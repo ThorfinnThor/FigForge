@@ -1,0 +1,248 @@
+{
+  "schemaVersion": 1,
+  "ticket": "FF-10",
+  "sourcePolicy": "Nur Rebrickable Catalog Downloads/CSV, keine MOC-Dateien.",
+  "generatedFrom": {
+    "assortmentSha256": "12dd1dbf0cde990698ee703540656726990b346a9a570ed03835248887908717",
+    "sourceLockSha256": "1ff3982922f1c1563dd2f086922baf7dc7407727c39eba3ee7814022d8f4c73e",
+    "anchorRegistrySha256": "58233a8597ccdc3cce9109f8631dffe35f27b28f80473905b0b9e347882b6502"
+  },
+  "package": {
+    "id": "ff04-fixture-standard-v1",
+    "url": "/assets/model-packages/ff04-fixture-standard-v1.json",
+    "format": "json",
+    "sha256": "23ef2f2d78b7dbf962b75b274223bd922730603600f1e62ab8fe9a698319deaa",
+    "bytes": 8246,
+    "appearance": "synthetic",
+    "publishable": false
+  },
+  "thumbnails": [
+    {
+      "id": "thumbnail:ff03-hand-10053-left",
+      "partId": "ff03-hand-10053-left",
+      "url": "/assets/thumbnails/ff03-hand-10053-left.svg",
+      "format": "svg",
+      "sha256": "4d7d2acfc5fb787b545c32024f67b96b4e51956f9e7b3ff482ab4fc34625299f",
+      "bytes": 764,
+      "width": 256,
+      "height": 256,
+      "appearance": "synthetic",
+      "publishable": false
+    },
+    {
+      "id": "thumbnail:ff03-hand-10053-right",
+      "partId": "ff03-hand-10053-right",
+      "url": "/assets/thumbnails/ff03-hand-10053-right.svg",
+      "format": "svg",
+      "sha256": "6f7fc41a814498734bda51f71123c523fb8d62f645b6ea28f8d53b8584768f99",
+      "bytes": 765,
+      "width": 256,
+      "height": 256,
+      "appearance": "synthetic",
+      "publishable": false
+    },
+    {
+      "id": "thumbnail:ff03-hand-11439-left",
+      "partId": "ff03-hand-11439-left",
+      "url": "/assets/thumbnails/ff03-hand-11439-left.svg",
+      "format": "svg",
+      "sha256": "3c89d0d8d5241b01261bbfdc0ed93abc1ff0979a57db399b3035ec4cc6dc7535",
+      "bytes": 741,
+      "width": 256,
+      "height": 256,
+      "appearance": "synthetic",
+      "publishable": false
+    },
+    {
+      "id": "thumbnail:ff03-hand-11439-right",
+      "partId": "ff03-hand-11439-right",
+      "url": "/assets/thumbnails/ff03-hand-11439-right.svg",
+      "format": "svg",
+      "sha256": "bc6920d60835463937603c3afe67356e86f6f9d0d22eec6eae6fec4650e23b3a",
+      "bytes": 742,
+      "width": 256,
+      "height": 256,
+      "appearance": "synthetic",
+      "publishable": false
+    },
+    {
+      "id": "thumbnail:ff03-hand-3841-left",
+      "partId": "ff03-hand-3841-left",
+      "url": "/assets/thumbnails/ff03-hand-3841-left.svg",
+      "format": "svg",
+      "sha256": "fddcf6b73d7ec9d6e13d95f65849a7bebb20e81accc0f71bfc97e66b26951cb6",
+      "bytes": 759,
+      "width": 256,
+      "height": 256,
+      "appearance": "synthetic",
+      "publishable": false
+    },
+    {
+      "id": "thumbnail:ff03-hand-3841-right",
+      "partId": "ff03-hand-3841-right",
+      "url": "/assets/thumbnails/ff03-hand-3841-right.svg",
+      "format": "svg",
+      "sha256": "1fcc81e57bb90c9e78fedf6a99b2e3c6cc2835b3be27498ded48c09cb1aa4293",
+      "bytes": 760,
+      "width": 256,
+      "height": 256,
+      "appearance": "synthetic",
+      "publishable": false
+    },
+    {
+      "id": "thumbnail:ff03-head-3626c",
+      "partId": "ff03-head-3626c",
+      "url": "/assets/thumbnails/ff03-head-3626c.svg",
+      "format": "svg",
+      "sha256": "1136c8c9b0318847f05d22600f64c039f04b3b80348ad7da7512c4423e8f70c6",
+      "bytes": 753,
+      "width": 256,
+      "height": 256,
+      "appearance": "synthetic",
+      "publishable": false
+    },
+    {
+      "id": "thumbnail:ff03-head-3626cpr0001",
+      "partId": "ff03-head-3626cpr0001",
+      "url": "/assets/thumbnails/ff03-head-3626cpr0001.svg",
+      "format": "svg",
+      "sha256": "b6bfc299a6563633a42100f5881dd463939e62fe62a29a3afc1b0067bb5228d3",
+      "bytes": 905,
+      "width": 256,
+      "height": 256,
+      "appearance": "synthetic",
+      "publishable": false
+    },
+    {
+      "id": "thumbnail:ff03-head-3626cpr0008",
+      "partId": "ff03-head-3626cpr0008",
+      "url": "/assets/thumbnails/ff03-head-3626cpr0008.svg",
+      "format": "svg",
+      "sha256": "c28209c00651c76522b65ca4c1572929887df9918f25fa267edc57a5b07e9924",
+      "bytes": 909,
+      "width": 256,
+      "height": 256,
+      "appearance": "synthetic",
+      "publishable": false
+    },
+    {
+      "id": "thumbnail:ff03-head-3626cpr0387",
+      "partId": "ff03-head-3626cpr0387",
+      "url": "/assets/thumbnails/ff03-head-3626cpr0387.svg",
+      "format": "svg",
+      "sha256": "82b1b5c259fc86f0ddd8586ef35c770fdbbbd10dfa8cb118f6dbb58bc557d598",
+      "bytes": 905,
+      "width": 256,
+      "height": 256,
+      "appearance": "synthetic",
+      "publishable": false
+    },
+    {
+      "id": "thumbnail:ff03-head-3626cpr0495",
+      "partId": "ff03-head-3626cpr0495",
+      "url": "/assets/thumbnails/ff03-head-3626cpr0495.svg",
+      "format": "svg",
+      "sha256": "a03f74606463fb9a9d5b563a30b6d78ffcc2545311256ee3825ee9ebdc175771",
+      "bytes": 912,
+      "width": 256,
+      "height": 256,
+      "appearance": "synthetic",
+      "publishable": false
+    },
+    {
+      "id": "thumbnail:ff03-headwear-10048",
+      "partId": "ff03-headwear-10048",
+      "url": "/assets/thumbnails/ff03-headwear-10048.svg",
+      "format": "svg",
+      "sha256": "cee9cd6af01309e02db0b914d225ece12469749623832a7c948aab137906ede0",
+      "bytes": 770,
+      "width": 256,
+      "height": 256,
+      "appearance": "synthetic",
+      "publishable": false
+    },
+    {
+      "id": "thumbnail:ff03-headwear-25405",
+      "partId": "ff03-headwear-25405",
+      "url": "/assets/thumbnails/ff03-headwear-25405.svg",
+      "format": "svg",
+      "sha256": "994b9e1987a6d02567ca3ac81fc818e631d9235e2478802acdd1750b7652e64e",
+      "bytes": 768,
+      "width": 256,
+      "height": 256,
+      "appearance": "synthetic",
+      "publishable": false
+    },
+    {
+      "id": "thumbnail:ff03-headwear-25409",
+      "partId": "ff03-headwear-25409",
+      "url": "/assets/thumbnails/ff03-headwear-25409.svg",
+      "format": "svg",
+      "sha256": "7bac8a64a318f17ff6b9af6e178f428a2ffb40380167efb0ba8d6f737056018a",
+      "bytes": 769,
+      "width": 256,
+      "height": 256,
+      "appearance": "synthetic",
+      "publishable": false
+    },
+    {
+      "id": "thumbnail:ff03-headwear-36268",
+      "partId": "ff03-headwear-36268",
+      "url": "/assets/thumbnails/ff03-headwear-36268.svg",
+      "format": "svg",
+      "sha256": "75b5793277d759eb586a381004a0660419260a5cebe6422aec49516dfd26c9fb",
+      "bytes": 765,
+      "width": 256,
+      "height": 256,
+      "appearance": "synthetic",
+      "publishable": false
+    },
+    {
+      "id": "thumbnail:ff03-headwear-3901",
+      "partId": "ff03-headwear-3901",
+      "url": "/assets/thumbnails/ff03-headwear-3901.svg",
+      "format": "svg",
+      "sha256": "2c15f9b24b396b2db8b2bd64cfa5ab69b20be00de12e2c274345caa155fb953d",
+      "bytes": 765,
+      "width": 256,
+      "height": 256,
+      "appearance": "synthetic",
+      "publishable": false
+    },
+    {
+      "id": "thumbnail:fixture:legs-assembly",
+      "partId": "fixture:legs-assembly",
+      "url": "/assets/thumbnails/fixture-legs-assembly.svg",
+      "format": "svg",
+      "sha256": "c11879856341906d25bc36fcf07aabc08b83cb7cba7d30137e820d379323adfa",
+      "bytes": 777,
+      "width": 256,
+      "height": 256,
+      "appearance": "synthetic",
+      "publishable": false
+    },
+    {
+      "id": "thumbnail:fixture:torso-assembly",
+      "partId": "fixture:torso-assembly",
+      "url": "/assets/thumbnails/fixture-torso-assembly.svg",
+      "format": "svg",
+      "sha256": "6763574466172f7e60ca82ebaedf46a3143d03ea811c1e64d9121a91adca3cb4",
+      "bytes": 821,
+      "width": 256,
+      "height": 256,
+      "appearance": "synthetic",
+      "publishable": false
+    }
+  ],
+  "summary": {
+    "partCount": 18,
+    "thumbnailCount": 18,
+    "publishablePackageCount": 0,
+    "maxThumbnailBytes": 60000
+  },
+  "openBlockers": [
+    "FF-10 outputs are synthetic FF-04 fixtures and are not publishable catalog assets.",
+    "Real LDraw model packages require separately verified release, license, dependency and hash evidence.",
+    "Only Rebrickable Catalog Downloads/CSV are allowed as catalog inputs; no MOC files or API data are included."
+  ]
+}

@@ -1,0 +1,172 @@
+{
+  "schemaVersion": 1,
+  "updatedAt": "2026-09-27",
+  "prototypeOnly": true,
+  "publishable": false,
+  "sourcePolicy": "Nur Rebrickable Catalog Downloads/CSV, keine MOC-Dateien.",
+  "librarySource": "LDraw.org official parts library",
+  "entries": [
+    {
+      "componentId": "ff03-head-3626c",
+      "rebrickablePartNum": "3626c",
+      "status": "verified",
+      "ldrawFile": "parts/3626c.dat",
+      "ldrawUpdate": "2022-05",
+      "mappingEvidence": "Exact Rebrickable part number and official LDraw file name match.",
+      "sourceUrl": "https://library.ldraw.org/parts/list?tableSearch=3626c",
+      "packageUrl": "https://library.ldraw.org/library/official/parts/3626c.zip",
+      "packageSha256": "17817dbf39b4d460af2d3754fe4ddae7345e5c641fa06bc9d4df6adc4ad28f85",
+      "fileSha256": "538729132df1cd01bd1811c0dbac5a1bbda5d11d9cfb755797401c19641a6657"
+    },
+    {
+      "componentId": "ff03-head-3626cpr0001",
+      "rebrickablePartNum": "3626cpr0001",
+      "status": "verified",
+      "ldrawFile": "parts/3626cp01.dat",
+      "ldrawUpdate": "2024-07",
+      "mappingEvidence": "Official LDraw !KEYWORDS names Rebrickable 3626cpr0001.",
+      "sourceUrl": "https://library.ldraw.org/parts/list?tableSearch=3626cpr0001",
+      "packageUrl": "https://library.ldraw.org/library/official/parts/3626cp01.zip",
+      "packageSha256": "a7883540e202463ee6c0c22cd1ca32f63d5b6505237cf0f12b0c865c8542c376",
+      "fileSha256": "0634368409e8aaf90c315dde09ce98906f82fac11bd9dfd7dbad1126022b72b9"
+    },
+    {
+      "componentId": "ff03-head-3626cpr0008",
+      "rebrickablePartNum": "3626cpr0008",
+      "status": "blocked",
+      "reason": "No official LDraw file with an explicit Rebrickable 3626cpr0008 mapping was found."
+    },
+    {
+      "componentId": "ff03-head-3626cpr0387",
+      "rebrickablePartNum": "3626cpr0387",
+      "status": "verified",
+      "ldrawFile": "parts/3626cp7h.dat",
+      "ldrawUpdate": "2025-09",
+      "mappingEvidence": "Official LDraw !KEYWORDS names Rebrickable 3626cpr0387.",
+      "sourceUrl": "https://library.ldraw.org/parts/list?tableSearch=3626cpr0387",
+      "packageUrl": "https://library.ldraw.org/library/official/parts/3626cp7h.zip",
+      "packageSha256": "d64663cf7319d6740b8a1f2f92d719a658d93a8b56fad0b15ead2dfa213e56ef",
+      "fileSha256": "aaa85b76e6f7bbcb683a7aba810fba508c89e0fe985a4a1867d82fffeb3b30ae"
+    },
+    {
+      "componentId": "ff03-head-3626cpr0495",
+      "rebrickablePartNum": "3626cpr0495",
+      "status": "blocked",
+      "reason": "No official LDraw file with an explicit Rebrickable 3626cpr0495 mapping was found."
+    },
+    {
+      "componentId": "ff03-headwear-10048",
+      "rebrickablePartNum": "10048",
+      "status": "verified",
+      "ldrawFile": "parts/10048.dat",
+      "ldrawUpdate": "2013-01",
+      "mappingEvidence": "Exact Rebrickable part number and official LDraw file name match.",
+      "sourceUrl": "https://library.ldraw.org/parts/list?tableSearch=10048",
+      "packageUrl": "https://library.ldraw.org/library/official/parts/10048.zip",
+      "packageSha256": "00b33ad4ab6ac5c430c9e8953089874b2daf400cef5deab855a749f6e01d7552",
+      "fileSha256": "15f35afd2a835254e925386a9cc55d0091f69bf4a85b801c77f4b2abe576e0d5"
+    },
+    {
+      "componentId": "ff03-headwear-25405",
+      "rebrickablePartNum": "25405",
+      "status": "blocked",
+      "reason": "LDraw 25405 is currently unofficial; this prototype accepts official LDraw files only."
+    },
+    {
+      "componentId": "ff03-headwear-25409",
+      "rebrickablePartNum": "25409",
+      "status": "verified",
+      "ldrawFile": "parts/25409.dat",
+      "ldrawUpdate": "2026-03",
+      "mappingEvidence": "Exact Rebrickable part number and official LDraw file name match.",
+      "sourceUrl": "https://library.ldraw.org/parts/list?tableSearch=25409",
+      "packageUrl": "https://library.ldraw.org/library/official/parts/25409.zip",
+      "packageSha256": "5e8a7166cb5c05dfca8a7279541509b2d543d687a6cba62773bf21fdd9ded3cb",
+      "fileSha256": "fc23e337fc8cfed6025d5660b61bfbfcb0e86e65c651750610286e01bee79501"
+    },
+    {
+      "componentId": "ff03-headwear-36268",
+      "rebrickablePartNum": "36268",
+      "status": "blocked",
+      "reason": "No official LDraw file with an explicit Rebrickable 36268 mapping was found."
+    },
+    {
+      "componentId": "ff03-headwear-3901",
+      "rebrickablePartNum": "3901",
+      "status": "verified",
+      "ldrawFile": "parts/3901.dat",
+      "ldrawUpdate": "2012-03",
+      "mappingEvidence": "Exact Rebrickable part number and official LDraw file name match.",
+      "sourceUrl": "https://library.ldraw.org/parts/list?tableSearch=3901",
+      "packageUrl": "https://library.ldraw.org/library/official/parts/3901.zip",
+      "packageSha256": "07ab386c24f55bec14a312058ccd274d9fc520bba737b3bea6f87ee5496e220b",
+      "fileSha256": "f5036d191f6ac8143029d5c2a2e7f8d64d02979ec0049c0b73cb7e420f36f554"
+    },
+    {
+      "componentId": "ff03-torso-3814",
+      "rebrickablePartNum": "3814",
+      "status": "verified",
+      "ldrawFile": "parts/973.dat",
+      "ldrawUpdate": "2009-01",
+      "mappingEvidence": "Official LDraw !KEYWORDS names Rebrickable 3814.",
+      "sourceUrl": "https://library.ldraw.org/parts/14192",
+      "packageUrl": "https://library.ldraw.org/library/official/parts/973.zip",
+      "packageSha256": "c59b38817d22438793ab5ee30fdd1dd2899429adce2aeaea478b76ef6b916037",
+      "fileSha256": "bc916535c228a21d472db6868c591d8e8c7a9c6340b300aba07a7ba22f972ad9"
+    },
+    {
+      "componentId": "ff03-torso-973c01h01",
+      "rebrickablePartNum": "973c01h01",
+      "status": "blocked",
+      "reason": "No official LDraw assembly explicitly maps the complete Rebrickable 973c01h01 variant."
+    },
+    {
+      "componentId": "ff03-legs-970c01",
+      "rebrickablePartNum": "970c01",
+      "status": "blocked",
+      "reason": "No official LDraw assembly explicitly maps the complete Rebrickable 970c01 variant."
+    },
+    {
+      "componentId": "ff03-legs-970c01pr0001",
+      "rebrickablePartNum": "970c01pr0001",
+      "status": "blocked",
+      "reason": "No official LDraw file with an explicit Rebrickable 970c01pr0001 mapping was found."
+    },
+    {
+      "componentId": "ff03-hand-10053",
+      "rebrickablePartNum": "10053",
+      "status": "verified",
+      "ldrawFile": "parts/10053.dat",
+      "ldrawUpdate": "2014-01",
+      "mappingEvidence": "Exact Rebrickable part number and official LDraw file name match.",
+      "sourceUrl": "https://library.ldraw.org/parts/list?tableSearch=10053",
+      "packageUrl": "https://library.ldraw.org/library/official/parts/10053.zip",
+      "packageSha256": "730e1b41b63228b5bc82c4e05cd93fd8bb52c166bf7697566af58f4c654e66fe",
+      "fileSha256": "6bd1664d50df8017f339bb0b91b8b204e56a3260defc70fe90c2fa9b883efa76"
+    },
+    {
+      "componentId": "ff03-hand-11439",
+      "rebrickablePartNum": "11439",
+      "status": "verified",
+      "ldrawFile": "parts/11439.dat",
+      "ldrawUpdate": "2023-03",
+      "mappingEvidence": "Exact Rebrickable part number and official LDraw file name match.",
+      "sourceUrl": "https://library.ldraw.org/parts/list?tableSearch=11439",
+      "packageUrl": "https://library.ldraw.org/library/official/parts/11439.zip",
+      "packageSha256": "d73d783bcb412bce0bb7d498a9fbb44b1a5c8570b8dd8c04d93732b87ead4c7d",
+      "fileSha256": "056b2b5f9602d8db424acd0e34b388328de8dca7a4797ef7d6e0062bf82239d1"
+    },
+    {
+      "componentId": "ff03-hand-3841",
+      "rebrickablePartNum": "3841",
+      "status": "verified",
+      "ldrawFile": "parts/3841.dat",
+      "ldrawUpdate": "2003-03",
+      "mappingEvidence": "Exact Rebrickable part number and official LDraw file name match.",
+      "sourceUrl": "https://library.ldraw.org/parts/list?tableSearch=3841",
+      "packageUrl": "https://library.ldraw.org/library/official/parts/3841.zip",
+      "packageSha256": "13b231dbeb193c9d4821f63e288115b717882cc1e95c0e39de10db36d2e1e876",
+      "fileSha256": "645fa0242092a1583a1210c441cf9eec72b36742db403da077f9bd9e232a2978"
+    }
+  ]
+}

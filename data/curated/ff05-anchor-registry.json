@@ -1,0 +1,53 @@
+{
+  "schemaVersion": 1,
+  "profileId": "fixture-standard-minifigure-v1",
+  "coordinateSystem": {
+    "units": "three-scene-units",
+    "handedness": "right",
+    "upAxis": "y"
+  },
+  "source": "synthetic-ff04-fixture",
+  "publishable": false,
+  "anchors": [
+    {
+      "id": "anchor:fixture-standard:head",
+      "slot": "head",
+      "parent": "torsoAssembly",
+      "placementFamily": "fixture-standard-head",
+      "transform": [1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 2.88, 0, 1],
+      "reviewStatus": "fixture-only",
+      "evidenceIds": ["evidence:fixture:ff04-dimensions"],
+      "note": "Measured from the synthetic FF-04 torso and neck fixture; not valid for catalog geometry."
+    },
+    {
+      "id": "anchor:fixture-standard:headwear",
+      "slot": "headwear",
+      "parent": "head",
+      "placementFamily": "fixture-standard-headwear",
+      "transform": [1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0.45, 0, 1],
+      "reviewStatus": "fixture-only",
+      "evidenceIds": ["evidence:fixture:ff04-dimensions"],
+      "note": "Relative to the synthetic head origin and measured against its top stud."
+    },
+    {
+      "id": "anchor:fixture-standard:left-hand",
+      "slot": "leftHandAccessory",
+      "parent": "torsoAssembly",
+      "placementFamily": "fixture-standard-grip",
+      "transform": [0.9800666, 0.1986693, 0, 0, -0.1986693, 0.9800666, 0, 0, 0, 0, 1, 0, -0.77, 1.23, 0, 1],
+      "reviewStatus": "fixture-only",
+      "evidenceIds": ["evidence:fixture:ff04-dimensions"],
+      "note": "Synthetic left-hand grip origin with a small outward rotation; no real grip claim."
+    },
+    {
+      "id": "anchor:fixture-standard:right-hand",
+      "slot": "rightHandAccessory",
+      "parent": "torsoAssembly",
+      "placementFamily": "fixture-standard-grip",
+      "transform": [0.9800666, -0.1986693, 0, 0, 0.1986693, 0.9800666, 0, 0, 0, 0, 1, 0, 0.77, 1.23, 0, 1],
+      "reviewStatus": "fixture-only",
+      "evidenceIds": ["evidence:fixture:ff04-dimensions"],
+      "note": "Synthetic right-hand grip origin with a small outward rotation; no real grip claim."
+    }
+  ]
+}

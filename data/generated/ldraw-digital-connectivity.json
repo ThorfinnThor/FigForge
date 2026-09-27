@@ -1,0 +1,326 @@
+{
+  "schemaVersion": 1,
+  "ticket": "FF-05/FF-16-digital-connectivity",
+  "generatedAt": "2026-09-27",
+  "sourcePolicy": "Nur Rebrickable Catalog Downloads/CSV, keine MOC-Dateien.",
+  "publishable": false,
+  "source": {
+    "repositoryUrl": "https://github.com/RolandMelkert/LDCadShadowLibrary",
+    "revision": "9b1131fb1991f8c0bfc072325e4e12f6271aba35",
+    "licenseId": "CC-BY-SA-4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "noticePath": "/licenses/LDCadShadowLibrary-NOTICE.txt"
+  },
+  "sourceFiles": [
+    {
+      "path": "data/vendor/ldcad-shadow/p/stud16.dat",
+      "sha256": "3593666367ae84212e24135b48bba7eb7498a8ecd35becd1d1d429b47e4710b4"
+    },
+    {
+      "path": "data/vendor/ldcad-shadow/p/stud4o.dat",
+      "sha256": "fb0ff82b90dd75dac4a5f68cc091e6152cb677939058136f8c173f8d8e0949a2"
+    },
+    {
+      "path": "data/vendor/ldcad-shadow/parts/10053.dat",
+      "sha256": "233455b6c8a11e10565287340f8b29c0a72e62f8a377dca4acfc93a61b5e3f98"
+    },
+    {
+      "path": "data/vendor/ldcad-shadow/parts/3820.dat",
+      "sha256": "b3ad8f83fb10d9128a5d4d65ab379d97e805d352e27ba72542698e2ad389f06f"
+    },
+    {
+      "path": "data/vendor/ldcad-shadow/parts/3841.dat",
+      "sha256": "3807c7f4872a8931202332a5868187c7451320d8d411df7583b14d9745320c14"
+    },
+    {
+      "path": "data/vendor/ldcad-shadow/parts/3901.dat",
+      "sha256": "851dd26fec3719e2bbac476ff4eaee37b249650d3c53fae9810ca1605fa8d60f"
+    },
+    {
+      "path": "data/vendor/ldcad-shadow/parts/s/3626cs02.dat",
+      "sha256": "6282f1c368ec1393f332480f5b9c127cff08d321f6aa64f228bbb2abbd3e29eb"
+    },
+    {
+      "path": "data/vendor/ldcad-shadow/parts/s/973s01.dat",
+      "sha256": "e4b40dba31f3a374389f4170350d423db8b4813863bff5d5c8453b2c5d0d6033"
+    }
+  ],
+  "referenceAssemblySha256": "ce4bb41330448fdf264edc62bae4d0d2ad07abf450d30161b2a61b1d96ce1fef",
+  "entries": [
+    {
+      "componentId": "ff03-head-3626c",
+      "role": "head",
+      "status": "digitally-supported",
+      "placementMode": "prototype-family-origin",
+      "placementTransformLdu": [
+        1,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        -24,
+        0,
+        1
+      ],
+      "targetSlot": "head",
+      "evidenceFiles": [
+        "parts/s/3626cs02.dat",
+        "parts/s/973s01.dat"
+      ],
+      "note": "Standard head placement is derived from the official LDraw reference assembly and matching LDCad neck connectors."
+    },
+    {
+      "componentId": "ff03-head-3626cpr0001",
+      "role": "head",
+      "status": "digitally-supported",
+      "placementMode": "prototype-family-origin",
+      "placementTransformLdu": [
+        1,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        -24,
+        0,
+        1
+      ],
+      "targetSlot": "head",
+      "evidenceFiles": [
+        "parts/s/3626cs02.dat",
+        "parts/s/973s01.dat"
+      ],
+      "note": "Standard head placement is derived from the official LDraw reference assembly and matching LDCad neck connectors."
+    },
+    {
+      "componentId": "ff03-head-3626cpr0387",
+      "role": "head",
+      "status": "digitally-supported",
+      "placementMode": "prototype-family-origin",
+      "placementTransformLdu": [
+        1,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        -24,
+        0,
+        1
+      ],
+      "targetSlot": "head",
+      "evidenceFiles": [
+        "parts/s/3626cs02.dat",
+        "parts/s/973s01.dat"
+      ],
+      "note": "Standard head placement is derived from the official LDraw reference assembly and matching LDCad neck connectors."
+    },
+    {
+      "componentId": "ff03-headwear-10048",
+      "role": "headwear",
+      "status": "digitally-supported",
+      "placementMode": "prototype-family-origin",
+      "placementTransformLdu": [
+        1,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        -24,
+        0,
+        1
+      ],
+      "targetSlot": "headwear",
+      "evidenceFiles": [
+        "p/stud16.dat",
+        "parts/s/3626cs02.dat"
+      ],
+      "note": "Standard headwear placement is derived from the official LDraw reference assembly and matching LDCad head/headwear connectors."
+    },
+    {
+      "componentId": "ff03-headwear-25409",
+      "role": "headwear",
+      "status": "digitally-supported",
+      "placementMode": "prototype-family-origin",
+      "placementTransformLdu": [
+        1,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        -24,
+        0,
+        1
+      ],
+      "targetSlot": "headwear",
+      "evidenceFiles": [
+        "p/stud4o.dat",
+        "parts/s/3626cs02.dat"
+      ],
+      "note": "Standard headwear placement is derived from the official LDraw reference assembly and matching LDCad head/headwear connectors."
+    },
+    {
+      "componentId": "ff03-headwear-3901",
+      "role": "headwear",
+      "status": "digitally-supported",
+      "placementMode": "prototype-family-origin",
+      "placementTransformLdu": [
+        1,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        -24,
+        0,
+        1
+      ],
+      "targetSlot": "headwear",
+      "evidenceFiles": [
+        "parts/3901.dat",
+        "parts/s/3626cs02.dat"
+      ],
+      "note": "Standard headwear placement is derived from the official LDraw reference assembly and matching LDCad head/headwear connectors."
+    },
+    {
+      "componentId": "ff03-torso-3814",
+      "role": "torsoAssembly",
+      "status": "blocked",
+      "placementMode": null,
+      "placementTransformLdu": null,
+      "targetSlot": null,
+      "evidenceFiles": [
+        "parts/s/973s01.dat"
+      ],
+      "reasonCode": "incomplete-sales-assembly",
+      "note": "The mapped 973.dat file is a torso shell, not the complete Rebrickable sales assembly."
+    },
+    {
+      "componentId": "ff03-hand-10053",
+      "role": "handAccessory",
+      "status": "digitally-supported",
+      "placementMode": "snap-connector",
+      "placementTransformLdu": [
+        0.985,
+        -0.17,
+        0,
+        0,
+        0.086268,
+        0.499806,
+        0.86148,
+        0,
+        -0.146464,
+        -0.848563,
+        0.507414,
+        0,
+        24.780896,
+        33.091985,
+        -17.47572,
+        1
+      ],
+      "targetSlot": "rightHandAccessory",
+      "evidenceFiles": [
+        "parts/10053.dat",
+        "parts/3820.dat"
+      ],
+      "note": "The radius-4 sword connector is aligned to the radius-4 reference-hand clip."
+    },
+    {
+      "componentId": "ff03-hand-11439",
+      "role": "handAccessory",
+      "status": "blocked",
+      "placementMode": null,
+      "placementTransformLdu": null,
+      "targetSlot": null,
+      "evidenceFiles": [],
+      "reasonCode": "missing-snap-metadata",
+      "note": "The pinned LDCad Shadow Library revision contains no connection metadata for 11439.dat."
+    },
+    {
+      "componentId": "ff03-hand-3841",
+      "role": "handAccessory",
+      "status": "digitally-supported",
+      "placementMode": "snap-connector",
+      "placementTransformLdu": [
+        -0.985,
+        0.17,
+        0,
+        0,
+        -0.086268,
+        -0.499806,
+        -0.861479,
+        0,
+        -0.146464,
+        -0.848563,
+        0.507414,
+        0,
+        25.384769,
+        36.590629,
+        -11.445363,
+        1
+      ],
+      "targetSlot": "rightHandAccessory",
+      "evidenceFiles": [
+        "parts/3841.dat",
+        "parts/3820.dat"
+      ],
+      "note": "The midpoint of the slideable radius-4 shaft is aligned to the radius-4 reference-hand clip."
+    }
+  ],
+  "summary": {
+    "entryCount": 10,
+    "digitallySupportedCount": 8,
+    "blockedCount": 2,
+    "humanInputRequired": false
+  },
+  "limitations": [
+    "Digital connection metadata supports placement but is not a physical clutch-force or material-stress guarantee.",
+    "Only the standard-minifigure subset listed in this artifact is supported.",
+    "Part 11439 and the incomplete torso sales assembly remain blocked."
+  ]
+}

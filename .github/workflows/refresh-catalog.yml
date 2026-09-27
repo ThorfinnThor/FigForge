@@ -1,0 +1,84 @@
+name: Propose catalog refresh
+
+on:
+  schedule:
+    - cron: "17 4 * * 1"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pull-requests: write
+
+concurrency:
+  group: rebrickable-catalog-refresh
+  cancel-in-progress: false
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - name: Check out protected production branch
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          ref: ${{ github.event.repository.default_branch }}
+          fetch-depth: 0
+
+      - name: Set up Node.js
+        uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+
+      - name: Install locked dependencies
+        run: npm ci
+
+      - name: Download, validate, and normalize catalog
+        run: npm run data:refresh:remote
+
+      - name: Validate proposed data and repository
+        run: npm run verify
+
+      - name: Detect generated data changes
+        id: changes
+        shell: bash
+        run: |
+          if git diff --quiet -- data; then
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+          else
+            echo "changed=true" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Commit proposed data update to automation branch
+        if: steps.changes.outputs.changed == 'true'
+        shell: bash
+        run: |
+          branch="automation/rebrickable-catalog-refresh"
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git fetch origin "$branch" || true
+          git switch -C "$branch"
+          git add -- data
+          git commit -m "chore(data): propose Rebrickable catalog refresh"
+          git push --force-with-lease origin "HEAD:refs/heads/$branch"
+
+      - name: Open or update review pull request
+        if: steps.changes.outputs.changed == 'true'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        shell: bash
+        run: |
+          branch="automation/rebrickable-catalog-refresh"
+          if gh pr view "$branch" >/dev/null 2>&1; then
+            gh pr comment "$branch" --body "Catalog-Daten wurden neu validiert und der bestehende Review-PR wurde aktualisiert."
+          else
+            gh pr create \
+              --base "${{ github.event.repository.default_branch }}" \
+              --head "$branch" \
+              --title "chore(data): Rebrickable catalog refresh" \
+              --body "Automatisch erzeugter Vorschlag. Nur Rebrickable Catalog Downloads/CSV; keine MOC-Dateien und keine API. Vor dem Merge sind Quellen-, Schema- und Diff-Review erforderlich."
+          fi
+
+      - name: Report no change
+        if: steps.changes.outputs.changed != 'true'
+        run: echo "No catalog change was proposed."

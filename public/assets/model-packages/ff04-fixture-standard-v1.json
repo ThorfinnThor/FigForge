@@ -1,0 +1,323 @@
+{
+  "schemaVersion": 1,
+  "ticket": "FF-10",
+  "packageId": "ff04-fixture-standard-v1",
+  "kind": "synthetic-fixture",
+  "publishable": false,
+  "sourcePolicy": "Nur Rebrickable Catalog Downloads/CSV, keine MOC-Dateien.",
+  "sourceHashes": {
+    "assortmentSha256": "12dd1dbf0cde990698ee703540656726990b346a9a570ed03835248887908717",
+    "sourceLockSha256": "1ff3982922f1c1563dd2f086922baf7dc7407727c39eba3ee7814022d8f4c73e",
+    "anchorRegistrySha256": "58233a8597ccdc3cce9109f8631dffe35f27b28f80473905b0b9e347882b6502"
+  },
+  "fixture": {
+    "profileId": "fixture-standard-minifigure-v1",
+    "source": "synthetic-ff04-fixture",
+    "coordinateSystem": {
+      "units": "three-scene-units",
+      "handedness": "right",
+      "upAxis": "y"
+    },
+    "anchors": [
+      {
+        "id": "anchor:fixture-standard:head",
+        "slot": "head",
+        "parent": "torsoAssembly",
+        "placementFamily": "fixture-standard-head",
+        "transform": [
+          1,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          2.88,
+          0,
+          1
+        ]
+      },
+      {
+        "id": "anchor:fixture-standard:headwear",
+        "slot": "headwear",
+        "parent": "head",
+        "placementFamily": "fixture-standard-headwear",
+        "transform": [
+          1,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0.45,
+          0,
+          1
+        ]
+      },
+      {
+        "id": "anchor:fixture-standard:left-hand",
+        "slot": "leftHandAccessory",
+        "parent": "torsoAssembly",
+        "placementFamily": "fixture-standard-grip",
+        "transform": [
+          0.9800666,
+          0.1986693,
+          0,
+          0,
+          -0.1986693,
+          0.9800666,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          -0.77,
+          1.23,
+          0,
+          1
+        ]
+      },
+      {
+        "id": "anchor:fixture-standard:right-hand",
+        "slot": "rightHandAccessory",
+        "parent": "torsoAssembly",
+        "placementFamily": "fixture-standard-grip",
+        "transform": [
+          0.9800666,
+          -0.1986693,
+          0,
+          0,
+          0.1986693,
+          0.9800666,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0.77,
+          1.23,
+          0,
+          1
+        ]
+      }
+    ]
+  },
+  "cameraPresets": [
+    "three-quarter",
+    "front",
+    "back"
+  ],
+  "parts": [
+    {
+      "id": "ff03-hand-10053-left",
+      "label": "10053 · kleines Schwert",
+      "slot": "leftHandAccessory",
+      "placementFamily": "fixture-standard-grip",
+      "fixtureStyle": "hand-tool",
+      "sourceIds": [
+        "catalog:ff03-hand-10053",
+        "evidence:fixture:ff04-geometry"
+      ]
+    },
+    {
+      "id": "ff03-hand-10053-right",
+      "label": "10053 · kleines Schwert",
+      "slot": "rightHandAccessory",
+      "placementFamily": "fixture-standard-grip",
+      "fixtureStyle": "hand-tool",
+      "sourceIds": [
+        "catalog:ff03-hand-10053",
+        "evidence:fixture:ff04-geometry"
+      ]
+    },
+    {
+      "id": "ff03-hand-11439-left",
+      "label": "11439 · gezacktes Schwert",
+      "slot": "leftHandAccessory",
+      "placementFamily": "fixture-standard-grip",
+      "fixtureStyle": "hand-shield",
+      "sourceIds": [
+        "catalog:ff03-hand-11439",
+        "evidence:fixture:ff04-geometry"
+      ]
+    },
+    {
+      "id": "ff03-hand-11439-right",
+      "label": "11439 · gezacktes Schwert",
+      "slot": "rightHandAccessory",
+      "placementFamily": "fixture-standard-grip",
+      "fixtureStyle": "hand-shield",
+      "sourceIds": [
+        "catalog:ff03-hand-11439",
+        "evidence:fixture:ff04-geometry"
+      ]
+    },
+    {
+      "id": "ff03-hand-3841-left",
+      "label": "3841 · Stab-Prüfgeometrie",
+      "slot": "leftHandAccessory",
+      "placementFamily": "fixture-standard-grip",
+      "fixtureStyle": "hand-staff",
+      "sourceIds": [
+        "catalog:ff03-hand-3841",
+        "evidence:fixture:ff04-geometry"
+      ]
+    },
+    {
+      "id": "ff03-hand-3841-right",
+      "label": "3841 · Stab-Prüfgeometrie",
+      "slot": "rightHandAccessory",
+      "placementFamily": "fixture-standard-grip",
+      "fixtureStyle": "hand-staff",
+      "sourceIds": [
+        "catalog:ff03-hand-3841",
+        "evidence:fixture:ff04-geometry"
+      ]
+    },
+    {
+      "id": "ff03-head-3626c",
+      "label": "3626c · ohne Druck",
+      "slot": "head",
+      "placementFamily": "fixture-standard-head",
+      "fixtureStyle": "plain",
+      "sourceIds": [
+        "catalog:ff03-head-3626c",
+        "evidence:fixture:ff04-geometry"
+      ]
+    },
+    {
+      "id": "ff03-head-3626cpr0001",
+      "label": "3626cpr0001 · Standardgrinsen",
+      "slot": "head",
+      "placementFamily": "fixture-standard-head",
+      "fixtureStyle": "grin",
+      "sourceIds": [
+        "catalog:ff03-head-3626cpr0001",
+        "evidence:fixture:ff04-geometry"
+      ]
+    },
+    {
+      "id": "ff03-head-3626cpr0008",
+      "label": "3626cpr0008 · Brauen und Lächeln",
+      "slot": "head",
+      "placementFamily": "fixture-standard-head",
+      "fixtureStyle": "brows",
+      "sourceIds": [
+        "catalog:ff03-head-3626cpr0008",
+        "evidence:fixture:ff04-geometry"
+      ]
+    },
+    {
+      "id": "ff03-head-3626cpr0387",
+      "label": "3626cpr0387 · dünnes Grinsen",
+      "slot": "head",
+      "placementFamily": "fixture-standard-head",
+      "fixtureStyle": "grin",
+      "sourceIds": [
+        "catalog:ff03-head-3626cpr0387",
+        "evidence:fixture:ff04-geometry"
+      ]
+    },
+    {
+      "id": "ff03-head-3626cpr0495",
+      "label": "3626cpr0495 · erschrockenes Lächeln",
+      "slot": "head",
+      "placementFamily": "fixture-standard-head",
+      "fixtureStyle": "brows",
+      "sourceIds": [
+        "catalog:ff03-head-3626cpr0495",
+        "evidence:fixture:ff04-geometry"
+      ]
+    },
+    {
+      "id": "ff03-headwear-10048",
+      "label": "10048 · zerzaustes Haar",
+      "slot": "headwear",
+      "placementFamily": "fixture-standard-headwear",
+      "fixtureStyle": "headwear",
+      "sourceIds": [
+        "catalog:ff03-headwear-10048",
+        "evidence:fixture:ff04-geometry"
+      ]
+    },
+    {
+      "id": "ff03-headwear-25405",
+      "label": "25405 · Pferdeschwanz",
+      "slot": "headwear",
+      "placementFamily": "fixture-standard-headwear",
+      "fixtureStyle": "headwear",
+      "sourceIds": [
+        "catalog:ff03-headwear-25405",
+        "evidence:fixture:ff04-geometry"
+      ]
+    },
+    {
+      "id": "ff03-headwear-25409",
+      "label": "25409 · Seitenscheitel",
+      "slot": "headwear",
+      "placementFamily": "fixture-standard-headwear",
+      "fixtureStyle": "headwear",
+      "sourceIds": [
+        "catalog:ff03-headwear-25409",
+        "evidence:fixture:ff04-geometry"
+      ]
+    },
+    {
+      "id": "ff03-headwear-36268",
+      "label": "36268 · Bob-Frisur",
+      "slot": "headwear",
+      "placementFamily": "fixture-standard-headwear",
+      "fixtureStyle": "headwear",
+      "sourceIds": [
+        "catalog:ff03-headwear-36268",
+        "evidence:fixture:ff04-geometry"
+      ]
+    },
+    {
+      "id": "ff03-headwear-3901",
+      "label": "3901 · glattes Haar",
+      "slot": "headwear",
+      "placementFamily": "fixture-standard-headwear",
+      "fixtureStyle": "headwear",
+      "sourceIds": [
+        "catalog:ff03-headwear-3901",
+        "evidence:fixture:ff04-geometry"
+      ]
+    },
+    {
+      "id": "fixture:legs-assembly",
+      "label": "FF-04 synthetic legs assembly",
+      "slot": "legsAssembly",
+      "placementFamily": "fixture-standard-legs",
+      "fixtureStyle": "base-legs",
+      "sourceIds": [
+        "evidence:fixture:ff04-geometry"
+      ]
+    },
+    {
+      "id": "fixture:torso-assembly",
+      "label": "FF-04 synthetic torso assembly",
+      "slot": "torsoAssembly",
+      "placementFamily": "fixture-standard-torso",
+      "fixtureStyle": "base-torso",
+      "sourceIds": [
+        "evidence:fixture:ff04-geometry"
+      ]
+    }
+  ]
+}

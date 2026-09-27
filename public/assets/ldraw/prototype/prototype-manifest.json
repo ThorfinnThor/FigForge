@@ -1,0 +1,55 @@
+{
+  "schemaVersion": 1,
+  "prototypeOnly": true,
+  "publishable": false,
+  "retrievedAt": "2026-09-27",
+  "source": "LDraw.org official parts library",
+  "model": "/assets/ldraw/prototype/models/figforge-minifigure-packed.mpd",
+  "assemblySource": "/assets/ldraw/prototype/models/figforge-minifigure.ldr",
+  "materials": "/assets/ldraw/prototype/LDConfig.ldr",
+  "licenseSummary": "/licenses/LDraw-CAreadme.txt",
+  "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+  "parts": [
+    {
+      "file": "parts/973c01.dat",
+      "label": "Minifig Torso with Arms and Yellow Hands",
+      "ldrawStatus": "official",
+      "ldrawUpdate": "2020-02",
+      "sourceUrl": "https://library.ldraw.org/parts/14193",
+      "packageUrl": "https://library.ldraw.org/library/official/parts/973c01.zip",
+      "packageSha256": "3d2c901256127a4c85dfe55752ab820449857620155c2e7f3d8ffa4e2df94027"
+    },
+    {
+      "file": "parts/3626cpcbe.dat",
+      "label": "Minifig Head with Brown Bushy Moustache and Eyebrows and Black Chin Strap Pattern",
+      "ldrawStatus": "official",
+      "ldrawUpdate": "2024-09",
+      "sourceUrl": "https://library.ldraw.org/parts/6582",
+      "packageUrl": "https://library.ldraw.org/library/official/parts/3626cpcbe.zip",
+      "packageSha256": "17b3006c228639fce26371c5b743a2f4d8fb041c3719ebc54114d6a41e6f9087"
+    },
+    {
+      "file": "parts/25409.dat",
+      "label": "Minifig Hair Mid-Length Tousled with Side Part",
+      "ldrawStatus": "official",
+      "ldrawUpdate": "2026-03",
+      "sourceUrl": "https://library.ldraw.org/parts/50305",
+      "packageUrl": "https://library.ldraw.org/library/official/parts/25409.zip",
+      "packageSha256": "5e8a7166cb5c05dfca8a7279541509b2d543d687a6cba62773bf21fdd9ded3cb"
+    },
+    {
+      "file": "parts/73200b-f1.dat",
+      "label": "Minifig Hips and Legs (Standing)",
+      "ldrawStatus": "official",
+      "ldrawUpdate": "2023-03",
+      "sourceUrl": "https://library.ldraw.org/parts/26214",
+      "packageUrl": "https://library.ldraw.org/library/official/parts/73200b-f1.zip",
+      "packageSha256": "48a8d06f6a42d024d5ee13cf13440f0620381b56c31ab4241bd2c707bf88ac00"
+    }
+  ],
+  "notes": [
+    "The assembly is a local visual proof and is not a verified procurement recipe.",
+    "No Rebrickable API or MOC files are used.",
+    "All referenced geometry came from official LDraw part packages; dependency headers are retained."
+  ]
+}

@@ -1,0 +1,1713 @@
+{
+  "schemaVersion": 1,
+  "ticket": "FF-09",
+  "sourcePolicy": "Nur Rebrickable Catalog Downloads/CSV, keine MOC-Dateien.",
+  "sourceAssortmentSha256": "12dd1dbf0cde990698ee703540656726990b346a9a570ed03835248887908717",
+  "sourceLockSha256": "1ff3982922f1c1563dd2f086922baf7dc7407727c39eba3ee7814022d8f4c73e",
+  "generatedFrom": {
+    "componentCount": 17,
+    "variantCount": 20,
+    "recipeCount": 5
+  },
+  "summary": {
+    "openMappingCount": 133,
+    "duplicateGroupCount": 0,
+    "blockedComponentCount": 17,
+    "blockedVariantCount": 20,
+    "unresolvedProcurementCount": 37,
+    "unresolvedAttachmentCount": 17,
+    "unresolvedRenderCount": 37,
+    "unresolvedHumanReviewCount": 17,
+    "unresolvedReleaseCount": 20,
+    "unresolvedRecipeCount": 5
+  },
+  "openMappings": [
+    {
+      "id": "component:ff03-hand-10053:attachment",
+      "entityType": "component",
+      "entityId": "ff03-hand-10053",
+      "field": "attachment",
+      "status": "pending",
+      "blocker": "Handle/grip geometry and hand-slot check are pending.",
+      "sourceIds": [
+        "evidence:parts:10053",
+        "evidence:category:73"
+      ],
+      "candidateIds": []
+    },
+    {
+      "id": "component:ff03-hand-10053:humanreview",
+      "entityType": "component",
+      "entityId": "ff03-hand-10053",
+      "field": "humanReview",
+      "status": "pending",
+      "blocker": "Human review is not complete.",
+      "sourceIds": [
+        "evidence:parts:10053",
+        "evidence:category:73"
+      ],
+      "candidateIds": []
+    },
+    {
+      "id": "component:ff03-hand-10053:procurement",
+      "entityType": "component",
+      "entityId": "ff03-hand-10053",
+      "field": "procurement",
+      "status": "blocked",
+      "blocker": "BrickLink item/color mapping is not yet independently verified.",
+      "sourceIds": [
+        "evidence:parts:10053",
+        "evidence:category:73"
+      ],
+      "candidateIds": []
+    },
+    {
+      "id": "component:ff03-hand-10053:render",
+      "entityType": "component",
+      "entityId": "ff03-hand-10053",
+      "field": "render",
+      "status": "missing",
+      "blocker": "Exact render asset is not available (status: missing).",
+      "sourceIds": [
+        "evidence:parts:10053",
+        "evidence:category:73"
+      ],
+      "candidateIds": []
+    },
+    {
+      "id": "component:ff03-hand-11439:attachment",
+      "entityType": "component",
+      "entityId": "ff03-hand-11439",
+      "field": "attachment",
+      "status": "pending",
+      "blocker": "Handle/grip geometry and hand-slot check are pending.",
+      "sourceIds": [
+        "evidence:parts:11439",
+        "evidence:category:73"
+      ],
+      "candidateIds": []
+    },
+    {
+      "id": "component:ff03-hand-11439:humanreview",
+      "entityType": "component",
+      "entityId": "ff03-hand-11439",
+      "field": "humanReview",
+      "status": "pending",
+      "blocker": "Human review is not complete.",
+      "sourceIds": [
+        "evidence:parts:11439",
+        "evidence:category:73"
+      ],
+      "candidateIds": []
+    },
+    {
+      "id": "component:ff03-hand-11439:procurement",
+      "entityType": "component",
+      "entityId": "ff03-hand-11439",
+      "field": "procurement",
+      "status": "blocked",
+      "blocker": "BrickLink item/color mapping is not yet independently verified.",
+      "sourceIds": [
+        "evidence:parts:11439",
+        "evidence:category:73"
+      ],
+      "candidateIds": []
+    },
+    {
+      "id": "component:ff03-hand-11439:render",
+      "entityType": "component",
+      "entityId": "ff03-hand-11439",
+      "field": "render",
+      "status": "missing",
+      "blocker": "Exact render asset is not available (status: missing).",
+      "sourceIds": [
+        "evidence:parts:11439",
+        "evidence:category:73"
+      ],
+      "candidateIds": []
+    },
+    {
+      "id": "component:ff03-hand-3841:attachment",
+      "entityType": "component",
+      "entityId": "ff03-hand-3841",
+      "field": "attachment",
+      "status": "pending",
+      "blocker": "Handle/grip geometry and hand-slot check are pending.",
+      "sourceIds": [
+        "evidence:parts:3841",
+        "evidence:category:73"
+      ],
+      "candidateIds": []
+    },
+    {
+      "id": "component:ff03-hand-3841:humanreview",
+      "entityType": "component",
+      "entityId": "ff03-hand-3841",
+      "field": "humanReview",
+      "status": "pending",
+      "blocker": "Human review is not complete.",
+      "sourceIds": [
+        "evidence:parts:3841",
+        "evidence:category:73"
+      ],
+      "candidateIds": []
+    },
+    {
+      "id": "component:ff03-hand-3841:procurement",
+      "entityType": "component",
+      "entityId": "ff03-hand-3841",
+      "field": "procurement",
+      "status": "blocked",
+      "blocker": "BrickLink item/color mapping is not yet independently verified.",
+      "sourceIds": [
+        "evidence:parts:3841",
+        "evidence:category:73"
+      ],
+      "candidateIds": []
+    },
+    {
+      "id": "component:ff03-hand-3841:render",
+      "entityType": "component",
+      "entityId": "ff03-hand-3841",
+      "field": "render",
+      "status": "missing",
+      "blocker": "Exact render asset is not available (status: missing).",
+      "sourceIds": [
+        "evidence:parts:3841",
+        "evidence:category:73"
+      ],
+      "candidateIds": []
+    },
+    {
+      "id": "component:ff03-head-3626c:attachment",
+      "entityType": "component",
+      "entityId": "ff03-head-3626c",
+      "field": "attachment",
+      "status": "pending",
+      "blocker": "LDraw geometry, release, dependencies, hash, license and head-slot check are pending.",
+      "sourceIds": [
+        "evidence:parts:3626c",
+        "evidence:category:59"
+      ],
+      "candidateIds": []
+    },
+    {
+      "id": "component:ff03-head-3626c:humanreview",
+      "entityType": "component",
+      "entityId": "ff03-head-3626c",
+      "field": "humanReview",
+      "status": "pending",
+      "blocker": "Human review is not complete.",
+      "sourceIds": [
+        "evidence:parts:3626c",
+        "evidence:category:59"
+      ],
+      "candidateIds": []
+    },
+    {
+      "id": "component:ff03-head-3626c:procurement",
+      "entityType": "component",
+      "entityId": "ff03-head-3626c",
+      "field": "procurement",
+      "status": "blocked",
+      "blocker": "BrickLink item/color mapping is not yet independently verified.",
+      "sourceIds": [
+        "evidence:parts:3626c",
+        "evidence:category:59"
+      ],
+      "candidateIds": []
+    },
+    {
+      "id": "component:ff03-head-3626c:render",
+      "entityType": "component",
+      "entityId": "ff03-head-3626c",
+      "field": "render",
+      "status": "missing",
+      "blocker": "Exact render asset is not available (status: missing).",
+      "sourceIds": [
+        "evidence:parts:3626c",
+        "evidence:category:59"
+      ],
+      "candidateIds": []
+    },
+    {
+      "id": "component:ff03-head-3626cpr0001:attachment",
+      "entityType": "component",
+      "entityId": "ff03-head-3626cpr0001",
+      "field": "attachment",
+      "status": "pending",
+      "blocker": "LDraw geometry, release, dependencies, hash, license and head-slot check are pending.",
+      "sourceIds": [
+        "evidence:parts:3626cpr0001",
+        "evidence:category:59"
+      ],
+      "candidateIds": []
+    },
+    {
+      "id": "component:ff03-head-3626cpr0001:humanreview",
+      "entityType": "component",
+      "entityId": "ff03-head-3626cpr0001",
+      "field": "humanReview",
+      "status": "pending",
+      "blocker": "Human review is not complete.",
+      "sourceIds": [
+        "evidence:parts:3626cpr0001",
+        "evidence:category:59"
+      ],
+      "candidateIds": []
+    },
+    {
+      "id": "component:ff03-head-3626cpr0001:procurement",
+      "entityType": "component",
+      "entityId": "ff03-head-3626cpr0001",
+      "field": "procurement",
+      "status": "blocked",
+      "blocker": "BrickLink item/color mapping is not yet independently verified.",
+      "sourceIds": [
+        "evidence:parts:3626cpr0001",
+        "evidence:category:59"
+      ],
+      "candidateIds": []
+    },
+    {
+      "id": "component:ff03-head-3626cpr0001:render",
+      "entityType": "component",
+      "entityId": "ff03-head-3626cpr0001",
+      "field": "render",
+      "status": "missing",
+      "blocker": "Exact render asset is not available (status: missing).",
+      "sourceIds": [
+        "evidence:parts:3626cpr0001",
+        "evidence:category:59"
+      ],
+      "candidateIds": []
+    },
+    {
+      "id": "component:ff03-head-3626cpr0008:attachment",
+      "entityType": "component",
+      "entityId": "ff03-head-3626cpr0008",
+      "field": "attachment",
+      "status": "pending",
+      "blocker": "LDraw geometry, release, dependencies, hash, license and head-slot check are pending.",
+      "sourceIds": [
+        "evidence:parts:3626cpr0008",
+        "evidence:category:59"
+      ],
+      "candidateIds": []
+    },
+    {
+      "id": "component:ff03-head-3626cpr0008:humanreview",
+      "entityType": "component",
+      "entityId": "ff03-head-3626cpr0008",
+      "field": "humanReview",
+      "status": "pending",
+      "blocker": "Human review is not complete.",
+      "sourceIds": [
+        "evidence:parts:3626cpr0008",
+        "evidence:category:59"
+      ],
+      "candidateIds": []
+    },
+    {
+      "id": "component:ff03-head-3626cpr0008:procurement",
+      "entityType": "component",
+      "entityId": "ff03-head-3626cpr0008",
+      "field": "procurement",
+      "status": "blocked",
+      "blocker": "BrickLink item/color mapping is not yet independently verified.",
+      "sourceIds": [
+        "evidence:parts:3626cpr0008",
+        "evidence:category:59"
+      ],
+      "candidateIds": []
+    },
+    {
+      "id": "component:ff03-head-3626cpr0008:render",
+      "entityType": "component",
+      "entityId": "ff03-head-3626cpr0008",
+      "field": "render",
+      "status": "missing",
+      "blocker": "Exact render asset is not available (status: missing).",
+      "sourceIds": [
+        "evidence:parts:3626cpr0008",
+        "evidence:category:59"
+      ],
+      "candidateIds": []
+    },
+    {
+      "id": "component:ff03-head-3626cpr0387:attachment",
+      "entityType": "component",
+      "entityId": "ff03-head-3626cpr0387",
+      "field": "attachment",
+      "status": "pending",
+      "blocker": "LDraw geometry, release, dependencies, hash, license and head-slot check are pending.",
+      "sourceIds": [
+        "evidence:parts:3626cpr0387",
+        "evidence:category:59"
+      ],
+      "candidateIds": []
+    },
+    {
+      "id": "component:ff03-head-3626cpr0387:humanreview",
+      "entityType": "component",
+      "entityId": "ff03-head-3626cpr0387",
+      "field": "humanReview",
+      "status": "pending",
+      "blocker": "Human review is not complete.",
+      "sourceIds": [
+        "evidence:parts:3626cpr0387",
+        "evidence:category:59"
+      ],
+      "candidateIds": []
+    },
+    {
+      "id": "component:ff03-head-3626cpr0387:procurement",
+      "entityType": "component",
+      "entityId": "ff03-head-3626cpr0387",
+      "field": "procurement",
+      "status": "blocked",
+      "blocker": "BrickLink item/color mapping is not yet independently verified.",
+      "sourceIds": [
+        "evidence:parts:3626cpr0387",
+        "evidence:category:59"
+      ],
+      "candidateIds": []
+    },
+    {
+      "id": "component:ff03-head-3626cpr0387:render",
+      "entityType": "component",
+      "entityId": "ff03-head-3626cpr0387",
+      "field": "render",
+      "status": "missing",
+      "blocker": "Exact render asset is not available (status: missing).",
+      "sourceIds": [
+        "evidence:parts:3626cpr0387",
+        "evidence:category:59"
+      ],
+      "candidateIds": []
+    },
+    {
+      "id": "component:ff03-head-3626cpr0495:attachment",
+      "entityType": "component",
+      "entityId": "ff03-head-3626cpr0495",
+      "field": "attachment",
+      "status": "pending",
+      "blocker": "LDraw geometry, release, dependencies, hash, license and head-slot check are pending.",
+      "sourceIds": [
+        "evidence:parts:3626cpr0495",
+        "evidence:category:59"
+      ],
+      "candidateIds": []
+    },
+    {
+      "id": "component:ff03-head-3626cpr0495:humanreview",
+      "entityType": "component",
+      "entityId": "ff03-head-3626cpr0495",
+      "field": "humanReview",
+      "status": "pending",
+      "blocker": "Human review is not complete.",
+      "sourceIds": [
+        "evidence:parts:3626cpr0495",
+        "evidence:category:59"
+      ],
+      "candidateIds": []
+    },
+    {
+      "id": "component:ff03-head-3626cpr0495:procurement",
+      "entityType": "component",
+      "entityId": "ff03-head-3626cpr0495",
+      "field": "procurement",
+      "status": "blocked",
+      "blocker": "BrickLink item/color mapping is not yet independently verified.",
+      "sourceIds": [
+        "evidence:parts:3626cpr0495",
+        "evidence:category:59"
+      ],
+      "candidateIds": []
+    },
+    {
+      "id": "component:ff03-head-3626cpr0495:render",
+      "entityType": "component",
+      "entityId": "ff03-head-3626cpr0495",
+      "field": "render",
+      "status": "missing",
+      "blocker": "Exact render asset is not available (status: missing).",
+      "sourceIds": [
+        "evidence:parts:3626cpr0495",
+        "evidence:category:59"
+      ],
+      "candidateIds": []
+    },
+    {
+      "id": "component:ff03-headwear-10048:attachment",
+      "entityType": "component",
+      "entityId": "ff03-headwear-10048",
+      "field": "attachment",
+      "status": "pending",
+      "blocker": "LDraw geometry, release, dependencies, hash, license and headwear-slot check are pending.",
+      "sourceIds": [
+        "evidence:parts:10048",
+        "evidence:category:65"
+      ],
+      "candidateIds": []
+    },
+    {
+      "id": "component:ff03-headwear-10048:humanreview",
+      "entityType": "component",
+      "entityId": "ff03-headwear-10048",
+      "field": "humanReview",
+      "status": "pending",
+      "blocker": "Human review is not complete.",
+      "sourceIds": [
+        "evidence:parts:10048",
+        "evidence:category:65"
+      ],
+      "candidateIds": []
+    },
+    {
+      "id": "component:ff03-headwear-10048:procurement",
+      "entityType": "component",
+      "entityId": "ff03-headwear-10048",
+      "field": "procurement",
+      "status": "blocked",
+      "blocker": "BrickLink item/color mapping is not yet independently verified.",
+      "sourceIds": [
+        "evidence:parts:10048",
+        "evidence:category:65"
+      ],
+      "candidateIds": []
+    },
+    {
+      "id": "component:ff03-headwear-10048:render",
+      "entityType": "component",
+      "entityId": "ff03-headwear-10048",
+      "field": "render",
+      "status": "missing",
+      "blocker": "Exact render asset is not available (status: missing).",
+      "sourceIds": [
+        "evidence:parts:10048",
+        "evidence:category:65"
+      ],
+      "candidateIds": []
+    },
+    {
+      "id": "component:ff03-headwear-25405:attachment",
+      "entityType": "component",
+      "entityId": "ff03-headwear-25405",
+      "field": "attachment",
+      "status": "pending",
+      "blocker": "LDraw geometry, release, dependencies, hash, license and headwear-slot check are pending.",
+      "sourceIds": [
+        "evidence:parts:25405",
+        "evidence:category:65"
+      ],
+      "candidateIds": []
+    },
+    {
+      "id": "component:ff03-headwear-25405:humanreview",
+      "entityType": "component",
+      "entityId": "ff03-headwear-25405",
+      "field": "humanReview",
+      "status": "pending",
+      "blocker": "Human review is not complete.",
+      "sourceIds": [
+        "evidence:parts:25405",
+        "evidence:category:65"
+      ],
+      "candidateIds": []
+    },
+    {
+      "id": "component:ff03-headwear-25405:procurement",
+      "entityType": "component",
+      "entityId": "ff03-headwear-25405",
+      "field": "procurement",
+      "status": "blocked",
+      "blocker": "BrickLink item/color mapping is not yet independently verified.",
+      "sourceIds": [
+        "evidence:parts:25405",
+        "evidence:category:65"
+      ],
+      "candidateIds": []
+    },
+    {
+      "id": "component:ff03-headwear-25405:render",
+      "entityType": "component",
+      "entityId": "ff03-headwear-25405",
+      "field": "render",
+      "status": "missing",
+      "blocker": "Exact render asset is not available (status: missing).",
+      "sourceIds": [
+        "evidence:parts:25405",
+        "evidence:category:65"
+      ],
+      "candidateIds": []
+    },
+    {
+      "id": "component:ff03-headwear-25409:attachment",
+      "entityType": "component",
+      "entityId": "ff03-headwear-25409",
+      "field": "attachment",
+      "status": "pending",
+      "blocker": "LDraw geometry, release, dependencies, hash, license and headwear-slot check are pending.",
+      "sourceIds": [
+        "evidence:parts:25409",
+        "evidence:category:65"
+      ],
+      "candidateIds": []
+    },
+    {
+      "id": "component:ff03-headwear-25409:humanreview",
+      "entityType": "component",
+      "entityId": "ff03-headwear-25409",
+      "field": "humanReview",
+      "status": "pending",
+      "blocker": "Human review is not complete.",
+      "sourceIds": [
+        "evidence:parts:25409",
+        "evidence:category:65"
+      ],
+      "candidateIds": []
+    },
+    {
+      "id": "component:ff03-headwear-25409:procurement",
+      "entityType": "component",
+      "entityId": "ff03-headwear-25409",
+      "field": "procurement",
+      "status": "blocked",
+      "blocker": "BrickLink item/color mapping is not yet independently verified.",
+      "sourceIds": [
+        "evidence:parts:25409",
+        "evidence:category:65"
+      ],
+      "candidateIds": []
+    },
+    {
+      "id": "component:ff03-headwear-25409:render",
+      "entityType": "component",
+      "entityId": "ff03-headwear-25409",
+      "field": "render",
+      "status": "missing",
+      "blocker": "Exact render asset is not available (status: missing).",
+      "sourceIds": [
+        "evidence:parts:25409",
+        "evidence:category:65"
+      ],
+      "candidateIds": []
+    },
+    {
+      "id": "component:ff03-headwear-36268:attachment",
+      "entityType": "component",
+      "entityId": "ff03-headwear-36268",
+      "field": "attachment",
+      "status": "pending",
+      "blocker": "LDraw geometry, release, dependencies, hash, license and headwear-slot check are pending.",
+      "sourceIds": [
+        "evidence:parts:36268",
+        "evidence:category:65"
+      ],
+      "candidateIds": []
+    },
+    {
+      "id": "component:ff03-headwear-36268:humanreview",
+      "entityType": "component",
+      "entityId": "ff03-headwear-36268",
+      "field": "humanReview",
+      "status": "pending",
+      "blocker": "Human review is not complete.",
+      "sourceIds": [
+        "evidence:parts:36268",
+        "evidence:category:65"
+      ],
+      "candidateIds": []
+    },
+    {
+      "id": "component:ff03-headwear-36268:procurement",
+      "entityType": "component",
+      "entityId": "ff03-headwear-36268",
+      "field": "procurement",
+      "status": "blocked",
+      "blocker": "BrickLink item/color mapping is not yet independently verified.",
+      "sourceIds": [
+        "evidence:parts:36268",
+        "evidence:category:65"
+      ],
+      "candidateIds": []
+    },
+    {
+      "id": "component:ff03-headwear-36268:render",
+      "entityType": "component",
+      "entityId": "ff03-headwear-36268",
+      "field": "render",
+      "status": "missing",
+      "blocker": "Exact render asset is not available (status: missing).",
+      "sourceIds": [
+        "evidence:parts:36268",
+        "evidence:category:65"
+      ],
+      "candidateIds": []
+    },
+    {
+      "id": "component:ff03-headwear-3901:attachment",
+      "entityType": "component",
+      "entityId": "ff03-headwear-3901",
+      "field": "attachment",
+      "status": "pending",
+      "blocker": "LDraw geometry, release, dependencies, hash, license and headwear-slot check are pending.",
+      "sourceIds": [
+        "evidence:parts:3901",
+        "evidence:category:65"
+      ],
+      "candidateIds": []
+    },
+    {
+      "id": "component:ff03-headwear-3901:humanreview",
+      "entityType": "component",
+      "entityId": "ff03-headwear-3901",
+      "field": "humanReview",
+      "status": "pending",
+      "blocker": "Human review is not complete.",
+      "sourceIds": [
+        "evidence:parts:3901",
+        "evidence:category:65"
+      ],
+      "candidateIds": []
+    },
+    {
+      "id": "component:ff03-headwear-3901:procurement",
+      "entityType": "component",
+      "entityId": "ff03-headwear-3901",
+      "field": "procurement",
+      "status": "blocked",
+      "blocker": "BrickLink item/color mapping is not yet independently verified.",
+      "sourceIds": [
+        "evidence:parts:3901",
+        "evidence:category:65"
+      ],
+      "candidateIds": []
+    },
+    {
+      "id": "component:ff03-headwear-3901:render",
+      "entityType": "component",
+      "entityId": "ff03-headwear-3901",
+      "field": "render",
+      "status": "missing",
+      "blocker": "Exact render asset is not available (status: missing).",
+      "sourceIds": [
+        "evidence:parts:3901",
+        "evidence:category:65"
+      ],
+      "candidateIds": []
+    },
+    {
+      "id": "component:ff03-legs-970c01:attachment",
+      "entityType": "component",
+      "entityId": "ff03-legs-970c01",
+      "field": "attachment",
+      "status": "pending",
+      "blocker": "LDraw geometry, release, dependencies, hash, license and leg-slot check are pending.",
+      "sourceIds": [
+        "evidence:parts:970c01",
+        "evidence:category:61"
+      ],
+      "candidateIds": []
+    },
+    {
+      "id": "component:ff03-legs-970c01:humanreview",
+      "entityType": "component",
+      "entityId": "ff03-legs-970c01",
+      "field": "humanReview",
+      "status": "pending",
+      "blocker": "Human review is not complete.",
+      "sourceIds": [
+        "evidence:parts:970c01",
+        "evidence:category:61"
+      ],
+      "candidateIds": []
+    },
+    {
+      "id": "component:ff03-legs-970c01:procurement",
+      "entityType": "component",
+      "entityId": "ff03-legs-970c01",
+      "field": "procurement",
+      "status": "blocked",
+      "blocker": "BrickLink item/color mapping is not yet independently verified.",
+      "sourceIds": [
+        "evidence:parts:970c01",
+        "evidence:category:61"
+      ],
+      "candidateIds": []
+    },
+    {
+      "id": "component:ff03-legs-970c01:render",
+      "entityType": "component",
+      "entityId": "ff03-legs-970c01",
+      "field": "render",
+      "status": "missing",
+      "blocker": "Exact render asset is not available (status: missing).",
+      "sourceIds": [
+        "evidence:parts:970c01",
+        "evidence:category:61"
+      ],
+      "candidateIds": []
+    },
+    {
+      "id": "component:ff03-legs-970c01pr0001:attachment",
+      "entityType": "component",
+      "entityId": "ff03-legs-970c01pr0001",
+      "field": "attachment",
+      "status": "pending",
+      "blocker": "LDraw geometry, release, dependencies, hash, license and leg-slot check are pending.",
+      "sourceIds": [
+        "evidence:parts:970c01pr0001",
+        "evidence:category:61"
+      ],
+      "candidateIds": []
+    },
+    {
+      "id": "component:ff03-legs-970c01pr0001:humanreview",
+      "entityType": "component",
+      "entityId": "ff03-legs-970c01pr0001",
+      "field": "humanReview",
+      "status": "pending",
+      "blocker": "Human review is not complete.",
+      "sourceIds": [
+        "evidence:parts:970c01pr0001",
+        "evidence:category:61"
+      ],
+      "candidateIds": []
+    },
+    {
+      "id": "component:ff03-legs-970c01pr0001:procurement",
+      "entityType": "component",
+      "entityId": "ff03-legs-970c01pr0001",
+      "field": "procurement",
+      "status": "blocked",
+      "blocker": "BrickLink item/color mapping is not yet independently verified.",
+      "sourceIds": [
+        "evidence:parts:970c01pr0001",
+        "evidence:category:61"
+      ],
+      "candidateIds": []
+    },
+    {
+      "id": "component:ff03-legs-970c01pr0001:render",
+      "entityType": "component",
+      "entityId": "ff03-legs-970c01pr0001",
+      "field": "render",
+      "status": "missing",
+      "blocker": "Exact render asset is not available (status: missing).",
+      "sourceIds": [
+        "evidence:parts:970c01pr0001",
+        "evidence:category:61"
+      ],
+      "candidateIds": []
+    },
+    {
+      "id": "component:ff03-torso-3814:attachment",
+      "entityType": "component",
+      "entityId": "ff03-torso-3814",
+      "field": "attachment",
+      "status": "pending",
+      "blocker": "LDraw geometry, release, dependencies, hash, license and torso-slot check are pending.",
+      "sourceIds": [
+        "evidence:parts:3814",
+        "evidence:category:60"
+      ],
+      "candidateIds": []
+    },
+    {
+      "id": "component:ff03-torso-3814:humanreview",
+      "entityType": "component",
+      "entityId": "ff03-torso-3814",
+      "field": "humanReview",
+      "status": "pending",
+      "blocker": "Human review is not complete.",
+      "sourceIds": [
+        "evidence:parts:3814",
+        "evidence:category:60"
+      ],
+      "candidateIds": []
+    },
+    {
+      "id": "component:ff03-torso-3814:procurement",
+      "entityType": "component",
+      "entityId": "ff03-torso-3814",
+      "field": "procurement",
+      "status": "blocked",
+      "blocker": "BrickLink item/color mapping is not yet independently verified.",
+      "sourceIds": [
+        "evidence:parts:3814",
+        "evidence:category:60"
+      ],
+      "candidateIds": []
+    },
+    {
+      "id": "component:ff03-torso-3814:render",
+      "entityType": "component",
+      "entityId": "ff03-torso-3814",
+      "field": "render",
+      "status": "missing",
+      "blocker": "Exact render asset is not available (status: missing).",
+      "sourceIds": [
+        "evidence:parts:3814",
+        "evidence:category:60"
+      ],
+      "candidateIds": []
+    },
+    {
+      "id": "component:ff03-torso-973c01h01:attachment",
+      "entityType": "component",
+      "entityId": "ff03-torso-973c01h01",
+      "field": "attachment",
+      "status": "pending",
+      "blocker": "LDraw geometry, release, dependencies, hash, license and torso-slot check are pending.",
+      "sourceIds": [
+        "evidence:parts:973c01h01",
+        "evidence:category:60"
+      ],
+      "candidateIds": []
+    },
+    {
+      "id": "component:ff03-torso-973c01h01:humanreview",
+      "entityType": "component",
+      "entityId": "ff03-torso-973c01h01",
+      "field": "humanReview",
+      "status": "pending",
+      "blocker": "Human review is not complete.",
+      "sourceIds": [
+        "evidence:parts:973c01h01",
+        "evidence:category:60"
+      ],
+      "candidateIds": []
+    },
+    {
+      "id": "component:ff03-torso-973c01h01:procurement",
+      "entityType": "component",
+      "entityId": "ff03-torso-973c01h01",
+      "field": "procurement",
+      "status": "blocked",
+      "blocker": "BrickLink item/color mapping is not yet independently verified.",
+      "sourceIds": [
+        "evidence:parts:973c01h01",
+        "evidence:category:60"
+      ],
+      "candidateIds": []
+    },
+    {
+      "id": "component:ff03-torso-973c01h01:render",
+      "entityType": "component",
+      "entityId": "ff03-torso-973c01h01",
+      "field": "render",
+      "status": "missing",
+      "blocker": "Exact render asset is not available (status: missing).",
+      "sourceIds": [
+        "evidence:parts:973c01h01",
+        "evidence:category:60"
+      ],
+      "candidateIds": []
+    },
+    {
+      "id": "procurementrecipe:recipe:ff06:hand-11439:recipe",
+      "entityType": "procurementRecipe",
+      "entityId": "recipe:ff06:hand-11439",
+      "field": "recipe",
+      "status": "unverified",
+      "blocker": "BrickLink item and color IDs have not been independently verified; no purchase line may be exposed.",
+      "sourceIds": [
+        "evidence:parts:11439",
+        "evidence:category:73"
+      ],
+      "candidateIds": []
+    },
+    {
+      "id": "procurementrecipe:recipe:ff06:head-3626cpr0001:recipe",
+      "entityType": "procurementRecipe",
+      "entityId": "recipe:ff06:head-3626cpr0001",
+      "field": "recipe",
+      "status": "unverified",
+      "blocker": "BrickLink item and color IDs have not been independently verified; no purchase line may be exposed.",
+      "sourceIds": [
+        "evidence:parts:3626cpr0001",
+        "evidence:category:59"
+      ],
+      "candidateIds": []
+    },
+    {
+      "id": "procurementrecipe:recipe:ff06:headwear-10048:recipe",
+      "entityType": "procurementRecipe",
+      "entityId": "recipe:ff06:headwear-10048",
+      "field": "recipe",
+      "status": "unverified",
+      "blocker": "BrickLink item and color IDs have not been independently verified; no purchase line may be exposed.",
+      "sourceIds": [
+        "evidence:parts:10048",
+        "evidence:category:65"
+      ],
+      "candidateIds": []
+    },
+    {
+      "id": "procurementrecipe:recipe:ff06:legs-970c01:recipe",
+      "entityType": "procurementRecipe",
+      "entityId": "recipe:ff06:legs-970c01",
+      "field": "recipe",
+      "status": "unverified",
+      "blocker": "The hips-and-legs assembly and its BrickLink item and color IDs have not been independently verified.",
+      "sourceIds": [
+        "evidence:parts:970c01",
+        "evidence:category:61"
+      ],
+      "candidateIds": []
+    },
+    {
+      "id": "procurementrecipe:recipe:ff06:torso-3814:recipe",
+      "entityType": "procurementRecipe",
+      "entityId": "recipe:ff06:torso-3814",
+      "field": "recipe",
+      "status": "unverified",
+      "blocker": "The catalog row describes a torso part, not a verified complete torso assembly; required components and BrickLink mappings remain unresolved.",
+      "sourceIds": [
+        "evidence:parts:3814",
+        "evidence:category:60"
+      ],
+      "candidateIds": []
+    },
+    {
+      "id": "variant:ff03-variant-01:procurement",
+      "entityType": "variant",
+      "entityId": "ff03-variant-01",
+      "field": "procurement",
+      "status": "blocked",
+      "blocker": "Component LDraw, attachment, BrickLink and human-review evidence is incomplete.",
+      "sourceIds": [
+        "evidence:parts:3626c"
+      ],
+      "candidateIds": []
+    },
+    {
+      "id": "variant:ff03-variant-01:release",
+      "entityType": "variant",
+      "entityId": "ff03-variant-01",
+      "field": "release",
+      "status": "blocked",
+      "blocker": "Component LDraw, attachment, BrickLink and human-review evidence is incomplete.",
+      "sourceIds": [
+        "evidence:parts:3626c"
+      ],
+      "candidateIds": []
+    },
+    {
+      "id": "variant:ff03-variant-01:render",
+      "entityType": "variant",
+      "entityId": "ff03-variant-01",
+      "field": "render",
+      "status": "missing",
+      "blocker": "Component LDraw, attachment, BrickLink and human-review evidence is incomplete.",
+      "sourceIds": [
+        "evidence:parts:3626c"
+      ],
+      "candidateIds": []
+    },
+    {
+      "id": "variant:ff03-variant-02:procurement",
+      "entityType": "variant",
+      "entityId": "ff03-variant-02",
+      "field": "procurement",
+      "status": "blocked",
+      "blocker": "Component LDraw, attachment, BrickLink and human-review evidence is incomplete.",
+      "sourceIds": [
+        "evidence:parts:3626cpr0001"
+      ],
+      "candidateIds": []
+    },
+    {
+      "id": "variant:ff03-variant-02:release",
+      "entityType": "variant",
+      "entityId": "ff03-variant-02",
+      "field": "release",
+      "status": "blocked",
+      "blocker": "Component LDraw, attachment, BrickLink and human-review evidence is incomplete.",
+      "sourceIds": [
+        "evidence:parts:3626cpr0001"
+      ],
+      "candidateIds": []
+    },
+    {
+      "id": "variant:ff03-variant-02:render",
+      "entityType": "variant",
+      "entityId": "ff03-variant-02",
+      "field": "render",
+      "status": "missing",
+      "blocker": "Component LDraw, attachment, BrickLink and human-review evidence is incomplete.",
+      "sourceIds": [
+        "evidence:parts:3626cpr0001"
+      ],
+      "candidateIds": []
+    },
+    {
+      "id": "variant:ff03-variant-03:procurement",
+      "entityType": "variant",
+      "entityId": "ff03-variant-03",
+      "field": "procurement",
+      "status": "blocked",
+      "blocker": "Component LDraw, attachment, BrickLink and human-review evidence is incomplete.",
+      "sourceIds": [
+        "evidence:parts:3626cpr0008"
+      ],
+      "candidateIds": []
+    },
+    {
+      "id": "variant:ff03-variant-03:release",
+      "entityType": "variant",
+      "entityId": "ff03-variant-03",
+      "field": "release",
+      "status": "blocked",
+      "blocker": "Component LDraw, attachment, BrickLink and human-review evidence is incomplete.",
+      "sourceIds": [
+        "evidence:parts:3626cpr0008"
+      ],
+      "candidateIds": []
+    },
+    {
+      "id": "variant:ff03-variant-03:render",
+      "entityType": "variant",
+      "entityId": "ff03-variant-03",
+      "field": "render",
+      "status": "missing",
+      "blocker": "Component LDraw, attachment, BrickLink and human-review evidence is incomplete.",
+      "sourceIds": [
+        "evidence:parts:3626cpr0008"
+      ],
+      "candidateIds": []
+    },
+    {
+      "id": "variant:ff03-variant-04:procurement",
+      "entityType": "variant",
+      "entityId": "ff03-variant-04",
+      "field": "procurement",
+      "status": "blocked",
+      "blocker": "Component LDraw, attachment, BrickLink and human-review evidence is incomplete.",
+      "sourceIds": [
+        "evidence:parts:3626cpr0387"
+      ],
+      "candidateIds": []
+    },
+    {
+      "id": "variant:ff03-variant-04:release",
+      "entityType": "variant",
+      "entityId": "ff03-variant-04",
+      "field": "release",
+      "status": "blocked",
+      "blocker": "Component LDraw, attachment, BrickLink and human-review evidence is incomplete.",
+      "sourceIds": [
+        "evidence:parts:3626cpr0387"
+      ],
+      "candidateIds": []
+    },
+    {
+      "id": "variant:ff03-variant-04:render",
+      "entityType": "variant",
+      "entityId": "ff03-variant-04",
+      "field": "render",
+      "status": "missing",
+      "blocker": "Component LDraw, attachment, BrickLink and human-review evidence is incomplete.",
+      "sourceIds": [
+        "evidence:parts:3626cpr0387"
+      ],
+      "candidateIds": []
+    },
+    {
+      "id": "variant:ff03-variant-05:procurement",
+      "entityType": "variant",
+      "entityId": "ff03-variant-05",
+      "field": "procurement",
+      "status": "blocked",
+      "blocker": "Component LDraw, attachment, BrickLink and human-review evidence is incomplete.",
+      "sourceIds": [
+        "evidence:parts:3626cpr0495"
+      ],
+      "candidateIds": []
+    },
+    {
+      "id": "variant:ff03-variant-05:release",
+      "entityType": "variant",
+      "entityId": "ff03-variant-05",
+      "field": "release",
+      "status": "blocked",
+      "blocker": "Component LDraw, attachment, BrickLink and human-review evidence is incomplete.",
+      "sourceIds": [
+        "evidence:parts:3626cpr0495"
+      ],
+      "candidateIds": []
+    },
+    {
+      "id": "variant:ff03-variant-05:render",
+      "entityType": "variant",
+      "entityId": "ff03-variant-05",
+      "field": "render",
+      "status": "missing",
+      "blocker": "Component LDraw, attachment, BrickLink and human-review evidence is incomplete.",
+      "sourceIds": [
+        "evidence:parts:3626cpr0495"
+      ],
+      "candidateIds": []
+    },
+    {
+      "id": "variant:ff03-variant-06:procurement",
+      "entityType": "variant",
+      "entityId": "ff03-variant-06",
+      "field": "procurement",
+      "status": "blocked",
+      "blocker": "Component LDraw, attachment, BrickLink and human-review evidence is incomplete.",
+      "sourceIds": [
+        "evidence:parts:3626c"
+      ],
+      "candidateIds": []
+    },
+    {
+      "id": "variant:ff03-variant-06:release",
+      "entityType": "variant",
+      "entityId": "ff03-variant-06",
+      "field": "release",
+      "status": "blocked",
+      "blocker": "Component LDraw, attachment, BrickLink and human-review evidence is incomplete.",
+      "sourceIds": [
+        "evidence:parts:3626c"
+      ],
+      "candidateIds": []
+    },
+    {
+      "id": "variant:ff03-variant-06:render",
+      "entityType": "variant",
+      "entityId": "ff03-variant-06",
+      "field": "render",
+      "status": "missing",
+      "blocker": "Component LDraw, attachment, BrickLink and human-review evidence is incomplete.",
+      "sourceIds": [
+        "evidence:parts:3626c"
+      ],
+      "candidateIds": []
+    },
+    {
+      "id": "variant:ff03-variant-07:procurement",
+      "entityType": "variant",
+      "entityId": "ff03-variant-07",
+      "field": "procurement",
+      "status": "blocked",
+      "blocker": "Component LDraw, attachment, BrickLink and human-review evidence is incomplete.",
+      "sourceIds": [
+        "evidence:parts:3626cpr0001"
+      ],
+      "candidateIds": []
+    },
+    {
+      "id": "variant:ff03-variant-07:release",
+      "entityType": "variant",
+      "entityId": "ff03-variant-07",
+      "field": "release",
+      "status": "blocked",
+      "blocker": "Component LDraw, attachment, BrickLink and human-review evidence is incomplete.",
+      "sourceIds": [
+        "evidence:parts:3626cpr0001"
+      ],
+      "candidateIds": []
+    },
+    {
+      "id": "variant:ff03-variant-07:render",
+      "entityType": "variant",
+      "entityId": "ff03-variant-07",
+      "field": "render",
+      "status": "missing",
+      "blocker": "Component LDraw, attachment, BrickLink and human-review evidence is incomplete.",
+      "sourceIds": [
+        "evidence:parts:3626cpr0001"
+      ],
+      "candidateIds": []
+    },
+    {
+      "id": "variant:ff03-variant-08:procurement",
+      "entityType": "variant",
+      "entityId": "ff03-variant-08",
+      "field": "procurement",
+      "status": "blocked",
+      "blocker": "Component LDraw, attachment, BrickLink and human-review evidence is incomplete.",
+      "sourceIds": [
+        "evidence:parts:3626cpr0008"
+      ],
+      "candidateIds": []
+    },
+    {
+      "id": "variant:ff03-variant-08:release",
+      "entityType": "variant",
+      "entityId": "ff03-variant-08",
+      "field": "release",
+      "status": "blocked",
+      "blocker": "Component LDraw, attachment, BrickLink and human-review evidence is incomplete.",
+      "sourceIds": [
+        "evidence:parts:3626cpr0008"
+      ],
+      "candidateIds": []
+    },
+    {
+      "id": "variant:ff03-variant-08:render",
+      "entityType": "variant",
+      "entityId": "ff03-variant-08",
+      "field": "render",
+      "status": "missing",
+      "blocker": "Component LDraw, attachment, BrickLink and human-review evidence is incomplete.",
+      "sourceIds": [
+        "evidence:parts:3626cpr0008"
+      ],
+      "candidateIds": []
+    },
+    {
+      "id": "variant:ff03-variant-09:procurement",
+      "entityType": "variant",
+      "entityId": "ff03-variant-09",
+      "field": "procurement",
+      "status": "blocked",
+      "blocker": "Component LDraw, attachment, BrickLink and human-review evidence is incomplete.",
+      "sourceIds": [
+        "evidence:parts:3626cpr0387"
+      ],
+      "candidateIds": []
+    },
+    {
+      "id": "variant:ff03-variant-09:release",
+      "entityType": "variant",
+      "entityId": "ff03-variant-09",
+      "field": "release",
+      "status": "blocked",
+      "blocker": "Component LDraw, attachment, BrickLink and human-review evidence is incomplete.",
+      "sourceIds": [
+        "evidence:parts:3626cpr0387"
+      ],
+      "candidateIds": []
+    },
+    {
+      "id": "variant:ff03-variant-09:render",
+      "entityType": "variant",
+      "entityId": "ff03-variant-09",
+      "field": "render",
+      "status": "missing",
+      "blocker": "Component LDraw, attachment, BrickLink and human-review evidence is incomplete.",
+      "sourceIds": [
+        "evidence:parts:3626cpr0387"
+      ],
+      "candidateIds": []
+    },
+    {
+      "id": "variant:ff03-variant-10:procurement",
+      "entityType": "variant",
+      "entityId": "ff03-variant-10",
+      "field": "procurement",
+      "status": "blocked",
+      "blocker": "Component LDraw, attachment, BrickLink and human-review evidence is incomplete.",
+      "sourceIds": [
+        "evidence:parts:3626cpr0495"
+      ],
+      "candidateIds": []
+    },
+    {
+      "id": "variant:ff03-variant-10:release",
+      "entityType": "variant",
+      "entityId": "ff03-variant-10",
+      "field": "release",
+      "status": "blocked",
+      "blocker": "Component LDraw, attachment, BrickLink and human-review evidence is incomplete.",
+      "sourceIds": [
+        "evidence:parts:3626cpr0495"
+      ],
+      "candidateIds": []
+    },
+    {
+      "id": "variant:ff03-variant-10:render",
+      "entityType": "variant",
+      "entityId": "ff03-variant-10",
+      "field": "render",
+      "status": "missing",
+      "blocker": "Component LDraw, attachment, BrickLink and human-review evidence is incomplete.",
+      "sourceIds": [
+        "evidence:parts:3626cpr0495"
+      ],
+      "candidateIds": []
+    },
+    {
+      "id": "variant:ff03-variant-11:procurement",
+      "entityType": "variant",
+      "entityId": "ff03-variant-11",
+      "field": "procurement",
+      "status": "blocked",
+      "blocker": "Component LDraw, attachment, BrickLink and human-review evidence is incomplete.",
+      "sourceIds": [
+        "evidence:parts:3626c"
+      ],
+      "candidateIds": []
+    },
+    {
+      "id": "variant:ff03-variant-11:release",
+      "entityType": "variant",
+      "entityId": "ff03-variant-11",
+      "field": "release",
+      "status": "blocked",
+      "blocker": "Component LDraw, attachment, BrickLink and human-review evidence is incomplete.",
+      "sourceIds": [
+        "evidence:parts:3626c"
+      ],
+      "candidateIds": []
+    },
+    {
+      "id": "variant:ff03-variant-11:render",
+      "entityType": "variant",
+      "entityId": "ff03-variant-11",
+      "field": "render",
+      "status": "missing",
+      "blocker": "Component LDraw, attachment, BrickLink and human-review evidence is incomplete.",
+      "sourceIds": [
+        "evidence:parts:3626c"
+      ],
+      "candidateIds": []
+    },
+    {
+      "id": "variant:ff03-variant-12:procurement",
+      "entityType": "variant",
+      "entityId": "ff03-variant-12",
+      "field": "procurement",
+      "status": "blocked",
+      "blocker": "Component LDraw, attachment, BrickLink and human-review evidence is incomplete.",
+      "sourceIds": [
+        "evidence:parts:3626cpr0001"
+      ],
+      "candidateIds": []
+    },
+    {
+      "id": "variant:ff03-variant-12:release",
+      "entityType": "variant",
+      "entityId": "ff03-variant-12",
+      "field": "release",
+      "status": "blocked",
+      "blocker": "Component LDraw, attachment, BrickLink and human-review evidence is incomplete.",
+      "sourceIds": [
+        "evidence:parts:3626cpr0001"
+      ],
+      "candidateIds": []
+    },
+    {
+      "id": "variant:ff03-variant-12:render",
+      "entityType": "variant",
+      "entityId": "ff03-variant-12",
+      "field": "render",
+      "status": "missing",
+      "blocker": "Component LDraw, attachment, BrickLink and human-review evidence is incomplete.",
+      "sourceIds": [
+        "evidence:parts:3626cpr0001"
+      ],
+      "candidateIds": []
+    },
+    {
+      "id": "variant:ff03-variant-13:procurement",
+      "entityType": "variant",
+      "entityId": "ff03-variant-13",
+      "field": "procurement",
+      "status": "blocked",
+      "blocker": "Component LDraw, attachment, BrickLink and human-review evidence is incomplete.",
+      "sourceIds": [
+        "evidence:parts:3626cpr0008"
+      ],
+      "candidateIds": []
+    },
+    {
+      "id": "variant:ff03-variant-13:release",
+      "entityType": "variant",
+      "entityId": "ff03-variant-13",
+      "field": "release",
+      "status": "blocked",
+      "blocker": "Component LDraw, attachment, BrickLink and human-review evidence is incomplete.",
+      "sourceIds": [
+        "evidence:parts:3626cpr0008"
+      ],
+      "candidateIds": []
+    },
+    {
+      "id": "variant:ff03-variant-13:render",
+      "entityType": "variant",
+      "entityId": "ff03-variant-13",
+      "field": "render",
+      "status": "missing",
+      "blocker": "Component LDraw, attachment, BrickLink and human-review evidence is incomplete.",
+      "sourceIds": [
+        "evidence:parts:3626cpr0008"
+      ],
+      "candidateIds": []
+    },
+    {
+      "id": "variant:ff03-variant-14:procurement",
+      "entityType": "variant",
+      "entityId": "ff03-variant-14",
+      "field": "procurement",
+      "status": "blocked",
+      "blocker": "Component LDraw, attachment, BrickLink and human-review evidence is incomplete.",
+      "sourceIds": [
+        "evidence:parts:3626cpr0387"
+      ],
+      "candidateIds": []
+    },
+    {
+      "id": "variant:ff03-variant-14:release",
+      "entityType": "variant",
+      "entityId": "ff03-variant-14",
+      "field": "release",
+      "status": "blocked",
+      "blocker": "Component LDraw, attachment, BrickLink and human-review evidence is incomplete.",
+      "sourceIds": [
+        "evidence:parts:3626cpr0387"
+      ],
+      "candidateIds": []
+    },
+    {
+      "id": "variant:ff03-variant-14:render",
+      "entityType": "variant",
+      "entityId": "ff03-variant-14",
+      "field": "render",
+      "status": "missing",
+      "blocker": "Component LDraw, attachment, BrickLink and human-review evidence is incomplete.",
+      "sourceIds": [
+        "evidence:parts:3626cpr0387"
+      ],
+      "candidateIds": []
+    },
+    {
+      "id": "variant:ff03-variant-15:procurement",
+      "entityType": "variant",
+      "entityId": "ff03-variant-15",
+      "field": "procurement",
+      "status": "blocked",
+      "blocker": "Component LDraw, attachment, BrickLink and human-review evidence is incomplete.",
+      "sourceIds": [
+        "evidence:parts:3626cpr0495"
+      ],
+      "candidateIds": []
+    },
+    {
+      "id": "variant:ff03-variant-15:release",
+      "entityType": "variant",
+      "entityId": "ff03-variant-15",
+      "field": "release",
+      "status": "blocked",
+      "blocker": "Component LDraw, attachment, BrickLink and human-review evidence is incomplete.",
+      "sourceIds": [
+        "evidence:parts:3626cpr0495"
+      ],
+      "candidateIds": []
+    },
+    {
+      "id": "variant:ff03-variant-15:render",
+      "entityType": "variant",
+      "entityId": "ff03-variant-15",
+      "field": "render",
+      "status": "missing",
+      "blocker": "Component LDraw, attachment, BrickLink and human-review evidence is incomplete.",
+      "sourceIds": [
+        "evidence:parts:3626cpr0495"
+      ],
+      "candidateIds": []
+    },
+    {
+      "id": "variant:ff03-variant-16:procurement",
+      "entityType": "variant",
+      "entityId": "ff03-variant-16",
+      "field": "procurement",
+      "status": "blocked",
+      "blocker": "Component LDraw, attachment, BrickLink and human-review evidence is incomplete.",
+      "sourceIds": [
+        "evidence:parts:3626c"
+      ],
+      "candidateIds": []
+    },
+    {
+      "id": "variant:ff03-variant-16:release",
+      "entityType": "variant",
+      "entityId": "ff03-variant-16",
+      "field": "release",
+      "status": "blocked",
+      "blocker": "Component LDraw, attachment, BrickLink and human-review evidence is incomplete.",
+      "sourceIds": [
+        "evidence:parts:3626c"
+      ],
+      "candidateIds": []
+    },
+    {
+      "id": "variant:ff03-variant-16:render",
+      "entityType": "variant",
+      "entityId": "ff03-variant-16",
+      "field": "render",
+      "status": "missing",
+      "blocker": "Component LDraw, attachment, BrickLink and human-review evidence is incomplete.",
+      "sourceIds": [
+        "evidence:parts:3626c"
+      ],
+      "candidateIds": []
+    },
+    {
+      "id": "variant:ff03-variant-17:procurement",
+      "entityType": "variant",
+      "entityId": "ff03-variant-17",
+      "field": "procurement",
+      "status": "blocked",
+      "blocker": "Component LDraw, attachment, BrickLink and human-review evidence is incomplete.",
+      "sourceIds": [
+        "evidence:parts:3626cpr0001"
+      ],
+      "candidateIds": []
+    },
+    {
+      "id": "variant:ff03-variant-17:release",
+      "entityType": "variant",
+      "entityId": "ff03-variant-17",
+      "field": "release",
+      "status": "blocked",
+      "blocker": "Component LDraw, attachment, BrickLink and human-review evidence is incomplete.",
+      "sourceIds": [
+        "evidence:parts:3626cpr0001"
+      ],
+      "candidateIds": []
+    },
+    {
+      "id": "variant:ff03-variant-17:render",
+      "entityType": "variant",
+      "entityId": "ff03-variant-17",
+      "field": "render",
+      "status": "missing",
+      "blocker": "Component LDraw, attachment, BrickLink and human-review evidence is incomplete.",
+      "sourceIds": [
+        "evidence:parts:3626cpr0001"
+      ],
+      "candidateIds": []
+    },
+    {
+      "id": "variant:ff03-variant-18:procurement",
+      "entityType": "variant",
+      "entityId": "ff03-variant-18",
+      "field": "procurement",
+      "status": "blocked",
+      "blocker": "Component LDraw, attachment, BrickLink and human-review evidence is incomplete.",
+      "sourceIds": [
+        "evidence:parts:3626cpr0008"
+      ],
+      "candidateIds": []
+    },
+    {
+      "id": "variant:ff03-variant-18:release",
+      "entityType": "variant",
+      "entityId": "ff03-variant-18",
+      "field": "release",
+      "status": "blocked",
+      "blocker": "Component LDraw, attachment, BrickLink and human-review evidence is incomplete.",
+      "sourceIds": [
+        "evidence:parts:3626cpr0008"
+      ],
+      "candidateIds": []
+    },
+    {
+      "id": "variant:ff03-variant-18:render",
+      "entityType": "variant",
+      "entityId": "ff03-variant-18",
+      "field": "render",
+      "status": "missing",
+      "blocker": "Component LDraw, attachment, BrickLink and human-review evidence is incomplete.",
+      "sourceIds": [
+        "evidence:parts:3626cpr0008"
+      ],
+      "candidateIds": []
+    },
+    {
+      "id": "variant:ff03-variant-19:procurement",
+      "entityType": "variant",
+      "entityId": "ff03-variant-19",
+      "field": "procurement",
+      "status": "blocked",
+      "blocker": "Component LDraw, attachment, BrickLink and human-review evidence is incomplete.",
+      "sourceIds": [
+        "evidence:parts:3626cpr0387"
+      ],
+      "candidateIds": []
+    },
+    {
+      "id": "variant:ff03-variant-19:release",
+      "entityType": "variant",
+      "entityId": "ff03-variant-19",
+      "field": "release",
+      "status": "blocked",
+      "blocker": "Component LDraw, attachment, BrickLink and human-review evidence is incomplete.",
+      "sourceIds": [
+        "evidence:parts:3626cpr0387"
+      ],
+      "candidateIds": []
+    },
+    {
+      "id": "variant:ff03-variant-19:render",
+      "entityType": "variant",
+      "entityId": "ff03-variant-19",
+      "field": "render",
+      "status": "missing",
+      "blocker": "Component LDraw, attachment, BrickLink and human-review evidence is incomplete.",
+      "sourceIds": [
+        "evidence:parts:3626cpr0387"
+      ],
+      "candidateIds": []
+    },
+    {
+      "id": "variant:ff03-variant-20:procurement",
+      "entityType": "variant",
+      "entityId": "ff03-variant-20",
+      "field": "procurement",
+      "status": "blocked",
+      "blocker": "Component LDraw, attachment, BrickLink and human-review evidence is incomplete.",
+      "sourceIds": [
+        "evidence:parts:3626cpr0495"
+      ],
+      "candidateIds": []
+    },
+    {
+      "id": "variant:ff03-variant-20:release",
+      "entityType": "variant",
+      "entityId": "ff03-variant-20",
+      "field": "release",
+      "status": "blocked",
+      "blocker": "Component LDraw, attachment, BrickLink and human-review evidence is incomplete.",
+      "sourceIds": [
+        "evidence:parts:3626cpr0495"
+      ],
+      "candidateIds": []
+    },
+    {
+      "id": "variant:ff03-variant-20:render",
+      "entityType": "variant",
+      "entityId": "ff03-variant-20",
+      "field": "render",
+      "status": "missing",
+      "blocker": "Component LDraw, attachment, BrickLink and human-review evidence is incomplete.",
+      "sourceIds": [
+        "evidence:parts:3626cpr0495"
+      ],
+      "candidateIds": []
+    }
+  ],
+  "duplicateGroups": [],
+  "excludedSharedEvidenceIds": [
+    "evidence:category:59",
+    "evidence:category:60",
+    "evidence:category:61",
+    "evidence:category:65",
+    "evidence:category:73"
+  ],
+  "openBlockers": [
+    "No LDraw file/release, transitive dependency, hash or license evidence has been attached yet.",
+    "BrickLink item and color IDs are intentionally null until independently reviewed; no procurement availability is claimed.",
+    "Attachment profiles and hand-grip checks remain pending human review.",
+    "All components and variants remain blocked and must not be published.",
+    "Human review must independently confirm every BrickLink item and color mapping before any recipe becomes verified.",
+    "The torso selection needs an explicit decision between a complete assembly and a verified component breakdown.",
+    "No XML or other purchasing export may be produced from this blocked reference list.",
+    "FF-09 leaves candidateIds empty until a source-backed human mapping is verified."
+  ]
+}

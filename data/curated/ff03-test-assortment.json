@@ -1,0 +1,382 @@
+{
+  "schemaVersion": 1,
+  "ticket": "FF-03",
+  "updatedAt": "2026-09-27T09:16:17Z",
+  "sourcePolicy": "Nur Rebrickable Catalog Downloads/CSV, keine MOC-Dateien.",
+  "sourceLockSha256": "1ff3982922f1c1563dd2f086922baf7dc7407727c39eba3ee7814022d8f4c73e",
+  "components": [
+    {
+      "id": "ff03-head-3626c",
+      "role": "head",
+      "rebrickablePartNum": "3626c",
+      "name": "Minifig Head [Plain] [Hollow Stud]",
+      "rebrickableCategoryId": 59,
+      "rebrickableCategoryName": "Minifig Heads",
+      "material": "Plastic",
+      "catalogEvidenceIds": ["evidence:parts:3626c", "evidence:category:59"],
+      "catalogRows": [
+        {"id": "evidence:parts:3626c", "fileName": "parts.csv.gz", "key": "part_num", "value": "3626c", "sha256": "7fb9e560e5fde2af836b9eeb7ccada150f19e344ba7814c602cc2e119905cddc"},
+        {"id": "evidence:category:59", "fileName": "part_categories.csv.gz", "key": "id", "value": "59", "sha256": "4cf11af9fb405cf61226bb9f4f0a0c5dd2b793fbb54e32ab5102d758c64726a0"}
+      ],
+      "colorEvidence": [{"elementId": "4582532", "rebrickableColorId": 0, "colorName": "Black", "rgb": "05131D", "evidenceId": "evidence:elements:4582532"}],
+      "attachmentProfile": {"status": "pending", "allowedSlots": ["head"], "blocker": "LDraw geometry, release, dependencies, hash, license and head-slot check are pending."},
+      "renderStatus": "missing",
+      "procurement": {"status": "blocked", "bricklinkItemId": null, "bricklinkColorId": null, "blocker": "BrickLink item/color mapping is not yet independently verified."},
+      "humanReview": "pending",
+      "releaseStatus": "blocked"
+    },
+    {
+      "id": "ff03-head-3626cpr0001",
+      "role": "head",
+      "rebrickablePartNum": "3626cpr0001",
+      "name": "Minifig Head Standard Grin Print [Hollow Stud]",
+      "rebrickableCategoryId": 59,
+      "rebrickableCategoryName": "Minifig Heads",
+      "material": "Plastic",
+      "catalogEvidenceIds": ["evidence:parts:3626cpr0001", "evidence:category:59"],
+      "catalogRows": [
+        {"id": "evidence:parts:3626cpr0001", "fileName": "parts.csv.gz", "key": "part_num", "value": "3626cpr0001", "sha256": "7fb9e560e5fde2af836b9eeb7ccada150f19e344ba7814c602cc2e119905cddc"},
+        {"id": "evidence:category:59", "fileName": "part_categories.csv.gz", "key": "id", "value": "59", "sha256": "4cf11af9fb405cf61226bb9f4f0a0c5dd2b793fbb54e32ab5102d758c64726a0"}
+      ],
+      "colorEvidence": [{"elementId": "9336", "rebrickableColorId": 14, "colorName": "Yellow", "rgb": "F2CD37", "evidenceId": "evidence:elements:9336"}],
+      "attachmentProfile": {"status": "pending", "allowedSlots": ["head"], "blocker": "LDraw geometry, release, dependencies, hash, license and head-slot check are pending."},
+      "renderStatus": "missing",
+      "procurement": {"status": "blocked", "bricklinkItemId": null, "bricklinkColorId": null, "blocker": "BrickLink item/color mapping is not yet independently verified."},
+      "humanReview": "pending",
+      "releaseStatus": "blocked"
+    },
+    {
+      "id": "ff03-head-3626cpr0008",
+      "role": "head",
+      "rebrickablePartNum": "3626cpr0008",
+      "name": "Minifig Head, Dark Brown Eyebrows, Open Sideways Smile with Dimples Print [Hollow Stud]",
+      "rebrickableCategoryId": 59,
+      "rebrickableCategoryName": "Minifig Heads",
+      "material": "Plastic",
+      "catalogEvidenceIds": ["evidence:parts:3626cpr0008", "evidence:category:59"],
+      "catalogRows": [
+        {"id": "evidence:parts:3626cpr0008", "fileName": "parts.csv.gz", "key": "part_num", "value": "3626cpr0008", "sha256": "7fb9e560e5fde2af836b9eeb7ccada150f19e344ba7814c602cc2e119905cddc"},
+        {"id": "evidence:category:59", "fileName": "part_categories.csv.gz", "key": "id", "value": "59", "sha256": "4cf11af9fb405cf61226bb9f4f0a0c5dd2b793fbb54e32ab5102d758c64726a0"}
+      ],
+      "colorEvidence": [{"elementId": "6044663", "rebrickableColorId": 14, "colorName": "Yellow", "rgb": "F2CD37", "evidenceId": "evidence:elements:6044663"}],
+      "attachmentProfile": {"status": "pending", "allowedSlots": ["head"], "blocker": "LDraw geometry, release, dependencies, hash, license and head-slot check are pending."},
+      "renderStatus": "missing",
+      "procurement": {"status": "blocked", "bricklinkItemId": null, "bricklinkColorId": null, "blocker": "BrickLink item/color mapping is not yet independently verified."},
+      "humanReview": "pending",
+      "releaseStatus": "blocked"
+    },
+    {
+      "id": "ff03-head-3626cpr0387",
+      "role": "head",
+      "rebrickablePartNum": "3626cpr0387",
+      "name": "Minifig Head, Brown Eyebrows, Thin Grin, Eyes with White Pupils Print",
+      "rebrickableCategoryId": 59,
+      "rebrickableCategoryName": "Minifig Heads",
+      "material": "Plastic",
+      "catalogEvidenceIds": ["evidence:parts:3626cpr0387", "evidence:category:59"],
+      "catalogRows": [
+        {"id": "evidence:parts:3626cpr0387", "fileName": "parts.csv.gz", "key": "part_num", "value": "3626cpr0387", "sha256": "7fb9e560e5fde2af836b9eeb7ccada150f19e344ba7814c602cc2e119905cddc"},
+        {"id": "evidence:category:59", "fileName": "part_categories.csv.gz", "key": "id", "value": "59", "sha256": "4cf11af9fb405cf61226bb9f4f0a0c5dd2b793fbb54e32ab5102d758c64726a0"}
+      ],
+      "colorEvidence": [{"elementId": "4226443", "rebrickableColorId": 14, "colorName": "Yellow", "rgb": "F2CD37", "evidenceId": "evidence:elements:4226443"}],
+      "attachmentProfile": {"status": "pending", "allowedSlots": ["head"], "blocker": "LDraw geometry, release, dependencies, hash, license and head-slot check are pending."},
+      "renderStatus": "missing",
+      "procurement": {"status": "blocked", "bricklinkItemId": null, "bricklinkColorId": null, "blocker": "BrickLink item/color mapping is not yet independently verified."},
+      "humanReview": "pending",
+      "releaseStatus": "blocked"
+    },
+    {
+      "id": "ff03-head-3626cpr0495",
+      "role": "head",
+      "rebrickablePartNum": "3626cpr0495",
+      "name": "Minifig Head, Brown Eyebrows Scared / Smiling Print [Hollow Stud]",
+      "rebrickableCategoryId": 59,
+      "rebrickableCategoryName": "Minifig Heads",
+      "material": "Plastic",
+      "catalogEvidenceIds": ["evidence:parts:3626cpr0495", "evidence:category:59"],
+      "catalogRows": [
+        {"id": "evidence:parts:3626cpr0495", "fileName": "parts.csv.gz", "key": "part_num", "value": "3626cpr0495", "sha256": "7fb9e560e5fde2af836b9eeb7ccada150f19e344ba7814c602cc2e119905cddc"},
+        {"id": "evidence:category:59", "fileName": "part_categories.csv.gz", "key": "id", "value": "59", "sha256": "4cf11af9fb405cf61226bb9f4f0a0c5dd2b793fbb54e32ab5102d758c64726a0"}
+      ],
+      "colorEvidence": [{"elementId": "4506830", "rebrickableColorId": 14, "colorName": "Yellow", "rgb": "F2CD37", "evidenceId": "evidence:elements:4506830"}],
+      "attachmentProfile": {"status": "pending", "allowedSlots": ["head"], "blocker": "LDraw geometry, release, dependencies, hash, license and head-slot check are pending."},
+      "renderStatus": "missing",
+      "procurement": {"status": "blocked", "bricklinkItemId": null, "bricklinkColorId": null, "blocker": "BrickLink item/color mapping is not yet independently verified."},
+      "humanReview": "pending",
+      "releaseStatus": "blocked"
+    },
+    {
+      "id": "ff03-headwear-10048",
+      "role": "headwear",
+      "rebrickablePartNum": "10048",
+      "name": "Hair Tousled, Mid-length",
+      "rebrickableCategoryId": 65,
+      "rebrickableCategoryName": "Minifig Headwear",
+      "material": "Plastic",
+      "catalogEvidenceIds": ["evidence:parts:10048", "evidence:category:65"],
+      "catalogRows": [
+        {"id": "evidence:parts:10048", "fileName": "parts.csv.gz", "key": "part_num", "value": "10048", "sha256": "7fb9e560e5fde2af836b9eeb7ccada150f19e344ba7814c602cc2e119905cddc"},
+        {"id": "evidence:category:65", "fileName": "part_categories.csv.gz", "key": "id", "value": "65", "sha256": "4cf11af9fb405cf61226bb9f4f0a0c5dd2b793fbb54e32ab5102d758c64726a0"}
+      ],
+      "colorEvidence": [{"elementId": "6002753", "rebrickableColorId": 70, "colorName": "Reddish Brown", "rgb": "582A12", "evidenceId": "evidence:elements:6002753"}],
+      "attachmentProfile": {"status": "pending", "allowedSlots": ["headwear"], "blocker": "LDraw geometry, release, dependencies, hash, license and headwear-slot check are pending."},
+      "renderStatus": "missing",
+      "procurement": {"status": "blocked", "bricklinkItemId": null, "bricklinkColorId": null, "blocker": "BrickLink item/color mapping is not yet independently verified."},
+      "humanReview": "pending",
+      "releaseStatus": "blocked"
+    },
+    {
+      "id": "ff03-headwear-25405",
+      "role": "headwear",
+      "rebrickablePartNum": "25405",
+      "name": "Hair Wavy Ponytail with Long Bangs and Band [Plain]",
+      "rebrickableCategoryId": 65,
+      "rebrickableCategoryName": "Minifig Headwear",
+      "material": "Plastic",
+      "catalogEvidenceIds": ["evidence:parts:25405", "evidence:category:65"],
+      "catalogRows": [
+        {"id": "evidence:parts:25405", "fileName": "parts.csv.gz", "key": "part_num", "value": "25405", "sha256": "7fb9e560e5fde2af836b9eeb7ccada150f19e344ba7814c602cc2e119905cddc"},
+        {"id": "evidence:category:65", "fileName": "part_categories.csv.gz", "key": "id", "value": "65", "sha256": "4cf11af9fb405cf61226bb9f4f0a0c5dd2b793fbb54e32ab5102d758c64726a0"}
+      ],
+      "colorEvidence": [{"elementId": "6375822", "rebrickableColorId": 179, "colorName": "Flat Silver", "rgb": "898788", "evidenceId": "evidence:elements:6375822"}],
+      "attachmentProfile": {"status": "pending", "allowedSlots": ["headwear"], "blocker": "LDraw geometry, release, dependencies, hash, license and headwear-slot check are pending."},
+      "renderStatus": "missing",
+      "procurement": {"status": "blocked", "bricklinkItemId": null, "bricklinkColorId": null, "blocker": "BrickLink item/color mapping is not yet independently verified."},
+      "humanReview": "pending",
+      "releaseStatus": "blocked"
+    },
+    {
+      "id": "ff03-headwear-25409",
+      "role": "headwear",
+      "rebrickablePartNum": "25409",
+      "name": "Hair Tousled Mid-Length with Side Part",
+      "rebrickableCategoryId": 65,
+      "rebrickableCategoryName": "Minifig Headwear",
+      "material": "Plastic",
+      "catalogEvidenceIds": ["evidence:parts:25409", "evidence:category:65"],
+      "catalogRows": [
+        {"id": "evidence:parts:25409", "fileName": "parts.csv.gz", "key": "part_num", "value": "25409", "sha256": "7fb9e560e5fde2af836b9eeb7ccada150f19e344ba7814c602cc2e119905cddc"},
+        {"id": "evidence:category:65", "fileName": "part_categories.csv.gz", "key": "id", "value": "65", "sha256": "4cf11af9fb405cf61226bb9f4f0a0c5dd2b793fbb54e32ab5102d758c64726a0"}
+      ],
+      "colorEvidence": [{"elementId": "6424563", "rebrickableColorId": 226, "colorName": "Bright Light Yellow", "rgb": "FFF03A", "evidenceId": "evidence:elements:6424563"}],
+      "attachmentProfile": {"status": "pending", "allowedSlots": ["headwear"], "blocker": "LDraw geometry, release, dependencies, hash, license and headwear-slot check are pending."},
+      "renderStatus": "missing",
+      "procurement": {"status": "blocked", "bricklinkItemId": null, "bricklinkColorId": null, "blocker": "BrickLink item/color mapping is not yet independently verified."},
+      "humanReview": "pending",
+      "releaseStatus": "blocked"
+    },
+    {
+      "id": "ff03-headwear-36268",
+      "role": "headwear",
+      "rebrickablePartNum": "36268",
+      "name": "Hair Short Bob Cut with Left Side Part",
+      "rebrickableCategoryId": 65,
+      "rebrickableCategoryName": "Minifig Headwear",
+      "material": "Plastic",
+      "catalogEvidenceIds": ["evidence:parts:36268", "evidence:category:65"],
+      "catalogRows": [
+        {"id": "evidence:parts:36268", "fileName": "parts.csv.gz", "key": "part_num", "value": "36268", "sha256": "7fb9e560e5fde2af836b9eeb7ccada150f19e344ba7814c602cc2e119905cddc"},
+        {"id": "evidence:category:65", "fileName": "part_categories.csv.gz", "key": "id", "value": "65", "sha256": "4cf11af9fb405cf61226bb9f4f0a0c5dd2b793fbb54e32ab5102d758c64726a0"}
+      ],
+      "colorEvidence": [{"elementId": "6210762", "rebrickableColorId": 70, "colorName": "Reddish Brown", "rgb": "582A12", "evidenceId": "evidence:elements:6210762"}],
+      "attachmentProfile": {"status": "pending", "allowedSlots": ["headwear"], "blocker": "LDraw geometry, release, dependencies, hash, license and headwear-slot check are pending."},
+      "renderStatus": "missing",
+      "procurement": {"status": "blocked", "bricklinkItemId": null, "bricklinkColorId": null, "blocker": "BrickLink item/color mapping is not yet independently verified."},
+      "humanReview": "pending",
+      "releaseStatus": "blocked"
+    },
+    {
+      "id": "ff03-headwear-3901",
+      "role": "headwear",
+      "rebrickablePartNum": "3901",
+      "name": "Hair Smooth",
+      "rebrickableCategoryId": 65,
+      "rebrickableCategoryName": "Minifig Headwear",
+      "material": "Plastic",
+      "catalogEvidenceIds": ["evidence:parts:3901", "evidence:category:65"],
+      "catalogRows": [
+        {"id": "evidence:parts:3901", "fileName": "parts.csv.gz", "key": "part_num", "value": "3901", "sha256": "7fb9e560e5fde2af836b9eeb7ccada150f19e344ba7814c602cc2e119905cddc"},
+        {"id": "evidence:category:65", "fileName": "part_categories.csv.gz", "key": "id", "value": "65", "sha256": "4cf11af9fb405cf61226bb9f4f0a0c5dd2b793fbb54e32ab5102d758c64726a0"}
+      ],
+      "colorEvidence": [{"elementId": "390126", "rebrickableColorId": 0, "colorName": "Black", "rgb": "05131D", "evidenceId": "evidence:elements:390126"}],
+      "attachmentProfile": {"status": "pending", "allowedSlots": ["headwear"], "blocker": "LDraw geometry, release, dependencies, hash, license and headwear-slot check are pending."},
+      "renderStatus": "missing",
+      "procurement": {"status": "blocked", "bricklinkItemId": null, "bricklinkColorId": null, "blocker": "BrickLink item/color mapping is not yet independently verified."},
+      "humanReview": "pending",
+      "releaseStatus": "blocked"
+    },
+    {
+      "id": "ff03-torso-3814",
+      "role": "torsoAssembly",
+      "rebrickablePartNum": "3814",
+      "name": "Torso [Plain]",
+      "rebrickableCategoryId": 60,
+      "rebrickableCategoryName": "Minifig Upper Body",
+      "material": "Plastic",
+      "catalogEvidenceIds": ["evidence:parts:3814", "evidence:category:60"],
+      "catalogRows": [
+        {"id": "evidence:parts:3814", "fileName": "parts.csv.gz", "key": "part_num", "value": "3814", "sha256": "7fb9e560e5fde2af836b9eeb7ccada150f19e344ba7814c602cc2e119905cddc"},
+        {"id": "evidence:category:60", "fileName": "part_categories.csv.gz", "key": "id", "value": "60", "sha256": "4cf11af9fb405cf61226bb9f4f0a0c5dd2b793fbb54e32ab5102d758c64726a0"}
+      ],
+      "colorEvidence": [{"elementId": "381426", "rebrickableColorId": 0, "colorName": "Black", "rgb": "05131D", "evidenceId": "evidence:elements:381426"}],
+      "attachmentProfile": {"status": "pending", "allowedSlots": ["torsoAssembly"], "blocker": "LDraw geometry, release, dependencies, hash, license and torso-slot check are pending."},
+      "renderStatus": "missing",
+      "procurement": {"status": "blocked", "bricklinkItemId": null, "bricklinkColorId": null, "blocker": "BrickLink item/color mapping is not yet independently verified."},
+      "humanReview": "pending",
+      "releaseStatus": "blocked"
+    },
+    {
+      "id": "ff03-torso-973c01h01",
+      "role": "torsoAssembly",
+      "rebrickablePartNum": "973c01h01",
+      "name": "Torso, Yellow Arms and Hands [Plain]",
+      "rebrickableCategoryId": 60,
+      "rebrickableCategoryName": "Minifig Upper Body",
+      "material": "Plastic",
+      "catalogEvidenceIds": ["evidence:parts:973c01h01", "evidence:category:60"],
+      "catalogRows": [
+        {"id": "evidence:parts:973c01h01", "fileName": "parts.csv.gz", "key": "part_num", "value": "973c01h01", "sha256": "7fb9e560e5fde2af836b9eeb7ccada150f19e344ba7814c602cc2e119905cddc"},
+        {"id": "evidence:category:60", "fileName": "part_categories.csv.gz", "key": "id", "value": "60", "sha256": "4cf11af9fb405cf61226bb9f4f0a0c5dd2b793fbb54e32ab5102d758c64726a0"}
+      ],
+      "colorEvidence": [{"elementId": "74989", "rebrickableColorId": 0, "colorName": "Black", "rgb": "05131D", "evidenceId": "evidence:elements:74989"}],
+      "attachmentProfile": {"status": "pending", "allowedSlots": ["torsoAssembly"], "blocker": "LDraw geometry, release, dependencies, hash, license and torso-slot check are pending."},
+      "renderStatus": "missing",
+      "procurement": {"status": "blocked", "bricklinkItemId": null, "bricklinkColorId": null, "blocker": "BrickLink item/color mapping is not yet independently verified."},
+      "humanReview": "pending",
+      "releaseStatus": "blocked"
+    },
+    {
+      "id": "ff03-legs-970c01",
+      "role": "legsAssembly",
+      "rebrickablePartNum": "970c01",
+      "name": "Hips and Yellow Legs",
+      "rebrickableCategoryId": 61,
+      "rebrickableCategoryName": "Minifig Lower Body",
+      "material": "Plastic",
+      "catalogEvidenceIds": ["evidence:parts:970c01", "evidence:category:61"],
+      "catalogRows": [
+        {"id": "evidence:parts:970c01", "fileName": "parts.csv.gz", "key": "part_num", "value": "970c01", "sha256": "7fb9e560e5fde2af836b9eeb7ccada150f19e344ba7814c602cc2e119905cddc"},
+        {"id": "evidence:category:61", "fileName": "part_categories.csv.gz", "key": "id", "value": "61", "sha256": "4cf11af9fb405cf61226bb9f4f0a0c5dd2b793fbb54e32ab5102d758c64726a0"}
+      ],
+      "colorEvidence": [{"elementId": "4584273", "rebrickableColorId": 71, "colorName": "Light Bluish Gray", "rgb": "A0A5A9", "evidenceId": "evidence:elements:4584273"}],
+      "attachmentProfile": {"status": "pending", "allowedSlots": ["legsAssembly"], "blocker": "LDraw geometry, release, dependencies, hash, license and leg-slot check are pending."},
+      "renderStatus": "missing",
+      "procurement": {"status": "blocked", "bricklinkItemId": null, "bricklinkColorId": null, "blocker": "BrickLink item/color mapping is not yet independently verified."},
+      "humanReview": "pending",
+      "releaseStatus": "blocked"
+    },
+    {
+      "id": "ff03-legs-970c01pr0001",
+      "role": "legsAssembly",
+      "rebrickablePartNum": "970c01pr0001",
+      "name": "Hips and Yellow Legs with Black Markings Print",
+      "rebrickableCategoryId": 61,
+      "rebrickableCategoryName": "Minifig Lower Body",
+      "material": "Plastic",
+      "catalogEvidenceIds": ["evidence:parts:970c01pr0001", "evidence:category:61"],
+      "catalogRows": [
+        {"id": "evidence:parts:970c01pr0001", "fileName": "parts.csv.gz", "key": "part_num", "value": "970c01pr0001", "sha256": "7fb9e560e5fde2af836b9eeb7ccada150f19e344ba7814c602cc2e119905cddc"},
+        {"id": "evidence:category:61", "fileName": "part_categories.csv.gz", "key": "id", "value": "61", "sha256": "4cf11af9fb405cf61226bb9f4f0a0c5dd2b793fbb54e32ab5102d758c64726a0"}
+      ],
+      "colorEvidence": [{"elementId": "6102604", "rebrickableColorId": 0, "colorName": "Black", "rgb": "05131D", "evidenceId": "evidence:elements:6102604"}],
+      "attachmentProfile": {"status": "pending", "allowedSlots": ["legsAssembly"], "blocker": "LDraw geometry, release, dependencies, hash, license and leg-slot check are pending."},
+      "renderStatus": "missing",
+      "procurement": {"status": "blocked", "bricklinkItemId": null, "bricklinkColorId": null, "blocker": "BrickLink item/color mapping is not yet independently verified."},
+      "humanReview": "pending",
+      "releaseStatus": "blocked"
+    },
+    {
+      "id": "ff03-hand-10053",
+      "role": "handAccessory",
+      "rebrickablePartNum": "10053",
+      "name": "Weapon Sword Small",
+      "rebrickableCategoryId": 73,
+      "rebrickableCategoryName": "Minifig Shields, Weapons, & Tools",
+      "material": "Plastic",
+      "catalogEvidenceIds": ["evidence:parts:10053", "evidence:category:73"],
+      "catalogRows": [
+        {"id": "evidence:parts:10053", "fileName": "parts.csv.gz", "key": "part_num", "value": "10053", "sha256": "7fb9e560e5fde2af836b9eeb7ccada150f19e344ba7814c602cc2e119905cddc"},
+        {"id": "evidence:category:73", "fileName": "part_categories.csv.gz", "key": "id", "value": "73", "sha256": "4cf11af9fb405cf61226bb9f4f0a0c5dd2b793fbb54e32ab5102d758c64726a0"}
+      ],
+      "colorEvidence": [{"elementId": "6002763", "rebrickableColorId": 179, "colorName": "Flat Silver", "rgb": "898788", "evidenceId": "evidence:elements:6002763"}],
+      "attachmentProfile": {"status": "pending", "allowedSlots": ["leftHandAccessory", "rightHandAccessory"], "blocker": "Handle/grip geometry and hand-slot check are pending."},
+      "renderStatus": "missing",
+      "procurement": {"status": "blocked", "bricklinkItemId": null, "bricklinkColorId": null, "blocker": "BrickLink item/color mapping is not yet independently verified."},
+      "humanReview": "pending",
+      "releaseStatus": "blocked"
+    },
+    {
+      "id": "ff03-hand-11439",
+      "role": "handAccessory",
+      "rebrickablePartNum": "11439",
+      "name": "Weapon Sword with Jagged Edges [Plain]",
+      "rebrickableCategoryId": 73,
+      "rebrickableCategoryName": "Minifig Shields, Weapons, & Tools",
+      "material": "Plastic",
+      "catalogEvidenceIds": ["evidence:parts:11439", "evidence:category:73"],
+      "catalogRows": [
+        {"id": "evidence:parts:11439", "fileName": "parts.csv.gz", "key": "part_num", "value": "11439", "sha256": "7fb9e560e5fde2af836b9eeb7ccada150f19e344ba7814c602cc2e119905cddc"},
+        {"id": "evidence:category:73", "fileName": "part_categories.csv.gz", "key": "id", "value": "73", "sha256": "4cf11af9fb405cf61226bb9f4f0a0c5dd2b793fbb54e32ab5102d758c64726a0"}
+      ],
+      "colorEvidence": [{"elementId": "6157543", "rebrickableColorId": 42, "colorName": "Trans-Neon Green", "rgb": "F8F184", "evidenceId": "evidence:elements:6157543"}],
+      "attachmentProfile": {"status": "pending", "allowedSlots": ["leftHandAccessory", "rightHandAccessory"], "blocker": "Handle/grip geometry and hand-slot check are pending."},
+      "renderStatus": "missing",
+      "procurement": {"status": "blocked", "bricklinkItemId": null, "bricklinkColorId": null, "blocker": "BrickLink item/color mapping is not yet independently verified."},
+      "humanReview": "pending",
+      "releaseStatus": "blocked"
+    },
+    {
+      "id": "ff03-hand-3841",
+      "role": "handAccessory",
+      "rebrickablePartNum": "3841",
+      "name": "Tool Pickaxe",
+      "rebrickableCategoryId": 73,
+      "rebrickableCategoryName": "Minifig Shields, Weapons, & Tools",
+      "material": "Plastic",
+      "catalogEvidenceIds": ["evidence:parts:3841", "evidence:category:73"],
+      "catalogRows": [
+        {"id": "evidence:parts:3841", "fileName": "parts.csv.gz", "key": "part_num", "value": "3841", "sha256": "7fb9e560e5fde2af836b9eeb7ccada150f19e344ba7814c602cc2e119905cddc"},
+        {"id": "evidence:category:73", "fileName": "part_categories.csv.gz", "key": "id", "value": "73", "sha256": "4cf11af9fb405cf61226bb9f4f0a0c5dd2b793fbb54e32ab5102d758c64726a0"}
+      ],
+      "colorEvidence": [{"elementId": "4600316", "rebrickableColorId": 297, "colorName": "Pearl Gold", "rgb": "AA7F2E", "evidenceId": "evidence:elements:4600316"}],
+      "attachmentProfile": {"status": "pending", "allowedSlots": ["leftHandAccessory", "rightHandAccessory"], "blocker": "Handle/grip geometry and hand-slot check are pending."},
+      "renderStatus": "missing",
+      "procurement": {"status": "blocked", "bricklinkItemId": null, "bricklinkColorId": null, "blocker": "BrickLink item/color mapping is not yet independently verified."},
+      "humanReview": "pending",
+      "releaseStatus": "blocked"
+    }
+  ],
+  "variants": [
+    {"id": "ff03-variant-01", "headId": "ff03-head-3626c", "headwearId": "ff03-headwear-10048", "torsoAssemblyId": "ff03-torso-3814", "legsAssemblyId": "ff03-legs-970c01", "handAccessoryId": "ff03-hand-10053", "catalogEvidenceIds": ["evidence:parts:3626c"], "renderStatus": "missing", "procurementStatus": "blocked", "releaseStatus": "blocked", "blocker": "Component LDraw, attachment, BrickLink and human-review evidence is incomplete."},
+    {"id": "ff03-variant-02", "headId": "ff03-head-3626cpr0001", "headwearId": "ff03-headwear-10048", "torsoAssemblyId": "ff03-torso-3814", "legsAssemblyId": "ff03-legs-970c01", "handAccessoryId": "ff03-hand-11439", "catalogEvidenceIds": ["evidence:parts:3626cpr0001"], "renderStatus": "missing", "procurementStatus": "blocked", "releaseStatus": "blocked", "blocker": "Component LDraw, attachment, BrickLink and human-review evidence is incomplete."},
+    {"id": "ff03-variant-03", "headId": "ff03-head-3626cpr0008", "headwearId": "ff03-headwear-10048", "torsoAssemblyId": "ff03-torso-3814", "legsAssemblyId": "ff03-legs-970c01", "handAccessoryId": "ff03-hand-3841", "catalogEvidenceIds": ["evidence:parts:3626cpr0008"], "renderStatus": "missing", "procurementStatus": "blocked", "releaseStatus": "blocked", "blocker": "Component LDraw, attachment, BrickLink and human-review evidence is incomplete."},
+    {"id": "ff03-variant-04", "headId": "ff03-head-3626cpr0387", "headwearId": "ff03-headwear-10048", "torsoAssemblyId": "ff03-torso-3814", "legsAssemblyId": "ff03-legs-970c01", "handAccessoryId": "ff03-hand-10053", "catalogEvidenceIds": ["evidence:parts:3626cpr0387"], "renderStatus": "missing", "procurementStatus": "blocked", "releaseStatus": "blocked", "blocker": "Component LDraw, attachment, BrickLink and human-review evidence is incomplete."},
+    {"id": "ff03-variant-05", "headId": "ff03-head-3626cpr0495", "headwearId": "ff03-headwear-10048", "torsoAssemblyId": "ff03-torso-3814", "legsAssemblyId": "ff03-legs-970c01", "handAccessoryId": "ff03-hand-11439", "catalogEvidenceIds": ["evidence:parts:3626cpr0495"], "renderStatus": "missing", "procurementStatus": "blocked", "releaseStatus": "blocked", "blocker": "Component LDraw, attachment, BrickLink and human-review evidence is incomplete."},
+    {"id": "ff03-variant-06", "headId": "ff03-head-3626c", "headwearId": "ff03-headwear-25405", "torsoAssemblyId": "ff03-torso-973c01h01", "legsAssemblyId": "ff03-legs-970c01", "handAccessoryId": "ff03-hand-3841", "catalogEvidenceIds": ["evidence:parts:3626c"], "renderStatus": "missing", "procurementStatus": "blocked", "releaseStatus": "blocked", "blocker": "Component LDraw, attachment, BrickLink and human-review evidence is incomplete."},
+    {"id": "ff03-variant-07", "headId": "ff03-head-3626cpr0001", "headwearId": "ff03-headwear-25405", "torsoAssemblyId": "ff03-torso-973c01h01", "legsAssemblyId": "ff03-legs-970c01", "handAccessoryId": "ff03-hand-10053", "catalogEvidenceIds": ["evidence:parts:3626cpr0001"], "renderStatus": "missing", "procurementStatus": "blocked", "releaseStatus": "blocked", "blocker": "Component LDraw, attachment, BrickLink and human-review evidence is incomplete."},
+    {"id": "ff03-variant-08", "headId": "ff03-head-3626cpr0008", "headwearId": "ff03-headwear-25405", "torsoAssemblyId": "ff03-torso-973c01h01", "legsAssemblyId": "ff03-legs-970c01", "handAccessoryId": "ff03-hand-11439", "catalogEvidenceIds": ["evidence:parts:3626cpr0008"], "renderStatus": "missing", "procurementStatus": "blocked", "releaseStatus": "blocked", "blocker": "Component LDraw, attachment, BrickLink and human-review evidence is incomplete."},
+    {"id": "ff03-variant-09", "headId": "ff03-head-3626cpr0387", "headwearId": "ff03-headwear-25405", "torsoAssemblyId": "ff03-torso-973c01h01", "legsAssemblyId": "ff03-legs-970c01", "handAccessoryId": "ff03-hand-3841", "catalogEvidenceIds": ["evidence:parts:3626cpr0387"], "renderStatus": "missing", "procurementStatus": "blocked", "releaseStatus": "blocked", "blocker": "Component LDraw, attachment, BrickLink and human-review evidence is incomplete."},
+    {"id": "ff03-variant-10", "headId": "ff03-head-3626cpr0495", "headwearId": "ff03-headwear-25405", "torsoAssemblyId": "ff03-torso-973c01h01", "legsAssemblyId": "ff03-legs-970c01", "handAccessoryId": "ff03-hand-10053", "catalogEvidenceIds": ["evidence:parts:3626cpr0495"], "renderStatus": "missing", "procurementStatus": "blocked", "releaseStatus": "blocked", "blocker": "Component LDraw, attachment, BrickLink and human-review evidence is incomplete."},
+    {"id": "ff03-variant-11", "headId": "ff03-head-3626c", "headwearId": "ff03-headwear-25409", "torsoAssemblyId": "ff03-torso-3814", "legsAssemblyId": "ff03-legs-970c01pr0001", "handAccessoryId": "ff03-hand-11439", "catalogEvidenceIds": ["evidence:parts:3626c"], "renderStatus": "missing", "procurementStatus": "blocked", "releaseStatus": "blocked", "blocker": "Component LDraw, attachment, BrickLink and human-review evidence is incomplete."},
+    {"id": "ff03-variant-12", "headId": "ff03-head-3626cpr0001", "headwearId": "ff03-headwear-25409", "torsoAssemblyId": "ff03-torso-3814", "legsAssemblyId": "ff03-legs-970c01pr0001", "handAccessoryId": "ff03-hand-3841", "catalogEvidenceIds": ["evidence:parts:3626cpr0001"], "renderStatus": "missing", "procurementStatus": "blocked", "releaseStatus": "blocked", "blocker": "Component LDraw, attachment, BrickLink and human-review evidence is incomplete."},
+    {"id": "ff03-variant-13", "headId": "ff03-head-3626cpr0008", "headwearId": "ff03-headwear-25409", "torsoAssemblyId": "ff03-torso-3814", "legsAssemblyId": "ff03-legs-970c01pr0001", "handAccessoryId": "ff03-hand-10053", "catalogEvidenceIds": ["evidence:parts:3626cpr0008"], "renderStatus": "missing", "procurementStatus": "blocked", "releaseStatus": "blocked", "blocker": "Component LDraw, attachment, BrickLink and human-review evidence is incomplete."},
+    {"id": "ff03-variant-14", "headId": "ff03-head-3626cpr0387", "headwearId": "ff03-headwear-25409", "torsoAssemblyId": "ff03-torso-3814", "legsAssemblyId": "ff03-legs-970c01pr0001", "handAccessoryId": "ff03-hand-11439", "catalogEvidenceIds": ["evidence:parts:3626cpr0387"], "renderStatus": "missing", "procurementStatus": "blocked", "releaseStatus": "blocked", "blocker": "Component LDraw, attachment, BrickLink and human-review evidence is incomplete."},
+    {"id": "ff03-variant-15", "headId": "ff03-head-3626cpr0495", "headwearId": "ff03-headwear-25409", "torsoAssemblyId": "ff03-torso-3814", "legsAssemblyId": "ff03-legs-970c01pr0001", "handAccessoryId": "ff03-hand-3841", "catalogEvidenceIds": ["evidence:parts:3626cpr0495"], "renderStatus": "missing", "procurementStatus": "blocked", "releaseStatus": "blocked", "blocker": "Component LDraw, attachment, BrickLink and human-review evidence is incomplete."},
+    {"id": "ff03-variant-16", "headId": "ff03-head-3626c", "headwearId": "ff03-headwear-36268", "torsoAssemblyId": "ff03-torso-973c01h01", "legsAssemblyId": "ff03-legs-970c01pr0001", "handAccessoryId": "ff03-hand-10053", "catalogEvidenceIds": ["evidence:parts:3626c"], "renderStatus": "missing", "procurementStatus": "blocked", "releaseStatus": "blocked", "blocker": "Component LDraw, attachment, BrickLink and human-review evidence is incomplete."},
+    {"id": "ff03-variant-17", "headId": "ff03-head-3626cpr0001", "headwearId": "ff03-headwear-36268", "torsoAssemblyId": "ff03-torso-973c01h01", "legsAssemblyId": "ff03-legs-970c01pr0001", "handAccessoryId": "ff03-hand-11439", "catalogEvidenceIds": ["evidence:parts:3626cpr0001"], "renderStatus": "missing", "procurementStatus": "blocked", "releaseStatus": "blocked", "blocker": "Component LDraw, attachment, BrickLink and human-review evidence is incomplete."},
+    {"id": "ff03-variant-18", "headId": "ff03-head-3626cpr0008", "headwearId": "ff03-headwear-36268", "torsoAssemblyId": "ff03-torso-973c01h01", "legsAssemblyId": "ff03-legs-970c01pr0001", "handAccessoryId": "ff03-hand-3841", "catalogEvidenceIds": ["evidence:parts:3626cpr0008"], "renderStatus": "missing", "procurementStatus": "blocked", "releaseStatus": "blocked", "blocker": "Component LDraw, attachment, BrickLink and human-review evidence is incomplete."},
+    {"id": "ff03-variant-19", "headId": "ff03-head-3626cpr0387", "headwearId": "ff03-headwear-36268", "torsoAssemblyId": "ff03-torso-973c01h01", "legsAssemblyId": "ff03-legs-970c01pr0001", "handAccessoryId": "ff03-hand-10053", "catalogEvidenceIds": ["evidence:parts:3626cpr0387"], "renderStatus": "missing", "procurementStatus": "blocked", "releaseStatus": "blocked", "blocker": "Component LDraw, attachment, BrickLink and human-review evidence is incomplete."},
+    {"id": "ff03-variant-20", "headId": "ff03-head-3626cpr0495", "headwearId": "ff03-headwear-36268", "torsoAssemblyId": "ff03-torso-973c01h01", "legsAssemblyId": "ff03-legs-970c01pr0001", "handAccessoryId": "ff03-hand-11439", "catalogEvidenceIds": ["evidence:parts:3626cpr0495"], "renderStatus": "missing", "procurementStatus": "blocked", "releaseStatus": "blocked", "blocker": "Component LDraw, attachment, BrickLink and human-review evidence is incomplete."}
+  ],
+  "excludedCandidates": [
+    {"rebrickablePartNum": "100456pr0001", "category": "Minifig Heads", "reason": "Special molded/droid head; excluded from the standard minifigure family target."},
+    {"rebrickablePartNum": "102718pr0001", "category": "Minifig Heads", "reason": "Molded Ewok head; excluded as a special body system."},
+    {"rebrickablePartNum": "30375", "category": "Minifig Upper Body", "reason": "Battle Droid torso; excluded from the standard minifigure family target."}
+  ],
+  "openBlockers": [
+    "No LDraw file/release, transitive dependency, hash or license evidence has been attached yet.",
+    "BrickLink item and color IDs are intentionally null until independently reviewed; no procurement availability is claimed.",
+    "Attachment profiles and hand-grip checks remain pending human review.",
+    "All components and variants remain blocked and must not be published."
+  ]
+}

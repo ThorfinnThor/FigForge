@@ -1,0 +1,192 @@
+{
+  "schemaVersion": 1,
+  "ticket": "FF-21",
+  "normalizerVersion": "de-en-domain-v1",
+  "updatedAt": "2026-09-27T16:30:00Z",
+  "sourcePolicy": "Nur Rebrickable Catalog Downloads/CSV, keine MOC-Dateien.",
+  "baseLexiconPath": "data/curated/ff17-search-lexicon.json",
+  "baseLexiconSha256": "3aeaf50fc767010b596051981c76d446df4ebc9c8f499022833b670e3526ef11",
+  "reviewStatus": "proposed; human-review-pending",
+  "entries": [
+    {
+      "id": "term:schlicht",
+      "sourceForms": [
+        "schlicht",
+        "schlichte"
+      ],
+      "targetTerms": [
+        "plain"
+      ],
+      "relatedTerms": [],
+      "kind": "term",
+      "categoryRole": null,
+      "colorName": null,
+      "warning": null
+    },
+    {
+      "id": "term:grinsen",
+      "sourceForms": [
+        "grinsen",
+        "grinsend"
+      ],
+      "targetTerms": [
+        "grin",
+        "smile"
+      ],
+      "relatedTerms": [],
+      "kind": "term",
+      "categoryRole": "head",
+      "colorName": null,
+      "warning": null
+    },
+    {
+      "id": "term:augenbrauen",
+      "sourceForms": [
+        "augenbrauen"
+      ],
+      "targetTerms": [
+        "eyebrows"
+      ],
+      "relatedTerms": [],
+      "kind": "term",
+      "categoryRole": "head",
+      "colorName": null,
+      "warning": null
+    },
+    {
+      "id": "term:pony",
+      "sourceForms": [
+        "pony",
+        "pferdeschwanz"
+      ],
+      "targetTerms": [
+        "ponytail"
+      ],
+      "relatedTerms": [],
+      "kind": "term",
+      "categoryRole": "headwear",
+      "colorName": null,
+      "warning": null
+    },
+    {
+      "id": "term:glatt",
+      "sourceForms": [
+        "glatt",
+        "glatte"
+      ],
+      "targetTerms": [
+        "smooth"
+      ],
+      "relatedTerms": [],
+      "kind": "term",
+      "categoryRole": "headwear",
+      "colorName": null,
+      "warning": null
+    },
+    {
+      "id": "term:kurz",
+      "sourceForms": [
+        "kurz",
+        "kurze"
+      ],
+      "targetTerms": [
+        "short"
+      ],
+      "relatedTerms": [],
+      "kind": "term",
+      "categoryRole": null,
+      "colorName": null,
+      "warning": null
+    },
+    {
+      "id": "term:seitenpartie",
+      "sourceForms": [
+        "seitenpartie"
+      ],
+      "targetTerms": [
+        "side part"
+      ],
+      "relatedTerms": [],
+      "kind": "term",
+      "categoryRole": "headwear",
+      "colorName": null,
+      "warning": null
+    },
+    {
+      "id": "term:torso",
+      "sourceForms": [
+        "torso",
+        "oberkörper",
+        "oberkoerper"
+      ],
+      "targetTerms": [
+        "torso"
+      ],
+      "relatedTerms": [],
+      "kind": "term",
+      "categoryRole": "torsoAssembly",
+      "colorName": null,
+      "warning": null
+    },
+    {
+      "id": "term:arme",
+      "sourceForms": [
+        "arme",
+        "arm"
+      ],
+      "targetTerms": [
+        "arms"
+      ],
+      "relatedTerms": [],
+      "kind": "term",
+      "categoryRole": "torsoAssembly",
+      "colorName": null,
+      "warning": null
+    },
+    {
+      "id": "term:beine",
+      "sourceForms": [
+        "beine",
+        "bein"
+      ],
+      "targetTerms": [
+        "legs"
+      ],
+      "relatedTerms": [],
+      "kind": "term",
+      "categoryRole": "legsAssembly",
+      "colorName": null,
+      "warning": null
+    },
+    {
+      "id": "term:spitzhacke",
+      "sourceForms": [
+        "spitzhacke",
+        "hacke"
+      ],
+      "targetTerms": [
+        "pickaxe"
+      ],
+      "relatedTerms": [],
+      "kind": "term",
+      "categoryRole": "handAccessory",
+      "colorName": null,
+      "warning": null
+    },
+    {
+      "id": "term:gezackt",
+      "sourceForms": [
+        "gezackt",
+        "gezacktes"
+      ],
+      "targetTerms": [
+        "jagged"
+      ],
+      "relatedTerms": [],
+      "kind": "term",
+      "categoryRole": "handAccessory",
+      "colorName": null,
+      "warning": null
+    }
+  ]
+}

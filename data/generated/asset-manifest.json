@@ -1,0 +1,474 @@
+{
+  "schemaVersion": 1,
+  "ticket": "FF-11",
+  "sourcePolicy": "Nur Rebrickable Catalog Downloads/CSV, keine MOC-Dateien.",
+  "provenance": {
+    "sourceLockSha256": "1ff3982922f1c1563dd2f086922baf7dc7407727c39eba3ee7814022d8f4c73e",
+    "modelPackageIndexSha256": "925ef0ea3a06f1b3bbcc7dffc834dcdd6c0099e3ea0566f6489ce17620b58583",
+    "mappingReviewSha256": "4090650b6ebe76cb2e71aaf987fa5dcb2c0f92ee20c4ae7c44ac1b917f5c84f9"
+  },
+  "release": {
+    "status": "blocked",
+    "publishable": false,
+    "reason": "FF-10 enthält ausschließlich synthetische Prüfgeometrie; externe Asset-, Lizenz- und Review-Freigaben fehlen."
+  },
+  "noticesFile": {
+    "path": "/licenses/figforge-attribution.json",
+    "sha256": "a4c41731b8f5efca97492f2b00907a47d5221382e2859a12ee24a731582a064a",
+    "bytes": 4818
+  },
+  "assets": [
+    {
+      "id": "asset:model-package:ff04-fixture-standard-v1",
+      "kind": "model-package",
+      "path": "/assets/model-packages/ff04-fixture-standard-v1.json",
+      "sha256": "23ef2f2d78b7dbf962b75b274223bd922730603600f1e62ab8fe9a698319deaa",
+      "bytes": 8246,
+      "sourceIds": [
+        "src:fixture-ff04",
+        "src:rebrickable-catalog"
+      ],
+      "licenseEvidenceIds": [
+        "license:fixture:synthetic",
+        "license:rebrickable:catalog"
+      ],
+      "status": "blocked",
+      "publishable": false,
+      "note": "FF-10 ist synthetische Prüfgeometrie; ohne reale Asset-, Lizenz- und Release-Evidence nicht veröffentlichen."
+    },
+    {
+      "id": "asset:thumbnail:ff03-hand-10053-left",
+      "kind": "thumbnail",
+      "path": "/assets/thumbnails/ff03-hand-10053-left.svg",
+      "sha256": "4d7d2acfc5fb787b545c32024f67b96b4e51956f9e7b3ff482ab4fc34625299f",
+      "bytes": 764,
+      "sourceIds": [
+        "src:fixture-ff04",
+        "src:rebrickable-catalog"
+      ],
+      "licenseEvidenceIds": [
+        "license:fixture:synthetic",
+        "license:rebrickable:catalog"
+      ],
+      "status": "blocked",
+      "publishable": false,
+      "note": "FF-10 ist synthetische Prüfgeometrie; ohne reale Asset-, Lizenz- und Release-Evidence nicht veröffentlichen."
+    },
+    {
+      "id": "asset:thumbnail:ff03-hand-10053-right",
+      "kind": "thumbnail",
+      "path": "/assets/thumbnails/ff03-hand-10053-right.svg",
+      "sha256": "6f7fc41a814498734bda51f71123c523fb8d62f645b6ea28f8d53b8584768f99",
+      "bytes": 765,
+      "sourceIds": [
+        "src:fixture-ff04",
+        "src:rebrickable-catalog"
+      ],
+      "licenseEvidenceIds": [
+        "license:fixture:synthetic",
+        "license:rebrickable:catalog"
+      ],
+      "status": "blocked",
+      "publishable": false,
+      "note": "FF-10 ist synthetische Prüfgeometrie; ohne reale Asset-, Lizenz- und Release-Evidence nicht veröffentlichen."
+    },
+    {
+      "id": "asset:thumbnail:ff03-hand-11439-left",
+      "kind": "thumbnail",
+      "path": "/assets/thumbnails/ff03-hand-11439-left.svg",
+      "sha256": "3c89d0d8d5241b01261bbfdc0ed93abc1ff0979a57db399b3035ec4cc6dc7535",
+      "bytes": 741,
+      "sourceIds": [
+        "src:fixture-ff04",
+        "src:rebrickable-catalog"
+      ],
+      "licenseEvidenceIds": [
+        "license:fixture:synthetic",
+        "license:rebrickable:catalog"
+      ],
+      "status": "blocked",
+      "publishable": false,
+      "note": "FF-10 ist synthetische Prüfgeometrie; ohne reale Asset-, Lizenz- und Release-Evidence nicht veröffentlichen."
+    },
+    {
+      "id": "asset:thumbnail:ff03-hand-11439-right",
+      "kind": "thumbnail",
+      "path": "/assets/thumbnails/ff03-hand-11439-right.svg",
+      "sha256": "bc6920d60835463937603c3afe67356e86f6f9d0d22eec6eae6fec4650e23b3a",
+      "bytes": 742,
+      "sourceIds": [
+        "src:fixture-ff04",
+        "src:rebrickable-catalog"
+      ],
+      "licenseEvidenceIds": [
+        "license:fixture:synthetic",
+        "license:rebrickable:catalog"
+      ],
+      "status": "blocked",
+      "publishable": false,
+      "note": "FF-10 ist synthetische Prüfgeometrie; ohne reale Asset-, Lizenz- und Release-Evidence nicht veröffentlichen."
+    },
+    {
+      "id": "asset:thumbnail:ff03-hand-3841-left",
+      "kind": "thumbnail",
+      "path": "/assets/thumbnails/ff03-hand-3841-left.svg",
+      "sha256": "fddcf6b73d7ec9d6e13d95f65849a7bebb20e81accc0f71bfc97e66b26951cb6",
+      "bytes": 759,
+      "sourceIds": [
+        "src:fixture-ff04",
+        "src:rebrickable-catalog"
+      ],
+      "licenseEvidenceIds": [
+        "license:fixture:synthetic",
+        "license:rebrickable:catalog"
+      ],
+      "status": "blocked",
+      "publishable": false,
+      "note": "FF-10 ist synthetische Prüfgeometrie; ohne reale Asset-, Lizenz- und Release-Evidence nicht veröffentlichen."
+    },
+    {
+      "id": "asset:thumbnail:ff03-hand-3841-right",
+      "kind": "thumbnail",
+      "path": "/assets/thumbnails/ff03-hand-3841-right.svg",
+      "sha256": "1fcc81e57bb90c9e78fedf6a99b2e3c6cc2835b3be27498ded48c09cb1aa4293",
+      "bytes": 760,
+      "sourceIds": [
+        "src:fixture-ff04",
+        "src:rebrickable-catalog"
+      ],
+      "licenseEvidenceIds": [
+        "license:fixture:synthetic",
+        "license:rebrickable:catalog"
+      ],
+      "status": "blocked",
+      "publishable": false,
+      "note": "FF-10 ist synthetische Prüfgeometrie; ohne reale Asset-, Lizenz- und Release-Evidence nicht veröffentlichen."
+    },
+    {
+      "id": "asset:thumbnail:ff03-head-3626c",
+      "kind": "thumbnail",
+      "path": "/assets/thumbnails/ff03-head-3626c.svg",
+      "sha256": "1136c8c9b0318847f05d22600f64c039f04b3b80348ad7da7512c4423e8f70c6",
+      "bytes": 753,
+      "sourceIds": [
+        "src:fixture-ff04",
+        "src:rebrickable-catalog"
+      ],
+      "licenseEvidenceIds": [
+        "license:fixture:synthetic",
+        "license:rebrickable:catalog"
+      ],
+      "status": "blocked",
+      "publishable": false,
+      "note": "FF-10 ist synthetische Prüfgeometrie; ohne reale Asset-, Lizenz- und Release-Evidence nicht veröffentlichen."
+    },
+    {
+      "id": "asset:thumbnail:ff03-head-3626cpr0001",
+      "kind": "thumbnail",
+      "path": "/assets/thumbnails/ff03-head-3626cpr0001.svg",
+      "sha256": "b6bfc299a6563633a42100f5881dd463939e62fe62a29a3afc1b0067bb5228d3",
+      "bytes": 905,
+      "sourceIds": [
+        "src:fixture-ff04",
+        "src:rebrickable-catalog"
+      ],
+      "licenseEvidenceIds": [
+        "license:fixture:synthetic",
+        "license:rebrickable:catalog"
+      ],
+      "status": "blocked",
+      "publishable": false,
+      "note": "FF-10 ist synthetische Prüfgeometrie; ohne reale Asset-, Lizenz- und Release-Evidence nicht veröffentlichen."
+    },
+    {
+      "id": "asset:thumbnail:ff03-head-3626cpr0008",
+      "kind": "thumbnail",
+      "path": "/assets/thumbnails/ff03-head-3626cpr0008.svg",
+      "sha256": "c28209c00651c76522b65ca4c1572929887df9918f25fa267edc57a5b07e9924",
+      "bytes": 909,
+      "sourceIds": [
+        "src:fixture-ff04",
+        "src:rebrickable-catalog"
+      ],
+      "licenseEvidenceIds": [
+        "license:fixture:synthetic",
+        "license:rebrickable:catalog"
+      ],
+      "status": "blocked",
+      "publishable": false,
+      "note": "FF-10 ist synthetische Prüfgeometrie; ohne reale Asset-, Lizenz- und Release-Evidence nicht veröffentlichen."
+    },
+    {
+      "id": "asset:thumbnail:ff03-head-3626cpr0387",
+      "kind": "thumbnail",
+      "path": "/assets/thumbnails/ff03-head-3626cpr0387.svg",
+      "sha256": "82b1b5c259fc86f0ddd8586ef35c770fdbbbd10dfa8cb118f6dbb58bc557d598",
+      "bytes": 905,
+      "sourceIds": [
+        "src:fixture-ff04",
+        "src:rebrickable-catalog"
+      ],
+      "licenseEvidenceIds": [
+        "license:fixture:synthetic",
+        "license:rebrickable:catalog"
+      ],
+      "status": "blocked",
+      "publishable": false,
+      "note": "FF-10 ist synthetische Prüfgeometrie; ohne reale Asset-, Lizenz- und Release-Evidence nicht veröffentlichen."
+    },
+    {
+      "id": "asset:thumbnail:ff03-head-3626cpr0495",
+      "kind": "thumbnail",
+      "path": "/assets/thumbnails/ff03-head-3626cpr0495.svg",
+      "sha256": "a03f74606463fb9a9d5b563a30b6d78ffcc2545311256ee3825ee9ebdc175771",
+      "bytes": 912,
+      "sourceIds": [
+        "src:fixture-ff04",
+        "src:rebrickable-catalog"
+      ],
+      "licenseEvidenceIds": [
+        "license:fixture:synthetic",
+        "license:rebrickable:catalog"
+      ],
+      "status": "blocked",
+      "publishable": false,
+      "note": "FF-10 ist synthetische Prüfgeometrie; ohne reale Asset-, Lizenz- und Release-Evidence nicht veröffentlichen."
+    },
+    {
+      "id": "asset:thumbnail:ff03-headwear-10048",
+      "kind": "thumbnail",
+      "path": "/assets/thumbnails/ff03-headwear-10048.svg",
+      "sha256": "cee9cd6af01309e02db0b914d225ece12469749623832a7c948aab137906ede0",
+      "bytes": 770,
+      "sourceIds": [
+        "src:fixture-ff04",
+        "src:rebrickable-catalog"
+      ],
+      "licenseEvidenceIds": [
+        "license:fixture:synthetic",
+        "license:rebrickable:catalog"
+      ],
+      "status": "blocked",
+      "publishable": false,
+      "note": "FF-10 ist synthetische Prüfgeometrie; ohne reale Asset-, Lizenz- und Release-Evidence nicht veröffentlichen."
+    },
+    {
+      "id": "asset:thumbnail:ff03-headwear-25405",
+      "kind": "thumbnail",
+      "path": "/assets/thumbnails/ff03-headwear-25405.svg",
+      "sha256": "994b9e1987a6d02567ca3ac81fc818e631d9235e2478802acdd1750b7652e64e",
+      "bytes": 768,
+      "sourceIds": [
+        "src:fixture-ff04",
+        "src:rebrickable-catalog"
+      ],
+      "licenseEvidenceIds": [
+        "license:fixture:synthetic",
+        "license:rebrickable:catalog"
+      ],
+      "status": "blocked",
+      "publishable": false,
+      "note": "FF-10 ist synthetische Prüfgeometrie; ohne reale Asset-, Lizenz- und Release-Evidence nicht veröffentlichen."
+    },
+    {
+      "id": "asset:thumbnail:ff03-headwear-25409",
+      "kind": "thumbnail",
+      "path": "/assets/thumbnails/ff03-headwear-25409.svg",
+      "sha256": "7bac8a64a318f17ff6b9af6e178f428a2ffb40380167efb0ba8d6f737056018a",
+      "bytes": 769,
+      "sourceIds": [
+        "src:fixture-ff04",
+        "src:rebrickable-catalog"
+      ],
+      "licenseEvidenceIds": [
+        "license:fixture:synthetic",
+        "license:rebrickable:catalog"
+      ],
+      "status": "blocked",
+      "publishable": false,
+      "note": "FF-10 ist synthetische Prüfgeometrie; ohne reale Asset-, Lizenz- und Release-Evidence nicht veröffentlichen."
+    },
+    {
+      "id": "asset:thumbnail:ff03-headwear-36268",
+      "kind": "thumbnail",
+      "path": "/assets/thumbnails/ff03-headwear-36268.svg",
+      "sha256": "75b5793277d759eb586a381004a0660419260a5cebe6422aec49516dfd26c9fb",
+      "bytes": 765,
+      "sourceIds": [
+        "src:fixture-ff04",
+        "src:rebrickable-catalog"
+      ],
+      "licenseEvidenceIds": [
+        "license:fixture:synthetic",
+        "license:rebrickable:catalog"
+      ],
+      "status": "blocked",
+      "publishable": false,
+      "note": "FF-10 ist synthetische Prüfgeometrie; ohne reale Asset-, Lizenz- und Release-Evidence nicht veröffentlichen."
+    },
+    {
+      "id": "asset:thumbnail:ff03-headwear-3901",
+      "kind": "thumbnail",
+      "path": "/assets/thumbnails/ff03-headwear-3901.svg",
+      "sha256": "2c15f9b24b396b2db8b2bd64cfa5ab69b20be00de12e2c274345caa155fb953d",
+      "bytes": 765,
+      "sourceIds": [
+        "src:fixture-ff04",
+        "src:rebrickable-catalog"
+      ],
+      "licenseEvidenceIds": [
+        "license:fixture:synthetic",
+        "license:rebrickable:catalog"
+      ],
+      "status": "blocked",
+      "publishable": false,
+      "note": "FF-10 ist synthetische Prüfgeometrie; ohne reale Asset-, Lizenz- und Release-Evidence nicht veröffentlichen."
+    },
+    {
+      "id": "asset:thumbnail:fixture:legs-assembly",
+      "kind": "thumbnail",
+      "path": "/assets/thumbnails/fixture-legs-assembly.svg",
+      "sha256": "c11879856341906d25bc36fcf07aabc08b83cb7cba7d30137e820d379323adfa",
+      "bytes": 777,
+      "sourceIds": [
+        "src:fixture-ff04",
+        "src:rebrickable-catalog"
+      ],
+      "licenseEvidenceIds": [
+        "license:fixture:synthetic",
+        "license:rebrickable:catalog"
+      ],
+      "status": "blocked",
+      "publishable": false,
+      "note": "FF-10 ist synthetische Prüfgeometrie; ohne reale Asset-, Lizenz- und Release-Evidence nicht veröffentlichen."
+    },
+    {
+      "id": "asset:thumbnail:fixture:torso-assembly",
+      "kind": "thumbnail",
+      "path": "/assets/thumbnails/fixture-torso-assembly.svg",
+      "sha256": "6763574466172f7e60ca82ebaedf46a3143d03ea811c1e64d9121a91adca3cb4",
+      "bytes": 821,
+      "sourceIds": [
+        "src:fixture-ff04",
+        "src:rebrickable-catalog"
+      ],
+      "licenseEvidenceIds": [
+        "license:fixture:synthetic",
+        "license:rebrickable:catalog"
+      ],
+      "status": "blocked",
+      "publishable": false,
+      "note": "FF-10 ist synthetische Prüfgeometrie; ohne reale Asset-, Lizenz- und Release-Evidence nicht veröffentlichen."
+    }
+  ],
+  "sourceNotices": [
+    {
+      "id": "src:fixture-ff04",
+      "name": "FigForge FF-04 synthetic fixture",
+      "scope": "synthetic-fixture",
+      "url": null,
+      "localPath": null,
+      "status": "not-applicable",
+      "attribution": "Interne synthetische Prüfgeometrie; kein Drittanbieter-Asset und nicht veröffentlichbar.",
+      "note": "Dient nur zur Prüfung von Szene, Ankern, Paketierung und Thumbnail-Reproduzierbarkeit."
+    },
+    {
+      "id": "src:ldcad-shadow",
+      "name": "LDCad Shadow Library",
+      "scope": "ldraw-assets",
+      "url": "https://github.com/RolandMelkert/LDCadShadowLibrary",
+      "localPath": "/licenses/LDCadShadowLibrary-NOTICE.txt",
+      "status": "confirmed",
+      "attribution": "Ausgewählte Verbindungsmetadaten der LDCad Shadow Library, Revision 9b1131fb1991f8c0bfc072325e4e12f6271aba35, CC BY-SA 4.0.",
+      "note": "Die normalisierte digitale Anschluss-Registry wird unter denselben CC-BY-SA-4.0-Bedingungen bereitgestellt."
+    },
+    {
+      "id": "src:ldraw-assets",
+      "name": "LDraw Parts Library",
+      "scope": "ldraw-assets",
+      "url": "https://www.ldraw.org/",
+      "localPath": null,
+      "status": "blocked",
+      "attribution": "Keine LDraw-Datei ist in FF-10 enthalten.",
+      "note": "Release, Lizenzheader, transitive Abhängigkeiten, Dateipfade und Hashes müssen vor einem echten Assetpaket geprüft werden."
+    },
+    {
+      "id": "src:rebrickable-catalog",
+      "name": "Rebrickable Catalog Downloads/CSV",
+      "scope": "catalog-metadata",
+      "url": "https://rebrickable.com/downloads/",
+      "localPath": null,
+      "status": "pending",
+      "attribution": "Rebrickable Catalog Downloads/CSV; kommerzielle Nutzung und Attribution sind noch als Projektbeleg abzulegen.",
+      "note": "Nur die gelockten Catalog-Downloads/CSV sind zulässig. Keine API und keine MOC-Dateien."
+    },
+    {
+      "id": "src:three-runtime",
+      "name": "Three.js runtime",
+      "scope": "runtime",
+      "url": null,
+      "localPath": "/licenses/three-MIT.txt",
+      "status": "confirmed",
+      "attribution": "Three.js wird unter MIT-Hinweis ausgeliefert; der lokale Lizenztext ist im Release enthalten.",
+      "note": "Der Lizenztext wird separat gehasht und nicht mit Katalog- oder LDraw-Rechten gleichgesetzt."
+    }
+  ],
+  "licenseEvidence": [
+    {
+      "id": "license:fixture:synthetic",
+      "sourceId": "src:fixture-ff04",
+      "subjectId": "ff04-fixture-standard-v1",
+      "status": "not-applicable",
+      "licenseId": null,
+      "localPath": null,
+      "sha256": null,
+      "note": "Interne synthetische Prüfgeometrie; nicht als lizenzierter Katalog- oder LDraw-Asset freigegeben."
+    },
+    {
+      "id": "license:ldcad-shadow:cc-by-sa-4.0",
+      "sourceId": "src:ldcad-shadow",
+      "subjectId": "data:ldraw-digital-connectivity",
+      "status": "confirmed",
+      "licenseId": "CC-BY-SA-4.0",
+      "localPath": "/licenses/LDCadShadowLibrary-NOTICE.txt",
+      "sha256": "44682492b539ebe42d8607cc44af3bb4357b641c85f05f2389787c6ec9f23c4a",
+      "note": "Attribution und Share-Alike-Hinweis für die normalisierte digitale Anschluss-Registry."
+    },
+    {
+      "id": "license:ldraw:pending",
+      "sourceId": "src:ldraw-assets",
+      "subjectId": "ff04-fixture-standard-v1",
+      "status": "blocked",
+      "licenseId": null,
+      "localPath": null,
+      "sha256": null,
+      "note": "Kein LDraw-Asset enthalten; Release- und Lizenzprüfung ist offen."
+    },
+    {
+      "id": "license:rebrickable:catalog",
+      "sourceId": "src:rebrickable-catalog",
+      "subjectId": "ff04-fixture-standard-v1",
+      "status": "pending",
+      "licenseId": null,
+      "localPath": null,
+      "sha256": null,
+      "note": "Projektbestätigung vorhanden; konkrete Belegablage und Attribution für Catalog Downloads/CSV stehen aus."
+    },
+    {
+      "id": "license:three:mit",
+      "sourceId": "src:three-runtime",
+      "subjectId": "runtime:three",
+      "status": "confirmed",
+      "licenseId": "MIT",
+      "localPath": "/licenses/three-MIT.txt",
+      "sha256": "8b378ebe60e2fe500158cb0ac71cb5e8b7d92953c2abcc63a0eb90499653b5bc",
+      "note": "Lokaler MIT-Lizenztext für die Three.js-Laufzeit."
+    }
+  ],
+  "openBlockers": [
+    "FF-10 assets are synthetic FF-04 fixtures and are not publishable catalog assets.",
+    "Rebrickable Catalog Downloads/CSV commercial-use evidence and attribution are still pending project documentation.",
+    "Real LDraw assets require release, license-header, dependency, path and hash evidence before publication.",
+    "GitHub review and Cloudflare Workers Builds release approval are not represented by this local manifest."
+  ]
+}

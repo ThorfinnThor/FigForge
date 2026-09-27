@@ -1,0 +1,39 @@
+{
+  "schemaVersion": 1,
+  "ticket": "FF-18",
+  "updatedAt": "2026-09-27T17:00:00Z",
+  "runtimePackage": "@huggingface/transformers",
+  "runtimeVersion": "4.3.0",
+  "profiles": [
+    {
+      "profileId": "compact-minilm",
+      "upstreamModelId": "sentence-transformers/all-MiniLM-L6-v2",
+      "exportRepository": "Xenova/all-MiniLM-L6-v2",
+      "modelRevision": "751bff37182d3f1213fa05d7196b954e230abad9",
+      "licenseId": "Apache-2.0",
+      "files": [
+        {"path":"config.json","byteLength":650,"sha256":"7135149f7cffa1a573466c6e4d8423ed73b62fd2332c575bf738a0d033f70df7","url":"https://huggingface.co/Xenova/all-MiniLM-L6-v2/resolve/751bff37182d3f1213fa05d7196b954e230abad9/config.json"},
+        {"path":"onnx/model_int8.onnx","byteLength":22972370,"sha256":"afdb6f1a0e45b715d0bb9b11772f032c399babd23bfc31fed1c170afc848bdb1","url":"https://huggingface.co/Xenova/all-MiniLM-L6-v2/resolve/751bff37182d3f1213fa05d7196b954e230abad9/onnx/model_int8.onnx"},
+        {"path":"special_tokens_map.json","byteLength":125,"sha256":"b6d346be366a7d1d48332dbc9fdf3bf8960b5d879522b7799ddba59e76237ee3","url":"https://huggingface.co/Xenova/all-MiniLM-L6-v2/resolve/751bff37182d3f1213fa05d7196b954e230abad9/special_tokens_map.json"},
+        {"path":"tokenizer.json","byteLength":711661,"sha256":"da0e79933b9ed51798a3ae27893d3c5fa4a201126cef75586296df9b4d2c62a0","url":"https://huggingface.co/Xenova/all-MiniLM-L6-v2/resolve/751bff37182d3f1213fa05d7196b954e230abad9/tokenizer.json"},
+        {"path":"tokenizer_config.json","byteLength":366,"sha256":"9261e7d79b44c8195c1cada2b453e55b00aeb81e907a6664974b4d7776172ab3","url":"https://huggingface.co/Xenova/all-MiniLM-L6-v2/resolve/751bff37182d3f1213fa05d7196b954e230abad9/tokenizer_config.json"},
+        {"path":"vocab.txt","byteLength":231508,"sha256":"07eced375cec144d27c900241f3e339478dec958f92fddbc551f295c992038a3","url":"https://huggingface.co/Xenova/all-MiniLM-L6-v2/resolve/751bff37182d3f1213fa05d7196b954e230abad9/vocab.txt"}
+      ]
+    },
+    {
+      "profileId": "quality-e5",
+      "upstreamModelId": "intfloat/multilingual-e5-small",
+      "exportRepository": "Xenova/multilingual-e5-small",
+      "modelRevision": "761b726dd34fb83930e26aab4e9ac3899aa1fa78",
+      "licenseId": "MIT-upstream; export-review-pending",
+      "files": [
+        {"path":"config.json","byteLength":658,"sha256":"cb99455288675345e1a4f411438d5d0adbba5fbd3a67ea4fb03c015433b996c1","url":"https://huggingface.co/Xenova/multilingual-e5-small/resolve/761b726dd34fb83930e26aab4e9ac3899aa1fa78/config.json"},
+        {"path":"onnx/model_int8.onnx","byteLength":118054593,"sha256":"4d24e2bc01a447951524466ef533e52944bf48509e6552810bcee1a2711cb02c","url":"https://huggingface.co/Xenova/multilingual-e5-small/resolve/761b726dd34fb83930e26aab4e9ac3899aa1fa78/onnx/model_int8.onnx"},
+        {"path":"sentencepiece.bpe.model","byteLength":5069051,"sha256":"cfc8146abe2a0488e9e2a0c56de7952f7c11ab059eca145a0a727afce0db2865","url":"https://huggingface.co/Xenova/multilingual-e5-small/resolve/761b726dd34fb83930e26aab4e9ac3899aa1fa78/sentencepiece.bpe.model"},
+        {"path":"special_tokens_map.json","byteLength":167,"sha256":"d05497f1da52c5e09554c0cd874037a083e1dc1b9cfd48034d1c717f1afc07a7","url":"https://huggingface.co/Xenova/multilingual-e5-small/resolve/761b726dd34fb83930e26aab4e9ac3899aa1fa78/special_tokens_map.json"},
+        {"path":"tokenizer.json","byteLength":17082730,"sha256":"0b44a9d7b51c3c62626640cda0e2c2f70fdacdc25bbbd68038369d14ebdf4c39","url":"https://huggingface.co/Xenova/multilingual-e5-small/resolve/761b726dd34fb83930e26aab4e9ac3899aa1fa78/tokenizer.json"},
+        {"path":"tokenizer_config.json","byteLength":443,"sha256":"a1d6bc8734a6f635dc158508bef000f8e2e5a759c7d92f984b2c86e5ff53425b","url":"https://huggingface.co/Xenova/multilingual-e5-small/resolve/761b726dd34fb83930e26aab4e9ac3899aa1fa78/tokenizer_config.json"}
+      ]
+    }
+  ]
+}

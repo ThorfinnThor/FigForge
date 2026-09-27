@@ -1,0 +1,23 @@
+{
+  "schemaVersion": 1,
+  "ticket": "FF-18",
+  "updatedAt": "2026-09-27T17:30:00Z",
+  "sourcePolicy": "Nur Rebrickable Catalog Downloads/CSV, keine MOC-Dateien.",
+  "profiles": [
+    {
+      "profileId": "compact-minilm",
+      "profilePath": "data/generated/search-indices/compact-minilm/search-profile.json",
+      "indexPath": "data/generated/search-indices/compact-minilm/index.f32",
+      "profileSha256": "8973b88d0b7022a301ae2188202291007c7ff696be1a0c8a00be714f07a1ffd7",
+      "indexSha256": "7f19cebb279f29cf5a293f30a8588f46232a158fc236b9e6164f398b7b63ad15"
+    },
+    {
+      "profileId": "quality-e5",
+      "profilePath": "data/generated/search-indices/quality-e5/search-profile.json",
+      "indexPath": "data/generated/search-indices/quality-e5/index.f32",
+      "profileSha256": "48356b2c5f86c6f4b02e28d37a1e9248274e348d7af07490a8c4cc76d1d34ab1",
+      "indexSha256": "97ba9e0ce09e42cce3bd5cf22094f3064bf77c6a4e890ee49aa0e3cf65261b55"
+    }
+  ],
+  "decisionStatus": "blocked-pending-human-relevance-review"
+}

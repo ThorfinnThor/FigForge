@@ -1,0 +1,288 @@
+{
+  "schemaVersion": 1,
+  "ticket": "FF-16",
+  "updatedAt": "2026-09-27T15:15:00Z",
+  "sourcePolicy": "Nur Rebrickable Catalog Downloads/CSV, keine MOC-Dateien.",
+  "sourceAssortmentSha256": "12dd1dbf0cde990698ee703540656726990b346a9a570ed03835248887908717",
+  "sourceAnchorRegistrySha256": "58233a8597ccdc3cce9109f8631dffe35f27b28f80473905b0b9e347882b6502",
+  "profileId": "fixture-standard-minifigure-v1",
+  "publishable": false,
+  "defaultDecision": "blocked",
+  "componentRules": [
+    {
+      "id": "compat:component:ff03-head-3626c",
+      "componentId": "ff03-head-3626c",
+      "allowedSlots": ["head"],
+      "decision": "blocked",
+      "reasonCode": "attachment-unverified",
+      "evidenceIds": ["evidence:parts:3626c"],
+      "message": "Reale Kopfpassform ist nicht geprüft; nur die synthetische Fixture-Darstellung ist verfügbar."
+    },
+    {
+      "id": "compat:component:ff03-head-3626cpr0001",
+      "componentId": "ff03-head-3626cpr0001",
+      "allowedSlots": ["head"],
+      "decision": "blocked",
+      "reasonCode": "attachment-unverified",
+      "evidenceIds": ["evidence:parts:3626cpr0001"],
+      "message": "Reale Kopfpassform ist nicht geprüft; nur die synthetische Fixture-Darstellung ist verfügbar."
+    },
+    {
+      "id": "compat:component:ff03-head-3626cpr0008",
+      "componentId": "ff03-head-3626cpr0008",
+      "allowedSlots": ["head"],
+      "decision": "blocked",
+      "reasonCode": "attachment-unverified",
+      "evidenceIds": ["evidence:parts:3626cpr0008"],
+      "message": "Reale Kopfpassform ist nicht geprüft; nur die synthetische Fixture-Darstellung ist verfügbar."
+    },
+    {
+      "id": "compat:component:ff03-head-3626cpr0387",
+      "componentId": "ff03-head-3626cpr0387",
+      "allowedSlots": ["head"],
+      "decision": "blocked",
+      "reasonCode": "attachment-unverified",
+      "evidenceIds": ["evidence:parts:3626cpr0387"],
+      "message": "Reale Kopfpassform ist nicht geprüft; nur die synthetische Fixture-Darstellung ist verfügbar."
+    },
+    {
+      "id": "compat:component:ff03-head-3626cpr0495",
+      "componentId": "ff03-head-3626cpr0495",
+      "allowedSlots": ["head"],
+      "decision": "blocked",
+      "reasonCode": "attachment-unverified",
+      "evidenceIds": ["evidence:parts:3626cpr0495"],
+      "message": "Reale Kopfpassform ist nicht geprüft; nur die synthetische Fixture-Darstellung ist verfügbar."
+    },
+    {
+      "id": "compat:component:ff03-headwear-10048",
+      "componentId": "ff03-headwear-10048",
+      "allowedSlots": ["headwear"],
+      "decision": "blocked",
+      "reasonCode": "attachment-unverified",
+      "evidenceIds": ["evidence:parts:10048"],
+      "message": "Kollision und Halt der realen Kopfbedeckung sind nicht geprüft."
+    },
+    {
+      "id": "compat:component:ff03-headwear-25405",
+      "componentId": "ff03-headwear-25405",
+      "allowedSlots": ["headwear"],
+      "decision": "blocked",
+      "reasonCode": "attachment-unverified",
+      "evidenceIds": ["evidence:parts:25405"],
+      "message": "Kollision und Halt der realen Kopfbedeckung sind nicht geprüft."
+    },
+    {
+      "id": "compat:component:ff03-headwear-25409",
+      "componentId": "ff03-headwear-25409",
+      "allowedSlots": ["headwear"],
+      "decision": "blocked",
+      "reasonCode": "attachment-unverified",
+      "evidenceIds": ["evidence:parts:25409"],
+      "message": "Kollision und Halt der realen Kopfbedeckung sind nicht geprüft."
+    },
+    {
+      "id": "compat:component:ff03-headwear-36268",
+      "componentId": "ff03-headwear-36268",
+      "allowedSlots": ["headwear"],
+      "decision": "blocked",
+      "reasonCode": "attachment-unverified",
+      "evidenceIds": ["evidence:parts:36268"],
+      "message": "Kollision und Halt der realen Kopfbedeckung sind nicht geprüft."
+    },
+    {
+      "id": "compat:component:ff03-headwear-3901",
+      "componentId": "ff03-headwear-3901",
+      "allowedSlots": ["headwear"],
+      "decision": "blocked",
+      "reasonCode": "attachment-unverified",
+      "evidenceIds": ["evidence:parts:3901"],
+      "message": "Kollision und Halt der realen Kopfbedeckung sind nicht geprüft."
+    },
+    {
+      "id": "compat:component:ff03-torso-3814",
+      "componentId": "ff03-torso-3814",
+      "allowedSlots": ["torsoAssembly"],
+      "decision": "blocked",
+      "reasonCode": "attachment-unverified",
+      "evidenceIds": ["evidence:parts:3814"],
+      "message": "Die reale Oberkörperbaugruppe und ihre Anschlüsse sind nicht geprüft."
+    },
+    {
+      "id": "compat:component:ff03-torso-973c01h01",
+      "componentId": "ff03-torso-973c01h01",
+      "allowedSlots": ["torsoAssembly"],
+      "decision": "blocked",
+      "reasonCode": "attachment-unverified",
+      "evidenceIds": ["evidence:parts:973c01h01"],
+      "message": "Die reale Oberkörperbaugruppe und ihre Anschlüsse sind nicht geprüft."
+    },
+    {
+      "id": "compat:component:ff03-legs-970c01",
+      "componentId": "ff03-legs-970c01",
+      "allowedSlots": ["legsAssembly"],
+      "decision": "blocked",
+      "reasonCode": "attachment-unverified",
+      "evidenceIds": ["evidence:parts:970c01"],
+      "message": "Die reale Beinbaugruppe und ihr Torsoanschluss sind nicht geprüft."
+    },
+    {
+      "id": "compat:component:ff03-legs-970c01pr0001",
+      "componentId": "ff03-legs-970c01pr0001",
+      "allowedSlots": ["legsAssembly"],
+      "decision": "blocked",
+      "reasonCode": "attachment-unverified",
+      "evidenceIds": ["evidence:parts:970c01pr0001"],
+      "message": "Die reale Beinbaugruppe und ihr Torsoanschluss sind nicht geprüft."
+    },
+    {
+      "id": "compat:component:ff03-hand-10053",
+      "componentId": "ff03-hand-10053",
+      "allowedSlots": ["leftHandAccessory", "rightHandAccessory"],
+      "decision": "blocked",
+      "reasonCode": "attachment-unverified",
+      "evidenceIds": ["evidence:parts:10053"],
+      "message": "Griffdurchmesser, Ausrichtung und reale Handpassform sind nicht geprüft."
+    },
+    {
+      "id": "compat:component:ff03-hand-11439",
+      "componentId": "ff03-hand-11439",
+      "allowedSlots": ["leftHandAccessory", "rightHandAccessory"],
+      "decision": "blocked",
+      "reasonCode": "attachment-unverified",
+      "evidenceIds": ["evidence:parts:11439"],
+      "message": "Griffdurchmesser, Ausrichtung und reale Handpassform sind nicht geprüft."
+    },
+    {
+      "id": "compat:component:ff03-hand-3841",
+      "componentId": "ff03-hand-3841",
+      "allowedSlots": ["leftHandAccessory", "rightHandAccessory"],
+      "decision": "blocked",
+      "reasonCode": "attachment-unverified",
+      "evidenceIds": ["evidence:parts:3841"],
+      "message": "Griffdurchmesser, Ausrichtung und reale Handpassform sind nicht geprüft."
+    }
+  ],
+  "fixtureRules": [
+    {
+      "id": "compat:fixture:head",
+      "slot": "head",
+      "placementFamily": "fixture-standard-head",
+      "decision": "warning",
+      "reasonCode": "fixture-only",
+      "evidenceIds": ["evidence:fixture:ff04-dimensions"],
+      "message": "Nur synthetische Fixture-Passform; keine Aussage zur realen Kopfgeometrie."
+    },
+    {
+      "id": "compat:fixture:headwear",
+      "slot": "headwear",
+      "placementFamily": "fixture-standard-headwear",
+      "decision": "warning",
+      "reasonCode": "fixture-only",
+      "evidenceIds": ["evidence:fixture:ff04-dimensions"],
+      "message": "Nur synthetische Fixture-Passform; reale Kollision und Halt sind ungeprüft."
+    },
+    {
+      "id": "compat:fixture:left-hand",
+      "slot": "leftHandAccessory",
+      "placementFamily": "fixture-standard-grip",
+      "decision": "warning",
+      "reasonCode": "fixture-only",
+      "evidenceIds": ["evidence:fixture:ff04-dimensions"],
+      "message": "Nur synthetischer Griffanker; reale Handpassform ist ungeprüft."
+    },
+    {
+      "id": "compat:fixture:right-hand",
+      "slot": "rightHandAccessory",
+      "placementFamily": "fixture-standard-grip",
+      "decision": "warning",
+      "reasonCode": "fixture-only",
+      "evidenceIds": ["evidence:fixture:ff04-dimensions"],
+      "message": "Nur synthetischer Griffanker; reale Handpassform ist ungeprüft."
+    }
+  ],
+  "exclusionRules": [
+    {
+      "id": "exclude:part:100456pr0001",
+      "matchType": "rebrickable-part-number",
+      "value": "100456pr0001",
+      "decision": "blocked",
+      "reasonCode": "non-standard-body-system",
+      "evidenceIds": ["ff03:excluded-candidates"],
+      "message": "Spezial-/Droidenkopf außerhalb der Standard-Minifigurenfamilie."
+    },
+    {
+      "id": "exclude:part:102718pr0001",
+      "matchType": "rebrickable-part-number",
+      "value": "102718pr0001",
+      "decision": "blocked",
+      "reasonCode": "non-standard-body-system",
+      "evidenceIds": ["ff03:excluded-candidates"],
+      "message": "Geformter Spezialkopf außerhalb der Standard-Minifigurenfamilie."
+    },
+    {
+      "id": "exclude:part:30375",
+      "matchType": "rebrickable-part-number",
+      "value": "30375",
+      "decision": "blocked",
+      "reasonCode": "non-standard-body-system",
+      "evidenceIds": ["ff03:excluded-candidates"],
+      "message": "Droidenoberkörper außerhalb der Standard-Minifigurenfamilie."
+    },
+    {
+      "id": "exclude:family:bigfig-head",
+      "matchType": "family",
+      "value": "bigfig-head",
+      "decision": "blocked",
+      "reasonCode": "non-standard-body-system",
+      "evidenceIds": ["plan:7.3"],
+      "message": "Bigfig-Köpfe sind im Standard-Builder ausgeschlossen."
+    },
+    {
+      "id": "exclude:family:minidoll",
+      "matchType": "family",
+      "value": "minidoll",
+      "decision": "blocked",
+      "reasonCode": "non-standard-body-system",
+      "evidenceIds": ["plan:7.3"],
+      "message": "Minidoll-Komponenten sind im Standard-Builder ausgeschlossen."
+    },
+    {
+      "id": "exclude:family:special-body",
+      "matchType": "family",
+      "value": "special-body",
+      "decision": "blocked",
+      "reasonCode": "non-standard-body-system",
+      "evidenceIds": ["plan:7.3"],
+      "message": "Spezialkörpersysteme benötigen ein eigenes geprüftes Profil."
+    },
+    {
+      "id": "exclude:family:flexible-part",
+      "matchType": "family",
+      "value": "flexible-part",
+      "decision": "blocked",
+      "reasonCode": "unsupported-flexible-part",
+      "evidenceIds": ["plan:7.3"],
+      "message": "Flexible Teile bleiben ohne getestetes statisches Modell ausgeschlossen."
+    },
+    {
+      "id": "exclude:family:neck-armor",
+      "matchType": "family",
+      "value": "neck-armor",
+      "decision": "blocked",
+      "reasonCode": "unverified-neck-geometry",
+      "evidenceIds": ["plan:7.3"],
+      "message": "Große Rüstung und Nackenaufsätze benötigen ein geprüftes Profil."
+    }
+  ],
+  "slotPolicies": [
+    {
+      "id": "slot-policy:headwear-single",
+      "slot": "headwear",
+      "occupancy": "single",
+      "onConflict": "replace",
+      "decision": "warning",
+      "message": "Haare und Helm belegen denselben Slot; eine neue Auswahl ersetzt die bisherige."
+    }
+  ]
+}

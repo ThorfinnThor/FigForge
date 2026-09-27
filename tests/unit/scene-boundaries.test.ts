@@ -1,0 +1,32 @@
+import { readFile } from "node:fs/promises";
+import { describe, expect, it } from "vitest";
+import { cameraPresetPositions } from "../../src/scene/FigureSceneController.js";
+import { assertInternalLDrawUrl } from "../../src/scene/ldraw-part-loader.js";
+
+describe("FF-04 scene boundaries", () => {
+  it("exposes exactly the planned camera presets", () => {
+    expect(Object.keys(cameraPresetPositions)).toEqual(["three-quarter", "front", "back"]);
+  });
+
+  it("accepts only same-origin LDraw asset files", () => {
+    expect(assertInternalLDrawUrl("/assets/ldraw/head.mpd", "https://figforge.example/app").href).toBe(
+      "https://figforge.example/assets/ldraw/head.mpd",
+    );
+    expect(() =>
+      assertInternalLDrawUrl("https://untrusted.example/head.mpd", "https://figforge.example/app"),
+    ).toThrow(/same-origin/u);
+    expect(() => assertInternalLDrawUrl("/assets/head.glb", "https://figforge.example/app")).toThrow(
+      /same-origin/u,
+    );
+  });
+
+  it("exposes an explicit scene recovery path without hiding errors", async () => {
+    const viewportSource = await readFile("src/components/FigureViewport.tsx", "utf8");
+    const controllerSource = await readFile("src/scene/FigureSceneController.ts", "utf8");
+
+    expect(viewportSource).toContain("3D-Szene wiederherstellen");
+    expect(viewportSource).toContain('sceneState === "context-lost"');
+    expect(controllerSource).toContain("requestContextRestore");
+    expect(controllerSource).toContain("forceContextLoss");
+  });
+});

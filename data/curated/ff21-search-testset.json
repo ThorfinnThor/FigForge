@@ -1,0 +1,2352 @@
+{
+  "schemaVersion": 1,
+  "ticket": "FF-21",
+  "updatedAt": "2026-09-27T16:30:00Z",
+  "sourcePolicy": "Nur Rebrickable Catalog Downloads/CSV, keine MOC-Dateien.",
+  "sourceDocumentsPath": "data/curated/ff21-search-documents.json",
+  "sourceDocumentsSha256": "0cc01906351678ef9113d6a69cfd57359fa19d9a0eed4d1c8d0c1f4e69eae9bd",
+  "holdoutPolicy": "Holdout bleibt bis zur Profilentscheidung unangetastet.",
+  "relevanceDefinition": "Menschliche Relevanzstufen 0/1/2; keine E5-Proxylabels.",
+  "cases": [
+    {
+      "id": "ff21-dev-german-01",
+      "split": "development",
+      "stratum": "german",
+      "language": "de",
+      "domain": "head",
+      "theme": "everyday",
+      "query": "schlichter schwarzer Kopf",
+      "paraphraseGroup": "paraphrase:development:de-head-plain",
+      "proposedIntent": {
+        "componentId": "ff03-head-3626c",
+        "reason": "plain head"
+      },
+      "reviewStatus": "pending-human-relevance-review"
+    },
+    {
+      "id": "ff21-dev-german-02",
+      "split": "development",
+      "stratum": "german",
+      "language": "de",
+      "domain": "head",
+      "theme": "fantasy",
+      "query": "einfacher schwarzer Kopf",
+      "paraphraseGroup": "paraphrase:development:de-head-plain",
+      "proposedIntent": {
+        "componentId": "ff03-head-3626c",
+        "reason": "plain head"
+      },
+      "reviewStatus": "pending-human-relevance-review"
+    },
+    {
+      "id": "ff21-dev-german-03",
+      "split": "development",
+      "stratum": "german",
+      "language": "de",
+      "domain": "head",
+      "theme": "space",
+      "query": "gelber Kopf mit Standardgrinsen",
+      "paraphraseGroup": "paraphrase:development:de-head-grin",
+      "proposedIntent": {
+        "componentId": "ff03-head-3626cpr0001",
+        "reason": "grinning head"
+      },
+      "reviewStatus": "pending-human-relevance-review"
+    },
+    {
+      "id": "ff21-dev-german-04",
+      "split": "development",
+      "stratum": "german",
+      "language": "de",
+      "domain": "head",
+      "theme": "everyday",
+      "query": "gelbes Grinsegesicht",
+      "paraphraseGroup": "paraphrase:development:de-head-grin",
+      "proposedIntent": {
+        "componentId": "ff03-head-3626cpr0001",
+        "reason": "grinning head"
+      },
+      "reviewStatus": "pending-human-relevance-review"
+    },
+    {
+      "id": "ff21-dev-german-05",
+      "split": "development",
+      "stratum": "german",
+      "language": "de",
+      "domain": "head",
+      "theme": "fantasy",
+      "query": "Kopf mit braunen Augenbrauen",
+      "paraphraseGroup": "paraphrase:development:de-head-brows",
+      "proposedIntent": {
+        "componentId": "ff03-head-3626cpr0387",
+        "reason": "printed head"
+      },
+      "reviewStatus": "pending-human-relevance-review"
+    },
+    {
+      "id": "ff21-dev-german-06",
+      "split": "development",
+      "stratum": "german",
+      "language": "de",
+      "domain": "head",
+      "theme": "space",
+      "query": "erschrockener gelber Kopf",
+      "paraphraseGroup": "paraphrase:development:de-head-scared",
+      "proposedIntent": {
+        "componentId": "ff03-head-3626cpr0495",
+        "reason": "printed head"
+      },
+      "reviewStatus": "pending-human-relevance-review"
+    },
+    {
+      "id": "ff21-dev-german-07",
+      "split": "development",
+      "stratum": "german",
+      "language": "de",
+      "domain": "headwear",
+      "theme": "everyday",
+      "query": "zerzaustes mittellanges Haar",
+      "paraphraseGroup": "paraphrase:development:de-hair-tousled",
+      "proposedIntent": {
+        "componentId": "ff03-headwear-10048",
+        "reason": "tousled hair"
+      },
+      "reviewStatus": "pending-human-relevance-review"
+    },
+    {
+      "id": "ff21-dev-german-08",
+      "split": "development",
+      "stratum": "german",
+      "language": "de",
+      "domain": "headwear",
+      "theme": "fantasy",
+      "query": "welliges Haar mit Pferdeschwanz",
+      "paraphraseGroup": "paraphrase:development:de-hair-pony",
+      "proposedIntent": {
+        "componentId": "ff03-headwear-25405",
+        "reason": "ponytail hair"
+      },
+      "reviewStatus": "pending-human-relevance-review"
+    },
+    {
+      "id": "ff21-dev-german-09",
+      "split": "development",
+      "stratum": "german",
+      "language": "de",
+      "domain": "headwear",
+      "theme": "space",
+      "query": "gelbes Haar mit Seitenpartie",
+      "paraphraseGroup": "paraphrase:development:de-hair-side",
+      "proposedIntent": {
+        "componentId": "ff03-headwear-25409",
+        "reason": "side-part hair"
+      },
+      "reviewStatus": "pending-human-relevance-review"
+    },
+    {
+      "id": "ff21-dev-german-10",
+      "split": "development",
+      "stratum": "german",
+      "language": "de",
+      "domain": "headwear",
+      "theme": "everyday",
+      "query": "kurzer Bob mit Seitenpartie",
+      "paraphraseGroup": "paraphrase:development:de-hair-bob",
+      "proposedIntent": {
+        "componentId": "ff03-headwear-36268",
+        "reason": "bob hair"
+      },
+      "reviewStatus": "pending-human-relevance-review"
+    },
+    {
+      "id": "ff21-dev-german-11",
+      "split": "development",
+      "stratum": "german",
+      "language": "de",
+      "domain": "headwear",
+      "theme": "fantasy",
+      "query": "glattes schwarzes Haar",
+      "paraphraseGroup": "paraphrase:development:de-hair-smooth",
+      "proposedIntent": {
+        "componentId": "ff03-headwear-3901",
+        "reason": "smooth hair"
+      },
+      "reviewStatus": "pending-human-relevance-review"
+    },
+    {
+      "id": "ff21-dev-german-12",
+      "split": "development",
+      "stratum": "german",
+      "language": "de",
+      "domain": "torsoAssembly",
+      "theme": "space",
+      "query": "schlichter schwarzer Torso",
+      "paraphraseGroup": "paraphrase:development:de-torso-plain",
+      "proposedIntent": {
+        "componentId": "ff03-torso-3814",
+        "reason": "plain torso"
+      },
+      "reviewStatus": "pending-human-relevance-review"
+    },
+    {
+      "id": "ff21-dev-german-13",
+      "split": "development",
+      "stratum": "german",
+      "language": "de",
+      "domain": "torsoAssembly",
+      "theme": "everyday",
+      "query": "Torso mit gelben Armen",
+      "paraphraseGroup": "paraphrase:development:de-torso-arms",
+      "proposedIntent": {
+        "componentId": "ff03-torso-973c01h01",
+        "reason": "yellow-arm torso"
+      },
+      "reviewStatus": "pending-human-relevance-review"
+    },
+    {
+      "id": "ff21-dev-german-14",
+      "split": "development",
+      "stratum": "german",
+      "language": "de",
+      "domain": "legsAssembly",
+      "theme": "fantasy",
+      "query": "graue Beine mit gelben Hüften",
+      "paraphraseGroup": "paraphrase:development:de-legs-plain",
+      "proposedIntent": {
+        "componentId": "ff03-legs-970c01",
+        "reason": "plain legs"
+      },
+      "reviewStatus": "pending-human-relevance-review"
+    },
+    {
+      "id": "ff21-dev-german-15",
+      "split": "development",
+      "stratum": "german",
+      "language": "de",
+      "domain": "legsAssembly",
+      "theme": "space",
+      "query": "schwarze bedruckte Beine",
+      "paraphraseGroup": "paraphrase:development:de-legs-printed",
+      "proposedIntent": {
+        "componentId": "ff03-legs-970c01pr0001",
+        "reason": "printed legs"
+      },
+      "reviewStatus": "pending-human-relevance-review"
+    },
+    {
+      "id": "ff21-dev-german-16",
+      "split": "development",
+      "stratum": "german",
+      "language": "de",
+      "domain": "handAccessory",
+      "theme": "everyday",
+      "query": "kleines silbernes Schwert",
+      "paraphraseGroup": "paraphrase:development:de-sword-small",
+      "proposedIntent": {
+        "componentId": "ff03-hand-10053",
+        "reason": "small sword"
+      },
+      "reviewStatus": "pending-human-relevance-review"
+    },
+    {
+      "id": "ff21-dev-german-17",
+      "split": "development",
+      "stratum": "german",
+      "language": "de",
+      "domain": "handAccessory",
+      "theme": "fantasy",
+      "query": "gezacktes Schwert",
+      "paraphraseGroup": "paraphrase:development:de-sword-jagged",
+      "proposedIntent": {
+        "componentId": "ff03-hand-11439",
+        "reason": "jagged sword"
+      },
+      "reviewStatus": "pending-human-relevance-review"
+    },
+    {
+      "id": "ff21-dev-german-18",
+      "split": "development",
+      "stratum": "german",
+      "language": "de",
+      "domain": "handAccessory",
+      "theme": "space",
+      "query": "goldene Spitzhacke",
+      "paraphraseGroup": "paraphrase:development:de-pickaxe",
+      "proposedIntent": {
+        "componentId": "ff03-hand-3841",
+        "reason": "pickaxe"
+      },
+      "reviewStatus": "pending-human-relevance-review"
+    },
+    {
+      "id": "ff21-dev-german-19",
+      "split": "development",
+      "stratum": "german",
+      "language": "de",
+      "domain": "head",
+      "theme": "everyday",
+      "query": "schwarzer Kopf ohne Druck",
+      "paraphraseGroup": "paraphrase:development:de-head-plain",
+      "proposedIntent": {
+        "componentId": "ff03-head-3626c",
+        "reason": "plain head"
+      },
+      "reviewStatus": "pending-human-relevance-review"
+    },
+    {
+      "id": "ff21-dev-german-20",
+      "split": "development",
+      "stratum": "german",
+      "language": "de",
+      "domain": "head",
+      "theme": "fantasy",
+      "query": "gelber Kopf mit dünnem Grinsen",
+      "paraphraseGroup": "paraphrase:development:de-head-brows",
+      "proposedIntent": {
+        "componentId": "ff03-head-3626cpr0387",
+        "reason": "printed head"
+      },
+      "reviewStatus": "pending-human-relevance-review"
+    },
+    {
+      "id": "ff21-dev-german-21",
+      "split": "development",
+      "stratum": "german",
+      "language": "de",
+      "domain": "headwear",
+      "theme": "space",
+      "query": "braunes zerzaustes Haar",
+      "paraphraseGroup": "paraphrase:development:de-hair-tousled",
+      "proposedIntent": {
+        "componentId": "ff03-headwear-10048",
+        "reason": "tousled hair"
+      },
+      "reviewStatus": "pending-human-relevance-review"
+    },
+    {
+      "id": "ff21-dev-german-22",
+      "split": "development",
+      "stratum": "german",
+      "language": "de",
+      "domain": "headwear",
+      "theme": "everyday",
+      "query": "glattes Haar in Schwarz",
+      "paraphraseGroup": "paraphrase:development:de-hair-smooth",
+      "proposedIntent": {
+        "componentId": "ff03-headwear-3901",
+        "reason": "smooth hair"
+      },
+      "reviewStatus": "pending-human-relevance-review"
+    },
+    {
+      "id": "ff21-dev-german-23",
+      "split": "development",
+      "stratum": "german",
+      "language": "de",
+      "domain": "torsoAssembly",
+      "theme": "fantasy",
+      "query": "schlichter Oberkörper",
+      "paraphraseGroup": "paraphrase:development:de-torso-plain",
+      "proposedIntent": {
+        "componentId": "ff03-torso-3814",
+        "reason": "plain torso"
+      },
+      "reviewStatus": "pending-human-relevance-review"
+    },
+    {
+      "id": "ff21-dev-german-24",
+      "split": "development",
+      "stratum": "german",
+      "language": "de",
+      "domain": "torsoAssembly",
+      "theme": "space",
+      "query": "Oberkörper mit gelben Händen",
+      "paraphraseGroup": "paraphrase:development:de-torso-arms",
+      "proposedIntent": {
+        "componentId": "ff03-torso-973c01h01",
+        "reason": "yellow-arm torso"
+      },
+      "reviewStatus": "pending-human-relevance-review"
+    },
+    {
+      "id": "ff21-dev-german-25",
+      "split": "development",
+      "stratum": "german",
+      "language": "de",
+      "domain": "legsAssembly",
+      "theme": "everyday",
+      "query": "ungeprintete Beine",
+      "paraphraseGroup": "paraphrase:development:de-legs-plain",
+      "proposedIntent": {
+        "componentId": "ff03-legs-970c01",
+        "reason": "plain legs"
+      },
+      "reviewStatus": "pending-human-relevance-review"
+    },
+    {
+      "id": "ff21-dev-german-26",
+      "split": "development",
+      "stratum": "german",
+      "language": "de",
+      "domain": "legsAssembly",
+      "theme": "fantasy",
+      "query": "Beine mit schwarzer Markierung",
+      "paraphraseGroup": "paraphrase:development:de-legs-printed",
+      "proposedIntent": {
+        "componentId": "ff03-legs-970c01pr0001",
+        "reason": "printed legs"
+      },
+      "reviewStatus": "pending-human-relevance-review"
+    },
+    {
+      "id": "ff21-dev-german-27",
+      "split": "development",
+      "stratum": "german",
+      "language": "de",
+      "domain": "handAccessory",
+      "theme": "space",
+      "query": "kleines Schwert für die Hand",
+      "paraphraseGroup": "paraphrase:development:de-sword-small",
+      "proposedIntent": {
+        "componentId": "ff03-hand-10053",
+        "reason": "small sword"
+      },
+      "reviewStatus": "pending-human-relevance-review"
+    },
+    {
+      "id": "ff21-dev-german-28",
+      "split": "development",
+      "stratum": "german",
+      "language": "de",
+      "domain": "handAccessory",
+      "theme": "everyday",
+      "query": "Schwert mit gezackten Kanten",
+      "paraphraseGroup": "paraphrase:development:de-sword-jagged",
+      "proposedIntent": {
+        "componentId": "ff03-hand-11439",
+        "reason": "jagged sword"
+      },
+      "reviewStatus": "pending-human-relevance-review"
+    },
+    {
+      "id": "ff21-dev-german-29",
+      "split": "development",
+      "stratum": "german",
+      "language": "de",
+      "domain": "handAccessory",
+      "theme": "fantasy",
+      "query": "Spitzhacke in Perl Gold",
+      "paraphraseGroup": "paraphrase:development:de-pickaxe",
+      "proposedIntent": {
+        "componentId": "ff03-hand-3841",
+        "reason": "pickaxe"
+      },
+      "reviewStatus": "pending-human-relevance-review"
+    },
+    {
+      "id": "ff21-dev-german-30",
+      "split": "development",
+      "stratum": "german",
+      "language": "de",
+      "domain": "head",
+      "theme": "space",
+      "query": "gelber Kopf mit offenem Lächeln",
+      "paraphraseGroup": "paraphrase:development:de-head-smile",
+      "proposedIntent": {
+        "componentId": "ff03-head-3626cpr0008",
+        "reason": "printed head"
+      },
+      "reviewStatus": "pending-human-relevance-review"
+    },
+    {
+      "id": "ff21-dev-english-01",
+      "split": "development",
+      "stratum": "english",
+      "language": "en",
+      "domain": "head",
+      "theme": "everyday",
+      "query": "plain black minifig head",
+      "paraphraseGroup": "paraphrase:development:en-head-plain",
+      "proposedIntent": {
+        "componentId": "ff03-head-3626c",
+        "reason": "plain head"
+      },
+      "reviewStatus": "pending-human-relevance-review"
+    },
+    {
+      "id": "ff21-dev-english-02",
+      "split": "development",
+      "stratum": "english",
+      "language": "en",
+      "domain": "head",
+      "theme": "fantasy",
+      "query": "unprinted black head",
+      "paraphraseGroup": "paraphrase:development:en-head-plain",
+      "proposedIntent": {
+        "componentId": "ff03-head-3626c",
+        "reason": "plain head"
+      },
+      "reviewStatus": "pending-human-relevance-review"
+    },
+    {
+      "id": "ff21-dev-english-03",
+      "split": "development",
+      "stratum": "english",
+      "language": "en",
+      "domain": "head",
+      "theme": "space",
+      "query": "standard grin yellow head",
+      "paraphraseGroup": "paraphrase:development:en-head-grin",
+      "proposedIntent": {
+        "componentId": "ff03-head-3626cpr0001",
+        "reason": "grinning head"
+      },
+      "reviewStatus": "pending-human-relevance-review"
+    },
+    {
+      "id": "ff21-dev-english-04",
+      "split": "development",
+      "stratum": "english",
+      "language": "en",
+      "domain": "head",
+      "theme": "everyday",
+      "query": "yellow head with open smile",
+      "paraphraseGroup": "paraphrase:development:en-head-smile",
+      "proposedIntent": {
+        "componentId": "ff03-head-3626cpr0008",
+        "reason": "printed head"
+      },
+      "reviewStatus": "pending-human-relevance-review"
+    },
+    {
+      "id": "ff21-dev-english-05",
+      "split": "development",
+      "stratum": "english",
+      "language": "en",
+      "domain": "headwear",
+      "theme": "fantasy",
+      "query": "tousled mid-length hair",
+      "paraphraseGroup": "paraphrase:development:en-hair-tousled",
+      "proposedIntent": {
+        "componentId": "ff03-headwear-10048",
+        "reason": "tousled hair"
+      },
+      "reviewStatus": "pending-human-relevance-review"
+    },
+    {
+      "id": "ff21-dev-english-06",
+      "split": "development",
+      "stratum": "english",
+      "language": "en",
+      "domain": "headwear",
+      "theme": "space",
+      "query": "wavy ponytail hair",
+      "paraphraseGroup": "paraphrase:development:en-hair-pony",
+      "proposedIntent": {
+        "componentId": "ff03-headwear-25405",
+        "reason": "ponytail hair"
+      },
+      "reviewStatus": "pending-human-relevance-review"
+    },
+    {
+      "id": "ff21-dev-english-07",
+      "split": "development",
+      "stratum": "english",
+      "language": "en",
+      "domain": "headwear",
+      "theme": "everyday",
+      "query": "short bob side part hair",
+      "paraphraseGroup": "paraphrase:development:en-hair-bob",
+      "proposedIntent": {
+        "componentId": "ff03-headwear-36268",
+        "reason": "bob hair"
+      },
+      "reviewStatus": "pending-human-relevance-review"
+    },
+    {
+      "id": "ff21-dev-english-08",
+      "split": "development",
+      "stratum": "english",
+      "language": "en",
+      "domain": "headwear",
+      "theme": "fantasy",
+      "query": "smooth black hair",
+      "paraphraseGroup": "paraphrase:development:en-hair-smooth",
+      "proposedIntent": {
+        "componentId": "ff03-headwear-3901",
+        "reason": "smooth hair"
+      },
+      "reviewStatus": "pending-human-relevance-review"
+    },
+    {
+      "id": "ff21-dev-english-09",
+      "split": "development",
+      "stratum": "english",
+      "language": "en",
+      "domain": "torsoAssembly",
+      "theme": "space",
+      "query": "plain black torso",
+      "paraphraseGroup": "paraphrase:development:en-torso-plain",
+      "proposedIntent": {
+        "componentId": "ff03-torso-3814",
+        "reason": "plain torso"
+      },
+      "reviewStatus": "pending-human-relevance-review"
+    },
+    {
+      "id": "ff21-dev-english-10",
+      "split": "development",
+      "stratum": "english",
+      "language": "en",
+      "domain": "torsoAssembly",
+      "theme": "everyday",
+      "query": "torso with yellow arms and hands",
+      "paraphraseGroup": "paraphrase:development:en-torso-arms",
+      "proposedIntent": {
+        "componentId": "ff03-torso-973c01h01",
+        "reason": "yellow-arm torso"
+      },
+      "reviewStatus": "pending-human-relevance-review"
+    },
+    {
+      "id": "ff21-dev-english-11",
+      "split": "development",
+      "stratum": "english",
+      "language": "en",
+      "domain": "legsAssembly",
+      "theme": "fantasy",
+      "query": "plain legs",
+      "paraphraseGroup": "paraphrase:development:en-legs-plain",
+      "proposedIntent": {
+        "componentId": "ff03-legs-970c01",
+        "reason": "plain legs"
+      },
+      "reviewStatus": "pending-human-relevance-review"
+    },
+    {
+      "id": "ff21-dev-english-12",
+      "split": "development",
+      "stratum": "english",
+      "language": "en",
+      "domain": "legsAssembly",
+      "theme": "space",
+      "query": "printed black legs",
+      "paraphraseGroup": "paraphrase:development:en-legs-printed",
+      "proposedIntent": {
+        "componentId": "ff03-legs-970c01pr0001",
+        "reason": "printed legs"
+      },
+      "reviewStatus": "pending-human-relevance-review"
+    },
+    {
+      "id": "ff21-dev-english-13",
+      "split": "development",
+      "stratum": "english",
+      "language": "en",
+      "domain": "handAccessory",
+      "theme": "everyday",
+      "query": "small silver sword",
+      "paraphraseGroup": "paraphrase:development:en-sword-small",
+      "proposedIntent": {
+        "componentId": "ff03-hand-10053",
+        "reason": "small sword"
+      },
+      "reviewStatus": "pending-human-relevance-review"
+    },
+    {
+      "id": "ff21-dev-english-14",
+      "split": "development",
+      "stratum": "english",
+      "language": "en",
+      "domain": "handAccessory",
+      "theme": "fantasy",
+      "query": "jagged edge sword",
+      "paraphraseGroup": "paraphrase:development:en-sword-jagged",
+      "proposedIntent": {
+        "componentId": "ff03-hand-11439",
+        "reason": "jagged sword"
+      },
+      "reviewStatus": "pending-human-relevance-review"
+    },
+    {
+      "id": "ff21-dev-english-15",
+      "split": "development",
+      "stratum": "english",
+      "language": "en",
+      "domain": "handAccessory",
+      "theme": "space",
+      "query": "pearl gold pickaxe",
+      "paraphraseGroup": "paraphrase:development:en-pickaxe",
+      "proposedIntent": {
+        "componentId": "ff03-hand-3841",
+        "reason": "pickaxe"
+      },
+      "reviewStatus": "pending-human-relevance-review"
+    },
+    {
+      "id": "ff21-dev-english-16",
+      "split": "development",
+      "stratum": "english",
+      "language": "en",
+      "domain": "head",
+      "theme": "everyday",
+      "query": "head with brown eyebrows",
+      "paraphraseGroup": "paraphrase:development:en-head-brows",
+      "proposedIntent": {
+        "componentId": "ff03-head-3626cpr0387",
+        "reason": "printed head"
+      },
+      "reviewStatus": "pending-human-relevance-review"
+    },
+    {
+      "id": "ff21-dev-english-17",
+      "split": "development",
+      "stratum": "english",
+      "language": "en",
+      "domain": "head",
+      "theme": "fantasy",
+      "query": "scared smiling head",
+      "paraphraseGroup": "paraphrase:development:en-head-scared",
+      "proposedIntent": {
+        "componentId": "ff03-head-3626cpr0495",
+        "reason": "printed head"
+      },
+      "reviewStatus": "pending-human-relevance-review"
+    },
+    {
+      "id": "ff21-dev-english-18",
+      "split": "development",
+      "stratum": "english",
+      "language": "en",
+      "domain": "headwear",
+      "theme": "space",
+      "query": "hair with side part",
+      "paraphraseGroup": "paraphrase:development:en-hair-side",
+      "proposedIntent": {
+        "componentId": "ff03-headwear-25409",
+        "reason": "side-part hair"
+      },
+      "reviewStatus": "pending-human-relevance-review"
+    },
+    {
+      "id": "ff21-dev-english-19",
+      "split": "development",
+      "stratum": "english",
+      "language": "en",
+      "domain": "legsAssembly",
+      "theme": "everyday",
+      "query": "yellow marked legs",
+      "paraphraseGroup": "paraphrase:development:en-legs-printed",
+      "proposedIntent": {
+        "componentId": "ff03-legs-970c01pr0001",
+        "reason": "printed legs"
+      },
+      "reviewStatus": "pending-human-relevance-review"
+    },
+    {
+      "id": "ff21-dev-english-20",
+      "split": "development",
+      "stratum": "english",
+      "language": "en",
+      "domain": "handAccessory",
+      "theme": "fantasy",
+      "query": "short weapon sword",
+      "paraphraseGroup": "paraphrase:development:en-sword-small",
+      "proposedIntent": {
+        "componentId": "ff03-hand-10053",
+        "reason": "small sword"
+      },
+      "reviewStatus": "pending-human-relevance-review"
+    },
+    {
+      "id": "ff21-dev-typo-compound-01",
+      "split": "development",
+      "stratum": "typo-compound",
+      "language": "de",
+      "domain": "head",
+      "theme": "everyday",
+      "query": "ogerkopf",
+      "paraphraseGroup": "paraphrase:development:typo-ogre-head",
+      "proposedIntent": {
+        "componentId": "ff03-head-3626c",
+        "reason": "Candidate intent is a draft for human review; spelling and compound behavior must be judged."
+      },
+      "reviewStatus": "pending-human-relevance-review"
+    },
+    {
+      "id": "ff21-dev-typo-compound-02",
+      "split": "development",
+      "stratum": "typo-compound",
+      "language": "mixed",
+      "domain": "handAccessory",
+      "theme": "fantasy",
+      "query": "langesschwert",
+      "paraphraseGroup": "paraphrase:development:typo-long-sword",
+      "proposedIntent": {
+        "componentId": "ff03-hand-10053",
+        "reason": "Candidate intent is a draft for human review; spelling and compound behavior must be judged."
+      },
+      "reviewStatus": "pending-human-relevance-review"
+    },
+    {
+      "id": "ff21-dev-typo-compound-03",
+      "split": "development",
+      "stratum": "typo-compound",
+      "language": "de",
+      "domain": "headwear",
+      "theme": "space",
+      "query": "glatthaar",
+      "paraphraseGroup": "paraphrase:development:typo-smooth-hair",
+      "proposedIntent": {
+        "componentId": "ff03-headwear-3901",
+        "reason": "Candidate intent is a draft for human review; spelling and compound behavior must be judged."
+      },
+      "reviewStatus": "pending-human-relevance-review"
+    },
+    {
+      "id": "ff21-dev-typo-compound-04",
+      "split": "development",
+      "stratum": "typo-compound",
+      "language": "mixed",
+      "domain": "headwear",
+      "theme": "everyday",
+      "query": "pferdeschwanzhaar",
+      "paraphraseGroup": "paraphrase:development:typo-ponytail",
+      "proposedIntent": {
+        "componentId": "ff03-headwear-25405",
+        "reason": "Candidate intent is a draft for human review; spelling and compound behavior must be judged."
+      },
+      "reviewStatus": "pending-human-relevance-review"
+    },
+    {
+      "id": "ff21-dev-typo-compound-05",
+      "split": "development",
+      "stratum": "typo-compound",
+      "language": "de",
+      "domain": "handAccessory",
+      "theme": "fantasy",
+      "query": "spitzhacke",
+      "paraphraseGroup": "paraphrase:development:typo-pickaxe",
+      "proposedIntent": {
+        "componentId": "ff03-hand-3841",
+        "reason": "Candidate intent is a draft for human review; spelling and compound behavior must be judged."
+      },
+      "reviewStatus": "pending-human-relevance-review"
+    },
+    {
+      "id": "ff21-dev-typo-compound-06",
+      "split": "development",
+      "stratum": "typo-compound",
+      "language": "mixed",
+      "domain": "handAccessory",
+      "theme": "space",
+      "query": "zackenschwert",
+      "paraphraseGroup": "paraphrase:development:typo-jagged-sword",
+      "proposedIntent": {
+        "componentId": "ff03-hand-11439",
+        "reason": "Candidate intent is a draft for human review; spelling and compound behavior must be judged."
+      },
+      "reviewStatus": "pending-human-relevance-review"
+    },
+    {
+      "id": "ff21-dev-typo-compound-07",
+      "split": "development",
+      "stratum": "typo-compound",
+      "language": "de",
+      "domain": "head",
+      "theme": "everyday",
+      "query": "schwartzer kopf",
+      "paraphraseGroup": "paraphrase:development:typo-black-head",
+      "proposedIntent": {
+        "componentId": "ff03-head-3626c",
+        "reason": "Candidate intent is a draft for human review; spelling and compound behavior must be judged."
+      },
+      "reviewStatus": "pending-human-relevance-review"
+    },
+    {
+      "id": "ff21-dev-typo-compound-08",
+      "split": "development",
+      "stratum": "typo-compound",
+      "language": "mixed",
+      "domain": "torsoAssembly",
+      "theme": "fantasy",
+      "query": "gelbarmtorso",
+      "paraphraseGroup": "paraphrase:development:typo-yellow-arm-torso",
+      "proposedIntent": {
+        "componentId": "ff03-torso-973c01h01",
+        "reason": "Candidate intent is a draft for human review; spelling and compound behavior must be judged."
+      },
+      "reviewStatus": "pending-human-relevance-review"
+    },
+    {
+      "id": "ff21-dev-typo-compound-09",
+      "split": "development",
+      "stratum": "typo-compound",
+      "language": "de",
+      "domain": "headwear",
+      "theme": "space",
+      "query": "haareseitenpartie",
+      "paraphraseGroup": "paraphrase:development:typo-side-part",
+      "proposedIntent": {
+        "componentId": "ff03-headwear-25409",
+        "reason": "Candidate intent is a draft for human review; spelling and compound behavior must be judged."
+      },
+      "reviewStatus": "pending-human-relevance-review"
+    },
+    {
+      "id": "ff21-dev-typo-compound-10",
+      "split": "development",
+      "stratum": "typo-compound",
+      "language": "mixed",
+      "domain": "handAccessory",
+      "theme": "everyday",
+      "query": "kleinesschwert",
+      "paraphraseGroup": "paraphrase:development:typo-small-sword",
+      "proposedIntent": {
+        "componentId": "ff03-hand-10053",
+        "reason": "Candidate intent is a draft for human review; spelling and compound behavior must be judged."
+      },
+      "reviewStatus": "pending-human-relevance-review"
+    },
+    {
+      "id": "ff21-dev-ambiguity-negation-01",
+      "split": "development",
+      "stratum": "ambiguity-negation",
+      "language": "de",
+      "domain": "head",
+      "theme": "everyday",
+      "query": "ohne Helm",
+      "paraphraseGroup": "paraphrase:development:negation-no-helmet",
+      "proposedIntent": {
+        "componentId": "ff03-head-3626c",
+        "reason": "Ambiguous or negated intent is deliberately not converted into an automatic relevance label."
+      },
+      "reviewStatus": "pending-human-relevance-review"
+    },
+    {
+      "id": "ff21-dev-ambiguity-negation-02",
+      "split": "development",
+      "stratum": "ambiguity-negation",
+      "language": "de",
+      "domain": "handAccessory",
+      "theme": "fantasy",
+      "query": "Schild",
+      "paraphraseGroup": "paraphrase:development:ambiguity-shield",
+      "proposedIntent": {
+        "componentId": "ff03-hand-3841",
+        "reason": "Ambiguous or negated intent is deliberately not converted into an automatic relevance label."
+      },
+      "reviewStatus": "pending-human-relevance-review"
+    },
+    {
+      "id": "ff21-dev-ambiguity-negation-03",
+      "split": "development",
+      "stratum": "ambiguity-negation",
+      "language": "de",
+      "domain": "headwear",
+      "theme": "space",
+      "query": "ohne schwarze Haare",
+      "paraphraseGroup": "paraphrase:development:negation-no-black-hair",
+      "proposedIntent": {
+        "componentId": "ff03-headwear-3901",
+        "reason": "Ambiguous or negated intent is deliberately not converted into an automatic relevance label."
+      },
+      "reviewStatus": "pending-human-relevance-review"
+    },
+    {
+      "id": "ff21-dev-ambiguity-negation-04",
+      "split": "development",
+      "stratum": "ambiguity-negation",
+      "language": "de",
+      "domain": "handAccessory",
+      "theme": "everyday",
+      "query": "Schild ohne Schwert",
+      "paraphraseGroup": "paraphrase:development:ambiguity-shield-sword",
+      "proposedIntent": {
+        "componentId": "ff03-hand-11439",
+        "reason": "Ambiguous or negated intent is deliberately not converted into an automatic relevance label."
+      },
+      "reviewStatus": "pending-human-relevance-review"
+    },
+    {
+      "id": "ff21-dev-ambiguity-negation-05",
+      "split": "development",
+      "stratum": "ambiguity-negation",
+      "language": "de",
+      "domain": "head",
+      "theme": "fantasy",
+      "query": "Kopf aber kein Helm",
+      "paraphraseGroup": "paraphrase:development:negation-head-no-helmet",
+      "proposedIntent": {
+        "componentId": "ff03-head-3626cpr0001",
+        "reason": "Ambiguous or negated intent is deliberately not converted into an automatic relevance label."
+      },
+      "reviewStatus": "pending-human-relevance-review"
+    },
+    {
+      "id": "ff21-dev-ambiguity-negation-06",
+      "split": "development",
+      "stratum": "ambiguity-negation",
+      "language": "en",
+      "domain": "head",
+      "theme": "space",
+      "query": "not a helmet, find head",
+      "paraphraseGroup": "paraphrase:development:negation-head-not-helmet",
+      "proposedIntent": {
+        "componentId": "ff03-head-3626c",
+        "reason": "Ambiguous or negated intent is deliberately not converted into an automatic relevance label."
+      },
+      "reviewStatus": "pending-human-relevance-review"
+    },
+    {
+      "id": "ff21-dev-ambiguity-negation-07",
+      "split": "development",
+      "stratum": "ambiguity-negation",
+      "language": "en",
+      "domain": "handAccessory",
+      "theme": "everyday",
+      "query": "shield sign or hand shield",
+      "paraphraseGroup": "paraphrase:development:ambiguity-shield-en",
+      "proposedIntent": {
+        "componentId": "ff03-hand-3841",
+        "reason": "Ambiguous or negated intent is deliberately not converted into an automatic relevance label."
+      },
+      "reviewStatus": "pending-human-relevance-review"
+    },
+    {
+      "id": "ff21-dev-ambiguity-negation-08",
+      "split": "development",
+      "stratum": "ambiguity-negation",
+      "language": "en",
+      "domain": "handAccessory",
+      "theme": "fantasy",
+      "query": "without sword",
+      "paraphraseGroup": "paraphrase:development:negation-no-sword",
+      "proposedIntent": {
+        "componentId": "ff03-hand-10053",
+        "reason": "Ambiguous or negated intent is deliberately not converted into an automatic relevance label."
+      },
+      "reviewStatus": "pending-human-relevance-review"
+    },
+    {
+      "id": "ff21-dev-ambiguity-negation-09",
+      "split": "development",
+      "stratum": "ambiguity-negation",
+      "language": "en",
+      "domain": "headwear",
+      "theme": "space",
+      "query": "no black hair",
+      "paraphraseGroup": "paraphrase:development:negation-no-black-hair-en",
+      "proposedIntent": {
+        "componentId": "ff03-headwear-3901",
+        "reason": "Ambiguous or negated intent is deliberately not converted into an automatic relevance label."
+      },
+      "reviewStatus": "pending-human-relevance-review"
+    },
+    {
+      "id": "ff21-dev-ambiguity-negation-10",
+      "split": "development",
+      "stratum": "ambiguity-negation",
+      "language": "en",
+      "domain": "head",
+      "theme": "everyday",
+      "query": "plain head not helmet",
+      "paraphraseGroup": "paraphrase:development:ambiguity-head-helmet",
+      "proposedIntent": {
+        "componentId": "ff03-head-3626c",
+        "reason": "Ambiguous or negated intent is deliberately not converted into an automatic relevance label."
+      },
+      "reviewStatus": "pending-human-relevance-review"
+    },
+    {
+      "id": "ff21-dev-unfulfillable-01",
+      "split": "development",
+      "stratum": "unfulfillable",
+      "language": "en",
+      "domain": "head",
+      "theme": "everyday",
+      "query": "purple dragon wing",
+      "paraphraseGroup": "paraphrase:development:unfulfillable-dragon",
+      "proposedIntent": null,
+      "reviewStatus": "pending-human-relevance-review"
+    },
+    {
+      "id": "ff21-dev-unfulfillable-02",
+      "split": "development",
+      "stratum": "unfulfillable",
+      "language": "de",
+      "domain": "headwear",
+      "theme": "fantasy",
+      "query": "transparent astronaut cape",
+      "paraphraseGroup": "paraphrase:development:unfulfillable-cape",
+      "proposedIntent": null,
+      "reviewStatus": "pending-human-relevance-review"
+    },
+    {
+      "id": "ff21-dev-unfulfillable-03",
+      "split": "development",
+      "stratum": "unfulfillable",
+      "language": "en",
+      "domain": "torsoAssembly",
+      "theme": "space",
+      "query": "wooden minifig beard",
+      "paraphraseGroup": "paraphrase:development:unfulfillable-beard",
+      "proposedIntent": null,
+      "reviewStatus": "pending-human-relevance-review"
+    },
+    {
+      "id": "ff21-dev-unfulfillable-04",
+      "split": "development",
+      "stratum": "unfulfillable",
+      "language": "de",
+      "domain": "legsAssembly",
+      "theme": "everyday",
+      "query": "glowing crystal tail",
+      "paraphraseGroup": "paraphrase:development:unfulfillable-tail",
+      "proposedIntent": null,
+      "reviewStatus": "pending-human-relevance-review"
+    },
+    {
+      "id": "ff21-dev-unfulfillable-05",
+      "split": "development",
+      "stratum": "unfulfillable",
+      "language": "en",
+      "domain": "handAccessory",
+      "theme": "fantasy",
+      "query": "red laser blast effect",
+      "paraphraseGroup": "paraphrase:development:unfulfillable-laser",
+      "proposedIntent": null,
+      "reviewStatus": "pending-human-relevance-review"
+    },
+    {
+      "id": "ff21-dev-unfulfillable-06",
+      "split": "development",
+      "stratum": "unfulfillable",
+      "language": "de",
+      "domain": "head",
+      "theme": "space",
+      "query": "blue alien tentacle head",
+      "paraphraseGroup": "paraphrase:development:unfulfillable-alien",
+      "proposedIntent": null,
+      "reviewStatus": "pending-human-relevance-review"
+    },
+    {
+      "id": "ff21-dev-unfulfillable-07",
+      "split": "development",
+      "stratum": "unfulfillable",
+      "language": "en",
+      "domain": "headwear",
+      "theme": "everyday",
+      "query": "golden wizard robe",
+      "paraphraseGroup": "paraphrase:development:unfulfillable-robe",
+      "proposedIntent": null,
+      "reviewStatus": "pending-human-relevance-review"
+    },
+    {
+      "id": "ff21-dev-unfulfillable-08",
+      "split": "development",
+      "stratum": "unfulfillable",
+      "language": "de",
+      "domain": "torsoAssembly",
+      "theme": "fantasy",
+      "query": "invisible shield",
+      "paraphraseGroup": "paraphrase:development:unfulfillable-invisible-shield",
+      "proposedIntent": null,
+      "reviewStatus": "pending-human-relevance-review"
+    },
+    {
+      "id": "ff21-dev-unfulfillable-09",
+      "split": "development",
+      "stratum": "unfulfillable",
+      "language": "en",
+      "domain": "legsAssembly",
+      "theme": "space",
+      "query": "mechanical robot wing",
+      "paraphraseGroup": "paraphrase:development:unfulfillable-robot-wing",
+      "proposedIntent": null,
+      "reviewStatus": "pending-human-relevance-review"
+    },
+    {
+      "id": "ff21-dev-unfulfillable-10",
+      "split": "development",
+      "stratum": "unfulfillable",
+      "language": "de",
+      "domain": "handAccessory",
+      "theme": "everyday",
+      "query": "rainbow dinosaur helmet",
+      "paraphraseGroup": "paraphrase:development:unfulfillable-dinosaur",
+      "proposedIntent": null,
+      "reviewStatus": "pending-human-relevance-review"
+    },
+    {
+      "id": "ff21-holdout-german-01",
+      "split": "holdout",
+      "stratum": "german",
+      "language": "de",
+      "domain": "head",
+      "theme": "everyday",
+      "query": "unverzierter dunkler Minifigurenkopf",
+      "paraphraseGroup": "paraphrase:holdout:de-head-plain",
+      "proposedIntent": {
+        "componentId": "ff03-head-3626c",
+        "reason": "plain head"
+      },
+      "reviewStatus": "pending-human-relevance-review"
+    },
+    {
+      "id": "ff21-holdout-german-02",
+      "split": "holdout",
+      "stratum": "german",
+      "language": "de",
+      "domain": "head",
+      "theme": "fantasy",
+      "query": "einfacher dunkler Minifigurenkopf",
+      "paraphraseGroup": "paraphrase:holdout:de-head-plain",
+      "proposedIntent": {
+        "componentId": "ff03-head-3626c",
+        "reason": "plain head"
+      },
+      "reviewStatus": "pending-human-relevance-review"
+    },
+    {
+      "id": "ff21-holdout-german-03",
+      "split": "holdout",
+      "stratum": "german",
+      "language": "de",
+      "domain": "head",
+      "theme": "space",
+      "query": "hellgelber Minifigurenkopf mit Standardgrinsen",
+      "paraphraseGroup": "paraphrase:holdout:de-head-grin",
+      "proposedIntent": {
+        "componentId": "ff03-head-3626cpr0001",
+        "reason": "grinning head"
+      },
+      "reviewStatus": "pending-human-relevance-review"
+    },
+    {
+      "id": "ff21-holdout-german-04",
+      "split": "holdout",
+      "stratum": "german",
+      "language": "de",
+      "domain": "head",
+      "theme": "everyday",
+      "query": "hellgelbes Grinsegesicht",
+      "paraphraseGroup": "paraphrase:holdout:de-head-grin",
+      "proposedIntent": {
+        "componentId": "ff03-head-3626cpr0001",
+        "reason": "grinning head"
+      },
+      "reviewStatus": "pending-human-relevance-review"
+    },
+    {
+      "id": "ff21-holdout-german-05",
+      "split": "holdout",
+      "stratum": "german",
+      "language": "de",
+      "domain": "head",
+      "theme": "fantasy",
+      "query": "Minifigurenkopf mit braunen Augenbrauen",
+      "paraphraseGroup": "paraphrase:holdout:de-head-brows",
+      "proposedIntent": {
+        "componentId": "ff03-head-3626cpr0387",
+        "reason": "printed head"
+      },
+      "reviewStatus": "pending-human-relevance-review"
+    },
+    {
+      "id": "ff21-holdout-german-06",
+      "split": "holdout",
+      "stratum": "german",
+      "language": "de",
+      "domain": "head",
+      "theme": "space",
+      "query": "erschrockener hellgelber Minifigurenkopf",
+      "paraphraseGroup": "paraphrase:holdout:de-head-scared",
+      "proposedIntent": {
+        "componentId": "ff03-head-3626cpr0495",
+        "reason": "printed head"
+      },
+      "reviewStatus": "pending-human-relevance-review"
+    },
+    {
+      "id": "ff21-holdout-german-07",
+      "split": "holdout",
+      "stratum": "german",
+      "language": "de",
+      "domain": "headwear",
+      "theme": "everyday",
+      "query": "zerzaustes mittellanges Frisur",
+      "paraphraseGroup": "paraphrase:holdout:de-hair-tousled",
+      "proposedIntent": {
+        "componentId": "ff03-headwear-10048",
+        "reason": "tousled hair"
+      },
+      "reviewStatus": "pending-human-relevance-review"
+    },
+    {
+      "id": "ff21-holdout-german-08",
+      "split": "holdout",
+      "stratum": "german",
+      "language": "de",
+      "domain": "headwear",
+      "theme": "fantasy",
+      "query": "welliges Frisur mit Pferdeschwanz",
+      "paraphraseGroup": "paraphrase:holdout:de-hair-pony",
+      "proposedIntent": {
+        "componentId": "ff03-headwear-25405",
+        "reason": "ponytail hair"
+      },
+      "reviewStatus": "pending-human-relevance-review"
+    },
+    {
+      "id": "ff21-holdout-german-09",
+      "split": "holdout",
+      "stratum": "german",
+      "language": "de",
+      "domain": "headwear",
+      "theme": "space",
+      "query": "hellgelbes Frisur mit Seitenpartie",
+      "paraphraseGroup": "paraphrase:holdout:de-hair-side",
+      "proposedIntent": {
+        "componentId": "ff03-headwear-25409",
+        "reason": "side-part hair"
+      },
+      "reviewStatus": "pending-human-relevance-review"
+    },
+    {
+      "id": "ff21-holdout-german-10",
+      "split": "holdout",
+      "stratum": "german",
+      "language": "de",
+      "domain": "headwear",
+      "theme": "everyday",
+      "query": "kurzer Bob mit Seitenpartie Variante 10",
+      "paraphraseGroup": "paraphrase:holdout:de-hair-bob",
+      "proposedIntent": {
+        "componentId": "ff03-headwear-36268",
+        "reason": "bob hair"
+      },
+      "reviewStatus": "pending-human-relevance-review"
+    },
+    {
+      "id": "ff21-holdout-german-11",
+      "split": "holdout",
+      "stratum": "german",
+      "language": "de",
+      "domain": "headwear",
+      "theme": "fantasy",
+      "query": "glattes dunkles Frisur",
+      "paraphraseGroup": "paraphrase:holdout:de-hair-smooth",
+      "proposedIntent": {
+        "componentId": "ff03-headwear-3901",
+        "reason": "smooth hair"
+      },
+      "reviewStatus": "pending-human-relevance-review"
+    },
+    {
+      "id": "ff21-holdout-german-12",
+      "split": "holdout",
+      "stratum": "german",
+      "language": "de",
+      "domain": "torsoAssembly",
+      "theme": "space",
+      "query": "unverzierter dunkler Oberkörper",
+      "paraphraseGroup": "paraphrase:holdout:de-torso-plain",
+      "proposedIntent": {
+        "componentId": "ff03-torso-3814",
+        "reason": "plain torso"
+      },
+      "reviewStatus": "pending-human-relevance-review"
+    },
+    {
+      "id": "ff21-holdout-german-13",
+      "split": "holdout",
+      "stratum": "german",
+      "language": "de",
+      "domain": "torsoAssembly",
+      "theme": "everyday",
+      "query": "Oberkörper mit hellgelben Armen",
+      "paraphraseGroup": "paraphrase:holdout:de-torso-arms",
+      "proposedIntent": {
+        "componentId": "ff03-torso-973c01h01",
+        "reason": "yellow-arm torso"
+      },
+      "reviewStatus": "pending-human-relevance-review"
+    },
+    {
+      "id": "ff21-holdout-german-14",
+      "split": "holdout",
+      "stratum": "german",
+      "language": "de",
+      "domain": "legsAssembly",
+      "theme": "fantasy",
+      "query": "graue Beinbaugruppe mit hellgelben Hüften",
+      "paraphraseGroup": "paraphrase:holdout:de-legs-plain",
+      "proposedIntent": {
+        "componentId": "ff03-legs-970c01",
+        "reason": "plain legs"
+      },
+      "reviewStatus": "pending-human-relevance-review"
+    },
+    {
+      "id": "ff21-holdout-german-15",
+      "split": "holdout",
+      "stratum": "german",
+      "language": "de",
+      "domain": "legsAssembly",
+      "theme": "space",
+      "query": "dunkle bedruckte Beinbaugruppe",
+      "paraphraseGroup": "paraphrase:holdout:de-legs-printed",
+      "proposedIntent": {
+        "componentId": "ff03-legs-970c01pr0001",
+        "reason": "printed legs"
+      },
+      "reviewStatus": "pending-human-relevance-review"
+    },
+    {
+      "id": "ff21-holdout-german-16",
+      "split": "holdout",
+      "stratum": "german",
+      "language": "de",
+      "domain": "handAccessory",
+      "theme": "everyday",
+      "query": "kleines silbernes Klinge",
+      "paraphraseGroup": "paraphrase:holdout:de-sword-small",
+      "proposedIntent": {
+        "componentId": "ff03-hand-10053",
+        "reason": "small sword"
+      },
+      "reviewStatus": "pending-human-relevance-review"
+    },
+    {
+      "id": "ff21-holdout-german-17",
+      "split": "holdout",
+      "stratum": "german",
+      "language": "de",
+      "domain": "handAccessory",
+      "theme": "fantasy",
+      "query": "gezacktes Klinge",
+      "paraphraseGroup": "paraphrase:holdout:de-sword-jagged",
+      "proposedIntent": {
+        "componentId": "ff03-hand-11439",
+        "reason": "jagged sword"
+      },
+      "reviewStatus": "pending-human-relevance-review"
+    },
+    {
+      "id": "ff21-holdout-german-18",
+      "split": "holdout",
+      "stratum": "german",
+      "language": "de",
+      "domain": "handAccessory",
+      "theme": "space",
+      "query": "goldene Pickelwerkzeug",
+      "paraphraseGroup": "paraphrase:holdout:de-pickaxe",
+      "proposedIntent": {
+        "componentId": "ff03-hand-3841",
+        "reason": "pickaxe"
+      },
+      "reviewStatus": "pending-human-relevance-review"
+    },
+    {
+      "id": "ff21-holdout-german-19",
+      "split": "holdout",
+      "stratum": "german",
+      "language": "de",
+      "domain": "head",
+      "theme": "everyday",
+      "query": "dunkler Minifigurenkopf ohne Druck",
+      "paraphraseGroup": "paraphrase:holdout:de-head-plain",
+      "proposedIntent": {
+        "componentId": "ff03-head-3626c",
+        "reason": "plain head"
+      },
+      "reviewStatus": "pending-human-relevance-review"
+    },
+    {
+      "id": "ff21-holdout-german-20",
+      "split": "holdout",
+      "stratum": "german",
+      "language": "de",
+      "domain": "head",
+      "theme": "fantasy",
+      "query": "hellgelber Minifigurenkopf mit dünnem Grinsen",
+      "paraphraseGroup": "paraphrase:holdout:de-head-brows",
+      "proposedIntent": {
+        "componentId": "ff03-head-3626cpr0387",
+        "reason": "printed head"
+      },
+      "reviewStatus": "pending-human-relevance-review"
+    },
+    {
+      "id": "ff21-holdout-german-21",
+      "split": "holdout",
+      "stratum": "german",
+      "language": "de",
+      "domain": "headwear",
+      "theme": "space",
+      "query": "braunes zerzaustes Frisur",
+      "paraphraseGroup": "paraphrase:holdout:de-hair-tousled",
+      "proposedIntent": {
+        "componentId": "ff03-headwear-10048",
+        "reason": "tousled hair"
+      },
+      "reviewStatus": "pending-human-relevance-review"
+    },
+    {
+      "id": "ff21-holdout-german-22",
+      "split": "holdout",
+      "stratum": "german",
+      "language": "de",
+      "domain": "headwear",
+      "theme": "everyday",
+      "query": "glattes Frisur in Schwarz",
+      "paraphraseGroup": "paraphrase:holdout:de-hair-smooth",
+      "proposedIntent": {
+        "componentId": "ff03-headwear-3901",
+        "reason": "smooth hair"
+      },
+      "reviewStatus": "pending-human-relevance-review"
+    },
+    {
+      "id": "ff21-holdout-german-23",
+      "split": "holdout",
+      "stratum": "german",
+      "language": "de",
+      "domain": "torsoAssembly",
+      "theme": "fantasy",
+      "query": "unverzierter Oberkörper",
+      "paraphraseGroup": "paraphrase:holdout:de-torso-plain",
+      "proposedIntent": {
+        "componentId": "ff03-torso-3814",
+        "reason": "plain torso"
+      },
+      "reviewStatus": "pending-human-relevance-review"
+    },
+    {
+      "id": "ff21-holdout-german-24",
+      "split": "holdout",
+      "stratum": "german",
+      "language": "de",
+      "domain": "torsoAssembly",
+      "theme": "space",
+      "query": "Oberkörper mit hellgelben Händen",
+      "paraphraseGroup": "paraphrase:holdout:de-torso-arms",
+      "proposedIntent": {
+        "componentId": "ff03-torso-973c01h01",
+        "reason": "yellow-arm torso"
+      },
+      "reviewStatus": "pending-human-relevance-review"
+    },
+    {
+      "id": "ff21-holdout-german-25",
+      "split": "holdout",
+      "stratum": "german",
+      "language": "de",
+      "domain": "legsAssembly",
+      "theme": "everyday",
+      "query": "ungeprintete Beinbaugruppe",
+      "paraphraseGroup": "paraphrase:holdout:de-legs-plain",
+      "proposedIntent": {
+        "componentId": "ff03-legs-970c01",
+        "reason": "plain legs"
+      },
+      "reviewStatus": "pending-human-relevance-review"
+    },
+    {
+      "id": "ff21-holdout-german-26",
+      "split": "holdout",
+      "stratum": "german",
+      "language": "de",
+      "domain": "legsAssembly",
+      "theme": "fantasy",
+      "query": "Beinbaugruppe mit dunkler Markierung",
+      "paraphraseGroup": "paraphrase:holdout:de-legs-printed",
+      "proposedIntent": {
+        "componentId": "ff03-legs-970c01pr0001",
+        "reason": "printed legs"
+      },
+      "reviewStatus": "pending-human-relevance-review"
+    },
+    {
+      "id": "ff21-holdout-german-27",
+      "split": "holdout",
+      "stratum": "german",
+      "language": "de",
+      "domain": "handAccessory",
+      "theme": "space",
+      "query": "kleines Klinge für die Hand",
+      "paraphraseGroup": "paraphrase:holdout:de-sword-small",
+      "proposedIntent": {
+        "componentId": "ff03-hand-10053",
+        "reason": "small sword"
+      },
+      "reviewStatus": "pending-human-relevance-review"
+    },
+    {
+      "id": "ff21-holdout-german-28",
+      "split": "holdout",
+      "stratum": "german",
+      "language": "de",
+      "domain": "handAccessory",
+      "theme": "everyday",
+      "query": "Klinge mit gezackten Kanten",
+      "paraphraseGroup": "paraphrase:holdout:de-sword-jagged",
+      "proposedIntent": {
+        "componentId": "ff03-hand-11439",
+        "reason": "jagged sword"
+      },
+      "reviewStatus": "pending-human-relevance-review"
+    },
+    {
+      "id": "ff21-holdout-german-29",
+      "split": "holdout",
+      "stratum": "german",
+      "language": "de",
+      "domain": "handAccessory",
+      "theme": "fantasy",
+      "query": "Pickelwerkzeug in Perl Gold",
+      "paraphraseGroup": "paraphrase:holdout:de-pickaxe",
+      "proposedIntent": {
+        "componentId": "ff03-hand-3841",
+        "reason": "pickaxe"
+      },
+      "reviewStatus": "pending-human-relevance-review"
+    },
+    {
+      "id": "ff21-holdout-german-30",
+      "split": "holdout",
+      "stratum": "german",
+      "language": "de",
+      "domain": "head",
+      "theme": "space",
+      "query": "hellgelber Minifigurenkopf mit offenem Lächeln",
+      "paraphraseGroup": "paraphrase:holdout:de-head-smile",
+      "proposedIntent": {
+        "componentId": "ff03-head-3626cpr0008",
+        "reason": "printed head"
+      },
+      "reviewStatus": "pending-human-relevance-review"
+    },
+    {
+      "id": "ff21-holdout-english-01",
+      "split": "holdout",
+      "stratum": "english",
+      "language": "en",
+      "domain": "head",
+      "theme": "everyday",
+      "query": "unprinted dark minifig minifig face piece",
+      "paraphraseGroup": "paraphrase:holdout:en-head-plain",
+      "proposedIntent": {
+        "componentId": "ff03-head-3626c",
+        "reason": "plain head"
+      },
+      "reviewStatus": "pending-human-relevance-review"
+    },
+    {
+      "id": "ff21-holdout-english-02",
+      "split": "holdout",
+      "stratum": "english",
+      "language": "en",
+      "domain": "head",
+      "theme": "fantasy",
+      "query": "unprinted dark minifig face piece",
+      "paraphraseGroup": "paraphrase:holdout:en-head-plain",
+      "proposedIntent": {
+        "componentId": "ff03-head-3626c",
+        "reason": "plain head"
+      },
+      "reviewStatus": "pending-human-relevance-review"
+    },
+    {
+      "id": "ff21-holdout-english-03",
+      "split": "holdout",
+      "stratum": "english",
+      "language": "en",
+      "domain": "head",
+      "theme": "space",
+      "query": "standard grin bright yellow minifig face piece",
+      "paraphraseGroup": "paraphrase:holdout:en-head-grin",
+      "proposedIntent": {
+        "componentId": "ff03-head-3626cpr0001",
+        "reason": "grinning head"
+      },
+      "reviewStatus": "pending-human-relevance-review"
+    },
+    {
+      "id": "ff21-holdout-english-04",
+      "split": "holdout",
+      "stratum": "english",
+      "language": "en",
+      "domain": "head",
+      "theme": "everyday",
+      "query": "bright yellow minifig face piece with open smile",
+      "paraphraseGroup": "paraphrase:holdout:en-head-smile",
+      "proposedIntent": {
+        "componentId": "ff03-head-3626cpr0008",
+        "reason": "printed head"
+      },
+      "reviewStatus": "pending-human-relevance-review"
+    },
+    {
+      "id": "ff21-holdout-english-05",
+      "split": "holdout",
+      "stratum": "english",
+      "language": "en",
+      "domain": "headwear",
+      "theme": "fantasy",
+      "query": "tousled mid-length hairstyle",
+      "paraphraseGroup": "paraphrase:holdout:en-hair-tousled",
+      "proposedIntent": {
+        "componentId": "ff03-headwear-10048",
+        "reason": "tousled hair"
+      },
+      "reviewStatus": "pending-human-relevance-review"
+    },
+    {
+      "id": "ff21-holdout-english-06",
+      "split": "holdout",
+      "stratum": "english",
+      "language": "en",
+      "domain": "headwear",
+      "theme": "space",
+      "query": "wavy ponytail hairstyle",
+      "paraphraseGroup": "paraphrase:holdout:en-hair-pony",
+      "proposedIntent": {
+        "componentId": "ff03-headwear-25405",
+        "reason": "ponytail hair"
+      },
+      "reviewStatus": "pending-human-relevance-review"
+    },
+    {
+      "id": "ff21-holdout-english-07",
+      "split": "holdout",
+      "stratum": "english",
+      "language": "en",
+      "domain": "headwear",
+      "theme": "everyday",
+      "query": "short bob side part hairstyle",
+      "paraphraseGroup": "paraphrase:holdout:en-hair-bob",
+      "proposedIntent": {
+        "componentId": "ff03-headwear-36268",
+        "reason": "bob hair"
+      },
+      "reviewStatus": "pending-human-relevance-review"
+    },
+    {
+      "id": "ff21-holdout-english-08",
+      "split": "holdout",
+      "stratum": "english",
+      "language": "en",
+      "domain": "headwear",
+      "theme": "fantasy",
+      "query": "smooth dark hairstyle",
+      "paraphraseGroup": "paraphrase:holdout:en-hair-smooth",
+      "proposedIntent": {
+        "componentId": "ff03-headwear-3901",
+        "reason": "smooth hair"
+      },
+      "reviewStatus": "pending-human-relevance-review"
+    },
+    {
+      "id": "ff21-holdout-english-09",
+      "split": "holdout",
+      "stratum": "english",
+      "language": "en",
+      "domain": "torsoAssembly",
+      "theme": "space",
+      "query": "unprinted dark upper body",
+      "paraphraseGroup": "paraphrase:holdout:en-torso-plain",
+      "proposedIntent": {
+        "componentId": "ff03-torso-3814",
+        "reason": "plain torso"
+      },
+      "reviewStatus": "pending-human-relevance-review"
+    },
+    {
+      "id": "ff21-holdout-english-10",
+      "split": "holdout",
+      "stratum": "english",
+      "language": "en",
+      "domain": "torsoAssembly",
+      "theme": "everyday",
+      "query": "upper body with bright yellow arms and hands",
+      "paraphraseGroup": "paraphrase:holdout:en-torso-arms",
+      "proposedIntent": {
+        "componentId": "ff03-torso-973c01h01",
+        "reason": "yellow-arm torso"
+      },
+      "reviewStatus": "pending-human-relevance-review"
+    },
+    {
+      "id": "ff21-holdout-english-11",
+      "split": "holdout",
+      "stratum": "english",
+      "language": "en",
+      "domain": "legsAssembly",
+      "theme": "fantasy",
+      "query": "unprinted lower body",
+      "paraphraseGroup": "paraphrase:holdout:en-legs-plain",
+      "proposedIntent": {
+        "componentId": "ff03-legs-970c01",
+        "reason": "plain legs"
+      },
+      "reviewStatus": "pending-human-relevance-review"
+    },
+    {
+      "id": "ff21-holdout-english-12",
+      "split": "holdout",
+      "stratum": "english",
+      "language": "en",
+      "domain": "legsAssembly",
+      "theme": "space",
+      "query": "printed dark lower body",
+      "paraphraseGroup": "paraphrase:holdout:en-legs-printed",
+      "proposedIntent": {
+        "componentId": "ff03-legs-970c01pr0001",
+        "reason": "printed legs"
+      },
+      "reviewStatus": "pending-human-relevance-review"
+    },
+    {
+      "id": "ff21-holdout-english-13",
+      "split": "holdout",
+      "stratum": "english",
+      "language": "en",
+      "domain": "handAccessory",
+      "theme": "everyday",
+      "query": "small silver blade weapon",
+      "paraphraseGroup": "paraphrase:holdout:en-sword-small",
+      "proposedIntent": {
+        "componentId": "ff03-hand-10053",
+        "reason": "small sword"
+      },
+      "reviewStatus": "pending-human-relevance-review"
+    },
+    {
+      "id": "ff21-holdout-english-14",
+      "split": "holdout",
+      "stratum": "english",
+      "language": "en",
+      "domain": "handAccessory",
+      "theme": "fantasy",
+      "query": "jagged edge blade weapon",
+      "paraphraseGroup": "paraphrase:holdout:en-sword-jagged",
+      "proposedIntent": {
+        "componentId": "ff03-hand-11439",
+        "reason": "jagged sword"
+      },
+      "reviewStatus": "pending-human-relevance-review"
+    },
+    {
+      "id": "ff21-holdout-english-15",
+      "split": "holdout",
+      "stratum": "english",
+      "language": "en",
+      "domain": "handAccessory",
+      "theme": "space",
+      "query": "pearl gold mining tool",
+      "paraphraseGroup": "paraphrase:holdout:en-pickaxe",
+      "proposedIntent": {
+        "componentId": "ff03-hand-3841",
+        "reason": "pickaxe"
+      },
+      "reviewStatus": "pending-human-relevance-review"
+    },
+    {
+      "id": "ff21-holdout-english-16",
+      "split": "holdout",
+      "stratum": "english",
+      "language": "en",
+      "domain": "head",
+      "theme": "everyday",
+      "query": "minifig face piece with brown eyebrows",
+      "paraphraseGroup": "paraphrase:holdout:en-head-brows",
+      "proposedIntent": {
+        "componentId": "ff03-head-3626cpr0387",
+        "reason": "printed head"
+      },
+      "reviewStatus": "pending-human-relevance-review"
+    },
+    {
+      "id": "ff21-holdout-english-17",
+      "split": "holdout",
+      "stratum": "english",
+      "language": "en",
+      "domain": "head",
+      "theme": "fantasy",
+      "query": "scared smiling minifig face piece",
+      "paraphraseGroup": "paraphrase:holdout:en-head-scared",
+      "proposedIntent": {
+        "componentId": "ff03-head-3626cpr0495",
+        "reason": "printed head"
+      },
+      "reviewStatus": "pending-human-relevance-review"
+    },
+    {
+      "id": "ff21-holdout-english-18",
+      "split": "holdout",
+      "stratum": "english",
+      "language": "en",
+      "domain": "headwear",
+      "theme": "space",
+      "query": "hairstyle with side part",
+      "paraphraseGroup": "paraphrase:holdout:en-hair-side",
+      "proposedIntent": {
+        "componentId": "ff03-headwear-25409",
+        "reason": "side-part hair"
+      },
+      "reviewStatus": "pending-human-relevance-review"
+    },
+    {
+      "id": "ff21-holdout-english-19",
+      "split": "holdout",
+      "stratum": "english",
+      "language": "en",
+      "domain": "legsAssembly",
+      "theme": "everyday",
+      "query": "bright yellow marked lower body",
+      "paraphraseGroup": "paraphrase:holdout:en-legs-printed",
+      "proposedIntent": {
+        "componentId": "ff03-legs-970c01pr0001",
+        "reason": "printed legs"
+      },
+      "reviewStatus": "pending-human-relevance-review"
+    },
+    {
+      "id": "ff21-holdout-english-20",
+      "split": "holdout",
+      "stratum": "english",
+      "language": "en",
+      "domain": "handAccessory",
+      "theme": "fantasy",
+      "query": "short weapon blade weapon",
+      "paraphraseGroup": "paraphrase:holdout:en-sword-small",
+      "proposedIntent": {
+        "componentId": "ff03-hand-10053",
+        "reason": "small sword"
+      },
+      "reviewStatus": "pending-human-relevance-review"
+    },
+    {
+      "id": "ff21-holdout-typo-compound-01",
+      "split": "holdout",
+      "stratum": "typo-compound",
+      "language": "de",
+      "domain": "head",
+      "theme": "everyday",
+      "query": "ogerkopf Variante 1",
+      "paraphraseGroup": "paraphrase:holdout:typo-ogre-head",
+      "proposedIntent": {
+        "componentId": "ff03-head-3626c",
+        "reason": "Candidate intent is a draft for human review; spelling and compound behavior must be judged."
+      },
+      "reviewStatus": "pending-human-relevance-review"
+    },
+    {
+      "id": "ff21-holdout-typo-compound-02",
+      "split": "holdout",
+      "stratum": "typo-compound",
+      "language": "mixed",
+      "domain": "handAccessory",
+      "theme": "fantasy",
+      "query": "langesschwert Variante 2",
+      "paraphraseGroup": "paraphrase:holdout:typo-long-sword",
+      "proposedIntent": {
+        "componentId": "ff03-hand-10053",
+        "reason": "Candidate intent is a draft for human review; spelling and compound behavior must be judged."
+      },
+      "reviewStatus": "pending-human-relevance-review"
+    },
+    {
+      "id": "ff21-holdout-typo-compound-03",
+      "split": "holdout",
+      "stratum": "typo-compound",
+      "language": "de",
+      "domain": "headwear",
+      "theme": "space",
+      "query": "glatthaar Variante 3",
+      "paraphraseGroup": "paraphrase:holdout:typo-smooth-hair",
+      "proposedIntent": {
+        "componentId": "ff03-headwear-3901",
+        "reason": "Candidate intent is a draft for human review; spelling and compound behavior must be judged."
+      },
+      "reviewStatus": "pending-human-relevance-review"
+    },
+    {
+      "id": "ff21-holdout-typo-compound-04",
+      "split": "holdout",
+      "stratum": "typo-compound",
+      "language": "mixed",
+      "domain": "headwear",
+      "theme": "everyday",
+      "query": "pferdeschwanzhaar Variante 4",
+      "paraphraseGroup": "paraphrase:holdout:typo-ponytail",
+      "proposedIntent": {
+        "componentId": "ff03-headwear-25405",
+        "reason": "Candidate intent is a draft for human review; spelling and compound behavior must be judged."
+      },
+      "reviewStatus": "pending-human-relevance-review"
+    },
+    {
+      "id": "ff21-holdout-typo-compound-05",
+      "split": "holdout",
+      "stratum": "typo-compound",
+      "language": "de",
+      "domain": "handAccessory",
+      "theme": "fantasy",
+      "query": "spitzhacke Variante 5",
+      "paraphraseGroup": "paraphrase:holdout:typo-pickaxe",
+      "proposedIntent": {
+        "componentId": "ff03-hand-3841",
+        "reason": "Candidate intent is a draft for human review; spelling and compound behavior must be judged."
+      },
+      "reviewStatus": "pending-human-relevance-review"
+    },
+    {
+      "id": "ff21-holdout-typo-compound-06",
+      "split": "holdout",
+      "stratum": "typo-compound",
+      "language": "mixed",
+      "domain": "handAccessory",
+      "theme": "space",
+      "query": "zackenschwert Variante 6",
+      "paraphraseGroup": "paraphrase:holdout:typo-jagged-sword",
+      "proposedIntent": {
+        "componentId": "ff03-hand-11439",
+        "reason": "Candidate intent is a draft for human review; spelling and compound behavior must be judged."
+      },
+      "reviewStatus": "pending-human-relevance-review"
+    },
+    {
+      "id": "ff21-holdout-typo-compound-07",
+      "split": "holdout",
+      "stratum": "typo-compound",
+      "language": "de",
+      "domain": "head",
+      "theme": "everyday",
+      "query": "schwartzer kopf Variante 7",
+      "paraphraseGroup": "paraphrase:holdout:typo-black-head",
+      "proposedIntent": {
+        "componentId": "ff03-head-3626c",
+        "reason": "Candidate intent is a draft for human review; spelling and compound behavior must be judged."
+      },
+      "reviewStatus": "pending-human-relevance-review"
+    },
+    {
+      "id": "ff21-holdout-typo-compound-08",
+      "split": "holdout",
+      "stratum": "typo-compound",
+      "language": "mixed",
+      "domain": "torsoAssembly",
+      "theme": "fantasy",
+      "query": "gelbarmupper body",
+      "paraphraseGroup": "paraphrase:holdout:typo-yellow-arm-torso",
+      "proposedIntent": {
+        "componentId": "ff03-torso-973c01h01",
+        "reason": "Candidate intent is a draft for human review; spelling and compound behavior must be judged."
+      },
+      "reviewStatus": "pending-human-relevance-review"
+    },
+    {
+      "id": "ff21-holdout-typo-compound-09",
+      "split": "holdout",
+      "stratum": "typo-compound",
+      "language": "de",
+      "domain": "headwear",
+      "theme": "space",
+      "query": "haareseitenpartie Variante 9",
+      "paraphraseGroup": "paraphrase:holdout:typo-side-part",
+      "proposedIntent": {
+        "componentId": "ff03-headwear-25409",
+        "reason": "Candidate intent is a draft for human review; spelling and compound behavior must be judged."
+      },
+      "reviewStatus": "pending-human-relevance-review"
+    },
+    {
+      "id": "ff21-holdout-typo-compound-10",
+      "split": "holdout",
+      "stratum": "typo-compound",
+      "language": "mixed",
+      "domain": "handAccessory",
+      "theme": "everyday",
+      "query": "kleinesschwert Variante 10",
+      "paraphraseGroup": "paraphrase:holdout:typo-small-sword",
+      "proposedIntent": {
+        "componentId": "ff03-hand-10053",
+        "reason": "Candidate intent is a draft for human review; spelling and compound behavior must be judged."
+      },
+      "reviewStatus": "pending-human-relevance-review"
+    },
+    {
+      "id": "ff21-holdout-ambiguity-negation-01",
+      "split": "holdout",
+      "stratum": "ambiguity-negation",
+      "language": "de",
+      "domain": "head",
+      "theme": "everyday",
+      "query": "ohne Helm Variante 1",
+      "paraphraseGroup": "paraphrase:holdout:negation-no-helmet",
+      "proposedIntent": {
+        "componentId": "ff03-head-3626c",
+        "reason": "Ambiguous or negated intent is deliberately not converted into an automatic relevance label."
+      },
+      "reviewStatus": "pending-human-relevance-review"
+    },
+    {
+      "id": "ff21-holdout-ambiguity-negation-02",
+      "split": "holdout",
+      "stratum": "ambiguity-negation",
+      "language": "de",
+      "domain": "handAccessory",
+      "theme": "fantasy",
+      "query": "Schild Variante 2",
+      "paraphraseGroup": "paraphrase:holdout:ambiguity-shield",
+      "proposedIntent": {
+        "componentId": "ff03-hand-3841",
+        "reason": "Ambiguous or negated intent is deliberately not converted into an automatic relevance label."
+      },
+      "reviewStatus": "pending-human-relevance-review"
+    },
+    {
+      "id": "ff21-holdout-ambiguity-negation-03",
+      "split": "holdout",
+      "stratum": "ambiguity-negation",
+      "language": "de",
+      "domain": "headwear",
+      "theme": "space",
+      "query": "ohne dunkle Frisur",
+      "paraphraseGroup": "paraphrase:holdout:negation-no-black-hair",
+      "proposedIntent": {
+        "componentId": "ff03-headwear-3901",
+        "reason": "Ambiguous or negated intent is deliberately not converted into an automatic relevance label."
+      },
+      "reviewStatus": "pending-human-relevance-review"
+    },
+    {
+      "id": "ff21-holdout-ambiguity-negation-04",
+      "split": "holdout",
+      "stratum": "ambiguity-negation",
+      "language": "de",
+      "domain": "handAccessory",
+      "theme": "everyday",
+      "query": "Schild ohne Klinge",
+      "paraphraseGroup": "paraphrase:holdout:ambiguity-shield-sword",
+      "proposedIntent": {
+        "componentId": "ff03-hand-11439",
+        "reason": "Ambiguous or negated intent is deliberately not converted into an automatic relevance label."
+      },
+      "reviewStatus": "pending-human-relevance-review"
+    },
+    {
+      "id": "ff21-holdout-ambiguity-negation-05",
+      "split": "holdout",
+      "stratum": "ambiguity-negation",
+      "language": "de",
+      "domain": "head",
+      "theme": "fantasy",
+      "query": "Minifigurenkopf aber kein Helm",
+      "paraphraseGroup": "paraphrase:holdout:negation-head-no-helmet",
+      "proposedIntent": {
+        "componentId": "ff03-head-3626cpr0001",
+        "reason": "Ambiguous or negated intent is deliberately not converted into an automatic relevance label."
+      },
+      "reviewStatus": "pending-human-relevance-review"
+    },
+    {
+      "id": "ff21-holdout-ambiguity-negation-06",
+      "split": "holdout",
+      "stratum": "ambiguity-negation",
+      "language": "en",
+      "domain": "head",
+      "theme": "space",
+      "query": "not a head protection, find minifig face piece",
+      "paraphraseGroup": "paraphrase:holdout:negation-head-not-helmet",
+      "proposedIntent": {
+        "componentId": "ff03-head-3626c",
+        "reason": "Ambiguous or negated intent is deliberately not converted into an automatic relevance label."
+      },
+      "reviewStatus": "pending-human-relevance-review"
+    },
+    {
+      "id": "ff21-holdout-ambiguity-negation-07",
+      "split": "holdout",
+      "stratum": "ambiguity-negation",
+      "language": "en",
+      "domain": "handAccessory",
+      "theme": "everyday",
+      "query": "protective sign sign or hand protective sign",
+      "paraphraseGroup": "paraphrase:holdout:ambiguity-shield-en",
+      "proposedIntent": {
+        "componentId": "ff03-hand-3841",
+        "reason": "Ambiguous or negated intent is deliberately not converted into an automatic relevance label."
+      },
+      "reviewStatus": "pending-human-relevance-review"
+    },
+    {
+      "id": "ff21-holdout-ambiguity-negation-08",
+      "split": "holdout",
+      "stratum": "ambiguity-negation",
+      "language": "en",
+      "domain": "handAccessory",
+      "theme": "fantasy",
+      "query": "without blade weapon",
+      "paraphraseGroup": "paraphrase:holdout:negation-no-sword",
+      "proposedIntent": {
+        "componentId": "ff03-hand-10053",
+        "reason": "Ambiguous or negated intent is deliberately not converted into an automatic relevance label."
+      },
+      "reviewStatus": "pending-human-relevance-review"
+    },
+    {
+      "id": "ff21-holdout-ambiguity-negation-09",
+      "split": "holdout",
+      "stratum": "ambiguity-negation",
+      "language": "en",
+      "domain": "headwear",
+      "theme": "space",
+      "query": "no dark hairstyle",
+      "paraphraseGroup": "paraphrase:holdout:negation-no-black-hair-en",
+      "proposedIntent": {
+        "componentId": "ff03-headwear-3901",
+        "reason": "Ambiguous or negated intent is deliberately not converted into an automatic relevance label."
+      },
+      "reviewStatus": "pending-human-relevance-review"
+    },
+    {
+      "id": "ff21-holdout-ambiguity-negation-10",
+      "split": "holdout",
+      "stratum": "ambiguity-negation",
+      "language": "en",
+      "domain": "head",
+      "theme": "everyday",
+      "query": "unprinted minifig face piece not head protection",
+      "paraphraseGroup": "paraphrase:holdout:ambiguity-head-helmet",
+      "proposedIntent": {
+        "componentId": "ff03-head-3626c",
+        "reason": "Ambiguous or negated intent is deliberately not converted into an automatic relevance label."
+      },
+      "reviewStatus": "pending-human-relevance-review"
+    },
+    {
+      "id": "ff21-holdout-unfulfillable-01",
+      "split": "holdout",
+      "stratum": "unfulfillable",
+      "language": "en",
+      "domain": "head",
+      "theme": "everyday",
+      "query": "purple wyvern wing",
+      "paraphraseGroup": "paraphrase:holdout:unfulfillable-dragon",
+      "proposedIntent": null,
+      "reviewStatus": "pending-human-relevance-review"
+    },
+    {
+      "id": "ff21-holdout-unfulfillable-02",
+      "split": "holdout",
+      "stratum": "unfulfillable",
+      "language": "de",
+      "domain": "headwear",
+      "theme": "fantasy",
+      "query": "transparent space explorer cape",
+      "paraphraseGroup": "paraphrase:holdout:unfulfillable-cape",
+      "proposedIntent": null,
+      "reviewStatus": "pending-human-relevance-review"
+    },
+    {
+      "id": "ff21-holdout-unfulfillable-03",
+      "split": "holdout",
+      "stratum": "unfulfillable",
+      "language": "en",
+      "domain": "torsoAssembly",
+      "theme": "space",
+      "query": "wooden minifig beard Variante 3",
+      "paraphraseGroup": "paraphrase:holdout:unfulfillable-beard",
+      "proposedIntent": null,
+      "reviewStatus": "pending-human-relevance-review"
+    },
+    {
+      "id": "ff21-holdout-unfulfillable-04",
+      "split": "holdout",
+      "stratum": "unfulfillable",
+      "language": "de",
+      "domain": "legsAssembly",
+      "theme": "everyday",
+      "query": "glowing crystal tail Variante 4",
+      "paraphraseGroup": "paraphrase:holdout:unfulfillable-tail",
+      "proposedIntent": null,
+      "reviewStatus": "pending-human-relevance-review"
+    },
+    {
+      "id": "ff21-holdout-unfulfillable-05",
+      "split": "holdout",
+      "stratum": "unfulfillable",
+      "language": "en",
+      "domain": "handAccessory",
+      "theme": "fantasy",
+      "query": "red laser blast effect Variante 5",
+      "paraphraseGroup": "paraphrase:holdout:unfulfillable-laser",
+      "proposedIntent": null,
+      "reviewStatus": "pending-human-relevance-review"
+    },
+    {
+      "id": "ff21-holdout-unfulfillable-06",
+      "split": "holdout",
+      "stratum": "unfulfillable",
+      "language": "de",
+      "domain": "head",
+      "theme": "space",
+      "query": "blue alien tentacle minifig face piece",
+      "paraphraseGroup": "paraphrase:holdout:unfulfillable-alien",
+      "proposedIntent": null,
+      "reviewStatus": "pending-human-relevance-review"
+    },
+    {
+      "id": "ff21-holdout-unfulfillable-07",
+      "split": "holdout",
+      "stratum": "unfulfillable",
+      "language": "en",
+      "domain": "headwear",
+      "theme": "everyday",
+      "query": "golden mage robe",
+      "paraphraseGroup": "paraphrase:holdout:unfulfillable-robe",
+      "proposedIntent": null,
+      "reviewStatus": "pending-human-relevance-review"
+    },
+    {
+      "id": "ff21-holdout-unfulfillable-08",
+      "split": "holdout",
+      "stratum": "unfulfillable",
+      "language": "de",
+      "domain": "torsoAssembly",
+      "theme": "fantasy",
+      "query": "invisible protective sign",
+      "paraphraseGroup": "paraphrase:holdout:unfulfillable-invisible-shield",
+      "proposedIntent": null,
+      "reviewStatus": "pending-human-relevance-review"
+    },
+    {
+      "id": "ff21-holdout-unfulfillable-09",
+      "split": "holdout",
+      "stratum": "unfulfillable",
+      "language": "en",
+      "domain": "legsAssembly",
+      "theme": "space",
+      "query": "mechanical android wing",
+      "paraphraseGroup": "paraphrase:holdout:unfulfillable-robot-wing",
+      "proposedIntent": null,
+      "reviewStatus": "pending-human-relevance-review"
+    },
+    {
+      "id": "ff21-holdout-unfulfillable-10",
+      "split": "holdout",
+      "stratum": "unfulfillable",
+      "language": "de",
+      "domain": "handAccessory",
+      "theme": "everyday",
+      "query": "rainbow prehistoric creature head protection",
+      "paraphraseGroup": "paraphrase:holdout:unfulfillable-dinosaur",
+      "proposedIntent": null,
+      "reviewStatus": "pending-human-relevance-review"
+    }
+  ]
+}

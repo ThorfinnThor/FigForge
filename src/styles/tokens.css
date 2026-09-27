@@ -1,0 +1,31 @@
+:root {
+  --bg-app: #f5f6f4;
+  --surface: #ffffff;
+  --surface-soft: #eff2ef;
+  --text-primary: #11191d;
+  --text-secondary: #56636a;
+  --border-subtle: #dde3de;
+  --border-control: #7a8781;
+  --green: #087f63;
+  --green-hover: #06684f;
+  --green-soft: #e5f3ec;
+  --lime: #d5ff45;
+  --lime-soft: #f2f8d7;
+  --warning: #9a4b10;
+  --warning-bg: #fff4de;
+  --danger: #b42318;
+  --focus: #087f63;
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --shadow-panel: 0 6px 24px rgb(17 25 29 / 5%);
+  --shadow-float: 0 12px 36px rgb(17 25 29 / 12%);
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 20px;
+  --space-6: 24px;
+  --space-8: 32px;
+  --space-12: 48px;
+}

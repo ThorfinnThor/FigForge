@@ -1,0 +1,64 @@
+{
+  "profileId": "compact-minilm",
+  "schemaVersion": 1,
+  "catalogVersion": "0cc01906351678ef9113d6a69cfd57359fa19d9a0eed4d1c8d0c1f4e69eae9bd",
+  "upstreamModelId": "sentence-transformers/all-MiniLM-L6-v2",
+  "exportRepository": "Xenova/all-MiniLM-L6-v2",
+  "modelRevision": "751bff37182d3f1213fa05d7196b954e230abad9",
+  "onnxSha256": "afdb6f1a0e45b715d0bb9b11772f032c399babd23bfc31fed1c170afc848bdb1",
+  "runtimeVersion": "@huggingface/transformers@4.3.0",
+  "tokenizerRevision": "751bff37182d3f1213fa05d7196b954e230abad9",
+  "tokenizerSha256": "da0e79933b9ed51798a3ae27893d3c5fa4a201126cef75586296df9b4d2c62a0",
+  "quantization": "int8",
+  "embeddingDimension": 384,
+  "pooling": "mean-with-attention-mask",
+  "normalize": true,
+  "maxTokens": 256,
+  "queryPrefix": "",
+  "documentPrefix": "",
+  "queryNormalizerVersion": "de-en-domain-v1",
+  "documentSchemaVersion": "catalog-name-category-color-v1",
+  "indexDtype": "float32-le",
+  "indexSha256": "7f19cebb279f29cf5a293f30a8588f46232a158fc236b9e6164f398b7b63ad15",
+  "orderedVariantIdsSha256": "b2dbabbf2a62ad3754a370624361b7c6c01dc77ec42610f8375f61438fb83a82",
+  "documentCount": 17,
+  "indexByteLength": 26112,
+  "requiredFiles": [
+    {
+      "path": "config.json",
+      "byteLength": 650,
+      "sha256": "7135149f7cffa1a573466c6e4d8423ed73b62fd2332c575bf738a0d033f70df7",
+      "url": "https://huggingface.co/Xenova/all-MiniLM-L6-v2/resolve/751bff37182d3f1213fa05d7196b954e230abad9/config.json"
+    },
+    {
+      "path": "onnx/model_int8.onnx",
+      "byteLength": 22972370,
+      "sha256": "afdb6f1a0e45b715d0bb9b11772f032c399babd23bfc31fed1c170afc848bdb1",
+      "url": "https://huggingface.co/Xenova/all-MiniLM-L6-v2/resolve/751bff37182d3f1213fa05d7196b954e230abad9/onnx/model_int8.onnx"
+    },
+    {
+      "path": "special_tokens_map.json",
+      "byteLength": 125,
+      "sha256": "b6d346be366a7d1d48332dbc9fdf3bf8960b5d879522b7799ddba59e76237ee3",
+      "url": "https://huggingface.co/Xenova/all-MiniLM-L6-v2/resolve/751bff37182d3f1213fa05d7196b954e230abad9/special_tokens_map.json"
+    },
+    {
+      "path": "tokenizer.json",
+      "byteLength": 711661,
+      "sha256": "da0e79933b9ed51798a3ae27893d3c5fa4a201126cef75586296df9b4d2c62a0",
+      "url": "https://huggingface.co/Xenova/all-MiniLM-L6-v2/resolve/751bff37182d3f1213fa05d7196b954e230abad9/tokenizer.json"
+    },
+    {
+      "path": "tokenizer_config.json",
+      "byteLength": 366,
+      "sha256": "9261e7d79b44c8195c1cada2b453e55b00aeb81e907a6664974b4d7776172ab3",
+      "url": "https://huggingface.co/Xenova/all-MiniLM-L6-v2/resolve/751bff37182d3f1213fa05d7196b954e230abad9/tokenizer_config.json"
+    },
+    {
+      "path": "vocab.txt",
+      "byteLength": 231508,
+      "sha256": "07eced375cec144d27c900241f3e339478dec958f92fddbc551f295c992038a3",
+      "url": "https://huggingface.co/Xenova/all-MiniLM-L6-v2/resolve/751bff37182d3f1213fa05d7196b954e230abad9/vocab.txt"
+    }
+  ]
+}

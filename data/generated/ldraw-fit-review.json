@@ -1,0 +1,1109 @@
+{
+  "schemaVersion": 1,
+  "ticket": "FF-05/FF-16-LDraw-preflight",
+  "generatedAt": "2026-09-27",
+  "sourcePolicy": "Nur Rebrickable Catalog Downloads/CSV, keine MOC-Dateien.",
+  "prototypeOnly": true,
+  "publishable": false,
+  "sourceHashes": {
+    "mappingSha256": "cec0ca97e4b3ed6939b0d854c666634aa31ea18592472ba8228a7d0c4074039a",
+    "thumbnailIndexSha256": "f159ee3a71c64490638ec8cce71898fdf91ad401fcacee943709dc9b14ce367e",
+    "prototypeModelSha256": "cae221929004908c43eb9be7663bf725867b708f80558d2ccc80bf69ffb4d98f",
+    "materialsSha256": "0178cd14fba46acb9df049c835e60e223b134d178f7e928ace0be1dfbe78895d"
+  },
+  "entries": [
+    {
+      "id": "fit-review:ff03-head-3626c",
+      "componentId": "ff03-head-3626c",
+      "rebrickablePartNum": "3626c",
+      "role": "head",
+      "allowedSlots": [
+        "head"
+      ],
+      "ldrawFile": "parts/3626c.dat",
+      "ldrawUpdate": "2022-05",
+      "sourceUrl": "https://library.ldraw.org/parts/list?tableSearch=3626c",
+      "sourceFileSha256": "538729132df1cd01bd1811c0dbac5a1bbda5d11d9cfb755797401c19641a6657",
+      "packedModelUrl": "/assets/ldraw/catalog/models/ff03-head-3626c.mpd",
+      "packedModelSha256": "11fc782612f7ec63a7940f20718e68a5357463ea9adc19ee081579d5bd32e6af",
+      "geometry": {
+        "loadStatus": "passed",
+        "meshCount": 1,
+        "triangleCount": 544,
+        "vertexCount": 1632,
+        "boundsLdu": {
+          "min": [
+            -13,
+            -4,
+            -13
+          ],
+          "max": [
+            13,
+            24,
+            13
+          ],
+          "size": [
+            26,
+            28,
+            26
+          ]
+        }
+      },
+      "placement": {
+        "mode": "prototype-family-origin",
+        "status": "candidate-only",
+        "referencePartFile": "3626cpcbe.dat",
+        "transformLdu": [
+          1,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          -24,
+          0,
+          1
+        ],
+        "evidence": "Transform extracted from the local reference assembly; it is a review candidate, not physical fit proof."
+      },
+      "preflightStatus": "ready-for-human-fit-review",
+      "compatibilityDecision": "blocked",
+      "humanReview": {
+        "status": "pending",
+        "requiredChecks": [
+          "Confirm seating and rotation on the physical reference torso neck stud.",
+          "Confirm clearance with all three reviewed headwear candidates.",
+          "Record reviewer, date and photo or measurement reference."
+        ],
+        "reviewer": null,
+        "reviewedAt": null,
+        "evidenceReference": null,
+        "blocker": "Physical fit, retention and collision review has not been performed by a human reviewer."
+      }
+    },
+    {
+      "id": "fit-review:ff03-head-3626cpr0001",
+      "componentId": "ff03-head-3626cpr0001",
+      "rebrickablePartNum": "3626cpr0001",
+      "role": "head",
+      "allowedSlots": [
+        "head"
+      ],
+      "ldrawFile": "parts/3626cp01.dat",
+      "ldrawUpdate": "2024-07",
+      "sourceUrl": "https://library.ldraw.org/parts/list?tableSearch=3626cpr0001",
+      "sourceFileSha256": "0634368409e8aaf90c315dde09ce98906f82fac11bd9dfd7dbad1126022b72b9",
+      "packedModelUrl": "/assets/ldraw/catalog/models/ff03-head-3626cpr0001.mpd",
+      "packedModelSha256": "1453add3a37cd9f36d70c1e8ced90841330482939a229325ba715fd4f07dce78",
+      "geometry": {
+        "loadStatus": "passed",
+        "meshCount": 1,
+        "triangleCount": 652,
+        "vertexCount": 1956,
+        "boundsLdu": {
+          "min": [
+            -13,
+            -4,
+            -13
+          ],
+          "max": [
+            13,
+            24,
+            13
+          ],
+          "size": [
+            26,
+            28,
+            26
+          ]
+        }
+      },
+      "placement": {
+        "mode": "prototype-family-origin",
+        "status": "candidate-only",
+        "referencePartFile": "3626cpcbe.dat",
+        "transformLdu": [
+          1,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          -24,
+          0,
+          1
+        ],
+        "evidence": "Transform extracted from the local reference assembly; it is a review candidate, not physical fit proof."
+      },
+      "preflightStatus": "ready-for-human-fit-review",
+      "compatibilityDecision": "blocked",
+      "humanReview": {
+        "status": "pending",
+        "requiredChecks": [
+          "Confirm seating and rotation on the physical reference torso neck stud.",
+          "Confirm clearance with all three reviewed headwear candidates.",
+          "Record reviewer, date and photo or measurement reference."
+        ],
+        "reviewer": null,
+        "reviewedAt": null,
+        "evidenceReference": null,
+        "blocker": "Physical fit, retention and collision review has not been performed by a human reviewer."
+      }
+    },
+    {
+      "id": "fit-review:ff03-head-3626cpr0387",
+      "componentId": "ff03-head-3626cpr0387",
+      "rebrickablePartNum": "3626cpr0387",
+      "role": "head",
+      "allowedSlots": [
+        "head"
+      ],
+      "ldrawFile": "parts/3626cp7h.dat",
+      "ldrawUpdate": "2025-09",
+      "sourceUrl": "https://library.ldraw.org/parts/list?tableSearch=3626cpr0387",
+      "sourceFileSha256": "aaa85b76e6f7bbcb683a7aba810fba508c89e0fe985a4a1867d82fffeb3b30ae",
+      "packedModelUrl": "/assets/ldraw/catalog/models/ff03-head-3626cpr0387.mpd",
+      "packedModelSha256": "51494d7ebd3a93b28e3667db4bc9bc9679e52bd6b54f343e2ca4baa5a853c312",
+      "geometry": {
+        "loadStatus": "passed",
+        "meshCount": 1,
+        "triangleCount": 1060,
+        "vertexCount": 3180,
+        "boundsLdu": {
+          "min": [
+            -13,
+            -4,
+            -13
+          ],
+          "max": [
+            13,
+            24,
+            13
+          ],
+          "size": [
+            26,
+            28,
+            26
+          ]
+        }
+      },
+      "placement": {
+        "mode": "prototype-family-origin",
+        "status": "candidate-only",
+        "referencePartFile": "3626cpcbe.dat",
+        "transformLdu": [
+          1,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          -24,
+          0,
+          1
+        ],
+        "evidence": "Transform extracted from the local reference assembly; it is a review candidate, not physical fit proof."
+      },
+      "preflightStatus": "ready-for-human-fit-review",
+      "compatibilityDecision": "blocked",
+      "humanReview": {
+        "status": "pending",
+        "requiredChecks": [
+          "Confirm seating and rotation on the physical reference torso neck stud.",
+          "Confirm clearance with all three reviewed headwear candidates.",
+          "Record reviewer, date and photo or measurement reference."
+        ],
+        "reviewer": null,
+        "reviewedAt": null,
+        "evidenceReference": null,
+        "blocker": "Physical fit, retention and collision review has not been performed by a human reviewer."
+      }
+    },
+    {
+      "id": "fit-review:ff03-headwear-10048",
+      "componentId": "ff03-headwear-10048",
+      "rebrickablePartNum": "10048",
+      "role": "headwear",
+      "allowedSlots": [
+        "headwear"
+      ],
+      "ldrawFile": "parts/10048.dat",
+      "ldrawUpdate": "2013-01",
+      "sourceUrl": "https://library.ldraw.org/parts/list?tableSearch=10048",
+      "sourceFileSha256": "15f35afd2a835254e925386a9cc55d0091f69bf4a85b801c77f4b2abe576e0d5",
+      "packedModelUrl": "/assets/ldraw/catalog/models/ff03-headwear-10048.mpd",
+      "packedModelSha256": "b21f7957dfeae682319016e691745461f768436067fc3493a4e3912bd7e02507",
+      "geometry": {
+        "loadStatus": "passed",
+        "meshCount": 1,
+        "triangleCount": 1736,
+        "vertexCount": 5208,
+        "boundsLdu": {
+          "min": [
+            -18.291,
+            -10.391,
+            -15.433
+          ],
+          "max": [
+            18.491,
+            22.639,
+            18.945
+          ],
+          "size": [
+            36.782,
+            33.03,
+            34.378
+          ]
+        }
+      },
+      "placement": {
+        "mode": "prototype-family-origin",
+        "status": "candidate-only",
+        "referencePartFile": "25409.dat",
+        "transformLdu": [
+          1,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          -24,
+          0,
+          1
+        ],
+        "evidence": "Transform extracted from the local reference assembly; it is a review candidate, not physical fit proof."
+      },
+      "preflightStatus": "ready-for-human-fit-review",
+      "compatibilityDecision": "blocked",
+      "humanReview": {
+        "status": "pending",
+        "requiredChecks": [
+          "Confirm stud engagement, retention and removal on each reviewed physical head.",
+          "Confirm no visible collision or unintended gap around the head.",
+          "Record reviewer, date and photo or measurement reference."
+        ],
+        "reviewer": null,
+        "reviewedAt": null,
+        "evidenceReference": null,
+        "blocker": "Physical fit, retention and collision review has not been performed by a human reviewer."
+      }
+    },
+    {
+      "id": "fit-review:ff03-headwear-25409",
+      "componentId": "ff03-headwear-25409",
+      "rebrickablePartNum": "25409",
+      "role": "headwear",
+      "allowedSlots": [
+        "headwear"
+      ],
+      "ldrawFile": "parts/25409.dat",
+      "ldrawUpdate": "2026-03",
+      "sourceUrl": "https://library.ldraw.org/parts/list?tableSearch=25409",
+      "sourceFileSha256": "fc23e337fc8cfed6025d5660b61bfbfcb0e86e65c651750610286e01bee79501",
+      "packedModelUrl": "/assets/ldraw/catalog/models/ff03-headwear-25409.mpd",
+      "packedModelSha256": "c23bb6bc46ca997c2a2ddaaf65372c4f3796ef8d9dae585ad055373eef3cb3bf",
+      "geometry": {
+        "loadStatus": "passed",
+        "meshCount": 1,
+        "triangleCount": 2230,
+        "vertexCount": 6690,
+        "boundsLdu": {
+          "min": [
+            -17.877,
+            -11.939,
+            -16.55
+          ],
+          "max": [
+            19.311,
+            23.38,
+            19.151
+          ],
+          "size": [
+            37.188,
+            35.319,
+            35.701
+          ]
+        }
+      },
+      "placement": {
+        "mode": "prototype-family-origin",
+        "status": "candidate-only",
+        "referencePartFile": "25409.dat",
+        "transformLdu": [
+          1,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          -24,
+          0,
+          1
+        ],
+        "evidence": "Transform extracted from the local reference assembly; it is a review candidate, not physical fit proof."
+      },
+      "preflightStatus": "ready-for-human-fit-review",
+      "compatibilityDecision": "blocked",
+      "humanReview": {
+        "status": "pending",
+        "requiredChecks": [
+          "Confirm stud engagement, retention and removal on each reviewed physical head.",
+          "Confirm no visible collision or unintended gap around the head.",
+          "Record reviewer, date and photo or measurement reference."
+        ],
+        "reviewer": null,
+        "reviewedAt": null,
+        "evidenceReference": null,
+        "blocker": "Physical fit, retention and collision review has not been performed by a human reviewer."
+      }
+    },
+    {
+      "id": "fit-review:ff03-headwear-3901",
+      "componentId": "ff03-headwear-3901",
+      "rebrickablePartNum": "3901",
+      "role": "headwear",
+      "allowedSlots": [
+        "headwear"
+      ],
+      "ldrawFile": "parts/3901.dat",
+      "ldrawUpdate": "2012-03",
+      "sourceUrl": "https://library.ldraw.org/parts/list?tableSearch=3901",
+      "sourceFileSha256": "f5036d191f6ac8143029d5c2a2e7f8d64d02979ec0049c0b73cb7e420f36f554",
+      "packedModelUrl": "/assets/ldraw/catalog/models/ff03-headwear-3901.mpd",
+      "packedModelSha256": "405f62f290a9c15be77e4ddc87f6c06b404efdd25661168068f9980a45f823fc",
+      "geometry": {
+        "loadStatus": "passed",
+        "meshCount": 1,
+        "triangleCount": 695,
+        "vertexCount": 2085,
+        "boundsLdu": {
+          "min": [
+            -15.113,
+            -7.037,
+            -15.012
+          ],
+          "max": [
+            14.911,
+            17.034,
+            15.908
+          ],
+          "size": [
+            30.024,
+            24.071,
+            30.92
+          ]
+        }
+      },
+      "placement": {
+        "mode": "prototype-family-origin",
+        "status": "candidate-only",
+        "referencePartFile": "25409.dat",
+        "transformLdu": [
+          1,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          -24,
+          0,
+          1
+        ],
+        "evidence": "Transform extracted from the local reference assembly; it is a review candidate, not physical fit proof."
+      },
+      "preflightStatus": "ready-for-human-fit-review",
+      "compatibilityDecision": "blocked",
+      "humanReview": {
+        "status": "pending",
+        "requiredChecks": [
+          "Confirm stud engagement, retention and removal on each reviewed physical head.",
+          "Confirm no visible collision or unintended gap around the head.",
+          "Record reviewer, date and photo or measurement reference."
+        ],
+        "reviewer": null,
+        "reviewedAt": null,
+        "evidenceReference": null,
+        "blocker": "Physical fit, retention and collision review has not been performed by a human reviewer."
+      }
+    },
+    {
+      "id": "fit-review:ff03-torso-3814",
+      "componentId": "ff03-torso-3814",
+      "rebrickablePartNum": "3814",
+      "role": "torsoAssembly",
+      "allowedSlots": [
+        "torsoAssembly"
+      ],
+      "ldrawFile": "parts/973.dat",
+      "ldrawUpdate": "2009-01",
+      "sourceUrl": "https://library.ldraw.org/parts/14192",
+      "sourceFileSha256": "bc916535c228a21d472db6868c591d8e8c7a9c6340b300aba07a7ba22f972ad9",
+      "packedModelUrl": "/assets/ldraw/catalog/models/ff03-torso-3814.mpd",
+      "packedModelSha256": "7254822742cac6e76a237199e451753c57675e87e5f1abc6f7ec00924582ebe6",
+      "geometry": {
+        "loadStatus": "passed",
+        "meshCount": 1,
+        "triangleCount": 320,
+        "vertexCount": 960,
+        "boundsLdu": {
+          "min": [
+            -19,
+            -12,
+            -10
+          ],
+          "max": [
+            19,
+            32,
+            10
+          ],
+          "size": [
+            38,
+            44,
+            20
+          ]
+        }
+      },
+      "placement": {
+        "mode": "prototype-family-origin",
+        "status": "candidate-only",
+        "referencePartFile": "973c01.dat",
+        "transformLdu": [
+          1,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          1
+        ],
+        "evidence": "Transform extracted from the local reference assembly; it is a review candidate, not physical fit proof."
+      },
+      "preflightStatus": "blocked-incomplete-assembly",
+      "compatibilityDecision": "blocked",
+      "humanReview": {
+        "status": "blocked",
+        "requiredChecks": [
+          "Provide a complete torso sales-assembly model including arms and hands.",
+          "Confirm neck, arm, hand and leg interfaces on physical reference parts.",
+          "Record reviewer, date and photo or measurement reference."
+        ],
+        "reviewer": null,
+        "reviewedAt": null,
+        "evidenceReference": null,
+        "blocker": "Rebrickable 3814 maps to the torso shell 973.dat, not a complete torso assembly with arms and hands."
+      }
+    },
+    {
+      "id": "fit-review:ff03-hand-10053",
+      "componentId": "ff03-hand-10053",
+      "rebrickablePartNum": "10053",
+      "role": "handAccessory",
+      "allowedSlots": [
+        "leftHandAccessory",
+        "rightHandAccessory"
+      ],
+      "ldrawFile": "parts/10053.dat",
+      "ldrawUpdate": "2014-01",
+      "sourceUrl": "https://library.ldraw.org/parts/list?tableSearch=10053",
+      "sourceFileSha256": "6bd1664d50df8017f339bb0b91b8b204e56a3260defc70fe90c2fa9b883efa76",
+      "packedModelUrl": "/assets/ldraw/catalog/models/ff03-hand-10053.mpd",
+      "packedModelSha256": "c8119a76476b239444d3c59fa9dd3a0735bb7653eb7c9bb139de9d66825e49f6",
+      "geometry": {
+        "loadStatus": "passed",
+        "meshCount": 1,
+        "triangleCount": 354,
+        "vertexCount": 1062,
+        "boundsLdu": {
+          "min": [
+            -4.5,
+            -54.76,
+            -9.79
+          ],
+          "max": [
+            4.5,
+            14.16,
+            9.79
+          ],
+          "size": [
+            9,
+            68.92,
+            19.58
+          ]
+        }
+      },
+      "placement": {
+        "mode": "separate-unattached-inspection",
+        "status": "unavailable",
+        "referencePartFile": null,
+        "transformLdu": null,
+        "evidence": "The official accessory file has no part-specific hand transform; it remains separate until human grip review."
+      },
+      "preflightStatus": "ready-for-human-fit-review",
+      "compatibilityDecision": "blocked",
+      "humanReview": {
+        "status": "pending",
+        "requiredChecks": [
+          "Confirm grip diameter, insertion depth and rotation in both physical reference hands.",
+          "Confirm the hand is not overstressed and the accessory remains retained.",
+          "Record reviewer, date and photo or measurement reference."
+        ],
+        "reviewer": null,
+        "reviewedAt": null,
+        "evidenceReference": null,
+        "blocker": "Physical fit, retention and collision review has not been performed by a human reviewer."
+      }
+    },
+    {
+      "id": "fit-review:ff03-hand-11439",
+      "componentId": "ff03-hand-11439",
+      "rebrickablePartNum": "11439",
+      "role": "handAccessory",
+      "allowedSlots": [
+        "leftHandAccessory",
+        "rightHandAccessory"
+      ],
+      "ldrawFile": "parts/11439.dat",
+      "ldrawUpdate": "2023-03",
+      "sourceUrl": "https://library.ldraw.org/parts/list?tableSearch=11439",
+      "sourceFileSha256": "056b2b5f9602d8db424acd0e34b388328de8dca7a4797ef7d6e0062bf82239d1",
+      "packedModelUrl": "/assets/ldraw/catalog/models/ff03-hand-11439.mpd",
+      "packedModelSha256": "31037ff8a8b2d2d8562498f991ff59b15cb8fddd7574adf7130cc573dfea7b61",
+      "geometry": {
+        "loadStatus": "passed",
+        "meshCount": 1,
+        "triangleCount": 672,
+        "vertexCount": 2016,
+        "boundsLdu": {
+          "min": [
+            -4.5,
+            -104.5,
+            -9
+          ],
+          "max": [
+            4.5,
+            5,
+            9.256
+          ],
+          "size": [
+            9,
+            109.5,
+            18.256
+          ]
+        }
+      },
+      "placement": {
+        "mode": "separate-unattached-inspection",
+        "status": "unavailable",
+        "referencePartFile": null,
+        "transformLdu": null,
+        "evidence": "The official accessory file has no part-specific hand transform; it remains separate until human grip review."
+      },
+      "preflightStatus": "ready-for-human-fit-review",
+      "compatibilityDecision": "blocked",
+      "humanReview": {
+        "status": "pending",
+        "requiredChecks": [
+          "Confirm grip diameter, insertion depth and rotation in both physical reference hands.",
+          "Confirm the hand is not overstressed and the accessory remains retained.",
+          "Record reviewer, date and photo or measurement reference."
+        ],
+        "reviewer": null,
+        "reviewedAt": null,
+        "evidenceReference": null,
+        "blocker": "Physical fit, retention and collision review has not been performed by a human reviewer."
+      }
+    },
+    {
+      "id": "fit-review:ff03-hand-3841",
+      "componentId": "ff03-hand-3841",
+      "rebrickablePartNum": "3841",
+      "role": "handAccessory",
+      "allowedSlots": [
+        "leftHandAccessory",
+        "rightHandAccessory"
+      ],
+      "ldrawFile": "parts/3841.dat",
+      "ldrawUpdate": "2003-03",
+      "sourceUrl": "https://library.ldraw.org/parts/list?tableSearch=3841",
+      "sourceFileSha256": "645fa0242092a1583a1210c441cf9eec72b36742db403da077f9bd9e232a2978",
+      "packedModelUrl": "/assets/ldraw/catalog/models/ff03-hand-3841.mpd",
+      "packedModelSha256": "43f6db03ce3207db81430a83b4fc6a668a252d70697371a330e5f1f488432402",
+      "geometry": {
+        "loadStatus": "passed",
+        "meshCount": 1,
+        "triangleCount": 254,
+        "vertexCount": 762,
+        "boundsLdu": {
+          "min": [
+            -4,
+            -40,
+            -30
+          ],
+          "max": [
+            4,
+            42,
+            30
+          ],
+          "size": [
+            8,
+            82,
+            60
+          ]
+        }
+      },
+      "placement": {
+        "mode": "separate-unattached-inspection",
+        "status": "unavailable",
+        "referencePartFile": null,
+        "transformLdu": null,
+        "evidence": "The official accessory file has no part-specific hand transform; it remains separate until human grip review."
+      },
+      "preflightStatus": "ready-for-human-fit-review",
+      "compatibilityDecision": "blocked",
+      "humanReview": {
+        "status": "pending",
+        "requiredChecks": [
+          "Confirm grip diameter, insertion depth and rotation in both physical reference hands.",
+          "Confirm the hand is not overstressed and the accessory remains retained.",
+          "Record reviewer, date and photo or measurement reference."
+        ],
+        "reviewer": null,
+        "reviewedAt": null,
+        "evidenceReference": null,
+        "blocker": "Physical fit, retention and collision review has not been performed by a human reviewer."
+      }
+    }
+  ],
+  "reviewCases": [
+    {
+      "id": "fit-case:ff03-head-3626c:reference-torso",
+      "kind": "head-on-reference-torso",
+      "componentIds": [
+        "ff03-head-3626c"
+      ],
+      "slot": "head",
+      "referenceFiles": [
+        "parts/973c01.dat"
+      ],
+      "status": "pending-human-fit-review",
+      "requiredChecks": [
+        "Check seating, rotation and neck-stud retention.",
+        "Test with physical parts or an independently reliable fit reference.",
+        "Record reviewer, date and evidence reference before changing compatibility status."
+      ],
+      "result": null
+    },
+    {
+      "id": "fit-case:ff03-head-3626cpr0001:reference-torso",
+      "kind": "head-on-reference-torso",
+      "componentIds": [
+        "ff03-head-3626cpr0001"
+      ],
+      "slot": "head",
+      "referenceFiles": [
+        "parts/973c01.dat"
+      ],
+      "status": "pending-human-fit-review",
+      "requiredChecks": [
+        "Check seating, rotation and neck-stud retention.",
+        "Test with physical parts or an independently reliable fit reference.",
+        "Record reviewer, date and evidence reference before changing compatibility status."
+      ],
+      "result": null
+    },
+    {
+      "id": "fit-case:ff03-head-3626cpr0387:reference-torso",
+      "kind": "head-on-reference-torso",
+      "componentIds": [
+        "ff03-head-3626cpr0387"
+      ],
+      "slot": "head",
+      "referenceFiles": [
+        "parts/973c01.dat"
+      ],
+      "status": "pending-human-fit-review",
+      "requiredChecks": [
+        "Check seating, rotation and neck-stud retention.",
+        "Test with physical parts or an independently reliable fit reference.",
+        "Record reviewer, date and evidence reference before changing compatibility status."
+      ],
+      "result": null
+    },
+    {
+      "id": "fit-case:ff03-headwear-10048:ff03-head-3626c",
+      "kind": "headwear-on-head",
+      "componentIds": [
+        "ff03-headwear-10048",
+        "ff03-head-3626c"
+      ],
+      "slot": "headwear",
+      "referenceFiles": [
+        "parts/10048.dat",
+        "parts/3626c.dat"
+      ],
+      "status": "pending-human-fit-review",
+      "requiredChecks": [
+        "Check stud engagement, retention, collision and visible gap.",
+        "Test with physical parts or an independently reliable fit reference.",
+        "Record reviewer, date and evidence reference before changing compatibility status."
+      ],
+      "result": null
+    },
+    {
+      "id": "fit-case:ff03-headwear-10048:ff03-head-3626cpr0001",
+      "kind": "headwear-on-head",
+      "componentIds": [
+        "ff03-headwear-10048",
+        "ff03-head-3626cpr0001"
+      ],
+      "slot": "headwear",
+      "referenceFiles": [
+        "parts/10048.dat",
+        "parts/3626cp01.dat"
+      ],
+      "status": "pending-human-fit-review",
+      "requiredChecks": [
+        "Check stud engagement, retention, collision and visible gap.",
+        "Test with physical parts or an independently reliable fit reference.",
+        "Record reviewer, date and evidence reference before changing compatibility status."
+      ],
+      "result": null
+    },
+    {
+      "id": "fit-case:ff03-headwear-10048:ff03-head-3626cpr0387",
+      "kind": "headwear-on-head",
+      "componentIds": [
+        "ff03-headwear-10048",
+        "ff03-head-3626cpr0387"
+      ],
+      "slot": "headwear",
+      "referenceFiles": [
+        "parts/10048.dat",
+        "parts/3626cp7h.dat"
+      ],
+      "status": "pending-human-fit-review",
+      "requiredChecks": [
+        "Check stud engagement, retention, collision and visible gap.",
+        "Test with physical parts or an independently reliable fit reference.",
+        "Record reviewer, date and evidence reference before changing compatibility status."
+      ],
+      "result": null
+    },
+    {
+      "id": "fit-case:ff03-headwear-25409:ff03-head-3626c",
+      "kind": "headwear-on-head",
+      "componentIds": [
+        "ff03-headwear-25409",
+        "ff03-head-3626c"
+      ],
+      "slot": "headwear",
+      "referenceFiles": [
+        "parts/25409.dat",
+        "parts/3626c.dat"
+      ],
+      "status": "pending-human-fit-review",
+      "requiredChecks": [
+        "Check stud engagement, retention, collision and visible gap.",
+        "Test with physical parts or an independently reliable fit reference.",
+        "Record reviewer, date and evidence reference before changing compatibility status."
+      ],
+      "result": null
+    },
+    {
+      "id": "fit-case:ff03-headwear-25409:ff03-head-3626cpr0001",
+      "kind": "headwear-on-head",
+      "componentIds": [
+        "ff03-headwear-25409",
+        "ff03-head-3626cpr0001"
+      ],
+      "slot": "headwear",
+      "referenceFiles": [
+        "parts/25409.dat",
+        "parts/3626cp01.dat"
+      ],
+      "status": "pending-human-fit-review",
+      "requiredChecks": [
+        "Check stud engagement, retention, collision and visible gap.",
+        "Test with physical parts or an independently reliable fit reference.",
+        "Record reviewer, date and evidence reference before changing compatibility status."
+      ],
+      "result": null
+    },
+    {
+      "id": "fit-case:ff03-headwear-25409:ff03-head-3626cpr0387",
+      "kind": "headwear-on-head",
+      "componentIds": [
+        "ff03-headwear-25409",
+        "ff03-head-3626cpr0387"
+      ],
+      "slot": "headwear",
+      "referenceFiles": [
+        "parts/25409.dat",
+        "parts/3626cp7h.dat"
+      ],
+      "status": "pending-human-fit-review",
+      "requiredChecks": [
+        "Check stud engagement, retention, collision and visible gap.",
+        "Test with physical parts or an independently reliable fit reference.",
+        "Record reviewer, date and evidence reference before changing compatibility status."
+      ],
+      "result": null
+    },
+    {
+      "id": "fit-case:ff03-headwear-3901:ff03-head-3626c",
+      "kind": "headwear-on-head",
+      "componentIds": [
+        "ff03-headwear-3901",
+        "ff03-head-3626c"
+      ],
+      "slot": "headwear",
+      "referenceFiles": [
+        "parts/3901.dat",
+        "parts/3626c.dat"
+      ],
+      "status": "pending-human-fit-review",
+      "requiredChecks": [
+        "Check stud engagement, retention, collision and visible gap.",
+        "Test with physical parts or an independently reliable fit reference.",
+        "Record reviewer, date and evidence reference before changing compatibility status."
+      ],
+      "result": null
+    },
+    {
+      "id": "fit-case:ff03-headwear-3901:ff03-head-3626cpr0001",
+      "kind": "headwear-on-head",
+      "componentIds": [
+        "ff03-headwear-3901",
+        "ff03-head-3626cpr0001"
+      ],
+      "slot": "headwear",
+      "referenceFiles": [
+        "parts/3901.dat",
+        "parts/3626cp01.dat"
+      ],
+      "status": "pending-human-fit-review",
+      "requiredChecks": [
+        "Check stud engagement, retention, collision and visible gap.",
+        "Test with physical parts or an independently reliable fit reference.",
+        "Record reviewer, date and evidence reference before changing compatibility status."
+      ],
+      "result": null
+    },
+    {
+      "id": "fit-case:ff03-headwear-3901:ff03-head-3626cpr0387",
+      "kind": "headwear-on-head",
+      "componentIds": [
+        "ff03-headwear-3901",
+        "ff03-head-3626cpr0387"
+      ],
+      "slot": "headwear",
+      "referenceFiles": [
+        "parts/3901.dat",
+        "parts/3626cp7h.dat"
+      ],
+      "status": "pending-human-fit-review",
+      "requiredChecks": [
+        "Check stud engagement, retention, collision and visible gap.",
+        "Test with physical parts or an independently reliable fit reference.",
+        "Record reviewer, date and evidence reference before changing compatibility status."
+      ],
+      "result": null
+    },
+    {
+      "id": "fit-case:ff03-hand-10053:left",
+      "kind": "accessory-in-reference-hand",
+      "componentIds": [
+        "ff03-hand-10053"
+      ],
+      "slot": "leftHandAccessory",
+      "referenceFiles": [
+        "parts/10053.dat",
+        "parts/3820.dat"
+      ],
+      "status": "pending-human-fit-review",
+      "requiredChecks": [
+        "Check grip diameter, insertion depth, rotation, retention and hand stress.",
+        "Test with physical parts or an independently reliable fit reference.",
+        "Record reviewer, date and evidence reference before changing compatibility status."
+      ],
+      "result": null
+    },
+    {
+      "id": "fit-case:ff03-hand-10053:right",
+      "kind": "accessory-in-reference-hand",
+      "componentIds": [
+        "ff03-hand-10053"
+      ],
+      "slot": "rightHandAccessory",
+      "referenceFiles": [
+        "parts/10053.dat",
+        "parts/3820.dat"
+      ],
+      "status": "pending-human-fit-review",
+      "requiredChecks": [
+        "Check grip diameter, insertion depth, rotation, retention and hand stress.",
+        "Test with physical parts or an independently reliable fit reference.",
+        "Record reviewer, date and evidence reference before changing compatibility status."
+      ],
+      "result": null
+    },
+    {
+      "id": "fit-case:ff03-hand-11439:left",
+      "kind": "accessory-in-reference-hand",
+      "componentIds": [
+        "ff03-hand-11439"
+      ],
+      "slot": "leftHandAccessory",
+      "referenceFiles": [
+        "parts/11439.dat",
+        "parts/3820.dat"
+      ],
+      "status": "pending-human-fit-review",
+      "requiredChecks": [
+        "Check grip diameter, insertion depth, rotation, retention and hand stress.",
+        "Test with physical parts or an independently reliable fit reference.",
+        "Record reviewer, date and evidence reference before changing compatibility status."
+      ],
+      "result": null
+    },
+    {
+      "id": "fit-case:ff03-hand-11439:right",
+      "kind": "accessory-in-reference-hand",
+      "componentIds": [
+        "ff03-hand-11439"
+      ],
+      "slot": "rightHandAccessory",
+      "referenceFiles": [
+        "parts/11439.dat",
+        "parts/3820.dat"
+      ],
+      "status": "pending-human-fit-review",
+      "requiredChecks": [
+        "Check grip diameter, insertion depth, rotation, retention and hand stress.",
+        "Test with physical parts or an independently reliable fit reference.",
+        "Record reviewer, date and evidence reference before changing compatibility status."
+      ],
+      "result": null
+    },
+    {
+      "id": "fit-case:ff03-hand-3841:left",
+      "kind": "accessory-in-reference-hand",
+      "componentIds": [
+        "ff03-hand-3841"
+      ],
+      "slot": "leftHandAccessory",
+      "referenceFiles": [
+        "parts/3841.dat",
+        "parts/3820.dat"
+      ],
+      "status": "pending-human-fit-review",
+      "requiredChecks": [
+        "Check grip diameter, insertion depth, rotation, retention and hand stress.",
+        "Test with physical parts or an independently reliable fit reference.",
+        "Record reviewer, date and evidence reference before changing compatibility status."
+      ],
+      "result": null
+    },
+    {
+      "id": "fit-case:ff03-hand-3841:right",
+      "kind": "accessory-in-reference-hand",
+      "componentIds": [
+        "ff03-hand-3841"
+      ],
+      "slot": "rightHandAccessory",
+      "referenceFiles": [
+        "parts/3841.dat",
+        "parts/3820.dat"
+      ],
+      "status": "pending-human-fit-review",
+      "requiredChecks": [
+        "Check grip diameter, insertion depth, rotation, retention and hand stress.",
+        "Test with physical parts or an independently reliable fit reference.",
+        "Record reviewer, date and evidence reference before changing compatibility status."
+      ],
+      "result": null
+    },
+    {
+      "id": "fit-case:ff03-torso-3814:assembly-scope",
+      "kind": "torso-assembly-scope",
+      "componentIds": [
+        "ff03-torso-3814"
+      ],
+      "slot": "torsoAssembly",
+      "referenceFiles": [
+        "parts/973.dat",
+        "parts/973c01.dat"
+      ],
+      "status": "blocked-incomplete-assembly",
+      "requiredChecks": [
+        "Obtain a complete mapped torso assembly before physical fit review."
+      ],
+      "result": null
+    }
+  ],
+  "summary": {
+    "entryCount": 10,
+    "readyForHumanReviewCount": 9,
+    "blockedEntryCount": 1,
+    "pendingCaseCount": 18,
+    "blockedCaseCount": 1,
+    "verifiedFitCount": 0
+  },
+  "openBlockers": [
+    "No physical fit, retention or collision review has been recorded.",
+    "Accessory files contain no verified part-specific hand transforms and remain separately displayed.",
+    "Rebrickable 3814 maps only to the 973.dat torso shell, not a complete torso sales assembly.",
+    "All FF-16 catalog compatibility decisions remain blocked until curated human evidence is reviewed."
+  ]
+}

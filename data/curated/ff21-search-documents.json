@@ -1,0 +1,521 @@
+{
+  "schemaVersion": 1,
+  "ticket": "FF-21",
+  "updatedAt": "2026-09-27T16:30:00Z",
+  "sourcePolicy": "Nur Rebrickable Catalog Downloads/CSV, keine MOC-Dateien.",
+  "sourceAssortmentSha256": "12dd1dbf0cde990698ee703540656726990b346a9a570ed03835248887908717",
+  "normalizerVersion": "de-en-domain-v1",
+  "documentSchemaVersion": "catalog-name-category-color-v1",
+  "reviewStatus": "catalog-fields-verified; annotations-human-review-pending",
+  "documents": [
+    {
+      "id": "searchdoc:ff03-head-3626c",
+      "componentId": "ff03-head-3626c",
+      "rebrickablePartNum": "3626c",
+      "originalName": "Minifig Head [Plain] [Hollow Stud]",
+      "categoryName": "Minifig Heads",
+      "categoryRole": "head",
+      "colorName": "Black",
+      "catalogEvidenceIds": [
+        "evidence:parts:3626c",
+        "evidence:category:59"
+      ],
+      "englishText": "Minifig Head [Plain] [Hollow Stud]. Minifig Heads. Black.",
+      "annotation": {
+        "status": "catalog-derived",
+        "terms": [
+          "minifig",
+          "head",
+          "plain",
+          "hollow",
+          "stud",
+          "heads",
+          "black"
+        ],
+        "note": "Terms are copied or normalized from the Rebrickable catalog name, category, and locked color row; no shape, fit, or MOC claim is added."
+      }
+    },
+    {
+      "id": "searchdoc:ff03-head-3626cpr0001",
+      "componentId": "ff03-head-3626cpr0001",
+      "rebrickablePartNum": "3626cpr0001",
+      "originalName": "Minifig Head Standard Grin Print [Hollow Stud]",
+      "categoryName": "Minifig Heads",
+      "categoryRole": "head",
+      "colorName": "Yellow",
+      "catalogEvidenceIds": [
+        "evidence:parts:3626cpr0001",
+        "evidence:category:59"
+      ],
+      "englishText": "Minifig Head Standard Grin Print [Hollow Stud]. Minifig Heads. Yellow.",
+      "annotation": {
+        "status": "catalog-derived",
+        "terms": [
+          "minifig",
+          "head",
+          "standard",
+          "grin",
+          "print",
+          "hollow",
+          "stud",
+          "heads",
+          "yellow"
+        ],
+        "note": "Terms are copied or normalized from the Rebrickable catalog name, category, and locked color row; no shape, fit, or MOC claim is added."
+      }
+    },
+    {
+      "id": "searchdoc:ff03-head-3626cpr0008",
+      "componentId": "ff03-head-3626cpr0008",
+      "rebrickablePartNum": "3626cpr0008",
+      "originalName": "Minifig Head, Dark Brown Eyebrows, Open Sideways Smile with Dimples Print [Hollow Stud]",
+      "categoryName": "Minifig Heads",
+      "categoryRole": "head",
+      "colorName": "Yellow",
+      "catalogEvidenceIds": [
+        "evidence:parts:3626cpr0008",
+        "evidence:category:59"
+      ],
+      "englishText": "Minifig Head, Dark Brown Eyebrows, Open Sideways Smile with Dimples Print [Hollow Stud]. Minifig Heads. Yellow.",
+      "annotation": {
+        "status": "catalog-derived",
+        "terms": [
+          "minifig",
+          "head",
+          "dark",
+          "brown",
+          "eyebrows",
+          "open",
+          "sideways",
+          "smile",
+          "with",
+          "dimples",
+          "print",
+          "hollow",
+          "stud",
+          "heads",
+          "yellow"
+        ],
+        "note": "Terms are copied or normalized from the Rebrickable catalog name, category, and locked color row; no shape, fit, or MOC claim is added."
+      }
+    },
+    {
+      "id": "searchdoc:ff03-head-3626cpr0387",
+      "componentId": "ff03-head-3626cpr0387",
+      "rebrickablePartNum": "3626cpr0387",
+      "originalName": "Minifig Head, Brown Eyebrows, Thin Grin, Eyes with White Pupils Print",
+      "categoryName": "Minifig Heads",
+      "categoryRole": "head",
+      "colorName": "Yellow",
+      "catalogEvidenceIds": [
+        "evidence:parts:3626cpr0387",
+        "evidence:category:59"
+      ],
+      "englishText": "Minifig Head, Brown Eyebrows, Thin Grin, Eyes with White Pupils Print. Minifig Heads. Yellow.",
+      "annotation": {
+        "status": "catalog-derived",
+        "terms": [
+          "minifig",
+          "head",
+          "brown",
+          "eyebrows",
+          "thin",
+          "grin",
+          "eyes",
+          "with",
+          "white",
+          "pupils",
+          "print",
+          "heads",
+          "yellow"
+        ],
+        "note": "Terms are copied or normalized from the Rebrickable catalog name, category, and locked color row; no shape, fit, or MOC claim is added."
+      }
+    },
+    {
+      "id": "searchdoc:ff03-head-3626cpr0495",
+      "componentId": "ff03-head-3626cpr0495",
+      "rebrickablePartNum": "3626cpr0495",
+      "originalName": "Minifig Head, Brown Eyebrows Scared / Smiling Print [Hollow Stud]",
+      "categoryName": "Minifig Heads",
+      "categoryRole": "head",
+      "colorName": "Yellow",
+      "catalogEvidenceIds": [
+        "evidence:parts:3626cpr0495",
+        "evidence:category:59"
+      ],
+      "englishText": "Minifig Head, Brown Eyebrows Scared / Smiling Print [Hollow Stud]. Minifig Heads. Yellow.",
+      "annotation": {
+        "status": "catalog-derived",
+        "terms": [
+          "minifig",
+          "head",
+          "brown",
+          "eyebrows",
+          "scared",
+          "smiling",
+          "print",
+          "hollow",
+          "stud",
+          "heads",
+          "yellow"
+        ],
+        "note": "Terms are copied or normalized from the Rebrickable catalog name, category, and locked color row; no shape, fit, or MOC claim is added."
+      }
+    },
+    {
+      "id": "searchdoc:ff03-headwear-10048",
+      "componentId": "ff03-headwear-10048",
+      "rebrickablePartNum": "10048",
+      "originalName": "Hair Tousled, Mid-length",
+      "categoryName": "Minifig Headwear",
+      "categoryRole": "headwear",
+      "colorName": "Reddish Brown",
+      "catalogEvidenceIds": [
+        "evidence:parts:10048",
+        "evidence:category:65"
+      ],
+      "englishText": "Hair Tousled, Mid-length. Minifig Headwear. Reddish Brown.",
+      "annotation": {
+        "status": "catalog-derived",
+        "terms": [
+          "hair",
+          "tousled",
+          "mid-length",
+          "minifig",
+          "headwear",
+          "reddish",
+          "brown"
+        ],
+        "note": "Terms are copied or normalized from the Rebrickable catalog name, category, and locked color row; no shape, fit, or MOC claim is added."
+      }
+    },
+    {
+      "id": "searchdoc:ff03-headwear-25405",
+      "componentId": "ff03-headwear-25405",
+      "rebrickablePartNum": "25405",
+      "originalName": "Hair Wavy Ponytail with Long Bangs and Band [Plain]",
+      "categoryName": "Minifig Headwear",
+      "categoryRole": "headwear",
+      "colorName": "Flat Silver",
+      "catalogEvidenceIds": [
+        "evidence:parts:25405",
+        "evidence:category:65"
+      ],
+      "englishText": "Hair Wavy Ponytail with Long Bangs and Band [Plain]. Minifig Headwear. Flat Silver.",
+      "annotation": {
+        "status": "catalog-derived",
+        "terms": [
+          "hair",
+          "wavy",
+          "ponytail",
+          "with",
+          "long",
+          "bangs",
+          "and",
+          "band",
+          "plain",
+          "minifig",
+          "headwear",
+          "flat",
+          "silver"
+        ],
+        "note": "Terms are copied or normalized from the Rebrickable catalog name, category, and locked color row; no shape, fit, or MOC claim is added."
+      }
+    },
+    {
+      "id": "searchdoc:ff03-headwear-25409",
+      "componentId": "ff03-headwear-25409",
+      "rebrickablePartNum": "25409",
+      "originalName": "Hair Tousled Mid-Length with Side Part",
+      "categoryName": "Minifig Headwear",
+      "categoryRole": "headwear",
+      "colorName": "Bright Light Yellow",
+      "catalogEvidenceIds": [
+        "evidence:parts:25409",
+        "evidence:category:65"
+      ],
+      "englishText": "Hair Tousled Mid-Length with Side Part. Minifig Headwear. Bright Light Yellow.",
+      "annotation": {
+        "status": "catalog-derived",
+        "terms": [
+          "hair",
+          "tousled",
+          "mid-length",
+          "with",
+          "side",
+          "part",
+          "minifig",
+          "headwear",
+          "bright",
+          "light",
+          "yellow"
+        ],
+        "note": "Terms are copied or normalized from the Rebrickable catalog name, category, and locked color row; no shape, fit, or MOC claim is added."
+      }
+    },
+    {
+      "id": "searchdoc:ff03-headwear-36268",
+      "componentId": "ff03-headwear-36268",
+      "rebrickablePartNum": "36268",
+      "originalName": "Hair Short Bob Cut with Left Side Part",
+      "categoryName": "Minifig Headwear",
+      "categoryRole": "headwear",
+      "colorName": "Reddish Brown",
+      "catalogEvidenceIds": [
+        "evidence:parts:36268",
+        "evidence:category:65"
+      ],
+      "englishText": "Hair Short Bob Cut with Left Side Part. Minifig Headwear. Reddish Brown.",
+      "annotation": {
+        "status": "catalog-derived",
+        "terms": [
+          "hair",
+          "short",
+          "bob",
+          "cut",
+          "with",
+          "left",
+          "side",
+          "part",
+          "minifig",
+          "headwear",
+          "reddish",
+          "brown"
+        ],
+        "note": "Terms are copied or normalized from the Rebrickable catalog name, category, and locked color row; no shape, fit, or MOC claim is added."
+      }
+    },
+    {
+      "id": "searchdoc:ff03-headwear-3901",
+      "componentId": "ff03-headwear-3901",
+      "rebrickablePartNum": "3901",
+      "originalName": "Hair Smooth",
+      "categoryName": "Minifig Headwear",
+      "categoryRole": "headwear",
+      "colorName": "Black",
+      "catalogEvidenceIds": [
+        "evidence:parts:3901",
+        "evidence:category:65"
+      ],
+      "englishText": "Hair Smooth. Minifig Headwear. Black.",
+      "annotation": {
+        "status": "catalog-derived",
+        "terms": [
+          "hair",
+          "smooth",
+          "minifig",
+          "headwear",
+          "black"
+        ],
+        "note": "Terms are copied or normalized from the Rebrickable catalog name, category, and locked color row; no shape, fit, or MOC claim is added."
+      }
+    },
+    {
+      "id": "searchdoc:ff03-torso-3814",
+      "componentId": "ff03-torso-3814",
+      "rebrickablePartNum": "3814",
+      "originalName": "Torso [Plain]",
+      "categoryName": "Minifig Upper Body",
+      "categoryRole": "torsoAssembly",
+      "colorName": "Black",
+      "catalogEvidenceIds": [
+        "evidence:parts:3814",
+        "evidence:category:60"
+      ],
+      "englishText": "Torso [Plain]. Minifig Upper Body. Black.",
+      "annotation": {
+        "status": "catalog-derived",
+        "terms": [
+          "torso",
+          "plain",
+          "minifig",
+          "upper",
+          "body",
+          "black"
+        ],
+        "note": "Terms are copied or normalized from the Rebrickable catalog name, category, and locked color row; no shape, fit, or MOC claim is added."
+      }
+    },
+    {
+      "id": "searchdoc:ff03-torso-973c01h01",
+      "componentId": "ff03-torso-973c01h01",
+      "rebrickablePartNum": "973c01h01",
+      "originalName": "Torso, Yellow Arms and Hands [Plain]",
+      "categoryName": "Minifig Upper Body",
+      "categoryRole": "torsoAssembly",
+      "colorName": "Black",
+      "catalogEvidenceIds": [
+        "evidence:parts:973c01h01",
+        "evidence:category:60"
+      ],
+      "englishText": "Torso, Yellow Arms and Hands [Plain]. Minifig Upper Body. Black.",
+      "annotation": {
+        "status": "catalog-derived",
+        "terms": [
+          "torso",
+          "yellow",
+          "arms",
+          "and",
+          "hands",
+          "plain",
+          "minifig",
+          "upper",
+          "body",
+          "black"
+        ],
+        "note": "Terms are copied or normalized from the Rebrickable catalog name, category, and locked color row; no shape, fit, or MOC claim is added."
+      }
+    },
+    {
+      "id": "searchdoc:ff03-legs-970c01",
+      "componentId": "ff03-legs-970c01",
+      "rebrickablePartNum": "970c01",
+      "originalName": "Hips and Yellow Legs",
+      "categoryName": "Minifig Lower Body",
+      "categoryRole": "legsAssembly",
+      "colorName": "Light Bluish Gray",
+      "catalogEvidenceIds": [
+        "evidence:parts:970c01",
+        "evidence:category:61"
+      ],
+      "englishText": "Hips and Yellow Legs. Minifig Lower Body. Light Bluish Gray.",
+      "annotation": {
+        "status": "catalog-derived",
+        "terms": [
+          "hips",
+          "and",
+          "yellow",
+          "legs",
+          "minifig",
+          "lower",
+          "body",
+          "light",
+          "bluish",
+          "gray"
+        ],
+        "note": "Terms are copied or normalized from the Rebrickable catalog name, category, and locked color row; no shape, fit, or MOC claim is added."
+      }
+    },
+    {
+      "id": "searchdoc:ff03-legs-970c01pr0001",
+      "componentId": "ff03-legs-970c01pr0001",
+      "rebrickablePartNum": "970c01pr0001",
+      "originalName": "Hips and Yellow Legs with Black Markings Print",
+      "categoryName": "Minifig Lower Body",
+      "categoryRole": "legsAssembly",
+      "colorName": "Black",
+      "catalogEvidenceIds": [
+        "evidence:parts:970c01pr0001",
+        "evidence:category:61"
+      ],
+      "englishText": "Hips and Yellow Legs with Black Markings Print. Minifig Lower Body. Black.",
+      "annotation": {
+        "status": "catalog-derived",
+        "terms": [
+          "hips",
+          "and",
+          "yellow",
+          "legs",
+          "with",
+          "black",
+          "markings",
+          "print",
+          "minifig",
+          "lower",
+          "body"
+        ],
+        "note": "Terms are copied or normalized from the Rebrickable catalog name, category, and locked color row; no shape, fit, or MOC claim is added."
+      }
+    },
+    {
+      "id": "searchdoc:ff03-hand-10053",
+      "componentId": "ff03-hand-10053",
+      "rebrickablePartNum": "10053",
+      "originalName": "Weapon Sword Small",
+      "categoryName": "Minifig Shields, Weapons, & Tools",
+      "categoryRole": "handAccessory",
+      "colorName": "Flat Silver",
+      "catalogEvidenceIds": [
+        "evidence:parts:10053",
+        "evidence:category:73"
+      ],
+      "englishText": "Weapon Sword Small. Minifig Shields, Weapons, & Tools. Flat Silver.",
+      "annotation": {
+        "status": "catalog-derived",
+        "terms": [
+          "weapon",
+          "sword",
+          "small",
+          "minifig",
+          "shields",
+          "weapons",
+          "tools",
+          "flat",
+          "silver"
+        ],
+        "note": "Terms are copied or normalized from the Rebrickable catalog name, category, and locked color row; no shape, fit, or MOC claim is added."
+      }
+    },
+    {
+      "id": "searchdoc:ff03-hand-11439",
+      "componentId": "ff03-hand-11439",
+      "rebrickablePartNum": "11439",
+      "originalName": "Weapon Sword with Jagged Edges [Plain]",
+      "categoryName": "Minifig Shields, Weapons, & Tools",
+      "categoryRole": "handAccessory",
+      "colorName": "Trans-Neon Green",
+      "catalogEvidenceIds": [
+        "evidence:parts:11439",
+        "evidence:category:73"
+      ],
+      "englishText": "Weapon Sword with Jagged Edges [Plain]. Minifig Shields, Weapons, & Tools. Trans-Neon Green.",
+      "annotation": {
+        "status": "catalog-derived",
+        "terms": [
+          "weapon",
+          "sword",
+          "with",
+          "jagged",
+          "edges",
+          "plain",
+          "minifig",
+          "shields",
+          "weapons",
+          "tools",
+          "trans-neon",
+          "green"
+        ],
+        "note": "Terms are copied or normalized from the Rebrickable catalog name, category, and locked color row; no shape, fit, or MOC claim is added."
+      }
+    },
+    {
+      "id": "searchdoc:ff03-hand-3841",
+      "componentId": "ff03-hand-3841",
+      "rebrickablePartNum": "3841",
+      "originalName": "Tool Pickaxe",
+      "categoryName": "Minifig Shields, Weapons, & Tools",
+      "categoryRole": "handAccessory",
+      "colorName": "Pearl Gold",
+      "catalogEvidenceIds": [
+        "evidence:parts:3841",
+        "evidence:category:73"
+      ],
+      "englishText": "Tool Pickaxe. Minifig Shields, Weapons, & Tools. Pearl Gold.",
+      "annotation": {
+        "status": "catalog-derived",
+        "terms": [
+          "tool",
+          "pickaxe",
+          "minifig",
+          "shields",
+          "weapons",
+          "tools",
+          "pearl",
+          "gold"
+        ],
+        "note": "Terms are copied or normalized from the Rebrickable catalog name, category, and locked color row; no shape, fit, or MOC claim is added."
+      }
+    }
+  ]
+}

@@ -1,0 +1,69 @@
+{
+  "fixtureOnly": true,
+  "recipes": [
+    {
+      "id": "recipe:fixture:head",
+      "variantId": "variant:fixture:head",
+      "recipe": { "strategy": "single-item", "status": "verified", "lines": [{ "itemType": "P", "bricklinkItemId": "fixture-head", "bricklinkColorId": 1, "quantity": 1, "evidenceIds": ["evidence:fixture:head"] }] },
+      "catalogEvidenceIds": ["evidence:fixture:catalog-head"],
+      "blocker": null
+    },
+    {
+      "id": "recipe:fixture:hair",
+      "variantId": "variant:fixture:hair",
+      "recipe": { "strategy": "single-item", "status": "verified", "lines": [{ "itemType": "P", "bricklinkItemId": "fixture-hair", "bricklinkColorId": 2, "quantity": 1, "evidenceIds": ["evidence:fixture:hair"] }] },
+      "catalogEvidenceIds": ["evidence:fixture:catalog-hair"],
+      "blocker": null
+    },
+    {
+      "id": "recipe:fixture:torso-components",
+      "variantId": "variant:fixture:torso",
+      "recipe": {
+        "strategy": "components",
+        "status": "verified",
+        "lines": [
+          { "itemType": "P", "bricklinkItemId": "fixture-torso", "bricklinkColorId": 3, "quantity": 1, "evidenceIds": ["evidence:fixture:torso"] },
+          { "itemType": "P", "bricklinkItemId": "fixture-arm", "bricklinkColorId": 3, "quantity": 2, "evidenceIds": ["evidence:fixture:arm"] },
+          { "itemType": "P", "bricklinkItemId": "fixture-hand", "bricklinkColorId": 4, "quantity": 2, "evidenceIds": ["evidence:fixture:hand"] }
+        ]
+      },
+      "catalogEvidenceIds": ["evidence:fixture:catalog-torso"],
+      "blocker": null
+    },
+    {
+      "id": "recipe:fixture:legs-assembly",
+      "variantId": "variant:fixture:legs",
+      "recipe": { "strategy": "assembly", "status": "verified", "lines": [{ "itemType": "P", "bricklinkItemId": "fixture-legs-assembly", "bricklinkColorId": 5, "quantity": 1, "evidenceIds": ["evidence:fixture:legs"] }] },
+      "catalogEvidenceIds": ["evidence:fixture:catalog-legs"],
+      "blocker": null
+    },
+    {
+      "id": "recipe:fixture:tool",
+      "variantId": "variant:fixture:tool",
+      "recipe": { "strategy": "single-item", "status": "verified", "lines": [{ "itemType": "P", "bricklinkItemId": "fixture-tool", "bricklinkColorId": 6, "quantity": 1, "evidenceIds": ["evidence:fixture:tool"] }] },
+      "catalogEvidenceIds": ["evidence:fixture:catalog-tool"],
+      "blocker": null
+    }
+  ],
+  "selections": [
+    { "id": "selection:fixture:head", "slot": "head", "variantId": "variant:fixture:head", "recipeId": "recipe:fixture:head" },
+    { "id": "selection:fixture:hair", "slot": "headwear", "variantId": "variant:fixture:hair", "recipeId": "recipe:fixture:hair" },
+    { "id": "selection:fixture:torso", "slot": "torsoAssembly", "variantId": "variant:fixture:torso", "recipeId": "recipe:fixture:torso-components" },
+    { "id": "selection:fixture:legs", "slot": "legsAssembly", "variantId": "variant:fixture:legs", "recipeId": "recipe:fixture:legs-assembly" },
+    { "id": "selection:fixture:left-tool", "slot": "leftHandAccessory", "variantId": "variant:fixture:tool", "recipeId": "recipe:fixture:tool" },
+    { "id": "selection:fixture:right-tool", "slot": "rightHandAccessory", "variantId": "variant:fixture:tool", "recipeId": "recipe:fixture:tool" }
+  ],
+  "expectedPartsList": {
+    "status": "complete",
+    "lines": [
+      { "itemType": "P", "bricklinkItemId": "fixture-arm", "bricklinkColorId": 3, "quantity": 2, "evidenceIds": ["evidence:fixture:arm"], "sourceSelectionIds": ["selection:fixture:torso"] },
+      { "itemType": "P", "bricklinkItemId": "fixture-hair", "bricklinkColorId": 2, "quantity": 1, "evidenceIds": ["evidence:fixture:hair"], "sourceSelectionIds": ["selection:fixture:hair"] },
+      { "itemType": "P", "bricklinkItemId": "fixture-hand", "bricklinkColorId": 4, "quantity": 2, "evidenceIds": ["evidence:fixture:hand"], "sourceSelectionIds": ["selection:fixture:torso"] },
+      { "itemType": "P", "bricklinkItemId": "fixture-head", "bricklinkColorId": 1, "quantity": 1, "evidenceIds": ["evidence:fixture:head"], "sourceSelectionIds": ["selection:fixture:head"] },
+      { "itemType": "P", "bricklinkItemId": "fixture-legs-assembly", "bricklinkColorId": 5, "quantity": 1, "evidenceIds": ["evidence:fixture:legs"], "sourceSelectionIds": ["selection:fixture:legs"] },
+      { "itemType": "P", "bricklinkItemId": "fixture-tool", "bricklinkColorId": 6, "quantity": 2, "evidenceIds": ["evidence:fixture:tool"], "sourceSelectionIds": ["selection:fixture:left-tool", "selection:fixture:right-tool"] },
+      { "itemType": "P", "bricklinkItemId": "fixture-torso", "bricklinkColorId": 3, "quantity": 1, "evidenceIds": ["evidence:fixture:torso"], "sourceSelectionIds": ["selection:fixture:torso"] }
+    ],
+    "blockedSelections": []
+  }
+}

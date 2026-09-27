@@ -1,0 +1,71 @@
+{
+  "schemaVersion": 1,
+  "ticket": "FF-06",
+  "updatedAt": "2026-09-27T00:00:00.000Z",
+  "sourcePolicy": "Nur Rebrickable Catalog Downloads/CSV, keine MOC-Dateien.",
+  "sourceAssortmentSha256": "12dd1dbf0cde990698ee703540656726990b346a9a570ed03835248887908717",
+  "recipes": [
+    {
+      "id": "recipe:ff06:head-3626cpr0001",
+      "variantId": "ff03-head-3626cpr0001",
+      "recipe": { "strategy": "single-item", "status": "unverified", "lines": [] },
+      "catalogEvidenceIds": ["evidence:parts:3626cpr0001", "evidence:category:59"],
+      "blocker": "BrickLink item and color IDs have not been independently verified; no purchase line may be exposed."
+    },
+    {
+      "id": "recipe:ff06:headwear-10048",
+      "variantId": "ff03-headwear-10048",
+      "recipe": { "strategy": "single-item", "status": "unverified", "lines": [] },
+      "catalogEvidenceIds": ["evidence:parts:10048", "evidence:category:65"],
+      "blocker": "BrickLink item and color IDs have not been independently verified; no purchase line may be exposed."
+    },
+    {
+      "id": "recipe:ff06:torso-3814",
+      "variantId": "ff03-torso-3814",
+      "recipe": { "strategy": "components", "status": "unverified", "lines": [] },
+      "catalogEvidenceIds": ["evidence:parts:3814", "evidence:category:60"],
+      "blocker": "The catalog row describes a torso part, not a verified complete torso assembly; required components and BrickLink mappings remain unresolved."
+    },
+    {
+      "id": "recipe:ff06:legs-970c01",
+      "variantId": "ff03-legs-970c01",
+      "recipe": { "strategy": "assembly", "status": "unverified", "lines": [] },
+      "catalogEvidenceIds": ["evidence:parts:970c01", "evidence:category:61"],
+      "blocker": "The hips-and-legs assembly and its BrickLink item and color IDs have not been independently verified."
+    },
+    {
+      "id": "recipe:ff06:hand-11439",
+      "variantId": "ff03-hand-11439",
+      "recipe": { "strategy": "single-item", "status": "unverified", "lines": [] },
+      "catalogEvidenceIds": ["evidence:parts:11439", "evidence:category:73"],
+      "blocker": "BrickLink item and color IDs have not been independently verified; no purchase line may be exposed."
+    }
+  ],
+  "referenceFigure": {
+    "id": "figure:ff06:reference-02",
+    "sourceVariantId": "ff03-variant-02",
+    "selections": [
+      { "id": "selection:ff06:head", "slot": "head", "variantId": "ff03-head-3626cpr0001", "recipeId": "recipe:ff06:head-3626cpr0001" },
+      { "id": "selection:ff06:headwear", "slot": "headwear", "variantId": "ff03-headwear-10048", "recipeId": "recipe:ff06:headwear-10048" },
+      { "id": "selection:ff06:torso", "slot": "torsoAssembly", "variantId": "ff03-torso-3814", "recipeId": "recipe:ff06:torso-3814" },
+      { "id": "selection:ff06:legs", "slot": "legsAssembly", "variantId": "ff03-legs-970c01", "recipeId": "recipe:ff06:legs-970c01" },
+      { "id": "selection:ff06:right-hand", "slot": "rightHandAccessory", "variantId": "ff03-hand-11439", "recipeId": "recipe:ff06:hand-11439" }
+    ]
+  },
+  "expectedPartsList": {
+    "status": "blocked",
+    "lines": [],
+    "blockedSelections": [
+      { "selectionId": "selection:ff06:head", "slot": "head", "variantId": "ff03-head-3626cpr0001", "recipeId": "recipe:ff06:head-3626cpr0001", "recipeStatus": "unverified", "reason": "BrickLink item and color IDs have not been independently verified; no purchase line may be exposed." },
+      { "selectionId": "selection:ff06:headwear", "slot": "headwear", "variantId": "ff03-headwear-10048", "recipeId": "recipe:ff06:headwear-10048", "recipeStatus": "unverified", "reason": "BrickLink item and color IDs have not been independently verified; no purchase line may be exposed." },
+      { "selectionId": "selection:ff06:torso", "slot": "torsoAssembly", "variantId": "ff03-torso-3814", "recipeId": "recipe:ff06:torso-3814", "recipeStatus": "unverified", "reason": "The catalog row describes a torso part, not a verified complete torso assembly; required components and BrickLink mappings remain unresolved." },
+      { "selectionId": "selection:ff06:legs", "slot": "legsAssembly", "variantId": "ff03-legs-970c01", "recipeId": "recipe:ff06:legs-970c01", "recipeStatus": "unverified", "reason": "The hips-and-legs assembly and its BrickLink item and color IDs have not been independently verified." },
+      { "selectionId": "selection:ff06:right-hand", "slot": "rightHandAccessory", "variantId": "ff03-hand-11439", "recipeId": "recipe:ff06:hand-11439", "recipeStatus": "unverified", "reason": "BrickLink item and color IDs have not been independently verified; no purchase line may be exposed." }
+    ]
+  },
+  "openBlockers": [
+    "Human review must independently confirm every BrickLink item and color mapping before any recipe becomes verified.",
+    "The torso selection needs an explicit decision between a complete assembly and a verified component breakdown.",
+    "No XML or other purchasing export may be produced from this blocked reference list."
+  ]
+}

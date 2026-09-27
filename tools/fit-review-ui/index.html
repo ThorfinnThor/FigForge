@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>FigForge · LDraw-Passformprüfung</title>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <a class="skip-link" href="#review">Zur Prüfung springen</a>
+    <header>
+      <div>
+        <p class="eyebrow">FigForge · ausschließlich lokal</p>
+        <h1>LDraw-Passformprüfung</h1>
+        <p class="intro">Dokumentiere reale Passformnachweise, ohne die Kompatibilitätsmatrix automatisch freizugeben.</p>
+      </div>
+      <div class="progress-card" aria-live="polite">
+        <span id="progress-label">Lade Prüfstand …</span>
+        <progress id="progress" max="18" value="0"></progress>
+      </div>
+    </header>
+
+    <main id="review" tabindex="-1">
+      <section class="guidance" aria-labelledby="guidance-title">
+        <h2 id="guidance-title">Verbindlicher Prüfmaßstab</h2>
+        <p id="instructions"></p>
+        <ul>
+          <li><strong>Passt:</strong> nur mit realen Teilen oder unabhängig verlässlicher Passformreferenz.</li>
+          <li><strong>Passt nicht:</strong> konkreten Konflikt und Evidenz dokumentieren.</li>
+          <li><strong>Unklar:</strong> wenn Evidenz oder Messung keine sichere Entscheidung erlaubt.</li>
+        </ul>
+        <p class="warning">LDraw-Geometrie allein ist kein physischer Passformnachweis. Der Export bleibt nicht veröffentlichbar.</p>
+      </section>
+
+      <section id="blocked-summary" class="blocked-summary" aria-live="polite"></section>
+
+      <nav class="case-nav" aria-label="Prüffallnavigation">
+        <button id="previous" type="button">← Vorheriger</button>
+        <label for="case-select">Prüffall</label>
+        <select id="case-select"></select>
+        <button id="next-open" type="button">Nächster offener</button>
+        <button id="next" type="button">Nächster →</button>
+      </nav>
+
+      <section class="case-card" aria-labelledby="case-title">
+        <p id="case-meta" class="eyebrow"></p>
+        <h2 id="case-title"></h2>
+        <div id="components" class="components" aria-label="Zu prüfende Komponenten"></div>
+        <dl class="case-details">
+          <div><dt>Slot</dt><dd id="slot"></dd></div>
+          <div><dt>Referenzdateien</dt><dd id="reference-files"></dd></div>
+        </dl>
+        <h3>Erforderliche Kontrollen</h3>
+        <ul id="required-checks" class="check-list"></ul>
+      </section>
+
+      <form id="review-form" class="review-form">
+        <fieldset>
+          <legend>Ergebnis</legend>
+          <div class="result-buttons" role="group" aria-label="Passformergebnis">
+            <button type="button" data-result="fits" aria-pressed="false">Passt</button>
+            <button type="button" data-result="does-not-fit" aria-pressed="false">Passt nicht</button>
+            <button type="button" data-result="inconclusive" aria-pressed="false">Unklar</button>
+          </div>
+        </fieldset>
+
+        <div class="form-grid">
+          <label>
+            Prüferkennung
+            <input id="reviewer-id" name="reviewerId" required minlength="2" maxlength="100" autocomplete="name" />
+          </label>
+          <label>
+            Evidenzart
+            <select id="evidence-type" name="evidenceType" required>
+              <option value="">Bitte wählen</option>
+              <option value="physical-parts">Reale Teile</option>
+              <option value="independent-fit-reference">Unabhängige Passformreferenz</option>
+            </select>
+          </label>
+        </div>
+
+        <label>
+          Evidenzreferenz
+          <input id="evidence-reference" name="evidenceReference" required minlength="3" maxlength="500" placeholder="Foto-Datei, Messprotokoll oder belastbare Referenz" />
+        </label>
+        <label>
+          Notizen
+          <textarea id="notes" name="notes" maxlength="1500" rows="4" placeholder="Sitz, Rotation, Kollision, Klemmung oder beobachteter Fehler"></textarea>
+        </label>
+        <button class="save-button" type="submit">Prüffall lokal speichern</button>
+      </form>
+
+      <section class="export-card">
+        <div>
+          <h2>Review-Artefakt exportieren</h2>
+          <p>Der Export wird erst nach allen 18 Fällen freigeschaltet und bleibt `publishable: false`.</p>
+        </div>
+        <a id="export" class="export-link disabled" aria-disabled="true">JSON exportieren</a>
+      </section>
+
+      <p id="status" class="status" role="status" aria-live="polite"></p>
+    </main>
+    <script type="module" src="/app.js"></script>
+  </body>
+</html>

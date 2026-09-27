@@ -1,0 +1,33 @@
+{
+  "schemaVersion": 1,
+  "ticket": "FF-17",
+  "normalizerVersion": "de-en-domain-v1",
+  "updatedAt": "2026-09-27T15:30:00Z",
+  "sourcePolicy": "Nur Rebrickable Catalog Downloads/CSV, keine MOC-Dateien.",
+  "sourceAssortmentSha256": "12dd1dbf0cde990698ee703540656726990b346a9a570ed03835248887908717",
+  "entries": [
+    {"id":"term:oger","sourceForms":["oger"],"targetTerms":["ogre"],"relatedTerms":[],"kind":"term","categoryRole":null,"colorName":null,"warning":null},
+    {"id":"compound:oger-head","sourceForms":["ogerkopf"],"targetTerms":["ogre","head"],"relatedTerms":[],"kind":"compound","categoryRole":"head","colorName":null,"warning":null},
+    {"id":"term:hauer","sourceForms":["hauer","hauern"],"targetTerms":["tusks"],"relatedTerms":["fangs"],"kind":"term","categoryRole":null,"colorName":null,"warning":null},
+    {"id":"compound:long-sword","sourceForms":["langes schwert","langem schwert"],"targetTerms":["long","sword"],"relatedTerms":[],"kind":"compound","categoryRole":"handAccessory","colorName":null,"warning":null},
+    {"id":"term:schwert","sourceForms":["schwert","schwerter"],"targetTerms":["sword"],"relatedTerms":[],"kind":"term","categoryRole":"handAccessory","colorName":null,"warning":null},
+    {"id":"term:ruestung","sourceForms":["rüstung","ruestung"],"targetTerms":["armor"],"relatedTerms":["armour"],"kind":"term","categoryRole":null,"colorName":null,"warning":null},
+    {"id":"term:zerzaust","sourceForms":["zerzaust","zerzauste","zerzausten"],"targetTerms":["messy"],"relatedTerms":[],"kind":"term","categoryRole":"headwear","colorName":null,"warning":null},
+    {"id":"term:haar","sourceForms":["haar","haare","frisur"],"targetTerms":["hair"],"relatedTerms":[],"kind":"term","categoryRole":"headwear","colorName":null,"warning":null},
+    {"id":"term:helm","sourceForms":["helm","helme"],"targetTerms":["helmet"],"relatedTerms":[],"kind":"term","categoryRole":"headwear","colorName":null,"warning":null},
+    {"id":"ambiguous:schild","sourceForms":["schild","schilder"],"targetTerms":[],"relatedTerms":[],"kind":"ambiguous","categoryRole":"handAccessory","colorName":null,"warning":"„Schild“ bleibt ohne Kontext unbestimmt und wird nicht blind übersetzt."},
+    {"id":"category:kopf","sourceForms":["kopf","köpfe","koepfe"],"targetTerms":["head"],"relatedTerms":[],"kind":"category","categoryRole":"head","colorName":null,"warning":null},
+    {"id":"category:kopfbedeckung","sourceForms":["kopfbedeckung","kopfbedeckungen"],"targetTerms":["headwear"],"relatedTerms":[],"kind":"category","categoryRole":"headwear","colorName":null,"warning":null},
+    {"id":"category:oberkoerper","sourceForms":["oberkörper","oberkoerper","torso"],"targetTerms":["torso"],"relatedTerms":[],"kind":"category","categoryRole":"torsoAssembly","colorName":null,"warning":null},
+    {"id":"category:beine","sourceForms":["bein","beine"],"targetTerms":["legs"],"relatedTerms":[],"kind":"category","categoryRole":"legsAssembly","colorName":null,"warning":null},
+    {"id":"category:zubehoer","sourceForms":["zubehör","zubehoer","handzubehör","handzubehoer","waffe","waffen","werkzeug"],"targetTerms":["accessory"],"relatedTerms":[],"kind":"category","categoryRole":"handAccessory","colorName":null,"warning":null},
+    {"id":"color:schwarz","sourceForms":["schwarz","schwarze","schwarzen"],"targetTerms":["black"],"relatedTerms":[],"kind":"color","categoryRole":null,"colorName":"Black","warning":null},
+    {"id":"color:gelb","sourceForms":["gelb","gelbe","gelben"],"targetTerms":["yellow"],"relatedTerms":[],"kind":"color","categoryRole":null,"colorName":"Yellow","warning":null},
+    {"id":"color:braun","sourceForms":["braun","braune","braunen"],"targetTerms":["brown"],"relatedTerms":[],"kind":"color","categoryRole":null,"colorName":"Brown","warning":null},
+    {"id":"color:rot","sourceForms":["rot","rote","roten"],"targetTerms":["red"],"relatedTerms":[],"kind":"color","categoryRole":null,"colorName":"Red","warning":null},
+    {"id":"color:gruen","sourceForms":["grün","gruen","grüne","gruene","grünen","gruenen","grüner","gruener","grünem","gruenem"],"targetTerms":["green"],"relatedTerms":[],"kind":"color","categoryRole":null,"colorName":"Green","warning":null},
+    {"id":"color:silber","sourceForms":["silber","silberne","silbernen"],"targetTerms":["silver"],"relatedTerms":[],"kind":"color","categoryRole":null,"colorName":"Silver","warning":null},
+    {"id":"color:gold","sourceForms":["gold","goldene","goldenen"],"targetTerms":["gold"],"relatedTerms":[],"kind":"color","categoryRole":null,"colorName":"Gold","warning":null},
+    {"id":"color:grau","sourceForms":["grau","graue","grauen"],"targetTerms":["gray"],"relatedTerms":["grey"],"kind":"color","categoryRole":null,"colorName":"Gray","warning":null}
+  ]
+}

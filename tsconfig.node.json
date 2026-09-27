@@ -1,0 +1,35 @@
+{
+  "compilerOptions": {
+    "composite": true,
+    "target": "ES2023",
+    "lib": ["ES2023", "DOM"],
+    "module": "NodeNext",
+    "moduleResolution": "NodeNext",
+    "jsx": "react-jsx",
+    "resolveJsonModule": true,
+    "strict": true,
+    "skipLibCheck": true,
+    "noEmit": true,
+    "types": ["node", "vitest/globals"],
+    "noUncheckedIndexedAccess": true,
+    "exactOptionalPropertyTypes": true
+  },
+  "include": [
+    "vite.config.ts",
+    "vitest.config.ts",
+    "eslint.config.js",
+    "src/contracts/**/*.ts",
+    "src/components/ui/**/*.tsx",
+    "src/components/catalog-workspace-data.ts",
+    "src/components/**/*.ts",
+    "src/catalog/**/*.ts",
+    "src/compatibility/**/*.ts",
+    "src/search/**/*.ts",
+    "src/figure/**/*.ts",
+    "src/storage/**/*.ts",
+    "src/procurement/**/*.ts",
+    "src/scene/**/*.ts",
+    "tools/**/*.ts",
+    "tests/**/*.ts"
+  ]
+}

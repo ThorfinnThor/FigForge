@@ -1,0 +1,11 @@
+0 FigForge local LDraw minifigure prototype
+0 Name: figforge-minifigure.ldr
+0 Author: FigForge
+0 !LICENSE Model assembly references only; referenced official LDraw parts retain their licenses
+0 !CATEGORY Model
+0 !KEYWORDS local prototype, minifigure
+0 // Yellow printed head and hands, red torso, reddish brown hair, dark bluish gray hips and legs.
+1 4 0 0 0 1 0 0 0 1 0 0 0 1 973c01.dat
+1 14 0 -24 0 1 0 0 0 1 0 0 0 1 3626cpcbe.dat
+1 70 0 -24 0 1 0 0 0 1 0 0 0 1 25409.dat
+1 72 0 32 0 1 0 0 0 1 0 0 0 1 73200b-f1.dat

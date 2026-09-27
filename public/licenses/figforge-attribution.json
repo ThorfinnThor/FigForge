@@ -1,0 +1,115 @@
+{
+  "schemaVersion": 1,
+  "ticket": "FF-11",
+  "sourcePolicy": "Nur Rebrickable Catalog Downloads/CSV, keine MOC-Dateien.",
+  "sourceNotices": [
+    {
+      "id": "src:fixture-ff04",
+      "name": "FigForge FF-04 synthetic fixture",
+      "scope": "synthetic-fixture",
+      "url": null,
+      "localPath": null,
+      "status": "not-applicable",
+      "attribution": "Interne synthetische Prüfgeometrie; kein Drittanbieter-Asset und nicht veröffentlichbar.",
+      "note": "Dient nur zur Prüfung von Szene, Ankern, Paketierung und Thumbnail-Reproduzierbarkeit."
+    },
+    {
+      "id": "src:ldcad-shadow",
+      "name": "LDCad Shadow Library",
+      "scope": "ldraw-assets",
+      "url": "https://github.com/RolandMelkert/LDCadShadowLibrary",
+      "localPath": "/licenses/LDCadShadowLibrary-NOTICE.txt",
+      "status": "confirmed",
+      "attribution": "Ausgewählte Verbindungsmetadaten der LDCad Shadow Library, Revision 9b1131fb1991f8c0bfc072325e4e12f6271aba35, CC BY-SA 4.0.",
+      "note": "Die normalisierte digitale Anschluss-Registry wird unter denselben CC-BY-SA-4.0-Bedingungen bereitgestellt."
+    },
+    {
+      "id": "src:ldraw-assets",
+      "name": "LDraw Parts Library",
+      "scope": "ldraw-assets",
+      "url": "https://www.ldraw.org/",
+      "localPath": null,
+      "status": "blocked",
+      "attribution": "Keine LDraw-Datei ist in FF-10 enthalten.",
+      "note": "Release, Lizenzheader, transitive Abhängigkeiten, Dateipfade und Hashes müssen vor einem echten Assetpaket geprüft werden."
+    },
+    {
+      "id": "src:rebrickable-catalog",
+      "name": "Rebrickable Catalog Downloads/CSV",
+      "scope": "catalog-metadata",
+      "url": "https://rebrickable.com/downloads/",
+      "localPath": null,
+      "status": "pending",
+      "attribution": "Rebrickable Catalog Downloads/CSV; kommerzielle Nutzung und Attribution sind noch als Projektbeleg abzulegen.",
+      "note": "Nur die gelockten Catalog-Downloads/CSV sind zulässig. Keine API und keine MOC-Dateien."
+    },
+    {
+      "id": "src:three-runtime",
+      "name": "Three.js runtime",
+      "scope": "runtime",
+      "url": null,
+      "localPath": "/licenses/three-MIT.txt",
+      "status": "confirmed",
+      "attribution": "Three.js wird unter MIT-Hinweis ausgeliefert; der lokale Lizenztext ist im Release enthalten.",
+      "note": "Der Lizenztext wird separat gehasht und nicht mit Katalog- oder LDraw-Rechten gleichgesetzt."
+    }
+  ],
+  "licenseEvidence": [
+    {
+      "id": "license:fixture:synthetic",
+      "sourceId": "src:fixture-ff04",
+      "subjectId": "ff04-fixture-standard-v1",
+      "status": "not-applicable",
+      "licenseId": null,
+      "localPath": null,
+      "sha256": null,
+      "note": "Interne synthetische Prüfgeometrie; nicht als lizenzierter Katalog- oder LDraw-Asset freigegeben."
+    },
+    {
+      "id": "license:ldcad-shadow:cc-by-sa-4.0",
+      "sourceId": "src:ldcad-shadow",
+      "subjectId": "data:ldraw-digital-connectivity",
+      "status": "confirmed",
+      "licenseId": "CC-BY-SA-4.0",
+      "localPath": "/licenses/LDCadShadowLibrary-NOTICE.txt",
+      "sha256": "44682492b539ebe42d8607cc44af3bb4357b641c85f05f2389787c6ec9f23c4a",
+      "note": "Attribution und Share-Alike-Hinweis für die normalisierte digitale Anschluss-Registry."
+    },
+    {
+      "id": "license:ldraw:pending",
+      "sourceId": "src:ldraw-assets",
+      "subjectId": "ff04-fixture-standard-v1",
+      "status": "blocked",
+      "licenseId": null,
+      "localPath": null,
+      "sha256": null,
+      "note": "Kein LDraw-Asset enthalten; Release- und Lizenzprüfung ist offen."
+    },
+    {
+      "id": "license:rebrickable:catalog",
+      "sourceId": "src:rebrickable-catalog",
+      "subjectId": "ff04-fixture-standard-v1",
+      "status": "pending",
+      "licenseId": null,
+      "localPath": null,
+      "sha256": null,
+      "note": "Projektbestätigung vorhanden; konkrete Belegablage und Attribution für Catalog Downloads/CSV stehen aus."
+    },
+    {
+      "id": "license:three:mit",
+      "sourceId": "src:three-runtime",
+      "subjectId": "runtime:three",
+      "status": "confirmed",
+      "licenseId": "MIT",
+      "localPath": "/licenses/three-MIT.txt",
+      "sha256": "8b378ebe60e2fe500158cb0ac71cb5e8b7d92953c2abcc63a0eb90499653b5bc",
+      "note": "Lokaler MIT-Lizenztext für die Three.js-Laufzeit."
+    }
+  ],
+  "openBlockers": [
+    "FF-10 assets are synthetic FF-04 fixtures and are not publishable catalog assets.",
+    "Rebrickable Catalog Downloads/CSV commercial-use evidence and attribution are still pending project documentation.",
+    "Real LDraw assets require release, license-header, dependency, path and hash evidence before publication.",
+    "GitHub review and Cloudflare Workers Builds release approval are not represented by this local manifest."
+  ]
+}

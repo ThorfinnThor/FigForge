@@ -1,0 +1,18 @@
+{
+  "schemaVersion": 1,
+  "ticket": "FF-17",
+  "normalizerVersion": "de-en-domain-v1",
+  "updatedAt": "2026-09-27T15:30:00Z",
+  "sourcePolicy": "Nur Rebrickable Catalog Downloads/CSV, keine MOC-Dateien.",
+  "fixtures": [
+    {"id":"fixture:oger-head-tusks","query":"Ogerkopf mit Hauern","expectation":{"englishIncludes":["ogre head","tusks"],"relatedTerms":[],"categoryRole":"head","colorNames":[],"excludedTerms":[],"idMatches":[],"warningCodes":[],"unknownTerms":["mit"]}},
+    {"id":"fixture:inflected-tusks","query":"Hauern","expectation":{"englishIncludes":["tusks"],"relatedTerms":["fangs"],"categoryRole":null,"colorNames":[],"excludedTerms":[],"idMatches":[],"warningCodes":[],"unknownTerms":[]}},
+    {"id":"fixture:long-sword","query":"langes Schwert","expectation":{"englishIncludes":["long sword"],"relatedTerms":[],"categoryRole":"handAccessory","colorNames":[],"excludedTerms":[],"idMatches":[],"warningCodes":[],"unknownTerms":[]}},
+    {"id":"fixture:messy-black-hair","query":"zerzauste schwarze Haare","expectation":{"englishIncludes":["messy black hair"],"relatedTerms":[],"categoryRole":"headwear","colorNames":["black"],"excludedTerms":[],"idMatches":[],"warningCodes":[],"unknownTerms":[]}},
+    {"id":"fixture:negated-helmet","query":"ohne Helm","expectation":{"englishIncludes":["without helmet"],"relatedTerms":[],"categoryRole":"headwear","colorNames":[],"excludedTerms":["helmet"],"idMatches":[],"warningCodes":[],"unknownTerms":[]}},
+    {"id":"fixture:exact-id","query":"3626cpr0001","expectation":{"englishIncludes":["3626cpr0001"],"relatedTerms":[],"categoryRole":null,"colorNames":[],"excludedTerms":[],"idMatches":["3626cpr0001"],"warningCodes":[],"unknownTerms":[]}},
+    {"id":"fixture:category-and-color","query":"Köpfe schwarz","expectation":{"englishIncludes":["head black"],"relatedTerms":[],"categoryRole":"head","colorNames":["black"],"excludedTerms":[],"idMatches":[],"warningCodes":[],"unknownTerms":[]}},
+    {"id":"fixture:ambiguous-shield","query":"Schild","expectation":{"englishIncludes":[],"relatedTerms":[],"categoryRole":"handAccessory","colorNames":[],"excludedTerms":[],"idMatches":[],"warningCodes":["ambiguous:schild"],"unknownTerms":[]}},
+    {"id":"fixture:unknown-preserved","query":"mystisches Teil","expectation":{"englishIncludes":["mystisches teil"],"relatedTerms":[],"categoryRole":null,"colorNames":[],"excludedTerms":[],"idMatches":[],"warningCodes":[],"unknownTerms":["mystisches","teil"]}}
+  ]
+}

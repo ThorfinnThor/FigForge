@@ -1,0 +1,19 @@
+node_modules/
+dist/
+coverage/
+.wrangler/
+.dev.vars
+.env
+.env.*
+!.env.example
+*.log
+*.tsbuildinfo
+.DS_Store
+
+# Downloaded raw catalog files are transient and must never be committed.
+work/
+data/incoming/
+
+# Historische lokale Review-Autosaves; nie in Git aufnehmen.
+data/review/ff18-development-progress.json
+data/review/ldraw-fit-human-progress.json

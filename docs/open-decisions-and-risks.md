@@ -1,0 +1,42 @@
+# Offene Entscheidungen und Risiken
+
+Stand: FF-18 technisch / Entscheidung blockiert, 27. September 2026.
+
+| Thema | Status | Risiko / nächste Freigabe |
+|---|---|---|
+| Projektname `FigForge` | offen | Name, Domain und kollidierende Rechte vor öffentlichem Branding prüfen. |
+| Rebrickable Catalog Downloads/CSV | fünf erlaubte Archive für FF-03 mit URL, Abrufzeit und Hash gelockt | Nutzungs-/Attributionsnachweis bleibt vor produktiver Nutzung zu dokumentieren; FF-08-Refresh bleibt separat. |
+| Rebrickable API | ausgeschlossen | V1 darf keinen API-Key, API-Call oder API-abgeleitete Freigabe enthalten. |
+| MOC-Dateien/-Inhalte | ausgeschlossen | Allowlist und Tests verhindern Aufnahme; bei Schema-/Dateiänderung hart abbrechen. |
+| LDraw-Assets | 10 offizielle Modelle datei- und hashgebunden; acht besitzen digitale Anschlussprofile | Digitale Verbindung belegt die reproduzierbare Positionierung, aber keine physische Klemmkraft oder Materialspannung. `11439` und die unvollständige Torsohülle bleiben gesperrt. |
+| FF-04-Prüfszene | Three.js-Szene und LDrawLoader-Adapter implementiert; Darstellung noch synthetisch | Kein Katalogteil darf als exakter Render gelten, bevor ein evidenzgebundenes LDraw-Asset den Adapter durchläuft. |
+| FF-05-Ankerprofil | hashgebundene Baugruppen- und Snap-Transforms für Kopf, Kopfbedeckung und zwei Handaccessoires | Unbekannte Snap-Profile bleiben nach Default-Deny gesperrt; digitale Verbindung ist keine physische Garantie. |
+| BrickLink-Zuordnung | offen | IDs nicht aus anderen Nummernräumen ableiten; einzelne Einkaufsmappings menschlich prüfen. |
+| FF-06-Beschaffungsrezepte | fünf reale Rezepte strukturell erfasst; alle `unverified` und ohne Einkaufszeilen | Menschliche Prüfung von BrickLink-Artikel, BrickLink-Farbe und der Torso-Auflösung ist erforderlich. Bis dahin bleibt die Soll-Teileliste vollständig blockiert. |
+| FF-07-klickbarer POC | fünf Kopf-, fünf Kopfbedeckungs- und drei Handoptionen je Seite bedienbar; nur synthetische Prüfgeometrie | Der POC beweist Bedienfluss und Slot-Isolation, aber keine reale LDraw-Passform, Materialtreue oder Einkaufsfreigabe. |
+| FF-08-Refresh | CSV/GZip-Adapter, Normalisierung und geplante PR-Erzeugung implementiert; lokaler Check bleibt netzwerkfrei | Der Remote-Lauf wurde in dieser Übergabe nicht ausgeführt. Ein echter GitHub-Action-Lauf muss CDN-Erreichbarkeit, neue Hashes und PR-Berechtigungen bestätigen. |
+| FF-09-Mapping-Review | 133 offene Mapping-Einträge werden deterministisch aus FF-03/FF-06 erzeugt; Dublettensignale prüfen Teilenummern, Variantensignaturen und Rezept-IDs | Aktuell keine Dublettengruppe; alle `candidateIds` bleiben leer, bis eine separate Quelle und menschliche Prüfung die Zuordnung belegen. Gemeinsame Kategorie-Evidence ist ausdrücklich ausgeschlossen. |
+| FF-10-Modellpakete/Thumbnails | Reproduzierbares FF-04-Fixturepaket mit 18 synthetischen Teilen und 18 SVG-Thumbnails, Quellhashes und 60-KiB-Thumbnailbudget | Alle Ausgaben sind `publishable: false`; echte LDraw-Pakete, Releases, Lizenzen und GLB/MPD-Konvertierung bleiben bis zu separater Evidence offen. SVG ist bewusst die dependency-freie Referenzform, nicht die finale WebP-Optimierung. |
+| FF-11-Assetmanifest | 19 Artefakte, 4 Quellenhinweise, 4 Lizenznachweise und öffentliche Attribution-Datei deterministisch aus FF-09/FF-10/Source-Lock erzeugt | Release bleibt `blocked`; Rebrickable-Nutzungs-/Attributionsbeleg und LDraw-Rechte sind nicht automatisch bestätigt. Three.js-MIT-Hinweis ist separat gehasht und lokal enthalten. |
+| FF-12-UI-Primitiven | Design-Tokens sowie Button-, Input-, Karten- und Statuskomponenten implementiert; FF-07-POC nutzt Button, Card und Status | Responsive Gesamtarbeitsfläche, PartCards, Suche und visuelle Browserabnahme gehören zu späteren UI-Tickets. Manrope/Kalam bleiben bis zu konkreten Fontdateien systemische Fallbacks. |
+| FF-13-Arbeitsfläche | Vier-Spalten-Desktoplayout mit FF-03-Katalogkarten, Kategoriefilter, POC-Vorschau und Figurenpanel; blockierte reale Render-/Kaufzustände sichtbar | Der Filter ist nur ein lokaler Stichwortfilter; semantische Suche, responsive Tabs, echte PartDetails und Einkaufsaktionen bleiben spätere Tickets. Keine FF-03-Karte darf trotz UI-Auswahl als kaufbar gelten. |
+| FF-14-Responsive | Tablet-Drawer von 768–1439 px, horizontale Kategorien bei Tabletbreite, mobile Teile-/Figur-/Liste-Tabs unter 768 px, Escape und Fokus-Rückgabe | Browserabnahme bei 1536/1440/1280/1024/768/390/320 px und kurzer Fensterhöhe steht noch aus; der Drawer bleibt ein lokales UI ohne zusätzliche Daten- oder Kaufaktion. |
+| FF-15-Scene-Lifecycle | Sitzungsgebundener Prototypcache, tiefe Ressourcenklone, Abbruch-/Race-Schutz, idempotentes Dispose und Wiederherstellungsaktion implementiert | Reale LDraw-Pakete sind weiterhin blockiert; Browsernachweise für echten Kontextverlust, wiederholtes Mount/Unmount und GPU-Speicherverhalten stehen aus. Tiefe Klone erhöhen bewusst den Speicher je sichtbarer Instanz. |
+| FF-16-Kompatibilität | acht der zehn belegten LDraw-Modelle sind digital verbunden; `11439` und `3814 → 973.dat` bleiben blockiert | Die frühere menschliche Passformeingabe ist historisch und nicht mehr Teil des Runtimepfads. Physische Klemmkraft wird nicht garantiert. |
+| FF-17-Basissuche | Lokales lexikalisches Ranking, Normalizer `de-en-domain-v1`, IDs, Zusammensetzungen, Negationen, Kategorien, Farben und 9 Regression-Fixtures | Suchqualität ist nur über die kleinen kuratierten Fixtures abgesichert; semantische Suche, 160-Fälle-Benchmark und Holdout-Vergleich gehören zu späteren Tickets. Unklare Begriffe bleiben bewusst unübersetzt. |
+| FF-18-Modell-/Indexvergleich | MiniLM/E5 auf gepinnten INT8-ONNX-Dateien ausgeführt; zwei getrennte, normierte FP32-Indizes und 1.482 blind sortierte Review-Kandidaten erzeugt; lokale Oberfläche schützt den Holdout | 739 Entwicklungsbewertungen fehlen. Katalogtexte ersetzen keine visuelle Teileprüfung; unklare Fälle menschlich kennzeichnen. Bis dahin keine nDCG@10-/Success@5-Werte, kein ADR und keine Profilwahl ausgeben. E5-Exportlizenz bleibt separat zu prüfen. |
+| FF-21-Suchdokumente und Testsatz | 17 kataloggebundene englische Dokumente, Lexikon-Delta und 160 Fälle mit 80/80-Split deterministisch erzeugt; identische Abfragen und Paraphrasengruppen über beide Splits werden abgewiesen | Dokumentfelder sind aus gelocktem Rebrickable-Katalog abgeleitet; eigene Annotationsbegriffe und alle Relevanzurteile bleiben menschlich zu prüfen. Holdout darf bis FF-18-Entscheidung nicht zum Regel-Tuning verwendet werden. |
+| FF-22/FF-23 lokaler Entwurf | Aktuelle Figur wird in IndexedDB gespeichert; strikter JSON-Import/-Export für drei digital unterstützte Slots | Mehrere benannte Entwürfe, Migrationen ab Schema 2 und der versionierte Share-Link bleiben offen. Browser können lokalen Speicher löschen; deshalb bleibt JSON-Export sichtbar. |
+| Testsortiment | 17 Katalog-Komponenten und 20 Variantenkandidaten belegt; acht LDraw-Modelle digital verbunden | BrickLink- und allgemeine Veröffentlichungsnachweise fehlen; keine Veröffentlichung zulassen. |
+| GitHub-Remote und Eigentümer | nicht vorhanden | Repository erstellen/verbinden und Branchschutz manuell aktivieren; CODEOWNERS erst mit echten Verantwortlichen ergänzen. |
+| Cloudflare-Konto/Projekt | nicht verbunden | Worker-Name, Produktionsbranch, Buildbefehle und Kontingente vor FF-31 prüfen. |
+| Cloudflare-Deployment | nicht autorisiert | Nur lokaler Wrangler-Dry-Run; kein öffentliches Deployment erfolgt. |
+| Suchmodell | offen | Beide Kandidaten sind reproduzierbar indiziert; die Auswahl bleibt gesperrt, bis menschliche Relevanzurteile und der sprachgetrennte Holdout-Vergleich vorliegen. |
+| CSP für WASM/Worker | vorläufig | Header beim echten Modell-/Worker-Bundle und in Zielbrowsern erneut prüfen. |
+
+## Abbruchbedingungen
+
+- Ein automatischer Datenlauf entdeckt eine nicht erlaubte Datei, MOC-Bezug, API-URL oder Schemaänderung.
+- Eine Quelle kann nicht mit Revision, Abrufzeit und Hash belegt werden.
+- Ein Workflow müsste Branchschutz umgehen oder direkt nach Produktion deployen.
+- Eine veröffentlichte Variante würde ohne verifizierte Einkaufszuordnung entstehen.

@@ -1,0 +1,12 @@
+FigForge includes a selected subset of connection metadata from the
+LDCad Shadow Library:
+https://github.com/RolandMelkert/LDCadShadowLibrary
+
+Revision: 9b1131fb1991f8c0bfc072325e4e12f6271aba35
+Author attribution: LDCad Shadow Library and the authors named in the vendored files.
+License: Creative Commons Attribution-ShareAlike 4.0 International
+https://creativecommons.org/licenses/by-sa/4.0/
+
+The normalized FigForge digital-connection registry derived from this metadata
+is made available under the same CC BY-SA 4.0 terms. LDraw geometry remains
+subject to its own license and attribution.
