@@ -8,6 +8,8 @@ coverage/
 !.env.example
 *.log
 *.tsbuildinfo
+__pycache__/
+*.pyc
 .DS_Store
 
 # Downloaded raw catalog files are transient and must never be committed.
