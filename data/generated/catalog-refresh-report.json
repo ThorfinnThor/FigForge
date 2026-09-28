@@ -1,0 +1,17 @@
+{
+  "schemaVersion": 1,
+  "ticket": "FF-08",
+  "sourcePolicy": "Nur Rebrickable Catalog Downloads/CSV, keine MOC-Dateien.",
+  "sourceLockUpdatedAt": "2026-09-27",
+  "changedArtifacts": [
+    "colors.csv.gz",
+    "part_categories.csv.gz",
+    "parts.csv.gz",
+    "part_relationships.csv.gz",
+    "elements.csv.gz"
+  ],
+  "normalizedPartCount": 64675,
+  "artifactCount": 5,
+  "apiUsed": false,
+  "mocFilesAllowed": false
+}
