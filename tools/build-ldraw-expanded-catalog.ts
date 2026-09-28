@@ -14,6 +14,7 @@ import {
 import { LDrawConditionalLineMaterial } from "three/addons/materials/LDrawConditionalLineMaterial.js";
 import { LDrawLoader } from "three/addons/loaders/LDrawLoader.js";
 import { catalogPackageSchema, type CatalogPackagePart, type CatalogRole } from "../src/contracts/catalog-package.js";
+import { isCompleteMinifigLegsAssembly } from "./lib/ldraw-legs-assembly.js";
 import { browserReferencePath, embeddedLdrawName } from "./lib/ldraw-paths.js";
 import { isCompleteStandardTorsoAssembly } from "./lib/ldraw-torso-assembly.js";
 
@@ -26,7 +27,7 @@ const publicRoot = resolve(root, "public/assets/ldraw/official-2608");
 const modelDirectory = resolve(publicRoot, "models");
 const thumbnailDirectory = resolve(root, "public/assets/thumbnails/ldraw-expanded");
 const CUSTOM_COLOR_CODE = 10_000;
-const BUILD_ROLES = ["head", "headwear", "torsoAssembly"] as const satisfies readonly CatalogRole[];
+const BUILD_ROLES = ["head", "headwear", "torsoAssembly", "legsAssembly"] as const satisfies readonly CatalogRole[];
 
 if (typeof globalThis.ProgressEvent === "undefined") {
   Object.defineProperty(globalThis, "ProgressEvent", {
@@ -84,6 +85,7 @@ const packageFileByRole = {
   head: "head.json",
   headwear: "headwear.json",
   torsoAssembly: "torso-assembly.json",
+  legsAssembly: "legs-assembly.json",
 } as const;
 
 async function collectFiles(directory: string): Promise<string[]> {
@@ -298,8 +300,11 @@ const placementByRole = new Map(BUILD_ROLES.map((role) => {
   return [role, reference.placementTransformLdu] as const;
 }));
 
-const supportsRoleAssembly = async (role: (typeof BUILD_ROLES)[number], candidate: Candidate): Promise<boolean> =>
-  role !== "torsoAssembly" || isCompleteStandardTorsoAssembly(await sourceFor(candidate.file));
+const supportsRoleAssembly = async (role: (typeof BUILD_ROLES)[number], candidate: Candidate): Promise<boolean> => {
+  if (role === "torsoAssembly") return isCompleteStandardTorsoAssembly(await sourceFor(candidate.file));
+  if (role === "legsAssembly") return isCompleteMinifigLegsAssembly(await sourceFor(candidate.file));
+  return true;
+};
 
 const matchedParts: Array<{
   part: CatalogPackagePart & { role: (typeof BUILD_ROLES)[number] };
@@ -383,7 +388,7 @@ for (const [index, { part, candidate }] of matchedParts.entries()) {
   const colorVariant = normalizedPart?.colorVariants[0];
   const colorRgb = colorVariant?.rgb && /^[A-F0-9]{6}$/u.test(colorVariant.rgb) ? colorVariant.rgb : "A0A8A4";
   const isPrintParentFallback = candidate.matchType === "rebrickable-print-parent";
-  const assetRole = part.role === "torsoAssembly" ? "torso" : part.role;
+  const assetRole = part.role === "torsoAssembly" ? "torso" : part.role === "legsAssembly" ? "legs" : part.role;
   const modelName = isPrintParentFallback
     ? `${assetRole}-geometry-${basename(candidate.file, ".dat")}-${colorRgb.toLowerCase()}`.replaceAll(/[^a-z0-9._-]/gu, "-")
     : `${assetRole}-${normalize(part.rebrickablePartNum).replaceAll(/[^a-z0-9._-]/gu, "-")}`;
@@ -508,6 +513,7 @@ const output = {
     headCount: outputEntries.filter(({ role }) => role === "head").length,
     headwearCount: outputEntries.filter(({ role }) => role === "headwear").length,
     torsoAssemblyCount: outputEntries.filter(({ role }) => role === "torsoAssembly").length,
+    legsAssemblyCount: outputEntries.filter(({ role }) => role === "legsAssembly").length,
     directMappingCount: outputEntries.filter(({ mappingEvidence }) => mappingEvidence !== "rebrickable-print-parent").length,
     printParentGeometryFallbackCount: outputEntries.filter(({ mappingEvidence }) => mappingEvidence === "rebrickable-print-parent").length,
     generatedAssetCount: outputEntries.length - outputEntries.filter(({ mappingEvidence }) => mappingEvidence === "rebrickable-print-parent").length + fallbackAssetCache.size,

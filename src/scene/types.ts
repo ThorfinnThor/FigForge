@@ -4,7 +4,7 @@ import type { AnchorSlot } from "../contracts/anchor-registry.js";
 export type CameraPreset = "three-quarter" | "front" | "back";
 export type FigureSlot = AnchorSlot;
 
-export type LDrawCatalogRole = "head" | "headwear" | "torsoAssembly" | "handAccessory";
+export type LDrawCatalogRole = "head" | "headwear" | "torsoAssembly" | "legsAssembly" | "handAccessory";
 
 export type LDrawCatalogSelection = {
   componentId: string;

@@ -70,7 +70,8 @@ const transforms = prototypeTransforms(prototypeRaw);
 const head = transforms.get("3626cpcbe.dat");
 const headwear = transforms.get("25409.dat");
 const torsoAssembly = transforms.get("973c01.dat");
-if (!head || !headwear || !torsoAssembly) throw new Error("Reference family transforms are missing");
+const legsAssembly = transforms.get("73200b-f1.dat");
+if (!head || !headwear || !torsoAssembly || !legsAssembly) throw new Error("Reference family transforms are missing");
 
 const rightHand = ldrawMatrix([23.6904, 26.774, -9.8982, 0.985, 0.1202, -0.1202, -0.17, 0.6964, -0.6964, 0, 0.707, 0.707]);
 const handGrip = ldrawMatrix([0, -0.82275, -9.8951, 1, 0, 0, 0, 0.9681, -0.2504, 0, 0.2504, 0.9681]);
@@ -83,6 +84,7 @@ const snapPlacement = (sourceConnector: Matrix4): number[] => rounded(
 const headTransform = rounded(head);
 const headwearTransform = rounded(headwear);
 const torsoAssemblyTransform = rounded(torsoAssembly);
+const legsAssemblyTransform = rounded(legsAssembly);
 const headEvidence = ["parts/s/3626cs02.dat", "parts/s/973s01.dat"];
 
 const document = ldrawDigitalConnectivitySchema.parse({
@@ -103,16 +105,28 @@ const document = ldrawDigitalConnectivitySchema.parse({
     sha256: sha256(vendorRaw[index]!),
   })),
   referenceAssemblySha256: sha256(prototypeRaw),
-  familyProfiles: [{
-    profileId: "standard-minifig-torso-assembly-v1",
-    role: "torsoAssembly",
-    placementMode: "prototype-family-origin",
-    placementTransformLdu: torsoAssemblyTransform,
-    targetSlot: "torsoAssembly",
-    eligibility: "official-shortcut-standard-torso-arms-hands",
-    evidenceFiles: ["parts/973c01.dat", "parts/s/973s01.dat"],
-    note: "Complete official torso shortcuts containing a 973-family torso, both standard arms and two hands share the identity transform of the official 973c01 reference assembly.",
-  }],
+  familyProfiles: [
+    {
+      profileId: "standard-minifig-torso-assembly-v1",
+      role: "torsoAssembly",
+      placementMode: "prototype-family-origin",
+      placementTransformLdu: torsoAssemblyTransform,
+      targetSlot: "torsoAssembly",
+      eligibility: "official-shortcut-standard-torso-arms-hands",
+      evidenceFiles: ["parts/973c01.dat", "parts/s/973s01.dat"],
+      note: "Complete official torso shortcuts containing a 973-family torso, both standard arms and two hands share the identity transform of the official 973c01 reference assembly.",
+    },
+    {
+      profileId: "complete-minifig-legs-assembly-v1",
+      role: "legsAssembly",
+      placementMode: "prototype-family-origin",
+      placementTransformLdu: legsAssemblyTransform,
+      targetSlot: "legsAssembly",
+      eligibility: "official-complete-minifig-hips-legs-title",
+      evidenceFiles: ["parts/73200b-f1.dat"],
+      note: "Official top-level parts or shortcuts whose own title declares a complete Minifig Hips and Legs assembly share the lower-body origin of the official 73200b-f1 reference assembly.",
+    },
+  ],
   entries: [
     ...["ff03-head-3626c", "ff03-head-3626cpr0001", "ff03-head-3626cpr0387"].map((componentId) => ({
       componentId,

@@ -40,7 +40,7 @@ describe("FF-14 responsive catalog workspace", () => {
       legsAssembly: 3_231,
       handAccessory: 1_308,
     });
-    expect(allParts.filter(builderComponentForCatalogPart)).toHaveLength(6_079);
+    expect(allParts.filter(builderComponentForCatalogPart)).toHaveLength(6_250);
   });
 
   it("defines responsive tabs, drawer focus return and keyboard dismissal", async () => {
@@ -91,7 +91,7 @@ describe("FF-14 responsive catalog workspace", () => {
     expect(allParts.filter((part) => {
       const builderComponent = builderComponentForCatalogPart(part);
       return builderComponent && verifiedLDrawEntryForComponent(builderComponent.id);
-    })).toHaveLength(6_072);
+    })).toHaveLength(6_243);
     expect(cardSource).toContain("Geometrie ohne Druck");
     expect(cardSource).toContain('disabled={connectionStatus !== "digitally-supported"}');
     expect(cardSource).toContain("In Figur einsetzen");
@@ -99,5 +99,6 @@ describe("FF-14 responsive catalog workspace", () => {
     expect(controllerSource).toContain('digitalConnectionStatus = "supported"');
     expect(controllerSource).toContain("physicalFitGuaranteed = false");
     expect(controllerSource).toContain("assertInternalLDrawUrl(selection.modelUrl");
+    expect(controllerSource).toContain('legsAssembly: { prototypeFileName: "73200b-f1.dat" }');
   });
 });

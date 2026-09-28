@@ -37,7 +37,7 @@ export type VerifiedLDrawCatalogEntry = {
 };
 
 type ExpandedLDrawCatalogEntry = VerifiedLDrawCatalogEntry & Omit<CatalogPackagePart, "id" | "role"> & {
-  role: "head" | "headwear" | "torsoAssembly";
+  role: "head" | "headwear" | "torsoAssembly" | "legsAssembly";
   placementMode: "prototype-family-origin";
   placementTransformLdu: number[];
 };

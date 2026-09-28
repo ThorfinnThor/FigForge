@@ -146,13 +146,13 @@ export function FigureViewport({ selectedParts }: FigureViewportProps) {
         </p>
 
         <dl className="prototype-part-list">
-          <div><dt>Beine</dt><dd>Basisprototyp · Katalogmodell blockiert</dd></div>
-          {(["torsoAssembly", "head", "headwear", "handAccessory"] as const).map((role) => {
+          {(["legsAssembly", "torsoAssembly", "head", "headwear", "handAccessory"] as const).map((role) => {
             const part = selectedForRole(role);
             const labels: Record<LDrawCatalogRole, string> = {
               handAccessory: "Zubehör",
               head: "Kopf",
               headwear: "Haare",
+              legsAssembly: "Beine",
               torsoAssembly: "Torso",
             };
             return (
@@ -160,7 +160,7 @@ export function FigureViewport({ selectedParts }: FigureViewportProps) {
                 <dt>{labels[role]}</dt>
                 <dd>{part
                   ? `${part.rebrickablePartNum} · LDraw ${part.ldrawUpdate}${role === "handAccessory" ? " · rechte Hand" : ""}`
-                  : "Kein belegtes Modell ausgewählt"}</dd>
+                  : role === "legsAssembly" ? "Basisprototyp · kein Katalogmodell ausgewählt" : "Kein belegtes Modell ausgewählt"}</dd>
               </div>
             );
           })}
