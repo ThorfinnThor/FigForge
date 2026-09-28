@@ -32,6 +32,14 @@ describe("repository delivery policy", () => {
     expect(combined).not.toContain("cloudflare_account_id");
   });
 
+  it("keeps Cloudflare branch previews explicitly configured", async () => {
+    const wrangler = JSON.parse(await readProjectFile("wrangler.jsonc")) as {
+      previews?: Record<string, unknown>;
+    };
+
+    expect(wrangler.previews).toEqual({});
+  });
+
   it("pins GitHub-authored actions to immutable commit SHAs", async () => {
     const workflows = await Promise.all([
       readProjectFile(".github/workflows/ci.yml"),
