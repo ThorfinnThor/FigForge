@@ -37,6 +37,7 @@ const catalog = JSON.parse(await readFile(resolve(root, "data/generated/ldraw-ex
     digitallySupportedCount: number;
     headCount: number;
     headwearCount: number;
+    torsoAssemblyCount: number;
     directMappingCount: number;
     printParentGeometryFallbackCount: number;
     generatedAssetCount: number;
@@ -54,7 +55,7 @@ assert.equal(catalog.source.noticePath, lock.noticePath);
 assert.match(lock.contentPolicy, /MOC files are excluded/u);
 assert.equal(catalog.summary.mocFilesUsed, 0);
 assert.equal(catalog.entries.length, catalog.summary.digitallySupportedCount);
-assert.equal(catalog.summary.headCount + catalog.summary.headwearCount, catalog.entries.length);
+assert.equal(catalog.summary.headCount + catalog.summary.headwearCount + catalog.summary.torsoAssemblyCount, catalog.entries.length);
 assert(catalog.entries.length >= 800, "Expanded catalog unexpectedly dropped below 800 renderable parts");
 
 const publicLDrawRoot = resolve(root, "public/assets/ldraw/official-2608");
@@ -86,7 +87,7 @@ for (const entry of catalog.entries) {
   assert(!ids.has(entry.componentId), `Duplicate component ID: ${entry.componentId}`);
   ids.add(entry.componentId);
   assert.equal(entry.status, "verified");
-  assert(["head", "headwear"].includes(entry.role));
+  assert(["head", "headwear", "torsoAssembly"].includes(entry.role));
   assert(entry.componentId.startsWith(`catalog:${entry.role}:`));
   assert(entry.ldrawFile.startsWith("parts/"));
   assert(!entry.ldrawFile.toLowerCase().includes("moc"));
@@ -148,6 +149,7 @@ console.log(JSON.stringify({
   entries: catalog.entries.length,
   heads: catalog.summary.headCount,
   headwear: catalog.summary.headwearCount,
+  torsoAssemblies: catalog.summary.torsoAssemblyCount,
   printParentGeometryFallbacks: catalog.summary.printParentGeometryFallbackCount,
   generatedAssets: catalog.summary.generatedAssetCount,
   excludedRenderFailures: catalog.summary.renderFailuresExcluded,

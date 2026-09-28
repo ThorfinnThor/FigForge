@@ -45,4 +45,14 @@ describe("LDraw/LDCad digital connectivity", () => {
       }
     }
   });
+
+  it("provides a versioned identity placement for complete torso shortcuts", () => {
+    expect(registry.familyProfiles).toEqual([expect.objectContaining({
+      profileId: "standard-minifig-torso-assembly-v1",
+      role: "torsoAssembly",
+      placementMode: "prototype-family-origin",
+      eligibility: "official-shortcut-standard-torso-arms-hands",
+      placementTransformLdu: [1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1],
+    })]);
+  });
 });
