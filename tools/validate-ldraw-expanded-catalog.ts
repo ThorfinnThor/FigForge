@@ -38,6 +38,9 @@ const catalog = JSON.parse(await readFile(resolve(root, "data/generated/ldraw-ex
       sampledPointCount: number;
       protectedBodyBoxCount: number;
       collisionSampleCount: 0;
+      gripCandidatesTested: number;
+      safeGripCandidatesFound: 1;
+      selectedGripCandidateIndex: number;
       orientationCandidatesTested: number;
       selectedOrientationIndex: number;
       physicalFitGuaranteed: false;
@@ -58,7 +61,14 @@ const catalog = JSON.parse(await readFile(resolve(root, "data/generated/ldraw-ex
     generatedAssetCount: number;
     sharedOfficialFileCount: number;
     renderFailuresExcluded: number;
+    accessoryGripCandidatesExcluded: number;
+    accessoryMultipleGripCandidatesEvaluated: number;
+    accessoryMultipleGripCandidatesPassed: number;
+    accessoryMultipleGripCandidatesAmbiguous: number;
+    accessoryMultipleGripCandidatesNoSafe: number;
+    accessoryMultipleGripCandidatesRenderFailed: number;
     accessoryPlacementCandidatesEvaluated: number;
+    accessoryPlacementRenderFailuresExcluded: number;
     digitalPlacementPassedCount: number;
     digitalPlacementRejectionsExcluded: number;
     mocFilesUsed: number;
@@ -68,7 +78,9 @@ const catalog = JSON.parse(await readFile(resolve(root, "data/generated/ldraw-ex
     ldrawFile: string;
     reasonCode: string;
     collisionSampleCount: number;
-    orientationCollisionCounts: number[];
+    gripCandidatesTested: number;
+    safeGripCandidatesFound: number;
+    orientationCollisionCountsByGrip: number[][];
   }>;
 };
 
@@ -93,12 +105,33 @@ assert.equal(catalog.summary.digitalPlacementPassedCount, catalog.summary.handAc
 assert.equal(catalog.summary.digitalPlacementRejectionsExcluded, catalog.digitalPlacementRejections.length);
 assert.equal(
   catalog.summary.accessoryPlacementCandidatesEvaluated,
-  catalog.summary.digitalPlacementPassedCount + catalog.summary.digitalPlacementRejectionsExcluded,
+  catalog.summary.digitalPlacementPassedCount
+    + catalog.summary.digitalPlacementRejectionsExcluded
+    + catalog.summary.accessoryPlacementRenderFailuresExcluded,
+);
+assert.equal(
+  catalog.summary.accessoryMultipleGripCandidatesEvaluated,
+  catalog.summary.accessoryMultipleGripCandidatesPassed
+    + catalog.summary.accessoryMultipleGripCandidatesAmbiguous
+    + catalog.summary.accessoryMultipleGripCandidatesNoSafe
+    + catalog.summary.accessoryMultipleGripCandidatesRenderFailed,
 );
 for (const rejection of catalog.digitalPlacementRejections) {
   assert(rejection.ldrawFile.startsWith("parts/") && !rejection.ldrawFile.toLowerCase().includes("moc"));
-  assert(["grip-too-short", "reference-figure-clearance-failed"].includes(rejection.reasonCode));
-  assert.equal(rejection.orientationCollisionCounts.length, 8);
+  assert([
+    "grip-too-short",
+    "reference-figure-clearance-failed",
+    "no-safe-grip-candidate",
+    "multiple-safe-grip-candidates",
+  ].includes(rejection.reasonCode));
+  assert(rejection.gripCandidatesTested >= 1);
+  assert.equal(rejection.orientationCollisionCountsByGrip.length, rejection.gripCandidatesTested);
+  assert(rejection.orientationCollisionCountsByGrip.every((counts) => counts.length === 8));
+  if (rejection.reasonCode === "multiple-safe-grip-candidates") {
+    assert(rejection.safeGripCandidatesFound > 1);
+  } else {
+    assert.equal(rejection.safeGripCandidatesFound, 0);
+  }
   assert(rejection.collisionSampleCount >= 0);
 }
 
@@ -156,6 +189,12 @@ for (const entry of catalog.entries) {
     assert(entry.digitalValidation.sampledPointCount > 0);
     assert(entry.digitalValidation.protectedBodyBoxCount > 0);
     assert.equal(entry.digitalValidation.collisionSampleCount, 0);
+    assert(entry.digitalValidation.gripCandidatesTested >= 1);
+    assert.equal(entry.digitalValidation.safeGripCandidatesFound, 1);
+    assert(
+      entry.digitalValidation.selectedGripCandidateIndex >= 0
+        && entry.digitalValidation.selectedGripCandidateIndex < entry.digitalValidation.gripCandidatesTested,
+    );
     assert.equal(entry.digitalValidation.orientationCandidatesTested, 8);
     assert(entry.digitalValidation.selectedOrientationIndex >= 0 && entry.digitalValidation.selectedOrientationIndex < 8);
     assert.equal(entry.digitalValidation.physicalFitGuaranteed, false);
