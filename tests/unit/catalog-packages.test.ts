@@ -25,6 +25,7 @@ const fixtureCatalog: NormalizedCatalog = {
         { elementId: "2", colorId: 14, colorName: "Yellow", rgb: "F2CD37", evidenceId: "evidence:yellow-2" },
       ],
       relationshipCount: 0,
+      printParentPartNums: [],
       evidenceIds: ["evidence:head"],
     },
     {
@@ -36,6 +37,7 @@ const fixtureCatalog: NormalizedCatalog = {
       material: "Plastic",
       colorVariants: [],
       relationshipCount: 0,
+      printParentPartNums: [],
       evidenceIds: ["evidence:hat"],
     },
     {
@@ -47,6 +49,7 @@ const fixtureCatalog: NormalizedCatalog = {
       material: "Plastic",
       colorVariants: [],
       relationshipCount: 0,
+      printParentPartNums: [],
       evidenceIds: ["evidence:brick"],
     },
   ],

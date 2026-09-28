@@ -35,6 +35,7 @@ export const normalizedPartSchema = z
     material: z.string().min(1).max(80),
     colorVariants: z.array(normalizedColorVariantSchema),
     relationshipCount: z.number().int().nonnegative(),
+    printParentPartNums: z.array(z.string().min(1).max(80)),
     evidenceIds: z.array(stableId).min(1),
   })
   .strict();

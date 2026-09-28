@@ -8,6 +8,7 @@ type PartCardProps = {
   builderComponentId?: string | undefined;
   component: CatalogPackagePart;
   connectionStatus: "digitally-supported" | "blocked" | undefined;
+  geometryOnlyPreview?: boolean;
   ldrawAvailable: boolean;
   onSelect: (() => void) | undefined;
   thumbnailUrl?: string | undefined;
@@ -18,6 +19,7 @@ export function PartCard({
   builderComponentId,
   component,
   connectionStatus,
+  geometryOnlyPreview = false,
   ldrawAvailable,
   onSelect,
   selected = false,
@@ -40,7 +42,7 @@ export function PartCard({
         )}
         <span className="part-card__badge">
           {connectionStatus === "digitally-supported"
-            ? selected ? "Aktiv" : "Digital verbunden"
+            ? selected ? "Aktiv" : geometryOnlyPreview ? "Geometrie ohne Druck" : "Digital verbunden"
             : builderComponentId ? ldrawAvailable ? "Gesperrt" : "Katalog"
               : "Catalog CSV"}
         </span>
@@ -49,7 +51,9 @@ export function PartCard({
         <h3 className="part-card__title">{component.name}</h3>
         <p className="part-card__id">Rebrickable · {component.rebrickablePartNum}</p>
         <StatusMessage className="part-card__status" tone="warning">
-          {ldrawAvailable
+          {geometryOnlyPreview
+            ? "Offizielle Grundgeometrie des Rebrickable-Druckelternteils · Druck/Dekor wird nicht dargestellt"
+            : ldrawAvailable
             ? connectionStatus === "digitally-supported"
               ? "LDraw-Modell und versioniertes digitales Anschlussprofil vorhanden"
               : "Kein belegtes digitales Anschlussprofil · Auswahl gesperrt"
@@ -63,7 +67,7 @@ export function PartCard({
           disabled={connectionStatus !== "digitally-supported"}
           onClick={onSelect}
           title={connectionStatus === "digitally-supported"
-            ? `Digitales Anschlussprofil vorhanden. Physische Passform ist nicht garantiert. ${compatibility?.message ?? ""}`
+            ? `${geometryOnlyPreview ? "Offizielle Grundgeometrie vorhanden; Druck und Dekor werden nicht dargestellt. " : ""}Digitales Anschlussprofil vorhanden. Physische Passform ist nicht garantiert. ${compatibility?.message ?? ""}`
             : builderComponentId && ldrawAvailable
               ? "Für dieses offizielle LDraw-Modell fehlt ein belegtes digitales Anschlussprofil."
               : builderComponentId
