@@ -5,7 +5,7 @@ import { PartCard } from "./PartCard.js";
 import {
   CATALOG_CATEGORIES,
   builderComponentForCatalogPart,
-  catalogAssortment,
+  builderComponentForId,
   digitalConnectivityForComponent,
   digitallySupportedLDrawEntryForComponent,
   loadCatalogParts,
@@ -26,14 +26,13 @@ import {
   serializeFigureDocument,
 } from "../figure/figure-document.js";
 import { loadCurrentFigureDraft, saveCurrentFigureDraft } from "../storage/figure-draft-store.js";
-import type { AssortmentComponent } from "../contracts/test-assortment.js";
 import type { CatalogPackagePart } from "../contracts/catalog-package.js";
 import type { LDrawCatalogRole, LDrawCatalogSelection } from "../scene/types.js";
 
 const categoryLabel = new Map(CATALOG_CATEGORIES.map((category) => [category.id, category.label]));
 
 type MobileTab = "parts" | "figure" | "list";
-type CatalogRole = AssortmentComponent["role"];
+type CatalogRole = CatalogPackagePart["role"];
 type CatalogLoadState = "loading" | "ready" | "error";
 
 const INITIAL_VISIBLE_PARTS = 80;
@@ -113,20 +112,19 @@ export function CatalogWorkspace() {
     setVisiblePartCount(INITIAL_VISIBLE_PARTS);
   }, [activeCategory, deferredQuery]);
 
-  const referenceComponent = (id: string) => catalogAssortment.components.find((component) => component.id === id);
   const selectedComponentIds = new Set(Object.values(selectedByRole));
   const figureSlots = [
-    { id: "head", label: "Kopf", component: selectedByRole.head ? referenceComponent(selectedByRole.head) : undefined },
-    { id: "headwear", label: "Kopfbedeckung", component: selectedByRole.headwear ? referenceComponent(selectedByRole.headwear) : undefined },
-    { id: "torsoAssembly", label: "Oberkörper", component: selectedByRole.torsoAssembly ? referenceComponent(selectedByRole.torsoAssembly) : undefined },
-    { id: "legsAssembly", label: "Beine", component: selectedByRole.legsAssembly ? referenceComponent(selectedByRole.legsAssembly) : undefined },
-    { id: "handAccessory", label: "Handzubehör", component: selectedByRole.handAccessory ? referenceComponent(selectedByRole.handAccessory) : undefined },
+    { id: "head", label: "Kopf", component: selectedByRole.head ? builderComponentForId(selectedByRole.head) : undefined },
+    { id: "headwear", label: "Kopfbedeckung", component: selectedByRole.headwear ? builderComponentForId(selectedByRole.headwear) : undefined },
+    { id: "torsoAssembly", label: "Oberkörper", component: selectedByRole.torsoAssembly ? builderComponentForId(selectedByRole.torsoAssembly) : undefined },
+    { id: "legsAssembly", label: "Beine", component: selectedByRole.legsAssembly ? builderComponentForId(selectedByRole.legsAssembly) : undefined },
+    { id: "handAccessory", label: "Handzubehör", component: selectedByRole.handAccessory ? builderComponentForId(selectedByRole.handAccessory) : undefined },
   ] as const;
   const selectedLDrawParts = Object.entries(selectedByRole).flatMap(([role, componentId]) => {
     if (!componentId || !isLDrawCatalogRole(role as CatalogRole)) {
       return [];
     }
-    const component = referenceComponent(componentId);
+    const component = builderComponentForId(componentId);
     const ldrawEntry = digitallySupportedLDrawEntryForComponent(componentId);
     const connectivity = digitalConnectivityForComponent(componentId);
     if (!component || !ldrawEntry || connectivity?.status !== "digitally-supported") {
@@ -145,7 +143,7 @@ export function CatalogWorkspace() {
     } satisfies LDrawCatalogSelection];
   });
 
-  const selectForPreview = (component: AssortmentComponent): void => {
+  const selectForPreview = (component: CatalogPackagePart): void => {
     if (!digitallySupportedLDrawEntryForComponent(component.id)) {
       return;
     }
@@ -153,7 +151,7 @@ export function CatalogWorkspace() {
   };
 
   const isSupportedDocumentSelection = (componentId: string, slot: FigureDocumentSlot): boolean => {
-    const component = referenceComponent(componentId);
+    const component = builderComponentForId(componentId);
     return component?.role === slot && Boolean(digitallySupportedLDrawEntryForComponent(componentId));
   };
 
@@ -439,7 +437,8 @@ export function CatalogWorkspace() {
 
       <StatusMessage className="workspace-source-note" id="source-hinweis" tone="info">
         Katalogstatus: 20.202 Minifig-Teile aus belegten Rebrickable Catalog Downloads/CSV. Nur Einträge mit geprüftem LDraw-Modell und digitalem Anschlussprofil sind in die Figur einsetzbar; fehlende Bilder werden nicht aus fremden Websiteinhalten ergänzt. MOC-Dateien und Rebrickable-API-Daten werden nicht verwendet.
-        {" "}<a href="/licenses/LDCadShadowLibrary-NOTICE.txt" target="_blank" rel="noreferrer">Anschlussdaten-Lizenz</a>
+        {" "}<a href="/licenses/LDraw-CAreadme.txt" target="_blank" rel="noreferrer">LDraw-Lizenzhinweis</a>
+        {" · "}<a href="/licenses/LDCadShadowLibrary-NOTICE.txt" target="_blank" rel="noreferrer">Anschlussdaten-Lizenz</a>
       </StatusMessage>
     </div>
   );

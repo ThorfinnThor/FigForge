@@ -24,6 +24,7 @@ import type { CameraPreset, LDrawCatalogRole, LDrawCatalogSelection } from "./ty
 
 const MODEL_PATH = "/assets/ldraw/prototype/models/figforge-minifigure-packed.mpd";
 const MATERIALS_PATH = "/assets/ldraw/prototype/LDConfig.ldr";
+const OFFICIAL_PARTS_LIBRARY_PATH = "/assets/ldraw/official-2608/";
 const MODEL_HEIGHT = 3.08;
 const CAMERA_TARGET = new Vector3(0, 1.66, 0);
 
@@ -141,7 +142,8 @@ export class LDrawPrototypeSceneController {
     const modelUrl = assertInternalLDrawUrl(MODEL_PATH, baseUrl);
     const materialsUrl = assertInternalLDrawUrl(MATERIALS_PATH, baseUrl);
     const loader = new LDrawLoader()
-      .setConditionalLineMaterial(LDrawConditionalLineMaterial);
+      .setConditionalLineMaterial(LDrawConditionalLineMaterial)
+      .setPartsLibraryPath(new URL(OFFICIAL_PARTS_LIBRARY_PATH, baseUrl).href);
 
     await loader.preloadMaterials(materialsUrl.href);
     this.#loader = loader;

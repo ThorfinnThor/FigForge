@@ -14,6 +14,7 @@ const modelPackageIndexContent = await readFile(resolve(process.cwd(), "data/gen
 const mappingReviewContent = await readFile(resolve(process.cwd(), "data/generated/mapping-review.json"), "utf8");
 const threeLicenseContent = await readFile(resolve(process.cwd(), "public/licenses/three-MIT.txt"), "utf8");
 const ldcadShadowNoticeContent = await readFile(resolve(process.cwd(), "public/licenses/LDCadShadowLibrary-NOTICE.txt"), "utf8");
+const ldrawNoticeContent = await readFile(resolve(process.cwd(), "public/licenses/LDraw-CAreadme.txt"), "utf8");
 const sourceLock = sourceLockSchema.parse(JSON.parse(sourceLockContent) as unknown);
 const modelPackageIndex = modelPackageIndexSchema.parse(JSON.parse(modelPackageIndexContent) as unknown);
 const mappingReview = mappingReviewSchema.parse(JSON.parse(mappingReviewContent) as unknown);
@@ -25,6 +26,7 @@ const build = buildAssetManifest({
   mappingReview,
   threeLicenseSha256: sha256(threeLicenseContent),
   ldcadShadowNoticeSha256: sha256(ldcadShadowNoticeContent),
+  ldrawNoticeSha256: sha256(ldrawNoticeContent),
 });
 assetManifestSchema.parse(build.manifest);
 

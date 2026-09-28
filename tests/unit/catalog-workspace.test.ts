@@ -40,7 +40,7 @@ describe("FF-14 responsive catalog workspace", () => {
       legsAssembly: 3_231,
       handAccessory: 1_308,
     });
-    expect(allParts.filter(builderComponentForCatalogPart)).toHaveLength(17);
+    expect(allParts.filter(builderComponentForCatalogPart)).toHaveLength(860);
   });
 
   it("defines responsive tabs, drawer focus return and keyboard dismissal", async () => {
@@ -75,7 +75,7 @@ describe("FF-14 responsive catalog workspace", () => {
     expect(thumbnailUrls.filter((url) => url.startsWith("/assets/thumbnails/ldraw/"))).toHaveLength(10);
   });
 
-  it("enables only the ten catalog entries with verified official LDraw mappings", async () => {
+  it("keeps the curated subset stable while enabling the expanded official LDraw catalog", async () => {
     const verified = catalogAssortment.components.filter((component) =>
       verifiedLDrawEntryForComponent(component.id),
     );
@@ -87,6 +87,11 @@ describe("FF-14 responsive catalog workspace", () => {
 
     expect(verified).toHaveLength(10);
     expect(blocked).toHaveLength(7);
+    const allParts = await loadCatalogParts("all");
+    expect(allParts.filter((part) => {
+      const builderComponent = builderComponentForCatalogPart(part);
+      return builderComponent && verifiedLDrawEntryForComponent(builderComponent.id);
+    })).toHaveLength(853);
     expect(cardSource).toContain('disabled={connectionStatus !== "digitally-supported"}');
     expect(cardSource).toContain("In Figur einsetzen");
     expect(cardSource).toContain("Kein offizielles LDraw-Modell");

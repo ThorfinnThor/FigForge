@@ -16,6 +16,7 @@ const modelPackageIndexContent = await readFile(resolve(process.cwd(), "data/gen
 const mappingReviewContent = await readFile(resolve(process.cwd(), "data/generated/mapping-review.json"), "utf8");
 const threeLicenseContent = await readFile(resolve(process.cwd(), "public/licenses/three-MIT.txt"), "utf8");
 const ldcadShadowNoticeContent = await readFile(resolve(process.cwd(), "public/licenses/LDCadShadowLibrary-NOTICE.txt"), "utf8");
+const ldrawNoticeContent = await readFile(resolve(process.cwd(), "public/licenses/LDraw-CAreadme.txt"), "utf8");
 const sourceLock = sourceLockSchema.parse(JSON.parse(sourceLockContent) as unknown);
 const modelPackageIndex = modelPackageIndexSchema.parse(JSON.parse(modelPackageIndexContent) as unknown);
 const mappingReview = mappingReviewSchema.parse(JSON.parse(mappingReviewContent) as unknown);
@@ -33,6 +34,7 @@ const expected = buildAssetManifest({
   mappingReview,
   threeLicenseSha256: sha256(threeLicenseContent),
   ldcadShadowNoticeSha256: sha256(ldcadShadowNoticeContent),
+  ldrawNoticeSha256: sha256(ldrawNoticeContent),
 });
 
 assert.equal(sourceLock.sources[0].apiUsed, false, "Asset manifest cannot be based on the Rebrickable API");
@@ -60,6 +62,10 @@ const snapEvidence = manifest.licenseEvidence.find(({ id }) => id === "license:l
 assert(snapEvidence, "LDCad Shadow Library license evidence is missing");
 assert.equal(snapEvidence.sha256, sha256(ldcadShadowNoticeContent));
 assert.equal(snapEvidence.status, "confirmed");
+const ldrawEvidence = manifest.licenseEvidence.find(({ id }) => id === "license:ldraw:official-parts");
+assert(ldrawEvidence, "LDraw Parts Library license evidence is missing");
+assert.equal(ldrawEvidence.sha256, sha256(ldrawNoticeContent));
+assert.equal(ldrawEvidence.status, "confirmed");
 for (const evidence of manifest.licenseEvidence) {
   assert(manifest.sourceNotices.some(({ id }) => id === evidence.sourceId), `Unknown source for ${evidence.id}`);
 }
