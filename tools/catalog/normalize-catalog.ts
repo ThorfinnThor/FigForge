@@ -54,6 +54,13 @@ const parseInteger = (value: string, field: string, fileName: string): number =>
   return Number(value);
 };
 
+const parseColorId = (value: string, field: string, fileName: string): number => {
+  if (!/^-?\d+$/u.test(value)) {
+    throw new Error(`CSV ${fileName} has an invalid color ID in ${field}: ${value}`);
+  }
+  return Number(value);
+};
+
 const parseHex = (value: string, fileName: string): string => {
   const normalized = value.toUpperCase();
   if (!/^[0-9A-F]{6}$/u.test(normalized)) {
@@ -137,7 +144,7 @@ export const normalizeCatalogArtifacts = ({
 
   const colorById = new Map<number, { name: string; rgb: string }>();
   for (const row of colors.rows) {
-    const id = parseInteger(row.id ?? "", "id", "colors.csv.gz");
+    const id = parseColorId(row.id ?? "", "id", "colors.csv.gz");
     if (colorById.has(id)) throw new Error(`Duplicate color ID in colors.csv.gz: ${id}`);
     colorById.set(id, { name: row.name ?? "", rgb: parseHex(row.rgb ?? "", "colors.csv.gz") });
   }
@@ -152,7 +159,7 @@ export const normalizeCatalogArtifacts = ({
   for (const row of elements?.rows ?? []) {
     const partNum = row.part_num ?? "";
     const elementId = row.element_id ?? "";
-    const colorId = parseInteger(row.color_id ?? "", "color_id", "elements.csv.gz");
+    const colorId = parseColorId(row.color_id ?? "", "color_id", "elements.csv.gz");
     if (!elementId || elementIds.has(elementId)) throw new Error(`Duplicate or empty element ID in elements.csv.gz: ${elementId}`);
     if (!colorById.has(colorId)) throw new Error(`Element references unknown color ${colorId}`);
     elementIds.add(elementId);

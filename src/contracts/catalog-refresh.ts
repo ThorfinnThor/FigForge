@@ -17,7 +17,8 @@ const catalogFileNameSchema = z.enum([
 export const normalizedColorVariantSchema = z
   .object({
     elementId: z.string().min(1).max(64),
-    colorId: z.number().int().nonnegative(),
+    // Rebrickable reserves -1 for its catalog-level "Unknown" color.
+    colorId: z.number().int(),
     colorName: z.string().min(1).max(120),
     rgb: z.string().regex(/^[0-9A-F]{6}$/u),
     evidenceId: stableId,

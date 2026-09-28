@@ -5,11 +5,11 @@ import { normalizeCatalogArtifacts, type CatalogArtifactBytes } from "../../tool
 import { parseCsv } from "../../src/catalog/csv.js";
 
 const fixtureCsv = {
-  "colors.csv.gz": "id,name,rgb,is_trans\n1,Black,05131D,f\n14,Yellow,F2CD37,f\n",
+  "colors.csv.gz": "id,name,rgb,is_trans\n-1,Unknown,0033B2,f\n1,Black,05131D,f\n14,Yellow,F2CD37,f\n",
   "part_categories.csv.gz": "id,name\n59,Minifig Heads\n73,Minifig Shields\n",
   "parts.csv.gz": "part_num,name,part_cat_id,part_material\n3001,Head Plain,59,Plastic\n3002,\"Shield, Round\",73,Plastic\n",
   "part_relationships.csv.gz": "rel_type,child_part_num,parent_part_num\nsubpart,3002,3001\n",
-  "elements.csv.gz": "element_id,part_num,color_id\n9001,3001,14\n9002,3002,1\n",
+  "elements.csv.gz": "element_id,part_num,color_id\n9001,3001,14\n9002,3002,1\n9003,3002,-1\n",
 } as const;
 
 const fixtureArtifacts: CatalogArtifactBytes[] = Object.entries(fixtureCsv).map(([fileName, content]) => ({
@@ -52,6 +52,12 @@ describe("catalog refresh adapter", () => {
     });
     expect(result.normalizedCatalog.parts[0]?.relationshipCount).toBe(1);
     expect(result.normalizedCatalog.parts[1]?.relationshipCount).toBe(0);
+    expect(result.normalizedCatalog.parts[1]?.colorVariants[1]).toMatchObject({
+      elementId: "9003",
+      colorId: -1,
+      colorName: "Unknown",
+      rgb: "0033B2",
+    });
   });
 
   it("rejects a changed hash when lock updates are not explicitly allowed", () => {
