@@ -13,8 +13,8 @@
           "fileName": "colors.csv.gz",
           "required": true,
           "downloadUrl": "https://cdn.rebrickable.com/media/downloads/colors.csv.gz",
-          "sha256": "4e04369ec3f1b01c95f8aa60a9da8b9ad1abcd044237f4d8546b95047d498daf",
-          "retrievedAt": "2026-09-28T08:47:53.524Z"
+          "sha256": "cfd040a8467edcb65ed29a8795cf21e1d5c1d93d4047dd3a58854a2f3210372e",
+          "retrievedAt": "2026-09-28T10:59:44.708Z"
         },
         {
           "fileName": "part_categories.csv.gz",
