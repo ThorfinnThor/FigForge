@@ -39,17 +39,17 @@ jobs:
       - name: Prepare pinned official LDraw library
         shell: bash
         run: |
-          archive_path="$(mktemp)"
+          archive_path="data/incoming/ldraw-2608/complete.zip"
           archive_url="$(node -p "require('./data/ldraw-source.lock.json').archiveUrl")"
           archive_sha="$(node -p "require('./data/ldraw-source.lock.json').archiveSha256")"
+          mkdir -p data/incoming/ldraw-2608/extracted
           curl --fail --location --retry 3 --output "$archive_path" "$archive_url"
           echo "$archive_sha  $archive_path" | sha256sum --check --strict
-          mkdir -p data/incoming/ldraw-2608/extracted
           unzip -q "$archive_path" -d data/incoming/ldraw-2608/extracted
           test -d data/incoming/ldraw-2608/extracted/ldraw/parts
 
-      - name: Rebuild official LDraw coverage report
-        run: npm run assets:analyze:ldraw-coverage
+      - name: Rebuild official LDraw catalog assets and coverage report
+        run: npm run assets:ldraw-expanded && npm run assets:analyze:ldraw-coverage
 
       - name: Validate proposed data and repository
         run: npm run verify
@@ -58,7 +58,7 @@ jobs:
         id: changes
         shell: bash
         run: |
-          if [[ -n "$(git status --porcelain --untracked-files=all -- data docs/ldraw-catalog-coverage.md)" ]]; then
+          if [[ -n "$(git status --porcelain --untracked-files=all -- data docs/ldraw-catalog-coverage.md public/assets/ldraw/official-2608 public/assets/thumbnails/ldraw-expanded)" ]]; then
             echo "changed=true" >> "$GITHUB_OUTPUT"
           else
             echo "changed=false" >> "$GITHUB_OUTPUT"
@@ -73,7 +73,7 @@ jobs:
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git fetch origin "$branch" || true
           git switch -C "$branch"
-          git add -- data docs/ldraw-catalog-coverage.md
+          git add -- data docs/ldraw-catalog-coverage.md public/assets/ldraw/official-2608 public/assets/thumbnails/ldraw-expanded
           git commit -m "chore(data): propose Rebrickable catalog refresh"
           git push --force-with-lease origin "HEAD:refs/heads/$branch"
 

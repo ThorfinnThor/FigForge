@@ -30,6 +30,10 @@ export type VerifiedLDrawCatalogEntry = {
   ldrawUpdate: string;
   modelUrl: string;
   thumbnailUrl: string;
+  geometryFallback?: {
+    kind: "unprinted-print-parent";
+    parentPartNums: string[];
+  } | null;
 };
 
 type ExpandedLDrawCatalogEntry = VerifiedLDrawCatalogEntry & Omit<CatalogPackagePart, "id" | "role"> & {

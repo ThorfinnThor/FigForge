@@ -12,7 +12,7 @@ const packages = [
   ["handAccessory", "hand-accessory.json"],
 ] as const satisfies ReadonlyArray<readonly [CatalogRole, string]>;
 
-type MatchType = "exact-filename" | "explicit-keyword";
+type MatchType = "exact-filename" | "explicit-keyword" | "rebrickable-print-parent";
 type RemainingClassification =
   | "builder-blocked"
   | "render-failed"
@@ -151,12 +151,13 @@ export async function buildLDrawCatalogCoverage(
     if (builderReadyKeys.has(key)) throw new Error(`Duplicate builder-ready catalog key: ${key}`);
     builderReadyKeys.add(key);
   }
-  const renderFailureByIdentity = new Map(
-    expandedCatalog.renderFailures.map((failure) => [
-      `${normalize(failure.rebrickablePartNum)}:${failure.ldrawFile.toLowerCase()}`,
-      failure.reason,
-    ]),
-  );
+  const renderFailuresByPartNum = new Map<string, Array<{ ldrawFile: string; reason: string }>>();
+  for (const failure of expandedCatalog.renderFailures) {
+    const key = normalize(failure.rebrickablePartNum);
+    const failures = renderFailuresByPartNum.get(key) ?? [];
+    failures.push(failure);
+    renderFailuresByPartNum.set(key, failures);
+  }
 
   const thumbnailIndex = await readJson<{
     entries: Array<{ status: "verified" | "blocked" }>;
@@ -201,9 +202,11 @@ export async function buildLDrawCatalogCoverage(
     const key = catalogKey(part.role, part.rebrickablePartNum);
     const blockedReason = blockedByKey.get(key);
     if (blockedReason) return { classification: "builder-blocked", reason: blockedReason };
+    const renderFailures = renderFailuresByPartNum.get(normalize(part.rebrickablePartNum)) ?? [];
+    if (renderFailures.length > 0) {
+      return { classification: "render-failed", reason: [...new Set(renderFailures.map(({ reason }) => reason))].join("; ") };
+    }
     if (uniqueFiles.length === 1) {
-      const failureReason = renderFailureByIdentity.get(`${normalize(part.rebrickablePartNum)}:${uniqueFiles[0]?.toLowerCase()}`);
-      if (failureReason) return { classification: "render-failed", reason: failureReason };
       return {
         classification: "placement-profile-required",
         reason: null,
@@ -231,16 +234,20 @@ export async function buildLDrawCatalogCoverage(
       roleSummary[role].catalogPartCount += 1;
 
       const candidates = candidateIndex.get(normalize(part.rebrickablePartNum)) ?? [];
-      const uniqueFiles = [...new Set(candidates.map(({ file }) => file))].sort();
-      if (uniqueFiles.length === 1) uniqueOfficialMappingCount += 1;
-      if (uniqueFiles.length > 1) ambiguousOfficialMappingCount += 1;
+      const directFiles = [...new Set(candidates.map(({ file }) => file))].sort();
+      if (directFiles.length === 1) uniqueOfficialMappingCount += 1;
+      if (directFiles.length > 1) ambiguousOfficialMappingCount += 1;
 
       if (builderReadyKeys.has(key)) {
         roleSummary[role].builderReadyPartCount += 1;
         continue;
       }
 
-      const { classification, reason } = classifyRemaining(part, uniqueFiles);
+      const renderFailures = renderFailuresByPartNum.get(normalize(part.rebrickablePartNum)) ?? [];
+      const reportFiles = directFiles.length > 0
+        ? directFiles
+        : [...new Set(renderFailures.map(({ ldrawFile }) => ldrawFile))].sort();
+      const { classification, reason } = classifyRemaining(part, directFiles);
       roleSummary[role].remainingCatalogPartCount += 1;
       roleSummary[role].remainingClassifications[classification] += 1;
       remainingEntries.push({
@@ -249,8 +256,10 @@ export async function buildLDrawCatalogCoverage(
         rebrickablePartNum: part.rebrickablePartNum,
         name: part.name,
         classification,
-        ldrawFiles: uniqueFiles,
-        mappingEvidence: [...new Set(candidates.map(({ matchType }) => matchType))].sort(),
+        ldrawFiles: reportFiles,
+        mappingEvidence: directFiles.length > 0
+          ? [...new Set(candidates.map(({ matchType }) => matchType))].sort()
+          : renderFailures.length > 0 ? ["rebrickable-print-parent"] : [],
         reason,
       });
     }
@@ -286,6 +295,7 @@ export async function buildLDrawCatalogCoverage(
     methodology: [
       "Catalog scope is limited to the five minifigure-relevant packages derived from locked Rebrickable Catalog Downloads/CSV.",
       "Official LDraw matches require either an exact top-level parts/*.dat filename or an explicit !KEYWORDS Rebrickable identifier.",
+      "Head and headwear print variants may reuse a unique unprinted parent geometry only when part_relationships.csv explicitly declares the print relationship.",
       "No fuzzy name matching, Rebrickable API data, image scraping, LDraw models, or MOC files are used.",
       "A unique model mapping is not treated as builder-ready until a role-specific placement profile and rendering both succeed.",
     ],
@@ -318,5 +328,37 @@ export function renderLDrawCatalogCoverageMarkdown(report: LDrawCatalogCoverageR
     return `| ${role} | ${item.catalogPartCount.toLocaleString("de-DE")} | ${item.builderReadyPartCount.toLocaleString("de-DE")} | ${item.remainingClassifications["placement-profile-required"].toLocaleString("de-DE")} | ${item.remainingClassifications["builder-blocked"].toLocaleString("de-DE")} | ${item.remainingClassifications["render-failed"].toLocaleString("de-DE")} | ${item.remainingClassifications["ambiguous-official-mapping"].toLocaleString("de-DE")} | ${item.remainingClassifications["no-official-mapping"].toLocaleString("de-DE")} |`;
   });
   const summary = report.summary;
-  return `# LDraw-Katalogabdeckung\n\nStand: ${report.generatedAt}; Rebrickable-Source-Lock \`${report.sources.catalogSourceLockSha256}\`; offizielle LDraw-Bibliothek ${report.sources.ldrawRelease}.\n\n**Verbindliche Quellenregel: ${report.sourcePolicy}**\n\n## Ergebnis\n\n- ${summary.catalogPartCount.toLocaleString("de-DE")} minifigurenrelevante Katalogeinträge insgesamt.\n- ${summary.visualizedPartCount.toLocaleString("de-DE")} besitzen bereits ein Modell und Vorschaubild.\n- ${summary.builderReadyPartCount.toLocaleString("de-DE")} sind tatsächlich im Builder auswählbar.\n- ${summary.remainingCatalogPartCount.toLocaleString("de-DE")} sind noch nicht builderbereit; davon fehlen bei ${summary.remainingWithoutVisualizationCount.toLocaleString("de-DE")} auch Modell/Vorschaubild.\n- ${summary.uniqueOfficialMappingCount.toLocaleString("de-DE")} Katalogeinträge haben insgesamt eine eindeutige offizielle LDraw-Zuordnung, ${summary.ambiguousOfficialMappingCount.toLocaleString("de-DE")} sind mehrdeutig und ${summary.noOfficialMappingCount.toLocaleString("de-DE")} haben keine offizielle Zuordnung.\n\n| Rolle | Katalog | Builderbereit | Platzierung fehlt | Gesperrt | Renderfehler | Mehrdeutig | Keine Zuordnung |\n| --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: |\n${rows.join("\n")}\n\nDie Resttabelle weist einen Eintrag weniger unter „Keine Zuordnung“ aus als die rohe Mappingbilanz: \`3814\` wird wegen seiner kuratierten Modellabbildung vorrangig als gesperrt geführt, besitzt im offiziellen LDraw-Release aber keine exakte Dateinamen- oder explizite Rebrickable-Zuordnung.\n\n## Sichere Arbeitsreihenfolge\n\n1. Die ${summary.remainingClassifications["render-failed"].toLocaleString("de-DE")} Renderfehler technisch beheben.\n2. Für ${summary.remainingClassifications["placement-profile-required"].toLocaleString("de-DE")} eindeutig zugeordnete Teile reproduzierbare Platzierungs- und Assembly-Profile ableiten und prüfen.\n3. Die ${summary.remainingClassifications["ambiguous-official-mapping"].toLocaleString("de-DE")} mehrdeutigen Zuordnungen über offizielle Metadaten auflösen.\n4. Die ${summary.remainingClassifications["no-official-mapping"].toLocaleString("de-DE")} Einträge ohne offizielle Zuordnung bleiben gesperrt, bis eine spätere offizielle LDraw-Version eine belastbare Zuordnung liefert.\n\nDie vollständige maschinenlesbare Liste steht in \`data/generated/ldraw-catalog-coverage.json\`. Es werden keine unscharfen Namensvergleiche, keine Rebrickable-API, keine gescrapten Bilder, keine LDraw-Modelle und keine MOC-Dateien verwendet.\n`;
+  const directMappingDifference = summary.noOfficialMappingCount
+    - summary.remainingClassifications["no-official-mapping"];
+  return [
+    "# LDraw-Katalogabdeckung",
+    "",
+    `Stand: ${report.generatedAt}; Rebrickable-Source-Lock \`${report.sources.catalogSourceLockSha256}\`; offizielle LDraw-Bibliothek ${report.sources.ldrawRelease}.`,
+    "",
+    `**Verbindliche Quellenregel: ${report.sourcePolicy}**`,
+    "",
+    "## Ergebnis",
+    "",
+    `- ${summary.catalogPartCount.toLocaleString("de-DE")} minifigurenrelevante Katalogeinträge insgesamt.`,
+    `- ${summary.visualizedPartCount.toLocaleString("de-DE")} besitzen bereits ein Modell und Vorschaubild.`,
+    `- ${summary.builderReadyPartCount.toLocaleString("de-DE")} sind tatsächlich im Builder auswählbar.`,
+    `- ${summary.remainingCatalogPartCount.toLocaleString("de-DE")} sind noch nicht builderbereit; davon fehlen bei ${summary.remainingWithoutVisualizationCount.toLocaleString("de-DE")} auch Modell/Vorschaubild.`,
+    `- ${summary.uniqueOfficialMappingCount.toLocaleString("de-DE")} Katalogeinträge haben insgesamt eine eindeutige direkte LDraw-Zuordnung, ${summary.ambiguousOfficialMappingCount.toLocaleString("de-DE")} sind mehrdeutig und ${summary.noOfficialMappingCount.toLocaleString("de-DE")} haben keine direkte offizielle Zuordnung.`,
+    "",
+    "| Rolle | Katalog | Builderbereit | Platzierung fehlt | Gesperrt | Renderfehler | Mehrdeutig | Keine Zuordnung |",
+    "| --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: |",
+    ...rows,
+    "",
+    `Die Resttabelle weist ${directMappingDifference.toLocaleString("de-DE")} Einträge weniger unter „Keine Zuordnung“ aus als die rohe direkte Mappingbilanz. Diese Einträge verwenden entweder eine in Rebrickable deklarierte Druckeltern-Grundgeometrie, sind als zugehöriger Renderfehler klassifiziert oder – im Fall \`3814\` – wegen einer kuratierten Modellabbildung gesperrt.`,
+    "",
+    "## Sichere Arbeitsreihenfolge",
+    "",
+    `1. Die ${summary.remainingClassifications["render-failed"].toLocaleString("de-DE")} Renderfehler technisch beheben.`,
+    `2. Für ${summary.remainingClassifications["placement-profile-required"].toLocaleString("de-DE")} eindeutig zugeordnete Teile reproduzierbare Platzierungs- und Assembly-Profile ableiten und prüfen.`,
+    `3. Die ${summary.remainingClassifications["ambiguous-official-mapping"].toLocaleString("de-DE")} mehrdeutigen Zuordnungen über offizielle Metadaten auflösen.`,
+    `4. Die ${summary.remainingClassifications["no-official-mapping"].toLocaleString("de-DE")} Einträge ohne direkte offizielle Zuordnung bleiben gesperrt, bis eine spätere offizielle LDraw-Version eine belastbare Zuordnung liefert.`,
+    "",
+    "Die vollständige maschinenlesbare Liste steht in `data/generated/ldraw-catalog-coverage.json`. Es werden keine unscharfen Namensvergleiche, keine Rebrickable-API, keine gescrapten Bilder, keine LDraw-Modelle und keine MOC-Dateien verwendet.",
+    "",
+  ].join("\n");
 }

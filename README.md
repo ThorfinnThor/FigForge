@@ -50,6 +50,8 @@ Danach `http://127.0.0.1:4179` öffnen. Die Oberfläche zeigt ausschließlich di
 
 `npm run assets:analyze:ldraw-coverage` erzeugt den vollständigen LDraw-Restbestandsbericht. `npm run assets:validate:ldraw-coverage` gleicht ihn mit Katalog, Connectivity und der gepinnten offiziellen LDraw-Bibliothek ab.
 
+Gedruckte Kopf- und Kopfbedeckungsvarianten ohne eigenes offizielles LDraw-Modell dürfen ausschließlich die in der gelockten Rebrickable-Datei `part_relationships.csv.gz` deklarierte, eindeutig zugeordnete Grundgeometrie verwenden. Diese Einträge sind in der Oberfläche ausdrücklich als „Geometrie ohne Druck“ gekennzeichnet; Druck und Dekor werden nicht erfunden.
+
 ## Lieferung
 
 - `docs/implementation-plan.md`: verbindlicher Plan.

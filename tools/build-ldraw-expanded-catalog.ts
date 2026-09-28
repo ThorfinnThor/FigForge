@@ -57,13 +57,15 @@ type SourceLock = {
 
 type Candidate = {
   file: string;
-  matchType: "exact-filename" | "explicit-keyword";
+  matchType: "exact-filename" | "explicit-keyword" | "rebrickable-print-parent";
   update: string;
+  printParentPartNums?: string[];
 };
 
 type NormalizedPart = {
   partNum: string;
   colorVariants: Array<{ rgb: string; colorName: string }>;
+  printParentPartNums: string[];
 };
 
 type Triangle = {
@@ -304,18 +306,46 @@ const matchedParts: Array<{
   part: CatalogPackagePart & { role: (typeof BUILD_ROLES)[number] };
   candidate: Candidate;
 }> = [];
+let ambiguousMappingsExcluded = 0;
 for (const role of BUILD_ROLES) {
   const raw: unknown = JSON.parse(await readFile(resolve(root, "data/generated/catalog-packages", packageFileByRole[role]), "utf8"));
   const catalogPackage = catalogPackageSchema.parse(raw);
   for (const part of catalogPackage.parts) {
     if (curatedKeys.has(`${role}:${normalize(part.rebrickablePartNum)}`)) continue;
-    const candidates = candidateIndex.get(normalize(part.rebrickablePartNum)) ?? [];
-    const files = [...new Set(candidates.map(({ file }) => file))];
-    if (files.length !== 1) continue;
-    const exact = candidates.find(({ matchType }) => matchType === "exact-filename") ?? candidates[0];
-    if (exact) matchedParts.push({
+    const directCandidates = candidateIndex.get(normalize(part.rebrickablePartNum)) ?? [];
+    const directFiles = [...new Set(directCandidates.map(({ file }) => file))];
+    if (directFiles.length > 1) {
+      ambiguousMappingsExcluded += 1;
+      continue;
+    }
+    const direct = directCandidates.find(({ matchType }) => matchType === "exact-filename") ?? directCandidates[0];
+    if (directFiles.length === 1 && direct) {
+      matchedParts.push({
+        part: { ...part, role },
+        candidate: direct,
+      });
+      continue;
+    }
+
+    const normalizedPart = normalizedByPartNum.get(normalize(part.rebrickablePartNum));
+    const parentCandidates = (normalizedPart?.printParentPartNums ?? []).flatMap((parentPartNum) =>
+      (candidateIndex.get(normalize(parentPartNum)) ?? []).map((candidate) => ({ candidate, parentPartNum }))
+    );
+    const parentFiles = [...new Set(parentCandidates.map(({ candidate }) => candidate.file))];
+    if (parentFiles.length > 1) {
+      ambiguousMappingsExcluded += 1;
+      continue;
+    }
+    const parentMatch = parentCandidates.find(({ candidate }) => candidate.matchType === "exact-filename") ?? parentCandidates[0];
+    if (parentFiles.length === 1 && parentMatch) matchedParts.push({
       part: { ...part, role },
-      candidate: exact,
+      candidate: {
+        ...parentMatch.candidate,
+        matchType: "rebrickable-print-parent",
+        printParentPartNums: [...new Set(parentCandidates
+          .filter(({ candidate }) => candidate.file === parentMatch.candidate.file)
+          .map(({ parentPartNum }) => parentPartNum))].sort(),
+      },
     });
   }
 }
@@ -333,43 +363,78 @@ const materials = await readFile(resolve(libraryRoot, "LDConfig.ldr"), "utf8");
 const copiedDependencies = new Set<string>();
 const outputEntries: Array<Record<string, unknown>> = [];
 const skippedEntries: Array<{ rebrickablePartNum: string; ldrawFile: string; reason: string }> = [];
+type GeneratedAsset = {
+  modelUrl: string;
+  modelSha256: string;
+  thumbnailUrl: string;
+  thumbnailSha256: string;
+  thumbnailBytes: number;
+};
+const fallbackAssetCache = new Map<string, GeneratedAsset>();
+const fallbackFailureCache = new Map<string, string>();
 
 for (const [index, { part, candidate }] of matchedParts.entries()) {
-  const modelName = `${part.role === "head" ? "head" : "headwear"}-${normalize(part.rebrickablePartNum).replaceAll(/[^a-z0-9._-]/gu, "-")}`;
   const normalizedPart = normalizedByPartNum.get(normalize(part.rebrickablePartNum));
   const colorVariant = normalizedPart?.colorVariants[0];
   const colorRgb = colorVariant?.rgb && /^[A-F0-9]{6}$/u.test(colorVariant.rgb) ? colorVariant.rgb : "A0A8A4";
-  const { packed, dependencies } = await packedModel(candidate.file, modelName, colorRgb, fileIndex);
-  let thumbnail: Buffer;
-  try {
-    const model = await parsePackedModel(packed, materials);
-    thumbnail = await sharp(Buffer.from(renderSvg(model))).webp({ quality: 82, effort: 4 }).toBuffer();
-  } catch (error) {
+  const isPrintParentFallback = candidate.matchType === "rebrickable-print-parent";
+  const modelName = isPrintParentFallback
+    ? `${part.role}-geometry-${basename(candidate.file, ".dat")}-${colorRgb.toLowerCase()}`.replaceAll(/[^a-z0-9._-]/gu, "-")
+    : `${part.role === "head" ? "head" : "headwear"}-${normalize(part.rebrickablePartNum).replaceAll(/[^a-z0-9._-]/gu, "-")}`;
+  const assetKey = isPrintParentFallback ? `${part.role}:${candidate.file}:${colorRgb}` : `${part.role}:${part.rebrickablePartNum}`;
+  const cachedFailure = fallbackFailureCache.get(assetKey);
+  if (cachedFailure) {
     skippedEntries.push({
       rebrickablePartNum: part.rebrickablePartNum,
       ldrawFile: candidate.file,
-      reason: error instanceof Error ? error.message : "Unknown render failure",
+      reason: cachedFailure,
     });
     continue;
   }
-  const wrapper = [
-    `0 ${part.name}`,
-    `0 Name: ${modelName}.ldr`,
-    `0 // License: ${lock.license}; see referenced official part and ${basename(lock.noticePath)}`,
-    `0 !COLOUR FigForge_Catalog CODE ${CUSTOM_COLOR_CODE} VALUE #${colorRgb} EDGE #333333`,
-    `1 ${CUSTOM_COLOR_CODE} 0 0 0 1 0 0 0 1 0 0 0 1 ${basename(candidate.file)}`,
-    "",
-  ].join("\n");
-  const modelUrl = `/assets/ldraw/official-2608/models/${modelName}.ldr`;
-  const thumbnailUrl = `/assets/thumbnails/ldraw-expanded/${modelName}.webp`;
-  await writeFile(resolve(root, `public${modelUrl}`), wrapper, "utf8");
-  await writeFile(resolve(root, `public${thumbnailUrl}`), thumbnail);
-  for (const dependency of dependencies) {
-    if (copiedDependencies.has(dependency)) continue;
-    const destination = resolve(publicRoot, dependency);
-    await mkdir(dirname(destination), { recursive: true });
-    await cp(resolve(libraryRoot, dependency), destination);
-    copiedDependencies.add(dependency);
+  let asset = fallbackAssetCache.get(assetKey);
+  if (!asset) {
+    const { packed, dependencies } = await packedModel(candidate.file, modelName, colorRgb, fileIndex);
+    let thumbnail: Buffer;
+    try {
+      const model = await parsePackedModel(packed, materials);
+      thumbnail = await sharp(Buffer.from(renderSvg(model))).webp({ quality: 82, effort: 4 }).toBuffer();
+    } catch (error) {
+      const reason = error instanceof Error ? error.message : "Unknown render failure";
+      if (isPrintParentFallback) fallbackFailureCache.set(assetKey, reason);
+      skippedEntries.push({
+        rebrickablePartNum: part.rebrickablePartNum,
+        ldrawFile: candidate.file,
+        reason,
+      });
+      continue;
+    }
+    const wrapper = [
+      `0 ${isPrintParentFallback ? `Unprinted parent geometry for ${candidate.printParentPartNums?.join(", ")}` : part.name}`,
+      `0 Name: ${modelName}.ldr`,
+      `0 // License: ${lock.license}; see referenced official part and ${basename(lock.noticePath)}`,
+      `0 !COLOUR FigForge_Catalog CODE ${CUSTOM_COLOR_CODE} VALUE #${colorRgb} EDGE #333333`,
+      `1 ${CUSTOM_COLOR_CODE} 0 0 0 1 0 0 0 1 0 0 0 1 ${basename(candidate.file)}`,
+      "",
+    ].join("\n");
+    const modelUrl = `/assets/ldraw/official-2608/models/${modelName}.ldr`;
+    const thumbnailUrl = `/assets/thumbnails/ldraw-expanded/${modelName}.webp`;
+    await writeFile(resolve(root, `public${modelUrl}`), wrapper, "utf8");
+    await writeFile(resolve(root, `public${thumbnailUrl}`), thumbnail);
+    for (const dependency of dependencies) {
+      if (copiedDependencies.has(dependency)) continue;
+      const destination = resolve(publicRoot, dependency);
+      await mkdir(dirname(destination), { recursive: true });
+      await cp(resolve(libraryRoot, dependency), destination);
+      copiedDependencies.add(dependency);
+    }
+    asset = {
+      modelUrl,
+      modelSha256: sha256(wrapper),
+      thumbnailUrl,
+      thumbnailSha256: sha256(thumbnail),
+      thumbnailBytes: thumbnail.byteLength,
+    };
+    if (isPrintParentFallback) fallbackAssetCache.set(assetKey, asset);
   }
   outputEntries.push({
     componentId: `catalog:${part.role}:${normalize(part.rebrickablePartNum)}`,
@@ -387,11 +452,15 @@ for (const [index, { part, candidate }] of matchedParts.entries()) {
     ldrawFile: candidate.file,
     ldrawUpdate: candidate.update,
     mappingEvidence: candidate.matchType,
-    modelUrl,
-    modelSha256: sha256(wrapper),
-    thumbnailUrl,
-    thumbnailSha256: sha256(thumbnail),
-    thumbnailBytes: thumbnail.byteLength,
+    geometryFallback: isPrintParentFallback ? {
+      kind: "unprinted-print-parent",
+      parentPartNums: candidate.printParentPartNums,
+    } : null,
+    modelUrl: asset.modelUrl,
+    modelSha256: asset.modelSha256,
+    thumbnailUrl: asset.thumbnailUrl,
+    thumbnailSha256: asset.thumbnailSha256,
+    thumbnailBytes: asset.thumbnailBytes,
     placementMode: "prototype-family-origin",
     placementTransformLdu: placementByRole.get(part.role),
   });
@@ -432,14 +501,18 @@ const output = {
     digitallySupportedCount: outputEntries.length,
     headCount: outputEntries.filter(({ role }) => role === "head").length,
     headwearCount: outputEntries.filter(({ role }) => role === "headwear").length,
+    directMappingCount: outputEntries.filter(({ mappingEvidence }) => mappingEvidence !== "rebrickable-print-parent").length,
+    printParentGeometryFallbackCount: outputEntries.filter(({ mappingEvidence }) => mappingEvidence === "rebrickable-print-parent").length,
+    generatedAssetCount: outputEntries.length - outputEntries.filter(({ mappingEvidence }) => mappingEvidence === "rebrickable-print-parent").length + fallbackAssetCache.size,
     sharedOfficialFileCount: copiedDependencies.size,
-    ambiguousMappingsExcluded: 22,
+    ambiguousMappingsExcluded,
     renderFailuresExcluded: skippedEntries.length,
     mocFilesUsed: 0,
   },
   renderFailures: skippedEntries,
   limitations: [
-    "Only unambiguous exact-filename or explicit LDraw !KEYWORDS Rebrickable mappings are included.",
+    "Direct mappings require an unambiguous exact filename or explicit LDraw !KEYWORDS Rebrickable identifier.",
+    "Print variants may reuse the unique official unprinted parent geometry declared by the locked Rebrickable part_relationships.csv; their printed decoration is not rendered.",
     "Family-origin placement is a digital convention, not a physical clutch-force guarantee.",
     "The first catalog-backed color is used for preview; parts without color evidence use neutral gray.",
   ],

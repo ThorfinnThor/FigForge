@@ -309,6 +309,8 @@ export function CatalogWorkspace() {
               <PartCard
                 builderComponentId={builderComponentId}
                 component={component}
+                geometryOnlyPreview={Boolean(builderComponentId
+                  && verifiedLDrawEntryForComponent(builderComponentId)?.geometryFallback)}
                 key={`${component.role}:${component.rebrickablePartNum}`}
                 ldrawAvailable={Boolean(builderComponentId && verifiedLDrawEntryForComponent(builderComponentId))}
                 connectionStatus={builderComponentId

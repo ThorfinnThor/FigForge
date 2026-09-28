@@ -40,7 +40,7 @@ describe("FF-14 responsive catalog workspace", () => {
       legsAssembly: 3_231,
       handAccessory: 1_308,
     });
-    expect(allParts.filter(builderComponentForCatalogPart)).toHaveLength(860);
+    expect(allParts.filter(builderComponentForCatalogPart)).toHaveLength(4_547);
   });
 
   it("defines responsive tabs, drawer focus return and keyboard dismissal", async () => {
@@ -91,7 +91,8 @@ describe("FF-14 responsive catalog workspace", () => {
     expect(allParts.filter((part) => {
       const builderComponent = builderComponentForCatalogPart(part);
       return builderComponent && verifiedLDrawEntryForComponent(builderComponent.id);
-    })).toHaveLength(853);
+    })).toHaveLength(4540);
+    expect(cardSource).toContain("Geometrie ohne Druck");
     expect(cardSource).toContain('disabled={connectionStatus !== "digitally-supported"}');
     expect(cardSource).toContain("In Figur einsetzen");
     expect(cardSource).toContain("Kein offizielles LDraw-Modell");

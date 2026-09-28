@@ -168,9 +168,16 @@ export const normalizeCatalogArtifacts = ({
     elementsByPart.set(partNum, values);
   }
   const relationshipCounts = new Map<string, number>();
+  const printParentsByChild = new Map<string, Set<string>>();
   for (const row of relationships?.rows ?? []) {
     const parent = row.parent_part_num ?? "";
     relationshipCounts.set(parent, (relationshipCounts.get(parent) ?? 0) + 1);
+    if (row.rel_type === "P") {
+      const child = row.child_part_num ?? "";
+      const parents = printParentsByChild.get(child) ?? new Set<string>();
+      parents.add(parent);
+      printParentsByChild.set(child, parents);
+    }
   }
   const seenParts = new Set<string>();
   const normalizedParts = parts.rows.map((row) => {
@@ -199,6 +206,7 @@ export const normalizeCatalogArtifacts = ({
       material: row.part_material ?? "",
       colorVariants,
       relationshipCount: relationshipCounts.get(partNum) ?? 0,
+      printParentPartNums: [...(printParentsByChild.get(partNum) ?? [])].sort((left, right) => left.localeCompare(right)),
       evidenceIds: [evidenceId("parts.csv.gz", "part_num", partNum), evidenceId("part_categories.csv.gz", "id", String(categoryId))],
     };
   }).sort((left, right) => left.partNum.localeCompare(right.partNum));
