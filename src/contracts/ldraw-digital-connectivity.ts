@@ -32,7 +32,7 @@ const blockedEntrySchema = z.object({
   note: z.string().min(1).max(600),
 }).strict();
 
-const familyProfileSchema = z.object({
+const torsoFamilyProfileSchema = z.object({
   profileId: stableId,
   role: z.literal("torsoAssembly"),
   placementMode: z.literal("prototype-family-origin"),
@@ -42,6 +42,19 @@ const familyProfileSchema = z.object({
   evidenceFiles: z.array(z.string().min(1)).min(1),
   note: z.string().min(1).max(600),
 }).strict();
+
+const legsFamilyProfileSchema = z.object({
+  profileId: stableId,
+  role: z.literal("legsAssembly"),
+  placementMode: z.literal("prototype-family-origin"),
+  placementTransformLdu: matrix4Schema,
+  targetSlot: z.literal("legsAssembly"),
+  eligibility: z.literal("official-complete-minifig-hips-legs-title"),
+  evidenceFiles: z.array(z.string().min(1)).min(1),
+  note: z.string().min(1).max(600),
+}).strict();
+
+const familyProfileSchema = z.discriminatedUnion("role", [torsoFamilyProfileSchema, legsFamilyProfileSchema]);
 
 export const ldrawDigitalConnectivitySchema = z.object({
   schemaVersion: z.literal(1),
@@ -58,7 +71,7 @@ export const ldrawDigitalConnectivitySchema = z.object({
   }).strict(),
   sourceFiles: z.array(sourceFileSchema).length(8),
   referenceAssemblySha256: sha256,
-  familyProfiles: z.array(familyProfileSchema).length(1),
+  familyProfiles: z.array(familyProfileSchema).length(2),
   entries: z.array(z.discriminatedUnion("status", [supportedEntrySchema, blockedEntrySchema])).length(10),
   summary: z.object({
     entryCount: z.literal(10),

@@ -76,6 +76,35 @@
         "parts/s/973s01.dat"
       ],
       "note": "Complete official torso shortcuts containing a 973-family torso, both standard arms and two hands share the identity transform of the official 973c01 reference assembly."
+    },
+    {
+      "profileId": "complete-minifig-legs-assembly-v1",
+      "role": "legsAssembly",
+      "placementMode": "prototype-family-origin",
+      "placementTransformLdu": [
+        1,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        32,
+        0,
+        1
+      ],
+      "targetSlot": "legsAssembly",
+      "eligibility": "official-complete-minifig-hips-legs-title",
+      "evidenceFiles": [
+        "parts/73200b-f1.dat"
+      ],
+      "note": "Official top-level parts or shortcuts whose own title declares a complete Minifig Hips and Legs assembly share the lower-body origin of the official 73200b-f1 reference assembly."
     }
   ],
   "entries": [

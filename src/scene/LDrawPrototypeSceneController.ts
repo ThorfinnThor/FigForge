@@ -57,6 +57,7 @@ const FIGURE_SLOT_PLACEMENTS: Record<PrototypeReplacementRole, {
   head: { prototypeFileName: "3626cpcbe.dat" },
   headwear: { prototypeFileName: "25409.dat" },
   torsoAssembly: { prototypeFileName: "973c01.dat" },
+  legsAssembly: { prototypeFileName: "73200b-f1.dat" },
 };
 
 const CAMERA_POSITIONS: Record<CameraPreset, readonly [number, number, number]> = {

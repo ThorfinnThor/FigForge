@@ -47,12 +47,22 @@ describe("LDraw/LDCad digital connectivity", () => {
   });
 
   it("provides a versioned identity placement for complete torso shortcuts", () => {
-    expect(registry.familyProfiles).toEqual([expect.objectContaining({
+    expect(registry.familyProfiles).toContainEqual(expect.objectContaining({
       profileId: "standard-minifig-torso-assembly-v1",
       role: "torsoAssembly",
       placementMode: "prototype-family-origin",
       eligibility: "official-shortcut-standard-torso-arms-hands",
       placementTransformLdu: [1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1],
-    })]);
+    }));
+  });
+
+  it("provides the reference lower-body placement for complete hips-and-legs files", () => {
+    expect(registry.familyProfiles).toContainEqual(expect.objectContaining({
+      profileId: "complete-minifig-legs-assembly-v1",
+      role: "legsAssembly",
+      placementMode: "prototype-family-origin",
+      eligibility: "official-complete-minifig-hips-legs-title",
+      placementTransformLdu: [1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 32, 0, 1],
+    }));
   });
 });

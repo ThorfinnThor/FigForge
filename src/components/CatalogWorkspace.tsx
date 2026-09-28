@@ -36,6 +36,13 @@ type CatalogRole = CatalogPackagePart["role"];
 type CatalogLoadState = "loading" | "ready" | "error";
 
 const INITIAL_VISIBLE_PARTS = 80;
+const LDRAW_CATALOG_ROLES: ReadonlySet<string> = new Set([
+  "head",
+  "headwear",
+  "torsoAssembly",
+  "legsAssembly",
+  "handAccessory",
+]);
 
 const initialSelectionByRole = (): Partial<Record<CatalogRole, string>> => referenceVariant
   ? {
@@ -45,8 +52,8 @@ const initialSelectionByRole = (): Partial<Record<CatalogRole, string>> => refer
   }
   : {};
 
-const isLDrawCatalogRole = (role: CatalogRole): role is LDrawCatalogRole =>
-  role !== "legsAssembly";
+const isLDrawCatalogRole = (role: string): role is LDrawCatalogRole =>
+  LDRAW_CATALOG_ROLES.has(role);
 
 function useMediaQuery(query: string) {
   const [matches, setMatches] = useState(() => (
@@ -121,7 +128,7 @@ export function CatalogWorkspace() {
     { id: "handAccessory", label: "Handzubehör", component: selectedByRole.handAccessory ? builderComponentForId(selectedByRole.handAccessory) : undefined },
   ] as const;
   const selectedLDrawParts = Object.entries(selectedByRole).flatMap(([role, componentId]) => {
-    if (!componentId || !isLDrawCatalogRole(role as CatalogRole)) {
+    if (!componentId || !isLDrawCatalogRole(role)) {
       return [];
     }
     const component = builderComponentForId(componentId);
@@ -139,7 +146,7 @@ export function CatalogWorkspace() {
       placementMode: connectivity.placementMode,
       placementTransformLdu: connectivity.placementTransformLdu,
       rebrickablePartNum: component.rebrickablePartNum,
-      role: role as LDrawCatalogRole,
+      role,
     } satisfies LDrawCatalogSelection];
   });
 
