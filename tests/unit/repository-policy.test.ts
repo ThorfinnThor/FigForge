@@ -32,6 +32,13 @@ describe("repository delivery policy", () => {
     expect(combined).not.toContain("cloudflare_account_id");
   });
 
+  it("detects newly generated catalog files before opening the data PR", async () => {
+    const workflow = await readProjectFile(".github/workflows/refresh-catalog.yml");
+
+    expect(workflow).toContain("git status --porcelain --untracked-files=all -- data");
+    expect(workflow).not.toContain("git diff --quiet -- data");
+  });
+
   it("keeps Cloudflare branch previews explicitly configured", async () => {
     const wrangler = JSON.parse(await readProjectFile("wrangler.jsonc")) as {
       previews?: Record<string, unknown>;

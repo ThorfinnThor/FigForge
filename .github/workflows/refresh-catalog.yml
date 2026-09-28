@@ -43,10 +43,10 @@ jobs:
         id: changes
         shell: bash
         run: |
-          if git diff --quiet -- data; then
-            echo "changed=false" >> "$GITHUB_OUTPUT"
-          else
+          if [[ -n "$(git status --porcelain --untracked-files=all -- data)" ]]; then
             echo "changed=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "changed=false" >> "$GITHUB_OUTPUT"
           fi
 
       - name: Commit proposed data update to automation branch
