@@ -14,6 +14,7 @@ import {
 import { LDrawConditionalLineMaterial } from "three/addons/materials/LDrawConditionalLineMaterial.js";
 import { LDrawLoader } from "three/addons/loaders/LDrawLoader.js";
 import { catalogPackageSchema, type CatalogPackagePart, type CatalogRole } from "../src/contracts/catalog-package.js";
+import { browserReferencePath, embeddedLdrawName } from "./lib/ldraw-paths.js";
 
 const root = process.cwd();
 const libraryRoot = resolve(root, "data/incoming/ldraw-2608/extracted/ldraw");
@@ -129,18 +130,6 @@ async function dependencyClosure(topLevelPath: string, fileIndex: ReadonlyMap<st
   return [...visited].sort();
 }
 
-function embeddedName(path: string): string {
-  if (path.startsWith("parts/s/") || path.startsWith("p/48/")) return path;
-  return basename(path);
-}
-
-function browserReferencePath(path: string): string {
-  if (path.startsWith("parts/s/")) return path.slice("parts/".length);
-  if (path.startsWith("parts/")) return path.slice("parts/".length);
-  if (path.startsWith("p/")) return `../${path}`;
-  throw new Error(`Unsupported official LDraw dependency path: ${path}`);
-}
-
 async function packedModel(
   ldrawFile: string,
   modelName: string,
@@ -152,10 +141,10 @@ async function packedModel(
     `0 FILE ${modelName}.ldr`,
     "0 FigForge render input from official LDraw parts only",
     `0 !COLOUR FigForge_Catalog CODE ${CUSTOM_COLOR_CODE} VALUE #${colorRgb} EDGE #333333`,
-    `1 ${CUSTOM_COLOR_CODE} 0 0 0 1 0 0 0 1 0 0 0 1 ${embeddedName(ldrawFile)}`,
+    `1 ${CUSTOM_COLOR_CODE} 0 0 0 1 0 0 0 1 0 0 0 1 ${embeddedLdrawName(ldrawFile)}`,
   ];
   for (const dependency of dependencies) {
-    sections.push(`0 FILE ${embeddedName(dependency)}`, (await sourceFor(dependency)).trimEnd());
+    sections.push(`0 FILE ${embeddedLdrawName(dependency)}`, (await sourceFor(dependency)).trimEnd());
   }
   return { packed: `${sections.join("\n")}\n`, dependencies };
 }
