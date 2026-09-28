@@ -17,6 +17,12 @@ import { catalogPackageSchema, type CatalogPackagePart, type CatalogRole } from 
 import { isCompleteMinifigLegsAssembly } from "./lib/ldraw-legs-assembly.js";
 import { browserReferencePath, embeddedLdrawName } from "./lib/ldraw-paths.js";
 import { isCompleteStandardTorsoAssembly } from "./lib/ldraw-torso-assembly.js";
+import {
+  digitalAccessoryLimits,
+  validateDigitalAccessoryPlacement,
+  type DigitalAccessoryValidation,
+} from "./lib/ldraw-accessory-clearance.js";
+import { collectCylinderEvidence, proposedHandPlacements } from "./lib/ldraw-placement-candidates.js";
 
 const root = process.cwd();
 const libraryRoot = resolve(root, "data/incoming/ldraw-2608/extracted/ldraw");
@@ -27,7 +33,8 @@ const publicRoot = resolve(root, "public/assets/ldraw/official-2608");
 const modelDirectory = resolve(publicRoot, "models");
 const thumbnailDirectory = resolve(root, "public/assets/thumbnails/ldraw-expanded");
 const CUSTOM_COLOR_CODE = 10_000;
-const BUILD_ROLES = ["head", "headwear", "torsoAssembly", "legsAssembly"] as const satisfies readonly CatalogRole[];
+const FAMILY_BUILD_ROLES = ["head", "headwear", "torsoAssembly", "legsAssembly"] as const satisfies readonly CatalogRole[];
+const BUILD_ROLES = [...FAMILY_BUILD_ROLES, "handAccessory"] as const satisfies readonly CatalogRole[];
 
 if (typeof globalThis.ProgressEvent === "undefined") {
   Object.defineProperty(globalThis, "ProgressEvent", {
@@ -86,6 +93,7 @@ const packageFileByRole = {
   headwear: "headwear.json",
   torsoAssembly: "torso-assembly.json",
   legsAssembly: "legs-assembly.json",
+  handAccessory: "hand-accessory.json",
 } as const;
 
 async function collectFiles(directory: string): Promise<string[]> {
@@ -293,24 +301,33 @@ const digitalConnectivity = JSON.parse(await readFile(resolve(root, "data/genera
   entries: Array<{ role: CatalogRole; status: string; placementTransformLdu: number[] | null }>;
   familyProfiles: Array<{ role: CatalogRole; placementTransformLdu: number[] }>;
 };
-const placementByRole = new Map(BUILD_ROLES.map((role) => {
+const placementByRole = new Map(FAMILY_BUILD_ROLES.map((role) => {
   const reference = digitalConnectivity.familyProfiles.find((profile) => profile.role === role)
     ?? digitalConnectivity.entries.find((entry) => entry.role === role && entry.status === "digitally-supported");
   if (!reference?.placementTransformLdu) throw new Error(`Missing ${role} family-origin transform`);
   return [role, reference.placementTransformLdu] as const;
 }));
 
-const supportsRoleAssembly = async (role: (typeof BUILD_ROLES)[number], candidate: Candidate): Promise<boolean> => {
+const supportsRoleAssembly = async (role: CatalogRole, candidate: Candidate): Promise<boolean> => {
   if (role === "torsoAssembly") return isCompleteStandardTorsoAssembly(await sourceFor(candidate.file));
   if (role === "legsAssembly") return isCompleteMinifigLegsAssembly(await sourceFor(candidate.file));
   return true;
 };
 
 const matchedParts: Array<{
-  part: CatalogPackagePart & { role: (typeof BUILD_ROLES)[number] };
+  part: CatalogPackagePart;
   candidate: Candidate;
+  placementMode: "prototype-family-origin" | "snap-connector";
+  placementTransformLdu: number[];
+  placementTransformCandidatesLdu: number[][];
+  gripEvidence: null | {
+    centerLdu: [number, number, number];
+    lengthLdu: number;
+    primitive: string;
+  };
 }> = [];
 let ambiguousMappingsExcluded = 0;
+let accessoryGripCandidatesExcluded = 0;
 for (const role of BUILD_ROLES) {
   const raw: unknown = JSON.parse(await readFile(resolve(root, "data/generated/catalog-packages", packageFileByRole[role]), "utf8"));
   const catalogPackage = catalogPackageSchema.parse(raw);
@@ -327,12 +344,44 @@ for (const role of BUILD_ROLES) {
     }
     const direct = directCandidates.find(({ matchType }) => matchType === "exact-filename") ?? directCandidates[0];
     if (directFiles.length === 1 && direct) {
+      if (role === "handAccessory") {
+        const gripCandidates = (await collectCylinderEvidence(libraryRoot, direct.file)).filter((evidence) =>
+          evidence.radiusLdu >= 3.75 && evidence.radiusLdu <= 4.25 && evidence.lengthLdu >= 4
+        );
+        if (gripCandidates.length !== 1) {
+          accessoryGripCandidatesExcluded += 1;
+          continue;
+        }
+        const grip = gripCandidates[0]!;
+        const placementTransformCandidatesLdu = proposedHandPlacements(grip);
+        matchedParts.push({
+          part: { ...part, role },
+          candidate: direct,
+          placementMode: "snap-connector",
+          placementTransformLdu: placementTransformCandidatesLdu[0]!,
+          placementTransformCandidatesLdu,
+          gripEvidence: {
+            centerLdu: grip.centerLdu,
+            lengthLdu: grip.lengthLdu,
+            primitive: grip.primitive,
+          },
+        });
+        continue;
+      }
+      const placementTransformLdu = placementByRole.get(role);
+      if (!placementTransformLdu) throw new Error(`Missing ${role} placement transform`);
       matchedParts.push({
         part: { ...part, role },
         candidate: direct,
+        placementMode: "prototype-family-origin",
+        placementTransformLdu,
+        placementTransformCandidatesLdu: [placementTransformLdu],
+        gripEvidence: null,
       });
       continue;
     }
+
+    if (role === "handAccessory") continue;
 
     const normalizedPart = normalizedByPartNum.get(normalize(part.rebrickablePartNum));
     const parentCandidates = [];
@@ -347,16 +396,24 @@ for (const role of BUILD_ROLES) {
       continue;
     }
     const parentMatch = parentCandidates.find(({ candidate }) => candidate.matchType === "exact-filename") ?? parentCandidates[0];
-    if (parentFiles.length === 1 && parentMatch) matchedParts.push({
-      part: { ...part, role },
-      candidate: {
-        ...parentMatch.candidate,
-        matchType: "rebrickable-print-parent",
-        printParentPartNums: [...new Set(parentCandidates
-          .filter(({ candidate }) => candidate.file === parentMatch.candidate.file)
-          .map(({ parentPartNum }) => parentPartNum))].sort(),
-      },
-    });
+    if (parentFiles.length === 1 && parentMatch) {
+      const placementTransformLdu = placementByRole.get(role);
+      if (!placementTransformLdu) throw new Error(`Missing ${role} placement transform`);
+      matchedParts.push({
+        part: { ...part, role },
+        candidate: {
+          ...parentMatch.candidate,
+          matchType: "rebrickable-print-parent",
+          printParentPartNums: [...new Set(parentCandidates
+            .filter(({ candidate }) => candidate.file === parentMatch.candidate.file)
+            .map(({ parentPartNum }) => parentPartNum))].sort(),
+        },
+        placementMode: "prototype-family-origin",
+        placementTransformLdu,
+        placementTransformCandidatesLdu: [placementTransformLdu],
+        gripEvidence: null,
+      });
+    }
   }
 }
 
@@ -370,9 +427,23 @@ await cp(resolve(libraryRoot, "CAlicense4.txt"), resolve(root, "public/licenses/
 await chmod(resolve(root, "public/licenses/LDraw-CAlicense-2.0.txt"), 0o644);
 await chmod(resolve(root, "public/licenses/LDraw-CAlicense-4.0.txt"), 0o644);
 const materials = await readFile(resolve(libraryRoot, "LDConfig.ldr"), "utf8");
+const referenceFigure = matchedParts.some(({ part }) => part.role === "handAccessory")
+  ? await parsePackedModel(
+    await readFile(resolve(root, "public/assets/ldraw/prototype/models/figforge-minifigure-packed.mpd"), "utf8"),
+    materials,
+  )
+  : null;
 const copiedDependencies = new Set<string>();
 const outputEntries: Array<Record<string, unknown>> = [];
 const skippedEntries: Array<{ rebrickablePartNum: string; ldrawFile: string; reason: string }> = [];
+const digitalPlacementRejections: Array<{
+  rebrickablePartNum: string;
+  ldrawFile: string;
+  reasonCode: string;
+  collisionSampleCount: number;
+  collisionSamplesByPart: Record<string, number>;
+  orientationCollisionCounts: number[];
+}> = [];
 type GeneratedAsset = {
   modelUrl: string;
   modelSha256: string;
@@ -383,7 +454,8 @@ type GeneratedAsset = {
 const fallbackAssetCache = new Map<string, GeneratedAsset>();
 const fallbackFailureCache = new Map<string, string>();
 
-for (const [index, { part, candidate }] of matchedParts.entries()) {
+for (const [index, match] of matchedParts.entries()) {
+  const { part, candidate } = match;
   const normalizedPart = normalizedByPartNum.get(normalize(part.rebrickablePartNum));
   const colorVariant = normalizedPart?.colorVariants[0];
   const colorRgb = colorVariant?.rgb && /^[A-F0-9]{6}$/u.test(colorVariant.rgb) ? colorVariant.rgb : "A0A8A4";
@@ -403,11 +475,54 @@ for (const [index, { part, candidate }] of matchedParts.entries()) {
     continue;
   }
   let asset = fallbackAssetCache.get(assetKey);
+  let digitalValidation: (DigitalAccessoryValidation & {
+    orientationCandidatesTested: number;
+    selectedOrientationIndex: number | null;
+  }) | null = null;
   if (!asset) {
     const { packed, dependencies } = await packedModel(candidate.file, modelName, colorRgb, fileIndex);
     let thumbnail: Buffer;
     try {
       const model = await parsePackedModel(packed, materials);
+      if (part.role === "handAccessory") {
+        if (!referenceFigure || !match.gripEvidence) throw new Error("Missing accessory validation input");
+        const orientationValidations = match.placementTransformCandidatesLdu.map((placementTransformLdu) => ({
+          placementTransformLdu,
+          validation: validateDigitalAccessoryPlacement(
+            model,
+            referenceFigure,
+            placementTransformLdu,
+            match.gripEvidence!.centerLdu,
+            match.gripEvidence!.lengthLdu,
+          ),
+        }));
+        const passedOrientationIndex = orientationValidations.findIndex(({ validation }) => validation.status === "passed");
+        const bestRejectedIndex = orientationValidations.reduce((bestIndex, current, currentIndex, values) =>
+          current.validation.collisionSampleCount < values[bestIndex]!.validation.collisionSampleCount
+            ? currentIndex
+            : bestIndex
+        , 0);
+        const selectedOrientationIndex = passedOrientationIndex >= 0 ? passedOrientationIndex : bestRejectedIndex;
+        const selected = orientationValidations[selectedOrientationIndex];
+        if (!selected) throw new Error("No accessory orientation candidates were generated");
+        digitalValidation = {
+          ...selected.validation,
+          orientationCandidatesTested: orientationValidations.length,
+          selectedOrientationIndex: selectedOrientationIndex >= 0 ? selectedOrientationIndex : null,
+        };
+        match.placementTransformLdu = selected.placementTransformLdu;
+        if (digitalValidation.status === "rejected") {
+          digitalPlacementRejections.push({
+            rebrickablePartNum: part.rebrickablePartNum,
+            ldrawFile: candidate.file,
+            reasonCode: digitalValidation.reasonCode ?? "unknown-digital-placement-rejection",
+            collisionSampleCount: digitalValidation.collisionSampleCount,
+            collisionSamplesByPart: digitalValidation.collisionSamplesByPart,
+            orientationCollisionCounts: orientationValidations.map(({ validation }) => validation.collisionSampleCount),
+          });
+          continue;
+        }
+      }
       thumbnail = await sharp(Buffer.from(renderSvg(model))).webp({ quality: 82, effort: 4 }).toBuffer();
     } catch (error) {
       const reason = error instanceof Error ? error.message : "Unknown render failure";
@@ -472,8 +587,14 @@ for (const [index, { part, candidate }] of matchedParts.entries()) {
     thumbnailUrl: asset.thumbnailUrl,
     thumbnailSha256: asset.thumbnailSha256,
     thumbnailBytes: asset.thumbnailBytes,
-    placementMode: "prototype-family-origin",
-    placementTransformLdu: placementByRole.get(part.role),
+    placementMode: match.placementMode,
+    placementTransformLdu: match.placementTransformLdu,
+    digitalValidation: part.role === "handAccessory" ? {
+      ...digitalValidation,
+      gripPrimitive: match.gripEvidence?.primitive,
+      limits: digitalAccessoryLimits,
+      physicalFitGuaranteed: false,
+    } : null,
   });
   if ((index + 1) % 50 === 0 || index + 1 === matchedParts.length) {
     console.log(`Generated ${index + 1}/${matchedParts.length}`);
@@ -514,19 +635,26 @@ const output = {
     headwearCount: outputEntries.filter(({ role }) => role === "headwear").length,
     torsoAssemblyCount: outputEntries.filter(({ role }) => role === "torsoAssembly").length,
     legsAssemblyCount: outputEntries.filter(({ role }) => role === "legsAssembly").length,
+    handAccessoryCount: outputEntries.filter(({ role }) => role === "handAccessory").length,
     directMappingCount: outputEntries.filter(({ mappingEvidence }) => mappingEvidence !== "rebrickable-print-parent").length,
     printParentGeometryFallbackCount: outputEntries.filter(({ mappingEvidence }) => mappingEvidence === "rebrickable-print-parent").length,
     generatedAssetCount: outputEntries.length - outputEntries.filter(({ mappingEvidence }) => mappingEvidence === "rebrickable-print-parent").length + fallbackAssetCache.size,
     sharedOfficialFileCount: copiedDependencies.size,
     ambiguousMappingsExcluded,
+    accessoryGripCandidatesExcluded,
+    accessoryPlacementCandidatesEvaluated: matchedParts.filter(({ part }) => part.role === "handAccessory").length,
+    digitalPlacementPassedCount: outputEntries.filter(({ role }) => role === "handAccessory").length,
+    digitalPlacementRejectionsExcluded: digitalPlacementRejections.length,
     renderFailuresExcluded: skippedEntries.length,
     mocFilesUsed: 0,
   },
   renderFailures: skippedEntries,
+  digitalPlacementRejections,
   limitations: [
     "Direct mappings require an unambiguous exact filename or explicit LDraw !KEYWORDS Rebrickable identifier.",
     "Print variants may reuse the unique official unprinted parent geometry declared by the locked Rebrickable part_relationships.csv; their printed decoration is not rendered.",
     "Family-origin placement is a digital convention, not a physical clutch-force guarantee.",
+    "Hand accessories pass only deterministic radius-4 grip, minimum length, rigid-transform, model-bounds and reference-figure clearance checks; physical clutch force remains unverified.",
     "The first catalog-backed color is used for preview; parts without color evidence use neutral gray.",
   ],
 };

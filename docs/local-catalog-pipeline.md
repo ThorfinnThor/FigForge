@@ -34,3 +34,5 @@ npm run catalog:local -- --skip-verify
 
 Der Runner kann nur belegte Zuordnungen automatisieren. Fehlt im festgehaltenen offiziellen LDraw-Release eine eindeutige Geometrie oder sichere Verbindungsinformation, bleibt das Teil korrekt als nicht builder-bereit markiert.
 Der Kandidatenbericht steht in `data/generated/ldraw-placement-candidates.json`. Eine erkannte Radius-4-Geometrie ist nur ein Prüfhinweis und schaltet kein Teil automatisch im Builder frei. Für Einträge ohne offizielle Zuordnung erzeugt zusätzliche lokale Rechenzeit keine fehlenden Quelldaten; diese bleiben bis zu einem belastbaren Quellenupdate in der Warteschlange.
+
+Eindeutig zugeordnete Handzubehörteile werden zusätzlich in bis zu acht geometrisch gleichwertigen Griffausrichtungen geprüft. Builderbereit werden nur Varianten mit mindestens 8 LDU Grifflänge, starrer Transformation, gültigen Modellgrenzen, erfolgreichem Rendering und kollisionsfreier Lage außerhalb der zulässigen Hand-/Arm-Anschlusszone. Das ist eine digitale Platzierungsprüfung und keine Garantie für reale Klemmkraft oder Materialspannung.
