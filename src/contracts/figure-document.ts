@@ -13,7 +13,7 @@ export const figureDocumentSchema = z
     selections: z
       .array(z.object({
         slot: figureDocumentSlotSchema,
-        componentId: z.string().regex(/^ff03-[a-z0-9-]+$/u),
+        componentId: z.string().regex(/^(?:ff03-[a-z0-9-]+|catalog:(?:head|headwear):[a-z0-9._-]+)$/u),
       }).strict())
       .max(3),
   })

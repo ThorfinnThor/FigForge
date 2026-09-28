@@ -31,11 +31,11 @@ const sourceNotices = ([
     id: "src:ldraw-assets",
     name: "LDraw Parts Library",
     scope: "ldraw-assets",
-    url: "https://www.ldraw.org/",
-    localPath: null,
-    status: "blocked",
-    attribution: "Keine LDraw-Datei ist in FF-10 enthalten.",
-    note: "Release, Lizenzheader, transitive Abhängigkeiten, Dateipfade und Hashes müssen vor einem echten Assetpaket geprüft werden.",
+    url: "https://library.ldraw.org/",
+    localPath: "/licenses/LDraw-CAreadme.txt",
+    status: "confirmed",
+    attribution: "Offizielle LDraw Parts Library 2026-08; CC BY 2.0 und/oder CC BY 4.0 gemäß Lizenzheader der einzelnen Datei.",
+    note: "Originalheader und Autorennachweise bleiben in den ausgelieferten Dateien erhalten; CAreadme und beide Lizenztexte werden lokal mitgeliefert.",
   },
   {
     id: "src:rebrickable-catalog",
@@ -73,6 +73,7 @@ const buildLicenseEvidence = (input: {
   packageId: string;
   threeLicenseSha256: string;
   ldcadShadowNoticeSha256: string;
+  ldrawNoticeSha256: string;
 }): LicenseEvidence[] => ([
   {
     id: "license:fixture:synthetic",
@@ -85,14 +86,14 @@ const buildLicenseEvidence = (input: {
     note: "Interne synthetische Prüfgeometrie; nicht als lizenzierter Katalog- oder LDraw-Asset freigegeben.",
   },
   {
-    id: "license:ldraw:pending",
+    id: "license:ldraw:official-parts",
     sourceId: "src:ldraw-assets",
-    subjectId: input.packageId,
-    status: "blocked",
-    licenseId: null,
-    localPath: null,
-    sha256: null,
-    note: "Kein LDraw-Asset enthalten; Release- und Lizenzprüfung ist offen.",
+    subjectId: "ldraw:official-2026-08",
+    status: "confirmed",
+    licenseId: "CC-BY-2.0-and-or-CC-BY-4.0",
+    localPath: "/licenses/LDraw-CAreadme.txt",
+    sha256: input.ldrawNoticeSha256,
+    note: "Die konkrete Lizenz gilt gemäß Originalheader je offizieller LDraw-Datei; CAreadme und beide vollständigen Lizenztexte werden ausgeliefert.",
   },
   {
     id: "license:rebrickable:catalog",
@@ -174,6 +175,7 @@ export const buildAssetManifest = (input: {
   mappingReview: MappingReview;
   threeLicenseSha256: string;
   ldcadShadowNoticeSha256: string;
+  ldrawNoticeSha256: string;
 }): AssetManifestBuild => {
   if (input.mappingReview.openMappings.some(({ candidateIds }) => candidateIds.length > 0)) {
     throw new Error("FF-11 cannot publish guessed mapping candidates");
@@ -182,11 +184,11 @@ export const buildAssetManifest = (input: {
     packageId: input.modelPackageIndex.package.id,
     threeLicenseSha256: input.threeLicenseSha256,
     ldcadShadowNoticeSha256: input.ldcadShadowNoticeSha256,
+    ldrawNoticeSha256: input.ldrawNoticeSha256,
   });
   const openBlockers = [
     "FF-10 assets are synthetic FF-04 fixtures and are not publishable catalog assets.",
     "Rebrickable Catalog Downloads/CSV commercial-use evidence and attribution are still pending project documentation.",
-    "Real LDraw assets require release, license-header, dependency, path and hash evidence before publication.",
     "GitHub review and Cloudflare Workers Builds release approval are not represented by this local manifest.",
   ];
   const notices = publicNoticesSchema.parse({

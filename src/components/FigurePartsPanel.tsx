@@ -1,13 +1,13 @@
 import { Card } from "./ui/Card.js";
 import { Button } from "./ui/Button.js";
 import { StatusMessage } from "./ui/StatusMessage.js";
-import type { AssortmentComponent } from "../contracts/test-assortment.js";
+import type { CatalogPackagePart } from "../contracts/catalog-package.js";
 import { useRef, type RefObject } from "react";
 
 type FigureSlot = {
   id: string;
   label: string;
-  component: AssortmentComponent | undefined;
+  component: CatalogPackagePart | undefined;
 };
 
 type FigurePartsPanelProps = {

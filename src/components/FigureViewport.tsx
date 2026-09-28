@@ -186,7 +186,7 @@ export function FigureViewport({ selectedParts }: FigureViewportProps) {
         <StatusMessage tone={statusTone}>{status}</StatusMessage>
         <StatusMessage tone="warning">
           Lokaler MVP: Standardteile mit belegtem Anschlussprofil werden digital zusammengesetzt.
-          Nicht belegte Teile und öffentliches Deployment bleiben gesperrt.
+          Nicht belegte Teile bleiben gesperrt.
         </StatusMessage>
         {sceneState === "context-lost" || sceneState === "error" ? (
           <Button onClick={recoverScene} variant="secondary">

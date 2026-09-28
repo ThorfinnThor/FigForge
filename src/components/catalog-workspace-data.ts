@@ -2,13 +2,14 @@ import assortmentJson from "../../data/curated/ff03-test-assortment.json" with {
 import ldrawThumbnailIndexJson from "../../data/generated/ldraw-catalog-thumbnails.json" with { type: "json" };
 import ldrawFitReviewJson from "../../data/generated/ldraw-fit-review.json" with { type: "json" };
 import ldrawDigitalConnectivityJson from "../../data/generated/ldraw-digital-connectivity.json" with { type: "json" };
+import ldrawExpandedCatalogJson from "../../data/generated/ldraw-expanded-catalog.json" with { type: "json" };
 import modelPackageIndexJson from "../../data/generated/model-packages.json" with { type: "json" };
 import {
   catalogPackageSchema,
   type CatalogPackagePart,
   type CatalogRole,
 } from "../contracts/catalog-package.js";
-import type { AssortmentComponent, TestAssortment } from "../contracts/test-assortment.js";
+import type { TestAssortment } from "../contracts/test-assortment.js";
 import type { ModelPackageIndex } from "../contracts/model-package.js";
 import type { LDrawFitReviewDocument, LDrawFitReviewEntry } from "../contracts/ldraw-fit-review.js";
 import type {
@@ -31,6 +32,24 @@ export type VerifiedLDrawCatalogEntry = {
   thumbnailUrl: string;
 };
 
+type ExpandedLDrawCatalogEntry = VerifiedLDrawCatalogEntry & Omit<CatalogPackagePart, "id" | "role"> & {
+  role: "head" | "headwear";
+  placementMode: "prototype-family-origin";
+  placementTransformLdu: number[];
+};
+
+type RuntimeDigitalConnectivityEntry =
+  | {
+    status: "digitally-supported";
+    placementMode: "prototype-family-origin" | "snap-connector";
+    placementTransformLdu: number[];
+  }
+  | {
+    status: "blocked";
+    placementMode: null;
+    placementTransformLdu: null;
+  };
+
 type LDrawCatalogEntry = VerifiedLDrawCatalogEntry | {
   componentId: string;
   rebrickablePartNum: string;
@@ -41,14 +60,25 @@ type LDrawCatalogEntry = VerifiedLDrawCatalogEntry | {
 };
 
 const ldrawCatalogEntries = ldrawThumbnailIndexJson.entries as LDrawCatalogEntry[];
+const expandedLDrawCatalogEntries = ldrawExpandedCatalogJson.entries as unknown as ExpandedLDrawCatalogEntry[];
 const ldrawCatalogEntryByComponentId = new Map(
-  ldrawCatalogEntries.map((entry) => [entry.componentId, entry]),
+  [...ldrawCatalogEntries, ...expandedLDrawCatalogEntries].map((entry) => [entry.componentId, entry]),
 );
 const ldrawFitReviewByComponentId = new Map(
   ldrawFitReview.entries.map((entry) => [entry.componentId, entry]),
 );
-const digitalConnectivityByComponentId = new Map(
-  ldrawDigitalConnectivity.entries.map((entry) => [entry.componentId, entry]),
+const digitalConnectivityByComponentId = new Map<
+  string,
+  RuntimeDigitalConnectivityEntry | LDrawDigitalConnectivityEntry
+>(
+  [
+    ...ldrawDigitalConnectivity.entries.map((entry) => [entry.componentId, entry] as const),
+    ...expandedLDrawCatalogEntries.map((entry) => [entry.componentId, {
+      status: "digitally-supported" as const,
+      placementMode: entry.placementMode,
+      placementTransformLdu: entry.placementTransformLdu,
+    }] as const),
+  ],
 );
 
 export type CatalogCategory = "all" | CatalogRole;
@@ -79,6 +109,23 @@ const componentByCatalogKey = new Map(
   ]),
 );
 
+const expandedComponentByCatalogKey = new Map(
+  expandedLDrawCatalogEntries.map((entry) => [
+    `${entry.role}:${entry.rebrickablePartNum}`,
+    {
+      id: entry.componentId,
+      role: entry.role,
+      rebrickablePartNum: entry.rebrickablePartNum,
+      name: entry.name,
+      rebrickableCategoryId: entry.rebrickableCategoryId,
+      rebrickableCategoryName: entry.rebrickableCategoryName,
+      material: entry.material,
+      colorNames: entry.colorNames,
+    } satisfies CatalogPackagePart,
+  ]),
+);
+const builderComponentById = new Map<string, CatalogPackagePart>();
+
 const catalogKey = (part: Pick<CatalogPackagePart, "role" | "rebrickablePartNum">): string =>
   `${part.role}:${part.rebrickablePartNum}`;
 
@@ -93,6 +140,9 @@ export const curatedCatalogParts: CatalogPackagePart[] = catalogAssortment.compo
   colorNames: [...new Set(component.colorEvidence.map(({ colorName }) => colorName))],
 }));
 
+for (const component of curatedCatalogParts) builderComponentById.set(component.id, component);
+for (const component of expandedComponentByCatalogKey.values()) builderComponentById.set(component.id, component);
+
 const loadCatalogRole = (role: CatalogRole): Promise<readonly CatalogPackagePart[]> => {
   const cached = catalogPackageCache.get(role);
   if (cached) return cached;
@@ -103,8 +153,8 @@ const loadCatalogRole = (role: CatalogRole): Promise<readonly CatalogPackagePart
       partsByKey.set(catalogKey(part), part);
     }
     return [...partsByKey.values()].sort((left, right) => {
-      const leftBuilderReady = componentByCatalogKey.has(catalogKey(left));
-      const rightBuilderReady = componentByCatalogKey.has(catalogKey(right));
+      const leftBuilderReady = componentByCatalogKey.has(catalogKey(left)) || expandedComponentByCatalogKey.has(catalogKey(left));
+      const rightBuilderReady = componentByCatalogKey.has(catalogKey(right)) || expandedComponentByCatalogKey.has(catalogKey(right));
       if (leftBuilderReady !== rightBuilderReady) return leftBuilderReady ? -1 : 1;
       return left.rebrickablePartNum.localeCompare(right.rebrickablePartNum, "en", { numeric: true });
     });
@@ -120,13 +170,20 @@ export const loadCatalogParts = async (category: CatalogCategory): Promise<reado
 
 export const builderComponentForCatalogPart = (
   part: Pick<CatalogPackagePart, "role" | "rebrickablePartNum">,
-): AssortmentComponent | undefined => componentByCatalogKey.get(catalogKey(part));
+): CatalogPackagePart | undefined => {
+  const curated = componentByCatalogKey.get(catalogKey(part));
+  if (curated) return builderComponentById.get(curated.id);
+  return expandedComponentByCatalogKey.get(catalogKey(part));
+};
+
+export const builderComponentForId = (componentId: string): CatalogPackagePart | undefined =>
+  builderComponentById.get(componentId);
 
 const thumbnailByPartId = new Map(
   modelPackageIndex.thumbnails.map((thumbnail) => [thumbnail.partId, thumbnail.url]),
 );
 const verifiedLDrawThumbnailByComponentId = new Map(
-  ldrawCatalogEntries.flatMap((entry) =>
+  [...ldrawCatalogEntries, ...expandedLDrawCatalogEntries].flatMap((entry) =>
     entry.status === "verified" && entry.thumbnailUrl
       ? [[entry.componentId, entry.thumbnailUrl] as const]
       : [],
@@ -149,7 +206,8 @@ export const ldrawFitReviewEntryForComponent = (
 
 export const digitalConnectivityForComponent = (
   componentId: string,
-): LDrawDigitalConnectivityEntry | undefined => digitalConnectivityByComponentId.get(componentId);
+): RuntimeDigitalConnectivityEntry | LDrawDigitalConnectivityEntry | undefined =>
+  digitalConnectivityByComponentId.get(componentId);
 
 export const digitallySupportedLDrawEntryForComponent = (
   componentId: string,
@@ -160,7 +218,7 @@ export const digitallySupportedLDrawEntryForComponent = (
     : undefined;
 };
 
-export const thumbnailForComponent = (component: AssortmentComponent): string => {
+export const thumbnailForComponent = (component: Pick<CatalogPackagePart, "id" | "role">): string => {
   const officialLDrawThumbnail = verifiedLDrawThumbnailByComponentId.get(component.id);
   if (officialLDrawThumbnail) {
     return officialLDrawThumbnail;
