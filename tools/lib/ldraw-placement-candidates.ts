@@ -213,8 +213,29 @@ const rightHand = ldrawMatrix([23.6904, 26.774, -9.8982, 0.985, 0.1202, -0.1202,
 const handGrip = ldrawMatrix([0, -0.82275, -9.8951, 1, 0, 0, 0, 0.9681, -0.2504, 0, 0.2504, 0.9681]);
 
 export function proposedHandPlacement(evidence: CylinderEvidence): number[] {
-  const sourceConnector = new Matrix4().fromArray(evidence.sourceConnectorTransformLdu);
-  return roundedMatrix(rightHand.clone().multiply(handGrip).multiply(sourceConnector.invert()));
+  return proposedHandPlacements(evidence)[0]!;
+}
+
+export function proposedHandPlacements(evidence: CylinderEvidence): number[][] {
+  const targetConnector = rightHand.clone().multiply(handGrip);
+  const sourceConnectorInverse = new Matrix4()
+    .fromArray(evidence.sourceConnectorTransformLdu)
+    .invert();
+  const placements: number[][] = [];
+  for (const flip of [0, Math.PI]) {
+    for (const roll of [0, Math.PI / 2, Math.PI, 3 * Math.PI / 2]) {
+      const connectorOrientation = new Matrix4()
+        .makeRotationY(roll)
+        .multiply(new Matrix4().makeRotationX(flip));
+      const placement = roundedMatrix(
+        targetConnector.clone().multiply(connectorOrientation).multiply(sourceConnectorInverse),
+      );
+      if (!placements.some((existing) => existing.every((value, index) => value === placement[index]))) {
+        placements.push(placement);
+      }
+    }
+  }
+  return placements;
 }
 
 const isGripCandidate = (item: CylinderEvidence): boolean =>

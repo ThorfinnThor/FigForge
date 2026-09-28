@@ -31,6 +31,19 @@ const catalog = JSON.parse(await readFile(resolve(root, "data/generated/ldraw-ex
     previewColorRgb: string;
     placementMode: string;
     placementTransformLdu: number[];
+    digitalValidation: null | {
+      status: "passed";
+      reasonCode: null;
+      gripLengthLdu: number;
+      sampledPointCount: number;
+      protectedBodyBoxCount: number;
+      collisionSampleCount: 0;
+      orientationCandidatesTested: number;
+      selectedOrientationIndex: number;
+      physicalFitGuaranteed: false;
+      gripPrimitive: string;
+      limits: { minimumGripLengthLdu: number };
+    };
     geometryFallback: null | { kind: string; parentPartNums: string[] };
   }>;
   summary: {
@@ -39,13 +52,24 @@ const catalog = JSON.parse(await readFile(resolve(root, "data/generated/ldraw-ex
     headwearCount: number;
     torsoAssemblyCount: number;
     legsAssemblyCount: number;
+    handAccessoryCount: number;
     directMappingCount: number;
     printParentGeometryFallbackCount: number;
     generatedAssetCount: number;
     sharedOfficialFileCount: number;
     renderFailuresExcluded: number;
+    accessoryPlacementCandidatesEvaluated: number;
+    digitalPlacementPassedCount: number;
+    digitalPlacementRejectionsExcluded: number;
     mocFilesUsed: number;
   };
+  digitalPlacementRejections: Array<{
+    rebrickablePartNum: string;
+    ldrawFile: string;
+    reasonCode: string;
+    collisionSampleCount: number;
+    orientationCollisionCounts: number[];
+  }>;
 };
 
 assert.equal(catalog.sourcePolicy, "Nur Rebrickable Catalog Downloads/CSV, keine MOC-Dateien.");
@@ -56,8 +80,27 @@ assert.equal(catalog.source.noticePath, lock.noticePath);
 assert.match(lock.contentPolicy, /MOC files are excluded/u);
 assert.equal(catalog.summary.mocFilesUsed, 0);
 assert.equal(catalog.entries.length, catalog.summary.digitallySupportedCount);
-assert.equal(catalog.summary.headCount + catalog.summary.headwearCount + catalog.summary.torsoAssemblyCount + catalog.summary.legsAssemblyCount, catalog.entries.length);
+assert.equal(
+  catalog.summary.headCount
+    + catalog.summary.headwearCount
+    + catalog.summary.torsoAssemblyCount
+    + catalog.summary.legsAssemblyCount
+    + catalog.summary.handAccessoryCount,
+  catalog.entries.length,
+);
 assert(catalog.entries.length >= 800, "Expanded catalog unexpectedly dropped below 800 renderable parts");
+assert.equal(catalog.summary.digitalPlacementPassedCount, catalog.summary.handAccessoryCount);
+assert.equal(catalog.summary.digitalPlacementRejectionsExcluded, catalog.digitalPlacementRejections.length);
+assert.equal(
+  catalog.summary.accessoryPlacementCandidatesEvaluated,
+  catalog.summary.digitalPlacementPassedCount + catalog.summary.digitalPlacementRejectionsExcluded,
+);
+for (const rejection of catalog.digitalPlacementRejections) {
+  assert(rejection.ldrawFile.startsWith("parts/") && !rejection.ldrawFile.toLowerCase().includes("moc"));
+  assert(["grip-too-short", "reference-figure-clearance-failed"].includes(rejection.reasonCode));
+  assert.equal(rejection.orientationCollisionCounts.length, 8);
+  assert(rejection.collisionSampleCount >= 0);
+}
 
 const publicLDrawRoot = resolve(root, "public/assets/ldraw/official-2608");
 const fileMap = JSON.parse(await readFile(resolve(publicLDrawRoot, "file-map.json"), "utf8")) as Record<string, unknown>;
@@ -88,7 +131,7 @@ for (const entry of catalog.entries) {
   assert(!ids.has(entry.componentId), `Duplicate component ID: ${entry.componentId}`);
   ids.add(entry.componentId);
   assert.equal(entry.status, "verified");
-  assert(["head", "headwear", "torsoAssembly", "legsAssembly"].includes(entry.role));
+  assert(["head", "headwear", "torsoAssembly", "legsAssembly", "handAccessory"].includes(entry.role));
   assert(entry.componentId.startsWith(`catalog:${entry.role}:`));
   assert(entry.ldrawFile.startsWith("parts/"));
   assert(!entry.ldrawFile.toLowerCase().includes("moc"));
@@ -103,9 +146,23 @@ for (const entry of catalog.entries) {
   } else {
     assert.equal(entry.geometryFallback, null);
   }
-  assert.equal(entry.placementMode, "prototype-family-origin");
+  assert.equal(entry.placementMode, entry.role === "handAccessory" ? "snap-connector" : "prototype-family-origin");
   assert.equal(entry.placementTransformLdu.length, 16);
   assert(entry.placementTransformLdu.every(Number.isFinite));
+  if (entry.role === "handAccessory") {
+    assert.equal(entry.digitalValidation?.status, "passed");
+    assert.equal(entry.digitalValidation.reasonCode, null);
+    assert(entry.digitalValidation.gripLengthLdu >= entry.digitalValidation.limits.minimumGripLengthLdu);
+    assert(entry.digitalValidation.sampledPointCount > 0);
+    assert(entry.digitalValidation.protectedBodyBoxCount > 0);
+    assert.equal(entry.digitalValidation.collisionSampleCount, 0);
+    assert.equal(entry.digitalValidation.orientationCandidatesTested, 8);
+    assert(entry.digitalValidation.selectedOrientationIndex >= 0 && entry.digitalValidation.selectedOrientationIndex < 8);
+    assert.equal(entry.digitalValidation.physicalFitGuaranteed, false);
+    assert.match(entry.digitalValidation.gripPrimitive, /4-4cyl[ic]\.dat$/u);
+  } else {
+    assert.equal(entry.digitalValidation, null);
+  }
   const assetIdentity = {
     ldrawFile: entry.ldrawFile,
     previewColorRgb: entry.previewColorRgb,
@@ -152,6 +209,7 @@ console.log(JSON.stringify({
   headwear: catalog.summary.headwearCount,
   torsoAssemblies: catalog.summary.torsoAssemblyCount,
   legsAssemblies: catalog.summary.legsAssemblyCount,
+  handAccessories: catalog.summary.handAccessoryCount,
   printParentGeometryFallbacks: catalog.summary.printParentGeometryFallbackCount,
   generatedAssets: catalog.summary.generatedAssetCount,
   excludedRenderFailures: catalog.summary.renderFailuresExcluded,

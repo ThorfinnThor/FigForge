@@ -6,6 +6,7 @@ import {
   ldrawMatrix,
   parseLDrawReferences,
   proposedHandPlacement,
+  proposedHandPlacements,
 } from "../../tools/lib/ldraw-placement-candidates.js";
 
 describe("conservative LDraw placement candidate analysis", () => {
@@ -39,5 +40,9 @@ describe("conservative LDraw placement candidate analysis", () => {
     const placement = proposedHandPlacement(evidence!);
     expect(placement).toHaveLength(16);
     expect(placement.every(Number.isFinite)).toBe(true);
+    const alternatives = proposedHandPlacements(evidence!);
+    expect(alternatives).toHaveLength(8);
+    expect(alternatives[0]).toEqual(placement);
+    expect(alternatives.every((candidate) => candidate.length === 16 && candidate.every(Number.isFinite))).toBe(true);
   });
 });

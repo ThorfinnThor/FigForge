@@ -28,17 +28,17 @@
   },
   "summary": {
     "catalogPartCount": 20202,
-    "visualizedPartCount": 6243,
-    "builderReadyPartCount": 6241,
-    "remainingCatalogPartCount": 13961,
-    "remainingWithoutVisualizationCount": 13959,
+    "visualizedPartCount": 6397,
+    "builderReadyPartCount": 6395,
+    "remainingCatalogPartCount": 13807,
+    "remainingWithoutVisualizationCount": 13805,
     "uniqueOfficialMappingCount": 2272,
     "ambiguousOfficialMappingCount": 122,
     "noOfficialMappingCount": 17808,
     "remainingClassifications": {
       "builder-blocked": 2,
       "render-failed": 0,
-      "placement-profile-required": 810,
+      "placement-profile-required": 656,
       "ambiguous-official-mapping": 83,
       "no-official-mapping": 13066
     }
@@ -94,12 +94,12 @@
     },
     "handAccessory": {
       "catalogPartCount": 1308,
-      "builderReadyPartCount": 2,
-      "remainingCatalogPartCount": 1306,
+      "builderReadyPartCount": 156,
+      "remainingCatalogPartCount": 1152,
       "remainingClassifications": {
         "builder-blocked": 1,
         "render-failed": 0,
-        "placement-profile-required": 600,
+        "placement-profile-required": 446,
         "ambiguous-official-mapping": 33,
         "no-official-mapping": 672
       }
@@ -128098,34 +128098,6 @@
       "reason": null
     },
     {
-      "catalogId": "part:2530",
-      "role": "handAccessory",
-      "rebrickablePartNum": "2530",
-      "name": "Weapon Sword / Cutlass",
-      "classification": "placement-profile-required",
-      "ldrawFiles": [
-        "parts/2530.dat"
-      ],
-      "mappingEvidence": [
-        "exact-filename"
-      ],
-      "reason": null
-    },
-    {
-      "catalogId": "part:2542",
-      "role": "handAccessory",
-      "rebrickablePartNum": "2542",
-      "name": "Equipment Oar / Paddle",
-      "classification": "placement-profile-required",
-      "ldrawFiles": [
-        "parts/2542.dat"
-      ],
-      "mappingEvidence": [
-        "exact-filename"
-      ],
-      "reason": null
-    },
-    {
       "catalogId": "part:2561",
       "role": "handAccessory",
       "rebrickablePartNum": "2561",
@@ -128147,20 +128119,6 @@
       "classification": "placement-profile-required",
       "ldrawFiles": [
         "parts/2562.dat"
-      ],
-      "mappingEvidence": [
-        "exact-filename"
-      ],
-      "reason": null
-    },
-    {
-      "catalogId": "part:2570",
-      "role": "handAccessory",
-      "rebrickablePartNum": "2570",
-      "name": "Weapon Crossbow and Bolt",
-      "classification": "placement-profile-required",
-      "ldrawFiles": [
-        "parts/2570.dat"
       ],
       "mappingEvidence": [
         "exact-filename"
@@ -128778,20 +128736,6 @@
       "reason": null
     },
     {
-      "catalogId": "part:2674d",
-      "role": "handAccessory",
-      "rebrickablePartNum": "2674d",
-      "name": "Weapon Axe, Dwarf (Gimli)",
-      "classification": "placement-profile-required",
-      "ldrawFiles": [
-        "parts/2674d.dat"
-      ],
-      "mappingEvidence": [
-        "exact-filename"
-      ],
-      "reason": null
-    },
-    {
       "catalogId": "part:2674e",
       "role": "handAccessory",
       "rebrickablePartNum": "2674e",
@@ -128915,48 +128859,6 @@
       "classification": "placement-profile-required",
       "ldrawFiles": [
         "parts/3757.dat"
-      ],
-      "mappingEvidence": [
-        "exact-filename"
-      ],
-      "reason": null
-    },
-    {
-      "catalogId": "part:3835",
-      "role": "handAccessory",
-      "rebrickablePartNum": "3835",
-      "name": "Weapon Axe",
-      "classification": "placement-profile-required",
-      "ldrawFiles": [
-        "parts/3835.dat"
-      ],
-      "mappingEvidence": [
-        "exact-filename"
-      ],
-      "reason": null
-    },
-    {
-      "catalogId": "part:3836",
-      "role": "handAccessory",
-      "rebrickablePartNum": "3836",
-      "name": "Equipment Brush / Push Broom",
-      "classification": "placement-profile-required",
-      "ldrawFiles": [
-        "parts/3836.dat"
-      ],
-      "mappingEvidence": [
-        "exact-filename"
-      ],
-      "reason": null
-    },
-    {
-      "catalogId": "part:3837",
-      "role": "handAccessory",
-      "rebrickablePartNum": "3837",
-      "name": "Equipment Shovel [Rounded Handle End]",
-      "classification": "placement-profile-required",
-      "ldrawFiles": [
-        "parts/3837.dat"
       ],
       "mappingEvidence": [
         "exact-filename"
@@ -129624,20 +129526,6 @@
       "reason": null
     },
     {
-      "catalogId": "part:3847",
-      "role": "handAccessory",
-      "rebrickablePartNum": "3847",
-      "name": "Weapon Sword / Shortsword",
-      "classification": "placement-profile-required",
-      "ldrawFiles": [
-        "parts/3847.dat"
-      ],
-      "mappingEvidence": [
-        "exact-filename"
-      ],
-      "reason": null
-    },
-    {
       "catalogId": "part:3847a",
       "role": "handAccessory",
       "rebrickablePartNum": "3847a",
@@ -129645,20 +129533,6 @@
       "classification": "no-official-mapping",
       "ldrawFiles": [],
       "mappingEvidence": [],
-      "reason": null
-    },
-    {
-      "catalogId": "part:3848",
-      "role": "handAccessory",
-      "rebrickablePartNum": "3848",
-      "name": "Weapon Halberd / Axe",
-      "classification": "placement-profile-required",
-      "ldrawFiles": [
-        "parts/3848.dat"
-      ],
-      "mappingEvidence": [
-        "exact-filename"
-      ],
       "reason": null
     },
     {
@@ -129676,34 +129550,6 @@
       "reason": null
     },
     {
-      "catalogId": "part:3852a",
-      "role": "handAccessory",
-      "rebrickablePartNum": "3852a",
-      "name": "Equipment Hairbrush Long Handle [14mm]",
-      "classification": "placement-profile-required",
-      "ldrawFiles": [
-        "parts/3852a.dat"
-      ],
-      "mappingEvidence": [
-        "exact-filename"
-      ],
-      "reason": null
-    },
-    {
-      "catalogId": "part:3852b",
-      "role": "handAccessory",
-      "rebrickablePartNum": "3852b",
-      "name": "Equipment Hairbrush Short Handle [10mm]",
-      "classification": "placement-profile-required",
-      "ldrawFiles": [
-        "parts/3852b.dat"
-      ],
-      "mappingEvidence": [
-        "exact-filename"
-      ],
-      "reason": null
-    },
-    {
       "catalogId": "part:3876",
       "role": "handAccessory",
       "rebrickablePartNum": "3876",
@@ -129711,20 +129557,6 @@
       "classification": "placement-profile-required",
       "ldrawFiles": [
         "parts/3876.dat"
-      ],
-      "mappingEvidence": [
-        "exact-filename"
-      ],
-      "reason": null
-    },
-    {
-      "catalogId": "part:3885",
-      "role": "handAccessory",
-      "rebrickablePartNum": "3885",
-      "name": "Weapon Sword Blade, Darksaber",
-      "classification": "placement-profile-required",
-      "ldrawFiles": [
-        "parts/3885.dat"
       ],
       "mappingEvidence": [
         "exact-filename"
@@ -129964,20 +129796,6 @@
       "reason": null
     },
     {
-      "catalogId": "part:4006",
-      "role": "handAccessory",
-      "rebrickablePartNum": "4006",
-      "name": "Tool Screwdriver and Spanner / Wrench",
-      "classification": "placement-profile-required",
-      "ldrawFiles": [
-        "parts/4006.dat"
-      ],
-      "mappingEvidence": [
-        "exact-filename"
-      ],
-      "reason": null
-    },
-    {
       "catalogId": "part:4094b",
       "role": "handAccessory",
       "rebrickablePartNum": "4094b",
@@ -130004,48 +129822,6 @@
       "mappingEvidence": [
         "exact-filename",
         "explicit-keyword"
-      ],
-      "reason": null
-    },
-    {
-      "catalogId": "part:4328",
-      "role": "handAccessory",
-      "rebrickablePartNum": "4328",
-      "name": "Tool Pipe Wrench / Adjustable Spanner",
-      "classification": "placement-profile-required",
-      "ldrawFiles": [
-        "parts/4328.dat"
-      ],
-      "mappingEvidence": [
-        "exact-filename"
-      ],
-      "reason": null
-    },
-    {
-      "catalogId": "part:4332",
-      "role": "handAccessory",
-      "rebrickablePartNum": "4332",
-      "name": "Equipment Brush / Broom",
-      "classification": "placement-profile-required",
-      "ldrawFiles": [
-        "parts/4332.dat"
-      ],
-      "mappingEvidence": [
-        "exact-filename"
-      ],
-      "reason": null
-    },
-    {
-      "catalogId": "part:4337",
-      "role": "handAccessory",
-      "rebrickablePartNum": "4337",
-      "name": "Equipment Ladle",
-      "classification": "placement-profile-required",
-      "ldrawFiles": [
-        "parts/4337.dat"
-      ],
-      "mappingEvidence": [
-        "exact-filename"
       ],
       "reason": null
     },
@@ -130144,20 +129920,6 @@
       "reason": null
     },
     {
-      "catalogId": "part:4438",
-      "role": "handAccessory",
-      "rebrickablePartNum": "4438",
-      "name": "Weapon Axe (Fabuland)",
-      "classification": "placement-profile-required",
-      "ldrawFiles": [
-        "parts/4438.dat"
-      ],
-      "mappingEvidence": [
-        "exact-filename"
-      ],
-      "reason": null
-    },
-    {
       "catalogId": "part:4449",
       "role": "handAccessory",
       "rebrickablePartNum": "4449",
@@ -130188,34 +129950,6 @@
       "reason": null
     },
     {
-      "catalogId": "part:4496",
-      "role": "handAccessory",
-      "rebrickablePartNum": "4496",
-      "name": "Equipment Pitchfork / Fork, Rounded End",
-      "classification": "placement-profile-required",
-      "ldrawFiles": [
-        "parts/4496.dat"
-      ],
-      "mappingEvidence": [
-        "exact-filename"
-      ],
-      "reason": null
-    },
-    {
-      "catalogId": "part:4497",
-      "role": "handAccessory",
-      "rebrickablePartNum": "4497",
-      "name": "Weapon Pike / Spear Round End",
-      "classification": "placement-profile-required",
-      "ldrawFiles": [
-        "parts/4497.dat"
-      ],
-      "mappingEvidence": [
-        "exact-filename"
-      ],
-      "reason": null
-    },
-    {
       "catalogId": "part:4499",
       "role": "handAccessory",
       "rebrickablePartNum": "4499",
@@ -130242,34 +129976,6 @@
       "mappingEvidence": [
         "exact-filename",
         "explicit-keyword"
-      ],
-      "reason": null
-    },
-    {
-      "catalogId": "part:4528",
-      "role": "handAccessory",
-      "rebrickablePartNum": "4528",
-      "name": "Equipment Frying Pan",
-      "classification": "placement-profile-required",
-      "ldrawFiles": [
-        "parts/4528.dat"
-      ],
-      "mappingEvidence": [
-        "exact-filename"
-      ],
-      "reason": null
-    },
-    {
-      "catalogId": "part:4529",
-      "role": "handAccessory",
-      "rebrickablePartNum": "4529",
-      "name": "Equipment Saucepan",
-      "classification": "placement-profile-required",
-      "ldrawFiles": [
-        "parts/4529.dat"
-      ],
-      "mappingEvidence": [
-        "exact-filename"
       ],
       "reason": null
     },
@@ -130877,20 +130583,6 @@
       "classification": "placement-profile-required",
       "ldrawFiles": [
         "parts/6120.dat"
-      ],
-      "mappingEvidence": [
-        "exact-filename"
-      ],
-      "reason": null
-    },
-    {
-      "catalogId": "part:6123",
-      "role": "handAccessory",
-      "rebrickablePartNum": "6123",
-      "name": "Weapon Halberd / Axe Elaborate",
-      "classification": "placement-profile-required",
-      "ldrawFiles": [
-        "parts/6123.dat"
       ],
       "mappingEvidence": [
         "exact-filename"
@@ -131583,20 +131275,6 @@
       "reason": null
     },
     {
-      "catalogId": "part:10187",
-      "role": "handAccessory",
-      "rebrickablePartNum": "10187",
-      "name": "Weapon Bladed Claw Spread",
-      "classification": "placement-profile-required",
-      "ldrawFiles": [
-        "parts/10187.dat"
-      ],
-      "mappingEvidence": [
-        "exact-filename"
-      ],
-      "reason": null
-    },
-    {
       "catalogId": "part:10190",
       "role": "handAccessory",
       "rebrickablePartNum": "10190",
@@ -131618,20 +131296,6 @@
       "classification": "no-official-mapping",
       "ldrawFiles": [],
       "mappingEvidence": [],
-      "reason": null
-    },
-    {
-      "catalogId": "part:10830pat0001",
-      "role": "handAccessory",
-      "rebrickablePartNum": "10830pat0001",
-      "name": "Equipment Magnifying Glass with Thick Frame, Solid Handle, Trans-Clear Lens Pattern",
-      "classification": "placement-profile-required",
-      "ldrawFiles": [
-        "parts/10830p01.dat"
-      ],
-      "mappingEvidence": [
-        "explicit-keyword"
-      ],
       "reason": null
     },
     {
@@ -131659,20 +131323,6 @@
       "reason": null
     },
     {
-      "catalogId": "part:11092",
-      "role": "handAccessory",
-      "rebrickablePartNum": "11092",
-      "name": "Gorilla Fist / Hand",
-      "classification": "placement-profile-required",
-      "ldrawFiles": [
-        "parts/11092.dat"
-      ],
-      "mappingEvidence": [
-        "exact-filename"
-      ],
-      "reason": null
-    },
-    {
       "catalogId": "part:11096",
       "role": "handAccessory",
       "rebrickablePartNum": "11096",
@@ -131680,20 +131330,6 @@
       "classification": "placement-profile-required",
       "ldrawFiles": [
         "parts/11096.dat"
-      ],
-      "mappingEvidence": [
-        "exact-filename"
-      ],
-      "reason": null
-    },
-    {
-      "catalogId": "part:11103",
-      "role": "handAccessory",
-      "rebrickablePartNum": "11103",
-      "name": "Weapon Sword Double Blade with Bar Holder [Chi Sword]",
-      "classification": "placement-profile-required",
-      "ldrawFiles": [
-        "parts/11103.dat"
       ],
       "mappingEvidence": [
         "exact-filename"
@@ -131751,20 +131387,6 @@
       "reason": null
     },
     {
-      "catalogId": "part:11245",
-      "role": "handAccessory",
-      "rebrickablePartNum": "11245",
-      "name": "Bag / Rucksack (School) [Plain]",
-      "classification": "placement-profile-required",
-      "ldrawFiles": [
-        "parts/11245.dat"
-      ],
-      "mappingEvidence": [
-        "exact-filename"
-      ],
-      "reason": null
-    },
-    {
       "catalogId": "part:11245pr0001",
       "role": "handAccessory",
       "rebrickablePartNum": "11245pr0001",
@@ -131772,34 +131394,6 @@
       "classification": "no-official-mapping",
       "ldrawFiles": [],
       "mappingEvidence": [],
-      "reason": null
-    },
-    {
-      "catalogId": "part:11245pr0002",
-      "role": "handAccessory",
-      "rebrickablePartNum": "11245pr0002",
-      "name": "Bag / Rucksack (School) with Medium Blue Buckle and Star Print",
-      "classification": "placement-profile-required",
-      "ldrawFiles": [
-        "parts/11245p01.dat"
-      ],
-      "mappingEvidence": [
-        "explicit-keyword"
-      ],
-      "reason": null
-    },
-    {
-      "catalogId": "part:11250",
-      "role": "handAccessory",
-      "rebrickablePartNum": "11250",
-      "name": "Equipment Judge's Gavel",
-      "classification": "placement-profile-required",
-      "ldrawFiles": [
-        "parts/11250.dat"
-      ],
-      "mappingEvidence": [
-        "exact-filename"
-      ],
       "reason": null
     },
     {
@@ -131979,48 +131573,6 @@
       "reason": null
     },
     {
-      "catalogId": "part:11601",
-      "role": "handAccessory",
-      "rebrickablePartNum": "11601",
-      "name": "Tool Saw with Handle and Tooth",
-      "classification": "placement-profile-required",
-      "ldrawFiles": [
-        "parts/11601.dat"
-      ],
-      "mappingEvidence": [
-        "exact-filename"
-      ],
-      "reason": null
-    },
-    {
-      "catalogId": "part:11640",
-      "role": "handAccessory",
-      "rebrickablePartNum": "11640",
-      "name": "Musical Instrument Guitar Electric [Plain]",
-      "classification": "placement-profile-required",
-      "ldrawFiles": [
-        "parts/11640.dat"
-      ],
-      "mappingEvidence": [
-        "exact-filename"
-      ],
-      "reason": null
-    },
-    {
-      "catalogId": "part:11640pr0001",
-      "role": "handAccessory",
-      "rebrickablePartNum": "11640pr0001",
-      "name": "Musical Instrument Guitar Electric with Silver Strings and Stars on Magenta Background Print",
-      "classification": "placement-profile-required",
-      "ldrawFiles": [
-        "parts/11640p01.dat"
-      ],
-      "mappingEvidence": [
-        "explicit-keyword"
-      ],
-      "reason": null
-    },
-    {
       "catalogId": "part:11640pr0002",
       "role": "handAccessory",
       "rebrickablePartNum": "11640pr0002",
@@ -132048,20 +131600,6 @@
       "classification": "no-official-mapping",
       "ldrawFiles": [],
       "mappingEvidence": [],
-      "reason": null
-    },
-    {
-      "catalogId": "part:11640pr0005",
-      "role": "handAccessory",
-      "rebrickablePartNum": "11640pr0005",
-      "name": "Musical Instrument Guitar Electric with Tan Board, Silver Strings print",
-      "classification": "placement-profile-required",
-      "ldrawFiles": [
-        "parts/11640p02.dat"
-      ],
-      "mappingEvidence": [
-        "explicit-keyword"
-      ],
       "reason": null
     },
     {
@@ -132231,20 +131769,6 @@
       "reason": null
     },
     {
-      "catalogId": "part:13790",
-      "role": "handAccessory",
-      "rebrickablePartNum": "13790",
-      "name": "Weapon Truncheon",
-      "classification": "placement-profile-required",
-      "ldrawFiles": [
-        "parts/13790.dat"
-      ],
-      "mappingEvidence": [
-        "exact-filename"
-      ],
-      "reason": null
-    },
-    {
       "catalogId": "part:13793",
       "role": "handAccessory",
       "rebrickablePartNum": "13793",
@@ -132255,34 +131779,6 @@
       ],
       "mappingEvidence": [
         "exact-filename"
-      ],
-      "reason": null
-    },
-    {
-      "catalogId": "part:13808",
-      "role": "handAccessory",
-      "rebrickablePartNum": "13808",
-      "name": "Musical Instrument Saxophone",
-      "classification": "placement-profile-required",
-      "ldrawFiles": [
-        "parts/13808.dat"
-      ],
-      "mappingEvidence": [
-        "exact-filename"
-      ],
-      "reason": null
-    },
-    {
-      "catalogId": "part:13808pr0001",
-      "role": "handAccessory",
-      "rebrickablePartNum": "13808pr0001",
-      "name": "Musical Instrument Saxophone with Black Mouthpiece Print",
-      "classification": "placement-profile-required",
-      "ldrawFiles": [
-        "parts/13808p01.dat"
-      ],
-      "mappingEvidence": [
-        "explicit-keyword"
       ],
       "reason": null
     },
@@ -132304,20 +131800,6 @@
       "classification": "no-official-mapping",
       "ldrawFiles": [],
       "mappingEvidence": [],
-      "reason": null
-    },
-    {
-      "catalogId": "part:13952",
-      "role": "handAccessory",
-      "rebrickablePartNum": "13952",
-      "name": "Weapon Gun Laser (Kryptonian)",
-      "classification": "placement-profile-required",
-      "ldrawFiles": [
-        "parts/13952.dat"
-      ],
-      "mappingEvidence": [
-        "exact-filename"
-      ],
       "reason": null
     },
     {
@@ -132457,20 +131939,6 @@
       "reason": null
     },
     {
-      "catalogId": "part:17010",
-      "role": "handAccessory",
-      "rebrickablePartNum": "17010",
-      "name": "Weapon Gun / Blaster Small",
-      "classification": "placement-profile-required",
-      "ldrawFiles": [
-        "parts/17010.dat"
-      ],
-      "mappingEvidence": [
-        "exact-filename"
-      ],
-      "reason": null
-    },
-    {
       "catalogId": "part:17011",
       "role": "handAccessory",
       "rebrickablePartNum": "17011",
@@ -132541,20 +132009,6 @@
       "reason": null
     },
     {
-      "catalogId": "part:18031",
-      "role": "handAccessory",
-      "rebrickablePartNum": "18031",
-      "name": "Weapon Sword / Greatsword Pointed with Thick Crossguard",
-      "classification": "placement-profile-required",
-      "ldrawFiles": [
-        "parts/18031.dat"
-      ],
-      "mappingEvidence": [
-        "exact-filename"
-      ],
-      "reason": null
-    },
-    {
       "catalogId": "part:18034",
       "role": "handAccessory",
       "rebrickablePartNum": "18034",
@@ -132562,20 +132016,6 @@
       "classification": "placement-profile-required",
       "ldrawFiles": [
         "parts/18034.dat"
-      ],
-      "mappingEvidence": [
-        "exact-filename"
-      ],
-      "reason": null
-    },
-    {
-      "catalogId": "part:18041",
-      "role": "handAccessory",
-      "rebrickablePartNum": "18041",
-      "name": "Weapon Harpoon [Smooth Shaft]",
-      "classification": "placement-profile-required",
-      "ldrawFiles": [
-        "parts/18041.dat"
       ],
       "mappingEvidence": [
         "exact-filename"
@@ -132789,20 +132229,6 @@
       "reason": null
     },
     {
-      "catalogId": "part:18920",
-      "role": "handAccessory",
-      "rebrickablePartNum": "18920",
-      "name": "Equipment Scissors",
-      "classification": "placement-profile-required",
-      "ldrawFiles": [
-        "parts/18920.dat"
-      ],
-      "mappingEvidence": [
-        "exact-filename"
-      ],
-      "reason": null
-    },
-    {
       "catalogId": "part:18950",
       "role": "handAccessory",
       "rebrickablePartNum": "18950",
@@ -132854,34 +132280,6 @@
       "classification": "placement-profile-required",
       "ldrawFiles": [
         "parts/19118.dat"
-      ],
-      "mappingEvidence": [
-        "exact-filename"
-      ],
-      "reason": null
-    },
-    {
-      "catalogId": "part:19141",
-      "role": "handAccessory",
-      "rebrickablePartNum": "19141",
-      "name": "Equipment Scabbard for Two Swords",
-      "classification": "placement-profile-required",
-      "ldrawFiles": [
-        "parts/19141.dat"
-      ],
-      "mappingEvidence": [
-        "exact-filename"
-      ],
-      "reason": null
-    },
-    {
-      "catalogId": "part:19179",
-      "role": "handAccessory",
-      "rebrickablePartNum": "19179",
-      "name": "Weapon Blade with Bar and 3 Spikes",
-      "classification": "placement-profile-required",
-      "ldrawFiles": [
-        "parts/19179.dat"
       ],
       "mappingEvidence": [
         "exact-filename"
@@ -133153,20 +132551,6 @@
       "reason": null
     },
     {
-      "catalogId": "part:21700pr0001",
-      "role": "handAccessory",
-      "rebrickablePartNum": "21700pr0001",
-      "name": "Tool Screwdriver with 4 Prongs with Green Tip and White Handle Print (Sonic Screwdriver)",
-      "classification": "placement-profile-required",
-      "ldrawFiles": [
-        "parts/21700p01.dat"
-      ],
-      "mappingEvidence": [
-        "explicit-keyword"
-      ],
-      "reason": null
-    },
-    {
       "catalogId": "part:22407",
       "role": "handAccessory",
       "rebrickablePartNum": "22407",
@@ -133240,20 +132624,6 @@
       "classification": "placement-profile-required",
       "ldrawFiles": [
         "parts/23422.dat"
-      ],
-      "mappingEvidence": [
-        "exact-filename"
-      ],
-      "reason": null
-    },
-    {
-      "catalogId": "part:23860",
-      "role": "handAccessory",
-      "rebrickablePartNum": "23860",
-      "name": "Weapon Sword, Blade with Bar, Double Edge",
-      "classification": "placement-profile-required",
-      "ldrawFiles": [
-        "parts/23860.dat"
       ],
       "mappingEvidence": [
         "exact-filename"
@@ -133915,20 +133285,6 @@
       "reason": null
     },
     {
-      "catalogId": "part:24482",
-      "role": "handAccessory",
-      "rebrickablePartNum": "24482",
-      "name": "Weapon Spear Tip with Fins",
-      "classification": "placement-profile-required",
-      "ldrawFiles": [
-        "parts/24482.dat"
-      ],
-      "mappingEvidence": [
-        "exact-filename"
-      ],
-      "reason": null
-    },
-    {
       "catalogId": "part:24946",
       "role": "handAccessory",
       "rebrickablePartNum": "24946",
@@ -134193,20 +133549,6 @@
       "reason": null
     },
     {
-      "catalogId": "part:27257",
-      "role": "handAccessory",
-      "rebrickablePartNum": "27257",
-      "name": "Weapon Pike / Spear Tip with Bar",
-      "classification": "placement-profile-required",
-      "ldrawFiles": [
-        "parts/27257.dat"
-      ],
-      "mappingEvidence": [
-        "exact-filename"
-      ],
-      "reason": null
-    },
-    {
       "catalogId": "part:28587",
       "role": "handAccessory",
       "rebrickablePartNum": "28587",
@@ -134322,20 +133664,6 @@
       "reason": null
     },
     {
-      "catalogId": "part:29601",
-      "role": "handAccessory",
-      "rebrickablePartNum": "29601",
-      "name": "Weapon Gun Ray / Laser",
-      "classification": "placement-profile-required",
-      "ldrawFiles": [
-        "parts/29601.dat"
-      ],
-      "mappingEvidence": [
-        "exact-filename"
-      ],
-      "reason": null
-    },
-    {
       "catalogId": "part:29635",
       "role": "handAccessory",
       "rebrickablePartNum": "29635",
@@ -134343,20 +133671,6 @@
       "classification": "placement-profile-required",
       "ldrawFiles": [
         "parts/29635.dat"
-      ],
-      "mappingEvidence": [
-        "exact-filename"
-      ],
-      "reason": null
-    },
-    {
-      "catalogId": "part:29636",
-      "role": "handAccessory",
-      "rebrickablePartNum": "29636",
-      "name": "Equipment Whisk with Thin Ring",
-      "classification": "placement-profile-required",
-      "ldrawFiles": [
-        "parts/29636.dat"
       ],
       "mappingEvidence": [
         "exact-filename"
@@ -134514,34 +133828,6 @@
       "reason": null
     },
     {
-      "catalogId": "part:30152pat0001",
-      "role": "handAccessory",
-      "rebrickablePartNum": "30152pat0001",
-      "name": "Equipment Magnifying Glass with Thin Frame, Hollow Handle, Trans-Clear Lens Pattern",
-      "classification": "placement-profile-required",
-      "ldrawFiles": [
-        "parts/30152ap01.dat"
-      ],
-      "mappingEvidence": [
-        "explicit-keyword"
-      ],
-      "reason": null
-    },
-    {
-      "catalogId": "part:30152pat0003",
-      "role": "handAccessory",
-      "rebrickablePartNum": "30152pat0003",
-      "name": "Equipment Magnifying Glass with Thin Frame and Hollow Handle with Trans-Red Lens Pattern",
-      "classification": "placement-profile-required",
-      "ldrawFiles": [
-        "parts/30152ap02.dat"
-      ],
-      "mappingEvidence": [
-        "explicit-keyword"
-      ],
-      "reason": null
-    },
-    {
       "catalogId": "part:30154",
       "role": "handAccessory",
       "rebrickablePartNum": "30154",
@@ -134664,20 +133950,6 @@
       "classification": "placement-profile-required",
       "ldrawFiles": [
         "parts/30198.dat"
-      ],
-      "mappingEvidence": [
-        "exact-filename"
-      ],
-      "reason": null
-    },
-    {
-      "catalogId": "part:30222",
-      "role": "handAccessory",
-      "rebrickablePartNum": "30222",
-      "name": "Food Popsicle / Lollipop",
-      "classification": "placement-profile-required",
-      "ldrawFiles": [
-        "parts/30222.dat"
       ],
       "mappingEvidence": [
         "exact-filename"
@@ -134818,34 +134090,6 @@
       "reason": null
     },
     {
-      "catalogId": "part:30924",
-      "role": "handAccessory",
-      "rebrickablePartNum": "30924",
-      "name": "Equipment Medical Bandage",
-      "classification": "placement-profile-required",
-      "ldrawFiles": [
-        "parts/30924.dat"
-      ],
-      "mappingEvidence": [
-        "exact-filename"
-      ],
-      "reason": null
-    },
-    {
-      "catalogId": "part:31990",
-      "role": "handAccessory",
-      "rebrickablePartNum": "31990",
-      "name": "Equipment Oar / Paddle End",
-      "classification": "placement-profile-required",
-      "ldrawFiles": [
-        "parts/31990.dat"
-      ],
-      "mappingEvidence": [
-        "exact-filename"
-      ],
-      "reason": null
-    },
-    {
       "catalogId": "part:32008",
       "role": "handAccessory",
       "rebrickablePartNum": "32008",
@@ -134897,20 +134141,6 @@
       "classification": "no-official-mapping",
       "ldrawFiles": [],
       "mappingEvidence": [],
-      "reason": null
-    },
-    {
-      "catalogId": "part:32373",
-      "role": "handAccessory",
-      "rebrickablePartNum": "32373",
-      "name": "Weapon Pike / Spear - Flexible Rubber",
-      "classification": "placement-profile-required",
-      "ldrawFiles": [
-        "parts/32373.dat"
-      ],
-      "mappingEvidence": [
-        "exact-filename"
-      ],
       "reason": null
     },
     {
@@ -135054,20 +134284,6 @@
       "reason": null
     },
     {
-      "catalogId": "part:33057",
-      "role": "handAccessory",
-      "rebrickablePartNum": "33057",
-      "name": "Food Turkey Drumstick [Short] - 20mm Round Opening",
-      "classification": "placement-profile-required",
-      "ldrawFiles": [
-        "parts/33057.dat"
-      ],
-      "mappingEvidence": [
-        "exact-filename"
-      ],
-      "reason": null
-    },
-    {
       "catalogId": "part:33061",
       "role": "handAccessory",
       "rebrickablePartNum": "33061",
@@ -135089,20 +134305,6 @@
       "classification": "placement-profile-required",
       "ldrawFiles": [
         "parts/33078.dat"
-      ],
-      "mappingEvidence": [
-        "exact-filename"
-      ],
-      "reason": null
-    },
-    {
-      "catalogId": "part:33120",
-      "role": "handAccessory",
-      "rebrickablePartNum": "33120",
-      "name": "Food Ice Cream Cone with Ice Cream",
-      "classification": "placement-profile-required",
-      "ldrawFiles": [
-        "parts/33120.dat"
       ],
       "mappingEvidence": [
         "exact-filename"
@@ -135192,20 +134394,6 @@
       "reason": null
     },
     {
-      "catalogId": "part:34173",
-      "role": "handAccessory",
-      "rebrickablePartNum": "34173",
-      "name": "Equipment Cutlery - Spoon, Rounded Bottom",
-      "classification": "placement-profile-required",
-      "ldrawFiles": [
-        "parts/34173.dat"
-      ],
-      "mappingEvidence": [
-        "exact-filename"
-      ],
-      "reason": null
-    },
-    {
       "catalogId": "part:34684pr0017",
       "role": "handAccessory",
       "rebrickablePartNum": "34684pr0017",
@@ -135266,34 +134454,6 @@
       "reason": null
     },
     {
-      "catalogId": "part:35485",
-      "role": "handAccessory",
-      "rebrickablePartNum": "35485",
-      "name": "Weapon Chakram / Hoop Blade / Ring",
-      "classification": "placement-profile-required",
-      "ldrawFiles": [
-        "parts/35485.dat"
-      ],
-      "mappingEvidence": [
-        "exact-filename"
-      ],
-      "reason": null
-    },
-    {
-      "catalogId": "part:35692",
-      "role": "handAccessory",
-      "rebrickablePartNum": "35692",
-      "name": "Balloon Dog",
-      "classification": "placement-profile-required",
-      "ldrawFiles": [
-        "parts/35692.dat"
-      ],
-      "mappingEvidence": [
-        "exact-filename"
-      ],
-      "reason": null
-    },
-    {
       "catalogId": "part:35763",
       "role": "handAccessory",
       "rebrickablePartNum": "35763",
@@ -135301,62 +134461,6 @@
       "classification": "no-official-mapping",
       "ldrawFiles": [],
       "mappingEvidence": [],
-      "reason": null
-    },
-    {
-      "catalogId": "part:35809",
-      "role": "handAccessory",
-      "rebrickablePartNum": "35809",
-      "name": "Equipment Pen [Plain]",
-      "classification": "placement-profile-required",
-      "ldrawFiles": [
-        "parts/35809.dat"
-      ],
-      "mappingEvidence": [
-        "exact-filename"
-      ],
-      "reason": null
-    },
-    {
-      "catalogId": "part:35809pat0001",
-      "role": "handAccessory",
-      "rebrickablePartNum": "35809pat0001",
-      "name": "Equipment Pen with Tip and Cap Dark Purple Print",
-      "classification": "placement-profile-required",
-      "ldrawFiles": [
-        "parts/35809p01.dat"
-      ],
-      "mappingEvidence": [
-        "explicit-keyword"
-      ],
-      "reason": null
-    },
-    {
-      "catalogId": "part:35809pat0002",
-      "role": "handAccessory",
-      "rebrickablePartNum": "35809pat0002",
-      "name": "Equipment Pen with Tip and Cap Magenta Print",
-      "classification": "placement-profile-required",
-      "ldrawFiles": [
-        "parts/35809p02.dat"
-      ],
-      "mappingEvidence": [
-        "explicit-keyword"
-      ],
-      "reason": null
-    },
-    {
-      "catalogId": "part:35809pat0003",
-      "role": "handAccessory",
-      "rebrickablePartNum": "35809pat0003",
-      "name": "Equipment Pen with Tip and Cap Pearl Titanium Pattern",
-      "classification": "placement-profile-required",
-      "ldrawFiles": [
-        "parts/35809p03.dat"
-      ],
-      "mappingEvidence": [
-        "explicit-keyword"
-      ],
       "reason": null
     },
     {
@@ -135458,20 +134562,6 @@
       "reason": null
     },
     {
-      "catalogId": "part:37341a",
-      "role": "handAccessory",
-      "rebrickablePartNum": "37341a",
-      "name": "Weapon Sword Curved Blade with Bar",
-      "classification": "placement-profile-required",
-      "ldrawFiles": [
-        "parts/37341a.dat"
-      ],
-      "mappingEvidence": [
-        "exact-filename"
-      ],
-      "reason": null
-    },
-    {
       "catalogId": "part:37341b",
       "role": "handAccessory",
       "rebrickablePartNum": "37341b",
@@ -135486,20 +134576,6 @@
       "reason": null
     },
     {
-      "catalogId": "part:37341c",
-      "role": "handAccessory",
-      "rebrickablePartNum": "37341c",
-      "name": "Weapon Sword Blade with Bar, Square Crossguard",
-      "classification": "placement-profile-required",
-      "ldrawFiles": [
-        "parts/37341c.dat"
-      ],
-      "mappingEvidence": [
-        "exact-filename"
-      ],
-      "reason": null
-    },
-    {
       "catalogId": "part:37341d",
       "role": "handAccessory",
       "rebrickablePartNum": "37341d",
@@ -135507,20 +134583,6 @@
       "classification": "placement-profile-required",
       "ldrawFiles": [
         "parts/37341d.dat"
-      ],
-      "mappingEvidence": [
-        "exact-filename"
-      ],
-      "reason": null
-    },
-    {
-      "catalogId": "part:37341e",
-      "role": "handAccessory",
-      "rebrickablePartNum": "37341e",
-      "name": "Weapon Scythe / Hook with Double Blades",
-      "classification": "placement-profile-required",
-      "ldrawFiles": [
-        "parts/37341e.dat"
       ],
       "mappingEvidence": [
         "exact-filename"
@@ -135558,20 +134620,6 @@
       ],
       "mappingEvidence": [
         "explicit-keyword"
-      ],
-      "reason": null
-    },
-    {
-      "catalogId": "part:37704",
-      "role": "handAccessory",
-      "rebrickablePartNum": "37704",
-      "name": "Sports Quidditch Ball, Golden Snitch",
-      "classification": "placement-profile-required",
-      "ldrawFiles": [
-        "parts/37704.dat"
-      ],
-      "mappingEvidence": [
-        "exact-filename"
       ],
       "reason": null
     },
@@ -135638,20 +134686,6 @@
       "reason": null
     },
     {
-      "catalogId": "part:37720d",
-      "role": "handAccessory",
-      "rebrickablePartNum": "37720d",
-      "name": "Weapon Batman Batarang with Bar Handle on Bottom",
-      "classification": "placement-profile-required",
-      "ldrawFiles": [
-        "parts/37720d.dat"
-      ],
-      "mappingEvidence": [
-        "exact-filename"
-      ],
-      "reason": null
-    },
-    {
       "catalogId": "part:37720e",
       "role": "handAccessory",
       "rebrickablePartNum": "37720e",
@@ -135673,20 +134707,6 @@
       "classification": "placement-profile-required",
       "ldrawFiles": [
         "parts/37762.dat"
-      ],
-      "mappingEvidence": [
-        "exact-filename"
-      ],
-      "reason": null
-    },
-    {
-      "catalogId": "part:37776",
-      "role": "handAccessory",
-      "rebrickablePartNum": "37776",
-      "name": "Equipment Lantern",
-      "classification": "placement-profile-required",
-      "ldrawFiles": [
-        "parts/37776.dat"
       ],
       "mappingEvidence": [
         "exact-filename"
@@ -135806,34 +134826,6 @@
       "reason": null
     },
     {
-      "catalogId": "part:39802",
-      "role": "handAccessory",
-      "rebrickablePartNum": "39802",
-      "name": "Weapon Axe",
-      "classification": "placement-profile-required",
-      "ldrawFiles": [
-        "parts/39802.dat"
-      ],
-      "mappingEvidence": [
-        "exact-filename"
-      ],
-      "reason": null
-    },
-    {
-      "catalogId": "part:39802pr0001",
-      "role": "handAccessory",
-      "rebrickablePartNum": "39802pr0001",
-      "name": "Weapon Axe With Red Head",
-      "classification": "placement-profile-required",
-      "ldrawFiles": [
-        "parts/39802p01.dat"
-      ],
-      "mappingEvidence": [
-        "explicit-keyword"
-      ],
-      "reason": null
-    },
-    {
       "catalogId": "part:40598",
       "role": "handAccessory",
       "rebrickablePartNum": "40598",
@@ -135865,34 +134857,6 @@
       "classification": "placement-profile-required",
       "ldrawFiles": [
         "parts/40598b.dat"
-      ],
-      "mappingEvidence": [
-        "exact-filename"
-      ],
-      "reason": null
-    },
-    {
-      "catalogId": "part:40598c",
-      "role": "handAccessory",
-      "rebrickablePartNum": "40598c",
-      "name": "Weapon Grenade, Blunt Tip",
-      "classification": "placement-profile-required",
-      "ldrawFiles": [
-        "parts/40598c.dat"
-      ],
-      "mappingEvidence": [
-        "exact-filename"
-      ],
-      "reason": null
-    },
-    {
-      "catalogId": "part:40598d",
-      "role": "handAccessory",
-      "rebrickablePartNum": "40598d",
-      "name": "Weapon Grenade, Tapered Tip",
-      "classification": "placement-profile-required",
-      "ldrawFiles": [
-        "parts/40598d.dat"
       ],
       "mappingEvidence": [
         "exact-filename"
@@ -136018,20 +134982,6 @@
       "reason": null
     },
     {
-      "catalogId": "part:42876",
-      "role": "handAccessory",
-      "rebrickablePartNum": "42876",
-      "name": "Food Turkey Drumstick [Long] - 22mm Oval Opening",
-      "classification": "placement-profile-required",
-      "ldrawFiles": [
-        "parts/42876.dat"
-      ],
-      "mappingEvidence": [
-        "exact-filename"
-      ],
-      "reason": null
-    },
-    {
       "catalogId": "part:43372",
       "role": "handAccessory",
       "rebrickablePartNum": "43372",
@@ -136115,20 +135065,6 @@
       "classification": "placement-profile-required",
       "ldrawFiles": [
         "parts/43887.dat"
-      ],
-      "mappingEvidence": [
-        "exact-filename"
-      ],
-      "reason": null
-    },
-    {
-      "catalogId": "part:43899",
-      "role": "handAccessory",
-      "rebrickablePartNum": "43899",
-      "name": "Weapon Pike / Spear [4 Side Blades]",
-      "classification": "placement-profile-required",
-      "ldrawFiles": [
-        "parts/43899.dat"
       ],
       "mappingEvidence": [
         "exact-filename"
@@ -137014,34 +135950,6 @@
       "reason": null
     },
     {
-      "catalogId": "part:55237a",
-      "role": "handAccessory",
-      "rebrickablePartNum": "55237a",
-      "name": "Weapon Blade (Toa Kongu)",
-      "classification": "placement-profile-required",
-      "ldrawFiles": [
-        "parts/55237a.dat"
-      ],
-      "mappingEvidence": [
-        "exact-filename"
-      ],
-      "reason": null
-    },
-    {
-      "catalogId": "part:55237b",
-      "role": "handAccessory",
-      "rebrickablePartNum": "55237b",
-      "name": "Weapon Saw, Circular (Toa Matoro)",
-      "classification": "placement-profile-required",
-      "ldrawFiles": [
-        "parts/55237b.dat"
-      ],
-      "mappingEvidence": [
-        "exact-filename"
-      ],
-      "reason": null
-    },
-    {
       "catalogId": "part:55237c",
       "role": "handAccessory",
       "rebrickablePartNum": "55237c",
@@ -137049,20 +135957,6 @@
       "classification": "placement-profile-required",
       "ldrawFiles": [
         "parts/55237c.dat"
-      ],
-      "mappingEvidence": [
-        "exact-filename"
-      ],
-      "reason": null
-    },
-    {
-      "catalogId": "part:55237d",
-      "role": "handAccessory",
-      "rebrickablePartNum": "55237d",
-      "name": "Weapon Axe Head (Toa Hahli)",
-      "classification": "placement-profile-required",
-      "ldrawFiles": [
-        "parts/55237d.dat"
       ],
       "mappingEvidence": [
         "exact-filename"
@@ -137126,20 +136020,6 @@
       "reason": null
     },
     {
-      "catalogId": "part:55237i",
-      "role": "handAccessory",
-      "rebrickablePartNum": "55237i",
-      "name": "Weapon Sword (Piraka Thok)",
-      "classification": "placement-profile-required",
-      "ldrawFiles": [
-        "parts/55237i.dat"
-      ],
-      "mappingEvidence": [
-        "exact-filename"
-      ],
-      "reason": null
-    },
-    {
       "catalogId": "part:55237j",
       "role": "handAccessory",
       "rebrickablePartNum": "55237j",
@@ -137154,34 +136034,6 @@
       "reason": null
     },
     {
-      "catalogId": "part:55237k",
-      "role": "handAccessory",
-      "rebrickablePartNum": "55237k",
-      "name": "Weapon Blade, Double (Piraka Hakann)",
-      "classification": "placement-profile-required",
-      "ldrawFiles": [
-        "parts/55237k.dat"
-      ],
-      "mappingEvidence": [
-        "exact-filename"
-      ],
-      "reason": null
-    },
-    {
-      "catalogId": "part:55237l",
-      "role": "handAccessory",
-      "rebrickablePartNum": "55237l",
-      "name": "Weapon Axe Head (Piraka Vezok)",
-      "classification": "placement-profile-required",
-      "ldrawFiles": [
-        "parts/55237l.dat"
-      ],
-      "mappingEvidence": [
-        "exact-filename"
-      ],
-      "reason": null
-    },
-    {
       "catalogId": "part:55295",
       "role": "handAccessory",
       "rebrickablePartNum": "55295",
@@ -137189,34 +136041,6 @@
       "classification": "placement-profile-required",
       "ldrawFiles": [
         "parts/55295.dat"
-      ],
-      "mappingEvidence": [
-        "exact-filename"
-      ],
-      "reason": null
-    },
-    {
-      "catalogId": "part:55296",
-      "role": "handAccessory",
-      "rebrickablePartNum": "55296",
-      "name": "Tool Oil Can [Smooth Handle]",
-      "classification": "placement-profile-required",
-      "ldrawFiles": [
-        "parts/55296.dat"
-      ],
-      "mappingEvidence": [
-        "exact-filename"
-      ],
-      "reason": null
-    },
-    {
-      "catalogId": "part:55297",
-      "role": "handAccessory",
-      "rebrickablePartNum": "55297",
-      "name": "Tool Drill, Electric",
-      "classification": "placement-profile-required",
-      "ldrawFiles": [
-        "parts/55297.dat"
       ],
       "mappingEvidence": [
         "exact-filename"
@@ -137259,34 +136083,6 @@
       "classification": "placement-profile-required",
       "ldrawFiles": [
         "parts/55300.dat"
-      ],
-      "mappingEvidence": [
-        "exact-filename"
-      ],
-      "reason": null
-    },
-    {
-      "catalogId": "part:55707a",
-      "role": "handAccessory",
-      "rebrickablePartNum": "55707a",
-      "name": "Weapon Gun Semiautomatic Pistol",
-      "classification": "placement-profile-required",
-      "ldrawFiles": [
-        "parts/55707a.dat"
-      ],
-      "mappingEvidence": [
-        "exact-filename"
-      ],
-      "reason": null
-    },
-    {
-      "catalogId": "part:55707e",
-      "role": "handAccessory",
-      "rebrickablePartNum": "55707e",
-      "name": "Equipment Batman Accessory - Batwing",
-      "classification": "placement-profile-required",
-      "ldrawFiles": [
-        "parts/55707e.dat"
       ],
       "mappingEvidence": [
         "exact-filename"
@@ -137436,20 +136232,6 @@
       "reason": null
     },
     {
-      "catalogId": "part:59229",
-      "role": "handAccessory",
-      "rebrickablePartNum": "59229",
-      "name": "Weapon Sword Scythe Blade with Clip Pommel",
-      "classification": "placement-profile-required",
-      "ldrawFiles": [
-        "parts/59229.dat"
-      ],
-      "mappingEvidence": [
-        "exact-filename"
-      ],
-      "reason": null
-    },
-    {
       "catalogId": "part:59231",
       "role": "handAccessory",
       "rebrickablePartNum": "59231",
@@ -137522,20 +136304,6 @@
       "reason": null
     },
     {
-      "catalogId": "part:59232",
-      "role": "handAccessory",
-      "rebrickablePartNum": "59232",
-      "name": "Weapon Mace / Flail Spiked",
-      "classification": "placement-profile-required",
-      "ldrawFiles": [
-        "parts/59232.dat"
-      ],
-      "mappingEvidence": [
-        "exact-filename"
-      ],
-      "reason": null
-    },
-    {
       "catalogId": "part:59275",
       "role": "handAccessory",
       "rebrickablePartNum": "59275",
@@ -137548,20 +136316,6 @@
       "mappingEvidence": [
         "exact-filename",
         "explicit-keyword"
-      ],
-      "reason": null
-    },
-    {
-      "catalogId": "part:60674",
-      "role": "handAccessory",
-      "rebrickablePartNum": "60674",
-      "name": "Weapon Club Large (Troll)",
-      "classification": "placement-profile-required",
-      "ldrawFiles": [
-        "parts/60674.dat"
-      ],
-      "mappingEvidence": [
-        "exact-filename"
       ],
       "reason": null
     },
@@ -137627,20 +136381,6 @@
       "classification": "placement-profile-required",
       "ldrawFiles": [
         "parts/61199.dat"
-      ],
-      "mappingEvidence": [
-        "exact-filename"
-      ],
-      "reason": null
-    },
-    {
-      "catalogId": "part:61482",
-      "role": "handAccessory",
-      "rebrickablePartNum": "61482",
-      "name": "Equipment Handcuffs",
-      "classification": "placement-profile-required",
-      "ldrawFiles": [
-        "parts/61482.dat"
       ],
       "mappingEvidence": [
         "exact-filename"
@@ -137780,20 +136520,6 @@
       "reason": null
     },
     {
-      "catalogId": "part:62700",
-      "role": "handAccessory",
-      "rebrickablePartNum": "62700",
-      "name": "Equipment Barbed Wire Coil",
-      "classification": "placement-profile-required",
-      "ldrawFiles": [
-        "parts/62700.dat"
-      ],
-      "mappingEvidence": [
-        "exact-filename"
-      ],
-      "reason": null
-    },
-    {
       "catalogId": "part:62713",
       "role": "handAccessory",
       "rebrickablePartNum": "62713",
@@ -137877,20 +136603,6 @@
       "classification": "placement-profile-required",
       "ldrawFiles": [
         "parts/64644.dat"
-      ],
-      "mappingEvidence": [
-        "exact-filename"
-      ],
-      "reason": null
-    },
-    {
-      "catalogId": "part:64727",
-      "role": "handAccessory",
-      "rebrickablePartNum": "64727",
-      "name": "Weapon Spike Flexible 3.5L",
-      "classification": "placement-profile-required",
-      "ldrawFiles": [
-        "parts/64727.dat"
       ],
       "mappingEvidence": [
         "exact-filename"
@@ -139312,20 +138024,6 @@
       "reason": null
     },
     {
-      "catalogId": "part:75904",
-      "role": "handAccessory",
-      "rebrickablePartNum": "75904",
-      "name": "Tool Hammer / Sledgehammer",
-      "classification": "placement-profile-required",
-      "ldrawFiles": [
-        "parts/75904.dat"
-      ],
-      "mappingEvidence": [
-        "exact-filename"
-      ],
-      "reason": null
-    },
-    {
       "catalogId": "part:75904pr0001",
       "role": "handAccessory",
       "rebrickablePartNum": "75904pr0001",
@@ -139333,20 +138031,6 @@
       "classification": "no-official-mapping",
       "ldrawFiles": [],
       "mappingEvidence": [],
-      "reason": null
-    },
-    {
-      "catalogId": "part:75904pr0002",
-      "role": "handAccessory",
-      "rebrickablePartNum": "75904pr0002",
-      "name": "Tool Hammer / Sledgehammer with Copper Runes, Rivets print",
-      "classification": "placement-profile-required",
-      "ldrawFiles": [
-        "parts/75904p02.dat"
-      ],
-      "mappingEvidence": [
-        "explicit-keyword"
-      ],
       "reason": null
     },
     {
@@ -139438,20 +138122,6 @@
       "reason": null
     },
     {
-      "catalogId": "part:79736",
-      "role": "handAccessory",
-      "rebrickablePartNum": "79736",
-      "name": "Equipment Watering Can",
-      "classification": "placement-profile-required",
-      "ldrawFiles": [
-        "parts/79736.dat"
-      ],
-      "mappingEvidence": [
-        "exact-filename"
-      ],
-      "reason": null
-    },
-    {
       "catalogId": "part:79741",
       "role": "handAccessory",
       "rebrickablePartNum": "79741",
@@ -139473,34 +138143,6 @@
       "classification": "placement-profile-required",
       "ldrawFiles": [
         "parts/79743.dat"
-      ],
-      "mappingEvidence": [
-        "exact-filename"
-      ],
-      "reason": null
-    },
-    {
-      "catalogId": "part:79808",
-      "role": "handAccessory",
-      "rebrickablePartNum": "79808",
-      "name": "Equipment Whisk with Thick Ring with Anti-roll Notch",
-      "classification": "placement-profile-required",
-      "ldrawFiles": [
-        "parts/79808.dat"
-      ],
-      "mappingEvidence": [
-        "exact-filename"
-      ],
-      "reason": null
-    },
-    {
-      "catalogId": "part:79811",
-      "role": "handAccessory",
-      "rebrickablePartNum": "79811",
-      "name": "Equipment Cleaver, 2 Holes",
-      "classification": "placement-profile-required",
-      "ldrawFiles": [
-        "parts/79811.dat"
       ],
       "mappingEvidence": [
         "exact-filename"
@@ -139565,20 +138207,6 @@
       "classification": "no-official-mapping",
       "ldrawFiles": [],
       "mappingEvidence": [],
-      "reason": null
-    },
-    {
-      "catalogId": "part:80179",
-      "role": "handAccessory",
-      "rebrickablePartNum": "80179",
-      "name": "Equipment Cutlery - Spoon, Flat Bottom",
-      "classification": "placement-profile-required",
-      "ldrawFiles": [
-        "parts/80179.dat"
-      ],
-      "mappingEvidence": [
-        "exact-filename"
-      ],
       "reason": null
     },
     {
@@ -139794,20 +138422,6 @@
       "reason": null
     },
     {
-      "catalogId": "part:87585",
-      "role": "handAccessory",
-      "rebrickablePartNum": "87585",
-      "name": "Equipment Oar / Paddle [Reinforced]",
-      "classification": "placement-profile-required",
-      "ldrawFiles": [
-        "parts/87585.dat"
-      ],
-      "mappingEvidence": [
-        "exact-filename"
-      ],
-      "reason": null
-    },
-    {
       "catalogId": "part:87748",
       "role": "handAccessory",
       "rebrickablePartNum": "87748",
@@ -140010,20 +138624,6 @@
       "reason": null
     },
     {
-      "catalogId": "part:88001",
-      "role": "handAccessory",
-      "rebrickablePartNum": "88001",
-      "name": "Weapon Club Small, Spikes (Caveman)",
-      "classification": "placement-profile-required",
-      "ldrawFiles": [
-        "parts/88001.dat"
-      ],
-      "mappingEvidence": [
-        "exact-filename"
-      ],
-      "reason": null
-    },
-    {
       "catalogId": "part:88065pr0001",
       "role": "handAccessory",
       "rebrickablePartNum": "88065pr0001",
@@ -140099,34 +138699,6 @@
       "reason": null
     },
     {
-      "catalogId": "part:88811",
-      "role": "handAccessory",
-      "rebrickablePartNum": "88811",
-      "name": "Weapon Bladed Claw",
-      "classification": "placement-profile-required",
-      "ldrawFiles": [
-        "parts/88811.dat"
-      ],
-      "mappingEvidence": [
-        "exact-filename"
-      ],
-      "reason": null
-    },
-    {
-      "catalogId": "part:88812",
-      "role": "handAccessory",
-      "rebrickablePartNum": "88812",
-      "name": "Weapon Dagger with Bar",
-      "classification": "placement-profile-required",
-      "ldrawFiles": [
-        "parts/88812.dat"
-      ],
-      "mappingEvidence": [
-        "exact-filename"
-      ],
-      "reason": null
-    },
-    {
       "catalogId": "part:89801",
       "role": "handAccessory",
       "rebrickablePartNum": "89801",
@@ -140148,20 +138720,6 @@
       "classification": "no-official-mapping",
       "ldrawFiles": [],
       "mappingEvidence": [],
-      "reason": null
-    },
-    {
-      "catalogId": "part:90370",
-      "role": "handAccessory",
-      "rebrickablePartNum": "90370",
-      "name": "Musical Instrument Microphone [Plain]",
-      "classification": "placement-profile-required",
-      "ldrawFiles": [
-        "parts/90370.dat"
-      ],
-      "mappingEvidence": [
-        "exact-filename"
-      ],
       "reason": null
     },
     {
@@ -140195,34 +138753,6 @@
       "reason": null
     },
     {
-      "catalogId": "part:90370pr0005",
-      "role": "handAccessory",
-      "rebrickablePartNum": "90370pr0005",
-      "name": "Musical Instrument Microphone with Metallic Gold Top Half Screen Print",
-      "classification": "placement-profile-required",
-      "ldrawFiles": [
-        "parts/90370p03.dat"
-      ],
-      "mappingEvidence": [
-        "explicit-keyword"
-      ],
-      "reason": null
-    },
-    {
-      "catalogId": "part:90370pr0007",
-      "role": "handAccessory",
-      "rebrickablePartNum": "90370pr0007",
-      "name": "Musical Instrument Microphone with Silver Top Half Screen Print",
-      "classification": "placement-profile-required",
-      "ldrawFiles": [
-        "parts/90370p05.dat"
-      ],
-      "mappingEvidence": [
-        "explicit-keyword"
-      ],
-      "reason": null
-    },
-    {
       "catalogId": "part:90390",
       "role": "handAccessory",
       "rebrickablePartNum": "90390",
@@ -140230,34 +138760,6 @@
       "classification": "no-official-mapping",
       "ldrawFiles": [],
       "mappingEvidence": [],
-      "reason": null
-    },
-    {
-      "catalogId": "part:90391pr0001",
-      "role": "handAccessory",
-      "rebrickablePartNum": "90391pr0001",
-      "name": "Weapon Pike / Spear Elaborate with Pearl Light Gray Tip",
-      "classification": "placement-profile-required",
-      "ldrawFiles": [
-        "parts/90391p01.dat"
-      ],
-      "mappingEvidence": [
-        "explicit-keyword"
-      ],
-      "reason": null
-    },
-    {
-      "catalogId": "part:90391pr0002",
-      "role": "handAccessory",
-      "rebrickablePartNum": "90391pr0002",
-      "name": "Weapon Pike / Spear Elaborate with Pearl Gold Tip",
-      "classification": "placement-profile-required",
-      "ldrawFiles": [
-        "parts/90391p03.dat"
-      ],
-      "mappingEvidence": [
-        "explicit-keyword"
-      ],
       "reason": null
     },
     {
@@ -140380,48 +138882,6 @@
       "classification": "no-official-mapping",
       "ldrawFiles": [],
       "mappingEvidence": [],
-      "reason": null
-    },
-    {
-      "catalogId": "part:90463",
-      "role": "handAccessory",
-      "rebrickablePartNum": "90463",
-      "name": "Equipment Magnifying Glass with Removable Trans-Clear Lens",
-      "classification": "placement-profile-required",
-      "ldrawFiles": [
-        "parts/90463.dat"
-      ],
-      "mappingEvidence": [
-        "exact-filename"
-      ],
-      "reason": null
-    },
-    {
-      "catalogId": "part:90508",
-      "role": "handAccessory",
-      "rebrickablePartNum": "90508",
-      "name": "Musical Instrument Maracas",
-      "classification": "placement-profile-required",
-      "ldrawFiles": [
-        "parts/90508.dat"
-      ],
-      "mappingEvidence": [
-        "exact-filename"
-      ],
-      "reason": null
-    },
-    {
-      "catalogId": "part:90508pr0001",
-      "role": "handAccessory",
-      "rebrickablePartNum": "90508pr0001",
-      "name": "Musical Instrument Maracas with Green Border Print",
-      "classification": "placement-profile-required",
-      "ldrawFiles": [
-        "parts/90508p01.dat"
-      ],
-      "mappingEvidence": [
-        "explicit-keyword"
-      ],
       "reason": null
     },
     {
@@ -140567,20 +139027,6 @@
       "reason": null
     },
     {
-      "catalogId": "part:92290",
-      "role": "handAccessory",
-      "rebrickablePartNum": "92290",
-      "name": "Weapon Trident",
-      "classification": "placement-profile-required",
-      "ldrawFiles": [
-        "parts/92290.dat"
-      ],
-      "mappingEvidence": [
-        "exact-filename"
-      ],
-      "reason": null
-    },
-    {
       "catalogId": "part:92355",
       "role": "handAccessory",
       "rebrickablePartNum": "92355",
@@ -140588,20 +139034,6 @@
       "classification": "no-official-mapping",
       "ldrawFiles": [],
       "mappingEvidence": [],
-      "reason": null
-    },
-    {
-      "catalogId": "part:92585",
-      "role": "handAccessory",
-      "rebrickablePartNum": "92585",
-      "name": "Tool Crowbar",
-      "classification": "placement-profile-required",
-      "ldrawFiles": [
-        "parts/92585.dat"
-      ],
-      "mappingEvidence": [
-        "exact-filename"
-      ],
       "reason": null
     },
     {
@@ -140882,90 +139314,6 @@
       "classification": "no-official-mapping",
       "ldrawFiles": [],
       "mappingEvidence": [],
-      "reason": null
-    },
-    {
-      "catalogId": "part:93090",
-      "role": "handAccessory",
-      "rebrickablePartNum": "93090",
-      "name": "Bag / Handbag / Purse Round with Ruffle [Plain]",
-      "classification": "placement-profile-required",
-      "ldrawFiles": [
-        "parts/93090.dat"
-      ],
-      "mappingEvidence": [
-        "exact-filename"
-      ],
-      "reason": null
-    },
-    {
-      "catalogId": "part:93090pr0001",
-      "role": "handAccessory",
-      "rebrickablePartNum": "93090pr0001",
-      "name": "Bag / Handbag / Purse Round with Ruffle Bright Pink Print",
-      "classification": "placement-profile-required",
-      "ldrawFiles": [
-        "parts/93090p01.dat"
-      ],
-      "mappingEvidence": [
-        "explicit-keyword"
-      ],
-      "reason": null
-    },
-    {
-      "catalogId": "part:93090pr0003",
-      "role": "handAccessory",
-      "rebrickablePartNum": "93090pr0003",
-      "name": "Bag / Handbag / Purse Round with Ruffle Dark Pink Print",
-      "classification": "placement-profile-required",
-      "ldrawFiles": [
-        "parts/93090p02.dat"
-      ],
-      "mappingEvidence": [
-        "explicit-keyword"
-      ],
-      "reason": null
-    },
-    {
-      "catalogId": "part:93090pr0004",
-      "role": "handAccessory",
-      "rebrickablePartNum": "93090pr0004",
-      "name": "Bag / Handbag / Purse Round with Ruffle Light Aqua Print",
-      "classification": "placement-profile-required",
-      "ldrawFiles": [
-        "parts/93090p03.dat"
-      ],
-      "mappingEvidence": [
-        "explicit-keyword"
-      ],
-      "reason": null
-    },
-    {
-      "catalogId": "part:93091",
-      "role": "handAccessory",
-      "rebrickablePartNum": "93091",
-      "name": "Bag / Handbag / Purse Angular with Zipper [Plain]",
-      "classification": "placement-profile-required",
-      "ldrawFiles": [
-        "parts/93091.dat"
-      ],
-      "mappingEvidence": [
-        "exact-filename"
-      ],
-      "reason": null
-    },
-    {
-      "catalogId": "part:93091pr0003",
-      "role": "handAccessory",
-      "rebrickablePartNum": "93091pr0003",
-      "name": "Bag / Handbag / Purse Angular with Zipper and Dark Purple Side Print",
-      "classification": "placement-profile-required",
-      "ldrawFiles": [
-        "parts/93091p01.dat"
-      ],
-      "mappingEvidence": [
-        "explicit-keyword"
-      ],
       "reason": null
     },
     {
@@ -141431,48 +139779,6 @@
       "reason": null
     },
     {
-      "catalogId": "part:93550",
-      "role": "handAccessory",
-      "rebrickablePartNum": "93550",
-      "name": "Weapon Sword / Foil / Épée",
-      "classification": "placement-profile-required",
-      "ldrawFiles": [
-        "parts/93550.dat"
-      ],
-      "mappingEvidence": [
-        "exact-filename"
-      ],
-      "reason": null
-    },
-    {
-      "catalogId": "part:93551",
-      "role": "handAccessory",
-      "rebrickablePartNum": "93551",
-      "name": "Equipment Paint Palette",
-      "classification": "placement-profile-required",
-      "ldrawFiles": [
-        "parts/93551.dat"
-      ],
-      "mappingEvidence": [
-        "exact-filename"
-      ],
-      "reason": null
-    },
-    {
-      "catalogId": "part:93551pr0001",
-      "role": "handAccessory",
-      "rebrickablePartNum": "93551pr0001",
-      "name": "Equipment Paint Palette with Yellow, Blue, Green and Red Paint Spots Print",
-      "classification": "placement-profile-required",
-      "ldrawFiles": [
-        "parts/93551p01.dat"
-      ],
-      "mappingEvidence": [
-        "explicit-keyword"
-      ],
-      "reason": null
-    },
-    {
       "catalogId": "part:93551pr0002",
       "role": "handAccessory",
       "rebrickablePartNum": "93551pr0002",
@@ -141480,118 +139786,6 @@
       "classification": "no-official-mapping",
       "ldrawFiles": [],
       "mappingEvidence": [],
-      "reason": null
-    },
-    {
-      "catalogId": "part:93552",
-      "role": "handAccessory",
-      "rebrickablePartNum": "93552",
-      "name": "Equipment Paint Brush",
-      "classification": "placement-profile-required",
-      "ldrawFiles": [
-        "parts/93552.dat"
-      ],
-      "mappingEvidence": [
-        "exact-filename"
-      ],
-      "reason": null
-    },
-    {
-      "catalogId": "part:93552pat0001",
-      "role": "handAccessory",
-      "rebrickablePartNum": "93552pat0001",
-      "name": "Equipment Paint Brush with Full Orange Tip Pattern",
-      "classification": "placement-profile-required",
-      "ldrawFiles": [
-        "parts/93552p05.dat"
-      ],
-      "mappingEvidence": [
-        "explicit-keyword"
-      ],
-      "reason": null
-    },
-    {
-      "catalogId": "part:93552pat0002",
-      "role": "handAccessory",
-      "rebrickablePartNum": "93552pat0002",
-      "name": "Equipment Paint Brush with Green Tip Pattern",
-      "classification": "placement-profile-required",
-      "ldrawFiles": [
-        "parts/93552p04.dat"
-      ],
-      "mappingEvidence": [
-        "explicit-keyword"
-      ],
-      "reason": null
-    },
-    {
-      "catalogId": "part:93552pat0003",
-      "role": "handAccessory",
-      "rebrickablePartNum": "93552pat0003",
-      "name": "Equipment Paint Brush with Blue Tip Pattern",
-      "classification": "placement-profile-required",
-      "ldrawFiles": [
-        "parts/93552p06.dat"
-      ],
-      "mappingEvidence": [
-        "explicit-keyword"
-      ],
-      "reason": null
-    },
-    {
-      "catalogId": "part:93552pr0001",
-      "role": "handAccessory",
-      "rebrickablePartNum": "93552pr0001",
-      "name": "Equipment Paint Brush with Silver Ring and Green Tip Print",
-      "classification": "placement-profile-required",
-      "ldrawFiles": [
-        "parts/93552p01.dat"
-      ],
-      "mappingEvidence": [
-        "explicit-keyword"
-      ],
-      "reason": null
-    },
-    {
-      "catalogId": "part:93552pr0002",
-      "role": "handAccessory",
-      "rebrickablePartNum": "93552pr0002",
-      "name": "Equipment Paint Brush with Silver Ring and Medium Azure Tip Print",
-      "classification": "placement-profile-required",
-      "ldrawFiles": [
-        "parts/93552p02.dat"
-      ],
-      "mappingEvidence": [
-        "explicit-keyword"
-      ],
-      "reason": null
-    },
-    {
-      "catalogId": "part:93552pr0003",
-      "role": "handAccessory",
-      "rebrickablePartNum": "93552pr0003",
-      "name": "Equipment Paint Brush with Half Orange Tip Print",
-      "classification": "placement-profile-required",
-      "ldrawFiles": [
-        "parts/93552p03.dat"
-      ],
-      "mappingEvidence": [
-        "explicit-keyword"
-      ],
-      "reason": null
-    },
-    {
-      "catalogId": "part:93553",
-      "role": "handAccessory",
-      "rebrickablePartNum": "93553",
-      "name": "Equipment Hand Fan [Plain]",
-      "classification": "placement-profile-required",
-      "ldrawFiles": [
-        "parts/93553.dat"
-      ],
-      "mappingEvidence": [
-        "exact-filename"
-      ],
       "reason": null
     },
     {
@@ -141743,20 +139937,6 @@
       "reason": null
     },
     {
-      "catalogId": "part:93789",
-      "role": "handAccessory",
-      "rebrickablePartNum": "93789",
-      "name": "Weapon Pike / Spear Flat End",
-      "classification": "placement-profile-required",
-      "ldrawFiles": [
-        "parts/93789.dat"
-      ],
-      "mappingEvidence": [
-        "exact-filename"
-      ],
-      "reason": null
-    },
-    {
       "catalogId": "part:94158",
       "role": "handAccessory",
       "rebrickablePartNum": "94158",
@@ -141788,20 +139968,6 @@
       "classification": "placement-profile-required",
       "ldrawFiles": [
         "parts/94719.dat"
-      ],
-      "mappingEvidence": [
-        "exact-filename"
-      ],
-      "reason": null
-    },
-    {
-      "catalogId": "part:94720",
-      "role": "handAccessory",
-      "rebrickablePartNum": "94720",
-      "name": "Equipment Animal Grooming Kit Brush Oval, Large",
-      "classification": "placement-profile-required",
-      "ldrawFiles": [
-        "parts/94720.dat"
       ],
       "mappingEvidence": [
         "exact-filename"
@@ -141844,20 +140010,6 @@
       "classification": "no-official-mapping",
       "ldrawFiles": [],
       "mappingEvidence": [],
-      "reason": null
-    },
-    {
-      "catalogId": "part:94724",
-      "role": "handAccessory",
-      "rebrickablePartNum": "94724",
-      "name": "Equipment Animal Grooming Kit Spray Bottle with Heart",
-      "classification": "placement-profile-required",
-      "ldrawFiles": [
-        "parts/94724.dat"
-      ],
-      "mappingEvidence": [
-        "exact-filename"
-      ],
       "reason": null
     },
     {
@@ -142027,34 +140179,6 @@
       "reason": null
     },
     {
-      "catalogId": "part:95330",
-      "role": "handAccessory",
-      "rebrickablePartNum": "95330",
-      "name": "Weapon Axe [Plain]",
-      "classification": "placement-profile-required",
-      "ldrawFiles": [
-        "parts/95330.dat"
-      ],
-      "mappingEvidence": [
-        "exact-filename"
-      ],
-      "reason": null
-    },
-    {
-      "catalogId": "part:95330pr0001",
-      "role": "handAccessory",
-      "rebrickablePartNum": "95330pr0001",
-      "name": "Weapon Axe with Red Head and Silver Blade",
-      "classification": "placement-profile-required",
-      "ldrawFiles": [
-        "parts/95330p01.dat"
-      ],
-      "mappingEvidence": [
-        "explicit-keyword"
-      ],
-      "reason": null
-    },
-    {
       "catalogId": "part:95345",
       "role": "handAccessory",
       "rebrickablePartNum": "95345",
@@ -142110,62 +140234,6 @@
       "classification": "no-official-mapping",
       "ldrawFiles": [],
       "mappingEvidence": [],
-      "reason": null
-    },
-    {
-      "catalogId": "part:96480",
-      "role": "handAccessory",
-      "rebrickablePartNum": "96480",
-      "name": "Equipment Hairbrush with Heart on Reverse [Hair Accessory]",
-      "classification": "placement-profile-required",
-      "ldrawFiles": [
-        "parts/96480.dat"
-      ],
-      "mappingEvidence": [
-        "exact-filename"
-      ],
-      "reason": null
-    },
-    {
-      "catalogId": "part:96482",
-      "role": "handAccessory",
-      "rebrickablePartNum": "96482",
-      "name": "Equipment Comb with Handle and 3 Hearts [Hair Accessory]",
-      "classification": "placement-profile-required",
-      "ldrawFiles": [
-        "parts/96482.dat"
-      ],
-      "mappingEvidence": [
-        "exact-filename"
-      ],
-      "reason": null
-    },
-    {
-      "catalogId": "part:96484",
-      "role": "handAccessory",
-      "rebrickablePartNum": "96484",
-      "name": "Equipment Hair Dryer [Hair Accessory]",
-      "classification": "placement-profile-required",
-      "ldrawFiles": [
-        "parts/96484.dat"
-      ],
-      "mappingEvidence": [
-        "exact-filename"
-      ],
-      "reason": null
-    },
-    {
-      "catalogId": "part:96488",
-      "role": "handAccessory",
-      "rebrickablePartNum": "96488",
-      "name": "Equipment Hand Mirror with Heart on Reverse [Hair Accessory]",
-      "classification": "placement-profile-required",
-      "ldrawFiles": [
-        "parts/96488.dat"
-      ],
-      "mappingEvidence": [
-        "exact-filename"
-      ],
       "reason": null
     },
     {
@@ -142235,34 +140303,6 @@
       "reason": null
     },
     {
-      "catalogId": "part:97781",
-      "role": "handAccessory",
-      "rebrickablePartNum": "97781",
-      "name": "Equipment Cutlery - Fork [Kitchen Implements Kit]",
-      "classification": "placement-profile-required",
-      "ldrawFiles": [
-        "parts/97781.dat"
-      ],
-      "mappingEvidence": [
-        "exact-filename"
-      ],
-      "reason": null
-    },
-    {
-      "catalogId": "part:97782",
-      "role": "handAccessory",
-      "rebrickablePartNum": "97782",
-      "name": "Equipment Cutlery - Knife [Kitchen Implements Kit]",
-      "classification": "placement-profile-required",
-      "ldrawFiles": [
-        "parts/97782.dat"
-      ],
-      "mappingEvidence": [
-        "exact-filename"
-      ],
-      "reason": null
-    },
-    {
       "catalogId": "part:97783",
       "role": "handAccessory",
       "rebrickablePartNum": "97783",
@@ -142305,34 +140345,6 @@
       "reason": null
     },
     {
-      "catalogId": "part:97787",
-      "role": "handAccessory",
-      "rebrickablePartNum": "97787",
-      "name": "Equipment Spatula [Kitchen Implements Kit]",
-      "classification": "placement-profile-required",
-      "ldrawFiles": [
-        "parts/97787.dat"
-      ],
-      "mappingEvidence": [
-        "exact-filename"
-      ],
-      "reason": null
-    },
-    {
-      "catalogId": "part:97790",
-      "role": "handAccessory",
-      "rebrickablePartNum": "97790",
-      "name": "Equipment Frying Pan [Kitchen Implements Kit]",
-      "classification": "placement-profile-required",
-      "ldrawFiles": [
-        "parts/97790.dat"
-      ],
-      "mappingEvidence": [
-        "exact-filename"
-      ],
-      "reason": null
-    },
-    {
       "catalogId": "part:97791",
       "role": "handAccessory",
       "rebrickablePartNum": "97791",
@@ -142368,48 +140380,6 @@
       "classification": "no-official-mapping",
       "ldrawFiles": [],
       "mappingEvidence": [],
-      "reason": null
-    },
-    {
-      "catalogId": "part:98137",
-      "role": "handAccessory",
-      "rebrickablePartNum": "98137",
-      "name": "Weapon Sword, Big Blade with Bar",
-      "classification": "placement-profile-required",
-      "ldrawFiles": [
-        "parts/98137.dat"
-      ],
-      "mappingEvidence": [
-        "exact-filename"
-      ],
-      "reason": null
-    },
-    {
-      "catalogId": "part:98139",
-      "role": "handAccessory",
-      "rebrickablePartNum": "98139",
-      "name": "Weapon Sai",
-      "classification": "placement-profile-required",
-      "ldrawFiles": [
-        "parts/98139.dat"
-      ],
-      "mappingEvidence": [
-        "exact-filename"
-      ],
-      "reason": null
-    },
-    {
-      "catalogId": "part:98141",
-      "role": "handAccessory",
-      "rebrickablePartNum": "98141",
-      "name": "Weapon Scythe / Crescent Blade Serrated with Bar",
-      "classification": "placement-profile-required",
-      "ldrawFiles": [
-        "parts/98141.dat"
-      ],
-      "mappingEvidence": [
-        "exact-filename"
-      ],
       "reason": null
     },
     {
@@ -142791,62 +140761,6 @@
       "reason": null
     },
     {
-      "catalogId": "part:98369",
-      "role": "handAccessory",
-      "rebrickablePartNum": "98369",
-      "name": "Equipment Cleaver, no Holes",
-      "classification": "placement-profile-required",
-      "ldrawFiles": [
-        "parts/98369.dat"
-      ],
-      "mappingEvidence": [
-        "exact-filename"
-      ],
-      "reason": null
-    },
-    {
-      "catalogId": "part:98370",
-      "role": "handAccessory",
-      "rebrickablePartNum": "98370",
-      "name": "Weapon Sword / Greatsword Pointed with Thin Crossguard",
-      "classification": "placement-profile-required",
-      "ldrawFiles": [
-        "parts/98370.dat"
-      ],
-      "mappingEvidence": [
-        "exact-filename"
-      ],
-      "reason": null
-    },
-    {
-      "catalogId": "part:98372pr0001",
-      "role": "handAccessory",
-      "rebrickablePartNum": "98372pr0001",
-      "name": "Food Steak on Bone with Red Meat Print",
-      "classification": "placement-profile-required",
-      "ldrawFiles": [
-        "parts/98372p01.dat"
-      ],
-      "mappingEvidence": [
-        "explicit-keyword"
-      ],
-      "reason": null
-    },
-    {
-      "catalogId": "part:98372pr0002",
-      "role": "handAccessory",
-      "rebrickablePartNum": "98372pr0002",
-      "name": "Food Steak on Bone with Dark Red Meat Print",
-      "classification": "placement-profile-required",
-      "ldrawFiles": [
-        "parts/98372p02.dat"
-      ],
-      "mappingEvidence": [
-        "explicit-keyword"
-      ],
-      "reason": null
-    },
-    {
       "catalogId": "part:98375",
       "role": "handAccessory",
       "rebrickablePartNum": "98375",
@@ -142899,20 +140813,6 @@
       "reason": null
     },
     {
-      "catalogId": "part:98393b",
-      "role": "handAccessory",
-      "rebrickablePartNum": "98393b",
-      "name": "Equipment Medical Clipboard",
-      "classification": "placement-profile-required",
-      "ldrawFiles": [
-        "parts/98393b.dat"
-      ],
-      "mappingEvidence": [
-        "exact-filename"
-      ],
-      "reason": null
-    },
-    {
       "catalogId": "part:98393c",
       "role": "handAccessory",
       "rebrickablePartNum": "98393c",
@@ -142941,20 +140841,6 @@
       "reason": null
     },
     {
-      "catalogId": "part:98393e",
-      "role": "handAccessory",
-      "rebrickablePartNum": "98393e",
-      "name": "Equipment Medical Spoon",
-      "classification": "placement-profile-required",
-      "ldrawFiles": [
-        "parts/98393e.dat"
-      ],
-      "mappingEvidence": [
-        "exact-filename"
-      ],
-      "reason": null
-    },
-    {
       "catalogId": "part:98393f",
       "role": "handAccessory",
       "rebrickablePartNum": "98393f",
@@ -142976,48 +140862,6 @@
       "classification": "placement-profile-required",
       "ldrawFiles": [
         "parts/98393g.dat"
-      ],
-      "mappingEvidence": [
-        "exact-filename"
-      ],
-      "reason": null
-    },
-    {
-      "catalogId": "part:98393i",
-      "role": "handAccessory",
-      "rebrickablePartNum": "98393i",
-      "name": "Equipment Medical Syringe",
-      "classification": "placement-profile-required",
-      "ldrawFiles": [
-        "parts/98393i.dat"
-      ],
-      "mappingEvidence": [
-        "exact-filename"
-      ],
-      "reason": null
-    },
-    {
-      "catalogId": "part:98393j",
-      "role": "handAccessory",
-      "rebrickablePartNum": "98393j",
-      "name": "Equipment Medical Pen",
-      "classification": "placement-profile-required",
-      "ldrawFiles": [
-        "parts/98393j.dat"
-      ],
-      "mappingEvidence": [
-        "exact-filename"
-      ],
-      "reason": null
-    },
-    {
-      "catalogId": "part:98721",
-      "role": "handAccessory",
-      "rebrickablePartNum": "98721",
-      "name": "Weapon Batarang",
-      "classification": "placement-profile-required",
-      "ldrawFiles": [
-        "parts/98721.dat"
       ],
       "mappingEvidence": [
         "exact-filename"

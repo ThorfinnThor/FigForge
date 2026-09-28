@@ -7,9 +7,9 @@ Stand: 2026-09-28; Rebrickable-Source-Lock `6cfa8b0a22245c086d4a4bbac0aad64523a6
 ## Ergebnis
 
 - 20.202 minifigurenrelevante Katalogeinträge insgesamt.
-- 6.243 besitzen bereits ein Modell und Vorschaubild.
-- 6.241 sind tatsächlich im Builder auswählbar.
-- 13.961 sind noch nicht builderbereit; davon fehlen bei 13.959 auch Modell/Vorschaubild.
+- 6.397 besitzen bereits ein Modell und Vorschaubild.
+- 6.395 sind tatsächlich im Builder auswählbar.
+- 13.807 sind noch nicht builderbereit; davon fehlen bei 13.805 auch Modell/Vorschaubild.
 - 2.272 Katalogeinträge haben insgesamt eine eindeutige direkte LDraw-Zuordnung, 122 sind mehrdeutig und 17.808 haben keine direkte offizielle Zuordnung.
 
 | Rolle | Katalog | Builderbereit | Platzierung fehlt | Gesperrt | Renderfehler | Mehrdeutig | Keine Zuordnung |
@@ -18,14 +18,14 @@ Stand: 2026-09-28; Rebrickable-Source-Lock `6cfa8b0a22245c086d4a4bbac0aad64523a6
 | headwear | 2.410 | 711 | 0 | 0 | 0 | 17 | 1.682 |
 | torsoAssembly | 7.851 | 521 | 167 | 1 | 0 | 3 | 7.159 |
 | legsAssembly | 3.231 | 171 | 43 | 0 | 0 | 25 | 2.992 |
-| handAccessory | 1.308 | 2 | 600 | 1 | 0 | 33 | 672 |
+| handAccessory | 1.308 | 156 | 446 | 1 | 0 | 33 | 672 |
 
 Die Resttabelle weist 4.742 Einträge weniger unter „Keine Zuordnung“ aus als die rohe direkte Mappingbilanz. Diese Einträge verwenden entweder eine in Rebrickable deklarierte Druckeltern-Grundgeometrie, sind als zugehöriger Renderfehler klassifiziert oder – im Fall `3814` – wegen einer kuratierten Modellabbildung gesperrt.
 
 ## Sichere Arbeitsreihenfolge
 
 1. Die 0 Renderfehler technisch beheben.
-2. Für 810 eindeutig zugeordnete Teile reproduzierbare Platzierungs- und Assembly-Profile ableiten und prüfen.
+2. Für 656 eindeutig zugeordnete Teile reproduzierbare Platzierungs- und Assembly-Profile ableiten und prüfen.
 3. Die 83 mehrdeutigen Zuordnungen über offizielle Metadaten auflösen.
 4. Die 13.066 Einträge ohne direkte offizielle Zuordnung bleiben gesperrt, bis eine spätere offizielle LDraw-Version eine belastbare Zuordnung liefert.
 
