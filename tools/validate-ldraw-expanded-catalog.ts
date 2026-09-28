@@ -35,6 +35,7 @@ const catalog = JSON.parse(await readFile(resolve(root, "data/generated/ldraw-ex
     digitallySupportedCount: number;
     headCount: number;
     headwearCount: number;
+    sharedOfficialFileCount: number;
     renderFailuresExcluded: number;
     mocFilesUsed: number;
   };
@@ -50,6 +51,18 @@ assert.equal(catalog.summary.mocFilesUsed, 0);
 assert.equal(catalog.entries.length, catalog.summary.digitallySupportedCount);
 assert.equal(catalog.summary.headCount + catalog.summary.headwearCount, catalog.entries.length);
 assert(catalog.entries.length >= 800, "Expanded catalog unexpectedly dropped below 800 renderable parts");
+
+const publicLDrawRoot = resolve(root, "public/assets/ldraw/official-2608");
+const fileMap = JSON.parse(await readFile(resolve(publicLDrawRoot, "file-map.json"), "utf8")) as Record<string, unknown>;
+const fileMapEntries = Object.entries(fileMap);
+assert.equal(fileMapEntries.length, catalog.summary.sharedOfficialFileCount);
+for (const [reference, mappedPath] of fileMapEntries) {
+  assert(reference.endsWith(".dat") && !reference.includes("\\"), `Invalid LDraw file-map reference: ${reference}`);
+  assert(typeof mappedPath === "string" && mappedPath.endsWith(".dat"), `Invalid LDraw file-map target: ${reference}`);
+  const resolvedTarget = resolve(publicLDrawRoot, "parts", mappedPath);
+  assert(resolvedTarget.startsWith(`${publicLDrawRoot}/`), `LDraw file-map target escapes the library: ${mappedPath}`);
+  await readFile(resolvedTarget);
+}
 
 const ids = new Set<string>();
 const urls = new Set<string>();
@@ -71,6 +84,7 @@ for (const entry of catalog.entries) {
   const model = await readFile(resolve(root, `public${entry.modelUrl}`));
   const thumbnail = await readFile(resolve(root, `public${entry.thumbnailUrl}`));
   assert.equal(sha256(model), entry.modelSha256, `Model hash mismatch: ${entry.componentId}`);
+  assert(fileMap[basename(entry.ldrawFile)], `Mapped part is missing from the browser file map: ${entry.ldrawFile}`);
   assert.equal(sha256(thumbnail), entry.thumbnailSha256, `Thumbnail hash mismatch: ${entry.componentId}`);
   assert.equal(thumbnail.byteLength, entry.thumbnailBytes, `Thumbnail byte count mismatch: ${entry.componentId}`);
   assert(thumbnail.byteLength <= 10_000, `Thumbnail budget exceeded: ${entry.componentId}`);
