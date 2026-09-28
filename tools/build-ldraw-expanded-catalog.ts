@@ -19,10 +19,16 @@ import { browserReferencePath, embeddedLdrawName } from "./lib/ldraw-paths.js";
 import { isCompleteStandardTorsoAssembly } from "./lib/ldraw-torso-assembly.js";
 import {
   digitalAccessoryLimits,
+  selectUnambiguousDigitalAccessoryGrip,
   validateDigitalAccessoryPlacement,
+  type DigitalAccessoryGripEvaluation,
   type DigitalAccessoryValidation,
 } from "./lib/ldraw-accessory-clearance.js";
-import { collectCylinderEvidence, proposedHandPlacements } from "./lib/ldraw-placement-candidates.js";
+import {
+  collectCylinderEvidence,
+  proposedHandPlacements,
+  type CylinderEvidence,
+} from "./lib/ldraw-placement-candidates.js";
 
 const root = process.cwd();
 const libraryRoot = resolve(root, "data/incoming/ldraw-2608/extracted/ldraw");
@@ -319,15 +325,16 @@ const matchedParts: Array<{
   candidate: Candidate;
   placementMode: "prototype-family-origin" | "snap-connector";
   placementTransformLdu: number[];
-  placementTransformCandidatesLdu: number[][];
-  gripEvidence: null | {
-    centerLdu: [number, number, number];
-    lengthLdu: number;
-    primitive: string;
-  };
+  gripCandidates: Array<{
+    evidence: CylinderEvidence;
+    placementTransformCandidatesLdu: number[][];
+  }>;
+  selectedGripEvidence: CylinderEvidence | null;
+  selectedGripCandidateIndex: number | null;
 }> = [];
 let ambiguousMappingsExcluded = 0;
 let accessoryGripCandidatesExcluded = 0;
+let accessoryMultipleGripCandidatesEvaluated = 0;
 for (const role of BUILD_ROLES) {
   const raw: unknown = JSON.parse(await readFile(resolve(root, "data/generated/catalog-packages", packageFileByRole[role]), "utf8"));
   const catalogPackage = catalogPackageSchema.parse(raw);
@@ -348,23 +355,23 @@ for (const role of BUILD_ROLES) {
         const gripCandidates = (await collectCylinderEvidence(libraryRoot, direct.file)).filter((evidence) =>
           evidence.radiusLdu >= 3.75 && evidence.radiusLdu <= 4.25 && evidence.lengthLdu >= 4
         );
-        if (gripCandidates.length !== 1) {
+        if (gripCandidates.length === 0) {
           accessoryGripCandidatesExcluded += 1;
           continue;
         }
-        const grip = gripCandidates[0]!;
-        const placementTransformCandidatesLdu = proposedHandPlacements(grip);
+        if (gripCandidates.length > 1) accessoryMultipleGripCandidatesEvaluated += 1;
+        const candidates = gripCandidates.map((evidence) => ({
+          evidence,
+          placementTransformCandidatesLdu: proposedHandPlacements(evidence),
+        }));
         matchedParts.push({
           part: { ...part, role },
           candidate: direct,
           placementMode: "snap-connector",
-          placementTransformLdu: placementTransformCandidatesLdu[0]!,
-          placementTransformCandidatesLdu,
-          gripEvidence: {
-            centerLdu: grip.centerLdu,
-            lengthLdu: grip.lengthLdu,
-            primitive: grip.primitive,
-          },
+          placementTransformLdu: candidates[0]!.placementTransformCandidatesLdu[0]!,
+          gripCandidates: candidates,
+          selectedGripEvidence: null,
+          selectedGripCandidateIndex: null,
         });
         continue;
       }
@@ -375,8 +382,9 @@ for (const role of BUILD_ROLES) {
         candidate: direct,
         placementMode: "prototype-family-origin",
         placementTransformLdu,
-        placementTransformCandidatesLdu: [placementTransformLdu],
-        gripEvidence: null,
+        gripCandidates: [],
+        selectedGripEvidence: null,
+        selectedGripCandidateIndex: null,
       });
       continue;
     }
@@ -410,8 +418,9 @@ for (const role of BUILD_ROLES) {
         },
         placementMode: "prototype-family-origin",
         placementTransformLdu,
-        placementTransformCandidatesLdu: [placementTransformLdu],
-        gripEvidence: null,
+        gripCandidates: [],
+        selectedGripEvidence: null,
+        selectedGripCandidateIndex: null,
       });
     }
   }
@@ -442,8 +451,15 @@ const digitalPlacementRejections: Array<{
   reasonCode: string;
   collisionSampleCount: number;
   collisionSamplesByPart: Record<string, number>;
-  orientationCollisionCounts: number[];
+  gripCandidatesTested: number;
+  safeGripCandidatesFound: number;
+  orientationCollisionCountsByGrip: number[][];
 }> = [];
+let accessoryMultipleGripCandidatesPassed = 0;
+let accessoryMultipleGripCandidatesAmbiguous = 0;
+let accessoryMultipleGripCandidatesNoSafe = 0;
+let accessoryMultipleGripCandidatesRenderFailed = 0;
+let accessoryPlacementRenderFailuresExcluded = 0;
 type GeneratedAsset = {
   modelUrl: string;
   modelSha256: string;
@@ -476,8 +492,11 @@ for (const [index, match] of matchedParts.entries()) {
   }
   let asset = fallbackAssetCache.get(assetKey);
   let digitalValidation: (DigitalAccessoryValidation & {
+    gripCandidatesTested: number;
+    safeGripCandidatesFound: number;
+    selectedGripCandidateIndex: number;
     orientationCandidatesTested: number;
-    selectedOrientationIndex: number | null;
+    selectedOrientationIndex: number;
   }) | null = null;
   if (!asset) {
     const { packed, dependencies } = await packedModel(candidate.file, modelName, colorRgb, fileIndex);
@@ -485,48 +504,73 @@ for (const [index, match] of matchedParts.entries()) {
     try {
       const model = await parsePackedModel(packed, materials);
       if (part.role === "handAccessory") {
-        if (!referenceFigure || !match.gripEvidence) throw new Error("Missing accessory validation input");
-        const orientationValidations = match.placementTransformCandidatesLdu.map((placementTransformLdu) => ({
-          placementTransformLdu,
-          validation: validateDigitalAccessoryPlacement(
-            model,
-            referenceFigure,
+        if (!referenceFigure || match.gripCandidates.length === 0) throw new Error("Missing accessory validation input");
+        const gripEvaluations: DigitalAccessoryGripEvaluation[] = match.gripCandidates.map(({ evidence, placementTransformCandidatesLdu }) => ({
+          orientations: placementTransformCandidatesLdu.map((placementTransformLdu) => ({
             placementTransformLdu,
-            match.gripEvidence!.centerLdu,
-            match.gripEvidence!.lengthLdu,
-          ),
+            validation: validateDigitalAccessoryPlacement(
+              model,
+              referenceFigure,
+              placementTransformLdu,
+              evidence.centerLdu,
+              evidence.lengthLdu,
+            ),
+          })),
         }));
-        const passedOrientationIndex = orientationValidations.findIndex(({ validation }) => validation.status === "passed");
-        const bestRejectedIndex = orientationValidations.reduce((bestIndex, current, currentIndex, values) =>
-          current.validation.collisionSampleCount < values[bestIndex]!.validation.collisionSampleCount
-            ? currentIndex
-            : bestIndex
-        , 0);
-        const selectedOrientationIndex = passedOrientationIndex >= 0 ? passedOrientationIndex : bestRejectedIndex;
-        const selected = orientationValidations[selectedOrientationIndex];
-        if (!selected) throw new Error("No accessory orientation candidates were generated");
-        digitalValidation = {
-          ...selected.validation,
-          orientationCandidatesTested: orientationValidations.length,
-          selectedOrientationIndex: selectedOrientationIndex >= 0 ? selectedOrientationIndex : null,
-        };
-        match.placementTransformLdu = selected.placementTransformLdu;
-        if (digitalValidation.status === "rejected") {
+        const selection = selectUnambiguousDigitalAccessoryGrip(gripEvaluations);
+        if (selection.status === "rejected") {
+          const allOrientations = gripEvaluations.flatMap(({ orientations }) => orientations);
+          const bestRejected = allOrientations.reduce((best, current) =>
+            current.validation.collisionSampleCount < best.validation.collisionSampleCount ? current : best
+          );
+          if (match.gripCandidates.length > 1) {
+            if (selection.reasonCode === "multiple-safe-grip-candidates") {
+              accessoryMultipleGripCandidatesAmbiguous += 1;
+            } else {
+              accessoryMultipleGripCandidatesNoSafe += 1;
+            }
+          }
           digitalPlacementRejections.push({
             rebrickablePartNum: part.rebrickablePartNum,
             ldrawFile: candidate.file,
-            reasonCode: digitalValidation.reasonCode ?? "unknown-digital-placement-rejection",
-            collisionSampleCount: digitalValidation.collisionSampleCount,
-            collisionSamplesByPart: digitalValidation.collisionSamplesByPart,
-            orientationCollisionCounts: orientationValidations.map(({ validation }) => validation.collisionSampleCount),
+            reasonCode: match.gripCandidates.length === 1
+              ? bestRejected.validation.reasonCode ?? selection.reasonCode
+              : selection.reasonCode,
+            collisionSampleCount: bestRejected.validation.collisionSampleCount,
+            collisionSamplesByPart: bestRejected.validation.collisionSamplesByPart,
+            gripCandidatesTested: gripEvaluations.length,
+            safeGripCandidatesFound: selection.safeGripCandidatesFound,
+            orientationCollisionCountsByGrip: gripEvaluations.map(({ orientations }) =>
+              orientations.map(({ validation }) => validation.collisionSampleCount)
+            ),
           });
           continue;
         }
+        const selectedGrip = match.gripCandidates[selection.selectedGripCandidateIndex];
+        const selected = gripEvaluations[selection.selectedGripCandidateIndex]
+          ?.orientations[selection.selectedOrientationIndex];
+        if (!selectedGrip || !selected) throw new Error("Selected accessory placement is missing");
+        digitalValidation = {
+          ...selected.validation,
+          gripCandidatesTested: gripEvaluations.length,
+          safeGripCandidatesFound: selection.safeGripCandidatesFound,
+          selectedGripCandidateIndex: selection.selectedGripCandidateIndex,
+          orientationCandidatesTested: selectedGrip.placementTransformCandidatesLdu.length,
+          selectedOrientationIndex: selection.selectedOrientationIndex,
+        };
+        match.placementTransformLdu = selected.placementTransformLdu;
+        match.selectedGripEvidence = selectedGrip.evidence;
+        match.selectedGripCandidateIndex = selection.selectedGripCandidateIndex;
+        if (match.gripCandidates.length > 1) accessoryMultipleGripCandidatesPassed += 1;
       }
       thumbnail = await sharp(Buffer.from(renderSvg(model))).webp({ quality: 82, effort: 4 }).toBuffer();
     } catch (error) {
       const reason = error instanceof Error ? error.message : "Unknown render failure";
       if (isPrintParentFallback) fallbackFailureCache.set(assetKey, reason);
+      if (part.role === "handAccessory") {
+        accessoryPlacementRenderFailuresExcluded += 1;
+        if (match.gripCandidates.length > 1) accessoryMultipleGripCandidatesRenderFailed += 1;
+      }
       skippedEntries.push({
         rebrickablePartNum: part.rebrickablePartNum,
         ldrawFile: candidate.file,
@@ -591,7 +635,7 @@ for (const [index, match] of matchedParts.entries()) {
     placementTransformLdu: match.placementTransformLdu,
     digitalValidation: part.role === "handAccessory" ? {
       ...digitalValidation,
-      gripPrimitive: match.gripEvidence?.primitive,
+      gripPrimitive: match.selectedGripEvidence?.primitive,
       limits: digitalAccessoryLimits,
       physicalFitGuaranteed: false,
     } : null,
@@ -642,7 +686,13 @@ const output = {
     sharedOfficialFileCount: copiedDependencies.size,
     ambiguousMappingsExcluded,
     accessoryGripCandidatesExcluded,
+    accessoryMultipleGripCandidatesEvaluated,
+    accessoryMultipleGripCandidatesPassed,
+    accessoryMultipleGripCandidatesAmbiguous,
+    accessoryMultipleGripCandidatesNoSafe,
+    accessoryMultipleGripCandidatesRenderFailed,
     accessoryPlacementCandidatesEvaluated: matchedParts.filter(({ part }) => part.role === "handAccessory").length,
+    accessoryPlacementRenderFailuresExcluded,
     digitalPlacementPassedCount: outputEntries.filter(({ role }) => role === "handAccessory").length,
     digitalPlacementRejectionsExcluded: digitalPlacementRejections.length,
     renderFailuresExcluded: skippedEntries.length,
@@ -654,7 +704,7 @@ const output = {
     "Direct mappings require an unambiguous exact filename or explicit LDraw !KEYWORDS Rebrickable identifier.",
     "Print variants may reuse the unique official unprinted parent geometry declared by the locked Rebrickable part_relationships.csv; their printed decoration is not rendered.",
     "Family-origin placement is a digital convention, not a physical clutch-force guarantee.",
-    "Hand accessories pass only deterministic radius-4 grip, minimum length, rigid-transform, model-bounds and reference-figure clearance checks; physical clutch force remains unverified.",
+    "Hand accessories pass only when exactly one radius-4 grip candidate satisfies deterministic minimum-length, rigid-transform, model-bounds and reference-figure clearance checks; physical clutch force remains unverified.",
     "The first catalog-backed color is used for preview; parts without color evidence use neutral gray.",
   ],
 };

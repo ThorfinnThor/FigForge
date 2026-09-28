@@ -23,6 +23,54 @@ export type DigitalAccessoryValidation = {
   collisionSamplesByPart: Record<string, number>;
 };
 
+export type DigitalAccessoryGripEvaluation = {
+  orientations: Array<{
+    placementTransformLdu: number[];
+    validation: DigitalAccessoryValidation;
+  }>;
+};
+
+export type DigitalAccessoryGripSelection =
+  | {
+    status: "passed";
+    reasonCode: null;
+    safeGripCandidatesFound: 1;
+    selectedGripCandidateIndex: number;
+    selectedOrientationIndex: number;
+  }
+  | {
+    status: "rejected";
+    reasonCode: "no-safe-grip-candidate" | "multiple-safe-grip-candidates";
+    safeGripCandidatesFound: number;
+    selectedGripCandidateIndex: null;
+    selectedOrientationIndex: null;
+  };
+
+export function selectUnambiguousDigitalAccessoryGrip(
+  evaluations: readonly DigitalAccessoryGripEvaluation[],
+): DigitalAccessoryGripSelection {
+  const safeGrips = evaluations.flatMap(({ orientations }, gripIndex) => {
+    const orientationIndex = orientations.findIndex(({ validation }) => validation.status === "passed");
+    return orientationIndex >= 0 ? [{ gripIndex, orientationIndex }] : [];
+  });
+  if (safeGrips.length === 1) {
+    return {
+      status: "passed",
+      reasonCode: null,
+      safeGripCandidatesFound: 1,
+      selectedGripCandidateIndex: safeGrips[0]!.gripIndex,
+      selectedOrientationIndex: safeGrips[0]!.orientationIndex,
+    };
+  }
+  return {
+    status: "rejected",
+    reasonCode: safeGrips.length === 0 ? "no-safe-grip-candidate" : "multiple-safe-grip-candidates",
+    safeGripCandidatesFound: safeGrips.length,
+    selectedGripCandidateIndex: null,
+    selectedOrientationIndex: null,
+  };
+}
+
 const roundedVector = (vector: Vector3): [number, number, number] => [
   Math.round(vector.x * 10_000) / 10_000,
   Math.round(vector.y * 10_000) / 10_000,

@@ -28,17 +28,17 @@
   },
   "summary": {
     "catalogPartCount": 20202,
-    "visualizedPartCount": 6397,
-    "builderReadyPartCount": 6395,
-    "remainingCatalogPartCount": 13807,
-    "remainingWithoutVisualizationCount": 13805,
+    "visualizedPartCount": 6461,
+    "builderReadyPartCount": 6459,
+    "remainingCatalogPartCount": 13743,
+    "remainingWithoutVisualizationCount": 13741,
     "uniqueOfficialMappingCount": 2272,
     "ambiguousOfficialMappingCount": 122,
     "noOfficialMappingCount": 17808,
     "remainingClassifications": {
       "builder-blocked": 2,
       "render-failed": 0,
-      "placement-profile-required": 656,
+      "placement-profile-required": 592,
       "ambiguous-official-mapping": 83,
       "no-official-mapping": 13066
     }
@@ -94,12 +94,12 @@
     },
     "handAccessory": {
       "catalogPartCount": 1308,
-      "builderReadyPartCount": 156,
-      "remainingCatalogPartCount": 1152,
+      "builderReadyPartCount": 220,
+      "remainingCatalogPartCount": 1088,
       "remainingClassifications": {
         "builder-blocked": 1,
         "render-failed": 0,
-        "placement-profile-required": 446,
+        "placement-profile-required": 382,
         "ambiguous-official-mapping": 33,
         "no-official-mapping": 672
       }
@@ -128074,20 +128074,6 @@
       "reason": null
     },
     {
-      "catalogId": "part:2516",
-      "role": "handAccessory",
-      "rebrickablePartNum": "2516",
-      "name": "Tool Chainsaw / Drill Body",
-      "classification": "placement-profile-required",
-      "ldrawFiles": [
-        "parts/2516.dat"
-      ],
-      "mappingEvidence": [
-        "exact-filename"
-      ],
-      "reason": null
-    },
-    {
       "catalogId": "part:2519pr0001",
       "role": "handAccessory",
       "rebrickablePartNum": "2519pr0001",
@@ -128095,20 +128081,6 @@
       "classification": "no-official-mapping",
       "ldrawFiles": [],
       "mappingEvidence": [],
-      "reason": null
-    },
-    {
-      "catalogId": "part:2561",
-      "role": "handAccessory",
-      "rebrickablePartNum": "2561",
-      "name": "Weapon Gun / Flintlock / Musket (Pirate)",
-      "classification": "placement-profile-required",
-      "ldrawFiles": [
-        "parts/2561.dat"
-      ],
-      "mappingEvidence": [
-        "exact-filename"
-      ],
       "reason": null
     },
     {
@@ -129716,34 +129688,6 @@
       "reason": null
     },
     {
-      "catalogId": "part:3900",
-      "role": "handAccessory",
-      "rebrickablePartNum": "3900",
-      "name": "Equipment Signal Paddle",
-      "classification": "placement-profile-required",
-      "ldrawFiles": [
-        "parts/3900.dat"
-      ],
-      "mappingEvidence": [
-        "exact-filename"
-      ],
-      "reason": null
-    },
-    {
-      "catalogId": "part:3900pr0001",
-      "role": "handAccessory",
-      "rebrickablePartNum": "3900pr0001",
-      "name": "Equipment Signal Paddle with 'POLICE' Red Line Print",
-      "classification": "placement-profile-required",
-      "ldrawFiles": [
-        "parts/3900p01.dat"
-      ],
-      "mappingEvidence": [
-        "explicit-keyword"
-      ],
-      "reason": null
-    },
-    {
       "catalogId": "part:3900pr0002",
       "role": "handAccessory",
       "rebrickablePartNum": "3900pr0002",
@@ -129761,34 +129705,6 @@
       "classification": "placement-profile-required",
       "ldrawFiles": [
         "parts/3959.dat"
-      ],
-      "mappingEvidence": [
-        "exact-filename"
-      ],
-      "reason": null
-    },
-    {
-      "catalogId": "part:3962a",
-      "role": "handAccessory",
-      "rebrickablePartNum": "3962a",
-      "name": "Equipment Radio [Compact Handle]",
-      "classification": "placement-profile-required",
-      "ldrawFiles": [
-        "parts/3962a.dat"
-      ],
-      "mappingEvidence": [
-        "exact-filename"
-      ],
-      "reason": null
-    },
-    {
-      "catalogId": "part:3962b",
-      "role": "handAccessory",
-      "rebrickablePartNum": "3962b",
-      "name": "Equipment Radio [Extended Handle, Compact Speaker Grille]",
-      "classification": "placement-profile-required",
-      "ldrawFiles": [
-        "parts/3962b.dat"
       ],
       "mappingEvidence": [
         "exact-filename"
@@ -129850,34 +129766,6 @@
       ],
       "mappingEvidence": [
         "exact-filename"
-      ],
-      "reason": null
-    },
-    {
-      "catalogId": "part:4349",
-      "role": "handAccessory",
-      "rebrickablePartNum": "4349",
-      "name": "Equipment Weapon, Loudhailer / Speaker / Blaster / Space Gun",
-      "classification": "placement-profile-required",
-      "ldrawFiles": [
-        "parts/4349.dat"
-      ],
-      "mappingEvidence": [
-        "exact-filename"
-      ],
-      "reason": null
-    },
-    {
-      "catalogId": "part:4349pr0001",
-      "role": "handAccessory",
-      "rebrickablePartNum": "4349pr0001",
-      "name": "Equipment / Weapon, Loudhailer / Blaster / Space Gun with Orange Stripe Print",
-      "classification": "placement-profile-required",
-      "ldrawFiles": [
-        "parts/4349p01.dat"
-      ],
-      "mappingEvidence": [
-        "explicit-keyword"
       ],
       "reason": null
     },
@@ -129976,34 +129864,6 @@
       "mappingEvidence": [
         "exact-filename",
         "explicit-keyword"
-      ],
-      "reason": null
-    },
-    {
-      "catalogId": "part:4599a",
-      "role": "handAccessory",
-      "rebrickablePartNum": "4599a",
-      "name": "Tap 1 x 1 with Hole in Spout",
-      "classification": "placement-profile-required",
-      "ldrawFiles": [
-        "parts/4599a.dat"
-      ],
-      "mappingEvidence": [
-        "exact-filename"
-      ],
-      "reason": null
-    },
-    {
-      "catalogId": "part:4599b",
-      "role": "handAccessory",
-      "rebrickablePartNum": "4599b",
-      "name": "Tap 1 x 1 without Hole in Spout",
-      "classification": "placement-profile-required",
-      "ldrawFiles": [
-        "parts/4599b.dat"
-      ],
-      "mappingEvidence": [
-        "exact-filename"
       ],
       "reason": null
     },
@@ -130235,34 +130095,6 @@
       "classification": "no-official-mapping",
       "ldrawFiles": [],
       "mappingEvidence": [],
-      "reason": null
-    },
-    {
-      "catalogId": "part:5330pat0001",
-      "role": "handAccessory",
-      "rebrickablePartNum": "5330pat0001",
-      "name": "Weapon Hilt with Bar, Hourglass Opal Trans-Light Blue",
-      "classification": "placement-profile-required",
-      "ldrawFiles": [
-        "parts/5330p01.dat"
-      ],
-      "mappingEvidence": [
-        "explicit-keyword"
-      ],
-      "reason": null
-    },
-    {
-      "catalogId": "part:5330pat0002",
-      "role": "handAccessory",
-      "rebrickablePartNum": "5330pat0002",
-      "name": "Weapon Hilt with Bar, Hourglass Trans-Bright Green",
-      "classification": "placement-profile-required",
-      "ldrawFiles": [
-        "parts/5330p02.dat"
-      ],
-      "mappingEvidence": [
-        "explicit-keyword"
-      ],
       "reason": null
     },
     {
@@ -130555,20 +130387,6 @@
       "classification": "placement-profile-required",
       "ldrawFiles": [
         "parts/6075.dat"
-      ],
-      "mappingEvidence": [
-        "exact-filename"
-      ],
-      "reason": null
-    },
-    {
-      "catalogId": "part:6117",
-      "role": "handAccessory",
-      "rebrickablePartNum": "6117",
-      "name": "Tool Chainsaw Blade",
-      "classification": "placement-profile-required",
-      "ldrawFiles": [
-        "parts/6117.dat"
       ],
       "mappingEvidence": [
         "exact-filename"
@@ -130905,20 +130723,6 @@
       "reason": null
     },
     {
-      "catalogId": "part:6936",
-      "role": "handAccessory",
-      "rebrickablePartNum": "6936",
-      "name": "Tap 1 x 2 with Dual Handles",
-      "classification": "placement-profile-required",
-      "ldrawFiles": [
-        "parts/6936.dat"
-      ],
-      "mappingEvidence": [
-        "exact-filename"
-      ],
-      "reason": null
-    },
-    {
       "catalogId": "part:7182pat0001",
       "role": "handAccessory",
       "rebrickablePartNum": "7182pat0001",
@@ -131167,20 +130971,6 @@
       "reason": null
     },
     {
-      "catalogId": "part:10050",
-      "role": "handAccessory",
-      "rebrickablePartNum": "10050",
-      "name": "Weapon Sword (Uruk-hai)",
-      "classification": "placement-profile-required",
-      "ldrawFiles": [
-        "parts/10050.dat"
-      ],
-      "mappingEvidence": [
-        "exact-filename"
-      ],
-      "reason": null
-    },
-    {
       "catalogId": "part:10169",
       "role": "handAccessory",
       "rebrickablePartNum": "10169",
@@ -131323,20 +131113,6 @@
       "reason": null
     },
     {
-      "catalogId": "part:11096",
-      "role": "handAccessory",
-      "rebrickablePartNum": "11096",
-      "name": "Weapon Axe Head with Twin-Blade",
-      "classification": "placement-profile-required",
-      "ldrawFiles": [
-        "parts/11096.dat"
-      ],
-      "mappingEvidence": [
-        "exact-filename"
-      ],
-      "reason": null
-    },
-    {
       "catalogId": "part:11106",
       "role": "handAccessory",
       "rebrickablePartNum": "11106",
@@ -131404,34 +131180,6 @@
       "classification": "no-official-mapping",
       "ldrawFiles": [],
       "mappingEvidence": [],
-      "reason": null
-    },
-    {
-      "catalogId": "part:11251pat0001",
-      "role": "handAccessory",
-      "rebrickablePartNum": "11251pat0001",
-      "name": "Equipment Plunger [Soft Plastic] with Medium Nougat Handle",
-      "classification": "placement-profile-required",
-      "ldrawFiles": [
-        "parts/11459p01.dat"
-      ],
-      "mappingEvidence": [
-        "explicit-keyword"
-      ],
-      "reason": null
-    },
-    {
-      "catalogId": "part:11251pat0002",
-      "role": "handAccessory",
-      "rebrickablePartNum": "11251pat0002",
-      "name": "Equipment Plunger [Soft Plastic] with Reddish Brown Handle",
-      "classification": "placement-profile-required",
-      "ldrawFiles": [
-        "parts/11459p02.dat"
-      ],
-      "mappingEvidence": [
-        "explicit-keyword"
-      ],
       "reason": null
     },
     {
@@ -131729,20 +131477,6 @@
       "reason": null
     },
     {
-      "catalogId": "part:13608",
-      "role": "handAccessory",
-      "rebrickablePartNum": "13608",
-      "name": "Weapon Gun Ray / Sci Fi - Rounded Heat Diffusers",
-      "classification": "placement-profile-required",
-      "ldrawFiles": [
-        "parts/13608.dat"
-      ],
-      "mappingEvidence": [
-        "exact-filename"
-      ],
-      "reason": null
-    },
-    {
       "catalogId": "part:13770",
       "role": "handAccessory",
       "rebrickablePartNum": "13770",
@@ -131800,20 +131534,6 @@
       "classification": "no-official-mapping",
       "ldrawFiles": [],
       "mappingEvidence": [],
-      "reason": null
-    },
-    {
-      "catalogId": "part:15071",
-      "role": "handAccessory",
-      "rebrickablePartNum": "15071",
-      "name": "Weapon Gun / Blaster 1 x 2 x 2/3 with Studs on Sides and Handle",
-      "classification": "placement-profile-required",
-      "ldrawFiles": [
-        "parts/15071.dat"
-      ],
-      "mappingEvidence": [
-        "exact-filename"
-      ],
       "reason": null
     },
     {
@@ -132016,34 +131736,6 @@
       "classification": "placement-profile-required",
       "ldrawFiles": [
         "parts/18034.dat"
-      ],
-      "mappingEvidence": [
-        "exact-filename"
-      ],
-      "reason": null
-    },
-    {
-      "catalogId": "part:18673",
-      "role": "handAccessory",
-      "rebrickablePartNum": "18673",
-      "name": "Weapon Lightsaber Hilt Straight with Ring",
-      "classification": "placement-profile-required",
-      "ldrawFiles": [
-        "parts/18673.dat"
-      ],
-      "mappingEvidence": [
-        "exact-filename"
-      ],
-      "reason": null
-    },
-    {
-      "catalogId": "part:18738",
-      "role": "handAccessory",
-      "rebrickablePartNum": "18738",
-      "name": "Tool Ice Axe [3-Rib Handle]",
-      "classification": "placement-profile-required",
-      "ldrawFiles": [
-        "parts/18738.dat"
       ],
       "mappingEvidence": [
         "exact-filename"
@@ -132280,20 +131972,6 @@
       "classification": "placement-profile-required",
       "ldrawFiles": [
         "parts/19118.dat"
-      ],
-      "mappingEvidence": [
-        "exact-filename"
-      ],
-      "reason": null
-    },
-    {
-      "catalogId": "part:19220",
-      "role": "handAccessory",
-      "rebrickablePartNum": "19220",
-      "name": "Equipment Radio [Extended Handle, Expanded Speaker Grille]",
-      "classification": "placement-profile-required",
-      "ldrawFiles": [
-        "parts/19220.dat"
       ],
       "mappingEvidence": [
         "exact-filename"
@@ -132544,48 +132222,6 @@
       "classification": "placement-profile-required",
       "ldrawFiles": [
         "parts/21459.dat"
-      ],
-      "mappingEvidence": [
-        "exact-filename"
-      ],
-      "reason": null
-    },
-    {
-      "catalogId": "part:22407",
-      "role": "handAccessory",
-      "rebrickablePartNum": "22407",
-      "name": "Weapon Axe Head with Bar",
-      "classification": "placement-profile-required",
-      "ldrawFiles": [
-        "parts/22407.dat"
-      ],
-      "mappingEvidence": [
-        "exact-filename"
-      ],
-      "reason": null
-    },
-    {
-      "catalogId": "part:22408",
-      "role": "handAccessory",
-      "rebrickablePartNum": "22408",
-      "name": "Shield Pentagonal",
-      "classification": "placement-profile-required",
-      "ldrawFiles": [
-        "parts/22408.dat"
-      ],
-      "mappingEvidence": [
-        "exact-filename"
-      ],
-      "reason": null
-    },
-    {
-      "catalogId": "part:22409",
-      "role": "handAccessory",
-      "rebrickablePartNum": "22409",
-      "name": "Shield Pentagonal with Rock Edges",
-      "classification": "placement-profile-required",
-      "ldrawFiles": [
-        "parts/22409.dat"
       ],
       "mappingEvidence": [
         "exact-filename"
@@ -133191,62 +132827,6 @@
       "reason": null
     },
     {
-      "catalogId": "part:24108",
-      "role": "handAccessory",
-      "rebrickablePartNum": "24108",
-      "name": "Weapon Sword Long with Angular Crossguard",
-      "classification": "placement-profile-required",
-      "ldrawFiles": [
-        "parts/24108.dat"
-      ],
-      "mappingEvidence": [
-        "exact-filename"
-      ],
-      "reason": null
-    },
-    {
-      "catalogId": "part:24108pat0001",
-      "role": "handAccessory",
-      "rebrickablePartNum": "24108pat0001",
-      "name": "Weapon Sword Long with Angular Crossguard Flat Silver Pattern",
-      "classification": "placement-profile-required",
-      "ldrawFiles": [
-        "parts/24108pe1.dat"
-      ],
-      "mappingEvidence": [
-        "explicit-keyword"
-      ],
-      "reason": null
-    },
-    {
-      "catalogId": "part:24108pat0002",
-      "role": "handAccessory",
-      "rebrickablePartNum": "24108pat0002",
-      "name": "Weapon Sword Long with Angular Crossguard Light Bluish Gray Pattern",
-      "classification": "placement-profile-required",
-      "ldrawFiles": [
-        "parts/24108pe2.dat"
-      ],
-      "mappingEvidence": [
-        "explicit-keyword"
-      ],
-      "reason": null
-    },
-    {
-      "catalogId": "part:24108pat0003",
-      "role": "handAccessory",
-      "rebrickablePartNum": "24108pat0003",
-      "name": "Weapon Sword Long with Angular Crossguard Pearl Gold Pattern",
-      "classification": "placement-profile-required",
-      "ldrawFiles": [
-        "parts/24108pe3.dat"
-      ],
-      "mappingEvidence": [
-        "explicit-keyword"
-      ],
-      "reason": null
-    },
-    {
       "catalogId": "part:24144",
       "role": "handAccessory",
       "rebrickablePartNum": "24144",
@@ -133699,34 +133279,6 @@
       "classification": "placement-profile-required",
       "ldrawFiles": [
         "parts/30088.dat"
-      ],
-      "mappingEvidence": [
-        "exact-filename"
-      ],
-      "reason": null
-    },
-    {
-      "catalogId": "part:30089a",
-      "role": "handAccessory",
-      "rebrickablePartNum": "30089a",
-      "name": "Equipment Camera Handheld with Right-Aligned Viewfinder",
-      "classification": "placement-profile-required",
-      "ldrawFiles": [
-        "parts/30089a.dat"
-      ],
-      "mappingEvidence": [
-        "exact-filename"
-      ],
-      "reason": null
-    },
-    {
-      "catalogId": "part:30089b",
-      "role": "handAccessory",
-      "rebrickablePartNum": "30089b",
-      "name": "Equipment Camera Handheld with Central Viewfinder",
-      "classification": "placement-profile-required",
-      "ldrawFiles": [
-        "parts/30089b.dat"
       ],
       "mappingEvidence": [
         "exact-filename"
@@ -134700,20 +134252,6 @@
       "reason": null
     },
     {
-      "catalogId": "part:37762",
-      "role": "handAccessory",
-      "rebrickablePartNum": "37762",
-      "name": "Equipment Candlestick",
-      "classification": "placement-profile-required",
-      "ldrawFiles": [
-        "parts/37762.dat"
-      ],
-      "mappingEvidence": [
-        "exact-filename"
-      ],
-      "reason": null
-    },
-    {
       "catalogId": "part:38014",
       "role": "handAccessory",
       "rebrickablePartNum": "38014",
@@ -134802,20 +134340,6 @@
       "reason": null
     },
     {
-      "catalogId": "part:39144",
-      "role": "handAccessory",
-      "rebrickablePartNum": "39144",
-      "name": "Equipment Megaphone",
-      "classification": "placement-profile-required",
-      "ldrawFiles": [
-        "parts/39144.dat"
-      ],
-      "mappingEvidence": [
-        "exact-filename"
-      ],
-      "reason": null
-    },
-    {
       "catalogId": "part:39144pr0001",
       "role": "handAccessory",
       "rebrickablePartNum": "39144pr0001",
@@ -134850,20 +134374,6 @@
       "reason": null
     },
     {
-      "catalogId": "part:40598b",
-      "role": "handAccessory",
-      "rebrickablePartNum": "40598b",
-      "name": "Weapon Grappling Hook",
-      "classification": "placement-profile-required",
-      "ldrawFiles": [
-        "parts/40598b.dat"
-      ],
-      "mappingEvidence": [
-        "exact-filename"
-      ],
-      "reason": null
-    },
-    {
       "catalogId": "part:41159pat0001",
       "role": "handAccessory",
       "rebrickablePartNum": "41159pat0001",
@@ -134891,20 +134401,6 @@
       "classification": "no-official-mapping",
       "ldrawFiles": [],
       "mappingEvidence": [],
-      "reason": null
-    },
-    {
-      "catalogId": "part:42114",
-      "role": "handAccessory",
-      "rebrickablePartNum": "42114",
-      "name": "Weapon Lightsaber Hilt Angled",
-      "classification": "placement-profile-required",
-      "ldrawFiles": [
-        "parts/42114.dat"
-      ],
-      "mappingEvidence": [
-        "exact-filename"
-      ],
       "reason": null
     },
     {
@@ -135079,20 +134575,6 @@
       "classification": "no-official-mapping",
       "ldrawFiles": [],
       "mappingEvidence": [],
-      "reason": null
-    },
-    {
-      "catalogId": "part:44709",
-      "role": "handAccessory",
-      "rebrickablePartNum": "44709",
-      "name": "Weapon Gun / Blaster with Studs on Side",
-      "classification": "placement-profile-required",
-      "ldrawFiles": [
-        "parts/44709.dat"
-      ],
-      "mappingEvidence": [
-        "exact-filename"
-      ],
       "reason": null
     },
     {
@@ -135514,20 +134996,6 @@
       "mappingEvidence": [
         "exact-filename",
         "explicit-keyword"
-      ],
-      "reason": null
-    },
-    {
-      "catalogId": "part:50018c",
-      "role": "handAccessory",
-      "rebrickablePartNum": "50018c",
-      "name": "Tool Socket Wrench",
-      "classification": "placement-profile-required",
-      "ldrawFiles": [
-        "parts/50018c.dat"
-      ],
-      "mappingEvidence": [
-        "exact-filename"
       ],
       "reason": null
     },
@@ -135964,20 +135432,6 @@
       "reason": null
     },
     {
-      "catalogId": "part:55237e",
-      "role": "handAccessory",
-      "rebrickablePartNum": "55237e",
-      "name": "Weapon Sword (Toa Jaller)",
-      "classification": "placement-profile-required",
-      "ldrawFiles": [
-        "parts/55237e.dat"
-      ],
-      "mappingEvidence": [
-        "exact-filename"
-      ],
-      "reason": null
-    },
-    {
       "catalogId": "part:55237f",
       "role": "handAccessory",
       "rebrickablePartNum": "55237f",
@@ -136027,20 +135481,6 @@
       "classification": "placement-profile-required",
       "ldrawFiles": [
         "parts/55237j.dat"
-      ],
-      "mappingEvidence": [
-        "exact-filename"
-      ],
-      "reason": null
-    },
-    {
-      "catalogId": "part:55295",
-      "role": "handAccessory",
-      "rebrickablePartNum": "55295",
-      "name": "Tool Hammer Cross Pein [6-Rib Handle]",
-      "classification": "placement-profile-required",
-      "ldrawFiles": [
-        "parts/55295.dat"
       ],
       "mappingEvidence": [
         "exact-filename"
@@ -136208,20 +135648,6 @@
       "reason": null
     },
     {
-      "catalogId": "part:58367",
-      "role": "handAccessory",
-      "rebrickablePartNum": "58367",
-      "name": "Equipment Hose Nozzle / Gun with Side String Hole",
-      "classification": "placement-profile-required",
-      "ldrawFiles": [
-        "parts/58367.dat"
-      ],
-      "mappingEvidence": [
-        "exact-filename"
-      ],
-      "reason": null
-    },
-    {
       "catalogId": "part:58843",
       "role": "handAccessory",
       "rebrickablePartNum": "58843",
@@ -136316,34 +135742,6 @@
       "mappingEvidence": [
         "exact-filename",
         "explicit-keyword"
-      ],
-      "reason": null
-    },
-    {
-      "catalogId": "part:60752",
-      "role": "handAccessory",
-      "rebrickablePartNum": "60752",
-      "name": "Weapon Sword / Scimitar Notched Blade",
-      "classification": "placement-profile-required",
-      "ldrawFiles": [
-        "parts/60752.dat"
-      ],
-      "mappingEvidence": [
-        "exact-filename"
-      ],
-      "reason": null
-    },
-    {
-      "catalogId": "part:60849",
-      "role": "handAccessory",
-      "rebrickablePartNum": "60849",
-      "name": "Equipment Hose Nozzle / Gun with Side String Hole Simplified",
-      "classification": "placement-profile-required",
-      "ldrawFiles": [
-        "parts/60849.dat"
-      ],
-      "mappingEvidence": [
-        "exact-filename"
       ],
       "reason": null
     },
@@ -136466,20 +135864,6 @@
       "reason": null
     },
     {
-      "catalogId": "part:61975",
-      "role": "handAccessory",
-      "rebrickablePartNum": "61975",
-      "name": "Equipment Whip [Coiled]",
-      "classification": "placement-profile-required",
-      "ldrawFiles": [
-        "parts/61975.dat"
-      ],
-      "mappingEvidence": [
-        "exact-filename"
-      ],
-      "reason": null
-    },
-    {
       "catalogId": "part:61976",
       "role": "handAccessory",
       "rebrickablePartNum": "61976",
@@ -136530,20 +135914,6 @@
       "reason": null
     },
     {
-      "catalogId": "part:62808",
-      "role": "handAccessory",
-      "rebrickablePartNum": "62808",
-      "name": "Equipment Key",
-      "classification": "placement-profile-required",
-      "ldrawFiles": [
-        "parts/62808.dat"
-      ],
-      "mappingEvidence": [
-        "exact-filename"
-      ],
-      "reason": null
-    },
-    {
       "catalogId": "part:62885",
       "role": "handAccessory",
       "rebrickablePartNum": "62885",
@@ -136551,20 +135921,6 @@
       "classification": "placement-profile-required",
       "ldrawFiles": [
         "parts/62885.dat"
-      ],
-      "mappingEvidence": [
-        "exact-filename"
-      ],
-      "reason": null
-    },
-    {
-      "catalogId": "part:64000",
-      "role": "handAccessory",
-      "rebrickablePartNum": "64000",
-      "name": "Sports Hockey Stick, Round Shaft",
-      "classification": "placement-profile-required",
-      "ldrawFiles": [
-        "parts/64000.dat"
       ],
       "mappingEvidence": [
         "exact-filename"
@@ -136592,20 +135948,6 @@
       ],
       "mappingEvidence": [
         "explicit-keyword"
-      ],
-      "reason": null
-    },
-    {
-      "catalogId": "part:64644",
-      "role": "handAccessory",
-      "rebrickablePartNum": "64644",
-      "name": "Equipment Telescope / Torch / Spyglass, Support Round 1 x 1 x 1 2/3",
-      "classification": "placement-profile-required",
-      "ldrawFiles": [
-        "parts/64644.dat"
-      ],
-      "mappingEvidence": [
-        "exact-filename"
       ],
       "reason": null
     },
@@ -136884,20 +136226,6 @@
       "reason": null
     },
     {
-      "catalogId": "part:65581",
-      "role": "handAccessory",
-      "rebrickablePartNum": "65581",
-      "name": "Equipment Lantern with Round Handle",
-      "classification": "placement-profile-required",
-      "ldrawFiles": [
-        "parts/65581.dat"
-      ],
-      "mappingEvidence": [
-        "exact-filename"
-      ],
-      "reason": null
-    },
-    {
       "catalogId": "part:66237",
       "role": "handAccessory",
       "rebrickablePartNum": "66237",
@@ -136915,20 +136243,6 @@
       "classification": "no-official-mapping",
       "ldrawFiles": [],
       "mappingEvidence": [],
-      "reason": null
-    },
-    {
-      "catalogId": "part:66909",
-      "role": "handAccessory",
-      "rebrickablePartNum": "66909",
-      "name": "Weapon Hilt Symmetric",
-      "classification": "placement-profile-required",
-      "ldrawFiles": [
-        "parts/66909.dat"
-      ],
-      "mappingEvidence": [
-        "exact-filename"
-      ],
       "reason": null
     },
     {
@@ -138534,20 +137848,6 @@
       "reason": null
     },
     {
-      "catalogId": "part:87993",
-      "role": "handAccessory",
-      "rebrickablePartNum": "87993",
-      "name": "Weapon Gun Ray / Sci Fi",
-      "classification": "placement-profile-required",
-      "ldrawFiles": [
-        "parts/87993.dat"
-      ],
-      "mappingEvidence": [
-        "exact-filename"
-      ],
-      "reason": null
-    },
-    {
       "catalogId": "part:87996pr0001",
       "role": "handAccessory",
       "rebrickablePartNum": "87996pr0001",
@@ -139533,20 +138833,6 @@
       "reason": null
     },
     {
-      "catalogId": "part:93221pr0001",
-      "role": "handAccessory",
-      "rebrickablePartNum": "93221pr0001",
-      "name": "Equipment Radio / Boom Box with Handle and Gold Trim Print",
-      "classification": "placement-profile-required",
-      "ldrawFiles": [
-        "parts/93221p01.dat"
-      ],
-      "mappingEvidence": [
-        "explicit-keyword"
-      ],
-      "reason": null
-    },
-    {
       "catalogId": "part:93221pr0002",
       "role": "handAccessory",
       "rebrickablePartNum": "93221pr0002",
@@ -139554,20 +138840,6 @@
       "classification": "no-official-mapping",
       "ldrawFiles": [],
       "mappingEvidence": [],
-      "reason": null
-    },
-    {
-      "catalogId": "part:93221pr0003",
-      "role": "handAccessory",
-      "rebrickablePartNum": "93221pr0003",
-      "name": "Equipment Radio / Boom Box with Handle and Black Trim Print",
-      "classification": "placement-profile-required",
-      "ldrawFiles": [
-        "parts/93221p03.dat"
-      ],
-      "mappingEvidence": [
-        "explicit-keyword"
-      ],
       "reason": null
     },
     {
@@ -139581,20 +138853,6 @@
       "reason": null
     },
     {
-      "catalogId": "part:93221pr0005",
-      "role": "handAccessory",
-      "rebrickablePartNum": "93221pr0005",
-      "name": "Equipment Radio / Boom Box with Handle and Magenta Cassette Player, Switches and Rimmed Speakers Print",
-      "classification": "placement-profile-required",
-      "ldrawFiles": [
-        "parts/93221p05.dat"
-      ],
-      "mappingEvidence": [
-        "explicit-keyword"
-      ],
-      "reason": null
-    },
-    {
       "catalogId": "part:93221pr0006",
       "role": "handAccessory",
       "rebrickablePartNum": "93221pr0006",
@@ -139602,20 +138860,6 @@
       "classification": "no-official-mapping",
       "ldrawFiles": [],
       "mappingEvidence": [],
-      "reason": null
-    },
-    {
-      "catalogId": "part:93222",
-      "role": "handAccessory",
-      "rebrickablePartNum": "93222",
-      "name": "Equipment Fishing Rod, Short",
-      "classification": "placement-profile-required",
-      "ldrawFiles": [
-        "parts/93222.dat"
-      ],
-      "mappingEvidence": [
-        "exact-filename"
-      ],
       "reason": null
     },
     {
@@ -140359,20 +139603,6 @@
       "reason": null
     },
     {
-      "catalogId": "part:97793",
-      "role": "handAccessory",
-      "rebrickablePartNum": "97793",
-      "name": "Equipment Hand Mixer [Kitchen Implements Kit]",
-      "classification": "placement-profile-required",
-      "ldrawFiles": [
-        "parts/97793.dat"
-      ],
-      "mappingEvidence": [
-        "exact-filename"
-      ],
-      "reason": null
-    },
-    {
       "catalogId": "part:98134",
       "role": "handAccessory",
       "rebrickablePartNum": "98134",
@@ -140723,20 +139953,6 @@
       "reason": null
     },
     {
-      "catalogId": "part:98368",
-      "role": "handAccessory",
-      "rebrickablePartNum": "98368",
-      "name": "Toolbox",
-      "classification": "placement-profile-required",
-      "ldrawFiles": [
-        "parts/98368.dat"
-      ],
-      "mappingEvidence": [
-        "exact-filename"
-      ],
-      "reason": null
-    },
-    {
       "catalogId": "part:98368pr0001",
       "role": "handAccessory",
       "rebrickablePartNum": "98368pr0001",
@@ -140744,20 +139960,6 @@
       "classification": "no-official-mapping",
       "ldrawFiles": [],
       "mappingEvidence": [],
-      "reason": null
-    },
-    {
-      "catalogId": "part:98368pr0002",
-      "role": "handAccessory",
-      "rebrickablePartNum": "98368pr0002",
-      "name": "Toolbox with Classic Space Logo Print",
-      "classification": "placement-profile-required",
-      "ldrawFiles": [
-        "parts/98368p01.dat"
-      ],
-      "mappingEvidence": [
-        "explicit-keyword"
-      ],
       "reason": null
     },
     {
@@ -140967,20 +140169,6 @@
       "reason": null
     },
     {
-      "catalogId": "part:102498pat0001",
-      "role": "handAccessory",
-      "rebrickablePartNum": "102498pat0001",
-      "name": "Equipment Wand with Trans-Clear Hollow Stud Pattern",
-      "classification": "placement-profile-required",
-      "ldrawFiles": [
-        "parts/102498p01.dat"
-      ],
-      "mappingEvidence": [
-        "explicit-keyword"
-      ],
-      "reason": null
-    },
-    {
       "catalogId": "part:105006pat0001",
       "role": "handAccessory",
       "rebrickablePartNum": "105006pat0001",
@@ -141081,20 +140269,6 @@
       "reason": null
     },
     {
-      "catalogId": "part:604547",
-      "role": "handAccessory",
-      "rebrickablePartNum": "604547",
-      "name": "Tool Hammer Cross Pein [3-Rib Handle]",
-      "classification": "placement-profile-required",
-      "ldrawFiles": [
-        "parts/604547.dat"
-      ],
-      "mappingEvidence": [
-        "exact-filename"
-      ],
-      "reason": null
-    },
-    {
       "catalogId": "part:604548",
       "role": "handAccessory",
       "rebrickablePartNum": "604548",
@@ -141123,48 +140297,6 @@
       "reason": null
     },
     {
-      "catalogId": "part:604550",
-      "role": "handAccessory",
-      "rebrickablePartNum": "604550",
-      "name": "Tool Screwdriver with Wide Head [3-Rib Handle]",
-      "classification": "placement-profile-required",
-      "ldrawFiles": [
-        "parts/604550.dat"
-      ],
-      "mappingEvidence": [
-        "exact-filename"
-      ],
-      "reason": null
-    },
-    {
-      "catalogId": "part:604551",
-      "role": "handAccessory",
-      "rebrickablePartNum": "604551",
-      "name": "Tool Wrench / Spanner Open End [3-Rib Handle]",
-      "classification": "placement-profile-required",
-      "ldrawFiles": [
-        "parts/604551.dat"
-      ],
-      "mappingEvidence": [
-        "exact-filename"
-      ],
-      "reason": null
-    },
-    {
-      "catalogId": "part:604552",
-      "role": "handAccessory",
-      "rebrickablePartNum": "604552",
-      "name": "Tool Wrench / Spanner, Box [3-Rib Handle]",
-      "classification": "placement-profile-required",
-      "ldrawFiles": [
-        "parts/604552.dat"
-      ],
-      "mappingEvidence": [
-        "exact-filename"
-      ],
-      "reason": null
-    },
-    {
       "catalogId": "part:604553",
       "role": "handAccessory",
       "rebrickablePartNum": "604553",
@@ -141172,34 +140304,6 @@
       "classification": "placement-profile-required",
       "ldrawFiles": [
         "parts/604553.dat"
-      ],
-      "mappingEvidence": [
-        "exact-filename"
-      ],
-      "reason": null
-    },
-    {
-      "catalogId": "part:604614",
-      "role": "handAccessory",
-      "rebrickablePartNum": "604614",
-      "name": "Tool Wrench / Spanner Adjustable",
-      "classification": "placement-profile-required",
-      "ldrawFiles": [
-        "parts/604614.dat"
-      ],
-      "mappingEvidence": [
-        "exact-filename"
-      ],
-      "reason": null
-    },
-    {
-      "catalogId": "part:604615",
-      "role": "handAccessory",
-      "rebrickablePartNum": "604615",
-      "name": "Tool Ratchet / Socket Wrench",
-      "classification": "placement-profile-required",
-      "ldrawFiles": [
-        "parts/604615.dat"
       ],
       "mappingEvidence": [
         "exact-filename"
