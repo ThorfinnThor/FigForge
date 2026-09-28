@@ -581,6 +581,23 @@ button:disabled {
   object-fit: contain;
 }
 
+.part-card__no-preview {
+  display: grid;
+  width: 100%;
+  max-width: 128px;
+  height: 128px;
+  place-items: center;
+  padding: var(--space-3);
+  border: 1px dashed var(--border-control);
+  border-radius: var(--radius-sm);
+  color: var(--text-secondary);
+  background: var(--surface);
+  font-size: 0.7rem;
+  font-weight: 700;
+  line-height: 1.35;
+  text-align: center;
+}
+
 .part-card__badge {
   position: absolute;
   top: var(--space-2);
@@ -629,6 +646,14 @@ button:disabled {
 }
 
 .part-card__action {
+  width: 100%;
+}
+
+.part-card__action:disabled {
+  cursor: not-allowed;
+}
+
+.catalog-load-more {
   width: 100%;
 }
 

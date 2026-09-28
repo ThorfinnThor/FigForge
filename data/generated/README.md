@@ -5,6 +5,7 @@ FF-08 befüllt dieses Verzeichnis ausschließlich durch den geprüften Quellenad
 - `catalog-source.lock.json`: vom Refresh festgehaltene Download-Hashes und Abrufzeiten.
 - `catalog-normalized.json`: deterministische Normalisierung der erlaubten Catalog-CSV-Dateien.
 - `catalog-refresh-report.json`: maschinenlesbarer Diff-/Provenienzbericht.
+- `catalog-packages/`: fünf kompakte, nach Builder-Slot getrennte Browserpakete mit 20.202 Minifig-Teilen; ohne Bilder, MOC-Inhalte oder API-Daten.
 - `mapping-review.json`: deterministischer FF-09-Report zu offenen Mappings und Dublettensignalen.
 - `model-packages.json`: FF-10-Index des reproduzierbaren, ausdrücklich nicht veröffentlichbaren FF-04-Fixturepakets und seiner SVG-Thumbnails.
 - `asset-manifest.json`: FF-11-Manifest mit Artefakt-Hashes, Provenienz, Lizenzstatus und offenen Freigabeblockern.

@@ -7,6 +7,10 @@ import {
   serializeSourceLock,
   type CatalogArtifactBytes,
 } from "./catalog/normalize-catalog.js";
+import {
+  buildCatalogPackages,
+  CATALOG_PACKAGE_FILE_BY_ROLE,
+} from "./catalog/build-catalog-packages.js";
 
 const ALLOWED_FILES = new Set([
   "colors.csv.gz",
@@ -67,6 +71,7 @@ const readArtifacts = async (lock: SourceLock): Promise<CatalogArtifactBytes[]> 
 };
 
 const generatedDir = resolve(process.cwd(), "data/generated");
+const catalogPackagesDir = resolve(generatedDir, "catalog-packages");
 const baselineLockPath = resolve(process.cwd(), "data/sources.lock.json");
 const generatedLockPath = resolve(generatedDir, "catalog-source.lock.json");
 
@@ -94,9 +99,23 @@ if (!values.refresh) {
     allowHashUpdates: true,
     retrievedAt: new Date().toISOString(),
   });
+  const catalogPackages = buildCatalogPackages(result.normalizedCatalog);
   await mkdir(generatedDir, { recursive: true });
+  await mkdir(catalogPackagesDir, { recursive: true });
   await writeFile(generatedLockPath, serializeSourceLock(result.sourceLock), "utf8");
   await writeFile(resolve(generatedDir, "catalog-normalized.json"), `${JSON.stringify(result.normalizedCatalog, null, 2)}\n`, "utf8");
+  await writeFile(
+    resolve(catalogPackagesDir, "manifest.json"),
+    `${JSON.stringify(catalogPackages.manifest, null, 2)}\n`,
+    "utf8",
+  );
+  for (const [role, catalogPackage] of Object.entries(catalogPackages.packages)) {
+    await writeFile(
+      resolve(catalogPackagesDir, CATALOG_PACKAGE_FILE_BY_ROLE[role as keyof typeof CATALOG_PACKAGE_FILE_BY_ROLE]),
+      `${JSON.stringify(catalogPackage)}\n`,
+      "utf8",
+    );
+  }
   await writeFile(
     resolve(generatedDir, "catalog-refresh-report.json"),
     `${JSON.stringify({
@@ -106,11 +125,13 @@ if (!values.refresh) {
       sourceLockUpdatedAt: result.sourceLock.updatedAt,
       changedArtifacts: result.changedArtifacts,
       normalizedPartCount: result.normalizedCatalog.parts.length,
+      packagedMinifigPartCount: catalogPackages.manifest.includedPartCount,
+      catalogPackageCount: catalogPackages.manifest.packages.length,
       artifactCount: result.normalizedCatalog.artifacts.length,
       apiUsed: false,
       mocFilesAllowed: false,
     }, null, 2)}\n`,
     "utf8",
   );
-  console.log(JSON.stringify({ message: "catalog refresh normalized; generated outputs are ready for review", changedArtifacts: result.changedArtifacts, normalizedPartCount: result.normalizedCatalog.parts.length, outputDirectory: "data/generated", apiUsed: false, mocFilesAllowed: false }));
+  console.log(JSON.stringify({ message: "catalog refresh normalized; generated outputs are ready for review", changedArtifacts: result.changedArtifacts, normalizedPartCount: result.normalizedCatalog.parts.length, packagedMinifigPartCount: catalogPackages.manifest.includedPartCount, outputDirectory: "data/generated", apiUsed: false, mocFilesAllowed: false }));
 }

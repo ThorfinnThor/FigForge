@@ -27,6 +27,7 @@
     "data:validate:ff21": "tsx tools/validate-ff21-search.ts",
     "search:benchmark:preflight": "tsx tools/check-ff18-prerequisites.ts",
     "data:validate:generated": "tsx tools/validate-generated-catalog.ts",
+    "data:build:catalog-packages": "tsx tools/build-catalog-packages.ts",
     "data:review:mappings": "tsx tools/review-mappings.ts",
     "data:validate:mappings": "tsx tools/validate-mapping-review.ts",
     "assets:build": "tsx tools/build-assets.ts",
