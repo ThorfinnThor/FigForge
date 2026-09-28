@@ -2,12 +2,17 @@ import assert from "node:assert/strict";
 import { createHash } from "node:crypto";
 import { access, readFile } from "node:fs/promises";
 import { resolve } from "node:path";
+import {
+  catalogPackageManifestSchema,
+  catalogPackageSchema,
+} from "../src/contracts/catalog-package.js";
 import { normalizedCatalogSchema } from "../src/contracts/catalog-refresh.js";
 import { sourceLockSchema } from "../src/contracts/source-lock.js";
 
 const generatedDir = resolve(process.cwd(), "data/generated");
 const lockPath = resolve(generatedDir, "catalog-source.lock.json");
 const catalogPath = resolve(generatedDir, "catalog-normalized.json");
+const catalogPackagesDir = resolve(generatedDir, "catalog-packages");
 
 try {
   await access(lockPath);
@@ -31,4 +36,24 @@ for (const artifact of catalog.artifacts) {
   assert.equal(artifact.sha256, lockedHashes.get(artifact.fileName), `Generated hash mismatch for ${artifact.fileName}`);
 }
 
-console.log(JSON.stringify({ message: "generated catalog valid", generated: true, partCount: catalog.parts.length, artifactCount: catalog.artifacts.length, apiUsed: false, mocFilesAllowed: false }));
+const packageManifest = catalogPackageManifestSchema.parse(
+  JSON.parse(await readFile(resolve(catalogPackagesDir, "manifest.json"), "utf8")) as unknown,
+);
+assert.equal(packageManifest.sourceLockSha256, catalog.sourceLockSha256);
+const packagedPartIds = new Set<string>();
+for (const manifestEntry of packageManifest.packages) {
+  const catalogPackage = catalogPackageSchema.parse(
+    JSON.parse(await readFile(resolve(catalogPackagesDir, manifestEntry.fileName), "utf8")) as unknown,
+  );
+  assert.equal(catalogPackage.role, manifestEntry.role);
+  assert.equal(catalogPackage.sourceLockSha256, catalog.sourceLockSha256);
+  assert.deepEqual(catalogPackage.categoryIds, manifestEntry.categoryIds);
+  assert.equal(catalogPackage.parts.length, manifestEntry.partCount);
+  for (const part of catalogPackage.parts) {
+    assert.equal(packagedPartIds.has(part.id), false, `Catalog package contains duplicate part ${part.id}`);
+    packagedPartIds.add(part.id);
+  }
+}
+assert.equal(packagedPartIds.size, packageManifest.includedPartCount);
+
+console.log(JSON.stringify({ message: "generated catalog valid", generated: true, partCount: catalog.parts.length, packagedMinifigPartCount: packageManifest.includedPartCount, artifactCount: catalog.artifacts.length, apiUsed: false, mocFilesAllowed: false }));

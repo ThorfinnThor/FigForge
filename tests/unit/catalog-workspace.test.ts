@@ -2,7 +2,9 @@ import { readFile } from "node:fs/promises";
 import { describe, expect, it } from "vitest";
 import {
   CATALOG_CATEGORIES,
+  builderComponentForCatalogPart,
   catalogAssortment,
+  loadCatalogParts,
   thumbnailForComponent,
   verifiedLDrawEntryForComponent,
 } from "../../src/components/catalog-workspace-data.js";
@@ -18,10 +20,27 @@ describe("FF-14 responsive catalog workspace", () => {
     expect(source).toContain("Katalog filtern");
     expect(source).toContain("Nur Rebrickable Catalog Downloads/CSV");
     expect(source).toContain("Katalogstatus");
-    expect(source).toContain("onSelect={digitallySupportedLDrawEntryForComponent(component.id)");
+    expect(source).toContain("onSelect={builderComponent && digitallySupportedLDrawEntryForComponent(builderComponent.id)");
     expect(source).toContain("<FigureViewport selectedParts={selectedLDrawParts}");
     expect(source).toContain("saveCurrentFigureDraft");
     expect(source).toContain("parseFigureDocument");
+  });
+
+  it("loads 20,202 Rebrickable Minifig catalog entries from category packages", async () => {
+    const allParts = await loadCatalogParts("all");
+    const counts = Object.fromEntries(CATALOG_CATEGORIES
+      .filter(({ id }) => id !== "all")
+      .map(({ id }) => [id, allParts.filter((part) => part.role === id).length]));
+
+    expect(allParts).toHaveLength(20_202);
+    expect(counts).toEqual({
+      head: 5_402,
+      headwear: 2_410,
+      torsoAssembly: 7_851,
+      legsAssembly: 3_231,
+      handAccessory: 1_308,
+    });
+    expect(allParts.filter(builderComponentForCatalogPart)).toHaveLength(17);
   });
 
   it("defines responsive tabs, drawer focus return and keyboard dismissal", async () => {

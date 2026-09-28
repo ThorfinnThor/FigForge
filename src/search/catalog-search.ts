@@ -1,21 +1,30 @@
-import type { AssortmentComponent } from "../contracts/test-assortment.js";
 import type { CatalogCategory } from "../components/catalog-workspace-data.js";
 import { normalizeSearchQuery, type NormalizedQuery } from "./normalize-query.js";
 
-export type SearchResult = {
-  component: AssortmentComponent;
+type CatalogSearchItem = {
+  id: string;
+  role: Exclude<CatalogCategory, "all">;
+  rebrickablePartNum: string;
+  name: string;
+  rebrickableCategoryName: string;
+  colorNames?: readonly string[];
+  colorEvidence?: readonly { colorName: string }[];
+};
+
+export type SearchResult<T extends CatalogSearchItem = CatalogSearchItem> = {
+  component: T;
   score: number;
   matchedTerms: string[];
 };
 
-export type CatalogSearchResult = {
+export type CatalogSearchResult<T extends CatalogSearchItem = CatalogSearchItem> = {
   query: NormalizedQuery;
-  results: SearchResult[];
+  results: SearchResult<T>[];
   mode: "keyword";
 };
 
 type SearchOptions = { category?: Exclude<CatalogCategory, "all"> };
-type RankedResult = SearchResult & {
+type RankedResult<T extends CatalogSearchItem> = SearchResult<T> & {
   index: number;
   categoryMatches: boolean;
   colorsMatch: boolean;
@@ -23,32 +32,35 @@ type RankedResult = SearchResult & {
   idMatches: boolean;
 };
 
-function documentText(component: AssortmentComponent): string {
+const componentColorNames = (component: CatalogSearchItem): readonly string[] =>
+  component.colorNames ?? component.colorEvidence?.map(({ colorName }) => colorName) ?? [];
+
+function documentText(component: CatalogSearchItem): string {
   return [
     component.id,
     component.rebrickablePartNum,
     component.name,
     component.rebrickableCategoryName,
     component.role,
-    ...component.colorEvidence.map(({ colorName }) => colorName),
+    ...componentColorNames(component),
   ].join(" ").toLocaleLowerCase("en-US");
 }
 
-function colorMatches(component: AssortmentComponent, colorNames: readonly string[]): boolean {
-  const colors = component.colorEvidence.map(({ colorName }) => colorName.toLocaleLowerCase("en-US"));
+function colorMatches(component: CatalogSearchItem, colorNames: readonly string[]): boolean {
+  const colors = componentColorNames(component).map((colorName) => colorName.toLocaleLowerCase("en-US"));
   return colorNames.every((wanted) => colors.some((color) => color.includes(wanted) || wanted.includes(color)));
 }
 
-export function searchCatalog(
-  components: readonly AssortmentComponent[],
+export function searchCatalog<T extends CatalogSearchItem>(
+  components: readonly T[],
   input: string,
   options: SearchOptions = {},
-): CatalogSearchResult {
+): CatalogSearchResult<T> {
   const query = normalizeSearchQuery(input);
   const requestedCategory = options.category ?? query.categoryRole ?? undefined;
   const hasPositiveTerms = query.terms.length > 0 || query.relatedTerms.length > 0 || query.idMatches.length > 0;
   const results = components
-    .map((component, index): RankedResult => {
+    .map((component, index): RankedResult<T> => {
       const text = documentText(component);
       const exactId = query.idMatches.some((id) => component.rebrickablePartNum.toLocaleLowerCase("en-US") === id);
       const idContained = query.idMatches.some((id) => text.includes(id));

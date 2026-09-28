@@ -3,6 +3,11 @@ import ldrawThumbnailIndexJson from "../../data/generated/ldraw-catalog-thumbnai
 import ldrawFitReviewJson from "../../data/generated/ldraw-fit-review.json" with { type: "json" };
 import ldrawDigitalConnectivityJson from "../../data/generated/ldraw-digital-connectivity.json" with { type: "json" };
 import modelPackageIndexJson from "../../data/generated/model-packages.json" with { type: "json" };
+import {
+  catalogPackageSchema,
+  type CatalogPackagePart,
+  type CatalogRole,
+} from "../contracts/catalog-package.js";
 import type { AssortmentComponent, TestAssortment } from "../contracts/test-assortment.js";
 import type { ModelPackageIndex } from "../contracts/model-package.js";
 import type { LDrawFitReviewDocument, LDrawFitReviewEntry } from "../contracts/ldraw-fit-review.js";
@@ -46,7 +51,7 @@ const digitalConnectivityByComponentId = new Map(
   ldrawDigitalConnectivity.entries.map((entry) => [entry.componentId, entry]),
 );
 
-export type CatalogCategory = "all" | AssortmentComponent["role"];
+export type CatalogCategory = "all" | CatalogRole;
 
 export const CATALOG_CATEGORIES: ReadonlyArray<{ id: CatalogCategory; label: string }> = [
   { id: "all", label: "Alle Teile" },
@@ -56,6 +61,66 @@ export const CATALOG_CATEGORIES: ReadonlyArray<{ id: CatalogCategory; label: str
   { id: "legsAssembly", label: "Beine" },
   { id: "handAccessory", label: "Zubehör" },
 ];
+
+const catalogPackageLoaders: Record<CatalogRole, () => Promise<unknown>> = {
+  head: () => import("../../data/generated/catalog-packages/head.json"),
+  headwear: () => import("../../data/generated/catalog-packages/headwear.json"),
+  torsoAssembly: () => import("../../data/generated/catalog-packages/torso-assembly.json"),
+  legsAssembly: () => import("../../data/generated/catalog-packages/legs-assembly.json"),
+  handAccessory: () => import("../../data/generated/catalog-packages/hand-accessory.json"),
+};
+
+const catalogRoles = CATALOG_CATEGORIES.flatMap(({ id }) => id === "all" ? [] : [id]);
+const catalogPackageCache = new Map<CatalogRole, Promise<readonly CatalogPackagePart[]>>();
+const componentByCatalogKey = new Map(
+  catalogAssortment.components.map((component) => [
+    `${component.role}:${component.rebrickablePartNum}`,
+    component,
+  ]),
+);
+
+const catalogKey = (part: Pick<CatalogPackagePart, "role" | "rebrickablePartNum">): string =>
+  `${part.role}:${part.rebrickablePartNum}`;
+
+export const curatedCatalogParts: CatalogPackagePart[] = catalogAssortment.components.map((component) => ({
+  id: component.id,
+  role: component.role,
+  rebrickablePartNum: component.rebrickablePartNum,
+  name: component.name,
+  rebrickableCategoryId: component.rebrickableCategoryId,
+  rebrickableCategoryName: component.rebrickableCategoryName,
+  material: component.material,
+  colorNames: [...new Set(component.colorEvidence.map(({ colorName }) => colorName))],
+}));
+
+const loadCatalogRole = (role: CatalogRole): Promise<readonly CatalogPackagePart[]> => {
+  const cached = catalogPackageCache.get(role);
+  if (cached) return cached;
+  const promise = catalogPackageLoaders[role]().then((module) => {
+    const parsed = catalogPackageSchema.parse((module as { default: unknown }).default);
+    const partsByKey = new Map(parsed.parts.map((part) => [catalogKey(part), part]));
+    for (const part of curatedCatalogParts.filter((entry) => entry.role === role)) {
+      partsByKey.set(catalogKey(part), part);
+    }
+    return [...partsByKey.values()].sort((left, right) => {
+      const leftBuilderReady = componentByCatalogKey.has(catalogKey(left));
+      const rightBuilderReady = componentByCatalogKey.has(catalogKey(right));
+      if (leftBuilderReady !== rightBuilderReady) return leftBuilderReady ? -1 : 1;
+      return left.rebrickablePartNum.localeCompare(right.rebrickablePartNum, "en", { numeric: true });
+    });
+  });
+  catalogPackageCache.set(role, promise);
+  return promise;
+};
+
+export const loadCatalogParts = async (category: CatalogCategory): Promise<readonly CatalogPackagePart[]> => {
+  const roles = category === "all" ? catalogRoles : [category];
+  return (await Promise.all(roles.map(loadCatalogRole))).flat();
+};
+
+export const builderComponentForCatalogPart = (
+  part: Pick<CatalogPackagePart, "role" | "rebrickablePartNum">,
+): AssortmentComponent | undefined => componentByCatalogKey.get(catalogKey(part));
 
 const thumbnailByPartId = new Map(
   modelPackageIndex.thumbnails.map((thumbnail) => [thumbnail.partId, thumbnail.url]),

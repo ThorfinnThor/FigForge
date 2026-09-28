@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { catalogAssortment } from "../../src/components/catalog-workspace-data.js";
+import { curatedCatalogParts } from "../../src/components/catalog-workspace-data.js";
 import { searchCatalog } from "../../src/search/catalog-search.js";
 import { normalizeSearchQuery } from "../../src/search/normalize-query.js";
 
@@ -27,8 +27,8 @@ describe("FF-17 base search", () => {
   });
 
   it("uses exact IDs before lexical matches and applies category/color filters", () => {
-    const idResult = searchCatalog(catalogAssortment.components, "3626cpr0001");
-    const filtered = searchCatalog(catalogAssortment.components, "Köpfe schwarz");
+    const idResult = searchCatalog(curatedCatalogParts, "3626cpr0001");
+    const filtered = searchCatalog(curatedCatalogParts, "Köpfe schwarz");
 
     expect(idResult.results).toHaveLength(1);
     expect(idResult.results[0]?.component.rebrickablePartNum).toBe("3626cpr0001");

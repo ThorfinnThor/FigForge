@@ -1,12 +1,14 @@
-import { useEffect, useMemo, useRef, useState } from "react";
+import { useDeferredValue, useEffect, useMemo, useRef, useState } from "react";
 import { FigurePartsPanel } from "./FigurePartsPanel.js";
 import { FigureViewport } from "./FigureViewport.js";
 import { PartCard } from "./PartCard.js";
 import {
   CATALOG_CATEGORIES,
+  builderComponentForCatalogPart,
   catalogAssortment,
   digitalConnectivityForComponent,
   digitallySupportedLDrawEntryForComponent,
+  loadCatalogParts,
   referenceVariant,
   thumbnailForComponent,
   verifiedLDrawEntryForComponent,
@@ -25,12 +27,16 @@ import {
 } from "../figure/figure-document.js";
 import { loadCurrentFigureDraft, saveCurrentFigureDraft } from "../storage/figure-draft-store.js";
 import type { AssortmentComponent } from "../contracts/test-assortment.js";
+import type { CatalogPackagePart } from "../contracts/catalog-package.js";
 import type { LDrawCatalogRole, LDrawCatalogSelection } from "../scene/types.js";
 
 const categoryLabel = new Map(CATALOG_CATEGORIES.map((category) => [category.id, category.label]));
 
 type MobileTab = "parts" | "figure" | "list";
 type CatalogRole = AssortmentComponent["role"];
+type CatalogLoadState = "loading" | "ready" | "error";
+
+const INITIAL_VISIBLE_PARTS = 80;
 
 const initialSelectionByRole = (): Partial<Record<CatalogRole, string>> => referenceVariant
   ? {
@@ -60,8 +66,12 @@ function useMediaQuery(query: string) {
 }
 
 export function CatalogWorkspace() {
-  const [activeCategory, setActiveCategory] = useState<CatalogCategory>("all");
+  const [activeCategory, setActiveCategory] = useState<CatalogCategory>("head");
   const [query, setQuery] = useState("");
+  const deferredQuery = useDeferredValue(query);
+  const [catalogParts, setCatalogParts] = useState<readonly CatalogPackagePart[]>([]);
+  const [catalogLoadState, setCatalogLoadState] = useState<CatalogLoadState>("loading");
+  const [visiblePartCount, setVisiblePartCount] = useState(INITIAL_VISIBLE_PARTS);
   const [mobileTab, setMobileTab] = useState<MobileTab>("parts");
   const [isFigurePanelOpen, setIsFigurePanelOpen] = useState(false);
   const [selectedByRole, setSelectedByRole] = useState(initialSelectionByRole);
@@ -74,13 +84,34 @@ export function CatalogWorkspace() {
   const drawerCloseRef = useRef<HTMLButtonElement>(null);
   const searchResult = useMemo(
     () => searchCatalog(
-      catalogAssortment.components,
-      query,
+      catalogParts,
+      deferredQuery,
       activeCategory === "all" ? undefined : { category: activeCategory },
     ),
-    [activeCategory, query],
+    [activeCategory, catalogParts, deferredQuery],
   );
   const filteredComponents = searchResult.results.map(({ component }) => component);
+  const visibleComponents = filteredComponents.slice(0, visiblePartCount);
+
+  useEffect(() => {
+    let active = true;
+    setCatalogLoadState("loading");
+    setCatalogParts([]);
+    void loadCatalogParts(activeCategory)
+      .then((parts) => {
+        if (!active) return;
+        setCatalogParts(parts);
+        setCatalogLoadState("ready");
+      })
+      .catch(() => {
+        if (active) setCatalogLoadState("error");
+      });
+    return () => { active = false; };
+  }, [activeCategory]);
+
+  useEffect(() => {
+    setVisiblePartCount(INITIAL_VISIBLE_PARTS);
+  }, [activeCategory, deferredQuery]);
 
   const referenceComponent = (id: string) => catalogAssortment.components.find((component) => component.id === id);
   const selectedComponentIds = new Set(Object.values(selectedByRole));
@@ -246,12 +277,14 @@ export function CatalogWorkspace() {
           placeholder="Zum Beispiel: Ogerkopf mit Hauern"
           value={query}
           onChange={(event) => setQuery(event.target.value)}
-          hint={`${filteredComponents.length} von ${catalogAssortment.components.length} Katalogteilen · Basissuche`}
+          hint={catalogLoadState === "ready"
+            ? `${filteredComponents.length} von ${catalogParts.length} Katalogteilen · Basissuche`
+            : "Katalogpaket wird geladen …"}
         />
       </div>
       <div className="catalog-toolbar" aria-label="Aktiver Katalogfilter">
         <span className="catalog-toolbar__category">{categoryLabel.get(activeCategory)}</span>
-        <span className="catalog-toolbar__mode">Stichwortsuche · lokal</span>
+        <span className="catalog-toolbar__mode">20.202 Minifig-Teile · paketweise geladen</span>
         <span className="catalog-toolbar__policy">Nur Rebrickable Catalog Downloads/CSV</span>
       </div>
       {searchResult.query.warnings.length > 0 || searchResult.query.unknownTerms.length > 0 ? (
@@ -262,22 +295,46 @@ export function CatalogWorkspace() {
             : ""}
         </StatusMessage>
       ) : null}
-      {filteredComponents.length > 0 ? (
+      {catalogLoadState === "loading" ? (
+        <StatusMessage tone="info">Katalogpaket wird geladen …</StatusMessage>
+      ) : catalogLoadState === "error" ? (
+        <StatusMessage tone="danger">
+          Das Katalogpaket konnte nicht geladen werden. Bitte lade die Seite erneut.
+        </StatusMessage>
+      ) : filteredComponents.length > 0 ? (
+        <>
         <div className="part-grid">
-          {filteredComponents.map((component) => (
-            <PartCard
-              component={component}
-              key={component.id}
-              ldrawAvailable={Boolean(verifiedLDrawEntryForComponent(component.id))}
-              connectionStatus={digitalConnectivityForComponent(component.id)?.status}
-              onSelect={digitallySupportedLDrawEntryForComponent(component.id)
-                ? () => selectForPreview(component)
-                : undefined}
-              selected={selectedComponentIds.has(component.id)}
-              thumbnailUrl={thumbnailForComponent(component)}
-            />
-          ))}
+          {visibleComponents.map((component) => {
+            const builderComponent = builderComponentForCatalogPart(component);
+            const builderComponentId = builderComponent?.id;
+            return (
+              <PartCard
+                builderComponentId={builderComponentId}
+                component={component}
+                key={`${component.role}:${component.rebrickablePartNum}`}
+                ldrawAvailable={Boolean(builderComponentId && verifiedLDrawEntryForComponent(builderComponentId))}
+                connectionStatus={builderComponentId
+                  ? digitalConnectivityForComponent(builderComponentId)?.status
+                  : undefined}
+                onSelect={builderComponent && digitallySupportedLDrawEntryForComponent(builderComponent.id)
+                  ? () => selectForPreview(builderComponent)
+                  : undefined}
+                selected={Boolean(builderComponentId && selectedComponentIds.has(builderComponentId))}
+                thumbnailUrl={builderComponent ? thumbnailForComponent(builderComponent) : undefined}
+              />
+            );
+          })}
         </div>
+        {visibleComponents.length < filteredComponents.length ? (
+          <Button
+            className="catalog-load-more"
+            onClick={() => setVisiblePartCount((count) => count + INITIAL_VISIBLE_PARTS)}
+            variant="secondary"
+          >
+            Mehr anzeigen ({visibleComponents.length} von {filteredComponents.length})
+          </Button>
+        ) : null}
+        </>
       ) : (
         <StatusMessage tone="warning">
           Kein passender Treffer. Versuche einen allgemeineren Begriff oder ändere die Kategorie.
@@ -381,7 +438,7 @@ export function CatalogWorkspace() {
       )}
 
       <StatusMessage className="workspace-source-note" id="source-hinweis" tone="info">
-        Katalogstatus: kuratiert und belegt, aber noch nicht vollständig render- oder kaufgeprüft. MOC-Dateien und Rebrickable-API-Daten werden nicht verwendet.
+        Katalogstatus: 20.202 Minifig-Teile aus belegten Rebrickable Catalog Downloads/CSV. Nur Einträge mit geprüftem LDraw-Modell und digitalem Anschlussprofil sind in die Figur einsetzbar; fehlende Bilder werden nicht aus fremden Websiteinhalten ergänzt. MOC-Dateien und Rebrickable-API-Daten werden nicht verwendet.
         {" "}<a href="/licenses/LDCadShadowLibrary-NOTICE.txt" target="_blank" rel="noreferrer">Anschlussdaten-Lizenz</a>
       </StatusMessage>
     </div>
