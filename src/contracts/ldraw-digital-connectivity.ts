@@ -32,6 +32,17 @@ const blockedEntrySchema = z.object({
   note: z.string().min(1).max(600),
 }).strict();
 
+const familyProfileSchema = z.object({
+  profileId: stableId,
+  role: z.literal("torsoAssembly"),
+  placementMode: z.literal("prototype-family-origin"),
+  placementTransformLdu: matrix4Schema,
+  targetSlot: z.literal("torsoAssembly"),
+  eligibility: z.literal("official-shortcut-standard-torso-arms-hands"),
+  evidenceFiles: z.array(z.string().min(1)).min(1),
+  note: z.string().min(1).max(600),
+}).strict();
+
 export const ldrawDigitalConnectivitySchema = z.object({
   schemaVersion: z.literal(1),
   ticket: z.literal("FF-05/FF-16-digital-connectivity"),
@@ -47,6 +58,7 @@ export const ldrawDigitalConnectivitySchema = z.object({
   }).strict(),
   sourceFiles: z.array(sourceFileSchema).length(8),
   referenceAssemblySha256: sha256,
+  familyProfiles: z.array(familyProfileSchema).length(1),
   entries: z.array(z.discriminatedUnion("status", [supportedEntrySchema, blockedEntrySchema])).length(10),
   summary: z.object({
     entryCount: z.literal(10),

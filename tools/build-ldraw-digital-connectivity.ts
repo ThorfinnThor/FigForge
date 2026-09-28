@@ -69,7 +69,8 @@ requireMeta("parts/3841.dat", "SNAP_CYL [gender=M]");
 const transforms = prototypeTransforms(prototypeRaw);
 const head = transforms.get("3626cpcbe.dat");
 const headwear = transforms.get("25409.dat");
-if (!head || !headwear) throw new Error("Reference head/headwear transforms are missing");
+const torsoAssembly = transforms.get("973c01.dat");
+if (!head || !headwear || !torsoAssembly) throw new Error("Reference family transforms are missing");
 
 const rightHand = ldrawMatrix([23.6904, 26.774, -9.8982, 0.985, 0.1202, -0.1202, -0.17, 0.6964, -0.6964, 0, 0.707, 0.707]);
 const handGrip = ldrawMatrix([0, -0.82275, -9.8951, 1, 0, 0, 0, 0.9681, -0.2504, 0, 0.2504, 0.9681]);
@@ -81,6 +82,7 @@ const snapPlacement = (sourceConnector: Matrix4): number[] => rounded(
 );
 const headTransform = rounded(head);
 const headwearTransform = rounded(headwear);
+const torsoAssemblyTransform = rounded(torsoAssembly);
 const headEvidence = ["parts/s/3626cs02.dat", "parts/s/973s01.dat"];
 
 const document = ldrawDigitalConnectivitySchema.parse({
@@ -101,6 +103,16 @@ const document = ldrawDigitalConnectivitySchema.parse({
     sha256: sha256(vendorRaw[index]!),
   })),
   referenceAssemblySha256: sha256(prototypeRaw),
+  familyProfiles: [{
+    profileId: "standard-minifig-torso-assembly-v1",
+    role: "torsoAssembly",
+    placementMode: "prototype-family-origin",
+    placementTransformLdu: torsoAssemblyTransform,
+    targetSlot: "torsoAssembly",
+    eligibility: "official-shortcut-standard-torso-arms-hands",
+    evidenceFiles: ["parts/973c01.dat", "parts/s/973s01.dat"],
+    note: "Complete official torso shortcuts containing a 973-family torso, both standard arms and two hands share the identity transform of the official 973c01 reference assembly.",
+  }],
   entries: [
     ...["ff03-head-3626c", "ff03-head-3626cpr0001", "ff03-head-3626cpr0387"].map((componentId) => ({
       componentId,

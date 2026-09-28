@@ -46,6 +46,38 @@
     }
   ],
   "referenceAssemblySha256": "ce4bb41330448fdf264edc62bae4d0d2ad07abf450d30161b2a61b1d96ce1fef",
+  "familyProfiles": [
+    {
+      "profileId": "standard-minifig-torso-assembly-v1",
+      "role": "torsoAssembly",
+      "placementMode": "prototype-family-origin",
+      "placementTransformLdu": [
+        1,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        1
+      ],
+      "targetSlot": "torsoAssembly",
+      "eligibility": "official-shortcut-standard-torso-arms-hands",
+      "evidenceFiles": [
+        "parts/973c01.dat",
+        "parts/s/973s01.dat"
+      ],
+      "note": "Complete official torso shortcuts containing a 973-family torso, both standard arms and two hands share the identity transform of the official 973c01 reference assembly."
+    }
+  ],
   "entries": [
     {
       "componentId": "ff03-head-3626c",

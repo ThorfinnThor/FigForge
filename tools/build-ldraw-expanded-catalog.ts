@@ -15,6 +15,7 @@ import { LDrawConditionalLineMaterial } from "three/addons/materials/LDrawCondit
 import { LDrawLoader } from "three/addons/loaders/LDrawLoader.js";
 import { catalogPackageSchema, type CatalogPackagePart, type CatalogRole } from "../src/contracts/catalog-package.js";
 import { browserReferencePath, embeddedLdrawName } from "./lib/ldraw-paths.js";
+import { isCompleteStandardTorsoAssembly } from "./lib/ldraw-torso-assembly.js";
 
 const root = process.cwd();
 const libraryRoot = resolve(root, "data/incoming/ldraw-2608/extracted/ldraw");
@@ -25,7 +26,7 @@ const publicRoot = resolve(root, "public/assets/ldraw/official-2608");
 const modelDirectory = resolve(publicRoot, "models");
 const thumbnailDirectory = resolve(root, "public/assets/thumbnails/ldraw-expanded");
 const CUSTOM_COLOR_CODE = 10_000;
-const BUILD_ROLES = ["head", "headwear"] as const satisfies readonly CatalogRole[];
+const BUILD_ROLES = ["head", "headwear", "torsoAssembly"] as const satisfies readonly CatalogRole[];
 
 if (typeof globalThis.ProgressEvent === "undefined") {
   Object.defineProperty(globalThis, "ProgressEvent", {
@@ -79,7 +80,11 @@ type LDrawMesh = Mesh<BufferGeometry, Material | Material[]>;
 
 const sha256 = (content: string | Buffer): string => createHash("sha256").update(content).digest("hex");
 const normalize = (value: string): string => value.trim().toLowerCase();
-const packageFileByRole = { head: "head.json", headwear: "headwear.json" } as const;
+const packageFileByRole = {
+  head: "head.json",
+  headwear: "headwear.json",
+  torsoAssembly: "torso-assembly.json",
+} as const;
 
 async function collectFiles(directory: string): Promise<string[]> {
   const entries = await readdir(directory, { withFileTypes: true });
@@ -284,12 +289,17 @@ const curatedAssortment = JSON.parse(await readFile(resolve(root, "data/curated/
 const curatedKeys = new Set(curatedAssortment.components.map(({ role, rebrickablePartNum }) => `${role}:${normalize(rebrickablePartNum)}`));
 const digitalConnectivity = JSON.parse(await readFile(resolve(root, "data/generated/ldraw-digital-connectivity.json"), "utf8")) as {
   entries: Array<{ role: CatalogRole; status: string; placementTransformLdu: number[] | null }>;
+  familyProfiles: Array<{ role: CatalogRole; placementTransformLdu: number[] }>;
 };
 const placementByRole = new Map(BUILD_ROLES.map((role) => {
-  const reference = digitalConnectivity.entries.find((entry) => entry.role === role && entry.status === "digitally-supported");
+  const reference = digitalConnectivity.familyProfiles.find((profile) => profile.role === role)
+    ?? digitalConnectivity.entries.find((entry) => entry.role === role && entry.status === "digitally-supported");
   if (!reference?.placementTransformLdu) throw new Error(`Missing ${role} family-origin transform`);
   return [role, reference.placementTransformLdu] as const;
 }));
+
+const supportsRoleAssembly = async (role: (typeof BUILD_ROLES)[number], candidate: Candidate): Promise<boolean> =>
+  role !== "torsoAssembly" || isCompleteStandardTorsoAssembly(await sourceFor(candidate.file));
 
 const matchedParts: Array<{
   part: CatalogPackagePart & { role: (typeof BUILD_ROLES)[number] };
@@ -301,7 +311,10 @@ for (const role of BUILD_ROLES) {
   const catalogPackage = catalogPackageSchema.parse(raw);
   for (const part of catalogPackage.parts) {
     if (curatedKeys.has(`${role}:${normalize(part.rebrickablePartNum)}`)) continue;
-    const directCandidates = candidateIndex.get(normalize(part.rebrickablePartNum)) ?? [];
+    const directCandidates = [];
+    for (const candidate of candidateIndex.get(normalize(part.rebrickablePartNum)) ?? []) {
+      if (await supportsRoleAssembly(role, candidate)) directCandidates.push(candidate);
+    }
     const directFiles = [...new Set(directCandidates.map(({ file }) => file))];
     if (directFiles.length > 1) {
       ambiguousMappingsExcluded += 1;
@@ -317,9 +330,12 @@ for (const role of BUILD_ROLES) {
     }
 
     const normalizedPart = normalizedByPartNum.get(normalize(part.rebrickablePartNum));
-    const parentCandidates = (normalizedPart?.printParentPartNums ?? []).flatMap((parentPartNum) =>
-      (candidateIndex.get(normalize(parentPartNum)) ?? []).map((candidate) => ({ candidate, parentPartNum }))
-    );
+    const parentCandidates = [];
+    for (const parentPartNum of normalizedPart?.printParentPartNums ?? []) {
+      for (const candidate of candidateIndex.get(normalize(parentPartNum)) ?? []) {
+        if (await supportsRoleAssembly(role, candidate)) parentCandidates.push({ candidate, parentPartNum });
+      }
+    }
     const parentFiles = [...new Set(parentCandidates.map(({ candidate }) => candidate.file))];
     if (parentFiles.length > 1) {
       ambiguousMappingsExcluded += 1;
@@ -367,9 +383,10 @@ for (const [index, { part, candidate }] of matchedParts.entries()) {
   const colorVariant = normalizedPart?.colorVariants[0];
   const colorRgb = colorVariant?.rgb && /^[A-F0-9]{6}$/u.test(colorVariant.rgb) ? colorVariant.rgb : "A0A8A4";
   const isPrintParentFallback = candidate.matchType === "rebrickable-print-parent";
+  const assetRole = part.role === "torsoAssembly" ? "torso" : part.role;
   const modelName = isPrintParentFallback
-    ? `${part.role}-geometry-${basename(candidate.file, ".dat")}-${colorRgb.toLowerCase()}`.replaceAll(/[^a-z0-9._-]/gu, "-")
-    : `${part.role === "head" ? "head" : "headwear"}-${normalize(part.rebrickablePartNum).replaceAll(/[^a-z0-9._-]/gu, "-")}`;
+    ? `${assetRole}-geometry-${basename(candidate.file, ".dat")}-${colorRgb.toLowerCase()}`.replaceAll(/[^a-z0-9._-]/gu, "-")
+    : `${assetRole}-${normalize(part.rebrickablePartNum).replaceAll(/[^a-z0-9._-]/gu, "-")}`;
   const assetKey = isPrintParentFallback ? `${part.role}:${candidate.file}:${colorRgb}` : `${part.role}:${part.rebrickablePartNum}`;
   const cachedFailure = fallbackFailureCache.get(assetKey);
   if (cachedFailure) {
@@ -490,6 +507,7 @@ const output = {
     digitallySupportedCount: outputEntries.length,
     headCount: outputEntries.filter(({ role }) => role === "head").length,
     headwearCount: outputEntries.filter(({ role }) => role === "headwear").length,
+    torsoAssemblyCount: outputEntries.filter(({ role }) => role === "torsoAssembly").length,
     directMappingCount: outputEntries.filter(({ mappingEvidence }) => mappingEvidence !== "rebrickable-print-parent").length,
     printParentGeometryFallbackCount: outputEntries.filter(({ mappingEvidence }) => mappingEvidence === "rebrickable-print-parent").length,
     generatedAssetCount: outputEntries.length - outputEntries.filter(({ mappingEvidence }) => mappingEvidence === "rebrickable-print-parent").length + fallbackAssetCache.size,

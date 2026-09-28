@@ -295,7 +295,8 @@ export async function buildLDrawCatalogCoverage(
     methodology: [
       "Catalog scope is limited to the five minifigure-relevant packages derived from locked Rebrickable Catalog Downloads/CSV.",
       "Official LDraw matches require either an exact top-level parts/*.dat filename or an explicit !KEYWORDS Rebrickable identifier.",
-      "Head and headwear print variants may reuse a unique unprinted parent geometry only when part_relationships.csv explicitly declares the print relationship.",
+      "Head, headwear and complete torso-assembly print variants may reuse a unique unprinted parent geometry only when part_relationships.csv explicitly declares the print relationship.",
+      "Torso entries become builder-ready only when the official LDraw file is a shortcut containing a 973-family torso, left and right standard arms, and two hands.",
       "No fuzzy name matching, Rebrickable API data, image scraping, LDraw models, or MOC files are used.",
       "A unique model mapping is not treated as builder-ready until a role-specific placement profile and rendering both succeed.",
     ],
