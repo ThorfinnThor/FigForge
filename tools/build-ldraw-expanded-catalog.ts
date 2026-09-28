@@ -1,5 +1,5 @@
 import { createHash } from "node:crypto";
-import { cp, mkdir, readFile, readdir, rm, writeFile } from "node:fs/promises";
+import { chmod, cp, mkdir, readFile, readdir, rm, writeFile } from "node:fs/promises";
 import { basename, dirname, relative, resolve, sep } from "node:path";
 import sharp from "sharp";
 import {
@@ -130,6 +130,13 @@ async function dependencyClosure(topLevelPath: string, fileIndex: ReadonlyMap<st
 function embeddedName(path: string): string {
   if (path.startsWith("parts/s/") || path.startsWith("p/48/")) return path;
   return basename(path);
+}
+
+function browserReferencePath(path: string): string {
+  if (path.startsWith("parts/s/")) return path.slice("parts/".length);
+  if (path.startsWith("parts/")) return path.slice("parts/".length);
+  if (path.startsWith("p/")) return `../${path}`;
+  throw new Error(`Unsupported official LDraw dependency path: ${path}`);
 }
 
 async function packedModel(
@@ -320,6 +327,8 @@ await mkdir(thumbnailDirectory, { recursive: true });
 await cp(resolve(libraryRoot, "LDConfig.ldr"), resolve(publicRoot, "LDConfig.ldr"));
 await cp(resolve(libraryRoot, "CAlicense.txt"), resolve(root, "public/licenses/LDraw-CAlicense-2.0.txt"));
 await cp(resolve(libraryRoot, "CAlicense4.txt"), resolve(root, "public/licenses/LDraw-CAlicense-4.0.txt"));
+await chmod(resolve(root, "public/licenses/LDraw-CAlicense-2.0.txt"), 0o644);
+await chmod(resolve(root, "public/licenses/LDraw-CAlicense-4.0.txt"), 0o644);
 const materials = await readFile(resolve(libraryRoot, "LDConfig.ldr"), "utf8");
 const copiedDependencies = new Set<string>();
 const outputEntries: Array<Record<string, unknown>> = [];
@@ -390,6 +399,20 @@ for (const [index, { part, candidate }] of matchedParts.entries()) {
     console.log(`Generated ${index + 1}/${matchedParts.length}`);
   }
 }
+
+const browserFileMap = new Map<string, string>();
+for (const path of [...copiedDependencies].sort()) {
+  const reference = path.startsWith("parts/") ? path.slice("parts/".length) : path.slice("p/".length);
+  if (browserFileMap.has(reference)) {
+    throw new Error(`Ambiguous browser LDraw reference: ${reference}`);
+  }
+  browserFileMap.set(reference, browserReferencePath(path));
+}
+await writeFile(
+  resolve(publicRoot, "file-map.json"),
+  `${JSON.stringify(Object.fromEntries(browserFileMap))}\n`,
+  "utf8",
+);
 
 const output = {
   schemaVersion: 1,

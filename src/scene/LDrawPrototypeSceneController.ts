@@ -25,10 +25,31 @@ import type { CameraPreset, LDrawCatalogRole, LDrawCatalogSelection } from "./ty
 const MODEL_PATH = "/assets/ldraw/prototype/models/figforge-minifigure-packed.mpd";
 const MATERIALS_PATH = "/assets/ldraw/prototype/LDConfig.ldr";
 const OFFICIAL_PARTS_LIBRARY_PATH = "/assets/ldraw/official-2608/";
+const OFFICIAL_FILE_MAP_PATH = "/assets/ldraw/official-2608/file-map.json";
 const MODEL_HEIGHT = 3.08;
 const CAMERA_TARGET = new Vector3(0, 1.66, 0);
 
 type PrototypeReplacementRole = Exclude<LDrawCatalogRole, "handAccessory">;
+
+async function loadOfficialFileMap(baseUrl: string): Promise<Record<string, string>> {
+  const url = new URL(OFFICIAL_FILE_MAP_PATH, baseUrl);
+  if (url.origin !== new URL(baseUrl).origin) {
+    throw new Error("The LDraw file map must be same-origin");
+  }
+  const response = await fetch(url);
+  if (!response.ok) {
+    throw new Error(`Das LDraw-Dateiverzeichnis konnte nicht geladen werden (${response.status}).`);
+  }
+  const value: unknown = await response.json();
+  if (!value || typeof value !== "object" || Array.isArray(value)) {
+    throw new Error("Das LDraw-Dateiverzeichnis ist ungültig.");
+  }
+  const entries = Object.entries(value);
+  if (entries.some(([key, path]) => !key || typeof path !== "string" || !path.endsWith(".dat"))) {
+    throw new Error("Das LDraw-Dateiverzeichnis enthält ungültige Einträge.");
+  }
+  return Object.fromEntries(entries);
+}
 
 const FIGURE_SLOT_PLACEMENTS: Record<PrototypeReplacementRole, {
   prototypeFileName: string;
@@ -145,7 +166,11 @@ export class LDrawPrototypeSceneController {
       .setConditionalLineMaterial(LDrawConditionalLineMaterial)
       .setPartsLibraryPath(new URL(OFFICIAL_PARTS_LIBRARY_PATH, baseUrl).href);
 
-    await loader.preloadMaterials(materialsUrl.href);
+    const [fileMap] = await Promise.all([
+      loadOfficialFileMap(baseUrl),
+      loader.preloadMaterials(materialsUrl.href),
+    ]);
+    loader.setFileMap(fileMap);
     this.#loader = loader;
     const model = await loader.loadAsync(modelUrl.href);
     if (this.#disposed) {
