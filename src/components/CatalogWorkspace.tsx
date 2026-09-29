@@ -120,13 +120,18 @@ export function CatalogWorkspace() {
   }, [activeCategory, deferredQuery]);
 
   const selectedComponentIds = new Set(Object.values(selectedByRole));
+  const figureSlot = (id: CatalogRole, label: string) => {
+    const componentId = selectedByRole[id];
+    const component = componentId ? builderComponentForId(componentId) : undefined;
+    return { id, label, component, thumbnailUrl: component ? thumbnailForComponent(component) : undefined };
+  };
   const figureSlots = [
-    { id: "head", label: "Kopf", component: selectedByRole.head ? builderComponentForId(selectedByRole.head) : undefined },
-    { id: "headwear", label: "Kopfbedeckung", component: selectedByRole.headwear ? builderComponentForId(selectedByRole.headwear) : undefined },
-    { id: "torsoAssembly", label: "Oberkörper", component: selectedByRole.torsoAssembly ? builderComponentForId(selectedByRole.torsoAssembly) : undefined },
-    { id: "legsAssembly", label: "Beine", component: selectedByRole.legsAssembly ? builderComponentForId(selectedByRole.legsAssembly) : undefined },
-    { id: "handAccessory", label: "Handzubehör", component: selectedByRole.handAccessory ? builderComponentForId(selectedByRole.handAccessory) : undefined },
-  ] as const;
+    figureSlot("head", "Kopf"),
+    figureSlot("headwear", "Kopfbedeckung"),
+    figureSlot("torsoAssembly", "Oberkörper"),
+    figureSlot("legsAssembly", "Beine"),
+    figureSlot("handAccessory", "Handzubehör"),
+  ];
   const selectedLDrawParts = Object.entries(selectedByRole).flatMap(([role, componentId]) => {
     if (!componentId || !isLDrawCatalogRole(role)) {
       return [];
@@ -257,6 +262,7 @@ export function CatalogWorkspace() {
           aria-label={`${category.label} filtern`}
           aria-pressed={activeCategory === category.id}
           className="category-rail__button"
+          data-category={category.id}
           key={category.id}
           onClick={() => setActiveCategory(category.id)}
           size="sm"
@@ -372,7 +378,7 @@ export function CatalogWorkspace() {
   return (
     <div className="app-shell" id="builder">
       <header className="app-header">
-        <a className="wordmark" href="#builder">FigForge</a>
+        <a className="wordmark" href="#builder">Fig<span>Forge</span></a>
         <nav className="app-nav" aria-label="Hauptnavigation">
           <a className="app-nav__link app-nav__link--active" href="#builder" aria-current="page">Builder</a>
           <a className="app-nav__link" href="#figure-panel">Deine Figur</a>

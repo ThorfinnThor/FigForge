@@ -31,7 +31,13 @@ export function PartCard({
     : undefined;
 
   return (
-    <Card className="part-card" selected={selected && connectionStatus === "digitally-supported"}>
+    <Card
+      className="part-card"
+      data-role={component.role}
+      selected={selected && connectionStatus === "digitally-supported"}
+    >
+      <span className="part-card__hang" aria-hidden="true" />
+      <div className="part-card__band" aria-hidden="true" />
       <div className="part-card__image-wrap">
         {thumbnailUrl ? (
           <img className="part-card__image" src={thumbnailUrl} alt="" loading="lazy" />
@@ -40,14 +46,19 @@ export function PartCard({
             Keine Bildvorschau
           </span>
         )}
-        <span className="part-card__badge">
+      </div>
+      <div className="part-card__body">
+        <span
+          className="part-card__badge"
+          data-tone={connectionStatus === "digitally-supported"
+            ? selected ? "active" : geometryOnlyPreview ? "geometry" : "connected"
+            : "blocked"}
+        >
           {connectionStatus === "digitally-supported"
             ? selected ? "Aktiv" : geometryOnlyPreview ? "Geometrie ohne Druck" : "Digital verbunden"
             : builderComponentId ? ldrawAvailable ? "Gesperrt" : "Katalog"
               : "Catalog CSV"}
         </span>
-      </div>
-      <div className="part-card__body">
         <h3 className="part-card__title">{component.name}</h3>
         <p className="part-card__id">Rebrickable · {component.rebrickablePartNum}</p>
         <StatusMessage className="part-card__status" tone="warning">

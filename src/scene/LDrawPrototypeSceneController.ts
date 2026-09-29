@@ -92,10 +92,11 @@ export class LDrawPrototypeSceneController {
 
   constructor(options: PrototypeSceneControllerOptions) {
     this.#canvas = options.canvas;
-    this.#renderer = new WebGLRenderer({ canvas: options.canvas, antialias: true, alpha: false });
+    this.#renderer = new WebGLRenderer({ canvas: options.canvas, antialias: true, alpha: true });
     this.#renderer.outputColorSpace = SRGBColorSpace;
     this.#renderer.shadowMap.enabled = true;
-    this.#renderer.setClearColor(new Color(0xebe7df), 1);
+    // Transparent clear: the display-case backdrop is drawn by CSS behind the canvas.
+    this.#renderer.setClearColor(new Color(0x1d2748), 0);
 
     this.#camera = new PerspectiveCamera(32, 1, 0.1, 100);
     this.#controls = new OrbitControls(this.#camera, options.canvas);
@@ -120,8 +121,8 @@ export class LDrawPrototypeSceneController {
     this.#scene.add(rimLight);
 
     const stage = new Mesh(
-      new CircleGeometry(2.75, 64),
-      new MeshStandardMaterial({ color: 0xd6d0c5, roughness: 0.94, metalness: 0 }),
+      new CircleGeometry(1.25, 64),
+      new MeshStandardMaterial({ color: 0xc4b99f, roughness: 0.9, metalness: 0 }),
     );
     stage.rotation.x = -Math.PI / 2;
     stage.position.y = 0.03;
