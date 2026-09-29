@@ -1,6 +1,6 @@
 # FigForge – verbindliche Arbeitsregeln
 
-Der Implementierungsplan unter `docs/implementation-plan.md` und die Designreferenz unter `design/reference.png` sind maßgeblich.
+Der Implementierungsplan unter `docs/implementation-plan.md` und die Gestaltung „Lochwand“ aus `docs/decisions/ADR-007-lochwand-design.md` sind maßgeblich. Die ältere Designreferenz `design/reference.png` gilt nur noch für die Anordnung der Arbeitszonen; ihre Farben und Schriften sind ersetzt.
 
 ## Unveränderliche Grenzen
 

@@ -188,7 +188,8 @@ Die Richtung: **eine Lochwand im Spielwarenladen**. Teile hängen als Blisterkar
 | `--card` | `#FFFDF8` | Blisterkarten, Suchfeld, Panels und Sekundärbuttons. |
 | `--card-rule` | `#E3DCCB` | Gestrichelte Trennlinien in Karten und Listen. |
 | `--ink` / `--ink-muted` | `#1D2748` / `#5D6177` | Text auf Karten; Erläuterungen und IDs. |
-| `--signal` / `--signal-shadow` | `#F4C21B` / `#B8870A` | Primärbutton, Überschriften auf Dunkelblau, Wortmarke und Fokusrahmen. |
+| `--signal` / `--signal-shadow` | `#F4C21B` / `#B8870A` | Primärbutton, Überschriften auf Dunkelblau, Wortmarke und Fokusrahmen auf Dunkelblau. |
+| `--focus-ring` | `#1D2748` | Fokusrahmen auf hellen Flächen; auf dunkelblauen Flächen auf `--signal` umgestellt. |
 | `--ok-bg` / `--ok-ink` | `#DFF3E7` / `#18643D` | Status „Digital verbunden“. |
 | `--geo-bg` / `--geo-ink` | `#FFF0D1` / `#8A5200` | Status „Geometrie ohne Druck“ und ungeprüfte Zuordnung. |
 | `--danger` | `#B42318` | Fehler und blockierte Aktionen. |
@@ -199,7 +200,7 @@ Die Richtung: **eine Lochwand im Spielwarenladen**. Teile hängen als Blisterkar
 
 Berechnete Kontraste ausgewählter Vollfarben: Dunkelblau auf Karte etwa **14,4:1**, Sekundärtext auf Karte etwa **6,0:1**, Dunkelblau auf Signalgelb etwa **8,8:1**, Weiß auf Dunkelblau etwa **14,6:1**, `--navy-soft` auf Dunkelblau etwa **9,3:1**, `--danger` auf Karte etwa **6,5:1**, beide Status-Badges über **5,6:1**. Das sind eigene sRGB-Berechnungen; halbtransparente Flächen und reale Zustände werden separat getestet. Signalgelb erhält immer dunkelblaue, nicht weiße Schrift.
 
-**Zu prüfen:** Der gelbe Fokusrahmen hat gegen Karte (etwa 1,6:1) und Lochwand (etwa 1,9:1) wenig Kontrast. Er ist durch 3 px Stärke und 2 px Abstand sichtbar, muss aber in der visuellen Abnahme (14.3) gegen WCAG 2.2 AA geprüft werden.
+**Fokusrahmen:** 3 px mit 2 px Abstand in `--focus-ring`. Auf hellen Flächen und der Lochwand ist er Dunkelblau (etwa 14,4:1 gegen Karte, 4,6:1 gegen Wand), auf dunkelblauen Flächen (Kopfzeile, Schilder, Vitrine, Panelkopf, mobile Tabs) Signalgelb (etwa 8,8:1). Gelb auf Karte oder Wand (etwa 1,6:1 bzw. 1,9:1) ist als Fokusrahmen nicht zulässig.
 
 Radien und Abstände: `--radius-md` 12 px (Buttons, Karten), `--radius-lg` 16 px (Panels, Vitrine), Abstände `--space-1` bis `--space-8` von 4 bis 32 px. `src/styles/tokens.css` ist die einzige Quelle der Werte; der FF-12-Test schreibt die Lochwand-Kernwerte fest.
 
