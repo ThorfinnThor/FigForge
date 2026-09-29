@@ -1,4 +1,11 @@
+/*
+ * FigForge design tokens.
+ * FF-12 base set (neutral surfaces, spacing, radii) plus the "Lochwand" layer
+ * (ADR-007): a toy-shop pegboard wall, navy signage, cream blister cards and
+ * one colour per catalog category.
+ */
 :root {
+  /* FF-12 base set */
   --bg-app: #f5f6f4;
   --surface: #ffffff;
   --surface-soft: #eff2ef;
@@ -28,4 +35,36 @@
   --space-6: 24px;
   --space-8: 32px;
   --space-12: 48px;
+
+  /* Lochwand layer */
+  --peg: #b98655;
+  --peg-hole: #6e4b2b;
+  --peg-shade: rgb(0 0 0 / 25%);
+  --navy: #1d2748;
+  --navy-deep: #151c36;
+  --navy-soft: #c8cde6;
+  --card: #fffdf8;
+  --card-rule: #e3dccb;
+  --ink: #1d2748;
+  --ink-muted: #5d6177;
+  --signal: #f4c21b;
+  --signal-shadow: #b8870a;
+  --ok-bg: #dff3e7;
+  --ok-ink: #18643d;
+  --geo-bg: #fff0d1;
+  --geo-ink: #8a5200;
+  --stage-light: rgb(255 243 196 / 22%);
+
+  /* One colour per catalog category, used on hooks, cards and figure rows. */
+  --cat-all: #fffdf8;
+  --cat-head: #f4c21b;
+  --cat-headwear: #2f6fd0;
+  --cat-torso: #e0452f;
+  --cat-legs: #2f9460;
+  --cat-accessory: #8a52c7;
+
+  --font-display: "Lilita One", "Arial Rounded MT Bold", system-ui, sans-serif;
+  --font-body: "Rubik", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --lift: 0 5px 0 var(--peg-shade);
+  --lift-navy: 0 4px 0 var(--navy);
 }

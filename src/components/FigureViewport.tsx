@@ -137,36 +137,16 @@ export function FigureViewport({ selectedParts }: FigureViewportProps) {
 
   return (
     <section className="scene-lab" aria-labelledby="scene-heading">
-      <div className="scene-copy">
-        <p className="eyebrow">Lokaler LDraw-Prototyp</p>
-        <h1 id="scene-heading">Echte Teile statt Platzhalter</h1>
-        <p className="lede">
-          Belegte Katalogmodelle werden über versionierte digitale Anschlussprofile zusammengesetzt.
-          Das ist eine digitale Platzierung, keine Garantie für reale Klemmkraft oder Materialspannung.
-        </p>
-
-        <dl className="prototype-part-list">
-          {(["legsAssembly", "torsoAssembly", "head", "headwear", "handAccessory"] as const).map((role) => {
-            const part = selectedForRole(role);
-            const labels: Record<LDrawCatalogRole, string> = {
-              handAccessory: "Zubehör",
-              head: "Kopf",
-              headwear: "Haare",
-              legsAssembly: "Beine",
-              torsoAssembly: "Torso",
-            };
-            return (
-              <div key={role}>
-                <dt>{labels[role]}</dt>
-                <dd>{part
-                  ? `${part.rebrickablePartNum} · LDraw ${part.ldrawUpdate}${role === "handAccessory" ? " · rechte Hand" : ""}`
-                  : role === "legsAssembly" ? "Basisprototyp · kein Katalogmodell ausgewählt" : "Kein belegtes Modell ausgewählt"}</dd>
-              </div>
-            );
-          })}
-        </dl>
-
-        <fieldset>
+      <Card className="viewport-shell">
+        <span className="viewport-shell__beam" aria-hidden="true" />
+        <h2 className="viewport-shell__label" id="scene-heading">Vorschau</h2>
+        <div className="fixture-badge">Offizielle LDraw-Geometrie · lokaler Prototyp</div>
+        <canvas
+          ref={canvasRef}
+          className="viewport"
+          aria-label="Interaktive 3D-Vorschau einer aus offiziellen LDraw-Teilen zusammengesetzten Minifigur"
+        />
+        <fieldset className="camera-controls">
           <legend>Kamera</legend>
           <div className="control-list control-list--compact">
             {CAMERA_PRESETS.map((preset) => (
@@ -182,28 +162,48 @@ export function FigureViewport({ selectedParts }: FigureViewportProps) {
             ))}
           </div>
         </fieldset>
+        <p className="viewport-help">Ziehen zum Drehen · Mausrad oder Trackpad zum Zoomen</p>
+      </Card>
 
+      <div className="scene-copy">
         <StatusMessage tone={statusTone}>{status}</StatusMessage>
-        <StatusMessage tone="warning">
-          Lokaler MVP: Standardteile mit belegtem Anschlussprofil werden digital zusammengesetzt.
-          Nicht belegte Teile bleiben gesperrt.
-        </StatusMessage>
         {sceneState === "context-lost" || sceneState === "error" ? (
           <Button onClick={recoverScene} variant="secondary">
             3D-Szene wiederherstellen
           </Button>
         ) : null}
+        <details className="scene-details">
+          <summary>Eingesetzte LDraw-Modelle</summary>
+          <dl className="prototype-part-list">
+            {(["legsAssembly", "torsoAssembly", "head", "headwear", "handAccessory"] as const).map((role) => {
+              const part = selectedForRole(role);
+              const labels: Record<LDrawCatalogRole, string> = {
+                handAccessory: "Zubehör",
+                head: "Kopf",
+                headwear: "Haare",
+                legsAssembly: "Beine",
+                torsoAssembly: "Torso",
+              };
+              return (
+                <div key={role}>
+                  <dt>{labels[role]}</dt>
+                  <dd>{part
+                    ? `${part.rebrickablePartNum} · LDraw ${part.ldrawUpdate}${role === "handAccessory" ? " · rechte Hand" : ""}`
+                    : role === "legsAssembly" ? "Basisprototyp · kein Katalogmodell ausgewählt" : "Kein belegtes Modell ausgewählt"}</dd>
+                </div>
+              );
+            })}
+          </dl>
+          <p className="lede">
+            Belegte Katalogmodelle werden über versionierte digitale Anschlussprofile zusammengesetzt.
+            Das ist eine digitale Platzierung, keine Garantie für reale Klemmkraft oder Materialspannung.
+          </p>
+        </details>
+        <StatusMessage tone="warning">
+          Lokaler MVP: Standardteile mit belegtem Anschlussprofil werden digital zusammengesetzt.
+          Nicht belegte Teile bleiben gesperrt.
+        </StatusMessage>
       </div>
-
-      <Card className="viewport-shell">
-        <div className="fixture-badge">Offizielle LDraw-Geometrie · lokaler Prototyp</div>
-        <canvas
-          ref={canvasRef}
-          className="viewport"
-          aria-label="Interaktive 3D-Vorschau einer aus offiziellen LDraw-Teilen zusammengesetzten Minifigur"
-        />
-        <p className="viewport-help">Ziehen zum Drehen · Mausrad oder Trackpad zum Zoomen</p>
-      </Card>
     </section>
   );
 }

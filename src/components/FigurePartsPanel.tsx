@@ -8,6 +8,7 @@ type FigureSlot = {
   id: string;
   label: string;
   component: CatalogPackagePart | undefined;
+  thumbnailUrl?: string | undefined;
 };
 
 type FigurePartsPanelProps = {
@@ -35,6 +36,7 @@ export function FigurePartsPanel({
 
   return (
     <aside className={["figure-panel", drawer ? "figure-panel--drawer" : ""].filter(Boolean).join(" ")} id="figure-panel" aria-labelledby="figure-panel-heading">
+      <span className="figure-panel__hang" aria-hidden="true" />
       <div className="figure-panel__header">
         <div>
           <p className="eyebrow">Auswahl</p>
@@ -57,8 +59,11 @@ export function FigurePartsPanel({
       </div>
       <div className="figure-slot-list">
         {slots.map((slot) => (
-          <Card className="figure-slot" key={slot.id}>
-            <div className="figure-slot__thumb" aria-hidden="true">{slot.component?.role === "head" ? "K" : "•"}</div>
+          <Card className="figure-slot" data-role={slot.id} data-filled={slot.component ? "true" : undefined} key={slot.id}>
+            <span className="figure-slot__bar" aria-hidden="true" />
+            <div className="figure-slot__thumb" aria-hidden="true">
+              {slot.component && slot.thumbnailUrl ? <img alt="" src={slot.thumbnailUrl} /> : null}
+            </div>
             <div className="figure-slot__copy">
               <p className="figure-slot__label">{slot.label}</p>
               <p className="figure-slot__name">{slot.component?.name ?? "Nicht belegt"}</p>
