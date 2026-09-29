@@ -17,5 +17,5 @@ Diese Entscheidung ersetzt die visuellen Vorgaben aus Kapitel 4 des Implementier
 - Keine neuen Funktionen: Kategorien, Suche, Ergebnisraster, 3D-Vorschau mit drei Kameraansichten, fünf Figurslots, lokales Speichern und JSON-Import/-Export bleiben wie bisher.
 - Status bleiben sichtbar unterschieden: „Digital verbunden“, „Geometrie ohne Druck“ und gesperrte Einträge.
 - Die 3D-Szene rendert mit transparentem Hintergrund; der Vitrinenhintergrund kommt aus CSS. Der Drehteller ist kleiner als die bisherige Standfläche.
-- Die FF-12-Basistokens bleiben in `src/styles/tokens.css` erhalten, weil der FF-12-Test sie festschreibt; die neue Oberfläche nutzt die zusätzliche Lochwand-Ebene. Ob der FF-12-Sollwert angepasst wird, entscheidet der Projektverantwortliche.
-- Kapitel 4 des Implementierungsplans beschreibt weiterhin die alte Gestaltung, bis es gesondert nachgezogen wird.
+- Die alten FF-12-Tokens (heller Hintergrund, Grün, Lime und ungenutzte Schatten/Radien) sind aus `src/styles/tokens.css` entfernt. Der FF-12-Test schreibt seit der Freigabe des Projektverantwortlichen am 29.09.2026 die Lochwand-Kernwerte fest und prüft, dass keine Grün-/Lime-Tokens zurückkehren.
+- Kapitel 4 des Implementierungsplans beschreibt die Lochwand-Gestaltung; ein Screenshot der umgesetzten Oberfläche liegt unter `docs/assets/figforge-lochwand-desktop.png`.
