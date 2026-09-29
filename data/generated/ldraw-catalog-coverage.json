@@ -16,7 +16,8 @@
     "Head, headwear, complete torso-assembly and complete legs-assembly print variants may reuse a unique unprinted parent geometry only when part_relationships.csv explicitly declares the print relationship.",
     "Torso entries become builder-ready only when the official LDraw file is a shortcut containing a 973-family torso, left and right standard arms, and two hands.",
     "Legs entries become builder-ready only when the official top-level LDraw file title explicitly declares a complete Minifig Hips and Legs assembly.",
-    "No fuzzy name matching, Rebrickable API data, image scraping, LDraw models, or MOC files are used.",
+    "Rebrickable 973cNNhMM torso and 970cNN legs assemblies without an official assembly file are composed from official standard parts (ADR-008) when the colour code is unanimous across all unprinted base assemblies and the entry's own name states the same colours; printed torsos additionally need a unique official torso print part.",
+    "No fuzzy name matching, Rebrickable API data, image scraping, LDraw models, or MOC files are used; Rebrickable names are read only through fixed anchored patterns.",
     "A unique model mapping is not treated as builder-ready until a role-specific placement profile and rendering both succeed."
   ],
   "classificationDefinitions": {
@@ -28,19 +29,19 @@
   },
   "summary": {
     "catalogPartCount": 20202,
-    "visualizedPartCount": 6461,
-    "builderReadyPartCount": 6459,
-    "remainingCatalogPartCount": 13743,
-    "remainingWithoutVisualizationCount": 13741,
+    "visualizedPartCount": 6630,
+    "builderReadyPartCount": 6628,
+    "remainingCatalogPartCount": 13574,
+    "remainingWithoutVisualizationCount": 13572,
     "uniqueOfficialMappingCount": 2272,
     "ambiguousOfficialMappingCount": 122,
     "noOfficialMappingCount": 17808,
     "remainingClassifications": {
       "builder-blocked": 2,
       "render-failed": 0,
-      "placement-profile-required": 592,
+      "placement-profile-required": 582,
       "ambiguous-official-mapping": 83,
-      "no-official-mapping": 13066
+      "no-official-mapping": 12907
     }
   },
   "roles": {
@@ -70,26 +71,26 @@
     },
     "torsoAssembly": {
       "catalogPartCount": 7851,
-      "builderReadyPartCount": 521,
-      "remainingCatalogPartCount": 7330,
+      "builderReadyPartCount": 629,
+      "remainingCatalogPartCount": 7222,
       "remainingClassifications": {
         "builder-blocked": 1,
         "render-failed": 0,
-        "placement-profile-required": 167,
+        "placement-profile-required": 157,
         "ambiguous-official-mapping": 3,
-        "no-official-mapping": 7159
+        "no-official-mapping": 7061
       }
     },
     "legsAssembly": {
       "catalogPartCount": 3231,
-      "builderReadyPartCount": 171,
-      "remainingCatalogPartCount": 3060,
+      "builderReadyPartCount": 232,
+      "remainingCatalogPartCount": 2999,
       "remainingClassifications": {
         "builder-blocked": 0,
         "render-failed": 0,
         "placement-profile-required": 43,
         "ambiguous-official-mapping": 25,
-        "no-official-mapping": 2992
+        "no-official-mapping": 2931
       }
     },
     "handAccessory": {
@@ -25865,16 +25866,6 @@
       "reason": null
     },
     {
-      "catalogId": "part:973c01h03",
-      "role": "torsoAssembly",
-      "rebrickablePartNum": "973c01h03",
-      "name": "Torso, Yellow Arms, Black Hands [Plain]",
-      "classification": "no-official-mapping",
-      "ldrawFiles": [],
-      "mappingEvidence": [],
-      "reason": null
-    },
-    {
       "catalogId": "part:973c01h03pr0001",
       "role": "torsoAssembly",
       "rebrickablePartNum": "973c01h03pr0001",
@@ -26735,16 +26726,6 @@
       "reason": null
     },
     {
-      "catalogId": "part:973c01h27",
-      "role": "torsoAssembly",
-      "rebrickablePartNum": "973c01h27",
-      "name": "Torso, Yellow Arms, White Hands [Plain]",
-      "classification": "no-official-mapping",
-      "ldrawFiles": [],
-      "mappingEvidence": [],
-      "reason": null
-    },
-    {
       "catalogId": "part:973c01h27pr0001",
       "role": "torsoAssembly",
       "rebrickablePartNum": "973c01h27pr0001",
@@ -26789,16 +26770,6 @@
       "role": "torsoAssembly",
       "rebrickablePartNum": "973c01h27pr6857",
       "name": "Torso, Black Apron, Flaming Hamburger, Nougat Straps print, Yellow Arms, White Hands",
-      "classification": "no-official-mapping",
-      "ldrawFiles": [],
-      "mappingEvidence": [],
-      "reason": null
-    },
-    {
-      "catalogId": "part:973c01h28",
-      "role": "torsoAssembly",
-      "rebrickablePartNum": "973c01h28",
-      "name": "Torso, Yellow Arms, Blue Hands [Plain]",
       "classification": "no-official-mapping",
       "ldrawFiles": [],
       "mappingEvidence": [],
@@ -26879,16 +26850,6 @@
       "role": "torsoAssembly",
       "rebrickablePartNum": "973c02h01pr2608",
       "name": "Torso Shirt with String (Bolo) Tie Print, Light Nougat Arms, Yellow Hands",
-      "classification": "no-official-mapping",
-      "ldrawFiles": [],
-      "mappingEvidence": [],
-      "reason": null
-    },
-    {
-      "catalogId": "part:973c02h02",
-      "role": "torsoAssembly",
-      "rebrickablePartNum": "973c02h02",
-      "name": "Torso, Light Nougat Arms and Hands [Plain]",
       "classification": "no-official-mapping",
       "ldrawFiles": [],
       "mappingEvidence": [],
@@ -28255,16 +28216,6 @@
       "reason": null
     },
     {
-      "catalogId": "part:973c03h01",
-      "role": "torsoAssembly",
-      "rebrickablePartNum": "973c03h01",
-      "name": "Torso, Black Arms, Yellow Hands [Plain]",
-      "classification": "no-official-mapping",
-      "ldrawFiles": [],
-      "mappingEvidence": [],
-      "reason": null
-    },
-    {
       "catalogId": "part:973c03h01pr0001",
       "role": "torsoAssembly",
       "rebrickablePartNum": "973c03h01pr0001",
@@ -29289,16 +29240,6 @@
       "role": "torsoAssembly",
       "rebrickablePartNum": "973c03h01pr9999",
       "name": "Torso Tank Top with Dolphin, Palm Trees, and Sun, with Magenta, Dark Pink, and Dark Purple Sunset Print, Black Arms, Yellow Hands",
-      "classification": "no-official-mapping",
-      "ldrawFiles": [],
-      "mappingEvidence": [],
-      "reason": null
-    },
-    {
-      "catalogId": "part:973c03h02",
-      "role": "torsoAssembly",
-      "rebrickablePartNum": "973c03h02",
-      "name": "Torso, Black Arms, Light Nougat Hands [Plain]",
       "classification": "no-official-mapping",
       "ldrawFiles": [],
       "mappingEvidence": [],
@@ -30575,16 +30516,6 @@
       "reason": null
     },
     {
-      "catalogId": "part:973c03h03",
-      "role": "torsoAssembly",
-      "rebrickablePartNum": "973c03h03",
-      "name": "Torso, Black Arms and Hands [Plain]",
-      "classification": "no-official-mapping",
-      "ldrawFiles": [],
-      "mappingEvidence": [],
-      "reason": null
-    },
-    {
       "catalogId": "part:973c03h03pr0001",
       "role": "torsoAssembly",
       "rebrickablePartNum": "973c03h03pr0001",
@@ -31487,20 +31418,6 @@
       "classification": "no-official-mapping",
       "ldrawFiles": [],
       "mappingEvidence": [],
-      "reason": null
-    },
-    {
-      "catalogId": "part:973c03h03pr2167",
-      "role": "torsoAssembly",
-      "rebrickablePartNum": "973c03h03pr2167",
-      "name": "Torso Muscles, White Venom Logo Print, Black Arms, Black Hands",
-      "classification": "placement-profile-required",
-      "ldrawFiles": [
-        "parts/973pz1.dat"
-      ],
-      "mappingEvidence": [
-        "explicit-keyword"
-      ],
       "reason": null
     },
     {
@@ -33544,16 +33461,6 @@
       "reason": null
     },
     {
-      "catalogId": "part:973c03h10",
-      "role": "torsoAssembly",
-      "rebrickablePartNum": "973c03h10",
-      "name": "Torso, Black Arms, Dark Red Hands [Plain]",
-      "classification": "no-official-mapping",
-      "ldrawFiles": [],
-      "mappingEvidence": [],
-      "reason": null
-    },
-    {
       "catalogId": "part:973c03h10pr0001",
       "role": "torsoAssembly",
       "rebrickablePartNum": "973c03h10pr0001",
@@ -33618,16 +33525,6 @@
       "role": "torsoAssembly",
       "rebrickablePartNum": "973c03h11pr7099",
       "name": "Torso, Coat, Black Collar, Reddish Brown Belt, Gold Trim, Buttons print, Black Arms, Dark Tan Hands",
-      "classification": "no-official-mapping",
-      "ldrawFiles": [],
-      "mappingEvidence": [],
-      "reason": null
-    },
-    {
-      "catalogId": "part:973c03h12",
-      "role": "torsoAssembly",
-      "rebrickablePartNum": "973c03h12",
-      "name": "Torso, Black Arms, Dark Bluish Gray Hands [Plain]",
       "classification": "no-official-mapping",
       "ldrawFiles": [],
       "mappingEvidence": [],
@@ -35294,16 +35191,6 @@
       "reason": null
     },
     {
-      "catalogId": "part:973c03h27",
-      "role": "torsoAssembly",
-      "rebrickablePartNum": "973c03h27",
-      "name": "Torso, Black Arms, White Hands [Plain]",
-      "classification": "no-official-mapping",
-      "ldrawFiles": [],
-      "mappingEvidence": [],
-      "reason": null
-    },
-    {
       "catalogId": "part:973c03h27pr0001",
       "role": "torsoAssembly",
       "rebrickablePartNum": "973c03h27pr0001",
@@ -36594,16 +36481,6 @@
       "reason": null
     },
     {
-      "catalogId": "part:973c04h04",
-      "role": "torsoAssembly",
-      "rebrickablePartNum": "973c04h04",
-      "name": "Torso, Dark Azure Arms and Hands [Plain]",
-      "classification": "no-official-mapping",
-      "ldrawFiles": [],
-      "mappingEvidence": [],
-      "reason": null
-    },
-    {
       "catalogId": "part:973c04h04pr0001",
       "role": "torsoAssembly",
       "rebrickablePartNum": "973c04h04pr0001",
@@ -37604,16 +37481,6 @@
       "reason": null
     },
     {
-      "catalogId": "part:973c05h02",
-      "role": "torsoAssembly",
-      "rebrickablePartNum": "973c05h02",
-      "name": "Torso, Dark Blue Arms, Light Nougat Hands [Plain]",
-      "classification": "no-official-mapping",
-      "ldrawFiles": [],
-      "mappingEvidence": [],
-      "reason": null
-    },
-    {
       "catalogId": "part:973c05h02pr0001",
       "role": "torsoAssembly",
       "rebrickablePartNum": "973c05h02pr0001",
@@ -38298,16 +38165,6 @@
       "role": "torsoAssembly",
       "rebrickablePartNum": "973c05h02pr9904",
       "name": "Torso Pixelated Jacket with Black and Yellow Trim over Dark Bluish Gray Shirt Print, Dark Blue Arms, Light Nougat Hands",
-      "classification": "no-official-mapping",
-      "ldrawFiles": [],
-      "mappingEvidence": [],
-      "reason": null
-    },
-    {
-      "catalogId": "part:973c05h03",
-      "role": "torsoAssembly",
-      "rebrickablePartNum": "973c05h03",
-      "name": "Torso, Dark Blue Arms, Black Hands [Plain]",
       "classification": "no-official-mapping",
       "ldrawFiles": [],
       "mappingEvidence": [],
@@ -40014,16 +39871,6 @@
       "reason": null
     },
     {
-      "catalogId": "part:973c06h01",
-      "role": "torsoAssembly",
-      "rebrickablePartNum": "973c06h01",
-      "name": "Torso, Bright Green Arms, Yellow Hands [Plain]",
-      "classification": "no-official-mapping",
-      "ldrawFiles": [],
-      "mappingEvidence": [],
-      "reason": null
-    },
-    {
       "catalogId": "part:973c06h01pr0001",
       "role": "torsoAssembly",
       "rebrickablePartNum": "973c06h01pr0001",
@@ -40254,16 +40101,6 @@
       "reason": null
     },
     {
-      "catalogId": "part:973c06h06",
-      "role": "torsoAssembly",
-      "rebrickablePartNum": "973c06h06",
-      "name": "Torso, Bright Green Arms and Hands [Plain]",
-      "classification": "no-official-mapping",
-      "ldrawFiles": [],
-      "mappingEvidence": [],
-      "reason": null
-    },
-    {
       "catalogId": "part:973c06h06pr1179",
       "role": "torsoAssembly",
       "rebrickablePartNum": "973c06h06pr1179",
@@ -40281,20 +40118,6 @@
       "classification": "no-official-mapping",
       "ldrawFiles": [],
       "mappingEvidence": [],
-      "reason": null
-    },
-    {
-      "catalogId": "part:973c06h06pr2262",
-      "role": "torsoAssembly",
-      "rebrickablePartNum": "973c06h06pr2262",
-      "name": "Torso Turtle Shell Print, Bright Green Arms and Hands",
-      "classification": "placement-profile-required",
-      "ldrawFiles": [
-        "parts/973ptb.dat"
-      ],
-      "mappingEvidence": [
-        "explicit-keyword"
-      ],
       "reason": null
     },
     {
@@ -40408,16 +40231,6 @@
       "reason": null
     },
     {
-      "catalogId": "part:973c06h13",
-      "role": "torsoAssembly",
-      "rebrickablePartNum": "973c06h13",
-      "name": "Torso, Bright Green Arms, Nougat Hands [Plain]",
-      "classification": "no-official-mapping",
-      "ldrawFiles": [],
-      "mappingEvidence": [],
-      "reason": null
-    },
-    {
       "catalogId": "part:973c06h14pr4823",
       "role": "torsoAssembly",
       "rebrickablePartNum": "973c06h14pr4823",
@@ -40452,16 +40265,6 @@
       "role": "torsoAssembly",
       "rebrickablePartNum": "973c06h25pr6077",
       "name": "Torso, Ugly Christmas Sweater, Baby Groot, White Music Notes print, Bright Green Arms, Sand Green Hands",
-      "classification": "no-official-mapping",
-      "ldrawFiles": [],
-      "mappingEvidence": [],
-      "reason": null
-    },
-    {
-      "catalogId": "part:973c06h27",
-      "role": "torsoAssembly",
-      "rebrickablePartNum": "973c06h27",
-      "name": "Torso, Bright Green Arms, White Hands [Plain]",
       "classification": "no-official-mapping",
       "ldrawFiles": [],
       "mappingEvidence": [],
@@ -41028,16 +40831,6 @@
       "reason": null
     },
     {
-      "catalogId": "part:973c07h07",
-      "role": "torsoAssembly",
-      "rebrickablePartNum": "973c07h07",
-      "name": "Torso, Dark Brown Arms and Hands [Plain]",
-      "classification": "no-official-mapping",
-      "ldrawFiles": [],
-      "mappingEvidence": [],
-      "reason": null
-    },
-    {
       "catalogId": "part:973c07h07pr6678",
       "role": "torsoAssembly",
       "rebrickablePartNum": "973c07h07pr6678",
@@ -41408,16 +41201,6 @@
       "reason": null
     },
     {
-      "catalogId": "part:973c08h08",
-      "role": "torsoAssembly",
-      "rebrickablePartNum": "973c08h08",
-      "name": "Torso, Dark Gray Arms and Hands [Plain]",
-      "classification": "no-official-mapping",
-      "ldrawFiles": [],
-      "mappingEvidence": [],
-      "reason": null
-    },
-    {
       "catalogId": "part:973c08h08pr0191",
       "role": "torsoAssembly",
       "rebrickablePartNum": "973c08h08pr0191",
@@ -41432,16 +41215,6 @@
       "role": "torsoAssembly",
       "rebrickablePartNum": "973c08h16pr0184",
       "name": "Torso Jacket, Shirt, Bow Tie, Pockets, Buckle Print, Dark Gray Arms, Brown Hands",
-      "classification": "no-official-mapping",
-      "ldrawFiles": [],
-      "mappingEvidence": [],
-      "reason": null
-    },
-    {
-      "catalogId": "part:973c08h17",
-      "role": "torsoAssembly",
-      "rebrickablePartNum": "973c08h17",
-      "name": "Torso, Dark Gray Arms, Light Gray Hands [Plain]",
       "classification": "no-official-mapping",
       "ldrawFiles": [],
       "mappingEvidence": [],
@@ -41488,40 +41261,10 @@
       "reason": null
     },
     {
-      "catalogId": "part:973c08h25",
-      "role": "torsoAssembly",
-      "rebrickablePartNum": "973c08h25",
-      "name": "Torso, Dark Gray Arms, Sand Green Hands [Plain]",
-      "classification": "no-official-mapping",
-      "ldrawFiles": [],
-      "mappingEvidence": [],
-      "reason": null
-    },
-    {
-      "catalogId": "part:973c08h27",
-      "role": "torsoAssembly",
-      "rebrickablePartNum": "973c08h27",
-      "name": "Torso, Dark Gray Arms, White Hands [Plain]",
-      "classification": "no-official-mapping",
-      "ldrawFiles": [],
-      "mappingEvidence": [],
-      "reason": null
-    },
-    {
       "catalogId": "part:973c08h27pr0270",
       "role": "torsoAssembly",
       "rebrickablePartNum": "973c08h27pr0270",
       "name": "Torso Jumpsuit with Chest Panel with Red Buttons and Tubes Print (AT-AT Driver), Dark Gray Arms, White Hands",
-      "classification": "no-official-mapping",
-      "ldrawFiles": [],
-      "mappingEvidence": [],
-      "reason": null
-    },
-    {
-      "catalogId": "part:973c09h01",
-      "role": "torsoAssembly",
-      "rebrickablePartNum": "973c09h01",
-      "name": "Torso, Dark Purple Arms, Yellow Hands [Plain]",
       "classification": "no-official-mapping",
       "ldrawFiles": [],
       "mappingEvidence": [],
@@ -41642,16 +41385,6 @@
       "role": "torsoAssembly",
       "rebrickablePartNum": "973c09h01pr9999",
       "name": "Torso Shirt, Silver Bats and Stars Print, Dark Purple Arms, Yellow Hands",
-      "classification": "no-official-mapping",
-      "ldrawFiles": [],
-      "mappingEvidence": [],
-      "reason": null
-    },
-    {
-      "catalogId": "part:973c09h02",
-      "role": "torsoAssembly",
-      "rebrickablePartNum": "973c09h02",
-      "name": "Torso, Dark Purple Arms, Light Nougat Hands [Plain]",
       "classification": "no-official-mapping",
       "ldrawFiles": [],
       "mappingEvidence": [],
@@ -41948,16 +41681,6 @@
       "reason": null
     },
     {
-      "catalogId": "part:973c09h09",
-      "role": "torsoAssembly",
-      "rebrickablePartNum": "973c09h09",
-      "name": "Torso, Dark Purple Arms and Hands [Plain]",
-      "classification": "no-official-mapping",
-      "ldrawFiles": [],
-      "mappingEvidence": [],
-      "reason": null
-    },
-    {
       "catalogId": "part:973c09h09pr2863",
       "role": "torsoAssembly",
       "rebrickablePartNum": "973c09h09pr2863",
@@ -42008,16 +41731,6 @@
       "reason": null
     },
     {
-      "catalogId": "part:973c09h12",
-      "role": "torsoAssembly",
-      "rebrickablePartNum": "973c09h12",
-      "name": "Torso, Dark Purple Arms, Dark Bluish Gray Hands [Plain]",
-      "classification": "no-official-mapping",
-      "ldrawFiles": [],
-      "mappingEvidence": [],
-      "reason": null
-    },
-    {
       "catalogId": "part:973c09h12pr1312",
       "role": "torsoAssembly",
       "rebrickablePartNum": "973c09h12pr1312",
@@ -42052,16 +41765,6 @@
       "role": "torsoAssembly",
       "rebrickablePartNum": "973c09h13pr5951",
       "name": "Torso Robes, Dark Purple Trim, Ornate Belt Print, Dark Purple Arms, Nougat Hands",
-      "classification": "no-official-mapping",
-      "ldrawFiles": [],
-      "mappingEvidence": [],
-      "reason": null
-    },
-    {
-      "catalogId": "part:973c09h14",
-      "role": "torsoAssembly",
-      "rebrickablePartNum": "973c09h14",
-      "name": "Torso, Dark Purple Arms, Light Bluish Gray Hands [Plain]",
       "classification": "no-official-mapping",
       "ldrawFiles": [],
       "mappingEvidence": [],
@@ -42502,16 +42205,6 @@
       "role": "torsoAssembly",
       "rebrickablePartNum": "973c09h80pr0001",
       "name": "Torso, Blue Violet Open Robe, Blue Trim, Lavender/Blue Shapes on Shirt, Gold Trim print, Dark Purple Arms, Umber Brown Hands",
-      "classification": "no-official-mapping",
-      "ldrawFiles": [],
-      "mappingEvidence": [],
-      "reason": null
-    },
-    {
-      "catalogId": "part:973c10h01",
-      "role": "torsoAssembly",
-      "rebrickablePartNum": "973c10h01",
-      "name": "Torso, Dark Red Arms, Yellow Hands [Plain]",
       "classification": "no-official-mapping",
       "ldrawFiles": [],
       "mappingEvidence": [],
@@ -44148,16 +43841,6 @@
       "reason": null
     },
     {
-      "catalogId": "part:973c10h12",
-      "role": "torsoAssembly",
-      "rebrickablePartNum": "973c10h12",
-      "name": "Torso, Dark Red Arms, Dark Bluish Gray Hands [Plain]",
-      "classification": "no-official-mapping",
-      "ldrawFiles": [],
-      "mappingEvidence": [],
-      "reason": null
-    },
-    {
       "catalogId": "part:973c10h12pr0001",
       "role": "torsoAssembly",
       "rebrickablePartNum": "973c10h12pr0001",
@@ -44698,30 +44381,6 @@
       "reason": null
     },
     {
-      "catalogId": "part:973c11h01",
-      "role": "torsoAssembly",
-      "rebrickablePartNum": "973c11h01",
-      "name": "Torso, Dark Tan Arms, Yellow Hands [Plain]",
-      "classification": "no-official-mapping",
-      "ldrawFiles": [],
-      "mappingEvidence": [],
-      "reason": null
-    },
-    {
-      "catalogId": "part:973c11h01pr0001",
-      "role": "torsoAssembly",
-      "rebrickablePartNum": "973c11h01pr0001",
-      "name": "Torso Apron, Reddish Brown with Pocket print, Dark Tan Arms, Yellow Hands",
-      "classification": "placement-profile-required",
-      "ldrawFiles": [
-        "parts/973pc8.dat"
-      ],
-      "mappingEvidence": [
-        "explicit-keyword"
-      ],
-      "reason": null
-    },
-    {
       "catalogId": "part:973c11h01pr0002",
       "role": "torsoAssembly",
       "rebrickablePartNum": "973c11h01pr0002",
@@ -44876,16 +44535,6 @@
       "role": "torsoAssembly",
       "rebrickablePartNum": "973c11h01pr9708",
       "name": "Torso Vest, Dark Tan Layers Print, Dark Tan Arms, Yellow Hands",
-      "classification": "no-official-mapping",
-      "ldrawFiles": [],
-      "mappingEvidence": [],
-      "reason": null
-    },
-    {
-      "catalogId": "part:973c11h02",
-      "role": "torsoAssembly",
-      "rebrickablePartNum": "973c11h02",
-      "name": "Torso, Dark Tan Arms, Light Nougat Hands [Plain]",
       "classification": "no-official-mapping",
       "ldrawFiles": [],
       "mappingEvidence": [],
@@ -45896,16 +45545,6 @@
       "role": "torsoAssembly",
       "rebrickablePartNum": "973c11h20pr4149",
       "name": "Torso Jacket with Utility Belt with Ammo, Shoulder Strap Print (Resistance Trooper), Dark Tan Arms, Olive Green",
-      "classification": "no-official-mapping",
-      "ldrawFiles": [],
-      "mappingEvidence": [],
-      "reason": null
-    },
-    {
-      "catalogId": "part:973c11h23",
-      "role": "torsoAssembly",
-      "rebrickablePartNum": "973c11h23",
-      "name": "Torso, Dark Tan Arms, Medium Nougat Hands [Plain]",
       "classification": "no-official-mapping",
       "ldrawFiles": [],
       "mappingEvidence": [],
@@ -47792,16 +47431,6 @@
       "reason": null
     },
     {
-      "catalogId": "part:973c12h12",
-      "role": "torsoAssembly",
-      "rebrickablePartNum": "973c12h12",
-      "name": "Torso, Dark Bluish Gray Arms and Hands [Plain]",
-      "classification": "no-official-mapping",
-      "ldrawFiles": [],
-      "mappingEvidence": [],
-      "reason": null
-    },
-    {
       "catalogId": "part:973c12h12pr0001",
       "role": "torsoAssembly",
       "rebrickablePartNum": "973c12h12pr0001",
@@ -48116,16 +47745,6 @@
       "role": "torsoAssembly",
       "rebrickablePartNum": "973c12h18pr3826",
       "name": "Torso Armor, Black Chest Plate Print (Gamora), Dark Bluish Gray Arms, Lime Hands",
-      "classification": "no-official-mapping",
-      "ldrawFiles": [],
-      "mappingEvidence": [],
-      "reason": null
-    },
-    {
-      "catalogId": "part:973c12h19",
-      "role": "torsoAssembly",
-      "rebrickablePartNum": "973c12h19",
-      "name": "Torso, Dark Bluish Gray Arms, Reddish Brown Hands [Plain]",
       "classification": "no-official-mapping",
       "ldrawFiles": [],
       "mappingEvidence": [],
@@ -48712,30 +48331,10 @@
       "reason": null
     },
     {
-      "catalogId": "part:973c13h27",
-      "role": "torsoAssembly",
-      "rebrickablePartNum": "973c13h27",
-      "name": "Torso, Nougat Arms, White Hands [PLAIN]",
-      "classification": "no-official-mapping",
-      "ldrawFiles": [],
-      "mappingEvidence": [],
-      "reason": null
-    },
-    {
       "catalogId": "part:973c13h27pr5509",
       "role": "torsoAssembly",
       "rebrickablePartNum": "973c13h27pr5509",
       "name": "Torso Tank Top, White Shirt, Bright Pink Pants / Tail Print, Nougat Arms, White Hands",
-      "classification": "no-official-mapping",
-      "ldrawFiles": [],
-      "mappingEvidence": [],
-      "reason": null
-    },
-    {
-      "catalogId": "part:973c14h01",
-      "role": "torsoAssembly",
-      "rebrickablePartNum": "973c14h01",
-      "name": "Torso, Light Bluish Gray Arms, Yellow Hands [Plain]",
       "classification": "no-official-mapping",
       "ldrawFiles": [],
       "mappingEvidence": [],
@@ -49852,16 +49451,6 @@
       "reason": null
     },
     {
-      "catalogId": "part:973c14h12",
-      "role": "torsoAssembly",
-      "rebrickablePartNum": "973c14h12",
-      "name": "Torso, Light Bluish Gray Arms, Dark Bluish Gray Hands [Plain]",
-      "classification": "no-official-mapping",
-      "ldrawFiles": [],
-      "mappingEvidence": [],
-      "reason": null
-    },
-    {
       "catalogId": "part:973c14h12pr0001",
       "role": "torsoAssembly",
       "rebrickablePartNum": "973c14h12pr0001",
@@ -50176,16 +49765,6 @@
       "role": "torsoAssembly",
       "rebrickablePartNum": "973c14h13pr4311",
       "name": "Torso Jacket, ID Badge, Black Sweater Print, Light Bluish Gray Arms, Nougat Hands",
-      "classification": "no-official-mapping",
-      "ldrawFiles": [],
-      "mappingEvidence": [],
-      "reason": null
-    },
-    {
-      "catalogId": "part:973c14h14",
-      "role": "torsoAssembly",
-      "rebrickablePartNum": "973c14h14",
-      "name": "Torso, Light Bluish Gray Arms and Hands",
       "classification": "no-official-mapping",
       "ldrawFiles": [],
       "mappingEvidence": [],
@@ -51152,30 +50731,10 @@
       "reason": null
     },
     {
-      "catalogId": "part:973c16h16",
-      "role": "torsoAssembly",
-      "rebrickablePartNum": "973c16h16",
-      "name": "Torso, Brown Arms, Brown Hands [Plain]",
-      "classification": "no-official-mapping",
-      "ldrawFiles": [],
-      "mappingEvidence": [],
-      "reason": null
-    },
-    {
       "catalogId": "part:973c16h25pr0029",
       "role": "torsoAssembly",
       "rebrickablePartNum": "973c16h25pr0029",
       "name": "Torso Jacket, Patchwork, with Blue T-shirt Print (Frankenstein), Brown Arms, Sand Green Hands",
-      "classification": "no-official-mapping",
-      "ldrawFiles": [],
-      "mappingEvidence": [],
-      "reason": null
-    },
-    {
-      "catalogId": "part:973c17h01",
-      "role": "torsoAssembly",
-      "rebrickablePartNum": "973c17h01",
-      "name": "Torso, Light Gray Arms, Yellow Hands [Plain]",
       "classification": "no-official-mapping",
       "ldrawFiles": [],
       "mappingEvidence": [],
@@ -51326,16 +50885,6 @@
       "role": "torsoAssembly",
       "rebrickablePartNum": "973c17h08pr0283",
       "name": "Torso Armor Plates Green Print (Boba Fett), Light Gray Arms Printed, Dark Gray Hands",
-      "classification": "no-official-mapping",
-      "ldrawFiles": [],
-      "mappingEvidence": [],
-      "reason": null
-    },
-    {
-      "catalogId": "part:973c17h17",
-      "role": "torsoAssembly",
-      "rebrickablePartNum": "973c17h17",
-      "name": "Torso, Light Gray Arms and Hands [Plain]",
       "classification": "no-official-mapping",
       "ldrawFiles": [],
       "mappingEvidence": [],
@@ -51956,16 +51505,6 @@
       "role": "torsoAssembly",
       "rebrickablePartNum": "973c18h69pr0001",
       "name": "Torso, Toy Story Alien in Blue Circle, Dark Blue Background print, Lime Arms, Medium Brown Hands",
-      "classification": "no-official-mapping",
-      "ldrawFiles": [],
-      "mappingEvidence": [],
-      "reason": null
-    },
-    {
-      "catalogId": "part:973c19h01",
-      "role": "torsoAssembly",
-      "rebrickablePartNum": "973c19h01",
-      "name": "Torso, Reddish Brown Arms, Yellow Hands [Plain]",
       "classification": "no-official-mapping",
       "ldrawFiles": [],
       "mappingEvidence": [],
@@ -52772,16 +52311,6 @@
       "reason": null
     },
     {
-      "catalogId": "part:973c19h13",
-      "role": "torsoAssembly",
-      "rebrickablePartNum": "973c19h13",
-      "name": "Torso, Reddish Brown Arms, Nougat Hands [Plain]",
-      "classification": "no-official-mapping",
-      "ldrawFiles": [],
-      "mappingEvidence": [],
-      "reason": null
-    },
-    {
       "catalogId": "part:973c19h13pr5708",
       "role": "torsoAssembly",
       "rebrickablePartNum": "973c19h13pr5708",
@@ -52816,16 +52345,6 @@
       "role": "torsoAssembly",
       "rebrickablePartNum": "973c19h18pr2537",
       "name": "Torso Bare Chest with Spider Web and Blue Round Jewel (Chi) Print, Reddish Brown Arms, Lime Hands",
-      "classification": "no-official-mapping",
-      "ldrawFiles": [],
-      "mappingEvidence": [],
-      "reason": null
-    },
-    {
-      "catalogId": "part:973c19h19",
-      "role": "torsoAssembly",
-      "rebrickablePartNum": "973c19h19",
-      "name": "Torso, Reddish Brown Arms, Reddish Brown Hands [Plain]",
       "classification": "no-official-mapping",
       "ldrawFiles": [],
       "mappingEvidence": [],
@@ -53672,16 +53191,6 @@
       "reason": null
     },
     {
-      "catalogId": "part:973c20h07",
-      "role": "torsoAssembly",
-      "rebrickablePartNum": "973c20h07",
-      "name": "Torso, Olive Green Arms, Dark Brown Hands",
-      "classification": "no-official-mapping",
-      "ldrawFiles": [],
-      "mappingEvidence": [],
-      "reason": null
-    },
-    {
       "catalogId": "part:973c20h07pr0001",
       "role": "torsoAssembly",
       "rebrickablePartNum": "973c20h07pr0001",
@@ -53866,16 +53375,6 @@
       "role": "torsoAssembly",
       "rebrickablePartNum": "973c20h19pr6307",
       "name": "Torso, Dark Brown Scarf, Belt, Gold Belt Buckle print, Olive Green Arms, Reddish Brown Hands",
-      "classification": "no-official-mapping",
-      "ldrawFiles": [],
-      "mappingEvidence": [],
-      "reason": null
-    },
-    {
-      "catalogId": "part:973c20h20",
-      "role": "torsoAssembly",
-      "rebrickablePartNum": "973c20h20",
-      "name": "Torso, Olive Green Arms, Olive Green Hands [Plain]",
       "classification": "no-official-mapping",
       "ldrawFiles": [],
       "mappingEvidence": [],
@@ -54492,16 +53991,6 @@
       "reason": null
     },
     {
-      "catalogId": "part:973c21h21",
-      "role": "torsoAssembly",
-      "rebrickablePartNum": "973c21h21",
-      "name": "Torso, Pearl Gold Arms and Hands [Plain]",
-      "classification": "no-official-mapping",
-      "ldrawFiles": [],
-      "mappingEvidence": [],
-      "reason": null
-    },
-    {
       "catalogId": "part:973c21h21pr0001",
       "role": "torsoAssembly",
       "rebrickablePartNum": "973c21h21pr0001",
@@ -54902,16 +54391,6 @@
       "reason": null
     },
     {
-      "catalogId": "part:973c22h01",
-      "role": "torsoAssembly",
-      "rebrickablePartNum": "973c22h01",
-      "name": "Torso, Red Arms, Yellow Hands [Plain]",
-      "classification": "no-official-mapping",
-      "ldrawFiles": [],
-      "mappingEvidence": [],
-      "reason": null
-    },
-    {
       "catalogId": "part:973c22h01pr0002",
       "role": "torsoAssembly",
       "rebrickablePartNum": "973c22h01pr0002",
@@ -55169,20 +54648,6 @@
       "classification": "no-official-mapping",
       "ldrawFiles": [],
       "mappingEvidence": [],
-      "reason": null
-    },
-    {
-      "catalogId": "part:973c22h01pr0048",
-      "role": "torsoAssembly",
-      "rebrickablePartNum": "973c22h01pr0048",
-      "name": "Torso Forestman Maroon Collar Print, Red Arms, Yellow Hands",
-      "classification": "placement-profile-required",
-      "ldrawFiles": [
-        "parts/973p48.dat"
-      ],
-      "mappingEvidence": [
-        "explicit-keyword"
-      ],
       "reason": null
     },
     {
@@ -56466,20 +55931,6 @@
       "reason": null
     },
     {
-      "catalogId": "part:973c22h02pr2091",
-      "role": "torsoAssembly",
-      "rebrickablePartNum": "973c22h02pr2091",
-      "name": "Torso Dress with Gold Ornaments Print, Red Arms, Light Nougat Hands",
-      "classification": "placement-profile-required",
-      "ldrawFiles": [
-        "parts/973ptf.dat"
-      ],
-      "mappingEvidence": [
-        "explicit-keyword"
-      ],
-      "reason": null
-    },
-    {
       "catalogId": "part:973c22h02pr2343",
       "role": "torsoAssembly",
       "rebrickablePartNum": "973c22h02pr2343",
@@ -56714,16 +56165,6 @@
       "role": "torsoAssembly",
       "rebrickablePartNum": "973c22h02pr9826",
       "name": "Torso White Lightning Bolt on Gold Field, Gold Trim Print (Shazam), Red Arms, Light Nougat Hands",
-      "classification": "no-official-mapping",
-      "ldrawFiles": [],
-      "mappingEvidence": [],
-      "reason": null
-    },
-    {
-      "catalogId": "part:973c22h03",
-      "role": "torsoAssembly",
-      "rebrickablePartNum": "973c22h03",
-      "name": "Torso, Red Arms, Black Hands [Plain]",
       "classification": "no-official-mapping",
       "ldrawFiles": [],
       "mappingEvidence": [],
@@ -57445,16 +56886,6 @@
       "reason": null
     },
     {
-      "catalogId": "part:973c22h08",
-      "role": "torsoAssembly",
-      "rebrickablePartNum": "973c22h08",
-      "name": "Torso, Red Arms, Dark Gray Hands [Plain]",
-      "classification": "no-official-mapping",
-      "ldrawFiles": [],
-      "mappingEvidence": [],
-      "reason": null
-    },
-    {
       "catalogId": "part:973c22h08pr0270",
       "role": "torsoAssembly",
       "rebrickablePartNum": "973c22h08pr0270",
@@ -57665,16 +57096,6 @@
       "reason": null
     },
     {
-      "catalogId": "part:973c22h11",
-      "role": "torsoAssembly",
-      "rebrickablePartNum": "973c22h11",
-      "name": "Torso, Red Arms, Dark Tan Hands [Plain]",
-      "classification": "no-official-mapping",
-      "ldrawFiles": [],
-      "mappingEvidence": [],
-      "reason": null
-    },
-    {
       "catalogId": "part:973c22h11pr0001",
       "role": "torsoAssembly",
       "rebrickablePartNum": "973c22h11pr0001",
@@ -57689,16 +57110,6 @@
       "role": "torsoAssembly",
       "rebrickablePartNum": "973c22h11pr4740",
       "name": "Torso Overall, Dark Blue with One Strap Down, Shirt Pockets with Pens Print, Red Arms, Dark Tan Hands",
-      "classification": "no-official-mapping",
-      "ldrawFiles": [],
-      "mappingEvidence": [],
-      "reason": null
-    },
-    {
-      "catalogId": "part:973c22h12",
-      "role": "torsoAssembly",
-      "rebrickablePartNum": "973c22h12",
-      "name": "Torso, Red Arms, Dark Bluish Gray Hands [Plain]",
       "classification": "no-official-mapping",
       "ldrawFiles": [],
       "mappingEvidence": [],
@@ -57979,16 +57390,6 @@
       "role": "torsoAssembly",
       "rebrickablePartNum": "973c22h21pr5160",
       "name": "Torso Bodysuit, Gold Spider Print, Red Arms, Pearl Gold Hands",
-      "classification": "no-official-mapping",
-      "ldrawFiles": [],
-      "mappingEvidence": [],
-      "reason": null
-    },
-    {
-      "catalogId": "part:973c22h22",
-      "role": "torsoAssembly",
-      "rebrickablePartNum": "973c22h22",
-      "name": "Torso, Red Arms and Hands [Plain]",
       "classification": "no-official-mapping",
       "ldrawFiles": [],
       "mappingEvidence": [],
@@ -59195,16 +58596,6 @@
       "reason": null
     },
     {
-      "catalogId": "part:973c24h01",
-      "role": "torsoAssembly",
-      "rebrickablePartNum": "973c24h01",
-      "name": "Torso, Sand Blue Arms, Yellow Hands [Plain]",
-      "classification": "no-official-mapping",
-      "ldrawFiles": [],
-      "mappingEvidence": [],
-      "reason": null
-    },
-    {
       "catalogId": "part:973c24h01pr0001",
       "role": "torsoAssembly",
       "rebrickablePartNum": "973c24h01pr0001",
@@ -59625,16 +59016,6 @@
       "reason": null
     },
     {
-      "catalogId": "part:973c24h03",
-      "role": "torsoAssembly",
-      "rebrickablePartNum": "973c24h03",
-      "name": "Torso, Sand Blue Arms, Black Hands [Plain]",
-      "classification": "no-official-mapping",
-      "ldrawFiles": [],
-      "mappingEvidence": [],
-      "reason": null
-    },
-    {
       "catalogId": "part:973c24h03pr0001",
       "role": "torsoAssembly",
       "rebrickablePartNum": "973c24h03pr0001",
@@ -59915,16 +59296,6 @@
       "reason": null
     },
     {
-      "catalogId": "part:973c24h12",
-      "role": "torsoAssembly",
-      "rebrickablePartNum": "973c24h12",
-      "name": "Torso, Sand Blue Arms, Dark Bluish Gray Hands [Plain]",
-      "classification": "no-official-mapping",
-      "ldrawFiles": [],
-      "mappingEvidence": [],
-      "reason": null
-    },
-    {
       "catalogId": "part:973c24h12pr0001",
       "role": "torsoAssembly",
       "rebrickablePartNum": "973c24h12pr0001",
@@ -60189,16 +59560,6 @@
       "role": "torsoAssembly",
       "rebrickablePartNum": "973c24h24pr6063",
       "name": "Torso, Rock Pattern, Dark Brown Straps, Belt, Gold Skull Belt Buckle print, Sand Blue Arms, Sand Blue Hands",
-      "classification": "no-official-mapping",
-      "ldrawFiles": [],
-      "mappingEvidence": [],
-      "reason": null
-    },
-    {
-      "catalogId": "part:973c24h26",
-      "role": "torsoAssembly",
-      "rebrickablePartNum": "973c24h26",
-      "name": "Torso, Sand Blue Arms, Tan Hands [Plain]",
       "classification": "no-official-mapping",
       "ldrawFiles": [],
       "mappingEvidence": [],
@@ -60765,16 +60126,6 @@
       "reason": null
     },
     {
-      "catalogId": "part:973c25h25",
-      "role": "torsoAssembly",
-      "rebrickablePartNum": "973c25h25",
-      "name": "Torso, Sand Green Arms and Hands [Plain]",
-      "classification": "no-official-mapping",
-      "ldrawFiles": [],
-      "mappingEvidence": [],
-      "reason": null
-    },
-    {
       "catalogId": "part:973c25h25pr0001",
       "role": "torsoAssembly",
       "rebrickablePartNum": "973c25h25pr0001",
@@ -60959,16 +60310,6 @@
       "role": "torsoAssembly",
       "rebrickablePartNum": "973c25h69pr6237",
       "name": "Torso, Robe, Gold Decorations, Dark Green Trim print, Sand Green Arms, Medium Brown Hands",
-      "classification": "no-official-mapping",
-      "ldrawFiles": [],
-      "mappingEvidence": [],
-      "reason": null
-    },
-    {
-      "catalogId": "part:973c26h01",
-      "role": "torsoAssembly",
-      "rebrickablePartNum": "973c26h01",
-      "name": "Torso, Tan Arms, Yellow Hands [Plain]",
       "classification": "no-official-mapping",
       "ldrawFiles": [],
       "mappingEvidence": [],
@@ -62815,16 +62156,6 @@
       "reason": null
     },
     {
-      "catalogId": "part:973c26h26",
-      "role": "torsoAssembly",
-      "rebrickablePartNum": "973c26h26",
-      "name": "Torso, Tan Arms and Hands [Plain]",
-      "classification": "no-official-mapping",
-      "ldrawFiles": [],
-      "mappingEvidence": [],
-      "reason": null
-    },
-    {
       "catalogId": "part:973c26h26pr0001",
       "role": "torsoAssembly",
       "rebrickablePartNum": "973c26h26pr0001",
@@ -63119,16 +62450,6 @@
       "role": "torsoAssembly",
       "rebrickablePartNum": "973c26h78pr0001",
       "name": "Torso, Rebel Coverall, Dark Tan Belt print, Tan Arms, Sienna Brown Hands",
-      "classification": "no-official-mapping",
-      "ldrawFiles": [],
-      "mappingEvidence": [],
-      "reason": null
-    },
-    {
-      "catalogId": "part:973c27h01",
-      "role": "torsoAssembly",
-      "rebrickablePartNum": "973c27h01",
-      "name": "Torso, White Arms, Yellow Hands [Plain]",
       "classification": "no-official-mapping",
       "ldrawFiles": [],
       "mappingEvidence": [],
@@ -64132,20 +63453,6 @@
       "classification": "no-official-mapping",
       "ldrawFiles": [],
       "mappingEvidence": [],
-      "reason": null
-    },
-    {
-      "catalogId": "part:973c27h01pr1443",
-      "role": "torsoAssembly",
-      "rebrickablePartNum": "973c27h01pr1443",
-      "name": "Torso Corset and Medium Blue Ribbon Print, White Arms, Yellow Hands",
-      "classification": "placement-profile-required",
-      "ldrawFiles": [
-        "parts/973p3o.dat"
-      ],
-      "mappingEvidence": [
-        "explicit-keyword"
-      ],
       "reason": null
     },
     {
@@ -67309,16 +66616,6 @@
       "reason": null
     },
     {
-      "catalogId": "part:973c27h03",
-      "role": "torsoAssembly",
-      "rebrickablePartNum": "973c27h03",
-      "name": "Torso, White Arms, Black Hands [Plain]",
-      "classification": "no-official-mapping",
-      "ldrawFiles": [],
-      "mappingEvidence": [],
-      "reason": null
-    },
-    {
       "catalogId": "part:973c27h03pr0001",
       "role": "torsoAssembly",
       "rebrickablePartNum": "973c27h03pr0001",
@@ -68989,16 +68286,6 @@
       "reason": null
     },
     {
-      "catalogId": "part:973c27h14",
-      "role": "torsoAssembly",
-      "rebrickablePartNum": "973c27h14",
-      "name": "Torso, White Arms, Light Bluish Gray Hands [Plain]",
-      "classification": "no-official-mapping",
-      "ldrawFiles": [],
-      "mappingEvidence": [],
-      "reason": null
-    },
-    {
       "catalogId": "part:973c27h14pr0001",
       "role": "torsoAssembly",
       "rebrickablePartNum": "973c27h14pr0001",
@@ -69036,20 +68323,6 @@
       "classification": "no-official-mapping",
       "ldrawFiles": [],
       "mappingEvidence": [],
-      "reason": null
-    },
-    {
-      "catalogId": "part:973c27h14pr2141",
-      "role": "torsoAssembly",
-      "rebrickablePartNum": "973c27h14pr2141",
-      "name": "Torso Chef Jacket, Red Scarf and Food Stains Print, White Arms, Light Bluish Gray Hands",
-      "classification": "placement-profile-required",
-      "ldrawFiles": [
-        "parts/973p5r.dat"
-      ],
-      "mappingEvidence": [
-        "explicit-keyword"
-      ],
       "reason": null
     },
     {
@@ -69787,16 +69060,6 @@
       "role": "torsoAssembly",
       "rebrickablePartNum": "973c27h26pr4468",
       "name": "Torso Tunic, with Red Circle, Tan Neck, Dark Bluish Gray Belt with Device Print, White Arms, Tan Hands",
-      "classification": "no-official-mapping",
-      "ldrawFiles": [],
-      "mappingEvidence": [],
-      "reason": null
-    },
-    {
-      "catalogId": "part:973c27h27",
-      "role": "torsoAssembly",
-      "rebrickablePartNum": "973c27h27",
-      "name": "Torso, White Arms and Hands [Plain]",
       "classification": "no-official-mapping",
       "ldrawFiles": [],
       "mappingEvidence": [],
@@ -71273,16 +70536,6 @@
       "reason": null
     },
     {
-      "catalogId": "part:973c28h01",
-      "role": "torsoAssembly",
-      "rebrickablePartNum": "973c28h01",
-      "name": "Torso, Blue Arms, Yellow Hands [Plain]",
-      "classification": "no-official-mapping",
-      "ldrawFiles": [],
-      "mappingEvidence": [],
-      "reason": null
-    },
-    {
       "catalogId": "part:973c28h01pr0002",
       "role": "torsoAssembly",
       "rebrickablePartNum": "973c28h01pr0002",
@@ -71503,20 +70756,6 @@
       "reason": null
     },
     {
-      "catalogId": "part:973c28h01pr0092",
-      "role": "torsoAssembly",
-      "rebrickablePartNum": "973c28h01pr0092",
-      "name": "Torso Armor with Studs and Brown Crossbelt Print, Blue Arms, Yellow Hands",
-      "classification": "placement-profile-required",
-      "ldrawFiles": [
-        "parts/973pfa.dat"
-      ],
-      "mappingEvidence": [
-        "explicit-keyword"
-      ],
-      "reason": null
-    },
-    {
       "catalogId": "part:973c28h01pr0096",
       "role": "torsoAssembly",
       "rebrickablePartNum": "973c28h01pr0096",
@@ -71684,20 +70923,6 @@
       "classification": "no-official-mapping",
       "ldrawFiles": [],
       "mappingEvidence": [],
-      "reason": null
-    },
-    {
-      "catalogId": "part:973c28h01pr1470",
-      "role": "torsoAssembly",
-      "rebrickablePartNum": "973c28h01pr1470",
-      "name": "Torso Jacket with Pockets & Pen over Sweater, Orange Stripes Print, Blue Arms, Yellow Hands",
-      "classification": "placement-profile-required",
-      "ldrawFiles": [
-        "parts/973pun.dat"
-      ],
-      "mappingEvidence": [
-        "explicit-keyword"
-      ],
       "reason": null
     },
     {
@@ -72331,20 +71556,6 @@
       "reason": null
     },
     {
-      "catalogId": "part:973c28h02pr2463",
-      "role": "torsoAssembly",
-      "rebrickablePartNum": "973c28h02pr2463",
-      "name": "Torso Vest with Plaid Shirt and Blue Denim Jacket Print (Marty McFly), Blue Arms, Light Nougat Hands",
-      "classification": "placement-profile-required",
-      "ldrawFiles": [
-        "parts/973px9.dat"
-      ],
-      "mappingEvidence": [
-        "explicit-keyword"
-      ],
-      "reason": null
-    },
-    {
       "catalogId": "part:973c28h02pr2810",
       "role": "torsoAssembly",
       "rebrickablePartNum": "973c28h02pr2810",
@@ -72489,16 +71700,6 @@
       "role": "torsoAssembly",
       "rebrickablePartNum": "973c28h02pr9856",
       "name": "Torso Vest, Purple Scarf, Necklace with Pendant Print, Blue Arms, Light Nougat Hands",
-      "classification": "no-official-mapping",
-      "ldrawFiles": [],
-      "mappingEvidence": [],
-      "reason": null
-    },
-    {
-      "catalogId": "part:973c28h03",
-      "role": "torsoAssembly",
-      "rebrickablePartNum": "973c28h03",
-      "name": "Torso, Blue Arms, Black Hands [Plain]",
       "classification": "no-official-mapping",
       "ldrawFiles": [],
       "mappingEvidence": [],
@@ -72935,30 +72136,10 @@
       "reason": null
     },
     {
-      "catalogId": "part:973c28h08",
-      "role": "torsoAssembly",
-      "rebrickablePartNum": "973c28h08",
-      "name": "Torso, Blue Arms, Dark Gray Hands [Plain]",
-      "classification": "no-official-mapping",
-      "ldrawFiles": [],
-      "mappingEvidence": [],
-      "reason": null
-    },
-    {
       "catalogId": "part:973c28h11pr0001",
       "role": "torsoAssembly",
       "rebrickablePartNum": "973c28h11pr0001",
       "name": "Torso Rebel E-Wing Pilot Suit, Black Hoses, White Pockets print, Blue Arms, Dark Tan Hands",
-      "classification": "no-official-mapping",
-      "ldrawFiles": [],
-      "mappingEvidence": [],
-      "reason": null
-    },
-    {
-      "catalogId": "part:973c28h12",
-      "role": "torsoAssembly",
-      "rebrickablePartNum": "973c28h12",
-      "name": "Torso, Blue Arms, Dark Bluish Gray Hands [Plain]",
       "classification": "no-official-mapping",
       "ldrawFiles": [],
       "mappingEvidence": [],
@@ -73069,16 +72250,6 @@
       "role": "torsoAssembly",
       "rebrickablePartNum": "973c28h13pr6317",
       "name": "Torso Soccer Shirt, Green Collar Print, Blue Arms, Nougat Hands",
-      "classification": "no-official-mapping",
-      "ldrawFiles": [],
-      "mappingEvidence": [],
-      "reason": null
-    },
-    {
-      "catalogId": "part:973c28h14",
-      "role": "torsoAssembly",
-      "rebrickablePartNum": "973c28h14",
-      "name": "Torso, Blue Arms, Light Bluish Gray Hands [Plain]",
       "classification": "no-official-mapping",
       "ldrawFiles": [],
       "mappingEvidence": [],
@@ -73285,16 +72456,6 @@
       "reason": null
     },
     {
-      "catalogId": "part:973c28h22",
-      "role": "torsoAssembly",
-      "rebrickablePartNum": "973c28h22",
-      "name": "Torso, Blue Arms, Red Hands [Plain]",
-      "classification": "no-official-mapping",
-      "ldrawFiles": [],
-      "mappingEvidence": [],
-      "reason": null
-    },
-    {
       "catalogId": "part:973c28h22pr0001",
       "role": "torsoAssembly",
       "rebrickablePartNum": "973c28h22pr0001",
@@ -73475,16 +72636,6 @@
       "reason": null
     },
     {
-      "catalogId": "part:973c28h27",
-      "role": "torsoAssembly",
-      "rebrickablePartNum": "973c28h27",
-      "name": "Torso, Blue Arms, White Hands [Plain]",
-      "classification": "no-official-mapping",
-      "ldrawFiles": [],
-      "mappingEvidence": [],
-      "reason": null
-    },
-    {
       "catalogId": "part:973c28h27pr0001",
       "role": "torsoAssembly",
       "rebrickablePartNum": "973c28h27pr0001",
@@ -73629,16 +72780,6 @@
       "role": "torsoAssembly",
       "rebrickablePartNum": "973c28h27pr5619",
       "name": "Torso Shirt, Plaid with Yellow Button, Red Handkerchief, Wheat in Pocket print, Blue Arms, White Hands",
-      "classification": "no-official-mapping",
-      "ldrawFiles": [],
-      "mappingEvidence": [],
-      "reason": null
-    },
-    {
-      "catalogId": "part:973c28h28",
-      "role": "torsoAssembly",
-      "rebrickablePartNum": "973c28h28",
-      "name": "Torso, Blue Arms and Hands [PLAIN]",
       "classification": "no-official-mapping",
       "ldrawFiles": [],
       "mappingEvidence": [],
@@ -74465,16 +73606,6 @@
       "reason": null
     },
     {
-      "catalogId": "part:973c29h29",
-      "role": "torsoAssembly",
-      "rebrickablePartNum": "973c29h29",
-      "name": "Torso, Bright Light Blue Arms and Hands [Plain]",
-      "classification": "no-official-mapping",
-      "ldrawFiles": [],
-      "mappingEvidence": [],
-      "reason": null
-    },
-    {
       "catalogId": "part:973c29h29pr0001",
       "role": "torsoAssembly",
       "rebrickablePartNum": "973c29h29pr0001",
@@ -75225,16 +74356,6 @@
       "reason": null
     },
     {
-      "catalogId": "part:973c31h01",
-      "role": "torsoAssembly",
-      "rebrickablePartNum": "973c31h01",
-      "name": "Torso, Green Arms, Yellow Hands [Plain]",
-      "classification": "no-official-mapping",
-      "ldrawFiles": [],
-      "mappingEvidence": [],
-      "reason": null
-    },
-    {
       "catalogId": "part:973c31h01pr0001",
       "role": "torsoAssembly",
       "rebrickablePartNum": "973c31h01pr0001",
@@ -75925,16 +75046,6 @@
       "reason": null
     },
     {
-      "catalogId": "part:973c31h03",
-      "role": "torsoAssembly",
-      "rebrickablePartNum": "973c31h03",
-      "name": "Torso, Green Arms, Black Hands [Plain]",
-      "classification": "no-official-mapping",
-      "ldrawFiles": [],
-      "mappingEvidence": [],
-      "reason": null
-    },
-    {
       "catalogId": "part:973c31h03pr0001",
       "role": "torsoAssembly",
       "rebrickablePartNum": "973c31h03pr0001",
@@ -76149,16 +75260,6 @@
       "role": "torsoAssembly",
       "rebrickablePartNum": "973c31h09pr1952",
       "name": "Torso Bodysuit, Black Question Mark on Chest and Yellow Question Mark on Dark Purple Belt Print, Green Arms, Dark Purple Hands",
-      "classification": "no-official-mapping",
-      "ldrawFiles": [],
-      "mappingEvidence": [],
-      "reason": null
-    },
-    {
-      "catalogId": "part:973c31h12",
-      "role": "torsoAssembly",
-      "rebrickablePartNum": "973c31h12",
-      "name": "Torso, Green Arms, Dark Bluish Gray Hands [Plain]",
       "classification": "no-official-mapping",
       "ldrawFiles": [],
       "mappingEvidence": [],
@@ -76389,16 +75490,6 @@
       "role": "torsoAssembly",
       "rebrickablePartNum": "973c31h31pr9668",
       "name": "Torso Robe with Bright Green and White Energy (Lightning) Print (Lloyd), Green Arms and Hands",
-      "classification": "no-official-mapping",
-      "ldrawFiles": [],
-      "mappingEvidence": [],
-      "reason": null
-    },
-    {
-      "catalogId": "part:973c31h35",
-      "role": "torsoAssembly",
-      "rebrickablePartNum": "973c31h35",
-      "name": "Torso, Green Arms, Dark Green Hands [Plain]",
       "classification": "no-official-mapping",
       "ldrawFiles": [],
       "mappingEvidence": [],
@@ -76825,16 +75916,6 @@
       "reason": null
     },
     {
-      "catalogId": "part:973c32h05",
-      "role": "torsoAssembly",
-      "rebrickablePartNum": "973c32h05",
-      "name": "Torso, Medium Blue Arms, Dark Blue Hands [Plain]",
-      "classification": "no-official-mapping",
-      "ldrawFiles": [],
-      "mappingEvidence": [],
-      "reason": null
-    },
-    {
       "catalogId": "part:973c32h05pr0001",
       "role": "torsoAssembly",
       "rebrickablePartNum": "973c32h05pr0001",
@@ -76849,16 +75930,6 @@
       "role": "torsoAssembly",
       "rebrickablePartNum": "973c32h13pr0001",
       "name": "Torso, Jacket, White Fur Collar, Dark Red/Yellow Triangles, Dark Red Shirt print, Medium Blue Arms, Nougat Hands",
-      "classification": "no-official-mapping",
-      "ldrawFiles": [],
-      "mappingEvidence": [],
-      "reason": null
-    },
-    {
-      "catalogId": "part:973c32h14",
-      "role": "torsoAssembly",
-      "rebrickablePartNum": "973c32h14",
-      "name": "Torso, Medium Blue Arms, Light Bluish Gray Hands [Plain]",
       "classification": "no-official-mapping",
       "ldrawFiles": [],
       "mappingEvidence": [],
@@ -77029,16 +76100,6 @@
       "role": "torsoAssembly",
       "rebrickablePartNum": "973c32h29pr0001",
       "name": "Torso, Bright Liht Blue/Yellow Chest, Black with White Spots Tail/Spot on Back print, Medium Blue Arms, Bright Light Blue Hands",
-      "classification": "no-official-mapping",
-      "ldrawFiles": [],
-      "mappingEvidence": [],
-      "reason": null
-    },
-    {
-      "catalogId": "part:973c32h32",
-      "role": "torsoAssembly",
-      "rebrickablePartNum": "973c32h32",
-      "name": "Torso, Medium Blue Arms and Hands [Plain]",
       "classification": "no-official-mapping",
       "ldrawFiles": [],
       "mappingEvidence": [],
@@ -77265,16 +76326,6 @@
       "reason": null
     },
     {
-      "catalogId": "part:973c33h09",
-      "role": "torsoAssembly",
-      "rebrickablePartNum": "973c33h09",
-      "name": "Torso, Medium Lavender Arms, Dark Purple Hands [Plain]",
-      "classification": "no-official-mapping",
-      "ldrawFiles": [],
-      "mappingEvidence": [],
-      "reason": null
-    },
-    {
       "catalogId": "part:973c33h09pr0001",
       "role": "torsoAssembly",
       "rebrickablePartNum": "973c33h09pr0001",
@@ -77449,16 +76500,6 @@
       "role": "torsoAssembly",
       "rebrickablePartNum": "973c33h70pr0001",
       "name": "Torso, Shirt, Buttons, Tape Measure print, Medium Lavender Arms, Warm Tan Hands",
-      "classification": "no-official-mapping",
-      "ldrawFiles": [],
-      "mappingEvidence": [],
-      "reason": null
-    },
-    {
-      "catalogId": "part:973c34h01",
-      "role": "torsoAssembly",
-      "rebrickablePartNum": "973c34h01",
-      "name": "Torso, Orange Arms, Yellow Hands [Plain]",
       "classification": "no-official-mapping",
       "ldrawFiles": [],
       "mappingEvidence": [],
@@ -78045,16 +77086,6 @@
       "reason": null
     },
     {
-      "catalogId": "part:973c34h09",
-      "role": "torsoAssembly",
-      "rebrickablePartNum": "973c34h09",
-      "name": "Torso, Orange Arms, Dark Purple Hands [Plain]",
-      "classification": "no-official-mapping",
-      "ldrawFiles": [],
-      "mappingEvidence": [],
-      "reason": null
-    },
-    {
       "catalogId": "part:973c34h09pr3739",
       "role": "torsoAssembly",
       "rebrickablePartNum": "973c34h09pr3739",
@@ -78069,16 +77100,6 @@
       "role": "torsoAssembly",
       "rebrickablePartNum": "973c34h10pr6339",
       "name": "Torso Soccer Shirt, Dark Red Collar, Yellow Decoration print, Orange Arms, Dark Red Hands",
-      "classification": "no-official-mapping",
-      "ldrawFiles": [],
-      "mappingEvidence": [],
-      "reason": null
-    },
-    {
-      "catalogId": "part:973c34h12",
-      "role": "torsoAssembly",
-      "rebrickablePartNum": "973c34h12",
-      "name": "Torso, Orange Arms, Dark Bluish Gray Hands [Plain]",
       "classification": "no-official-mapping",
       "ldrawFiles": [],
       "mappingEvidence": [],
@@ -78395,16 +77416,6 @@
       "reason": null
     },
     {
-      "catalogId": "part:973c34h23",
-      "role": "torsoAssembly",
-      "rebrickablePartNum": "973c34h23",
-      "name": "Torso, Orange Arms, Medium Nougat Hands",
-      "classification": "no-official-mapping",
-      "ldrawFiles": [],
-      "mappingEvidence": [],
-      "reason": null
-    },
-    {
       "catalogId": "part:973c34h23pr6714",
       "role": "torsoAssembly",
       "rebrickablePartNum": "973c34h23pr6714",
@@ -78565,16 +77576,6 @@
       "reason": null
     },
     {
-      "catalogId": "part:973c34h34",
-      "role": "torsoAssembly",
-      "rebrickablePartNum": "973c34h34",
-      "name": "Torso, Orange Arms, Orange Hands [Plain]",
-      "classification": "no-official-mapping",
-      "ldrawFiles": [],
-      "mappingEvidence": [],
-      "reason": null
-    },
-    {
       "catalogId": "part:973c34h34pr0001",
       "role": "torsoAssembly",
       "rebrickablePartNum": "973c34h34pr0001",
@@ -78699,16 +77700,6 @@
       "role": "torsoAssembly",
       "rebrickablePartNum": "973c34h75pr6822",
       "name": "Torso, Robe with Blue Stripes, Blue String, Nougat Belt print, Orange Arms, Pearl Titanium Hands",
-      "classification": "no-official-mapping",
-      "ldrawFiles": [],
-      "mappingEvidence": [],
-      "reason": null
-    },
-    {
-      "catalogId": "part:973c35h01",
-      "role": "torsoAssembly",
-      "rebrickablePartNum": "973c35h01",
-      "name": "Torso, Dark Green Arms, Yellow Hands [Plain]",
       "classification": "no-official-mapping",
       "ldrawFiles": [],
       "mappingEvidence": [],
@@ -79825,16 +78816,6 @@
       "reason": null
     },
     {
-      "catalogId": "part:973c36h01",
-      "role": "torsoAssembly",
-      "rebrickablePartNum": "973c36h01",
-      "name": "Torso, Dark Pink Arms, Yellow Hands [Plain]",
-      "classification": "no-official-mapping",
-      "ldrawFiles": [],
-      "mappingEvidence": [],
-      "reason": null
-    },
-    {
       "catalogId": "part:973c36h01pr0001",
       "role": "torsoAssembly",
       "rebrickablePartNum": "973c36h01pr0001",
@@ -80115,16 +79096,6 @@
       "reason": null
     },
     {
-      "catalogId": "part:973c36h36",
-      "role": "torsoAssembly",
-      "rebrickablePartNum": "973c36h36",
-      "name": "Torso, Dark Pink Arms, Dark Pink Hands [Plain]",
-      "classification": "no-official-mapping",
-      "ldrawFiles": [],
-      "mappingEvidence": [],
-      "reason": null
-    },
-    {
       "catalogId": "part:973c36h36pr0001",
       "role": "torsoAssembly",
       "rebrickablePartNum": "973c36h36pr0001",
@@ -80249,16 +79220,6 @@
       "role": "torsoAssembly",
       "rebrickablePartNum": "973c36h70pr0001",
       "name": "Torso, Mickey Mouse in Bright Light Blue/Yellow Circle print, Dark Pink Arms, Warm Tan Hands",
-      "classification": "no-official-mapping",
-      "ldrawFiles": [],
-      "mappingEvidence": [],
-      "reason": null
-    },
-    {
-      "catalogId": "part:973c37h01",
-      "role": "torsoAssembly",
-      "rebrickablePartNum": "973c37h01",
-      "name": "Torso, Magenta Arms, Yellow Hands [Plain]",
       "classification": "no-official-mapping",
       "ldrawFiles": [],
       "mappingEvidence": [],
@@ -81065,16 +80026,6 @@
       "reason": null
     },
     {
-      "catalogId": "part:973c38h38",
-      "role": "torsoAssembly",
-      "rebrickablePartNum": "973c38h38",
-      "name": "Torso, Bright Light Orange Arms, Bright Light Orange Hands [Plain]",
-      "classification": "no-official-mapping",
-      "ldrawFiles": [],
-      "mappingEvidence": [],
-      "reason": null
-    },
-    {
       "catalogId": "part:973c38h38pr0001",
       "role": "torsoAssembly",
       "rebrickablePartNum": "973c38h38pr0001",
@@ -81265,16 +80216,6 @@
       "reason": null
     },
     {
-      "catalogId": "part:973c39h27",
-      "role": "torsoAssembly",
-      "rebrickablePartNum": "973c39h27",
-      "name": "Torso, Lavender Arms, White Hands [Plain]",
-      "classification": "no-official-mapping",
-      "ldrawFiles": [],
-      "mappingEvidence": [],
-      "reason": null
-    },
-    {
       "catalogId": "part:973c39h27pr6057",
       "role": "torsoAssembly",
       "rebrickablePartNum": "973c39h27pr6057",
@@ -81319,16 +80260,6 @@
       "role": "torsoAssembly",
       "rebrickablePartNum": "973c39h39pr4978",
       "name": "Torso Vest, Gold Glitter and Necklace, Belt with Gold Skull Buckle Print, Lavender Arms and Hands",
-      "classification": "no-official-mapping",
-      "ldrawFiles": [],
-      "mappingEvidence": [],
-      "reason": null
-    },
-    {
-      "catalogId": "part:973c39h44",
-      "role": "torsoAssembly",
-      "rebrickablePartNum": "973c39h44",
-      "name": "Torso, Lavender Arms, Bright Light Yellow Hands [PLAIN]",
       "classification": "no-official-mapping",
       "ldrawFiles": [],
       "mappingEvidence": [],
@@ -81579,16 +80510,6 @@
       "role": "torsoAssembly",
       "rebrickablePartNum": "973c41h01pr9999",
       "name": "Torso Jacket with Green Neckerchief Print, Dark Orange Arms, Yellow Hands",
-      "classification": "no-official-mapping",
-      "ldrawFiles": [],
-      "mappingEvidence": [],
-      "reason": null
-    },
-    {
-      "catalogId": "part:973c41h02",
-      "role": "torsoAssembly",
-      "rebrickablePartNum": "973c41h02",
-      "name": "Torso, Dark Orange Arms, Light Nougat Hands [Plain]",
       "classification": "no-official-mapping",
       "ldrawFiles": [],
       "mappingEvidence": [],
@@ -82279,16 +81200,6 @@
       "role": "torsoAssembly",
       "rebrickablePartNum": "973c42h42pr6913",
       "name": "Torso, Jacket, Magenta Bead Necklace, Medium Azure Bare Chest, Silver Symbol on Back print, Medium Azure Arms and Hands",
-      "classification": "no-official-mapping",
-      "ldrawFiles": [],
-      "mappingEvidence": [],
-      "reason": null
-    },
-    {
-      "catalogId": "part:973c43h01",
-      "role": "torsoAssembly",
-      "rebrickablePartNum": "973c43h01",
-      "name": "Torso, Bright Pink Arms, Yellow Hands [Plain]",
       "classification": "no-official-mapping",
       "ldrawFiles": [],
       "mappingEvidence": [],
@@ -83835,16 +82746,6 @@
       "reason": null
     },
     {
-      "catalogId": "part:973c68h44",
-      "role": "torsoAssembly",
-      "rebrickablePartNum": "973c68h44",
-      "name": "Torso, Trans-Yellow Arms, Bright Light Yellow Hands [PLAIN]",
-      "classification": "no-official-mapping",
-      "ldrawFiles": [],
-      "mappingEvidence": [],
-      "reason": null
-    },
-    {
       "catalogId": "part:973c68h44pr0001",
       "role": "torsoAssembly",
       "rebrickablePartNum": "973c68h44pr0001",
@@ -84915,16 +83816,6 @@
       "reason": null
     },
     {
-      "catalogId": "part:973c80h03",
-      "role": "torsoAssembly",
-      "rebrickablePartNum": "973c80h03",
-      "name": "Torso, Umber Brown Arms, Black Hands [PLAIN]",
-      "classification": "no-official-mapping",
-      "ldrawFiles": [],
-      "mappingEvidence": [],
-      "reason": null
-    },
-    {
       "catalogId": "part:973c80h03pr0002",
       "role": "torsoAssembly",
       "rebrickablePartNum": "973c80h03pr0002",
@@ -85009,16 +83900,6 @@
       "role": "torsoAssembly",
       "rebrickablePartNum": "973c84h02pr0003",
       "name": "Torso, Dark Pink Ribbon, Gold Necklace with Pendant print, Warm Pink Arms, Light Nougat Hands",
-      "classification": "no-official-mapping",
-      "ldrawFiles": [],
-      "mappingEvidence": [],
-      "reason": null
-    },
-    {
-      "catalogId": "part:973c84h84",
-      "role": "torsoAssembly",
-      "rebrickablePartNum": "973c84h84",
-      "name": "Torso, Warm Pink Arms and Hands [PLAIN]",
       "classification": "no-official-mapping",
       "ldrawFiles": [],
       "mappingEvidence": [],
@@ -101960,16 +100841,6 @@
       "reason": null
     },
     {
-      "catalogId": "part:970c04",
-      "role": "legsAssembly",
-      "rebrickablePartNum": "970c04",
-      "name": "Hips and Dark Azure Legs",
-      "classification": "no-official-mapping",
-      "ldrawFiles": [],
-      "mappingEvidence": [],
-      "reason": null
-    },
-    {
       "catalogId": "part:970c04pat18",
       "role": "legsAssembly",
       "rebrickablePartNum": "970c04pat18",
@@ -102184,16 +101055,6 @@
       "role": "legsAssembly",
       "rebrickablePartNum": "970c04pr9811",
       "name": "Hips and Dark Azure Legs with Black Utility Belt, Straps, Knee Pads print (Nya)",
-      "classification": "no-official-mapping",
-      "ldrawFiles": [],
-      "mappingEvidence": [],
-      "reason": null
-    },
-    {
-      "catalogId": "part:970c05",
-      "role": "legsAssembly",
-      "rebrickablePartNum": "970c05",
-      "name": "Hips and Dark Blue Legs",
       "classification": "no-official-mapping",
       "ldrawFiles": [],
       "mappingEvidence": [],
@@ -103520,16 +102381,6 @@
       "reason": null
     },
     {
-      "catalogId": "part:970c06",
-      "role": "legsAssembly",
-      "rebrickablePartNum": "970c06",
-      "name": "Hips and Bright Green Legs",
-      "classification": "no-official-mapping",
-      "ldrawFiles": [],
-      "mappingEvidence": [],
-      "reason": null
-    },
-    {
       "catalogId": "part:970c06pat02pr1400",
       "role": "legsAssembly",
       "rebrickablePartNum": "970c06pat02pr1400",
@@ -103794,16 +102645,6 @@
       "role": "legsAssembly",
       "rebrickablePartNum": "970c06pr9791",
       "name": "Hips and Bright Green Legs with Black Belt, Dark Green Robe, Green Knee Pads Print",
-      "classification": "no-official-mapping",
-      "ldrawFiles": [],
-      "mappingEvidence": [],
-      "reason": null
-    },
-    {
-      "catalogId": "part:970c07",
-      "role": "legsAssembly",
-      "rebrickablePartNum": "970c07",
-      "name": "Hips and Dark Brown Legs",
       "classification": "no-official-mapping",
       "ldrawFiles": [],
       "mappingEvidence": [],
@@ -104585,16 +103426,6 @@
       "reason": null
     },
     {
-      "catalogId": "part:970c08",
-      "role": "legsAssembly",
-      "rebrickablePartNum": "970c08",
-      "name": "Hips and Dark Gray Legs",
-      "classification": "no-official-mapping",
-      "ldrawFiles": [],
-      "mappingEvidence": [],
-      "reason": null
-    },
-    {
       "catalogId": "part:970c08pr0001",
       "role": "legsAssembly",
       "rebrickablePartNum": "970c08pr0001",
@@ -104609,16 +103440,6 @@
       "role": "legsAssembly",
       "rebrickablePartNum": "970c08pr0022",
       "name": "Hips and Dark Gray Legs with Geonosian Copper Print",
-      "classification": "no-official-mapping",
-      "ldrawFiles": [],
-      "mappingEvidence": [],
-      "reason": null
-    },
-    {
-      "catalogId": "part:970c09",
-      "role": "legsAssembly",
-      "rebrickablePartNum": "970c09",
-      "name": "Hips and Dark Purple Legs",
       "classification": "no-official-mapping",
       "ldrawFiles": [],
       "mappingEvidence": [],
@@ -105124,16 +103945,6 @@
       "role": "legsAssembly",
       "rebrickablePartNum": "970c09pr9995",
       "name": "Hips and Dark Purple Legs with Silver Buckle and Angular Stripes Print",
-      "classification": "no-official-mapping",
-      "ldrawFiles": [],
-      "mappingEvidence": [],
-      "reason": null
-    },
-    {
-      "catalogId": "part:970c10",
-      "role": "legsAssembly",
-      "rebrickablePartNum": "970c10",
-      "name": "Hips and Dark Red Legs",
       "classification": "no-official-mapping",
       "ldrawFiles": [],
       "mappingEvidence": [],
@@ -105874,16 +104685,6 @@
       "role": "legsAssembly",
       "rebrickablePartNum": "970c10pr9990",
       "name": "Hips and Dark Red Legs with Dark Azure Sash Print",
-      "classification": "no-official-mapping",
-      "ldrawFiles": [],
-      "mappingEvidence": [],
-      "reason": null
-    },
-    {
-      "catalogId": "part:970c11",
-      "role": "legsAssembly",
-      "rebrickablePartNum": "970c11",
-      "name": "Hips and Dark Tan Legs",
       "classification": "no-official-mapping",
       "ldrawFiles": [],
       "mappingEvidence": [],
@@ -106694,16 +105495,6 @@
       "role": "legsAssembly",
       "rebrickablePartNum": "970c11pr9976",
       "name": "Hips and Dark Tan Legs with Dark Blue Straps and Silver Buckles Print",
-      "classification": "no-official-mapping",
-      "ldrawFiles": [],
-      "mappingEvidence": [],
-      "reason": null
-    },
-    {
-      "catalogId": "part:970c12",
-      "role": "legsAssembly",
-      "rebrickablePartNum": "970c12",
-      "name": "Hips and Dark Bluish Gray Legs",
       "classification": "no-official-mapping",
       "ldrawFiles": [],
       "mappingEvidence": [],
@@ -107870,16 +106661,6 @@
       "reason": null
     },
     {
-      "catalogId": "part:970c13",
-      "role": "legsAssembly",
-      "rebrickablePartNum": "970c13",
-      "name": "Hips and Nougat Legs",
-      "classification": "no-official-mapping",
-      "ldrawFiles": [],
-      "mappingEvidence": [],
-      "reason": null
-    },
-    {
       "catalogId": "part:970c13pr0594",
       "role": "legsAssembly",
       "rebrickablePartNum": "970c13pr0594",
@@ -107894,16 +106675,6 @@
       "role": "legsAssembly",
       "rebrickablePartNum": "970c13pr2368",
       "name": "Hips and Nougat Legs with Olive Green Loin Cloth print",
-      "classification": "no-official-mapping",
-      "ldrawFiles": [],
-      "mappingEvidence": [],
-      "reason": null
-    },
-    {
-      "catalogId": "part:970c14",
-      "role": "legsAssembly",
-      "rebrickablePartNum": "970c14",
-      "name": "Hips and Light Bluish Gray Legs",
       "classification": "no-official-mapping",
       "ldrawFiles": [],
       "mappingEvidence": [],
@@ -108805,16 +107576,6 @@
       "reason": null
     },
     {
-      "catalogId": "part:970c15",
-      "role": "legsAssembly",
-      "rebrickablePartNum": "970c15",
-      "name": "Hips and Light Aqua Legs",
-      "classification": "no-official-mapping",
-      "ldrawFiles": [],
-      "mappingEvidence": [],
-      "reason": null
-    },
-    {
       "catalogId": "part:970c15pat03pr0001",
       "role": "legsAssembly",
       "rebrickablePartNum": "970c15pat03pr0001",
@@ -108865,30 +107626,10 @@
       "reason": null
     },
     {
-      "catalogId": "part:970c16",
-      "role": "legsAssembly",
-      "rebrickablePartNum": "970c16",
-      "name": "Hips and Brown Legs",
-      "classification": "no-official-mapping",
-      "ldrawFiles": [],
-      "mappingEvidence": [],
-      "reason": null
-    },
-    {
       "catalogId": "part:970c16pr0033",
       "role": "legsAssembly",
       "rebrickablePartNum": "970c16pr0033",
       "name": "Hips and Brown Legs with Gunbelt Print",
-      "classification": "no-official-mapping",
-      "ldrawFiles": [],
-      "mappingEvidence": [],
-      "reason": null
-    },
-    {
-      "catalogId": "part:970c17",
-      "role": "legsAssembly",
-      "rebrickablePartNum": "970c17",
-      "name": "Hips and Light Gray Legs",
       "classification": "no-official-mapping",
       "ldrawFiles": [],
       "mappingEvidence": [],
@@ -108919,16 +107660,6 @@
       "role": "legsAssembly",
       "rebrickablePartNum": "970c17pr0004",
       "name": "Hips and Light Gray Legs with Studios Dark Gray Mummy Wrapping Print",
-      "classification": "no-official-mapping",
-      "ldrawFiles": [],
-      "mappingEvidence": [],
-      "reason": null
-    },
-    {
-      "catalogId": "part:970c18",
-      "role": "legsAssembly",
-      "rebrickablePartNum": "970c18",
-      "name": "Hips and Lime Legs",
       "classification": "no-official-mapping",
       "ldrawFiles": [],
       "mappingEvidence": [],
@@ -109119,16 +107850,6 @@
       "role": "legsAssembly",
       "rebrickablePartNum": "970c18pr9802",
       "name": "Hips and Lime Legs with Dark Turquoise/Coral/Gold Skirt, Coral Knees print",
-      "classification": "no-official-mapping",
-      "ldrawFiles": [],
-      "mappingEvidence": [],
-      "reason": null
-    },
-    {
-      "catalogId": "part:970c19",
-      "role": "legsAssembly",
-      "rebrickablePartNum": "970c19",
-      "name": "Hips and Reddish Brown Legs",
       "classification": "no-official-mapping",
       "ldrawFiles": [],
       "mappingEvidence": [],
@@ -109839,16 +108560,6 @@
       "reason": null
     },
     {
-      "catalogId": "part:970c20",
-      "role": "legsAssembly",
-      "rebrickablePartNum": "970c20",
-      "name": "Hips and Olive Green Legs",
-      "classification": "no-official-mapping",
-      "ldrawFiles": [],
-      "mappingEvidence": [],
-      "reason": null
-    },
-    {
       "catalogId": "part:970c20pat01pr0001",
       "role": "legsAssembly",
       "rebrickablePartNum": "970c20pat01pr0001",
@@ -110329,16 +109040,6 @@
       "reason": null
     },
     {
-      "catalogId": "part:970c21",
-      "role": "legsAssembly",
-      "rebrickablePartNum": "970c21",
-      "name": "Hips and Pearl Gold Legs",
-      "classification": "no-official-mapping",
-      "ldrawFiles": [],
-      "mappingEvidence": [],
-      "reason": null
-    },
-    {
       "catalogId": "part:970c21pr0001",
       "role": "legsAssembly",
       "rebrickablePartNum": "970c21pr0001",
@@ -110653,16 +109354,6 @@
       "role": "legsAssembly",
       "rebrickablePartNum": "970c21pr9968",
       "name": "Hips and Pearl Gold Legs with Droid with Leg Side Print (C-3PO)",
-      "classification": "no-official-mapping",
-      "ldrawFiles": [],
-      "mappingEvidence": [],
-      "reason": null
-    },
-    {
-      "catalogId": "part:970c22",
-      "role": "legsAssembly",
-      "rebrickablePartNum": "970c22",
-      "name": "Hips and Red Legs",
       "classification": "no-official-mapping",
       "ldrawFiles": [],
       "mappingEvidence": [],
@@ -112134,16 +110825,6 @@
       "reason": null
     },
     {
-      "catalogId": "part:970c23",
-      "role": "legsAssembly",
-      "rebrickablePartNum": "970c23",
-      "name": "Hips and Medium Nougat Legs",
-      "classification": "no-official-mapping",
-      "ldrawFiles": [],
-      "mappingEvidence": [],
-      "reason": null
-    },
-    {
       "catalogId": "part:970c23pat19",
       "role": "legsAssembly",
       "rebrickablePartNum": "970c23pat19",
@@ -112498,16 +111179,6 @@
       "role": "legsAssembly",
       "rebrickablePartNum": "970c23pr9978",
       "name": "Hips and Medium Nougat Legs with Black Belt, Knee armor print",
-      "classification": "no-official-mapping",
-      "ldrawFiles": [],
-      "mappingEvidence": [],
-      "reason": null
-    },
-    {
-      "catalogId": "part:970c24",
-      "role": "legsAssembly",
-      "rebrickablePartNum": "970c24",
-      "name": "Hips and Sand Blue Legs",
       "classification": "no-official-mapping",
       "ldrawFiles": [],
       "mappingEvidence": [],
@@ -113204,16 +111875,6 @@
       "reason": null
     },
     {
-      "catalogId": "part:970c25",
-      "role": "legsAssembly",
-      "rebrickablePartNum": "970c25",
-      "name": "Hips and Sand Green Legs",
-      "classification": "no-official-mapping",
-      "ldrawFiles": [],
-      "mappingEvidence": [],
-      "reason": null
-    },
-    {
       "catalogId": "part:970c25pat12",
       "role": "legsAssembly",
       "rebrickablePartNum": "970c25pat12",
@@ -113378,16 +112039,6 @@
       "role": "legsAssembly",
       "rebrickablePartNum": "970c25pr9881",
       "name": "Hips and Sand Green Legs with Dark Red Sash Belt and Knee Wraps Print",
-      "classification": "no-official-mapping",
-      "ldrawFiles": [],
-      "mappingEvidence": [],
-      "reason": null
-    },
-    {
-      "catalogId": "part:970c26",
-      "role": "legsAssembly",
-      "rebrickablePartNum": "970c26",
-      "name": "Hips and Tan Legs",
       "classification": "no-official-mapping",
       "ldrawFiles": [],
       "mappingEvidence": [],
@@ -114008,16 +112659,6 @@
       "role": "legsAssembly",
       "rebrickablePartNum": "970c26pr9999",
       "name": "Hips and Tan Legs with Pockets, Silver Belt Buckle Print",
-      "classification": "no-official-mapping",
-      "ldrawFiles": [],
-      "mappingEvidence": [],
-      "reason": null
-    },
-    {
-      "catalogId": "part:970c27",
-      "role": "legsAssembly",
-      "rebrickablePartNum": "970c27",
-      "name": "Hips and White Legs",
       "classification": "no-official-mapping",
       "ldrawFiles": [],
       "mappingEvidence": [],
@@ -117409,16 +116050,6 @@
       "reason": null
     },
     {
-      "catalogId": "part:970c28",
-      "role": "legsAssembly",
-      "rebrickablePartNum": "970c28",
-      "name": "Hips and Blue Legs",
-      "classification": "no-official-mapping",
-      "ldrawFiles": [],
-      "mappingEvidence": [],
-      "reason": null
-    },
-    {
       "catalogId": "part:970c28pat01",
       "role": "legsAssembly",
       "rebrickablePartNum": "970c28pat01",
@@ -118439,16 +117070,6 @@
       "reason": null
     },
     {
-      "catalogId": "part:970c29",
-      "role": "legsAssembly",
-      "rebrickablePartNum": "970c29",
-      "name": "Hips and Bright Light Blue Legs",
-      "classification": "no-official-mapping",
-      "ldrawFiles": [],
-      "mappingEvidence": [],
-      "reason": null
-    },
-    {
       "catalogId": "part:970c29pat02pr0001",
       "role": "legsAssembly",
       "rebrickablePartNum": "970c29pat02pr0001",
@@ -118613,16 +117234,6 @@
       "role": "legsAssembly",
       "rebrickablePartNum": "970c29pr9819",
       "name": "Hips and Bright Light Blue Legs with 3 Black Toes/Claws print",
-      "classification": "no-official-mapping",
-      "ldrawFiles": [],
-      "mappingEvidence": [],
-      "reason": null
-    },
-    {
-      "catalogId": "part:970c30",
-      "role": "legsAssembly",
-      "rebrickablePartNum": "970c30",
-      "name": "Hips and Flat Silver Legs",
       "classification": "no-official-mapping",
       "ldrawFiles": [],
       "mappingEvidence": [],
@@ -118983,16 +117594,6 @@
       "role": "legsAssembly",
       "rebrickablePartNum": "970c30pr9997",
       "name": "Hips and Flat Silver Legs with Red Armor, Silver Stripes, Red and Yellow Knee Plates and Orange Belt Pouches Print",
-      "classification": "no-official-mapping",
-      "ldrawFiles": [],
-      "mappingEvidence": [],
-      "reason": null
-    },
-    {
-      "catalogId": "part:970c31",
-      "role": "legsAssembly",
-      "rebrickablePartNum": "970c31",
-      "name": "Hips and Green Legs",
       "classification": "no-official-mapping",
       "ldrawFiles": [],
       "mappingEvidence": [],
@@ -119429,16 +118030,6 @@
       "reason": null
     },
     {
-      "catalogId": "part:970c32",
-      "role": "legsAssembly",
-      "rebrickablePartNum": "970c32",
-      "name": "Hips and Medium Blue Legs",
-      "classification": "no-official-mapping",
-      "ldrawFiles": [],
-      "mappingEvidence": [],
-      "reason": null
-    },
-    {
       "catalogId": "part:970c32pat07",
       "role": "legsAssembly",
       "rebrickablePartNum": "970c32pat07",
@@ -119644,16 +118235,6 @@
       "reason": null
     },
     {
-      "catalogId": "part:970c33",
-      "role": "legsAssembly",
-      "rebrickablePartNum": "970c33",
-      "name": "Hips and Medium Lavender Legs",
-      "classification": "no-official-mapping",
-      "ldrawFiles": [],
-      "mappingEvidence": [],
-      "reason": null
-    },
-    {
       "catalogId": "part:970c33pat27pr1176",
       "role": "legsAssembly",
       "rebrickablePartNum": "970c33pat27pr1176",
@@ -119728,16 +118309,6 @@
       "role": "legsAssembly",
       "rebrickablePartNum": "970c33pr2133",
       "name": "Hips and Medium Lavender Legs with Medium Nougat Apron print",
-      "classification": "no-official-mapping",
-      "ldrawFiles": [],
-      "mappingEvidence": [],
-      "reason": null
-    },
-    {
-      "catalogId": "part:970c34",
-      "role": "legsAssembly",
-      "rebrickablePartNum": "970c34",
-      "name": "Hips and Orange Legs",
       "classification": "no-official-mapping",
       "ldrawFiles": [],
       "mappingEvidence": [],
@@ -120148,16 +118719,6 @@
       "role": "legsAssembly",
       "rebrickablePartNum": "970c34pr9999",
       "name": "Hips and Orange Legs with Pockets and Red Belt Print",
-      "classification": "no-official-mapping",
-      "ldrawFiles": [],
-      "mappingEvidence": [],
-      "reason": null
-    },
-    {
-      "catalogId": "part:970c35",
-      "role": "legsAssembly",
-      "rebrickablePartNum": "970c35",
-      "name": "Hips and Dark Green Legs",
       "classification": "no-official-mapping",
       "ldrawFiles": [],
       "mappingEvidence": [],
@@ -120708,16 +119269,6 @@
       "reason": null
     },
     {
-      "catalogId": "part:970c37",
-      "role": "legsAssembly",
-      "rebrickablePartNum": "970c37",
-      "name": "Hips and Magenta Legs",
-      "classification": "no-official-mapping",
-      "ldrawFiles": [],
-      "mappingEvidence": [],
-      "reason": null
-    },
-    {
       "catalogId": "part:970c37pat01",
       "role": "legsAssembly",
       "rebrickablePartNum": "970c37pat01",
@@ -120822,16 +119373,6 @@
       "role": "legsAssembly",
       "rebrickablePartNum": "970c37pr9806",
       "name": "Hips and Magenta Legs with Dark Azure/Bright Light Orange Stripes, Belt print",
-      "classification": "no-official-mapping",
-      "ldrawFiles": [],
-      "mappingEvidence": [],
-      "reason": null
-    },
-    {
-      "catalogId": "part:970c38",
-      "role": "legsAssembly",
-      "rebrickablePartNum": "970c38",
-      "name": "Hips and Bright Light Orange Legs",
       "classification": "no-official-mapping",
       "ldrawFiles": [],
       "mappingEvidence": [],
@@ -121173,16 +119714,6 @@
       "reason": null
     },
     {
-      "catalogId": "part:970c39",
-      "role": "legsAssembly",
-      "rebrickablePartNum": "970c39",
-      "name": "Hips and Lavender Legs",
-      "classification": "no-official-mapping",
-      "ldrawFiles": [],
-      "mappingEvidence": [],
-      "reason": null
-    },
-    {
       "catalogId": "part:970c39pat03pr1903",
       "role": "legsAssembly",
       "rebrickablePartNum": "970c39pat03pr1903",
@@ -121243,16 +119774,6 @@
       "reason": null
     },
     {
-      "catalogId": "part:970c40",
-      "role": "legsAssembly",
-      "rebrickablePartNum": "970c40",
-      "name": "Hips and Yellowish Green Legs",
-      "classification": "no-official-mapping",
-      "ldrawFiles": [],
-      "mappingEvidence": [],
-      "reason": null
-    },
-    {
       "catalogId": "part:970c40pr0001",
       "role": "legsAssembly",
       "rebrickablePartNum": "970c40pr0001",
@@ -121267,16 +119788,6 @@
       "role": "legsAssembly",
       "rebrickablePartNum": "970c40pr1433",
       "name": "Hips and Yellowish Green Legs with Torn Jeans, Black Skeleton",
-      "classification": "no-official-mapping",
-      "ldrawFiles": [],
-      "mappingEvidence": [],
-      "reason": null
-    },
-    {
-      "catalogId": "part:970c41",
-      "role": "legsAssembly",
-      "rebrickablePartNum": "970c41",
-      "name": "Hips and Dark Orange Legs",
       "classification": "no-official-mapping",
       "ldrawFiles": [],
       "mappingEvidence": [],
@@ -121513,16 +120024,6 @@
       "reason": null
     },
     {
-      "catalogId": "part:970c42",
-      "role": "legsAssembly",
-      "rebrickablePartNum": "970c42",
-      "name": "Hips and Medium Azure Legs",
-      "classification": "no-official-mapping",
-      "ldrawFiles": [],
-      "mappingEvidence": [],
-      "reason": null
-    },
-    {
       "catalogId": "part:970c42pat01",
       "role": "legsAssembly",
       "rebrickablePartNum": "970c42pat01",
@@ -121733,16 +120234,6 @@
       "reason": null
     },
     {
-      "catalogId": "part:970c43",
-      "role": "legsAssembly",
-      "rebrickablePartNum": "970c43",
-      "name": "Hips and Bright Pink Legs",
-      "classification": "no-official-mapping",
-      "ldrawFiles": [],
-      "mappingEvidence": [],
-      "reason": null
-    },
-    {
       "catalogId": "part:970c43pat02pr0003",
       "role": "legsAssembly",
       "rebrickablePartNum": "970c43pat02pr0003",
@@ -121823,16 +120314,6 @@
       "reason": null
     },
     {
-      "catalogId": "part:970c44",
-      "role": "legsAssembly",
-      "rebrickablePartNum": "970c44",
-      "name": "Hips and Bright Light Yellow Legs",
-      "classification": "no-official-mapping",
-      "ldrawFiles": [],
-      "mappingEvidence": [],
-      "reason": null
-    },
-    {
       "catalogId": "part:970c44pat02pr0001",
       "role": "legsAssembly",
       "rebrickablePartNum": "970c44pat02pr0001",
@@ -121897,26 +120378,6 @@
       "role": "legsAssembly",
       "rebrickablePartNum": "970c44pr1538",
       "name": "Hips and Bright Light Yellow Legs with Dirt, Mud Stains",
-      "classification": "no-official-mapping",
-      "ldrawFiles": [],
-      "mappingEvidence": [],
-      "reason": null
-    },
-    {
-      "catalogId": "part:970c45",
-      "role": "legsAssembly",
-      "rebrickablePartNum": "970c45",
-      "name": "Hips and Sand Red Legs",
-      "classification": "no-official-mapping",
-      "ldrawFiles": [],
-      "mappingEvidence": [],
-      "reason": null
-    },
-    {
-      "catalogId": "part:970c46",
-      "role": "legsAssembly",
-      "rebrickablePartNum": "970c46",
-      "name": "Hips and Dark Turquoise Legs",
       "classification": "no-official-mapping",
       "ldrawFiles": [],
       "mappingEvidence": [],
@@ -122023,36 +120484,6 @@
       "reason": null
     },
     {
-      "catalogId": "part:970c48",
-      "role": "legsAssembly",
-      "rebrickablePartNum": "970c48",
-      "name": "Hips and Chrome Gold Legs",
-      "classification": "no-official-mapping",
-      "ldrawFiles": [],
-      "mappingEvidence": [],
-      "reason": null
-    },
-    {
-      "catalogId": "part:970c49",
-      "role": "legsAssembly",
-      "rebrickablePartNum": "970c49",
-      "name": "Hips and Sand Purple Legs",
-      "classification": "no-official-mapping",
-      "ldrawFiles": [],
-      "mappingEvidence": [],
-      "reason": null
-    },
-    {
-      "catalogId": "part:970c50",
-      "role": "legsAssembly",
-      "rebrickablePartNum": "970c50",
-      "name": "Hips and Chrome Silver Legs",
-      "classification": "no-official-mapping",
-      "ldrawFiles": [],
-      "mappingEvidence": [],
-      "reason": null
-    },
-    {
       "catalogId": "part:970c51",
       "role": "legsAssembly",
       "rebrickablePartNum": "970c51",
@@ -122063,70 +120494,10 @@
       "reason": null
     },
     {
-      "catalogId": "part:970c54",
-      "role": "legsAssembly",
-      "rebrickablePartNum": "970c54",
-      "name": "Hips and Sky Blue Legs",
-      "classification": "no-official-mapping",
-      "ldrawFiles": [],
-      "mappingEvidence": [],
-      "reason": null
-    },
-    {
-      "catalogId": "part:970c55",
-      "role": "legsAssembly",
-      "rebrickablePartNum": "970c55",
-      "name": "Hips and Purple Legs",
-      "classification": "no-official-mapping",
-      "ldrawFiles": [],
-      "mappingEvidence": [],
-      "reason": null
-    },
-    {
       "catalogId": "part:970c55pr0001",
       "role": "legsAssembly",
       "rebrickablePartNum": "970c55pr0001",
       "name": "Hips and Purple Legs with Dumbledore Robe and Belt Print",
-      "classification": "no-official-mapping",
-      "ldrawFiles": [],
-      "mappingEvidence": [],
-      "reason": null
-    },
-    {
-      "catalogId": "part:970c56",
-      "role": "legsAssembly",
-      "rebrickablePartNum": "970c56",
-      "name": "Hips and Pearl Light Gold Legs",
-      "classification": "no-official-mapping",
-      "ldrawFiles": [],
-      "mappingEvidence": [],
-      "reason": null
-    },
-    {
-      "catalogId": "part:970c57",
-      "role": "legsAssembly",
-      "rebrickablePartNum": "970c57",
-      "name": "Hips and Violet Legs",
-      "classification": "no-official-mapping",
-      "ldrawFiles": [],
-      "mappingEvidence": [],
-      "reason": null
-    },
-    {
-      "catalogId": "part:970c59",
-      "role": "legsAssembly",
-      "rebrickablePartNum": "970c59",
-      "name": "Hips and Medium Orange Legs",
-      "classification": "no-official-mapping",
-      "ldrawFiles": [],
-      "mappingEvidence": [],
-      "reason": null
-    },
-    {
-      "catalogId": "part:970c60",
-      "role": "legsAssembly",
-      "rebrickablePartNum": "970c60",
-      "name": "Hips and Coral Legs",
       "classification": "no-official-mapping",
       "ldrawFiles": [],
       "mappingEvidence": [],
@@ -122173,40 +120544,10 @@
       "reason": null
     },
     {
-      "catalogId": "part:970c62",
-      "role": "legsAssembly",
-      "rebrickablePartNum": "970c62",
-      "name": "Hips and Light Purple Legs",
-      "classification": "no-official-mapping",
-      "ldrawFiles": [],
-      "mappingEvidence": [],
-      "reason": null
-    },
-    {
       "catalogId": "part:970c62pr0001",
       "role": "legsAssembly",
       "rebrickablePartNum": "970c62pr0001",
       "name": "Hips and Light Purple Legs with Dumbledore Robe and Belt Print",
-      "classification": "no-official-mapping",
-      "ldrawFiles": [],
-      "mappingEvidence": [],
-      "reason": null
-    },
-    {
-      "catalogId": "part:970c64",
-      "role": "legsAssembly",
-      "rebrickablePartNum": "970c64",
-      "name": "Hips and Trans-Dark Pink Legs",
-      "classification": "no-official-mapping",
-      "ldrawFiles": [],
-      "mappingEvidence": [],
-      "reason": null
-    },
-    {
-      "catalogId": "part:970c65",
-      "role": "legsAssembly",
-      "rebrickablePartNum": "970c65",
-      "name": "Hips and Trans-Light Blue Legs",
       "classification": "no-official-mapping",
       "ldrawFiles": [],
       "mappingEvidence": [],
@@ -122243,30 +120584,10 @@
       "reason": null
     },
     {
-      "catalogId": "part:970c66",
-      "role": "legsAssembly",
-      "rebrickablePartNum": "970c66",
-      "name": "Hips and Trans-Orange Legs",
-      "classification": "no-official-mapping",
-      "ldrawFiles": [],
-      "mappingEvidence": [],
-      "reason": null
-    },
-    {
       "catalogId": "part:970c66pr0006",
       "role": "legsAssembly",
       "rebrickablePartNum": "970c66pr0006",
       "name": "Hips and Trans-Orange Legs with Black Lava Rock Print",
-      "classification": "no-official-mapping",
-      "ldrawFiles": [],
-      "mappingEvidence": [],
-      "reason": null
-    },
-    {
-      "catalogId": "part:970c67",
-      "role": "legsAssembly",
-      "rebrickablePartNum": "970c67",
-      "name": "Hips and Trans-Red Legs",
       "classification": "no-official-mapping",
       "ldrawFiles": [],
       "mappingEvidence": [],
@@ -122283,40 +120604,10 @@
       "reason": null
     },
     {
-      "catalogId": "part:970c68",
-      "role": "legsAssembly",
-      "rebrickablePartNum": "970c68",
-      "name": "Hips and Trans-Yellow Legs",
-      "classification": "no-official-mapping",
-      "ldrawFiles": [],
-      "mappingEvidence": [],
-      "reason": null
-    },
-    {
       "catalogId": "part:970c68pr0002",
       "role": "legsAssembly",
       "rebrickablePartNum": "970c68pr0002",
       "name": "Hips and Trans-Yellow Legs with Azure, Yellow, Dark Blue Lightning print",
-      "classification": "no-official-mapping",
-      "ldrawFiles": [],
-      "mappingEvidence": [],
-      "reason": null
-    },
-    {
-      "catalogId": "part:970c71",
-      "role": "legsAssembly",
-      "rebrickablePartNum": "970c71",
-      "name": "Hips and Pink Legs",
-      "classification": "no-official-mapping",
-      "ldrawFiles": [],
-      "mappingEvidence": [],
-      "reason": null
-    },
-    {
-      "catalogId": "part:970c72",
-      "role": "legsAssembly",
-      "rebrickablePartNum": "970c72",
-      "name": "Hips and Trans-Neon Green Legs",
       "classification": "no-official-mapping",
       "ldrawFiles": [],
       "mappingEvidence": [],
@@ -122367,16 +120658,6 @@
       "role": "legsAssembly",
       "rebrickablePartNum": "970c72pr0953",
       "name": "Hips and Trans-Neon Green Legs with Dark Red Sash, Blue Robe, Knee Straps",
-      "classification": "no-official-mapping",
-      "ldrawFiles": [],
-      "mappingEvidence": [],
-      "reason": null
-    },
-    {
-      "catalogId": "part:970c75",
-      "role": "legsAssembly",
-      "rebrickablePartNum": "970c75",
-      "name": "Hips and Pearl Titanium Legs [Plain]",
       "classification": "no-official-mapping",
       "ldrawFiles": [],
       "mappingEvidence": [],
@@ -123227,16 +121508,6 @@
       "role": "legsAssembly",
       "rebrickablePartNum": "970c81pr0001",
       "name": "Hips and Opal Trans-Dark Pink Legs with Dark Purple Panels, Dark Blue Trim, Circuitry print",
-      "classification": "no-official-mapping",
-      "ldrawFiles": [],
-      "mappingEvidence": [],
-      "reason": null
-    },
-    {
-      "catalogId": "part:970c84",
-      "role": "legsAssembly",
-      "rebrickablePartNum": "970c84",
-      "name": "Hips and Warm Pink Legs [PLAIN]",
       "classification": "no-official-mapping",
       "ldrawFiles": [],
       "mappingEvidence": [],
