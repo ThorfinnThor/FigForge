@@ -67,7 +67,7 @@ Wir testen, ob eine einfache Verbindung aus **natürlicher Teilesuche, unmittelb
 | Speicherung | IndexedDB; ergänzend JSON-Dateien und versionierte Share-Links. |
 | Kaufen | BrickLink-kompatibles XML plus Erläuterung des manuellen Imports. Kein eigener Checkout. |
 | Backend | Kein eigener API-Server, keine Cloud-Datenbank und keine Accounts in Version 1. |
-| Design | Heller, ruhiger Katalog mit eigenständiger Typografie, grünen Funktionsakzenten und sparsamem Lime-/Sketchbook-Charakter. |
+| Design | „Lochwand“ ([ADR-007](decisions/ADR-007-lochwand-design.md)): Spielwaren-Lochwand mit Teilen als Blisterkarten, einer Farbe pro Kategorie, beleuchteter Vitrine für die Figur, Lilita One und Rubik. |
 | Sprache | Deutsche Oberfläche als Standard, englische Fassung vorbereiten. Suche mindestens auf Deutsch und Englisch testen. |
 | Kosten | Möglichst keine laufenden Infrastrukturgebühren im MVP; Entwicklungsaufwand, Modellnutzung beim Programmieren und Rechtsprüfung getrennt betrachten. |
 
@@ -152,120 +152,88 @@ Eine vorhandene Katalogvariante darf deshalb niemals automatisch ein grünes „
 
 ### 4.1 Referenz und Übersetzung in eine echte Arbeitsoberfläche
 
-![Freigegebene visuelle Stilreferenz: FigForge mit hellem Katalog, grünen und limefarbenen Akzenten sowie zentraler Figur.](assets/figforge-design-reference.png)
+![Freigegebene Gestaltung „Lochwand“: Lochwand-Hintergrund, dunkelblaue Kopfzeile, Katalogteile als Blisterkarten, beleuchtete Vitrine mit Figur und die Figurenliste als Blisterkarte.](assets/figforge-lochwand-desktop.png)
 
-**Referenzauflösung:** 1536 × 1024 Pixel. Das Bild ist im Begleitpaket enthalten. Farben, Typografie und Maße unten sind daraus abgeleitete, bewusst präzisierte Designentscheidungen — keine Behauptung über exakt gemessene Schriftarten oder Pixelwerte des generierten Bildes.
+**Maßgebliche Gestaltung:** die vom Projektverantwortlichen am 29.09.2026 freigegebene Richtung „Lochwand“ ([ADR-007](decisions/ADR-007-lochwand-design.md)). Das Bild oben ist ein Screenshot der umgesetzten Oberfläche mit echten Katalogdaten bei 1536 × 960 CSS-Pixeln. Verbindlich sind die Tokens in `src/styles/tokens.css` und die Regeln in diesem Kapitel; der Screenshot ist kein pixelgenaues Golden Image.
 
-Die Richtung bleibt: **überwiegend Clean Minimal, etwas Creative Studio und nur wenig dramatische Inszenierung**. Der Arbeitsbereich hat Vorrang vor dekorativem Marketing.
+Die Richtung: **eine Lochwand im Spielwarenladen**. Teile hängen als Blisterkarten mit Euro-Aufhängung, jede Kategorie hat eine eigene Farbe, die Figur steht auf einem Drehteller in einer beleuchteten Vitrine und die fertige Figur ist selbst eine Blisterkarte. Der Arbeitsbereich hat Vorrang vor dekorativem Marketing.
 
-**Beibehalten:** helle Flächen, links die Kategorien, daneben die Suchergebnisse, eine große Figur und rechts die Teileübersicht; ein handgezeichneter Markenakzent und ein dezenter Lime-Pinselstrich hinter der Vorschau.
+**Beibehalten aus der ursprünglichen Referenz:** links die Kategorien, daneben die Suchergebnisse, eine große Figur und rechts die Teileübersicht.
 
-**Ändern:** weniger Werbetext, keine nicht existierenden Menüpunkte, keine angeblichen Konten, keine redundanten Einkaufsbuttons, kein großes Marketing-Footerband im sichtbaren Arbeitsbereich. Der Fantasy-Look der Beispielperson wird nicht zur Einschränkung auf ein einzelnes Thema.
+**Nicht übernehmen:** Werbetext, nicht existierende Menüpunkte, angebliche Konten, redundante Einkaufsbuttons und ein großes Marketing-Footerband im sichtbaren Arbeitsbereich. Die Beispielfigur schränkt die App nicht auf ein einzelnes Thema ein.
 
 ### 4.2 Marke und grafische Sprache
 
-**Arbeitswortmarke:** „FigForge“ in einer markanten, leicht handschriftlichen Form. Für den Prototyp eine typografische Lösung verwenden; keine Minifiguren-Silhouette als Logo. Die kleine gezeichnete Krone aus der Referenz ist optional und bleibt bis zur Namens-/Markenprüfung ein Entwurf.
+**Arbeitswortmarke:** „Fig“ in Signalgelb und „Forge“ in Weiß, gesetzt in Lilita One mit hartem Versatzschatten auf der dunkelblauen Kopfzeile. Typografische Lösung ohne Minifiguren-Silhouette; bis zur Namens-/Markenprüfung ein Entwurf.
 
 **Tagline:** „Echte Teile. Eigene Charaktere.“
 
 **Stilregeln:**
 
-- Keine violett-blauen SaaS-Verläufe, gläsernen Karten, leuchtenden Außenkanten oder übergroßen Pillen.
-- Farbe hat eine Funktion: Grün für Auswahl und Bestätigung, Lime für den primären nächsten Schritt und die Marke.
-- Höchstens ein größerer Sketchbook-Akzent pro sichtbarer Arbeitsfläche. Keine Kritzeleien hinter Suchtexten oder Teilenummern.
-- Dünne, konsistente Linienicons; 20 px im Normalfall, 24 px bei Kategorien.
-- Keine Emojis als Produktionsicons. Neutrale Rahmen lassen die farbigen Teile wirken.
-- Schatten nur zur Ebenentrennung, nicht an jeder einzelnen Textzeile.
-- Der reale Builder darf schlichter als die generierte Figur aussehen. Produktkorrektheit hat Vorrang vor künstlich hinzugefügtem Detailreichtum.
+- Materialien statt Effekte: Lochwand aus Holz, cremefarbene Blisterkarten, dunkelblaue Ladenschilder. Keine violett-blauen SaaS-Verläufe, gläsernen Karten oder leuchtenden Außenkanten.
+- Farbe hat eine Funktion: Die Kategorienfarbe kennzeichnet Kategorie-Button, Kartenband und Figurenslot. Signalgelb markiert den primären nächsten Schritt und den Tastaturfokus. Dunkelblau trägt Schilder, aktive Zustände und Vitrine.
+- Tiefe entsteht durch harte, versetzte Schatten (`--lift`, `--lift-navy`), nicht durch weiche Schattenwolken. Schatten nur zur Ebenentrennung.
+- Leichte Schrägstellung nur als Akzent: aktive Kategorie, Vorschau-Etikett. Nie bei Suchtexten, Teilenamen oder Teilenummern.
+- Keine Emojis als Produktionsicons. Neutrale Kartenflächen lassen die farbigen Teile wirken.
+- Der reale Builder darf schlichter als eine inszenierte Figur aussehen. Produktkorrektheit hat Vorrang vor künstlich hinzugefügtem Detailreichtum.
 
 ### 4.3 Farb- und Oberflächentokens
 
 | Token | Wert | Zweck |
 |---|---|---|
-| `--bg-app` | `#F5F6F4` | Gesamte Arbeitsfläche. |
-| `--surface` | `#FFFFFF` | Karten, Suchfeld, modale Flächen. |
-| `--surface-soft` | `#EFF2EF` | Thumbnail-Hintergrund und ruhige Sekundärflächen. |
-| `--text-primary` | `#11191D` | Überschriften und aktive Texte. |
-| `--text-secondary` | `#56636A` | Erläuterungen und IDs. |
-| `--border-subtle` | `#DDE3DE` | Unaufdringliche Trennlinien. |
-| `--border-control` | `#7A8781` | Grenzen wichtiger Eingabeelemente und Zustände; Kontrast prüfen. |
-| `--green` | `#087F63` | Auswahl, aktive Kategorie, bestätigte Aktion. |
-| `--green-hover` | `#06684F` | Hoverzustand grüner Buttons. |
-| `--green-soft` | `#E5F3EC` | Aktive Kategorie und leichte Auswahlflächen. |
-| `--lime` | `#D5FF45` | Primärer Export-/Prüfbutton, Unterstreichung und Markendetail. |
-| `--lime-soft` | `#F2F8D7` | Sehr dezenter Bühnenakzent. |
-| `--warning` / `--warning-bg` | `#9A4B10` / `#FFF4DE` | Nicht geprüfte Zuordnung oder Kompatibilität. |
-| `--danger` | `#B42318` | Fehler und blockierte Exporte. |
-| `--focus` | `#087F63` | Gut sichtbarer Tastaturfokus. |
+| `--peg` / `--peg-hole` | `#B98655` / `#6E4B2B` | Lochwand-Hintergrund und Lochraster, Aufhängeschlitze. |
+| `--peg-shade` | `rgb(0 0 0 / 25%)` | Harter Versatzschatten von Karten auf der Wand. |
+| `--navy` / `--navy-deep` | `#1D2748` / `#151C36` | Kopfzeile, Schilder, aktive Zustände, Vitrine und deren Rahmen. |
+| `--navy-soft` | `#C8CDE6` | Sekundärtext auf Dunkelblau. |
+| `--card` | `#FFFDF8` | Blisterkarten, Suchfeld, Panels und Sekundärbuttons. |
+| `--card-rule` | `#E3DCCB` | Gestrichelte Trennlinien in Karten und Listen. |
+| `--ink` / `--ink-muted` | `#1D2748` / `#5D6177` | Text auf Karten; Erläuterungen und IDs. |
+| `--signal` / `--signal-shadow` | `#F4C21B` / `#B8870A` | Primärbutton, Überschriften auf Dunkelblau, Wortmarke und Fokusrahmen. |
+| `--ok-bg` / `--ok-ink` | `#DFF3E7` / `#18643D` | Status „Digital verbunden“. |
+| `--geo-bg` / `--geo-ink` | `#FFF0D1` / `#8A5200` | Status „Geometrie ohne Druck“ und ungeprüfte Zuordnung. |
+| `--danger` | `#B42318` | Fehler und blockierte Aktionen. |
+| `--surface-soft` | `#EFF2EF` | Neutrale Badges und leere Slot-Thumbnails. |
+| `--stage-light` | `rgb(255 243 196 / 22%)` | Lichtkegel in der Vitrine. |
 
-Berechnete Kontraste ausgewählter Vollfarben: Weiß auf Grün etwa **4,97:1**, Sekundärtext auf Weiß etwa **6,20:1**, dunkler Text auf Lime etwa **15,43:1**. Das sind eigene sRGB-Berechnungen; halbtransparente Flächen und reale Zustände werden separat getestet. Lime erhält immer dunklen, nicht weißen Text.
+**Kategorienfarben:** Alle Teile `--cat-all` `#FFFDF8`, Köpfe `--cat-head` `#F4C21B`, Kopfbedeckung `--cat-headwear` `#2F6FD0`, Oberkörper `--cat-torso` `#E0452F`, Beine `--cat-legs` `#2F9460`, Zubehör `--cat-accessory` `#8A52C7`. Sie werden über `data-category` beziehungsweise `data-role` als `--role-color` gesetzt und tragen nie allein Information: Kategorie und Slot sind immer beschriftet.
 
-```css
-:root {
-  --bg-app: #f5f6f4;
-  --surface: #fff;
-  --surface-soft: #eff2ef;
-  --text-primary: #11191d;
-  --text-secondary: #56636a;
-  --border-subtle: #dde3de;
-  --border-control: #7a8781;
-  --green: #087f63;
-  --green-hover: #06684f;
-  --green-soft: #e5f3ec;
-  --lime: #d5ff45;
-  --lime-soft: #f2f8d7;
-  --warning: #9a4b10;
-  --warning-bg: #fff4de;
-  --danger: #b42318;
-  --focus: #087f63;
-  --radius-sm: 8px;
-  --radius-md: 12px;
-  --radius-lg: 16px;
-  --shadow-panel: 0 6px 24px rgb(17 25 29 / 5%);
-  --shadow-float: 0 12px 36px rgb(17 25 29 / 12%);
-  --space-1: 4px;
-  --space-2: 8px;
-  --space-3: 12px;
-  --space-4: 16px;
-  --space-5: 20px;
-  --space-6: 24px;
-  --space-8: 32px;
-  --space-12: 48px;
-}
-```
+Berechnete Kontraste ausgewählter Vollfarben: Dunkelblau auf Karte etwa **14,4:1**, Sekundärtext auf Karte etwa **6,0:1**, Dunkelblau auf Signalgelb etwa **8,8:1**, Weiß auf Dunkelblau etwa **14,6:1**, `--navy-soft` auf Dunkelblau etwa **9,3:1**, `--danger` auf Karte etwa **6,5:1**, beide Status-Badges über **5,6:1**. Das sind eigene sRGB-Berechnungen; halbtransparente Flächen und reale Zustände werden separat getestet. Signalgelb erhält immer dunkelblaue, nicht weiße Schrift.
+
+**Zu prüfen:** Der gelbe Fokusrahmen hat gegen Karte (etwa 1,6:1) und Lochwand (etwa 1,9:1) wenig Kontrast. Er ist durch 3 px Stärke und 2 px Abstand sichtbar, muss aber in der visuellen Abnahme (14.3) gegen WCAG 2.2 AA geprüft werden.
+
+Radien und Abstände: `--radius-md` 12 px (Buttons, Karten), `--radius-lg` 16 px (Panels, Vitrine), Abstände `--space-1` bis `--space-8` von 4 bis 32 px. `src/styles/tokens.css` ist die einzige Quelle der Werte; der FF-12-Test schreibt die Lochwand-Kernwerte fest.
 
 ### 4.4 Typografie
 
 | Verwendung | Spezifikation |
 |---|---|
-| Oberfläche | Manrope, alternativ System-Sans bis zur Einbindung. |
-| Wortmarke / handschriftlicher Akzent | Kalam Bold als Prototypenbasis; später optional eigene Wortmarke. |
-| Große Einführung | 38/44 px, Gewicht 750–800, leicht negative Laufweite; maximal zwei Zeilen. |
-| Laufende Arbeit / kompakter Titel | 26/32 px, Gewicht 750. |
-| Panelüberschrift | 18/24 px, Gewicht 700. |
-| Suchfeld | 16/24 px, Gewicht 500. |
-| Normaler UI-Text | 14/20 px, Gewicht 500. |
-| Teilenamen auf Karten | 13/18 px, Gewicht 650–700. |
-| IDs, Hinweise | 12/17 px; nicht kleiner skalieren, um mehr Karten zu erzwingen. |
-| Handschriftlicher Hinweis | 18–22 px; kurz, nicht für Fehlermeldungen oder Bedienhinweise. |
+| Wortmarke, Überschriften, Etiketten | Lilita One 400 (`--font-display`); Fallback Arial Rounded MT Bold, System-Sans. |
+| Oberfläche und Fließtext | Rubik 400–700 (`--font-body`); Fallback System-Sans. |
+| Katalogüberschrift | Lilita One, `clamp(1.9rem, 2.6vw, 2.6rem)`, Signalgelb auf Dunkelblau; maximal zwei Zeilen. |
+| Panelüberschrift („Deine Figur“) | Lilita One, etwa 30 px, Signalgelb auf Dunkelblau. |
+| Suchfeld | Rubik 500, etwa 19 px; Feld mindestens 56 px hoch. |
+| Normaler UI-Text | Rubik 400–600, 14–15 px. |
+| Teilenamen auf Karten | Rubik 600, etwa 13–14 px. |
+| Kapitälchen-Labels (Kategorie, Slot, Status) | Rubik 700, 10–13 px, Versalien mit Laufweite. |
+| IDs, Hinweise | Rubik, 12 px, tabellarische Ziffern; nicht kleiner skalieren, um mehr Karten zu erzwingen. |
 
-Manrope und Kalam werden in ihren offiziellen Font-Repositories unter SIL OFL 1.1 angeboten. Bei tatsächlicher Einbindung die jeweiligen Lizenzhinweise mitführen. Schriften später von der eigenen Origin ausliefern, keine Laufzeitabhängigkeit von einem externen Font-CDN. Dieses Planungspaket enthält **keine Schriftdateien**. [S13](#s13)[S14](#s14)
+Lilita One und Rubik stehen unter SIL OFL 1.1. Sie werden als Latin-Subset über `@fontsource/lilita-one` und `@fontsource/rubik` gebündelt und von der eigenen Origin ausgeliefert; Lizenztexte unter `public/licenses/fonts-OFL.txt`, Nachweis in `docs/source-register.md` (SRC-FONTS). Keine Laufzeitabhängigkeit von einem externen Font-CDN. [S13](#s13)[S14](#s14)
 
 ### 4.5 Desktop-Layout
 
-**Ab 1440 px:** vier Spalten; Kopfzeile 72 px; Seitenabstand 32 px; Abstand zwischen Spalten 20 px. Maximale Arbeitsbreite 1800 px, darüber zentrieren.
+**Ab 1440 px:** vier Spalten; dunkelblaue Kopfzeile mindestens 76 px; Seitenabstand 24 px; Abstand zwischen Spalten 20 px. Die Lochwand füllt die volle Fensterbreite.
 
 ```text
 ┌────────────────────────────────────────────────────────────────────────────┐
-│ FigForge      Builder   Meine Figuren   Hilfe         Teileliste prüfen →  │
+│ FigForge   Builder  Deine Figur  Hinweise      ● Digitale Verbindungen     │
 ├───────────┬────────────────────────┬──────────────────────┬────────────────┤
-│ Kategorien│ Titel + Suche          │                      │ Deine Figur    │
-│           │ Filter + Trefferzahl   │      3D-Vorschau     │                │
-│ Kopf      │                        │                      │ Slot-Liste     │
-│ Haare/Hut │ Katalogkarten          │   echter Teilemix    │ Warnungen      │
-│ Körper    │                        │                      │                │
-│ Beine     │                        │                      │ Lokal speichern│
-│ Zubehör   │                        │ Kameraansichten      │ Liste prüfen   │
+│ Kategorien│ Schild: Titel          │  Vitrine             │ Blister:       │
+│ (Haken)   │ Suche + Trefferzahl    │                      │ Deine Figur    │
+│ Köpfe     │                        │   3D-Vorschau auf    │                │
+│ Kopfbed.  │ Blisterkarten          │   Drehteller         │ Slot-Liste     │
+│ Oberkörper│                        │                      │ Status         │
+│ Beine     │                        │                      │ Speichern /    │
+│ Zubehör   │                        │ Kameraansichten      │ Laden          │
 └───────────┴────────────────────────┴──────────────────────┴────────────────┘
 ```
 
@@ -273,19 +241,14 @@ Manrope und Kalam werden in ihren offiziellen Font-Repositories unter SIL OFL 1.
 /* Erst ab dem Desktop-Breakpoint einsetzen. */
 .workspace {
   display: grid;
-  grid-template-columns:
-    176px
-    minmax(350px, 1.1fr)
-    minmax(350px, 1fr)
-    280px;
+  grid-template-columns: 164px minmax(0, 1.25fr) minmax(320px, 1fr) 300px;
   gap: 20px;
-  padding: 24px 32px;
-  max-width: 1800px;
-  margin-inline: auto;
+  padding: 24px 24px 16px;
+  align-items: start;
 }
 ```
 
-Der Katalog darf vertikal scrollen; Figur und Auswahl bleiben sichtbar, soweit die Fensterhöhe reicht. Auf kurzen Displays auf normalen Seitenscroll wechseln. Keine Scrollfalle durch mehrere verschachtelte Panes. Alle Scrollregionen müssen per Tastatur erreichbar sein.
+Der Katalog scrollt mit der Seite; Vitrine und Figurenpanel bleiben per `position: sticky` sichtbar, soweit die Fensterhöhe reicht. Keine Scrollfalle durch mehrere verschachtelte Panes. Alle Scrollregionen müssen per Tastatur erreichbar sein.
 
 ### 4.6 Responsive Verhalten
 
@@ -306,20 +269,20 @@ Der Tab „Liste“ übernimmt mobil den Export-CTA. Eine fixierte Aktionsleiste
 | Komponente | Spezifikation und Zustände |
 |---|---|
 | `AppHeader` | Wortmarke links; nur funktionierende Navigation. Kein Accountavatar und kein Dark-Mode-Schalter im MVP. |
-| `CategoryRail` | Aktive Kategorie mit grünem Rand und leichter Grünfläche. Labels sichtbar oder zugänglich. Kategorien bilden Fähigkeiten des MVP ab, nicht alle Icons des Mockups. |
-| `SearchBar` | 52 px hoch; sichtbares Label oder klare zugängliche Beschriftung; Suchicon als Button, Enter löst Suche aus. Ladezustand darf Eingabe nicht löschen. |
+| `CategoryRail` | Kategorien als Karten mit Kategorienfarbe am Rand; die aktive Kategorie ist vollflächig in ihrer Farbe, leicht versetzt und schräg. Labels sichtbar oder zugänglich; Zustand über `aria-pressed`. Kategorien bilden Fähigkeiten des MVP ab, nicht alle Icons des Mockups. |
+| `SearchBar` | Mindestens 56 px hoch, dunkelblauer Rahmen auf Kartenfläche; sichtbares Label oder klare zugängliche Beschriftung; Suchicon als Button, Enter löst Suche aus. Ladezustand darf Eingabe nicht löschen. |
 | `FilterBar` | Kategorie, belegte Farbe, Sortierung. Jahresfilter nur nach nachgewiesener Datengrundlage. Kein interaktiver „Originalteile“-Schalter, wenn Alternativen gar nicht angeboten werden. |
 | `SearchStatus` | Echte Trefferzahl und Modus „Stichwortsuche“ / „Erweiterte Suche“. Vor Aktivierung echte fehlende Downloadmenge, währenddessen Fortschritt und Abbruch, danach Cachezustand anzeigen. Keine Aufforderung, beide Benchmarkmodelle zu laden. |
-| `PartCard` | 12 px Radius, neutraler Bildbereich, zwei Zeilen Name, ID mit Angabe des Systems. Hauptaktion setzt ein; Detail-/Favoritenbuttons sind getrennte Geschwisterelemente, keine verschachtelten Buttons. |
-| `PartCard:selected` | 2 px grüner Rahmen plus Häkchen und zugänglicher Zustand. Auswahl nicht nur durch Farbe signalisieren. |
+| `PartCard` | Blisterkarte mit Euro-Aufhängung und Band in der Kategorienfarbe, 12 px Radius, weißer Bildbereich, Name, ID mit Angabe des Systems und Status-Badge. Hauptaktion setzt ein; Detail-/Favoritenbuttons sind getrennte Geschwisterelemente, keine verschachtelten Buttons. |
+| `PartCard:selected` | Dunkelblauer Rahmen und dunkelblaues Band, Badge „Aktiv“ und zugänglicher Zustand. Auswahl nicht nur durch Farbe signalisieren. |
 | `PartDetails` | Varianten, Farben, Datenquelle, Renderstatus und Anschlussstatus; keine erfundenen Preisfelder. Auf Mobil als Bottom Sheet. |
-| `FigureViewport` | Helle Bühne, dezenter Bodenschatten, ruhige Studio-Beleuchtung; Konturen und Aufdrucke bleiben erkennbar. |
-| `ViewportToolbar` | Drehen/Zoom bzw. Reset und feste Ansichten. Alle relevanten Aktionen außerhalb des Canvas als echte Buttons. |
-| `FigurePartsPanel` | Slotname, Thumbnail, Teilname, Variante, Farbe und Entfernen. „Deine Figur“ statt Einkaufskorb. |
+| `FigureViewport` | Beleuchtete Vitrine: dunkelblauer Rahmen, Lichtkegel von oben, heller Drehteller; der Canvas rendert transparent, der Hintergrund kommt aus CSS. Etikett „Vorschau“. Konturen und Aufdrucke bleiben erkennbar. Keine automatische Rotation. |
+| `ViewportToolbar` | Drehen/Zoom bzw. Reset und feste Ansichten als dunkelblaue Pillenleiste in der Vitrine. Alle relevanten Aktionen außerhalb des Canvas als echte Buttons. |
+| `FigurePartsPanel` | Blisterkarte mit dunkelblauem Kopf und Aufhängung; je Slot Farbstreifen der Kategorie, Thumbnail, Slotname, Teilname, Variante, Farbe und Entfernen. „Deine Figur“ statt Einkaufskorb. |
 | `ExportReview` | Einkaufspositionen, Prüfstatus, nicht exportierbare Positionen, XML kopieren und Datei speichern. |
 | `LocalCollection` | Auf diesem Gerät gespeicherte Figuren; Umbenennen, Öffnen, Duplizieren, Löschen mit Rücknahme oder Bestätigung. |
 
-**Buttonhierarchie:** Primär „Teileliste prüfen“ in Lime mit dunkler Schrift. Sekundär „Lokal speichern“ als ruhiger Umrissbutton. „Einsetzen“ in Detailansichten darf grün sein. Header-CTA und Panel-CTA öffnen dieselbe Aktion; auf schmalen Displays nur einen gleichzeitig prominent zeigen.
+**Buttonhierarchie:** Alle Buttons haben einen 3 px dunkelblauen Rahmen und einen harten Versatzschatten, der beim Drücken einfedert. Primär „Teileliste prüfen“ in Signalgelb mit dunkelblauer Schrift; bis es diese Aktion gibt, trägt im Figurenpanel „Figur als JSON speichern“ das Signalgelb. Sekundär auf Kartenfläche. Gefährliche Aktionen in `--danger` mit weißer Schrift. Header-CTA und Panel-CTA öffnen dieselbe Aktion; auf schmalen Displays nur einen gleichzeitig prominent zeigen.
 
 **Nicht aus der Referenz übernehmen:** paralleles „Add to Parts List“ und „Export to BrickLink“, obwohl alle eingesetzten Teile bereits die Figur bilden. Die Figur ist automatisch die Quelle der Teileliste.
 
@@ -1144,7 +1107,7 @@ Prüfbreiten: 1536, 1440, 1280, 1024, 768, 390 und 320 CSS-Pixel. Zusätzlich Br
 
 Die generierte Referenz wird **nicht** als pixelgenaues Golden Image für reale Teile verwendet. Erst eine echte, freigegebene Browseransicht mit realen Assets wird als Screenshotbaseline festgehalten. Designreview vergleicht Hierarchie, Abstände, Farblogik, Typografie und Interaktionen.
 
-Keine abgeschnittenen Kartenbeschriftungen ohne erreichbaren vollständigen Namen. Keine Texte auf dem Pinselstrich. Keine Schattenwolken um jede Karte. Keine tote Community-Navigation und kein Accountavatar ohne Accountfunktion.
+Keine abgeschnittenen Kartenbeschriftungen ohne erreichbaren vollständigen Namen. Keine Texte auf Aufhängungen oder dem Drehteller. Keine Schattenwolken um jede Karte. Keine tote Community-Navigation und kein Accountavatar ohne Accountfunktion.
 
 ### 14.4 Menschliche Prüfungen
 
@@ -1409,8 +1372,8 @@ Die folgenden Quellen wurden für die technischen und rechtlichen Randbedingunge
 | <a id="s10"></a>S10 | [LEGO: Fair Play](https://www.lego.com/en-us/legal/notices-and-policies/fair-play) | Verifiziert: begrenzte Fan-/Referenzregeln und Grenzen des Disclaimers; keine pauschale kommerzielle Freigabe. |
 | <a id="s11"></a>S11 | [§ 23 MarkenG](https://www.gesetze-im-internet.de/markeng/__23.html) | Verifiziert: gesetzlicher Rahmen bestimmter referenzieller Markennutzungen; Anwendung auf das konkrete Produkt offen. |
 | <a id="s12"></a>S12 | [W3C: WCAG 2.2](https://www.w3.org/TR/WCAG22/) | Verifiziert: Standard als Grundlage der Accessibility-Ziele. |
-| <a id="s13"></a>S13 | [Manrope: OFL](https://github.com/google/fonts/blob/main/ofl/manrope/OFL.txt) | Verifiziert: SIL Open Font License 1.1. |
-| <a id="s14"></a>S14 | [Kalam: OFL](https://github.com/google/fonts/blob/main/ofl/kalam/OFL.txt) | Verifiziert: SIL Open Font License 1.1. |
+| <a id="s13"></a>S13 | [Lilita One: OFL](https://github.com/google/fonts/blob/main/ofl/lilitaone/OFL.txt) | SIL Open Font License 1.1; Lizenztext aus `@fontsource/lilita-one@5.3.0` unter `public/licenses/fonts-OFL.txt`. |
+| <a id="s14"></a>S14 | [Rubik: OFL](https://github.com/google/fonts/blob/main/ofl/rubik/OFL.txt) | SIL Open Font License 1.1; Lizenztext aus `@fontsource/rubik@5.3.0` unter `public/licenses/fonts-OFL.txt`. |
 | <a id="s15"></a>S15 | [LDraw: Legal Info](https://www.ldraw.org/legal-info) | Verifiziert: Bibliotheksrechte, Attribution und Rendering-Policy; jeweilige Dateilizenz zusätzlich prüfen. |
 | <a id="s16"></a>S16 | [BrickLink: Wanted List, Mass Upload](https://www.bricklink.com/help.asp?helpID=207) | Verifiziert: XML-Struktur und Importweg. Seite weist auf mögliche Unvollständigkeit hin; praktischer Importtest ist deshalb Pflicht. |
 | <a id="s17"></a>S17 | [§ 5 DDG](https://www.gesetze-im-internet.de/ddg/__5.html) | Verifiziert: Prüfung der Anbieterinformationen. |
@@ -1422,6 +1385,6 @@ Die folgenden Quellen wurden für die technischen und rechtlichen Randbedingunge
 | <a id="s23"></a>S23 | [Xenova/E5-small: ONNX-Dateien](https://huggingface.co/Xenova/multilingual-e5-small/tree/main/onnx) und [Tokenizer/Dateien](https://huggingface.co/Xenova/multilingual-e5-small/tree/main) | Am 27.09.2026 abgerufen: INT8/quantisiert rund 118 MB, `tokenizer.json` rund 17,1 MB; etwa 135 MB sind nur die Summe dieser Dateien, nicht der komplette Laufzeitdownload. |
 | <a id="s24"></a>S24 | [Cloudflare Workers Builds](https://developers.cloudflare.com/workers/ci-cd/builds/), [Git-Integration](https://developers.cloudflare.com/workers/ci-cd/builds/git-integration/) und [CI/CD-Übersicht](https://developers.cloudflare.com/workers/ci-cd/) | Am 27.09.2026 abgerufen: Workers Builds verbindet GitHub mit Cloudflare und automatisiert Build/Deployment bei Push; Nicht-Produktionsbranches können Vorschauen erhalten. Für FigForge bleibt GitHub Actions auf Datenrefresh und CI beschränkt. |
 
-**Designquelle:** das in dieser Unterhaltung ausgewählte und weiterentwickelte Mockup. Es liegt diesem Paket als `assets/figforge-design-reference.png` bei. Es dient ausschließlich als Gestaltungsreferenz, nicht als Beleg für reale Teile oder freigegebene Produktdarstellungen.
+**Designquelle:** das in dieser Unterhaltung ausgewählte und weiterentwickelte Mockup. Es liegt dem Repository als `design/reference.png` bei. Es dient ausschließlich als Gestaltungsreferenz, nicht als Beleg für reale Teile oder freigegebene Produktdarstellungen. Farben, Schriften und Materialwirkung sind seit [ADR-007](decisions/ADR-007-lochwand-design.md) durch die Gestaltung „Lochwand“ ersetzt; siehe Kapitel 4.
 
 **Offene Nachweise vor Umsetzung beziehungsweise Veröffentlichung:** Ablage des einschlägigen Nachweises zur bestätigten kommerziellen Nutzung der Rebrickable **Catalog Downloads/CSV** und Prüfung der tatsächlichen CSV-Felder, konkrete Asset-/Mappingabdeckung, ausgewählte Modell-/Paketrevisionen, Such-Holdout samt Profilentscheidung, physische Kompatibilität repräsentativer Kombinationen, Marken-/Darstellungsfreigabe, GitHub-Actions-/Branchschutzprüfung sowie reale Cloudflare-/Browsermessungen. Die Rebrickable API und sämtliche MOC-Dateien bleiben außerhalb des MVP; ihre Bedingungen werden erst bei einem späteren, getrennt freizugebenden Vorhaben geprüft.

@@ -39,10 +39,20 @@ describe("FF-12 shared UI primitives", () => {
   it("keeps the design tokens local and deterministic", async () => {
     const tokens = await readFile("src/styles/tokens.css", "utf8");
 
-    expect(tokens).toContain("--bg-app: #f5f6f4");
-    expect(tokens).toContain("--green: #087f63");
-    expect(tokens).toContain("--lime: #d5ff45");
+    expect(tokens).toContain("--peg: #b98655");
+    expect(tokens).toContain("--navy: #1d2748");
+    expect(tokens).toContain("--card: #fffdf8");
+    expect(tokens).toContain("--signal: #f4c21b");
+    expect(tokens).toContain("--cat-head: #f4c21b");
+    expect(tokens).toContain("--cat-headwear: #2f6fd0");
+    expect(tokens).toContain("--cat-torso: #e0452f");
+    expect(tokens).toContain("--cat-legs: #2f9460");
+    expect(tokens).toContain("--cat-accessory: #8a52c7");
+    expect(tokens).toContain('--font-display: "Lilita One"');
+    expect(tokens).toContain('--font-body: "Rubik"');
     expect(tokens).toContain("--radius-md: 12px");
+    expect(tokens).not.toContain("--lime");
+    expect(tokens).not.toContain("--green");
     expect(tokens).not.toContain("fonts.googleapis.com");
   });
 });
