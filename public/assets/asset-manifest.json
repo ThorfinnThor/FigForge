@@ -4,7 +4,7 @@
   "sourcePolicy": "Nur Rebrickable Catalog Downloads/CSV, keine MOC-Dateien.",
   "provenance": {
     "sourceLockSha256": "1ff3982922f1c1563dd2f086922baf7dc7407727c39eba3ee7814022d8f4c73e",
-    "modelPackageIndexSha256": "925ef0ea3a06f1b3bbcc7dffc834dcdd6c0099e3ea0566f6489ce17620b58583",
+    "modelPackageIndexSha256": "682d11408b519a4c62f349cc3be6417d531c3027e8edc2e943d58a7ada70ebe8",
     "mappingReviewSha256": "4090650b6ebe76cb2e71aaf987fa5dcb2c0f92ee20c4ae7c44ac1b917f5c84f9"
   },
   "release": {
@@ -40,8 +40,8 @@
       "id": "asset:thumbnail:ff03-hand-10053-left",
       "kind": "thumbnail",
       "path": "/assets/thumbnails/ff03-hand-10053-left.svg",
-      "sha256": "4d7d2acfc5fb787b545c32024f67b96b4e51956f9e7b3ff482ab4fc34625299f",
-      "bytes": 764,
+      "sha256": "ebdd59f8d87afd194aad9f75efb932f3891c591f2f02922114ab73bbbd144f82",
+      "bytes": 683,
       "sourceIds": [
         "src:fixture-ff04",
         "src:rebrickable-catalog"
@@ -58,8 +58,8 @@
       "id": "asset:thumbnail:ff03-hand-10053-right",
       "kind": "thumbnail",
       "path": "/assets/thumbnails/ff03-hand-10053-right.svg",
-      "sha256": "6f7fc41a814498734bda51f71123c523fb8d62f645b6ea28f8d53b8584768f99",
-      "bytes": 765,
+      "sha256": "29d1c46ef8ea0b866dd28f3917e0033742c84255e0f5928032d32b2b43d29f22",
+      "bytes": 684,
       "sourceIds": [
         "src:fixture-ff04",
         "src:rebrickable-catalog"
@@ -76,8 +76,8 @@
       "id": "asset:thumbnail:ff03-hand-11439-left",
       "kind": "thumbnail",
       "path": "/assets/thumbnails/ff03-hand-11439-left.svg",
-      "sha256": "3c89d0d8d5241b01261bbfdc0ed93abc1ff0979a57db399b3035ec4cc6dc7535",
-      "bytes": 741,
+      "sha256": "35f914ba1b82adc29898e5af8925f97812a628d7b5e4138d6ec51ea0565bf1f4",
+      "bytes": 660,
       "sourceIds": [
         "src:fixture-ff04",
         "src:rebrickable-catalog"
@@ -94,8 +94,8 @@
       "id": "asset:thumbnail:ff03-hand-11439-right",
       "kind": "thumbnail",
       "path": "/assets/thumbnails/ff03-hand-11439-right.svg",
-      "sha256": "bc6920d60835463937603c3afe67356e86f6f9d0d22eec6eae6fec4650e23b3a",
-      "bytes": 742,
+      "sha256": "115ed8b43f41d876b8ced5199aea764f19da4cc7eaec3f78a125cd42fd69cefc",
+      "bytes": 661,
       "sourceIds": [
         "src:fixture-ff04",
         "src:rebrickable-catalog"
@@ -112,8 +112,8 @@
       "id": "asset:thumbnail:ff03-hand-3841-left",
       "kind": "thumbnail",
       "path": "/assets/thumbnails/ff03-hand-3841-left.svg",
-      "sha256": "fddcf6b73d7ec9d6e13d95f65849a7bebb20e81accc0f71bfc97e66b26951cb6",
-      "bytes": 759,
+      "sha256": "761e9643c1375e729f815da22212de7c05072dde51aa3a61d9ba2da58b7f236a",
+      "bytes": 678,
       "sourceIds": [
         "src:fixture-ff04",
         "src:rebrickable-catalog"
@@ -130,8 +130,8 @@
       "id": "asset:thumbnail:ff03-hand-3841-right",
       "kind": "thumbnail",
       "path": "/assets/thumbnails/ff03-hand-3841-right.svg",
-      "sha256": "1fcc81e57bb90c9e78fedf6a99b2e3c6cc2835b3be27498ded48c09cb1aa4293",
-      "bytes": 760,
+      "sha256": "8fcc4bfa44d39ba0b7b746cf5fa55d2c060b2ecfe22a529d3da433b617d97a74",
+      "bytes": 679,
       "sourceIds": [
         "src:fixture-ff04",
         "src:rebrickable-catalog"
@@ -148,8 +148,8 @@
       "id": "asset:thumbnail:ff03-head-3626c",
       "kind": "thumbnail",
       "path": "/assets/thumbnails/ff03-head-3626c.svg",
-      "sha256": "1136c8c9b0318847f05d22600f64c039f04b3b80348ad7da7512c4423e8f70c6",
-      "bytes": 753,
+      "sha256": "13978c4a27dad49f511132e0dea097a028a265acd73b51ac83eb27ae2fe6c3a2",
+      "bytes": 672,
       "sourceIds": [
         "src:fixture-ff04",
         "src:rebrickable-catalog"
@@ -166,8 +166,8 @@
       "id": "asset:thumbnail:ff03-head-3626cpr0001",
       "kind": "thumbnail",
       "path": "/assets/thumbnails/ff03-head-3626cpr0001.svg",
-      "sha256": "b6bfc299a6563633a42100f5881dd463939e62fe62a29a3afc1b0067bb5228d3",
-      "bytes": 905,
+      "sha256": "a9018b18bee56e8f61c573f3ef4f54526731252aa5c376413b388f10932d12cb",
+      "bytes": 824,
       "sourceIds": [
         "src:fixture-ff04",
         "src:rebrickable-catalog"
@@ -184,8 +184,8 @@
       "id": "asset:thumbnail:ff03-head-3626cpr0008",
       "kind": "thumbnail",
       "path": "/assets/thumbnails/ff03-head-3626cpr0008.svg",
-      "sha256": "c28209c00651c76522b65ca4c1572929887df9918f25fa267edc57a5b07e9924",
-      "bytes": 909,
+      "sha256": "541fcee86b465fb0b89ca9a0f8188d83d4b736ae4bc24ba2fa371274d03adf0e",
+      "bytes": 828,
       "sourceIds": [
         "src:fixture-ff04",
         "src:rebrickable-catalog"
@@ -202,8 +202,8 @@
       "id": "asset:thumbnail:ff03-head-3626cpr0387",
       "kind": "thumbnail",
       "path": "/assets/thumbnails/ff03-head-3626cpr0387.svg",
-      "sha256": "82b1b5c259fc86f0ddd8586ef35c770fdbbbd10dfa8cb118f6dbb58bc557d598",
-      "bytes": 905,
+      "sha256": "03d31ceaf225969b2e50ac33ca35b97f26a9f0c2a52020246207c82b81d625f9",
+      "bytes": 824,
       "sourceIds": [
         "src:fixture-ff04",
         "src:rebrickable-catalog"
@@ -220,8 +220,8 @@
       "id": "asset:thumbnail:ff03-head-3626cpr0495",
       "kind": "thumbnail",
       "path": "/assets/thumbnails/ff03-head-3626cpr0495.svg",
-      "sha256": "a03f74606463fb9a9d5b563a30b6d78ffcc2545311256ee3825ee9ebdc175771",
-      "bytes": 912,
+      "sha256": "34b952e82f1124a40bb873841a4b93cda157835c170de051549f53e5b4e93deb",
+      "bytes": 831,
       "sourceIds": [
         "src:fixture-ff04",
         "src:rebrickable-catalog"
@@ -238,8 +238,8 @@
       "id": "asset:thumbnail:ff03-headwear-10048",
       "kind": "thumbnail",
       "path": "/assets/thumbnails/ff03-headwear-10048.svg",
-      "sha256": "cee9cd6af01309e02db0b914d225ece12469749623832a7c948aab137906ede0",
-      "bytes": 770,
+      "sha256": "1683e460d6343d011434785c81fb73589255cc75121b4e15b64d088ded492cce",
+      "bytes": 689,
       "sourceIds": [
         "src:fixture-ff04",
         "src:rebrickable-catalog"
@@ -256,8 +256,8 @@
       "id": "asset:thumbnail:ff03-headwear-25405",
       "kind": "thumbnail",
       "path": "/assets/thumbnails/ff03-headwear-25405.svg",
-      "sha256": "994b9e1987a6d02567ca3ac81fc818e631d9235e2478802acdd1750b7652e64e",
-      "bytes": 768,
+      "sha256": "efeb476a8ecaffb0ecf58f87f73a29c1bb19cba45452d4949c0430f930eeee6a",
+      "bytes": 687,
       "sourceIds": [
         "src:fixture-ff04",
         "src:rebrickable-catalog"
@@ -274,8 +274,8 @@
       "id": "asset:thumbnail:ff03-headwear-25409",
       "kind": "thumbnail",
       "path": "/assets/thumbnails/ff03-headwear-25409.svg",
-      "sha256": "7bac8a64a318f17ff6b9af6e178f428a2ffb40380167efb0ba8d6f737056018a",
-      "bytes": 769,
+      "sha256": "650b58d53870cf54ea623630c47b10849e98f0dab9158dd79b6fa4d7c901b9c6",
+      "bytes": 688,
       "sourceIds": [
         "src:fixture-ff04",
         "src:rebrickable-catalog"
@@ -292,8 +292,8 @@
       "id": "asset:thumbnail:ff03-headwear-36268",
       "kind": "thumbnail",
       "path": "/assets/thumbnails/ff03-headwear-36268.svg",
-      "sha256": "75b5793277d759eb586a381004a0660419260a5cebe6422aec49516dfd26c9fb",
-      "bytes": 765,
+      "sha256": "3f0834ecc962b7b182acb312539daba1d39a2e275156bb1fa6caafaa9902b941",
+      "bytes": 684,
       "sourceIds": [
         "src:fixture-ff04",
         "src:rebrickable-catalog"
@@ -310,8 +310,8 @@
       "id": "asset:thumbnail:ff03-headwear-3901",
       "kind": "thumbnail",
       "path": "/assets/thumbnails/ff03-headwear-3901.svg",
-      "sha256": "2c15f9b24b396b2db8b2bd64cfa5ab69b20be00de12e2c274345caa155fb953d",
-      "bytes": 765,
+      "sha256": "139ecc074b994f36604342e17f0c9d09f1c7277fa5a52f06433b4ff0ef6367c8",
+      "bytes": 684,
       "sourceIds": [
         "src:fixture-ff04",
         "src:rebrickable-catalog"
@@ -328,8 +328,8 @@
       "id": "asset:thumbnail:fixture:legs-assembly",
       "kind": "thumbnail",
       "path": "/assets/thumbnails/fixture-legs-assembly.svg",
-      "sha256": "c11879856341906d25bc36fcf07aabc08b83cb7cba7d30137e820d379323adfa",
-      "bytes": 777,
+      "sha256": "c621a3a80b955efe2f7e3eba296aca01b576538edcb728caea59cbeceeb4a86e",
+      "bytes": 696,
       "sourceIds": [
         "src:fixture-ff04",
         "src:rebrickable-catalog"
@@ -346,8 +346,8 @@
       "id": "asset:thumbnail:fixture:torso-assembly",
       "kind": "thumbnail",
       "path": "/assets/thumbnails/fixture-torso-assembly.svg",
-      "sha256": "6763574466172f7e60ca82ebaedf46a3143d03ea811c1e64d9121a91adca3cb4",
-      "bytes": 821,
+      "sha256": "3218353aee799aa243037f9dd5c669cc83013c10a5c3be342c390f148f9a62d3",
+      "bytes": 740,
       "sourceIds": [
         "src:fixture-ff04",
         "src:rebrickable-catalog"

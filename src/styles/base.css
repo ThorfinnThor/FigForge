@@ -38,8 +38,18 @@ button {
 }
 
 :focus-visible {
-  outline: 3px solid var(--signal);
+  outline: 3px solid var(--focus-ring);
   outline-offset: 2px;
+}
+
+/* Navy surfaces switch the focus ring to signal yellow so it stays visible. */
+.app-header,
+.catalog-panel__header,
+.viewport-shell,
+.figure-panel__header,
+.workspace-source-note,
+.mobile-tabs {
+  --focus-ring: var(--signal);
 }
 
 .eyebrow {
@@ -161,11 +171,6 @@ legend {
 
 .ff-button--danger:hover:not(:disabled) {
   box-shadow: 0 5px 0 #7a170f;
-}
-
-.ff-input:focus-visible {
-  outline: 3px solid var(--signal);
-  outline-offset: 2px;
 }
 
 .ff-button:active:not(:disabled) {

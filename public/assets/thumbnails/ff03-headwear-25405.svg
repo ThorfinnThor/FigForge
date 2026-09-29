@@ -3,7 +3,6 @@
 <desc id="description">Synthetic FF-04 fixture thumbnail; not publishable.</desc>
 <rect width="256" height="256" rx="24" fill="#f5f6f4"/>
 <rect x="16" y="16" width="224" height="224" rx="18" fill="#ffffff" stroke="#dde3de" stroke-width="2"/>
-<path d="M32 207h192" stroke="#d5ff45" stroke-width="9" stroke-linecap="round"/>
 <path d="M73 78c2-28 20-44 55-44s53 16 55 44H73z" fill="#352517"/><ellipse cx="128" cy="36" rx="42" ry="12" fill="#4d3524"/>
 <text x="32" y="232" fill="#56636a" font-family="Arial,sans-serif" font-size="9">SYNTHETIC · FF-04 · ff03-headwear-25405</text>
 </svg>

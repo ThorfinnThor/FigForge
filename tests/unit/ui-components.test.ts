@@ -50,6 +50,7 @@ describe("FF-12 shared UI primitives", () => {
     expect(tokens).toContain("--cat-accessory: #8a52c7");
     expect(tokens).toContain('--font-display: "Lilita One"');
     expect(tokens).toContain('--font-body: "Rubik"');
+    expect(tokens).toContain("--focus-ring: #1d2748");
     expect(tokens).toContain("--radius-md: 12px");
     expect(tokens).not.toContain("--lime");
     expect(tokens).not.toContain("--green");
