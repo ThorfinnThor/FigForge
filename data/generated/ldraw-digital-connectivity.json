@@ -25,6 +25,14 @@
       "sha256": "233455b6c8a11e10565287340f8b29c0a72e62f8a377dca4acfc93a61b5e3f98"
     },
     {
+      "path": "data/vendor/ldcad-shadow/parts/10169.dat",
+      "sha256": "55233c94709c86cdc660c6b7288c28d76e59ba73bc28218c8db970b650f98b56"
+    },
+    {
+      "path": "data/vendor/ldcad-shadow/parts/10170.dat",
+      "sha256": "b9da2d71d7ddbf7b1c3d5871d4f430186df2a24fcb3523f03fe327d847ee54bb"
+    },
+    {
       "path": "data/vendor/ldcad-shadow/parts/10172.dat",
       "sha256": "7d145b70ea0c76133851ad11d55b236092a33e3c2fae768ef77de4ca651287c4"
     },
