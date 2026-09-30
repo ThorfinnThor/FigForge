@@ -14,6 +14,17 @@ describe("complete standard torso assembly detection", () => {
     expect(isCompleteStandardTorsoAssembly(completeShortcut)).toBe(true);
   });
 
+  it("accepts an official shortcut containing a complete dual-mould arm pair", () => {
+    expect(isCompleteStandardTorsoAssembly(completeShortcut
+      .replace("3818.dat", "16000p01.dat")
+      .replace("3819.dat", "16001p01.dat"))).toBe(true);
+  });
+
+  it("rejects a mixed standard and dual-mould arm pair", () => {
+    expect(isCompleteStandardTorsoAssembly(completeShortcut
+      .replace("3818.dat", "16000p01.dat"))).toBe(false);
+  });
+
   it.each([
     completeShortcut.replace("Shortcut", "Part"),
     completeShortcut.replace(/^.*3818\.dat$/mu, ""),
