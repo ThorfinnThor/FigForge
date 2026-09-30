@@ -2,6 +2,7 @@ import { readFile, readdir } from "node:fs/promises";
 import { basename, resolve } from "node:path";
 import { catalogPackageSchema, type CatalogPackagePart, type CatalogRole } from "../../src/contracts/catalog-package.js";
 import { rebrickableKeywordIds } from "./ldraw-keywords.js";
+import { resolveOfficialLDrawMappingFile } from "./ldraw-official-mapping.js";
 
 const SOURCE_POLICY = "Nur Rebrickable Catalog Downloads/CSV, keine MOC-Dateien." as const;
 
@@ -174,10 +175,13 @@ export async function buildLDrawCatalogCoverage(
     .sort((left, right) => left.localeCompare(right));
 
   const candidateIndex = new Map<string, LDrawCandidate[]>();
+  const sourceByFile = new Map<string, string>();
+  const fileIndex = new Map(officialPartFiles.map((fileName) => [`parts/${fileName.toLowerCase()}`, `parts/${fileName}`]));
   for (const fileName of officialPartFiles) {
     const file = `parts/${fileName}`;
     addCandidate(candidateIndex, basename(fileName, ".dat"), { file, matchType: "exact-filename" });
     const source = await readFile(resolve(partsDirectory, fileName), "utf8");
+    sourceByFile.set(file, source);
     for (const line of source.split(/\r?\n/u)) {
       for (const partNum of rebrickableKeywordIds(line)) addCandidate(candidateIndex, partNum, { file, matchType: "explicit-keyword" });
     }
@@ -233,7 +237,9 @@ export async function buildLDrawCatalogCoverage(
       roleSummary[role].catalogPartCount += 1;
 
       const candidates = candidateIndex.get(normalize(part.rebrickablePartNum)) ?? [];
-      const directFiles = [...new Set(candidates.map(({ file }) => file))].sort();
+      const rawDirectFiles = [...new Set(candidates.map(({ file }) => file))].sort();
+      const resolvedFile = resolveOfficialLDrawMappingFile(candidates, sourceByFile, fileIndex);
+      const directFiles = resolvedFile ? [resolvedFile] : rawDirectFiles;
       if (directFiles.length === 1) uniqueOfficialMappingCount += 1;
       if (directFiles.length > 1) ambiguousOfficialMappingCount += 1;
 
@@ -294,6 +300,7 @@ export async function buildLDrawCatalogCoverage(
     methodology: [
       "Catalog scope is limited to the five minifigure-relevant packages derived from locked Rebrickable Catalog Downloads/CSV.",
       "Official LDraw matches require either an exact top-level parts/*.dat filename or an explicit !KEYWORDS Rebrickable identifier.",
+      "When an LDraw filename collides with an explicit Rebrickable keyword mapping, the explicit mapping wins; official Part Alias and ~Moved to wrappers are reduced to their canonical target before uniqueness is assessed. Genuinely different keyword targets remain ambiguous.",
       "Head, headwear, complete torso-assembly and complete legs-assembly print variants may reuse a unique unprinted parent geometry only when part_relationships.csv explicitly declares the print relationship.",
       "Torso entries become builder-ready only when the official LDraw file is a complete shortcut: either a 973-family torso with both arms and hands, or one of the explicitly recognized complete wing, flipper, pirate-hook, mechanical-arm or short-torso component signatures.",
       "Lower-body entries become builder-ready only when the official top-level LDraw title explicitly declares a complete Minifig Hips and Legs assembly, an allowlisted complete Hips replacement family (Ghost, Skirt, Tentacles, Mermaid Tail or Genie), or an allowlisted complete legs family with a centered torso-compatible stud (Minecraft Enderman or Bionicle).",

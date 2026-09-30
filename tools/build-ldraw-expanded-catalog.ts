@@ -39,6 +39,7 @@ import {
   type CylinderEvidence,
 } from "./lib/ldraw-placement-candidates.js";
 import { collectVendoredLDCadHandGripEvidence } from "./lib/ldcad-shadow-connectivity.js";
+import { resolveOfficialLDrawMappingFile } from "./lib/ldraw-official-mapping.js";
 import { writeLDrawRuntimePackages } from "./lib/ldraw-runtime-packages.js";
 
 const root = process.cwd();
@@ -325,6 +326,8 @@ const topLevelParts = (await readdir(resolve(libraryRoot, "parts"), { withFileTy
   .sort();
 
 const candidateIndex = new Map<string, Candidate[]>();
+const ldrawUpdateFromSource = (source: string): string =>
+  /0\s+!LDRAW_ORG\s+(?:Part|Shortcut)[^\r\n]*?\s+UPDATE\s+([0-9]{4}-[0-9]{2})/iu.exec(source)?.[1] ?? lock.release;
 const addCandidate = (partNum: string, candidate: Candidate): void => {
   const key = normalize(partNum);
   const values = candidateIndex.get(key) ?? [];
@@ -333,12 +336,26 @@ const addCandidate = (partNum: string, candidate: Candidate): void => {
 };
 for (const file of topLevelParts) {
   const source = await sourceFor(file);
-  const update = /0\s+!LDRAW_ORG\s+(?:Part|Shortcut)[^\r\n]*?\s+UPDATE\s+([0-9]{4}-[0-9]{2})/iu.exec(source)?.[1] ?? lock.release;
+  const update = ldrawUpdateFromSource(source);
   addCandidate(basename(file, ".dat"), { file, matchType: "exact-filename", update });
   for (const line of source.split(/\r?\n/u)) {
     for (const partNum of rebrickableKeywordIds(line)) addCandidate(partNum, { file, matchType: "explicit-keyword", update });
   }
 }
+const topLevelSourceByFile = new Map(topLevelParts.map((file) => [file, sourceCache.get(file)!]));
+const resolvedCandidatesFor = (partNum: string): Candidate[] => {
+  const candidates = candidateIndex.get(normalize(partNum)) ?? [];
+  const resolvedFile = resolveOfficialLDrawMappingFile(candidates, topLevelSourceByFile, fileIndex);
+  if (!resolvedFile) return candidates;
+  const existing = candidates.find(({ file, matchType }) => file === resolvedFile && matchType === "explicit-keyword")
+    ?? candidates.find(({ file }) => file === resolvedFile);
+  if (existing) return [existing];
+  const explicit = candidates.find(({ matchType }) => matchType === "explicit-keyword");
+  const source = topLevelSourceByFile.get(resolvedFile);
+  return explicit && source
+    ? [{ ...explicit, file: resolvedFile, update: ldrawUpdateFromSource(source) }]
+    : [];
+};
 
 const normalizedCatalog = JSON.parse(await readFile(resolve(root, "data/generated/catalog-normalized.json"), "utf8")) as {
   parts: NormalizedPart[];
@@ -535,14 +552,14 @@ for (const role of BUILD_ROLES) {
   for (const part of catalogPackage.parts) {
     if (curatedKeys.has(`${role}:${normalize(part.rebrickablePartNum)}`)) continue;
     const normalizedPart = normalizedByPartNum.get(normalize(part.rebrickablePartNum));
-    const directCandidates = [];
+    let directCandidates = [];
     for (const candidate of candidateIndex.get(normalize(part.rebrickablePartNum)) ?? []) {
       if (await supportsRoleAssembly(role, candidate)) directCandidates.push(candidate);
     }
-    const directFiles = [...new Set(directCandidates.map(({ file }) => file))];
+    let directFiles = [...new Set(directCandidates.map(({ file }) => file))];
     if (directFiles.length > 1) {
-      // A dual-mould colour code can safely replace ambiguous complete shortcuts:
-      // its mould geometry and both colours are independently confirmed below.
+      // Preserve the stronger deterministic colour-assembly path before resolving
+      // keyword collisions in complete shortcuts.
       if (role !== "handAccessory") {
         const composed = await composeColorCodedAssembly(part, role);
         if (composed) {
@@ -561,8 +578,19 @@ for (const role of BUILD_ROLES) {
           continue;
         }
       }
-      ambiguousMappingsExcluded += 1;
-      continue;
+      const resolved = resolvedCandidatesFor(part.rebrickablePartNum);
+      const resolvedSupported = [];
+      for (const candidate of resolved) {
+        if (await supportsRoleAssembly(role, candidate)) resolvedSupported.push(candidate);
+      }
+      const resolvedFiles = [...new Set(resolvedSupported.map(({ file }) => file))];
+      if (resolvedFiles.length === 1) {
+        directCandidates = resolvedSupported;
+        directFiles = resolvedFiles;
+      } else {
+        ambiguousMappingsExcluded += 1;
+        continue;
+      }
     }
     const direct = directCandidates.find(({ matchType }) => matchType === "exact-filename") ?? directCandidates[0];
     if (directFiles.length === 1 && direct) {

@@ -22,13 +22,13 @@
     "automaticBuilderEnablements": 0
   },
   "summary": {
-    "placementProfileRequiredCount": 542,
-    "uniqueRadius4CandidateCount": 43,
-    "multipleRadius4CandidateCount": 134,
-    "noRadius4CylinderDetectedCount": 197,
-    "roleSpecificAssemblyProfileRequiredCount": 168,
+    "placementProfileRequiredCount": 563,
+    "uniqueRadius4CandidateCount": 45,
+    "multipleRadius4CandidateCount": 145,
+    "noRadius4CylinderDetectedCount": 200,
+    "roleSpecificAssemblyProfileRequiredCount": 173,
     "noOfficialMappingQueueCount": 4904,
-    "ambiguousOfficialMappingQueueCount": 83
+    "ambiguousOfficialMappingQueueCount": 34
   },
   "placementCandidates": [
     {
@@ -1953,6 +1953,24 @@
       "limitation": "Cylinder analysis does not establish a safe assembly or body-slot placement for this role."
     },
     {
+      "catalogId": "part:37191",
+      "role": "torsoAssembly",
+      "rebrickablePartNum": "37191",
+      "name": "Minifig Torso Brick Suit",
+      "ldrawFiles": [
+        "parts/37191c01.dat"
+      ],
+      "mappingEvidence": [
+        "exact-filename",
+        "explicit-keyword"
+      ],
+      "analysis": "role-specific-assembly-profile-required",
+      "evidence": [],
+      "proposedPlacementTransformLdu": null,
+      "automaticBuilderEnablement": false,
+      "limitation": "Cylinder analysis does not establish a safe assembly or body-slot placement for this role."
+    },
+    {
       "catalogId": "part:37777pr0002",
       "role": "torsoAssembly",
       "rebrickablePartNum": "37777pr0002",
@@ -2616,6 +2634,60 @@
       "limitation": "Cylinder analysis does not establish a safe assembly or body-slot placement for this role."
     },
     {
+      "catalogId": "part:3815",
+      "role": "legsAssembly",
+      "rebrickablePartNum": "3815",
+      "name": "Hips",
+      "ldrawFiles": [
+        "parts/3815b.dat"
+      ],
+      "mappingEvidence": [
+        "exact-filename",
+        "explicit-keyword"
+      ],
+      "analysis": "role-specific-assembly-profile-required",
+      "evidence": [],
+      "proposedPlacementTransformLdu": null,
+      "automaticBuilderEnablement": false,
+      "limitation": "Cylinder analysis does not establish a safe assembly or body-slot placement for this role."
+    },
+    {
+      "catalogId": "part:3816",
+      "role": "legsAssembly",
+      "rebrickablePartNum": "3816",
+      "name": "Leg, Right",
+      "ldrawFiles": [
+        "parts/3816c.dat"
+      ],
+      "mappingEvidence": [
+        "exact-filename",
+        "explicit-keyword"
+      ],
+      "analysis": "role-specific-assembly-profile-required",
+      "evidence": [],
+      "proposedPlacementTransformLdu": null,
+      "automaticBuilderEnablement": false,
+      "limitation": "Cylinder analysis does not establish a safe assembly or body-slot placement for this role."
+    },
+    {
+      "catalogId": "part:3817",
+      "role": "legsAssembly",
+      "rebrickablePartNum": "3817",
+      "name": "Leg, Left",
+      "ldrawFiles": [
+        "parts/3817c.dat"
+      ],
+      "mappingEvidence": [
+        "exact-filename",
+        "explicit-keyword"
+      ],
+      "analysis": "role-specific-assembly-profile-required",
+      "evidence": [],
+      "proposedPlacementTransformLdu": null,
+      "automaticBuilderEnablement": false,
+      "limitation": "Cylinder analysis does not establish a safe assembly or body-slot placement for this role."
+    },
+    {
       "catalogId": "part:6266",
       "role": "legsAssembly",
       "rebrickablePartNum": "6266",
@@ -2676,6 +2748,24 @@
       ],
       "mappingEvidence": [
         "exact-filename"
+      ],
+      "analysis": "role-specific-assembly-profile-required",
+      "evidence": [],
+      "proposedPlacementTransformLdu": null,
+      "automaticBuilderEnablement": false,
+      "limitation": "Cylinder analysis does not establish a safe assembly or body-slot placement for this role."
+    },
+    {
+      "catalogId": "part:30362",
+      "role": "legsAssembly",
+      "rebrickablePartNum": "30362",
+      "name": "Leg Mechanical - Droid with Technic Pin",
+      "ldrawFiles": [
+        "parts/30362a.dat"
+      ],
+      "mappingEvidence": [
+        "exact-filename",
+        "explicit-keyword"
       ],
       "analysis": "role-specific-assembly-profile-required",
       "evidence": [],
@@ -2888,6 +2978,24 @@
       "limitation": "Cylinder analysis does not establish a safe assembly or body-slot placement for this role."
     },
     {
+      "catalogId": "part:37",
+      "role": "handAccessory",
+      "rebrickablePartNum": "37",
+      "name": "Weapon Dagger / Knife",
+      "ldrawFiles": [
+        "parts/44658.dat"
+      ],
+      "mappingEvidence": [
+        "exact-filename",
+        "explicit-keyword"
+      ],
+      "analysis": "no-radius-4-cylinder-detected",
+      "evidence": [],
+      "proposedPlacementTransformLdu": null,
+      "automaticBuilderEnablement": false,
+      "limitation": "Official LDraw files can encode shafts as direct mesh triangles, so absence of a cylinder primitive is not proof that no grip exists."
+    },
+    {
       "catalogId": "part:59",
       "role": "handAccessory",
       "rebrickablePartNum": "59",
@@ -3081,6 +3189,91 @@
             0,
             0,
             74.5,
+            1
+          ]
+        }
+      ],
+      "proposedPlacementTransformLdu": null,
+      "automaticBuilderEnablement": false,
+      "limitation": "Several possible shafts exist; selecting one automatically would guess the intended grip."
+    },
+    {
+      "catalogId": "part:556",
+      "role": "handAccessory",
+      "rebrickablePartNum": "556",
+      "name": "Equipment Shovel [Fabuland]",
+      "ldrawFiles": [
+        "parts/4330a.dat"
+      ],
+      "mappingEvidence": [
+        "exact-filename",
+        "explicit-keyword"
+      ],
+      "analysis": "multiple-radius-4-cylinder-candidates",
+      "evidence": [
+        {
+          "primitive": "p/4-4cylc.dat",
+          "radiusLdu": 4,
+          "lengthLdu": 30,
+          "centerLdu": [
+            0,
+            0,
+            0
+          ],
+          "axis": [
+            1,
+            0,
+            0
+          ],
+          "sourceConnectorTransformLdu": [
+            0,
+            0,
+            1,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0,
+            -1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            1
+          ]
+        },
+        {
+          "primitive": "p/4-4cyli.dat",
+          "radiusLdu": 4,
+          "lengthLdu": 76,
+          "centerLdu": [
+            0,
+            38,
+            0
+          ],
+          "axis": [
+            0,
+            1,
+            0
+          ],
+          "sourceConnectorTransformLdu": [
+            0,
+            0,
+            1,
+            0,
+            0,
+            1,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0,
+            38,
+            0,
             1
           ]
         }
@@ -3961,6 +4154,91 @@
       "proposedPlacementTransformLdu": null,
       "automaticBuilderEnablement": false,
       "limitation": "Official LDraw files can encode shafts as direct mesh triangles, so absence of a cylinder primitive is not proof that no grip exists."
+    },
+    {
+      "catalogId": "part:2599",
+      "role": "handAccessory",
+      "rebrickablePartNum": "2599",
+      "name": "Minifig Footwear Flippers [2 on Sprue]",
+      "ldrawFiles": [
+        "parts/2599a.dat"
+      ],
+      "mappingEvidence": [
+        "exact-filename",
+        "explicit-keyword"
+      ],
+      "analysis": "multiple-radius-4-cylinder-candidates",
+      "evidence": [
+        {
+          "primitive": "p/4-4cyli.dat",
+          "radiusLdu": 4,
+          "lengthLdu": 4,
+          "centerLdu": [
+            0,
+            -2,
+            -21
+          ],
+          "axis": [
+            0,
+            1,
+            0
+          ],
+          "sourceConnectorTransformLdu": [
+            0,
+            0,
+            -1,
+            0,
+            0,
+            1,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0,
+            -2,
+            -21,
+            1
+          ]
+        },
+        {
+          "primitive": "p/4-4cyli.dat",
+          "radiusLdu": 4,
+          "lengthLdu": 4,
+          "centerLdu": [
+            0,
+            -2,
+            21
+          ],
+          "axis": [
+            0,
+            1,
+            0
+          ],
+          "sourceConnectorTransformLdu": [
+            0,
+            0,
+            1,
+            0,
+            0,
+            1,
+            0,
+            0,
+            -1,
+            0,
+            0,
+            0,
+            0,
+            -2,
+            21,
+            1
+          ]
+        }
+      ],
+      "proposedPlacementTransformLdu": null,
+      "automaticBuilderEnablement": false,
+      "limitation": "Several possible shafts exist; selecting one automatically would guess the intended grip."
     },
     {
       "catalogId": "part:2614a",
@@ -7355,6 +7633,91 @@
       "limitation": "Official LDraw files can encode shafts as direct mesh triangles, so absence of a cylinder primitive is not proof that no grip exists."
     },
     {
+      "catalogId": "part:4210",
+      "role": "handAccessory",
+      "rebrickablePartNum": "4210",
+      "name": "Equipment Hose Nozzle Simple",
+      "ldrawFiles": [
+        "parts/4210a.dat"
+      ],
+      "mappingEvidence": [
+        "exact-filename",
+        "explicit-keyword"
+      ],
+      "analysis": "multiple-radius-4-cylinder-candidates",
+      "evidence": [
+        {
+          "primitive": "p/4-4cyli.dat",
+          "radiusLdu": 4,
+          "lengthLdu": 10,
+          "centerLdu": [
+            0,
+            0,
+            -9
+          ],
+          "axis": [
+            0,
+            0,
+            -1
+          ],
+          "sourceConnectorTransformLdu": [
+            -1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            -1,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0,
+            -9,
+            1
+          ]
+        },
+        {
+          "primitive": "p/4-4cyli.dat",
+          "radiusLdu": 4,
+          "lengthLdu": 17.25,
+          "centerLdu": [
+            0,
+            12.625,
+            0
+          ],
+          "axis": [
+            0,
+            1,
+            0
+          ],
+          "sourceConnectorTransformLdu": [
+            0,
+            0,
+            1,
+            0,
+            0,
+            1,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0,
+            12.625,
+            0,
+            1
+          ]
+        }
+      ],
+      "proposedPlacementTransformLdu": null,
+      "automaticBuilderEnablement": false,
+      "limitation": "Several possible shafts exist; selecting one automatically would guess the intended grip."
+    },
+    {
       "catalogId": "part:4341",
       "role": "handAccessory",
       "rebrickablePartNum": "4341",
@@ -7837,6 +8200,256 @@
       "limitation": "Several possible shafts exist; selecting one automatically would guess the intended grip."
     },
     {
+      "catalogId": "part:4479",
+      "role": "handAccessory",
+      "rebrickablePartNum": "4479",
+      "name": "Equipment Metal Detector",
+      "ldrawFiles": [
+        "parts/4479a.dat"
+      ],
+      "mappingEvidence": [
+        "exact-filename",
+        "explicit-keyword"
+      ],
+      "analysis": "multiple-radius-4-cylinder-candidates",
+      "evidence": [
+        {
+          "primitive": "p/4-4cyli.dat",
+          "radiusLdu": 4,
+          "lengthLdu": 4,
+          "centerLdu": [
+            17,
+            8,
+            -8
+          ],
+          "axis": [
+            0,
+            0,
+            1
+          ],
+          "sourceConnectorTransformLdu": [
+            1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            1,
+            0,
+            0,
+            17,
+            8,
+            -8,
+            1
+          ]
+        },
+        {
+          "primitive": "p/4-4cyli.dat",
+          "radiusLdu": 4,
+          "lengthLdu": 4,
+          "centerLdu": [
+            17,
+            8,
+            8
+          ],
+          "axis": [
+            0,
+            0,
+            -1
+          ],
+          "sourceConnectorTransformLdu": [
+            1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            -1,
+            0,
+            0,
+            1,
+            0,
+            0,
+            17,
+            8,
+            8,
+            1
+          ]
+        },
+        {
+          "primitive": "p/4-4cyli.dat",
+          "radiusLdu": 4,
+          "lengthLdu": 4,
+          "centerLdu": [
+            29,
+            8,
+            0
+          ],
+          "axis": [
+            -1,
+            0,
+            0
+          ],
+          "sourceConnectorTransformLdu": [
+            0,
+            1,
+            0,
+            0,
+            -1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            1,
+            0,
+            29,
+            8,
+            0,
+            1
+          ]
+        },
+        {
+          "primitive": "p/4-4cylc.dat",
+          "radiusLdu": 4,
+          "lengthLdu": 11,
+          "centerLdu": [
+            0,
+            21.5,
+            0
+          ],
+          "axis": [
+            0,
+            -1,
+            0
+          ],
+          "sourceConnectorTransformLdu": [
+            1,
+            0,
+            0,
+            0,
+            0,
+            -1,
+            0,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            21.5,
+            0,
+            1
+          ]
+        },
+        {
+          "primitive": "p/4-4cyli.dat",
+          "radiusLdu": 4,
+          "lengthLdu": 12,
+          "centerLdu": [
+            17,
+            8,
+            0
+          ],
+          "axis": [
+            0,
+            0,
+            1
+          ],
+          "sourceConnectorTransformLdu": [
+            1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            1,
+            0,
+            0,
+            17,
+            8,
+            0,
+            1
+          ]
+        },
+        {
+          "primitive": "p/4-4cyli.dat",
+          "radiusLdu": 4,
+          "lengthLdu": 26,
+          "centerLdu": [
+            -25,
+            8,
+            0
+          ],
+          "axis": [
+            -1,
+            0,
+            0
+          ],
+          "sourceConnectorTransformLdu": [
+            0,
+            0,
+            1,
+            0,
+            -1,
+            0,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            -25,
+            8,
+            0,
+            1
+          ]
+        },
+        {
+          "primitive": "p/4-4cyli.dat",
+          "radiusLdu": 4.000001,
+          "lengthLdu": 4.000002,
+          "centerLdu": [
+            -51.90692,
+            -5.22838,
+            0
+          ],
+          "axis": [
+            -0.82904,
+            0.55919,
+            0
+          ],
+          "sourceConnectorTransformLdu": [
+            0,
+            0,
+            1,
+            0,
+            -0.82904,
+            0.55919,
+            0,
+            0,
+            -0.55919,
+            -0.82904,
+            0,
+            0,
+            -51.90692,
+            -5.22838,
+            0,
+            1
+          ]
+        }
+      ],
+      "proposedPlacementTransformLdu": null,
+      "automaticBuilderEnablement": false,
+      "limitation": "Several possible shafts exist; selecting one automatically would guess the intended grip."
+    },
+    {
       "catalogId": "part:4499",
       "role": "handAccessory",
       "rebrickablePartNum": "4499",
@@ -7978,6 +8591,190 @@
             0,
             5,
             -4,
+            0,
+            1
+          ]
+        }
+      ],
+      "proposedPlacementTransformLdu": null,
+      "automaticBuilderEnablement": false,
+      "limitation": "Several possible shafts exist; selecting one automatically would guess the intended grip."
+    },
+    {
+      "catalogId": "part:4629c01",
+      "role": "handAccessory",
+      "rebrickablePartNum": "4629c01",
+      "name": "Tool Jack [Complete Assembly]",
+      "ldrawFiles": [
+        "parts/4629c02.dat"
+      ],
+      "mappingEvidence": [
+        "exact-filename",
+        "explicit-keyword"
+      ],
+      "analysis": "multiple-radius-4-cylinder-candidates",
+      "evidence": [
+        {
+          "primitive": "p/4-4cyli.dat",
+          "radiusLdu": 4,
+          "lengthLdu": 4,
+          "centerLdu": [
+            -20,
+            -4,
+            0
+          ],
+          "axis": [
+            0,
+            -1,
+            0
+          ],
+          "sourceConnectorTransformLdu": [
+            1,
+            0,
+            0,
+            0,
+            0,
+            -1,
+            0,
+            0,
+            0,
+            0,
+            1,
+            0,
+            -20,
+            -4,
+            0,
+            1
+          ]
+        },
+        {
+          "primitive": "p/4-4cyli.dat",
+          "radiusLdu": 4,
+          "lengthLdu": 4,
+          "centerLdu": [
+            0,
+            -4,
+            0
+          ],
+          "axis": [
+            0,
+            -1,
+            0
+          ],
+          "sourceConnectorTransformLdu": [
+            1,
+            0,
+            0,
+            0,
+            0,
+            -1,
+            0,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            -4,
+            0,
+            1
+          ]
+        },
+        {
+          "primitive": "p/4-4cyli.dat",
+          "radiusLdu": 4,
+          "lengthLdu": 4,
+          "centerLdu": [
+            20,
+            -4,
+            0
+          ],
+          "axis": [
+            0,
+            -1,
+            0
+          ],
+          "sourceConnectorTransformLdu": [
+            1,
+            0,
+            0,
+            0,
+            0,
+            -1,
+            0,
+            0,
+            0,
+            0,
+            1,
+            0,
+            20,
+            -4,
+            0,
+            1
+          ]
+        },
+        {
+          "primitive": "p/4-4cylc.dat",
+          "radiusLdu": 4,
+          "lengthLdu": 20,
+          "centerLdu": [
+            -74.5,
+            -15.5,
+            0
+          ],
+          "axis": [
+            0,
+            0,
+            1
+          ],
+          "sourceConnectorTransformLdu": [
+            0,
+            -1,
+            0,
+            0,
+            0,
+            0,
+            1,
+            0,
+            1,
+            0,
+            0,
+            0,
+            -74.5,
+            -15.5,
+            0,
+            1
+          ]
+        },
+        {
+          "primitive": "p/4-4cyli.dat",
+          "radiusLdu": 4,
+          "lengthLdu": 32,
+          "centerLdu": [
+            -58.5,
+            -15.5,
+            0
+          ],
+          "axis": [
+            -1,
+            0,
+            0
+          ],
+          "sourceConnectorTransformLdu": [
+            0,
+            -1,
+            0,
+            0,
+            -1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            1,
+            0,
+            -58.5,
+            -15.5,
             0,
             1
           ]
@@ -9545,6 +10342,75 @@
       "proposedPlacementTransformLdu": null,
       "automaticBuilderEnablement": false,
       "limitation": "Official LDraw files can encode shafts as direct mesh triangles, so absence of a cylinder primitive is not proof that no grip exists."
+    },
+    {
+      "catalogId": "part:11187",
+      "role": "handAccessory",
+      "rebrickablePartNum": "11187",
+      "name": "Minifig Footwear Snowshoe [Short Front End]",
+      "ldrawFiles": [
+        "parts/28263.dat"
+      ],
+      "mappingEvidence": [
+        "exact-filename",
+        "explicit-keyword"
+      ],
+      "analysis": "unique-radius-4-cylinder-candidate",
+      "evidence": [
+        {
+          "primitive": "p/4-4cyli.dat",
+          "radiusLdu": 4,
+          "lengthLdu": 4,
+          "centerLdu": [
+            0,
+            -2,
+            0
+          ],
+          "axis": [
+            0,
+            1,
+            0
+          ],
+          "sourceConnectorTransformLdu": [
+            1,
+            0,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            -2,
+            0,
+            1
+          ]
+        }
+      ],
+      "proposedPlacementTransformLdu": [
+        0.985,
+        -0.17,
+        0,
+        0,
+        0.086268,
+        0.499806,
+        0.86148,
+        0,
+        -0.146464,
+        -0.848563,
+        0.507414,
+        0,
+        24.953432,
+        34.091597,
+        -15.752761,
+        1
+      ],
+      "automaticBuilderEnablement": false,
+      "limitation": "A radius-4 cylinder is geometric evidence only; it may be decorative or unsuitable as the intended hand grip."
     },
     {
       "catalogId": "part:11252",
@@ -15080,6 +15946,91 @@
       "limitation": "Several possible shafts exist; selecting one automatically would guess the intended grip."
     },
     {
+      "catalogId": "part:50018b",
+      "role": "handAccessory",
+      "rebrickablePartNum": "50018b",
+      "name": "Tool Cup / Half Ball",
+      "ldrawFiles": [
+        "parts/50018f.dat"
+      ],
+      "mappingEvidence": [
+        "exact-filename",
+        "explicit-keyword"
+      ],
+      "analysis": "multiple-radius-4-cylinder-candidates",
+      "evidence": [
+        {
+          "primitive": "p/4-4cyli.dat",
+          "radiusLdu": 4,
+          "lengthLdu": 4,
+          "centerLdu": [
+            0,
+            -2,
+            0
+          ],
+          "axis": [
+            0,
+            1,
+            0
+          ],
+          "sourceConnectorTransformLdu": [
+            1,
+            0,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            -2,
+            0,
+            1
+          ]
+        },
+        {
+          "primitive": "p/4-4cyli.dat",
+          "radiusLdu": 4,
+          "lengthLdu": 5,
+          "centerLdu": [
+            0,
+            2.5,
+            0
+          ],
+          "axis": [
+            0,
+            1,
+            0
+          ],
+          "sourceConnectorTransformLdu": [
+            1,
+            0,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            2.5,
+            0,
+            1
+          ]
+        }
+      ],
+      "proposedPlacementTransformLdu": null,
+      "automaticBuilderEnablement": false,
+      "limitation": "Several possible shafts exist; selecting one automatically would guess the intended grip."
+    },
+    {
       "catalogId": "part:50018d",
       "role": "handAccessory",
       "rebrickablePartNum": "50018d",
@@ -15221,6 +16172,190 @@
             0,
             17.25,
             0,
+            1
+          ]
+        }
+      ],
+      "proposedPlacementTransformLdu": null,
+      "automaticBuilderEnablement": false,
+      "limitation": "Several possible shafts exist; selecting one automatically would guess the intended grip."
+    },
+    {
+      "catalogId": "part:50018e",
+      "role": "handAccessory",
+      "rebrickablePartNum": "50018e",
+      "name": "Tool Connector 3 Bar, 120 deg, Stud on Both Sides",
+      "ldrawFiles": [
+        "parts/50018a.dat"
+      ],
+      "mappingEvidence": [
+        "exact-filename",
+        "explicit-keyword"
+      ],
+      "analysis": "multiple-radius-4-cylinder-candidates",
+      "evidence": [
+        {
+          "primitive": "p/4-4cyli.dat",
+          "radiusLdu": 4,
+          "lengthLdu": 4,
+          "centerLdu": [
+            -6,
+            -17.5,
+            0
+          ],
+          "axis": [
+            1,
+            0,
+            0
+          ],
+          "sourceConnectorTransformLdu": [
+            0,
+            1,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            -1,
+            0,
+            -6,
+            -17.5,
+            0,
+            1
+          ]
+        },
+        {
+          "primitive": "p/4-4cylc.dat",
+          "radiusLdu": 4,
+          "lengthLdu": 4,
+          "centerLdu": [
+            0,
+            5.5,
+            0
+          ],
+          "axis": [
+            0,
+            -1,
+            0
+          ],
+          "sourceConnectorTransformLdu": [
+            -1,
+            0,
+            0,
+            0,
+            0,
+            -1,
+            0,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            5.5,
+            0,
+            1
+          ]
+        },
+        {
+          "primitive": "p/4-4cyli.dat",
+          "radiusLdu": 4,
+          "lengthLdu": 4,
+          "centerLdu": [
+            6,
+            -17.5,
+            0
+          ],
+          "axis": [
+            -1,
+            0,
+            0
+          ],
+          "sourceConnectorTransformLdu": [
+            0,
+            1,
+            0,
+            0,
+            -1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            1,
+            0,
+            6,
+            -17.5,
+            0,
+            1
+          ]
+        },
+        {
+          "primitive": "p/4-4cylc.dat",
+          "radiusLdu": 4.000008,
+          "lengthLdu": 4.000016,
+          "centerLdu": [
+            0,
+            -29,
+            -19.91854
+          ],
+          "axis": [
+            0,
+            0.499998,
+            0.866027
+          ],
+          "sourceConnectorTransformLdu": [
+            -1,
+            0,
+            0,
+            0,
+            0,
+            0.499998,
+            0.866027,
+            0,
+            0,
+            0.866027,
+            -0.499998,
+            0,
+            0,
+            -29,
+            -19.91854,
+            1
+          ]
+        },
+        {
+          "primitive": "p/4-4cylc.dat",
+          "radiusLdu": 4.000008,
+          "lengthLdu": 4.000016,
+          "centerLdu": [
+            0,
+            -29,
+            19.91854
+          ],
+          "axis": [
+            0,
+            0.499998,
+            -0.866027
+          ],
+          "sourceConnectorTransformLdu": [
+            -1,
+            0,
+            0,
+            0,
+            0,
+            0.499998,
+            -0.866027,
+            0,
+            0,
+            -0.866027,
+            -0.499998,
+            0,
+            0,
+            -29,
+            19.91854,
             1
           ]
         }
@@ -17515,6 +18650,91 @@
       "limitation": "Several possible shafts exist; selecting one automatically would guess the intended grip."
     },
     {
+      "catalogId": "part:56619",
+      "role": "handAccessory",
+      "rebrickablePartNum": "56619",
+      "name": "Equipment Handcuffs Long [Batman]",
+      "ldrawFiles": [
+        "parts/55707d.dat"
+      ],
+      "mappingEvidence": [
+        "exact-filename",
+        "explicit-keyword"
+      ],
+      "analysis": "multiple-radius-4-cylinder-candidates",
+      "evidence": [
+        {
+          "primitive": "p/4-4cyli.dat",
+          "radiusLdu": 4,
+          "lengthLdu": 8,
+          "centerLdu": [
+            -4,
+            0,
+            0
+          ],
+          "axis": [
+            1,
+            0,
+            0
+          ],
+          "sourceConnectorTransformLdu": [
+            0,
+            0,
+            -1,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0,
+            -1,
+            0,
+            0,
+            -4,
+            0,
+            0,
+            1
+          ]
+        },
+        {
+          "primitive": "p/4-4cyli.dat",
+          "radiusLdu": 4,
+          "lengthLdu": 8,
+          "centerLdu": [
+            4,
+            0,
+            0
+          ],
+          "axis": [
+            -1,
+            0,
+            0
+          ],
+          "sourceConnectorTransformLdu": [
+            0,
+            0,
+            1,
+            0,
+            -1,
+            0,
+            0,
+            0,
+            0,
+            -1,
+            0,
+            0,
+            4,
+            0,
+            0,
+            1
+          ]
+        }
+      ],
+      "proposedPlacementTransformLdu": null,
+      "automaticBuilderEnablement": false,
+      "limitation": "Several possible shafts exist; selecting one automatically would guess the intended grip."
+    },
+    {
       "catalogId": "part:57503",
       "role": "handAccessory",
       "rebrickablePartNum": "57503",
@@ -18060,6 +19280,193 @@
             0,
             0,
             11,
+            1
+          ]
+        }
+      ],
+      "proposedPlacementTransformLdu": null,
+      "automaticBuilderEnablement": false,
+      "limitation": "Several possible shafts exist; selecting one automatically would guess the intended grip."
+    },
+    {
+      "catalogId": "part:59275",
+      "role": "handAccessory",
+      "rebrickablePartNum": "59275",
+      "name": "Minifig Footwear Flipper [Thin]",
+      "ldrawFiles": [
+        "parts/59275a.dat"
+      ],
+      "mappingEvidence": [
+        "exact-filename",
+        "explicit-keyword"
+      ],
+      "analysis": "unique-radius-4-cylinder-candidate",
+      "evidence": [
+        {
+          "primitive": "p/4-4cyli.dat",
+          "radiusLdu": 4,
+          "lengthLdu": 4,
+          "centerLdu": [
+            0,
+            -2,
+            0
+          ],
+          "axis": [
+            0,
+            1,
+            0
+          ],
+          "sourceConnectorTransformLdu": [
+            0,
+            0,
+            -1,
+            0,
+            0,
+            1,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0,
+            -2,
+            0,
+            1
+          ]
+        }
+      ],
+      "proposedPlacementTransformLdu": [
+        -0.146464,
+        -0.848563,
+        0.507414,
+        0,
+        0.086268,
+        0.499806,
+        0.86148,
+        0,
+        -0.985,
+        0.17,
+        0,
+        0,
+        24.953432,
+        34.091597,
+        -15.752761,
+        1
+      ],
+      "automaticBuilderEnablement": false,
+      "limitation": "A radius-4 cylinder is geometric evidence only; it may be decorative or unsuitable as the intended hand grip."
+    },
+    {
+      "catalogId": "part:61190f",
+      "role": "handAccessory",
+      "rebrickablePartNum": "61190f",
+      "name": "Weapon Gun / Blaster Small DC-17 (Star Wars Accessory)",
+      "ldrawFiles": [
+        "parts/61190a.dat"
+      ],
+      "mappingEvidence": [
+        "exact-filename",
+        "explicit-keyword"
+      ],
+      "analysis": "multiple-radius-4-cylinder-candidates",
+      "evidence": [
+        {
+          "primitive": "p/4-4cylc.dat",
+          "radiusLdu": 4,
+          "lengthLdu": 15,
+          "centerLdu": [
+            0,
+            -0.5,
+            0.002
+          ],
+          "axis": [
+            0,
+            -1,
+            0
+          ],
+          "sourceConnectorTransformLdu": [
+            0,
+            0,
+            -1,
+            0,
+            0,
+            -1,
+            0,
+            0,
+            -1,
+            0,
+            0,
+            0,
+            0,
+            -0.5,
+            0.002,
+            1
+          ]
+        },
+        {
+          "primitive": "p/4-4cylc.dat",
+          "radiusLdu": 4.000108,
+          "lengthLdu": 5.000334,
+          "centerLdu": [
+            0,
+            -9.92,
+            8.159
+          ],
+          "axis": [
+            0,
+            -0.258783,
+            -0.965936
+          ],
+          "sourceConnectorTransformLdu": [
+            0,
+            -0.965948,
+            0.258736,
+            0,
+            0,
+            -0.258783,
+            -0.965936,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0,
+            -9.92,
+            8.159,
+            1
+          ]
+        },
+        {
+          "primitive": "p/4-4cylc.dat",
+          "radiusLdu": 4.000108,
+          "lengthLdu": 11.250397,
+          "centerLdu": [
+            0,
+            -16.81,
+            -17.5585
+          ],
+          "axis": [
+            0,
+            0.258835,
+            0.965921
+          ],
+          "sourceConnectorTransformLdu": [
+            0,
+            -0.965948,
+            0.258736,
+            0,
+            0,
+            0.258835,
+            0.965921,
+            0,
+            -1,
+            0,
+            0,
+            0,
+            0,
+            -16.81,
+            -17.5585,
             1
           ]
         }
@@ -19871,6 +21278,40 @@
       ],
       "mappingEvidence": [
         "exact-filename"
+      ],
+      "analysis": "no-radius-4-cylinder-detected",
+      "evidence": [],
+      "proposedPlacementTransformLdu": null,
+      "automaticBuilderEnablement": false,
+      "limitation": "Official LDraw files can encode shafts as direct mesh triangles, so absence of a cylinder primitive is not proof that no grip exists."
+    },
+    {
+      "catalogId": "part:75902pr0001",
+      "role": "handAccessory",
+      "rebrickablePartNum": "75902pr0001",
+      "name": "Shield Round Bowed, White and Blue Circles with Star Print (Captain America)",
+      "ldrawFiles": [
+        "parts/75902p02.dat"
+      ],
+      "mappingEvidence": [
+        "explicit-keyword"
+      ],
+      "analysis": "no-radius-4-cylinder-detected",
+      "evidence": [],
+      "proposedPlacementTransformLdu": null,
+      "automaticBuilderEnablement": false,
+      "limitation": "Official LDraw files can encode shafts as direct mesh triangles, so absence of a cylinder primitive is not proof that no grip exists."
+    },
+    {
+      "catalogId": "part:75902pr0002",
+      "role": "handAccessory",
+      "rebrickablePartNum": "75902pr0002",
+      "name": "Shield Round Bowed with Dark Green and Gold Rohan Print",
+      "ldrawFiles": [
+        "parts/75902p01.dat"
+      ],
+      "mappingEvidence": [
+        "explicit-keyword"
       ],
       "analysis": "no-radius-4-cylinder-detected",
       "evidence": [],
@@ -23970,6 +25411,124 @@
       "limitation": "Official LDraw files can encode shafts as direct mesh triangles, so absence of a cylinder primitive is not proof that no grip exists."
     },
     {
+      "catalogId": "part:93094",
+      "role": "handAccessory",
+      "rebrickablePartNum": "93094",
+      "name": "Lipstick [Plain]",
+      "ldrawFiles": [
+        "parts/93094a.dat"
+      ],
+      "mappingEvidence": [
+        "exact-filename",
+        "explicit-keyword"
+      ],
+      "analysis": "multiple-radius-4-cylinder-candidates",
+      "evidence": [
+        {
+          "primitive": "p/4-4cyli.dat",
+          "radiusLdu": 4,
+          "lengthLdu": 4,
+          "centerLdu": [
+            0,
+            -20,
+            0
+          ],
+          "axis": [
+            0,
+            -1,
+            0
+          ],
+          "sourceConnectorTransformLdu": [
+            1,
+            0,
+            0,
+            0,
+            0,
+            -1,
+            0,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            -20,
+            0,
+            1
+          ]
+        },
+        {
+          "primitive": "p/4-4cyli.dat",
+          "radiusLdu": 4,
+          "lengthLdu": 11.5,
+          "centerLdu": [
+            0,
+            -23.75,
+            0
+          ],
+          "axis": [
+            0,
+            -1,
+            0
+          ],
+          "sourceConnectorTransformLdu": [
+            1,
+            0,
+            0,
+            0,
+            0,
+            -1,
+            0,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            -23.75,
+            0,
+            1
+          ]
+        },
+        {
+          "primitive": "p/4-4cyli.dat",
+          "radiusLdu": 4,
+          "lengthLdu": 15,
+          "centerLdu": [
+            0,
+            -7.5,
+            0
+          ],
+          "axis": [
+            0,
+            -1,
+            0
+          ],
+          "sourceConnectorTransformLdu": [
+            1,
+            0,
+            0,
+            0,
+            0,
+            -1,
+            0,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            -7.5,
+            0,
+            1
+          ]
+        }
+      ],
+      "proposedPlacementTransformLdu": null,
+      "automaticBuilderEnablement": false,
+      "limitation": "Several possible shafts exist; selecting one automatically would guess the intended grip."
+    },
+    {
       "catalogId": "part:93094pat0001",
       "role": "handAccessory",
       "rebrickablePartNum": "93094pat0001",
@@ -24505,6 +26064,91 @@
       "proposedPlacementTransformLdu": null,
       "automaticBuilderEnablement": false,
       "limitation": "Official LDraw files can encode shafts as direct mesh triangles, so absence of a cylinder primitive is not proof that no grip exists."
+    },
+    {
+      "catalogId": "part:93549",
+      "role": "handAccessory",
+      "rebrickablePartNum": "93549",
+      "name": "Equipment Bottle / Erlenmeyer Flask [Plain]",
+      "ldrawFiles": [
+        "parts/u9180c01.dat"
+      ],
+      "mappingEvidence": [
+        "exact-filename",
+        "explicit-keyword"
+      ],
+      "analysis": "multiple-radius-4-cylinder-candidates",
+      "evidence": [
+        {
+          "primitive": "p/4-4cyli.dat",
+          "radiusLdu": 4,
+          "lengthLdu": 4,
+          "centerLdu": [
+            0,
+            -2,
+            0
+          ],
+          "axis": [
+            0,
+            1,
+            0
+          ],
+          "sourceConnectorTransformLdu": [
+            1,
+            0,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            -2,
+            0,
+            1
+          ]
+        },
+        {
+          "primitive": "p/4-4cyli.dat",
+          "radiusLdu": 4,
+          "lengthLdu": 13.5,
+          "centerLdu": [
+            0,
+            9.25,
+            0
+          ],
+          "axis": [
+            0,
+            1,
+            0
+          ],
+          "sourceConnectorTransformLdu": [
+            1,
+            0,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            9.25,
+            0,
+            1
+          ]
+        }
+      ],
+      "proposedPlacementTransformLdu": null,
+      "automaticBuilderEnablement": false,
+      "limitation": "Several possible shafts exist; selecting one automatically would guess the intended grip."
     },
     {
       "catalogId": "part:93555",
@@ -65463,32 +67107,6 @@
     ],
     "ambiguousOfficialMapping": [
       {
-        "catalogId": "part:3626bpr0348",
-        "role": "head",
-        "rebrickablePartNum": "3626bpr0348",
-        "name": "Minifig Head Rascus / Soldier / Knight / Warrior / Soccer Player, Male, Messy Black Hair, Goatee Print",
-        "ldrawFiles": [
-          "parts/3626bp82.dat",
-          "parts/50003.dat"
-        ],
-        "mappingEvidence": [
-          "explicit-keyword"
-        ]
-      },
-      {
-        "catalogId": "part:3626bpr0389",
-        "role": "head",
-        "rebrickablePartNum": "3626bpr0389",
-        "name": "Minifig Head, Smirk, Pupils, Stubble Beard and Moustache and Sideburns Print",
-        "ldrawFiles": [
-          "parts/3626bp81.dat",
-          "parts/51523.dat"
-        ],
-        "mappingEvidence": [
-          "explicit-keyword"
-        ]
-      },
-      {
         "catalogId": "part:3626cpr0976",
         "role": "head",
         "rebrickablePartNum": "3626cpr0976",
@@ -65528,75 +67146,6 @@
         ]
       },
       {
-        "catalogId": "part:769",
-        "role": "headwear",
-        "rebrickablePartNum": "769",
-        "name": "Headwear Accessory Visor Large",
-        "ldrawFiles": [
-          "parts/71016.dat",
-          "parts/769.dat"
-        ],
-        "mappingEvidence": [
-          "exact-filename",
-          "explicit-keyword"
-        ]
-      },
-      {
-        "catalogId": "part:2446",
-        "role": "headwear",
-        "rebrickablePartNum": "2446",
-        "name": "Helmet, Standard",
-        "ldrawFiles": [
-          "parts/2446.dat",
-          "parts/30124b.dat"
-        ],
-        "mappingEvidence": [
-          "exact-filename",
-          "explicit-keyword"
-        ]
-      },
-      {
-        "catalogId": "part:2447",
-        "role": "headwear",
-        "rebrickablePartNum": "2447",
-        "name": "Headwear Accessory Visor For Standard Helmet",
-        "ldrawFiles": [
-          "parts/2447.dat",
-          "parts/2447b.dat"
-        ],
-        "mappingEvidence": [
-          "exact-filename",
-          "explicit-keyword"
-        ]
-      },
-      {
-        "catalogId": "part:2528",
-        "role": "headwear",
-        "rebrickablePartNum": "2528",
-        "name": "Hat Pirate Bicorne (Admiral)",
-        "ldrawFiles": [
-          "parts/2528.dat",
-          "parts/2528a.dat"
-        ],
-        "mappingEvidence": [
-          "exact-filename",
-          "explicit-keyword"
-        ]
-      },
-      {
-        "catalogId": "part:2545pr0001",
-        "role": "headwear",
-        "rebrickablePartNum": "2545pr0001",
-        "name": "Hat / Imperial Guard Shako with Red Plume and Gold Badge Print",
-        "ldrawFiles": [
-          "parts/2545p01.dat",
-          "parts/84625.dat"
-        ],
-        "mappingEvidence": [
-          "explicit-keyword"
-        ]
-      },
-      {
         "catalogId": "part:2594",
         "role": "headwear",
         "rebrickablePartNum": "2594",
@@ -65605,91 +67154,6 @@
           "parts/2594.dat",
           "parts/2594a.dat",
           "parts/2594b.dat"
-        ],
-        "mappingEvidence": [
-          "exact-filename",
-          "explicit-keyword"
-        ]
-      },
-      {
-        "catalogId": "part:3834",
-        "role": "headwear",
-        "rebrickablePartNum": "3834",
-        "name": "Helmet Fire",
-        "ldrawFiles": [
-          "parts/15601.dat",
-          "parts/15602.dat",
-          "parts/3834.dat"
-        ],
-        "mappingEvidence": [
-          "exact-filename",
-          "explicit-keyword"
-        ]
-      },
-      {
-        "catalogId": "part:3844",
-        "role": "headwear",
-        "rebrickablePartNum": "3844",
-        "name": "Helmet Castle with Neck Protector",
-        "ldrawFiles": [
-          "parts/15606.dat",
-          "parts/3844.dat"
-        ],
-        "mappingEvidence": [
-          "exact-filename",
-          "explicit-keyword"
-        ]
-      },
-      {
-        "catalogId": "part:4485",
-        "role": "headwear",
-        "rebrickablePartNum": "4485",
-        "name": "Hat / Cap Long Peak [Plain]",
-        "ldrawFiles": [
-          "parts/4485.dat",
-          "parts/4485b.dat"
-        ],
-        "mappingEvidence": [
-          "exact-filename",
-          "explicit-keyword"
-        ]
-      },
-      {
-        "catalogId": "part:4505",
-        "role": "headwear",
-        "rebrickablePartNum": "4505",
-        "name": "Hood / Cowl / Farmer's Cap",
-        "ldrawFiles": [
-          "parts/4505.dat",
-          "parts/4505a.dat"
-        ],
-        "mappingEvidence": [
-          "exact-filename",
-          "explicit-keyword"
-        ]
-      },
-      {
-        "catalogId": "part:6093",
-        "role": "headwear",
-        "rebrickablePartNum": "6093",
-        "name": "Hair Ponytail",
-        "ldrawFiles": [
-          "parts/6093.dat",
-          "parts/6093a.dat"
-        ],
-        "mappingEvidence": [
-          "exact-filename",
-          "explicit-keyword"
-        ]
-      },
-      {
-        "catalogId": "part:6119",
-        "role": "headwear",
-        "rebrickablePartNum": "6119",
-        "name": "Headwear Accessory Visor with Antenna (Ice Planet)",
-        "ldrawFiles": [
-          "parts/6119.dat",
-          "parts/6119b.dat"
         ],
         "mappingEvidence": [
           "exact-filename",
@@ -65736,75 +67200,6 @@
         ]
       },
       {
-        "catalogId": "part:30090",
-        "role": "headwear",
-        "rebrickablePartNum": "30090",
-        "name": "Headwear Accessory Visor / Diver's Mask",
-        "ldrawFiles": [
-          "parts/30090.dat",
-          "parts/30090b.dat"
-        ],
-        "mappingEvidence": [
-          "exact-filename",
-          "explicit-keyword"
-        ]
-      },
-      {
-        "catalogId": "part:30126pr0003",
-        "role": "headwear",
-        "rebrickablePartNum": "30126pr0003",
-        "name": "Headwear Accessory Plume / Feathers with Pin and Black Tip on Both Sides Print",
-        "ldrawFiles": [
-          "parts/30126p01.dat",
-          "parts/82805.dat"
-        ],
-        "mappingEvidence": [
-          "explicit-keyword"
-        ]
-      },
-      {
-        "catalogId": "part:30168",
-        "role": "headwear",
-        "rebrickablePartNum": "30168",
-        "name": "Headdress Nemes (Mummy) with Stud [Type 1]",
-        "ldrawFiles": [
-          "parts/30168.dat",
-          "parts/30168b.dat"
-        ],
-        "mappingEvidence": [
-          "exact-filename",
-          "explicit-keyword"
-        ]
-      },
-      {
-        "catalogId": "part:30170",
-        "role": "headwear",
-        "rebrickablePartNum": "30170",
-        "name": "Headwear Accessory Glasses / Goggles",
-        "ldrawFiles": [
-          "parts/30170.dat",
-          "parts/30170b.dat"
-        ],
-        "mappingEvidence": [
-          "exact-filename",
-          "explicit-keyword"
-        ]
-      },
-      {
-        "catalogId": "part:30171",
-        "role": "headwear",
-        "rebrickablePartNum": "30171",
-        "name": "Hat / Helmet, Aviator Cap",
-        "ldrawFiles": [
-          "parts/30171.dat",
-          "parts/30171b.dat"
-        ],
-        "mappingEvidence": [
-          "exact-filename",
-          "explicit-keyword"
-        ]
-      },
-      {
         "catalogId": "part:35660pat0001",
         "role": "headwear",
         "rebrickablePartNum": "35660pat0001",
@@ -65827,34 +67222,6 @@
           "parts/35660p07.dat"
         ],
         "mappingEvidence": [
-          "explicit-keyword"
-        ]
-      },
-      {
-        "catalogId": "part:61190c",
-        "role": "headwear",
-        "rebrickablePartNum": "61190c",
-        "name": "Headwear Accessory Visor (Star Wars Clone Trooper)",
-        "ldrawFiles": [
-          "parts/61190c.dat",
-          "parts/61190f.dat"
-        ],
-        "mappingEvidence": [
-          "exact-filename",
-          "explicit-keyword"
-        ]
-      },
-      {
-        "catalogId": "part:90462",
-        "role": "headwear",
-        "rebrickablePartNum": "90462",
-        "name": "Headdress Nemes (Mummy) with Stud [Type 2]",
-        "ldrawFiles": [
-          "parts/90462.dat",
-          "parts/90462b.dat"
-        ],
-        "mappingEvidence": [
-          "exact-filename",
           "explicit-keyword"
         ]
       },
@@ -65937,20 +67304,6 @@
         ]
       },
       {
-        "catalogId": "part:37191",
-        "role": "torsoAssembly",
-        "rebrickablePartNum": "37191",
-        "name": "Minifig Torso Brick Suit",
-        "ldrawFiles": [
-          "parts/37191.dat",
-          "parts/37191c01.dat"
-        ],
-        "mappingEvidence": [
-          "exact-filename",
-          "explicit-keyword"
-        ]
-      },
-      {
         "catalogId": "part:970c03",
         "role": "legsAssembly",
         "rebrickablePartNum": "970c03",
@@ -66017,90 +67370,6 @@
         ]
       },
       {
-        "catalogId": "part:3815",
-        "role": "legsAssembly",
-        "rebrickablePartNum": "3815",
-        "name": "Hips",
-        "ldrawFiles": [
-          "parts/3815.dat",
-          "parts/3815b.dat"
-        ],
-        "mappingEvidence": [
-          "exact-filename",
-          "explicit-keyword"
-        ]
-      },
-      {
-        "catalogId": "part:3816",
-        "role": "legsAssembly",
-        "rebrickablePartNum": "3816",
-        "name": "Leg, Right",
-        "ldrawFiles": [
-          "parts/3816.dat",
-          "parts/3816c.dat"
-        ],
-        "mappingEvidence": [
-          "exact-filename",
-          "explicit-keyword"
-        ]
-      },
-      {
-        "catalogId": "part:3817",
-        "role": "legsAssembly",
-        "rebrickablePartNum": "3817",
-        "name": "Leg, Left",
-        "ldrawFiles": [
-          "parts/3817.dat",
-          "parts/3817c.dat"
-        ],
-        "mappingEvidence": [
-          "exact-filename",
-          "explicit-keyword"
-        ]
-      },
-      {
-        "catalogId": "part:30362",
-        "role": "legsAssembly",
-        "rebrickablePartNum": "30362",
-        "name": "Leg Mechanical - Droid with Technic Pin",
-        "ldrawFiles": [
-          "parts/30362.dat",
-          "parts/30362a.dat"
-        ],
-        "mappingEvidence": [
-          "exact-filename",
-          "explicit-keyword"
-        ]
-      },
-      {
-        "catalogId": "part:37",
-        "role": "handAccessory",
-        "rebrickablePartNum": "37",
-        "name": "Weapon Dagger / Knife",
-        "ldrawFiles": [
-          "parts/37.dat",
-          "parts/44658.dat"
-        ],
-        "mappingEvidence": [
-          "exact-filename",
-          "explicit-keyword"
-        ]
-      },
-      {
-        "catalogId": "part:556",
-        "role": "handAccessory",
-        "rebrickablePartNum": "556",
-        "name": "Equipment Shovel [Fabuland]",
-        "ldrawFiles": [
-          "parts/4330a.dat",
-          "parts/556.dat"
-        ],
-        "mappingEvidence": [
-          "exact-filename",
-          "explicit-keyword"
-        ]
-      },
-      {
         "catalogId": "part:2343",
         "role": "handAccessory",
         "rebrickablePartNum": "2343",
@@ -66109,62 +67378,6 @@
           "parts/2343.dat",
           "parts/30002.dat",
           "parts/6269.dat"
-        ],
-        "mappingEvidence": [
-          "exact-filename",
-          "explicit-keyword"
-        ]
-      },
-      {
-        "catalogId": "part:2488",
-        "role": "handAccessory",
-        "rebrickablePartNum": "2488",
-        "name": "Equipment Whip [aka Plant Vine]",
-        "ldrawFiles": [
-          "parts/2488.dat",
-          "parts/2488c01.dat"
-        ],
-        "mappingEvidence": [
-          "exact-filename",
-          "explicit-keyword"
-        ]
-      },
-      {
-        "catalogId": "part:2599",
-        "role": "handAccessory",
-        "rebrickablePartNum": "2599",
-        "name": "Minifig Footwear Flippers [2 on Sprue]",
-        "ldrawFiles": [
-          "parts/2599.dat",
-          "parts/2599a.dat"
-        ],
-        "mappingEvidence": [
-          "exact-filename",
-          "explicit-keyword"
-        ]
-      },
-      {
-        "catalogId": "part:2614",
-        "role": "handAccessory",
-        "rebrickablePartNum": "2614",
-        "name": "Equipment Fishing Rod 12L, Vertical Line Hole",
-        "ldrawFiles": [
-          "parts/2614.dat",
-          "parts/96858.dat"
-        ],
-        "mappingEvidence": [
-          "exact-filename",
-          "explicit-keyword"
-        ]
-      },
-      {
-        "catalogId": "part:4210",
-        "role": "handAccessory",
-        "rebrickablePartNum": "4210",
-        "name": "Equipment Hose Nozzle Simple",
-        "ldrawFiles": [
-          "parts/4210.dat",
-          "parts/4210a.dat"
         ],
         "mappingEvidence": [
           "exact-filename",
@@ -66187,48 +67400,6 @@
         ]
       },
       {
-        "catalogId": "part:4479",
-        "role": "handAccessory",
-        "rebrickablePartNum": "4479",
-        "name": "Equipment Metal Detector",
-        "ldrawFiles": [
-          "parts/4479.dat",
-          "parts/4479a.dat"
-        ],
-        "mappingEvidence": [
-          "exact-filename",
-          "explicit-keyword"
-        ]
-      },
-      {
-        "catalogId": "part:4522",
-        "role": "handAccessory",
-        "rebrickablePartNum": "4522",
-        "name": "Tool Hammer / Mallet Large",
-        "ldrawFiles": [
-          "parts/4522.dat",
-          "parts/4522b.dat"
-        ],
-        "mappingEvidence": [
-          "exact-filename",
-          "explicit-keyword"
-        ]
-      },
-      {
-        "catalogId": "part:4629c01",
-        "role": "handAccessory",
-        "rebrickablePartNum": "4629c01",
-        "name": "Tool Jack [Complete Assembly]",
-        "ldrawFiles": [
-          "parts/4629c01.dat",
-          "parts/4629c02.dat"
-        ],
-        "mappingEvidence": [
-          "exact-filename",
-          "explicit-keyword"
-        ]
-      },
-      {
         "catalogId": "part:6124",
         "role": "handAccessory",
         "rebrickablePartNum": "6124",
@@ -66237,34 +67408,6 @@
           "parts/28681.dat",
           "parts/6124.dat",
           "parts/6124b.dat"
-        ],
-        "mappingEvidence": [
-          "exact-filename",
-          "explicit-keyword"
-        ]
-      },
-      {
-        "catalogId": "part:11187",
-        "role": "handAccessory",
-        "rebrickablePartNum": "11187",
-        "name": "Minifig Footwear Snowshoe [Short Front End]",
-        "ldrawFiles": [
-          "parts/11187.dat",
-          "parts/28263.dat"
-        ],
-        "mappingEvidence": [
-          "exact-filename",
-          "explicit-keyword"
-        ]
-      },
-      {
-        "catalogId": "part:13770",
-        "role": "handAccessory",
-        "rebrickablePartNum": "13770",
-        "name": "Tap 1 x 2 with Dual Handles, Small",
-        "ldrawFiles": [
-          "parts/13770.dat",
-          "parts/28920.dat"
         ],
         "mappingEvidence": [
           "exact-filename",
@@ -66370,118 +67513,6 @@
         ]
       },
       {
-        "catalogId": "part:50018a",
-        "role": "handAccessory",
-        "rebrickablePartNum": "50018a",
-        "name": "Tool Saw / Circular Saw Right",
-        "ldrawFiles": [
-          "parts/50018a.dat",
-          "parts/50018g.dat"
-        ],
-        "mappingEvidence": [
-          "exact-filename",
-          "explicit-keyword"
-        ]
-      },
-      {
-        "catalogId": "part:50018b",
-        "role": "handAccessory",
-        "rebrickablePartNum": "50018b",
-        "name": "Tool Cup / Half Ball",
-        "ldrawFiles": [
-          "parts/50018b.dat",
-          "parts/50018f.dat"
-        ],
-        "mappingEvidence": [
-          "exact-filename",
-          "explicit-keyword"
-        ]
-      },
-      {
-        "catalogId": "part:50018e",
-        "role": "handAccessory",
-        "rebrickablePartNum": "50018e",
-        "name": "Tool Connector 3 Bar, 120 deg, Stud on Both Sides",
-        "ldrawFiles": [
-          "parts/50018a.dat",
-          "parts/50018e.dat"
-        ],
-        "mappingEvidence": [
-          "exact-filename",
-          "explicit-keyword"
-        ]
-      },
-      {
-        "catalogId": "part:50018f",
-        "role": "handAccessory",
-        "rebrickablePartNum": "50018f",
-        "name": "Tool Crank Shaft with Bar, Stud",
-        "ldrawFiles": [
-          "parts/50018e.dat",
-          "parts/50018f.dat"
-        ],
-        "mappingEvidence": [
-          "exact-filename",
-          "explicit-keyword"
-        ]
-      },
-      {
-        "catalogId": "part:50018g",
-        "role": "handAccessory",
-        "rebrickablePartNum": "50018g",
-        "name": "Weapon Gun / Ray Gun",
-        "ldrawFiles": [
-          "parts/50018b.dat",
-          "parts/50018g.dat"
-        ],
-        "mappingEvidence": [
-          "exact-filename",
-          "explicit-keyword"
-        ]
-      },
-      {
-        "catalogId": "part:56619",
-        "role": "handAccessory",
-        "rebrickablePartNum": "56619",
-        "name": "Equipment Handcuffs Long [Batman]",
-        "ldrawFiles": [
-          "parts/55707d.dat",
-          "parts/56619.dat"
-        ],
-        "mappingEvidence": [
-          "exact-filename",
-          "explicit-keyword"
-        ]
-      },
-      {
-        "catalogId": "part:59275",
-        "role": "handAccessory",
-        "rebrickablePartNum": "59275",
-        "name": "Minifig Footwear Flipper [Thin]",
-        "ldrawFiles": [
-          "parts/59275.dat",
-          "parts/59275a.dat"
-        ],
-        "mappingEvidence": [
-          "exact-filename",
-          "explicit-keyword"
-        ]
-      },
-      {
-        "catalogId": "part:61190f",
-        "role": "handAccessory",
-        "rebrickablePartNum": "61190f",
-        "name": "Weapon Gun / Blaster Small DC-17 (Star Wars Accessory)",
-        "ldrawFiles": [
-          "parts/61190a.dat",
-          "parts/61190f.dat"
-        ],
-        "mappingEvidence": [
-          "exact-filename",
-          "explicit-keyword"
-        ]
-      },
-      {
         "catalogId": "part:62698",
         "role": "handAccessory",
         "rebrickablePartNum": "62698",
@@ -66496,46 +67527,6 @@
         ]
       },
       {
-        "catalogId": "part:62808",
-        "role": "handAccessory",
-        "rebrickablePartNum": "62808",
-        "name": "Equipment Key",
-        "ldrawFiles": [
-          "parts/40359a.dat",
-          "parts/62808.dat"
-        ],
-        "mappingEvidence": [
-          "exact-filename",
-          "explicit-keyword"
-        ]
-      },
-      {
-        "catalogId": "part:75902pr0001",
-        "role": "handAccessory",
-        "rebrickablePartNum": "75902pr0001",
-        "name": "Shield Round Bowed, White and Blue Circles with Star Print (Captain America)",
-        "ldrawFiles": [
-          "parts/10532.dat",
-          "parts/75902p02.dat"
-        ],
-        "mappingEvidence": [
-          "explicit-keyword"
-        ]
-      },
-      {
-        "catalogId": "part:75902pr0002",
-        "role": "handAccessory",
-        "rebrickablePartNum": "75902pr0002",
-        "name": "Shield Round Bowed with Dark Green and Gold Rohan Print",
-        "ldrawFiles": [
-          "parts/10520.dat",
-          "parts/75902p01.dat"
-        ],
-        "mappingEvidence": [
-          "explicit-keyword"
-        ]
-      },
-      {
         "catalogId": "part:88704",
         "role": "handAccessory",
         "rebrickablePartNum": "88704",
@@ -66544,34 +67535,6 @@
           "parts/88704-f1.dat",
           "parts/88704-f2.dat",
           "parts/88704.dat"
-        ],
-        "mappingEvidence": [
-          "exact-filename",
-          "explicit-keyword"
-        ]
-      },
-      {
-        "catalogId": "part:93094",
-        "role": "handAccessory",
-        "rebrickablePartNum": "93094",
-        "name": "Lipstick [Plain]",
-        "ldrawFiles": [
-          "parts/93094.dat",
-          "parts/93094a.dat"
-        ],
-        "mappingEvidence": [
-          "exact-filename",
-          "explicit-keyword"
-        ]
-      },
-      {
-        "catalogId": "part:93549",
-        "role": "handAccessory",
-        "rebrickablePartNum": "93549",
-        "name": "Equipment Bottle / Erlenmeyer Flask [Plain]",
-        "ldrawFiles": [
-          "parts/93549.dat",
-          "parts/u9180c01.dat"
         ],
         "mappingEvidence": [
           "exact-filename",

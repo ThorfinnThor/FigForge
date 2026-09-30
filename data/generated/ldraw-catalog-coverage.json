@@ -13,6 +13,7 @@
   "methodology": [
     "Catalog scope is limited to the five minifigure-relevant packages derived from locked Rebrickable Catalog Downloads/CSV.",
     "Official LDraw matches require either an exact top-level parts/*.dat filename or an explicit !KEYWORDS Rebrickable identifier.",
+    "When an LDraw filename collides with an explicit Rebrickable keyword mapping, the explicit mapping wins; official Part Alias and ~Moved to wrappers are reduced to their canonical target before uniqueness is assessed. Genuinely different keyword targets remain ambiguous.",
     "Head, headwear, complete torso-assembly and complete legs-assembly print variants may reuse a unique unprinted parent geometry only when part_relationships.csv explicitly declares the print relationship.",
     "Torso entries become builder-ready only when the official LDraw file is a complete shortcut: either a 973-family torso with both arms and hands, or one of the explicitly recognized complete wing, flipper, pirate-hook, mechanical-arm or short-torso component signatures.",
     "Lower-body entries become builder-ready only when the official top-level LDraw title explicitly declares a complete Minifig Hips and Legs assembly, an allowlisted complete Hips replacement family (Ghost, Skirt, Tentacles, Mermaid Tail or Genie), or an allowlisted complete legs family with a centered torso-compatible stud (Minecraft Enderman or Bionicle).",
@@ -30,43 +31,43 @@
   },
   "summary": {
     "catalogPartCount": 20202,
-    "visualizedPartCount": 14673,
-    "builderReadyPartCount": 14671,
-    "remainingCatalogPartCount": 5531,
-    "remainingWithoutVisualizationCount": 5529,
-    "uniqueOfficialMappingCount": 2767,
-    "ambiguousOfficialMappingCount": 235,
+    "visualizedPartCount": 14701,
+    "builderReadyPartCount": 14699,
+    "remainingCatalogPartCount": 5503,
+    "remainingWithoutVisualizationCount": 5501,
+    "uniqueOfficialMappingCount": 2816,
+    "ambiguousOfficialMappingCount": 186,
     "noOfficialMappingCount": 17200,
     "remainingClassifications": {
       "builder-blocked": 2,
       "render-failed": 0,
-      "placement-profile-required": 542,
-      "ambiguous-official-mapping": 83,
+      "placement-profile-required": 563,
+      "ambiguous-official-mapping": 34,
       "no-official-mapping": 4904
     }
   },
   "roles": {
     "head": {
       "catalogPartCount": 5402,
-      "builderReadyPartCount": 4860,
-      "remainingCatalogPartCount": 542,
+      "builderReadyPartCount": 4862,
+      "remainingCatalogPartCount": 540,
       "remainingClassifications": {
         "builder-blocked": 0,
         "render-failed": 0,
         "placement-profile-required": 0,
-        "ambiguous-official-mapping": 5,
+        "ambiguous-official-mapping": 3,
         "no-official-mapping": 537
       }
     },
     "headwear": {
       "catalogPartCount": 2410,
-      "builderReadyPartCount": 761,
-      "remainingCatalogPartCount": 1649,
+      "builderReadyPartCount": 779,
+      "remainingCatalogPartCount": 1631,
       "remainingClassifications": {
         "builder-blocked": 0,
         "render-failed": 0,
         "placement-profile-required": 0,
-        "ambiguous-official-mapping": 24,
+        "ambiguous-official-mapping": 6,
         "no-official-mapping": 1625
       }
     },
@@ -77,8 +78,8 @@
       "remainingClassifications": {
         "builder-blocked": 1,
         "render-failed": 0,
-        "placement-profile-required": 146,
-        "ambiguous-official-mapping": 7,
+        "placement-profile-required": 147,
+        "ambiguous-official-mapping": 6,
         "no-official-mapping": 1785
       }
     },
@@ -89,20 +90,20 @@
       "remainingClassifications": {
         "builder-blocked": 0,
         "render-failed": 0,
-        "placement-profile-required": 22,
-        "ambiguous-official-mapping": 9,
+        "placement-profile-required": 26,
+        "ambiguous-official-mapping": 5,
         "no-official-mapping": 337
       }
     },
     "handAccessory": {
       "catalogPartCount": 1308,
-      "builderReadyPartCount": 275,
-      "remainingCatalogPartCount": 1033,
+      "builderReadyPartCount": 283,
+      "remainingCatalogPartCount": 1025,
       "remainingClassifications": {
         "builder-blocked": 1,
         "render-failed": 0,
-        "placement-profile-required": 374,
-        "ambiguous-official-mapping": 38,
+        "placement-profile-required": 390,
+        "ambiguous-official-mapping": 14,
         "no-official-mapping": 620
       }
     }
@@ -376,36 +377,6 @@
       "classification": "no-official-mapping",
       "ldrawFiles": [],
       "mappingEvidence": [],
-      "reason": null
-    },
-    {
-      "catalogId": "part:3626bpr0348",
-      "role": "head",
-      "rebrickablePartNum": "3626bpr0348",
-      "name": "Minifig Head Rascus / Soldier / Knight / Warrior / Soccer Player, Male, Messy Black Hair, Goatee Print",
-      "classification": "ambiguous-official-mapping",
-      "ldrawFiles": [
-        "parts/3626bp82.dat",
-        "parts/50003.dat"
-      ],
-      "mappingEvidence": [
-        "explicit-keyword"
-      ],
-      "reason": null
-    },
-    {
-      "catalogId": "part:3626bpr0389",
-      "role": "head",
-      "rebrickablePartNum": "3626bpr0389",
-      "name": "Minifig Head, Smirk, Pupils, Stubble Beard and Moustache and Sideburns Print",
-      "classification": "ambiguous-official-mapping",
-      "ldrawFiles": [
-        "parts/3626bp81.dat",
-        "parts/51523.dat"
-      ],
-      "mappingEvidence": [
-        "explicit-keyword"
-      ],
       "reason": null
     },
     {
@@ -5554,22 +5525,6 @@
       "reason": null
     },
     {
-      "catalogId": "part:769",
-      "role": "headwear",
-      "rebrickablePartNum": "769",
-      "name": "Headwear Accessory Visor Large",
-      "classification": "ambiguous-official-mapping",
-      "ldrawFiles": [
-        "parts/71016.dat",
-        "parts/769.dat"
-      ],
-      "mappingEvidence": [
-        "exact-filename",
-        "explicit-keyword"
-      ],
-      "reason": null
-    },
-    {
       "catalogId": "part:1127",
       "role": "headwear",
       "rebrickablePartNum": "1127",
@@ -6087,22 +6042,6 @@
       "classification": "no-official-mapping",
       "ldrawFiles": [],
       "mappingEvidence": [],
-      "reason": null
-    },
-    {
-      "catalogId": "part:2446",
-      "role": "headwear",
-      "rebrickablePartNum": "2446",
-      "name": "Helmet, Standard",
-      "classification": "ambiguous-official-mapping",
-      "ldrawFiles": [
-        "parts/2446.dat",
-        "parts/30124b.dat"
-      ],
-      "mappingEvidence": [
-        "exact-filename",
-        "explicit-keyword"
-      ],
       "reason": null
     },
     {
@@ -6816,22 +6755,6 @@
       "reason": null
     },
     {
-      "catalogId": "part:2447",
-      "role": "headwear",
-      "rebrickablePartNum": "2447",
-      "name": "Headwear Accessory Visor For Standard Helmet",
-      "classification": "ambiguous-official-mapping",
-      "ldrawFiles": [
-        "parts/2447.dat",
-        "parts/2447b.dat"
-      ],
-      "mappingEvidence": [
-        "exact-filename",
-        "explicit-keyword"
-      ],
-      "reason": null
-    },
-    {
       "catalogId": "part:2447pr0001",
       "role": "headwear",
       "rebrickablePartNum": "2447pr0001",
@@ -6942,22 +6865,6 @@
       "reason": null
     },
     {
-      "catalogId": "part:2528",
-      "role": "headwear",
-      "rebrickablePartNum": "2528",
-      "name": "Hat Pirate Bicorne (Admiral)",
-      "classification": "ambiguous-official-mapping",
-      "ldrawFiles": [
-        "parts/2528.dat",
-        "parts/2528a.dat"
-      ],
-      "mappingEvidence": [
-        "exact-filename",
-        "explicit-keyword"
-      ],
-      "reason": null
-    },
-    {
       "catalogId": "part:2528pr0015",
       "role": "headwear",
       "rebrickablePartNum": "2528pr0015",
@@ -7005,21 +6912,6 @@
       "classification": "no-official-mapping",
       "ldrawFiles": [],
       "mappingEvidence": [],
-      "reason": null
-    },
-    {
-      "catalogId": "part:2545pr0001",
-      "role": "headwear",
-      "rebrickablePartNum": "2545pr0001",
-      "name": "Hat / Imperial Guard Shako with Red Plume and Gold Badge Print",
-      "classification": "ambiguous-official-mapping",
-      "ldrawFiles": [
-        "parts/2545p01.dat",
-        "parts/84625.dat"
-      ],
-      "mappingEvidence": [
-        "explicit-keyword"
-      ],
       "reason": null
     },
     {
@@ -7460,39 +7352,6 @@
       "reason": null
     },
     {
-      "catalogId": "part:3834",
-      "role": "headwear",
-      "rebrickablePartNum": "3834",
-      "name": "Helmet Fire",
-      "classification": "ambiguous-official-mapping",
-      "ldrawFiles": [
-        "parts/15601.dat",
-        "parts/15602.dat",
-        "parts/3834.dat"
-      ],
-      "mappingEvidence": [
-        "exact-filename",
-        "explicit-keyword"
-      ],
-      "reason": null
-    },
-    {
-      "catalogId": "part:3844",
-      "role": "headwear",
-      "rebrickablePartNum": "3844",
-      "name": "Helmet Castle with Neck Protector",
-      "classification": "ambiguous-official-mapping",
-      "ldrawFiles": [
-        "parts/15606.dat",
-        "parts/3844.dat"
-      ],
-      "mappingEvidence": [
-        "exact-filename",
-        "explicit-keyword"
-      ],
-      "reason": null
-    },
-    {
       "catalogId": "part:3887",
       "role": "headwear",
       "rebrickablePartNum": "3887",
@@ -7590,38 +7449,6 @@
       "classification": "no-official-mapping",
       "ldrawFiles": [],
       "mappingEvidence": [],
-      "reason": null
-    },
-    {
-      "catalogId": "part:4485",
-      "role": "headwear",
-      "rebrickablePartNum": "4485",
-      "name": "Hat / Cap Long Peak [Plain]",
-      "classification": "ambiguous-official-mapping",
-      "ldrawFiles": [
-        "parts/4485.dat",
-        "parts/4485b.dat"
-      ],
-      "mappingEvidence": [
-        "exact-filename",
-        "explicit-keyword"
-      ],
-      "reason": null
-    },
-    {
-      "catalogId": "part:4505",
-      "role": "headwear",
-      "rebrickablePartNum": "4505",
-      "name": "Hood / Cowl / Farmer's Cap",
-      "classification": "ambiguous-official-mapping",
-      "ldrawFiles": [
-        "parts/4505.dat",
-        "parts/4505a.dat"
-      ],
-      "mappingEvidence": [
-        "exact-filename",
-        "explicit-keyword"
-      ],
       "reason": null
     },
     {
@@ -8202,38 +8029,6 @@
       "classification": "no-official-mapping",
       "ldrawFiles": [],
       "mappingEvidence": [],
-      "reason": null
-    },
-    {
-      "catalogId": "part:6093",
-      "role": "headwear",
-      "rebrickablePartNum": "6093",
-      "name": "Hair Ponytail",
-      "classification": "ambiguous-official-mapping",
-      "ldrawFiles": [
-        "parts/6093.dat",
-        "parts/6093a.dat"
-      ],
-      "mappingEvidence": [
-        "exact-filename",
-        "explicit-keyword"
-      ],
-      "reason": null
-    },
-    {
-      "catalogId": "part:6119",
-      "role": "headwear",
-      "rebrickablePartNum": "6119",
-      "name": "Headwear Accessory Visor with Antenna (Ice Planet)",
-      "classification": "ambiguous-official-mapping",
-      "ldrawFiles": [
-        "parts/6119.dat",
-        "parts/6119b.dat"
-      ],
-      "mappingEvidence": [
-        "exact-filename",
-        "explicit-keyword"
-      ],
       "reason": null
     },
     {
@@ -14372,53 +14167,6 @@
       "reason": null
     },
     {
-      "catalogId": "part:30090",
-      "role": "headwear",
-      "rebrickablePartNum": "30090",
-      "name": "Headwear Accessory Visor / Diver's Mask",
-      "classification": "ambiguous-official-mapping",
-      "ldrawFiles": [
-        "parts/30090.dat",
-        "parts/30090b.dat"
-      ],
-      "mappingEvidence": [
-        "exact-filename",
-        "explicit-keyword"
-      ],
-      "reason": null
-    },
-    {
-      "catalogId": "part:30126pr0003",
-      "role": "headwear",
-      "rebrickablePartNum": "30126pr0003",
-      "name": "Headwear Accessory Plume / Feathers with Pin and Black Tip on Both Sides Print",
-      "classification": "ambiguous-official-mapping",
-      "ldrawFiles": [
-        "parts/30126p01.dat",
-        "parts/82805.dat"
-      ],
-      "mappingEvidence": [
-        "explicit-keyword"
-      ],
-      "reason": null
-    },
-    {
-      "catalogId": "part:30168",
-      "role": "headwear",
-      "rebrickablePartNum": "30168",
-      "name": "Headdress Nemes (Mummy) with Stud [Type 1]",
-      "classification": "ambiguous-official-mapping",
-      "ldrawFiles": [
-        "parts/30168.dat",
-        "parts/30168b.dat"
-      ],
-      "mappingEvidence": [
-        "exact-filename",
-        "explicit-keyword"
-      ],
-      "reason": null
-    },
-    {
       "catalogId": "part:30168pr0001",
       "role": "headwear",
       "rebrickablePartNum": "30168pr0001",
@@ -14436,38 +14184,6 @@
       "classification": "no-official-mapping",
       "ldrawFiles": [],
       "mappingEvidence": [],
-      "reason": null
-    },
-    {
-      "catalogId": "part:30170",
-      "role": "headwear",
-      "rebrickablePartNum": "30170",
-      "name": "Headwear Accessory Glasses / Goggles",
-      "classification": "ambiguous-official-mapping",
-      "ldrawFiles": [
-        "parts/30170.dat",
-        "parts/30170b.dat"
-      ],
-      "mappingEvidence": [
-        "exact-filename",
-        "explicit-keyword"
-      ],
-      "reason": null
-    },
-    {
-      "catalogId": "part:30171",
-      "role": "headwear",
-      "rebrickablePartNum": "30171",
-      "name": "Hat / Helmet, Aviator Cap",
-      "classification": "ambiguous-official-mapping",
-      "ldrawFiles": [
-        "parts/30171.dat",
-        "parts/30171b.dat"
-      ],
-      "mappingEvidence": [
-        "exact-filename",
-        "explicit-keyword"
-      ],
       "reason": null
     },
     {
@@ -17501,22 +17217,6 @@
       "reason": null
     },
     {
-      "catalogId": "part:61190c",
-      "role": "headwear",
-      "rebrickablePartNum": "61190c",
-      "name": "Headwear Accessory Visor (Star Wars Clone Trooper)",
-      "classification": "ambiguous-official-mapping",
-      "ldrawFiles": [
-        "parts/61190c.dat",
-        "parts/61190f.dat"
-      ],
-      "mappingEvidence": [
-        "exact-filename",
-        "explicit-keyword"
-      ],
-      "reason": null
-    },
-    {
       "catalogId": "part:61195pr0001",
       "role": "headwear",
       "rebrickablePartNum": "61195pr0001",
@@ -20084,22 +19784,6 @@
       "classification": "no-official-mapping",
       "ldrawFiles": [],
       "mappingEvidence": [],
-      "reason": null
-    },
-    {
-      "catalogId": "part:90462",
-      "role": "headwear",
-      "rebrickablePartNum": "90462",
-      "name": "Headdress Nemes (Mummy) with Stud [Type 2]",
-      "classification": "ambiguous-official-mapping",
-      "ldrawFiles": [
-        "parts/90462.dat",
-        "parts/90462b.dat"
-      ],
-      "mappingEvidence": [
-        "exact-filename",
-        "explicit-keyword"
-      ],
       "reason": null
     },
     {
@@ -40513,9 +40197,8 @@
       "role": "torsoAssembly",
       "rebrickablePartNum": "37191",
       "name": "Minifig Torso Brick Suit",
-      "classification": "ambiguous-official-mapping",
+      "classification": "placement-profile-required",
       "ldrawFiles": [
-        "parts/37191.dat",
         "parts/37191c01.dat"
       ],
       "mappingEvidence": [
@@ -44241,9 +43924,8 @@
       "role": "legsAssembly",
       "rebrickablePartNum": "3815",
       "name": "Hips",
-      "classification": "ambiguous-official-mapping",
+      "classification": "placement-profile-required",
       "ldrawFiles": [
-        "parts/3815.dat",
         "parts/3815b.dat"
       ],
       "mappingEvidence": [
@@ -44257,9 +43939,8 @@
       "role": "legsAssembly",
       "rebrickablePartNum": "3816",
       "name": "Leg, Right",
-      "classification": "ambiguous-official-mapping",
+      "classification": "placement-profile-required",
       "ldrawFiles": [
-        "parts/3816.dat",
         "parts/3816c.dat"
       ],
       "mappingEvidence": [
@@ -44273,9 +43954,8 @@
       "role": "legsAssembly",
       "rebrickablePartNum": "3817",
       "name": "Leg, Left",
-      "classification": "ambiguous-official-mapping",
+      "classification": "placement-profile-required",
       "ldrawFiles": [
-        "parts/3817.dat",
         "parts/3817c.dat"
       ],
       "mappingEvidence": [
@@ -44685,9 +44365,8 @@
       "role": "legsAssembly",
       "rebrickablePartNum": "30362",
       "name": "Leg Mechanical - Droid with Technic Pin",
-      "classification": "ambiguous-official-mapping",
+      "classification": "placement-profile-required",
       "ldrawFiles": [
-        "parts/30362.dat",
         "parts/30362a.dat"
       ],
       "mappingEvidence": [
@@ -46019,9 +45698,8 @@
       "role": "handAccessory",
       "rebrickablePartNum": "37",
       "name": "Weapon Dagger / Knife",
-      "classification": "ambiguous-official-mapping",
+      "classification": "placement-profile-required",
       "ldrawFiles": [
-        "parts/37.dat",
         "parts/44658.dat"
       ],
       "mappingEvidence": [
@@ -46119,10 +45797,9 @@
       "role": "handAccessory",
       "rebrickablePartNum": "556",
       "name": "Equipment Shovel [Fabuland]",
-      "classification": "ambiguous-official-mapping",
+      "classification": "placement-profile-required",
       "ldrawFiles": [
-        "parts/4330a.dat",
-        "parts/556.dat"
+        "parts/4330a.dat"
       ],
       "mappingEvidence": [
         "exact-filename",
@@ -46292,22 +45969,6 @@
         "parts/2343.dat",
         "parts/30002.dat",
         "parts/6269.dat"
-      ],
-      "mappingEvidence": [
-        "exact-filename",
-        "explicit-keyword"
-      ],
-      "reason": null
-    },
-    {
-      "catalogId": "part:2488",
-      "role": "handAccessory",
-      "rebrickablePartNum": "2488",
-      "name": "Equipment Whip [aka Plant Vine]",
-      "classification": "ambiguous-official-mapping",
-      "ldrawFiles": [
-        "parts/2488.dat",
-        "parts/2488c01.dat"
       ],
       "mappingEvidence": [
         "exact-filename",
@@ -46794,26 +46455,9 @@
       "role": "handAccessory",
       "rebrickablePartNum": "2599",
       "name": "Minifig Footwear Flippers [2 on Sprue]",
-      "classification": "ambiguous-official-mapping",
+      "classification": "placement-profile-required",
       "ldrawFiles": [
-        "parts/2599.dat",
         "parts/2599a.dat"
-      ],
-      "mappingEvidence": [
-        "exact-filename",
-        "explicit-keyword"
-      ],
-      "reason": null
-    },
-    {
-      "catalogId": "part:2614",
-      "role": "handAccessory",
-      "rebrickablePartNum": "2614",
-      "name": "Equipment Fishing Rod 12L, Vertical Line Hole",
-      "classification": "ambiguous-official-mapping",
-      "ldrawFiles": [
-        "parts/2614.dat",
-        "parts/96858.dat"
       ],
       "mappingEvidence": [
         "exact-filename",
@@ -47902,9 +47546,8 @@
       "role": "handAccessory",
       "rebrickablePartNum": "4210",
       "name": "Equipment Hose Nozzle Simple",
-      "classification": "ambiguous-official-mapping",
+      "classification": "placement-profile-required",
       "ldrawFiles": [
-        "parts/4210.dat",
         "parts/4210a.dat"
       ],
       "mappingEvidence": [
@@ -47987,9 +47630,8 @@
       "role": "handAccessory",
       "rebrickablePartNum": "4479",
       "name": "Equipment Metal Detector",
-      "classification": "ambiguous-official-mapping",
+      "classification": "placement-profile-required",
       "ldrawFiles": [
-        "parts/4479.dat",
         "parts/4479a.dat"
       ],
       "mappingEvidence": [
@@ -48009,22 +47651,6 @@
       ],
       "mappingEvidence": [
         "exact-filename"
-      ],
-      "reason": null
-    },
-    {
-      "catalogId": "part:4522",
-      "role": "handAccessory",
-      "rebrickablePartNum": "4522",
-      "name": "Tool Hammer / Mallet Large",
-      "classification": "ambiguous-official-mapping",
-      "ldrawFiles": [
-        "parts/4522.dat",
-        "parts/4522b.dat"
-      ],
-      "mappingEvidence": [
-        "exact-filename",
-        "explicit-keyword"
       ],
       "reason": null
     },
@@ -48061,9 +47687,8 @@
       "role": "handAccessory",
       "rebrickablePartNum": "4629c01",
       "name": "Tool Jack [Complete Assembly]",
-      "classification": "ambiguous-official-mapping",
+      "classification": "placement-profile-required",
       "ldrawFiles": [
-        "parts/4629c01.dat",
         "parts/4629c02.dat"
       ],
       "mappingEvidence": [
@@ -49222,9 +48847,8 @@
       "role": "handAccessory",
       "rebrickablePartNum": "11187",
       "name": "Minifig Footwear Snowshoe [Short Front End]",
-      "classification": "ambiguous-official-mapping",
+      "classification": "placement-profile-required",
       "ldrawFiles": [
-        "parts/11187.dat",
         "parts/28263.dat"
       ],
       "mappingEvidence": [
@@ -49515,22 +49139,6 @@
       "classification": "no-official-mapping",
       "ldrawFiles": [],
       "mappingEvidence": [],
-      "reason": null
-    },
-    {
-      "catalogId": "part:13770",
-      "role": "handAccessory",
-      "rebrickablePartNum": "13770",
-      "name": "Tap 1 x 2 with Dual Handles, Small",
-      "classification": "ambiguous-official-mapping",
-      "ldrawFiles": [
-        "parts/13770.dat",
-        "parts/28920.dat"
-      ],
-      "mappingEvidence": [
-        "exact-filename",
-        "explicit-keyword"
-      ],
       "reason": null
     },
     {
@@ -52850,29 +52458,12 @@
       "reason": null
     },
     {
-      "catalogId": "part:50018a",
-      "role": "handAccessory",
-      "rebrickablePartNum": "50018a",
-      "name": "Tool Saw / Circular Saw Right",
-      "classification": "ambiguous-official-mapping",
-      "ldrawFiles": [
-        "parts/50018a.dat",
-        "parts/50018g.dat"
-      ],
-      "mappingEvidence": [
-        "exact-filename",
-        "explicit-keyword"
-      ],
-      "reason": null
-    },
-    {
       "catalogId": "part:50018b",
       "role": "handAccessory",
       "rebrickablePartNum": "50018b",
       "name": "Tool Cup / Half Ball",
-      "classification": "ambiguous-official-mapping",
+      "classification": "placement-profile-required",
       "ldrawFiles": [
-        "parts/50018b.dat",
         "parts/50018f.dat"
       ],
       "mappingEvidence": [
@@ -52900,42 +52491,9 @@
       "role": "handAccessory",
       "rebrickablePartNum": "50018e",
       "name": "Tool Connector 3 Bar, 120 deg, Stud on Both Sides",
-      "classification": "ambiguous-official-mapping",
+      "classification": "placement-profile-required",
       "ldrawFiles": [
-        "parts/50018a.dat",
-        "parts/50018e.dat"
-      ],
-      "mappingEvidence": [
-        "exact-filename",
-        "explicit-keyword"
-      ],
-      "reason": null
-    },
-    {
-      "catalogId": "part:50018f",
-      "role": "handAccessory",
-      "rebrickablePartNum": "50018f",
-      "name": "Tool Crank Shaft with Bar, Stud",
-      "classification": "ambiguous-official-mapping",
-      "ldrawFiles": [
-        "parts/50018e.dat",
-        "parts/50018f.dat"
-      ],
-      "mappingEvidence": [
-        "exact-filename",
-        "explicit-keyword"
-      ],
-      "reason": null
-    },
-    {
-      "catalogId": "part:50018g",
-      "role": "handAccessory",
-      "rebrickablePartNum": "50018g",
-      "name": "Weapon Gun / Ray Gun",
-      "classification": "ambiguous-official-mapping",
-      "ldrawFiles": [
-        "parts/50018b.dat",
-        "parts/50018g.dat"
+        "parts/50018a.dat"
       ],
       "mappingEvidence": [
         "exact-filename",
@@ -53420,10 +52978,9 @@
       "role": "handAccessory",
       "rebrickablePartNum": "56619",
       "name": "Equipment Handcuffs Long [Batman]",
-      "classification": "ambiguous-official-mapping",
+      "classification": "placement-profile-required",
       "ldrawFiles": [
-        "parts/55707d.dat",
-        "parts/56619.dat"
+        "parts/55707d.dat"
       ],
       "mappingEvidence": [
         "exact-filename",
@@ -53622,9 +53179,8 @@
       "role": "handAccessory",
       "rebrickablePartNum": "59275",
       "name": "Minifig Footwear Flipper [Thin]",
-      "classification": "ambiguous-official-mapping",
+      "classification": "placement-profile-required",
       "ldrawFiles": [
-        "parts/59275.dat",
         "parts/59275a.dat"
       ],
       "mappingEvidence": [
@@ -53648,10 +53204,9 @@
       "role": "handAccessory",
       "rebrickablePartNum": "61190f",
       "name": "Weapon Gun / Blaster Small DC-17 (Star Wars Accessory)",
-      "classification": "ambiguous-official-mapping",
+      "classification": "placement-profile-required",
       "ldrawFiles": [
-        "parts/61190a.dat",
-        "parts/61190f.dat"
+        "parts/61190a.dat"
       ],
       "mappingEvidence": [
         "exact-filename",
@@ -53799,22 +53354,6 @@
       "classification": "no-official-mapping",
       "ldrawFiles": [],
       "mappingEvidence": [],
-      "reason": null
-    },
-    {
-      "catalogId": "part:62808",
-      "role": "handAccessory",
-      "rebrickablePartNum": "62808",
-      "name": "Equipment Key",
-      "classification": "ambiguous-official-mapping",
-      "ldrawFiles": [
-        "parts/40359a.dat",
-        "parts/62808.dat"
-      ],
-      "mappingEvidence": [
-        "exact-filename",
-        "explicit-keyword"
-      ],
       "reason": null
     },
     {
@@ -54750,9 +54289,8 @@
       "role": "handAccessory",
       "rebrickablePartNum": "75902pr0001",
       "name": "Shield Round Bowed, White and Blue Circles with Star Print (Captain America)",
-      "classification": "ambiguous-official-mapping",
+      "classification": "placement-profile-required",
       "ldrawFiles": [
-        "parts/10532.dat",
         "parts/75902p02.dat"
       ],
       "mappingEvidence": [
@@ -54765,9 +54303,8 @@
       "role": "handAccessory",
       "rebrickablePartNum": "75902pr0002",
       "name": "Shield Round Bowed with Dark Green and Gold Rohan Print",
-      "classification": "ambiguous-official-mapping",
+      "classification": "placement-profile-required",
       "ldrawFiles": [
-        "parts/10520.dat",
         "parts/75902p01.dat"
       ],
       "mappingEvidence": [
@@ -56507,9 +56044,8 @@
       "role": "handAccessory",
       "rebrickablePartNum": "93094",
       "name": "Lipstick [Plain]",
-      "classification": "ambiguous-official-mapping",
+      "classification": "placement-profile-required",
       "ldrawFiles": [
-        "parts/93094.dat",
         "parts/93094a.dat"
       ],
       "mappingEvidence": [
@@ -56741,9 +56277,8 @@
       "role": "handAccessory",
       "rebrickablePartNum": "93549",
       "name": "Equipment Bottle / Erlenmeyer Flask [Plain]",
-      "classification": "ambiguous-official-mapping",
+      "classification": "placement-profile-required",
       "ldrawFiles": [
-        "parts/93549.dat",
         "parts/u9180c01.dat"
       ],
       "mappingEvidence": [
