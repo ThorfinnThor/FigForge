@@ -63,7 +63,7 @@ const catalog = JSON.parse(await readFile(resolve(root, "data/generated/ldraw-ex
   assemblyColorCodes: {
     codes: Array<{ code: string; colorName: string; colorRgb: string; evidencePartNums: string[] }>;
     unresolvedCodes: Array<{ code: string; colorNames: string[]; reason: string; evidencePartNums: string[] }>;
-    referenceAssemblies: Record<"torso" | "legs", {
+    referenceAssemblies: Record<"torso" | "legs" | "dualMouldLegs", {
       shortcutCount: number;
       agreeingShortcutCount: number;
       lines: Array<{ component: string; transform: number[] }>;
@@ -123,7 +123,7 @@ const { compositions: assemblyCompositions } = JSON.parse(
     agreeingReferenceShortcutCount: number;
     components: Array<{
       file: string;
-      colorRole: "catalog" | "arms" | "hands" | "legs";
+      colorRole: "catalog" | "arms" | "hands" | "legs" | "boots";
       colorName: string | null;
       colorRgb: string | null;
       transform: number[];
@@ -236,6 +236,7 @@ assert.deepEqual(
 );
 const fileMap = JSON.parse(await readFile(resolve(publicLDrawRoot, "file-map.json"), "utf8")) as Record<string, unknown>;
 const fileMapEntries = Object.entries(fileMap);
+const fileMapKey = (file: string): string => file.startsWith("parts/s/") ? file.slice("parts/".length) : basename(file);
 assert.equal(fileMapEntries.length, catalog.summary.sharedOfficialFileCount);
 for (const [reference, mappedPath] of fileMapEntries) {
   assert(reference.endsWith(".dat") && !reference.includes("\\"), `Invalid LDraw file-map reference: ${reference}`);
@@ -310,18 +311,20 @@ for (const entry of catalog.entries) {
     const colors = confirmAssemblyColors(entry.rebrickablePartNum, entry.name, assemblyColorCodes);
     assert(parsed && colors, `Assembly colours are not confirmed by code and name: ${entry.componentId}`);
     assert.equal(entry.role, colors.kind === "torso" ? "torsoAssembly" : "legsAssembly");
-    const reference = catalog.assemblyColorCodes.referenceAssemblies[colors.kind];
+    const reference = parsed.kind === "legs" && parsed.bootCode
+      ? catalog.assemblyColorCodes.referenceAssemblies.dualMouldLegs
+      : catalog.assemblyColorCodes.referenceAssemblies[colors.kind];
     assert.equal(composition.referenceShortcutCount, reference.shortcutCount);
     assert.equal(composition.agreeingReferenceShortcutCount, reference.agreeingShortcutCount);
     assert.deepEqual(composition.components.map(({ transform }) => transform), reference.lines.map(({ transform }) => transform));
     assert(composition.components.some(({ file, colorRole }) => file === entry.ldrawFile && colorRole === "catalog"));
     for (const component of composition.components) {
-      assert(component.file.startsWith("parts/") && fileMap[basename(component.file)], `Unmapped component: ${component.file}`);
+      assert(component.file.startsWith("parts/") && fileMap[fileMapKey(component.file)], `Unmapped component: ${component.file}`);
       const expectedColorName: string | null = component.colorRole === "catalog"
         ? null
         : colors.kind === "torso"
           ? component.colorRole === "arms" ? colors.armColorName : colors.handColorName
-          : colors.legColorName;
+          : component.colorRole === "boots" ? colors.bootColorName ?? null : colors.legColorName;
       assert.equal(component.colorName, expectedColorName, `Wrong ${component.colorRole} colour: ${entry.componentId}`);
       assert.equal(component.colorRgb, expectedColorName ? colorRgbByName.get(expectedColorName) : null);
     }
@@ -393,10 +396,10 @@ for (const entry of catalog.entries) {
   assert.equal(sha256(model), entry.modelSha256, `Model hash mismatch: ${entry.componentId}`);
   for (const component of assemblyCompositions[entry.componentId]?.components ?? []) {
     const modelSource = model.toString("utf8");
-    assert(modelSource.includes(` ${basename(component.file)}`), `Composed model misses ${component.file}: ${entry.componentId}`);
+    assert(modelSource.includes(` ${fileMapKey(component.file)}`), `Composed model misses ${component.file}: ${entry.componentId}`);
     if (component.colorRgb) assert(modelSource.includes(`VALUE #${component.colorRgb} `), `Composed model misses colour: ${entry.componentId}`);
   }
-  assert(fileMap[basename(entry.ldrawFile)], `Mapped part is missing from the browser file map: ${entry.ldrawFile}`);
+  assert(fileMap[fileMapKey(entry.ldrawFile)], `Mapped part is missing from the browser file map: ${entry.ldrawFile}`);
   assert.equal(sha256(thumbnail), entry.thumbnailSha256, `Thumbnail hash mismatch: ${entry.componentId}`);
   assert.equal(thumbnail.byteLength, entry.thumbnailBytes, `Thumbnail byte count mismatch: ${entry.componentId}`);
   assert(thumbnail.byteLength <= 10_000, `Thumbnail budget exceeded: ${entry.componentId}`);

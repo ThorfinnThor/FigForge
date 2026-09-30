@@ -29,10 +29,10 @@
   },
   "summary": {
     "catalogPartCount": 20202,
-    "visualizedPartCount": 14123,
-    "builderReadyPartCount": 14121,
-    "remainingCatalogPartCount": 6081,
-    "remainingWithoutVisualizationCount": 6079,
+    "visualizedPartCount": 14403,
+    "builderReadyPartCount": 14401,
+    "remainingCatalogPartCount": 5801,
+    "remainingWithoutVisualizationCount": 5799,
     "uniqueOfficialMappingCount": 2767,
     "ambiguousOfficialMappingCount": 235,
     "noOfficialMappingCount": 17200,
@@ -40,8 +40,8 @@
       "builder-blocked": 2,
       "render-failed": 0,
       "placement-profile-required": 633,
-      "ambiguous-official-mapping": 93,
-      "no-official-mapping": 5353
+      "ambiguous-official-mapping": 84,
+      "no-official-mapping": 5082
     }
   },
   "roles": {
@@ -83,14 +83,14 @@
     },
     "legsAssembly": {
       "catalogPartCount": 3231,
-      "builderReadyPartCount": 2385,
-      "remainingCatalogPartCount": 846,
+      "builderReadyPartCount": 2665,
+      "remainingCatalogPartCount": 566,
       "remainingClassifications": {
         "builder-blocked": 0,
         "render-failed": 0,
         "placement-profile-required": 48,
-        "ambiguous-official-mapping": 18,
-        "no-official-mapping": 780
+        "ambiguous-official-mapping": 9,
+        "no-official-mapping": 509
       }
     },
     "handAccessory": {
@@ -42655,70 +42655,10 @@
       "reason": null
     },
     {
-      "catalogId": "part:970c01pat03pr1258",
-      "role": "legsAssembly",
-      "rebrickablePartNum": "970c01pat03pr1258",
-      "name": "Hips with Yellow Legs and Black Boots Pattern with Bright Light Orange Leotard with Leopard Spots Print",
-      "classification": "no-official-mapping",
-      "ldrawFiles": [],
-      "mappingEvidence": [],
-      "reason": null
-    },
-    {
-      "catalogId": "part:970c01pat03pr1668",
-      "role": "legsAssembly",
-      "rebrickablePartNum": "970c01pat03pr1668",
-      "name": "Hips with Yellow Legs and Black Boots Pattern with Knee Cap, Steel Toes Print",
-      "classification": "no-official-mapping",
-      "ldrawFiles": [],
-      "mappingEvidence": [],
-      "reason": null
-    },
-    {
       "catalogId": "part:970c01pat09",
       "role": "legsAssembly",
       "rebrickablePartNum": "970c01pat09",
       "name": "Hips with Yellow Legs and Dark Purple Boots Pattern",
-      "classification": "no-official-mapping",
-      "ldrawFiles": [],
-      "mappingEvidence": [],
-      "reason": null
-    },
-    {
-      "catalogId": "part:970c01pat09pr0995",
-      "role": "legsAssembly",
-      "rebrickablePartNum": "970c01pat09pr0995",
-      "name": "Hips with Yellow Legs and Dark Purple Boots Pattern with Medium Azure Swimsuit and Lightning Bolts Print",
-      "classification": "no-official-mapping",
-      "ldrawFiles": [],
-      "mappingEvidence": [],
-      "reason": null
-    },
-    {
-      "catalogId": "part:970c01pat14pr1213",
-      "role": "legsAssembly",
-      "rebrickablePartNum": "970c01pat14pr1213",
-      "name": "Hips with Yellow Legs and Light Bluish Gray Boots Pattern with Shorts with Orange Wrinkles and Black Vertical Stripe on Sides Print (Batman)",
-      "classification": "no-official-mapping",
-      "ldrawFiles": [],
-      "mappingEvidence": [],
-      "reason": null
-    },
-    {
-      "catalogId": "part:970c01pat19pr1267",
-      "role": "legsAssembly",
-      "rebrickablePartNum": "970c01pat19pr1267",
-      "name": "Hips with Yellow Legs and Reddish Brown Boots Pattern with Belt and Dark Tan Loincloth Print",
-      "classification": "no-official-mapping",
-      "ldrawFiles": [],
-      "mappingEvidence": [],
-      "reason": null
-    },
-    {
-      "catalogId": "part:970c01pat22pr0001",
-      "role": "legsAssembly",
-      "rebrickablePartNum": "970c01pat22pr0001",
-      "name": "Hips with Yellow Legs and Red Boots Pattern with White Sox, Gold on Side print",
       "classification": "no-official-mapping",
       "ldrawFiles": [],
       "mappingEvidence": [],
@@ -42809,16 +42749,6 @@
       "reason": null
     },
     {
-      "catalogId": "part:970c02pat27pr1401",
-      "role": "legsAssembly",
-      "rebrickablePartNum": "970c02pat27pr1401",
-      "name": "Hips with Light Nougat Legs and White Boots Pattern with Black Knee Markings",
-      "classification": "no-official-mapping",
-      "ldrawFiles": [],
-      "mappingEvidence": [],
-      "reason": null
-    },
-    {
       "catalogId": "part:970c02pr1541",
       "role": "legsAssembly",
       "rebrickablePartNum": "970c02pr1541",
@@ -42844,136 +42774,6 @@
       "reason": null
     },
     {
-      "catalogId": "part:970c03pat01pr0003",
-      "role": "legsAssembly",
-      "rebrickablePartNum": "970c03pat01pr0003",
-      "name": "Hips with Black Legs and Yellow Boots Pattern with Blue Pockets print",
-      "classification": "no-official-mapping",
-      "ldrawFiles": [],
-      "mappingEvidence": [],
-      "reason": null
-    },
-    {
-      "catalogId": "part:970c03pat02pr1190",
-      "role": "legsAssembly",
-      "rebrickablePartNum": "970c03pat02pr1190",
-      "name": "Hips with Black Legs and Light Nougat Boots Pattern with Shorts with Yellow Bat Print",
-      "classification": "no-official-mapping",
-      "ldrawFiles": [],
-      "mappingEvidence": [],
-      "reason": null
-    },
-    {
-      "catalogId": "part:970c03pat02pr1472",
-      "role": "legsAssembly",
-      "rebrickablePartNum": "970c03pat02pr1472",
-      "name": "Hips with Black Legs and Light Nougat Boots Pattern with Wavy Lines and Black Sandals with Silver Buckles Print",
-      "classification": "no-official-mapping",
-      "ldrawFiles": [],
-      "mappingEvidence": [],
-      "reason": null
-    },
-    {
-      "catalogId": "part:970c03pat06pr1815",
-      "role": "legsAssembly",
-      "rebrickablePartNum": "970c03pat06pr1815",
-      "name": "Hips with Black Legs and Bright Green Boots Pattern with Green Knees Print",
-      "classification": "no-official-mapping",
-      "ldrawFiles": [],
-      "mappingEvidence": [],
-      "reason": null
-    },
-    {
-      "catalogId": "part:970c03pat07pr0001",
-      "role": "legsAssembly",
-      "rebrickablePartNum": "970c03pat07pr0001",
-      "name": "Hips with Black Legs and Dark Brown Boots Pattern with Light Bluish Grey Lines, Yellow Markings print",
-      "classification": "no-official-mapping",
-      "ldrawFiles": [],
-      "mappingEvidence": [],
-      "reason": null
-    },
-    {
-      "catalogId": "part:970c03pat07pr1265",
-      "role": "legsAssembly",
-      "rebrickablePartNum": "970c03pat07pr1265",
-      "name": "Hips with Black Legs and Dark Brown Boots Pattern with Light Bluish Gray Long Coattail Outlines Print",
-      "classification": "no-official-mapping",
-      "ldrawFiles": [],
-      "mappingEvidence": [],
-      "reason": null
-    },
-    {
-      "catalogId": "part:970c03pat07pr1771",
-      "role": "legsAssembly",
-      "rebrickablePartNum": "970c03pat07pr1771",
-      "name": "Hips with Black Legs and Dark Brown Boots Pattern with Light Bluish Gray Pocket Outlines and Reddish Brown Toes Print",
-      "classification": "no-official-mapping",
-      "ldrawFiles": [],
-      "mappingEvidence": [],
-      "reason": null
-    },
-    {
-      "catalogId": "part:970c03pat12pr0055",
-      "role": "legsAssembly",
-      "rebrickablePartNum": "970c03pat12pr0055",
-      "name": "Hips with Black Legs and Dark Bluish Gray Boots Pattern with Belt, Torn Coat Tails, Dark Blue Decorations, Dark Purple Loin Cloth print",
-      "classification": "no-official-mapping",
-      "ldrawFiles": [],
-      "mappingEvidence": [],
-      "reason": null
-    },
-    {
-      "catalogId": "part:970c03pat12pr9849",
-      "role": "legsAssembly",
-      "rebrickablePartNum": "970c03pat12pr9849",
-      "name": "Hips with Black Legs and Dark Bluish Gray Boots Pattern with Black Robe and Black Shoes print",
-      "classification": "no-official-mapping",
-      "ldrawFiles": [],
-      "mappingEvidence": [],
-      "reason": null
-    },
-    {
-      "catalogId": "part:970c03pat19",
-      "role": "legsAssembly",
-      "rebrickablePartNum": "970c03pat19",
-      "name": "Hips with Black Legs and Reddish Brown Boots Pattern",
-      "classification": "no-official-mapping",
-      "ldrawFiles": [],
-      "mappingEvidence": [],
-      "reason": null
-    },
-    {
-      "catalogId": "part:970c03pat19pr0002",
-      "role": "legsAssembly",
-      "rebrickablePartNum": "970c03pat19pr0002",
-      "name": "Hips with Black Legs and Reddish Brown Boots Pattern with Silver Belt, Chainmail print",
-      "classification": "no-official-mapping",
-      "ldrawFiles": [],
-      "mappingEvidence": [],
-      "reason": null
-    },
-    {
-      "catalogId": "part:970c03pat19pr1635",
-      "role": "legsAssembly",
-      "rebrickablePartNum": "970c03pat19pr1635",
-      "name": "Hips with Black Legs and Reddish Brown Boots Pattern with Metal Plating, Steel toes, Knee Pads",
-      "classification": "no-official-mapping",
-      "ldrawFiles": [],
-      "mappingEvidence": [],
-      "reason": null
-    },
-    {
-      "catalogId": "part:970c03pat19pr2698",
-      "role": "legsAssembly",
-      "rebrickablePartNum": "970c03pat19pr2698",
-      "name": "Hips with Black Legs and Reddish Brown Boots Pattern with Dark Azure Tunic End, Gold Trim print",
-      "classification": "no-official-mapping",
-      "ldrawFiles": [],
-      "mappingEvidence": [],
-      "reason": null
-    },
-    {
       "catalogId": "part:970c03pat22",
       "role": "legsAssembly",
       "rebrickablePartNum": "970c03pat22",
@@ -42984,70 +42784,10 @@
       "reason": null
     },
     {
-      "catalogId": "part:970c03pat22pr0001",
-      "role": "legsAssembly",
-      "rebrickablePartNum": "970c03pat22pr0001",
-      "name": "Hips with Black Legs and Red Boots Pattern with Silver Belt, Blue Straps, Laces, Silver Pins, Dark Bluish Grey Patches, Spider print",
-      "classification": "no-official-mapping",
-      "ldrawFiles": [],
-      "mappingEvidence": [],
-      "reason": null
-    },
-    {
-      "catalogId": "part:970c03pat22pr2160",
-      "role": "legsAssembly",
-      "rebrickablePartNum": "970c03pat22pr2160",
-      "name": "Hips with Black Legs and Red Boots Pattern with Silver Knee Pads print",
-      "classification": "no-official-mapping",
-      "ldrawFiles": [],
-      "mappingEvidence": [],
-      "reason": null
-    },
-    {
-      "catalogId": "part:970c03pat22pr2166",
-      "role": "legsAssembly",
-      "rebrickablePartNum": "970c03pat22pr2166",
-      "name": "Hips with Black Legs and Red Boots Pattern with Black Straps, Knee Pads print",
-      "classification": "no-official-mapping",
-      "ldrawFiles": [],
-      "mappingEvidence": [],
-      "reason": null
-    },
-    {
-      "catalogId": "part:970c03pat34",
-      "role": "legsAssembly",
-      "rebrickablePartNum": "970c03pat34",
-      "name": "Hips with Black Legs and Orange Boots Pattern",
-      "classification": "no-official-mapping",
-      "ldrawFiles": [],
-      "mappingEvidence": [],
-      "reason": null
-    },
-    {
       "catalogId": "part:970c03pat36",
       "role": "legsAssembly",
       "rebrickablePartNum": "970c03pat36",
       "name": "Hips with Black Legs and Dark Pink Boots Pattern",
-      "classification": "no-official-mapping",
-      "ldrawFiles": [],
-      "mappingEvidence": [],
-      "reason": null
-    },
-    {
-      "catalogId": "part:970c03pat36pr1167",
-      "role": "legsAssembly",
-      "rebrickablePartNum": "970c03pat36pr1167",
-      "name": "Hips with Black Legs and Dark Pink Boots Pattern with Bright Pink Leotard and Ballet Slippers Print (Fairy Batman)",
-      "classification": "no-official-mapping",
-      "ldrawFiles": [],
-      "mappingEvidence": [],
-      "reason": null
-    },
-    {
-      "catalogId": "part:970c03pat46pr0001",
-      "role": "legsAssembly",
-      "rebrickablePartNum": "970c03pat46pr0001",
-      "name": "Hips with Black Legs and Dark Turquoise Boots Pattern with Sneakers, White Spider print",
       "classification": "no-official-mapping",
       "ldrawFiles": [],
       "mappingEvidence": [],
@@ -43344,186 +43084,6 @@
       "reason": null
     },
     {
-      "catalogId": "part:970c04pat18pr1773",
-      "role": "legsAssembly",
-      "rebrickablePartNum": "970c04pat18pr1773",
-      "name": "Hips with Dark Azure Legs and Lime Boots Pattern with Black and Dark Bluish Gray Knee Pads and Yellow Shins Print",
-      "classification": "no-official-mapping",
-      "ldrawFiles": [],
-      "mappingEvidence": [],
-      "reason": null
-    },
-    {
-      "catalogId": "part:970c04pat27pr1411",
-      "role": "legsAssembly",
-      "rebrickablePartNum": "970c04pat27pr1411",
-      "name": "Hips with Dark Azure Legs and White Boots Pattern with White Underpants Print",
-      "classification": "no-official-mapping",
-      "ldrawFiles": [],
-      "mappingEvidence": [],
-      "reason": null
-    },
-    {
-      "catalogId": "part:970c05pat01",
-      "role": "legsAssembly",
-      "rebrickablePartNum": "970c05pat01",
-      "name": "Hips with Dark Blue Legs and Yellow Boots Pattern",
-      "classification": "no-official-mapping",
-      "ldrawFiles": [],
-      "mappingEvidence": [],
-      "reason": null
-    },
-    {
-      "catalogId": "part:970c05pat01pr0001",
-      "role": "legsAssembly",
-      "rebrickablePartNum": "970c05pat01pr0001",
-      "name": "Hips with Dark Blue Legs and Yellow Boots Pattern with Wet Suit Trunks, Light Aqua/Bright Light Blue Bands print",
-      "classification": "no-official-mapping",
-      "ldrawFiles": [],
-      "mappingEvidence": [],
-      "reason": null
-    },
-    {
-      "catalogId": "part:970c05pat02pr1550",
-      "role": "legsAssembly",
-      "rebrickablePartNum": "970c05pat02pr1550",
-      "name": "Hips with Dark Blue Legs and Light Nougat Boots Pattern with Asymmetric Skirt, Black Shoes Print",
-      "classification": "no-official-mapping",
-      "ldrawFiles": [],
-      "mappingEvidence": [],
-      "reason": null
-    },
-    {
-      "catalogId": "part:970c05pat04pr0001",
-      "role": "legsAssembly",
-      "rebrickablePartNum": "970c05pat04pr0001",
-      "name": "Hips with Dark Blue Legs and Dark Azure Boots Pattern with Dark Blue Dothi, Dark Red Tails, Gold Trim print",
-      "classification": "no-official-mapping",
-      "ldrawFiles": [],
-      "mappingEvidence": [],
-      "reason": null
-    },
-    {
-      "catalogId": "part:970c05pat12pr0001",
-      "role": "legsAssembly",
-      "rebrickablePartNum": "970c05pat12pr0001",
-      "name": "Hips with Dark Blue Legs and Dark Bluish Gray Boots Pattern with Light Bluish Gray Fur print",
-      "classification": "no-official-mapping",
-      "ldrawFiles": [],
-      "mappingEvidence": [],
-      "reason": null
-    },
-    {
-      "catalogId": "part:970c05pat12pr2006",
-      "role": "legsAssembly",
-      "rebrickablePartNum": "970c05pat12pr2006",
-      "name": "Hips with Dark Blue Legs and Dark Bluish Gray Boots Pattern with Holes and Tear and Black Belt and Claw Toes print",
-      "classification": "no-official-mapping",
-      "ldrawFiles": [],
-      "mappingEvidence": [],
-      "reason": null
-    },
-    {
-      "catalogId": "part:970c05pat13pr0001",
-      "role": "legsAssembly",
-      "rebrickablePartNum": "970c05pat13pr0001",
-      "name": "Hips with Dark Blue Legs and Nougat Boots Pattern with Torn Shorts, Tan Robe for Belts, Dark Brown Sandals print",
-      "classification": "no-official-mapping",
-      "ldrawFiles": [],
-      "mappingEvidence": [],
-      "reason": null
-    },
-    {
-      "catalogId": "part:970c05pat14pr0001",
-      "role": "legsAssembly",
-      "rebrickablePartNum": "970c05pat14pr0001",
-      "name": "Hips with Dark Blue Legs and Light Bluish Gray Boots Pattern with Straps, Dark Bluish Grey Toes, Red Knee Pads print",
-      "classification": "no-official-mapping",
-      "ldrawFiles": [],
-      "mappingEvidence": [],
-      "reason": null
-    },
-    {
-      "catalogId": "part:970c05pat14pr0002",
-      "role": "legsAssembly",
-      "rebrickablePartNum": "970c05pat14pr0002",
-      "name": "Hips with Dark Blue Legs and Light Bluish Gray Boots Pattern with Sand Blue Runes, Gold Decorations, Light Nougat Knees, Dark Brown Sandals print",
-      "classification": "no-official-mapping",
-      "ldrawFiles": [],
-      "mappingEvidence": [],
-      "reason": null
-    },
-    {
-      "catalogId": "part:970c05pat19pr0001",
-      "role": "legsAssembly",
-      "rebrickablePartNum": "970c05pat19pr0001",
-      "name": "Hips with Dark Blue Legs and Reddish Brown Boots Pattern with Black Lines/Pockets, Dark Red Straps print",
-      "classification": "no-official-mapping",
-      "ldrawFiles": [],
-      "mappingEvidence": [],
-      "reason": null
-    },
-    {
-      "catalogId": "part:970c05pat19pr0002",
-      "role": "legsAssembly",
-      "rebrickablePartNum": "970c05pat19pr0002",
-      "name": "Hips with Dark Blue Legs and Reddish Brown Boots Pattern with Dark Red Pouch, Gold Moon, Sand Blue Rune Stone print",
-      "classification": "no-official-mapping",
-      "ldrawFiles": [],
-      "mappingEvidence": [],
-      "reason": null
-    },
-    {
-      "catalogId": "part:970c05pat19pr0003",
-      "role": "legsAssembly",
-      "rebrickablePartNum": "970c05pat19pr0003",
-      "name": "Hips with Dark Blue Legs and Reddish Brown Boots Pattern with Black Armor, Toes print",
-      "classification": "no-official-mapping",
-      "ldrawFiles": [],
-      "mappingEvidence": [],
-      "reason": null
-    },
-    {
-      "catalogId": "part:970c05pat27pr0001",
-      "role": "legsAssembly",
-      "rebrickablePartNum": "970c05pat27pr0001",
-      "name": "Hips with Dark Blue Legs and White Boots Pattern with Silver Stars, Nike Logo, Medium Azure Sneakers print",
-      "classification": "no-official-mapping",
-      "ldrawFiles": [],
-      "mappingEvidence": [],
-      "reason": null
-    },
-    {
-      "catalogId": "part:970c05pat27pr2440",
-      "role": "legsAssembly",
-      "rebrickablePartNum": "970c05pat27pr2440",
-      "name": "Hips with Dark Blue Legs and White Boots Pattern with Black Toes, Coral Strand print",
-      "classification": "no-official-mapping",
-      "ldrawFiles": [],
-      "mappingEvidence": [],
-      "reason": null
-    },
-    {
-      "catalogId": "part:970c05pat28pr1639",
-      "role": "legsAssembly",
-      "rebrickablePartNum": "970c05pat28pr1639",
-      "name": "Hips with Dark Blue Legs and Blue Boots Pattern with Knee Pads, Olive Green Coat",
-      "classification": "no-official-mapping",
-      "ldrawFiles": [],
-      "mappingEvidence": [],
-      "reason": null
-    },
-    {
-      "catalogId": "part:970c05pat34",
-      "role": "legsAssembly",
-      "rebrickablePartNum": "970c05pat34",
-      "name": "Hips with Dark Blue Legs and Orange Boots Pattern",
-      "classification": "no-official-mapping",
-      "ldrawFiles": [],
-      "mappingEvidence": [],
-      "reason": null
-    },
-    {
       "catalogId": "part:970c05pr0028",
       "role": "legsAssembly",
       "rebrickablePartNum": "970c05pr0028",
@@ -43574,50 +43134,10 @@
       "reason": null
     },
     {
-      "catalogId": "part:970c06pat02pr1400",
-      "role": "legsAssembly",
-      "rebrickablePartNum": "970c06pat02pr1400",
-      "name": "Hips with Bright Green Legs and Light Nougat Boots Pattern with Green Swimming Trunks, 'R', Laces",
-      "classification": "no-official-mapping",
-      "ldrawFiles": [],
-      "mappingEvidence": [],
-      "reason": null
-    },
-    {
-      "catalogId": "part:970c06pat19pr2740",
-      "role": "legsAssembly",
-      "rebrickablePartNum": "970c06pat19pr2740",
-      "name": "Hips with Bright Green Legs and Reddish Brown Boots Pattern with Robe Ends, White Knees print",
-      "classification": "no-official-mapping",
-      "ldrawFiles": [],
-      "mappingEvidence": [],
-      "reason": null
-    },
-    {
       "catalogId": "part:970c06pat22",
       "role": "legsAssembly",
       "rebrickablePartNum": "970c06pat22",
       "name": "Hips with Bright Green Legs and Red Boots Pattern",
-      "classification": "no-official-mapping",
-      "ldrawFiles": [],
-      "mappingEvidence": [],
-      "reason": null
-    },
-    {
-      "catalogId": "part:970c06pat22pr1430",
-      "role": "legsAssembly",
-      "rebrickablePartNum": "970c06pat22pr1430",
-      "name": "Hips with Bright Green Legs and Red Boots Pattern with Yellow Stripes",
-      "classification": "no-official-mapping",
-      "ldrawFiles": [],
-      "mappingEvidence": [],
-      "reason": null
-    },
-    {
-      "catalogId": "part:970c06pat31",
-      "role": "legsAssembly",
-      "rebrickablePartNum": "970c06pat31",
-      "name": "Hips with Bright Green Legs and Green Boots Pattern",
       "classification": "no-official-mapping",
       "ldrawFiles": [],
       "mappingEvidence": [],
@@ -43634,16 +43154,6 @@
       "reason": null
     },
     {
-      "catalogId": "part:970c06pat37pr1090",
-      "role": "legsAssembly",
-      "rebrickablePartNum": "970c06pat37pr1090",
-      "name": "Hips with Bright Green Legs and Magenta Boots Pattern with Short Swimsuit and Scales Print (Green Goblin)",
-      "classification": "no-official-mapping",
-      "ldrawFiles": [],
-      "mappingEvidence": [],
-      "reason": null
-    },
-    {
       "catalogId": "part:970c06pr9791",
       "role": "legsAssembly",
       "rebrickablePartNum": "970c06pr9791",
@@ -43654,185 +43164,10 @@
       "reason": null
     },
     {
-      "catalogId": "part:970c07pat03pr1582",
-      "role": "legsAssembly",
-      "rebrickablePartNum": "970c07pat03pr1582",
-      "name": "Hips with Dark Brown Legs and Black Boots Pattern with Black belt, Reddish Brown Holster, Gray Belt Buckle",
-      "classification": "no-official-mapping",
-      "ldrawFiles": [],
-      "mappingEvidence": [],
-      "reason": null
-    },
-    {
-      "catalogId": "part:970c07pat03pr1605",
-      "role": "legsAssembly",
-      "rebrickablePartNum": "970c07pat03pr1605",
-      "name": "Hips with Dark Brown Legs and Black Boots Pattern with Belt and Strap with Silver Buckles, Knee Pads, Pouch on Right Side Print",
-      "classification": "no-official-mapping",
-      "ldrawFiles": [],
-      "mappingEvidence": [],
-      "reason": null
-    },
-    {
-      "catalogId": "part:970c09pat01pr1187",
-      "role": "legsAssembly",
-      "rebrickablePartNum": "970c09pat01pr1187",
-      "name": "Hips with Dark Purple Legs and Yellow Boots Pattern with Yellow Knee Pads, Clasps on Side, Silver Belt Print",
-      "classification": "no-official-mapping",
-      "ldrawFiles": [],
-      "mappingEvidence": [],
-      "reason": null
-    },
-    {
-      "catalogId": "part:970c09pat03pr0001",
-      "role": "legsAssembly",
-      "rebrickablePartNum": "970c09pat03pr0001",
-      "name": "Hips with Dark Purple Legs and Black Boots Pattern with Dress, Gold Trim, Belt, Lavender Sashes print",
-      "classification": "no-official-mapping",
-      "ldrawFiles": [],
-      "mappingEvidence": [],
-      "reason": null
-    },
-    {
-      "catalogId": "part:970c09pat06",
-      "role": "legsAssembly",
-      "rebrickablePartNum": "970c09pat06",
-      "name": "Hips with Dark Purple Legs and Bright Green Boots Pattern",
-      "classification": "ambiguous-official-mapping",
-      "ldrawFiles": [
-        "parts/20460bp0g.dat",
-        "parts/20461bp0g.dat"
-      ],
-      "mappingEvidence": [
-        "explicit-keyword"
-      ],
-      "reason": null
-    },
-    {
-      "catalogId": "part:970c09pat13pr1432",
-      "role": "legsAssembly",
-      "rebrickablePartNum": "970c09pat13pr1432",
-      "name": "Hips with Dark Purple Legs and Nougat Boots Pattern with Wetsuit Print",
-      "classification": "no-official-mapping",
-      "ldrawFiles": [],
-      "mappingEvidence": [],
-      "reason": null
-    },
-    {
-      "catalogId": "part:970c09pat20pr9973",
-      "role": "legsAssembly",
-      "rebrickablePartNum": "970c09pat20pr9973",
-      "name": "Hips with Dark Purple Legs and Olive Green Boots Pattern with Dark Red Stripes Print",
-      "classification": "no-official-mapping",
-      "ldrawFiles": [],
-      "mappingEvidence": [],
-      "reason": null
-    },
-    {
-      "catalogId": "part:970c09pat60pr2001",
-      "role": "legsAssembly",
-      "rebrickablePartNum": "970c09pat60pr2001",
-      "name": "Hips with Dark Purple Legs and Coral Boots Pattern with Sand Blue Knee and Feet Lines, Glitter Print",
-      "classification": "no-official-mapping",
-      "ldrawFiles": [],
-      "mappingEvidence": [],
-      "reason": null
-    },
-    {
       "catalogId": "part:970c09pr9966",
       "role": "legsAssembly",
       "rebrickablePartNum": "970c09pr9966",
       "name": "Hips and Dark Purple Legs with Dark Red Leg Print",
-      "classification": "no-official-mapping",
-      "ldrawFiles": [],
-      "mappingEvidence": [],
-      "reason": null
-    },
-    {
-      "catalogId": "part:970c10pat02pr0001",
-      "role": "legsAssembly",
-      "rebrickablePartNum": "970c10pat02pr0001",
-      "name": "Hips with Dark Red Legs and Light Nougat Boots Pattern with Dark Red Skirt, Gold Decorations print",
-      "classification": "no-official-mapping",
-      "ldrawFiles": [],
-      "mappingEvidence": [],
-      "reason": null
-    },
-    {
-      "catalogId": "part:970c10pat02pr0002",
-      "role": "legsAssembly",
-      "rebrickablePartNum": "970c10pat02pr0002",
-      "name": "Hips with Dark Red Legs and Light Nougat Boots Pattern with Tunic with Leather Straps with Gold Studs, Sandals Print",
-      "classification": "no-official-mapping",
-      "ldrawFiles": [],
-      "mappingEvidence": [],
-      "reason": null
-    },
-    {
-      "catalogId": "part:970c10pat02pr1159",
-      "role": "legsAssembly",
-      "rebrickablePartNum": "970c10pat02pr1159",
-      "name": "Hips with Dark Red Legs and Light Nougat Boots Pattern with Dressing Gown Robe Tails with Black Brocade Print",
-      "classification": "no-official-mapping",
-      "ldrawFiles": [],
-      "mappingEvidence": [],
-      "reason": null
-    },
-    {
-      "catalogId": "part:970c10pat03",
-      "role": "legsAssembly",
-      "rebrickablePartNum": "970c10pat03",
-      "name": "Hips with Dark Red Legs and Black Boots Pattern",
-      "classification": "no-official-mapping",
-      "ldrawFiles": [],
-      "mappingEvidence": [],
-      "reason": null
-    },
-    {
-      "catalogId": "part:970c10pat03pr0001",
-      "role": "legsAssembly",
-      "rebrickablePartNum": "970c10pat03pr0001",
-      "name": "Hips with Dark Red Legs and Black Boots Pattern with Gold Decorations, Pouch print",
-      "classification": "no-official-mapping",
-      "ldrawFiles": [],
-      "mappingEvidence": [],
-      "reason": null
-    },
-    {
-      "catalogId": "part:970c10pat03pr0002",
-      "role": "legsAssembly",
-      "rebrickablePartNum": "970c10pat03pr0002",
-      "name": "Hips with Dark Red Legs and Black Boots Pattern with Gold and Black Belt, Dark Turquoise/Gold Decorations, Gold Toes Print",
-      "classification": "no-official-mapping",
-      "ldrawFiles": [],
-      "mappingEvidence": [],
-      "reason": null
-    },
-    {
-      "catalogId": "part:970c10pat03pr1761",
-      "role": "legsAssembly",
-      "rebrickablePartNum": "970c10pat03pr1761",
-      "name": "Hips with Dark Red Legs and Black Boots Pattern with Pearl Titanium Coat Tails with Gold Trim, White Knees and Toes Print",
-      "classification": "no-official-mapping",
-      "ldrawFiles": [],
-      "mappingEvidence": [],
-      "reason": null
-    },
-    {
-      "catalogId": "part:970c10pat03pr2057",
-      "role": "legsAssembly",
-      "rebrickablePartNum": "970c10pat03pr2057",
-      "name": "Hips with Dark Red Legs and Black Boots Pattern with Gold and Black Belt, Gold Knee Straps, and Gold Toes Print",
-      "classification": "no-official-mapping",
-      "ldrawFiles": [],
-      "mappingEvidence": [],
-      "reason": null
-    },
-    {
-      "catalogId": "part:970c10pat03pr9931",
-      "role": "legsAssembly",
-      "rebrickablePartNum": "970c10pat03pr9931",
-      "name": "Hips with Dark Red Legs and Black Boots Pattern with Dark Brown Pockets, Blue Sash (Wong)",
       "classification": "no-official-mapping",
       "ldrawFiles": [],
       "mappingEvidence": [],
@@ -43889,165 +43224,10 @@
       "reason": null
     },
     {
-      "catalogId": "part:970c11pat03pr1106",
-      "role": "legsAssembly",
-      "rebrickablePartNum": "970c11pat03pr1106",
-      "name": "Hips with Dark Tan Legs and Black Boots Pattern with 2 Pockets, Silver and Orange Stripes Print",
-      "classification": "no-official-mapping",
-      "ldrawFiles": [],
-      "mappingEvidence": [],
-      "reason": null
-    },
-    {
-      "catalogId": "part:970c11pat03pr1562",
-      "role": "legsAssembly",
-      "rebrickablePartNum": "970c11pat03pr1562",
-      "name": "Hips with Dark Tan Legs and Black Boots Pattern with Jacket / Coat, Pockets, Belt Print",
-      "classification": "no-official-mapping",
-      "ldrawFiles": [],
-      "mappingEvidence": [],
-      "reason": null
-    },
-    {
-      "catalogId": "part:970c11pat07pr0002",
-      "role": "legsAssembly",
-      "rebrickablePartNum": "970c11pat07pr0002",
-      "name": "Hips with Dark Tan Legs and Dark Brown Boots Pattern with Pockets, Knee Pads print",
-      "classification": "no-official-mapping",
-      "ldrawFiles": [],
-      "mappingEvidence": [],
-      "reason": null
-    },
-    {
-      "catalogId": "part:970c11pat12pr0002",
-      "role": "legsAssembly",
-      "rebrickablePartNum": "970c11pat12pr0002",
-      "name": "Hips with Dark Tan Legs and Dark Bluish Gray Boots Pattern with Closed Robe print",
-      "classification": "no-official-mapping",
-      "ldrawFiles": [],
-      "mappingEvidence": [],
-      "reason": null
-    },
-    {
-      "catalogId": "part:970c11pat12pr0003",
-      "role": "legsAssembly",
-      "rebrickablePartNum": "970c11pat12pr0003",
-      "name": "Hips with Dark Tan Legs and Dark Bluish Gray Boots Pattern with Open Robe print",
-      "classification": "no-official-mapping",
-      "ldrawFiles": [],
-      "mappingEvidence": [],
-      "reason": null
-    },
-    {
       "catalogId": "part:970c11pat27pr1769",
       "role": "legsAssembly",
       "rebrickablePartNum": "970c11pat27pr1769",
       "name": "Hips with Dark Tan Legs and White Boots Pattern with Gold Belt, Skirt Hem and Legs Wrappings Print",
-      "classification": "no-official-mapping",
-      "ldrawFiles": [],
-      "mappingEvidence": [],
-      "reason": null
-    },
-    {
-      "catalogId": "part:970c12pat03",
-      "role": "legsAssembly",
-      "rebrickablePartNum": "970c12pat03",
-      "name": "Hips with Dark Bluish Gray Legs and Black Boots Pattern",
-      "classification": "ambiguous-official-mapping",
-      "ldrawFiles": [
-        "parts/20460bp05.dat",
-        "parts/20461bp05.dat"
-      ],
-      "mappingEvidence": [
-        "explicit-keyword"
-      ],
-      "reason": null
-    },
-    {
-      "catalogId": "part:970c12pat03pr0001",
-      "role": "legsAssembly",
-      "rebrickablePartNum": "970c12pat03pr0001",
-      "name": "Hips with Dark Bluish Gray Legs and Black Boots Pattern with Black Coat, Gold Buttons print",
-      "classification": "no-official-mapping",
-      "ldrawFiles": [],
-      "mappingEvidence": [],
-      "reason": null
-    },
-    {
-      "catalogId": "part:970c12pat03pr0002",
-      "role": "legsAssembly",
-      "rebrickablePartNum": "970c12pat03pr0002",
-      "name": "Hips with Dark Bluish Gray Legs and Black Boots Pattern with Reddish Brown Belt, Coat Ends, Gold Trim, Strap with Jewels print",
-      "classification": "no-official-mapping",
-      "ldrawFiles": [],
-      "mappingEvidence": [],
-      "reason": null
-    },
-    {
-      "catalogId": "part:970c12pat03pr0003",
-      "role": "legsAssembly",
-      "rebrickablePartNum": "970c12pat03pr0003",
-      "name": "Hips with Dark Bluish Gray Legs and Black Boots Pattern with Bright Green Belt, Gold Chain, Knee Pads print",
-      "classification": "no-official-mapping",
-      "ldrawFiles": [],
-      "mappingEvidence": [],
-      "reason": null
-    },
-    {
-      "catalogId": "part:970c12pat03pr0004",
-      "role": "legsAssembly",
-      "rebrickablePartNum": "970c12pat03pr0004",
-      "name": "Hips with Dark Bluish Gray Legs and Black Boots Pattern with Black Batman Armor print",
-      "classification": "no-official-mapping",
-      "ldrawFiles": [],
-      "mappingEvidence": [],
-      "reason": null
-    },
-    {
-      "catalogId": "part:970c12pat03pr2639",
-      "role": "legsAssembly",
-      "rebrickablePartNum": "970c12pat03pr2639",
-      "name": "Hips with Dark Bluish Gray Legs and Black Boots Pattern with Black Robe print",
-      "classification": "no-official-mapping",
-      "ldrawFiles": [],
-      "mappingEvidence": [],
-      "reason": null
-    },
-    {
-      "catalogId": "part:970c12pat22",
-      "role": "legsAssembly",
-      "rebrickablePartNum": "970c12pat22",
-      "name": "Hips with Dark Bluish Gray Legs and Red Boots Pattern",
-      "classification": "no-official-mapping",
-      "ldrawFiles": [],
-      "mappingEvidence": [],
-      "reason": null
-    },
-    {
-      "catalogId": "part:970c12pat22pr1523",
-      "role": "legsAssembly",
-      "rebrickablePartNum": "970c12pat22pr1523",
-      "name": "Hips with Dark Bluish Gray Legs and Red Boots Pattern with Pockets and Laces, White Soles Print",
-      "classification": "no-official-mapping",
-      "ldrawFiles": [],
-      "mappingEvidence": [],
-      "reason": null
-    },
-    {
-      "catalogId": "part:970c12pat22pr2481",
-      "role": "legsAssembly",
-      "rebrickablePartNum": "970c12pat22pr2481",
-      "name": "Hips with Dark Bluish Gray Legs and Red Boots Pattern with Lime Belt, White Knee Pads, Toes print",
-      "classification": "no-official-mapping",
-      "ldrawFiles": [],
-      "mappingEvidence": [],
-      "reason": null
-    },
-    {
-      "catalogId": "part:970c12pat35pr1641",
-      "role": "legsAssembly",
-      "rebrickablePartNum": "970c12pat35pr1641",
-      "name": "Hips with Dark Bluish Gray Legs and Dark Green Boots Pattern with Metal Plating, Knee Pads",
       "classification": "no-official-mapping",
       "ldrawFiles": [],
       "mappingEvidence": [],
@@ -44104,120 +43284,10 @@
       "reason": null
     },
     {
-      "catalogId": "part:970c14pat03",
-      "role": "legsAssembly",
-      "rebrickablePartNum": "970c14pat03",
-      "name": "Hips with Light Bluish Gray Legs and Black Boots Pattern",
-      "classification": "no-official-mapping",
-      "ldrawFiles": [],
-      "mappingEvidence": [],
-      "reason": null
-    },
-    {
-      "catalogId": "part:970c14pat03pr0001",
-      "role": "legsAssembly",
-      "rebrickablePartNum": "970c14pat03pr0001",
-      "name": "Hips with Light Bluish Gray Legs and Black Boots Pattern with White Buttons/Dots, Light Bluish Grey Shoes print",
-      "classification": "no-official-mapping",
-      "ldrawFiles": [],
-      "mappingEvidence": [],
-      "reason": null
-    },
-    {
-      "catalogId": "part:970c14pat03pr0002",
-      "role": "legsAssembly",
-      "rebrickablePartNum": "970c14pat03pr0002",
-      "name": "Hips with Light Bluish Gray Legs and Black Boots Pattern with Coat print",
-      "classification": "no-official-mapping",
-      "ldrawFiles": [],
-      "mappingEvidence": [],
-      "reason": null
-    },
-    {
-      "catalogId": "part:970c14pat03pr0003",
-      "role": "legsAssembly",
-      "rebrickablePartNum": "970c14pat03pr0003",
-      "name": "Hips with Light Bluish Gray Legs and Black Boots Pattern with Gold Knees, Dark Turquoise Toes print",
-      "classification": "no-official-mapping",
-      "ldrawFiles": [],
-      "mappingEvidence": [],
-      "reason": null
-    },
-    {
-      "catalogId": "part:970c14pat03pr0004",
-      "role": "legsAssembly",
-      "rebrickablePartNum": "970c14pat03pr0004",
-      "name": "Hips with Light Bluish Gray Legs and Black Boots Pattern with Black Belt, Gold Belt Buckle, Dark Bluish Grey Shirt End print",
-      "classification": "no-official-mapping",
-      "ldrawFiles": [],
-      "mappingEvidence": [],
-      "reason": null
-    },
-    {
-      "catalogId": "part:970c14pat03pr1108",
-      "role": "legsAssembly",
-      "rebrickablePartNum": "970c14pat03pr1108",
-      "name": "Hips with Light Bluish Gray Legs and Black Boots Pattern with Silver Belt and Chain, Knee Pads, Dark Bluish Gray Toes Print",
-      "classification": "no-official-mapping",
-      "ldrawFiles": [],
-      "mappingEvidence": [],
-      "reason": null
-    },
-    {
-      "catalogId": "part:970c14pat03pr1808",
-      "role": "legsAssembly",
-      "rebrickablePartNum": "970c14pat03pr1808",
-      "name": "Hips with Light Bluish Gray Legs and Black Boots Pattern with Black Leotard Print",
-      "classification": "no-official-mapping",
-      "ldrawFiles": [],
-      "mappingEvidence": [],
-      "reason": null
-    },
-    {
-      "catalogId": "part:970c14pat03pr2043",
-      "role": "legsAssembly",
-      "rebrickablePartNum": "970c14pat03pr2043",
-      "name": "Hips with Light Bluish Gray Legs and Black Boots Pattern with Black Leotard and Knees Print",
-      "classification": "no-official-mapping",
-      "ldrawFiles": [],
-      "mappingEvidence": [],
-      "reason": null
-    },
-    {
       "catalogId": "part:970c14pat05pr0001",
       "role": "legsAssembly",
       "rebrickablePartNum": "970c14pat05pr0001",
       "name": "Hips with Light Bluish Gray Legs and Dark Blue Boots Pattern with Dark Blue Leotard, Curved Boots print",
-      "classification": "no-official-mapping",
-      "ldrawFiles": [],
-      "mappingEvidence": [],
-      "reason": null
-    },
-    {
-      "catalogId": "part:970c14pat27pr0002",
-      "role": "legsAssembly",
-      "rebrickablePartNum": "970c14pat27pr0002",
-      "name": "Hips with Light Bluish Gray Legs and White Boots Pattern with White/Gold/Light Bluish Grey Lines print (The Vision)",
-      "classification": "no-official-mapping",
-      "ldrawFiles": [],
-      "mappingEvidence": [],
-      "reason": null
-    },
-    {
-      "catalogId": "part:970c15pat03pr0001",
-      "role": "legsAssembly",
-      "rebrickablePartNum": "970c15pat03pr0001",
-      "name": "Hips with Light Aqua Legs and Black Boots Pattern with Silver Fishnet Stockings, Laces, Warm Tan Knees print",
-      "classification": "no-official-mapping",
-      "ldrawFiles": [],
-      "mappingEvidence": [],
-      "reason": null
-    },
-    {
-      "catalogId": "part:970c15pat27pr0003",
-      "role": "legsAssembly",
-      "rebrickablePartNum": "970c15pat27pr0003",
-      "name": "Hips with Light Aqua Legs and White Boots Pattern with Azure Waves and Silver Stars print",
       "classification": "no-official-mapping",
       "ldrawFiles": [],
       "mappingEvidence": [],
@@ -44244,120 +43314,10 @@
       "reason": null
     },
     {
-      "catalogId": "part:970c18pat02pr2473",
-      "role": "legsAssembly",
-      "rebrickablePartNum": "970c18pat02pr2473",
-      "name": "Hips with Lime Legs and Light Nougat Boots Pattern with Lime Shoes Print",
-      "classification": "no-official-mapping",
-      "ldrawFiles": [],
-      "mappingEvidence": [],
-      "reason": null
-    },
-    {
-      "catalogId": "part:970c18pat31pr0001",
-      "role": "legsAssembly",
-      "rebrickablePartNum": "970c18pat31pr0001",
-      "name": "Hips with Lime Legs and Green Boots Pattern with Green Bubbles, Lime Toes print",
-      "classification": "no-official-mapping",
-      "ldrawFiles": [],
-      "mappingEvidence": [],
-      "reason": null
-    },
-    {
-      "catalogId": "part:970c18pat36pr0001",
-      "role": "legsAssembly",
-      "rebrickablePartNum": "970c18pat36pr0001",
-      "name": "Hips with Lime Legs and Dark Pink Boots Pattern with Football Short, White '1', Mountains Logo, White Socks, Bright Pink Shoes print",
-      "classification": "no-official-mapping",
-      "ldrawFiles": [],
-      "mappingEvidence": [],
-      "reason": null
-    },
-    {
-      "catalogId": "part:970c18pat41pr1036",
-      "role": "legsAssembly",
-      "rebrickablePartNum": "970c18pat41pr1036",
-      "name": "Hips with Lime Legs and Dark Orange Boots Pattern with Green Leggings under Tunic print",
-      "classification": "no-official-mapping",
-      "ldrawFiles": [],
-      "mappingEvidence": [],
-      "reason": null
-    },
-    {
-      "catalogId": "part:970c18pat41pr2438",
-      "role": "legsAssembly",
-      "rebrickablePartNum": "970c18pat41pr2438",
-      "name": "Hips with Lime Legs and Dark Orange Boots Pattern with Lime Shoes print",
-      "classification": "no-official-mapping",
-      "ldrawFiles": [],
-      "mappingEvidence": [],
-      "reason": null
-    },
-    {
-      "catalogId": "part:970c18pat84pr0001",
-      "role": "legsAssembly",
-      "rebrickablePartNum": "970c18pat84pr0001",
-      "name": "Hips with Lime Legs and Warm Pink Boots Pattern with Lavender Flowers print",
-      "classification": "no-official-mapping",
-      "ldrawFiles": [],
-      "mappingEvidence": [],
-      "reason": null
-    },
-    {
       "catalogId": "part:970c19pat01",
       "role": "legsAssembly",
       "rebrickablePartNum": "970c19pat01",
       "name": "Hips with Reddish Brown Legs and Yellow Boots Pattern",
-      "classification": "no-official-mapping",
-      "ldrawFiles": [],
-      "mappingEvidence": [],
-      "reason": null
-    },
-    {
-      "catalogId": "part:970c19pat01pr1442",
-      "role": "legsAssembly",
-      "rebrickablePartNum": "970c19pat01pr1442",
-      "name": "Hips with Reddish Brown Legs and Yellow Boots Pattern with Black Leotard Print",
-      "classification": "no-official-mapping",
-      "ldrawFiles": [],
-      "mappingEvidence": [],
-      "reason": null
-    },
-    {
-      "catalogId": "part:970c19pat06pr1663",
-      "role": "legsAssembly",
-      "rebrickablePartNum": "970c19pat06pr1663",
-      "name": "Hips with Reddish Brown Legs and Bright Green Boots Pattern with Silver Belt, Chain and Right Knee Armor Print",
-      "classification": "no-official-mapping",
-      "ldrawFiles": [],
-      "mappingEvidence": [],
-      "reason": null
-    },
-    {
-      "catalogId": "part:970c19pat07pr0001",
-      "role": "legsAssembly",
-      "rebrickablePartNum": "970c19pat07pr0001",
-      "name": "Hips with Reddish Brown Legs and Dark Brown Boots Pattern with Dark Orange Armor, Gold Flask print",
-      "classification": "no-official-mapping",
-      "ldrawFiles": [],
-      "mappingEvidence": [],
-      "reason": null
-    },
-    {
-      "catalogId": "part:970c19pat22",
-      "role": "legsAssembly",
-      "rebrickablePartNum": "970c19pat22",
-      "name": "Hips with Reddish Brown Legs and Red Boots Pattern",
-      "classification": "no-official-mapping",
-      "ldrawFiles": [],
-      "mappingEvidence": [],
-      "reason": null
-    },
-    {
-      "catalogId": "part:970c19pat26pr0001",
-      "role": "legsAssembly",
-      "rebrickablePartNum": "970c19pat26pr0001",
-      "name": "Hips with Reddish Brown Legs and Tan Boots Pattern with Black and Dark Brown Decorations, Black Knee Pads, Reddish Brown Toes print",
       "classification": "no-official-mapping",
       "ldrawFiles": [],
       "mappingEvidence": [],
@@ -44413,76 +43373,6 @@
       "reason": null
     },
     {
-      "catalogId": "part:970c20pat01pr0001",
-      "role": "legsAssembly",
-      "rebrickablePartNum": "970c20pat01pr0001",
-      "name": "Hips with Olive Green Legs and Yellow Boots Pattern with Blue Belt, Silver Belt Buckle with 'NANA', Raffled Shorts, Reddish brown Toes printprint",
-      "classification": "no-official-mapping",
-      "ldrawFiles": [],
-      "mappingEvidence": [],
-      "reason": null
-    },
-    {
-      "catalogId": "part:970c20pat03",
-      "role": "legsAssembly",
-      "rebrickablePartNum": "970c20pat03",
-      "name": "Hips with Olive Green Legs and Black Boots Pattern",
-      "classification": "no-official-mapping",
-      "ldrawFiles": [],
-      "mappingEvidence": [],
-      "reason": null
-    },
-    {
-      "catalogId": "part:970c20pat03pr9930",
-      "role": "legsAssembly",
-      "rebrickablePartNum": "970c20pat03pr9930",
-      "name": "Hips with Olive Green Legs and Black Boots Pattern with Black and Dark Bluish Gray Print and Gun Print on Right Side (Winter Soldier)",
-      "classification": "no-official-mapping",
-      "ldrawFiles": [],
-      "mappingEvidence": [],
-      "reason": null
-    },
-    {
-      "catalogId": "part:970c20pat07pr0001",
-      "role": "legsAssembly",
-      "rebrickablePartNum": "970c20pat07pr0001",
-      "name": "Hips with Olive Green Legs and Dark Brown Boots Pattern with Belt, Money Pouch print",
-      "classification": "no-official-mapping",
-      "ldrawFiles": [],
-      "mappingEvidence": [],
-      "reason": null
-    },
-    {
-      "catalogId": "part:970c20pat07pr0002",
-      "role": "legsAssembly",
-      "rebrickablePartNum": "970c20pat07pr0002",
-      "name": "Hips with Olive Green Legs and Dark Brown Boots Pattern with Gold Stripes, Decorations, Silver Tools in Pocket print",
-      "classification": "no-official-mapping",
-      "ldrawFiles": [],
-      "mappingEvidence": [],
-      "reason": null
-    },
-    {
-      "catalogId": "part:970c20pat07pr1877",
-      "role": "legsAssembly",
-      "rebrickablePartNum": "970c20pat07pr1877",
-      "name": "Hips with Olive Green Legs and Dark Brown Boots Pattern with Reddish Brown Belt End and Knee Straps Print",
-      "classification": "no-official-mapping",
-      "ldrawFiles": [],
-      "mappingEvidence": [],
-      "reason": null
-    },
-    {
-      "catalogId": "part:970c20pat27pr0001",
-      "role": "legsAssembly",
-      "rebrickablePartNum": "970c20pat27pr0001",
-      "name": "Hips with Olive Green Legs and White Boots Pattern with Red Belt, Pockets, Sneaker with Red Laces print",
-      "classification": "no-official-mapping",
-      "ldrawFiles": [],
-      "mappingEvidence": [],
-      "reason": null
-    },
-    {
       "catalogId": "part:970c20pr0005",
       "role": "legsAssembly",
       "rebrickablePartNum": "970c20pr0005",
@@ -44503,156 +43393,6 @@
       "reason": null
     },
     {
-      "catalogId": "part:970c22pat01",
-      "role": "legsAssembly",
-      "rebrickablePartNum": "970c22pat01",
-      "name": "Hips with Red Legs and Yellow Boots Pattern",
-      "classification": "no-official-mapping",
-      "ldrawFiles": [],
-      "mappingEvidence": [],
-      "reason": null
-    },
-    {
-      "catalogId": "part:970c22pat03",
-      "role": "legsAssembly",
-      "rebrickablePartNum": "970c22pat03",
-      "name": "Hips with Red Legs and Black Boots Pattern",
-      "classification": "no-official-mapping",
-      "ldrawFiles": [],
-      "mappingEvidence": [],
-      "reason": null
-    },
-    {
-      "catalogId": "part:970c22pat03pr0001",
-      "role": "legsAssembly",
-      "rebrickablePartNum": "970c22pat03pr0001",
-      "name": "Hips with Red Legs and Black Boots Pattern with Key Chain, White Toes, White Trim print",
-      "classification": "no-official-mapping",
-      "ldrawFiles": [],
-      "mappingEvidence": [],
-      "reason": null
-    },
-    {
-      "catalogId": "part:970c22pat03pr0002",
-      "role": "legsAssembly",
-      "rebrickablePartNum": "970c22pat03pr0002",
-      "name": "Hips with Red Legs and Black Boots Pattern with Red Dress, Dark Bluish Grey Leggings, Silver Stars print",
-      "classification": "no-official-mapping",
-      "ldrawFiles": [],
-      "mappingEvidence": [],
-      "reason": null
-    },
-    {
-      "catalogId": "part:970c22pat03pr0003",
-      "role": "legsAssembly",
-      "rebrickablePartNum": "970c22pat03pr0003",
-      "name": "Hips with Red Legs and Black Boots Pattern with Black Leotard and Black Circles Print",
-      "classification": "no-official-mapping",
-      "ldrawFiles": [],
-      "mappingEvidence": [],
-      "reason": null
-    },
-    {
-      "catalogId": "part:970c22pat03pr0004",
-      "role": "legsAssembly",
-      "rebrickablePartNum": "970c22pat03pr0004",
-      "name": "Hips with Red Legs and Black Boots Pattern with Skirt, Medium Brown Knees print",
-      "classification": "no-official-mapping",
-      "ldrawFiles": [],
-      "mappingEvidence": [],
-      "reason": null
-    },
-    {
-      "catalogId": "part:970c22pat03pr0982",
-      "role": "legsAssembly",
-      "rebrickablePartNum": "970c22pat03pr0982",
-      "name": "Hips with Red Legs and Black Boots Pattern with Plaid Miniskirt, Dark Brown Tights print",
-      "classification": "no-official-mapping",
-      "ldrawFiles": [],
-      "mappingEvidence": [],
-      "reason": null
-    },
-    {
-      "catalogId": "part:970c22pat03pr1032",
-      "role": "legsAssembly",
-      "rebrickablePartNum": "970c22pat03pr1032",
-      "name": "Hips with Red Legs and Black Boots Pattern with 2 White Buttons on Red Shorts and Yellow Shoes Print",
-      "classification": "no-official-mapping",
-      "ldrawFiles": [],
-      "mappingEvidence": [],
-      "reason": null
-    },
-    {
-      "catalogId": "part:970c22pat03pr1040",
-      "role": "legsAssembly",
-      "rebrickablePartNum": "970c22pat03pr1040",
-      "name": "Hips with Red Legs and Black Boots Pattern with Black Leotard and Orange Belt Print (Mr Incredible)",
-      "classification": "no-official-mapping",
-      "ldrawFiles": [],
-      "mappingEvidence": [],
-      "reason": null
-    },
-    {
-      "catalogId": "part:970c22pat03pr1503",
-      "role": "legsAssembly",
-      "rebrickablePartNum": "970c22pat03pr1503",
-      "name": "Hips with Red Legs and Black Boots Pattern with Black Leotard Print",
-      "classification": "no-official-mapping",
-      "ldrawFiles": [],
-      "mappingEvidence": [],
-      "reason": null
-    },
-    {
-      "catalogId": "part:970c22pat03pr1700",
-      "role": "legsAssembly",
-      "rebrickablePartNum": "970c22pat03pr1700",
-      "name": "Hips with Red Legs and Black Boots Pattern with Yellow Shoes Print",
-      "classification": "no-official-mapping",
-      "ldrawFiles": [],
-      "mappingEvidence": [],
-      "reason": null
-    },
-    {
-      "catalogId": "part:970c22pat03pr2049",
-      "role": "legsAssembly",
-      "rebrickablePartNum": "970c22pat03pr2049",
-      "name": "Hips with Red Legs and Black Boots Pattern with Black and Gold Trim, Gold Tassel Print",
-      "classification": "no-official-mapping",
-      "ldrawFiles": [],
-      "mappingEvidence": [],
-      "reason": null
-    },
-    {
-      "catalogId": "part:970c22pat03pr2056",
-      "role": "legsAssembly",
-      "rebrickablePartNum": "970c22pat03pr2056",
-      "name": "Hips with Red Legs and Black Boots Pattern with Bright Light Orange Robe End, White Knee Straps and Sash Belt Print",
-      "classification": "no-official-mapping",
-      "ldrawFiles": [],
-      "mappingEvidence": [],
-      "reason": null
-    },
-    {
-      "catalogId": "part:970c22pat03pr2198",
-      "role": "legsAssembly",
-      "rebrickablePartNum": "970c22pat03pr2198",
-      "name": "Hips with Red Legs and Black Boots Pattern with Dark Turquoise Pockets and Belt, White and Yellow Knees and Toes Print",
-      "classification": "no-official-mapping",
-      "ldrawFiles": [],
-      "mappingEvidence": [],
-      "reason": null
-    },
-    {
-      "catalogId": "part:970c22pat03pr2420",
-      "role": "legsAssembly",
-      "rebrickablePartNum": "970c22pat03pr2420",
-      "name": "Hips with Red Legs and Black Boots Pattern with Bright Light Orange/Dark Turquoise Robe, White Kneepads print",
-      "classification": "no-official-mapping",
-      "ldrawFiles": [],
-      "mappingEvidence": [],
-      "reason": null
-    },
-    {
       "catalogId": "part:970c22pat03pr2450",
       "role": "legsAssembly",
       "rebrickablePartNum": "970c22pat03pr2450",
@@ -44663,120 +43403,10 @@
       "reason": null
     },
     {
-      "catalogId": "part:970c22pat06pr1822",
-      "role": "legsAssembly",
-      "rebrickablePartNum": "970c22pat06pr1822",
-      "name": "Hips with Red Legs and Bright Green Boots Pattern with Yellow and Green Panels Print",
-      "classification": "no-official-mapping",
-      "ldrawFiles": [],
-      "mappingEvidence": [],
-      "reason": null
-    },
-    {
-      "catalogId": "part:970c22pat10pr0001",
-      "role": "legsAssembly",
-      "rebrickablePartNum": "970c22pat10pr0001",
-      "name": "Hips with Red Legs and Dark Red Boots Pattern with White Soles and Sports Logo on the Side, Zipper Pockets print",
-      "classification": "no-official-mapping",
-      "ldrawFiles": [],
-      "mappingEvidence": [],
-      "reason": null
-    },
-    {
-      "catalogId": "part:970c22pat12pr1767",
-      "role": "legsAssembly",
-      "rebrickablePartNum": "970c22pat12pr1767",
-      "name": "Hips with Red Legs and Dark Bluish Gray Boots Pattern with Red Flannel Shirt Tied Around Waist Print",
-      "classification": "no-official-mapping",
-      "ldrawFiles": [],
-      "mappingEvidence": [],
-      "reason": null
-    },
-    {
-      "catalogId": "part:970c22pat14",
-      "role": "legsAssembly",
-      "rebrickablePartNum": "970c22pat14",
-      "name": "Hips with Red Legs and Light Bluish Gray Boots Pattern [PLAIN]",
-      "classification": "no-official-mapping",
-      "ldrawFiles": [],
-      "mappingEvidence": [],
-      "reason": null
-    },
-    {
-      "catalogId": "part:970c22pat19pr0001",
-      "role": "legsAssembly",
-      "rebrickablePartNum": "970c22pat19pr0001",
-      "name": "Hips with Red Legs and Reddish Brown Boots Pattern with Black Stripe print",
-      "classification": "no-official-mapping",
-      "ldrawFiles": [],
-      "mappingEvidence": [],
-      "reason": null
-    },
-    {
-      "catalogId": "part:970c22pat24",
-      "role": "legsAssembly",
-      "rebrickablePartNum": "970c22pat24",
-      "name": "Hips with Red Legs and Sand Blue Boots Pattern [PLAIN]",
-      "classification": "no-official-mapping",
-      "ldrawFiles": [],
-      "mappingEvidence": [],
-      "reason": null
-    },
-    {
-      "catalogId": "part:970c22pat27",
-      "role": "legsAssembly",
-      "rebrickablePartNum": "970c22pat27",
-      "name": "Hips with Red Legs and White Boots Pattern",
-      "classification": "no-official-mapping",
-      "ldrawFiles": [],
-      "mappingEvidence": [],
-      "reason": null
-    },
-    {
-      "catalogId": "part:970c22pat27pr0001",
-      "role": "legsAssembly",
-      "rebrickablePartNum": "970c22pat27pr0001",
-      "name": "Hips with Red Legs and White Boots Pattern with Black Belt, Silver Belt Buckle, Chinese Character (Sky), Bright Light Orange Lines, Wings, Sneakers print",
-      "classification": "no-official-mapping",
-      "ldrawFiles": [],
-      "mappingEvidence": [],
-      "reason": null
-    },
-    {
       "catalogId": "part:970c22pat27pr1039",
       "role": "legsAssembly",
       "rebrickablePartNum": "970c22pat27pr1039",
       "name": "Hips with Red Legs and White Boots Pattern with Gold Coat Trim and Legs with Gold Coat Trim, White Leggings and Black Boots print",
-      "classification": "no-official-mapping",
-      "ldrawFiles": [],
-      "mappingEvidence": [],
-      "reason": null
-    },
-    {
-      "catalogId": "part:970c22pat27pr1874",
-      "role": "legsAssembly",
-      "rebrickablePartNum": "970c22pat27pr1874",
-      "name": "Hips with Red Legs and White Boots Pattern with Black Side Stripes, Gold Knee Pads Print",
-      "classification": "no-official-mapping",
-      "ldrawFiles": [],
-      "mappingEvidence": [],
-      "reason": null
-    },
-    {
-      "catalogId": "part:970c22pat38pr0001",
-      "role": "legsAssembly",
-      "rebrickablePartNum": "970c22pat38pr0001",
-      "name": "Hips with Red Legs and Bright Light Orange Boots Pattern with Green Knees, Red Toes print",
-      "classification": "no-official-mapping",
-      "ldrawFiles": [],
-      "mappingEvidence": [],
-      "reason": null
-    },
-    {
-      "catalogId": "part:970c22pat38pr2448",
-      "role": "legsAssembly",
-      "rebrickablePartNum": "970c22pat38pr2448",
-      "name": "Hips with Red Legs and Bright Light Orange Boots Pattern with Coat, White Fur with Black Spots, Dark Brown Claws print",
       "classification": "no-official-mapping",
       "ldrawFiles": [],
       "mappingEvidence": [],
@@ -44853,50 +43483,10 @@
       "reason": null
     },
     {
-      "catalogId": "part:970c23pat19",
-      "role": "legsAssembly",
-      "rebrickablePartNum": "970c23pat19",
-      "name": "Hips with Medium Nougat Legs and Reddish Brown Boots Pattern",
-      "classification": "no-official-mapping",
-      "ldrawFiles": [],
-      "mappingEvidence": [],
-      "reason": null
-    },
-    {
-      "catalogId": "part:970c23pat19pr1170",
-      "role": "legsAssembly",
-      "rebrickablePartNum": "970c23pat19pr1170",
-      "name": "Hips with Medium Nougat Legs and Reddish Brown Boots Pattern with Caveman Belt and Skirt, Light Nougat Knees Print",
-      "classification": "no-official-mapping",
-      "ldrawFiles": [],
-      "mappingEvidence": [],
-      "reason": null
-    },
-    {
-      "catalogId": "part:970c23pat19pr2496",
-      "role": "legsAssembly",
-      "rebrickablePartNum": "970c23pat19pr2496",
-      "name": "Hips with Medium Nougat Legs and Reddish Brown Boots Pattern with Reddish Brown Belt print",
-      "classification": "no-official-mapping",
-      "ldrawFiles": [],
-      "mappingEvidence": [],
-      "reason": null
-    },
-    {
       "catalogId": "part:970c23pat36",
       "role": "legsAssembly",
       "rebrickablePartNum": "970c23pat36",
       "name": "Hips with Medium Nougat Legs and Dark Pink Boots Pattern",
-      "classification": "no-official-mapping",
-      "ldrawFiles": [],
-      "mappingEvidence": [],
-      "reason": null
-    },
-    {
-      "catalogId": "part:970c23pat36pr1204",
-      "role": "legsAssembly",
-      "rebrickablePartNum": "970c23pat36pr1204",
-      "name": "Hips with Medium Nougat Legs and Dark Pink Boots Pattern with Swimsuit Print",
       "classification": "no-official-mapping",
       "ldrawFiles": [],
       "mappingEvidence": [],
@@ -44913,95 +43503,10 @@
       "reason": null
     },
     {
-      "catalogId": "part:970c24pat01pr0001",
-      "role": "legsAssembly",
-      "rebrickablePartNum": "970c24pat01pr0001",
-      "name": "Hips with Sand Blue Legs and Yellow Boots Pattern with Cut Off Jean Shorts with Pockets Print",
-      "classification": "no-official-mapping",
-      "ldrawFiles": [],
-      "mappingEvidence": [],
-      "reason": null
-    },
-    {
-      "catalogId": "part:970c24pat03pr0001",
-      "role": "legsAssembly",
-      "rebrickablePartNum": "970c24pat03pr0001",
-      "name": "Hips with Sand Blue Legs and Black Boots Pattern with Dark Blue Coat Ends, Gold Decorations, Trim print",
-      "classification": "no-official-mapping",
-      "ldrawFiles": [],
-      "mappingEvidence": [],
-      "reason": null
-    },
-    {
-      "catalogId": "part:970c24pat03pr1567",
-      "role": "legsAssembly",
-      "rebrickablePartNum": "970c24pat03pr1567",
-      "name": "Hips with Sand Blue Legs and Black Boots Pattern with Dark Bluish Gray Center Panel Print",
-      "classification": "no-official-mapping",
-      "ldrawFiles": [],
-      "mappingEvidence": [],
-      "reason": null
-    },
-    {
-      "catalogId": "part:970c24pat03pr2449",
-      "role": "legsAssembly",
-      "rebrickablePartNum": "970c24pat03pr2449",
-      "name": "Hips with Sand Blue Legs and Black Boots Pattern with Dark Brown Belt, Tunic/Robe print",
-      "classification": "no-official-mapping",
-      "ldrawFiles": [],
-      "mappingEvidence": [],
-      "reason": null
-    },
-    {
       "catalogId": "part:970c24pat05",
       "role": "legsAssembly",
       "rebrickablePartNum": "970c24pat05",
       "name": "Hips with Sand Blue Legs and Dark Blue Boots Pattern",
-      "classification": "no-official-mapping",
-      "ldrawFiles": [],
-      "mappingEvidence": [],
-      "reason": null
-    },
-    {
-      "catalogId": "part:970c24pat05pr1050",
-      "role": "legsAssembly",
-      "rebrickablePartNum": "970c24pat05pr1050",
-      "name": "Hips with Sand Blue Legs and Dark Blue Boots Pattern with Leotard with Scalloped Tops Print (60's Batman)",
-      "classification": "no-official-mapping",
-      "ldrawFiles": [],
-      "mappingEvidence": [],
-      "reason": null
-    },
-    {
-      "catalogId": "part:970c24pat07pr0001",
-      "role": "legsAssembly",
-      "rebrickablePartNum": "970c24pat07pr0001",
-      "name": "Hips with Sand Blue Legs and Dark Brown Boots Pattern with White/Dark Brown Sash, Dark Blue Coat Tails print",
-      "classification": "no-official-mapping",
-      "ldrawFiles": [],
-      "mappingEvidence": [],
-      "reason": null
-    },
-    {
-      "catalogId": "part:970c24pat10",
-      "role": "legsAssembly",
-      "rebrickablePartNum": "970c24pat10",
-      "name": "Hips with Sand Blue Legs and Dark Red Boots Pattern",
-      "classification": "ambiguous-official-mapping",
-      "ldrawFiles": [
-        "parts/20460bp07.dat",
-        "parts/20461bp07.dat"
-      ],
-      "mappingEvidence": [
-        "explicit-keyword"
-      ],
-      "reason": null
-    },
-    {
-      "catalogId": "part:970c24pat12pr0922",
-      "role": "legsAssembly",
-      "rebrickablePartNum": "970c24pat12pr0922",
-      "name": "Hips with Sand Blue Legs and Dark Bluish Gray Boots Pattern with Torn Patches, Gray Claws Print",
       "classification": "no-official-mapping",
       "ldrawFiles": [],
       "mappingEvidence": [],
@@ -45028,96 +43533,6 @@
       "reason": null
     },
     {
-      "catalogId": "part:970c25pat12pr1270",
-      "role": "legsAssembly",
-      "rebrickablePartNum": "970c25pat12pr1270",
-      "name": "Hips with Sand Green Legs and Dark Bluish Gray Boots Pattern with Retro Space Belt, Three Orange Stripes Print",
-      "classification": "no-official-mapping",
-      "ldrawFiles": [],
-      "mappingEvidence": [],
-      "reason": null
-    },
-    {
-      "catalogId": "part:970c25pat19pr0001",
-      "role": "legsAssembly",
-      "rebrickablePartNum": "970c25pat19pr0001",
-      "name": "Hips with Sand Green Legs and Reddish Brown Boots Pattern with Pockets, Black Sandals print",
-      "classification": "no-official-mapping",
-      "ldrawFiles": [],
-      "mappingEvidence": [],
-      "reason": null
-    },
-    {
-      "catalogId": "part:970c26pat11pr0991",
-      "role": "legsAssembly",
-      "rebrickablePartNum": "970c26pat11pr0991",
-      "name": "Hips with Tan Legs and Dark Tan Boots Pattern with Tan Fringe Skirt, Tied Belt Print",
-      "classification": "no-official-mapping",
-      "ldrawFiles": [],
-      "mappingEvidence": [],
-      "reason": null
-    },
-    {
-      "catalogId": "part:970c26pat19pr0001",
-      "role": "legsAssembly",
-      "rebrickablePartNum": "970c26pat19pr0001",
-      "name": "Hips with Tan Legs and Reddish Brown Boots Pattern with Reddish Brown Belt, Pockets print",
-      "classification": "no-official-mapping",
-      "ldrawFiles": [],
-      "mappingEvidence": [],
-      "reason": null
-    },
-    {
-      "catalogId": "part:970c26pat19pr1111",
-      "role": "legsAssembly",
-      "rebrickablePartNum": "970c26pat19pr1111",
-      "name": "Hips with Tan Legs and Reddish Brown Boots Pattern with Belt Loops, 2 Pockets with 2 Buttons Print",
-      "classification": "no-official-mapping",
-      "ldrawFiles": [],
-      "mappingEvidence": [],
-      "reason": null
-    },
-    {
-      "catalogId": "part:970c26pat23pr2468",
-      "role": "legsAssembly",
-      "rebrickablePartNum": "970c26pat23pr2468",
-      "name": "Hips with Tan Legs and Medium Nougat Boots Pattern with White Ruffles print",
-      "classification": "no-official-mapping",
-      "ldrawFiles": [],
-      "mappingEvidence": [],
-      "reason": null
-    },
-    {
-      "catalogId": "part:970c26pat23pr2472",
-      "role": "legsAssembly",
-      "rebrickablePartNum": "970c26pat23pr2472",
-      "name": "Hips with Tan Legs and Medium Nougat Boots Pattern with Red Sash, Dark Tan/Yellow Decorations print",
-      "classification": "no-official-mapping",
-      "ldrawFiles": [],
-      "mappingEvidence": [],
-      "reason": null
-    },
-    {
-      "catalogId": "part:970c26pat23pr2697",
-      "role": "legsAssembly",
-      "rebrickablePartNum": "970c26pat23pr2697",
-      "name": "Hips with Tan Legs and Medium Nougat Boots Pattern with Medium Nougat Straps, Dark Azure Coat Ends, Silver Decorations print",
-      "classification": "no-official-mapping",
-      "ldrawFiles": [],
-      "mappingEvidence": [],
-      "reason": null
-    },
-    {
-      "catalogId": "part:970c26pat35pr1667",
-      "role": "legsAssembly",
-      "rebrickablePartNum": "970c26pat35pr1667",
-      "name": "Hips with Tan Legs and Dark Green Boots Pattern with Black Belt, Gray Plaid, Black Toes Print",
-      "classification": "no-official-mapping",
-      "ldrawFiles": [],
-      "mappingEvidence": [],
-      "reason": null
-    },
-    {
       "catalogId": "part:970c26pr0004",
       "role": "legsAssembly",
       "rebrickablePartNum": "970c26pr0004",
@@ -45138,276 +43553,6 @@
       "reason": null
     },
     {
-      "catalogId": "part:970c27pat01pr0002",
-      "role": "legsAssembly",
-      "rebrickablePartNum": "970c27pat01pr0002",
-      "name": "Hips with White Legs and Yellow Boots Pattern with Red Dots print",
-      "classification": "no-official-mapping",
-      "ldrawFiles": [],
-      "mappingEvidence": [],
-      "reason": null
-    },
-    {
-      "catalogId": "part:970c27pat01pr1428",
-      "role": "legsAssembly",
-      "rebrickablePartNum": "970c27pat01pr1428",
-      "name": "Hips with White Legs and Yellow Boots Pattern with Red Paw Print Shorts and Yellow Feet Print",
-      "classification": "no-official-mapping",
-      "ldrawFiles": [],
-      "mappingEvidence": [],
-      "reason": null
-    },
-    {
-      "catalogId": "part:970c27pat02pr1431",
-      "role": "legsAssembly",
-      "rebrickablePartNum": "970c27pat02pr1431",
-      "name": "Hips with White Legs and Light Nougat Boots Pattern with Swimming Suit Black Stripes",
-      "classification": "no-official-mapping",
-      "ldrawFiles": [],
-      "mappingEvidence": [],
-      "reason": null
-    },
-    {
-      "catalogId": "part:970c27pat02pr1711",
-      "role": "legsAssembly",
-      "rebrickablePartNum": "970c27pat02pr1711",
-      "name": "Hips with White Legs and Light Nougat Boots Pattern with Wilma Flintstone Print",
-      "classification": "no-official-mapping",
-      "ldrawFiles": [],
-      "mappingEvidence": [],
-      "reason": null
-    },
-    {
-      "catalogId": "part:970c27pat02pr2367",
-      "role": "legsAssembly",
-      "rebrickablePartNum": "970c27pat02pr2367",
-      "name": "Hips with White Legs and Light Nougat Boots Pattern with White Dress print",
-      "classification": "no-official-mapping",
-      "ldrawFiles": [],
-      "mappingEvidence": [],
-      "reason": null
-    },
-    {
-      "catalogId": "part:970c27pat03",
-      "role": "legsAssembly",
-      "rebrickablePartNum": "970c27pat03",
-      "name": "Hips with White Legs and Black Boots Pattern",
-      "classification": "no-official-mapping",
-      "ldrawFiles": [],
-      "mappingEvidence": [],
-      "reason": null
-    },
-    {
-      "catalogId": "part:970c27pat03pr0001",
-      "role": "legsAssembly",
-      "rebrickablePartNum": "970c27pat03pr0001",
-      "name": "Hips with White Legs and Black Boots Pattern with Skirt, Light Bluish Grey Shoes Print",
-      "classification": "no-official-mapping",
-      "ldrawFiles": [],
-      "mappingEvidence": [],
-      "reason": null
-    },
-    {
-      "catalogId": "part:970c27pat03pr0002",
-      "role": "legsAssembly",
-      "rebrickablePartNum": "970c27pat03pr0002",
-      "name": "Hips with White Legs and Black Boots Pattern with White Ruffles, Dark Pink Toes print",
-      "classification": "no-official-mapping",
-      "ldrawFiles": [],
-      "mappingEvidence": [],
-      "reason": null
-    },
-    {
-      "catalogId": "part:970c27pat03pr0003",
-      "role": "legsAssembly",
-      "rebrickablePartNum": "970c27pat03pr0003",
-      "name": "Hips with White Legs and Black Boots Pattern with Ruffles, Yellow Feet Print (Minnie)",
-      "classification": "no-official-mapping",
-      "ldrawFiles": [],
-      "mappingEvidence": [],
-      "reason": null
-    },
-    {
-      "catalogId": "part:970c27pat03pr0004",
-      "role": "legsAssembly",
-      "rebrickablePartNum": "970c27pat03pr0004",
-      "name": "Hips with White Legs and Black Boots Pattern with Silver Laces print",
-      "classification": "no-official-mapping",
-      "ldrawFiles": [],
-      "mappingEvidence": [],
-      "reason": null
-    },
-    {
-      "catalogId": "part:970c27pat03pr0005",
-      "role": "legsAssembly",
-      "rebrickablePartNum": "970c27pat03pr0005",
-      "name": "Hips with White Legs and Black Boots Pattern with Red Lapels and Gold Laces print",
-      "classification": "no-official-mapping",
-      "ldrawFiles": [],
-      "mappingEvidence": [],
-      "reason": null
-    },
-    {
-      "catalogId": "part:970c27pat03pr0920",
-      "role": "legsAssembly",
-      "rebrickablePartNum": "970c27pat03pr0920",
-      "name": "Hips with White Legs and Black Boots Pattern with 3 Black and Gray Print",
-      "classification": "no-official-mapping",
-      "ldrawFiles": [],
-      "mappingEvidence": [],
-      "reason": null
-    },
-    {
-      "catalogId": "part:970c27pat03pr0921",
-      "role": "legsAssembly",
-      "rebrickablePartNum": "970c27pat03pr0921",
-      "name": "Hips with White Legs and Black Boots Pattern with Black Stripes Print",
-      "classification": "no-official-mapping",
-      "ldrawFiles": [],
-      "mappingEvidence": [],
-      "reason": null
-    },
-    {
-      "catalogId": "part:970c27pat03pr1033",
-      "role": "legsAssembly",
-      "rebrickablePartNum": "970c27pat03pr1033",
-      "name": "Hips with White Legs and Black Boots Pattern with White Ruffled Knickers and Dark Pink Shoes print",
-      "classification": "no-official-mapping",
-      "ldrawFiles": [],
-      "mappingEvidence": [],
-      "reason": null
-    },
-    {
-      "catalogId": "part:970c27pat03pr1214",
-      "role": "legsAssembly",
-      "rebrickablePartNum": "970c27pat03pr1214",
-      "name": "Hips with White Legs and Black Boots Pattern with Lab Coattails over Black Pants and ID Badge Print",
-      "classification": "no-official-mapping",
-      "ldrawFiles": [],
-      "mappingEvidence": [],
-      "reason": null
-    },
-    {
-      "catalogId": "part:970c27pat03pr1439",
-      "role": "legsAssembly",
-      "rebrickablePartNum": "970c27pat03pr1439",
-      "name": "Hips with White Legs and Black Boots Pattern with Lab Coat Print (Hugo Strange)",
-      "classification": "no-official-mapping",
-      "ldrawFiles": [],
-      "mappingEvidence": [],
-      "reason": null
-    },
-    {
-      "catalogId": "part:970c27pat03pr1589",
-      "role": "legsAssembly",
-      "rebrickablePartNum": "970c27pat03pr1589",
-      "name": "Hips with White Legs and Black Boots Pattern with White Toes",
-      "classification": "no-official-mapping",
-      "ldrawFiles": [],
-      "mappingEvidence": [],
-      "reason": null
-    },
-    {
-      "catalogId": "part:970c27pat03pr1732",
-      "role": "legsAssembly",
-      "rebrickablePartNum": "970c27pat03pr1732",
-      "name": "Hips with White Legs and Black Boots Pattern with Lab Coat Print",
-      "classification": "no-official-mapping",
-      "ldrawFiles": [],
-      "mappingEvidence": [],
-      "reason": null
-    },
-    {
-      "catalogId": "part:970c27pat03pr1756",
-      "role": "legsAssembly",
-      "rebrickablePartNum": "970c27pat03pr1756",
-      "name": "Hips with White Legs and Black Boots Pattern with Dress/Ruffles, Silver Feet",
-      "classification": "no-official-mapping",
-      "ldrawFiles": [],
-      "mappingEvidence": [],
-      "reason": null
-    },
-    {
-      "catalogId": "part:970c27pat03pr2421",
-      "role": "legsAssembly",
-      "rebrickablePartNum": "970c27pat03pr2421",
-      "name": "Hips with White Legs and Black Boots Pattern with Robe, Dark Turquoise/Gold Trim print",
-      "classification": "no-official-mapping",
-      "ldrawFiles": [],
-      "mappingEvidence": [],
-      "reason": null
-    },
-    {
-      "catalogId": "part:970c27pat03pr9999",
-      "role": "legsAssembly",
-      "rebrickablePartNum": "970c27pat03pr9999",
-      "name": "Hips with White Legs and Black Boots Pattern with Black Knee Pads and Gold Belt Buckle Print",
-      "classification": "no-official-mapping",
-      "ldrawFiles": [],
-      "mappingEvidence": [],
-      "reason": null
-    },
-    {
-      "catalogId": "part:970c27pat05pr0001",
-      "role": "legsAssembly",
-      "rebrickablePartNum": "970c27pat05pr0001",
-      "name": "Hips with White Legs and Dark Blue Boots Pattern with Medium Blue Fur print",
-      "classification": "no-official-mapping",
-      "ldrawFiles": [],
-      "mappingEvidence": [],
-      "reason": null
-    },
-    {
-      "catalogId": "part:970c27pat10pr1107",
-      "role": "legsAssembly",
-      "rebrickablePartNum": "970c27pat10pr1107",
-      "name": "Hips with White Legs and Dark Red Boots Pattern with Boxing Shorts with Red Trim and Laces",
-      "classification": "no-official-mapping",
-      "ldrawFiles": [],
-      "mappingEvidence": [],
-      "reason": null
-    },
-    {
-      "catalogId": "part:970c27pat14pr0001",
-      "role": "legsAssembly",
-      "rebrickablePartNum": "970c27pat14pr0001",
-      "name": "Hips with White Legs and Light Bluish Gray Boots Pattern with Sash, Light Bluish Grey Wraps print",
-      "classification": "no-official-mapping",
-      "ldrawFiles": [],
-      "mappingEvidence": [],
-      "reason": null
-    },
-    {
-      "catalogId": "part:970c27pat14pr0971",
-      "role": "legsAssembly",
-      "rebrickablePartNum": "970c27pat14pr0971",
-      "name": "Hips with White Legs and Light Bluish Gray Boots Pattern with Pink Dots Print",
-      "classification": "no-official-mapping",
-      "ldrawFiles": [],
-      "mappingEvidence": [],
-      "reason": null
-    },
-    {
-      "catalogId": "part:970c27pat19pr1109",
-      "role": "legsAssembly",
-      "rebrickablePartNum": "970c27pat19pr1109",
-      "name": "Hips with White Legs and Reddish Brown Boots Pattern with Dark Green Belt Tie, Dark Orange Toes Print",
-      "classification": "no-official-mapping",
-      "ldrawFiles": [],
-      "mappingEvidence": [],
-      "reason": null
-    },
-    {
-      "catalogId": "part:970c27pat21pr1405",
-      "role": "legsAssembly",
-      "rebrickablePartNum": "970c27pat21pr1405",
-      "name": "Hips with White Legs and Pearl Gold Boots Pattern with Gold Belt, Kneepads, and Toes, with 2 Straps on Side Print",
-      "classification": "no-official-mapping",
-      "ldrawFiles": [],
-      "mappingEvidence": [],
-      "reason": null
-    },
-    {
       "catalogId": "part:970c27pat22",
       "role": "legsAssembly",
       "rebrickablePartNum": "970c27pat22",
@@ -45418,60 +43563,10 @@
       "reason": null
     },
     {
-      "catalogId": "part:970c27pat22pr0001",
-      "role": "legsAssembly",
-      "rebrickablePartNum": "970c27pat22pr0001",
-      "name": "Hips with White Legs and Red Boots Pattern with Armor Knee Pads, Toes, Robotic Sides print",
-      "classification": "no-official-mapping",
-      "ldrawFiles": [],
-      "mappingEvidence": [],
-      "reason": null
-    },
-    {
       "catalogId": "part:970c27pat22pr1197",
       "role": "legsAssembly",
       "rebrickablePartNum": "970c27pat22pr1197",
       "name": "Hips with White Legs and Red Boots Pattern with Red Diamond Button, Pockets and Detailed Boots Print",
-      "classification": "no-official-mapping",
-      "ldrawFiles": [],
-      "mappingEvidence": [],
-      "reason": null
-    },
-    {
-      "catalogId": "part:970c27pat22pr1201",
-      "role": "legsAssembly",
-      "rebrickablePartNum": "970c27pat22pr1201",
-      "name": "Hips with White Legs and Red Boots Pattern with Leotard, White Tights with Red Corners Print (Calendar Man)",
-      "classification": "no-official-mapping",
-      "ldrawFiles": [],
-      "mappingEvidence": [],
-      "reason": null
-    },
-    {
-      "catalogId": "part:970c27pat22pr1591",
-      "role": "legsAssembly",
-      "rebrickablePartNum": "970c27pat22pr1591",
-      "name": "Hips with White Legs and Red Boots Pattern with Blue Coattails, Bright Light Orange Knees and Toes Print",
-      "classification": "no-official-mapping",
-      "ldrawFiles": [],
-      "mappingEvidence": [],
-      "reason": null
-    },
-    {
-      "catalogId": "part:970c27pat23pr0001",
-      "role": "legsAssembly",
-      "rebrickablePartNum": "970c27pat23pr0001",
-      "name": "Hips with White Legs and Medium Nougat Boots Pattern with Lab Coat Tails with 2 Black Pockets Print",
-      "classification": "no-official-mapping",
-      "ldrawFiles": [],
-      "mappingEvidence": [],
-      "reason": null
-    },
-    {
-      "catalogId": "part:970c27pat24pr1426",
-      "role": "legsAssembly",
-      "rebrickablePartNum": "970c27pat24pr1426",
-      "name": "Hips with White Legs and Sand Blue Boots Pattern with Lab Coat Pockets",
       "classification": "no-official-mapping",
       "ldrawFiles": [],
       "mappingEvidence": [],
@@ -45490,93 +43585,6 @@
       "mappingEvidence": [
         "explicit-keyword"
       ],
-      "reason": null
-    },
-    {
-      "catalogId": "part:970c27pat29pr1647",
-      "role": "legsAssembly",
-      "rebrickablePartNum": "970c27pat29pr1647",
-      "name": "Hips with White Legs and Bright Light Blue Boots Pattern with Light Nougat Knees, Red Shoes with Gold Speckles Print (Dorothy)",
-      "classification": "no-official-mapping",
-      "ldrawFiles": [],
-      "mappingEvidence": [],
-      "reason": null
-    },
-    {
-      "catalogId": "part:970c27pat36pr1671",
-      "role": "legsAssembly",
-      "rebrickablePartNum": "970c27pat36pr1671",
-      "name": "Hips with White Legs and Dark Pink Boots Pattern with Bright Light Orange Stripes Print",
-      "classification": "no-official-mapping",
-      "ldrawFiles": [],
-      "mappingEvidence": [],
-      "reason": null
-    },
-    {
-      "catalogId": "part:970c27pat36pr1672",
-      "role": "legsAssembly",
-      "rebrickablePartNum": "970c27pat36pr1672",
-      "name": "Hips with White Legs and Dark Pink Boots Pattern with Green Triangles Print",
-      "classification": "no-official-mapping",
-      "ldrawFiles": [],
-      "mappingEvidence": [],
-      "reason": null
-    },
-    {
-      "catalogId": "part:970c27pat38",
-      "role": "legsAssembly",
-      "rebrickablePartNum": "970c27pat38",
-      "name": "Hips with White Legs and Bright Light Orange Boots Pattern [Donald]",
-      "classification": "ambiguous-official-mapping",
-      "ldrawFiles": [
-        "parts/20460bp03.dat",
-        "parts/20461bp03.dat",
-        "parts/21019bp03.dat",
-        "parts/21019bpde7.dat"
-      ],
-      "mappingEvidence": [
-        "explicit-keyword"
-      ],
-      "reason": null
-    },
-    {
-      "catalogId": "part:970c27pat38pr1035",
-      "role": "legsAssembly",
-      "rebrickablePartNum": "970c27pat38pr1035",
-      "name": "Hips with White Legs and Bright Light Orange Boots Pattern with Bright Pink Shoes [Daisy]",
-      "classification": "no-official-mapping",
-      "ldrawFiles": [],
-      "mappingEvidence": [],
-      "reason": null
-    },
-    {
-      "catalogId": "part:970c27pat38pr2330",
-      "role": "legsAssembly",
-      "rebrickablePartNum": "970c27pat38pr2330",
-      "name": "Hips with White Legs and Bright Light Orange Boots Pattern with Gold Belt, Toes, Knees, Dark Red Lapels print",
-      "classification": "no-official-mapping",
-      "ldrawFiles": [],
-      "mappingEvidence": [],
-      "reason": null
-    },
-    {
-      "catalogId": "part:970c27pat42pr1276",
-      "role": "legsAssembly",
-      "rebrickablePartNum": "970c27pat42pr1276",
-      "name": "Hips with White Legs and Medium Azure Boots Pattern with Magenta Leotard, Back Zebra Stripes Print",
-      "classification": "no-official-mapping",
-      "ldrawFiles": [],
-      "mappingEvidence": [],
-      "reason": null
-    },
-    {
-      "catalogId": "part:970c27pat44pr0001",
-      "role": "legsAssembly",
-      "rebrickablePartNum": "970c27pat44pr0001",
-      "name": "Hips with White Legs and Bright Light Yellow Boots Pattern with Football Shorts, Blue/Red Trim, Medium Nougat Knees, Black Soles print",
-      "classification": "no-official-mapping",
-      "ldrawFiles": [],
-      "mappingEvidence": [],
       "reason": null
     },
     {
@@ -45730,95 +43738,10 @@
       "reason": null
     },
     {
-      "catalogId": "part:970c28pat01",
-      "role": "legsAssembly",
-      "rebrickablePartNum": "970c28pat01",
-      "name": "Hips with Blue Legs and Yellow Boots Pattern",
-      "classification": "ambiguous-official-mapping",
-      "ldrawFiles": [
-        "parts/20460bp04.dat",
-        "parts/20461bp04.dat"
-      ],
-      "mappingEvidence": [
-        "explicit-keyword"
-      ],
-      "reason": null
-    },
-    {
-      "catalogId": "part:970c28pat01pr0001",
-      "role": "legsAssembly",
-      "rebrickablePartNum": "970c28pat01pr0001",
-      "name": "Hips with Blue Legs and Yellow Boots Pattern with Football Shorts, Green Socks, Black Soles, Yellow '7' print",
-      "classification": "no-official-mapping",
-      "ldrawFiles": [],
-      "mappingEvidence": [],
-      "reason": null
-    },
-    {
-      "catalogId": "part:970c28pat01pr9999",
-      "role": "legsAssembly",
-      "rebrickablePartNum": "970c28pat01pr9999",
-      "name": "Hips with Blue Legs and Yellow Boots Pattern with Tatty Blue Hem, and Black Notch Belt Print",
-      "classification": "no-official-mapping",
-      "ldrawFiles": [],
-      "mappingEvidence": [],
-      "reason": null
-    },
-    {
-      "catalogId": "part:970c28pat03",
-      "role": "legsAssembly",
-      "rebrickablePartNum": "970c28pat03",
-      "name": "Hips with Blue Legs and Black Boots Pattern",
-      "classification": "no-official-mapping",
-      "ldrawFiles": [],
-      "mappingEvidence": [],
-      "reason": null
-    },
-    {
-      "catalogId": "part:970c28pat03pr1403",
-      "role": "legsAssembly",
-      "rebrickablePartNum": "970c28pat03pr1403",
-      "name": "Hips with Blue Legs and Black Boots Pattern with White Boomerangs",
-      "classification": "no-official-mapping",
-      "ldrawFiles": [],
-      "mappingEvidence": [],
-      "reason": null
-    },
-    {
       "catalogId": "part:970c28pat03pr1824",
       "role": "legsAssembly",
       "rebrickablePartNum": "970c28pat03pr1824",
       "name": "Hips with Blue Legs and Black Boots Pattern with Light Nougat Legs, White Line Print",
-      "classification": "no-official-mapping",
-      "ldrawFiles": [],
-      "mappingEvidence": [],
-      "reason": null
-    },
-    {
-      "catalogId": "part:970c28pat07pr0001",
-      "role": "legsAssembly",
-      "rebrickablePartNum": "970c28pat07pr0001",
-      "name": "Hips with Blue Legs and Dark Brown Boots Pattern with Reddish Brown Belt, Pocket Print",
-      "classification": "no-official-mapping",
-      "ldrawFiles": [],
-      "mappingEvidence": [],
-      "reason": null
-    },
-    {
-      "catalogId": "part:970c28pat07pr0002",
-      "role": "legsAssembly",
-      "rebrickablePartNum": "970c28pat07pr0002",
-      "name": "Hips with Blue Legs and Dark Brown Boots Pattern with Dark Purple Stripes print",
-      "classification": "no-official-mapping",
-      "ldrawFiles": [],
-      "mappingEvidence": [],
-      "reason": null
-    },
-    {
-      "catalogId": "part:970c28pat12pr0004",
-      "role": "legsAssembly",
-      "rebrickablePartNum": "970c28pat12pr0004",
-      "name": "Hips with Blue Legs and Dark Bluish Gray Boots Pattern with Blue Torn Jeans print",
       "classification": "no-official-mapping",
       "ldrawFiles": [],
       "mappingEvidence": [],
@@ -45835,51 +43758,6 @@
       "reason": null
     },
     {
-      "catalogId": "part:970c28pat22",
-      "role": "legsAssembly",
-      "rebrickablePartNum": "970c28pat22",
-      "name": "Hips with Blue Legs and Red Boots Pattern",
-      "classification": "ambiguous-official-mapping",
-      "ldrawFiles": [
-        "parts/20460bp01.dat",
-        "parts/20461bp01.dat"
-      ],
-      "mappingEvidence": [
-        "explicit-keyword"
-      ],
-      "reason": null
-    },
-    {
-      "catalogId": "part:970c28pat22pr0001",
-      "role": "legsAssembly",
-      "rebrickablePartNum": "970c28pat22pr0001",
-      "name": "Hips with Blue Legs and Red Boots Pattern with Black Belt, Golden Flash Wings Logo print",
-      "classification": "no-official-mapping",
-      "ldrawFiles": [],
-      "mappingEvidence": [],
-      "reason": null
-    },
-    {
-      "catalogId": "part:970c28pat22pr0002",
-      "role": "legsAssembly",
-      "rebrickablePartNum": "970c28pat22pr0002",
-      "name": "Hips with Blue Legs and Red Boots Pattern with Black Lines print",
-      "classification": "no-official-mapping",
-      "ldrawFiles": [],
-      "mappingEvidence": [],
-      "reason": null
-    },
-    {
-      "catalogId": "part:970c28pat22pr0003",
-      "role": "legsAssembly",
-      "rebrickablePartNum": "970c28pat22pr0003",
-      "name": "Hips with Blue Legs and Red Boots Pattern with Silver Armor, Wire, Barbed Wire, Dark Browns Straps, Pouch print",
-      "classification": "no-official-mapping",
-      "ldrawFiles": [],
-      "mappingEvidence": [],
-      "reason": null
-    },
-    {
       "catalogId": "part:970c28pat22pr1825",
       "role": "legsAssembly",
       "rebrickablePartNum": "970c28pat22pr1825",
@@ -45890,85 +43768,10 @@
       "reason": null
     },
     {
-      "catalogId": "part:970c28pat22pr2222",
-      "role": "legsAssembly",
-      "rebrickablePartNum": "970c28pat22pr2222",
-      "name": "Hips with Blue Legs and Red Boots Pattern with White Sox, Gold on Side print",
-      "classification": "no-official-mapping",
-      "ldrawFiles": [],
-      "mappingEvidence": [],
-      "reason": null
-    },
-    {
-      "catalogId": "part:970c28pat27",
-      "role": "legsAssembly",
-      "rebrickablePartNum": "970c28pat27",
-      "name": "Hips with Blue Legs and White Boots Pattern",
-      "classification": "ambiguous-official-mapping",
-      "ldrawFiles": [
-        "parts/20460bp00.dat",
-        "parts/20461bp00.dat"
-      ],
-      "mappingEvidence": [
-        "explicit-keyword"
-      ],
-      "reason": null
-    },
-    {
-      "catalogId": "part:970c28pat27pr0001",
-      "role": "legsAssembly",
-      "rebrickablePartNum": "970c28pat27pr0001",
-      "name": "Hips with Blue Legs and White Boots Pattern with Tan Knees, Dark Red Shoes print",
-      "classification": "no-official-mapping",
-      "ldrawFiles": [],
-      "mappingEvidence": [],
-      "reason": null
-    },
-    {
       "catalogId": "part:970c28pat27pr0004",
       "role": "legsAssembly",
       "rebrickablePartNum": "970c28pat27pr0004",
       "name": "Hips with Blue Legs and White Boots Pattern with Dark Blue Super Lines print (Val-Zod)",
-      "classification": "no-official-mapping",
-      "ldrawFiles": [],
-      "mappingEvidence": [],
-      "reason": null
-    },
-    {
-      "catalogId": "part:970c28pat27pr1123",
-      "role": "legsAssembly",
-      "rebrickablePartNum": "970c28pat27pr1123",
-      "name": "Hips with Blue Legs and White Boots Pattern with Red Shoes Print",
-      "classification": "no-official-mapping",
-      "ldrawFiles": [],
-      "mappingEvidence": [],
-      "reason": null
-    },
-    {
-      "catalogId": "part:970c28pat27pr9999",
-      "role": "legsAssembly",
-      "rebrickablePartNum": "970c28pat27pr9999",
-      "name": "Hips with Blue Legs and White Boots Pattern with Medium Blue Decorations and Blue Stars Print",
-      "classification": "no-official-mapping",
-      "ldrawFiles": [],
-      "mappingEvidence": [],
-      "reason": null
-    },
-    {
-      "catalogId": "part:970c28pat37pr1673",
-      "role": "legsAssembly",
-      "rebrickablePartNum": "970c28pat37pr1673",
-      "name": "Hips with Blue Legs and Magenta Boots Pattern with Silver Bubbles Print",
-      "classification": "no-official-mapping",
-      "ldrawFiles": [],
-      "mappingEvidence": [],
-      "reason": null
-    },
-    {
-      "catalogId": "part:970c28pat39pr0001",
-      "role": "legsAssembly",
-      "rebrickablePartNum": "970c28pat39pr0001",
-      "name": "Hips with Blue Legs and Lavender Boots Pattern with Pilot Suit, White Straps, Hose print",
       "classification": "no-official-mapping",
       "ldrawFiles": [],
       "mappingEvidence": [],
@@ -46015,61 +43818,6 @@
       "reason": null
     },
     {
-      "catalogId": "part:970c29pat02pr0001",
-      "role": "legsAssembly",
-      "rebrickablePartNum": "970c29pat02pr0001",
-      "name": "Hips with Bright Light Blue Legs and Light Nougat Boots Pattern with Dress, Blue Squares, Silver Slippers print",
-      "classification": "no-official-mapping",
-      "ldrawFiles": [],
-      "mappingEvidence": [],
-      "reason": null
-    },
-    {
-      "catalogId": "part:970c29pat03pr0001",
-      "role": "legsAssembly",
-      "rebrickablePartNum": "970c29pat03pr0001",
-      "name": "Hips with Bright Light Blue Legs and Black Boots Pattern with Skirt, Light Nougat Knees print",
-      "classification": "no-official-mapping",
-      "ldrawFiles": [],
-      "mappingEvidence": [],
-      "reason": null
-    },
-    {
-      "catalogId": "part:970c29pat05",
-      "role": "legsAssembly",
-      "rebrickablePartNum": "970c29pat05",
-      "name": "Hips with Bright Light Blue Legs and Dark Blue Boots Pattern",
-      "classification": "ambiguous-official-mapping",
-      "ldrawFiles": [
-        "parts/20460bp09.dat",
-        "parts/20461bp09.dat"
-      ],
-      "mappingEvidence": [
-        "explicit-keyword"
-      ],
-      "reason": null
-    },
-    {
-      "catalogId": "part:970c29pat23pr2492",
-      "role": "legsAssembly",
-      "rebrickablePartNum": "970c29pat23pr2492",
-      "name": "Hips with Bright Light Blue Legs and Medium Nougat Boots Pattern with Reddish Brown Belt, Blue Robe/Tunic, Gold Trim print",
-      "classification": "no-official-mapping",
-      "ldrawFiles": [],
-      "mappingEvidence": [],
-      "reason": null
-    },
-    {
-      "catalogId": "part:970c29pat27pr0001",
-      "role": "legsAssembly",
-      "rebrickablePartNum": "970c29pat27pr0001",
-      "name": "Hips with Bright Light Blue Legs and White Boots Pattern with White Cats, Black Shoes print",
-      "classification": "no-official-mapping",
-      "ldrawFiles": [],
-      "mappingEvidence": [],
-      "reason": null
-    },
-    {
       "catalogId": "part:970c29pat27pr0002",
       "role": "legsAssembly",
       "rebrickablePartNum": "970c29pat27pr0002",
@@ -46090,36 +43838,6 @@
       "reason": null
     },
     {
-      "catalogId": "part:970c30pat03pr1755",
-      "role": "legsAssembly",
-      "rebrickablePartNum": "970c30pat03pr1755",
-      "name": "Hips with Flat Silver Legs and Black Boots Pattern with Silver Toes",
-      "classification": "no-official-mapping",
-      "ldrawFiles": [],
-      "mappingEvidence": [],
-      "reason": null
-    },
-    {
-      "catalogId": "part:970c30pat03pr2122",
-      "role": "legsAssembly",
-      "rebrickablePartNum": "970c30pat03pr2122",
-      "name": "Hips with Flat Silver Legs and Black Boots Pattern with Metallic Silver Belt and Stripes Print",
-      "classification": "no-official-mapping",
-      "ldrawFiles": [],
-      "mappingEvidence": [],
-      "reason": null
-    },
-    {
-      "catalogId": "part:970c30pat22pr0001",
-      "role": "legsAssembly",
-      "rebrickablePartNum": "970c30pat22pr0001",
-      "name": "Hips with Flat Silver Legs and Red Boots Pattern with Dark Bluish Grey belt, Straps, Black Shoe Tongues print",
-      "classification": "no-official-mapping",
-      "ldrawFiles": [],
-      "mappingEvidence": [],
-      "reason": null
-    },
-    {
       "catalogId": "part:970c30pat27pr1739",
       "role": "legsAssembly",
       "rebrickablePartNum": "970c30pat27pr1739",
@@ -46134,46 +43852,6 @@
       "role": "legsAssembly",
       "rebrickablePartNum": "970c30pr1812",
       "name": "Hips and Flat Silver Legs with Reddish Brown Legs Print",
-      "classification": "no-official-mapping",
-      "ldrawFiles": [],
-      "mappingEvidence": [],
-      "reason": null
-    },
-    {
-      "catalogId": "part:970c31pat01",
-      "role": "legsAssembly",
-      "rebrickablePartNum": "970c31pat01",
-      "name": "Hips with Green Legs and Yellow Boots Pattern",
-      "classification": "no-official-mapping",
-      "ldrawFiles": [],
-      "mappingEvidence": [],
-      "reason": null
-    },
-    {
-      "catalogId": "part:970c31pat03pr1806",
-      "role": "legsAssembly",
-      "rebrickablePartNum": "970c31pat03pr1806",
-      "name": "Hips with Green Legs and Black Boots Pattern with Black Scales Print",
-      "classification": "no-official-mapping",
-      "ldrawFiles": [],
-      "mappingEvidence": [],
-      "reason": null
-    },
-    {
-      "catalogId": "part:970c31pat10pr0001",
-      "role": "legsAssembly",
-      "rebrickablePartNum": "970c31pat10pr0001",
-      "name": "Hips with Green Legs and Dark Red Boots Pattern with Football Shorts, Black Trim, Nougat Knees, Gold Shoes, Gold '7' print",
-      "classification": "no-official-mapping",
-      "ldrawFiles": [],
-      "mappingEvidence": [],
-      "reason": null
-    },
-    {
-      "catalogId": "part:970c31pat35pr0001",
-      "role": "legsAssembly",
-      "rebrickablePartNum": "970c31pat35pr0001",
-      "name": "Hips with Green Legs and Dark Green Boots Pattern with Dark Green Coat Ends, Lime Toes print",
       "classification": "no-official-mapping",
       "ldrawFiles": [],
       "mappingEvidence": [],
@@ -46206,61 +43884,6 @@
       "reason": null
     },
     {
-      "catalogId": "part:970c32pat07",
-      "role": "legsAssembly",
-      "rebrickablePartNum": "970c32pat07",
-      "name": "Hips with Medium Blue Legs and Dark Brown Boots Pattern",
-      "classification": "ambiguous-official-mapping",
-      "ldrawFiles": [
-        "parts/20460bp06.dat",
-        "parts/20461bp06.dat"
-      ],
-      "mappingEvidence": [
-        "explicit-keyword"
-      ],
-      "reason": null
-    },
-    {
-      "catalogId": "part:970c32pat27pr1760",
-      "role": "legsAssembly",
-      "rebrickablePartNum": "970c32pat27pr1760",
-      "name": "Hips with Medium Blue Legs and White Boots Pattern with Black Pockets, Yellow Knees and Medium Blue Stripe on Feet Print",
-      "classification": "no-official-mapping",
-      "ldrawFiles": [],
-      "mappingEvidence": [],
-      "reason": null
-    },
-    {
-      "catalogId": "part:970c32pat27pr2396",
-      "role": "legsAssembly",
-      "rebrickablePartNum": "970c32pat27pr2396",
-      "name": "Hips with Medium Blue Legs and White Boots Pattern with Light Nougat Knees print",
-      "classification": "no-official-mapping",
-      "ldrawFiles": [],
-      "mappingEvidence": [],
-      "reason": null
-    },
-    {
-      "catalogId": "part:970c32pat27pr9999",
-      "role": "legsAssembly",
-      "rebrickablePartNum": "970c32pat27pr9999",
-      "name": "Hips with Medium Blue Legs and White Boots Pattern with Pockets, Light Nougat Knees, and Coral Stripe Print",
-      "classification": "no-official-mapping",
-      "ldrawFiles": [],
-      "mappingEvidence": [],
-      "reason": null
-    },
-    {
-      "catalogId": "part:970c32pat38pr0001",
-      "role": "legsAssembly",
-      "rebrickablePartNum": "970c32pat38pr0001",
-      "name": "Hips with Medium Blue Legs and Bright Light Orange Boots Pattern with Light Bluish Gray Shoes, Bright Light Orange Belt prin",
-      "classification": "no-official-mapping",
-      "ldrawFiles": [],
-      "mappingEvidence": [],
-      "reason": null
-    },
-    {
       "catalogId": "part:970c32pr9783",
       "role": "legsAssembly",
       "rebrickablePartNum": "970c32pr9783",
@@ -46281,60 +43904,10 @@
       "reason": null
     },
     {
-      "catalogId": "part:970c33pat27pr1176",
-      "role": "legsAssembly",
-      "rebrickablePartNum": "970c33pat27pr1176",
-      "name": "Hips with Medium Lavender Legs and White Boots Pattern with 4 White Squares on Sides Print",
-      "classification": "no-official-mapping",
-      "ldrawFiles": [],
-      "mappingEvidence": [],
-      "reason": null
-    },
-    {
-      "catalogId": "part:970c34pat02pr1712",
-      "role": "legsAssembly",
-      "rebrickablePartNum": "970c34pat02pr1712",
-      "name": "Hips with Orange Legs and Light Nougat Boots Pattern with Fred Flintstone",
-      "classification": "no-official-mapping",
-      "ldrawFiles": [],
-      "mappingEvidence": [],
-      "reason": null
-    },
-    {
-      "catalogId": "part:970c34pat03",
-      "role": "legsAssembly",
-      "rebrickablePartNum": "970c34pat03",
-      "name": "Hips with Orange Legs and Black Boots Pattern",
-      "classification": "no-official-mapping",
-      "ldrawFiles": [],
-      "mappingEvidence": [],
-      "reason": null
-    },
-    {
-      "catalogId": "part:970c34pat03pr2491",
-      "role": "legsAssembly",
-      "rebrickablePartNum": "970c34pat03pr2491",
-      "name": "Hips with Orange Legs and Black Boots Pattern with Pockets, Silver Straps, Olive Green Ammo Belt print",
-      "classification": "no-official-mapping",
-      "ldrawFiles": [],
-      "mappingEvidence": [],
-      "reason": null
-    },
-    {
       "catalogId": "part:970c34pat22pr0001",
       "role": "legsAssembly",
       "rebrickablePartNum": "970c34pat22pr0001",
       "name": "Hips with Orange Legs and Red Boots Pattern with Dark Orange Armor, Black Circles print",
-      "classification": "no-official-mapping",
-      "ldrawFiles": [],
-      "mappingEvidence": [],
-      "reason": null
-    },
-    {
-      "catalogId": "part:970c34pat27",
-      "role": "legsAssembly",
-      "rebrickablePartNum": "970c34pat27",
-      "name": "Hips with Orange Legs and White Boots Pattern",
       "classification": "no-official-mapping",
       "ldrawFiles": [],
       "mappingEvidence": [],
@@ -46361,46 +43934,6 @@
       "reason": null
     },
     {
-      "catalogId": "part:970c35pat01pr1116",
-      "role": "legsAssembly",
-      "rebrickablePartNum": "970c35pat01pr1116",
-      "name": "Hips with Dark Green Legs and Yellow Boots Pattern with Tattered Shorts with White Stripes Print",
-      "classification": "no-official-mapping",
-      "ldrawFiles": [],
-      "mappingEvidence": [],
-      "reason": null
-    },
-    {
-      "catalogId": "part:970c35pat02pr0002",
-      "role": "legsAssembly",
-      "rebrickablePartNum": "970c35pat02pr0002",
-      "name": "Hips with Dark Green Legs and Light Nougat Boots Pattern with Dark Green Dress, Dark Blue Filigree print",
-      "classification": "no-official-mapping",
-      "ldrawFiles": [],
-      "mappingEvidence": [],
-      "reason": null
-    },
-    {
-      "catalogId": "part:970c35pat03",
-      "role": "legsAssembly",
-      "rebrickablePartNum": "970c35pat03",
-      "name": "Hips with Dark Green Legs and Black Boots Pattern [PLAIN]",
-      "classification": "no-official-mapping",
-      "ldrawFiles": [],
-      "mappingEvidence": [],
-      "reason": null
-    },
-    {
-      "catalogId": "part:970c35pat03pr0001",
-      "role": "legsAssembly",
-      "rebrickablePartNum": "970c35pat03pr0001",
-      "name": "Hips with Dark Green Legs and Black Boots Pattern with Green Robe Ends, Dark Bluish Grey Sash, Reddish Brown Knee Straps print",
-      "classification": "no-official-mapping",
-      "ldrawFiles": [],
-      "mappingEvidence": [],
-      "reason": null
-    },
-    {
       "catalogId": "part:970c35pat07pr1219",
       "role": "legsAssembly",
       "rebrickablePartNum": "970c35pat07pr1219",
@@ -46411,50 +43944,10 @@
       "reason": null
     },
     {
-      "catalogId": "part:970c35pat19pr1114",
-      "role": "legsAssembly",
-      "rebrickablePartNum": "970c35pat19pr1114",
-      "name": "Hips with Dark Green Legs and Reddish Brown Boots Pattern with Reddish Brown Belt, Pouch Print",
-      "classification": "no-official-mapping",
-      "ldrawFiles": [],
-      "mappingEvidence": [],
-      "reason": null
-    },
-    {
-      "catalogId": "part:970c35pat19pr2513",
-      "role": "legsAssembly",
-      "rebrickablePartNum": "970c35pat19pr2513",
-      "name": "Hips with Dark Green Legs and Reddish Brown Boots Pattern with Dark Green Torn Shorts, Dark Brown Fur, Claws print",
-      "classification": "no-official-mapping",
-      "ldrawFiles": [],
-      "mappingEvidence": [],
-      "reason": null
-    },
-    {
       "catalogId": "part:970c35pat22",
       "role": "legsAssembly",
       "rebrickablePartNum": "970c35pat22",
       "name": "Hips with Dark Green Legs and Red Boots Pattern",
-      "classification": "no-official-mapping",
-      "ldrawFiles": [],
-      "mappingEvidence": [],
-      "reason": null
-    },
-    {
-      "catalogId": "part:970c35pat22pr1404",
-      "role": "legsAssembly",
-      "rebrickablePartNum": "970c35pat22pr1404",
-      "name": "Hips with Dark Green Legs and Red Boots Pattern with Yellow Laces, Yellow Belt (El Dorado)",
-      "classification": "no-official-mapping",
-      "ldrawFiles": [],
-      "mappingEvidence": [],
-      "reason": null
-    },
-    {
-      "catalogId": "part:970c35pat75pr0994",
-      "role": "legsAssembly",
-      "rebrickablePartNum": "970c35pat75pr0994",
-      "name": "Hips with Dark Green Legs and Pearl Titanium Boots Pattern with Black Robe, Silver Chain Mail Print",
       "classification": "no-official-mapping",
       "ldrawFiles": [],
       "mappingEvidence": [],
@@ -46485,86 +43978,6 @@
       "reason": null
     },
     {
-      "catalogId": "part:970c36pat02pr9934",
-      "role": "legsAssembly",
-      "rebrickablePartNum": "970c36pat02pr9934",
-      "name": "Hips with Dark Pink Legs and Light Nougat Boots Pattern with Dark Pink Dress and Shoes Print (Dolores Umbridge)",
-      "classification": "no-official-mapping",
-      "ldrawFiles": [],
-      "mappingEvidence": [],
-      "reason": null
-    },
-    {
-      "catalogId": "part:970c36pat10pr0002",
-      "role": "legsAssembly",
-      "rebrickablePartNum": "970c36pat10pr0002",
-      "name": "Hips with Dark Pink Legs and Dark Red Boots Pattern with Black/Blue/Dark Turquoise Stripes print",
-      "classification": "no-official-mapping",
-      "ldrawFiles": [],
-      "mappingEvidence": [],
-      "reason": null
-    },
-    {
-      "catalogId": "part:970c36pat27pr0001",
-      "role": "legsAssembly",
-      "rebrickablePartNum": "970c36pat27pr0001",
-      "name": "Hips with Dark Pink Legs and White Boots Pattern with Armor, Circuitry print",
-      "classification": "no-official-mapping",
-      "ldrawFiles": [],
-      "mappingEvidence": [],
-      "reason": null
-    },
-    {
-      "catalogId": "part:970c36pat33pr2633",
-      "role": "legsAssembly",
-      "rebrickablePartNum": "970c36pat33pr2633",
-      "name": "Hips with Dark Pink Legs and Medium Lavender Boots Pattern with Gold Knees print",
-      "classification": "no-official-mapping",
-      "ldrawFiles": [],
-      "mappingEvidence": [],
-      "reason": null
-    },
-    {
-      "catalogId": "part:970c37pat01",
-      "role": "legsAssembly",
-      "rebrickablePartNum": "970c37pat01",
-      "name": "Hips with Magenta Legs and Yellow Boots Pattern",
-      "classification": "no-official-mapping",
-      "ldrawFiles": [],
-      "mappingEvidence": [],
-      "reason": null
-    },
-    {
-      "catalogId": "part:970c37pat02pr0001",
-      "role": "legsAssembly",
-      "rebrickablePartNum": "970c37pat02pr0001",
-      "name": "Hips with Magenta Legs and Light Nougat Boots Pattern with Dress print",
-      "classification": "no-official-mapping",
-      "ldrawFiles": [],
-      "mappingEvidence": [],
-      "reason": null
-    },
-    {
-      "catalogId": "part:970c38pat04pr2684",
-      "role": "legsAssembly",
-      "rebrickablePartNum": "970c38pat04pr2684",
-      "name": "Hips with Bright Light Orange Legs and Dark Azure Boots Pattern with Red Belt, Pockets print",
-      "classification": "no-official-mapping",
-      "ldrawFiles": [],
-      "mappingEvidence": [],
-      "reason": null
-    },
-    {
-      "catalogId": "part:970c38pat75pr1876",
-      "role": "legsAssembly",
-      "rebrickablePartNum": "970c38pat75pr1876",
-      "name": "Hips with Bright Light Orange Legs and Pearl Titanium Boots Pattern with Black Zig-zag Panels Print",
-      "classification": "no-official-mapping",
-      "ldrawFiles": [],
-      "mappingEvidence": [],
-      "reason": null
-    },
-    {
       "catalogId": "part:970c38pr1598",
       "role": "legsAssembly",
       "rebrickablePartNum": "970c38pr1598",
@@ -46590,146 +44003,6 @@
       "reason": null
     },
     {
-      "catalogId": "part:970c39pat03pr1903",
-      "role": "legsAssembly",
-      "rebrickablePartNum": "970c39pat03pr1903",
-      "name": "Hips with Lavender Legs and Black Boots Pattern with Skirt Ruffles Print",
-      "classification": "no-official-mapping",
-      "ldrawFiles": [],
-      "mappingEvidence": [],
-      "reason": null
-    },
-    {
-      "catalogId": "part:970c41pat01",
-      "role": "legsAssembly",
-      "rebrickablePartNum": "970c41pat01",
-      "name": "Hips with Dark Orange Legs and Yellow Boots Pattern [PLAIN]",
-      "classification": "no-official-mapping",
-      "ldrawFiles": [],
-      "mappingEvidence": [],
-      "reason": null
-    },
-    {
-      "catalogId": "part:970c41pat02pr1003",
-      "role": "legsAssembly",
-      "rebrickablePartNum": "970c41pat02pr1003",
-      "name": "Hips with Dark Orange Legs and Light Nougat Boots Pattern with Dark Orange dress Print (Possessed Dana)",
-      "classification": "no-official-mapping",
-      "ldrawFiles": [],
-      "mappingEvidence": [],
-      "reason": null
-    },
-    {
-      "catalogId": "part:970c41pat02pr1713",
-      "role": "legsAssembly",
-      "rebrickablePartNum": "970c41pat02pr1713",
-      "name": "Hips with Dark Orange Legs and Light Nougat Boots Pattern with Barney Rubble Print",
-      "classification": "no-official-mapping",
-      "ldrawFiles": [],
-      "mappingEvidence": [],
-      "reason": null
-    },
-    {
-      "catalogId": "part:970c41pat07pr0001",
-      "role": "legsAssembly",
-      "rebrickablePartNum": "970c41pat07pr0001",
-      "name": "Hips with Dark Orange Legs and Dark Brown Boots Pattern with Silver Armor, Dark Blue/Red/Gold Tunic print",
-      "classification": "no-official-mapping",
-      "ldrawFiles": [],
-      "mappingEvidence": [],
-      "reason": null
-    },
-    {
-      "catalogId": "part:970c41pat13pr1595",
-      "role": "legsAssembly",
-      "rebrickablePartNum": "970c41pat13pr1595",
-      "name": "Hips with Dark Orange Legs and Nougat Boots Pattern with Tan Straps, Dark Brown Sandals Print",
-      "classification": "no-official-mapping",
-      "ldrawFiles": [],
-      "mappingEvidence": [],
-      "reason": null
-    },
-    {
-      "catalogId": "part:970c41pat19pr0001",
-      "role": "legsAssembly",
-      "rebrickablePartNum": "970c41pat19pr0001",
-      "name": "Hips with Dark Orange Legs and Reddish Brown Boots Pattern with Stitched Pockets, Reddish Brown Pouch print",
-      "classification": "no-official-mapping",
-      "ldrawFiles": [],
-      "mappingEvidence": [],
-      "reason": null
-    },
-    {
-      "catalogId": "part:970c42pat01",
-      "role": "legsAssembly",
-      "rebrickablePartNum": "970c42pat01",
-      "name": "Hips with Medium Azure Legs and Yellow Boots Pattern",
-      "classification": "no-official-mapping",
-      "ldrawFiles": [],
-      "mappingEvidence": [],
-      "reason": null
-    },
-    {
-      "catalogId": "part:970c42pat02pr1714",
-      "role": "legsAssembly",
-      "rebrickablePartNum": "970c42pat02pr1714",
-      "name": "Hips with Medium Azure Legs and Light Nougat Boots Pattern with Betty Rubble Print",
-      "classification": "no-official-mapping",
-      "ldrawFiles": [],
-      "mappingEvidence": [],
-      "reason": null
-    },
-    {
-      "catalogId": "part:970c42pat27",
-      "role": "legsAssembly",
-      "rebrickablePartNum": "970c42pat27",
-      "name": "Hips with Medium Azure Legs and White Boots Pattern",
-      "classification": "no-official-mapping",
-      "ldrawFiles": [],
-      "mappingEvidence": [],
-      "reason": null
-    },
-    {
-      "catalogId": "part:970c42pat27pr1995",
-      "role": "legsAssembly",
-      "rebrickablePartNum": "970c42pat27pr1995",
-      "name": "Hips with Medium Azure Legs and White Boots Pattern with Bright Pink Knee Lines and Wavy Feet, Cheerleading Shirt with Sprinkles Print",
-      "classification": "no-official-mapping",
-      "ldrawFiles": [],
-      "mappingEvidence": [],
-      "reason": null
-    },
-    {
-      "catalogId": "part:970c42pat27pr1999",
-      "role": "legsAssembly",
-      "rebrickablePartNum": "970c42pat27pr1999",
-      "name": "Hips with Medium Azure Legs and White Boots Pattern with Dark Blue Pockets, Lime Knee Pads and Feet, White Zigzags and Circles Print",
-      "classification": "no-official-mapping",
-      "ldrawFiles": [],
-      "mappingEvidence": [],
-      "reason": null
-    },
-    {
-      "catalogId": "part:970c42pat33pr2483",
-      "role": "legsAssembly",
-      "rebrickablePartNum": "970c42pat33pr2483",
-      "name": "Hips with Medium Azure Legs and Medium Lavender Boots Pattern with Yellow/Orange Sash, Laced Knee Pads, Silver Toes print",
-      "classification": "no-official-mapping",
-      "ldrawFiles": [],
-      "mappingEvidence": [],
-      "reason": null
-    },
-    {
-      "catalogId": "part:970c42pat34pr0002",
-      "role": "legsAssembly",
-      "rebrickablePartNum": "970c42pat34pr0002",
-      "name": "Hips with Medium Azure Legs and Orange Boots Pattern with Black Rivets print",
-      "classification": "no-official-mapping",
-      "ldrawFiles": [],
-      "mappingEvidence": [],
-      "reason": null
-    },
-    {
       "catalogId": "part:970c42pat38",
       "role": "legsAssembly",
       "rebrickablePartNum": "970c42pat38",
@@ -46740,120 +44013,10 @@
       "reason": null
     },
     {
-      "catalogId": "part:970c42pat38pr0001",
-      "role": "legsAssembly",
-      "rebrickablePartNum": "970c42pat38pr0001",
-      "name": "Hips with Medium Azure Legs and Bright Light Orange Boots Pattern with Swimming Trunks, Blue Spots, Staples Front print",
-      "classification": "no-official-mapping",
-      "ldrawFiles": [],
-      "mappingEvidence": [],
-      "reason": null
-    },
-    {
-      "catalogId": "part:970c43pat02pr1902",
-      "role": "legsAssembly",
-      "rebrickablePartNum": "970c43pat02pr1902",
-      "name": "Hips with Bright Pink Legs and Light Nougat Boots Pattern with Dark Pink Skirt Ruffles, with Silver Shoes Print",
-      "classification": "no-official-mapping",
-      "ldrawFiles": [],
-      "mappingEvidence": [],
-      "reason": null
-    },
-    {
-      "catalogId": "part:970c43pat22pr2526",
-      "role": "legsAssembly",
-      "rebrickablePartNum": "970c43pat22pr2526",
-      "name": "Hips with Bright Pink Legs and Red Boots Pattern with White Knees and Toes Print",
-      "classification": "no-official-mapping",
-      "ldrawFiles": [],
-      "mappingEvidence": [],
-      "reason": null
-    },
-    {
-      "catalogId": "part:970c43pat27pr0001",
-      "role": "legsAssembly",
-      "rebrickablePartNum": "970c43pat27pr0001",
-      "name": "Hips with Bright Pink Legs and White Boots Pattern with Robe Ends, Blue Pants, White Slippers print",
-      "classification": "no-official-mapping",
-      "ldrawFiles": [],
-      "mappingEvidence": [],
-      "reason": null
-    },
-    {
-      "catalogId": "part:970c44pat02pr0001",
-      "role": "legsAssembly",
-      "rebrickablePartNum": "970c44pat02pr0001",
-      "name": "Hips with Bright Light Yellow Legs and Light Nougat Boots Pattern with Fur Coat, Black Dress, Red Shoes print",
-      "classification": "no-official-mapping",
-      "ldrawFiles": [],
-      "mappingEvidence": [],
-      "reason": null
-    },
-    {
-      "catalogId": "part:970c44pat02pr2469",
-      "role": "legsAssembly",
-      "rebrickablePartNum": "970c44pat02pr2469",
-      "name": "Hips with Bright Light Yellow Legs and Light Nougat Boots Pattern with Fur Coat, Black Dress, Red Shoes print",
-      "classification": "no-official-mapping",
-      "ldrawFiles": [],
-      "mappingEvidence": [],
-      "reason": null
-    },
-    {
-      "catalogId": "part:970c44pat19pr1665",
-      "role": "legsAssembly",
-      "rebrickablePartNum": "970c44pat19pr1665",
-      "name": "Hips with Bright Light Yellow Legs and Reddish Brown Boots Pattern with Orange Giraffe Spots Print",
-      "classification": "no-official-mapping",
-      "ldrawFiles": [],
-      "mappingEvidence": [],
-      "reason": null
-    },
-    {
-      "catalogId": "part:970c44pat27pr0001",
-      "role": "legsAssembly",
-      "rebrickablePartNum": "970c44pat27pr0001",
-      "name": "Hips with Bright Light Yellow Legs and White Boots Pattern with Bright Light Orange Shoes, Red Toes, Knees print",
-      "classification": "no-official-mapping",
-      "ldrawFiles": [],
-      "mappingEvidence": [],
-      "reason": null
-    },
-    {
-      "catalogId": "part:970c46pat01",
-      "role": "legsAssembly",
-      "rebrickablePartNum": "970c46pat01",
-      "name": "Hips with Dark Turquoise Legs and Yellow Boots Pattern [PLAIN]",
-      "classification": "no-official-mapping",
-      "ldrawFiles": [],
-      "mappingEvidence": [],
-      "reason": null
-    },
-    {
-      "catalogId": "part:970c46pat09pr0001",
-      "role": "legsAssembly",
-      "rebrickablePartNum": "970c46pat09pr0001",
-      "name": "Hips with Dark Turquoise Legs and Dark Purple Boots Pattern with Dark Purple/Silver Dots print",
-      "classification": "no-official-mapping",
-      "ldrawFiles": [],
-      "mappingEvidence": [],
-      "reason": null
-    },
-    {
       "catalogId": "part:970c51",
       "role": "legsAssembly",
       "rebrickablePartNum": "970c51",
       "name": "Hips and Chrome Black Legs",
-      "classification": "no-official-mapping",
-      "ldrawFiles": [],
-      "mappingEvidence": [],
-      "reason": null
-    },
-    {
-      "catalogId": "part:970c60pat15pr1674",
-      "role": "legsAssembly",
-      "rebrickablePartNum": "970c60pat15pr1674",
-      "name": "Hips with Coral Legs and Light Aqua Boots Pattern with White Zigzag Panel, Magenta Animal Print, and Yellow Knees Print",
       "classification": "no-official-mapping",
       "ldrawFiles": [],
       "mappingEvidence": [],
@@ -46894,16 +44057,6 @@
       "role": "legsAssembly",
       "rebrickablePartNum": "970c75pat30",
       "name": "Hips with Pearl Titanium Legs and Flat Silver Boots Pattern",
-      "classification": "no-official-mapping",
-      "ldrawFiles": [],
-      "mappingEvidence": [],
-      "reason": null
-    },
-    {
-      "catalogId": "part:970c75pat30pr1777",
-      "role": "legsAssembly",
-      "rebrickablePartNum": "970c75pat30pr1777",
-      "name": "Hips with Pearl Titanium Legs and Flat Silver Boots Pattern with Silver and Copper Pointed Armor Panels Print",
       "classification": "no-official-mapping",
       "ldrawFiles": [],
       "mappingEvidence": [],

@@ -1,0 +1,11 @@
+0 Hips with Magenta Legs and Yellow Boots Pattern
+0 Name: legs-970c37pat01.ldr
+0 // License: CC BY 2.0 and/or CC BY 4.0 as declared per official part file; see referenced official part and LDraw-CAreadme.txt
+0 !COLOUR FigForge_Catalog CODE 10000 VALUE #923978 EDGE #333333
+0 !COLOUR FigForge_Legs CODE 10001 VALUE #923978 EDGE #333333
+0 !COLOUR FigForge_Boots CODE 10002 VALUE #F2CD37 EDGE #333333
+1 10000 0 0 0 1 0 0 0 1 0 0 0 1 3815b.dat
+1 10001 0 12 0 1 0 0 0 1 0 0 0 1 s/20460bs01.dat
+1 10002 0 12 0 1 0 0 0 1 0 0 0 1 s/20460bs02.dat
+1 10001 0 12 0 -1 0 0 0 1 0 0 0 1 s/20460bs01.dat
+1 10002 0 12 0 -1 0 0 0 1 0 0 0 1 s/20460bs02.dat
