@@ -14,7 +14,7 @@
     "Catalog scope is limited to the five minifigure-relevant packages derived from locked Rebrickable Catalog Downloads/CSV.",
     "Official LDraw matches require either an exact top-level parts/*.dat filename or an explicit !KEYWORDS Rebrickable identifier.",
     "Head, headwear, complete torso-assembly and complete legs-assembly print variants may reuse a unique unprinted parent geometry only when part_relationships.csv explicitly declares the print relationship.",
-    "Torso entries become builder-ready only when the official LDraw file is a shortcut containing a 973-family torso, left and right standard arms, and two hands.",
+    "Torso entries become builder-ready only when the official LDraw file is a complete shortcut: either a 973-family torso with both arms and hands, or one of the explicitly recognized complete wing, flipper, pirate-hook, mechanical-arm or short-torso component signatures.",
     "Lower-body entries become builder-ready only when the official top-level LDraw title explicitly declares a complete Minifig Hips and Legs assembly, an allowlisted complete Hips replacement family (Ghost, Skirt, Tentacles, Mermaid Tail or Genie), or an allowlisted complete legs family with a centered torso-compatible stud (Minecraft Enderman or Bionicle).",
     "Rebrickable 973cNNhMM torso, 970cNN legs and 970lNNrMM asymmetric-leg assemblies without an official assembly file are composed from official standard parts (ADR-008) when the colour code is unanimous across all unprinted base assemblies and the entry's own name states the same colours; asymmetric legs additionally require exactly one catalog-backed hip colour, and printed torsos need a unique official torso print part.",
     "No fuzzy name matching, Rebrickable API data, image scraping, LDraw models, or MOC files are used; Rebrickable names are read only through fixed anchored patterns.",
@@ -29,19 +29,19 @@
   },
   "summary": {
     "catalogPartCount": 20202,
-    "visualizedPartCount": 14641,
-    "builderReadyPartCount": 14639,
-    "remainingCatalogPartCount": 5563,
-    "remainingWithoutVisualizationCount": 5561,
+    "visualizedPartCount": 14658,
+    "builderReadyPartCount": 14656,
+    "remainingCatalogPartCount": 5546,
+    "remainingWithoutVisualizationCount": 5544,
     "uniqueOfficialMappingCount": 2767,
     "ambiguousOfficialMappingCount": 235,
     "noOfficialMappingCount": 17200,
     "remainingClassifications": {
       "builder-blocked": 2,
       "render-failed": 0,
-      "placement-profile-required": 569,
-      "ambiguous-official-mapping": 84,
-      "no-official-mapping": 4908
+      "placement-profile-required": 557,
+      "ambiguous-official-mapping": 83,
+      "no-official-mapping": 4904
     }
   },
   "roles": {
@@ -71,14 +71,14 @@
     },
     "torsoAssembly": {
       "catalogPartCount": 7851,
-      "builderReadyPartCount": 5895,
-      "remainingCatalogPartCount": 1956,
+      "builderReadyPartCount": 5912,
+      "remainingCatalogPartCount": 1939,
       "remainingClassifications": {
         "builder-blocked": 1,
         "render-failed": 0,
-        "placement-profile-required": 158,
-        "ambiguous-official-mapping": 8,
-        "no-official-mapping": 1789
+        "placement-profile-required": 146,
+        "ambiguous-official-mapping": 7,
+        "no-official-mapping": 1785
       }
     },
     "legsAssembly": {
@@ -39382,20 +39382,6 @@
       "reason": null
     },
     {
-      "catalogId": "part:6954c01pr0001",
-      "role": "torsoAssembly",
-      "rebrickablePartNum": "6954c01pr0001",
-      "name": "Torso with Wings and Medium Blue Belly, Wings, Dark Blue Markings print, Sand Blue Wings, Dark Blue Hands",
-      "classification": "placement-profile-required",
-      "ldrawFiles": [
-        "parts/u9090p01.dat"
-      ],
-      "mappingEvidence": [
-        "explicit-keyword"
-      ],
-      "reason": null
-    },
-    {
       "catalogId": "part:10058",
       "role": "torsoAssembly",
       "rebrickablePartNum": "10058",
@@ -39706,74 +39692,6 @@
       "reason": null
     },
     {
-      "catalogId": "part:11938",
-      "role": "torsoAssembly",
-      "rebrickablePartNum": "11938",
-      "name": "Torso with Bird Wings [Plain]",
-      "classification": "placement-profile-required",
-      "ldrawFiles": [
-        "parts/11938.dat"
-      ],
-      "mappingEvidence": [
-        "exact-filename"
-      ],
-      "reason": null
-    },
-    {
-      "catalogId": "part:11938c01",
-      "role": "torsoAssembly",
-      "rebrickablePartNum": "11938c01",
-      "name": "Torso with Blue Bird Wings (Road Runner)",
-      "classification": "placement-profile-required",
-      "ldrawFiles": [
-        "parts/11938pde4.dat"
-      ],
-      "mappingEvidence": [
-        "explicit-keyword"
-      ],
-      "reason": null
-    },
-    {
-      "catalogId": "part:11938c01pr0001",
-      "role": "torsoAssembly",
-      "rebrickablePartNum": "11938c01pr0001",
-      "name": "Torso with Blue Bird Wings, Dark Blue Plumage print",
-      "classification": "no-official-mapping",
-      "ldrawFiles": [],
-      "mappingEvidence": [],
-      "reason": null
-    },
-    {
-      "catalogId": "part:11938pr0001",
-      "role": "torsoAssembly",
-      "rebrickablePartNum": "11938pr0001",
-      "name": "Torso with Bird Wings and Orange Feather print",
-      "classification": "no-official-mapping",
-      "ldrawFiles": [],
-      "mappingEvidence": [],
-      "reason": null
-    },
-    {
-      "catalogId": "part:11938pr0002",
-      "role": "torsoAssembly",
-      "rebrickablePartNum": "11938pr0002",
-      "name": "Torso with Bird Wings and Dark Brown Feathers, Red Collar print",
-      "classification": "no-official-mapping",
-      "ldrawFiles": [],
-      "mappingEvidence": [],
-      "reason": null
-    },
-    {
-      "catalogId": "part:11938pr0003",
-      "role": "torsoAssembly",
-      "rebrickablePartNum": "11938pr0003",
-      "name": "Torso with Feathers on Chest, Red Bird Wings with Yellow/Blue Feathers print",
-      "classification": "no-official-mapping",
-      "ldrawFiles": [],
-      "mappingEvidence": [],
-      "reason": null
-    },
-    {
       "catalogId": "part:12613pr0001",
       "role": "torsoAssembly",
       "rebrickablePartNum": "12613pr0001",
@@ -40040,21 +39958,6 @@
       "reason": null
     },
     {
-      "catalogId": "part:24319pr3197",
-      "role": "torsoAssembly",
-      "rebrickablePartNum": "24319pr3197",
-      "name": "Torso Shark, Light Blue Belly Print, Medium Blue Fin Arms",
-      "classification": "ambiguous-official-mapping",
-      "ldrawFiles": [
-        "parts/24319pcfd.dat",
-        "parts/973pcfd.dat"
-      ],
-      "mappingEvidence": [
-        "explicit-keyword"
-      ],
-      "reason": null
-    },
-    {
       "catalogId": "part:24319pr3517",
       "role": "torsoAssembly",
       "rebrickablePartNum": "24319pr3517",
@@ -40072,20 +39975,6 @@
       "classification": "no-official-mapping",
       "ldrawFiles": [],
       "mappingEvidence": [],
-      "reason": null
-    },
-    {
-      "catalogId": "part:24319pr9822",
-      "role": "torsoAssembly",
-      "rebrickablePartNum": "24319pr9822",
-      "name": "Torso White Chest / Belly, Dark Turquoise Scarf with White Snowflakes, Fish Print (Penguin) Black Flippers",
-      "classification": "placement-profile-required",
-      "ldrawFiles": [
-        "parts/24319pys.dat"
-      ],
-      "mappingEvidence": [
-        "explicit-keyword"
-      ],
       "reason": null
     },
     {
@@ -41213,20 +41102,6 @@
       "reason": null
     },
     {
-      "catalogId": "part:63208pr9999",
-      "role": "torsoAssembly",
-      "rebrickablePartNum": "63208pr9999",
-      "name": "Torso Worn Classic Space Logo Print, Blue Left Arm and Hand, Pearl Titanium Mechanical Right Arm",
-      "classification": "placement-profile-required",
-      "ldrawFiles": [
-        "parts/63208p91.dat"
-      ],
-      "mappingEvidence": [
-        "explicit-keyword"
-      ],
-      "reason": null
-    },
-    {
       "catalogId": "part:63776",
       "role": "torsoAssembly",
       "rebrickablePartNum": "63776",
@@ -41473,20 +41348,6 @@
       "reason": null
     },
     {
-      "catalogId": "part:84638c01pr1442",
-      "role": "torsoAssembly",
-      "rebrickablePartNum": "84638c01pr1442",
-      "name": "Torso Pirate Captain Jacket with White Ascot Black Arms Print, Yellow Right Hand, Pearl Gold Left Hook",
-      "classification": "placement-profile-required",
-      "ldrawFiles": [
-        "parts/84638p3k.dat"
-      ],
-      "mappingEvidence": [
-        "explicit-keyword"
-      ],
-      "reason": null
-    },
-    {
       "catalogId": "part:84638c02",
       "role": "torsoAssembly",
       "rebrickablePartNum": "84638c02",
@@ -41577,48 +41438,6 @@
       "reason": null
     },
     {
-      "catalogId": "part:84638c05pr0075",
-      "role": "torsoAssembly",
-      "rebrickablePartNum": "84638c05pr0075",
-      "name": "Torso Wetsuit with Blue Shark with Red X Print, Black Arms, Black Hand Right, Trans-Neon Green Hook Left",
-      "classification": "placement-profile-required",
-      "ldrawFiles": [
-        "parts/84638pak.dat"
-      ],
-      "mappingEvidence": [
-        "explicit-keyword"
-      ],
-      "reason": null
-    },
-    {
-      "catalogId": "part:84638c06pr0003",
-      "role": "torsoAssembly",
-      "rebrickablePartNum": "84638c06pr0003",
-      "name": "Torso Vest, Ragged, Knife, and Black Crossbelt Print, Yellow Arms, Yellow Hand Right, Light Gray Hook Left",
-      "classification": "placement-profile-required",
-      "ldrawFiles": [
-        "parts/84638p3a.dat"
-      ],
-      "mappingEvidence": [
-        "explicit-keyword"
-      ],
-      "reason": null
-    },
-    {
-      "catalogId": "part:84638c06pr0036",
-      "role": "torsoAssembly",
-      "rebrickablePartNum": "84638c06pr0036",
-      "name": "Torso Pirate Captain Jacket, Green Ascot and Undershirt, Brown Shoulder Strap and Belt Print, Black Arms, Yellow Hand Right, Light Gray Hook Left",
-      "classification": "placement-profile-required",
-      "ldrawFiles": [
-        "parts/84638p36.dat"
-      ],
-      "mappingEvidence": [
-        "explicit-keyword"
-      ],
-      "reason": null
-    },
-    {
       "catalogId": "part:84638c06pr0678",
       "role": "torsoAssembly",
       "rebrickablePartNum": "84638c06pr0678",
@@ -41626,34 +41445,6 @@
       "classification": "no-official-mapping",
       "ldrawFiles": [],
       "mappingEvidence": [],
-      "reason": null
-    },
-    {
-      "catalogId": "part:84638c07pr0007",
-      "role": "torsoAssembly",
-      "rebrickablePartNum": "84638c07pr0007",
-      "name": "Torso Safari Shirt, Black Neck, Holster Print, Tan Arms, Black Hand Right, Dark Gray Hook Left",
-      "classification": "placement-profile-required",
-      "ldrawFiles": [
-        "parts/84638pa7.dat"
-      ],
-      "mappingEvidence": [
-        "explicit-keyword"
-      ],
-      "reason": null
-    },
-    {
-      "catalogId": "part:84638c07pr0181",
-      "role": "torsoAssembly",
-      "rebrickablePartNum": "84638c07pr0181",
-      "name": "Torso Jacket, White Scarf, Brown Belt Print, Black Arms, Yellow Hand Right, Dark Gray Hook Left",
-      "classification": "placement-profile-required",
-      "ldrawFiles": [
-        "parts/84638pay.dat"
-      ],
-      "mappingEvidence": [
-        "explicit-keyword"
-      ],
       "reason": null
     },
     {
@@ -42154,20 +41945,6 @@
       "classification": "no-official-mapping",
       "ldrawFiles": [],
       "mappingEvidence": [],
-      "reason": null
-    },
-    {
-      "catalogId": "part:98127pr0005",
-      "role": "torsoAssembly",
-      "rebrickablePartNum": "98127pr0005",
-      "name": "Torso Short with Back Ridges, with Long Orange Collar and Black Tie Print, Black Arms and Hands with Dark Orange Short Sleeves Print",
-      "classification": "placement-profile-required",
-      "ldrawFiles": [
-        "parts/34777pd7f.dat"
-      ],
-      "mappingEvidence": [
-        "explicit-keyword"
-      ],
       "reason": null
     },
     {

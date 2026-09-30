@@ -18,7 +18,7 @@ import { OFFICIAL_LDRAW_PUBLIC_PATH } from "../src/scene/ldraw-release.js";
 import { deriveDualMouldLegReference, isCompleteMinifigLowerBody } from "./lib/ldraw-legs-assembly.js";
 import { rebrickableKeywordIds } from "./lib/ldraw-keywords.js";
 import { browserReferencePath, embeddedLdrawName } from "./lib/ldraw-paths.js";
-import { isCompleteStandardTorsoAssembly } from "./lib/ldraw-torso-assembly.js";
+import { isCompleteStandardTorsoAssembly, isCompleteTorsoAssembly } from "./lib/ldraw-torso-assembly.js";
 import {
   confirmAssemblyColors,
   deriveAssemblyColorCodeTable,
@@ -501,7 +501,7 @@ const composeColorCodedAssembly = async (
 };
 
 const supportsRoleAssembly = async (role: CatalogRole, candidate: Candidate): Promise<boolean> => {
-  if (role === "torsoAssembly") return isCompleteStandardTorsoAssembly(await sourceFor(candidate.file));
+  if (role === "torsoAssembly") return isCompleteTorsoAssembly(await sourceFor(candidate.file));
   if (role === "legsAssembly") return isCompleteMinifigLowerBody(await sourceFor(candidate.file));
   return true;
 };

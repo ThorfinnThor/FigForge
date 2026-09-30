@@ -45,7 +45,7 @@ describe("FF-14 responsive catalog workspace", () => {
       legsAssembly: 3_231,
       handAccessory: 1_308,
     });
-    expect(allParts.filter(builderComponentForCatalogPart)).toHaveLength(14_648);
+    expect(allParts.filter(builderComponentForCatalogPart)).toHaveLength(14_665);
   }, 15_000);
 
   it("defines responsive tabs, drawer focus return and keyboard dismissal", async () => {
@@ -96,11 +96,11 @@ describe("FF-14 responsive catalog workspace", () => {
     expect(allParts.filter((part) => {
       const builderComponent = builderComponentForCatalogPart(part);
       return builderComponent && verifiedLDrawEntryForComponent(builderComponent.id);
-    })).toHaveLength(14_641);
+    })).toHaveLength(14_658);
     expect(allParts.filter((part) => {
       const builderComponent = builderComponentForCatalogPart(part);
       return builderComponent && digitallySupportedLDrawEntryForComponent(builderComponent.id);
-    })).toHaveLength(14_639);
+    })).toHaveLength(14_656);
     expect(cardSource).toContain("Geometrie ohne Druck");
     expect(cardSource).toContain('disabled={connectionStatus !== "digitally-supported"}');
     expect(cardSource).toContain("In Figur einsetzen");
@@ -140,6 +140,22 @@ describe("FF-14 responsive catalog workspace", () => {
       expect(entry?.ldrawFile).toBe(`parts/${partNum}.dat`);
       expect(entry?.geometryFallback).toBeNull();
     }
+  });
+
+  it("enables only complete official special torso shortcuts", async () => {
+    const torsos = await loadCatalogParts("torsoAssembly");
+
+    for (const partNum of ["11938c01", "24319pr9822", "63208pr9999", "6954c01pr0001", "84638c01pr1442", "98127pr0005"]) {
+      const catalogPart = torsos.find(({ rebrickablePartNum }) => rebrickablePartNum === partNum);
+      const builderComponent = catalogPart ? builderComponentForCatalogPart(catalogPart) : undefined;
+      const entry = builderComponent ? verifiedLDrawEntryForComponent(builderComponent.id) : undefined;
+
+      expect(entry?.geometryFallback).toBeNull();
+      expect(entry?.ldrawFile).toMatch(/^parts\/[a-z0-9]+\.dat$/u);
+    }
+
+    const incompleteShell = torsos.find(({ rebrickablePartNum }) => rebrickablePartNum === "37777pr0002");
+    expect(incompleteShell && builderComponentForCatalogPart(incompleteShell)).toBeUndefined();
   });
 
   it("uses deterministic standing geometry when a printed black-leg parent is ambiguous", async () => {
