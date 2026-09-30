@@ -38,6 +38,7 @@ import {
   proposedHandPlacements,
   type CylinderEvidence,
 } from "./lib/ldraw-placement-candidates.js";
+import { writeLDrawRuntimePackages } from "./lib/ldraw-runtime-packages.js";
 
 const root = process.cwd();
 const libraryRoot = resolve(root, "data/incoming/ldraw-official/extracted/ldraw");
@@ -925,7 +926,8 @@ const output = {
   ],
 };
 await writeFile(outputPath, `${JSON.stringify(output, null, 2)}\n`, "utf8");
-// Composition evidence lives in its own file because the browser bundles the whole catalog file.
+await writeLDrawRuntimePackages(root);
+// Composition evidence stays outside the runtime packages because the browser does not need it.
 await writeFile(compositionsPath, `${JSON.stringify({
   schemaVersion: 1,
   sourcePolicy: lock.sourcePolicy,
