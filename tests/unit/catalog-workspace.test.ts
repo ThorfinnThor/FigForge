@@ -45,7 +45,7 @@ describe("FF-14 responsive catalog workspace", () => {
       legsAssembly: 3_231,
       handAccessory: 1_308,
     });
-    expect(allParts.filter(builderComponentForCatalogPart)).toHaveLength(14_680);
+    expect(allParts.filter(builderComponentForCatalogPart)).toHaveLength(14_708);
   }, 15_000);
 
   it("defines responsive tabs, drawer focus return and keyboard dismissal", async () => {
@@ -96,11 +96,11 @@ describe("FF-14 responsive catalog workspace", () => {
     expect(allParts.filter((part) => {
       const builderComponent = builderComponentForCatalogPart(part);
       return builderComponent && verifiedLDrawEntryForComponent(builderComponent.id);
-    })).toHaveLength(14_673);
+    })).toHaveLength(14_701);
     expect(allParts.filter((part) => {
       const builderComponent = builderComponentForCatalogPart(part);
       return builderComponent && digitallySupportedLDrawEntryForComponent(builderComponent.id);
-    })).toHaveLength(14_671);
+    })).toHaveLength(14_699);
     expect(cardSource).toContain("Geometrie ohne Druck");
     expect(cardSource).toContain('disabled={connectionStatus !== "digitally-supported"}');
     expect(cardSource).toContain("In Figur einsetzen");
@@ -192,6 +192,27 @@ describe("FF-14 responsive catalog workspace", () => {
       const entry = builderComponent ? verifiedLDrawEntryForComponent(builderComponent.id) : undefined;
 
       expect(entry?.ldrawFile).toBe("parts/3815b.dat");
+      expect(entry?.geometryFallback).toBeNull();
+    }
+  });
+
+  it("uses explicit Rebrickable keyword mappings instead of colliding LDraw filenames", async () => {
+    const expectedFiles = new Map([
+      ["head:3626bpr0348", "parts/3626bp82.dat"],
+      ["headwear:61190c", "parts/61190f.dat"],
+      ["handAccessory:50018a", "parts/50018g.dat"],
+      ["handAccessory:50018f", "parts/50018e.dat"],
+      ["handAccessory:50018g", "parts/50018b.dat"],
+    ]);
+
+    for (const [identity, expectedFile] of expectedFiles) {
+      const [role, partNum] = identity.split(":") as ["head" | "headwear" | "handAccessory", string];
+      const parts = await loadCatalogParts(role);
+      const catalogPart = parts.find(({ rebrickablePartNum }) => rebrickablePartNum === partNum);
+      const builderComponent = catalogPart ? builderComponentForCatalogPart(catalogPart) : undefined;
+      const entry = builderComponent ? verifiedLDrawEntryForComponent(builderComponent.id) : undefined;
+
+      expect(entry?.ldrawFile).toBe(expectedFile);
       expect(entry?.geometryFallback).toBeNull();
     }
   });
