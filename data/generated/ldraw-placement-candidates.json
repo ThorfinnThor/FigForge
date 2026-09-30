@@ -22,10 +22,10 @@
     "automaticBuilderEnablements": 0
   },
   "summary": {
-    "placementProfileRequiredCount": 547,
+    "placementProfileRequiredCount": 542,
     "uniqueRadius4CandidateCount": 43,
     "multipleRadius4CandidateCount": 134,
-    "noRadius4CylinderDetectedCount": 202,
+    "noRadius4CylinderDetectedCount": 197,
     "roleSpecificAssemblyProfileRequiredCount": 168,
     "noOfficialMappingQueueCount": 4904,
     "ambiguousOfficialMappingQueueCount": 83
@@ -9220,91 +9220,6 @@
       ],
       "mappingEvidence": [
         "explicit-keyword"
-      ],
-      "analysis": "no-radius-4-cylinder-detected",
-      "evidence": [],
-      "proposedPlacementTransformLdu": null,
-      "automaticBuilderEnablement": false,
-      "limitation": "Official LDraw files can encode shafts as direct mesh triangles, so absence of a cylinder primitive is not proof that no grip exists."
-    },
-    {
-      "catalogId": "part:10169",
-      "role": "handAccessory",
-      "rebrickablePartNum": "10169",
-      "name": "Bag / Sack with Handle",
-      "ldrawFiles": [
-        "parts/10169.dat"
-      ],
-      "mappingEvidence": [
-        "exact-filename"
-      ],
-      "analysis": "no-radius-4-cylinder-detected",
-      "evidence": [],
-      "proposedPlacementTransformLdu": null,
-      "automaticBuilderEnablement": false,
-      "limitation": "Official LDraw files can encode shafts as direct mesh triangles, so absence of a cylinder primitive is not proof that no grip exists."
-    },
-    {
-      "catalogId": "part:10169pr0001",
-      "role": "handAccessory",
-      "rebrickablePartNum": "10169pr0001",
-      "name": "Bag / Sack with Handle with '$' / Dollar Sign Print",
-      "ldrawFiles": [
-        "parts/10169p01.dat"
-      ],
-      "mappingEvidence": [
-        "explicit-keyword"
-      ],
-      "analysis": "no-radius-4-cylinder-detected",
-      "evidence": [],
-      "proposedPlacementTransformLdu": null,
-      "automaticBuilderEnablement": false,
-      "limitation": "Official LDraw files can encode shafts as direct mesh triangles, so absence of a cylinder primitive is not proof that no grip exists."
-    },
-    {
-      "catalogId": "part:10169pr0002",
-      "role": "handAccessory",
-      "rebrickablePartNum": "10169pr0002",
-      "name": "Bag / Sack with Handle with Patches, Stitches print",
-      "ldrawFiles": [
-        "parts/10169p02.dat"
-      ],
-      "mappingEvidence": [
-        "explicit-keyword"
-      ],
-      "analysis": "no-radius-4-cylinder-detected",
-      "evidence": [],
-      "proposedPlacementTransformLdu": null,
-      "automaticBuilderEnablement": false,
-      "limitation": "Official LDraw files can encode shafts as direct mesh triangles, so absence of a cylinder primitive is not proof that no grip exists."
-    },
-    {
-      "catalogId": "part:10169pr0003",
-      "role": "handAccessory",
-      "rebrickablePartNum": "10169pr0003",
-      "name": "Bag / Sack with Handle with Reddish Brown Star print",
-      "ldrawFiles": [
-        "parts/10169p03.dat"
-      ],
-      "mappingEvidence": [
-        "explicit-keyword"
-      ],
-      "analysis": "no-radius-4-cylinder-detected",
-      "evidence": [],
-      "proposedPlacementTransformLdu": null,
-      "automaticBuilderEnablement": false,
-      "limitation": "Official LDraw files can encode shafts as direct mesh triangles, so absence of a cylinder primitive is not proof that no grip exists."
-    },
-    {
-      "catalogId": "part:10170",
-      "role": "handAccessory",
-      "rebrickablePartNum": "10170",
-      "name": "Food Pretzel",
-      "ldrawFiles": [
-        "parts/10170.dat"
-      ],
-      "mappingEvidence": [
-        "exact-filename"
       ],
       "analysis": "no-radius-4-cylinder-detected",
       "evidence": [],

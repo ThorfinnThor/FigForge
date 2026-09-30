@@ -162,7 +162,7 @@ assert.equal(
 assert(catalog.entries.length >= 800, "Expanded catalog unexpectedly dropped below 800 renderable parts");
 assert.equal(catalog.summary.digitalPlacementPassedCount, catalog.summary.handAccessoryCount);
 assert.equal(catalog.summary.accessoryLdcadGripCandidatesDisambiguated, 34);
-assert.equal(catalog.summary.accessoryLdcadPrintParentGripCandidatesEvaluated, 9);
+assert.equal(catalog.summary.accessoryLdcadPrintParentGripCandidatesEvaluated, 12);
 assert.equal(catalog.summary.digitalPlacementRejectionsExcluded, catalog.digitalPlacementRejections.length);
 assert.equal(
   catalog.summary.accessoryPlacementCandidatesEvaluated,

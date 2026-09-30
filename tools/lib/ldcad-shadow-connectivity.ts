@@ -8,6 +8,8 @@ const MAX_HAND_GRIP_RADIUS_LDU = 4.25;
 const MIN_HAND_GRIP_LENGTH_LDU = 8;
 
 export const vendoredAccessoryGripFiles = [
+  "parts/10169.dat",
+  "parts/10170.dat",
   "parts/10172.dat",
   "parts/11156.dat",
   "parts/13793.dat",

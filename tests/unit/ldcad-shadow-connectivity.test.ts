@@ -70,5 +70,12 @@ describe("LDCad Shadow hand-grip metadata", () => {
     );
     expect(disambiguated).toHaveLength(1);
     expect(disambiguated[0]?.primitive).toMatch(/^ldcad-shadow:parts\/30035\.dat#SNAP_CYL:/u);
+
+    const newlyVendored = await collectVendoredLDCadHandGripEvidence(
+      "data/vendor/ldcad-shadow",
+      "parts/10169.dat",
+    );
+    expect(newlyVendored).toHaveLength(1);
+    expect(newlyVendored[0]).toMatchObject({ radiusLdu: 4, lengthLdu: 12 });
   });
 });

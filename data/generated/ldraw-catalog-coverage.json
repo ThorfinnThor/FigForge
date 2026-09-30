@@ -30,17 +30,17 @@
   },
   "summary": {
     "catalogPartCount": 20202,
-    "visualizedPartCount": 14668,
-    "builderReadyPartCount": 14666,
-    "remainingCatalogPartCount": 5536,
-    "remainingWithoutVisualizationCount": 5534,
+    "visualizedPartCount": 14673,
+    "builderReadyPartCount": 14671,
+    "remainingCatalogPartCount": 5531,
+    "remainingWithoutVisualizationCount": 5529,
     "uniqueOfficialMappingCount": 2767,
     "ambiguousOfficialMappingCount": 235,
     "noOfficialMappingCount": 17200,
     "remainingClassifications": {
       "builder-blocked": 2,
       "render-failed": 0,
-      "placement-profile-required": 547,
+      "placement-profile-required": 542,
       "ambiguous-official-mapping": 83,
       "no-official-mapping": 4904
     }
@@ -96,12 +96,12 @@
     },
     "handAccessory": {
       "catalogPartCount": 1308,
-      "builderReadyPartCount": 270,
-      "remainingCatalogPartCount": 1038,
+      "builderReadyPartCount": 275,
+      "remainingCatalogPartCount": 1033,
       "remainingClassifications": {
         "builder-blocked": 1,
         "render-failed": 0,
-        "placement-profile-required": 379,
+        "placement-profile-required": 374,
         "ambiguous-official-mapping": 38,
         "no-official-mapping": 620
       }
@@ -49118,76 +49118,6 @@
       ],
       "mappingEvidence": [
         "explicit-keyword"
-      ],
-      "reason": null
-    },
-    {
-      "catalogId": "part:10169",
-      "role": "handAccessory",
-      "rebrickablePartNum": "10169",
-      "name": "Bag / Sack with Handle",
-      "classification": "placement-profile-required",
-      "ldrawFiles": [
-        "parts/10169.dat"
-      ],
-      "mappingEvidence": [
-        "exact-filename"
-      ],
-      "reason": null
-    },
-    {
-      "catalogId": "part:10169pr0001",
-      "role": "handAccessory",
-      "rebrickablePartNum": "10169pr0001",
-      "name": "Bag / Sack with Handle with '$' / Dollar Sign Print",
-      "classification": "placement-profile-required",
-      "ldrawFiles": [
-        "parts/10169p01.dat"
-      ],
-      "mappingEvidence": [
-        "explicit-keyword"
-      ],
-      "reason": null
-    },
-    {
-      "catalogId": "part:10169pr0002",
-      "role": "handAccessory",
-      "rebrickablePartNum": "10169pr0002",
-      "name": "Bag / Sack with Handle with Patches, Stitches print",
-      "classification": "placement-profile-required",
-      "ldrawFiles": [
-        "parts/10169p02.dat"
-      ],
-      "mappingEvidence": [
-        "explicit-keyword"
-      ],
-      "reason": null
-    },
-    {
-      "catalogId": "part:10169pr0003",
-      "role": "handAccessory",
-      "rebrickablePartNum": "10169pr0003",
-      "name": "Bag / Sack with Handle with Reddish Brown Star print",
-      "classification": "placement-profile-required",
-      "ldrawFiles": [
-        "parts/10169p03.dat"
-      ],
-      "mappingEvidence": [
-        "explicit-keyword"
-      ],
-      "reason": null
-    },
-    {
-      "catalogId": "part:10170",
-      "role": "handAccessory",
-      "rebrickablePartNum": "10170",
-      "name": "Food Pretzel",
-      "classification": "placement-profile-required",
-      "ldrawFiles": [
-        "parts/10170.dat"
-      ],
-      "mappingEvidence": [
-        "exact-filename"
       ],
       "reason": null
     },
