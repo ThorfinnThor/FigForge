@@ -226,7 +226,7 @@ def safe_extract_ldraw(archive_path: Path, destination: Path) -> None:
 def ensure_ldraw(root: Path, *, offline: bool) -> dict[str, Any]:
     lock = read_json(root / "data/ldraw-source.lock.json")
     url, expected_hash, release = validate_ldraw_lock(lock)
-    base = root / "data/incoming/ldraw-2608"
+    base = root / "data/incoming/ldraw-official"
     archive_path = base / "complete.zip"
     extracted = base / "extracted"
     library = extracted / "ldraw"

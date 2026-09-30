@@ -7,7 +7,7 @@ const root = process.cwd();
 const libraryArgument = process.argv.find((argument) => argument.startsWith("--library="));
 const libraryRoot = libraryArgument
   ? resolve(libraryArgument.slice("--library=".length))
-  : resolve(root, "data/incoming/ldraw-2608/extracted/ldraw");
+  : resolve(root, "data/incoming/ldraw-official/extracted/ldraw");
 const coveragePath = resolve(root, "data/generated/ldraw-catalog-coverage.json");
 const outputPath = resolve(root, "data/generated/ldraw-placement-candidates.json");
 

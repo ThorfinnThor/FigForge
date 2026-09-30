@@ -36,20 +36,11 @@ jobs:
       - name: Download, validate, and normalize catalog
         run: npm run data:refresh:remote
 
-      - name: Prepare pinned official LDraw library
-        shell: bash
-        run: |
-          archive_path="data/incoming/ldraw-2608/complete.zip"
-          archive_url="$(node -p "require('./data/ldraw-source.lock.json').archiveUrl")"
-          archive_sha="$(node -p "require('./data/ldraw-source.lock.json').archiveSha256")"
-          mkdir -p data/incoming/ldraw-2608/extracted
-          curl --fail --location --retry 3 --output "$archive_path" "$archive_url"
-          echo "$archive_sha  $archive_path" | sha256sum --check --strict
-          unzip -q "$archive_path" -d data/incoming/ldraw-2608/extracted
-          test -d data/incoming/ldraw-2608/extracted/ldraw/parts
+      - name: Prepare official LDraw library (adopt a newer release)
+        run: npm run assets:ldraw-refresh
 
       - name: Rebuild official LDraw catalog assets and coverage report
-        run: npm run assets:ldraw-expanded && npm run assets:analyze:ldraw-coverage
+        run: npm run assets:ldraw-expanded && npm run assets:analyze:ldraw-coverage && npm run assets:analyze:placement-candidates
 
       - name: Validate proposed data and repository
         run: npm run verify
@@ -58,7 +49,7 @@ jobs:
         id: changes
         shell: bash
         run: |
-          if [[ -n "$(git status --porcelain --untracked-files=all -- data docs/ldraw-catalog-coverage.md public/assets/ldraw/official-2608 public/assets/thumbnails/ldraw-expanded)" ]]; then
+          if [[ -n "$(git status --porcelain --untracked-files=all -- data docs/ldraw-catalog-coverage.md public/assets/ldraw public/assets/thumbnails/ldraw-expanded)" ]]; then
             echo "changed=true" >> "$GITHUB_OUTPUT"
           else
             echo "changed=false" >> "$GITHUB_OUTPUT"
@@ -73,7 +64,7 @@ jobs:
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git fetch origin "$branch" || true
           git switch -C "$branch"
-          git add -- data docs/ldraw-catalog-coverage.md public/assets/ldraw/official-2608 public/assets/thumbnails/ldraw-expanded
+          git add -- data docs/ldraw-catalog-coverage.md public/assets/ldraw public/assets/thumbnails/ldraw-expanded
           git commit -m "chore(data): propose Rebrickable catalog refresh"
           git push --force-with-lease origin "HEAD:refs/heads/$branch"
 
@@ -91,7 +82,7 @@ jobs:
               --base "${{ github.event.repository.default_branch }}" \
               --head "$branch" \
               --title "chore(data): Rebrickable catalog refresh" \
-              --body "Automatisch erzeugter Vorschlag. Nur Rebrickable Catalog Downloads/CSV; keine MOC-Dateien und keine API. Vor dem Merge sind Quellen-, Schema- und Diff-Review erforderlich."
+              --body "Automatisch erzeugter Vorschlag. Nur Rebrickable Catalog Downloads/CSV und die offizielle LDraw-Bibliothek; keine MOC-Dateien und keine API. Eine neuere LDraw-Version wird mit neuem Hash in data/ldraw-source.lock.json übernommen. Vor dem Merge sind Quellen-, Schema- und Diff-Review erforderlich."
           fi
 
       - name: Report no change

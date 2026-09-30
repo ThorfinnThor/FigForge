@@ -1,7 +1,8 @@
 import assert from "node:assert/strict";
 import { createHash } from "node:crypto";
-import { readFile } from "node:fs/promises";
-import { basename, resolve } from "node:path";
+import { readFile, readdir } from "node:fs/promises";
+import { basename, dirname, resolve } from "node:path";
+import { OFFICIAL_LDRAW_PUBLIC_PATH } from "../src/scene/ldraw-release.js";
 import {
   confirmAssemblyColors,
   deriveAssemblyColorCodeTable,
@@ -170,7 +171,14 @@ for (const rejection of catalog.digitalPlacementRejections) {
   assert(rejection.collisionSampleCount >= 0);
 }
 
-const publicLDrawRoot = resolve(root, "public/assets/ldraw/official-2608");
+const publicLDrawRoot = resolve(root, `public${OFFICIAL_LDRAW_PUBLIC_PATH}`);
+assert.deepEqual(
+  (await readdir(dirname(publicLDrawRoot), { withFileTypes: true }))
+    .filter((entry) => entry.isDirectory() && /^official-\d{4}$/u.test(entry.name))
+    .map(({ name }) => name),
+  [basename(publicLDrawRoot)],
+  "Only the locked LDraw release may be published",
+);
 const fileMap = JSON.parse(await readFile(resolve(publicLDrawRoot, "file-map.json"), "utf8")) as Record<string, unknown>;
 const fileMapEntries = Object.entries(fileMap);
 assert.equal(fileMapEntries.length, catalog.summary.sharedOfficialFileCount);
@@ -338,7 +346,7 @@ for (const entry of catalog.entries) {
   assert.equal(thumbnail.byteLength, entry.thumbnailBytes, `Thumbnail byte count mismatch: ${entry.componentId}`);
   assert(thumbnail.byteLength <= 10_000, `Thumbnail budget exceeded: ${entry.componentId}`);
   assert.equal(thumbnail.subarray(0, 4).toString("hex"), "52494646", `Thumbnail is not WebP/RIFF: ${entry.componentId}`);
-  const officialPart = await readFile(resolve(root, "public/assets/ldraw/official-2608/parts", basename(entry.ldrawFile)), "utf8");
+  const officialPart = await readFile(resolve(publicLDrawRoot, "parts", basename(entry.ldrawFile)), "utf8");
   assert(/!LDRAW_ORG (?:Part|Shortcut)\b/u.test(officialPart), `Mapped file is not an official LDraw part: ${entry.ldrawFile}`);
 }
 assert.equal(
