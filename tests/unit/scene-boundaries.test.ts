@@ -29,4 +29,10 @@ describe("FF-04 scene boundaries", () => {
     expect(controllerSource).toContain("requestContextRestore");
     expect(controllerSource).toContain("forceContextLoss");
   });
+
+  it("does not reuse a stale LDraw file map after catalog deployments", async () => {
+    const controllerSource = await readFile("src/scene/LDrawPrototypeSceneController.ts", "utf8");
+
+    expect(controllerSource).toContain('fetch(url, { cache: "no-store" })');
+  });
 });

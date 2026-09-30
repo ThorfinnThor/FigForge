@@ -37,7 +37,7 @@ async function loadOfficialFileMap(baseUrl: string): Promise<Record<string, stri
   if (url.origin !== new URL(baseUrl).origin) {
     throw new Error("The LDraw file map must be same-origin");
   }
-  const response = await fetch(url);
+  const response = await fetch(url, { cache: "no-store" });
   if (!response.ok) {
     throw new Error(`Das LDraw-Dateiverzeichnis konnte nicht geladen werden (${response.status}).`);
   }
