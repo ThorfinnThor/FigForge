@@ -1,6 +1,6 @@
 # ADR-008: Standardbaugruppen aus Rebrickable-Farbcodes zusammensetzen
 
-- Status: vorgeschlagen
+- Status: angenommen (freigegeben durch den Projektverantwortlichen am 30.09.2026)
 - Datum: 2026-09-29
 - Tickets: FF-05, FF-16
 
