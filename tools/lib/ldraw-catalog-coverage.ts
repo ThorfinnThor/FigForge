@@ -296,7 +296,7 @@ export async function buildLDrawCatalogCoverage(
       "Official LDraw matches require either an exact top-level parts/*.dat filename or an explicit !KEYWORDS Rebrickable identifier.",
       "Head, headwear, complete torso-assembly and complete legs-assembly print variants may reuse a unique unprinted parent geometry only when part_relationships.csv explicitly declares the print relationship.",
       "Torso entries become builder-ready only when the official LDraw file is a shortcut containing a 973-family torso, left and right standard arms, and two hands.",
-      "Legs entries become builder-ready only when the official top-level LDraw file title explicitly declares a complete Minifig Hips and Legs assembly.",
+      "Lower-body entries become builder-ready only when the official top-level LDraw title explicitly declares a complete Minifig Hips and Legs assembly or an allowlisted complete Hips replacement family (Ghost, Skirt, Tentacles, Mermaid Tail or Genie).",
       "Rebrickable 973cNNhMM torso, 970cNN legs and 970lNNrMM asymmetric-leg assemblies without an official assembly file are composed from official standard parts (ADR-008) when the colour code is unanimous across all unprinted base assemblies and the entry's own name states the same colours; asymmetric legs additionally require exactly one catalog-backed hip colour, and printed torsos need a unique official torso print part.",
       "No fuzzy name matching, Rebrickable API data, image scraping, LDraw models, or MOC files are used; Rebrickable names are read only through fixed anchored patterns.",
       "A unique model mapping is not treated as builder-ready until a role-specific placement profile and rendering both succeed.",

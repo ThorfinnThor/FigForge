@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { deriveDualMouldLegReference, isCompleteMinifigLegsAssembly } from "../../tools/lib/ldraw-legs-assembly.js";
+import { deriveDualMouldLegReference, isCompleteMinifigLowerBody } from "../../tools/lib/ldraw-legs-assembly.js";
 
 describe("complete minifig legs assembly detection", () => {
   it.each([
@@ -13,7 +13,18 @@ describe("complete minifig legs assembly detection", () => {
 0 !LDRAW_ORG Shortcut UPDATE 2026-08
 1 16 0 0 0 1 0 0 0 1 0 0 0 1 43221.dat`,
   ])("accepts an official complete lower-body file", (source) => {
-    expect(isCompleteMinifigLegsAssembly(source)).toBe(true);
+    expect(isCompleteMinifigLowerBody(source)).toBe(true);
+  });
+
+  it.each([
+    "Minifig Hips Ghost with Dark Blue Pattern",
+    "Minifig Hips and Skirt with Black Folds Pattern",
+    "Minifig Hips with Tentacles",
+    "Minifig Hips Mermaid Tail Sitting",
+    "Minifig Hips Genie with Red Belt Pattern",
+  ])("accepts an official complete special lower-body family: %s", (title) => {
+    const source = `0 ${title}\n0 !LDRAW_ORG Part UPDATE 2026-08`;
+    expect(isCompleteMinifigLowerBody(source)).toBe(true);
   });
 
   it.each([
@@ -28,7 +39,7 @@ describe("complete minifig legs assembly detection", () => {
     `0 Minifig Hips and Legs
 0 !LDRAW_ORG Subpart UPDATE 2026-08`,
   ])("rejects individual, redirected, or non-top-level geometry", (source) => {
-    expect(isCompleteMinifigLegsAssembly(source)).toBe(false);
+    expect(isCompleteMinifigLowerBody(source)).toBe(false);
   });
 });
 
