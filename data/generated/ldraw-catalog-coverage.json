@@ -16,7 +16,7 @@
     "Head, headwear, complete torso-assembly and complete legs-assembly print variants may reuse a unique unprinted parent geometry only when part_relationships.csv explicitly declares the print relationship.",
     "Torso entries become builder-ready only when the official LDraw file is a shortcut containing a 973-family torso, left and right standard arms, and two hands.",
     "Legs entries become builder-ready only when the official top-level LDraw file title explicitly declares a complete Minifig Hips and Legs assembly.",
-    "Rebrickable 973cNNhMM torso and 970cNN legs assemblies without an official assembly file are composed from official standard parts (ADR-008) when the colour code is unanimous across all unprinted base assemblies and the entry's own name states the same colours; printed torsos additionally need a unique official torso print part.",
+    "Rebrickable 973cNNhMM torso, 970cNN legs and 970lNNrMM asymmetric-leg assemblies without an official assembly file are composed from official standard parts (ADR-008) when the colour code is unanimous across all unprinted base assemblies and the entry's own name states the same colours; asymmetric legs additionally require exactly one catalog-backed hip colour, and printed torsos need a unique official torso print part.",
     "No fuzzy name matching, Rebrickable API data, image scraping, LDraw models, or MOC files are used; Rebrickable names are read only through fixed anchored patterns.",
     "A unique model mapping is not treated as builder-ready until a role-specific placement profile and rendering both succeed."
   ],
@@ -29,10 +29,10 @@
   },
   "summary": {
     "catalogPartCount": 20202,
-    "visualizedPartCount": 14403,
-    "builderReadyPartCount": 14401,
-    "remainingCatalogPartCount": 5801,
-    "remainingWithoutVisualizationCount": 5799,
+    "visualizedPartCount": 14451,
+    "builderReadyPartCount": 14449,
+    "remainingCatalogPartCount": 5753,
+    "remainingWithoutVisualizationCount": 5751,
     "uniqueOfficialMappingCount": 2767,
     "ambiguousOfficialMappingCount": 235,
     "noOfficialMappingCount": 17200,
@@ -41,7 +41,7 @@
       "render-failed": 0,
       "placement-profile-required": 633,
       "ambiguous-official-mapping": 84,
-      "no-official-mapping": 5082
+      "no-official-mapping": 5034
     }
   },
   "roles": {
@@ -83,14 +83,14 @@
     },
     "legsAssembly": {
       "catalogPartCount": 3231,
-      "builderReadyPartCount": 2665,
-      "remainingCatalogPartCount": 566,
+      "builderReadyPartCount": 2713,
+      "remainingCatalogPartCount": 518,
       "remainingClassifications": {
         "builder-blocked": 0,
         "render-failed": 0,
         "placement-profile-required": 48,
         "ambiguous-official-mapping": 9,
-        "no-official-mapping": 509
+        "no-official-mapping": 461
       }
     },
     "handAccessory": {
@@ -44303,30 +44303,10 @@
       "reason": null
     },
     {
-      "catalogId": "part:970l03r10",
-      "role": "legsAssembly",
-      "rebrickablePartNum": "970l03r10",
-      "name": "Hips and Black Left Leg, Dark Red Right Leg [Plain]",
-      "classification": "no-official-mapping",
-      "ldrawFiles": [],
-      "mappingEvidence": [],
-      "reason": null
-    },
-    {
       "catalogId": "part:970l03r12",
       "role": "legsAssembly",
       "rebrickablePartNum": "970l03r12",
       "name": "Hips and Black Left Leg, Dark Bluish Gray Right Leg",
-      "classification": "no-official-mapping",
-      "ldrawFiles": [],
-      "mappingEvidence": [],
-      "reason": null
-    },
-    {
-      "catalogId": "part:970l03r12pr1280",
-      "role": "legsAssembly",
-      "rebrickablePartNum": "970l03r12pr1280",
-      "name": "Hips and Black Left Leg, Dark Bluish Gray Right Leg with Magenta Splotches and Tears Print (Two-Face)",
       "classification": "no-official-mapping",
       "ldrawFiles": [],
       "mappingEvidence": [],
@@ -44343,70 +44323,10 @@
       "reason": null
     },
     {
-      "catalogId": "part:970l03r22pr0907",
-      "role": "legsAssembly",
-      "rebrickablePartNum": "970l03r22pr0907",
-      "name": "Hips and Black Left Leg, Red Right Leg with White Panels, Black Diamonds Print",
-      "classification": "no-official-mapping",
-      "ldrawFiles": [],
-      "mappingEvidence": [],
-      "reason": null
-    },
-    {
-      "catalogId": "part:970l03r22pr1219",
-      "role": "legsAssembly",
-      "rebrickablePartNum": "970l03r22pr1219",
-      "name": "Hips and Black Left Leg, Red Right Leg with Black Shorts and Red Knee Pad on Left, 3 Black Diamonds on Shorts and Black Knee Pad on Right Print",
-      "classification": "no-official-mapping",
-      "ldrawFiles": [],
-      "mappingEvidence": [],
-      "reason": null
-    },
-    {
-      "catalogId": "part:970l03r22pr1290",
-      "role": "legsAssembly",
-      "rebrickablePartNum": "970l03r22pr1290",
-      "name": "Hips and Black Left Leg, Red Right Leg with Short Shorts over White Tights, Black Knee Pads Print",
-      "classification": "no-official-mapping",
-      "ldrawFiles": [],
-      "mappingEvidence": [],
-      "reason": null
-    },
-    {
-      "catalogId": "part:970l03r22pr1407",
-      "role": "legsAssembly",
-      "rebrickablePartNum": "970l03r22pr1407",
-      "name": "Hips and Black Left Leg, Red Right Leg with Zipper Print",
-      "classification": "no-official-mapping",
-      "ldrawFiles": [],
-      "mappingEvidence": [],
-      "reason": null
-    },
-    {
-      "catalogId": "part:970l03r22pr2637",
-      "role": "legsAssembly",
-      "rebrickablePartNum": "970l03r22pr2637",
-      "name": "Hips and Black Left Leg, Red Right Leg with Black and Red Diamonds, Black Bar Above Left Leg, Red/Back Toes Print",
-      "classification": "no-official-mapping",
-      "ldrawFiles": [],
-      "mappingEvidence": [],
-      "reason": null
-    },
-    {
       "catalogId": "part:970l03r27",
       "role": "legsAssembly",
       "rebrickablePartNum": "970l03r27",
       "name": "Hips and Black Left Leg, White Right Leg",
-      "classification": "no-official-mapping",
-      "ldrawFiles": [],
-      "mappingEvidence": [],
-      "reason": null
-    },
-    {
-      "catalogId": "part:970l03r27pr0001",
-      "role": "legsAssembly",
-      "rebrickablePartNum": "970l03r27pr0001",
-      "name": "Hips and Black Left Leg, White Right Leg with Black Bar Above Left Leg Print (Two-Face)",
       "classification": "no-official-mapping",
       "ldrawFiles": [],
       "mappingEvidence": [],
@@ -44423,50 +44343,10 @@
       "reason": null
     },
     {
-      "catalogId": "part:970l03r73pr1299",
-      "role": "legsAssembly",
-      "rebrickablePartNum": "970l03r73pr1299",
-      "name": "Hips and Black Left Leg, Trans-Clear Right Leg with Naval Uniform Jacket Tails Tattered with Silver Buttons and White Trim Print",
-      "classification": "no-official-mapping",
-      "ldrawFiles": [],
-      "mappingEvidence": [],
-      "reason": null
-    },
-    {
-      "catalogId": "part:970l04r03pr2641",
-      "role": "legsAssembly",
-      "rebrickablePartNum": "970l04r03pr2641",
-      "name": "Hips and Dark Azure Left Leg, Black Right Leg with Black/White Shapes print",
-      "classification": "no-official-mapping",
-      "ldrawFiles": [],
-      "mappingEvidence": [],
-      "reason": null
-    },
-    {
-      "catalogId": "part:970l04r36",
-      "role": "legsAssembly",
-      "rebrickablePartNum": "970l04r36",
-      "name": "Hips and Dark Azure Left Leg, Dark Pink Right Leg",
-      "classification": "no-official-mapping",
-      "ldrawFiles": [],
-      "mappingEvidence": [],
-      "reason": null
-    },
-    {
       "catalogId": "part:970l07r34",
       "role": "legsAssembly",
       "rebrickablePartNum": "970l07r34",
       "name": "Hips and Dark Brown Left Leg, Orange Right Leg",
-      "classification": "no-official-mapping",
-      "ldrawFiles": [],
-      "mappingEvidence": [],
-      "reason": null
-    },
-    {
-      "catalogId": "part:970l07r34pr0001",
-      "role": "legsAssembly",
-      "rebrickablePartNum": "970l07r34pr0001",
-      "name": "Hips and Dark Brown Left Leg, Orange Right Leg with Green Armor, Knee Belt, Black and Silver Bolted Armor Plates Print",
       "classification": "no-official-mapping",
       "ldrawFiles": [],
       "mappingEvidence": [],
@@ -44483,30 +44363,10 @@
       "reason": null
     },
     {
-      "catalogId": "part:970l09r22pr0944",
-      "role": "legsAssembly",
-      "rebrickablePartNum": "970l09r22pr0944",
-      "name": "Hips and Dark Purple Left Leg, Red Right Leg with Tears and Holes Print (Jestro)",
-      "classification": "no-official-mapping",
-      "ldrawFiles": [],
-      "mappingEvidence": [],
-      "reason": null
-    },
-    {
       "catalogId": "part:970l09r29",
       "role": "legsAssembly",
       "rebrickablePartNum": "970l09r29",
       "name": "Hips and Dark Purple Left Leg, Bright Light Blue Right Leg",
-      "classification": "no-official-mapping",
-      "ldrawFiles": [],
-      "mappingEvidence": [],
-      "reason": null
-    },
-    {
-      "catalogId": "part:970l09r29pr1146",
-      "role": "legsAssembly",
-      "rebrickablePartNum": "970l09r29pr1146",
-      "name": "Hips and Dark Purple Left Leg, Bright Light Blue Right Leg with Tattered Orange and Purple Leggings and Boot Print",
       "classification": "no-official-mapping",
       "ldrawFiles": [],
       "mappingEvidence": [],
@@ -44523,30 +44383,10 @@
       "reason": null
     },
     {
-      "catalogId": "part:970l09r33pr1195",
-      "role": "legsAssembly",
-      "rebrickablePartNum": "970l09r33pr1195",
-      "name": "Hips and Dark Purple Left Leg, Medium Lavender Right Leg with Yellow and Red Vertical Stripes",
-      "classification": "no-official-mapping",
-      "ldrawFiles": [],
-      "mappingEvidence": [],
-      "reason": null
-    },
-    {
       "catalogId": "part:970l09r34",
       "role": "legsAssembly",
       "rebrickablePartNum": "970l09r34",
       "name": "Hips and Dark Purple Left Leg, Orange Right Leg",
-      "classification": "no-official-mapping",
-      "ldrawFiles": [],
-      "mappingEvidence": [],
-      "reason": null
-    },
-    {
-      "catalogId": "part:970l09r34pr0303",
-      "role": "legsAssembly",
-      "rebrickablePartNum": "970l09r34pr0303",
-      "name": "Hips and Dark Purple Left Leg, Orange Right Leg with Coattails Print",
       "classification": "no-official-mapping",
       "ldrawFiles": [],
       "mappingEvidence": [],
@@ -44563,30 +44403,10 @@
       "reason": null
     },
     {
-      "catalogId": "part:970l09r38pr0710",
-      "role": "legsAssembly",
-      "rebrickablePartNum": "970l09r38pr0710",
-      "name": "Hips and Dark Purple Left Leg, Bright Light Orange Right Leg with Red Belt with Face Print",
-      "classification": "no-official-mapping",
-      "ldrawFiles": [],
-      "mappingEvidence": [],
-      "reason": null
-    },
-    {
       "catalogId": "part:970l11r26",
       "role": "legsAssembly",
       "rebrickablePartNum": "970l11r26",
       "name": "Hips and Dark Tan Left Leg, Tan Right Leg",
-      "classification": "no-official-mapping",
-      "ldrawFiles": [],
-      "mappingEvidence": [],
-      "reason": null
-    },
-    {
-      "catalogId": "part:970l11r26pr1193",
-      "role": "legsAssembly",
-      "rebrickablePartNum": "970l11r26pr1193",
-      "name": "Hips and Dark Tan Left Leg, Tan Right Leg with Dark Purple Coattails Print",
       "classification": "no-official-mapping",
       "ldrawFiles": [],
       "mappingEvidence": [],
@@ -44603,50 +44423,10 @@
       "reason": null
     },
     {
-      "catalogId": "part:970l11r65pr0665",
-      "role": "legsAssembly",
-      "rebrickablePartNum": "970l11r65pr0665",
-      "name": "Hips and Dark Tan Left Leg, Trans-Light Blue Right Leg with Gray Armor, Purple Sinew Patches and White Claws Print",
-      "classification": "no-official-mapping",
-      "ldrawFiles": [],
-      "mappingEvidence": [],
-      "reason": null
-    },
-    {
       "catalogId": "part:970l12r65",
       "role": "legsAssembly",
       "rebrickablePartNum": "970l12r65",
       "name": "Hips and Dark Bluish Gray Left Leg, Trans-Light Blue Right Leg",
-      "classification": "no-official-mapping",
-      "ldrawFiles": [],
-      "mappingEvidence": [],
-      "reason": null
-    },
-    {
-      "catalogId": "part:970l12r65pr0670",
-      "role": "legsAssembly",
-      "rebrickablePartNum": "970l12r65pr0670",
-      "name": "Hips and Dark Bluish Gray Left Leg, Trans-Light Blue Right Leg with Fur, Copper Pendants, Purple Sinew Patches and White Toenails Print",
-      "classification": "no-official-mapping",
-      "ldrawFiles": [],
-      "mappingEvidence": [],
-      "reason": null
-    },
-    {
-      "catalogId": "part:970l12r65pr0674",
-      "role": "legsAssembly",
-      "rebrickablePartNum": "970l12r65pr0674",
-      "name": "Hips and Dark Bluish Gray Left Leg, Trans-Light Blue Right Leg with Sand Green Scaled Armor and Scars Print",
-      "classification": "no-official-mapping",
-      "ldrawFiles": [],
-      "mappingEvidence": [],
-      "reason": null
-    },
-    {
-      "catalogId": "part:970l14r03",
-      "role": "legsAssembly",
-      "rebrickablePartNum": "970l14r03",
-      "name": "Hips and Light Bluish Gray Left Leg, Black Right Leg",
       "classification": "no-official-mapping",
       "ldrawFiles": [],
       "mappingEvidence": [],
@@ -44663,40 +44443,10 @@
       "reason": null
     },
     {
-      "catalogId": "part:970l14r65pr0817",
-      "role": "legsAssembly",
-      "rebrickablePartNum": "970l14r65pr0817",
-      "name": "Hips and Light Bluish Gray Left Leg, Trans-Light Blue Right Leg with Dark Blue Armor with Scales, Dark Tan Straps and Gray Talons Print",
-      "classification": "no-official-mapping",
-      "ldrawFiles": [],
-      "mappingEvidence": [],
-      "reason": null
-    },
-    {
-      "catalogId": "part:970l14r65pr0819",
-      "role": "legsAssembly",
-      "rebrickablePartNum": "970l14r65pr0819",
-      "name": "Hips and Light Bluish Gray Left Leg, Trans-Light Blue Right Leg with Copper Armor, Chains, Purple Sinew Patches and Gray Talons Print",
-      "classification": "no-official-mapping",
-      "ldrawFiles": [],
-      "mappingEvidence": [],
-      "reason": null
-    },
-    {
       "catalogId": "part:970l18r74",
       "role": "legsAssembly",
       "rebrickablePartNum": "970l18r74",
       "name": "Hips and Lime Left Leg, Trans-Bright Green Right Leg",
-      "classification": "no-official-mapping",
-      "ldrawFiles": [],
-      "mappingEvidence": [],
-      "reason": null
-    },
-    {
-      "catalogId": "part:970l18r74pr0001",
-      "role": "legsAssembly",
-      "rebrickablePartNum": "970l18r74pr0001",
-      "name": "Hips and Lime Left Leg, Trans-Bright Green Right Leg with Dark Green Slime print",
       "classification": "no-official-mapping",
       "ldrawFiles": [],
       "mappingEvidence": [],
@@ -44713,40 +44463,10 @@
       "reason": null
     },
     {
-      "catalogId": "part:970l19r47pr9919",
-      "role": "legsAssembly",
-      "rebrickablePartNum": "970l19r47pr9919",
-      "name": "Hips and Reddish Brown Left Leg, Pearl Titanium Right Leg with Belt, Armour Plating, Steel Toes, Chain with Gear",
-      "classification": "no-official-mapping",
-      "ldrawFiles": [],
-      "mappingEvidence": [],
-      "reason": null
-    },
-    {
       "catalogId": "part:970l22r03",
       "role": "legsAssembly",
       "rebrickablePartNum": "970l22r03",
       "name": "Hips and Red Left Leg, Black Right Leg",
-      "classification": "no-official-mapping",
-      "ldrawFiles": [],
-      "mappingEvidence": [],
-      "reason": null
-    },
-    {
-      "catalogId": "part:970l22r03pr1911",
-      "role": "legsAssembly",
-      "rebrickablePartNum": "970l22r03pr1911",
-      "name": "Hips and Red Left Leg, Black Right Leg with Shorts with Diamonds, White Legs, and Toe Caps Print",
-      "classification": "no-official-mapping",
-      "ldrawFiles": [],
-      "mappingEvidence": [],
-      "reason": null
-    },
-    {
-      "catalogId": "part:970l22r03pr2632",
-      "role": "legsAssembly",
-      "rebrickablePartNum": "970l22r03pr2632",
-      "name": "Hips and Red Left Leg, Black Right Leg with White and Black Shapes print",
       "classification": "no-official-mapping",
       "ldrawFiles": [],
       "mappingEvidence": [],
@@ -44763,30 +44483,10 @@
       "reason": null
     },
     {
-      "catalogId": "part:970l22r27pr0504",
-      "role": "legsAssembly",
-      "rebrickablePartNum": "970l22r27pr0504",
-      "name": "Hips and Red Left Leg, White Right Leg with Black Lace and Red Ladies Garter Print (Red Harrington)",
-      "classification": "no-official-mapping",
-      "ldrawFiles": [],
-      "mappingEvidence": [],
-      "reason": null
-    },
-    {
       "catalogId": "part:970l22r28",
       "role": "legsAssembly",
       "rebrickablePartNum": "970l22r28",
       "name": "Hips and Red Left Leg, Blue Right Leg",
-      "classification": "no-official-mapping",
-      "ldrawFiles": [],
-      "mappingEvidence": [],
-      "reason": null
-    },
-    {
-      "catalogId": "part:970l22r28pr0001",
-      "role": "legsAssembly",
-      "rebrickablePartNum": "970l22r28pr0001",
-      "name": "Hips and Red Left Leg, Blue Right Leg with Blue and Red Quarters and Dark Bluish Gray Straps Print",
       "classification": "no-official-mapping",
       "ldrawFiles": [],
       "mappingEvidence": [],
@@ -44823,40 +44523,10 @@
       "reason": null
     },
     {
-      "catalogId": "part:970l24r65pr0807",
-      "role": "legsAssembly",
-      "rebrickablePartNum": "970l24r65pr0807",
-      "name": "Hips and Sand Blue Left Leg, Trans-Light Blue Right Leg with Copper Armor, Glowing Bones and White Claws Print",
-      "classification": "no-official-mapping",
-      "ldrawFiles": [],
-      "mappingEvidence": [],
-      "reason": null
-    },
-    {
       "catalogId": "part:970l26r65",
       "role": "legsAssembly",
       "rebrickablePartNum": "970l26r65",
       "name": "Hips and Tan Left Leg, Trans-Light Blue Right Leg",
-      "classification": "no-official-mapping",
-      "ldrawFiles": [],
-      "mappingEvidence": [],
-      "reason": null
-    },
-    {
-      "catalogId": "part:970l26r65pr0667",
-      "role": "legsAssembly",
-      "rebrickablePartNum": "970l26r65pr0667",
-      "name": "Hips and Tan Left Leg, Trans-Light Blue Right Leg with Fur, Loincloth, Glowing Bones and White Toenails Print",
-      "classification": "no-official-mapping",
-      "ldrawFiles": [],
-      "mappingEvidence": [],
-      "reason": null
-    },
-    {
-      "catalogId": "part:970l27r22",
-      "role": "legsAssembly",
-      "rebrickablePartNum": "970l27r22",
-      "name": "Hips and White Left Leg, Red Right Leg",
       "classification": "no-official-mapping",
       "ldrawFiles": [],
       "mappingEvidence": [],
@@ -44873,70 +44543,10 @@
       "reason": null
     },
     {
-      "catalogId": "part:970l27r65pr0659",
-      "role": "legsAssembly",
-      "rebrickablePartNum": "970l27r65pr0659",
-      "name": "Hips and White Left Leg, Trans-Light Blue Right Leg with Gray Armor and Knee Pad, Copper Pendants and White Claws Print",
-      "classification": "no-official-mapping",
-      "ldrawFiles": [],
-      "mappingEvidence": [],
-      "reason": null
-    },
-    {
-      "catalogId": "part:970l27r65pr0661",
-      "role": "legsAssembly",
-      "rebrickablePartNum": "970l27r65pr0661",
-      "name": "Hips and White Left Leg, Trans-Light Blue Right Leg with Sand Green Scaled Armor and Knee Pad and Gray Talons Print",
-      "classification": "no-official-mapping",
-      "ldrawFiles": [],
-      "mappingEvidence": [],
-      "reason": null
-    },
-    {
-      "catalogId": "part:970l27r65pr0798",
-      "role": "legsAssembly",
-      "rebrickablePartNum": "970l27r65pr0798",
-      "name": "Hips and White Left Leg, Trans-Light Blue Right Leg with Fur Loincloth and Black Claws Print",
-      "classification": "no-official-mapping",
-      "ldrawFiles": [],
-      "mappingEvidence": [],
-      "reason": null
-    },
-    {
-      "catalogId": "part:970l27r65pr0800",
-      "role": "legsAssembly",
-      "rebrickablePartNum": "970l27r65pr0800",
-      "name": "Hips and White Left Leg, Trans-Light Blue Right Leg with Gray Scaled Armor and Black Claws Print",
-      "classification": "no-official-mapping",
-      "ldrawFiles": [],
-      "mappingEvidence": [],
-      "reason": null
-    },
-    {
       "catalogId": "part:970l28r03",
       "role": "legsAssembly",
       "rebrickablePartNum": "970l28r03",
       "name": "Hips and Blue Left Leg, Black Right Leg [Plain]",
-      "classification": "no-official-mapping",
-      "ldrawFiles": [],
-      "mappingEvidence": [],
-      "reason": null
-    },
-    {
-      "catalogId": "part:970l28r22",
-      "role": "legsAssembly",
-      "rebrickablePartNum": "970l28r22",
-      "name": "Hips and Blue Left Leg, Red Right Leg",
-      "classification": "no-official-mapping",
-      "ldrawFiles": [],
-      "mappingEvidence": [],
-      "reason": null
-    },
-    {
-      "catalogId": "part:970l28r22pr0001",
-      "role": "legsAssembly",
-      "rebrickablePartNum": "970l28r22pr0001",
-      "name": "Hips and Blue Left Leg, Red Right Leg with Dark Silver Armor, Knee Pads, Black Cat/Orange Durrr Burger on Toes print",
       "classification": "no-official-mapping",
       "ldrawFiles": [],
       "mappingEvidence": [],
@@ -44953,30 +44563,10 @@
       "reason": null
     },
     {
-      "catalogId": "part:970l28r34pr1420",
-      "role": "legsAssembly",
-      "rebrickablePartNum": "970l28r34pr1420",
-      "name": "Hips and Blue Left Leg, Orange Right Leg with Jester Costume print",
-      "classification": "no-official-mapping",
-      "ldrawFiles": [],
-      "mappingEvidence": [],
-      "reason": null
-    },
-    {
       "catalogId": "part:970l32r01",
       "role": "legsAssembly",
       "rebrickablePartNum": "970l32r01",
       "name": "Hips and Medium Blue Left Leg, Yellow Right Leg",
-      "classification": "no-official-mapping",
-      "ldrawFiles": [],
-      "mappingEvidence": [],
-      "reason": null
-    },
-    {
-      "catalogId": "part:970l32r01pr1261",
-      "role": "legsAssembly",
-      "rebrickablePartNum": "970l32r01pr1261",
-      "name": "Hips and Medium Blue Left Leg, Yellow Right Leg with Medium Blue and Red Patches Print",
       "classification": "no-official-mapping",
       "ldrawFiles": [],
       "mappingEvidence": [],
@@ -45003,50 +44593,10 @@
       "reason": null
     },
     {
-      "catalogId": "part:970l34r07pr0001",
-      "role": "legsAssembly",
-      "rebrickablePartNum": "970l34r07pr0001",
-      "name": "Hips and Orange Left Leg, Dark Brown Right Leg with Straps, Buckles, Belt Print",
-      "classification": "no-official-mapping",
-      "ldrawFiles": [],
-      "mappingEvidence": [],
-      "reason": null
-    },
-    {
-      "catalogId": "part:970l35r31",
-      "role": "legsAssembly",
-      "rebrickablePartNum": "970l35r31",
-      "name": "Hips and Dark Green Left Leg, Green Right Leg",
-      "classification": "no-official-mapping",
-      "ldrawFiles": [],
-      "mappingEvidence": [],
-      "reason": null
-    },
-    {
       "catalogId": "part:970l38r30",
       "role": "legsAssembly",
       "rebrickablePartNum": "970l38r30",
       "name": "Hips and Bright Light Orange Left Leg, Flat Silver Right Leg",
-      "classification": "no-official-mapping",
-      "ldrawFiles": [],
-      "mappingEvidence": [],
-      "reason": null
-    },
-    {
-      "catalogId": "part:970l38r30pr0806",
-      "role": "legsAssembly",
-      "rebrickablePartNum": "970l38r30pr0806",
-      "name": "Hips and Bright Light Orange Left Leg, Flat Silver Right Leg with Dark Red and Gray Straps with Pouches and Belt Print",
-      "classification": "no-official-mapping",
-      "ldrawFiles": [],
-      "mappingEvidence": [],
-      "reason": null
-    },
-    {
-      "catalogId": "part:970l42r38",
-      "role": "legsAssembly",
-      "rebrickablePartNum": "970l42r38",
-      "name": "Hips and Medium Azure Left Leg, Bright Light Orange Right Leg",
       "classification": "no-official-mapping",
       "ldrawFiles": [],
       "mappingEvidence": [],
@@ -45063,40 +44613,10 @@
       "reason": null
     },
     {
-      "catalogId": "part:970l73r11pr1837",
-      "role": "legsAssembly",
-      "rebrickablePartNum": "970l73r11pr1837",
-      "name": "Hips and Trans-Clear Left Leg, Dark Tan Right Leg with Azure Belt with 'M' Buckle Print",
-      "classification": "no-official-mapping",
-      "ldrawFiles": [],
-      "mappingEvidence": [],
-      "reason": null
-    },
-    {
-      "catalogId": "part:970l75r12pr2540",
-      "role": "legsAssembly",
-      "rebrickablePartNum": "970l75r12pr2540",
-      "name": "Hips and Pearl Titanium Left Leg, Dark Bluish Gray Right Leg, Dark Blue and Dark Red Droid Armor print",
-      "classification": "no-official-mapping",
-      "ldrawFiles": [],
-      "mappingEvidence": [],
-      "reason": null
-    },
-    {
       "catalogId": "part:970l75r64",
       "role": "legsAssembly",
       "rebrickablePartNum": "970l75r64",
       "name": "Hips and Pearl Titanium Left Leg, Trans-Dark Pink Right Leg",
-      "classification": "no-official-mapping",
-      "ldrawFiles": [],
-      "mappingEvidence": [],
-      "reason": null
-    },
-    {
-      "catalogId": "part:970l75r64pr0001",
-      "role": "legsAssembly",
-      "rebrickablePartNum": "970l75r64pr0001",
-      "name": "Hips and Pearl Titanium Left Leg, Trans-Dark Pink Right Leg with Dark Purple Lapels, Lightning, Silver Claws print",
       "classification": "no-official-mapping",
       "ldrawFiles": [],
       "mappingEvidence": [],

@@ -43,7 +43,7 @@ describe("FF-14 responsive catalog workspace", () => {
       legsAssembly: 3_231,
       handAccessory: 1_308,
     });
-    expect(allParts.filter(builderComponentForCatalogPart)).toHaveLength(14_410);
+    expect(allParts.filter(builderComponentForCatalogPart)).toHaveLength(14_458);
   }, 15_000);
 
   it("defines responsive tabs, drawer focus return and keyboard dismissal", async () => {
@@ -94,7 +94,7 @@ describe("FF-14 responsive catalog workspace", () => {
     expect(allParts.filter((part) => {
       const builderComponent = builderComponentForCatalogPart(part);
       return builderComponent && verifiedLDrawEntryForComponent(builderComponent.id);
-    })).toHaveLength(14_403);
+    })).toHaveLength(14_451);
     expect(cardSource).toContain("Geometrie ohne Druck");
     expect(cardSource).toContain('disabled={connectionStatus !== "digitally-supported"}');
     expect(cardSource).toContain("In Figur einsetzen");
@@ -128,5 +128,23 @@ describe("FF-14 responsive catalog workspace", () => {
     expect(builderComponent).toBeDefined();
     expect(entry?.ldrawFile).toBe("parts/3815b.dat");
     expect(entry?.geometryFallback).toBeNull();
+  });
+
+  it("enables asymmetric legs only when both leg colours and one hip colour are catalog-backed", async () => {
+    const legs = await loadCatalogParts("legsAssembly");
+    const safePart = legs.find(({ rebrickablePartNum }) => rebrickablePartNum === "970l03r22pr0907");
+    const blockedPart = legs.find(({ rebrickablePartNum }) => rebrickablePartNum === "970l03r12");
+    const ambiguousHipPart = legs.find(({ rebrickablePartNum }) => rebrickablePartNum === "970l03r22");
+    const safeComponent = safePart ? builderComponentForCatalogPart(safePart) : undefined;
+    const blockedComponent = blockedPart ? builderComponentForCatalogPart(blockedPart) : undefined;
+    const ambiguousHipComponent = ambiguousHipPart ? builderComponentForCatalogPart(ambiguousHipPart) : undefined;
+
+    expect(safeComponent).toBeDefined();
+    expect(safeComponent && verifiedLDrawEntryForComponent(safeComponent.id)?.geometryFallback).toEqual({
+      kind: "unprinted-assembly-code",
+      parentPartNums: ["970l03r22"],
+    });
+    expect(blockedComponent).toBeUndefined();
+    expect(ambiguousHipComponent).toBeUndefined();
   });
 });

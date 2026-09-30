@@ -6,13 +6,14 @@ import {
   parseAssemblyPartNum,
 } from "../../tools/lib/rebrickable-assembly-colors.js";
 
-const knownColors = new Set(["Yellow", "White", "Black", "Light Nougat", "Dark Blue", "Trans-Yellow"]);
+const knownColors = new Set(["Yellow", "White", "Black", "Red", "Light Nougat", "Dark Blue", "Trans-Yellow"]);
 const plainParts = [
   { partNum: "973c01h01", name: "Torso, Yellow Arms and Hands [Plain]" },
   { partNum: "973c27h01", name: "Torso, White Arms, Yellow Hands [Plain]" },
   { partNum: "973c03h02", name: "Torso, Black Arms, Light Nougat Hands [PLAIN]" },
   { partNum: "970c05", name: "Hips and Dark Blue Legs" },
   { partNum: "970c68", name: "Hips and Trans-Yellow Legs" },
+  { partNum: "970l03r22", name: "Hips and Black Left Leg, Red Right Leg [Plain]" },
 ];
 
 describe("Rebrickable assembly part numbers", () => {
@@ -24,6 +25,12 @@ describe("Rebrickable assembly part numbers", () => {
       kind: "legs",
       legCode: "24",
       bootCode: "10",
+      printed: true,
+    });
+    expect(parseAssemblyPartNum("970l03r22pr0115")).toEqual({
+      kind: "splitLegs",
+      leftLegCode: "03",
+      rightLegCode: "22",
       printed: true,
     });
   });
@@ -46,8 +53,10 @@ describe("assembly colour code table", () => {
       "05": "Dark Blue",
       "27": "White",
       "68": "Trans-Yellow",
+      "22": "Red",
     });
     expect(table.evidence.get("01")).toEqual(["973c01h01", "973c27h01"]);
+    expect(table.evidence.get("03")).toEqual(["970l03r22", "973c03h02"]);
     expect(table.unresolved.size).toBe(0);
   });
 
@@ -97,6 +106,8 @@ describe("per-entry colour confirmation", () => {
       .toEqual({ kind: "legs", legColorName: "Dark Blue" });
     expect(confirmAssemblyColors("970c05pat03pr0001", "Hips with Dark Blue Legs and Black Boots Pattern with Silver Toes Print", table))
       .toEqual({ kind: "legs", legColorName: "Dark Blue", bootColorName: "Black" });
+    expect(confirmAssemblyColors("970l03r22pr0115", "Hips and Black Left Leg, Red Right Leg with Diamonds Print", table))
+      .toEqual({ kind: "splitLegs", leftLegColorName: "Black", rightLegColorName: "Red" });
   });
 
   it.each([
@@ -109,6 +120,7 @@ describe("per-entry colour confirmation", () => {
     ["970c05", "Hips and Dark Blue Legs, White Legs Print"],
     ["970c05pat03pr0001", "Hips with Dark Blue Legs and Black Boots Pattern with White Legs Print"],
     ["970c05pat03pr0001", "Hips with Dark Blue Legs and Black Boots Pattern with White Boots Print"],
+    ["970l03r22pr0115", "Hips and Red Left Leg, Black Right Leg with Diamonds Print"],
   ])("blocks %s when the name does not confirm the code", (partNum, name) => {
     expect(confirmAssemblyColors(partNum, name, table)).toBeNull();
   });

@@ -26,3 +26,9 @@ Torso- und Hüftkörper behalten die bisherige Katalogfarbe. Arme, Hände und Be
 - Bedruckte Varianten ohne offizielle Druckdatei bleiben gesperrt. Ob sie später unbedruckt angezeigt werden, ist eine eigene Produktentscheidung.
 - `mappingEvidence` erhält den Wert `rebrickable-assembly-code`; jeder solche Eintrag trägt seine Zusammensetzung in `assemblyComposition`.
 - Weiterhin keine Rebrickable-API, keine MOC-Dateien und keine Aussage über physische Passform.
+
+## Erweiterung: asymmetrische Beine
+
+Seit 2026-09-30 werden auch Rebrickable-Baugruppen `970lNNrMM` nach denselben Belegregeln zusammengesetzt. Die beiden Farbcodes werden ausschließlich aus unbedruckten Grundbaugruppen mit dem verankerten Namensmuster „Hips and L Left Leg, R Right Leg“ abgeleitet und getrennt von der bisherigen Torso-/Bein-Codetabelle geprüft. `3817c` liefert die linke, `3816c` die rechte offizielle LDraw-Geometrie.
+
+Zusätzlich muss der konkrete Rebrickable-Eintrag über `elements.csv` genau einen gültigen RGB-Wert für die Hüfte belegen. Ein fehlender oder widersprüchlicher Hüftwert sperrt den Eintrag. Bedruckte Varianten ohne eigene komplette LDraw-Baugruppe folgen ADR-009 und werden ausdrücklich als „Geometrie ohne Druck“ markiert. Dadurch werden weder eine Hüftfarbe noch ein Aufdruck erfunden.

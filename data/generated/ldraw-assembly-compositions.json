@@ -724922,6 +724922,3270 @@
           ]
         }
       ]
+    },
+    "catalog:legsAssembly:970l03r10": {
+      "kind": "rebrickable-color-coded-assembly",
+      "printRendered": true,
+      "referenceShortcutCount": 112,
+      "agreeingReferenceShortcutCount": 111,
+      "components": [
+        {
+          "file": "parts/3815b.dat",
+          "colorRole": "catalog",
+          "colorName": null,
+          "colorRgb": null,
+          "transform": [
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1
+          ]
+        },
+        {
+          "file": "parts/3816c.dat",
+          "colorRole": "rightLeg",
+          "colorName": "Dark Red",
+          "colorRgb": "720E0F",
+          "transform": [
+            0,
+            12,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1
+          ]
+        },
+        {
+          "file": "parts/3817c.dat",
+          "colorRole": "leftLeg",
+          "colorName": "Black",
+          "colorRgb": "05131D",
+          "transform": [
+            0,
+            12,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1
+          ]
+        }
+      ]
+    },
+    "catalog:legsAssembly:970l03r12pr1280": {
+      "kind": "rebrickable-color-coded-assembly",
+      "printRendered": false,
+      "referenceShortcutCount": 112,
+      "agreeingReferenceShortcutCount": 111,
+      "components": [
+        {
+          "file": "parts/3815b.dat",
+          "colorRole": "catalog",
+          "colorName": null,
+          "colorRgb": null,
+          "transform": [
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1
+          ]
+        },
+        {
+          "file": "parts/3816c.dat",
+          "colorRole": "rightLeg",
+          "colorName": "Dark Bluish Gray",
+          "colorRgb": "6C6E68",
+          "transform": [
+            0,
+            12,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1
+          ]
+        },
+        {
+          "file": "parts/3817c.dat",
+          "colorRole": "leftLeg",
+          "colorName": "Black",
+          "colorRgb": "05131D",
+          "transform": [
+            0,
+            12,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1
+          ]
+        }
+      ]
+    },
+    "catalog:legsAssembly:970l03r22pr0907": {
+      "kind": "rebrickable-color-coded-assembly",
+      "printRendered": false,
+      "referenceShortcutCount": 112,
+      "agreeingReferenceShortcutCount": 111,
+      "components": [
+        {
+          "file": "parts/3815b.dat",
+          "colorRole": "catalog",
+          "colorName": null,
+          "colorRgb": null,
+          "transform": [
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1
+          ]
+        },
+        {
+          "file": "parts/3816c.dat",
+          "colorRole": "rightLeg",
+          "colorName": "Red",
+          "colorRgb": "C91A09",
+          "transform": [
+            0,
+            12,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1
+          ]
+        },
+        {
+          "file": "parts/3817c.dat",
+          "colorRole": "leftLeg",
+          "colorName": "Black",
+          "colorRgb": "05131D",
+          "transform": [
+            0,
+            12,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1
+          ]
+        }
+      ]
+    },
+    "catalog:legsAssembly:970l03r22pr1219": {
+      "kind": "rebrickable-color-coded-assembly",
+      "printRendered": false,
+      "referenceShortcutCount": 112,
+      "agreeingReferenceShortcutCount": 111,
+      "components": [
+        {
+          "file": "parts/3815b.dat",
+          "colorRole": "catalog",
+          "colorName": null,
+          "colorRgb": null,
+          "transform": [
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1
+          ]
+        },
+        {
+          "file": "parts/3816c.dat",
+          "colorRole": "rightLeg",
+          "colorName": "Red",
+          "colorRgb": "C91A09",
+          "transform": [
+            0,
+            12,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1
+          ]
+        },
+        {
+          "file": "parts/3817c.dat",
+          "colorRole": "leftLeg",
+          "colorName": "Black",
+          "colorRgb": "05131D",
+          "transform": [
+            0,
+            12,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1
+          ]
+        }
+      ]
+    },
+    "catalog:legsAssembly:970l03r22pr1290": {
+      "kind": "rebrickable-color-coded-assembly",
+      "printRendered": false,
+      "referenceShortcutCount": 112,
+      "agreeingReferenceShortcutCount": 111,
+      "components": [
+        {
+          "file": "parts/3815b.dat",
+          "colorRole": "catalog",
+          "colorName": null,
+          "colorRgb": null,
+          "transform": [
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1
+          ]
+        },
+        {
+          "file": "parts/3816c.dat",
+          "colorRole": "rightLeg",
+          "colorName": "Red",
+          "colorRgb": "C91A09",
+          "transform": [
+            0,
+            12,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1
+          ]
+        },
+        {
+          "file": "parts/3817c.dat",
+          "colorRole": "leftLeg",
+          "colorName": "Black",
+          "colorRgb": "05131D",
+          "transform": [
+            0,
+            12,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1
+          ]
+        }
+      ]
+    },
+    "catalog:legsAssembly:970l03r22pr1407": {
+      "kind": "rebrickable-color-coded-assembly",
+      "printRendered": false,
+      "referenceShortcutCount": 112,
+      "agreeingReferenceShortcutCount": 111,
+      "components": [
+        {
+          "file": "parts/3815b.dat",
+          "colorRole": "catalog",
+          "colorName": null,
+          "colorRgb": null,
+          "transform": [
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1
+          ]
+        },
+        {
+          "file": "parts/3816c.dat",
+          "colorRole": "rightLeg",
+          "colorName": "Red",
+          "colorRgb": "C91A09",
+          "transform": [
+            0,
+            12,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1
+          ]
+        },
+        {
+          "file": "parts/3817c.dat",
+          "colorRole": "leftLeg",
+          "colorName": "Black",
+          "colorRgb": "05131D",
+          "transform": [
+            0,
+            12,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1
+          ]
+        }
+      ]
+    },
+    "catalog:legsAssembly:970l03r22pr2637": {
+      "kind": "rebrickable-color-coded-assembly",
+      "printRendered": false,
+      "referenceShortcutCount": 112,
+      "agreeingReferenceShortcutCount": 111,
+      "components": [
+        {
+          "file": "parts/3815b.dat",
+          "colorRole": "catalog",
+          "colorName": null,
+          "colorRgb": null,
+          "transform": [
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1
+          ]
+        },
+        {
+          "file": "parts/3816c.dat",
+          "colorRole": "rightLeg",
+          "colorName": "Red",
+          "colorRgb": "C91A09",
+          "transform": [
+            0,
+            12,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1
+          ]
+        },
+        {
+          "file": "parts/3817c.dat",
+          "colorRole": "leftLeg",
+          "colorName": "Black",
+          "colorRgb": "05131D",
+          "transform": [
+            0,
+            12,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1
+          ]
+        }
+      ]
+    },
+    "catalog:legsAssembly:970l03r27pr0001": {
+      "kind": "rebrickable-color-coded-assembly",
+      "printRendered": false,
+      "referenceShortcutCount": 112,
+      "agreeingReferenceShortcutCount": 111,
+      "components": [
+        {
+          "file": "parts/3815b.dat",
+          "colorRole": "catalog",
+          "colorName": null,
+          "colorRgb": null,
+          "transform": [
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1
+          ]
+        },
+        {
+          "file": "parts/3816c.dat",
+          "colorRole": "rightLeg",
+          "colorName": "White",
+          "colorRgb": "FFFFFF",
+          "transform": [
+            0,
+            12,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1
+          ]
+        },
+        {
+          "file": "parts/3817c.dat",
+          "colorRole": "leftLeg",
+          "colorName": "Black",
+          "colorRgb": "05131D",
+          "transform": [
+            0,
+            12,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1
+          ]
+        }
+      ]
+    },
+    "catalog:legsAssembly:970l03r73pr1299": {
+      "kind": "rebrickable-color-coded-assembly",
+      "printRendered": false,
+      "referenceShortcutCount": 112,
+      "agreeingReferenceShortcutCount": 111,
+      "components": [
+        {
+          "file": "parts/3815b.dat",
+          "colorRole": "catalog",
+          "colorName": null,
+          "colorRgb": null,
+          "transform": [
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1
+          ]
+        },
+        {
+          "file": "parts/3816c.dat",
+          "colorRole": "rightLeg",
+          "colorName": "Trans-Clear",
+          "colorRgb": "FCFCFC",
+          "transform": [
+            0,
+            12,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1
+          ]
+        },
+        {
+          "file": "parts/3817c.dat",
+          "colorRole": "leftLeg",
+          "colorName": "Black",
+          "colorRgb": "05131D",
+          "transform": [
+            0,
+            12,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1
+          ]
+        }
+      ]
+    },
+    "catalog:legsAssembly:970l04r03pr2641": {
+      "kind": "rebrickable-color-coded-assembly",
+      "printRendered": false,
+      "referenceShortcutCount": 112,
+      "agreeingReferenceShortcutCount": 111,
+      "components": [
+        {
+          "file": "parts/3815b.dat",
+          "colorRole": "catalog",
+          "colorName": null,
+          "colorRgb": null,
+          "transform": [
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1
+          ]
+        },
+        {
+          "file": "parts/3816c.dat",
+          "colorRole": "rightLeg",
+          "colorName": "Black",
+          "colorRgb": "05131D",
+          "transform": [
+            0,
+            12,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1
+          ]
+        },
+        {
+          "file": "parts/3817c.dat",
+          "colorRole": "leftLeg",
+          "colorName": "Dark Azure",
+          "colorRgb": "078BC9",
+          "transform": [
+            0,
+            12,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1
+          ]
+        }
+      ]
+    },
+    "catalog:legsAssembly:970l04r36": {
+      "kind": "rebrickable-color-coded-assembly",
+      "printRendered": true,
+      "referenceShortcutCount": 112,
+      "agreeingReferenceShortcutCount": 111,
+      "components": [
+        {
+          "file": "parts/3815b.dat",
+          "colorRole": "catalog",
+          "colorName": null,
+          "colorRgb": null,
+          "transform": [
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1
+          ]
+        },
+        {
+          "file": "parts/3816c.dat",
+          "colorRole": "rightLeg",
+          "colorName": "Dark Pink",
+          "colorRgb": "C870A0",
+          "transform": [
+            0,
+            12,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1
+          ]
+        },
+        {
+          "file": "parts/3817c.dat",
+          "colorRole": "leftLeg",
+          "colorName": "Dark Azure",
+          "colorRgb": "078BC9",
+          "transform": [
+            0,
+            12,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1
+          ]
+        }
+      ]
+    },
+    "catalog:legsAssembly:970l07r34pr0001": {
+      "kind": "rebrickable-color-coded-assembly",
+      "printRendered": false,
+      "referenceShortcutCount": 112,
+      "agreeingReferenceShortcutCount": 111,
+      "components": [
+        {
+          "file": "parts/3815b.dat",
+          "colorRole": "catalog",
+          "colorName": null,
+          "colorRgb": null,
+          "transform": [
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1
+          ]
+        },
+        {
+          "file": "parts/3816c.dat",
+          "colorRole": "rightLeg",
+          "colorName": "Orange",
+          "colorRgb": "FE8A18",
+          "transform": [
+            0,
+            12,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1
+          ]
+        },
+        {
+          "file": "parts/3817c.dat",
+          "colorRole": "leftLeg",
+          "colorName": "Dark Brown",
+          "colorRgb": "352100",
+          "transform": [
+            0,
+            12,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1
+          ]
+        }
+      ]
+    },
+    "catalog:legsAssembly:970l09r22pr0944": {
+      "kind": "rebrickable-color-coded-assembly",
+      "printRendered": false,
+      "referenceShortcutCount": 112,
+      "agreeingReferenceShortcutCount": 111,
+      "components": [
+        {
+          "file": "parts/3815b.dat",
+          "colorRole": "catalog",
+          "colorName": null,
+          "colorRgb": null,
+          "transform": [
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1
+          ]
+        },
+        {
+          "file": "parts/3816c.dat",
+          "colorRole": "rightLeg",
+          "colorName": "Red",
+          "colorRgb": "C91A09",
+          "transform": [
+            0,
+            12,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1
+          ]
+        },
+        {
+          "file": "parts/3817c.dat",
+          "colorRole": "leftLeg",
+          "colorName": "Dark Purple",
+          "colorRgb": "3F3691",
+          "transform": [
+            0,
+            12,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1
+          ]
+        }
+      ]
+    },
+    "catalog:legsAssembly:970l09r29pr1146": {
+      "kind": "rebrickable-color-coded-assembly",
+      "printRendered": false,
+      "referenceShortcutCount": 112,
+      "agreeingReferenceShortcutCount": 111,
+      "components": [
+        {
+          "file": "parts/3815b.dat",
+          "colorRole": "catalog",
+          "colorName": null,
+          "colorRgb": null,
+          "transform": [
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1
+          ]
+        },
+        {
+          "file": "parts/3816c.dat",
+          "colorRole": "rightLeg",
+          "colorName": "Bright Light Blue",
+          "colorRgb": "9FC3E9",
+          "transform": [
+            0,
+            12,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1
+          ]
+        },
+        {
+          "file": "parts/3817c.dat",
+          "colorRole": "leftLeg",
+          "colorName": "Dark Purple",
+          "colorRgb": "3F3691",
+          "transform": [
+            0,
+            12,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1
+          ]
+        }
+      ]
+    },
+    "catalog:legsAssembly:970l09r33pr1195": {
+      "kind": "rebrickable-color-coded-assembly",
+      "printRendered": false,
+      "referenceShortcutCount": 112,
+      "agreeingReferenceShortcutCount": 111,
+      "components": [
+        {
+          "file": "parts/3815b.dat",
+          "colorRole": "catalog",
+          "colorName": null,
+          "colorRgb": null,
+          "transform": [
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1
+          ]
+        },
+        {
+          "file": "parts/3816c.dat",
+          "colorRole": "rightLeg",
+          "colorName": "Medium Lavender",
+          "colorRgb": "AC78BA",
+          "transform": [
+            0,
+            12,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1
+          ]
+        },
+        {
+          "file": "parts/3817c.dat",
+          "colorRole": "leftLeg",
+          "colorName": "Dark Purple",
+          "colorRgb": "3F3691",
+          "transform": [
+            0,
+            12,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1
+          ]
+        }
+      ]
+    },
+    "catalog:legsAssembly:970l09r34pr0303": {
+      "kind": "rebrickable-color-coded-assembly",
+      "printRendered": false,
+      "referenceShortcutCount": 112,
+      "agreeingReferenceShortcutCount": 111,
+      "components": [
+        {
+          "file": "parts/3815b.dat",
+          "colorRole": "catalog",
+          "colorName": null,
+          "colorRgb": null,
+          "transform": [
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1
+          ]
+        },
+        {
+          "file": "parts/3816c.dat",
+          "colorRole": "rightLeg",
+          "colorName": "Orange",
+          "colorRgb": "FE8A18",
+          "transform": [
+            0,
+            12,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1
+          ]
+        },
+        {
+          "file": "parts/3817c.dat",
+          "colorRole": "leftLeg",
+          "colorName": "Dark Purple",
+          "colorRgb": "3F3691",
+          "transform": [
+            0,
+            12,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1
+          ]
+        }
+      ]
+    },
+    "catalog:legsAssembly:970l09r38pr0710": {
+      "kind": "rebrickable-color-coded-assembly",
+      "printRendered": false,
+      "referenceShortcutCount": 112,
+      "agreeingReferenceShortcutCount": 111,
+      "components": [
+        {
+          "file": "parts/3815b.dat",
+          "colorRole": "catalog",
+          "colorName": null,
+          "colorRgb": null,
+          "transform": [
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1
+          ]
+        },
+        {
+          "file": "parts/3816c.dat",
+          "colorRole": "rightLeg",
+          "colorName": "Bright Light Orange",
+          "colorRgb": "F8BB3D",
+          "transform": [
+            0,
+            12,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1
+          ]
+        },
+        {
+          "file": "parts/3817c.dat",
+          "colorRole": "leftLeg",
+          "colorName": "Dark Purple",
+          "colorRgb": "3F3691",
+          "transform": [
+            0,
+            12,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1
+          ]
+        }
+      ]
+    },
+    "catalog:legsAssembly:970l11r26pr1193": {
+      "kind": "rebrickable-color-coded-assembly",
+      "printRendered": false,
+      "referenceShortcutCount": 112,
+      "agreeingReferenceShortcutCount": 111,
+      "components": [
+        {
+          "file": "parts/3815b.dat",
+          "colorRole": "catalog",
+          "colorName": null,
+          "colorRgb": null,
+          "transform": [
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1
+          ]
+        },
+        {
+          "file": "parts/3816c.dat",
+          "colorRole": "rightLeg",
+          "colorName": "Tan",
+          "colorRgb": "E4CD9E",
+          "transform": [
+            0,
+            12,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1
+          ]
+        },
+        {
+          "file": "parts/3817c.dat",
+          "colorRole": "leftLeg",
+          "colorName": "Dark Tan",
+          "colorRgb": "958A73",
+          "transform": [
+            0,
+            12,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1
+          ]
+        }
+      ]
+    },
+    "catalog:legsAssembly:970l11r65pr0665": {
+      "kind": "rebrickable-color-coded-assembly",
+      "printRendered": false,
+      "referenceShortcutCount": 112,
+      "agreeingReferenceShortcutCount": 111,
+      "components": [
+        {
+          "file": "parts/3815b.dat",
+          "colorRole": "catalog",
+          "colorName": null,
+          "colorRgb": null,
+          "transform": [
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1
+          ]
+        },
+        {
+          "file": "parts/3816c.dat",
+          "colorRole": "rightLeg",
+          "colorName": "Trans-Light Blue",
+          "colorRgb": "AEEFEC",
+          "transform": [
+            0,
+            12,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1
+          ]
+        },
+        {
+          "file": "parts/3817c.dat",
+          "colorRole": "leftLeg",
+          "colorName": "Dark Tan",
+          "colorRgb": "958A73",
+          "transform": [
+            0,
+            12,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1
+          ]
+        }
+      ]
+    },
+    "catalog:legsAssembly:970l12r65pr0670": {
+      "kind": "rebrickable-color-coded-assembly",
+      "printRendered": false,
+      "referenceShortcutCount": 112,
+      "agreeingReferenceShortcutCount": 111,
+      "components": [
+        {
+          "file": "parts/3815b.dat",
+          "colorRole": "catalog",
+          "colorName": null,
+          "colorRgb": null,
+          "transform": [
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1
+          ]
+        },
+        {
+          "file": "parts/3816c.dat",
+          "colorRole": "rightLeg",
+          "colorName": "Trans-Light Blue",
+          "colorRgb": "AEEFEC",
+          "transform": [
+            0,
+            12,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1
+          ]
+        },
+        {
+          "file": "parts/3817c.dat",
+          "colorRole": "leftLeg",
+          "colorName": "Dark Bluish Gray",
+          "colorRgb": "6C6E68",
+          "transform": [
+            0,
+            12,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1
+          ]
+        }
+      ]
+    },
+    "catalog:legsAssembly:970l12r65pr0674": {
+      "kind": "rebrickable-color-coded-assembly",
+      "printRendered": false,
+      "referenceShortcutCount": 112,
+      "agreeingReferenceShortcutCount": 111,
+      "components": [
+        {
+          "file": "parts/3815b.dat",
+          "colorRole": "catalog",
+          "colorName": null,
+          "colorRgb": null,
+          "transform": [
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1
+          ]
+        },
+        {
+          "file": "parts/3816c.dat",
+          "colorRole": "rightLeg",
+          "colorName": "Trans-Light Blue",
+          "colorRgb": "AEEFEC",
+          "transform": [
+            0,
+            12,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1
+          ]
+        },
+        {
+          "file": "parts/3817c.dat",
+          "colorRole": "leftLeg",
+          "colorName": "Dark Bluish Gray",
+          "colorRgb": "6C6E68",
+          "transform": [
+            0,
+            12,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1
+          ]
+        }
+      ]
+    },
+    "catalog:legsAssembly:970l14r03": {
+      "kind": "rebrickable-color-coded-assembly",
+      "printRendered": true,
+      "referenceShortcutCount": 112,
+      "agreeingReferenceShortcutCount": 111,
+      "components": [
+        {
+          "file": "parts/3815b.dat",
+          "colorRole": "catalog",
+          "colorName": null,
+          "colorRgb": null,
+          "transform": [
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1
+          ]
+        },
+        {
+          "file": "parts/3816c.dat",
+          "colorRole": "rightLeg",
+          "colorName": "Black",
+          "colorRgb": "05131D",
+          "transform": [
+            0,
+            12,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1
+          ]
+        },
+        {
+          "file": "parts/3817c.dat",
+          "colorRole": "leftLeg",
+          "colorName": "Light Bluish Gray",
+          "colorRgb": "A0A5A9",
+          "transform": [
+            0,
+            12,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1
+          ]
+        }
+      ]
+    },
+    "catalog:legsAssembly:970l14r65pr0817": {
+      "kind": "rebrickable-color-coded-assembly",
+      "printRendered": false,
+      "referenceShortcutCount": 112,
+      "agreeingReferenceShortcutCount": 111,
+      "components": [
+        {
+          "file": "parts/3815b.dat",
+          "colorRole": "catalog",
+          "colorName": null,
+          "colorRgb": null,
+          "transform": [
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1
+          ]
+        },
+        {
+          "file": "parts/3816c.dat",
+          "colorRole": "rightLeg",
+          "colorName": "Trans-Light Blue",
+          "colorRgb": "AEEFEC",
+          "transform": [
+            0,
+            12,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1
+          ]
+        },
+        {
+          "file": "parts/3817c.dat",
+          "colorRole": "leftLeg",
+          "colorName": "Light Bluish Gray",
+          "colorRgb": "A0A5A9",
+          "transform": [
+            0,
+            12,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1
+          ]
+        }
+      ]
+    },
+    "catalog:legsAssembly:970l14r65pr0819": {
+      "kind": "rebrickable-color-coded-assembly",
+      "printRendered": false,
+      "referenceShortcutCount": 112,
+      "agreeingReferenceShortcutCount": 111,
+      "components": [
+        {
+          "file": "parts/3815b.dat",
+          "colorRole": "catalog",
+          "colorName": null,
+          "colorRgb": null,
+          "transform": [
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1
+          ]
+        },
+        {
+          "file": "parts/3816c.dat",
+          "colorRole": "rightLeg",
+          "colorName": "Trans-Light Blue",
+          "colorRgb": "AEEFEC",
+          "transform": [
+            0,
+            12,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1
+          ]
+        },
+        {
+          "file": "parts/3817c.dat",
+          "colorRole": "leftLeg",
+          "colorName": "Light Bluish Gray",
+          "colorRgb": "A0A5A9",
+          "transform": [
+            0,
+            12,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1
+          ]
+        }
+      ]
+    },
+    "catalog:legsAssembly:970l18r74pr0001": {
+      "kind": "rebrickable-color-coded-assembly",
+      "printRendered": false,
+      "referenceShortcutCount": 112,
+      "agreeingReferenceShortcutCount": 111,
+      "components": [
+        {
+          "file": "parts/3815b.dat",
+          "colorRole": "catalog",
+          "colorName": null,
+          "colorRgb": null,
+          "transform": [
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1
+          ]
+        },
+        {
+          "file": "parts/3816c.dat",
+          "colorRole": "rightLeg",
+          "colorName": "Trans-Bright Green",
+          "colorRgb": "D9E4A7",
+          "transform": [
+            0,
+            12,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1
+          ]
+        },
+        {
+          "file": "parts/3817c.dat",
+          "colorRole": "leftLeg",
+          "colorName": "Lime",
+          "colorRgb": "BBE90B",
+          "transform": [
+            0,
+            12,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1
+          ]
+        }
+      ]
+    },
+    "catalog:legsAssembly:970l19r47pr9919": {
+      "kind": "rebrickable-color-coded-assembly",
+      "printRendered": false,
+      "referenceShortcutCount": 112,
+      "agreeingReferenceShortcutCount": 111,
+      "components": [
+        {
+          "file": "parts/3815b.dat",
+          "colorRole": "catalog",
+          "colorName": null,
+          "colorRgb": null,
+          "transform": [
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1
+          ]
+        },
+        {
+          "file": "parts/3816c.dat",
+          "colorRole": "rightLeg",
+          "colorName": "Pearl Titanium",
+          "colorRgb": "3E3C39",
+          "transform": [
+            0,
+            12,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1
+          ]
+        },
+        {
+          "file": "parts/3817c.dat",
+          "colorRole": "leftLeg",
+          "colorName": "Reddish Brown",
+          "colorRgb": "582A12",
+          "transform": [
+            0,
+            12,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1
+          ]
+        }
+      ]
+    },
+    "catalog:legsAssembly:970l22r03pr1911": {
+      "kind": "rebrickable-color-coded-assembly",
+      "printRendered": false,
+      "referenceShortcutCount": 112,
+      "agreeingReferenceShortcutCount": 111,
+      "components": [
+        {
+          "file": "parts/3815b.dat",
+          "colorRole": "catalog",
+          "colorName": null,
+          "colorRgb": null,
+          "transform": [
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1
+          ]
+        },
+        {
+          "file": "parts/3816c.dat",
+          "colorRole": "rightLeg",
+          "colorName": "Black",
+          "colorRgb": "05131D",
+          "transform": [
+            0,
+            12,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1
+          ]
+        },
+        {
+          "file": "parts/3817c.dat",
+          "colorRole": "leftLeg",
+          "colorName": "Red",
+          "colorRgb": "C91A09",
+          "transform": [
+            0,
+            12,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1
+          ]
+        }
+      ]
+    },
+    "catalog:legsAssembly:970l22r03pr2632": {
+      "kind": "rebrickable-color-coded-assembly",
+      "printRendered": false,
+      "referenceShortcutCount": 112,
+      "agreeingReferenceShortcutCount": 111,
+      "components": [
+        {
+          "file": "parts/3815b.dat",
+          "colorRole": "catalog",
+          "colorName": null,
+          "colorRgb": null,
+          "transform": [
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1
+          ]
+        },
+        {
+          "file": "parts/3816c.dat",
+          "colorRole": "rightLeg",
+          "colorName": "Black",
+          "colorRgb": "05131D",
+          "transform": [
+            0,
+            12,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1
+          ]
+        },
+        {
+          "file": "parts/3817c.dat",
+          "colorRole": "leftLeg",
+          "colorName": "Red",
+          "colorRgb": "C91A09",
+          "transform": [
+            0,
+            12,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1
+          ]
+        }
+      ]
+    },
+    "catalog:legsAssembly:970l22r27pr0504": {
+      "kind": "rebrickable-color-coded-assembly",
+      "printRendered": false,
+      "referenceShortcutCount": 112,
+      "agreeingReferenceShortcutCount": 111,
+      "components": [
+        {
+          "file": "parts/3815b.dat",
+          "colorRole": "catalog",
+          "colorName": null,
+          "colorRgb": null,
+          "transform": [
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1
+          ]
+        },
+        {
+          "file": "parts/3816c.dat",
+          "colorRole": "rightLeg",
+          "colorName": "White",
+          "colorRgb": "FFFFFF",
+          "transform": [
+            0,
+            12,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1
+          ]
+        },
+        {
+          "file": "parts/3817c.dat",
+          "colorRole": "leftLeg",
+          "colorName": "Red",
+          "colorRgb": "C91A09",
+          "transform": [
+            0,
+            12,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1
+          ]
+        }
+      ]
+    },
+    "catalog:legsAssembly:970l22r28pr0001": {
+      "kind": "rebrickable-color-coded-assembly",
+      "printRendered": false,
+      "referenceShortcutCount": 112,
+      "agreeingReferenceShortcutCount": 111,
+      "components": [
+        {
+          "file": "parts/3815b.dat",
+          "colorRole": "catalog",
+          "colorName": null,
+          "colorRgb": null,
+          "transform": [
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1
+          ]
+        },
+        {
+          "file": "parts/3816c.dat",
+          "colorRole": "rightLeg",
+          "colorName": "Blue",
+          "colorRgb": "0055BF",
+          "transform": [
+            0,
+            12,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1
+          ]
+        },
+        {
+          "file": "parts/3817c.dat",
+          "colorRole": "leftLeg",
+          "colorName": "Red",
+          "colorRgb": "C91A09",
+          "transform": [
+            0,
+            12,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1
+          ]
+        }
+      ]
+    },
+    "catalog:legsAssembly:970l24r65pr0807": {
+      "kind": "rebrickable-color-coded-assembly",
+      "printRendered": false,
+      "referenceShortcutCount": 112,
+      "agreeingReferenceShortcutCount": 111,
+      "components": [
+        {
+          "file": "parts/3815b.dat",
+          "colorRole": "catalog",
+          "colorName": null,
+          "colorRgb": null,
+          "transform": [
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1
+          ]
+        },
+        {
+          "file": "parts/3816c.dat",
+          "colorRole": "rightLeg",
+          "colorName": "Trans-Light Blue",
+          "colorRgb": "AEEFEC",
+          "transform": [
+            0,
+            12,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1
+          ]
+        },
+        {
+          "file": "parts/3817c.dat",
+          "colorRole": "leftLeg",
+          "colorName": "Sand Blue",
+          "colorRgb": "6074A1",
+          "transform": [
+            0,
+            12,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1
+          ]
+        }
+      ]
+    },
+    "catalog:legsAssembly:970l26r65pr0667": {
+      "kind": "rebrickable-color-coded-assembly",
+      "printRendered": false,
+      "referenceShortcutCount": 112,
+      "agreeingReferenceShortcutCount": 111,
+      "components": [
+        {
+          "file": "parts/3815b.dat",
+          "colorRole": "catalog",
+          "colorName": null,
+          "colorRgb": null,
+          "transform": [
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1
+          ]
+        },
+        {
+          "file": "parts/3816c.dat",
+          "colorRole": "rightLeg",
+          "colorName": "Trans-Light Blue",
+          "colorRgb": "AEEFEC",
+          "transform": [
+            0,
+            12,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1
+          ]
+        },
+        {
+          "file": "parts/3817c.dat",
+          "colorRole": "leftLeg",
+          "colorName": "Tan",
+          "colorRgb": "E4CD9E",
+          "transform": [
+            0,
+            12,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1
+          ]
+        }
+      ]
+    },
+    "catalog:legsAssembly:970l27r22": {
+      "kind": "rebrickable-color-coded-assembly",
+      "printRendered": true,
+      "referenceShortcutCount": 112,
+      "agreeingReferenceShortcutCount": 111,
+      "components": [
+        {
+          "file": "parts/3815b.dat",
+          "colorRole": "catalog",
+          "colorName": null,
+          "colorRgb": null,
+          "transform": [
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1
+          ]
+        },
+        {
+          "file": "parts/3816c.dat",
+          "colorRole": "rightLeg",
+          "colorName": "Red",
+          "colorRgb": "C91A09",
+          "transform": [
+            0,
+            12,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1
+          ]
+        },
+        {
+          "file": "parts/3817c.dat",
+          "colorRole": "leftLeg",
+          "colorName": "White",
+          "colorRgb": "FFFFFF",
+          "transform": [
+            0,
+            12,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1
+          ]
+        }
+      ]
+    },
+    "catalog:legsAssembly:970l27r65pr0659": {
+      "kind": "rebrickable-color-coded-assembly",
+      "printRendered": false,
+      "referenceShortcutCount": 112,
+      "agreeingReferenceShortcutCount": 111,
+      "components": [
+        {
+          "file": "parts/3815b.dat",
+          "colorRole": "catalog",
+          "colorName": null,
+          "colorRgb": null,
+          "transform": [
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1
+          ]
+        },
+        {
+          "file": "parts/3816c.dat",
+          "colorRole": "rightLeg",
+          "colorName": "Trans-Light Blue",
+          "colorRgb": "AEEFEC",
+          "transform": [
+            0,
+            12,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1
+          ]
+        },
+        {
+          "file": "parts/3817c.dat",
+          "colorRole": "leftLeg",
+          "colorName": "White",
+          "colorRgb": "FFFFFF",
+          "transform": [
+            0,
+            12,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1
+          ]
+        }
+      ]
+    },
+    "catalog:legsAssembly:970l27r65pr0661": {
+      "kind": "rebrickable-color-coded-assembly",
+      "printRendered": false,
+      "referenceShortcutCount": 112,
+      "agreeingReferenceShortcutCount": 111,
+      "components": [
+        {
+          "file": "parts/3815b.dat",
+          "colorRole": "catalog",
+          "colorName": null,
+          "colorRgb": null,
+          "transform": [
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1
+          ]
+        },
+        {
+          "file": "parts/3816c.dat",
+          "colorRole": "rightLeg",
+          "colorName": "Trans-Light Blue",
+          "colorRgb": "AEEFEC",
+          "transform": [
+            0,
+            12,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1
+          ]
+        },
+        {
+          "file": "parts/3817c.dat",
+          "colorRole": "leftLeg",
+          "colorName": "White",
+          "colorRgb": "FFFFFF",
+          "transform": [
+            0,
+            12,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1
+          ]
+        }
+      ]
+    },
+    "catalog:legsAssembly:970l27r65pr0798": {
+      "kind": "rebrickable-color-coded-assembly",
+      "printRendered": false,
+      "referenceShortcutCount": 112,
+      "agreeingReferenceShortcutCount": 111,
+      "components": [
+        {
+          "file": "parts/3815b.dat",
+          "colorRole": "catalog",
+          "colorName": null,
+          "colorRgb": null,
+          "transform": [
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1
+          ]
+        },
+        {
+          "file": "parts/3816c.dat",
+          "colorRole": "rightLeg",
+          "colorName": "Trans-Light Blue",
+          "colorRgb": "AEEFEC",
+          "transform": [
+            0,
+            12,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1
+          ]
+        },
+        {
+          "file": "parts/3817c.dat",
+          "colorRole": "leftLeg",
+          "colorName": "White",
+          "colorRgb": "FFFFFF",
+          "transform": [
+            0,
+            12,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1
+          ]
+        }
+      ]
+    },
+    "catalog:legsAssembly:970l27r65pr0800": {
+      "kind": "rebrickable-color-coded-assembly",
+      "printRendered": false,
+      "referenceShortcutCount": 112,
+      "agreeingReferenceShortcutCount": 111,
+      "components": [
+        {
+          "file": "parts/3815b.dat",
+          "colorRole": "catalog",
+          "colorName": null,
+          "colorRgb": null,
+          "transform": [
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1
+          ]
+        },
+        {
+          "file": "parts/3816c.dat",
+          "colorRole": "rightLeg",
+          "colorName": "Trans-Light Blue",
+          "colorRgb": "AEEFEC",
+          "transform": [
+            0,
+            12,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1
+          ]
+        },
+        {
+          "file": "parts/3817c.dat",
+          "colorRole": "leftLeg",
+          "colorName": "White",
+          "colorRgb": "FFFFFF",
+          "transform": [
+            0,
+            12,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1
+          ]
+        }
+      ]
+    },
+    "catalog:legsAssembly:970l28r22": {
+      "kind": "rebrickable-color-coded-assembly",
+      "printRendered": true,
+      "referenceShortcutCount": 112,
+      "agreeingReferenceShortcutCount": 111,
+      "components": [
+        {
+          "file": "parts/3815b.dat",
+          "colorRole": "catalog",
+          "colorName": null,
+          "colorRgb": null,
+          "transform": [
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1
+          ]
+        },
+        {
+          "file": "parts/3816c.dat",
+          "colorRole": "rightLeg",
+          "colorName": "Red",
+          "colorRgb": "C91A09",
+          "transform": [
+            0,
+            12,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1
+          ]
+        },
+        {
+          "file": "parts/3817c.dat",
+          "colorRole": "leftLeg",
+          "colorName": "Blue",
+          "colorRgb": "0055BF",
+          "transform": [
+            0,
+            12,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1
+          ]
+        }
+      ]
+    },
+    "catalog:legsAssembly:970l28r22pr0001": {
+      "kind": "rebrickable-color-coded-assembly",
+      "printRendered": false,
+      "referenceShortcutCount": 112,
+      "agreeingReferenceShortcutCount": 111,
+      "components": [
+        {
+          "file": "parts/3815b.dat",
+          "colorRole": "catalog",
+          "colorName": null,
+          "colorRgb": null,
+          "transform": [
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1
+          ]
+        },
+        {
+          "file": "parts/3816c.dat",
+          "colorRole": "rightLeg",
+          "colorName": "Red",
+          "colorRgb": "C91A09",
+          "transform": [
+            0,
+            12,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1
+          ]
+        },
+        {
+          "file": "parts/3817c.dat",
+          "colorRole": "leftLeg",
+          "colorName": "Blue",
+          "colorRgb": "0055BF",
+          "transform": [
+            0,
+            12,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1
+          ]
+        }
+      ]
+    },
+    "catalog:legsAssembly:970l28r34pr1420": {
+      "kind": "rebrickable-color-coded-assembly",
+      "printRendered": false,
+      "referenceShortcutCount": 112,
+      "agreeingReferenceShortcutCount": 111,
+      "components": [
+        {
+          "file": "parts/3815b.dat",
+          "colorRole": "catalog",
+          "colorName": null,
+          "colorRgb": null,
+          "transform": [
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1
+          ]
+        },
+        {
+          "file": "parts/3816c.dat",
+          "colorRole": "rightLeg",
+          "colorName": "Orange",
+          "colorRgb": "FE8A18",
+          "transform": [
+            0,
+            12,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1
+          ]
+        },
+        {
+          "file": "parts/3817c.dat",
+          "colorRole": "leftLeg",
+          "colorName": "Blue",
+          "colorRgb": "0055BF",
+          "transform": [
+            0,
+            12,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1
+          ]
+        }
+      ]
+    },
+    "catalog:legsAssembly:970l32r01pr1261": {
+      "kind": "rebrickable-color-coded-assembly",
+      "printRendered": false,
+      "referenceShortcutCount": 112,
+      "agreeingReferenceShortcutCount": 111,
+      "components": [
+        {
+          "file": "parts/3815b.dat",
+          "colorRole": "catalog",
+          "colorName": null,
+          "colorRgb": null,
+          "transform": [
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1
+          ]
+        },
+        {
+          "file": "parts/3816c.dat",
+          "colorRole": "rightLeg",
+          "colorName": "Yellow",
+          "colorRgb": "F2CD37",
+          "transform": [
+            0,
+            12,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1
+          ]
+        },
+        {
+          "file": "parts/3817c.dat",
+          "colorRole": "leftLeg",
+          "colorName": "Medium Blue",
+          "colorRgb": "5A93DB",
+          "transform": [
+            0,
+            12,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1
+          ]
+        }
+      ]
+    },
+    "catalog:legsAssembly:970l34r07pr0001": {
+      "kind": "rebrickable-color-coded-assembly",
+      "printRendered": false,
+      "referenceShortcutCount": 112,
+      "agreeingReferenceShortcutCount": 111,
+      "components": [
+        {
+          "file": "parts/3815b.dat",
+          "colorRole": "catalog",
+          "colorName": null,
+          "colorRgb": null,
+          "transform": [
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1
+          ]
+        },
+        {
+          "file": "parts/3816c.dat",
+          "colorRole": "rightLeg",
+          "colorName": "Dark Brown",
+          "colorRgb": "352100",
+          "transform": [
+            0,
+            12,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1
+          ]
+        },
+        {
+          "file": "parts/3817c.dat",
+          "colorRole": "leftLeg",
+          "colorName": "Orange",
+          "colorRgb": "FE8A18",
+          "transform": [
+            0,
+            12,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1
+          ]
+        }
+      ]
+    },
+    "catalog:legsAssembly:970l35r31": {
+      "kind": "rebrickable-color-coded-assembly",
+      "printRendered": true,
+      "referenceShortcutCount": 112,
+      "agreeingReferenceShortcutCount": 111,
+      "components": [
+        {
+          "file": "parts/3815b.dat",
+          "colorRole": "catalog",
+          "colorName": null,
+          "colorRgb": null,
+          "transform": [
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1
+          ]
+        },
+        {
+          "file": "parts/3816c.dat",
+          "colorRole": "rightLeg",
+          "colorName": "Green",
+          "colorRgb": "237841",
+          "transform": [
+            0,
+            12,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1
+          ]
+        },
+        {
+          "file": "parts/3817c.dat",
+          "colorRole": "leftLeg",
+          "colorName": "Dark Green",
+          "colorRgb": "184632",
+          "transform": [
+            0,
+            12,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1
+          ]
+        }
+      ]
+    },
+    "catalog:legsAssembly:970l38r30pr0806": {
+      "kind": "rebrickable-color-coded-assembly",
+      "printRendered": false,
+      "referenceShortcutCount": 112,
+      "agreeingReferenceShortcutCount": 111,
+      "components": [
+        {
+          "file": "parts/3815b.dat",
+          "colorRole": "catalog",
+          "colorName": null,
+          "colorRgb": null,
+          "transform": [
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1
+          ]
+        },
+        {
+          "file": "parts/3816c.dat",
+          "colorRole": "rightLeg",
+          "colorName": "Flat Silver",
+          "colorRgb": "898788",
+          "transform": [
+            0,
+            12,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1
+          ]
+        },
+        {
+          "file": "parts/3817c.dat",
+          "colorRole": "leftLeg",
+          "colorName": "Bright Light Orange",
+          "colorRgb": "F8BB3D",
+          "transform": [
+            0,
+            12,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1
+          ]
+        }
+      ]
+    },
+    "catalog:legsAssembly:970l42r38": {
+      "kind": "rebrickable-color-coded-assembly",
+      "printRendered": true,
+      "referenceShortcutCount": 112,
+      "agreeingReferenceShortcutCount": 111,
+      "components": [
+        {
+          "file": "parts/3815b.dat",
+          "colorRole": "catalog",
+          "colorName": null,
+          "colorRgb": null,
+          "transform": [
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1
+          ]
+        },
+        {
+          "file": "parts/3816c.dat",
+          "colorRole": "rightLeg",
+          "colorName": "Bright Light Orange",
+          "colorRgb": "F8BB3D",
+          "transform": [
+            0,
+            12,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1
+          ]
+        },
+        {
+          "file": "parts/3817c.dat",
+          "colorRole": "leftLeg",
+          "colorName": "Medium Azure",
+          "colorRgb": "36AEBF",
+          "transform": [
+            0,
+            12,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1
+          ]
+        }
+      ]
+    },
+    "catalog:legsAssembly:970l73r11pr1837": {
+      "kind": "rebrickable-color-coded-assembly",
+      "printRendered": false,
+      "referenceShortcutCount": 112,
+      "agreeingReferenceShortcutCount": 111,
+      "components": [
+        {
+          "file": "parts/3815b.dat",
+          "colorRole": "catalog",
+          "colorName": null,
+          "colorRgb": null,
+          "transform": [
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1
+          ]
+        },
+        {
+          "file": "parts/3816c.dat",
+          "colorRole": "rightLeg",
+          "colorName": "Dark Tan",
+          "colorRgb": "958A73",
+          "transform": [
+            0,
+            12,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1
+          ]
+        },
+        {
+          "file": "parts/3817c.dat",
+          "colorRole": "leftLeg",
+          "colorName": "Trans-Clear",
+          "colorRgb": "FCFCFC",
+          "transform": [
+            0,
+            12,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1
+          ]
+        }
+      ]
+    },
+    "catalog:legsAssembly:970l75r12pr2540": {
+      "kind": "rebrickable-color-coded-assembly",
+      "printRendered": false,
+      "referenceShortcutCount": 112,
+      "agreeingReferenceShortcutCount": 111,
+      "components": [
+        {
+          "file": "parts/3815b.dat",
+          "colorRole": "catalog",
+          "colorName": null,
+          "colorRgb": null,
+          "transform": [
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1
+          ]
+        },
+        {
+          "file": "parts/3816c.dat",
+          "colorRole": "rightLeg",
+          "colorName": "Dark Bluish Gray",
+          "colorRgb": "6C6E68",
+          "transform": [
+            0,
+            12,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1
+          ]
+        },
+        {
+          "file": "parts/3817c.dat",
+          "colorRole": "leftLeg",
+          "colorName": "Pearl Titanium",
+          "colorRgb": "3E3C39",
+          "transform": [
+            0,
+            12,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1
+          ]
+        }
+      ]
+    },
+    "catalog:legsAssembly:970l75r64pr0001": {
+      "kind": "rebrickable-color-coded-assembly",
+      "printRendered": false,
+      "referenceShortcutCount": 112,
+      "agreeingReferenceShortcutCount": 111,
+      "components": [
+        {
+          "file": "parts/3815b.dat",
+          "colorRole": "catalog",
+          "colorName": null,
+          "colorRgb": null,
+          "transform": [
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1
+          ]
+        },
+        {
+          "file": "parts/3816c.dat",
+          "colorRole": "rightLeg",
+          "colorName": "Trans-Dark Pink",
+          "colorRgb": "DF6695",
+          "transform": [
+            0,
+            12,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1
+          ]
+        },
+        {
+          "file": "parts/3817c.dat",
+          "colorRole": "leftLeg",
+          "colorName": "Pearl Titanium",
+          "colorRgb": "3E3C39",
+          "transform": [
+            0,
+            12,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1
+          ]
+        }
+      ]
     }
   }
 }
