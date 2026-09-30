@@ -528,11 +528,13 @@ let ambiguousMappingsExcluded = 0;
 let accessoryGripCandidatesExcluded = 0;
 let accessoryMultipleGripCandidatesEvaluated = 0;
 let accessoryLdcadGripCandidatesDisambiguated = 0;
+let accessoryLdcadPrintParentGripCandidatesEvaluated = 0;
 for (const role of BUILD_ROLES) {
   const raw: unknown = JSON.parse(await readFile(resolve(root, "data/generated/catalog-packages", packageFileByRole[role]), "utf8"));
   const catalogPackage = catalogPackageSchema.parse(raw);
   for (const part of catalogPackage.parts) {
     if (curatedKeys.has(`${role}:${normalize(part.rebrickablePartNum)}`)) continue;
+    const normalizedPart = normalizedByPartNum.get(normalize(part.rebrickablePartNum));
     const directCandidates = [];
     for (const candidate of candidateIndex.get(normalize(part.rebrickablePartNum)) ?? []) {
       if (await supportsRoleAssembly(role, candidate)) directCandidates.push(candidate);
@@ -569,15 +571,34 @@ for (const role of BUILD_ROLES) {
           evidence.radiusLdu >= 3.75 && evidence.radiusLdu <= 4.25 && evidence.lengthLdu >= 4
         );
         const ldcadGripCandidates = await collectVendoredLDCadHandGripEvidence(ldcadShadowRoot, direct.file);
-        // A single explicit connector from the pinned LDCad Shadow source names
-        // the intended grip. Geometry remains the fallback when no such evidence
-        // exists; the two sources are not combined into a false ambiguity.
-        const gripCandidates = ldcadGripCandidates.length === 1
+        const printParentLdcadGripCandidates = [];
+        for (const parentPartNum of normalizedPart?.printParentPartNums ?? []) {
+          for (const parentCandidate of candidateIndex.get(normalize(parentPartNum)) ?? []) {
+            printParentLdcadGripCandidates.push(
+              ...await collectVendoredLDCadHandGripEvidence(ldcadShadowRoot, parentCandidate.file),
+            );
+          }
+        }
+        const uniquePrintParentLdcadGripCandidates = [...new Map(printParentLdcadGripCandidates
+          .map((evidence) => [evidence.primitive, evidence])).values()];
+        const inheritedLdcadGripCandidates = ldcadGripCandidates.length === 0
+          && uniquePrintParentLdcadGripCandidates.length === 1
+          ? uniquePrintParentLdcadGripCandidates
+          : [];
+        const documentedGripCandidates = ldcadGripCandidates.length === 1
           ? ldcadGripCandidates
+          : inheritedLdcadGripCandidates;
+        // A single explicit connector from the pinned LDCad Shadow source names
+        // the intended grip. Rebrickable-declared print children may reuse the
+        // connector of exactly one print parent while retaining their exact printed
+        // LDraw geometry. Geometry remains the fallback when neither source exists.
+        const gripCandidates = documentedGripCandidates.length === 1
+          ? documentedGripCandidates
           : geometricGripCandidates;
-        if (ldcadGripCandidates.length === 1 && geometricGripCandidates.length > 1) {
+        if (documentedGripCandidates.length === 1 && geometricGripCandidates.length > 1) {
           accessoryLdcadGripCandidatesDisambiguated += 1;
         }
+        if (inheritedLdcadGripCandidates.length === 1) accessoryLdcadPrintParentGripCandidatesEvaluated += 1;
         if (gripCandidates.length === 0) {
           accessoryGripCandidatesExcluded += 1;
           continue;
@@ -616,7 +637,6 @@ for (const role of BUILD_ROLES) {
 
     if (role === "handAccessory") continue;
 
-    const normalizedPart = normalizedByPartNum.get(normalize(part.rebrickablePartNum));
     const parentCandidates = [];
     for (const parentPartNum of normalizedPart?.printParentPartNums ?? []) {
       for (const candidate of candidateIndex.get(normalize(parentPartNum)) ?? []) {
@@ -1011,6 +1031,7 @@ const output = {
     ambiguousMappingsExcluded,
     accessoryGripCandidatesExcluded,
     accessoryLdcadGripCandidatesDisambiguated,
+    accessoryLdcadPrintParentGripCandidatesEvaluated,
     accessoryMultipleGripCandidatesEvaluated,
     accessoryMultipleGripCandidatesPassed,
     accessoryMultipleGripCandidatesAmbiguous,
@@ -1065,7 +1086,7 @@ const output = {
     "Asymmetric 970lNNrMM legs are composed from the official LDraw hip, left-leg and right-leg geometry only when both leg colours are confirmed by the Rebrickable assembly code and entry name and exactly one catalog-backed hip colour exists.",
     "Printed torso and legs assemblies without any official LDraw file for their number use the same composition with the plain official body in the catalog colour; they are marked as not rendering their print and share one generated asset per colour combination.",
     "Family-origin placement is a digital convention, not a physical clutch-force guarantee.",
-    "Hand accessories pass only when exactly one radius-4 grip candidate from official LDraw geometry or the pinned LDCad Shadow Library satisfies deterministic minimum-length, rigid-transform, model-bounds and reference-figure clearance checks; physical clutch force remains unverified.",
+    "Hand accessories pass only when exactly one radius-4 grip candidate from official LDraw geometry or the pinned LDCad Shadow Library satisfies deterministic minimum-length, rigid-transform, model-bounds and reference-figure clearance checks; exact printed geometry may reuse one pinned LDCad grip only when locked Rebrickable part_relationships.csv declares exactly one print parent. Physical clutch force remains unverified.",
     "The first catalog-backed color is used for preview; parts without color evidence use neutral gray.",
   ],
 };
