@@ -29,19 +29,19 @@
   },
   "summary": {
     "catalogPartCount": 20202,
-    "visualizedPartCount": 14477,
-    "builderReadyPartCount": 14475,
-    "remainingCatalogPartCount": 5727,
-    "remainingWithoutVisualizationCount": 5725,
+    "visualizedPartCount": 14493,
+    "builderReadyPartCount": 14491,
+    "remainingCatalogPartCount": 5711,
+    "remainingWithoutVisualizationCount": 5709,
     "uniqueOfficialMappingCount": 2767,
     "ambiguousOfficialMappingCount": 235,
     "noOfficialMappingCount": 17200,
     "remainingClassifications": {
       "builder-blocked": 2,
       "render-failed": 0,
-      "placement-profile-required": 607,
+      "placement-profile-required": 593,
       "ambiguous-official-mapping": 84,
-      "no-official-mapping": 5034
+      "no-official-mapping": 5032
     }
   },
   "roles": {
@@ -71,14 +71,14 @@
     },
     "torsoAssembly": {
       "catalogPartCount": 7851,
-      "builderReadyPartCount": 5879,
-      "remainingCatalogPartCount": 1972,
+      "builderReadyPartCount": 5895,
+      "remainingCatalogPartCount": 1956,
       "remainingClassifications": {
         "builder-blocked": 1,
         "render-failed": 0,
-        "placement-profile-required": 172,
+        "placement-profile-required": 158,
         "ambiguous-official-mapping": 8,
-        "no-official-mapping": 1791
+        "no-official-mapping": 1789
       }
     },
     "legsAssembly": {
@@ -33776,20 +33776,6 @@
       "reason": null
     },
     {
-      "catalogId": "part:973g01c02h02pr5685",
-      "role": "torsoAssembly",
-      "rebrickablePartNum": "973g01c02h02pr5685",
-      "name": "Torso, Dual Molded Arms, Shirt with Black Collar print, Yellow Sleeves Pattern, Light Nougat Arms and Hands",
-      "classification": "placement-profile-required",
-      "ldrawFiles": [
-        "parts/16360pdeb.dat"
-      ],
-      "mappingEvidence": [
-        "explicit-keyword"
-      ],
-      "reason": null
-    },
-    {
       "catalogId": "part:973g01c02h28pr9857",
       "role": "torsoAssembly",
       "rebrickablePartNum": "973g01c02h28pr9857",
@@ -33957,20 +33943,6 @@
       "classification": "no-official-mapping",
       "ldrawFiles": [],
       "mappingEvidence": [],
-      "reason": null
-    },
-    {
-      "catalogId": "part:973g02c39h39pr0001",
-      "role": "torsoAssembly",
-      "rebrickablePartNum": "973g02c39h39pr0001",
-      "name": "Torso, Dual Molded Arms, Dress, Dark Pink Belt with Heart, Pearl Necklace print, Light Nougat Sleeves Pattern, Lavender Arms and Hands",
-      "classification": "placement-profile-required",
-      "ldrawFiles": [
-        "parts/16360pdg6.dat"
-      ],
-      "mappingEvidence": [
-        "explicit-keyword"
-      ],
       "reason": null
     },
     {
@@ -34241,20 +34213,6 @@
       "classification": "no-official-mapping",
       "ldrawFiles": [],
       "mappingEvidence": [],
-      "reason": null
-    },
-    {
-      "catalogId": "part:973g04c01h01pr5120",
-      "role": "torsoAssembly",
-      "rebrickablePartNum": "973g04c01h01pr5120",
-      "name": "Torso, Dual Molded Arms, Wetsuit with Turtle in Coral Circle Print, Dark Azure Sleeves Pattern, Yellow Arms and Hands",
-      "classification": "placement-profile-required",
-      "ldrawFiles": [
-        "parts/16360pckc.dat"
-      ],
-      "mappingEvidence": [
-        "explicit-keyword"
-      ],
       "reason": null
     },
     {
@@ -34628,20 +34586,6 @@
       "reason": null
     },
     {
-      "catalogId": "part:973g18c02h02pr3062",
-      "role": "torsoAssembly",
-      "rebrickablePartNum": "973g18c02h02pr3062",
-      "name": "Torso, Dual Molded Arms, V Neck Shirt Print, Lime Sleeves Pattern, Light Nougat Arms and Hands",
-      "classification": "placement-profile-required",
-      "ldrawFiles": [
-        "parts/16360p0v.dat"
-      ],
-      "mappingEvidence": [
-        "explicit-keyword"
-      ],
-      "reason": null
-    },
-    {
       "catalogId": "part:973g18c02h02pr3100",
       "role": "torsoAssembly",
       "rebrickablePartNum": "973g18c02h02pr3100",
@@ -34726,54 +34670,6 @@
       "role": "torsoAssembly",
       "rebrickablePartNum": "973g21c39h39pr0001",
       "name": "Torso Dress, Dark Pink Front, Gold Necklace, Belt print, Dual Molded Arms with Pearl Gold Sleeves Pattern, Lavender Arms and Hands",
-      "classification": "no-official-mapping",
-      "ldrawFiles": [],
-      "mappingEvidence": [],
-      "reason": null
-    },
-    {
-      "catalogId": "part:973g22c01h01",
-      "role": "torsoAssembly",
-      "rebrickablePartNum": "973g22c01h01",
-      "name": "Torso, Dual Molded Arms with Red Sleeves Pattern, Yellow Arms and Hands",
-      "classification": "placement-profile-required",
-      "ldrawFiles": [
-        "parts/16360p01.dat"
-      ],
-      "mappingEvidence": [
-        "explicit-keyword"
-      ],
-      "reason": null
-    },
-    {
-      "catalogId": "part:973g22c01h01pr2606",
-      "role": "torsoAssembly",
-      "rebrickablePartNum": "973g22c01h01pr2606",
-      "name": "Torso, Dual Molded Arms, Slingshot on Back Print, Red Sleeves Pattern, Yellow Arms and Hands",
-      "classification": "placement-profile-required",
-      "ldrawFiles": [
-        "parts/16360pd12.dat"
-      ],
-      "mappingEvidence": [
-        "explicit-keyword"
-      ],
-      "reason": null
-    },
-    {
-      "catalogId": "part:973g22c01h01pr3797",
-      "role": "torsoAssembly",
-      "rebrickablePartNum": "973g22c01h01pr3797",
-      "name": "Torso, Dual Molded Arms, Checkered Apron and White Bow Tie, Smile Button Print, Red Sleeves Pattern, Yellow Arms and Hands",
-      "classification": "no-official-mapping",
-      "ldrawFiles": [],
-      "mappingEvidence": [],
-      "reason": null
-    },
-    {
-      "catalogId": "part:973g22c01h01pr9999",
-      "role": "torsoAssembly",
-      "rebrickablePartNum": "973g22c01h01pr9999",
-      "name": "Torso, Dual Molded Arms with Referee Shirt, Vertical Red Stripes, Whistle, Soccer Ball Print, Red Sleeves Pattern, Yellow Arms and Hands",
       "classification": "no-official-mapping",
       "ldrawFiles": [],
       "mappingEvidence": [],
@@ -34897,20 +34793,6 @@
       "classification": "no-official-mapping",
       "ldrawFiles": [],
       "mappingEvidence": [],
-      "reason": null
-    },
-    {
-      "catalogId": "part:973g22c03h27pr3505",
-      "role": "torsoAssembly",
-      "rebrickablePartNum": "973g22c03h27pr3505",
-      "name": "Torso, Dual Molded Arms, Dress Top with White Collar and Polka Dots Front and Back Print, Red Sleeves Pattern, Black Arms, White Hands",
-      "classification": "placement-profile-required",
-      "ldrawFiles": [
-        "parts/16360pxi.dat"
-      ],
-      "mappingEvidence": [
-        "explicit-keyword"
-      ],
       "reason": null
     },
     {
@@ -35101,34 +34983,6 @@
       "classification": "no-official-mapping",
       "ldrawFiles": [],
       "mappingEvidence": [],
-      "reason": null
-    },
-    {
-      "catalogId": "part:973g27c01h01pr2585",
-      "role": "torsoAssembly",
-      "rebrickablePartNum": "973g27c01h01pr2585",
-      "name": "Torso, Dual Molded Arms, Shirt with Tie and ID Badge Print, White Sleeves Pattern, Yellow Arms and Hands",
-      "classification": "placement-profile-required",
-      "ldrawFiles": [
-        "parts/16360p87.dat"
-      ],
-      "mappingEvidence": [
-        "explicit-keyword"
-      ],
-      "reason": null
-    },
-    {
-      "catalogId": "part:973g27c01h01pr2604",
-      "role": "torsoAssembly",
-      "rebrickablePartNum": "973g27c01h01pr2604",
-      "name": "Torso, Dual Molded Arms, Shirt with Black Belly Bump and Collar Outline Print, White Sleeves Pattern, Yellow Arms and Hands",
-      "classification": "placement-profile-required",
-      "ldrawFiles": [
-        "parts/16360pd11.dat"
-      ],
-      "mappingEvidence": [
-        "explicit-keyword"
-      ],
       "reason": null
     },
     {
@@ -35602,20 +35456,6 @@
       "reason": null
     },
     {
-      "catalogId": "part:973g28c06h18pr7034",
-      "role": "torsoAssembly",
-      "rebrickablePartNum": "973g28c06h18pr7034",
-      "name": "Torso, Dual Molded Arms, Shirt with White Flowers, Bright Green Chest print, Blue Sleeves Pattern, Bright Green Arms, Lime Hands",
-      "classification": "placement-profile-required",
-      "ldrawFiles": [
-        "parts/16360p5l.dat"
-      ],
-      "mappingEvidence": [
-        "explicit-keyword"
-      ],
-      "reason": null
-    },
-    {
       "catalogId": "part:973g28c22h05pr3542",
       "role": "torsoAssembly",
       "rebrickablePartNum": "973g28c22h05pr3542",
@@ -35916,20 +35756,6 @@
       "reason": null
     },
     {
-      "catalogId": "part:973g34c32h27pr2612",
-      "role": "torsoAssembly",
-      "rebrickablePartNum": "973g34c32h27pr2612",
-      "name": "Torso, Dual Molded Arms, Jacket, Open with Gray Belly Print, Orange Sleeves Pattern, Medium Blue Arms, White Hands",
-      "classification": "placement-profile-required",
-      "ldrawFiles": [
-        "parts/16360pd1d.dat"
-      ],
-      "mappingEvidence": [
-        "explicit-keyword"
-      ],
-      "reason": null
-    },
-    {
       "catalogId": "part:973g36c03h27pr3314",
       "role": "torsoAssembly",
       "rebrickablePartNum": "973g36c03h27pr3314",
@@ -35937,20 +35763,6 @@
       "classification": "no-official-mapping",
       "ldrawFiles": [],
       "mappingEvidence": [],
-      "reason": null
-    },
-    {
-      "catalogId": "part:973g36c27h27pr3506",
-      "role": "torsoAssembly",
-      "rebrickablePartNum": "973g36c27h27pr3506",
-      "name": "Torso, Dual Molded Arms, Shirt with Collar, Lavender Ruffles and Button Print, Dark Pink Sleeves Pattern, White Arms and Hands",
-      "classification": "placement-profile-required",
-      "ldrawFiles": [
-        "parts/16360pxh.dat"
-      ],
-      "mappingEvidence": [
-        "explicit-keyword"
-      ],
       "reason": null
     },
     {
@@ -35991,20 +35803,6 @@
       "classification": "no-official-mapping",
       "ldrawFiles": [],
       "mappingEvidence": [],
-      "reason": null
-    },
-    {
-      "catalogId": "part:973g41c03h03pr3946",
-      "role": "torsoAssembly",
-      "rebrickablePartNum": "973g41c03h03pr3946",
-      "name": "Torso, Dual Molded Arms, Wide Black Tie and Gold Tie Bar Print, Dark Orange Sleeves Pattern, Black Arms and Hands",
-      "classification": "placement-profile-required",
-      "ldrawFiles": [
-        "parts/16360pd7f.dat"
-      ],
-      "mappingEvidence": [
-        "explicit-keyword"
-      ],
       "reason": null
     },
     {
@@ -36095,20 +35893,6 @@
       "classification": "no-official-mapping",
       "ldrawFiles": [],
       "mappingEvidence": [],
-      "reason": null
-    },
-    {
-      "catalogId": "part:973g43c01h27pr2611",
-      "role": "torsoAssembly",
-      "rebrickablePartNum": "973g43c01h27pr2611",
-      "name": "Torso, Dual Molded Arms, Shirt with Black Collar Outline and Blue Bow Tie Print, Bright Pink Sleeves Pattern, Yellow Arms, White Hands",
-      "classification": "placement-profile-required",
-      "ldrawFiles": [
-        "parts/16360p2t.dat"
-      ],
-      "mappingEvidence": [
-        "explicit-keyword"
-      ],
       "reason": null
     },
     {
