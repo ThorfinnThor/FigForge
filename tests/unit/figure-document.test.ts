@@ -17,6 +17,14 @@ describe("FF-22/FF-23 local figure document", () => {
     expect(parseFigureDocument(serializeFigureDocument(source))).toEqual(source);
   });
 
+  it("persists expanded hand accessories selected from the catalog", () => {
+    const source = createFigureDocument({
+      handAccessory: "catalog:handAccessory:21459",
+    }, "Katana", "2026-09-30T13:00:00.000Z");
+
+    expect(parseFigureDocument(serializeFigureDocument(source))).toEqual(source);
+  });
+
   it("rejects duplicate slots, unknown fields and oversized input", () => {
     expect(() => parseFigureDocument(JSON.stringify({
       schemaVersion: 1,

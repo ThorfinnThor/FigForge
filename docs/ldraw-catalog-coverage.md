@@ -7,9 +7,9 @@ Stand: 2026-09-28; Rebrickable-Source-Lock `6cfa8b0a22245c086d4a4bbac0aad64523a6
 ## Ergebnis
 
 - 20.202 minifigurenrelevante Katalogeinträge insgesamt.
-- 14.451 besitzen bereits ein Modell und Vorschaubild.
-- 14.449 sind tatsächlich im Builder auswählbar.
-- 5.753 sind noch nicht builderbereit; davon fehlen bei 5.751 auch Modell/Vorschaubild.
+- 14.459 besitzen bereits ein Modell und Vorschaubild.
+- 14.457 sind tatsächlich im Builder auswählbar.
+- 5.745 sind noch nicht builderbereit; davon fehlen bei 5.743 auch Modell/Vorschaubild.
 - 2.767 Katalogeinträge haben insgesamt eine eindeutige direkte LDraw-Zuordnung, 235 sind mehrdeutig und 17.200 haben keine direkte offizielle Zuordnung.
 
 | Rolle | Katalog | Builderbereit | Platzierung fehlt | Gesperrt | Renderfehler | Mehrdeutig | Keine Zuordnung |
@@ -18,14 +18,14 @@ Stand: 2026-09-28; Rebrickable-Source-Lock `6cfa8b0a22245c086d4a4bbac0aad64523a6
 | headwear | 2.410 | 761 | 0 | 0 | 0 | 24 | 1.625 |
 | torsoAssembly | 7.851 | 5.879 | 172 | 1 | 0 | 8 | 1.791 |
 | legsAssembly | 3.231 | 2.713 | 48 | 0 | 0 | 9 | 461 |
-| handAccessory | 1.308 | 236 | 413 | 1 | 0 | 38 | 620 |
+| handAccessory | 1.308 | 244 | 405 | 1 | 0 | 38 | 620 |
 
 Die Resttabelle weist 12.166 Einträge weniger unter „Keine Zuordnung“ aus als die rohe direkte Mappingbilanz. Diese Einträge verwenden entweder eine in Rebrickable deklarierte Druckeltern-Grundgeometrie, sind als zugehöriger Renderfehler klassifiziert oder – im Fall `3814` – wegen einer kuratierten Modellabbildung gesperrt.
 
 ## Sichere Arbeitsreihenfolge
 
 1. Die 0 Renderfehler technisch beheben.
-2. Für 633 eindeutig zugeordnete Teile reproduzierbare Platzierungs- und Assembly-Profile ableiten und prüfen.
+2. Für 625 eindeutig zugeordnete Teile reproduzierbare Platzierungs- und Assembly-Profile ableiten und prüfen.
 3. Die 84 mehrdeutigen Zuordnungen über offizielle Metadaten auflösen.
 4. Die 5.034 Einträge ohne direkte offizielle Zuordnung bleiben gesperrt, bis eine spätere offizielle LDraw-Version eine belastbare Zuordnung liefert.
 

@@ -10,6 +10,7 @@ import {
   deriveAssemblyColorCodeTable,
   parseAssemblyPartNum,
 } from "./lib/rebrickable-assembly-colors.js";
+import { handGripEvidenceFromLDCadShadow } from "./lib/ldcad-shadow-connectivity.js";
 
 const root = process.cwd();
 const sha256 = (content: string | Buffer): string => createHash("sha256").update(content).digest("hex");
@@ -55,6 +56,7 @@ const catalog = JSON.parse(await readFile(resolve(root, "data/generated/ldraw-ex
       selectedOrientationIndex: number;
       physicalFitGuaranteed: false;
       gripPrimitive: string;
+      gripEvidenceSource: "official-ldraw-geometry" | "ldcad-shadow-snap";
       limits: { minimumGripLengthLdu: number };
     };
     geometryFallback: null | { kind: string; parentPartNums: string[] };
@@ -107,6 +109,12 @@ const catalog = JSON.parse(await readFile(resolve(root, "data/generated/ldraw-ex
     orientationCollisionCountsByGrip: number[][];
   }>;
 };
+const connectivityRegistry = JSON.parse(
+  await readFile(resolve(root, "data/generated/ldraw-digital-connectivity.json"), "utf8"),
+) as { sourceFiles: Array<{ path: string }> };
+const pinnedShadowFiles = new Set(connectivityRegistry.sourceFiles.map(({ path }) =>
+  path.replace(/^data\/vendor\/ldcad-shadow\//u, "")
+));
 
 const runtimeFileByRole = {
   head: "head.json",
@@ -411,7 +419,22 @@ for (const entry of catalog.entries) {
     assert.equal(entry.digitalValidation.orientationCandidatesTested, 8);
     assert(entry.digitalValidation.selectedOrientationIndex >= 0 && entry.digitalValidation.selectedOrientationIndex < 8);
     assert.equal(entry.digitalValidation.physicalFitGuaranteed, false);
-    assert.match(entry.digitalValidation.gripPrimitive, /4-4cyl[ic]\.dat$/u);
+    if (entry.digitalValidation.gripEvidenceSource === "ldcad-shadow-snap") {
+      assert.match(entry.digitalValidation.gripPrimitive, /^ldcad-shadow:parts\/[a-z0-9]+\.dat#SNAP_CYL:\d+$/u);
+      const match = /^ldcad-shadow:(parts\/[a-z0-9]+\.dat)#SNAP_CYL:\d+$/u.exec(
+        entry.digitalValidation.gripPrimitive,
+      );
+      assert(match, `Invalid LDCad grip evidence: ${entry.componentId}`);
+      const sourcePath = match[1]!;
+      assert(pinnedShadowFiles.has(sourcePath), `Unpinned LDCad grip evidence: ${entry.componentId}`);
+      const shadowSource = await readFile(resolve(root, "data/vendor/ldcad-shadow", sourcePath), "utf8");
+      const evidence = handGripEvidenceFromLDCadShadow(sourcePath, shadowSource)
+        .find(({ primitive }) => primitive === entry.digitalValidation?.gripPrimitive);
+      assert(evidence, `LDCad grip evidence cannot be reproduced: ${entry.componentId}`);
+      assert.equal(evidence.lengthLdu, entry.digitalValidation.gripLengthLdu);
+    } else {
+      assert.match(entry.digitalValidation.gripPrimitive, /4-4cyl[ic]\.dat$/u);
+    }
   } else {
     assert.equal(entry.digitalValidation, null);
   }

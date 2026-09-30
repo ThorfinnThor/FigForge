@@ -16,6 +16,7 @@ FigForge importiert ausschließlich eine gepinnte, gehashte Teilmenge der LDCad 
 
 - Standardköpfe und Standardkopfbedeckungen verwenden die Transformationsfamilie der offiziellen LDraw-Referenzbaugruppe und passende LDCad-Anschlüsse.
 - Handzubehör wird durch Paarung des teilespezifischen Radius-4-Verbinders mit dem Radius-4-Clip der Referenzhand platziert.
+- Wenn die offizielle LDraw-Geometrie einen Griff nur aus Teilsegmenten modelliert, darf ein gepinnter männlicher `SNAP_CYL`-Verbinder der LDCad Shadow Library den vollständigen Griff belegen. Automatisch akzeptiert werden nur einzelne runde Radius-4-Profile mit mindestens 8 LDU Länge; Mehrfachprofile und weibliche Verbindungen bleiben gesperrt.
 - Slide-Verbindungen erhalten einen deterministischen Startwert innerhalb ihres erlaubten Bereichs.
 - Fehlt ein belegtes Profil, bleibt das Teil gesperrt. Das gilt derzeit für `11439`.
 - Eine unvollständige LDraw-Datei wird nicht als vollständige Verkaufsbaugruppe ausgegeben. Deshalb bleibt `3814 → 973.dat` gesperrt.
@@ -27,6 +28,7 @@ Die normalisierte Registry wird mit Attribution und Share-Alike-Hinweis ausgelie
 
 - Der Builder benötigt keine Passformeingaben des Betreibers.
 - Acht der zehn offiziell zugeordneten LDraw-Komponenten sind im lokalen MVP auswählbar.
+- Acht weitere Katalog-Zubehörteile können über eindeutig gehashte LDCad-Griffprofile in denselben Kollisionslauf aufgenommen werden.
 - Verbindungspunkte und Platzierung sind reproduzierbar und quellgebunden.
 - Klemmkraft, Materialspannung und universelle Kollisionsfreiheit werden nicht behauptet.
 - Neue Teile werden nur nach belegtem Snap-Profil freigeschaltet; Ähnlichkeit oder Teilenummern-Nähe genügt nicht.

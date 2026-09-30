@@ -170,8 +170,10 @@ export function CatalogWorkspace() {
   useEffect(() => {
     let active = true;
     void loadCurrentFigureDraft()
-      .then((document) => {
+      .then(async (document) => {
         if (!active || !document) return;
+        await Promise.all([...new Set(document.selections.map(({ slot }) => slot))].map(loadCatalogParts));
+        if (!active) return;
         const restored = selectionsFromFigureDocument(document, isSupportedDocumentSelection);
         if (Object.keys(restored).length === document.selections.length) {
           setSelectedByRole(restored);

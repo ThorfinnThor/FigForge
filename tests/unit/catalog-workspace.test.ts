@@ -4,6 +4,7 @@ import {
   CATALOG_CATEGORIES,
   builderComponentForCatalogPart,
   catalogAssortment,
+  digitallySupportedLDrawEntryForComponent,
   loadCatalogParts,
   thumbnailForComponent,
   verifiedLDrawEntryForComponent,
@@ -25,6 +26,7 @@ describe("FF-14 responsive catalog workspace", () => {
     expect(source).toContain("<FigureViewport selectedParts={selectedLDrawParts}");
     expect(source).toContain("saveCurrentFigureDraft");
     expect(source).toContain("parseFigureDocument");
+    expect(source).toContain("document.selections.map(({ slot }) => slot)");
     expect(dataSource).not.toContain("ldraw-expanded-catalog.json");
     expect(dataSource).toContain("data/generated/ldraw-runtime/");
   });
@@ -43,7 +45,7 @@ describe("FF-14 responsive catalog workspace", () => {
       legsAssembly: 3_231,
       handAccessory: 1_308,
     });
-    expect(allParts.filter(builderComponentForCatalogPart)).toHaveLength(14_458);
+    expect(allParts.filter(builderComponentForCatalogPart)).toHaveLength(14_466);
   }, 15_000);
 
   it("defines responsive tabs, drawer focus return and keyboard dismissal", async () => {
@@ -94,7 +96,11 @@ describe("FF-14 responsive catalog workspace", () => {
     expect(allParts.filter((part) => {
       const builderComponent = builderComponentForCatalogPart(part);
       return builderComponent && verifiedLDrawEntryForComponent(builderComponent.id);
-    })).toHaveLength(14_451);
+    })).toHaveLength(14_459);
+    expect(allParts.filter((part) => {
+      const builderComponent = builderComponentForCatalogPart(part);
+      return builderComponent && digitallySupportedLDrawEntryForComponent(builderComponent.id);
+    })).toHaveLength(14_457);
     expect(cardSource).toContain("Geometrie ohne Druck");
     expect(cardSource).toContain('disabled={connectionStatus !== "digitally-supported"}');
     expect(cardSource).toContain("In Figur einsetzen");

@@ -38,6 +38,7 @@ import {
   proposedHandPlacements,
   type CylinderEvidence,
 } from "./lib/ldraw-placement-candidates.js";
+import { collectVendoredLDCadHandGripEvidence } from "./lib/ldcad-shadow-connectivity.js";
 import { writeLDrawRuntimePackages } from "./lib/ldraw-runtime-packages.js";
 
 const root = process.cwd();
@@ -46,6 +47,7 @@ const archivePath = resolve(root, "data/incoming/ldraw-official/complete.zip");
 const lockPath = resolve(root, "data/ldraw-source.lock.json");
 const outputPath = resolve(root, "data/generated/ldraw-expanded-catalog.json");
 const compositionsPath = resolve(root, "data/generated/ldraw-assembly-compositions.json");
+const ldcadShadowRoot = resolve(root, "data/vendor/ldcad-shadow");
 const publicRoot = resolve(root, `public${OFFICIAL_LDRAW_PUBLIC_PATH}`);
 const modelDirectory = resolve(publicRoot, "models");
 const thumbnailDirectory = resolve(root, "public/assets/thumbnails/ldraw-expanded");
@@ -557,9 +559,13 @@ for (const role of BUILD_ROLES) {
     const direct = directCandidates.find(({ matchType }) => matchType === "exact-filename") ?? directCandidates[0];
     if (directFiles.length === 1 && direct) {
       if (role === "handAccessory") {
-        const gripCandidates = (await collectCylinderEvidence(libraryRoot, direct.file)).filter((evidence) =>
+        const geometricGripCandidates = (await collectCylinderEvidence(libraryRoot, direct.file)).filter((evidence) =>
           evidence.radiusLdu >= 3.75 && evidence.radiusLdu <= 4.25 && evidence.lengthLdu >= 4
         );
+        const gripCandidates = [
+          ...geometricGripCandidates,
+          ...await collectVendoredLDCadHandGripEvidence(ldcadShadowRoot, direct.file),
+        ];
         if (gripCandidates.length === 0) {
           accessoryGripCandidatesExcluded += 1;
           continue;
@@ -892,6 +898,9 @@ for (const [index, match] of matchedParts.entries()) {
     digitalValidation: part.role === "handAccessory" ? {
       ...digitalValidation,
       gripPrimitive: match.selectedGripEvidence?.primitive,
+      gripEvidenceSource: match.selectedGripEvidence?.primitive.startsWith("ldcad-shadow:")
+        ? "ldcad-shadow-snap"
+        : "official-ldraw-geometry",
       limits: digitalAccessoryLimits,
       physicalFitGuaranteed: false,
     } : null,
@@ -1003,7 +1012,7 @@ const output = {
     "Asymmetric 970lNNrMM legs are composed from the official LDraw hip, left-leg and right-leg geometry only when both leg colours are confirmed by the Rebrickable assembly code and entry name and exactly one catalog-backed hip colour exists.",
     "Printed torso and legs assemblies without any official LDraw file for their number use the same composition with the plain official body in the catalog colour; they are marked as not rendering their print and share one generated asset per colour combination.",
     "Family-origin placement is a digital convention, not a physical clutch-force guarantee.",
-    "Hand accessories pass only when exactly one radius-4 grip candidate satisfies deterministic minimum-length, rigid-transform, model-bounds and reference-figure clearance checks; physical clutch force remains unverified.",
+    "Hand accessories pass only when exactly one radius-4 grip candidate from official LDraw geometry or the pinned LDCad Shadow Library satisfies deterministic minimum-length, rigid-transform, model-bounds and reference-figure clearance checks; physical clutch force remains unverified.",
     "The first catalog-backed color is used for preview; parts without color evidence use neutral gray.",
   ],
 };
