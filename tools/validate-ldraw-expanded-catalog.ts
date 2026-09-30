@@ -2,6 +2,11 @@ import assert from "node:assert/strict";
 import { createHash } from "node:crypto";
 import { readFile } from "node:fs/promises";
 import { basename, resolve } from "node:path";
+import {
+  confirmAssemblyColors,
+  deriveAssemblyColorCodeTable,
+  parseAssemblyPartNum,
+} from "./lib/rebrickable-assembly-colors.js";
 
 const root = process.cwd();
 const sha256 = (content: string | Buffer): string => createHash("sha256").update(content).digest("hex");
@@ -48,7 +53,29 @@ const catalog = JSON.parse(await readFile(resolve(root, "data/generated/ldraw-ex
       limits: { minimumGripLengthLdu: number };
     };
     geometryFallback: null | { kind: string; parentPartNums: string[] };
+    name: string;
+    assemblyComposition: null | {
+      kind: string;
+      referenceShortcutCount: number;
+      agreeingReferenceShortcutCount: number;
+      components: Array<{
+        file: string;
+        colorRole: "catalog" | "arms" | "hands" | "legs";
+        colorName: string | null;
+        colorRgb: string | null;
+        transform: number[];
+      }>;
+    };
   }>;
+  assemblyColorCodes: {
+    codes: Array<{ code: string; colorName: string; colorRgb: string; evidencePartNums: string[] }>;
+    unresolvedCodes: Array<{ code: string; colorNames: string[]; reason: string; evidencePartNums: string[] }>;
+    referenceAssemblies: Record<"torso" | "legs", {
+      shortcutCount: number;
+      agreeingShortcutCount: number;
+      lines: Array<{ component: string; transform: number[] }>;
+    }>;
+  };
   summary: {
     digitallySupportedCount: number;
     headCount: number;
@@ -57,6 +84,7 @@ const catalog = JSON.parse(await readFile(resolve(root, "data/generated/ldraw-ex
     legsAssemblyCount: number;
     handAccessoryCount: number;
     directMappingCount: number;
+    colorCodedAssemblyCount: number;
     printParentGeometryFallbackCount: number;
     generatedAssetCount: number;
     sharedOfficialFileCount: number;
@@ -157,9 +185,43 @@ const assetsByModelUrl = new Map<string, {
   thumbnailBytes: number;
 }>();
 const normalizedCatalog = JSON.parse(await readFile(resolve(root, "data/generated/catalog-normalized.json"), "utf8")) as {
-  parts: Array<{ partNum: string; printParentPartNums: string[] }>;
+  parts: Array<{
+    partNum: string;
+    name: string;
+    printParentPartNums: string[];
+    colorVariants: Array<{ colorName: string; rgb: string }>;
+  }>;
 };
 const normalizedByPartNum = new Map(normalizedCatalog.parts.map((part) => [part.partNum.toLowerCase(), part]));
+
+// The published colour code table must be exactly what the locked catalog yields.
+const colorRgbsByName = new Map<string, Set<string>>();
+for (const part of normalizedCatalog.parts) {
+  for (const { colorName, rgb } of part.colorVariants) {
+    colorRgbsByName.set(colorName, (colorRgbsByName.get(colorName) ?? new Set()).add(rgb));
+  }
+}
+const colorRgbByName = new Map([...colorRgbsByName]
+  .filter(([, rgbs]) => rgbs.size === 1 && /^[A-F0-9]{6}$/u.test([...rgbs][0]!))
+  .map(([name, rgbs]) => [name, [...rgbs][0]!]));
+const assemblyColorCodes = deriveAssemblyColorCodeTable(normalizedCatalog.parts, new Set(colorRgbByName.keys()));
+assert.deepEqual(
+  catalog.assemblyColorCodes.codes,
+  [...assemblyColorCodes.codes].map(([code, colorName]) => ({
+    code,
+    colorName,
+    colorRgb: colorRgbByName.get(colorName),
+    evidencePartNums: assemblyColorCodes.evidence.get(code) ?? [],
+  })),
+  "Published assembly colour codes differ from the locked catalog",
+);
+assert.equal(catalog.assemblyColorCodes.unresolvedCodes.length, assemblyColorCodes.unresolved.size);
+for (const unresolved of catalog.assemblyColorCodes.unresolvedCodes) {
+  assert(!catalog.assemblyColorCodes.codes.some(({ code }) => code === unresolved.code));
+}
+for (const reference of Object.values(catalog.assemblyColorCodes.referenceAssemblies)) {
+  assert(reference.agreeingShortcutCount / reference.shortcutCount >= 0.9, "Reference assembly lacks shortcut agreement");
+}
 for (const entry of catalog.entries) {
   assert(!ids.has(entry.componentId), `Duplicate component ID: ${entry.componentId}`);
   ids.add(entry.componentId);
@@ -168,8 +230,35 @@ for (const entry of catalog.entries) {
   assert(entry.componentId.startsWith(`catalog:${entry.role}:`));
   assert(entry.ldrawFile.startsWith("parts/"));
   assert(!entry.ldrawFile.toLowerCase().includes("moc"));
-  assert(["exact-filename", "explicit-keyword", "rebrickable-print-parent"].includes(entry.mappingEvidence));
+  assert(["exact-filename", "explicit-keyword", "rebrickable-print-parent", "rebrickable-assembly-code"].includes(entry.mappingEvidence));
   const isPrintParentFallback = entry.mappingEvidence === "rebrickable-print-parent";
+  if (entry.mappingEvidence === "rebrickable-assembly-code") {
+    const composition = entry.assemblyComposition;
+    assert(composition, `Missing assembly composition: ${entry.componentId}`);
+    assert.equal(composition.kind, "rebrickable-color-coded-assembly");
+    const parsed = parseAssemblyPartNum(entry.rebrickablePartNum);
+    const colors = confirmAssemblyColors(entry.rebrickablePartNum, entry.name, assemblyColorCodes);
+    assert(parsed && colors, `Assembly colours are not confirmed by code and name: ${entry.componentId}`);
+    assert.equal(entry.role, colors.kind === "torso" ? "torsoAssembly" : "legsAssembly");
+    const reference = catalog.assemblyColorCodes.referenceAssemblies[colors.kind];
+    assert.equal(composition.referenceShortcutCount, reference.shortcutCount);
+    assert.equal(composition.agreeingReferenceShortcutCount, reference.agreeingShortcutCount);
+    assert.deepEqual(composition.components.map(({ transform }) => transform), reference.lines.map(({ transform }) => transform));
+    assert(composition.components.some(({ file, colorRole }) => file === entry.ldrawFile && colorRole === "catalog"));
+    for (const component of composition.components) {
+      assert(component.file.startsWith("parts/") && fileMap[basename(component.file)], `Unmapped component: ${component.file}`);
+      const expectedColorName: string | null = component.colorRole === "catalog"
+        ? null
+        : colors.kind === "torso"
+          ? component.colorRole === "arms" ? colors.armColorName : colors.handColorName
+          : colors.legColorName;
+      assert.equal(component.colorName, expectedColorName, `Wrong ${component.colorRole} colour: ${entry.componentId}`);
+      assert.equal(component.colorRgb, expectedColorName ? colorRgbByName.get(expectedColorName) : null);
+    }
+    assert.equal(entry.geometryFallback, null);
+  } else {
+    assert.equal(entry.assemblyComposition, null);
+  }
   if (isPrintParentFallback) {
     assert.equal(entry.geometryFallback?.kind, "unprinted-print-parent");
     assert(entry.geometryFallback.parentPartNums.length > 0);
@@ -221,6 +310,11 @@ for (const entry of catalog.entries) {
   const model = await readFile(resolve(root, `public${entry.modelUrl}`));
   const thumbnail = await readFile(resolve(root, `public${entry.thumbnailUrl}`));
   assert.equal(sha256(model), entry.modelSha256, `Model hash mismatch: ${entry.componentId}`);
+  for (const component of entry.assemblyComposition?.components ?? []) {
+    const modelSource = model.toString("utf8");
+    assert(modelSource.includes(` ${basename(component.file)}`), `Composed model misses ${component.file}: ${entry.componentId}`);
+    if (component.colorRgb) assert(modelSource.includes(`VALUE #${component.colorRgb} `), `Composed model misses colour: ${entry.componentId}`);
+  }
   assert(fileMap[basename(entry.ldrawFile)], `Mapped part is missing from the browser file map: ${entry.ldrawFile}`);
   assert.equal(sha256(thumbnail), entry.thumbnailSha256, `Thumbnail hash mismatch: ${entry.componentId}`);
   assert.equal(thumbnail.byteLength, entry.thumbnailBytes, `Thumbnail byte count mismatch: ${entry.componentId}`);
@@ -229,7 +323,13 @@ for (const entry of catalog.entries) {
   const officialPart = await readFile(resolve(root, "public/assets/ldraw/official-2608/parts", basename(entry.ldrawFile)), "utf8");
   assert(/!LDRAW_ORG (?:Part|Shortcut)\b/u.test(officialPart), `Mapped file is not an official LDraw part: ${entry.ldrawFile}`);
 }
-assert.equal(catalog.summary.directMappingCount + catalog.summary.printParentGeometryFallbackCount, catalog.entries.length);
+assert.equal(
+  catalog.summary.directMappingCount
+    + catalog.summary.colorCodedAssemblyCount
+    + catalog.summary.printParentGeometryFallbackCount,
+  catalog.entries.length,
+);
+assert.equal(catalog.summary.colorCodedAssemblyCount, catalog.entries.filter(({ mappingEvidence }) => mappingEvidence === "rebrickable-assembly-code").length);
 assert.equal(catalog.summary.printParentGeometryFallbackCount, catalog.entries.filter(({ mappingEvidence }) => mappingEvidence === "rebrickable-print-parent").length);
 assert.equal(catalog.summary.generatedAssetCount, assetsByModelUrl.size);
 
@@ -250,6 +350,7 @@ console.log(JSON.stringify({
   legsAssemblies: catalog.summary.legsAssemblyCount,
   handAccessories: catalog.summary.handAccessoryCount,
   printParentGeometryFallbacks: catalog.summary.printParentGeometryFallbackCount,
+  colorCodedAssemblies: catalog.summary.colorCodedAssemblyCount,
   generatedAssets: catalog.summary.generatedAssetCount,
   excludedRenderFailures: catalog.summary.renderFailuresExcluded,
   mocFilesUsed: catalog.summary.mocFilesUsed,

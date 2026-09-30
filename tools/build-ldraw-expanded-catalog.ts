@@ -18,6 +18,13 @@ import { isCompleteMinifigLegsAssembly } from "./lib/ldraw-legs-assembly.js";
 import { browserReferencePath, embeddedLdrawName } from "./lib/ldraw-paths.js";
 import { isCompleteStandardTorsoAssembly } from "./lib/ldraw-torso-assembly.js";
 import {
+  confirmAssemblyColors,
+  deriveAssemblyColorCodeTable,
+  deriveReferenceAssembly,
+  parseAssemblyPartNum,
+  type ReferenceAssembly,
+} from "./lib/rebrickable-assembly-colors.js";
+import {
   digitalAccessoryLimits,
   selectUnambiguousDigitalAccessoryGrip,
   validateDigitalAccessoryPlacement,
@@ -39,6 +46,7 @@ const publicRoot = resolve(root, "public/assets/ldraw/official-2608");
 const modelDirectory = resolve(publicRoot, "models");
 const thumbnailDirectory = resolve(root, "public/assets/thumbnails/ldraw-expanded");
 const CUSTOM_COLOR_CODE = 10_000;
+const ASSEMBLY_COLOR_CODES = { catalog: CUSTOM_COLOR_CODE, arms: 10_001, hands: 10_002, legs: 10_001 } as const;
 const FAMILY_BUILD_ROLES = ["head", "headwear", "torsoAssembly", "legsAssembly"] as const satisfies readonly CatalogRole[];
 const BUILD_ROLES = [...FAMILY_BUILD_ROLES, "handAccessory"] as const satisfies readonly CatalogRole[];
 
@@ -73,15 +81,31 @@ type SourceLock = {
 
 type Candidate = {
   file: string;
-  matchType: "exact-filename" | "explicit-keyword" | "rebrickable-print-parent";
+  matchType: "exact-filename" | "explicit-keyword" | "rebrickable-print-parent" | "rebrickable-assembly-code";
   update: string;
   printParentPartNums?: string[];
 };
 
 type NormalizedPart = {
   partNum: string;
+  name: string;
   colorVariants: Array<{ rgb: string; colorName: string }>;
   printParentPartNums: string[];
+};
+
+type AssemblyColorRole = keyof typeof ASSEMBLY_COLOR_CODES;
+
+type AssemblyComposition = {
+  kind: "rebrickable-color-coded-assembly";
+  referenceShortcutCount: number;
+  agreeingReferenceShortcutCount: number;
+  components: Array<{
+    file: string;
+    colorRole: AssemblyColorRole;
+    colorName: string | null;
+    colorRgb: string | null;
+    transform: number[];
+  }>;
 };
 
 type Triangle = {
@@ -151,18 +175,26 @@ async function dependencyClosure(topLevelPath: string, fileIndex: ReadonlyMap<st
   return [...visited].sort();
 }
 
+const identityTransform = [0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1];
+
+type ModelLine = { colorCode: number; transform: number[]; file: string };
+type ModelColor = { name: string; code: number; rgb: string };
+
+const colorDefinition = ({ name, code, rgb }: ModelColor): string =>
+  `0 !COLOUR ${name} CODE ${code} VALUE #${rgb} EDGE #333333`;
+
 async function packedModel(
-  ldrawFile: string,
+  lines: readonly ModelLine[],
+  colors: readonly ModelColor[],
   modelName: string,
-  colorRgb: string,
   fileIndex: ReadonlyMap<string, string>,
 ): Promise<{ packed: string; dependencies: string[] }> {
-  const dependencies = await dependencyClosure(ldrawFile, fileIndex);
+  const dependencies = [...new Set((await Promise.all(lines.map(({ file }) => dependencyClosure(file, fileIndex)))).flat())].sort();
   const sections = [
     `0 FILE ${modelName}.ldr`,
     "0 FigForge render input from official LDraw parts only",
-    `0 !COLOUR FigForge_Catalog CODE ${CUSTOM_COLOR_CODE} VALUE #${colorRgb} EDGE #333333`,
-    `1 ${CUSTOM_COLOR_CODE} 0 0 0 1 0 0 0 1 0 0 0 1 ${embeddedLdrawName(ldrawFile)}`,
+    ...colors.map(colorDefinition),
+    ...lines.map(({ colorCode, transform, file }) => `1 ${colorCode} ${transform.join(" ")} ${embeddedLdrawName(file)}`),
   ];
   for (const dependency of dependencies) {
     sections.push(`0 FILE ${embeddedLdrawName(dependency)}`, (await sourceFor(dependency)).trimEnd());
@@ -314,6 +346,106 @@ const placementByRole = new Map(FAMILY_BUILD_ROLES.map((role) => {
   return [role, reference.placementTransformLdu] as const;
 }));
 
+// Rebrickable colour codes are only trusted when every unprinted base assembly names the same catalog colour.
+const colorRgbsByName = new Map<string, Set<string>>();
+for (const part of normalizedCatalog.parts) {
+  for (const { colorName, rgb } of part.colorVariants) {
+    colorRgbsByName.set(colorName, (colorRgbsByName.get(colorName) ?? new Set()).add(rgb));
+  }
+}
+const colorRgbByName = new Map([...colorRgbsByName]
+  .filter(([, rgbs]) => rgbs.size === 1 && /^[A-F0-9]{6}$/u.test([...rgbs][0]!))
+  .map(([name, rgbs]) => [name, [...rgbs][0]!]));
+const assemblyColorCodes = deriveAssemblyColorCodeTable(normalizedCatalog.parts, new Set(colorRgbByName.keys()));
+const topLevelSources = await Promise.all(topLevelParts.map(sourceFor));
+const referenceAssemblies = {
+  torso: deriveReferenceAssembly(
+    topLevelSources.filter(isCompleteStandardTorsoAssembly),
+    ["973", "3818", "3819", "3820"],
+  ),
+  legs: deriveReferenceAssembly(
+    topLevelSources.filter((source) => /^0\s+!LDRAW_ORG\s+Shortcut\b/mu.test(source) && isCompleteMinifigLegsAssembly(source)),
+    ["3815b", "3816c", "3817c"],
+  ),
+} satisfies Record<"torso" | "legs", ReferenceAssembly>;
+const plainComponentFiles: Record<string, string> = {
+  "3818": "parts/3818.dat",
+  "3819": "parts/3819.dat",
+  "3820": "parts/3820.dat",
+  "3815b": "parts/3815b.dat",
+  "3816c": "parts/3816c.dat",
+  "3817c": "parts/3817c.dat",
+};
+for (const file of [...Object.values(plainComponentFiles), "parts/973.dat"]) {
+  if (!fileIndex.has(file)) throw new Error(`Missing official assembly component: ${file}`);
+}
+
+const isTorsoPrintPart = async (file: string): Promise<boolean> => {
+  if (!/^parts\/973p[a-z0-9]+\.dat$/iu.test(file)) return false;
+  const source = await sourceFor(file);
+  return /^0\s+!LDRAW_ORG\s+Part\b/mu.test(source) && /^0\s+Minifig Torso\b/u.test(source.trimStart());
+};
+
+// Builds a standard assembly from official parts when the Rebrickable number and name both state its colours.
+const composeColorCodedAssembly = async (
+  part: CatalogPackagePart,
+  role: CatalogRole,
+): Promise<{ candidate: Candidate; composition: AssemblyComposition } | null> => {
+  const parsed = parseAssemblyPartNum(part.rebrickablePartNum);
+  if (!parsed) return null;
+  if ((role === "torsoAssembly") !== (parsed.kind === "torso") || (role === "legsAssembly") !== (parsed.kind === "legs")) return null;
+  const colors = confirmAssemblyColors(part.rebrickablePartNum, part.name, assemblyColorCodes);
+  if (!colors) return null;
+  const officialFiles = [...new Set((candidateIndex.get(normalize(part.rebrickablePartNum)) ?? []).map(({ file }) => file))];
+  let bodyFile: string;
+  if (colors.kind === "torso") {
+    if (parsed.printed) {
+      if (officialFiles.length !== 1 || !(await isTorsoPrintPart(officialFiles[0]!))) return null;
+      bodyFile = officialFiles[0]!;
+    } else {
+      if (officialFiles.length > 0) return null;
+      bodyFile = "parts/973.dat";
+    }
+  } else {
+    if (parsed.printed || officialFiles.length > 0) return null;
+    bodyFile = "parts/3815b.dat";
+  }
+  const colorFor = (component: string): { colorRole: AssemblyColorRole; colorName: string | null } => {
+    if (colors.kind === "torso") {
+      if (component === "3818" || component === "3819") return { colorRole: "arms", colorName: colors.armColorName };
+      if (component === "3820") return { colorRole: "hands", colorName: colors.handColorName };
+      return { colorRole: "catalog", colorName: null };
+    }
+    if (component === "3816c" || component === "3817c") return { colorRole: "legs", colorName: colors.legColorName };
+    return { colorRole: "catalog", colorName: null };
+  };
+  const reference = referenceAssemblies[colors.kind];
+  const components = reference.lines.map(({ component, transform }) => {
+    const { colorRole, colorName } = colorFor(component);
+    const file = component === "973" || component === "3815b" ? bodyFile : plainComponentFiles[component];
+    if (!file) throw new Error(`Missing assembly component file: ${component}`);
+    return {
+      file,
+      colorRole,
+      colorName,
+      colorRgb: colorName ? colorRgbByName.get(colorName) ?? null : null,
+      transform,
+    };
+  });
+  if (components.some(({ colorName, colorRgb }) => colorName && !colorRgb)) return null;
+  const bodySource = await sourceFor(bodyFile);
+  const update = /0\s+!LDRAW_ORG\s+(?:Part|Shortcut)[^\r\n]*?\s+UPDATE\s+([0-9]{4}-[0-9]{2})/iu.exec(bodySource)?.[1] ?? lock.release;
+  return {
+    candidate: { file: bodyFile, matchType: "rebrickable-assembly-code", update },
+    composition: {
+      kind: "rebrickable-color-coded-assembly",
+      referenceShortcutCount: reference.shortcutCount,
+      agreeingReferenceShortcutCount: reference.agreeingShortcutCount,
+      components,
+    },
+  };
+};
+
 const supportsRoleAssembly = async (role: CatalogRole, candidate: Candidate): Promise<boolean> => {
   if (role === "torsoAssembly") return isCompleteStandardTorsoAssembly(await sourceFor(candidate.file));
   if (role === "legsAssembly") return isCompleteMinifigLegsAssembly(await sourceFor(candidate.file));
@@ -331,6 +463,7 @@ const matchedParts: Array<{
   }>;
   selectedGripEvidence: CylinderEvidence | null;
   selectedGripCandidateIndex: number | null;
+  composition: AssemblyComposition | null;
 }> = [];
 let ambiguousMappingsExcluded = 0;
 let accessoryGripCandidatesExcluded = 0;
@@ -372,6 +505,7 @@ for (const role of BUILD_ROLES) {
           gripCandidates: candidates,
           selectedGripEvidence: null,
           selectedGripCandidateIndex: null,
+          composition: null,
         });
         continue;
       }
@@ -385,6 +519,7 @@ for (const role of BUILD_ROLES) {
         gripCandidates: [],
         selectedGripEvidence: null,
         selectedGripCandidateIndex: null,
+        composition: null,
       });
       continue;
     }
@@ -421,6 +556,24 @@ for (const role of BUILD_ROLES) {
         gripCandidates: [],
         selectedGripEvidence: null,
         selectedGripCandidateIndex: null,
+        composition: null,
+      });
+      continue;
+    }
+
+    const composed = await composeColorCodedAssembly(part, role);
+    if (composed) {
+      const placementTransformLdu = placementByRole.get(role);
+      if (!placementTransformLdu) throw new Error(`Missing ${role} placement transform`);
+      matchedParts.push({
+        part: { ...part, role },
+        candidate: composed.candidate,
+        placementMode: "prototype-family-origin",
+        placementTransformLdu,
+        gripCandidates: [],
+        selectedGripEvidence: null,
+        selectedGripCandidateIndex: null,
+        composition: composed.composition,
       });
     }
   }
@@ -498,8 +651,20 @@ for (const [index, match] of matchedParts.entries()) {
     orientationCandidatesTested: number;
     selectedOrientationIndex: number;
   }) | null = null;
+  const modelColors: ModelColor[] = [{ name: "FigForge_Catalog", code: CUSTOM_COLOR_CODE, rgb: colorRgb }];
+  const modelLines: ModelLine[] = [{ colorCode: CUSTOM_COLOR_CODE, transform: identityTransform, file: candidate.file }];
+  if (match.composition) {
+    modelLines.length = 0;
+    for (const component of match.composition.components) {
+      const code = ASSEMBLY_COLOR_CODES[component.colorRole];
+      if (component.colorRgb && !modelColors.some((color) => color.code === code)) {
+        modelColors.push({ name: `FigForge_${component.colorRole[0]!.toUpperCase()}${component.colorRole.slice(1)}`, code, rgb: component.colorRgb });
+      }
+      modelLines.push({ colorCode: code, transform: component.transform, file: component.file });
+    }
+  }
   if (!asset) {
-    const { packed, dependencies } = await packedModel(candidate.file, modelName, colorRgb, fileIndex);
+    const { packed, dependencies } = await packedModel(modelLines, modelColors, modelName, fileIndex);
     let thumbnail: Buffer;
     try {
       const model = await parsePackedModel(packed, materials);
@@ -582,8 +747,8 @@ for (const [index, match] of matchedParts.entries()) {
       `0 ${isPrintParentFallback ? `Unprinted parent geometry for ${candidate.printParentPartNums?.join(", ")}` : part.name}`,
       `0 Name: ${modelName}.ldr`,
       `0 // License: ${lock.license}; see referenced official part and ${basename(lock.noticePath)}`,
-      `0 !COLOUR FigForge_Catalog CODE ${CUSTOM_COLOR_CODE} VALUE #${colorRgb} EDGE #333333`,
-      `1 ${CUSTOM_COLOR_CODE} 0 0 0 1 0 0 0 1 0 0 0 1 ${basename(candidate.file)}`,
+      ...modelColors.map(colorDefinition),
+      ...modelLines.map(({ colorCode, transform, file }) => `1 ${colorCode} ${transform.join(" ")} ${basename(file)}`),
       "",
     ].join("\n");
     const modelUrl = `/assets/ldraw/official-2608/models/${modelName}.ldr`;
@@ -626,6 +791,7 @@ for (const [index, match] of matchedParts.entries()) {
       kind: "unprinted-print-parent",
       parentPartNums: candidate.printParentPartNums,
     } : null,
+    assemblyComposition: match.composition,
     modelUrl: asset.modelUrl,
     modelSha256: asset.modelSha256,
     thumbnailUrl: asset.thumbnailUrl,
@@ -680,7 +846,10 @@ const output = {
     torsoAssemblyCount: outputEntries.filter(({ role }) => role === "torsoAssembly").length,
     legsAssemblyCount: outputEntries.filter(({ role }) => role === "legsAssembly").length,
     handAccessoryCount: outputEntries.filter(({ role }) => role === "handAccessory").length,
-    directMappingCount: outputEntries.filter(({ mappingEvidence }) => mappingEvidence !== "rebrickable-print-parent").length,
+    directMappingCount: outputEntries.filter(({ mappingEvidence }) =>
+      mappingEvidence !== "rebrickable-print-parent" && mappingEvidence !== "rebrickable-assembly-code"
+    ).length,
+    colorCodedAssemblyCount: outputEntries.filter(({ mappingEvidence }) => mappingEvidence === "rebrickable-assembly-code").length,
     printParentGeometryFallbackCount: outputEntries.filter(({ mappingEvidence }) => mappingEvidence === "rebrickable-print-parent").length,
     generatedAssetCount: outputEntries.length - outputEntries.filter(({ mappingEvidence }) => mappingEvidence === "rebrickable-print-parent").length + fallbackAssetCache.size,
     sharedOfficialFileCount: copiedDependencies.size,
@@ -698,11 +867,32 @@ const output = {
     renderFailuresExcluded: skippedEntries.length,
     mocFilesUsed: 0,
   },
+  assemblyColorCodes: {
+    derivation: "Unprinted Rebrickable base assemblies 973cNNhMM and 970cNN whose names follow the fixed grammar 'Torso, A Arms, H Hands' or 'Hips and L Legs'; a code is used only when all such names agree on one catalog colour with one RGB value.",
+    codes: [...assemblyColorCodes.codes].map(([code, colorName]) => ({
+      code,
+      colorName,
+      colorRgb: colorRgbByName.get(colorName),
+      evidencePartNums: assemblyColorCodes.evidence.get(code) ?? [],
+    })),
+    unresolvedCodes: [...assemblyColorCodes.unresolved].map(([code, { colorNames, reason }]) => ({
+      code,
+      colorNames,
+      reason,
+      evidencePartNums: assemblyColorCodes.evidence.get(code) ?? [],
+    })),
+    referenceAssemblies: Object.fromEntries(Object.entries(referenceAssemblies).map(([kind, reference]) => [kind, {
+      shortcutCount: reference.shortcutCount,
+      agreeingShortcutCount: reference.agreeingShortcutCount,
+      lines: reference.lines,
+    }])),
+  },
   renderFailures: skippedEntries,
   digitalPlacementRejections,
   limitations: [
     "Direct mappings require an unambiguous exact filename or explicit LDraw !KEYWORDS Rebrickable identifier.",
     "Print variants may reuse the unique official unprinted parent geometry declared by the locked Rebrickable part_relationships.csv; their printed decoration is not rendered.",
+    "Standard torso and legs assemblies without an official LDraw file are composed from official torso, arm, hand, hip and leg parts in the placement shared by the official shortcuts; arm, hand and leg colours come from the Rebrickable assembly code and must be confirmed by the entry's own name.",
     "Family-origin placement is a digital convention, not a physical clutch-force guarantee.",
     "Hand accessories pass only when exactly one radius-4 grip candidate satisfies deterministic minimum-length, rigid-transform, model-bounds and reference-figure clearance checks; physical clutch force remains unverified.",
     "The first catalog-backed color is used for preview; parts without color evidence use neutral gray.",
