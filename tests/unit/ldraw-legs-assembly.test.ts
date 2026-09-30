@@ -28,12 +28,26 @@ describe("complete minifig legs assembly detection", () => {
   });
 
   it.each([
+    "Minifig Legs Minecraft Enderman",
+    "Minifig Legs Bionicle",
+  ])("accepts an official complete stud-connected legs family: %s", (title) => {
+    const source = `0 ${title}\n0 !LDRAW_ORG Part UPDATE 2026-08`;
+    expect(isCompleteMinifigLowerBody(source)).toBe(true);
+  });
+
+  it.each([
     `0 Minifig Hips
 0 !LDRAW_ORG Part UPDATE 2026-08`,
     `0 Minifig Leg Right
 0 !LDRAW_ORG Part UPDATE 2026-08`,
     `0 Minifig Skeleton Leg with Black Foot
 0 !LDRAW_ORG Shortcut UPDATE 2026-08`,
+    `0 Minifig Mechanical Legs
+0 !LDRAW_ORG Part UPDATE 2026-08`,
+    `0 Minifig Martian Legs
+0 !LDRAW_ORG Part UPDATE 2026-08`,
+    `0 Minifig Legs SW Super Battle Droid
+0 !LDRAW_ORG Part UPDATE 2026-08`,
     `0 ~Moved to 3815c01
 0 !LDRAW_ORG Part UPDATE 2026-08`,
     `0 Minifig Hips and Legs

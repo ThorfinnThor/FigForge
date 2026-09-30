@@ -22,11 +22,11 @@
     "automaticBuilderEnablements": 0
   },
   "summary": {
-    "placementProfileRequiredCount": 571,
+    "placementProfileRequiredCount": 569,
     "uniqueRadius4CandidateCount": 43,
     "multipleRadius4CandidateCount": 142,
     "noRadius4CylinderDetectedCount": 202,
-    "roleSpecificAssemblyProfileRequiredCount": 184,
+    "roleSpecificAssemblyProfileRequiredCount": 182,
     "noOfficialMappingQueueCount": 4908,
     "ambiguousOfficialMappingQueueCount": 84
   },
@@ -2905,23 +2905,6 @@
       "limitation": "Cylinder analysis does not establish a safe assembly or body-slot placement for this role."
     },
     {
-      "catalogId": "part:19732",
-      "role": "legsAssembly",
-      "rebrickablePartNum": "19732",
-      "name": "Legs, Long, Enderman",
-      "ldrawFiles": [
-        "parts/19732.dat"
-      ],
-      "mappingEvidence": [
-        "exact-filename"
-      ],
-      "analysis": "role-specific-assembly-profile-required",
-      "evidence": [],
-      "proposedPlacementTransformLdu": null,
-      "automaticBuilderEnablement": false,
-      "limitation": "Cylinder analysis does not establish a safe assembly or body-slot placement for this role."
-    },
-    {
       "catalogId": "part:23769",
       "role": "legsAssembly",
       "rebrickablePartNum": "23769",
@@ -3013,23 +2996,6 @@
       "name": "Leg Mechanical, Exo-Force Robot",
       "ldrawFiles": [
         "parts/53984.dat"
-      ],
-      "mappingEvidence": [
-        "exact-filename"
-      ],
-      "analysis": "role-specific-assembly-profile-required",
-      "evidence": [],
-      "proposedPlacementTransformLdu": null,
-      "automaticBuilderEnablement": false,
-      "limitation": "Cylinder analysis does not establish a safe assembly or body-slot placement for this role."
-    },
-    {
-      "catalogId": "part:54276",
-      "role": "legsAssembly",
-      "rebrickablePartNum": "54276",
-      "name": "Legs Mechanical, Bionicle",
-      "ldrawFiles": [
-        "parts/54276.dat"
       ],
       "mappingEvidence": [
         "exact-filename"

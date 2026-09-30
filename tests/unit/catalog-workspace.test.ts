@@ -45,7 +45,7 @@ describe("FF-14 responsive catalog workspace", () => {
       legsAssembly: 3_231,
       handAccessory: 1_308,
     });
-    expect(allParts.filter(builderComponentForCatalogPart)).toHaveLength(14_646);
+    expect(allParts.filter(builderComponentForCatalogPart)).toHaveLength(14_648);
   }, 15_000);
 
   it("defines responsive tabs, drawer focus return and keyboard dismissal", async () => {
@@ -96,11 +96,11 @@ describe("FF-14 responsive catalog workspace", () => {
     expect(allParts.filter((part) => {
       const builderComponent = builderComponentForCatalogPart(part);
       return builderComponent && verifiedLDrawEntryForComponent(builderComponent.id);
-    })).toHaveLength(14_639);
+    })).toHaveLength(14_641);
     expect(allParts.filter((part) => {
       const builderComponent = builderComponentForCatalogPart(part);
       return builderComponent && digitallySupportedLDrawEntryForComponent(builderComponent.id);
-    })).toHaveLength(14_637);
+    })).toHaveLength(14_639);
     expect(cardSource).toContain("Geometrie ohne Druck");
     expect(cardSource).toContain('disabled={connectionStatus !== "digitally-supported"}');
     expect(cardSource).toContain("In Figur einsetzen");
@@ -127,6 +127,19 @@ describe("FF-14 responsive catalog workspace", () => {
       kind: "unprinted-print-parent",
       parentPartNums: ["36036"],
     });
+  });
+
+  it("enables complete stud-connected Enderman and Bionicle legs", async () => {
+    const legs = await loadCatalogParts("legsAssembly");
+
+    for (const partNum of ["19732", "54276"]) {
+      const catalogPart = legs.find(({ rebrickablePartNum }) => rebrickablePartNum === partNum);
+      const builderComponent = catalogPart ? builderComponentForCatalogPart(catalogPart) : undefined;
+      const entry = builderComponent ? verifiedLDrawEntryForComponent(builderComponent.id) : undefined;
+
+      expect(entry?.ldrawFile).toBe(`parts/${partNum}.dat`);
+      expect(entry?.geometryFallback).toBeNull();
+    }
   });
 
   it("uses deterministic standing geometry when a printed black-leg parent is ambiguous", async () => {
