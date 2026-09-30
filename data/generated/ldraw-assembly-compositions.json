@@ -551375,6 +551375,74 @@
         }
       ]
     },
+    "catalog:legsAssembly:970c02": {
+      "kind": "rebrickable-color-coded-assembly",
+      "printRendered": true,
+      "referenceShortcutCount": 112,
+      "agreeingReferenceShortcutCount": 111,
+      "components": [
+        {
+          "file": "parts/3815b.dat",
+          "colorRole": "catalog",
+          "colorName": null,
+          "colorRgb": null,
+          "transform": [
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1
+          ]
+        },
+        {
+          "file": "parts/3816c.dat",
+          "colorRole": "legs",
+          "colorName": "Light Nougat",
+          "colorRgb": "F6D7B3",
+          "transform": [
+            0,
+            12,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1
+          ]
+        },
+        {
+          "file": "parts/3817c.dat",
+          "colorRole": "legs",
+          "colorName": "Light Nougat",
+          "colorRgb": "F6D7B3",
+          "transform": [
+            0,
+            12,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1
+          ]
+        }
+      ]
+    },
     "catalog:legsAssembly:970c02pat27pr1401": {
       "kind": "rebrickable-color-coded-assembly",
       "printRendered": false,
@@ -706274,6 +706342,74 @@
           "colorRole": "legs",
           "colorName": "Dark Green",
           "colorRgb": "184632",
+          "transform": [
+            0,
+            12,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1
+          ]
+        }
+      ]
+    },
+    "catalog:legsAssembly:970c36": {
+      "kind": "rebrickable-color-coded-assembly",
+      "printRendered": true,
+      "referenceShortcutCount": 112,
+      "agreeingReferenceShortcutCount": 111,
+      "components": [
+        {
+          "file": "parts/3815b.dat",
+          "colorRole": "catalog",
+          "colorName": null,
+          "colorRgb": null,
+          "transform": [
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1
+          ]
+        },
+        {
+          "file": "parts/3816c.dat",
+          "colorRole": "legs",
+          "colorName": "Dark Pink",
+          "colorRgb": "C870A0",
+          "transform": [
+            0,
+            12,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1
+          ]
+        },
+        {
+          "file": "parts/3817c.dat",
+          "colorRole": "legs",
+          "colorName": "Dark Pink",
+          "colorRgb": "C870A0",
           "transform": [
             0,
             12,

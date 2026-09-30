@@ -22,11 +22,11 @@
     "automaticBuilderEnablements": 0
   },
   "summary": {
-    "placementProfileRequiredCount": 557,
+    "placementProfileRequiredCount": 555,
     "uniqueRadius4CandidateCount": 43,
     "multipleRadius4CandidateCount": 142,
     "noRadius4CylinderDetectedCount": 202,
-    "roleSpecificAssemblyProfileRequiredCount": 170,
+    "roleSpecificAssemblyProfileRequiredCount": 168,
     "noOfficialMappingQueueCount": 4904,
     "ambiguousOfficialMappingQueueCount": 83
   },
@@ -2514,23 +2514,6 @@
       "limitation": "Cylinder analysis does not establish a safe assembly or body-slot placement for this role."
     },
     {
-      "catalogId": "part:970c02",
-      "role": "legsAssembly",
-      "rebrickablePartNum": "970c02",
-      "name": "Hips and Light Nougat Legs",
-      "ldrawFiles": [
-        "parts/970c02.dat"
-      ],
-      "mappingEvidence": [
-        "exact-filename"
-      ],
-      "analysis": "role-specific-assembly-profile-required",
-      "evidence": [],
-      "proposedPlacementTransformLdu": null,
-      "automaticBuilderEnablement": false,
-      "limitation": "Cylinder analysis does not establish a safe assembly or body-slot placement for this role."
-    },
-    {
       "catalogId": "part:970c19pr0033",
       "role": "legsAssembly",
       "rebrickablePartNum": "970c19pr0033",
@@ -2540,23 +2523,6 @@
       ],
       "mappingEvidence": [
         "explicit-keyword"
-      ],
-      "analysis": "role-specific-assembly-profile-required",
-      "evidence": [],
-      "proposedPlacementTransformLdu": null,
-      "automaticBuilderEnablement": false,
-      "limitation": "Cylinder analysis does not establish a safe assembly or body-slot placement for this role."
-    },
-    {
-      "catalogId": "part:970c36",
-      "role": "legsAssembly",
-      "rebrickablePartNum": "970c36",
-      "name": "Hips and Dark Pink Legs",
-      "ldrawFiles": [
-        "parts/970c36.dat"
-      ],
-      "mappingEvidence": [
-        "exact-filename"
       ],
       "analysis": "role-specific-assembly-profile-required",
       "evidence": [],
