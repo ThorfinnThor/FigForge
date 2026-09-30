@@ -38,6 +38,7 @@
     "assets:ldraw-thumbnails": "tsx tools/build-ldraw-catalog-thumbnails.ts",
     "assets:ldraw-refresh": "tsx tools/refresh-ldraw-library.ts",
     "assets:ldraw-expanded": "tsx tools/build-ldraw-expanded-catalog.ts",
+    "assets:ldraw-runtime": "tsx tools/build-ldraw-runtime-packages.ts",
     "assets:validate:ldraw-expanded": "tsx tools/validate-ldraw-expanded-catalog.ts",
     "assets:analyze:ldraw-coverage": "tsx tools/analyze-ldraw-catalog-coverage.ts",
     "assets:validate:ldraw-coverage": "tsx tools/validate-ldraw-catalog-coverage.ts",

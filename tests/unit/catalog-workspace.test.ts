@@ -12,6 +12,7 @@ import {
 describe("FF-14 responsive catalog workspace", () => {
   it("wires the curated catalog and figure panel without inventing availability", async () => {
     const source = await readFile("src/components/CatalogWorkspace.tsx", "utf8");
+    const dataSource = await readFile("src/components/catalog-workspace-data.ts", "utf8");
 
     expect(catalogAssortment.components).toHaveLength(17);
     expect(source).toContain("<PartCard");
@@ -24,6 +25,8 @@ describe("FF-14 responsive catalog workspace", () => {
     expect(source).toContain("<FigureViewport selectedParts={selectedLDrawParts}");
     expect(source).toContain("saveCurrentFigureDraft");
     expect(source).toContain("parseFigureDocument");
+    expect(dataSource).not.toContain("ldraw-expanded-catalog.json");
+    expect(dataSource).toContain("data/generated/ldraw-runtime/");
   });
 
   it("loads 20,202 Rebrickable Minifig catalog entries from category packages", async () => {

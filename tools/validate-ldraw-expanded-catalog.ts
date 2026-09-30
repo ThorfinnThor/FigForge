@@ -2,6 +2,8 @@ import assert from "node:assert/strict";
 import { createHash } from "node:crypto";
 import { readFile, readdir } from "node:fs/promises";
 import { basename, dirname, resolve } from "node:path";
+import { type CatalogRole } from "../src/contracts/catalog-package.js";
+import { ldrawRuntimePackageSchema } from "../src/contracts/ldraw-runtime-package.js";
 import { OFFICIAL_LDRAW_PUBLIC_PATH } from "../src/scene/ldraw-release.js";
 import {
   confirmAssemblyColors,
@@ -28,6 +30,7 @@ const catalog = JSON.parse(await readFile(resolve(root, "data/generated/ldraw-ex
     rebrickablePartNum: string;
     status: string;
     ldrawFile: string;
+    ldrawUpdate: string;
     mappingEvidence: string;
     modelUrl: string;
     modelSha256: string;
@@ -102,6 +105,14 @@ const catalog = JSON.parse(await readFile(resolve(root, "data/generated/ldraw-ex
     orientationCollisionCountsByGrip: number[][];
   }>;
 };
+
+const runtimeFileByRole = {
+  head: "head.json",
+  headwear: "headwear.json",
+  torsoAssembly: "torso-assembly.json",
+  legsAssembly: "legs-assembly.json",
+  handAccessory: "hand-accessory.json",
+} as const satisfies Record<CatalogRole, string>;
 const { compositions: assemblyCompositions } = JSON.parse(
   await readFile(resolve(root, "data/generated/ldraw-assembly-compositions.json"), "utf8"),
 ) as {
@@ -152,6 +163,50 @@ assert.equal(
     + catalog.summary.accessoryMultipleGripCandidatesNoSafe
     + catalog.summary.accessoryMultipleGripCandidatesRenderFailed,
 );
+
+const catalogEntriesSha256 = sha256(JSON.stringify(catalog.entries));
+const runtimeManifest = JSON.parse(
+  await readFile(resolve(root, "data/generated/ldraw-runtime/manifest.json"), "utf8"),
+) as {
+  schemaVersion: number;
+  sourcePolicy: string;
+  catalogEntriesSha256: string;
+  totalEntryCount: number;
+  packages: Array<{ role: CatalogRole; fileName: string; entryCount: number }>;
+};
+assert.equal(runtimeManifest.schemaVersion, 1);
+assert.equal(runtimeManifest.sourcePolicy, catalog.sourcePolicy);
+assert.equal(runtimeManifest.catalogEntriesSha256, catalogEntriesSha256);
+assert.equal(runtimeManifest.totalEntryCount, catalog.entries.length);
+assert.equal(runtimeManifest.packages.length, 5);
+let runtimeEntryCount = 0;
+for (const [role, fileName] of Object.entries(runtimeFileByRole) as Array<[CatalogRole, string]>) {
+  const runtimePackage = ldrawRuntimePackageSchema.parse(JSON.parse(
+    await readFile(resolve(root, "data/generated/ldraw-runtime", fileName), "utf8"),
+  ));
+  const expectedEntries = catalog.entries
+    .filter((entry) => entry.role === role)
+    .map((entry) => ({
+      componentId: entry.componentId,
+      rebrickablePartNum: entry.rebrickablePartNum,
+      status: entry.status,
+      ldrawFile: entry.ldrawFile,
+      ldrawUpdate: entry.ldrawUpdate,
+      modelUrl: entry.modelUrl,
+      thumbnailUrl: entry.thumbnailUrl,
+      geometryFallback: entry.geometryFallback,
+      placementMode: entry.placementMode,
+      placementTransformLdu: entry.placementTransformLdu,
+    }));
+  assert.equal(runtimePackage.sourcePolicy, catalog.sourcePolicy);
+  assert.equal(runtimePackage.catalogEntriesSha256, catalogEntriesSha256);
+  assert.equal(runtimePackage.role, role);
+  assert.deepEqual(runtimePackage.entries, expectedEntries);
+  const manifestEntry = runtimeManifest.packages.find((entry) => entry.role === role);
+  assert.deepEqual(manifestEntry, { role, fileName, entryCount: expectedEntries.length });
+  runtimeEntryCount += runtimePackage.entryCount;
+}
+assert.equal(runtimeEntryCount, catalog.entries.length);
 for (const rejection of catalog.digitalPlacementRejections) {
   assert(rejection.ldrawFile.startsWith("parts/") && !rejection.ldrawFile.toLowerCase().includes("moc"));
   assert([
