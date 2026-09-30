@@ -3,6 +3,7 @@ import { createHash } from "node:crypto";
 import { readFile, readdir } from "node:fs/promises";
 import { basename, dirname, resolve } from "node:path";
 import { OFFICIAL_LDRAW_PUBLIC_PATH } from "../src/scene/ldraw-release.js";
+import { ldrawRuntimePackages } from "./lib/ldraw-runtime.js";
 import {
   confirmAssemblyColors,
   deriveAssemblyColorCodeTable,
@@ -28,6 +29,7 @@ const catalog = JSON.parse(await readFile(resolve(root, "data/generated/ldraw-ex
     rebrickablePartNum: string;
     status: string;
     ldrawFile: string;
+    ldrawUpdate: string;
     mappingEvidence: string;
     modelUrl: string;
     modelSha256: string;
@@ -242,7 +244,8 @@ for (const entry of catalog.entries) {
   ids.add(entry.componentId);
   assert.equal(entry.status, "verified");
   assert(["head", "headwear", "torsoAssembly", "legsAssembly", "handAccessory"].includes(entry.role));
-  assert(entry.componentId.startsWith(`catalog:${entry.role}:`));
+  // The browser derives the component ID from role and part number when it reads the compact runtime package.
+  assert.equal(entry.componentId, `catalog:${entry.role}:${entry.rebrickablePartNum.trim().toLowerCase()}`);
   assert(entry.ldrawFile.startsWith("parts/"));
   assert(!entry.ldrawFile.toLowerCase().includes("moc"));
   assert(["exact-filename", "explicit-keyword", "rebrickable-print-parent", "rebrickable-assembly-code"].includes(entry.mappingEvidence));
@@ -363,6 +366,14 @@ assert.equal(
 );
 assert.equal(catalog.summary.printParentGeometryFallbackCount, catalog.entries.filter(({ mappingEvidence }) => mappingEvidence === "rebrickable-print-parent").length);
 assert.equal(catalog.summary.generatedAssetCount, assetsByModelUrl.size);
+
+// The per-role browser packages must be exactly the projection of the validated catalog.
+const runtimeDirectory = resolve(root, "data/generated/ldraw-runtime");
+const expectedRuntimePackages = ldrawRuntimePackages(catalog.source.archiveSha256, catalog.entries);
+assert.deepEqual((await readdir(runtimeDirectory)).sort(), expectedRuntimePackages.map(({ file }) => file).sort());
+for (const { file, content } of expectedRuntimePackages) {
+  assert.equal(await readFile(resolve(runtimeDirectory, file), "utf8"), content, `Stale runtime package: ${file}`);
+}
 
 const notice = await readFile(resolve(root, `public${lock.noticePath}`), "utf8");
 assert(notice.includes("Creative Commons Attribution License 2.0 (CC BY 2.0)"));

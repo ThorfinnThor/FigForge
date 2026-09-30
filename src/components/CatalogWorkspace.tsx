@@ -8,6 +8,7 @@ import {
   builderComponentForId,
   digitalConnectivityForComponent,
   digitallySupportedLDrawEntryForComponent,
+  loadBuilderRoles,
   loadCatalogParts,
   referenceVariant,
   thumbnailForComponent,
@@ -54,6 +55,10 @@ const initialSelectionByRole = (): Partial<Record<CatalogRole, string>> => refer
 
 const isLDrawCatalogRole = (role: string): role is LDrawCatalogRole =>
   LDRAW_CATALOG_ROLES.has(role);
+
+// Saved figures may name parts from any role; their catalog slices must be loaded before the selection is checked.
+const builderRolesForDocument = (document: { selections: ReadonlyArray<{ slot: string }> }): CatalogRole[] =>
+  document.selections.flatMap(({ slot }) => isLDrawCatalogRole(slot) ? [slot] : []);
 
 function useMediaQuery(query: string) {
   const [matches, setMatches] = useState(() => (
@@ -170,8 +175,10 @@ export function CatalogWorkspace() {
   useEffect(() => {
     let active = true;
     void loadCurrentFigureDraft()
-      .then((document) => {
+      .then(async (document) => {
         if (!active || !document) return;
+        await loadBuilderRoles(builderRolesForDocument(document));
+        if (!active) return;
         const restored = selectionsFromFigureDocument(document, isSupportedDocumentSelection);
         if (Object.keys(restored).length === document.selections.length) {
           setSelectedByRole(restored);
@@ -216,6 +223,7 @@ export function CatalogWorkspace() {
         throw new Error("Datei überschreitet das 64-KiB-Limit.");
       }
       const document = parseFigureDocument(await file.text());
+      await loadBuilderRoles(builderRolesForDocument(document));
       const restored = selectionsFromFigureDocument(document, isSupportedDocumentSelection);
       if (Object.keys(restored).length !== document.selections.length) {
         throw new Error("Die Datei enthält unbekannte oder digital nicht unterstützte Teile.");
