@@ -19,13 +19,14 @@ import { OrbitControls } from "three/addons/controls/OrbitControls.js";
 import { LDrawConditionalLineMaterial } from "three/addons/materials/LDrawConditionalLineMaterial.js";
 import { LDrawLoader } from "three/addons/loaders/LDrawLoader.js";
 import { assertInternalLDrawUrl } from "./ldraw-part-loader.js";
+import { OFFICIAL_LDRAW_PUBLIC_PATH } from "./ldraw-release.js";
 import { disposeObject3D } from "./dispose-object.js";
 import type { CameraPreset, LDrawCatalogRole, LDrawCatalogSelection } from "./types.js";
 
 const MODEL_PATH = "/assets/ldraw/prototype/models/figforge-minifigure-packed.mpd";
 const MATERIALS_PATH = "/assets/ldraw/prototype/LDConfig.ldr";
-const OFFICIAL_PARTS_LIBRARY_PATH = "/assets/ldraw/official-2608/";
-const OFFICIAL_FILE_MAP_PATH = "/assets/ldraw/official-2608/file-map.json";
+const OFFICIAL_PARTS_LIBRARY_PATH = OFFICIAL_LDRAW_PUBLIC_PATH;
+const OFFICIAL_FILE_MAP_PATH = `${OFFICIAL_LDRAW_PUBLIC_PATH}file-map.json`;
 const MODEL_HEIGHT = 3.08;
 const CAMERA_TARGET = new Vector3(0, 1.66, 0);
 

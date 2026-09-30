@@ -14,6 +14,7 @@ import {
 import { LDrawConditionalLineMaterial } from "three/addons/materials/LDrawConditionalLineMaterial.js";
 import { LDrawLoader } from "three/addons/loaders/LDrawLoader.js";
 import { catalogPackageSchema, type CatalogPackagePart, type CatalogRole } from "../src/contracts/catalog-package.js";
+import { OFFICIAL_LDRAW_PUBLIC_PATH } from "../src/scene/ldraw-release.js";
 import { isCompleteMinifigLegsAssembly } from "./lib/ldraw-legs-assembly.js";
 import { rebrickableKeywordIds } from "./lib/ldraw-keywords.js";
 import { browserReferencePath, embeddedLdrawName } from "./lib/ldraw-paths.js";
@@ -39,12 +40,12 @@ import {
 } from "./lib/ldraw-placement-candidates.js";
 
 const root = process.cwd();
-const libraryRoot = resolve(root, "data/incoming/ldraw-2608/extracted/ldraw");
-const archivePath = resolve(root, "data/incoming/ldraw-2608/complete.zip");
+const libraryRoot = resolve(root, "data/incoming/ldraw-official/extracted/ldraw");
+const archivePath = resolve(root, "data/incoming/ldraw-official/complete.zip");
 const lockPath = resolve(root, "data/ldraw-source.lock.json");
 const outputPath = resolve(root, "data/generated/ldraw-expanded-catalog.json");
 const compositionsPath = resolve(root, "data/generated/ldraw-assembly-compositions.json");
-const publicRoot = resolve(root, "public/assets/ldraw/official-2608");
+const publicRoot = resolve(root, `public${OFFICIAL_LDRAW_PUBLIC_PATH}`);
 const modelDirectory = resolve(publicRoot, "models");
 const thumbnailDirectory = resolve(root, "public/assets/thumbnails/ldraw-expanded");
 const CUSTOM_COLOR_CODE = 10_000;
@@ -582,6 +583,10 @@ for (const role of BUILD_ROLES) {
 }
 
 await rm(publicRoot, { force: true, recursive: true });
+// Folders of earlier locked releases are removed so only the locked release is published.
+for (const entry of await readdir(dirname(publicRoot), { withFileTypes: true })) {
+  if (entry.isDirectory() && /^official-\d{4}$/u.test(entry.name)) await rm(resolve(dirname(publicRoot), entry.name), { recursive: true });
+}
 await rm(thumbnailDirectory, { force: true, recursive: true });
 await mkdir(modelDirectory, { recursive: true });
 await mkdir(thumbnailDirectory, { recursive: true });
@@ -765,7 +770,7 @@ for (const [index, match] of matchedParts.entries()) {
       ...modelLines.map(({ colorCode, transform, file }) => `1 ${colorCode} ${transform.join(" ")} ${basename(file)}`),
       "",
     ].join("\n");
-    const modelUrl = `/assets/ldraw/official-2608/models/${modelName}.ldr`;
+    const modelUrl = `${OFFICIAL_LDRAW_PUBLIC_PATH}models/${modelName}.ldr`;
     const thumbnailUrl = `/assets/thumbnails/ldraw-expanded/${modelName}.webp`;
     await writeFile(resolve(root, `public${modelUrl}`), wrapper, "utf8");
     await writeFile(resolve(root, `public${thumbnailUrl}`), thumbnail);

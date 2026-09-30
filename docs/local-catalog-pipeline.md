@@ -10,7 +10,7 @@ Der Befehl:
 
 - lädt ausschließlich die explizit erlaubten Rebrickable Catalog Downloads/CSV;
 - verwendet keine Rebrickable API und keine MOC-Dateien;
-- prüft und entpackt ausschließlich das in `data/ldraw-source.lock.json` festgehaltene offizielle LDraw-Archiv;
+- prüft und entpackt ausschließlich das in `data/ldraw-source.lock.json` festgehaltene offizielle LDraw-Archiv (neuere Versionen übernimmt nur der wöchentliche Datenrefresh, siehe ADR-010);
 - baut Katalogpakete, lokale Modelle, Vorschaubilder und den Abdeckungsbericht neu;
 - analysiert alle eindeutig zugeordneten, aber noch nicht platzierten Teile in einem Lauf und berechnet nur konservative Platzierungskandidaten;
 - schreibt nicht eindeutig lösbare Teile in eine Quellen-Warteschlange, die bei jedem Daten- oder LDraw-Update erneut geprüft wird;
