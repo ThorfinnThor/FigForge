@@ -17,6 +17,7 @@ import { catalogPackageSchema, type CatalogPackagePart, type CatalogRole } from 
 import { OFFICIAL_LDRAW_PUBLIC_PATH } from "../src/scene/ldraw-release.js";
 import { isCompleteMinifigLegsAssembly } from "./lib/ldraw-legs-assembly.js";
 import { rebrickableKeywordIds } from "./lib/ldraw-keywords.js";
+import { ldrawRuntimePackages } from "./lib/ldraw-runtime.js";
 import { browserReferencePath, embeddedLdrawName } from "./lib/ldraw-paths.js";
 import { isCompleteStandardTorsoAssembly } from "./lib/ldraw-torso-assembly.js";
 import {
@@ -45,6 +46,7 @@ const archivePath = resolve(root, "data/incoming/ldraw-official/complete.zip");
 const lockPath = resolve(root, "data/ldraw-source.lock.json");
 const outputPath = resolve(root, "data/generated/ldraw-expanded-catalog.json");
 const compositionsPath = resolve(root, "data/generated/ldraw-assembly-compositions.json");
+const runtimeDirectory = resolve(root, "data/generated/ldraw-runtime");
 const publicRoot = resolve(root, `public${OFFICIAL_LDRAW_PUBLIC_PATH}`);
 const modelDirectory = resolve(publicRoot, "models");
 const thumbnailDirectory = resolve(root, "public/assets/thumbnails/ldraw-expanded");
@@ -925,7 +927,13 @@ const output = {
   ],
 };
 await writeFile(outputPath, `${JSON.stringify(output, null, 2)}\n`, "utf8");
-// Composition evidence lives in its own file because the browser bundles the whole catalog file.
+// The browser loads one slim package per role on demand instead of bundling the full catalog.
+await rm(runtimeDirectory, { force: true, recursive: true });
+await mkdir(runtimeDirectory, { recursive: true });
+for (const { file, content } of ldrawRuntimePackages(lock.archiveSha256, outputEntries as unknown as Parameters<typeof ldrawRuntimePackages>[1])) {
+  await writeFile(resolve(runtimeDirectory, file), content, "utf8");
+}
+// Composition evidence lives in its own file; the browser never loads it.
 await writeFile(compositionsPath, `${JSON.stringify({
   schemaVersion: 1,
   sourcePolicy: lock.sourcePolicy,
