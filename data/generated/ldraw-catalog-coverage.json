@@ -29,17 +29,17 @@
   },
   "summary": {
     "catalogPartCount": 20202,
-    "visualizedPartCount": 14451,
-    "builderReadyPartCount": 14449,
-    "remainingCatalogPartCount": 5753,
-    "remainingWithoutVisualizationCount": 5751,
+    "visualizedPartCount": 14459,
+    "builderReadyPartCount": 14457,
+    "remainingCatalogPartCount": 5745,
+    "remainingWithoutVisualizationCount": 5743,
     "uniqueOfficialMappingCount": 2767,
     "ambiguousOfficialMappingCount": 235,
     "noOfficialMappingCount": 17200,
     "remainingClassifications": {
       "builder-blocked": 2,
       "render-failed": 0,
-      "placement-profile-required": 633,
+      "placement-profile-required": 625,
       "ambiguous-official-mapping": 84,
       "no-official-mapping": 5034
     }
@@ -95,12 +95,12 @@
     },
     "handAccessory": {
       "catalogPartCount": 1308,
-      "builderReadyPartCount": 236,
-      "remainingCatalogPartCount": 1072,
+      "builderReadyPartCount": 244,
+      "remainingCatalogPartCount": 1064,
       "remainingClassifications": {
         "builder-blocked": 1,
         "render-failed": 0,
-        "placement-profile-required": 413,
+        "placement-profile-required": 405,
         "ambiguous-official-mapping": 38,
         "no-official-mapping": 620
       }
@@ -52518,20 +52518,6 @@
       "reason": null
     },
     {
-      "catalogId": "part:21459",
-      "role": "handAccessory",
-      "rebrickablePartNum": "21459",
-      "name": "Weapon Sword / Katana / Shamshir with Capped Pommel [Square Guard]",
-      "classification": "placement-profile-required",
-      "ldrawFiles": [
-        "parts/21459.dat"
-      ],
-      "mappingEvidence": [
-        "exact-filename"
-      ],
-      "reason": null
-    },
-    {
       "catalogId": "part:22566",
       "role": "handAccessory",
       "rebrickablePartNum": "22566",
@@ -53510,20 +53496,6 @@
       "classification": "no-official-mapping",
       "ldrawFiles": [],
       "mappingEvidence": [],
-      "reason": null
-    },
-    {
-      "catalogId": "part:29109",
-      "role": "handAccessory",
-      "rebrickablePartNum": "29109",
-      "name": "Weapon Sword / Machete",
-      "classification": "placement-profile-required",
-      "ldrawFiles": [
-        "parts/29109.dat"
-      ],
-      "mappingEvidence": [
-        "exact-filename"
-      ],
       "reason": null
     },
     {
@@ -59533,34 +59505,6 @@
       "reason": null
     },
     {
-      "catalogId": "part:95049",
-      "role": "handAccessory",
-      "rebrickablePartNum": "95049",
-      "name": "Weapon Staff with Spherical End (King)",
-      "classification": "placement-profile-required",
-      "ldrawFiles": [
-        "parts/95049.dat"
-      ],
-      "mappingEvidence": [
-        "exact-filename"
-      ],
-      "reason": null
-    },
-    {
-      "catalogId": "part:95050",
-      "role": "handAccessory",
-      "rebrickablePartNum": "95050",
-      "name": "Weapon Staff with Hooked End (King)",
-      "classification": "placement-profile-required",
-      "ldrawFiles": [
-        "parts/95050.dat"
-      ],
-      "mappingEvidence": [
-        "exact-filename"
-      ],
-      "reason": null
-    },
-    {
       "catalogId": "part:95051",
       "role": "handAccessory",
       "rebrickablePartNum": "95051",
@@ -59582,34 +59526,6 @@
       "classification": "placement-profile-required",
       "ldrawFiles": [
         "parts/95052.dat"
-      ],
-      "mappingEvidence": [
-        "exact-filename"
-      ],
-      "reason": null
-    },
-    {
-      "catalogId": "part:95053",
-      "role": "handAccessory",
-      "rebrickablePartNum": "95053",
-      "name": "Weapon Sword Small [Angular Hilt]",
-      "classification": "placement-profile-required",
-      "ldrawFiles": [
-        "parts/95053.dat"
-      ],
-      "mappingEvidence": [
-        "exact-filename"
-      ],
-      "reason": null
-    },
-    {
-      "catalogId": "part:95054",
-      "role": "handAccessory",
-      "rebrickablePartNum": "95054",
-      "name": "Weapon Dagger / Knife [Flat Hilt End]",
-      "classification": "placement-profile-required",
-      "ldrawFiles": [
-        "parts/95054.dat"
       ],
       "mappingEvidence": [
         "exact-filename"
@@ -60381,20 +60297,6 @@
       "reason": null
     },
     {
-      "catalogId": "part:99253",
-      "role": "handAccessory",
-      "rebrickablePartNum": "99253",
-      "name": "Equipment Lasso",
-      "classification": "placement-profile-required",
-      "ldrawFiles": [
-        "parts/99253.dat"
-      ],
-      "mappingEvidence": [
-        "exact-filename"
-      ],
-      "reason": null
-    },
-    {
       "catalogId": "part:99774",
       "role": "handAccessory",
       "rebrickablePartNum": "99774",
@@ -60546,20 +60448,6 @@
       "classification": "no-official-mapping",
       "ldrawFiles": [],
       "mappingEvidence": [],
-      "reason": null
-    },
-    {
-      "catalogId": "part:604548",
-      "role": "handAccessory",
-      "rebrickablePartNum": "604548",
-      "name": "Tool Oil Can [Ribbed Handle]",
-      "classification": "placement-profile-required",
-      "ldrawFiles": [
-        "parts/604548.dat"
-      ],
-      "mappingEvidence": [
-        "exact-filename"
-      ],
       "reason": null
     },
     {

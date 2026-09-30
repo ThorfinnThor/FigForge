@@ -29,7 +29,8 @@ describe("LDraw/LDCad digital connectivity", () => {
     });
   });
 
-  it("binds every vendored source file to its exact hash and license header", async () => {
+  it("binds all sixteen vendored source files to their exact hashes and license headers", async () => {
+    expect(registry.sourceFiles).toHaveLength(16);
     for (const sourceFile of registry.sourceFiles) {
       const content = await readFile(sourceFile.path, "utf8");
       expect(sha256(content)).toBe(sourceFile.sha256);
