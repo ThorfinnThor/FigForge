@@ -45,7 +45,7 @@ describe("FF-14 responsive catalog workspace", () => {
       legsAssembly: 3_231,
       handAccessory: 1_308,
     });
-    expect(allParts.filter(builderComponentForCatalogPart)).toHaveLength(14_667);
+    expect(allParts.filter(builderComponentForCatalogPart)).toHaveLength(14_675);
   }, 15_000);
 
   it("defines responsive tabs, drawer focus return and keyboard dismissal", async () => {
@@ -96,11 +96,11 @@ describe("FF-14 responsive catalog workspace", () => {
     expect(allParts.filter((part) => {
       const builderComponent = builderComponentForCatalogPart(part);
       return builderComponent && verifiedLDrawEntryForComponent(builderComponent.id);
-    })).toHaveLength(14_660);
+    })).toHaveLength(14_668);
     expect(allParts.filter((part) => {
       const builderComponent = builderComponentForCatalogPart(part);
       return builderComponent && digitallySupportedLDrawEntryForComponent(builderComponent.id);
-    })).toHaveLength(14_658);
+    })).toHaveLength(14_666);
     expect(cardSource).toContain("Geometrie ohne Druck");
     expect(cardSource).toContain('disabled={connectionStatus !== "digitally-supported"}');
     expect(cardSource).toContain("In Figur einsetzen");
@@ -193,6 +193,28 @@ describe("FF-14 responsive catalog workspace", () => {
 
       expect(entry?.ldrawFile).toBe("parts/3815b.dat");
       expect(entry?.geometryFallback).toBeNull();
+    }
+  });
+
+  it("keeps exact mug prints while inheriting their uniquely declared parent grip", async () => {
+    const accessories = await loadCatalogParts("handAccessory");
+    const expandedCatalog = JSON.parse(await readFile("data/generated/ldraw-expanded-catalog.json", "utf8")) as {
+      entries: Array<{
+        rebrickablePartNum: string;
+        digitalValidation: null | { gripEvidenceSource: string; gripPrimitive: string };
+      }>;
+    };
+
+    for (const partNum of ["3899pr0001", "3899pr0002", "3899pr0003", "3899pr0004", "3899pr0005", "3899pr0007", "3899pr0008", "3899pr0009"]) {
+      const catalogPart = accessories.find(({ rebrickablePartNum }) => rebrickablePartNum === partNum);
+      const builderComponent = catalogPart ? builderComponentForCatalogPart(catalogPart) : undefined;
+      const entry = builderComponent ? verifiedLDrawEntryForComponent(builderComponent.id) : undefined;
+
+      expect(entry?.geometryFallback).toBeNull();
+      expect(entry?.ldrawFile).toMatch(/^parts\/3899p\d+\.dat$/u);
+      const auditEntry = expandedCatalog.entries.find(({ rebrickablePartNum }) => rebrickablePartNum === partNum);
+      expect(auditEntry?.digitalValidation?.gripEvidenceSource).toBe("ldcad-shadow-snap");
+      expect(auditEntry?.digitalValidation?.gripPrimitive).toMatch(/^ldcad-shadow:parts\/3899\.dat#SNAP_CYL:/u);
     }
   });
 

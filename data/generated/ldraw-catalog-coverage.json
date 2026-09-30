@@ -18,6 +18,7 @@
     "Lower-body entries become builder-ready only when the official top-level LDraw title explicitly declares a complete Minifig Hips and Legs assembly, an allowlisted complete Hips replacement family (Ghost, Skirt, Tentacles, Mermaid Tail or Genie), or an allowlisted complete legs family with a centered torso-compatible stud (Minecraft Enderman or Bionicle).",
     "Rebrickable 973cNNhMM torso, 970cNN legs and 970lNNrMM asymmetric-leg assemblies without a matching official standard assembly file are composed from official standard parts (ADR-008) when the colour code is unanimous across all unprinted base assemblies and the entry's own name states the same colours; this also rejects the obsolete, semantically unrelated LDraw aliases for 970c02 and 970c36. Asymmetric legs additionally require exactly one catalog-backed hip colour, and printed torsos need a unique official torso print part.",
     "No fuzzy name matching, Rebrickable API data, image scraping, LDraw models, or MOC files are used; Rebrickable names are read only through fixed anchored patterns.",
+    "An exact printed hand-accessory model may reuse a pinned LDCad hand-grip connector only when locked Rebrickable part_relationships.csv declares exactly one print parent carrying that unique connector; digital collision validation is still required for the printed model itself.",
     "A unique model mapping is not treated as builder-ready until a role-specific placement profile and rendering both succeed."
   ],
   "classificationDefinitions": {
@@ -29,17 +30,17 @@
   },
   "summary": {
     "catalogPartCount": 20202,
-    "visualizedPartCount": 14660,
-    "builderReadyPartCount": 14658,
-    "remainingCatalogPartCount": 5544,
-    "remainingWithoutVisualizationCount": 5542,
+    "visualizedPartCount": 14668,
+    "builderReadyPartCount": 14666,
+    "remainingCatalogPartCount": 5536,
+    "remainingWithoutVisualizationCount": 5534,
     "uniqueOfficialMappingCount": 2767,
     "ambiguousOfficialMappingCount": 235,
     "noOfficialMappingCount": 17200,
     "remainingClassifications": {
       "builder-blocked": 2,
       "render-failed": 0,
-      "placement-profile-required": 555,
+      "placement-profile-required": 547,
       "ambiguous-official-mapping": 83,
       "no-official-mapping": 4904
     }
@@ -95,12 +96,12 @@
     },
     "handAccessory": {
       "catalogPartCount": 1308,
-      "builderReadyPartCount": 262,
-      "remainingCatalogPartCount": 1046,
+      "builderReadyPartCount": 270,
+      "remainingCatalogPartCount": 1038,
       "remainingClassifications": {
         "builder-blocked": 1,
         "render-failed": 0,
-        "placement-profile-required": 387,
+        "placement-profile-required": 379,
         "ambiguous-official-mapping": 38,
         "no-official-mapping": 620
       }
@@ -47829,76 +47830,6 @@
       "reason": null
     },
     {
-      "catalogId": "part:3899pr0001",
-      "role": "handAccessory",
-      "rebrickablePartNum": "3899pr0001",
-      "name": "Equipment Cup / Mug with 'C:\\' Print",
-      "classification": "placement-profile-required",
-      "ldrawFiles": [
-        "parts/3899p01.dat"
-      ],
-      "mappingEvidence": [
-        "explicit-keyword"
-      ],
-      "reason": null
-    },
-    {
-      "catalogId": "part:3899pr0002",
-      "role": "handAccessory",
-      "rebrickablePartNum": "3899pr0002",
-      "name": "Equipment Cup / Mug with 'Shhh!' Print",
-      "classification": "placement-profile-required",
-      "ldrawFiles": [
-        "parts/3899p02.dat"
-      ],
-      "mappingEvidence": [
-        "explicit-keyword"
-      ],
-      "reason": null
-    },
-    {
-      "catalogId": "part:3899pr0003",
-      "role": "handAccessory",
-      "rebrickablePartNum": "3899pr0003",
-      "name": "Equipment Cup / Mug with 'DUNK ME!' Print",
-      "classification": "placement-profile-required",
-      "ldrawFiles": [
-        "parts/3899p03.dat"
-      ],
-      "mappingEvidence": [
-        "explicit-keyword"
-      ],
-      "reason": null
-    },
-    {
-      "catalogId": "part:3899pr0004",
-      "role": "handAccessory",
-      "rebrickablePartNum": "3899pr0004",
-      "name": "Equipment Cup / Mug with Octan Logo Print",
-      "classification": "placement-profile-required",
-      "ldrawFiles": [
-        "parts/3899p04.dat"
-      ],
-      "mappingEvidence": [
-        "explicit-keyword"
-      ],
-      "reason": null
-    },
-    {
-      "catalogId": "part:3899pr0005",
-      "role": "handAccessory",
-      "rebrickablePartNum": "3899pr0005",
-      "name": "Equipment Cup / Mug with Black 'I' Heart 'SOUTH PAWS' Print",
-      "classification": "placement-profile-required",
-      "ldrawFiles": [
-        "parts/3899p05.dat"
-      ],
-      "mappingEvidence": [
-        "explicit-keyword"
-      ],
-      "reason": null
-    },
-    {
       "catalogId": "part:3899pr0006",
       "role": "handAccessory",
       "rebrickablePartNum": "3899pr0006",
@@ -47906,48 +47837,6 @@
       "classification": "no-official-mapping",
       "ldrawFiles": [],
       "mappingEvidence": [],
-      "reason": null
-    },
-    {
-      "catalogId": "part:3899pr0007",
-      "role": "handAccessory",
-      "rebrickablePartNum": "3899pr0007",
-      "name": "Equipment Cup / Mug with Black 'I Heart HLC' Print",
-      "classification": "placement-profile-required",
-      "ldrawFiles": [
-        "parts/3899p07.dat"
-      ],
-      "mappingEvidence": [
-        "explicit-keyword"
-      ],
-      "reason": null
-    },
-    {
-      "catalogId": "part:3899pr0008",
-      "role": "handAccessory",
-      "rebrickablePartNum": "3899pr0008",
-      "name": "Equipment Cup / Mug with Gold Square, Reddish Brown 'TVA' Print",
-      "classification": "placement-profile-required",
-      "ldrawFiles": [
-        "parts/3899p09.dat"
-      ],
-      "mappingEvidence": [
-        "explicit-keyword"
-      ],
-      "reason": null
-    },
-    {
-      "catalogId": "part:3899pr0009",
-      "role": "handAccessory",
-      "rebrickablePartNum": "3899pr0009",
-      "name": "Equipment Cup / Mug with Marshmallow with Flames/Fire print",
-      "classification": "placement-profile-required",
-      "ldrawFiles": [
-        "parts/3899p08.dat"
-      ],
-      "mappingEvidence": [
-        "explicit-keyword"
-      ],
       "reason": null
     },
     {
