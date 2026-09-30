@@ -43,7 +43,7 @@ describe("FF-14 responsive catalog workspace", () => {
       legsAssembly: 3_231,
       handAccessory: 1_308,
     });
-    expect(allParts.filter(builderComponentForCatalogPart)).toHaveLength(13_746);
+    expect(allParts.filter(builderComponentForCatalogPart)).toHaveLength(14_130);
   });
 
   it("defines responsive tabs, drawer focus return and keyboard dismissal", async () => {
@@ -94,7 +94,7 @@ describe("FF-14 responsive catalog workspace", () => {
     expect(allParts.filter((part) => {
       const builderComponent = builderComponentForCatalogPart(part);
       return builderComponent && verifiedLDrawEntryForComponent(builderComponent.id);
-    })).toHaveLength(13_739);
+    })).toHaveLength(14_123);
     expect(cardSource).toContain("Geometrie ohne Druck");
     expect(cardSource).toContain('disabled={connectionStatus !== "digitally-supported"}');
     expect(cardSource).toContain("In Figur einsetzen");
@@ -103,5 +103,19 @@ describe("FF-14 responsive catalog workspace", () => {
     expect(controllerSource).toContain("physicalFitGuaranteed = false");
     expect(controllerSource).toContain("assertInternalLDrawUrl(selection.modelUrl");
     expect(controllerSource).toContain('legsAssembly: { prototypeFileName: "73200b-f1.dat" }');
+  });
+
+  it("uses deterministic standing geometry when a printed black-leg parent is ambiguous", async () => {
+    const legs = await loadCatalogParts("legsAssembly");
+    const catalogPart = legs.find(({ rebrickablePartNum }) => rebrickablePartNum === "970c03pr0005");
+    const builderComponent = catalogPart ? builderComponentForCatalogPart(catalogPart) : undefined;
+    const entry = builderComponent ? verifiedLDrawEntryForComponent(builderComponent.id) : undefined;
+
+    expect(builderComponent).toBeDefined();
+    expect(entry?.ldrawFile).toBe("parts/3815b.dat");
+    expect(entry?.geometryFallback).toEqual({
+      kind: "unprinted-assembly-code",
+      parentPartNums: ["970c03"],
+    });
   });
 });
