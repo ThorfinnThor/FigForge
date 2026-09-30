@@ -59,6 +59,7 @@ export function FigurePartsPanel({
           ) : null}
         </div>
       </div>
+      <div className="figure-panel__body">
       <div className="figure-slot-list">
         {slots.map((slot) => (
           <Card className="figure-slot" data-role={slot.id} data-filled={slot.component ? "true" : undefined} key={slot.id}>
@@ -101,6 +102,7 @@ export function FigurePartsPanel({
       <StatusMessage className="figure-panel__status" tone={transferMessage?.startsWith("Fehler") ? "danger" : "info"}>
         {transferMessage ?? "Der JSON-Export enthält nur versionierte FigForge-IDs – keine Modell-URLs, MOC-Daten oder Einkaufszuordnungen."}
       </StatusMessage>
+      </div>
     </aside>
   );
 }

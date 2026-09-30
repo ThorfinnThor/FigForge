@@ -838,11 +838,23 @@ legend {
   display: grid;
   align-content: start;
   gap: var(--space-3);
+  grid-template-rows: auto minmax(0, 1fr);
+  max-height: calc(100vh - var(--space-4) - 28px);
   margin-top: 14px;
-  padding-bottom: var(--space-4);
   border-radius: var(--radius-lg);
   background: var(--card);
   box-shadow: 0 6px 0 rgb(0 0 0 / 28%);
+}
+
+/* The header stays on the card; everything below it scrolls when the card is taller than the window. */
+.figure-panel__body {
+  display: grid;
+  align-content: start;
+  gap: var(--space-3);
+  min-height: 0;
+  padding-bottom: var(--space-4);
+  overflow-y: auto;
+  overscroll-behavior: contain;
 }
 
 .figure-panel__hang {
@@ -1220,6 +1232,7 @@ legend {
     display: grid;
     width: min(360px, 88vw);
     max-width: 100%;
+    max-height: none;
     margin: 0;
     align-content: start;
     overflow-y: auto;
@@ -1421,6 +1434,7 @@ legend {
   .figure-panel {
     position: relative;
     top: auto;
+    max-height: none;
     grid-template-columns: minmax(0, 1fr);
   }
 
