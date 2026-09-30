@@ -5,7 +5,8 @@ export function isCompleteMinifigLowerBody(source: string): boolean {
   if (!/^0\s+!LDRAW_ORG\s+(?:Part|Shortcut)\b/mu.test(source)) return false;
 
   const title = firstMeaningfulLine(source);
-  return /^0\s+Minifig Hips\b.*\b(?:Legs|Ghost|Skirt|Tentacles|Mermaid Tail|Genie)\b/iu.test(title);
+  return /^0\s+Minifig Hips\b.*\b(?:Legs|Ghost|Skirt|Tentacles|Mermaid Tail|Genie)\b/iu.test(title)
+    || /^0\s+Minifig Legs (?:Minecraft Enderman|Bionicle)$/iu.test(title);
 }
 
 export type DualMouldReferenceLine = {
