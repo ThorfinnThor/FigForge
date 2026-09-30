@@ -15,7 +15,7 @@ import { LDrawConditionalLineMaterial } from "three/addons/materials/LDrawCondit
 import { LDrawLoader } from "three/addons/loaders/LDrawLoader.js";
 import { catalogPackageSchema, type CatalogPackagePart, type CatalogRole } from "../src/contracts/catalog-package.js";
 import { OFFICIAL_LDRAW_PUBLIC_PATH } from "../src/scene/ldraw-release.js";
-import { isCompleteMinifigLegsAssembly } from "./lib/ldraw-legs-assembly.js";
+import { deriveDualMouldLegReference, isCompleteMinifigLegsAssembly } from "./lib/ldraw-legs-assembly.js";
 import { rebrickableKeywordIds } from "./lib/ldraw-keywords.js";
 import { browserReferencePath, embeddedLdrawName } from "./lib/ldraw-paths.js";
 import { isCompleteStandardTorsoAssembly } from "./lib/ldraw-torso-assembly.js";
@@ -50,7 +50,7 @@ const publicRoot = resolve(root, `public${OFFICIAL_LDRAW_PUBLIC_PATH}`);
 const modelDirectory = resolve(publicRoot, "models");
 const thumbnailDirectory = resolve(root, "public/assets/thumbnails/ldraw-expanded");
 const CUSTOM_COLOR_CODE = 10_000;
-const ASSEMBLY_COLOR_CODES = { catalog: CUSTOM_COLOR_CODE, arms: 10_001, hands: 10_002, legs: 10_001 } as const;
+const ASSEMBLY_COLOR_CODES = { catalog: CUSTOM_COLOR_CODE, arms: 10_001, hands: 10_002, legs: 10_001, boots: 10_002 } as const;
 const FAMILY_BUILD_ROLES = ["head", "headwear", "torsoAssembly", "legsAssembly"] as const satisfies readonly CatalogRole[];
 const BUILD_ROLES = [...FAMILY_BUILD_ROLES, "handAccessory"] as const satisfies readonly CatalogRole[];
 
@@ -370,7 +370,12 @@ const referenceAssemblies = {
     topLevelSources.filter((source) => /^0\s+!LDRAW_ORG\s+Shortcut\b/mu.test(source) && isCompleteMinifigLegsAssembly(source)),
     ["3815b", "3816c", "3817c"],
   ),
-} satisfies Record<"torso" | "legs", ReferenceAssembly>;
+  dualMouldLegs: deriveDualMouldLegReference(
+    await sourceFor("parts/21019b.dat"),
+    await sourceFor("parts/20460b.dat"),
+    await sourceFor("parts/20461b.dat"),
+  ),
+} satisfies Record<"torso" | "legs" | "dualMouldLegs", ReferenceAssembly>;
 const plainComponentFiles: Record<string, string> = {
   "3818": "parts/3818.dat",
   "3819": "parts/3819.dat",
@@ -378,6 +383,8 @@ const plainComponentFiles: Record<string, string> = {
   "3815b": "parts/3815b.dat",
   "3816c": "parts/3816c.dat",
   "3817c": "parts/3817c.dat",
+  "20460bs01": "parts/s/20460bs01.dat",
+  "20460bs02": "parts/s/20460bs02.dat",
 };
 for (const file of [...Object.values(plainComponentFiles), "parts/973.dat"]) {
   if (!fileIndex.has(file)) throw new Error(`Missing official assembly component: ${file}`);
@@ -405,6 +412,10 @@ const composeColorCodedAssembly = async (
   if (colors.kind === "torso" && parsed.printed && officialFiles.length === 1) {
     if (!(await isTorsoPrintPart(officialFiles[0]!))) return null;
     bodyFile = officialFiles[0]!;
+  } else if (parsed.kind === "legs" && parsed.bootCode) {
+    // Exact keyword matches for these numbers are the separate left/right leg files,
+    // never a complete lower body. The official dual-mould shortcut is expanded below.
+    bodyFile = plainBodyFile;
   } else {
     // Without any official file for this number, the plain body is used; a print is then marked as not rendered.
     if (officialFiles.length > 0) return null;
@@ -412,17 +423,22 @@ const composeColorCodedAssembly = async (
   }
   const printRendered = !parsed.printed || bodyFile !== plainBodyFile;
   const bodyRgb = normalizedByPartNum.get(normalize(part.rebrickablePartNum))?.colorVariants[0]?.rgb;
-  if (!printRendered && !(bodyRgb && /^[A-F0-9]{6}$/u.test(bodyRgb))) return null;
+  if ((!printRendered || (parsed.kind === "legs" && parsed.bootCode)) && !(bodyRgb && /^[A-F0-9]{6}$/u.test(bodyRgb))) return null;
   const colorFor = (component: string): { colorRole: AssemblyColorRole; colorName: string | null } => {
     if (colors.kind === "torso") {
       if (component === "3818" || component === "3819") return { colorRole: "arms", colorName: colors.armColorName };
       if (component === "3820") return { colorRole: "hands", colorName: colors.handColorName };
       return { colorRole: "catalog", colorName: null };
     }
-    if (component === "3816c" || component === "3817c") return { colorRole: "legs", colorName: colors.legColorName };
+    if (component === "3816c" || component === "3817c" || component === "20460bs01") {
+      return { colorRole: "legs", colorName: colors.legColorName };
+    }
+    if (component === "20460bs02") return { colorRole: "boots", colorName: colors.bootColorName ?? null };
     return { colorRole: "catalog", colorName: null };
   };
-  const reference = referenceAssemblies[colors.kind];
+  const reference = parsed.kind === "legs" && parsed.bootCode
+    ? referenceAssemblies.dualMouldLegs
+    : referenceAssemblies[colors.kind];
   const components = reference.lines.map(({ component, transform }) => {
     const { colorRole, colorName } = colorFor(component);
     const file = component === "973" || component === "3815b" ? bodyFile : plainComponentFiles[component];
@@ -483,6 +499,26 @@ for (const role of BUILD_ROLES) {
     }
     const directFiles = [...new Set(directCandidates.map(({ file }) => file))];
     if (directFiles.length > 1) {
+      // A dual-mould colour code can safely replace ambiguous complete shortcuts:
+      // its mould geometry and both colours are independently confirmed below.
+      if (role !== "handAccessory") {
+        const composed = await composeColorCodedAssembly(part, role);
+        if (composed) {
+          const placementTransformLdu = placementByRole.get(role);
+          if (!placementTransformLdu) throw new Error(`Missing ${role} placement transform`);
+          matchedParts.push({
+            part: { ...part, role },
+            candidate: composed.candidate,
+            placementMode: "prototype-family-origin",
+            placementTransformLdu,
+            gripCandidates: [],
+            selectedGripEvidence: null,
+            selectedGripCandidateIndex: null,
+            composition: composed.composition,
+          });
+          continue;
+        }
+      }
       ambiguousMappingsExcluded += 1;
       continue;
     }
@@ -768,7 +804,7 @@ for (const [index, match] of matchedParts.entries()) {
       `0 Name: ${modelName}.ldr`,
       `0 // License: ${lock.license}; see referenced official part and ${basename(lock.noticePath)}`,
       ...modelColors.map(colorDefinition),
-      ...modelLines.map(({ colorCode, transform, file }) => `1 ${colorCode} ${transform.join(" ")} ${basename(file)}`),
+      ...modelLines.map(({ colorCode, transform, file }) => `1 ${colorCode} ${transform.join(" ")} ${browserReferencePath(file)}`),
       "",
     ].join("\n");
     const modelUrl = `${OFFICIAL_LDRAW_PUBLIC_PATH}models/${modelName}.ldr`;
@@ -894,7 +930,7 @@ const output = {
     mocFilesUsed: 0,
   },
   assemblyColorCodes: {
-    derivation: "Unprinted Rebrickable base assemblies 973cNNhMM and 970cNN whose names follow the fixed grammar 'Torso, A Arms, H Hands' or 'Hips and L Legs'; a code is used only when all such names agree on one catalog colour with one RGB value.",
+    derivation: "Unprinted Rebrickable base assemblies 973cNNhMM, 970cNN and 970cNNpatMM whose names follow the fixed grammar 'Torso, A Arms, H Hands', 'Hips and L Legs' or 'Hips with L Legs and B Boots Pattern'; a code is used only when all such names agree on one catalog colour with one RGB value.",
     codes: [...assemblyColorCodes.codes].map(([code, colorName]) => ({
       code,
       colorName,
@@ -919,6 +955,7 @@ const output = {
     "Direct mappings require an unambiguous exact filename or explicit LDraw !KEYWORDS Rebrickable identifier.",
     "Print variants may reuse the unique official unprinted parent geometry declared by the locked Rebrickable part_relationships.csv; their printed decoration is not rendered.",
     "Standard torso and legs assemblies without an official LDraw file are composed from official torso, arm, hand, hip and leg parts in the placement shared by the official shortcuts; arm, hand and leg colours come from the Rebrickable assembly code and must be confirmed by the entry's own name.",
+    "Dual-moulded 970cNNpatMM legs are composed from the official LDraw hip and dual-mould upper/lower leg geometry; leg and boot colours must both be confirmed by the Rebrickable assembly code and entry name, and the hip needs catalog-backed colour evidence.",
     "Printed torso and legs assemblies without any official LDraw file for their number use the same composition with the plain official body in the catalog colour; they are marked as not rendering their print and share one generated asset per colour combination.",
     "Family-origin placement is a digital convention, not a physical clutch-force guarantee.",
     "Hand accessories pass only when exactly one radius-4 grip candidate satisfies deterministic minimum-length, rigid-transform, model-bounds and reference-figure clearance checks; physical clutch force remains unverified.",

@@ -43,8 +43,8 @@ describe("FF-14 responsive catalog workspace", () => {
       legsAssembly: 3_231,
       handAccessory: 1_308,
     });
-    expect(allParts.filter(builderComponentForCatalogPart)).toHaveLength(14_130);
-  });
+    expect(allParts.filter(builderComponentForCatalogPart)).toHaveLength(14_410);
+  }, 15_000);
 
   it("defines responsive tabs, drawer focus return and keyboard dismissal", async () => {
     const source = await readFile("src/components/CatalogWorkspace.tsx", "utf8");
@@ -94,7 +94,7 @@ describe("FF-14 responsive catalog workspace", () => {
     expect(allParts.filter((part) => {
       const builderComponent = builderComponentForCatalogPart(part);
       return builderComponent && verifiedLDrawEntryForComponent(builderComponent.id);
-    })).toHaveLength(14_123);
+    })).toHaveLength(14_403);
     expect(cardSource).toContain("Geometrie ohne Druck");
     expect(cardSource).toContain('disabled={connectionStatus !== "digitally-supported"}');
     expect(cardSource).toContain("In Figur einsetzen");
@@ -117,5 +117,16 @@ describe("FF-14 responsive catalog workspace", () => {
       kind: "unprinted-assembly-code",
       parentPartNums: ["970c03"],
     });
+  });
+
+  it("enables colour-confirmed dual-mould leg variants without choosing an ambiguous shortcut", async () => {
+    const legs = await loadCatalogParts("legsAssembly");
+    const catalogPart = legs.find(({ rebrickablePartNum }) => rebrickablePartNum === "970c09pat06");
+    const builderComponent = catalogPart ? builderComponentForCatalogPart(catalogPart) : undefined;
+    const entry = builderComponent ? verifiedLDrawEntryForComponent(builderComponent.id) : undefined;
+
+    expect(builderComponent).toBeDefined();
+    expect(entry?.ldrawFile).toBe("parts/3815b.dat");
+    expect(entry?.geometryFallback).toBeNull();
   });
 });

@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { isCompleteMinifigLegsAssembly } from "../../tools/lib/ldraw-legs-assembly.js";
+import { deriveDualMouldLegReference, isCompleteMinifigLegsAssembly } from "../../tools/lib/ldraw-legs-assembly.js";
 
 describe("complete minifig legs assembly detection", () => {
   it.each([
@@ -29,5 +29,31 @@ describe("complete minifig legs assembly detection", () => {
 0 !LDRAW_ORG Subpart UPDATE 2026-08`,
   ])("rejects individual, redirected, or non-top-level geometry", (source) => {
     expect(isCompleteMinifigLegsAssembly(source)).toBe(false);
+  });
+});
+
+describe("dual-mould leg reference expansion", () => {
+  it("preserves the official hip, left-leg and mirrored right-leg transforms", () => {
+    const reference = deriveDualMouldLegReference(
+      `0 ~Minifig Hips and Legs Dual Mould
+1 16 0 0 0 1 0 0 0 1 0 0 0 1 3815b.dat
+1 16 0 12 0 1 0 0 0 1 0 0 0 1 20460b.dat
+1 16 0 12 0 1 0 0 0 1 0 0 0 1 20461b.dat`,
+      `0 ~Minifig Leg Left Dual Mould
+1 16 0 0 0 1 0 0 0 1 0 0 0 1 s\\20460bs01.dat
+1 16 0 0 0 1 0 0 0 1 0 0 0 1 s\\20460bs02.dat`,
+      `0 ~Minifig Leg Right Dual Mould
+1 16 0 0 0 -1 0 0 0 1 0 0 0 1 20460b.dat`,
+    );
+
+    expect(reference.lines.map(({ component }) => component)).toEqual([
+      "3815b",
+      "20460bs01",
+      "20460bs02",
+      "20460bs01",
+      "20460bs02",
+    ]);
+    expect(reference.lines[1]?.transform).toEqual([0, 12, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1]);
+    expect(reference.lines[3]?.transform).toEqual([0, 12, 0, -1, 0, 0, 0, 1, 0, 0, 0, 1]);
   });
 });

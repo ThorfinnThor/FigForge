@@ -20,6 +20,12 @@ describe("Rebrickable assembly part numbers", () => {
     expect(parseAssemblyPartNum("973c27h01")).toEqual({ kind: "torso", armCode: "27", handCode: "01", printed: false });
     expect(parseAssemblyPartNum("973c03h03pr2167")).toEqual({ kind: "torso", armCode: "03", handCode: "03", printed: true });
     expect(parseAssemblyPartNum("970c05")).toEqual({ kind: "legs", legCode: "05", printed: false });
+    expect(parseAssemblyPartNum("970c24pat10pr1234")).toEqual({
+      kind: "legs",
+      legCode: "24",
+      bootCode: "10",
+      printed: true,
+    });
   });
 
   it.each(["973", "973pr1234", "973g22c01h01", "76382p1t", "970c02pr1099x", "3818"])("ignores %s", (partNum) => {
@@ -66,6 +72,15 @@ describe("assembly colour code table", () => {
     );
     expect(table.codes.size).toBe(0);
   });
+
+  it("derives both colours from unprinted dual-mould leg assemblies", () => {
+    const table = deriveAssemblyColorCodeTable(
+      [{ partNum: "970c05pat03", name: "Hips with Dark Blue Legs and Black Boots Pattern" }],
+      knownColors,
+    );
+    expect(Object.fromEntries(table.codes)).toEqual({ "03": "Black", "05": "Dark Blue" });
+    expect(table.evidence.get("03")).toEqual(["970c05pat03"]);
+  });
 });
 
 describe("per-entry colour confirmation", () => {
@@ -80,6 +95,8 @@ describe("per-entry colour confirmation", () => {
       .toEqual({ kind: "torso", armColorName: "Yellow", handColorName: "Yellow" });
     expect(confirmAssemblyColors("970c05", "Hips and Dark Blue Legs", table))
       .toEqual({ kind: "legs", legColorName: "Dark Blue" });
+    expect(confirmAssemblyColors("970c05pat03pr0001", "Hips with Dark Blue Legs and Black Boots Pattern with Silver Toes Print", table))
+      .toEqual({ kind: "legs", legColorName: "Dark Blue", bootColorName: "Black" });
   });
 
   it.each([
@@ -90,6 +107,8 @@ describe("per-entry colour confirmation", () => {
     ["973c27h01", "Torso, White Arms, Yellow Hands, Black Arms"],
     ["970c05", "Hips and Blue Legs"],
     ["970c05", "Hips and Dark Blue Legs, White Legs Print"],
+    ["970c05pat03pr0001", "Hips with Dark Blue Legs and Black Boots Pattern with White Legs Print"],
+    ["970c05pat03pr0001", "Hips with Dark Blue Legs and Black Boots Pattern with White Boots Print"],
   ])("blocks %s when the name does not confirm the code", (partNum, name) => {
     expect(confirmAssemblyColors(partNum, name, table)).toBeNull();
   });
