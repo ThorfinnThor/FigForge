@@ -43,6 +43,7 @@ const libraryRoot = resolve(root, "data/incoming/ldraw-2608/extracted/ldraw");
 const archivePath = resolve(root, "data/incoming/ldraw-2608/complete.zip");
 const lockPath = resolve(root, "data/ldraw-source.lock.json");
 const outputPath = resolve(root, "data/generated/ldraw-expanded-catalog.json");
+const compositionsPath = resolve(root, "data/generated/ldraw-assembly-compositions.json");
 const publicRoot = resolve(root, "public/assets/ldraw/official-2608");
 const modelDirectory = resolve(publicRoot, "models");
 const thumbnailDirectory = resolve(root, "public/assets/thumbnails/ldraw-expanded");
@@ -98,6 +99,7 @@ type AssemblyColorRole = keyof typeof ASSEMBLY_COLOR_CODES;
 
 type AssemblyComposition = {
   kind: "rebrickable-color-coded-assembly";
+  printRendered: boolean;
   referenceShortcutCount: number;
   agreeingReferenceShortcutCount: number;
   components: Array<{
@@ -396,19 +398,19 @@ const composeColorCodedAssembly = async (
   const colors = confirmAssemblyColors(part.rebrickablePartNum, part.name, assemblyColorCodes);
   if (!colors) return null;
   const officialFiles = [...new Set((candidateIndex.get(normalize(part.rebrickablePartNum)) ?? []).map(({ file }) => file))];
+  const plainBodyFile = colors.kind === "torso" ? "parts/973.dat" : "parts/3815b.dat";
   let bodyFile: string;
-  if (colors.kind === "torso") {
-    if (parsed.printed) {
-      if (officialFiles.length !== 1 || !(await isTorsoPrintPart(officialFiles[0]!))) return null;
-      bodyFile = officialFiles[0]!;
-    } else {
-      if (officialFiles.length > 0) return null;
-      bodyFile = "parts/973.dat";
-    }
+  if (colors.kind === "torso" && parsed.printed && officialFiles.length === 1) {
+    if (!(await isTorsoPrintPart(officialFiles[0]!))) return null;
+    bodyFile = officialFiles[0]!;
   } else {
-    if (parsed.printed || officialFiles.length > 0) return null;
-    bodyFile = "parts/3815b.dat";
+    // Without any official file for this number, the plain body is used; a print is then marked as not rendered.
+    if (officialFiles.length > 0) return null;
+    bodyFile = plainBodyFile;
   }
+  const printRendered = !parsed.printed || bodyFile !== plainBodyFile;
+  const bodyRgb = normalizedByPartNum.get(normalize(part.rebrickablePartNum))?.colorVariants[0]?.rgb;
+  if (!printRendered && !(bodyRgb && /^[A-F0-9]{6}$/u.test(bodyRgb))) return null;
   const colorFor = (component: string): { colorRole: AssemblyColorRole; colorName: string | null } => {
     if (colors.kind === "torso") {
       if (component === "3818" || component === "3819") return { colorRole: "arms", colorName: colors.armColorName };
@@ -438,6 +440,7 @@ const composeColorCodedAssembly = async (
     candidate: { file: bodyFile, matchType: "rebrickable-assembly-code", update },
     composition: {
       kind: "rebrickable-color-coded-assembly",
+      printRendered,
       referenceShortcutCount: reference.shortcutCount,
       agreeingReferenceShortcutCount: reference.agreeingShortcutCount,
       components,
@@ -628,11 +631,21 @@ for (const [index, match] of matchedParts.entries()) {
   const colorVariant = normalizedPart?.colorVariants[0];
   const colorRgb = colorVariant?.rgb && /^[A-F0-9]{6}$/u.test(colorVariant.rgb) ? colorVariant.rgb : "A0A8A4";
   const isPrintParentFallback = candidate.matchType === "rebrickable-print-parent";
+  const isUnprintedAssembly = match.composition?.printRendered === false;
+  const isSharedAsset = isPrintParentFallback || isUnprintedAssembly;
   const assetRole = part.role === "torsoAssembly" ? "torso" : part.role === "legsAssembly" ? "legs" : part.role;
+  const unprintedColors = [
+    colorRgb,
+    ...[...new Map((match.composition?.components ?? []).flatMap(({ colorRole, colorRgb: rgb }) => rgb ? [[colorRole, rgb] as const] : []))]
+      .sort(([left], [right]) => left.localeCompare(right))
+      .map(([colorRole, rgb]) => `${colorRole}${rgb}`),
+  ].join("-").toLowerCase();
   const modelName = isPrintParentFallback
     ? `${assetRole}-geometry-${basename(candidate.file, ".dat")}-${colorRgb.toLowerCase()}`.replaceAll(/[^a-z0-9._-]/gu, "-")
-    : `${assetRole}-${normalize(part.rebrickablePartNum).replaceAll(/[^a-z0-9._-]/gu, "-")}`;
-  const assetKey = isPrintParentFallback ? `${part.role}:${candidate.file}:${colorRgb}` : `${part.role}:${part.rebrickablePartNum}`;
+    : isUnprintedAssembly
+      ? `${assetRole}-unprinted-${unprintedColors}`
+      : `${assetRole}-${normalize(part.rebrickablePartNum).replaceAll(/[^a-z0-9._-]/gu, "-")}`;
+  const assetKey = isSharedAsset ? `${part.role}:${modelName}` : `${part.role}:${part.rebrickablePartNum}`;
   const cachedFailure = fallbackFailureCache.get(assetKey);
   if (cachedFailure) {
     skippedEntries.push({
@@ -730,7 +743,7 @@ for (const [index, match] of matchedParts.entries()) {
       thumbnail = await sharp(Buffer.from(renderSvg(model))).webp({ quality: 82, effort: 4 }).toBuffer();
     } catch (error) {
       const reason = error instanceof Error ? error.message : "Unknown render failure";
-      if (isPrintParentFallback) fallbackFailureCache.set(assetKey, reason);
+      if (isSharedAsset) fallbackFailureCache.set(assetKey, reason);
       if (part.role === "handAccessory") {
         accessoryPlacementRenderFailuresExcluded += 1;
         if (match.gripCandidates.length > 1) accessoryMultipleGripCandidatesRenderFailed += 1;
@@ -743,7 +756,9 @@ for (const [index, match] of matchedParts.entries()) {
       continue;
     }
     const wrapper = [
-      `0 ${isPrintParentFallback ? `Unprinted parent geometry for ${candidate.printParentPartNums?.join(", ")}` : part.name}`,
+      `0 ${isPrintParentFallback
+        ? `Unprinted parent geometry for ${candidate.printParentPartNums?.join(", ")}`
+        : isUnprintedAssembly ? `Unprinted ${assetRole} assembly from official parts` : part.name}`,
       `0 Name: ${modelName}.ldr`,
       `0 // License: ${lock.license}; see referenced official part and ${basename(lock.noticePath)}`,
       ...modelColors.map(colorDefinition),
@@ -768,7 +783,7 @@ for (const [index, match] of matchedParts.entries()) {
       thumbnailSha256: sha256(thumbnail),
       thumbnailBytes: thumbnail.byteLength,
     };
-    if (isPrintParentFallback) fallbackAssetCache.set(assetKey, asset);
+    if (isSharedAsset) fallbackAssetCache.set(assetKey, asset);
   }
   outputEntries.push({
     componentId: `catalog:${part.role}:${normalize(part.rebrickablePartNum)}`,
@@ -789,8 +804,10 @@ for (const [index, match] of matchedParts.entries()) {
     geometryFallback: isPrintParentFallback ? {
       kind: "unprinted-print-parent",
       parentPartNums: candidate.printParentPartNums,
+    } : isUnprintedAssembly ? {
+      kind: "unprinted-assembly-code",
+      parentPartNums: normalizedPart?.printParentPartNums ?? [],
     } : null,
-    assemblyComposition: match.composition,
     modelUrl: asset.modelUrl,
     modelSha256: asset.modelSha256,
     thumbnailUrl: asset.thumbnailUrl,
@@ -824,6 +841,7 @@ await writeFile(
   "utf8",
 );
 
+const outputComponentIds = new Set(outputEntries.map(({ componentId }) => componentId));
 const output = {
   schemaVersion: 1,
   generatedAt: "2026-09-28",
@@ -849,8 +867,11 @@ const output = {
       mappingEvidence !== "rebrickable-print-parent" && mappingEvidence !== "rebrickable-assembly-code"
     ).length,
     colorCodedAssemblyCount: outputEntries.filter(({ mappingEvidence }) => mappingEvidence === "rebrickable-assembly-code").length,
+    unprintedColorCodedAssemblyCount: outputEntries.filter(({ geometryFallback }) =>
+      (geometryFallback as { kind?: string } | null)?.kind === "unprinted-assembly-code"
+    ).length,
     printParentGeometryFallbackCount: outputEntries.filter(({ mappingEvidence }) => mappingEvidence === "rebrickable-print-parent").length,
-    generatedAssetCount: outputEntries.length - outputEntries.filter(({ mappingEvidence }) => mappingEvidence === "rebrickable-print-parent").length + fallbackAssetCache.size,
+    generatedAssetCount: outputEntries.filter(({ geometryFallback }) => geometryFallback === null).length + fallbackAssetCache.size,
     sharedOfficialFileCount: copiedDependencies.size,
     ambiguousMappingsExcluded,
     accessoryGripCandidatesExcluded,
@@ -892,10 +913,20 @@ const output = {
     "Direct mappings require an unambiguous exact filename or explicit LDraw !KEYWORDS Rebrickable identifier.",
     "Print variants may reuse the unique official unprinted parent geometry declared by the locked Rebrickable part_relationships.csv; their printed decoration is not rendered.",
     "Standard torso and legs assemblies without an official LDraw file are composed from official torso, arm, hand, hip and leg parts in the placement shared by the official shortcuts; arm, hand and leg colours come from the Rebrickable assembly code and must be confirmed by the entry's own name.",
+    "Printed torso and legs assemblies without any official LDraw file for their number use the same composition with the plain official body in the catalog colour; they are marked as not rendering their print and share one generated asset per colour combination.",
     "Family-origin placement is a digital convention, not a physical clutch-force guarantee.",
     "Hand accessories pass only when exactly one radius-4 grip candidate satisfies deterministic minimum-length, rigid-transform, model-bounds and reference-figure clearance checks; physical clutch force remains unverified.",
     "The first catalog-backed color is used for preview; parts without color evidence use neutral gray.",
   ],
 };
 await writeFile(outputPath, `${JSON.stringify(output, null, 2)}\n`, "utf8");
+// Composition evidence lives in its own file because the browser bundles the whole catalog file.
+await writeFile(compositionsPath, `${JSON.stringify({
+  schemaVersion: 1,
+  sourcePolicy: lock.sourcePolicy,
+  catalogPath: "data/generated/ldraw-expanded-catalog.json",
+  compositions: Object.fromEntries(matchedParts
+    .flatMap(({ part, composition }) => composition ? [[`catalog:${part.role}:${normalize(part.rebrickablePartNum)}`, composition] as const] : [])
+    .filter(([componentId]) => outputComponentIds.has(componentId))),
+}, null, 2)}\n`, "utf8");
 console.log(JSON.stringify({ message: "expanded official LDraw catalog built", ...output.summary }));

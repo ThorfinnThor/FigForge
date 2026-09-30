@@ -1,0 +1,11 @@
+0 Unprinted torso assembly from official parts
+0 Name: torso-unprinted-898788-arms898788-hands898788.ldr
+0 // License: CC BY 2.0 and/or CC BY 4.0 as declared per official part file; see referenced official part and LDraw-CAreadme.txt
+0 !COLOUR FigForge_Catalog CODE 10000 VALUE #898788 EDGE #333333
+0 !COLOUR FigForge_Arms CODE 10001 VALUE #898788 EDGE #333333
+0 !COLOUR FigForge_Hands CODE 10002 VALUE #898788 EDGE #333333
+1 10001 -15.552 9 0 0.985 -0.17 0 0.17 0.985 0 0 0 1 3818.dat
+1 10001 15.552 9 0 0.985 0.17 0 -0.17 0.985 0 0 0 1 3819.dat
+1 10002 -23.69 26.774 -9.898 0.985 -0.12 0.12 0.17 0.696 -0.696 0 0.707 0.707 3820.dat
+1 10002 23.69 26.774 -9.898 0.985 0.12 -0.12 -0.17 0.696 -0.696 0 0.707 0.707 3820.dat
+1 10000 0 0 0 1 0 0 0 1 0 0 0 1 973.dat

@@ -31,7 +31,7 @@ export type VerifiedLDrawCatalogEntry = {
   modelUrl: string;
   thumbnailUrl: string;
   geometryFallback?: {
-    kind: "unprinted-print-parent";
+    kind: "unprinted-print-parent" | "unprinted-assembly-code";
     parentPartNums: string[];
   } | null;
 };
