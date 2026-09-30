@@ -1,6 +1,7 @@
 import { readFile, readdir } from "node:fs/promises";
 import { basename, resolve } from "node:path";
 import { catalogPackageSchema, type CatalogPackagePart, type CatalogRole } from "../../src/contracts/catalog-package.js";
+import { rebrickableKeywordIds } from "./ldraw-keywords.js";
 
 const SOURCE_POLICY = "Nur Rebrickable Catalog Downloads/CSV, keine MOC-Dateien." as const;
 
@@ -178,9 +179,7 @@ export async function buildLDrawCatalogCoverage(
     addCandidate(candidateIndex, basename(fileName, ".dat"), { file, matchType: "exact-filename" });
     const source = await readFile(resolve(partsDirectory, fileName), "utf8");
     for (const line of source.split(/\r?\n/u)) {
-      if (!/^0\s+!KEYWORDS\b/iu.test(line)) continue;
-      const match = /(?:^|,\s*)Rebrickable\s+([^,\s]+)/iu.exec(line);
-      if (match?.[1]) addCandidate(candidateIndex, match[1], { file, matchType: "explicit-keyword" });
+      for (const partNum of rebrickableKeywordIds(line)) addCandidate(candidateIndex, partNum, { file, matchType: "explicit-keyword" });
     }
   }
 

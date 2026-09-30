@@ -34,6 +34,7 @@ const catalog = JSON.parse(await readFile(resolve(root, "data/generated/ldraw-ex
     thumbnailSha256: string;
     thumbnailBytes: number;
     previewColorRgb: string;
+    previewColorEvidence: string;
     placementMode: string;
     placementTransformLdu: number[];
     digitalValidation: null | {
@@ -54,18 +55,6 @@ const catalog = JSON.parse(await readFile(resolve(root, "data/generated/ldraw-ex
     };
     geometryFallback: null | { kind: string; parentPartNums: string[] };
     name: string;
-    assemblyComposition: null | {
-      kind: string;
-      referenceShortcutCount: number;
-      agreeingReferenceShortcutCount: number;
-      components: Array<{
-        file: string;
-        colorRole: "catalog" | "arms" | "hands" | "legs";
-        colorName: string | null;
-        colorRgb: string | null;
-        transform: number[];
-      }>;
-    };
   }>;
   assemblyColorCodes: {
     codes: Array<{ code: string; colorName: string; colorRgb: string; evidencePartNums: string[] }>;
@@ -85,6 +74,7 @@ const catalog = JSON.parse(await readFile(resolve(root, "data/generated/ldraw-ex
     handAccessoryCount: number;
     directMappingCount: number;
     colorCodedAssemblyCount: number;
+    unprintedColorCodedAssemblyCount: number;
     printParentGeometryFallbackCount: number;
     generatedAssetCount: number;
     sharedOfficialFileCount: number;
@@ -109,6 +99,23 @@ const catalog = JSON.parse(await readFile(resolve(root, "data/generated/ldraw-ex
     gripCandidatesTested: number;
     safeGripCandidatesFound: number;
     orientationCollisionCountsByGrip: number[][];
+  }>;
+};
+const { compositions: assemblyCompositions } = JSON.parse(
+  await readFile(resolve(root, "data/generated/ldraw-assembly-compositions.json"), "utf8"),
+) as {
+  compositions: Record<string, {
+    kind: string;
+    printRendered: boolean;
+    referenceShortcutCount: number;
+    agreeingReferenceShortcutCount: number;
+    components: Array<{
+      file: string;
+      colorRole: "catalog" | "arms" | "hands" | "legs";
+      colorName: string | null;
+      colorRgb: string | null;
+      transform: number[];
+    }>;
   }>;
 };
 
@@ -233,7 +240,7 @@ for (const entry of catalog.entries) {
   assert(["exact-filename", "explicit-keyword", "rebrickable-print-parent", "rebrickable-assembly-code"].includes(entry.mappingEvidence));
   const isPrintParentFallback = entry.mappingEvidence === "rebrickable-print-parent";
   if (entry.mappingEvidence === "rebrickable-assembly-code") {
-    const composition = entry.assemblyComposition;
+    const composition = assemblyCompositions[entry.componentId];
     assert(composition, `Missing assembly composition: ${entry.componentId}`);
     assert.equal(composition.kind, "rebrickable-color-coded-assembly");
     const parsed = parseAssemblyPartNum(entry.rebrickablePartNum);
@@ -255,17 +262,28 @@ for (const entry of catalog.entries) {
       assert.equal(component.colorName, expectedColorName, `Wrong ${component.colorRole} colour: ${entry.componentId}`);
       assert.equal(component.colorRgb, expectedColorName ? colorRgbByName.get(expectedColorName) : null);
     }
-    assert.equal(entry.geometryFallback, null);
+    // A printed number without its own official file keeps the plain body and must say its print is not rendered.
+    const plainBodyFile = colors.kind === "torso" ? "parts/973.dat" : "parts/3815b.dat";
+    assert.equal(composition.printRendered, !parsed.printed || entry.ldrawFile !== plainBodyFile);
+    if (composition.printRendered) {
+      assert.equal(entry.geometryFallback, null);
+    } else {
+      assert.equal(entry.geometryFallback?.kind, "unprinted-assembly-code");
+      assert.equal(entry.previewColorEvidence, "rebrickable-elements-first", `Unprinted assembly lacks catalog colour: ${entry.componentId}`);
+      const normalizedPart = normalizedByPartNum.get(entry.rebrickablePartNum.toLowerCase());
+      assert.deepEqual(entry.geometryFallback.parentPartNums, normalizedPart?.printParentPartNums ?? []);
+    }
   } else {
-    assert.equal(entry.assemblyComposition, null);
+    assert(!Object.hasOwn(assemblyCompositions, entry.componentId), `Unexpected assembly composition: ${entry.componentId}`);
   }
+  const isUnprintedAssembly = assemblyCompositions[entry.componentId]?.printRendered === false;
   if (isPrintParentFallback) {
     assert.equal(entry.geometryFallback?.kind, "unprinted-print-parent");
     assert(entry.geometryFallback.parentPartNums.length > 0);
     const normalizedPart = normalizedByPartNum.get(entry.rebrickablePartNum.toLowerCase());
     assert(normalizedPart, `Missing normalized catalog part: ${entry.rebrickablePartNum}`);
     assert(entry.geometryFallback.parentPartNums.every((parent) => normalizedPart.printParentPartNums.includes(parent)));
-  } else {
+  } else if (!isUnprintedAssembly) {
     assert.equal(entry.geometryFallback, null);
   }
   assert.equal(entry.placementMode, entry.role === "handAccessory" ? "snap-connector" : "prototype-family-origin");
@@ -301,7 +319,7 @@ for (const entry of catalog.entries) {
   };
   const existingAsset = assetsByModelUrl.get(entry.modelUrl);
   if (existingAsset) {
-    assert(isPrintParentFallback, `Direct mapping reuses model URL: ${entry.modelUrl}`);
+    assert(isPrintParentFallback || isUnprintedAssembly, `Direct mapping reuses model URL: ${entry.modelUrl}`);
     assert.deepEqual(assetIdentity, existingAsset, `Inconsistent shared geometry asset: ${entry.modelUrl}`);
     continue;
   }
@@ -310,7 +328,7 @@ for (const entry of catalog.entries) {
   const model = await readFile(resolve(root, `public${entry.modelUrl}`));
   const thumbnail = await readFile(resolve(root, `public${entry.thumbnailUrl}`));
   assert.equal(sha256(model), entry.modelSha256, `Model hash mismatch: ${entry.componentId}`);
-  for (const component of entry.assemblyComposition?.components ?? []) {
+  for (const component of assemblyCompositions[entry.componentId]?.components ?? []) {
     const modelSource = model.toString("utf8");
     assert(modelSource.includes(` ${basename(component.file)}`), `Composed model misses ${component.file}: ${entry.componentId}`);
     if (component.colorRgb) assert(modelSource.includes(`VALUE #${component.colorRgb} `), `Composed model misses colour: ${entry.componentId}`);
@@ -330,6 +348,11 @@ assert.equal(
   catalog.entries.length,
 );
 assert.equal(catalog.summary.colorCodedAssemblyCount, catalog.entries.filter(({ mappingEvidence }) => mappingEvidence === "rebrickable-assembly-code").length);
+assert.equal(Object.keys(assemblyCompositions).length, catalog.summary.colorCodedAssemblyCount);
+assert.equal(
+  catalog.summary.unprintedColorCodedAssemblyCount,
+  catalog.entries.filter(({ geometryFallback }) => geometryFallback?.kind === "unprinted-assembly-code").length,
+);
 assert.equal(catalog.summary.printParentGeometryFallbackCount, catalog.entries.filter(({ mappingEvidence }) => mappingEvidence === "rebrickable-print-parent").length);
 assert.equal(catalog.summary.generatedAssetCount, assetsByModelUrl.size);
 
@@ -351,6 +374,7 @@ console.log(JSON.stringify({
   handAccessories: catalog.summary.handAccessoryCount,
   printParentGeometryFallbacks: catalog.summary.printParentGeometryFallbackCount,
   colorCodedAssemblies: catalog.summary.colorCodedAssemblyCount,
+  unprintedColorCodedAssemblies: catalog.summary.unprintedColorCodedAssemblyCount,
   generatedAssets: catalog.summary.generatedAssetCount,
   excludedRenderFailures: catalog.summary.renderFailuresExcluded,
   mocFilesUsed: catalog.summary.mocFilesUsed,

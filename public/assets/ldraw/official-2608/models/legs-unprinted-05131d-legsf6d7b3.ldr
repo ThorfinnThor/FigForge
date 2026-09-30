@@ -1,0 +1,8 @@
+0 Unprinted legs assembly from official parts
+0 Name: legs-unprinted-05131d-legsf6d7b3.ldr
+0 // License: CC BY 2.0 and/or CC BY 4.0 as declared per official part file; see referenced official part and LDraw-CAreadme.txt
+0 !COLOUR FigForge_Catalog CODE 10000 VALUE #05131D EDGE #333333
+0 !COLOUR FigForge_Legs CODE 10001 VALUE #F6D7B3 EDGE #333333
+1 10000 0 0 0 1 0 0 0 1 0 0 0 1 3815b.dat
+1 10001 0 12 0 1 0 0 0 1 0 0 0 1 3816c.dat
+1 10001 0 12 0 1 0 0 0 1 0 0 0 1 3817c.dat
