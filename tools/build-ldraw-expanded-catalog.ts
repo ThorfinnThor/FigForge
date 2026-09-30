@@ -538,10 +538,6 @@ for (const role of BUILD_ROLES) {
       }
     }
     const parentFiles = [...new Set(parentCandidates.map(({ candidate }) => candidate.file))];
-    if (parentFiles.length > 1) {
-      ambiguousMappingsExcluded += 1;
-      continue;
-    }
     const parentMatch = parentCandidates.find(({ candidate }) => candidate.matchType === "exact-filename") ?? parentCandidates[0];
     if (parentFiles.length === 1 && parentMatch) {
       const placementTransformLdu = placementByRole.get(role);
@@ -579,6 +575,10 @@ for (const role of BUILD_ROLES) {
         selectedGripCandidateIndex: null,
         composition: composed.composition,
       });
+    } else if (parentFiles.length > 1) {
+      // A deterministic standard assembly is safer than choosing between ambiguous
+      // parent shortcuts (for example standing vs. sitting black legs).
+      ambiguousMappingsExcluded += 1;
     }
   }
 }
