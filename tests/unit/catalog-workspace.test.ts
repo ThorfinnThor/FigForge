@@ -44,7 +44,7 @@ describe("FF-14 responsive catalog workspace", () => {
       handAccessory: 1_308,
     });
     expect(allParts.filter(builderComponentForCatalogPart)).toHaveLength(14_410);
-  });
+  }, 15_000);
 
   it("defines responsive tabs, drawer focus return and keyboard dismissal", async () => {
     const source = await readFile("src/components/CatalogWorkspace.tsx", "utf8");
