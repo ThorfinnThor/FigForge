@@ -2,6 +2,7 @@ import { useDeferredValue, useEffect, useMemo, useRef, useState } from "react";
 import { FigurePartsPanel } from "./FigurePartsPanel.js";
 import { FigureViewport } from "./FigureViewport.js";
 import { PartCard } from "./PartCard.js";
+import { ShopExportPanel } from "./ShopExportPanel.js";
 import {
   CATALOG_CATEGORIES,
   builderComponentForCatalogPart,
@@ -28,6 +29,7 @@ import {
 import { loadCurrentFigureDraft, saveCurrentFigureDraft } from "../storage/figure-draft-store.js";
 import type { CatalogPackagePart } from "../contracts/catalog-package.js";
 import type { LDrawCatalogRole, LDrawCatalogSelection } from "../scene/types.js";
+import type { ShopExportSelection } from "../procurement/shop-export.js";
 
 const categoryLabel = new Map(CATALOG_CATEGORIES.map((category) => [category.id, category.label]));
 
@@ -154,6 +156,11 @@ export function CatalogWorkspace() {
       role,
     } satisfies LDrawCatalogSelection];
   });
+
+  // Shop lines use the real Rebrickable part number, also for parts shown as "Geometrie ohne Druck".
+  const shopExportSelections = figureSlots.flatMap(({ id, component }) => component
+    ? [{ slot: id, name: component.name, rebrickablePartNum: component.rebrickablePartNum } satisfies ShopExportSelection]
+    : []);
 
   const selectForPreview = (component: CatalogPackagePart): void => {
     if (!digitallySupportedLDrawEntryForComponent(component.id)) {
@@ -372,6 +379,7 @@ export function CatalogWorkspace() {
       onExport={exportFigure}
       onImport={importFigure}
       saveStatus={saveStatus}
+      shopExport={<ShopExportPanel selections={shopExportSelections} />}
       slots={figureSlots}
       transferMessage={transferMessage}
     />

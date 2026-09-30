@@ -2,7 +2,7 @@ import { Card } from "./ui/Card.js";
 import { Button } from "./ui/Button.js";
 import { StatusMessage } from "./ui/StatusMessage.js";
 import type { CatalogPackagePart } from "../contracts/catalog-package.js";
-import { useRef, type RefObject } from "react";
+import { useRef, type ReactNode, type RefObject } from "react";
 
 type FigureSlot = {
   id: string;
@@ -18,6 +18,7 @@ type FigurePartsPanelProps = {
   onExport: () => void;
   onImport: (file: File) => Promise<void>;
   saveStatus: "loading" | "saved" | "error";
+  shopExport?: ReactNode;
   transferMessage: string | null;
   slots: readonly FigureSlot[];
 };
@@ -29,6 +30,7 @@ export function FigurePartsPanel({
   onExport,
   onImport,
   saveStatus,
+  shopExport,
   slots,
   transferMessage,
 }: FigurePartsPanelProps) {
@@ -72,6 +74,7 @@ export function FigurePartsPanel({
           </Card>
         ))}
       </div>
+      {shopExport}
       <div className="figure-panel__actions">
         <Button onClick={onExport} size="sm" variant="secondary">Figur als JSON speichern</Button>
         <Button onClick={() => importInputRef.current?.click()} size="sm" variant="ghost">JSON laden</Button>
