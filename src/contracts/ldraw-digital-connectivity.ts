@@ -69,7 +69,7 @@ export const ldrawDigitalConnectivitySchema = z.object({
     licenseUrl: z.url(),
     noticePath: z.literal("/licenses/LDCadShadowLibrary-NOTICE.txt"),
   }).strict(),
-  sourceFiles: z.array(sourceFileSchema).length(41),
+  sourceFiles: z.array(sourceFileSchema).length(43),
   referenceAssemblySha256: sha256,
   familyProfiles: z.array(familyProfileSchema).length(2),
   entries: z.array(z.discriminatedUnion("status", [supportedEntrySchema, blockedEntrySchema])).length(10),
