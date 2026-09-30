@@ -25,12 +25,60 @@
       "sha256": "233455b6c8a11e10565287340f8b29c0a72e62f8a377dca4acfc93a61b5e3f98"
     },
     {
+      "path": "data/vendor/ldcad-shadow/parts/10172.dat",
+      "sha256": "7d145b70ea0c76133851ad11d55b236092a33e3c2fae768ef77de4ca651287c4"
+    },
+    {
+      "path": "data/vendor/ldcad-shadow/parts/11156.dat",
+      "sha256": "b98f268b8cebf34a98cd4ee86b60ac84f518a1064015f0c7034cabb51ec04943"
+    },
+    {
+      "path": "data/vendor/ldcad-shadow/parts/13793.dat",
+      "sha256": "eac49ffbcc1e3a0053600b6a2db67bec8410db93fc3124ec83023606d02d2467"
+    },
+    {
+      "path": "data/vendor/ldcad-shadow/parts/19118.dat",
+      "sha256": "943d8ccf5866588a8ab8b0faf6ab42867fc43f1cd7326b4b44056e2e76f3ccb9"
+    },
+    {
       "path": "data/vendor/ldcad-shadow/parts/21459.dat",
       "sha256": "147f0dda32dd1cf1b0a49ee58f8e19ecc3fa56fb0c397e7a61e72646d02c2230"
     },
     {
+      "path": "data/vendor/ldcad-shadow/parts/24324.dat",
+      "sha256": "895ea548f066578b9ed25171f476158170eb6017961527b2195a0a85608ed357"
+    },
+    {
+      "path": "data/vendor/ldcad-shadow/parts/2614.dat",
+      "sha256": "a0ddd5b914fafe5552c6149273fda66e1f39e371d3d299994993b450113a4fef"
+    },
+    {
+      "path": "data/vendor/ldcad-shadow/parts/27150.dat",
+      "sha256": "0575a22f16048b473bfc986699a4bbaf96126d1a17589209a632f0663c619862"
+    },
+    {
       "path": "data/vendor/ldcad-shadow/parts/29109.dat",
       "sha256": "f3d5f333c38d245b019bdecb0b1a98ed290f79cc6e25f1b93ffc0e5fe3e714ed"
+    },
+    {
+      "path": "data/vendor/ldcad-shadow/parts/30035.dat",
+      "sha256": "b5d4f8a2e15c54668c23727202a7f421effbfcb4af6ab1f22c30d34630c6c56f"
+    },
+    {
+      "path": "data/vendor/ldcad-shadow/parts/30092.dat",
+      "sha256": "295dc7b323df0e75ff7c4ff2b29ecc9554748ac1647a1863a18b65cfdc6324a8"
+    },
+    {
+      "path": "data/vendor/ldcad-shadow/parts/30148.dat",
+      "sha256": "9e2ef16924529e4e39a9e4bb53d3a8aa07c5d3429a49981f23d1a5e3e9fe4f73"
+    },
+    {
+      "path": "data/vendor/ldcad-shadow/parts/30162.dat",
+      "sha256": "ada659af9762d9aa46ff7f27185ad793274d834cc75c12f88cd42ca62c752403"
+    },
+    {
+      "path": "data/vendor/ldcad-shadow/parts/30304.dat",
+      "sha256": "b945da2386a520f152cb4bba69bf8ac7a87a8f7113410fc594ec173b9e30c05c"
     },
     {
       "path": "data/vendor/ldcad-shadow/parts/3820.dat",
@@ -41,8 +89,60 @@
       "sha256": "3807c7f4872a8931202332a5868187c7451320d8d411df7583b14d9745320c14"
     },
     {
+      "path": "data/vendor/ldcad-shadow/parts/3899.dat",
+      "sha256": "05ecb66fc05f53e35a3bbfbb12c4965edea3077039c6a163347cce96c73cb385"
+    },
+    {
       "path": "data/vendor/ldcad-shadow/parts/3901.dat",
       "sha256": "851dd26fec3719e2bbac476ff4eaee37b249650d3c53fae9810ca1605fa8d60f"
+    },
+    {
+      "path": "data/vendor/ldcad-shadow/parts/4341.dat",
+      "sha256": "1b92c65a052f43f1372a7bdd197b94b132bbf5cd071eb41becaede25054fee5a"
+    },
+    {
+      "path": "data/vendor/ldcad-shadow/parts/4360.dat",
+      "sha256": "84f872ca7b01e93cec1355012f320ca8d5c83b63d360b6011c29071ada610819"
+    },
+    {
+      "path": "data/vendor/ldcad-shadow/parts/43887.dat",
+      "sha256": "5fcbc0af29b5361bd2cee019a2ad631d1a42cd1ad775bc9aefa4497ab8b977dc"
+    },
+    {
+      "path": "data/vendor/ldcad-shadow/parts/4628.dat",
+      "sha256": "8629c60b29cc107c879c30ba6d232efb3621ffebfb63f3ce2664745ed2da8698"
+    },
+    {
+      "path": "data/vendor/ldcad-shadow/parts/57467.dat",
+      "sha256": "f1cbfd2eadbeec024cd2d898da7eb5f22d80a33055904cc9e3d7044476a4bdf4"
+    },
+    {
+      "path": "data/vendor/ldcad-shadow/parts/604548.dat",
+      "sha256": "69e51bd23afd6020b68ca4418e830329518f479dc4406058d972dd51a6ed8852"
+    },
+    {
+      "path": "data/vendor/ldcad-shadow/parts/604549.dat",
+      "sha256": "9b2e4fe99afb136b0976b28f81a05041aa564d27f7cef3b3eda113d220e73c8a"
+    },
+    {
+      "path": "data/vendor/ldcad-shadow/parts/62885.dat",
+      "sha256": "7aae43920b91791b89852de2775b7391c0ac0e661d3cf8a32aee663e2d6e4e21"
+    },
+    {
+      "path": "data/vendor/ldcad-shadow/parts/73117.dat",
+      "sha256": "29732129f4e4b8425e7726690724a464315ef3ecbe760d1990ba47d67616685d"
+    },
+    {
+      "path": "data/vendor/ldcad-shadow/parts/89801.dat",
+      "sha256": "34e997e2f76c9513accbfdae8492d1657505f1e09131ed8da6b80bca9995a7ca"
+    },
+    {
+      "path": "data/vendor/ldcad-shadow/parts/93092.dat",
+      "sha256": "fbe9c4de5dbc6e9af6a555ab421487ad61b7e510093ef8ea58154fc8163e7089"
+    },
+    {
+      "path": "data/vendor/ldcad-shadow/parts/93252.dat",
+      "sha256": "5b111cb7454e82f31763fcf8fc47095dde7e453fa576f621f74035cdca3b30df"
     },
     {
       "path": "data/vendor/ldcad-shadow/parts/95049.dat",
@@ -61,12 +161,12 @@
       "sha256": "25df7b2d6ae5cd12778b8fcf9d644bfc38ae787f3cd9d0b8088806795cc488e5"
     },
     {
-      "path": "data/vendor/ldcad-shadow/parts/99253.dat",
-      "sha256": "278ec2f8ccaccbb2780f93d45b35afd1f97cfe3779075557d666b506c9665672"
+      "path": "data/vendor/ldcad-shadow/parts/98338.dat",
+      "sha256": "2fdf0b5728f4d380e579f8ba0fe41babbdc4829835e3894e4ddfac9f0c36b0ff"
     },
     {
-      "path": "data/vendor/ldcad-shadow/parts/604548.dat",
-      "sha256": "69e51bd23afd6020b68ca4418e830329518f479dc4406058d972dd51a6ed8852"
+      "path": "data/vendor/ldcad-shadow/parts/99253.dat",
+      "sha256": "278ec2f8ccaccbb2780f93d45b35afd1f97cfe3779075557d666b506c9665672"
     },
     {
       "path": "data/vendor/ldcad-shadow/parts/s/3626cs02.dat",

@@ -1,5 +1,6 @@
 import { describe, expect, it } from "vitest";
 import {
+  collectVendoredLDCadHandGripEvidence,
   handGripEvidenceFromLDCadShadow,
   parseLDCadSnapCylinders,
 } from "../../tools/lib/ldcad-shadow-connectivity.js";
@@ -54,5 +55,20 @@ describe("LDCad Shadow hand-grip metadata", () => {
       "0 !LDCAD SNAP_CYL [gender=M] [secs=R 4 10 R 6 2]",
     ].join("\n");
     expect(handGripEvidenceFromLDCadShadow("parts/test.dat", source)).toEqual([]);
+  });
+
+  it("uses exactly one pinned connector to disambiguate multi-shaft geometry", async () => {
+    const evidence = await collectVendoredLDCadHandGripEvidence(
+      "data/vendor/ldcad-shadow",
+      "parts/518.dat",
+    );
+    expect(evidence).toEqual([]);
+
+    const disambiguated = await collectVendoredLDCadHandGripEvidence(
+      "data/vendor/ldcad-shadow",
+      "parts/30035.dat",
+    );
+    expect(disambiguated).toHaveLength(1);
+    expect(disambiguated[0]?.primitive).toMatch(/^ldcad-shadow:parts\/30035\.dat#SNAP_CYL:/u);
   });
 });

@@ -3,29 +3,23 @@ import { readFile, writeFile } from "node:fs/promises";
 import { basename, resolve } from "node:path";
 import { Matrix4 } from "three";
 import { ldrawDigitalConnectivitySchema } from "../src/contracts/ldraw-digital-connectivity.js";
+import { vendoredAccessoryGripFiles } from "./lib/ldcad-shadow-connectivity.js";
 
 const root = process.cwd();
 const vendorRoot = resolve(root, "data/vendor/ldcad-shadow");
 const outputPath = resolve(root, "data/generated/ldraw-digital-connectivity.json");
 const prototypePath = resolve(root, "public/assets/ldraw/prototype/models/figforge-minifigure-packed.mpd");
-const sourceFiles = [
+const referenceSourceFiles = [
   "p/stud16.dat",
   "p/stud4o.dat",
   "parts/10053.dat",
-  "parts/21459.dat",
-  "parts/29109.dat",
   "parts/3820.dat",
   "parts/3841.dat",
   "parts/3901.dat",
-  "parts/95049.dat",
-  "parts/95050.dat",
-  "parts/95053.dat",
-  "parts/95054.dat",
-  "parts/99253.dat",
-  "parts/604548.dat",
   "parts/s/3626cs02.dat",
   "parts/s/973s01.dat",
 ] as const;
+const sourceFiles = [...referenceSourceFiles, ...vendoredAccessoryGripFiles].sort();
 
 const sha256 = (value: string | Buffer): string => createHash("sha256").update(value).digest("hex");
 const rounded = (matrix: Matrix4): number[] => matrix.toArray().map((value) => Math.round(value * 1_000_000) / 1_000_000);
@@ -64,8 +58,8 @@ const source = JSON.parse(sourceRaw) as {
   licenseId: string;
   licenseUrl: string;
 };
-const vendorByPath = new Map(sourceFiles.map((path, index) => [path, vendorRaw[index]]));
-const requireMeta = (path: typeof sourceFiles[number], fragment: string): void => {
+const vendorByPath = new Map<string, string>(sourceFiles.map((path, index) => [path, vendorRaw[index]!]));
+const requireMeta = (path: string, fragment: string): void => {
   if (!vendorByPath.get(path)?.includes(fragment)) throw new Error(`Missing required snap metadata in ${path}`);
 };
 requireMeta("parts/s/3626cs02.dat", "SNAP_CYL [gender=F]");

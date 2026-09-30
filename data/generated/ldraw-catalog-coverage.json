@@ -29,17 +29,17 @@
   },
   "summary": {
     "catalogPartCount": 20202,
-    "visualizedPartCount": 14459,
-    "builderReadyPartCount": 14457,
-    "remainingCatalogPartCount": 5745,
-    "remainingWithoutVisualizationCount": 5743,
+    "visualizedPartCount": 14477,
+    "builderReadyPartCount": 14475,
+    "remainingCatalogPartCount": 5727,
+    "remainingWithoutVisualizationCount": 5725,
     "uniqueOfficialMappingCount": 2767,
     "ambiguousOfficialMappingCount": 235,
     "noOfficialMappingCount": 17200,
     "remainingClassifications": {
       "builder-blocked": 2,
       "render-failed": 0,
-      "placement-profile-required": 625,
+      "placement-profile-required": 607,
       "ambiguous-official-mapping": 84,
       "no-official-mapping": 5034
     }
@@ -95,12 +95,12 @@
     },
     "handAccessory": {
       "catalogPartCount": 1308,
-      "builderReadyPartCount": 244,
-      "remainingCatalogPartCount": 1064,
+      "builderReadyPartCount": 262,
+      "remainingCatalogPartCount": 1046,
       "remainingClassifications": {
         "builder-blocked": 1,
         "render-failed": 0,
-        "placement-profile-required": 405,
+        "placement-profile-required": 387,
         "ambiguous-official-mapping": 38,
         "no-official-mapping": 620
       }
@@ -49872,20 +49872,6 @@
       "reason": null
     },
     {
-      "catalogId": "part:3899",
-      "role": "handAccessory",
-      "rebrickablePartNum": "3899",
-      "name": "Equipment Cup / Mug [Plain]",
-      "classification": "placement-profile-required",
-      "ldrawFiles": [
-        "parts/3899.dat"
-      ],
-      "mappingEvidence": [
-        "exact-filename"
-      ],
-      "reason": null
-    },
-    {
       "catalogId": "part:3899pr0001",
       "role": "handAccessory",
       "rebrickablePartNum": "3899pr0001",
@@ -50110,20 +50096,6 @@
       "reason": null
     },
     {
-      "catalogId": "part:4360",
-      "role": "handAccessory",
-      "rebrickablePartNum": "4360",
-      "name": "Equipment Camera with Side Sight [aka Space Gun]",
-      "classification": "placement-profile-required",
-      "ldrawFiles": [
-        "parts/4360.dat"
-      ],
-      "mappingEvidence": [
-        "exact-filename"
-      ],
-      "reason": null
-    },
-    {
       "catalogId": "part:4429",
       "role": "handAccessory",
       "rebrickablePartNum": "4429",
@@ -50218,20 +50190,6 @@
       "classification": "placement-profile-required",
       "ldrawFiles": [
         "parts/4627.dat"
-      ],
-      "mappingEvidence": [
-        "exact-filename"
-      ],
-      "reason": null
-    },
-    {
-      "catalogId": "part:4628",
-      "role": "handAccessory",
-      "rebrickablePartNum": "4628",
-      "name": "Tool Jack Handle",
-      "classification": "placement-profile-required",
-      "ldrawFiles": [
-        "parts/4628.dat"
       ],
       "mappingEvidence": [
         "exact-filename"
@@ -51484,20 +51442,6 @@
       "reason": null
     },
     {
-      "catalogId": "part:11156",
-      "role": "handAccessory",
-      "rebrickablePartNum": "11156",
-      "name": "Weapon Sword (Elven Warrior)",
-      "classification": "placement-profile-required",
-      "ldrawFiles": [
-        "parts/11156.dat"
-      ],
-      "mappingEvidence": [
-        "exact-filename"
-      ],
-      "reason": null
-    },
-    {
       "catalogId": "part:11187",
       "role": "handAccessory",
       "rebrickablePartNum": "11187",
@@ -51821,20 +51765,6 @@
       "classification": "no-official-mapping",
       "ldrawFiles": [],
       "mappingEvidence": [],
-      "reason": null
-    },
-    {
-      "catalogId": "part:13793",
-      "role": "handAccessory",
-      "rebrickablePartNum": "13793",
-      "name": "Tool Welding Gun",
-      "classification": "placement-profile-required",
-      "ldrawFiles": [
-        "parts/13793.dat"
-      ],
-      "mappingEvidence": [
-        "exact-filename"
-      ],
       "reason": null
     },
     {
@@ -52294,20 +52224,6 @@
       ],
       "mappingEvidence": [
         "explicit-keyword"
-      ],
-      "reason": null
-    },
-    {
-      "catalogId": "part:19118",
-      "role": "handAccessory",
-      "rebrickablePartNum": "19118",
-      "name": "Equipment Key Ornamented with Stud",
-      "classification": "placement-profile-required",
-      "ldrawFiles": [
-        "parts/19118.dat"
-      ],
-      "mappingEvidence": [
-        "exact-filename"
       ],
       "reason": null
     },
@@ -53144,20 +53060,6 @@
       "reason": null
     },
     {
-      "catalogId": "part:24324",
-      "role": "handAccessory",
-      "rebrickablePartNum": "24324",
-      "name": "Book Binding with Two Studs",
-      "classification": "placement-profile-required",
-      "ldrawFiles": [
-        "parts/24324.dat"
-      ],
-      "mappingEvidence": [
-        "exact-filename"
-      ],
-      "reason": null
-    },
-    {
       "catalogId": "part:24946",
       "role": "handAccessory",
       "rebrickablePartNum": "24946",
@@ -53408,20 +53310,6 @@
       "reason": null
     },
     {
-      "catalogId": "part:27150",
-      "role": "handAccessory",
-      "rebrickablePartNum": "27150",
-      "name": "Equipment Umbrella Folded",
-      "classification": "placement-profile-required",
-      "ldrawFiles": [
-        "parts/27150.dat"
-      ],
-      "mappingEvidence": [
-        "exact-filename"
-      ],
-      "reason": null
-    },
-    {
       "catalogId": "part:28587",
       "role": "handAccessory",
       "rebrickablePartNum": "28587",
@@ -53537,20 +53425,6 @@
       "reason": null
     },
     {
-      "catalogId": "part:30035",
-      "role": "handAccessory",
-      "rebrickablePartNum": "30035",
-      "name": "Equipment Space Scanner",
-      "classification": "placement-profile-required",
-      "ldrawFiles": [
-        "parts/30035.dat"
-      ],
-      "mappingEvidence": [
-        "exact-filename"
-      ],
-      "reason": null
-    },
-    {
       "catalogId": "part:30088",
       "role": "handAccessory",
       "rebrickablePartNum": "30088",
@@ -53649,20 +53523,6 @@
       "reason": null
     },
     {
-      "catalogId": "part:30148",
-      "role": "handAccessory",
-      "rebrickablePartNum": "30148",
-      "name": "Equipment Camera / Camcorder [Movie Style]",
-      "classification": "placement-profile-required",
-      "ldrawFiles": [
-        "parts/30148.dat"
-      ],
-      "mappingEvidence": [
-        "exact-filename"
-      ],
-      "reason": null
-    },
-    {
       "catalogId": "part:30154",
       "role": "handAccessory",
       "rebrickablePartNum": "30154",
@@ -53670,20 +53530,6 @@
       "classification": "placement-profile-required",
       "ldrawFiles": [
         "parts/30154.dat"
-      ],
-      "mappingEvidence": [
-        "exact-filename"
-      ],
-      "reason": null
-    },
-    {
-      "catalogId": "part:30162",
-      "role": "handAccessory",
-      "rebrickablePartNum": "30162",
-      "name": "Equipment Binoculars",
-      "classification": "placement-profile-required",
-      "ldrawFiles": [
-        "parts/30162.dat"
       ],
       "mappingEvidence": [
         "exact-filename"
@@ -53827,20 +53673,6 @@
       "classification": "placement-profile-required",
       "ldrawFiles": [
         "parts/30284.dat"
-      ],
-      "mappingEvidence": [
-        "exact-filename"
-      ],
-      "reason": null
-    },
-    {
-      "catalogId": "part:30304",
-      "role": "handAccessory",
-      "rebrickablePartNum": "30304",
-      "name": "Equipment Space Binoculars / Scanner / Electrobinoculars",
-      "classification": "placement-profile-required",
-      "ldrawFiles": [
-        "parts/30304.dat"
       ],
       "mappingEvidence": [
         "exact-filename"
@@ -55834,20 +55666,6 @@
       "reason": null
     },
     {
-      "catalogId": "part:57467",
-      "role": "handAccessory",
-      "rebrickablePartNum": "57467",
-      "name": "Weapon Harpoon [4 Grooves on Shaft]",
-      "classification": "placement-profile-required",
-      "ldrawFiles": [
-        "parts/57467.dat"
-      ],
-      "mappingEvidence": [
-        "exact-filename"
-      ],
-      "reason": null
-    },
-    {
       "catalogId": "part:57503",
       "role": "handAccessory",
       "rebrickablePartNum": "57503",
@@ -56220,20 +56038,6 @@
       "mappingEvidence": [
         "exact-filename",
         "explicit-keyword"
-      ],
-      "reason": null
-    },
-    {
-      "catalogId": "part:62885",
-      "role": "handAccessory",
-      "rebrickablePartNum": "62885",
-      "name": "Weapon Gun Automatic Pistol Medium Barrel",
-      "classification": "placement-profile-required",
-      "ldrawFiles": [
-        "parts/62885.dat"
-      ],
-      "mappingEvidence": [
-        "exact-filename"
       ],
       "reason": null
     },
@@ -58923,20 +58727,6 @@
       "reason": null
     },
     {
-      "catalogId": "part:93092",
-      "role": "handAccessory",
-      "rebrickablePartNum": "93092",
-      "name": "Bag / Basket",
-      "classification": "placement-profile-required",
-      "ldrawFiles": [
-        "parts/93092.dat"
-      ],
-      "mappingEvidence": [
-        "exact-filename"
-      ],
-      "reason": null
-    },
-    {
       "catalogId": "part:93094",
       "role": "handAccessory",
       "rebrickablePartNum": "93094",
@@ -59164,20 +58954,6 @@
       "classification": "placement-profile-required",
       "ldrawFiles": [
         "parts/93251.dat"
-      ],
-      "mappingEvidence": [
-        "exact-filename"
-      ],
-      "reason": null
-    },
-    {
-      "catalogId": "part:93252",
-      "role": "handAccessory",
-      "rebrickablePartNum": "93252",
-      "name": "Weapon Staff with Forked End (Pharaoh)",
-      "classification": "placement-profile-required",
-      "ldrawFiles": [
-        "parts/93252.dat"
       ],
       "mappingEvidence": [
         "exact-filename"
@@ -59819,20 +59595,6 @@
       "reason": null
     },
     {
-      "catalogId": "part:98338",
-      "role": "handAccessory",
-      "rebrickablePartNum": "98338",
-      "name": "Weapon Spear Short with Hole",
-      "classification": "placement-profile-required",
-      "ldrawFiles": [
-        "parts/98338.dat"
-      ],
-      "mappingEvidence": [
-        "exact-filename"
-      ],
-      "reason": null
-    },
-    {
       "catalogId": "part:98341",
       "role": "handAccessory",
       "rebrickablePartNum": "98341",
@@ -60448,20 +60210,6 @@
       "classification": "no-official-mapping",
       "ldrawFiles": [],
       "mappingEvidence": [],
-      "reason": null
-    },
-    {
-      "catalogId": "part:604549",
-      "role": "handAccessory",
-      "rebrickablePartNum": "604549",
-      "name": "Tool Drill / Impact Wrench, Cordless Electric",
-      "classification": "placement-profile-required",
-      "ldrawFiles": [
-        "parts/604549.dat"
-      ],
-      "mappingEvidence": [
-        "exact-filename"
-      ],
       "reason": null
     },
     {

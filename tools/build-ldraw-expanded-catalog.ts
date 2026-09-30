@@ -522,6 +522,7 @@ const matchedParts: Array<{
 let ambiguousMappingsExcluded = 0;
 let accessoryGripCandidatesExcluded = 0;
 let accessoryMultipleGripCandidatesEvaluated = 0;
+let accessoryLdcadGripCandidatesDisambiguated = 0;
 for (const role of BUILD_ROLES) {
   const raw: unknown = JSON.parse(await readFile(resolve(root, "data/generated/catalog-packages", packageFileByRole[role]), "utf8"));
   const catalogPackage = catalogPackageSchema.parse(raw);
@@ -562,10 +563,16 @@ for (const role of BUILD_ROLES) {
         const geometricGripCandidates = (await collectCylinderEvidence(libraryRoot, direct.file)).filter((evidence) =>
           evidence.radiusLdu >= 3.75 && evidence.radiusLdu <= 4.25 && evidence.lengthLdu >= 4
         );
-        const gripCandidates = [
-          ...geometricGripCandidates,
-          ...await collectVendoredLDCadHandGripEvidence(ldcadShadowRoot, direct.file),
-        ];
+        const ldcadGripCandidates = await collectVendoredLDCadHandGripEvidence(ldcadShadowRoot, direct.file);
+        // A single explicit connector from the pinned LDCad Shadow source names
+        // the intended grip. Geometry remains the fallback when no such evidence
+        // exists; the two sources are not combined into a false ambiguity.
+        const gripCandidates = ldcadGripCandidates.length === 1
+          ? ldcadGripCandidates
+          : geometricGripCandidates;
+        if (ldcadGripCandidates.length === 1 && geometricGripCandidates.length > 1) {
+          accessoryLdcadGripCandidatesDisambiguated += 1;
+        }
         if (gripCandidates.length === 0) {
           accessoryGripCandidatesExcluded += 1;
           continue;
@@ -958,6 +965,7 @@ const output = {
     sharedOfficialFileCount: copiedDependencies.size,
     ambiguousMappingsExcluded,
     accessoryGripCandidatesExcluded,
+    accessoryLdcadGripCandidatesDisambiguated,
     accessoryMultipleGripCandidatesEvaluated,
     accessoryMultipleGripCandidatesPassed,
     accessoryMultipleGripCandidatesAmbiguous,
