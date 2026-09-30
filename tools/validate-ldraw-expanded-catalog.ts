@@ -88,6 +88,7 @@ const catalog = JSON.parse(await readFile(resolve(root, "data/generated/ldraw-ex
     sharedOfficialFileCount: number;
     renderFailuresExcluded: number;
     accessoryGripCandidatesExcluded: number;
+    accessoryLdcadGripCandidatesDisambiguated: number;
     accessoryMultipleGripCandidatesEvaluated: number;
     accessoryMultipleGripCandidatesPassed: number;
     accessoryMultipleGripCandidatesAmbiguous: number;
@@ -159,6 +160,7 @@ assert.equal(
 );
 assert(catalog.entries.length >= 800, "Expanded catalog unexpectedly dropped below 800 renderable parts");
 assert.equal(catalog.summary.digitalPlacementPassedCount, catalog.summary.handAccessoryCount);
+assert.equal(catalog.summary.accessoryLdcadGripCandidatesDisambiguated, 25);
 assert.equal(catalog.summary.digitalPlacementRejectionsExcluded, catalog.digitalPlacementRejections.length);
 assert.equal(
   catalog.summary.accessoryPlacementCandidatesEvaluated,
@@ -221,6 +223,7 @@ for (const rejection of catalog.digitalPlacementRejections) {
   assert(rejection.ldrawFile.startsWith("parts/") && !rejection.ldrawFile.toLowerCase().includes("moc"));
   assert([
     "grip-too-short",
+    "accessory-extent-exceeds-limit",
     "reference-figure-clearance-failed",
     "no-safe-grip-candidate",
     "multiple-safe-grip-candidates",
