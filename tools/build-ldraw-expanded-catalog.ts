@@ -51,6 +51,7 @@ import { writeLDrawRuntimePackages } from "./lib/ldraw-runtime-packages.js";
 import { readMultipleGripClearanceReviews } from "./lib/ldraw-multiple-grip-clearance-reviews.js";
 import { readNoRadiusGripClearanceReviews } from "./lib/ldraw-no-radius-grip-clearance-reviews.js";
 import { readUniqueGripClearanceReviews } from "./lib/ldraw-unique-grip-clearance-reviews.js";
+import { writeShopExportPackages } from "./lib/shop-export-packages.js";
 
 const root = process.cwd();
 const libraryRoot = resolve(root, "data/incoming/ldraw-official/extracted/ldraw");
@@ -1266,6 +1267,7 @@ const output = {
 };
 await writeFile(outputPath, `${JSON.stringify(output, null, 2)}\n`, "utf8");
 await writeLDrawRuntimePackages(root);
+await writeShopExportPackages(root);
 // Composition evidence stays outside the runtime packages because the browser does not need it.
 await writeFile(compositionsPath, `${JSON.stringify({
   schemaVersion: 1,
