@@ -87,7 +87,7 @@ export function ShopExportPanel({ selections }: ShopExportPanelProps) {
       serialize: serializePickABrickCsv,
       link: applyAffiliateTemplate(PICK_A_BRICK_URL, import.meta.env.VITE_LEGO_AFFILIATE_LINK_TEMPLATE),
       linkLabel: "Pick a Brick öffnen",
-      hint: "Bei Pick a Brick die CSV-Datei hochladen. Nicht jedes Element ist dort erhältlich.",
+      hint: "Bei Pick a Brick die CSV-Datei hochladen. LEGO verkauft dort nur einen Teil der aktuell produzierten Elemente; ältere und viele bedruckte Minifigurteile meldet der Upload als nicht verfügbar. Dann hilft die Rebrickable-Liste.",
     },
     {
       result: compileShopExport("rebrickable", selections, lookup),

@@ -62,8 +62,11 @@ Recherche zu Zielseiten (Stand 2026-09-30, ohne praktischen Importtest):
   die Person im jeweiligen Shop.
 - Pick a Brick führt nur einen Teil aller Elemente. Nicht verkaufte Elemente
   meldet LEGO beim Upload; FigForge prüft keine Verfügbarkeit.
-- Vor der Freigabe ist je Format ein praktischer Importtest ohne Kauf nötig
-  (Pick a Brick in einer unterstützten Region, Rebrickable-Teilelistenimport).
+- Praktischer Test Pick a Brick (2026-09-30, Palico): Der Upload hat die CSV
+  gelesen und beide Elementnummern (6002763, 6396389) erkannt, beide aber als
+  „currently unavailable on Pick a Brick“ gemeldet. Format und Nummern stimmen;
+  das Sortiment ist die Grenze. Die Oberfläche sagt das vorab und verweist auf
+  die Rebrickable-Liste. Der Rebrickable-Import ist noch ungetestet.
 - Vor der Aktivierung eines Partnerlinks sind die Programmbedingungen,
   insbesondere für Pick a Brick, und die Werbekennzeichnung rechtlich zu prüfen.
 - Eine spätere Farbauswahl im Builder würde die Zahl eindeutig exportierbarer
