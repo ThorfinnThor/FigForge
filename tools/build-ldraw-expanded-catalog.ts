@@ -15,6 +15,7 @@ import { LDrawConditionalLineMaterial } from "three/addons/materials/LDrawCondit
 import { LDrawLoader } from "three/addons/loaders/LDrawLoader.js";
 import { catalogPackageSchema, type CatalogPackagePart, type CatalogRole } from "../src/contracts/catalog-package.js";
 import { isCompleteMinifigLegsAssembly } from "./lib/ldraw-legs-assembly.js";
+import { rebrickableKeywordIds } from "./lib/ldraw-keywords.js";
 import { browserReferencePath, embeddedLdrawName } from "./lib/ldraw-paths.js";
 import { isCompleteStandardTorsoAssembly } from "./lib/ldraw-torso-assembly.js";
 import {
@@ -321,9 +322,7 @@ for (const file of topLevelParts) {
   const update = /0\s+!LDRAW_ORG\s+(?:Part|Shortcut)[^\r\n]*?\s+UPDATE\s+([0-9]{4}-[0-9]{2})/iu.exec(source)?.[1] ?? lock.release;
   addCandidate(basename(file, ".dat"), { file, matchType: "exact-filename", update });
   for (const line of source.split(/\r?\n/u)) {
-    if (!/^0\s+!KEYWORDS\b/iu.test(line)) continue;
-    const match = /(?:^|,\s*)Rebrickable\s+([^,\s]+)/iu.exec(line);
-    if (match?.[1]) addCandidate(match[1], { file, matchType: "explicit-keyword", update });
+    for (const partNum of rebrickableKeywordIds(line)) addCandidate(partNum, { file, matchType: "explicit-keyword", update });
   }
 }
 
