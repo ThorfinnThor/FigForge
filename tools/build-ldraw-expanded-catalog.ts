@@ -50,7 +50,15 @@ const publicRoot = resolve(root, `public${OFFICIAL_LDRAW_PUBLIC_PATH}`);
 const modelDirectory = resolve(publicRoot, "models");
 const thumbnailDirectory = resolve(root, "public/assets/thumbnails/ldraw-expanded");
 const CUSTOM_COLOR_CODE = 10_000;
-const ASSEMBLY_COLOR_CODES = { catalog: CUSTOM_COLOR_CODE, arms: 10_001, hands: 10_002, legs: 10_001, boots: 10_002 } as const;
+const ASSEMBLY_COLOR_CODES = {
+  catalog: CUSTOM_COLOR_CODE,
+  arms: 10_001,
+  hands: 10_002,
+  legs: 10_001,
+  boots: 10_002,
+  leftLeg: 10_001,
+  rightLeg: 10_002,
+} as const;
 const FAMILY_BUILD_ROLES = ["head", "headwear", "torsoAssembly", "legsAssembly"] as const satisfies readonly CatalogRole[];
 const BUILD_ROLES = [...FAMILY_BUILD_ROLES, "handAccessory"] as const satisfies readonly CatalogRole[];
 
@@ -359,7 +367,15 @@ for (const part of normalizedCatalog.parts) {
 const colorRgbByName = new Map([...colorRgbsByName]
   .filter(([, rgbs]) => rgbs.size === 1 && /^[A-F0-9]{6}$/u.test([...rgbs][0]!))
   .map(([name, rgbs]) => [name, [...rgbs][0]!]));
-const assemblyColorCodes = deriveAssemblyColorCodeTable(normalizedCatalog.parts, new Set(colorRgbByName.keys()));
+const knownAssemblyColorNames = new Set(colorRgbByName.keys());
+const assemblyColorCodes = deriveAssemblyColorCodeTable(
+  normalizedCatalog.parts.filter(({ partNum }) => parseAssemblyPartNum(partNum)?.kind !== "splitLegs"),
+  knownAssemblyColorNames,
+);
+const splitLegColorCodes = deriveAssemblyColorCodeTable(
+  normalizedCatalog.parts.filter(({ partNum }) => parseAssemblyPartNum(partNum)?.kind === "splitLegs"),
+  knownAssemblyColorNames,
+);
 const topLevelSources = await Promise.all(topLevelParts.map(sourceFor));
 const referenceAssemblies = {
   torso: deriveReferenceAssembly(
@@ -403,8 +419,12 @@ const composeColorCodedAssembly = async (
 ): Promise<{ candidate: Candidate; composition: AssemblyComposition } | null> => {
   const parsed = parseAssemblyPartNum(part.rebrickablePartNum);
   if (!parsed) return null;
-  if ((role === "torsoAssembly") !== (parsed.kind === "torso") || (role === "legsAssembly") !== (parsed.kind === "legs")) return null;
-  const colors = confirmAssemblyColors(part.rebrickablePartNum, part.name, assemblyColorCodes);
+  if ((role === "torsoAssembly") !== (parsed.kind === "torso") || (role === "legsAssembly") !== (parsed.kind !== "torso")) return null;
+  const colors = confirmAssemblyColors(
+    part.rebrickablePartNum,
+    part.name,
+    parsed.kind === "splitLegs" ? splitLegColorCodes : assemblyColorCodes,
+  );
   if (!colors) return null;
   const officialFiles = [...new Set((candidateIndex.get(normalize(part.rebrickablePartNum)) ?? []).map(({ file }) => file))];
   const plainBodyFile = colors.kind === "torso" ? "parts/973.dat" : "parts/3815b.dat";
@@ -412,7 +432,7 @@ const composeColorCodedAssembly = async (
   if (colors.kind === "torso" && parsed.printed && officialFiles.length === 1) {
     if (!(await isTorsoPrintPart(officialFiles[0]!))) return null;
     bodyFile = officialFiles[0]!;
-  } else if (parsed.kind === "legs" && parsed.bootCode) {
+  } else if ((parsed.kind === "legs" && parsed.bootCode) || parsed.kind === "splitLegs") {
     // Exact keyword matches for these numbers are the separate left/right leg files,
     // never a complete lower body. The official dual-mould shortcut is expanded below.
     bodyFile = plainBodyFile;
@@ -422,12 +442,24 @@ const composeColorCodedAssembly = async (
     bodyFile = plainBodyFile;
   }
   const printRendered = !parsed.printed || bodyFile !== plainBodyFile;
-  const bodyRgb = normalizedByPartNum.get(normalize(part.rebrickablePartNum))?.colorVariants[0]?.rgb;
-  if ((!printRendered || (parsed.kind === "legs" && parsed.bootCode)) && !(bodyRgb && /^[A-F0-9]{6}$/u.test(bodyRgb))) return null;
+  const colorVariants = normalizedByPartNum.get(normalize(part.rebrickablePartNum))?.colorVariants ?? [];
+  const catalogRgbs = [...new Set(colorVariants
+    .map(({ rgb }) => rgb)
+    .filter((rgb) => /^[A-F0-9]{6}$/u.test(rgb)))];
+  const uniqueBodyRgb = catalogRgbs.length === 1 ? catalogRgbs[0] : undefined;
+  const firstBodyRgb = colorVariants[0]?.rgb;
+  const hasLegacyBodyRgb = Boolean(firstBodyRgb && /^[A-F0-9]{6}$/u.test(firstBodyRgb));
+  if (parsed.kind === "splitLegs" ? !uniqueBodyRgb : (!printRendered || (parsed.kind === "legs" && parsed.bootCode)) && !hasLegacyBodyRgb) return null;
   const colorFor = (component: string): { colorRole: AssemblyColorRole; colorName: string | null } => {
     if (colors.kind === "torso") {
       if (component === "3818" || component === "3819") return { colorRole: "arms", colorName: colors.armColorName };
       if (component === "3820") return { colorRole: "hands", colorName: colors.handColorName };
+      return { colorRole: "catalog", colorName: null };
+    }
+    if (colors.kind === "splitLegs") {
+      // Official LDraw 3817c is the left leg and 3816c is the right leg.
+      if (component === "3817c") return { colorRole: "leftLeg", colorName: colors.leftLegColorName };
+      if (component === "3816c") return { colorRole: "rightLeg", colorName: colors.rightLegColorName };
       return { colorRole: "catalog", colorName: null };
     }
     if (component === "3816c" || component === "3817c" || component === "20460bs01") {
@@ -438,7 +470,7 @@ const composeColorCodedAssembly = async (
   };
   const reference = parsed.kind === "legs" && parsed.bootCode
     ? referenceAssemblies.dualMouldLegs
-    : referenceAssemblies[colors.kind];
+    : colors.kind === "torso" ? referenceAssemblies.torso : referenceAssemblies.legs;
   const components = reference.lines.map(({ component, transform }) => {
     const { colorRole, colorName } = colorFor(component);
     const file = component === "973" || component === "3815b" ? bodyFile : plainComponentFiles[component];
@@ -930,7 +962,7 @@ const output = {
     mocFilesUsed: 0,
   },
   assemblyColorCodes: {
-    derivation: "Unprinted Rebrickable base assemblies 973cNNhMM, 970cNN and 970cNNpatMM whose names follow the fixed grammar 'Torso, A Arms, H Hands', 'Hips and L Legs' or 'Hips with L Legs and B Boots Pattern'; a code is used only when all such names agree on one catalog colour with one RGB value.",
+    derivation: "Unprinted Rebrickable base assemblies 973cNNhMM, 970cNN, 970cNNpatMM and 970lNNrMM whose names follow the fixed grammar 'Torso, A Arms, H Hands', 'Hips and L Legs', 'Hips with L Legs and B Boots Pattern' or 'Hips and L Left Leg, R Right Leg'; a code is used only when all such names agree on one catalog colour with one RGB value.",
     codes: [...assemblyColorCodes.codes].map(([code, colorName]) => ({
       code,
       colorName,
@@ -942,6 +974,18 @@ const output = {
       colorNames,
       reason,
       evidencePartNums: assemblyColorCodes.evidence.get(code) ?? [],
+    })),
+    splitLegCodes: [...splitLegColorCodes.codes].map(([code, colorName]) => ({
+      code,
+      colorName,
+      colorRgb: colorRgbByName.get(colorName),
+      evidencePartNums: splitLegColorCodes.evidence.get(code) ?? [],
+    })),
+    unresolvedSplitLegCodes: [...splitLegColorCodes.unresolved].map(([code, { colorNames, reason }]) => ({
+      code,
+      colorNames,
+      reason,
+      evidencePartNums: splitLegColorCodes.evidence.get(code) ?? [],
     })),
     referenceAssemblies: Object.fromEntries(Object.entries(referenceAssemblies).map(([kind, reference]) => [kind, {
       shortcutCount: reference.shortcutCount,
@@ -956,6 +1000,7 @@ const output = {
     "Print variants may reuse the unique official unprinted parent geometry declared by the locked Rebrickable part_relationships.csv; their printed decoration is not rendered.",
     "Standard torso and legs assemblies without an official LDraw file are composed from official torso, arm, hand, hip and leg parts in the placement shared by the official shortcuts; arm, hand and leg colours come from the Rebrickable assembly code and must be confirmed by the entry's own name.",
     "Dual-moulded 970cNNpatMM legs are composed from the official LDraw hip and dual-mould upper/lower leg geometry; leg and boot colours must both be confirmed by the Rebrickable assembly code and entry name, and the hip needs catalog-backed colour evidence.",
+    "Asymmetric 970lNNrMM legs are composed from the official LDraw hip, left-leg and right-leg geometry only when both leg colours are confirmed by the Rebrickable assembly code and entry name and exactly one catalog-backed hip colour exists.",
     "Printed torso and legs assemblies without any official LDraw file for their number use the same composition with the plain official body in the catalog colour; they are marked as not rendering their print and share one generated asset per colour combination.",
     "Family-origin placement is a digital convention, not a physical clutch-force guarantee.",
     "Hand accessories pass only when exactly one radius-4 grip candidate satisfies deterministic minimum-length, rigid-transform, model-bounds and reference-figure clearance checks; physical clutch force remains unverified.",

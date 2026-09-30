@@ -1,6 +1,7 @@
 export type ParsedAssemblyPartNum =
   | { kind: "torso"; armCode: string; handCode: string; printed: boolean }
-  | { kind: "legs"; legCode: string; bootCode?: string; printed: boolean };
+  | { kind: "legs"; legCode: string; bootCode?: string; printed: boolean }
+  | { kind: "splitLegs"; leftLegCode: string; rightLegCode: string; printed: boolean };
 
 export type AssemblyColorCodeTable = {
   codes: Map<string, string>;
@@ -10,7 +11,8 @@ export type AssemblyColorCodeTable = {
 
 export type ConfirmedAssemblyColors =
   | { kind: "torso"; armColorName: string; handColorName: string }
-  | { kind: "legs"; legColorName: string; bootColorName?: string };
+  | { kind: "legs"; legColorName: string; bootColorName?: string }
+  | { kind: "splitLegs"; leftLegColorName: string; rightLegColorName: string };
 
 const escapeRegExp = (value: string): string => value.replaceAll(/[.*+?^${}()|[\]\\]/gu, "\\$&");
 
@@ -23,6 +25,15 @@ export function parseAssemblyPartNum(partNum: string): ParsedAssemblyPartNum | n
   }
   const legs = /^970c(\d{2})(pr\d+)?$/iu.exec(partNum.trim());
   if (legs) return { kind: "legs", legCode: legs[1]!, printed: Boolean(legs[2]) };
+  const splitLegs = /^970l(\d{2})r(\d{2})(pr\d+)?$/iu.exec(partNum.trim());
+  if (splitLegs) {
+    return {
+      kind: "splitLegs",
+      leftLegCode: splitLegs[1]!,
+      rightLegCode: splitLegs[2]!,
+      printed: Boolean(splitLegs[3]),
+    };
+  }
   return null;
 }
 
@@ -36,6 +47,10 @@ function plainAssemblyColorNames(partNum: string, name: string): Array<[code: st
     const split = /^Torso, ([A-Z][A-Za-z -]*?) Arms, ([A-Z][A-Za-z -]*?) Hands(?: \[(?:Plain|PLAIN)\])?$/u.exec(name);
     if (split) return [[parsed.armCode, split[1]!], [parsed.handCode, split[2]!]];
     return null;
+  }
+  if (parsed.kind === "splitLegs") {
+    const splitLegs = /^Hips and ([A-Z][A-Za-z -]*?) Left Leg, ([A-Z][A-Za-z -]*?) Right Leg(?: \[(?:Plain|PLAIN)\])?$/u.exec(name);
+    return splitLegs ? [[parsed.leftLegCode, splitLegs[1]!], [parsed.rightLegCode, splitLegs[2]!]] : null;
   }
   if (parsed.bootCode) {
     const dualMouldLegs = /^Hips with ([A-Z][A-Za-z -]*?) Legs and ([A-Z][A-Za-z -]*?) Boots Pattern(?: \[[^\]]+\])?$/u.exec(name);
@@ -97,6 +112,14 @@ export function confirmAssemblyColors(
       ? new RegExp(`(?:^|, )${armPattern} Arms(?: and|, ${handPattern}) Hands\\b`, "u").test(name)
       : new RegExp(`(?:^|, )${armPattern} Arms, ${handPattern} Hands\\b`, "u").test(name);
     return confirmed ? { kind: "torso", armColorName: arm, handColorName: hand } : null;
+  }
+  if (parsed.kind === "splitLegs") {
+    const leftLeg = table.codes.get(parsed.leftLegCode);
+    const rightLeg = table.codes.get(parsed.rightLegCode);
+    if (!leftLeg || !rightLeg) return null;
+    return new RegExp(`^Hips and ${escapeRegExp(leftLeg)} Left Leg, ${escapeRegExp(rightLeg)} Right Leg\\b`, "u").test(name)
+      ? { kind: "splitLegs", leftLegColorName: leftLeg, rightLegColorName: rightLeg }
+      : null;
   }
   const leg = table.codes.get(parsed.legCode);
   if (!leg) return null;

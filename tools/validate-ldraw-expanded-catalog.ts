@@ -63,6 +63,8 @@ const catalog = JSON.parse(await readFile(resolve(root, "data/generated/ldraw-ex
   assemblyColorCodes: {
     codes: Array<{ code: string; colorName: string; colorRgb: string; evidencePartNums: string[] }>;
     unresolvedCodes: Array<{ code: string; colorNames: string[]; reason: string; evidencePartNums: string[] }>;
+    splitLegCodes: Array<{ code: string; colorName: string; colorRgb: string; evidencePartNums: string[] }>;
+    unresolvedSplitLegCodes: Array<{ code: string; colorNames: string[]; reason: string; evidencePartNums: string[] }>;
     referenceAssemblies: Record<"torso" | "legs" | "dualMouldLegs", {
       shortcutCount: number;
       agreeingShortcutCount: number;
@@ -123,7 +125,7 @@ const { compositions: assemblyCompositions } = JSON.parse(
     agreeingReferenceShortcutCount: number;
     components: Array<{
       file: string;
-      colorRole: "catalog" | "arms" | "hands" | "legs" | "boots";
+      colorRole: "catalog" | "arms" | "hands" | "legs" | "boots" | "leftLeg" | "rightLeg";
       colorName: string | null;
       colorRgb: string | null;
       transform: number[];
@@ -275,7 +277,15 @@ for (const part of normalizedCatalog.parts) {
 const colorRgbByName = new Map([...colorRgbsByName]
   .filter(([, rgbs]) => rgbs.size === 1 && /^[A-F0-9]{6}$/u.test([...rgbs][0]!))
   .map(([name, rgbs]) => [name, [...rgbs][0]!]));
-const assemblyColorCodes = deriveAssemblyColorCodeTable(normalizedCatalog.parts, new Set(colorRgbByName.keys()));
+const knownAssemblyColorNames = new Set(colorRgbByName.keys());
+const assemblyColorCodes = deriveAssemblyColorCodeTable(
+  normalizedCatalog.parts.filter(({ partNum }) => parseAssemblyPartNum(partNum)?.kind !== "splitLegs"),
+  knownAssemblyColorNames,
+);
+const splitLegColorCodes = deriveAssemblyColorCodeTable(
+  normalizedCatalog.parts.filter(({ partNum }) => parseAssemblyPartNum(partNum)?.kind === "splitLegs"),
+  knownAssemblyColorNames,
+);
 assert.deepEqual(
   catalog.assemblyColorCodes.codes,
   [...assemblyColorCodes.codes].map(([code, colorName]) => ({
@@ -290,6 +300,17 @@ assert.equal(catalog.assemblyColorCodes.unresolvedCodes.length, assemblyColorCod
 for (const unresolved of catalog.assemblyColorCodes.unresolvedCodes) {
   assert(!catalog.assemblyColorCodes.codes.some(({ code }) => code === unresolved.code));
 }
+assert.deepEqual(
+  catalog.assemblyColorCodes.splitLegCodes,
+  [...splitLegColorCodes.codes].map(([code, colorName]) => ({
+    code,
+    colorName,
+    colorRgb: colorRgbByName.get(colorName),
+    evidencePartNums: splitLegColorCodes.evidence.get(code) ?? [],
+  })),
+  "Published split-leg colour codes differ from the locked catalog",
+);
+assert.equal(catalog.assemblyColorCodes.unresolvedSplitLegCodes.length, splitLegColorCodes.unresolved.size);
 for (const reference of Object.values(catalog.assemblyColorCodes.referenceAssemblies)) {
   assert(reference.agreeingShortcutCount / reference.shortcutCount >= 0.9, "Reference assembly lacks shortcut agreement");
 }
@@ -308,12 +329,27 @@ for (const entry of catalog.entries) {
     assert(composition, `Missing assembly composition: ${entry.componentId}`);
     assert.equal(composition.kind, "rebrickable-color-coded-assembly");
     const parsed = parseAssemblyPartNum(entry.rebrickablePartNum);
-    const colors = confirmAssemblyColors(entry.rebrickablePartNum, entry.name, assemblyColorCodes);
+    const colors = parsed && confirmAssemblyColors(
+      entry.rebrickablePartNum,
+      entry.name,
+      parsed.kind === "splitLegs" ? splitLegColorCodes : assemblyColorCodes,
+    );
     assert(parsed && colors, `Assembly colours are not confirmed by code and name: ${entry.componentId}`);
     assert.equal(entry.role, colors.kind === "torso" ? "torsoAssembly" : "legsAssembly");
+    if (colors.kind === "splitLegs") {
+      const normalizedPart = normalizedByPartNum.get(entry.rebrickablePartNum.toLowerCase());
+      const hipRgbs = [...new Set((normalizedPart?.colorVariants ?? [])
+        .map(({ rgb }) => rgb)
+        .filter((rgb) => /^[A-F0-9]{6}$/u.test(rgb)))];
+      assert.equal(hipRgbs.length, 1, `Asymmetric legs need exactly one catalog-backed hip colour: ${entry.componentId}`);
+      assert(composition.components.some(({ file, colorRole }) => file === "parts/3817c.dat" && colorRole === "leftLeg"));
+      assert(composition.components.some(({ file, colorRole }) => file === "parts/3816c.dat" && colorRole === "rightLeg"));
+    }
     const reference = parsed.kind === "legs" && parsed.bootCode
       ? catalog.assemblyColorCodes.referenceAssemblies.dualMouldLegs
-      : catalog.assemblyColorCodes.referenceAssemblies[colors.kind];
+      : colors.kind === "torso"
+        ? catalog.assemblyColorCodes.referenceAssemblies.torso
+        : catalog.assemblyColorCodes.referenceAssemblies.legs;
     assert.equal(composition.referenceShortcutCount, reference.shortcutCount);
     assert.equal(composition.agreeingReferenceShortcutCount, reference.agreeingShortcutCount);
     assert.deepEqual(composition.components.map(({ transform }) => transform), reference.lines.map(({ transform }) => transform));
@@ -324,7 +360,11 @@ for (const entry of catalog.entries) {
         ? null
         : colors.kind === "torso"
           ? component.colorRole === "arms" ? colors.armColorName : colors.handColorName
-          : component.colorRole === "boots" ? colors.bootColorName ?? null : colors.legColorName;
+          : colors.kind === "splitLegs"
+            ? component.colorRole === "leftLeg"
+              ? colors.leftLegColorName
+              : component.colorRole === "rightLeg" ? colors.rightLegColorName : null
+            : component.colorRole === "boots" ? colors.bootColorName ?? null : colors.legColorName;
       assert.equal(component.colorName, expectedColorName, `Wrong ${component.colorRole} colour: ${entry.componentId}`);
       assert.equal(component.colorRgb, expectedColorName ? colorRgbByName.get(expectedColorName) : null);
     }
