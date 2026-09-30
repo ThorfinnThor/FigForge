@@ -89,6 +89,7 @@ const catalog = JSON.parse(await readFile(resolve(root, "data/generated/ldraw-ex
     renderFailuresExcluded: number;
     accessoryGripCandidatesExcluded: number;
     accessoryLdcadGripCandidatesDisambiguated: number;
+    accessoryLdcadPrintParentGripCandidatesEvaluated: number;
     accessoryMultipleGripCandidatesEvaluated: number;
     accessoryMultipleGripCandidatesPassed: number;
     accessoryMultipleGripCandidatesAmbiguous: number;
@@ -160,7 +161,8 @@ assert.equal(
 );
 assert(catalog.entries.length >= 800, "Expanded catalog unexpectedly dropped below 800 renderable parts");
 assert.equal(catalog.summary.digitalPlacementPassedCount, catalog.summary.handAccessoryCount);
-assert.equal(catalog.summary.accessoryLdcadGripCandidatesDisambiguated, 25);
+assert.equal(catalog.summary.accessoryLdcadGripCandidatesDisambiguated, 34);
+assert.equal(catalog.summary.accessoryLdcadPrintParentGripCandidatesEvaluated, 9);
 assert.equal(catalog.summary.digitalPlacementRejectionsExcluded, catalog.digitalPlacementRejections.length);
 assert.equal(
   catalog.summary.accessoryPlacementCandidatesEvaluated,
