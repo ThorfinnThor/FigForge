@@ -404,6 +404,11 @@ const plainComponentFiles: Record<string, string> = {
   "20460bs01": "parts/s/20460bs01.dat",
   "20460bs02": "parts/s/20460bs02.dat",
 };
+// These Rebrickable standard colour assemblies collide with obsolete LDraw aliases:
+// 970c02 points to sitting legs and 970c36 to a wooden-leg assembly. Their catalog
+// names still fully confirm the standard 970 colour code, so use the deterministic
+// standard assembly instead of publishing the unrelated legacy geometry.
+const obsoleteLDrawLegAliasCollisions = new Set(["970c02", "970c36"]);
 for (const file of [...Object.values(plainComponentFiles), "parts/973.dat"]) {
   if (!fileIndex.has(file)) throw new Error(`Missing official assembly component: ${file}`);
 }
@@ -440,7 +445,7 @@ const composeColorCodedAssembly = async (
     bodyFile = plainBodyFile;
   } else {
     // Without any official file for this number, the plain body is used; a print is then marked as not rendered.
-    if (officialFiles.length > 0) return null;
+    if (officialFiles.length > 0 && !obsoleteLDrawLegAliasCollisions.has(part.rebrickablePartNum)) return null;
     bodyFile = plainBodyFile;
   }
   const printRendered = !parsed.printed || bodyFile !== plainBodyFile;
