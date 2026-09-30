@@ -45,7 +45,7 @@ describe("FF-14 responsive catalog workspace", () => {
       legsAssembly: 3_231,
       handAccessory: 1_308,
     });
-    expect(allParts.filter(builderComponentForCatalogPart)).toHaveLength(14_500);
+    expect(allParts.filter(builderComponentForCatalogPart)).toHaveLength(14_646);
   }, 15_000);
 
   it("defines responsive tabs, drawer focus return and keyboard dismissal", async () => {
@@ -96,11 +96,11 @@ describe("FF-14 responsive catalog workspace", () => {
     expect(allParts.filter((part) => {
       const builderComponent = builderComponentForCatalogPart(part);
       return builderComponent && verifiedLDrawEntryForComponent(builderComponent.id);
-    })).toHaveLength(14_493);
+    })).toHaveLength(14_639);
     expect(allParts.filter((part) => {
       const builderComponent = builderComponentForCatalogPart(part);
       return builderComponent && digitallySupportedLDrawEntryForComponent(builderComponent.id);
-    })).toHaveLength(14_491);
+    })).toHaveLength(14_637);
     expect(cardSource).toContain("Geometrie ohne Druck");
     expect(cardSource).toContain('disabled={connectionStatus !== "digitally-supported"}');
     expect(cardSource).toContain("In Figur einsetzen");
@@ -109,6 +109,24 @@ describe("FF-14 responsive catalog workspace", () => {
     expect(controllerSource).toContain("physicalFitGuaranteed = false");
     expect(controllerSource).toContain("assertInternalLDrawUrl(selection.modelUrl");
     expect(controllerSource).toContain('legsAssembly: { prototypeFileName: "73200b-f1.dat" }');
+  });
+
+  it("enables official special lower bodies and keeps missing prints explicit", async () => {
+    const legs = await loadCatalogParts("legsAssembly");
+    const exactPart = legs.find(({ rebrickablePartNum }) => rebrickablePartNum === "98376pr0002");
+    const fallbackPart = legs.find(({ rebrickablePartNum }) => rebrickablePartNum === "36036pr0001");
+    const exactComponent = exactPart ? builderComponentForCatalogPart(exactPart) : undefined;
+    const fallbackComponent = fallbackPart ? builderComponentForCatalogPart(fallbackPart) : undefined;
+    const exactEntry = exactComponent ? verifiedLDrawEntryForComponent(exactComponent.id) : undefined;
+    const fallbackEntry = fallbackComponent ? verifiedLDrawEntryForComponent(fallbackComponent.id) : undefined;
+
+    expect(exactEntry?.ldrawFile).toBe("parts/98376p01.dat");
+    expect(exactEntry?.geometryFallback).toBeNull();
+    expect(fallbackEntry?.ldrawFile).toBe("parts/36036.dat");
+    expect(fallbackEntry?.geometryFallback).toEqual({
+      kind: "unprinted-print-parent",
+      parentPartNums: ["36036"],
+    });
   });
 
   it("uses deterministic standing geometry when a printed black-leg parent is ambiguous", async () => {

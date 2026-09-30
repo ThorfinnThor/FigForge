@@ -15,7 +15,7 @@ import { LDrawConditionalLineMaterial } from "three/addons/materials/LDrawCondit
 import { LDrawLoader } from "three/addons/loaders/LDrawLoader.js";
 import { catalogPackageSchema, type CatalogPackagePart, type CatalogRole } from "../src/contracts/catalog-package.js";
 import { OFFICIAL_LDRAW_PUBLIC_PATH } from "../src/scene/ldraw-release.js";
-import { deriveDualMouldLegReference, isCompleteMinifigLegsAssembly } from "./lib/ldraw-legs-assembly.js";
+import { deriveDualMouldLegReference, isCompleteMinifigLowerBody } from "./lib/ldraw-legs-assembly.js";
 import { rebrickableKeywordIds } from "./lib/ldraw-keywords.js";
 import { browserReferencePath, embeddedLdrawName } from "./lib/ldraw-paths.js";
 import { isCompleteStandardTorsoAssembly } from "./lib/ldraw-torso-assembly.js";
@@ -385,7 +385,7 @@ const referenceAssemblies = {
     ["973", "3818", "3819", "3820"],
   ),
   legs: deriveReferenceAssembly(
-    topLevelSources.filter((source) => /^0\s+!LDRAW_ORG\s+Shortcut\b/mu.test(source) && isCompleteMinifigLegsAssembly(source)),
+    topLevelSources.filter((source) => /^0\s+!LDRAW_ORG\s+Shortcut\b/mu.test(source) && isCompleteMinifigLowerBody(source)),
     ["3815b", "3816c", "3817c"],
   ),
   dualMouldLegs: deriveDualMouldLegReference(
@@ -502,7 +502,7 @@ const composeColorCodedAssembly = async (
 
 const supportsRoleAssembly = async (role: CatalogRole, candidate: Candidate): Promise<boolean> => {
   if (role === "torsoAssembly") return isCompleteStandardTorsoAssembly(await sourceFor(candidate.file));
-  if (role === "legsAssembly") return isCompleteMinifigLegsAssembly(await sourceFor(candidate.file));
+  if (role === "legsAssembly") return isCompleteMinifigLowerBody(await sourceFor(candidate.file));
   return true;
 };
 
@@ -669,7 +669,6 @@ await rm(publicRoot, { force: true, recursive: true });
 for (const entry of await readdir(dirname(publicRoot), { withFileTypes: true })) {
   if (entry.isDirectory() && /^official-\d{4}$/u.test(entry.name)) await rm(resolve(dirname(publicRoot), entry.name), { recursive: true });
 }
-await rm(thumbnailDirectory, { force: true, recursive: true });
 await mkdir(modelDirectory, { recursive: true });
 await mkdir(thumbnailDirectory, { recursive: true });
 await cp(resolve(libraryRoot, "LDConfig.ldr"), resolve(publicRoot, "LDConfig.ldr"));
@@ -709,6 +708,23 @@ type GeneratedAsset = {
   thumbnailSha256: string;
   thumbnailBytes: number;
 };
+
+type PreviousGeneratedAsset = GeneratedAsset & {
+  componentId: string;
+};
+
+const previousAssetsByModelUrl = new Map<string, PreviousGeneratedAsset>();
+try {
+  const previous = JSON.parse(await readFile(outputPath, "utf8")) as { entries?: PreviousGeneratedAsset[] };
+  for (const entry of previous.entries ?? []) {
+    if (entry.modelUrl && !previousAssetsByModelUrl.has(entry.modelUrl)) {
+      previousAssetsByModelUrl.set(entry.modelUrl, entry);
+    }
+  }
+} catch {
+  // The first generation has no prior assets to reuse.
+}
+
 const fallbackAssetCache = new Map<string, GeneratedAsset>();
 const fallbackFailureCache = new Map<string, string>();
 
@@ -764,6 +780,19 @@ for (const [index, match] of matchedParts.entries()) {
   }
   if (!asset) {
     const { packed, dependencies } = await packedModel(modelLines, modelColors, modelName, fileIndex);
+    const wrapper = [
+      `0 ${isPrintParentFallback
+        ? `Unprinted parent geometry for ${candidate.printParentPartNums?.join(", ")}`
+        : isUnprintedAssembly ? `Unprinted ${assetRole} assembly from official parts` : part.name}`,
+      `0 Name: ${modelName}.ldr`,
+      `0 // License: ${lock.license}; see referenced official part and ${basename(lock.noticePath)}`,
+      ...modelColors.map(colorDefinition),
+      ...modelLines.map(({ colorCode, transform, file }) => `1 ${colorCode} ${transform.join(" ")} ${browserReferencePath(file)}`),
+      "",
+    ].join("\n");
+    const modelUrl = `${OFFICIAL_LDRAW_PUBLIC_PATH}models/${modelName}.ldr`;
+    const modelSha256 = sha256(wrapper);
+    const thumbnailUrl = `/assets/thumbnails/ldraw-expanded/${modelName}.webp`;
     let thumbnail: Buffer;
     try {
       const model = await parsePackedModel(packed, materials);
@@ -827,7 +856,24 @@ for (const [index, match] of matchedParts.entries()) {
         match.selectedGripCandidateIndex = selection.selectedGripCandidateIndex;
         if (match.gripCandidates.length > 1) accessoryMultipleGripCandidatesPassed += 1;
       }
-      thumbnail = await sharp(Buffer.from(renderSvg(model))).webp({ quality: 82, effort: 4 }).toBuffer();
+      const renderedSvg = Buffer.from(renderSvg(model));
+      const previousAsset = previousAssetsByModelUrl.get(modelUrl);
+      let previousThumbnail: Buffer | null = null;
+      if (previousAsset?.modelSha256 === modelSha256 && previousAsset.thumbnailUrl === thumbnailUrl) {
+        try {
+          const candidateThumbnail = await readFile(resolve(root, `public${thumbnailUrl}`));
+          if (
+            candidateThumbnail.byteLength === previousAsset.thumbnailBytes
+            && sha256(candidateThumbnail) === previousAsset.thumbnailSha256
+          ) {
+            previousThumbnail = candidateThumbnail;
+          }
+        } catch {
+          // Missing or stale prior thumbnails are regenerated below.
+        }
+      }
+      thumbnail = previousThumbnail
+        ?? await sharp(renderedSvg).webp({ quality: 82, effort: 4 }).toBuffer();
     } catch (error) {
       const reason = error instanceof Error ? error.message : "Unknown render failure";
       if (isSharedAsset) fallbackFailureCache.set(assetKey, reason);
@@ -842,18 +888,6 @@ for (const [index, match] of matchedParts.entries()) {
       });
       continue;
     }
-    const wrapper = [
-      `0 ${isPrintParentFallback
-        ? `Unprinted parent geometry for ${candidate.printParentPartNums?.join(", ")}`
-        : isUnprintedAssembly ? `Unprinted ${assetRole} assembly from official parts` : part.name}`,
-      `0 Name: ${modelName}.ldr`,
-      `0 // License: ${lock.license}; see referenced official part and ${basename(lock.noticePath)}`,
-      ...modelColors.map(colorDefinition),
-      ...modelLines.map(({ colorCode, transform, file }) => `1 ${colorCode} ${transform.join(" ")} ${browserReferencePath(file)}`),
-      "",
-    ].join("\n");
-    const modelUrl = `${OFFICIAL_LDRAW_PUBLIC_PATH}models/${modelName}.ldr`;
-    const thumbnailUrl = `/assets/thumbnails/ldraw-expanded/${modelName}.webp`;
     await writeFile(resolve(root, `public${modelUrl}`), wrapper, "utf8");
     await writeFile(resolve(root, `public${thumbnailUrl}`), thumbnail);
     for (const dependency of dependencies) {
@@ -865,7 +899,7 @@ for (const [index, match] of matchedParts.entries()) {
     }
     asset = {
       modelUrl,
-      modelSha256: sha256(wrapper),
+      modelSha256,
       thumbnailUrl,
       thumbnailSha256: sha256(thumbnail),
       thumbnailBytes: thumbnail.byteLength,
@@ -932,6 +966,12 @@ await writeFile(
 );
 
 const outputComponentIds = new Set(outputEntries.map(({ componentId }) => componentId));
+const outputThumbnailPaths = new Set(outputEntries.map(({ thumbnailUrl }) =>
+  resolve(root, `public${String(thumbnailUrl)}`)
+));
+for (const thumbnailPath of await collectFiles(thumbnailDirectory)) {
+  if (!outputThumbnailPaths.has(thumbnailPath)) await rm(thumbnailPath);
+}
 const output = {
   schemaVersion: 1,
   generatedAt: "2026-09-28",
