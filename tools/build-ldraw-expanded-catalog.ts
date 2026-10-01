@@ -36,7 +36,9 @@ import {
 import {
   collectCylinderEvidence,
   proposedHandPlacements,
+  proposedSlidingHandPlacements,
   type CylinderEvidence,
+  type HandPlacementCandidate,
 } from "./lib/ldraw-placement-candidates.js";
 import { collectVendoredLDCadHandGripEvidence } from "./lib/ldcad-shadow-connectivity.js";
 import { resolveOfficialLDrawMappingFile } from "./lib/ldraw-official-mapping.js";
@@ -535,7 +537,7 @@ const matchedParts: Array<{
   placementTransformLdu: number[];
   gripCandidates: Array<{
     evidence: CylinderEvidence;
-    placementTransformCandidatesLdu: number[][];
+    placementCandidates: HandPlacementCandidate[];
   }>;
   selectedGripEvidence: CylinderEvidence | null;
   selectedGripCandidateIndex: number | null;
@@ -595,8 +597,11 @@ for (const role of BUILD_ROLES) {
     const direct = directCandidates.find(({ matchType }) => matchType === "exact-filename") ?? directCandidates[0];
     if (directFiles.length === 1 && direct) {
       if (role === "handAccessory") {
-        const geometricGripCandidates = (await collectCylinderEvidence(libraryRoot, direct.file)).filter((evidence) =>
+        const geometricConnectorCandidates = (await collectCylinderEvidence(libraryRoot, direct.file)).filter((evidence) =>
           evidence.radiusLdu >= 3.75 && evidence.radiusLdu <= 4.25 && evidence.lengthLdu >= 4
+        );
+        const geometricGripCandidates = geometricConnectorCandidates.filter((evidence) =>
+          evidence.lengthLdu >= digitalAccessoryLimits.minimumGripLengthLdu
         );
         const ldcadGripCandidates = await collectVendoredLDCadHandGripEvidence(ldcadShadowRoot, direct.file);
         const printParentLdcadGripCandidates = [];
@@ -623,7 +628,7 @@ for (const role of BUILD_ROLES) {
         const gripCandidates = documentedGripCandidates.length === 1
           ? documentedGripCandidates
           : geometricGripCandidates;
-        if (documentedGripCandidates.length === 1 && geometricGripCandidates.length > 1) {
+        if (documentedGripCandidates.length === 1 && geometricConnectorCandidates.length > 1) {
           accessoryLdcadGripCandidatesDisambiguated += 1;
         }
         if (inheritedLdcadGripCandidates.length === 1) accessoryLdcadPrintParentGripCandidatesEvaluated += 1;
@@ -634,13 +639,18 @@ for (const role of BUILD_ROLES) {
         if (gripCandidates.length > 1) accessoryMultipleGripCandidatesEvaluated += 1;
         const candidates = gripCandidates.map((evidence) => ({
           evidence,
-          placementTransformCandidatesLdu: proposedHandPlacements(evidence),
+          placementCandidates: gripCandidates.length === 1
+            ? proposedSlidingHandPlacements(evidence)
+            : proposedHandPlacements(evidence).map((placementTransformLdu) => ({
+              placementTransformLdu,
+              sourceGripCenterLdu: evidence.centerLdu,
+            })),
         }));
         matchedParts.push({
           part: { ...part, role },
           candidate: direct,
           placementMode: "snap-connector",
-          placementTransformLdu: candidates[0]!.placementTransformCandidatesLdu[0]!,
+          placementTransformLdu: candidates[0]!.placementCandidates[0]!.placementTransformLdu,
           gripCandidates: candidates,
           selectedGripEvidence: null,
           selectedGripCandidateIndex: null,
@@ -851,14 +861,14 @@ for (const [index, match] of matchedParts.entries()) {
       const model = await parsePackedModel(packed, materials);
       if (part.role === "handAccessory") {
         if (!referenceFigure || match.gripCandidates.length === 0) throw new Error("Missing accessory validation input");
-        const gripEvaluations: DigitalAccessoryGripEvaluation[] = match.gripCandidates.map(({ evidence, placementTransformCandidatesLdu }) => ({
-          orientations: placementTransformCandidatesLdu.map((placementTransformLdu) => ({
+        const gripEvaluations: DigitalAccessoryGripEvaluation[] = match.gripCandidates.map(({ evidence, placementCandidates }) => ({
+          orientations: placementCandidates.map(({ placementTransformLdu, sourceGripCenterLdu }) => ({
             placementTransformLdu,
             validation: validateDigitalAccessoryPlacement(
               model,
               referenceFigure,
               placementTransformLdu,
-              evidence.centerLdu,
+              sourceGripCenterLdu,
               evidence.lengthLdu,
             ),
           })),
@@ -893,15 +903,14 @@ for (const [index, match] of matchedParts.entries()) {
           continue;
         }
         const selectedGrip = match.gripCandidates[selection.selectedGripCandidateIndex];
-        const selected = gripEvaluations[selection.selectedGripCandidateIndex]
-          ?.orientations[selection.selectedOrientationIndex];
+        const selected = gripEvaluations[selection.selectedGripCandidateIndex]?.orientations[selection.selectedOrientationIndex];
         if (!selectedGrip || !selected) throw new Error("Selected accessory placement is missing");
         digitalValidation = {
           ...selected.validation,
           gripCandidatesTested: gripEvaluations.length,
           safeGripCandidatesFound: selection.safeGripCandidatesFound,
           selectedGripCandidateIndex: selection.selectedGripCandidateIndex,
-          orientationCandidatesTested: selectedGrip.placementTransformCandidatesLdu.length,
+          orientationCandidatesTested: selectedGrip.placementCandidates.length,
           selectedOrientationIndex: selection.selectedOrientationIndex,
         };
         match.placementTransformLdu = selected.placementTransformLdu;

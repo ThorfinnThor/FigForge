@@ -7,6 +7,7 @@ import {
   parseLDrawReferences,
   proposedHandPlacement,
   proposedHandPlacements,
+  proposedSlidingHandPlacements,
 } from "../../tools/lib/ldraw-placement-candidates.js";
 
 describe("conservative LDraw placement candidate analysis", () => {
@@ -44,5 +45,17 @@ describe("conservative LDraw placement candidate analysis", () => {
     expect(alternatives).toHaveLength(8);
     expect(alternatives[0]).toEqual(placement);
     expect(alternatives.every((candidate) => candidate.length === 16 && candidate.every(Number.isFinite))).toBe(true);
+  });
+
+  it("samples only contact points that retain the full digital hand span", () => {
+    const evidence = cylinderEvidenceFromTransform("p/4-4cyli.dat", new Matrix4().makeScale(4, 12, 4));
+    expect(evidence).not.toBeNull();
+    const candidates = proposedSlidingHandPlacements(evidence!);
+    expect(candidates).toHaveLength(40);
+    expect([...new Set(candidates.map(({ sourceGripCenterLdu }) => sourceGripCenterLdu.join(":")))])
+      .toEqual(["0:6:0", "0:5:0", "0:7:0", "0:4:0", "0:8:0"]);
+    expect(candidates.every(({ placementTransformLdu }) =>
+      placementTransformLdu.length === 16 && placementTransformLdu.every(Number.isFinite)
+    )).toBe(true);
   });
 });

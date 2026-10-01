@@ -1,7 +1,7 @@
 import { basename } from "node:path";
 import { Box3, BufferGeometry, Group, Matrix4, Material, Mesh, Vector3 } from "three";
 
-const MIN_GRIP_LENGTH_LDU = 8;
+export const MIN_DIGITAL_HAND_GRIP_LENGTH_LDU = 8;
 const MAX_ACCESSORY_EXTENT_LDU = 240;
 const GRIP_NEIGHBORHOOD_RADIUS_LDU = 7;
 const BODY_BOX_INSET_LDU = 0.25;
@@ -140,7 +140,7 @@ export function validateDigitalAccessoryPlacement(
   sourceGripCenterLdu: readonly [number, number, number],
   gripLengthLdu: number,
 ): DigitalAccessoryValidation {
-  if (gripLengthLdu < MIN_GRIP_LENGTH_LDU) return rejected("grip-too-short", gripLengthLdu);
+  if (gripLengthLdu < MIN_DIGITAL_HAND_GRIP_LENGTH_LDU) return rejected("grip-too-short", gripLengthLdu);
   if (placementTransformLdu.length !== 16 || placementTransformLdu.some((value) => !Number.isFinite(value))) {
     return rejected("invalid-placement-transform", gripLengthLdu);
   }
@@ -195,7 +195,7 @@ export function validateDigitalAccessoryPlacement(
 }
 
 export const digitalAccessoryLimits = {
-  minimumGripLengthLdu: MIN_GRIP_LENGTH_LDU,
+  minimumGripLengthLdu: MIN_DIGITAL_HAND_GRIP_LENGTH_LDU,
   maximumAccessoryExtentLdu: MAX_ACCESSORY_EXTENT_LDU,
   gripNeighborhoodRadiusLdu: GRIP_NEIGHBORHOOD_RADIUS_LDU,
   bodyBoxInsetLdu: BODY_BOX_INSET_LDU,

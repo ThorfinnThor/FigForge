@@ -2,6 +2,7 @@ import { readFile } from "node:fs/promises";
 import { dirname, resolve } from "node:path";
 import { Matrix4, Vector3 } from "three";
 import type { LDrawCatalogCoverageEntry, LDrawCatalogCoverageReport } from "./ldraw-catalog-coverage.js";
+import { MIN_DIGITAL_HAND_GRIP_LENGTH_LDU } from "./ldraw-accessory-clearance.js";
 
 const SOURCE_POLICY = "Nur Rebrickable Catalog Downloads/CSV, keine MOC-Dateien." as const;
 const MAX_DEPTH = 64;
@@ -16,6 +17,11 @@ export type CylinderEvidence = {
   centerLdu: [number, number, number];
   axis: [number, number, number];
   sourceConnectorTransformLdu: number[];
+};
+
+export type HandPlacementCandidate = {
+  placementTransformLdu: number[];
+  sourceGripCenterLdu: [number, number, number];
 };
 
 export type PlacementCandidate = Pick<
@@ -238,8 +244,45 @@ export function proposedHandPlacements(evidence: CylinderEvidence): number[][] {
   return placements;
 }
 
+const gripContactOffsets = (lengthLdu: number): number[] => {
+  const maximumOffset = Math.max(0, (lengthLdu - MIN_DIGITAL_HAND_GRIP_LENGTH_LDU) / 2);
+  const offsets = [0];
+  for (let offset = 1; offset < maximumOffset; offset += 1) offsets.push(-offset, offset);
+  if (maximumOffset > 0) offsets.push(-maximumOffset, maximumOffset);
+  return [...new Set(offsets.map(roundedNumber))];
+};
+
+/**
+ * Tests the centre first, then deterministic contact points along every part of
+ * the shaft that still leaves the full reference-hand grip span on the shaft.
+ */
+export function proposedSlidingHandPlacements(evidence: CylinderEvidence): HandPlacementCandidate[] {
+  const sourceConnector = new Matrix4().fromArray(evidence.sourceConnectorTransformLdu);
+  const elements = sourceConnector.elements;
+  const shaftAxis = new Vector3(elements[4], elements[5], elements[6]).normalize();
+  const centre = new Vector3(...evidence.centerLdu);
+  const candidates: HandPlacementCandidate[] = [];
+  for (const offset of gripContactOffsets(evidence.lengthLdu)) {
+    const contact = centre.clone().addScaledVector(shaftAxis, offset);
+    const contactEvidence: CylinderEvidence = {
+      ...evidence,
+      centerLdu: roundedVector(contact),
+      sourceConnectorTransformLdu: roundedMatrix(sourceConnector.clone().setPosition(contact)),
+    };
+    for (const placementTransformLdu of proposedHandPlacements(contactEvidence)) {
+      candidates.push({
+        placementTransformLdu,
+        sourceGripCenterLdu: contactEvidence.centerLdu,
+      });
+    }
+  }
+  return candidates;
+}
+
 const isGripCandidate = (item: CylinderEvidence): boolean =>
-  item.radiusLdu >= 3.75 && item.radiusLdu <= 4.25 && item.lengthLdu >= 4;
+  item.radiusLdu >= 3.75
+  && item.radiusLdu <= 4.25
+  && item.lengthLdu >= MIN_DIGITAL_HAND_GRIP_LENGTH_LDU;
 
 const queueEntry = (entry: LDrawCatalogCoverageEntry): SourceQueueEntry => ({
   catalogId: entry.catalogId,
@@ -319,7 +362,7 @@ export async function buildLDrawPlacementCandidateReport(
     sources: coverage.sources,
     methodology: [
       "Every catalog entry already classified as placement-profile-required is processed in this run.",
-      "Hand-accessory candidates require a unique official LDraw mapping and a transitive full-cylinder primitive with radius 3.75-4.25 LDU and length at least 4 LDU.",
+      `Hand-accessory candidates require a unique official LDraw mapping and a transitive full-cylinder primitive with radius 3.75-4.25 LDU and length at least ${MIN_DIGITAL_HAND_GRIP_LENGTH_LDU} LDU.`,
       "A unique geometric candidate receives a proposed transform, but is never enabled automatically because geometry alone does not prove intended connectivity.",
       "Entries without an official mapping or with several official mappings are queued for deterministic retry after locked catalog or official LDraw updates.",
     ],
