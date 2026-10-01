@@ -7,14 +7,39 @@ import {
 } from "../../src/figure/figure-document.js";
 
 describe("FF-22/FF-23 local figure document", () => {
-  it("round-trips only versioned slot and component IDs", () => {
+  it("round-trips all five versioned builder slots and component IDs", () => {
     const source = createFigureDocument({
       head: "ff03-head-3626c",
       headwear: "ff03-headwear-10048",
+      torsoAssembly: "catalog:torsoAssembly:37191",
+      legsAssembly: "catalog:legsAssembly:970c01",
       handAccessory: "ff03-hand-10053",
     }, "Testfigur", "2026-09-27T20:00:00.000Z");
 
     expect(parseFigureDocument(serializeFigureDocument(source))).toEqual(source);
+    expect(source.selections.map(({ slot }) => slot)).toEqual([
+      "head",
+      "headwear",
+      "torsoAssembly",
+      "legsAssembly",
+      "handAccessory",
+    ]);
+  });
+
+  it("continues to accept existing three-slot version-1 documents", () => {
+    const existing = JSON.stringify({
+      schemaVersion: 1,
+      kind: "figforge-figure",
+      name: "Bestehende Figur",
+      updatedAt: "2026-09-27T20:00:00.000Z",
+      selections: [
+        { slot: "head", componentId: "ff03-head-3626c" },
+        { slot: "headwear", componentId: "ff03-headwear-10048" },
+        { slot: "handAccessory", componentId: "ff03-hand-10053" },
+      ],
+    });
+
+    expect(parseFigureDocument(existing).selections).toHaveLength(3);
   });
 
   it("persists expanded hand accessories selected from the catalog", () => {
