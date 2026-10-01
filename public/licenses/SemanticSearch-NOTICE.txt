@@ -1,0 +1,19 @@
+FigForge semantic-search beta notices
+
+Model: sentence-transformers/all-MiniLM-L6-v2
+Browser export: Xenova/all-MiniLM-L6-v2
+Pinned export revision: 751bff37182d3f1213fa05d7196b954e230abad9
+License identifier recorded by the project: Apache-2.0
+Source: https://huggingface.co/Xenova/all-MiniLM-L6-v2
+
+Runtime: @huggingface/transformers 4.3.0
+License: Apache-2.0
+Source: https://github.com/huggingface/transformers.js
+
+Runtime component: onnxruntime-web 1.31.0-dev.20260914-8d85527a0
+License: MIT
+Source: https://github.com/microsoft/onnxruntime
+
+The semantic-search documents contain catalog names, categories, documented
+colours, roles and identifiers derived from the project's pinned Rebrickable
+Catalog Downloads/CSV. No MOC files or Rebrickable API data are used.

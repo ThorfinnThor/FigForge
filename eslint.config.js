@@ -8,6 +8,7 @@ export default tseslint.config(
       "dist/**",
       ".wrangler/**",
       "data/generated/**",
+      "public/search/runtime/**",
       "tools/review-ui/**",
       "tools/fit-review-ui/**",
       "eslint.config.js",

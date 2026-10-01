@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
 import { curatedCatalogParts } from "../../src/components/catalog-workspace-data.js";
-import { searchCatalog } from "../../src/search/catalog-search.js";
+import { mergeSemanticCatalogResults, searchCatalog } from "../../src/search/catalog-search.js";
 import { normalizeSearchQuery } from "../../src/search/normalize-query.js";
 
 describe("FF-17 base search", () => {
@@ -34,5 +34,38 @@ describe("FF-17 base search", () => {
     expect(idResult.results[0]?.component.rebrickablePartNum).toBe("3626cpr0001");
     expect(filtered.results.every(({ component }) => component.role === "head")).toBe(true);
     expect(filtered.results.map(({ component }) => component.rebrickablePartNum)).toEqual(["3626c"]);
+  });
+});
+
+describe("semantic result merge", () => {
+  it("adds semantic discoveries while preserving stronger lexical matches", () => {
+    const result = mergeSemanticCatalogResults(curatedCatalogParts, "grin", [
+      { componentId: "ff03-head-3626cpr0495", score: 0.9 },
+      { componentId: "ff03-head-3626cpr0001", score: 0.8 },
+    ], { category: "head" });
+    expect(result.mode).toBe("semantic");
+    expect(result.results.some(({ component }) => component.id === "ff03-head-3626cpr0495")).toBe(true);
+    expect(result.results[0]?.component.id).toBe("ff03-head-3626cpr0001");
+  });
+
+  it("never lets semantics weaken exact ID behavior or category filters", () => {
+    const exact = mergeSemanticCatalogResults(curatedCatalogParts, "3626cpr0001", [
+      { componentId: "ff03-headwear-10048", score: 1 },
+    ]);
+    expect(exact.mode).toBe("keyword");
+    expect(exact.results.map(({ component }) => component.rebrickablePartNum)).toEqual(["3626cpr0001"]);
+
+    const filtered = mergeSemanticCatalogResults(curatedCatalogParts, "hair", [
+      { componentId: "ff03-head-3626cpr0001", score: 1 },
+      { componentId: "ff03-headwear-10048", score: 0.8 },
+    ], { category: "headwear" });
+    expect(filtered.results.every(({ component }) => component.role === "headwear")).toBe(true);
+  });
+
+  it("does not mix the unfiltered base catalog into unknown semantic queries", () => {
+    const result = mergeSemanticCatalogResults(curatedCatalogParts, "green alien face", [
+      { componentId: "ff03-head-3626cpr0008", score: 0.8 },
+    ], { category: "head" });
+    expect(result.results.map(({ component }) => component.id)).toEqual(["ff03-head-3626cpr0008"]);
   });
 });

@@ -18,7 +18,12 @@ import {
 import { Button } from "./ui/Button.js";
 import { StatusMessage } from "./ui/StatusMessage.js";
 import { TextInput } from "./ui/TextInput.js";
-import { searchCatalog } from "../search/catalog-search.js";
+import { mergeSemanticCatalogResults, searchCatalog } from "../search/catalog-search.js";
+import {
+  SemanticSearchClient,
+  semanticSearchMissingBytes,
+  semanticSearchRelease,
+} from "../search/semantic-search-client.js";
 import { FIGURE_DOCUMENT_MAX_BYTES, type FigureDocumentSlot } from "../contracts/figure-document.js";
 import {
   createFigureDocument,
@@ -35,6 +40,7 @@ type MobileTab = "parts" | "figure" | "list";
 type CatalogRole = CatalogPackagePart["role"];
 type CatalogLoadState = "loading" | "ready" | "error";
 type CatalogViewMode = "exact" | "all";
+type SemanticSearchStatus = "disabled" | "loading" | "ready" | "error";
 
 const INITIAL_VISIBLE_PARTS = 80;
 const LDRAW_CATALOG_ROLES: ReadonlySet<string> = new Set([
@@ -87,6 +93,14 @@ export function CatalogWorkspace() {
   const [draftHydrated, setDraftHydrated] = useState(false);
   const [saveStatus, setSaveStatus] = useState<"loading" | "saved" | "error">("loading");
   const [transferMessage, setTransferMessage] = useState<string | null>(null);
+  const [semanticStatus, setSemanticStatus] = useState<SemanticSearchStatus>("disabled");
+  const [semanticProgress, setSemanticProgress] = useState({ loaded: 0, total: semanticSearchRelease.requiredDownloadBytes });
+  const [semanticMissingBytes, setSemanticMissingBytes] = useState(semanticSearchRelease.requiredDownloadBytes);
+  const [semanticHits, setSemanticHits] = useState<Array<{ componentId: string; score: number }>>([]);
+  const [semanticQuery, setSemanticQuery] = useState("");
+  const [semanticSearching, setSemanticSearching] = useState(false);
+  const semanticClientRef = useRef<SemanticSearchClient | null>(null);
+  const semanticRequestRef = useRef(0);
   const isMobileLayout = useMediaQuery("(max-width: 767px)");
   const isDrawerLayout = useMediaQuery("(min-width: 768px) and (max-width: 1439px)");
   const drawerTriggerRef = useRef<HTMLButtonElement>(null);
@@ -100,14 +114,12 @@ export function CatalogWorkspace() {
       : catalogParts,
     [catalogParts, catalogViewMode],
   );
-  const searchResult = useMemo(
-    () => searchCatalog(
-      catalogPartsForView,
-      deferredQuery,
-      activeCategory === "all" ? undefined : { category: activeCategory },
-    ),
-    [activeCategory, catalogPartsForView, deferredQuery],
-  );
+  const searchResult = useMemo(() => {
+    const options = activeCategory === "all" ? undefined : { category: activeCategory };
+    return semanticStatus === "ready" && semanticQuery === deferredQuery && deferredQuery.trim().length > 0
+      ? mergeSemanticCatalogResults(catalogPartsForView, deferredQuery, semanticHits, options)
+      : searchCatalog(catalogPartsForView, deferredQuery, options);
+  }, [activeCategory, catalogPartsForView, deferredQuery, semanticHits, semanticQuery, semanticStatus]);
   const filteredComponents = searchResult.results.map(({ component }) => component);
   const visibleComponents = filteredComponents.slice(0, visiblePartCount);
 
@@ -126,6 +138,63 @@ export function CatalogWorkspace() {
       });
     return () => { active = false; };
   }, [activeCategory]);
+
+  useEffect(() => {
+    void semanticSearchMissingBytes().then(setSemanticMissingBytes);
+    return () => semanticClientRef.current?.dispose();
+  }, []);
+
+  useEffect(() => {
+    if (semanticStatus !== "ready") return;
+    if (deferredQuery.trim().length === 0) {
+      setSemanticHits([]);
+      setSemanticQuery("");
+      setSemanticSearching(false);
+      return;
+    }
+    const requestId = ++semanticRequestRef.current;
+    setSemanticSearching(true);
+    void semanticClientRef.current?.search(deferredQuery)
+      .then((hits) => {
+        if (requestId !== semanticRequestRef.current) return;
+        setSemanticHits(hits);
+        setSemanticQuery(deferredQuery);
+      })
+      .catch(() => {
+        if (requestId === semanticRequestRef.current) setSemanticStatus("error");
+      })
+      .finally(() => {
+        if (requestId === semanticRequestRef.current) setSemanticSearching(false);
+      });
+  }, [deferredQuery, semanticStatus]);
+
+  const enableSemanticSearch = (): void => {
+    semanticClientRef.current?.dispose();
+    const client = new SemanticSearchClient();
+    semanticClientRef.current = client;
+    setSemanticStatus("loading");
+    setSemanticProgress({ loaded: 0, total: semanticSearchRelease.requiredDownloadBytes });
+    void client.initialize((loaded, total) => setSemanticProgress({ loaded, total }))
+      .then(() => {
+        setSemanticStatus("ready");
+        setSemanticMissingBytes(0);
+      })
+      .catch(() => setSemanticStatus("error"));
+  };
+
+  const cancelSemanticSearch = (): void => {
+    semanticRequestRef.current += 1;
+    semanticClientRef.current?.dispose();
+    semanticClientRef.current = null;
+    setSemanticStatus("disabled");
+    setSemanticSearching(false);
+    void semanticSearchMissingBytes().then(setSemanticMissingBytes);
+  };
+
+  const megabytes = (bytes: number): string => (bytes / 1_000_000).toLocaleString(language, {
+    minimumFractionDigits: 1,
+    maximumFractionDigits: 1,
+  });
 
   useEffect(() => {
     setVisiblePartCount(INITIAL_VISIBLE_PARTS);
@@ -303,9 +372,29 @@ export function CatalogWorkspace() {
           value={query}
           onChange={(event) => setQuery(event.target.value)}
           hint={catalogLoadState === "ready"
-            ? t("catalog.results", { shown: filteredComponents.length, total: catalogPartsForView.length })
+            ? t(searchResult.mode === "semantic" ? "catalog.results.semantic" : "catalog.results.base", { shown: filteredComponents.length, total: catalogPartsForView.length })
             : t("catalog.loadingHint")}
         />
+        <div className="semantic-search-controls">
+          {semanticStatus === "disabled" || semanticStatus === "error" ? (
+            <Button onClick={enableSemanticSearch} size="sm" variant="secondary">
+              {t("search.semantic.enable", { downloadMB: megabytes(semanticMissingBytes) })}
+            </Button>
+          ) : null}
+          {semanticStatus === "loading" ? (
+            <>
+              <span role="status">{t("search.semantic.loading", {
+                loadedMB: megabytes(semanticProgress.loaded),
+                totalMB: megabytes(semanticProgress.total),
+              })}</span>
+              <Button onClick={cancelSemanticSearch} size="sm" variant="ghost">{t("search.semantic.cancel")}</Button>
+            </>
+          ) : null}
+          {semanticStatus === "ready" ? (
+            <span role="status">{semanticSearching ? t("search.semantic.searching") : t("search.semantic.ready")}</span>
+          ) : null}
+          {semanticStatus === "error" ? <span className="semantic-search-error">{t("search.semantic.error")}</span> : null}
+        </div>
       </div>
       <div className="catalog-toolbar" aria-label={t("catalog.categoryFilter")}>
         <span className="catalog-toolbar__category">{t(`category.${activeCategory}`)}</span>
@@ -493,6 +582,7 @@ export function CatalogWorkspace() {
         {t("source.note")}
         {" "}<a href="/licenses/LDraw-CAreadme.txt" target="_blank" rel="noreferrer">{t("source.ldrawLicense")}</a>
         {" · "}<a href="/licenses/LDCadShadowLibrary-NOTICE.txt" target="_blank" rel="noreferrer">{t("source.connectionLicense")}</a>
+        {" · "}<a href="/licenses/SemanticSearch-NOTICE.txt" target="_blank" rel="noreferrer">{t("source.searchLicense")}</a>
       </StatusMessage>
     </div>
   );

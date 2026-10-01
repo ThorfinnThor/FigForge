@@ -1,0 +1,78 @@
+{
+  "schemaVersion": 1,
+  "status": "beta-pending-human-relevance-review",
+  "sourcePolicy": "Nur Rebrickable Catalog Downloads/CSV, keine MOC-Dateien.",
+  "profileId": "compact-minilm",
+  "modelId": "Xenova/all-MiniLM-L6-v2",
+  "modelRevision": "751bff37182d3f1213fa05d7196b954e230abad9",
+  "runtimeVersion": "@huggingface/transformers@4.3.0",
+  "queryNormalizerVersion": "de-en-domain-v1",
+  "embeddingDimension": 384,
+  "documentCount": 2726,
+  "documentsSha256": "cf3b84f7e8d54f09e7d884384233ccb38f2871e01cbfd2e817bfe0b4d3723293",
+  "orderedComponentIdsSha256": "077fc9d1311ea84ee4bd23cb7441631bddf69230079f78cc3b182362e630e6cb",
+  "indexSha256": "e039a8978e44a342dba844ac27fadb8c613f91476521f1e50a1dedd4796d994a",
+  "requiredDownloadBytes": 42443717,
+  "assets": [
+    {
+      "url": "/search/compact-minilm/index.f32",
+      "byteLength": 4187136,
+      "sha256": "e039a8978e44a342dba844ac27fadb8c613f91476521f1e50a1dedd4796d994a",
+      "kind": "index"
+    },
+    {
+      "url": "/search/compact-minilm/ordered-component-ids.json",
+      "byteLength": 50682,
+      "sha256": "077fc9d1311ea84ee4bd23cb7441631bddf69230079f78cc3b182362e630e6cb",
+      "kind": "mapping"
+    },
+    {
+      "url": "/search/models/Xenova/all-MiniLM-L6-v2/config.json",
+      "byteLength": 650,
+      "sha256": "7135149f7cffa1a573466c6e4d8423ed73b62fd2332c575bf738a0d033f70df7",
+      "kind": "tokenizer"
+    },
+    {
+      "url": "/search/models/Xenova/all-MiniLM-L6-v2/onnx/model_int8.onnx",
+      "byteLength": 22972370,
+      "sha256": "afdb6f1a0e45b715d0bb9b11772f032c399babd23bfc31fed1c170afc848bdb1",
+      "kind": "model"
+    },
+    {
+      "url": "/search/models/Xenova/all-MiniLM-L6-v2/special_tokens_map.json",
+      "byteLength": 125,
+      "sha256": "b6d346be366a7d1d48332dbc9fdf3bf8960b5d879522b7799ddba59e76237ee3",
+      "kind": "tokenizer"
+    },
+    {
+      "url": "/search/models/Xenova/all-MiniLM-L6-v2/tokenizer.json",
+      "byteLength": 711661,
+      "sha256": "da0e79933b9ed51798a3ae27893d3c5fa4a201126cef75586296df9b4d2c62a0",
+      "kind": "tokenizer"
+    },
+    {
+      "url": "/search/models/Xenova/all-MiniLM-L6-v2/tokenizer_config.json",
+      "byteLength": 366,
+      "sha256": "9261e7d79b44c8195c1cada2b453e55b00aeb81e907a6664974b4d7776172ab3",
+      "kind": "tokenizer"
+    },
+    {
+      "url": "/search/models/Xenova/all-MiniLM-L6-v2/vocab.txt",
+      "byteLength": 231508,
+      "sha256": "07eced375cec144d27c900241f3e339478dec958f92fddbc551f295c992038a3",
+      "kind": "tokenizer"
+    },
+    {
+      "url": "/search/runtime/ort-wasm-simd-threaded.mjs",
+      "byteLength": 24381,
+      "sha256": "c57ca56328877353a575e51bbca6f18450027d6c9bf2307a2cb2c41363b4de9f",
+      "kind": "runtime"
+    },
+    {
+      "url": "/search/runtime/ort-wasm-simd-threaded.wasm",
+      "byteLength": 14264838,
+      "sha256": "06ba057753da3847e4c24f02d91ab133455b0817c69a44993a9a53a2146df9e3",
+      "kind": "runtime"
+    }
+  ]
+}
