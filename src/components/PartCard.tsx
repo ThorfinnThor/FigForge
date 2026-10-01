@@ -3,6 +3,7 @@ import { Card } from "./ui/Card.js";
 import { StatusMessage } from "./ui/StatusMessage.js";
 import { evaluateCatalogPlacement } from "../compatibility/compatibility-evaluator.js";
 import type { CatalogPackagePart } from "../contracts/catalog-package.js";
+import { useI18n } from "../i18n.js";
 
 type PartCardProps = {
   builderComponentId?: string | undefined;
@@ -25,6 +26,7 @@ export function PartCard({
   selected = false,
   thumbnailUrl,
 }: PartCardProps) {
+  const { t } = useI18n();
   const targetSlot = component.role === "handAccessory" ? "leftHandAccessory" : component.role;
   const compatibility = builderComponentId
     ? evaluateCatalogPlacement(builderComponentId, targetSlot)
@@ -42,8 +44,8 @@ export function PartCard({
         {thumbnailUrl ? (
           <img className="part-card__image" src={thumbnailUrl} alt="" loading="lazy" />
         ) : (
-          <span className="part-card__no-preview" aria-label="Keine Bildvorschau verfügbar">
-            Keine Bildvorschau
+          <span className="part-card__no-preview" aria-label={t("part.noPreview")}>
+            {t("part.noPreview")}
           </span>
         )}
       </div>
@@ -55,32 +57,32 @@ export function PartCard({
             : "blocked"}
         >
           {connectionStatus === "digitally-supported"
-            ? selected ? "Aktiv" : geometryOnlyPreview ? "Geometrie ohne Druck" : "Digital verbunden"
-            : builderComponentId ? ldrawAvailable ? "Gesperrt" : "Katalog"
-              : "Catalog CSV"}
+            ? selected ? t("part.active") : geometryOnlyPreview ? t("part.geometry") : t("part.connected")
+            : builderComponentId ? ldrawAvailable ? t("part.locked") : t("part.catalog")
+              : t("part.catalogCsv")}
         </span>
         <h3 className="part-card__title">{component.name}</h3>
         <p className="part-card__id">Rebrickable · {component.rebrickablePartNum}</p>
         <StatusMessage className="part-card__status" tone="warning">
           {geometryOnlyPreview
-            ? "Offizielle Grundgeometrie des Rebrickable-Druckelternteils · Druck/Dekor wird nicht dargestellt"
+            ? t("part.geometryStatus")
             : ldrawAvailable
             ? connectionStatus === "digitally-supported"
-              ? "LDraw-Modell und versioniertes digitales Anschlussprofil vorhanden"
-              : "Kein belegtes digitales Anschlussprofil · Auswahl gesperrt"
+              ? t("part.connectedStatus")
+              : t("part.profileMissing")
             : builderComponentId
-              ? "Kein belegtes offizielles LDraw-Modell · Auswahl gesperrt"
-              : "Rebrickable-Katalogeintrag · noch ohne geprüftes 3D-Modell"}
+              ? t("part.modelMissing")
+              : t("part.catalogStatus")}
         </StatusMessage>
         {geometryOnlyPreview ? (
           <a
-            aria-label={`${component.name} mit Druck auf Rebrickable ansehen (öffnet neuen Tab)`}
+            aria-label={t("part.rebrickableLinkLabel", { name: component.name })}
             className="part-card__rebrickable-link"
             href={`https://rebrickable.com/parts/${encodeURIComponent(component.rebrickablePartNum)}/`}
             rel="noopener noreferrer"
             target="_blank"
           >
-            Original auf Rebrickable ansehen
+            {t("part.rebrickableLink")}
           </a>
         ) : null}
         <Button
@@ -89,20 +91,20 @@ export function PartCard({
           disabled={connectionStatus !== "digitally-supported"}
           onClick={onSelect}
           title={connectionStatus === "digitally-supported"
-            ? `${geometryOnlyPreview ? "Offizielle Grundgeometrie vorhanden; Druck und Dekor werden nicht dargestellt. " : ""}Digitales Anschlussprofil vorhanden. Physische Passform ist nicht garantiert. ${compatibility?.message ?? ""}`
+            ? `${geometryOnlyPreview ? t("part.geometryTitle") : ""}${t("part.connectedTitle")}${compatibility?.message ?? ""}`
             : builderComponentId && ldrawAvailable
-              ? "Für dieses offizielle LDraw-Modell fehlt ein belegtes digitales Anschlussprofil."
+              ? t("part.profileMissingTitle")
               : builderComponentId
-                ? "Für dieses Katalogteil fehlt eine belegte offizielle LDraw-Zuordnung."
-                : "Dieser Eintrag stammt aus den Rebrickable Catalog Downloads/CSV; 3D-Modell und Anschlussprofil sind noch nicht geprüft."}
+                ? t("part.modelMissingTitle")
+                : t("part.catalogTitle")}
           variant="secondary"
           size="sm"
         >
           {connectionStatus === "digitally-supported"
-            ? selected ? "In Figur eingesetzt" : "In Figur einsetzen"
+            ? selected ? t("part.inserted") : t("part.insert")
             : builderComponentId && ldrawAvailable
-              ? "Anschlussprofil fehlt"
-              : builderComponentId ? "Kein offizielles LDraw-Modell" : "Noch nicht 3D-fähig"}
+              ? t("part.profileMissingButton")
+              : builderComponentId ? t("part.modelMissingButton") : t("part.not3d")}
         </Button>
       </div>
     </Card>

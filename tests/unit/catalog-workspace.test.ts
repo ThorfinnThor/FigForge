@@ -5,6 +5,7 @@ import {
   builderComponentForCatalogPart,
   catalogAssortment,
   digitallySupportedLDrawEntryForComponent,
+  hasExactPrintedGeometry,
   loadCatalogParts,
   thumbnailForComponent,
   verifiedLDrawEntryForComponent,
@@ -19,9 +20,11 @@ describe("FF-14 responsive catalog workspace", () => {
     expect(source).toContain("<PartCard");
     expect(source).toContain("<FigurePartsPanel");
     expect(source).toContain("<FigureViewport");
-    expect(source).toContain("Katalog filtern");
-    expect(source).toContain("Nur Rebrickable Catalog Downloads/CSV");
-    expect(source).toContain("Katalogstatus");
+    expect(source).toContain('t("catalog.searchLabel")');
+    expect(source).toContain('value={catalogViewMode}');
+    expect(source).toContain('value="exact"');
+    expect(source).toContain('t("catalog.policy")');
+    expect(source).toContain('t("source.note")');
     expect(source).toContain("onSelect={builderComponent && digitallySupportedLDrawEntryForComponent(builderComponent.id)");
     expect(source).toContain("<FigureViewport selectedParts={selectedLDrawParts}");
     expect(source).toContain("saveCurrentFigureDraft");
@@ -57,7 +60,7 @@ describe("FF-14 responsive catalog workspace", () => {
     expect(source).toContain('aria-expanded={isFigurePanelOpen}');
     expect(source).toContain('event.key === "Escape"');
     expect(source).toContain("drawerTriggerRef.current?.focus()");
-    expect(source).toContain("Deine Figur öffnen");
+    expect(source).toContain('t("header.openFigure")');
     expect(styles).toContain("@media (min-width: 768px) and (max-width: 1439px)");
     expect(styles).toContain("@media (max-width: 767px)");
     expect(styles).toContain("safe-area-inset-bottom");
@@ -101,19 +104,33 @@ describe("FF-14 responsive catalog workspace", () => {
       const builderComponent = builderComponentForCatalogPart(part);
       return builderComponent && digitallySupportedLDrawEntryForComponent(builderComponent.id);
     })).toHaveLength(14_824);
-    expect(cardSource).toContain("Geometrie ohne Druck");
-    expect(cardSource).toContain("Original auf Rebrickable ansehen");
+    expect(cardSource).toContain('t("part.geometry")');
+    expect(cardSource).toContain('t("part.rebrickableLink")');
     expect(cardSource).toContain("https://rebrickable.com/parts/${encodeURIComponent(component.rebrickablePartNum)}/");
     expect(cardSource).toContain('rel="noopener noreferrer"');
     expect(cardSource).toContain('target="_blank"');
     expect(cardSource).toContain('disabled={connectionStatus !== "digitally-supported"}');
-    expect(cardSource).toContain("In Figur einsetzen");
-    expect(cardSource).toContain("Kein offizielles LDraw-Modell");
+    expect(cardSource).toContain('t("part.insert")');
+    expect(cardSource).toContain('t("part.modelMissingButton")');
     expect(controllerSource).toContain('digitalConnectionStatus = "supported"');
     expect(controllerSource).toContain("physicalFitGuaranteed = false");
     expect(controllerSource).toContain("assertInternalLDrawUrl(selection.modelUrl");
     expect(controllerSource).toContain('legsAssembly: { prototypeFileName: "73200b-f1.dat" }');
   });
+
+  it("focuses the default view on the 2,721 exact digitally supported models", async () => {
+    const allParts = await loadCatalogParts("all");
+    const exactParts = allParts.filter((part) => {
+      const component = builderComponentForCatalogPart(part);
+      return Boolean(component && hasExactPrintedGeometry(component.id));
+    });
+
+    expect(exactParts).toHaveLength(2_721);
+    expect(exactParts.every((part) => {
+      const component = builderComponentForCatalogPart(part);
+      return Boolean(component && hasExactPrintedGeometry(component.id));
+    })).toBe(true);
+  }, 15_000);
 
   it("enables official special lower bodies and keeps missing prints explicit", async () => {
     const legs = await loadCatalogParts("legsAssembly");

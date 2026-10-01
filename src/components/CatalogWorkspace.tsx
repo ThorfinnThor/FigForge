@@ -8,6 +8,7 @@ import {
   builderComponentForId,
   digitalConnectivityForComponent,
   digitallySupportedLDrawEntryForComponent,
+  hasExactPrintedGeometry,
   loadCatalogParts,
   referenceVariant,
   thumbnailForComponent,
@@ -28,12 +29,12 @@ import {
 import { loadCurrentFigureDraft, saveCurrentFigureDraft } from "../storage/figure-draft-store.js";
 import type { CatalogPackagePart } from "../contracts/catalog-package.js";
 import type { LDrawCatalogRole, LDrawCatalogSelection } from "../scene/types.js";
-
-const categoryLabel = new Map(CATALOG_CATEGORIES.map((category) => [category.id, category.label]));
+import { useI18n } from "../i18n.js";
 
 type MobileTab = "parts" | "figure" | "list";
 type CatalogRole = CatalogPackagePart["role"];
 type CatalogLoadState = "loading" | "ready" | "error";
+type CatalogViewMode = "exact" | "all";
 
 const INITIAL_VISIBLE_PARTS = 80;
 const LDRAW_CATALOG_ROLES: ReadonlySet<string> = new Set([
@@ -72,11 +73,13 @@ function useMediaQuery(query: string) {
 }
 
 export function CatalogWorkspace() {
+  const { language, setLanguage, t } = useI18n();
   const [activeCategory, setActiveCategory] = useState<CatalogCategory>("head");
   const [query, setQuery] = useState("");
   const deferredQuery = useDeferredValue(query);
   const [catalogParts, setCatalogParts] = useState<readonly CatalogPackagePart[]>([]);
   const [catalogLoadState, setCatalogLoadState] = useState<CatalogLoadState>("loading");
+  const [catalogViewMode, setCatalogViewMode] = useState<CatalogViewMode>("exact");
   const [visiblePartCount, setVisiblePartCount] = useState(INITIAL_VISIBLE_PARTS);
   const [mobileTab, setMobileTab] = useState<MobileTab>("parts");
   const [isFigurePanelOpen, setIsFigurePanelOpen] = useState(false);
@@ -88,13 +91,22 @@ export function CatalogWorkspace() {
   const isDrawerLayout = useMediaQuery("(min-width: 768px) and (max-width: 1439px)");
   const drawerTriggerRef = useRef<HTMLButtonElement>(null);
   const drawerCloseRef = useRef<HTMLButtonElement>(null);
+  const catalogPartsForView = useMemo(
+    () => catalogViewMode === "exact"
+      ? catalogParts.filter((part) => {
+        const component = builderComponentForCatalogPart(part);
+        return Boolean(component && hasExactPrintedGeometry(component.id));
+      })
+      : catalogParts,
+    [catalogParts, catalogViewMode],
+  );
   const searchResult = useMemo(
     () => searchCatalog(
-      catalogParts,
+      catalogPartsForView,
       deferredQuery,
       activeCategory === "all" ? undefined : { category: activeCategory },
     ),
-    [activeCategory, catalogParts, deferredQuery],
+    [activeCategory, catalogPartsForView, deferredQuery],
   );
   const filteredComponents = searchResult.results.map(({ component }) => component);
   const visibleComponents = filteredComponents.slice(0, visiblePartCount);
@@ -117,7 +129,7 @@ export function CatalogWorkspace() {
 
   useEffect(() => {
     setVisiblePartCount(INITIAL_VISIBLE_PARTS);
-  }, [activeCategory, deferredQuery]);
+  }, [activeCategory, catalogViewMode, deferredQuery]);
 
   const selectedComponentIds = new Set(Object.values(selectedByRole));
   const figureSlot = (id: CatalogRole, label: string) => {
@@ -126,11 +138,11 @@ export function CatalogWorkspace() {
     return { id, label, component, thumbnailUrl: component ? thumbnailForComponent(component) : undefined };
   };
   const figureSlots = [
-    figureSlot("head", "Kopf"),
-    figureSlot("headwear", "Kopfbedeckung"),
-    figureSlot("torsoAssembly", "Oberkörper"),
-    figureSlot("legsAssembly", "Beine"),
-    figureSlot("handAccessory", "Handzubehör"),
+    figureSlot("head", t("figure.head")),
+    figureSlot("headwear", t("figure.headwear")),
+    figureSlot("torsoAssembly", t("figure.torsoAssembly")),
+    figureSlot("legsAssembly", t("figure.legsAssembly")),
+    figureSlot("handAccessory", t("figure.handAccessory")),
   ];
   const selectedLDrawParts = Object.entries(selectedByRole).flatMap(([role, componentId]) => {
     if (!componentId || !isLDrawCatalogRole(role)) {
@@ -209,23 +221,23 @@ export function CatalogWorkspace() {
     link.click();
     link.remove();
     window.setTimeout(() => URL.revokeObjectURL(url), 1_000);
-    setTransferMessage("Figurdatei wurde erstellt.");
+    setTransferMessage(t("figure.transfer.exported"));
   };
 
   const importFigure = async (file: File): Promise<void> => {
     try {
       if (file.size > FIGURE_DOCUMENT_MAX_BYTES) {
-        throw new Error("Datei überschreitet das 64-KiB-Limit.");
+        throw new Error(t("figure.transfer.fileTooLarge"));
       }
       const document = parseFigureDocument(await file.text());
       const restored = selectionsFromFigureDocument(document, isSupportedDocumentSelection);
       if (Object.keys(restored).length !== document.selections.length) {
-        throw new Error("Die Datei enthält unbekannte oder digital nicht unterstützte Teile.");
+        throw new Error(t("figure.transfer.unsupported"));
       }
       setSelectedByRole(restored);
-      setTransferMessage(`„${document.name}“ wurde geladen.`);
+      setTransferMessage(t("figure.transfer.loaded", { name: document.name }));
     } catch (error) {
-      setTransferMessage(`Fehler: ${error instanceof Error ? error.message : "Ungültige Figurdatei."}`);
+      setTransferMessage(`${t("figure.transfer.errorPrefix")}: ${error instanceof Error ? error.message : t("figure.transfer.invalid")}`);
     }
   };
 
@@ -257,21 +269,21 @@ export function CatalogWorkspace() {
   }, [isDrawerLayout, isFigurePanelOpen]);
 
   const categoryRail = (
-    <aside className="category-rail" aria-label="Katalogkategorien">
-      <p className="category-rail__title">Kategorien</p>
+    <aside className="category-rail" aria-label={t("categories.title")}>
+      <p className="category-rail__title">{t("categories.title")}</p>
       {CATALOG_CATEGORIES.map((category) => (
         <Button
-          aria-label={`${category.label} filtern`}
+          aria-label={`${t(`category.${category.id}`)} ${t("category.filter")}`}
           aria-pressed={activeCategory === category.id}
           className="category-rail__button"
           data-category={category.id}
           key={category.id}
           onClick={() => setActiveCategory(category.id)}
           size="sm"
-          title={category.label}
+          title={t(`category.${category.id}`)}
           variant="ghost"
         >
-          {category.label}
+          {t(`category.${category.id}`)}
         </Button>
       ))}
     </aside>
@@ -280,39 +292,57 @@ export function CatalogWorkspace() {
   const catalogPanel = (
     <section className="catalog-panel" aria-labelledby="catalog-heading">
       <div className="catalog-panel__header">
-        <p className="eyebrow">Katalog</p>
-        <h1 id="catalog-heading">Baue den Charakter, den du dir vorstellst.</h1>
-        <p className="lede">Finde echte Teile mit deinen eigenen Worten.</p>
+        <p className="eyebrow">{t("catalog.eyebrow")}</p>
+        <h1 id="catalog-heading">{t("catalog.heading")}</h1>
+        <p className="lede">{t("catalog.lede")}</p>
       </div>
       <div className="catalog-search-sticky">
         <TextInput
-          label="Katalog filtern"
-          placeholder="Zum Beispiel: Ogerkopf mit Hauern"
+          label={t("catalog.searchLabel")}
+          placeholder={t("catalog.searchPlaceholder")}
           value={query}
           onChange={(event) => setQuery(event.target.value)}
           hint={catalogLoadState === "ready"
-            ? `${filteredComponents.length} von ${catalogParts.length} Katalogteilen · Basissuche`
-            : "Katalogpaket wird geladen …"}
+            ? t("catalog.results", { shown: filteredComponents.length, total: catalogPartsForView.length })
+            : t("catalog.loadingHint")}
         />
       </div>
-      <div className="catalog-toolbar" aria-label="Aktiver Katalogfilter">
-        <span className="catalog-toolbar__category">{categoryLabel.get(activeCategory)}</span>
-        <span className="catalog-toolbar__mode">20.202 Minifig-Teile · paketweise geladen</span>
-        <span className="catalog-toolbar__policy">Nur Rebrickable Catalog Downloads/CSV</span>
+      <div className="catalog-toolbar" aria-label={t("catalog.categoryFilter")}>
+        <span className="catalog-toolbar__category">{t(`category.${activeCategory}`)}</span>
+        <label className="catalog-toolbar__view">
+          <span>{t("catalog.mode.label")}</span>
+          <select
+            aria-label={t("catalog.showMode")}
+            value={catalogViewMode}
+            onChange={(event) => setCatalogViewMode(event.currentTarget.value as CatalogViewMode)}
+          >
+            <option value="exact">{t("catalog.mode.exact")}</option>
+            <option value="all">{t("catalog.mode.all")}</option>
+          </select>
+        </label>
+        <span className="catalog-toolbar__mode">
+          {catalogViewMode === "exact" ? t("catalog.mode.exactHint") : t("catalog.mode.allHint")}
+        </span>
+        <span className="catalog-toolbar__policy">{t("catalog.policy")}</span>
       </div>
       {searchResult.query.warnings.length > 0 || searchResult.query.unknownTerms.length > 0 ? (
         <StatusMessage className="search-status" tone="warning">
-          {searchResult.query.warnings.join(" ")}
+           {searchResult.query.warnings.map((warning) => {
+             if (language === "de") return warning;
+             if (warning.includes("Mehrere Kategorien")) return t("search.categoryConflict");
+             if (warning.includes("Schild")) return t("search.ambiguousShield");
+             return warning;
+           }).join(" ")}
           {searchResult.query.unknownTerms.length > 0
-            ? ` Unbekannte Begriffe bleiben erhalten: ${searchResult.query.unknownTerms.join(", ")}.`
+            ? ` ${t("catalog.unknownTerms", { terms: searchResult.query.unknownTerms.join(", ") })}`
             : ""}
         </StatusMessage>
       ) : null}
       {catalogLoadState === "loading" ? (
-        <StatusMessage tone="info">Katalogpaket wird geladen …</StatusMessage>
+        <StatusMessage tone="info">{t("catalog.loading")}</StatusMessage>
       ) : catalogLoadState === "error" ? (
         <StatusMessage tone="danger">
-          Das Katalogpaket konnte nicht geladen werden. Bitte lade die Seite erneut.
+          {t("catalog.loadError")}
         </StatusMessage>
       ) : filteredComponents.length > 0 ? (
         <>
@@ -346,20 +376,20 @@ export function CatalogWorkspace() {
             onClick={() => setVisiblePartCount((count) => count + INITIAL_VISIBLE_PARTS)}
             variant="secondary"
           >
-            Mehr anzeigen ({visibleComponents.length} von {filteredComponents.length})
+            {t("catalog.loadMore", { shown: visibleComponents.length, total: filteredComponents.length })}
           </Button>
         ) : null}
         </>
       ) : (
         <StatusMessage tone="warning">
-          Kein passender Treffer. Versuche einen allgemeineren Begriff oder ändere die Kategorie.
+          {t("catalog.noResults")}
         </StatusMessage>
       )}
     </section>
   );
 
   const viewport = (
-    <section className="workspace-viewport" aria-label="Figurenvorschau">
+    <section className="workspace-viewport" aria-label={t("mobile.figure")}>
       <FigureViewport selectedParts={selectedLDrawParts} />
     </section>
   );
@@ -381,12 +411,19 @@ export function CatalogWorkspace() {
     <div className="app-shell" id="builder">
       <header className="app-header">
         <a className="wordmark" href="#builder">Fig<span>Forge</span></a>
-        <nav className="app-nav" aria-label="Hauptnavigation">
-          <a className="app-nav__link app-nav__link--active" href="#builder" aria-current="page">Builder</a>
-          <a className="app-nav__link" href="#figure-panel">Deine Figur</a>
-          <a className="app-nav__link" href="#source-hinweis">Hinweise</a>
+         <nav className="app-nav" aria-label={t("nav.label")}>
+          <a className="app-nav__link app-nav__link--active" href="#builder" aria-current="page">{t("nav.builder")}</a>
+          <a className="app-nav__link" href="#figure-panel">{t("nav.figure")}</a>
+          <a className="app-nav__link" href="#source-hinweis">{t("nav.notes")}</a>
         </nav>
-        <span className="app-header__status">Digitale LDraw-Verbindungen aktiv</span>
+        <span className="app-header__status">{t("header.status")}</span>
+        <label className="language-picker">
+          <span>{t("language.label")}</span>
+          <select aria-label={t("language.label")} value={language} onChange={(event) => setLanguage(event.currentTarget.value as "de" | "en")}>
+            <option value="de">{t("language.de")}</option>
+            <option value="en">{t("language.en")}</option>
+          </select>
+        </label>
         {!isMobileLayout && isDrawerLayout ? (
           <button
             aria-expanded={isFigurePanelOpen}
@@ -395,18 +432,18 @@ export function CatalogWorkspace() {
             ref={drawerTriggerRef}
             type="button"
           >
-            Deine Figur öffnen
+            {t("header.openFigure")}
           </button>
         ) : null}
       </header>
 
       {isMobileLayout ? (
-        <div className="mobile-workspace" aria-label="FigForge Builder-Arbeitsfläche">
-          <div className="mobile-tabs" role="tablist" aria-label="Builder-Bereiche">
+         <div className="mobile-workspace" aria-label={t("mobile.workspaceLabel")}>
+           <div className="mobile-tabs" role="tablist" aria-label={t("mobile.tabsLabel")}>
             {([
-              ["parts", "Teile"],
-              ["figure", "Figur"],
-              ["list", "Liste"],
+              ["parts", t("mobile.parts")],
+              ["figure", t("mobile.figure")],
+              ["list", t("mobile.list")],
             ] as const).map(([tab, label]) => (
               <button
                 aria-controls={`mobile-panel-${tab}`}
@@ -441,21 +478,21 @@ export function CatalogWorkspace() {
           ) : null}
         </div>
       ) : (
-        <div className="workspace" aria-label="FigForge Builder-Arbeitsfläche">
+         <div className="workspace" aria-label={t("mobile.workspaceLabel")}>
           {categoryRail}
           {catalogPanel}
           {viewport}
           {isDrawerLayout && isFigurePanelOpen ? (
-            <button aria-label="Figurenliste schließen" className="figure-panel-backdrop" onClick={closeFigurePanel} type="button" />
+          <button aria-label={t("figure.panelClose")} className="figure-panel-backdrop" onClick={closeFigurePanel} type="button" />
           ) : null}
           {!isDrawerLayout || isFigurePanelOpen ? figurePanel : null}
         </div>
       )}
 
       <StatusMessage className="workspace-source-note" id="source-hinweis" tone="info">
-        Katalogstatus: 20.202 Minifig-Teile aus belegten Rebrickable Catalog Downloads/CSV. Nur Einträge mit geprüftem LDraw-Modell und digitalem Anschlussprofil sind in die Figur einsetzbar; fehlende Bilder werden nicht aus fremden Websiteinhalten ergänzt. MOC-Dateien und Rebrickable-API-Daten werden nicht verwendet.
-        {" "}<a href="/licenses/LDraw-CAreadme.txt" target="_blank" rel="noreferrer">LDraw-Lizenzhinweis</a>
-        {" · "}<a href="/licenses/LDCadShadowLibrary-NOTICE.txt" target="_blank" rel="noreferrer">Anschlussdaten-Lizenz</a>
+        {t("source.note")}
+        {" "}<a href="/licenses/LDraw-CAreadme.txt" target="_blank" rel="noreferrer">{t("source.ldrawLicense")}</a>
+        {" · "}<a href="/licenses/LDCadShadowLibrary-NOTICE.txt" target="_blank" rel="noreferrer">{t("source.connectionLicense")}</a>
       </StatusMessage>
     </div>
   );

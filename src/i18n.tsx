@@ -1,0 +1,246 @@
+import { createContext, useContext, useEffect, useMemo, useState, type ReactNode } from "react";
+
+export type Language = "de" | "en";
+
+type Messages = Record<string, string>;
+
+const messages: Record<Language, Messages> = {
+  de: {
+    "language.label": "Sprache",
+    "language.de": "Deutsch",
+    "language.en": "English",
+    "nav.builder": "Builder",
+    "nav.figure": "Deine Figur",
+    "nav.notes": "Hinweise",
+    "nav.label": "Hauptnavigation",
+    "header.status": "Digitale LDraw-Verbindungen aktiv",
+    "header.openFigure": "Deine Figur öffnen",
+    "mobile.parts": "Teile",
+    "mobile.figure": "Figur",
+    "mobile.list": "Liste",
+    "mobile.workspaceLabel": "FigForge Builder-Arbeitsfläche",
+    "mobile.tabsLabel": "Builder-Bereiche",
+    "category.filter": "filtern",
+    "categories.title": "Kategorien",
+    "category.all": "Alle Teile",
+    "category.head": "Köpfe",
+    "category.headwear": "Kopfbedeckung",
+    "category.torsoAssembly": "Oberkörper",
+    "category.legsAssembly": "Beine",
+    "category.handAccessory": "Zubehör",
+    "catalog.eyebrow": "Katalog",
+    "catalog.heading": "Baue den Charakter, den du dir vorstellst.",
+    "catalog.lede": "Finde echte Teile mit deinen eigenen Worten.",
+    "catalog.searchLabel": "Katalog filtern",
+    "catalog.searchPlaceholder": "Zum Beispiel: Ogerkopf mit Hauern",
+    "catalog.loadingHint": "Katalogpaket wird geladen …",
+    "catalog.results": "{shown} von {total} passenden Katalogteilen · Basissuche",
+    "catalog.mode.exact": "Exakte Druckgeometrie",
+    "catalog.mode.all": "Alle Katalogteile",
+    "catalog.mode.label": "Anzeigen",
+    "catalog.mode.exactHint": "Standard: nur Teile mit exakt zugeordnetem LDraw-Modell",
+    "catalog.mode.allHint": "Zusätzlich ungeprüfte oder noch nicht einsetzbare Katalogteile",
+    "catalog.policy": "Nur Rebrickable Catalog Downloads/CSV",
+    "catalog.loading": "Katalogpaket wird geladen …",
+    "catalog.loadError": "Das Katalogpaket konnte nicht geladen werden. Bitte lade die Seite erneut.",
+    "catalog.noResults": "Kein passender Treffer. Versuche einen allgemeineren Begriff oder ändere die Kategorie.",
+    "catalog.loadMore": "Mehr anzeigen ({shown} von {total})",
+    "catalog.unknownTerms": "Unbekannte Begriffe bleiben erhalten: {terms}.",
+    "search.categoryConflict": "Mehrere Kategorien erkannt; der erste sichere Kategoriefilter bleibt aktiv.",
+    "search.ambiguousShield": "„Schild“ bleibt ohne Kontext unbestimmt und wird nicht blind übersetzt.",
+    "catalog.categoryFilter": "Aktiver Katalogfilter",
+    "catalog.showMode": "Katalogumfang",
+    "figure.eyebrow": "Auswahl",
+    "figure.title": "Deine Figur",
+    "figure.slots": "{count} Slots",
+    "figure.close": "Schließen",
+    "figure.empty": "Nicht belegt",
+    "figure.none": "Keine Auswahl",
+    "figure.head": "Kopf",
+    "figure.headwear": "Kopfbedeckung",
+    "figure.torsoAssembly": "Oberkörper",
+    "figure.legsAssembly": "Beine",
+    "figure.handAccessory": "Handzubehör",
+    "figure.export": "Figur als JSON speichern",
+    "figure.import": "JSON laden",
+    "figure.importLabel": "FigForge-JSON auswählen",
+    "figure.save.loading": "Lokaler Entwurf wird geladen …",
+    "figure.save.saved": "Auf diesem Gerät gespeichert.",
+    "figure.save.error": "Lokales Speichern ist fehlgeschlagen; JSON-Export bleibt verfügbar.",
+    "figure.transfer.default": "Der JSON-Export enthält nur versionierte FigForge-IDs – keine Modell-URLs, MOC-Daten oder Einkaufszuordnungen.",
+    "figure.transfer.exported": "Figurdatei wurde erstellt.",
+    "figure.transfer.loaded": "„{name}“ wurde geladen.",
+    "figure.transfer.fileTooLarge": "Datei überschreitet das 64-KiB-Limit.",
+    "figure.transfer.invalid": "Ungültige Figurdatei.",
+    "figure.transfer.unsupported": "Die Datei enthält unbekannte oder digital nicht unterstützte Teile.",
+    "figure.transfer.errorPrefix": "Fehler",
+    "figure.panelClose": "Figurenliste schließen",
+    "part.noPreview": "Keine Bildvorschau verfügbar",
+    "part.active": "Aktiv",
+    "part.geometry": "Geometrie ohne Druck",
+    "part.connected": "Digital verbunden",
+    "part.locked": "Gesperrt",
+    "part.catalog": "Katalog",
+    "part.catalogCsv": "Catalog CSV",
+    "part.geometryStatus": "Offizielle Grundgeometrie des Rebrickable-Druckelternteils · Druck/Dekor wird nicht dargestellt",
+    "part.connectedStatus": "LDraw-Modell und versioniertes digitales Anschlussprofil vorhanden",
+    "part.profileMissing": "Kein belegtes digitales Anschlussprofil · Auswahl gesperrt",
+    "part.modelMissing": "Kein belegtes offizielles LDraw-Modell · Auswahl gesperrt",
+    "part.catalogStatus": "Rebrickable-Katalogeintrag · noch ohne geprüftes 3D-Modell",
+    "part.rebrickableLink": "Original auf Rebrickable ansehen",
+    "part.rebrickableLinkLabel": "{name} mit Druck auf Rebrickable ansehen (öffnet neuen Tab)",
+    "part.inserted": "In Figur eingesetzt",
+    "part.insert": "In Figur einsetzen",
+    "part.profileMissingButton": "Anschlussprofil fehlt",
+    "part.modelMissingButton": "Kein offizielles LDraw-Modell",
+    "part.not3d": "Noch nicht 3D-fähig",
+    "part.geometryTitle": "Offizielle Grundgeometrie vorhanden; Druck und Dekor werden nicht dargestellt. ",
+    "part.connectedTitle": "Digitales Anschlussprofil vorhanden. Physische Passform ist nicht garantiert. ",
+    "part.profileMissingTitle": "Für dieses offizielle LDraw-Modell fehlt ein belegtes digitales Anschlussprofil.",
+    "part.modelMissingTitle": "Für dieses Katalogteil fehlt eine belegte offizielle LDraw-Zuordnung.",
+    "part.catalogTitle": "Dieser Eintrag stammt aus den Rebrickable Catalog Downloads/CSV; 3D-Modell und Anschlussprofil sind noch nicht geprüft.",
+    "source.note": "Katalogstatus: 20.202 Minifig-Teile aus belegten Rebrickable Catalog Downloads/CSV. Nur Einträge mit geprüftem LDraw-Modell und digitalem Anschlussprofil sind in die Figur einsetzbar; fehlende Bilder werden nicht aus fremden Websiteinhalten ergänzt. MOC-Dateien und Rebrickable-API-Daten werden nicht verwendet.",
+    "source.ldrawLicense": "LDraw-Lizenzhinweis",
+    "source.connectionLicense": "Anschlussdaten-Lizenz",
+  },
+  en: {
+    "language.label": "Language",
+    "language.de": "Deutsch",
+    "language.en": "English",
+    "nav.builder": "Builder",
+    "nav.figure": "Your figure",
+    "nav.notes": "Notes",
+    "nav.label": "Main navigation",
+    "header.status": "Digital LDraw connections active",
+    "header.openFigure": "Open your figure",
+    "mobile.parts": "Parts",
+    "mobile.figure": "Figure",
+    "mobile.list": "List",
+    "mobile.workspaceLabel": "FigForge builder workspace",
+    "mobile.tabsLabel": "Builder areas",
+    "category.filter": "filter",
+    "categories.title": "Categories",
+    "category.all": "All parts",
+    "category.head": "Heads",
+    "category.headwear": "Headwear",
+    "category.torsoAssembly": "Torsos",
+    "category.legsAssembly": "Legs",
+    "category.handAccessory": "Accessories",
+    "catalog.eyebrow": "Catalog",
+    "catalog.heading": "Build the character you imagine.",
+    "catalog.lede": "Find genuine parts in your own words.",
+    "catalog.searchLabel": "Filter catalog",
+    "catalog.searchPlaceholder": "For example: ogre head with tusks",
+    "catalog.loadingHint": "Loading catalog package …",
+    "catalog.results": "{shown} of {total} matching catalog parts · base search",
+    "catalog.mode.exact": "Exact printed geometry",
+    "catalog.mode.all": "All catalog parts",
+    "catalog.mode.label": "Show",
+    "catalog.mode.exactHint": "Default: only parts with an exact LDraw model mapping",
+    "catalog.mode.allHint": "Also show unreviewed or not-yet-insertable catalog parts",
+    "catalog.policy": "Rebrickable Catalog Downloads/CSV only",
+    "catalog.loading": "Loading catalog package …",
+    "catalog.loadError": "The catalog package could not be loaded. Please reload the page.",
+    "catalog.noResults": "No matching result. Try a broader term or change the category.",
+    "catalog.loadMore": "Show more ({shown} of {total})",
+    "catalog.unknownTerms": "Unknown terms remain unchanged: {terms}.",
+    "search.categoryConflict": "Multiple categories detected; the first safe category filter remains active.",
+    "search.ambiguousShield": "“Schild” is ambiguous without context and is not translated blindly.",
+    "catalog.categoryFilter": "Active catalog filter",
+    "catalog.showMode": "Catalog scope",
+    "figure.eyebrow": "Selection",
+    "figure.title": "Your figure",
+    "figure.slots": "{count} slots",
+    "figure.close": "Close",
+    "figure.empty": "Empty",
+    "figure.none": "No selection",
+    "figure.head": "Head",
+    "figure.headwear": "Headwear",
+    "figure.torsoAssembly": "Torso",
+    "figure.legsAssembly": "Legs",
+    "figure.handAccessory": "Hand accessory",
+    "figure.export": "Save figure as JSON",
+    "figure.import": "Load JSON",
+    "figure.importLabel": "Choose FigForge JSON",
+    "figure.save.loading": "Loading local draft …",
+    "figure.save.saved": "Saved on this device.",
+    "figure.save.error": "Local saving failed; JSON export is still available.",
+    "figure.transfer.default": "The JSON export contains versioned FigForge IDs only – no model URLs, MOC data or purchasing mappings.",
+    "figure.transfer.exported": "Figure file created.",
+    "figure.transfer.loaded": "“{name}” loaded.",
+    "figure.transfer.fileTooLarge": "File exceeds the 64 KiB limit.",
+    "figure.transfer.invalid": "Invalid figure file.",
+    "figure.transfer.unsupported": "The file contains unknown or digitally unsupported parts.",
+    "figure.transfer.errorPrefix": "Error",
+    "figure.panelClose": "Close figure list",
+    "part.noPreview": "No image preview available",
+    "part.active": "Active",
+    "part.geometry": "Geometry without print",
+    "part.connected": "Digitally connected",
+    "part.locked": "Locked",
+    "part.catalog": "Catalog",
+    "part.catalogCsv": "Catalog CSV",
+    "part.geometryStatus": "Official base geometry of the Rebrickable print parent · print/decor is not shown",
+    "part.connectedStatus": "LDraw model and versioned digital connection profile available",
+    "part.profileMissing": "No documented digital connection profile · selection locked",
+    "part.modelMissing": "No documented official LDraw model · selection locked",
+    "part.catalogStatus": "Rebrickable catalog entry · no reviewed 3D model yet",
+    "part.rebrickableLink": "View original on Rebrickable",
+    "part.rebrickableLinkLabel": "View {name} with print on Rebrickable (opens a new tab)",
+    "part.inserted": "Inserted in figure",
+    "part.insert": "Insert in figure",
+    "part.profileMissingButton": "Connection profile missing",
+    "part.modelMissingButton": "No official LDraw model",
+    "part.not3d": "Not 3D-ready yet",
+    "part.geometryTitle": "Official base geometry available; print and decor are not shown. ",
+    "part.connectedTitle": "Digital connection profile available. Physical fit is not guaranteed. ",
+    "part.profileMissingTitle": "This official LDraw model has no documented digital connection profile.",
+    "part.modelMissingTitle": "This catalog part has no documented official LDraw mapping.",
+    "part.catalogTitle": "This entry comes from Rebrickable Catalog Downloads/CSV; its 3D model and connection profile have not been reviewed yet.",
+    "source.note": "Catalog status: 20,202 minifigure parts from verified Rebrickable Catalog Downloads/CSV. Only entries with a reviewed LDraw model and digital connection profile can be inserted into a figure; missing images are not supplemented from third-party websites. MOC files and Rebrickable API data are not used.",
+    "source.ldrawLicense": "LDraw license notice",
+    "source.connectionLicense": "Connection data license",
+  },
+};
+
+type I18nContextValue = {
+  language: Language;
+  setLanguage: (language: Language) => void;
+  t: (key: string, values?: Record<string, string | number>) => string;
+};
+
+const I18nContext = createContext<I18nContextValue | null>(null);
+const LANGUAGE_STORAGE_KEY = "figforge-language";
+
+const interpolate = (template: string, values?: Record<string, string | number>): string => {
+  if (!values) return template;
+  return template.replace(/\{(\w+)\}/gu, (_, key: string) => String(values[key] ?? `{${key}}`));
+};
+
+export function I18nProvider({ children }: { children: ReactNode }) {
+  const [language, setLanguageState] = useState<Language>("de");
+
+  useEffect(() => {
+    const stored = window.localStorage.getItem(LANGUAGE_STORAGE_KEY);
+    if (stored === "de" || stored === "en") setLanguageState(stored);
+  }, []);
+
+  const setLanguage = (next: Language) => {
+    setLanguageState(next);
+    window.localStorage.setItem(LANGUAGE_STORAGE_KEY, next);
+  };
+
+  const value = useMemo<I18nContextValue>(() => ({
+    language,
+    setLanguage,
+    t: (key, values) => interpolate(messages[language][key] ?? messages.de[key] ?? key, values),
+  }), [language]);
+
+  return <I18nContext.Provider value={value}>{children}</I18nContext.Provider>;
+}
+
+export function useI18n(): I18nContextValue {
+  const value = useContext(I18nContext);
+  if (!value) throw new Error("useI18n must be used inside I18nProvider");
+  return value;
+}

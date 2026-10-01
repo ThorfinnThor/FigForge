@@ -3,6 +3,7 @@ import { Button } from "./ui/Button.js";
 import { StatusMessage } from "./ui/StatusMessage.js";
 import type { CatalogPackagePart } from "../contracts/catalog-package.js";
 import { useRef, type RefObject } from "react";
+import { useI18n } from "../i18n.js";
 
 type FigureSlot = {
   id: string;
@@ -33,26 +34,27 @@ export function FigurePartsPanel({
   transferMessage,
 }: FigurePartsPanelProps) {
   const importInputRef = useRef<HTMLInputElement>(null);
+  const { t } = useI18n();
 
   return (
     <aside className={["figure-panel", drawer ? "figure-panel--drawer" : ""].filter(Boolean).join(" ")} id="figure-panel" aria-labelledby="figure-panel-heading">
       <span className="figure-panel__hang" aria-hidden="true" />
       <div className="figure-panel__header">
         <div>
-          <p className="eyebrow">Auswahl</p>
-          <h2 id="figure-panel-heading">Deine Figur</h2>
+          <p className="eyebrow">{t("figure.eyebrow")}</p>
+          <h2 id="figure-panel-heading">{t("figure.title")}</h2>
         </div>
         <div className="figure-panel__header-actions">
-          <span className="figure-panel__count">{slots.length} Slots</span>
+          <span className="figure-panel__count">{t("figure.slots", { count: slots.length })}</span>
           {drawer ? (
             <button
-              aria-label="Figurenliste schließen"
+              aria-label={t("figure.panelClose")}
               className="figure-panel__close"
               onClick={onClose}
               ref={closeButtonRef}
               type="button"
             >
-              Schließen
+              {t("figure.close")}
             </button>
           ) : null}
         </div>
@@ -66,18 +68,18 @@ export function FigurePartsPanel({
             </div>
             <div className="figure-slot__copy">
               <p className="figure-slot__label">{slot.label}</p>
-              <p className="figure-slot__name">{slot.component?.name ?? "Nicht belegt"}</p>
-              <p className="figure-slot__meta">{slot.component ? `Rebrickable · ${slot.component.rebrickablePartNum}` : "Keine Auswahl"}</p>
+              <p className="figure-slot__name">{slot.component?.name ?? t("figure.empty")}</p>
+              <p className="figure-slot__meta">{slot.component ? `Rebrickable · ${slot.component.rebrickablePartNum}` : t("figure.none")}</p>
             </div>
           </Card>
         ))}
       </div>
       <div className="figure-panel__actions">
-        <Button onClick={onExport} size="sm" variant="secondary">Figur als JSON speichern</Button>
-        <Button onClick={() => importInputRef.current?.click()} size="sm" variant="ghost">JSON laden</Button>
+        <Button onClick={onExport} size="sm" variant="secondary">{t("figure.export")}</Button>
+        <Button onClick={() => importInputRef.current?.click()} size="sm" variant="ghost">{t("figure.import")}</Button>
         <input
           accept="application/json,.json"
-          aria-label="FigForge-JSON auswählen"
+          aria-label={t("figure.importLabel")}
           className="figure-panel__file-input"
           onChange={(event) => {
             const file = event.currentTarget.files?.[0];
@@ -90,13 +92,13 @@ export function FigurePartsPanel({
       </div>
       <StatusMessage className="figure-panel__status" tone={saveStatus === "error" ? "danger" : "success"}>
         {saveStatus === "loading"
-          ? "Lokaler Entwurf wird geladen …"
+          ? t("figure.save.loading")
           : saveStatus === "saved"
-            ? "Auf diesem Gerät gespeichert."
-            : "Lokales Speichern ist fehlgeschlagen; JSON-Export bleibt verfügbar."}
+            ? t("figure.save.saved")
+            : t("figure.save.error")}
       </StatusMessage>
       <StatusMessage className="figure-panel__status" tone={transferMessage?.startsWith("Fehler") ? "danger" : "info"}>
-        {transferMessage ?? "Der JSON-Export enthält nur versionierte FigForge-IDs – keine Modell-URLs, MOC-Daten oder Einkaufszuordnungen."}
+        {transferMessage ?? t("figure.transfer.default")}
       </StatusMessage>
     </aside>
   );

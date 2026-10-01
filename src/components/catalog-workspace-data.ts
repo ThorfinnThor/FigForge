@@ -238,6 +238,16 @@ export const digitallySupportedLDrawEntryForComponent = (
     : undefined;
 };
 
+/**
+ * Parts shown by the default builder view: a digitally supported official
+ * model with no print-parent geometry fallback. Older curated entries omit
+ * geometryFallback entirely, which is equivalent to an exact model.
+ */
+export const hasExactPrintedGeometry = (componentId: string): boolean => {
+  const entry = digitallySupportedLDrawEntryForComponent(componentId);
+  return Boolean(entry && (entry.geometryFallback === null || entry.geometryFallback === undefined));
+};
+
 export const thumbnailForComponent = (component: Pick<CatalogPackagePart, "id" | "role">): string => {
   const officialLDrawThumbnail = verifiedLDrawThumbnailByComponentId.get(component.id);
   if (officialLDrawThumbnail) {
