@@ -72,6 +72,17 @@ export function PartCard({
               ? "Kein belegtes offizielles LDraw-Modell · Auswahl gesperrt"
               : "Rebrickable-Katalogeintrag · noch ohne geprüftes 3D-Modell"}
         </StatusMessage>
+        {geometryOnlyPreview ? (
+          <a
+            aria-label={`${component.name} mit Druck auf Rebrickable ansehen (öffnet neuen Tab)`}
+            className="part-card__rebrickable-link"
+            href={`https://rebrickable.com/parts/${encodeURIComponent(component.rebrickablePartNum)}/`}
+            rel="noopener noreferrer"
+            target="_blank"
+          >
+            Original auf Rebrickable ansehen
+          </a>
+        ) : null}
         <Button
           aria-pressed={connectionStatus === "digitally-supported" ? selected : undefined}
           className="part-card__action"
