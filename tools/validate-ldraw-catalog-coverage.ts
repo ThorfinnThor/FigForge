@@ -22,6 +22,7 @@ const classifications = [
   "builder-blocked",
   "render-failed",
   "placement-profile-required",
+  "reviewed-incompatible-assembly",
   "ambiguous-official-mapping",
   "no-official-mapping",
 ] as const;
@@ -141,6 +142,10 @@ for (const [role, fileName] of packageFiles) {
     } else if (remaining.classification === "placement-profile-required") {
       assert.equal(remaining.ldrawFiles.length, 1);
       assert.equal(remaining.reason, null);
+    } else if (remaining.classification === "reviewed-incompatible-assembly") {
+      assert.equal(remaining.ldrawFiles.length, 1);
+      assert.match(remaining.reason ?? "", /^not-a-complete-compatible-role-assembly:/u);
+      assert.notEqual(remaining.role, "handAccessory");
     } else if (remaining.classification === "ambiguous-official-mapping") {
       assert(remaining.ldrawFiles.length > 1);
       assert.equal(remaining.reason, null);

@@ -1,3 +1,4 @@
+import { createHash } from "node:crypto";
 import { readFile, readdir } from "node:fs/promises";
 import { basename, resolve } from "node:path";
 import { catalogPackageSchema, type CatalogPackagePart, type CatalogRole } from "../../src/contracts/catalog-package.js";
@@ -24,6 +25,7 @@ type RemainingClassification =
   | "builder-blocked"
   | "render-failed"
   | "placement-profile-required"
+  | "reviewed-incompatible-assembly"
   | "ambiguous-official-mapping"
   | "no-official-mapping";
 
@@ -86,6 +88,7 @@ const emptyCounts = (): ClassificationCounts => ({
   "builder-blocked": 0,
   "render-failed": 0,
   "placement-profile-required": 0,
+  "reviewed-incompatible-assembly": 0,
   "ambiguous-official-mapping": 0,
   "no-official-mapping": 0,
 });
@@ -119,6 +122,17 @@ export async function buildLDrawCatalogCoverage(
   if (ldrawLock.sourcePolicy !== SOURCE_POLICY) throw new Error("LDraw source policy mismatch");
   const ambiguousMappingResolutions = await readAmbiguousMappingResolutions(root);
   const ambiguousMappingSelections = selectedAmbiguousMappings(ambiguousMappingResolutions);
+  const roleAssemblyReview = await readJson<{
+    schemaVersion: 1;
+    sourcePolicy: string;
+    ldrawRelease: string;
+    builderEligible: Array<{ role: CatalogRole; rebrickablePartNum: string; ldrawFile: string }>;
+    reviewedIncompatibleQueue: { count: number; sha256: string; reasonCode: string; reason: string };
+  }>(resolve(root, "data/curated/ldraw-role-assembly-review.json"));
+  if (roleAssemblyReview.schemaVersion !== 1 || roleAssemblyReview.sourcePolicy !== SOURCE_POLICY) {
+    throw new Error("Invalid role-assembly review policy");
+  }
+  if (roleAssemblyReview.ldrawRelease !== ldrawLock.release) throw new Error("Role-assembly review LDraw release mismatch");
 
   const catalogManifest = await readJson<{
     sourcePolicy: string;
@@ -152,13 +166,24 @@ export async function buildLDrawCatalogCoverage(
   }
 
   const expandedCatalog = await readJson<{
-    entries: Array<{ role: CatalogRole; rebrickablePartNum: string }>;
+    entries: Array<{ role: CatalogRole; rebrickablePartNum: string; ldrawFile: string }>;
     renderFailures: Array<{ rebrickablePartNum: string; ldrawFile: string; reason: string }>;
   }>(resolve(root, "data/generated/ldraw-expanded-catalog.json"));
+  const expandedFileByKey = new Map<string, string>();
   for (const entry of expandedCatalog.entries) {
     const key = catalogKey(entry.role, entry.rebrickablePartNum);
     if (builderReadyKeys.has(key)) throw new Error(`Duplicate builder-ready catalog key: ${key}`);
     builderReadyKeys.add(key);
+    expandedFileByKey.set(key, entry.ldrawFile);
+  }
+  for (const eligible of roleAssemblyReview.builderEligible) {
+    const key = catalogKey(eligible.role, eligible.rebrickablePartNum);
+    if (!builderReadyKeys.has(key)) {
+      throw new Error(`Reviewed role assembly is not builder-ready: ${eligible.role}:${eligible.rebrickablePartNum}`);
+    }
+    if (expandedFileByKey.get(key) !== eligible.ldrawFile) {
+      throw new Error(`Reviewed role assembly file changed: ${eligible.role}:${eligible.rebrickablePartNum}`);
+    }
   }
   const renderFailuresByPartNum = new Map<string, Array<{ ldrawFile: string; reason: string }>>();
   for (const failure of expandedCatalog.renderFailures) {
@@ -288,6 +313,38 @@ export async function buildLDrawCatalogCoverage(
     return roleOrder || left.rebrickablePartNum.localeCompare(right.rebrickablePartNum, "en", { numeric: true });
   });
 
+  const reviewedRoleQueue = remainingEntries
+    .filter(({ classification, role }) => classification === "placement-profile-required" && role !== "handAccessory")
+    .map(({ role, rebrickablePartNum, ldrawFiles }) => ({
+      role,
+      rebrickablePartNum,
+      ldrawFile: ldrawFiles[0]!,
+    }))
+    .sort((left, right) => `${left.role}:${left.rebrickablePartNum}`.localeCompare(
+      `${right.role}:${right.rebrickablePartNum}`,
+      "en",
+      { numeric: true },
+    ));
+  const reviewedRoleQueueSha256 = createHash("sha256")
+    .update(JSON.stringify(reviewedRoleQueue))
+    .digest("hex");
+  if (
+    reviewedRoleQueue.length !== roleAssemblyReview.reviewedIncompatibleQueue.count
+    || reviewedRoleQueueSha256 !== roleAssemblyReview.reviewedIncompatibleQueue.sha256
+  ) {
+    throw new Error("Role-specific assembly queue changed; a new explicit review is required");
+  }
+  const reviewedRoleKeys = new Set(reviewedRoleQueue.map(({ role, rebrickablePartNum }) =>
+    catalogKey(role, rebrickablePartNum)
+  ));
+  for (const entry of remainingEntries) {
+    if (!reviewedRoleKeys.has(catalogKey(entry.role, entry.rebrickablePartNum))) continue;
+    roleSummary[entry.role].remainingClassifications["placement-profile-required"] -= 1;
+    roleSummary[entry.role].remainingClassifications["reviewed-incompatible-assembly"] += 1;
+    entry.classification = "reviewed-incompatible-assembly";
+    entry.reason = `${roleAssemblyReview.reviewedIncompatibleQueue.reasonCode}: ${roleAssemblyReview.reviewedIncompatibleQueue.reason}`;
+  }
+
   const remainingClassifications = emptyCounts();
   for (const entry of remainingEntries) remainingClassifications[entry.classification] += 1;
   const builderReadyPartCount = builderReadyKeys.size;
@@ -321,11 +378,13 @@ export async function buildLDrawCatalogCoverage(
       "No fuzzy name matching, Rebrickable API data, image scraping, LDraw models, or MOC files are used; Rebrickable names are read only through fixed anchored patterns.",
       "An exact printed hand-accessory model may reuse a pinned LDCad hand-grip connector only when locked Rebrickable part_relationships.csv declares exactly one print parent carrying that unique connector; digital collision validation is still required for the printed model itself.",
       "A unique model mapping is not treated as builder-ready until a role-specific placement profile and rendering both succeed.",
+      "The pinned role-assembly review enables only complete standard-slot assemblies and explicitly marks the remaining audited component/non-standard-family models as incompatible; any queue change invalidates the review hash.",
     ],
     classificationDefinitions: {
       "builder-blocked": "A visualized official model exists, but the current connectivity registry explicitly blocks builder use.",
       "render-failed": "The official mapping is unique, but deterministic thumbnail/model preparation failed.",
       "placement-profile-required": "The official mapping is unique; a safe role-specific placement/assembly profile is still required.",
+      "reviewed-incompatible-assembly": "The official mapping was reviewed, but it is an individual component or belongs to a figure family that is not a complete drop-in assembly for this builder slot.",
       "ambiguous-official-mapping": "Several official LDraw top-level files claim the same Rebrickable identifier; no file is selected automatically.",
       "no-official-mapping": "The pinned official LDraw release contains no exact or explicitly declared mapping.",
     },
@@ -348,7 +407,7 @@ export async function buildLDrawCatalogCoverage(
 export function renderLDrawCatalogCoverageMarkdown(report: LDrawCatalogCoverageReport): string {
   const rows = packages.map(([role]) => {
     const item = report.roles[role];
-    return `| ${role} | ${item.catalogPartCount.toLocaleString("de-DE")} | ${item.builderReadyPartCount.toLocaleString("de-DE")} | ${item.remainingClassifications["placement-profile-required"].toLocaleString("de-DE")} | ${item.remainingClassifications["builder-blocked"].toLocaleString("de-DE")} | ${item.remainingClassifications["render-failed"].toLocaleString("de-DE")} | ${item.remainingClassifications["ambiguous-official-mapping"].toLocaleString("de-DE")} | ${item.remainingClassifications["no-official-mapping"].toLocaleString("de-DE")} |`;
+    return `| ${role} | ${item.catalogPartCount.toLocaleString("de-DE")} | ${item.builderReadyPartCount.toLocaleString("de-DE")} | ${item.remainingClassifications["placement-profile-required"].toLocaleString("de-DE")} | ${item.remainingClassifications["reviewed-incompatible-assembly"].toLocaleString("de-DE")} | ${item.remainingClassifications["builder-blocked"].toLocaleString("de-DE")} | ${item.remainingClassifications["render-failed"].toLocaleString("de-DE")} | ${item.remainingClassifications["ambiguous-official-mapping"].toLocaleString("de-DE")} | ${item.remainingClassifications["no-official-mapping"].toLocaleString("de-DE")} |`;
   });
   const summary = report.summary;
   const directMappingDifference = summary.noOfficialMappingCount
@@ -368,8 +427,8 @@ export function renderLDrawCatalogCoverageMarkdown(report: LDrawCatalogCoverageR
     `- ${summary.remainingCatalogPartCount.toLocaleString("de-DE")} sind noch nicht builderbereit; davon fehlen bei ${summary.remainingWithoutVisualizationCount.toLocaleString("de-DE")} auch Modell/Vorschaubild.`,
     `- ${summary.uniqueOfficialMappingCount.toLocaleString("de-DE")} Katalogeinträge haben insgesamt eine eindeutige direkte LDraw-Zuordnung, ${summary.ambiguousOfficialMappingCount.toLocaleString("de-DE")} sind mehrdeutig und ${summary.noOfficialMappingCount.toLocaleString("de-DE")} haben keine direkte offizielle Zuordnung.`,
     "",
-    "| Rolle | Katalog | Builderbereit | Platzierung fehlt | Gesperrt | Renderfehler | Mehrdeutig | Keine Zuordnung |",
-    "| --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: |",
+    "| Rolle | Katalog | Builderbereit | Platzierung fehlt | Geprüft unvereinbar | Gesperrt | Renderfehler | Mehrdeutig | Keine Zuordnung |",
+    "| --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |",
     ...rows,
     "",
     `Die Resttabelle weist ${directMappingDifference.toLocaleString("de-DE")} Einträge weniger unter „Keine Zuordnung“ aus als die rohe direkte Mappingbilanz. Diese Einträge verwenden entweder eine in Rebrickable deklarierte Druckeltern-Grundgeometrie, sind als zugehöriger Renderfehler klassifiziert oder – im Fall \`3814\` – wegen einer kuratierten Modellabbildung gesperrt.`,

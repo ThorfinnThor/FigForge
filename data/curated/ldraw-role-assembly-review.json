@@ -1,0 +1,16 @@
+{
+  "schemaVersion": 1,
+  "sourcePolicy": "Nur Rebrickable Catalog Downloads/CSV, keine MOC-Dateien.",
+  "ldrawRelease": "2026-08",
+  "methodology": "The complete role-specific queue was reviewed against the catalog role and the official top-level LDraw model. Only complete assemblies that use the existing standard minifigure torso-slot origin may become builder-ready. Individual body components and assemblies that require a different figure family or counterpart remain explicitly incompatible instead of receiving a guessed placement.",
+  "builderEligible": [
+    { "role": "torsoAssembly", "rebrickablePartNum": "17", "ldrawFile": "parts/17.dat", "evidence": "Official one-piece Minifig Torso with Integral Arms at the standard torso origin." },
+    { "role": "torsoAssembly", "rebrickablePartNum": "37191", "ldrawFile": "parts/37191c01.dat", "evidence": "Official complete Minifig Torso Brick shortcut containing the body, both arms and both hands." }
+  ],
+  "reviewedIncompatibleQueue": {
+    "count": 95,
+    "sha256": "25b0562c5aa8bad745a810a12f7c807daf56e1c444cad9142e90da6533038708",
+    "reasonCode": "not-a-complete-compatible-role-assembly",
+    "reason": "The unique official model is an individual component or requires a non-standard figure-family counterpart/anchor; it is not a complete drop-in assembly for the current minifigure builder slot."
+  }
+}
