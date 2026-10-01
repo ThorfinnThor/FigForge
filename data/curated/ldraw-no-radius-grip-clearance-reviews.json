@@ -1,0 +1,33 @@
+{
+  "schemaVersion": 1,
+  "sourcePolicy": "Nur Rebrickable Catalog Downloads/CSV, keine MOC-Dateien.",
+  "methodology": "The 270 remaining accessories without an official radius-4 cylinder primitive are compared with the pinned LDCad Shadow Library. Only the 23 catalog parts for which that exact pinned source identifies exactly one male round hand-grip connector are eligible for closed-mesh clearance. Parts with zero or multiple documented grips remain blocked without guessing.",
+  "auditedQueueCount": 270,
+  "uniqueDocumentedGripCount": 23,
+  "withoutUniqueDocumentedGripCount": 247,
+  "reviews": [
+    { "rebrickablePartNum": "37", "catalogName": "Weapon Dagger / Knife", "ldrawFile": "parts/44658.dat", "gripEvidenceFile": "parts/44658.dat", "expectedResult": "passed" },
+    { "rebrickablePartNum": "59", "catalogName": "Weapon Sword / Greatsword Round", "ldrawFile": "parts/59.dat", "gripEvidenceFile": "parts/59.dat", "expectedResult": "passed" },
+    { "rebrickablePartNum": "4342", "catalogName": "Food Bread", "ldrawFile": "parts/4342.dat", "gripEvidenceFile": "parts/4342.dat", "expectedResult": "passed" },
+    { "rebrickablePartNum": "4449", "catalogName": "Bag / Briefcase", "ldrawFile": "parts/4449-f1.dat", "gripEvidenceFile": "parts/4449-f1.dat", "expectedResult": "passed" },
+    { "rebrickablePartNum": "4499", "catalogName": "Weapon Bow and Arrow [Large]", "ldrawFile": "parts/4499.dat", "gripEvidenceFile": "parts/4499.dat", "expectedResult": "passed" },
+    { "rebrickablePartNum": "18787", "catalogName": "Weapon Sword Blocky", "ldrawFile": "parts/18787.dat", "gripEvidenceFile": "parts/18787.dat", "expectedResult": "passed" },
+    { "rebrickablePartNum": "18788", "catalogName": "Weapon Axe Blocky", "ldrawFile": "parts/18788.dat", "gripEvidenceFile": "parts/18788.dat", "expectedResult": "passed" },
+    { "rebrickablePartNum": "18789", "catalogName": "Tool Pickaxe Blocky, Double", "ldrawFile": "parts/18789.dat", "gripEvidenceFile": "parts/18789.dat", "expectedResult": "passed" },
+    { "rebrickablePartNum": "18791", "catalogName": "Equipment Shovel Blocky", "ldrawFile": "parts/18791.dat", "gripEvidenceFile": "parts/18791.dat", "expectedResult": "passed" },
+    { "rebrickablePartNum": "23986", "catalogName": "Equipment Teapot", "ldrawFile": "parts/23986.dat", "gripEvidenceFile": "parts/23986.dat", "expectedResult": "passed" },
+    { "rebrickablePartNum": "30173a", "catalogName": "Weapon Sword / Katana [Octagonal Guard]", "ldrawFile": "parts/30173a.dat", "gripEvidenceFile": "parts/30173a.dat", "expectedResult": "passed" },
+    { "rebrickablePartNum": "30173b", "catalogName": "Weapon Sword / Katana / Shamshir with Uncapped Pommel [Square Guard]", "ldrawFile": "parts/30173b.dat", "gripEvidenceFile": "parts/30173b.dat", "expectedResult": "passed" },
+    { "rebrickablePartNum": "30229", "catalogName": "Equipment Zip Line Handle", "ldrawFile": "parts/30229.dat", "gripEvidenceFile": "parts/30229.dat", "expectedResult": "passed" },
+    { "rebrickablePartNum": "38014", "catalogName": "Equipment Cup / Teacup", "ldrawFile": "parts/38014.dat", "gripEvidenceFile": "parts/38014.dat", "expectedResult": "passed" },
+    { "rebrickablePartNum": "43887", "catalogName": "Weapon Sword / Scimitar", "ldrawFile": "parts/43887.dat", "gripEvidenceFile": "parts/43887.dat", "expectedResult": "passed" },
+    { "rebrickablePartNum": "48495", "catalogName": "Weapon Sword / Greatsword Angular", "ldrawFile": "parts/48495.dat", "gripEvidenceFile": "parts/48495.dat", "expectedResult": "passed" },
+    { "rebrickablePartNum": "71342", "catalogName": "Musical Instrument Bugle", "ldrawFile": "parts/71342.dat", "gripEvidenceFile": "parts/71342.dat", "expectedResult": "passed" },
+    { "rebrickablePartNum": "76764", "catalogName": "Weapon Sword / Shortsword Elaborate Hilt", "ldrawFile": "parts/76764.dat", "gripEvidenceFile": "parts/76764.dat", "expectedResult": "passed" },
+    { "rebrickablePartNum": "79741", "catalogName": "Equipment Cutlery - Fork", "ldrawFile": "parts/79741.dat", "gripEvidenceFile": "parts/79741.dat", "expectedResult": "passed" },
+    { "rebrickablePartNum": "93055", "catalogName": "Weapon Sword Katana with Dragon Guard (The Sword of Fire)", "ldrawFile": "parts/93055.dat", "gripEvidenceFile": "parts/93055.dat", "expectedResult": "passed" },
+    { "rebrickablePartNum": "93247", "catalogName": "Weapon Sword / Khopesh", "ldrawFile": "parts/93247.dat", "gripEvidenceFile": "parts/93247.dat", "expectedResult": "passed" },
+    { "rebrickablePartNum": "93559", "catalogName": "Sports Hockey Stick, Flat Shaft", "ldrawFile": "parts/93559.dat", "gripEvidenceFile": "parts/93559.dat", "expectedResult": "passed" },
+    { "rebrickablePartNum": "95673", "catalogName": "Weapon Sword with Thin Crossguard (Roman Gladius)", "ldrawFile": "parts/95673.dat", "gripEvidenceFile": "parts/95673.dat", "expectedResult": "passed" }
+  ]
+}

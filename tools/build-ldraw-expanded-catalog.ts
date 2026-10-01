@@ -49,6 +49,7 @@ import {
 import { resolveOfficialLDrawMappingFile } from "./lib/ldraw-official-mapping.js";
 import { writeLDrawRuntimePackages } from "./lib/ldraw-runtime-packages.js";
 import { readMultipleGripClearanceReviews } from "./lib/ldraw-multiple-grip-clearance-reviews.js";
+import { readNoRadiusGripClearanceReviews } from "./lib/ldraw-no-radius-grip-clearance-reviews.js";
 import { readUniqueGripClearanceReviews } from "./lib/ldraw-unique-grip-clearance-reviews.js";
 
 const root = process.cwd();
@@ -363,9 +364,11 @@ const ambiguousMappingResolutions = await readAmbiguousMappingResolutions(root);
 const ambiguousMappingSelections = selectedAmbiguousMappings(ambiguousMappingResolutions);
 const uniqueGripClearanceReviews = await readUniqueGripClearanceReviews(root);
 const multipleGripClearanceReviews = await readMultipleGripClearanceReviews(root);
+const noRadiusGripClearanceReviews = await readNoRadiusGripClearanceReviews(root);
 const closedMeshClearancePartNums = new Set([
   ...uniqueGripClearanceReviews.reviews,
   ...multipleGripClearanceReviews.reviews,
+  ...noRadiusGripClearanceReviews.reviews,
 ].map(({ rebrickablePartNum }) => normalize(rebrickablePartNum)));
 const resolvedCandidatesFor = (partNum: string, role: CatalogRole): Candidate[] => {
   const candidates = candidateIndex.get(normalize(partNum)) ?? [];

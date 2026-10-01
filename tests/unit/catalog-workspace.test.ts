@@ -45,7 +45,7 @@ describe("FF-14 responsive catalog workspace", () => {
       legsAssembly: 3_231,
       handAccessory: 1_308,
     });
-    expect(allParts.filter(builderComponentForCatalogPart)).toHaveLength(14_808);
+    expect(allParts.filter(builderComponentForCatalogPart)).toHaveLength(14_831);
   }, 15_000);
 
   it("defines responsive tabs, drawer focus return and keyboard dismissal", async () => {
@@ -96,11 +96,11 @@ describe("FF-14 responsive catalog workspace", () => {
     expect(allParts.filter((part) => {
       const builderComponent = builderComponentForCatalogPart(part);
       return builderComponent && verifiedLDrawEntryForComponent(builderComponent.id);
-    })).toHaveLength(14_801);
+    })).toHaveLength(14_824);
     expect(allParts.filter((part) => {
       const builderComponent = builderComponentForCatalogPart(part);
       return builderComponent && digitallySupportedLDrawEntryForComponent(builderComponent.id);
-    })).toHaveLength(14_799);
+    })).toHaveLength(14_822);
     expect(cardSource).toContain("Geometrie ohne Druck");
     expect(cardSource).toContain('disabled={connectionStatus !== "digitally-supported"}');
     expect(cardSource).toContain("In Figur einsetzen");
@@ -256,6 +256,22 @@ describe("FF-14 responsive catalog workspace", () => {
 
     for (const partNum of passed) expect(entryFor(partNum)).toBeDefined();
     for (const partNum of blocked) expect(entryFor(partNum)).toBeUndefined();
+  });
+
+  it("uses pinned snap evidence to resolve 23 accessories without cylinder primitives", async () => {
+    const accessories = await loadCatalogParts("handAccessory");
+    const passed = [
+      "37", "59", "4342", "4449", "4499", "18787", "18788", "18789", "18791", "23986",
+      "30173a", "30173b", "30229", "38014", "43887", "48495", "71342", "76764", "79741",
+      "93055", "93247", "93559", "95673",
+    ];
+    const entryFor = (partNum: string) => {
+      const part = accessories.find(({ rebrickablePartNum }) => rebrickablePartNum === partNum);
+      const component = part ? builderComponentForCatalogPart(part) : undefined;
+      return component ? digitallySupportedLDrawEntryForComponent(component.id) : undefined;
+    };
+
+    for (const partNum of passed) expect(entryFor(partNum)).toBeDefined();
   });
 
   it("keeps exact mug prints while inheriting their uniquely declared parent grip", async () => {

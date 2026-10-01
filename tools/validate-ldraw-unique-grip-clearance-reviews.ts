@@ -3,11 +3,13 @@ import { readFile } from "node:fs/promises";
 import { resolve } from "node:path";
 import { catalogPackageSchema } from "../src/contracts/catalog-package.js";
 import { readMultipleGripClearanceReviews } from "./lib/ldraw-multiple-grip-clearance-reviews.js";
+import { readNoRadiusGripClearanceReviews } from "./lib/ldraw-no-radius-grip-clearance-reviews.js";
 import { readUniqueGripClearanceReviews } from "./lib/ldraw-unique-grip-clearance-reviews.js";
 
 const root = process.cwd();
 const reviews = await readUniqueGripClearanceReviews(root);
 const multipleGripReviews = await readMultipleGripClearanceReviews(root);
+const noRadiusGripReviews = await readNoRadiusGripClearanceReviews(root);
 const catalogSource: unknown = JSON.parse(await readFile(
   resolve(root, "data/generated/catalog-packages/hand-accessory.json"),
   "utf8",
@@ -101,6 +103,9 @@ assert.deepEqual(
   new Set([
     ...passed.map(({ rebrickablePartNum }) => rebrickablePartNum),
     ...multipleGripReviews.reviews
+      .filter(({ expectedResult }) => expectedResult === "passed")
+      .map(({ rebrickablePartNum }) => rebrickablePartNum),
+    ...noRadiusGripReviews.reviews
       .filter(({ expectedResult }) => expectedResult === "passed")
       .map(({ rebrickablePartNum }) => rebrickablePartNum),
   ]),

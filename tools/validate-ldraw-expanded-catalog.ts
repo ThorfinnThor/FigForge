@@ -452,8 +452,8 @@ for (const entry of catalog.entries) {
       assert.equal(entry.digitalValidation.clearanceMode, "closed-mesh");
     }
     if (entry.digitalValidation.gripEvidenceSource === "ldcad-shadow-snap") {
-      assert.match(entry.digitalValidation.gripPrimitive, /^ldcad-shadow:parts\/[a-z0-9]+\.dat#SNAP_CYL:\d+$/u);
-      const match = /^ldcad-shadow:(parts\/[a-z0-9]+\.dat)#SNAP_CYL:\d+$/u.exec(
+      assert.match(entry.digitalValidation.gripPrimitive, /^ldcad-shadow:parts\/[a-z0-9-]+\.dat#SNAP_CYL:\d+$/u);
+      const match = /^ldcad-shadow:(parts\/[a-z0-9-]+\.dat)#SNAP_CYL:\d+$/u.exec(
         entry.digitalValidation.gripPrimitive,
       );
       assert(match, `Invalid LDCad grip evidence: ${entry.componentId}`);
