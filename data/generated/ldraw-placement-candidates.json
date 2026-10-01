@@ -22,13 +22,13 @@
     "automaticBuilderEnablements": 0
   },
   "summary": {
-    "placementProfileRequiredCount": 486,
-    "uniqueRadius4CandidateCount": 19,
-    "multipleRadius4CandidateCount": 106,
-    "noRadius4CylinderDetectedCount": 264,
+    "placementProfileRequiredCount": 494,
+    "uniqueRadius4CandidateCount": 20,
+    "multipleRadius4CandidateCount": 107,
+    "noRadius4CylinderDetectedCount": 270,
     "roleSpecificAssemblyProfileRequiredCount": 97,
     "noOfficialMappingQueueCount": 4904,
-    "ambiguousOfficialMappingQueueCount": 34
+    "ambiguousOfficialMappingQueueCount": 13
   },
   "placementCandidates": [
     {
@@ -2040,6 +2040,74 @@
       "proposedPlacementTransformLdu": null,
       "automaticBuilderEnablement": false,
       "limitation": "Official LDraw files can encode shafts as direct mesh triangles, so absence of a cylinder primitive is not proof that no grip exists."
+    },
+    {
+      "catalogId": "part:2343",
+      "role": "handAccessory",
+      "rebrickablePartNum": "2343",
+      "name": "Equipment Goblet / Glass",
+      "ldrawFiles": [
+        "parts/2343.dat"
+      ],
+      "mappingEvidence": [
+        "curated-official-metadata"
+      ],
+      "analysis": "unique-radius-4-cylinder-candidate",
+      "evidence": [
+        {
+          "primitive": "p/4-4cyli.dat",
+          "radiusLdu": 4,
+          "lengthLdu": 14,
+          "centerLdu": [
+            0,
+            25,
+            0
+          ],
+          "axis": [
+            0,
+            1,
+            0
+          ],
+          "sourceConnectorTransformLdu": [
+            1,
+            0,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            25,
+            0,
+            1
+          ]
+        }
+      ],
+      "proposedPlacementTransformLdu": [
+        0.985,
+        -0.17,
+        0,
+        0,
+        0.086268,
+        0.499806,
+        0.86148,
+        0,
+        -0.146464,
+        -0.848563,
+        0.507414,
+        0,
+        22.624208,
+        20.596828,
+        -39.012707,
+        1
+      ],
+      "automaticBuilderEnablement": false,
+      "limitation": "A radius-4 cylinder is geometric evidence only; it may be decorative or unsuitable as the intended hand grip."
     },
     {
       "catalogId": "part:2495",
@@ -6295,6 +6363,23 @@
       "limitation": "Several possible shafts exist; selecting one automatically would guess the intended grip."
     },
     {
+      "catalogId": "part:4449",
+      "role": "handAccessory",
+      "rebrickablePartNum": "4449",
+      "name": "Bag / Briefcase",
+      "ldrawFiles": [
+        "parts/4449-f1.dat"
+      ],
+      "mappingEvidence": [
+        "curated-official-metadata"
+      ],
+      "analysis": "no-radius-4-cylinder-detected",
+      "evidence": [],
+      "proposedPlacementTransformLdu": null,
+      "automaticBuilderEnablement": false,
+      "limitation": "Official LDraw files can encode shafts as direct mesh triangles, so absence of a cylinder primitive is not proof that no grip exists."
+    },
+    {
       "catalogId": "part:4479",
       "role": "handAccessory",
       "rebrickablePartNum": "4479",
@@ -8696,6 +8781,23 @@
       "limitation": "A radius-4 cylinder is geometric evidence only; it may be decorative or unsuitable as the intended hand grip."
     },
     {
+      "catalogId": "part:28981",
+      "role": "handAccessory",
+      "rebrickablePartNum": "28981",
+      "name": "Hammock",
+      "ldrawFiles": [
+        "parts/28981c01.dat"
+      ],
+      "mappingEvidence": [
+        "curated-official-metadata"
+      ],
+      "analysis": "no-radius-4-cylinder-detected",
+      "evidence": [],
+      "proposedPlacementTransformLdu": null,
+      "automaticBuilderEnablement": false,
+      "limitation": "Official LDraw files can encode shafts as direct mesh triangles, so absence of a cylinder primitive is not proof that no grip exists."
+    },
+    {
       "catalogId": "part:29596",
       "role": "handAccessory",
       "rebrickablePartNum": "29596",
@@ -9485,6 +9587,189 @@
       "limitation": "Official LDraw files can encode shafts as direct mesh triangles, so absence of a cylinder primitive is not proof that no grip exists."
     },
     {
+      "catalogId": "part:30191",
+      "role": "handAccessory",
+      "rebrickablePartNum": "30191",
+      "name": "Equipment Stretcher Holder",
+      "ldrawFiles": [
+        "parts/30191-f3.dat"
+      ],
+      "mappingEvidence": [
+        "curated-official-metadata"
+      ],
+      "analysis": "multiple-radius-4-cylinder-candidates",
+      "evidence": [
+        {
+          "primitive": "p/4-4cyli.dat",
+          "radiusLdu": 4,
+          "lengthLdu": 8,
+          "centerLdu": [
+            -70,
+            42,
+            -26
+          ],
+          "axis": [
+            1,
+            0,
+            0
+          ],
+          "sourceConnectorTransformLdu": [
+            0,
+            0,
+            -1,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0,
+            -1,
+            0,
+            0,
+            -70,
+            42,
+            -26,
+            1
+          ]
+        },
+        {
+          "primitive": "p/4-4cyli.dat",
+          "radiusLdu": 4,
+          "lengthLdu": 8,
+          "centerLdu": [
+            -70,
+            42,
+            26
+          ],
+          "axis": [
+            1,
+            0,
+            0
+          ],
+          "sourceConnectorTransformLdu": [
+            0,
+            0,
+            -1,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0,
+            -1,
+            0,
+            0,
+            -70,
+            42,
+            26,
+            1
+          ]
+        },
+        {
+          "primitive": "p/4-4cyli.dat",
+          "radiusLdu": 4,
+          "lengthLdu": 8,
+          "centerLdu": [
+            70,
+            42,
+            -26
+          ],
+          "axis": [
+            -1,
+            0,
+            0
+          ],
+          "sourceConnectorTransformLdu": [
+            0,
+            0,
+            1,
+            0,
+            -1,
+            0,
+            0,
+            0,
+            0,
+            -1,
+            0,
+            0,
+            70,
+            42,
+            -26,
+            1
+          ]
+        },
+        {
+          "primitive": "p/4-4cyli.dat",
+          "radiusLdu": 4,
+          "lengthLdu": 8,
+          "centerLdu": [
+            70,
+            42,
+            26
+          ],
+          "axis": [
+            -1,
+            0,
+            0
+          ],
+          "sourceConnectorTransformLdu": [
+            0,
+            0,
+            1,
+            0,
+            -1,
+            0,
+            0,
+            0,
+            0,
+            -1,
+            0,
+            0,
+            70,
+            42,
+            26,
+            1
+          ]
+        },
+        {
+          "primitive": "p/4-4cyli.dat",
+          "radiusLdu": 4,
+          "lengthLdu": 20,
+          "centerLdu": [
+            0,
+            0,
+            0
+          ],
+          "axis": [
+            0,
+            0,
+            1
+          ],
+          "sourceConnectorTransformLdu": [
+            -1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            1
+          ]
+        }
+      ],
+      "proposedPlacementTransformLdu": null,
+      "automaticBuilderEnablement": false,
+      "limitation": "Several possible shafts exist; selecting one automatically would guess the intended grip."
+    },
+    {
       "catalogId": "part:30192",
       "role": "handAccessory",
       "rebrickablePartNum": "30192",
@@ -9806,6 +10091,23 @@
       "limitation": "Official LDraw files can encode shafts as direct mesh triangles, so absence of a cylinder primitive is not proof that no grip exists."
     },
     {
+      "catalogId": "part:33009",
+      "role": "handAccessory",
+      "rebrickablePartNum": "33009",
+      "name": "Book 2 x 3 [Plain]",
+      "ldrawFiles": [
+        "parts/33009-f1.dat"
+      ],
+      "mappingEvidence": [
+        "curated-official-metadata"
+      ],
+      "analysis": "no-radius-4-cylinder-detected",
+      "evidence": [],
+      "proposedPlacementTransformLdu": null,
+      "automaticBuilderEnablement": false,
+      "limitation": "Official LDraw files can encode shafts as direct mesh triangles, so absence of a cylinder primitive is not proof that no grip exists."
+    },
+    {
       "catalogId": "part:33048",
       "role": "handAccessory",
       "rebrickablePartNum": "33048",
@@ -10068,6 +10370,23 @@
       ],
       "mappingEvidence": [
         "exact-filename"
+      ],
+      "analysis": "no-radius-4-cylinder-detected",
+      "evidence": [],
+      "proposedPlacementTransformLdu": null,
+      "automaticBuilderEnablement": false,
+      "limitation": "Official LDraw files can encode shafts as direct mesh triangles, so absence of a cylinder primitive is not proof that no grip exists."
+    },
+    {
+      "catalogId": "part:36752",
+      "role": "handAccessory",
+      "rebrickablePartNum": "36752",
+      "name": "Equipment Wand Sprue [Complete Set of 2]",
+      "ldrawFiles": [
+        "parts/36752c01.dat"
+      ],
+      "mappingEvidence": [
+        "curated-official-metadata"
       ],
       "analysis": "no-radius-4-cylinder-detected",
       "evidence": [],
@@ -18890,6 +19209,40 @@
       "proposedPlacementTransformLdu": null,
       "automaticBuilderEnablement": false,
       "limitation": "Several possible shafts exist; selecting one automatically would guess the intended grip."
+    },
+    {
+      "catalogId": "part:upn0218pr0001",
+      "role": "handAccessory",
+      "rebrickablePartNum": "upn0218pr0001",
+      "name": "Tent, Tepee Cover with Black Edge and Horses Print",
+      "ldrawFiles": [
+        "parts/u9328ap01.dat"
+      ],
+      "mappingEvidence": [
+        "curated-official-metadata"
+      ],
+      "analysis": "no-radius-4-cylinder-detected",
+      "evidence": [],
+      "proposedPlacementTransformLdu": null,
+      "automaticBuilderEnablement": false,
+      "limitation": "Official LDraw files can encode shafts as direct mesh triangles, so absence of a cylinder primitive is not proof that no grip exists."
+    },
+    {
+      "catalogId": "part:upn0218pr0002",
+      "role": "handAccessory",
+      "rebrickablePartNum": "upn0218pr0002",
+      "name": "Tent, Tepee Cover with Buffalo Helmets Print",
+      "ldrawFiles": [
+        "parts/u9328ap02.dat"
+      ],
+      "mappingEvidence": [
+        "curated-official-metadata"
+      ],
+      "analysis": "no-radius-4-cylinder-detected",
+      "evidence": [],
+      "proposedPlacementTransformLdu": null,
+      "automaticBuilderEnablement": false,
+      "limitation": "Official LDraw files can encode shafts as direct mesh triangles, so absence of a cylinder primitive is not proof that no grip exists."
     }
   ],
   "sourceQueue": {
@@ -58130,32 +58483,6 @@
     ],
     "ambiguousOfficialMapping": [
       {
-        "catalogId": "part:3626cpr0976",
-        "role": "head",
-        "rebrickablePartNum": "3626cpr0976",
-        "name": "Minifig Head Uruk-hai, Scowling / Handprint Print",
-        "ldrawFiles": [
-          "parts/3626bpm0.dat",
-          "parts/3626cpm0.dat"
-        ],
-        "mappingEvidence": [
-          "explicit-keyword"
-        ]
-      },
-      {
-        "catalogId": "part:3626cpr1665",
-        "role": "head",
-        "rebrickablePartNum": "3626cpr1665",
-        "name": "Minifig Head, Glasses with Brown Thin Eyebrows, Smile Print",
-        "ldrawFiles": [
-          "parts/3626cp87.dat",
-          "parts/3626cp8y.dat"
-        ],
-        "mappingEvidence": [
-          "explicit-keyword"
-        ]
-      },
-      {
         "catalogId": "part:30480pr0001",
         "role": "head",
         "rebrickablePartNum": "30480pr0001",
@@ -58165,21 +58492,6 @@
           "parts/30480ps2.dat"
         ],
         "mappingEvidence": [
-          "explicit-keyword"
-        ]
-      },
-      {
-        "catalogId": "part:2594",
-        "role": "headwear",
-        "rebrickablePartNum": "2594",
-        "name": "Headwear Accessory Visor Grille with Top Pin Hole (Castle)",
-        "ldrawFiles": [
-          "parts/2594.dat",
-          "parts/2594a.dat",
-          "parts/2594b.dat"
-        ],
-        "mappingEvidence": [
-          "exact-filename",
           "explicit-keyword"
         ]
       },
@@ -58204,19 +58516,6 @@
         "ldrawFiles": [
           "parts/20606p03.dat",
           "parts/20606p05.dat"
-        ],
-        "mappingEvidence": [
-          "explicit-keyword"
-        ]
-      },
-      {
-        "catalogId": "part:25973pr0022",
-        "role": "headwear",
-        "rebrickablePartNum": "25973pr0022",
-        "name": "Bald Head with Tied Red Bandana Print",
-        "ldrawFiles": [
-          "parts/25973p01.dat",
-          "parts/25973p02.dat"
         ],
         "mappingEvidence": [
           "explicit-keyword"
@@ -58262,32 +58561,6 @@
         ]
       },
       {
-        "catalogId": "part:973c14h02pr3053",
-        "role": "torsoAssembly",
-        "rebrickablePartNum": "973c14h02pr3053",
-        "name": "Torso Hoodie, Open over Dark Red Undeshirt Print, Light Bluish Gray Arms, Light Nougat Hands",
-        "ldrawFiles": [
-          "parts/76382p0032.dat",
-          "parts/76382p9b.dat"
-        ],
-        "mappingEvidence": [
-          "explicit-keyword"
-        ]
-      },
-      {
-        "catalogId": "part:973c22h03pr1264",
-        "role": "torsoAssembly",
-        "rebrickablePartNum": "973c22h03pr1264",
-        "name": "Torso Robe with Dark Red Crease Lines Print (Royal Guard), Red Arms, Black Hands",
-        "ldrawFiles": [
-          "parts/76382p0028.dat",
-          "parts/76382p0029.dat"
-        ],
-        "mappingEvidence": [
-          "explicit-keyword"
-        ]
-      },
-      {
         "catalogId": "part:973c27h03pr0520",
         "role": "torsoAssembly",
         "rebrickablePartNum": "973c27h03pr0520",
@@ -58295,19 +58568,6 @@
         "ldrawFiles": [
           "parts/76382ps9.dat",
           "parts/76382psk.dat"
-        ],
-        "mappingEvidence": [
-          "explicit-keyword"
-        ]
-      },
-      {
-        "catalogId": "part:973c28h01pr0046",
-        "role": "torsoAssembly",
-        "rebrickablePartNum": "973c28h01pr0046",
-        "name": "Torso Tunic with Tied Lace and Purse Print (Forestman), Blue Arms, Yellow Hands",
-        "ldrawFiles": [
-          "parts/76382p0002.dat",
-          "parts/76382p46.dat"
         ],
         "mappingEvidence": [
           "explicit-keyword"
@@ -58327,32 +58587,6 @@
         ]
       },
       {
-        "catalogId": "part:970c03",
-        "role": "legsAssembly",
-        "rebrickablePartNum": "970c03",
-        "name": "Hips and Black Legs",
-        "ldrawFiles": [
-          "parts/73200b-f1.dat",
-          "parts/73200b-f2.dat"
-        ],
-        "mappingEvidence": [
-          "explicit-keyword"
-        ]
-      },
-      {
-        "catalogId": "part:970c19pr0438",
-        "role": "legsAssembly",
-        "rebrickablePartNum": "970c19pr0438",
-        "name": "Hips and Reddish Brown Legs with Dark Red Loincloth, Belt with White Spikes and White Claws Print",
-        "ldrawFiles": [
-          "parts/3816cpaz.dat",
-          "parts/3817cpaz.dat"
-        ],
-        "mappingEvidence": [
-          "explicit-keyword"
-        ]
-      },
-      {
         "catalogId": "part:970c27pat28",
         "role": "legsAssembly",
         "rebrickablePartNum": "970c27pat28",
@@ -58362,63 +58596,6 @@
           "parts/20461bp02.dat"
         ],
         "mappingEvidence": [
-          "explicit-keyword"
-        ]
-      },
-      {
-        "catalogId": "part:970c31pr0472",
-        "role": "legsAssembly",
-        "rebrickablePartNum": "970c31pr0472",
-        "name": "Hips and Green Legs with Ninja Turtle Armour Print",
-        "ldrawFiles": [
-          "parts/3815bpx3.dat",
-          "parts/3816cpx3.dat",
-          "parts/3817cpx3.dat"
-        ],
-        "mappingEvidence": [
-          "explicit-keyword"
-        ]
-      },
-      {
-        "catalogId": "part:970c38pr1598",
-        "role": "legsAssembly",
-        "rebrickablePartNum": "970c38pr1598",
-        "name": "Hips and Bright Light Orange Legs with Pockets, Yellow/Silver Stripes (Firefighter) print",
-        "ldrawFiles": [
-          "parts/3816cp70.dat",
-          "parts/3817cp70.dat"
-        ],
-        "mappingEvidence": [
-          "explicit-keyword"
-        ]
-      },
-      {
-        "catalogId": "part:2343",
-        "role": "handAccessory",
-        "rebrickablePartNum": "2343",
-        "name": "Equipment Goblet / Glass",
-        "ldrawFiles": [
-          "parts/2343.dat",
-          "parts/30002.dat",
-          "parts/6269.dat"
-        ],
-        "mappingEvidence": [
-          "exact-filename",
-          "explicit-keyword"
-        ]
-      },
-      {
-        "catalogId": "part:4449",
-        "role": "handAccessory",
-        "rebrickablePartNum": "4449",
-        "name": "Bag / Briefcase",
-        "ldrawFiles": [
-          "parts/4449-f1.dat",
-          "parts/4449-f2.dat",
-          "parts/4449.dat"
-        ],
-        "mappingEvidence": [
-          "exact-filename",
           "explicit-keyword"
         ]
       },
@@ -58452,77 +58629,6 @@
         ]
       },
       {
-        "catalogId": "part:28981",
-        "role": "handAccessory",
-        "rebrickablePartNum": "28981",
-        "name": "Hammock",
-        "ldrawFiles": [
-          "parts/28981.dat",
-          "parts/28981c01.dat",
-          "parts/28981c02.dat"
-        ],
-        "mappingEvidence": [
-          "exact-filename",
-          "explicit-keyword"
-        ]
-      },
-      {
-        "catalogId": "part:30191",
-        "role": "handAccessory",
-        "rebrickablePartNum": "30191",
-        "name": "Equipment Stretcher Holder",
-        "ldrawFiles": [
-          "parts/30191-f2.dat",
-          "parts/30191-f3.dat",
-          "parts/30191.dat"
-        ],
-        "mappingEvidence": [
-          "exact-filename",
-          "explicit-keyword"
-        ]
-      },
-      {
-        "catalogId": "part:30488c01",
-        "role": "handAccessory",
-        "rebrickablePartNum": "30488c01",
-        "name": "Sports Soccer Minifig Stand with Spring and Green Pin [Complete Assembly]",
-        "ldrawFiles": [
-          "parts/76407.dat",
-          "parts/76407p01.dat"
-        ],
-        "mappingEvidence": [
-          "explicit-keyword"
-        ]
-      },
-      {
-        "catalogId": "part:33009",
-        "role": "handAccessory",
-        "rebrickablePartNum": "33009",
-        "name": "Book 2 x 3 [Plain]",
-        "ldrawFiles": [
-          "parts/33009-f1.dat",
-          "parts/33009-f2.dat",
-          "parts/33009.dat"
-        ],
-        "mappingEvidence": [
-          "exact-filename",
-          "explicit-keyword"
-        ]
-      },
-      {
-        "catalogId": "part:36752",
-        "role": "handAccessory",
-        "rebrickablePartNum": "36752",
-        "name": "Equipment Wand Sprue [Complete Set of 2]",
-        "ldrawFiles": [
-          "parts/36752c01.dat",
-          "parts/36752c02.dat"
-        ],
-        "mappingEvidence": [
-          "explicit-keyword"
-        ]
-      },
-      {
         "catalogId": "part:37178",
         "role": "handAccessory",
         "rebrickablePartNum": "37178",
@@ -58544,47 +58650,6 @@
           "parts/62698-f1.dat",
           "parts/62698-f2.dat",
           "parts/62698-f3.dat"
-        ],
-        "mappingEvidence": [
-          "explicit-keyword"
-        ]
-      },
-      {
-        "catalogId": "part:88704",
-        "role": "handAccessory",
-        "rebrickablePartNum": "88704",
-        "name": "Equipment Whip - Bent",
-        "ldrawFiles": [
-          "parts/88704-f1.dat",
-          "parts/88704-f2.dat",
-          "parts/88704.dat"
-        ],
-        "mappingEvidence": [
-          "exact-filename",
-          "explicit-keyword"
-        ]
-      },
-      {
-        "catalogId": "part:upn0218pr0001",
-        "role": "handAccessory",
-        "rebrickablePartNum": "upn0218pr0001",
-        "name": "Tent, Tepee Cover with Black Edge and Horses Print",
-        "ldrawFiles": [
-          "parts/u9328ap01.dat",
-          "parts/u9328ap01c01.dat"
-        ],
-        "mappingEvidence": [
-          "explicit-keyword"
-        ]
-      },
-      {
-        "catalogId": "part:upn0218pr0002",
-        "role": "handAccessory",
-        "rebrickablePartNum": "upn0218pr0002",
-        "name": "Tent, Tepee Cover with Buffalo Helmets Print",
-        "ldrawFiles": [
-          "parts/u9328ap02.dat",
-          "parts/u9328ap02c01.dat"
         ],
         "mappingEvidence": [
           "explicit-keyword"

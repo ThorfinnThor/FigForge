@@ -45,7 +45,7 @@ describe("FF-14 responsive catalog workspace", () => {
       legsAssembly: 3_231,
       handAccessory: 1_308,
     });
-    expect(allParts.filter(builderComponentForCatalogPart)).toHaveLength(14_785);
+    expect(allParts.filter(builderComponentForCatalogPart)).toHaveLength(14_798);
   }, 15_000);
 
   it("defines responsive tabs, drawer focus return and keyboard dismissal", async () => {
@@ -96,11 +96,11 @@ describe("FF-14 responsive catalog workspace", () => {
     expect(allParts.filter((part) => {
       const builderComponent = builderComponentForCatalogPart(part);
       return builderComponent && verifiedLDrawEntryForComponent(builderComponent.id);
-    })).toHaveLength(14_778);
+    })).toHaveLength(14_791);
     expect(allParts.filter((part) => {
       const builderComponent = builderComponentForCatalogPart(part);
       return builderComponent && digitallySupportedLDrawEntryForComponent(builderComponent.id);
-    })).toHaveLength(14_776);
+    })).toHaveLength(14_789);
     expect(cardSource).toContain("Geometrie ohne Druck");
     expect(cardSource).toContain('disabled={connectionStatus !== "digitally-supported"}');
     expect(cardSource).toContain("In Figur einsetzen");
@@ -280,6 +280,25 @@ describe("FF-14 responsive catalog workspace", () => {
       geometryFallback: null,
     });
     expect(entryFor(componentOnlyLeg)).toBeUndefined();
+  });
+
+  it("enables only audited resolutions of ambiguous official mappings", async () => {
+    const heads = await loadCatalogParts("head");
+    const legs = await loadCatalogParts("legsAssembly");
+    const entryFor = (part: (typeof heads)[number] | undefined) => {
+      const component = part ? builderComponentForCatalogPart(part) : undefined;
+      return component ? digitallySupportedLDrawEntryForComponent(component.id) : undefined;
+    };
+
+    expect(entryFor(heads.find(({ rebrickablePartNum }) => rebrickablePartNum === "3626cpr0976"))).toMatchObject({
+      ldrawFile: "parts/3626cpm0.dat",
+      geometryFallback: null,
+    });
+    expect(entryFor(heads.find(({ rebrickablePartNum }) => rebrickablePartNum === "30480pr0001"))).toBeUndefined();
+    for (const partNum of ["970c19pr0438", "970c31pr0472", "970c38pr1598"]) {
+      expect(entryFor(legs.find(({ rebrickablePartNum }) => rebrickablePartNum === partNum))?.geometryFallback).toBeNull();
+    }
+    expect(entryFor(legs.find(({ rebrickablePartNum }) => rebrickablePartNum === "970c27pat28"))).toBeUndefined();
   });
 
   it("enables asymmetric legs only when both leg colours and one hip colour are catalog-backed", async () => {

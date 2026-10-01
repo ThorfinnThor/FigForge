@@ -14,6 +14,7 @@
     "Catalog scope is limited to the five minifigure-relevant packages derived from locked Rebrickable Catalog Downloads/CSV.",
     "Official LDraw matches require either an exact top-level parts/*.dat filename or an explicit !KEYWORDS Rebrickable identifier.",
     "When an LDraw filename collides with an explicit Rebrickable keyword mapping, the explicit mapping wins; official Part Alias and ~Moved to wrappers are reduced to their canonical target before uniqueness is assessed. Genuinely different keyword targets remain ambiguous.",
+    "Ambiguous official mappings are selected only through the audited curated resolution table when the locked catalog name or official redirect/description distinguishes one candidate; collapsed colour, mould and pose variants remain blocked.",
     "Head, headwear, complete torso-assembly and complete legs-assembly print variants may reuse a unique unprinted parent geometry only when part_relationships.csv explicitly declares the print relationship.",
     "Torso entries become builder-ready only when the official LDraw file is a complete shortcut: either a 973-family torso with both arms and hands, or one of the explicitly recognized complete wing, flipper, pirate-hook, mechanical-arm or short-torso component signatures.",
     "Lower-body entries become builder-ready only when the official top-level LDraw title explicitly declares a complete Minifig Hips and Legs assembly, an allowlisted complete Hips replacement family (Ghost, Skirt, Tentacles, Mermaid Tail or Genie), or an allowlisted complete legs family with a centered torso-compatible stud (Minecraft Enderman or Bionicle).",
@@ -31,79 +32,79 @@
   },
   "summary": {
     "catalogPartCount": 20202,
-    "visualizedPartCount": 14778,
-    "builderReadyPartCount": 14776,
-    "remainingCatalogPartCount": 5426,
-    "remainingWithoutVisualizationCount": 5424,
-    "uniqueOfficialMappingCount": 2816,
-    "ambiguousOfficialMappingCount": 186,
+    "visualizedPartCount": 14791,
+    "builderReadyPartCount": 14789,
+    "remainingCatalogPartCount": 5413,
+    "remainingWithoutVisualizationCount": 5411,
+    "uniqueOfficialMappingCount": 2834,
+    "ambiguousOfficialMappingCount": 168,
     "noOfficialMappingCount": 17200,
     "remainingClassifications": {
       "builder-blocked": 2,
       "render-failed": 0,
-      "placement-profile-required": 486,
-      "ambiguous-official-mapping": 34,
+      "placement-profile-required": 494,
+      "ambiguous-official-mapping": 13,
       "no-official-mapping": 4904
     }
   },
   "roles": {
     "head": {
       "catalogPartCount": 5402,
-      "builderReadyPartCount": 4862,
-      "remainingCatalogPartCount": 540,
+      "builderReadyPartCount": 4864,
+      "remainingCatalogPartCount": 538,
       "remainingClassifications": {
         "builder-blocked": 0,
         "render-failed": 0,
         "placement-profile-required": 0,
-        "ambiguous-official-mapping": 3,
+        "ambiguous-official-mapping": 1,
         "no-official-mapping": 537
       }
     },
     "headwear": {
       "catalogPartCount": 2410,
-      "builderReadyPartCount": 779,
-      "remainingCatalogPartCount": 1631,
+      "builderReadyPartCount": 781,
+      "remainingCatalogPartCount": 1629,
       "remainingClassifications": {
         "builder-blocked": 0,
         "render-failed": 0,
         "placement-profile-required": 0,
-        "ambiguous-official-mapping": 6,
+        "ambiguous-official-mapping": 4,
         "no-official-mapping": 1625
       }
     },
     "torsoAssembly": {
       "catalogPartCount": 7851,
-      "builderReadyPartCount": 5987,
-      "remainingCatalogPartCount": 1864,
+      "builderReadyPartCount": 5990,
+      "remainingCatalogPartCount": 1861,
       "remainingClassifications": {
         "builder-blocked": 1,
         "render-failed": 0,
         "placement-profile-required": 72,
-        "ambiguous-official-mapping": 6,
+        "ambiguous-official-mapping": 3,
         "no-official-mapping": 1785
       }
     },
     "legsAssembly": {
       "catalogPartCount": 3231,
-      "builderReadyPartCount": 2864,
-      "remainingCatalogPartCount": 367,
+      "builderReadyPartCount": 2868,
+      "remainingCatalogPartCount": 363,
       "remainingClassifications": {
         "builder-blocked": 0,
         "render-failed": 0,
         "placement-profile-required": 25,
-        "ambiguous-official-mapping": 5,
+        "ambiguous-official-mapping": 1,
         "no-official-mapping": 337
       }
     },
     "handAccessory": {
       "catalogPartCount": 1308,
-      "builderReadyPartCount": 284,
-      "remainingCatalogPartCount": 1024,
+      "builderReadyPartCount": 286,
+      "remainingCatalogPartCount": 1022,
       "remainingClassifications": {
         "builder-blocked": 1,
         "render-failed": 0,
-        "placement-profile-required": 389,
-        "ambiguous-official-mapping": 14,
+        "placement-profile-required": 397,
+        "ambiguous-official-mapping": 4,
         "no-official-mapping": 620
       }
     }
@@ -397,36 +398,6 @@
       "classification": "no-official-mapping",
       "ldrawFiles": [],
       "mappingEvidence": [],
-      "reason": null
-    },
-    {
-      "catalogId": "part:3626cpr0976",
-      "role": "head",
-      "rebrickablePartNum": "3626cpr0976",
-      "name": "Minifig Head Uruk-hai, Scowling / Handprint Print",
-      "classification": "ambiguous-official-mapping",
-      "ldrawFiles": [
-        "parts/3626bpm0.dat",
-        "parts/3626cpm0.dat"
-      ],
-      "mappingEvidence": [
-        "explicit-keyword"
-      ],
-      "reason": null
-    },
-    {
-      "catalogId": "part:3626cpr1665",
-      "role": "head",
-      "rebrickablePartNum": "3626cpr1665",
-      "name": "Minifig Head, Glasses with Brown Thin Eyebrows, Smile Print",
-      "classification": "ambiguous-official-mapping",
-      "ldrawFiles": [
-        "parts/3626cp87.dat",
-        "parts/3626cp8y.dat"
-      ],
-      "mappingEvidence": [
-        "explicit-keyword"
-      ],
       "reason": null
     },
     {
@@ -6945,23 +6916,6 @@
       "reason": null
     },
     {
-      "catalogId": "part:2594",
-      "role": "headwear",
-      "rebrickablePartNum": "2594",
-      "name": "Headwear Accessory Visor Grille with Top Pin Hole (Castle)",
-      "classification": "ambiguous-official-mapping",
-      "ldrawFiles": [
-        "parts/2594.dat",
-        "parts/2594a.dat",
-        "parts/2594b.dat"
-      ],
-      "mappingEvidence": [
-        "exact-filename",
-        "explicit-keyword"
-      ],
-      "reason": null
-    },
-    {
       "catalogId": "part:2646",
       "role": "headwear",
       "rebrickablePartNum": "2646",
@@ -13099,21 +13053,6 @@
       "classification": "no-official-mapping",
       "ldrawFiles": [],
       "mappingEvidence": [],
-      "reason": null
-    },
-    {
-      "catalogId": "part:25973pr0022",
-      "role": "headwear",
-      "rebrickablePartNum": "25973pr0022",
-      "name": "Bald Head with Tied Red Bandana Print",
-      "classification": "ambiguous-official-mapping",
-      "ldrawFiles": [
-        "parts/25973p01.dat",
-        "parts/25973p02.dat"
-      ],
-      "mappingEvidence": [
-        "explicit-keyword"
-      ],
       "reason": null
     },
     {
@@ -25136,21 +25075,6 @@
       "reason": null
     },
     {
-      "catalogId": "part:973c14h02pr3053",
-      "role": "torsoAssembly",
-      "rebrickablePartNum": "973c14h02pr3053",
-      "name": "Torso Hoodie, Open over Dark Red Undeshirt Print, Light Bluish Gray Arms, Light Nougat Hands",
-      "classification": "ambiguous-official-mapping",
-      "ldrawFiles": [
-        "parts/76382p0032.dat",
-        "parts/76382p9b.dat"
-      ],
-      "mappingEvidence": [
-        "explicit-keyword"
-      ],
-      "reason": null
-    },
-    {
       "catalogId": "part:973c14h02pr4882",
       "role": "torsoAssembly",
       "rebrickablePartNum": "973c14h02pr4882",
@@ -26108,21 +26032,6 @@
       "classification": "no-official-mapping",
       "ldrawFiles": [],
       "mappingEvidence": [],
-      "reason": null
-    },
-    {
-      "catalogId": "part:973c22h03pr1264",
-      "role": "torsoAssembly",
-      "rebrickablePartNum": "973c22h03pr1264",
-      "name": "Torso Robe with Dark Red Crease Lines Print (Royal Guard), Red Arms, Black Hands",
-      "classification": "ambiguous-official-mapping",
-      "ldrawFiles": [
-        "parts/76382p0028.dat",
-        "parts/76382p0029.dat"
-      ],
-      "mappingEvidence": [
-        "explicit-keyword"
-      ],
       "reason": null
     },
     {
@@ -28348,21 +28257,6 @@
       "classification": "no-official-mapping",
       "ldrawFiles": [],
       "mappingEvidence": [],
-      "reason": null
-    },
-    {
-      "catalogId": "part:973c28h01pr0046",
-      "role": "torsoAssembly",
-      "rebrickablePartNum": "973c28h01pr0046",
-      "name": "Torso Tunic with Tied Lace and Purse Print (Forestman), Blue Arms, Yellow Hands",
-      "classification": "ambiguous-official-mapping",
-      "ldrawFiles": [
-        "parts/76382p0002.dat",
-        "parts/76382p46.dat"
-      ],
-      "mappingEvidence": [
-        "explicit-keyword"
-      ],
       "reason": null
     },
     {
@@ -40940,21 +40834,6 @@
       "reason": null
     },
     {
-      "catalogId": "part:970c03",
-      "role": "legsAssembly",
-      "rebrickablePartNum": "970c03",
-      "name": "Hips and Black Legs",
-      "classification": "ambiguous-official-mapping",
-      "ldrawFiles": [
-        "parts/73200b-f1.dat",
-        "parts/73200b-f2.dat"
-      ],
-      "mappingEvidence": [
-        "explicit-keyword"
-      ],
-      "reason": null
-    },
-    {
       "catalogId": "part:970c03pat22",
       "role": "legsAssembly",
       "rebrickablePartNum": "970c03pat22",
@@ -41505,21 +41384,6 @@
       "reason": null
     },
     {
-      "catalogId": "part:970c19pr0438",
-      "role": "legsAssembly",
-      "rebrickablePartNum": "970c19pr0438",
-      "name": "Hips and Reddish Brown Legs with Dark Red Loincloth, Belt with White Spikes and White Claws Print",
-      "classification": "ambiguous-official-mapping",
-      "ldrawFiles": [
-        "parts/3816cpaz.dat",
-        "parts/3817cpaz.dat"
-      ],
-      "mappingEvidence": [
-        "explicit-keyword"
-      ],
-      "reason": null
-    },
-    {
       "catalogId": "part:970c19pr2269",
       "role": "legsAssembly",
       "rebrickablePartNum": "970c19pr2269",
@@ -42025,22 +41889,6 @@
       "reason": null
     },
     {
-      "catalogId": "part:970c31pr0472",
-      "role": "legsAssembly",
-      "rebrickablePartNum": "970c31pr0472",
-      "name": "Hips and Green Legs with Ninja Turtle Armour Print",
-      "classification": "ambiguous-official-mapping",
-      "ldrawFiles": [
-        "parts/3815bpx3.dat",
-        "parts/3816cpx3.dat",
-        "parts/3817cpx3.dat"
-      ],
-      "mappingEvidence": [
-        "explicit-keyword"
-      ],
-      "reason": null
-    },
-    {
       "catalogId": "part:970c31pr1049",
       "role": "legsAssembly",
       "rebrickablePartNum": "970c31pr1049",
@@ -42128,21 +41976,6 @@
       "classification": "no-official-mapping",
       "ldrawFiles": [],
       "mappingEvidence": [],
-      "reason": null
-    },
-    {
-      "catalogId": "part:970c38pr1598",
-      "role": "legsAssembly",
-      "rebrickablePartNum": "970c38pr1598",
-      "name": "Hips and Bright Light Orange Legs with Pockets, Yellow/Silver Stripes (Firefighter) print",
-      "classification": "ambiguous-official-mapping",
-      "ldrawFiles": [
-        "parts/3816cp70.dat",
-        "parts/3817cp70.dat"
-      ],
-      "mappingEvidence": [
-        "explicit-keyword"
-      ],
       "reason": null
     },
     {
@@ -44900,15 +44733,12 @@
       "role": "handAccessory",
       "rebrickablePartNum": "2343",
       "name": "Equipment Goblet / Glass",
-      "classification": "ambiguous-official-mapping",
+      "classification": "placement-profile-required",
       "ldrawFiles": [
-        "parts/2343.dat",
-        "parts/30002.dat",
-        "parts/6269.dat"
+        "parts/2343.dat"
       ],
       "mappingEvidence": [
-        "exact-filename",
-        "explicit-keyword"
+        "curated-official-metadata"
       ],
       "reason": null
     },
@@ -46549,15 +46379,12 @@
       "role": "handAccessory",
       "rebrickablePartNum": "4449",
       "name": "Bag / Briefcase",
-      "classification": "ambiguous-official-mapping",
+      "classification": "placement-profile-required",
       "ldrawFiles": [
-        "parts/4449-f1.dat",
-        "parts/4449-f2.dat",
-        "parts/4449.dat"
+        "parts/4449-f1.dat"
       ],
       "mappingEvidence": [
-        "exact-filename",
-        "explicit-keyword"
+        "curated-official-metadata"
       ],
       "reason": null
     },
@@ -49670,15 +49497,12 @@
       "role": "handAccessory",
       "rebrickablePartNum": "28981",
       "name": "Hammock",
-      "classification": "ambiguous-official-mapping",
+      "classification": "placement-profile-required",
       "ldrawFiles": [
-        "parts/28981.dat",
-        "parts/28981c01.dat",
-        "parts/28981c02.dat"
+        "parts/28981c01.dat"
       ],
       "mappingEvidence": [
-        "exact-filename",
-        "explicit-keyword"
+        "curated-official-metadata"
       ],
       "reason": null
     },
@@ -49875,15 +49699,12 @@
       "role": "handAccessory",
       "rebrickablePartNum": "30191",
       "name": "Equipment Stretcher Holder",
-      "classification": "ambiguous-official-mapping",
+      "classification": "placement-profile-required",
       "ldrawFiles": [
-        "parts/30191-f2.dat",
-        "parts/30191-f3.dat",
-        "parts/30191.dat"
+        "parts/30191-f3.dat"
       ],
       "mappingEvidence": [
-        "exact-filename",
-        "explicit-keyword"
+        "curated-official-metadata"
       ],
       "reason": null
     },
@@ -50014,21 +49835,6 @@
       "reason": null
     },
     {
-      "catalogId": "part:30488c01",
-      "role": "handAccessory",
-      "rebrickablePartNum": "30488c01",
-      "name": "Sports Soccer Minifig Stand with Spring and Green Pin [Complete Assembly]",
-      "classification": "ambiguous-official-mapping",
-      "ldrawFiles": [
-        "parts/76407.dat",
-        "parts/76407p01.dat"
-      ],
-      "mappingEvidence": [
-        "explicit-keyword"
-      ],
-      "reason": null
-    },
-    {
       "catalogId": "part:30493",
       "role": "handAccessory",
       "rebrickablePartNum": "30493",
@@ -50121,15 +49927,12 @@
       "role": "handAccessory",
       "rebrickablePartNum": "33009",
       "name": "Book 2 x 3 [Plain]",
-      "classification": "ambiguous-official-mapping",
+      "classification": "placement-profile-required",
       "ldrawFiles": [
-        "parts/33009-f1.dat",
-        "parts/33009-f2.dat",
-        "parts/33009.dat"
+        "parts/33009-f1.dat"
       ],
       "mappingEvidence": [
-        "exact-filename",
-        "explicit-keyword"
+        "curated-official-metadata"
       ],
       "reason": null
     },
@@ -50476,13 +50279,12 @@
       "role": "handAccessory",
       "rebrickablePartNum": "36752",
       "name": "Equipment Wand Sprue [Complete Set of 2]",
-      "classification": "ambiguous-official-mapping",
+      "classification": "placement-profile-required",
       "ldrawFiles": [
-        "parts/36752c01.dat",
-        "parts/36752c02.dat"
+        "parts/36752c01.dat"
       ],
       "mappingEvidence": [
-        "explicit-keyword"
+        "curated-official-metadata"
       ],
       "reason": null
     },
@@ -54345,23 +54147,6 @@
       "reason": null
     },
     {
-      "catalogId": "part:88704",
-      "role": "handAccessory",
-      "rebrickablePartNum": "88704",
-      "name": "Equipment Whip - Bent",
-      "classification": "ambiguous-official-mapping",
-      "ldrawFiles": [
-        "parts/88704-f1.dat",
-        "parts/88704-f2.dat",
-        "parts/88704.dat"
-      ],
-      "mappingEvidence": [
-        "exact-filename",
-        "explicit-keyword"
-      ],
-      "reason": null
-    },
-    {
       "catalogId": "part:89801",
       "role": "handAccessory",
       "rebrickablePartNum": "89801",
@@ -56494,13 +56279,12 @@
       "role": "handAccessory",
       "rebrickablePartNum": "upn0218pr0001",
       "name": "Tent, Tepee Cover with Black Edge and Horses Print",
-      "classification": "ambiguous-official-mapping",
+      "classification": "placement-profile-required",
       "ldrawFiles": [
-        "parts/u9328ap01.dat",
-        "parts/u9328ap01c01.dat"
+        "parts/u9328ap01.dat"
       ],
       "mappingEvidence": [
-        "explicit-keyword"
+        "curated-official-metadata"
       ],
       "reason": null
     },
@@ -56509,13 +56293,12 @@
       "role": "handAccessory",
       "rebrickablePartNum": "upn0218pr0002",
       "name": "Tent, Tepee Cover with Buffalo Helmets Print",
-      "classification": "ambiguous-official-mapping",
+      "classification": "placement-profile-required",
       "ldrawFiles": [
-        "parts/u9328ap02.dat",
-        "parts/u9328ap02c01.dat"
+        "parts/u9328ap02.dat"
       ],
       "mappingEvidence": [
-        "explicit-keyword"
+        "curated-official-metadata"
       ],
       "reason": null
     },

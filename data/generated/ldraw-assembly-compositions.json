@@ -631007,6 +631007,74 @@
         }
       ]
     },
+    "catalog:legsAssembly:970c19pr0438": {
+      "kind": "rebrickable-color-coded-assembly",
+      "printRendered": true,
+      "referenceShortcutCount": 112,
+      "agreeingReferenceShortcutCount": 111,
+      "components": [
+        {
+          "file": "parts/3815b.dat",
+          "colorRole": "catalog",
+          "colorName": null,
+          "colorRgb": null,
+          "transform": [
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1
+          ]
+        },
+        {
+          "file": "parts/3816cpaz.dat",
+          "colorRole": "legs",
+          "colorName": "Reddish Brown",
+          "colorRgb": "582A12",
+          "transform": [
+            0,
+            12,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1
+          ]
+        },
+        {
+          "file": "parts/3817cpaz.dat",
+          "colorRole": "legs",
+          "colorName": "Reddish Brown",
+          "colorRgb": "582A12",
+          "transform": [
+            0,
+            12,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1
+          ]
+        }
+      ]
+    },
     "catalog:legsAssembly:970c19pr0515": {
       "kind": "rebrickable-color-coded-assembly",
       "printRendered": false,
@@ -696663,6 +696731,74 @@
         }
       ]
     },
+    "catalog:legsAssembly:970c31pr0472": {
+      "kind": "rebrickable-color-coded-assembly",
+      "printRendered": true,
+      "referenceShortcutCount": 112,
+      "agreeingReferenceShortcutCount": 111,
+      "components": [
+        {
+          "file": "parts/3815bpx3.dat",
+          "colorRole": "catalog",
+          "colorName": null,
+          "colorRgb": null,
+          "transform": [
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1
+          ]
+        },
+        {
+          "file": "parts/3816cpx3.dat",
+          "colorRole": "legs",
+          "colorName": "Green",
+          "colorRgb": "237841",
+          "transform": [
+            0,
+            12,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1
+          ]
+        },
+        {
+          "file": "parts/3817cpx3.dat",
+          "colorRole": "legs",
+          "colorName": "Green",
+          "colorRgb": "237841",
+          "transform": [
+            0,
+            12,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1
+          ]
+        }
+      ]
+    },
     "catalog:legsAssembly:970c31pr0592": {
       "kind": "rebrickable-color-coded-assembly",
       "printRendered": false,
@@ -709787,6 +709923,74 @@
         },
         {
           "file": "parts/3817c.dat",
+          "colorRole": "legs",
+          "colorName": "Bright Light Orange",
+          "colorRgb": "F8BB3D",
+          "transform": [
+            0,
+            12,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1
+          ]
+        }
+      ]
+    },
+    "catalog:legsAssembly:970c38pr1598": {
+      "kind": "rebrickable-color-coded-assembly",
+      "printRendered": true,
+      "referenceShortcutCount": 112,
+      "agreeingReferenceShortcutCount": 111,
+      "components": [
+        {
+          "file": "parts/3815b.dat",
+          "colorRole": "catalog",
+          "colorName": null,
+          "colorRgb": null,
+          "transform": [
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1
+          ]
+        },
+        {
+          "file": "parts/3816cp70.dat",
+          "colorRole": "legs",
+          "colorName": "Bright Light Orange",
+          "colorRgb": "F8BB3D",
+          "transform": [
+            0,
+            12,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1
+          ]
+        },
+        {
+          "file": "parts/3817cp70.dat",
           "colorRole": "legs",
           "colorName": "Bright Light Orange",
           "colorRgb": "F8BB3D",

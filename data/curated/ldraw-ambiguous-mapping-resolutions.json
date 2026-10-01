@@ -1,0 +1,189 @@
+{
+  "schemaVersion": 1,
+  "sourcePolicy": "Nur Rebrickable Catalog Downloads/CSV, keine MOC-Dateien.",
+  "methodology": "A selection is allowed only when the Rebrickable catalog name or the official LDraw redirect/description distinguishes one candidate without guessing. Entries that collapse colour, mould or pose variants remain blocked.",
+  "selections": [
+    {
+      "role": "head",
+      "rebrickablePartNum": "3626cpr0976",
+      "selectedFile": "parts/3626cpm0.dat",
+      "catalogName": "Minifig Head Uruk-hai, Scowling / Handprint Print",
+      "officialDescription": "Minifig Head with LOTR Uruk-Hai Scowl and White Hand 2-Sided Pattern (Hollow Stud)",
+      "reason": "The catalog number specifies the 3626c hollow-stud mould; the other candidate is the pierced-base 3626b mould."
+    },
+    {
+      "role": "head",
+      "rebrickablePartNum": "3626cpr1665",
+      "selectedFile": "parts/3626cp87.dat",
+      "catalogName": "Minifig Head, Glasses with Brown Thin Eyebrows, Smile Print",
+      "officialDescription": "Minifig Head with Glasses, Thin Brown Eyebrows, Smile Pattern (Hollow Stud)",
+      "reason": "Only this official description contains the catalog's thin-eyebrow feature; the other file describes rounded glasses."
+    },
+    {
+      "role": "headwear",
+      "rebrickablePartNum": "2594",
+      "selectedFile": "parts/2594b.dat",
+      "catalogName": "Headwear Accessory Visor Grille with Top Pin Hole (Castle)",
+      "officialDescription": "Minifig Helmet Visor Pointed with Squared Nose",
+      "reason": "The exact official 2594.dat file is a ~Moved to redirect to 2594b.dat."
+    },
+    {
+      "role": "headwear",
+      "rebrickablePartNum": "25973pr0022",
+      "selectedFile": "parts/25973p01.dat",
+      "catalogName": "Bald Head with Tied Red Bandana Print",
+      "officialDescription": "Minifig Headdress Bald Head with Tied Red Bandana Pattern",
+      "reason": "This description matches a bald head with a red bandana; the other candidate describes a red bald head."
+    },
+    {
+      "role": "torsoAssembly",
+      "rebrickablePartNum": "973c14h02pr3053",
+      "selectedFile": "parts/76382p0032.dat",
+      "catalogName": "Torso Hoodie, Open over Dark Red Undeshirt Print, Light Bluish Gray Arms, Light Nougat Hands",
+      "officialDescription": "Minifig Torso with Arms and Light Nougat Hands with  Hooded Sweatshirt Open with Drawstrings over Dark Red Top Pattern",
+      "reason": "The selected shortcut fixes the hands to Light Nougat; the other official shortcut fixes them to Yellow."
+    },
+    {
+      "role": "torsoAssembly",
+      "rebrickablePartNum": "973c22h03pr1264",
+      "selectedFile": "parts/76382p0028.dat",
+      "catalogName": "Torso Robe with Dark Red Crease Lines Print (Royal Guard), Red Arms, Black Hands",
+      "officialDescription": "Minifig Torso with Arms and Black Hands with SW Dark Red Robe Pattern",
+      "reason": "The selected shortcut fixes the hands to Black; the other fixes arms and hands to Dark Red."
+    },
+    {
+      "role": "torsoAssembly",
+      "rebrickablePartNum": "973c28h01pr0046",
+      "selectedFile": "parts/76382p0002.dat",
+      "catalogName": "Torso Tunic with Tied Lace and Purse Print (Forestman), Blue Arms, Yellow Hands",
+      "officialDescription": "Minifig Torso with Blue Arms and Hands with Forestman and Purse Pattern",
+      "reason": "The selected shortcut fixes Blue arms and Yellow hands exactly as named by the catalog."
+    },
+    {
+      "role": "legsAssembly",
+      "rebrickablePartNum": "970c03",
+      "selectedFile": "parts/73200b-f1.dat",
+      "catalogName": "Hips and Black Legs",
+      "officialDescription": "Minifig Hips and Legs (Standing)",
+      "reason": "The Builder's lower-body slot uses the standard standing pose; the other candidate is explicitly the sitting pose."
+    },
+    {
+      "role": "handAccessory",
+      "rebrickablePartNum": "2343",
+      "selectedFile": "parts/2343.dat",
+      "catalogName": "Equipment Goblet / Glass",
+      "officialDescription": "Minifig Goblet",
+      "reason": "The exact standard goblet matches the catalog name; the remaining physical variant is explicitly the hollow-stem mould."
+    },
+    {
+      "role": "handAccessory",
+      "rebrickablePartNum": "4449",
+      "selectedFile": "parts/4449-f1.dat",
+      "catalogName": "Bag / Briefcase",
+      "officialDescription": "Minifig Suitcase (Closed)",
+      "reason": "The exact official 4449.dat file is a ~Moved to redirect to the closed-form shortcut."
+    },
+    {
+      "role": "handAccessory",
+      "rebrickablePartNum": "28981",
+      "selectedFile": "parts/28981c01.dat",
+      "catalogName": "Hammock",
+      "officialDescription": "Sheet Fabric Oval 10 x  5 (Formed as Hammock)",
+      "reason": "Only this candidate is explicitly formed as the catalog's hammock; the alternatives are a flat sheet and a sail."
+    },
+    {
+      "role": "handAccessory",
+      "rebrickablePartNum": "30191",
+      "selectedFile": "parts/30191-f3.dat",
+      "catalogName": "Equipment Stretcher Holder",
+      "officialDescription": "Bar Flexible H-shaped with Holders (Formed for 93140 Stretcher)",
+      "reason": "Only this official formed variant names the catalog's stretcher use."
+    },
+    {
+      "role": "handAccessory",
+      "rebrickablePartNum": "30488c01",
+      "selectedFile": "parts/76407p01.dat",
+      "catalogName": "Sports Soccer Minifig Stand with Spring and Green Pin [Complete Assembly]",
+      "officialDescription": "Minifig Stand with Spring and Green Hinge Pin Pattern",
+      "reason": "Only this complete official shortcut fixes the hinge pin to Green as required by the catalog name."
+    },
+    {
+      "role": "handAccessory",
+      "rebrickablePartNum": "33009",
+      "selectedFile": "parts/33009-f1.dat",
+      "catalogName": "Book 2 x 3 [Plain]",
+      "officialDescription": "Minifig Book (Closed)",
+      "reason": "The exact official 33009.dat file is a ~Moved to redirect to the closed-form shortcut."
+    },
+    {
+      "role": "handAccessory",
+      "rebrickablePartNum": "36752",
+      "selectedFile": "parts/36752c01.dat",
+      "catalogName": "Equipment Wand Sprue [Complete Set of 2]",
+      "officialDescription": "Minifig Tool Wands on Sprue",
+      "reason": "The catalog asks for the complete sprue; the other official candidate explicitly omits the arch."
+    },
+    {
+      "role": "handAccessory",
+      "rebrickablePartNum": "88704",
+      "selectedFile": "parts/88704.dat",
+      "catalogName": "Equipment Whip - Bent",
+      "officialDescription": "Minifig Whip Bent Flexible",
+      "reason": "The exact generic bent-whip file matches the catalog; the other files are special railway wiring poses."
+    },
+    {
+      "role": "handAccessory",
+      "rebrickablePartNum": "upn0218pr0001",
+      "selectedFile": "parts/u9328ap01.dat",
+      "catalogName": "Tent, Tepee Cover with Black Edge and Horses Print",
+      "officialDescription": "Sheet Fabric Tepee Cover with Black Edge and Horses Pattern",
+      "reason": "The catalog identifies the cover itself; the other candidate is the formed tent shortcut."
+    },
+    {
+      "role": "handAccessory",
+      "rebrickablePartNum": "upn0218pr0002",
+      "selectedFile": "parts/u9328ap02.dat",
+      "catalogName": "Tent, Tepee Cover with Buffalo Helmets Print",
+      "officialDescription": "Sheet Fabric Tepee Cover with Buffalo Helmets Pattern",
+      "reason": "The catalog identifies the cover itself; the other candidate is the formed tent shortcut."
+    }
+  ],
+  "assemblies": [
+    {
+      "role": "legsAssembly",
+      "rebrickablePartNum": "970c19pr0438",
+      "catalogName": "Hips and Reddish Brown Legs with Dark Red Loincloth, Belt with White Spikes and White Claws Print",
+      "componentFiles": ["parts/3816cpaz.dat", "parts/3817cpaz.dat"],
+      "reason": "The official candidates are exactly one right and one left printed leg; the unique catalog element colour supplies the hips colour."
+    },
+    {
+      "role": "legsAssembly",
+      "rebrickablePartNum": "970c31pr0472",
+      "catalogName": "Hips and Green Legs with Ninja Turtle Armour Print",
+      "componentFiles": ["parts/3815bpx3.dat", "parts/3816cpx3.dat", "parts/3817cpx3.dat"],
+      "reason": "The official candidates are exactly one printed hips, one right leg and one left leg, with a unique catalog-backed body colour."
+    },
+    {
+      "role": "legsAssembly",
+      "rebrickablePartNum": "970c38pr1598",
+      "catalogName": "Hips and Bright Light Orange Legs with Pockets, Yellow/Silver Stripes (Firefighter) print",
+      "componentFiles": ["parts/3816cp70.dat", "parts/3817cp70.dat"],
+      "reason": "The official candidates are exactly one right and one left printed leg; the unique catalog element colour supplies the hips colour."
+    }
+  ],
+  "blocked": [
+    { "role": "head", "rebrickablePartNum": "30480pr0001", "catalogName": "Minifig Head Special, Protocol Droid with Yellow Eyes Print (C-3PO / K-3PO)", "reason": "Official candidates differ by Yellow versus Bright Light Yellow eye decoration, which the catalog entry does not distinguish reliably." },
+    { "role": "headwear", "rebrickablePartNum": "20606pr0004", "catalogName": "Hair and Hat, Floppy Witch Hat with Light Bluish Gray Hair Print", "reason": "Official candidates represent different hat colour combinations under the same Rebrickable identifier." },
+    { "role": "headwear", "rebrickablePartNum": "20606pr0005", "catalogName": "Hair and Hat, Floppy Witch Hat with Dark Bluish Gray Hair Print", "reason": "Official candidates represent different hat colour combinations under the same Rebrickable identifier." },
+    { "role": "headwear", "rebrickablePartNum": "35660pat0001", "catalogName": "Hair and Hat / Cap, Ponytail Reddish Brown Print", "reason": "Official candidates differ by cap colour while the catalog identifier collapses those variants." },
+    { "role": "headwear", "rebrickablePartNum": "35660pat0003", "catalogName": "Hair and Hat / Cap, Ponytail Bright Light Yellow Print", "reason": "Official candidates differ by cap colour while the catalog identifier collapses those variants." },
+    { "role": "torsoAssembly", "rebrickablePartNum": "973c03h03pr0007", "catalogName": "Torso Darth Vader (Basic) Print, Black Arms and Hands", "reason": "Official candidates contain distinct Grey and Bluish Grey print revisions not distinguished by the catalog name." },
+    { "role": "torsoAssembly", "rebrickablePartNum": "973c27h03pr0520", "catalogName": "Torso Armour Stormtrooper Print, White Arms, Black Hands", "reason": "Official candidates contain distinct Grey and Bluish Grey armour-print revisions not distinguished by the catalog name." },
+    { "role": "torsoAssembly", "rebrickablePartNum": "973c34h03pr1301", "catalogName": "Torso Rebel Pilot Print, Orange Arms, Black Hands", "reason": "Official candidates contain distinct Grey and Bluish Grey pilot-print revisions not distinguished by the catalog name." },
+    { "role": "legsAssembly", "rebrickablePartNum": "970c27pat28", "catalogName": "Hips with White Legs and Blue Boots Pattern", "reason": "The official files identify both printed legs, but the catalog has no element colour from which to establish the hip colour safely." },
+    { "role": "handAccessory", "rebrickablePartNum": "6124", "catalogName": "Equipment Magic Wand", "reason": "Official candidates contain materially different short- and long-handle moulds under the same catalog identifier." },
+    { "role": "handAccessory", "rebrickablePartNum": "25375", "catalogName": "Tassel with 1 x 1 Round Stud", "reason": "Official candidates are three equally valid formed orientations and the catalog does not select one." },
+    { "role": "handAccessory", "rebrickablePartNum": "37178", "catalogName": "Bag / Suitcase with Long Handle [Opens]", "reason": "The catalog says the suitcase opens but does not choose the open or closed display pose." },
+    { "role": "handAccessory", "rebrickablePartNum": "62698", "catalogName": "Equipment Laptop", "reason": "The official files provide open-flat, open and closed poses and the catalog does not select one." }
+  ]
+}
