@@ -7,9 +7,9 @@ Stand: 2026-09-28; Rebrickable-Source-Lock `6cfa8b0a22245c086d4a4bbac0aad64523a6
 ## Ergebnis
 
 - 20.202 minifigurenrelevante Katalogeinträge insgesamt.
-- 14.701 besitzen bereits ein Modell und Vorschaubild.
-- 14.699 sind tatsächlich im Builder auswählbar.
-- 5.503 sind noch nicht builderbereit; davon fehlen bei 5.501 auch Modell/Vorschaubild.
+- 14.702 besitzen bereits ein Modell und Vorschaubild.
+- 14.700 sind tatsächlich im Builder auswählbar.
+- 5.502 sind noch nicht builderbereit; davon fehlen bei 5.500 auch Modell/Vorschaubild.
 - 2.816 Katalogeinträge haben insgesamt eine eindeutige direkte LDraw-Zuordnung, 186 sind mehrdeutig und 17.200 haben keine direkte offizielle Zuordnung.
 
 | Rolle | Katalog | Builderbereit | Platzierung fehlt | Gesperrt | Renderfehler | Mehrdeutig | Keine Zuordnung |
@@ -18,14 +18,14 @@ Stand: 2026-09-28; Rebrickable-Source-Lock `6cfa8b0a22245c086d4a4bbac0aad64523a6
 | headwear | 2.410 | 779 | 0 | 0 | 0 | 6 | 1.625 |
 | torsoAssembly | 7.851 | 5.912 | 147 | 1 | 0 | 6 | 1.785 |
 | legsAssembly | 3.231 | 2.863 | 26 | 0 | 0 | 5 | 337 |
-| handAccessory | 1.308 | 283 | 390 | 1 | 0 | 14 | 620 |
+| handAccessory | 1.308 | 284 | 389 | 1 | 0 | 14 | 620 |
 
 Die Resttabelle weist 12.296 Einträge weniger unter „Keine Zuordnung“ aus als die rohe direkte Mappingbilanz. Diese Einträge verwenden entweder eine in Rebrickable deklarierte Druckeltern-Grundgeometrie, sind als zugehöriger Renderfehler klassifiziert oder – im Fall `3814` – wegen einer kuratierten Modellabbildung gesperrt.
 
 ## Sichere Arbeitsreihenfolge
 
 1. Die 0 Renderfehler technisch beheben.
-2. Für 563 eindeutig zugeordnete Teile reproduzierbare Platzierungs- und Assembly-Profile ableiten und prüfen.
+2. Für 562 eindeutig zugeordnete Teile reproduzierbare Platzierungs- und Assembly-Profile ableiten und prüfen.
 3. Die 34 mehrdeutigen Zuordnungen über offizielle Metadaten auflösen.
 4. Die 4.904 Einträge ohne direkte offizielle Zuordnung bleiben gesperrt, bis eine spätere offizielle LDraw-Version eine belastbare Zuordnung liefert.
 

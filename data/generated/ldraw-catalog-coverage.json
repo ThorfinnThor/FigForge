@@ -31,17 +31,17 @@
   },
   "summary": {
     "catalogPartCount": 20202,
-    "visualizedPartCount": 14701,
-    "builderReadyPartCount": 14699,
-    "remainingCatalogPartCount": 5503,
-    "remainingWithoutVisualizationCount": 5501,
+    "visualizedPartCount": 14702,
+    "builderReadyPartCount": 14700,
+    "remainingCatalogPartCount": 5502,
+    "remainingWithoutVisualizationCount": 5500,
     "uniqueOfficialMappingCount": 2816,
     "ambiguousOfficialMappingCount": 186,
     "noOfficialMappingCount": 17200,
     "remainingClassifications": {
       "builder-blocked": 2,
       "render-failed": 0,
-      "placement-profile-required": 563,
+      "placement-profile-required": 562,
       "ambiguous-official-mapping": 34,
       "no-official-mapping": 4904
     }
@@ -97,12 +97,12 @@
     },
     "handAccessory": {
       "catalogPartCount": 1308,
-      "builderReadyPartCount": 283,
-      "remainingCatalogPartCount": 1025,
+      "builderReadyPartCount": 284,
+      "remainingCatalogPartCount": 1024,
       "remainingClassifications": {
         "builder-blocked": 1,
         "render-failed": 0,
-        "placement-profile-required": 390,
+        "placement-profile-required": 389,
         "ambiguous-official-mapping": 14,
         "no-official-mapping": 620
       }
@@ -49179,20 +49179,6 @@
       "classification": "no-official-mapping",
       "ldrawFiles": [],
       "mappingEvidence": [],
-      "reason": null
-    },
-    {
-      "catalogId": "part:15407",
-      "role": "handAccessory",
-      "rebrickablePartNum": "15407",
-      "name": "Equipment Hand Armor",
-      "classification": "placement-profile-required",
-      "ldrawFiles": [
-        "parts/15407.dat"
-      ],
-      "mappingEvidence": [
-        "exact-filename"
-      ],
       "reason": null
     },
     {

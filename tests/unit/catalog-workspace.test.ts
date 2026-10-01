@@ -45,7 +45,7 @@ describe("FF-14 responsive catalog workspace", () => {
       legsAssembly: 3_231,
       handAccessory: 1_308,
     });
-    expect(allParts.filter(builderComponentForCatalogPart)).toHaveLength(14_708);
+    expect(allParts.filter(builderComponentForCatalogPart)).toHaveLength(14_709);
   }, 15_000);
 
   it("defines responsive tabs, drawer focus return and keyboard dismissal", async () => {
@@ -96,11 +96,11 @@ describe("FF-14 responsive catalog workspace", () => {
     expect(allParts.filter((part) => {
       const builderComponent = builderComponentForCatalogPart(part);
       return builderComponent && verifiedLDrawEntryForComponent(builderComponent.id);
-    })).toHaveLength(14_701);
+    })).toHaveLength(14_702);
     expect(allParts.filter((part) => {
       const builderComponent = builderComponentForCatalogPart(part);
       return builderComponent && digitallySupportedLDrawEntryForComponent(builderComponent.id);
-    })).toHaveLength(14_699);
+    })).toHaveLength(14_700);
     expect(cardSource).toContain("Geometrie ohne Druck");
     expect(cardSource).toContain('disabled={connectionStatus !== "digitally-supported"}');
     expect(cardSource).toContain("In Figur einsetzen");
@@ -237,6 +237,25 @@ describe("FF-14 responsive catalog workspace", () => {
       expect(auditEntry?.digitalValidation?.gripEvidenceSource).toBe("ldcad-shadow-snap");
       expect(auditEntry?.digitalValidation?.gripPrimitive).toMatch(/^ldcad-shadow:parts\/3899\.dat#SNAP_CYL:/u);
     }
+  });
+
+  it("enables hand armor only after a collision-free axial grip position is found", async () => {
+    const accessories = await loadCatalogParts("handAccessory");
+    const catalogPart = accessories.find(({ rebrickablePartNum }) => rebrickablePartNum === "15407");
+    const builderComponent = catalogPart ? builderComponentForCatalogPart(catalogPart) : undefined;
+    const entry = builderComponent ? digitallySupportedLDrawEntryForComponent(builderComponent.id) : undefined;
+    const expandedCatalog = JSON.parse(await readFile("data/generated/ldraw-expanded-catalog.json", "utf8")) as {
+      entries: Array<{
+        rebrickablePartNum: string;
+        digitalValidation: null | { orientationCandidatesTested: number; selectedOrientationIndex: number };
+      }>;
+    };
+    const auditEntry = expandedCatalog.entries.find(({ rebrickablePartNum }) => rebrickablePartNum === "15407");
+
+    expect(entry?.ldrawFile).toBe("parts/15407.dat");
+    expect(entry?.geometryFallback).toBeNull();
+    expect(auditEntry?.digitalValidation?.orientationCandidatesTested).toBeGreaterThan(8);
+    expect(auditEntry?.digitalValidation?.selectedOrientationIndex).toBeGreaterThanOrEqual(8);
   });
 
   it("enables asymmetric legs only when both leg colours and one hip colour are catalog-backed", async () => {

@@ -232,7 +232,7 @@ for (const rejection of catalog.digitalPlacementRejections) {
   ].includes(rejection.reasonCode));
   assert(rejection.gripCandidatesTested >= 1);
   assert.equal(rejection.orientationCollisionCountsByGrip.length, rejection.gripCandidatesTested);
-  assert(rejection.orientationCollisionCountsByGrip.every((counts) => counts.length === 8));
+  assert(rejection.orientationCollisionCountsByGrip.every((counts) => counts.length >= 8 && counts.length % 8 === 0));
   if (rejection.reasonCode === "multiple-safe-grip-candidates") {
     assert(rejection.safeGripCandidatesFound > 1);
   } else {
@@ -421,8 +421,11 @@ for (const entry of catalog.entries) {
       entry.digitalValidation.selectedGripCandidateIndex >= 0
         && entry.digitalValidation.selectedGripCandidateIndex < entry.digitalValidation.gripCandidatesTested,
     );
-    assert.equal(entry.digitalValidation.orientationCandidatesTested, 8);
-    assert(entry.digitalValidation.selectedOrientationIndex >= 0 && entry.digitalValidation.selectedOrientationIndex < 8);
+    assert(entry.digitalValidation.orientationCandidatesTested >= 8);
+    assert(
+      entry.digitalValidation.selectedOrientationIndex >= 0
+        && entry.digitalValidation.selectedOrientationIndex < entry.digitalValidation.orientationCandidatesTested,
+    );
     assert.equal(entry.digitalValidation.physicalFitGuaranteed, false);
     if (entry.digitalValidation.gripEvidenceSource === "ldcad-shadow-snap") {
       assert.match(entry.digitalValidation.gripPrimitive, /^ldcad-shadow:parts\/[a-z0-9]+\.dat#SNAP_CYL:\d+$/u);
