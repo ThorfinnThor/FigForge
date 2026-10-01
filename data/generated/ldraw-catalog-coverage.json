@@ -34,17 +34,17 @@
   },
   "summary": {
     "catalogPartCount": 20202,
-    "visualizedPartCount": 14826,
-    "builderReadyPartCount": 14824,
-    "remainingCatalogPartCount": 5378,
-    "remainingWithoutVisualizationCount": 5376,
+    "visualizedPartCount": 14831,
+    "builderReadyPartCount": 14829,
+    "remainingCatalogPartCount": 5373,
+    "remainingWithoutVisualizationCount": 5371,
     "uniqueOfficialMappingCount": 2834,
     "ambiguousOfficialMappingCount": 168,
     "noOfficialMappingCount": 17200,
     "remainingClassifications": {
       "builder-blocked": 2,
       "render-failed": 0,
-      "placement-profile-required": 364,
+      "placement-profile-required": 359,
       "reviewed-incompatible-assembly": 95,
       "ambiguous-official-mapping": 13,
       "no-official-mapping": 4904
@@ -105,12 +105,12 @@
     },
     "handAccessory": {
       "catalogPartCount": 1308,
-      "builderReadyPartCount": 319,
-      "remainingCatalogPartCount": 989,
+      "builderReadyPartCount": 324,
+      "remainingCatalogPartCount": 984,
       "remainingClassifications": {
         "builder-blocked": 1,
         "render-failed": 0,
-        "placement-profile-required": 364,
+        "placement-profile-required": 359,
         "reviewed-incompatible-assembly": 0,
         "ambiguous-official-mapping": 4,
         "no-official-mapping": 620
@@ -49491,20 +49491,6 @@
       "reason": null
     },
     {
-      "catalogId": "part:30193",
-      "role": "handAccessory",
-      "rebrickablePartNum": "30193",
-      "name": "Tool Ice Axe [6-Rib Handle]",
-      "classification": "placement-profile-required",
-      "ldrawFiles": [
-        "parts/30193.dat"
-      ],
-      "mappingEvidence": [
-        "exact-filename"
-      ],
-      "reason": null
-    },
-    {
       "catalogId": "part:30194",
       "role": "handAccessory",
       "rebrickablePartNum": "30194",
@@ -51621,20 +51607,6 @@
       "reason": null
     },
     {
-      "catalogId": "part:61199",
-      "role": "handAccessory",
-      "rebrickablePartNum": "61199",
-      "name": "Weapon Lightsaber Hilt Short Curved with Ridges",
-      "classification": "placement-profile-required",
-      "ldrawFiles": [
-        "parts/61199.dat"
-      ],
-      "mappingEvidence": [
-        "exact-filename"
-      ],
-      "reason": null
-    },
-    {
       "catalogId": "part:61856",
       "role": "handAccessory",
       "rebrickablePartNum": "61856",
@@ -53607,20 +53579,6 @@
       "reason": null
     },
     {
-      "catalogId": "part:87989",
-      "role": "handAccessory",
-      "rebrickablePartNum": "87989",
-      "name": "Equipment Medical Syringe",
-      "classification": "placement-profile-required",
-      "ldrawFiles": [
-        "parts/87989.dat"
-      ],
-      "mappingEvidence": [
-        "exact-filename"
-      ],
-      "reason": null
-    },
-    {
       "catalogId": "part:87996pr0001",
       "role": "handAccessory",
       "rebrickablePartNum": "87996pr0001",
@@ -54402,20 +54360,6 @@
       "reason": null
     },
     {
-      "catalogId": "part:93216",
-      "role": "handAccessory",
-      "rebrickablePartNum": "93216",
-      "name": "Sports Tennis Racket",
-      "classification": "placement-profile-required",
-      "ldrawFiles": [
-        "parts/93216.dat"
-      ],
-      "mappingEvidence": [
-        "exact-filename"
-      ],
-      "reason": null
-    },
-    {
       "catalogId": "part:93218",
       "role": "handAccessory",
       "rebrickablePartNum": "93218",
@@ -54861,20 +54805,6 @@
       "classification": "placement-profile-required",
       "ldrawFiles": [
         "parts/95051.dat"
-      ],
-      "mappingEvidence": [
-        "exact-filename"
-      ],
-      "reason": null
-    },
-    {
-      "catalogId": "part:95052",
-      "role": "handAccessory",
-      "rebrickablePartNum": "95052",
-      "name": "Weapon Axe with Twin-Blade",
-      "classification": "placement-profile-required",
-      "ldrawFiles": [
-        "parts/95052.dat"
       ],
       "mappingEvidence": [
         "exact-filename"

@@ -48,7 +48,7 @@ describe("FF-14 responsive catalog workspace", () => {
       legsAssembly: 3_231,
       handAccessory: 1_308,
     });
-    expect(allParts.filter(builderComponentForCatalogPart)).toHaveLength(14_833);
+    expect(allParts.filter(builderComponentForCatalogPart)).toHaveLength(14_838);
   }, 15_000);
 
   it("defines responsive tabs, drawer focus return and keyboard dismissal", async () => {
@@ -99,11 +99,11 @@ describe("FF-14 responsive catalog workspace", () => {
     expect(allParts.filter((part) => {
       const builderComponent = builderComponentForCatalogPart(part);
       return builderComponent && verifiedLDrawEntryForComponent(builderComponent.id);
-    })).toHaveLength(14_826);
+    })).toHaveLength(14_831);
     expect(allParts.filter((part) => {
       const builderComponent = builderComponentForCatalogPart(part);
       return builderComponent && digitallySupportedLDrawEntryForComponent(builderComponent.id);
-    })).toHaveLength(14_824);
+    })).toHaveLength(14_829);
     expect(cardSource).toContain('t("part.geometry")');
     expect(cardSource).toContain('t("part.rebrickableLink")');
     expect(cardSource).toContain("https://rebrickable.com/parts/${encodeURIComponent(component.rebrickablePartNum)}/");
@@ -118,14 +118,14 @@ describe("FF-14 responsive catalog workspace", () => {
     expect(controllerSource).toContain('legsAssembly: { prototypeFileName: "73200b-f1.dat" }');
   });
 
-  it("focuses the default view on the 2,721 exact digitally supported models", async () => {
+  it("focuses the default view on the 2,726 exact digitally supported models", async () => {
     const allParts = await loadCatalogParts("all");
     const exactParts = allParts.filter((part) => {
       const component = builderComponentForCatalogPart(part);
       return Boolean(component && hasExactPrintedGeometry(component.id));
     });
 
-    expect(exactParts).toHaveLength(2_721);
+    expect(exactParts).toHaveLength(2_726);
     expect(exactParts.every((part) => {
       const component = builderComponentForCatalogPart(part);
       return Boolean(component && hasExactPrintedGeometry(component.id));
@@ -265,9 +265,9 @@ describe("FF-14 responsive catalog workspace", () => {
     for (const partNum of blocked) expect(entryFor(partNum)).toBeUndefined();
   });
 
-  it("uses unique pinned snap evidence to resolve only three multi-cylinder accessories", async () => {
+  it("uses unique pinned snap evidence to resolve only four multi-cylinder accessories", async () => {
     const accessories = await loadCatalogParts("handAccessory");
-    const passed = ["30092", "56619", "61190f"];
+    const passed = ["30092", "56619", "61190f", "95052"];
     const blocked = ["4341", "10172", "10172pr0001", "89801"];
     const entryFor = (partNum: string) => {
       const part = accessories.find(({ rebrickablePartNum }) => rebrickablePartNum === partNum);
@@ -279,12 +279,12 @@ describe("FF-14 responsive catalog workspace", () => {
     for (const partNum of blocked) expect(entryFor(partNum)).toBeUndefined();
   });
 
-  it("uses pinned snap evidence to resolve 23 accessories without cylinder primitives", async () => {
+  it("uses pinned snap evidence to resolve 27 accessories without cylinder primitives", async () => {
     const accessories = await loadCatalogParts("handAccessory");
     const passed = [
       "37", "59", "4342", "4449", "4499", "18787", "18788", "18789", "18791", "23986",
       "30173a", "30173b", "30229", "38014", "43887", "48495", "71342", "76764", "79741",
-      "93055", "93247", "93559", "95673",
+      "30193", "61199", "87989", "93055", "93216", "93247", "93559", "95673",
     ];
     const entryFor = (partNum: string) => {
       const part = accessories.find(({ rebrickablePartNum }) => rebrickablePartNum === partNum);

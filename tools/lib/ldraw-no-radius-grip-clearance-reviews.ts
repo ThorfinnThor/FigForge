@@ -16,8 +16,8 @@ export type NoRadiusGripClearanceReviews = {
   sourcePolicy: typeof NO_RADIUS_GRIP_REVIEW_SOURCE_POLICY;
   methodology: string;
   auditedQueueCount: 270;
-  uniqueDocumentedGripCount: 23;
-  withoutUniqueDocumentedGripCount: 247;
+  uniqueDocumentedGripCount: 27;
+  withoutUniqueDocumentedGripCount: 243;
   reviews: NoRadiusGripClearanceReview[];
 };
 

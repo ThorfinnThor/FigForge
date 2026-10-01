@@ -113,6 +113,10 @@
       "sha256": "a58cc21e545cba60dbd4075bfa6163c5386527e7385b5c62b49f480ff7660680"
     },
     {
+      "path": "data/vendor/ldcad-shadow/parts/30193.dat",
+      "sha256": "58da4588fbbced264f2d235bb37dce8716275161738895b65561abc06d883aa3"
+    },
+    {
       "path": "data/vendor/ldcad-shadow/parts/30229.dat",
       "sha256": "5ec54df29bfdcd953fc4903ad6aae21be273f2cf0fdb70454313407db2025e2f"
     },
@@ -201,6 +205,10 @@
       "sha256": "d21ede9d7a1ef501ea1c91c67e50fb90e235d13171848b9e7b458494bd49e698"
     },
     {
+      "path": "data/vendor/ldcad-shadow/parts/61199.dat",
+      "sha256": "8e26807bf1f45e60f5f4d39fcc2a879d8829ec525912ab977923bdd0a42d4fad"
+    },
+    {
       "path": "data/vendor/ldcad-shadow/parts/62885.dat",
       "sha256": "7aae43920b91791b89852de2775b7391c0ac0e661d3cf8a32aee663e2d6e4e21"
     },
@@ -221,6 +229,10 @@
       "sha256": "bd04153c7116e155cf1f06bad25bcae298dce1ab78f9b34dc2cd030ae2138f3e"
     },
     {
+      "path": "data/vendor/ldcad-shadow/parts/87989.dat",
+      "sha256": "22732d5c0e72909546f8d9facd803ea571756e33c15b22c3d961aadc19eaa8dd"
+    },
+    {
       "path": "data/vendor/ldcad-shadow/parts/89801.dat",
       "sha256": "34e997e2f76c9513accbfdae8492d1657505f1e09131ed8da6b80bca9995a7ca"
     },
@@ -231,6 +243,10 @@
     {
       "path": "data/vendor/ldcad-shadow/parts/93092.dat",
       "sha256": "fbe9c4de5dbc6e9af6a555ab421487ad61b7e510093ef8ea58154fc8163e7089"
+    },
+    {
+      "path": "data/vendor/ldcad-shadow/parts/93216.dat",
+      "sha256": "869a9c632ebe593b2d4534514af77f946dfd7bb1fe25de7fa537532deed975f6"
     },
     {
       "path": "data/vendor/ldcad-shadow/parts/93247.dat",
@@ -251,6 +267,10 @@
     {
       "path": "data/vendor/ldcad-shadow/parts/95050.dat",
       "sha256": "f7bc9e20781b054dac93ed70588ab49d4df53d2e8a6daa3113ccbd5d8fcbf93f"
+    },
+    {
+      "path": "data/vendor/ldcad-shadow/parts/95052.dat",
+      "sha256": "de5499f0fc7078efb157c740ac4493af6334c70bb0d63033546cab8954ed8203"
     },
     {
       "path": "data/vendor/ldcad-shadow/parts/95053.dat",

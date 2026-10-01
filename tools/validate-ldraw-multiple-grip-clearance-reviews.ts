@@ -51,11 +51,11 @@ const remainingMultiple = new Set(placement.placementCandidates
   .filter(({ analysis }) => analysis === "multiple-radius-4-cylinder-candidates")
   .map(({ rebrickablePartNum }) => rebrickablePartNum));
 
-assert.equal(reviews.reviews.length, 7);
-assert.equal(new Set(reviews.reviews.map(({ rebrickablePartNum }) => rebrickablePartNum)).size, 7);
+assert.equal(reviews.reviews.length, 8);
+assert.equal(new Set(reviews.reviews.map(({ rebrickablePartNum }) => rebrickablePartNum)).size, 8);
 const passed = reviews.reviews.filter(({ expectedResult }) => expectedResult === "passed");
 const blocked = reviews.reviews.filter(({ expectedResult }) => expectedResult === "blocked");
-assert.equal(passed.length, 3);
+assert.equal(passed.length, 4);
 assert.equal(blocked.length, 4);
 
 for (const review of reviews.reviews) {
@@ -87,10 +87,10 @@ for (const review of reviews.reviews) {
   }
 }
 
-assert.equal(placement.summary.multipleRadius4CandidateCount, 104);
+assert.equal(placement.summary.multipleRadius4CandidateCount, 103);
 assert.equal(
   [...remainingMultiple].filter((partNum) => !blocked.some((review) => review.rebrickablePartNum === partNum)).length,
-  100,
+  99,
 );
 
 console.log(JSON.stringify({
@@ -98,6 +98,6 @@ console.log(JSON.stringify({
   reviewed: reviews.reviews.length,
   passed: passed.length,
   blocked: blocked.length,
-  remainingWithoutUniqueDocumentedGrip: 100,
+  remainingWithoutUniqueDocumentedGrip: 99,
   sourcePolicy: reviews.sourcePolicy,
 }));

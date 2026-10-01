@@ -44,10 +44,10 @@ const remainingNoRadius = new Set(placement.placementCandidates
   .map(({ rebrickablePartNum }) => rebrickablePartNum));
 
 assert.equal(reviews.auditedQueueCount, 270);
-assert.equal(reviews.uniqueDocumentedGripCount, 23);
-assert.equal(reviews.withoutUniqueDocumentedGripCount, 247);
+assert.equal(reviews.uniqueDocumentedGripCount, 27);
+assert.equal(reviews.withoutUniqueDocumentedGripCount, 243);
 assert.equal(reviews.reviews.length, reviews.uniqueDocumentedGripCount);
-assert.equal(new Set(reviews.reviews.map(({ rebrickablePartNum }) => rebrickablePartNum)).size, 23);
+assert.equal(new Set(reviews.reviews.map(({ rebrickablePartNum }) => rebrickablePartNum)).size, 27);
 assert(reviews.reviews.every(({ expectedResult }) => expectedResult === "passed"));
 
 for (const review of reviews.reviews) {

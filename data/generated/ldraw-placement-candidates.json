@@ -22,10 +22,10 @@
     "automaticBuilderEnablements": 0
   },
   "summary": {
-    "placementProfileRequiredCount": 364,
+    "placementProfileRequiredCount": 359,
     "uniqueRadius4CandidateCount": 13,
-    "multipleRadius4CandidateCount": 104,
-    "noRadius4CylinderDetectedCount": 247,
+    "multipleRadius4CandidateCount": 103,
+    "noRadius4CylinderDetectedCount": 243,
     "roleSpecificAssemblyProfileRequiredCount": 0,
     "noOfficialMappingQueueCount": 4904,
     "ambiguousOfficialMappingQueueCount": 13
@@ -7708,23 +7708,6 @@
       "limitation": "Official LDraw files can encode shafts as direct mesh triangles, so absence of a cylinder primitive is not proof that no grip exists."
     },
     {
-      "catalogId": "part:30193",
-      "role": "handAccessory",
-      "rebrickablePartNum": "30193",
-      "name": "Tool Ice Axe [6-Rib Handle]",
-      "ldrawFiles": [
-        "parts/30193.dat"
-      ],
-      "mappingEvidence": [
-        "exact-filename"
-      ],
-      "analysis": "no-radius-4-cylinder-detected",
-      "evidence": [],
-      "proposedPlacementTransformLdu": null,
-      "automaticBuilderEnablement": false,
-      "limitation": "Official LDraw files can encode shafts as direct mesh triangles, so absence of a cylinder primitive is not proof that no grip exists."
-    },
-    {
       "catalogId": "part:30194",
       "role": "handAccessory",
       "rebrickablePartNum": "30194",
@@ -11284,23 +11267,6 @@
       "limitation": "Official LDraw files can encode shafts as direct mesh triangles, so absence of a cylinder primitive is not proof that no grip exists."
     },
     {
-      "catalogId": "part:61199",
-      "role": "handAccessory",
-      "rebrickablePartNum": "61199",
-      "name": "Weapon Lightsaber Hilt Short Curved with Ridges",
-      "ldrawFiles": [
-        "parts/61199.dat"
-      ],
-      "mappingEvidence": [
-        "exact-filename"
-      ],
-      "analysis": "no-radius-4-cylinder-detected",
-      "evidence": [],
-      "proposedPlacementTransformLdu": null,
-      "automaticBuilderEnablement": false,
-      "limitation": "Official LDraw files can encode shafts as direct mesh triangles, so absence of a cylinder primitive is not proof that no grip exists."
-    },
-    {
       "catalogId": "part:61856",
       "role": "handAccessory",
       "rebrickablePartNum": "61856",
@@ -13982,23 +13948,6 @@
       "limitation": "Several possible shafts exist; selecting one automatically would guess the intended grip."
     },
     {
-      "catalogId": "part:87989",
-      "role": "handAccessory",
-      "rebrickablePartNum": "87989",
-      "name": "Equipment Medical Syringe",
-      "ldrawFiles": [
-        "parts/87989.dat"
-      ],
-      "mappingEvidence": [
-        "exact-filename"
-      ],
-      "analysis": "no-radius-4-cylinder-detected",
-      "evidence": [],
-      "proposedPlacementTransformLdu": null,
-      "automaticBuilderEnablement": false,
-      "limitation": "Official LDraw files can encode shafts as direct mesh triangles, so absence of a cylinder primitive is not proof that no grip exists."
-    },
-    {
       "catalogId": "part:87997",
       "role": "handAccessory",
       "rebrickablePartNum": "87997",
@@ -15352,23 +15301,6 @@
       "limitation": "Several possible shafts exist; selecting one automatically would guess the intended grip."
     },
     {
-      "catalogId": "part:93216",
-      "role": "handAccessory",
-      "rebrickablePartNum": "93216",
-      "name": "Sports Tennis Racket",
-      "ldrawFiles": [
-        "parts/93216.dat"
-      ],
-      "mappingEvidence": [
-        "exact-filename"
-      ],
-      "analysis": "no-radius-4-cylinder-detected",
-      "evidence": [],
-      "proposedPlacementTransformLdu": null,
-      "automaticBuilderEnablement": false,
-      "limitation": "Official LDraw files can encode shafts as direct mesh triangles, so absence of a cylinder primitive is not proof that no grip exists."
-    },
-    {
       "catalogId": "part:93220",
       "role": "handAccessory",
       "rebrickablePartNum": "93220",
@@ -15673,90 +15605,6 @@
       "proposedPlacementTransformLdu": null,
       "automaticBuilderEnablement": false,
       "limitation": "Official LDraw files can encode shafts as direct mesh triangles, so absence of a cylinder primitive is not proof that no grip exists."
-    },
-    {
-      "catalogId": "part:95052",
-      "role": "handAccessory",
-      "rebrickablePartNum": "95052",
-      "name": "Weapon Axe with Twin-Blade",
-      "ldrawFiles": [
-        "parts/95052.dat"
-      ],
-      "mappingEvidence": [
-        "exact-filename"
-      ],
-      "analysis": "multiple-radius-4-cylinder-candidates",
-      "evidence": [
-        {
-          "primitive": "p/4-4cylc.dat",
-          "radiusLdu": 4,
-          "lengthLdu": 11,
-          "centerLdu": [
-            0,
-            11,
-            0
-          ],
-          "axis": [
-            0,
-            -1,
-            0
-          ],
-          "sourceConnectorTransformLdu": [
-            1,
-            0,
-            0,
-            0,
-            0,
-            -1,
-            0,
-            0,
-            0,
-            0,
-            1,
-            0,
-            0,
-            11,
-            0,
-            1
-          ]
-        },
-        {
-          "primitive": "p/4-4cyli.dat",
-          "radiusLdu": 4,
-          "lengthLdu": 13,
-          "centerLdu": [
-            0,
-            -12,
-            0
-          ],
-          "axis": [
-            0,
-            -1,
-            0
-          ],
-          "sourceConnectorTransformLdu": [
-            1,
-            0,
-            0,
-            0,
-            0,
-            -1,
-            0,
-            0,
-            0,
-            0,
-            1,
-            0,
-            0,
-            -12,
-            0,
-            1
-          ]
-        }
-      ],
-      "proposedPlacementTransformLdu": null,
-      "automaticBuilderEnablement": false,
-      "limitation": "Several possible shafts exist; selecting one automatically would guess the intended grip."
     },
     {
       "catalogId": "part:95199",

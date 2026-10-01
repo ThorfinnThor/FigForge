@@ -27,6 +27,7 @@ export const vendoredAccessoryGripFiles = [
   "parts/29109.dat",
   "parts/30035.dat",
   "parts/30092.dat",
+  "parts/30193.dat",
   "parts/30173a.dat",
   "parts/30173b.dat",
   "parts/30148.dat",
@@ -47,20 +48,24 @@ export const vendoredAccessoryGripFiles = [
   "parts/55707d.dat",
   "parts/57467.dat",
   "parts/61190a.dat",
+  "parts/61199.dat",
   "parts/604549.dat",
   "parts/62885.dat",
   "parts/71342.dat",
   "parts/73117.dat",
   "parts/76764.dat",
   "parts/79741.dat",
+  "parts/87989.dat",
   "parts/89801.dat",
   "parts/93092.dat",
+  "parts/93216.dat",
   "parts/93055.dat",
   "parts/93247.dat",
   "parts/93252.dat",
   "parts/93559.dat",
   "parts/95049.dat",
   "parts/95050.dat",
+  "parts/95052.dat",
   "parts/95053.dat",
   "parts/95054.dat",
   "parts/95673.dat",
@@ -141,27 +146,45 @@ export function handGripEvidenceFromLDCadShadow(
   sourcePath: string,
   source: string,
 ): CylinderEvidence[] {
-  return parseLDCadSnapCylinders(source).flatMap((connector) => {
-    // Multi-section profiles can contain only a short radius-4 tip or several
-    // independently plausible shafts. Keep this automated path deliberately
-    // limited to one documented round bar of hand-grip dimensions.
-    if (connector.gender !== "M" || connector.sections.length !== 1) return [];
-    const section = connector.sections[0]!;
-    if (
-      section.shape !== "R"
-      || section.radiusLdu < MIN_HAND_GRIP_RADIUS_LDU
-      || section.radiusLdu > MAX_HAND_GRIP_RADIUS_LDU
-      || section.lengthLdu < MIN_HAND_GRIP_LENGTH_LDU
-    ) return [];
+  const candidates = parseLDCadSnapCylinders(source).flatMap((connector) => {
+    if (connector.gender !== "M") return [];
+    const qualifyingSections = connector.sections
+      .map((section, index) => ({ section, index }))
+      .filter(({ section }) => (
+        section.shape === "R"
+        && section.radiusLdu >= MIN_HAND_GRIP_RADIUS_LDU
+        && section.radiusLdu <= MAX_HAND_GRIP_RADIUS_LDU
+        && section.lengthLdu >= MIN_HAND_GRIP_LENGTH_LDU
+      ));
+    // A compound connector is usable only when it documents exactly one
+    // hand-sized segment. More than one qualifying segment would make the
+    // intended grip position ambiguous again.
+    if (qualifyingSections.length !== 1) return [];
+    return [{ connector, ...qualifyingSections[0]! }];
+  });
+  // Prefer the library's dedicated single-section grip whenever one exists.
+  // Compound profiles are a fallback for parts whose handle is documented as
+  // one segment inside a larger stepped shaft.
+  const singleSectionCandidates = candidates.filter(({ connector }) => connector.sections.length === 1);
+  const selectedCandidates = singleSectionCandidates.length > 0 ? singleSectionCandidates : candidates;
+
+  return selectedCandidates.map(({ connector, section, index: sectionIndex }) => {
 
     const transform = ldrawMatrix([...connector.positionLdu, ...connector.orientation]);
     const elements = transform.elements;
     const localX = new Vector3(elements[0], elements[1], elements[2]).normalize();
     const localY = new Vector3(elements[4], elements[5], elements[6]).normalize();
     const localZ = new Vector3(elements[8], elements[9], elements[10]).normalize();
-    const extentAxis = localY.clone().multiplyScalar(-section.lengthLdu);
-    const center = new Vector3(...connector.positionLdu);
-    if (!connector.center) center.add(extentAxis.clone().multiplyScalar(0.5));
+    const direction = localY.clone().negate();
+    const precedingLengthLdu = connector.sections
+      .slice(0, sectionIndex)
+      .reduce((sum, candidate) => sum + candidate.lengthLdu, 0);
+    const totalLengthLdu = connector.sections.reduce((sum, candidate) => sum + candidate.lengthLdu, 0);
+    const profileStartLdu = connector.center ? -totalLengthLdu / 2 : 0;
+    const centerOffsetLdu = profileStartLdu + precedingLengthLdu + section.lengthLdu / 2;
+    const extentAxis = direction.clone().multiplyScalar(section.lengthLdu);
+    const center = new Vector3(...connector.positionLdu)
+      .add(direction.clone().multiplyScalar(centerOffsetLdu));
 
     // SNAP_CYL sections extend along local -Y. Negating X together with Y keeps
     // the connector basis right-handed for the rigid placement validator.
@@ -170,14 +193,14 @@ export function handGripEvidenceFromLDCadShadow(
       localY.clone().negate(),
       localZ,
     ).setPosition(center);
-    return [{
+    return {
       primitive: `ldcad-shadow:${sourcePath}#SNAP_CYL:${connector.lineNumber}`,
       radiusLdu: section.radiusLdu,
       lengthLdu: section.lengthLdu,
       centerLdu: roundedVector(center),
       axis: roundedVector(extentAxis),
       sourceConnectorTransformLdu: roundedMatrix(sourceConnector),
-    }];
+    };
   });
 }
 

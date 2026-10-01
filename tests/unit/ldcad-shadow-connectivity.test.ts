@@ -47,14 +47,38 @@ describe("LDCad Shadow hand-grip metadata", () => {
     });
   });
 
-  it("rejects female, short, non-round and multi-section profiles", () => {
+  it("rejects female, short, non-round and ambiguous compound profiles", () => {
     const source = [
       "0 !LDCAD SNAP_CYL [gender=F] [secs=R 4 20]",
       "0 !LDCAD SNAP_CYL [gender=M] [secs=R 4 7]",
       "0 !LDCAD SNAP_CYL [gender=M] [secs=A 4 20]",
-      "0 !LDCAD SNAP_CYL [gender=M] [secs=R 4 10 R 6 2]",
+      "0 !LDCAD SNAP_CYL [gender=M] [secs=R 4 10 R 6 2 R 4 12]",
     ].join("\n");
     expect(handGripEvidenceFromLDCadShadow("parts/test.dat", source)).toEqual([]);
+  });
+
+  it("uses the one hand-sized segment inside a compound profile", () => {
+    const evidence = handGripEvidenceFromLDCadShadow(
+      "parts/30193.dat",
+      "0 !LDCAD SNAP_CYL [gender=M] [secs=R 4 4 R 2.75 7 R 4 25] [pos=0 -36 0] [ori=-1 0 0 0 -1 0 0 0 1]",
+    );
+    expect(evidence).toHaveLength(1);
+    expect(evidence[0]).toMatchObject({
+      centerLdu: [0, -12.5, 0],
+      axis: [0, 25, 0],
+      radiusLdu: 4,
+      lengthLdu: 25,
+    });
+  });
+
+  it("prefers a dedicated grip over a compound connector in the same part", () => {
+    const source = [
+      "0 !LDCAD SNAP_CYL [gender=M] [secs=R 4 43] [pos=0 2.5 0] [ori=-1 0 0 0 -1 0 0 0 1]",
+      "0 !LDCAD SNAP_CYL [gender=M] [secs=R 4 20 R 3 80] [pos=0 -39 0] [ori=-1 0 0 0 1 0 0 0 -1]",
+    ].join("\n");
+    const evidence = handGripEvidenceFromLDCadShadow("parts/2614.dat", source);
+    expect(evidence).toHaveLength(1);
+    expect(evidence[0]).toMatchObject({ lengthLdu: 43 });
   });
 
   it("uses exactly one pinned connector to disambiguate multi-shaft geometry", async () => {
