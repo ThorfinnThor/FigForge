@@ -19,3 +19,4 @@ data/incoming/
 # Historische lokale Review-Autosaves; nie in Git aufnehmen.
 data/review/ff18-development-progress.json
 data/review/ldraw-fit-human-progress.json
+data/review/semantic-search-release-progress.json

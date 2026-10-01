@@ -14,6 +14,7 @@
     "catalog:local": "python3 tools/run_local_catalog_pipeline.py",
     "catalog:local:test": "python3 -m unittest tests/python/test_local_catalog_pipeline.py",
     "review:ff18": "tsx tools/ff18-review-server.ts",
+    "review:semantic-release": "tsx tools/semantic-search-review-server.ts",
     "typecheck": "tsc -b --pretty false",
     "lint": "eslint .",
     "test": "vitest run",
@@ -30,6 +31,8 @@
     "search:benchmark:preflight": "tsx tools/check-ff18-prerequisites.ts",
     "search:build:release": "tsx tools/build-semantic-search-release.ts",
     "search:validate:release": "tsx tools/validate-semantic-search-release.ts",
+    "search:build:review": "tsx tools/build-semantic-search-release-review.ts",
+    "search:validate:review": "tsx tools/validate-semantic-search-release-review.ts",
     "data:validate:generated": "tsx tools/validate-generated-catalog.ts",
     "data:build:catalog-packages": "tsx tools/build-catalog-packages.ts",
     "data:review:mappings": "tsx tools/review-mappings.ts",
@@ -60,7 +63,7 @@
     "data:refresh": "tsx tools/refresh-catalog.ts --check-only",
     "data:refresh:remote": "tsx tools/refresh-catalog.ts --refresh",
     "cf:check": "tsx tools/check-cloudflare.ts",
-    "verify": "npm run catalog:local:test && npm run data:validate && npm run data:validate:ff03 && npm run data:validate:ff05 && npm run data:validate:ff06 && npm run data:validate:ff16 && npm run data:validate:ff17 && npm run data:validate:ff18 && npm run data:validate:ff21 && npm run search:validate:release && npm run data:validate:generated && npm run data:validate:mappings && npm run assets:validate && npm run assets:validate:fit-review && npm run assets:validate:connectivity && npm run assets:validate:ldraw-expanded && npm run assets:validate:ambiguous-mappings && npm run assets:validate:unique-grip-clearance && npm run assets:validate:multiple-grip-clearance && npm run assets:validate:no-radius-grip-clearance && npm run assets:validate:ldraw-coverage && npm run assets:validate:placement-candidates && npm run licenses:validate && npm run typecheck && npm run lint && npm run test && npm run build && npm run cf:check"
+    "verify": "npm run catalog:local:test && npm run data:validate && npm run data:validate:ff03 && npm run data:validate:ff05 && npm run data:validate:ff06 && npm run data:validate:ff16 && npm run data:validate:ff17 && npm run data:validate:ff18 && npm run data:validate:ff21 && npm run search:validate:release && npm run search:validate:review && npm run data:validate:generated && npm run data:validate:mappings && npm run assets:validate && npm run assets:validate:fit-review && npm run assets:validate:connectivity && npm run assets:validate:ldraw-expanded && npm run assets:validate:ambiguous-mappings && npm run assets:validate:unique-grip-clearance && npm run assets:validate:multiple-grip-clearance && npm run assets:validate:no-radius-grip-clearance && npm run assets:validate:ldraw-coverage && npm run assets:validate:placement-candidates && npm run licenses:validate && npm run typecheck && npm run lint && npm run test && npm run build && npm run cf:check"
   },
   "dependencies": {
     "@fontsource/lilita-one": "^5.3.0",

@@ -10,6 +10,7 @@ export default tseslint.config(
       "data/generated/**",
       "public/search/runtime/**",
       "tools/review-ui/**",
+      "tools/semantic-search-review-ui/**",
       "tools/fit-review-ui/**",
       "eslint.config.js",
     ],

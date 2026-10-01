@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>FigForge · Semantische Relevanzprüfung</title>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <a class="skip-link" href="#review">Zur Bewertung springen</a>
+    <header>
+      <div>
+        <p class="eyebrow">FigForge · nur lokal</p>
+        <h1>Semantische Relevanzprüfung</h1>
+        <p class="intro">Bewerte die sichtbaren Treffer. Systemherkunft und Holdout bleiben verborgen.</p>
+      </div>
+      <div class="progress-card" aria-live="polite">
+        <span id="progress-label">Lade Fortschritt …</span>
+        <progress id="progress" max="1" value="0"></progress>
+      </div>
+    </header>
+
+    <main id="review" tabindex="-1">
+      <section class="guidance" aria-labelledby="guidance-title">
+        <h2 id="guidance-title">Bewertungsmaßstab</h2>
+        <div class="scale">
+          <span><strong>0</strong> unpassend</span>
+          <span><strong>1</strong> akzeptabel</span>
+          <span><strong>2</strong> sehr passend</span>
+        </div>
+        <p>Bewerte Suchtext gegen Bild, Katalogname, Kategorie und Farbe. Es geht nicht um Kaufbarkeit oder physische Passform.</p>
+      </section>
+
+      <nav class="case-nav" aria-label="Anfragenavigation">
+        <button id="previous" type="button">← Vorherige</button>
+        <label for="case-select">Anfrage</label>
+        <select id="case-select"></select>
+        <button id="next-unanswered" type="button">Nächste offene</button>
+        <button id="next" type="button">Nächste →</button>
+      </nav>
+
+      <section class="query-card" aria-labelledby="query-title">
+        <p id="case-meta" class="eyebrow"></p>
+        <h2 id="query-title"></h2>
+        <p id="case-progress"></p>
+      </section>
+      <section id="candidates" class="candidates" aria-label="Trefferkandidaten"></section>
+
+      <section class="export-card">
+        <div>
+          <h2>Ergebnis exportieren</h2>
+          <p>Bewertungen und Messbericht werden nach vollständiger Development-Prüfung freigeschaltet.</p>
+        </div>
+        <div class="export-actions">
+          <a id="export" class="export-link disabled" aria-disabled="true">Bewertungen</a>
+          <a id="report" class="export-link disabled" aria-disabled="true">Messbericht</a>
+        </div>
+      </section>
+      <p id="status" class="status" role="status" aria-live="polite"></p>
+    </main>
+    <script type="module" src="/app.js"></script>
+  </body>
+</html>
+

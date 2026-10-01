@@ -1,0 +1,43 @@
+{
+  "schemaVersion": 1,
+  "updatedAt": "2026-10-01T15:30:00Z",
+  "sourcePolicy": "Nur Rebrickable Catalog Downloads/CSV, keine MOC-Dateien.",
+  "reviewStatus": "curated-queries-human-relevance-pending",
+  "cases": [
+    { "caseId": "release-dev-en-green-alien-face", "split": "development", "language": "en", "role": "head", "query": "green alien face" },
+    { "caseId": "release-dev-en-angry-bearded-face", "split": "development", "language": "en", "role": "head", "query": "angry face with beard" },
+    { "caseId": "release-dev-de-yellow-sunglasses-head", "split": "development", "language": "de", "role": "head", "query": "gelber Kopf mit Sonnenbrille" },
+    { "caseId": "release-dev-de-smiling-freckles", "split": "development", "language": "de", "role": "head", "query": "lächelndes Gesicht mit Sommersprossen" },
+    { "caseId": "release-dev-en-robot-red-eyes", "split": "development", "language": "en", "role": "head", "query": "robot face with red eyes" },
+    { "caseId": "release-dev-de-eyepatch-beard", "split": "development", "language": "de", "role": "head", "query": "Kopf mit Augenklappe und Bart" },
+
+    { "caseId": "release-dev-en-black-knight-helmet", "split": "development", "language": "en", "role": "headwear", "query": "black knight helmet" },
+    { "caseId": "release-dev-de-red-ponytail", "split": "development", "language": "de", "role": "headwear", "query": "rote Haare mit Pferdeschwanz" },
+    { "caseId": "release-dev-en-wizard-hat-stars", "split": "development", "language": "en", "role": "headwear", "query": "wizard hat with stars" },
+    { "caseId": "release-dev-en-blonde-braided-hair", "split": "development", "language": "en", "role": "headwear", "query": "blonde braided hair" },
+    { "caseId": "release-dev-de-black-pirate-hat", "split": "development", "language": "de", "role": "headwear", "query": "schwarzer Piratenhut" },
+
+    { "caseId": "release-dev-en-blue-police-uniform", "split": "development", "language": "en", "role": "torsoAssembly", "query": "blue police uniform torso" },
+    { "caseId": "release-dev-de-black-knight-torso", "split": "development", "language": "de", "role": "torsoAssembly", "query": "schwarzer Ritter Torso" },
+    { "caseId": "release-dev-en-space-control-panel", "split": "development", "language": "en", "role": "torsoAssembly", "query": "space suit torso with control panel" },
+    { "caseId": "release-dev-de-red-pirate-no-armor", "split": "development", "language": "de", "role": "torsoAssembly", "query": "roter Piraten Torso ohne Rüstung" },
+
+    { "caseId": "release-dev-en-silver-robot-legs", "split": "development", "language": "en", "role": "legsAssembly", "query": "silver robot legs" },
+    { "caseId": "release-dev-de-black-red-boots", "split": "development", "language": "de", "role": "legsAssembly", "query": "schwarze Beine mit roten Stiefeln" },
+    { "caseId": "release-dev-en-blue-jeans", "split": "development", "language": "en", "role": "legsAssembly", "query": "blue jeans legs" },
+
+    { "caseId": "release-dev-en-golden-sword", "split": "development", "language": "en", "role": "handAccessory", "query": "golden sword" },
+    { "caseId": "release-dev-de-magic-wand", "split": "development", "language": "de", "role": "handAccessory", "query": "Zauberstab" },
+
+    { "caseId": "release-holdout-en-three-eyed-alien", "split": "holdout", "language": "en", "role": "head", "query": "alien with three eyes" },
+    { "caseId": "release-holdout-de-sad-glasses", "split": "holdout", "language": "de", "role": "head", "query": "trauriges Gesicht mit Brille" },
+    { "caseId": "release-holdout-en-samurai-helmet", "split": "holdout", "language": "en", "role": "headwear", "query": "samurai helmet" },
+    { "caseId": "release-holdout-de-brown-curly-hair", "split": "holdout", "language": "de", "role": "headwear", "query": "braune lockige Haare" },
+    { "caseId": "release-holdout-en-firefighter-jacket", "split": "holdout", "language": "en", "role": "torsoAssembly", "query": "firefighter jacket" },
+    { "caseId": "release-holdout-de-green-ninja-armor", "split": "holdout", "language": "de", "role": "torsoAssembly", "query": "grüne Ninja Rüstung" },
+    { "caseId": "release-holdout-en-short-dark-blue-legs", "split": "holdout", "language": "en", "role": "legsAssembly", "query": "short dark blue legs" },
+    { "caseId": "release-holdout-de-white-astronaut-legs", "split": "holdout", "language": "de", "role": "legsAssembly", "query": "weiße Astronautenbeine" },
+    { "caseId": "release-holdout-en-lion-shield", "split": "holdout", "language": "en", "role": "handAccessory", "query": "shield with lion" },
+    { "caseId": "release-holdout-de-black-axe", "split": "holdout", "language": "de", "role": "handAccessory", "query": "schwarze Axt" }
+  ]
+}
