@@ -27,7 +27,7 @@ const root = process.cwd();
 const updatedAt = "2026-10-01T16:30:00Z";
 const querySetPath = resolve(root, "data/curated/semantic-search-release-review-queries.json");
 const releaseManifestPath = resolve(root, "data/generated/semantic-search-release.json");
-const outputPath = resolve(root, "data/review/semantic-search-release-review.json");
+const outputPath = resolve(root, process.argv[2] ?? "data/review/semantic-search-release-review.json");
 const sha256 = (content: Uint8Array | string): string => createHash("sha256").update(content).digest("hex");
 const keyFor = (role: CatalogRole, partNum: string): string => `${role}:${partNum.toLowerCase()}`;
 const roleFiles: Record<CatalogRole, string> = {

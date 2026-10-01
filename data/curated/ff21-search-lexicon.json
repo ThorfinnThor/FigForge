@@ -5,7 +5,7 @@
   "updatedAt": "2026-09-27T16:30:00Z",
   "sourcePolicy": "Nur Rebrickable Catalog Downloads/CSV, keine MOC-Dateien.",
   "baseLexiconPath": "data/curated/ff17-search-lexicon.json",
-  "baseLexiconSha256": "3aeaf50fc767010b596051981c76d446df4ebc9c8f499022833b670e3526ef11",
+  "baseLexiconSha256": "c41ce85657cb6b85244aaa1329911e878008ed7ae653bbac608d99d7ab9826a3",
   "reviewStatus": "proposed; human-review-pending",
   "entries": [
     {
