@@ -339,7 +339,7 @@ for (const entry of catalog.entries) {
   assert(entry.componentId.startsWith(`catalog:${entry.role}:`));
   assert(entry.ldrawFile.startsWith("parts/"));
   assert(!entry.ldrawFile.toLowerCase().includes("moc"));
-  assert(["exact-filename", "explicit-keyword", "official-assembly-wrapper", "rebrickable-print-parent", "rebrickable-assembly-code"].includes(entry.mappingEvidence));
+  assert(["curated-official-metadata", "exact-filename", "explicit-keyword", "official-assembly-wrapper", "rebrickable-print-parent", "rebrickable-assembly-code"].includes(entry.mappingEvidence));
   if (entry.mappingEvidence === "official-assembly-wrapper") {
     const assemblyWrapperFor = entry.assemblyWrapperFor;
     if (!assemblyWrapperFor?.startsWith("parts/")) throw new Error(`Missing assembly wrapper source: ${entry.componentId}`);
@@ -396,9 +396,14 @@ for (const entry of catalog.entries) {
       assert.equal(component.colorName, expectedColorName, `Wrong ${component.colorRole} colour: ${entry.componentId}`);
       assert.equal(component.colorRgb, expectedColorName ? colorRgbByName.get(expectedColorName) : null);
     }
-    // A printed number without its own official file keeps the plain body and must say its print is not rendered.
-    const plainBodyFile = colors.kind === "torso" ? "parts/973.dat" : "parts/3815b.dat";
-    assert.equal(composition.printRendered, !parsed.printed || entry.ldrawFile !== plainBodyFile);
+    // A printed number is rendered only when at least one composed official component carries a pattern.
+    const componentDescriptions = await Promise.all(composition.components.map(async ({ file }) =>
+      (await readFile(resolve(libraryRoot, file), "utf8")).split(/\r?\n/u)[0] ?? ""
+    ));
+    assert.equal(
+      composition.printRendered,
+      !parsed.printed || componentDescriptions.some((description) => /\bPattern\b/u.test(description)),
+    );
     if (composition.printRendered) {
       assert.equal(entry.geometryFallback, null);
     } else {

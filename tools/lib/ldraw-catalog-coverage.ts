@@ -2,6 +2,11 @@ import { readFile, readdir } from "node:fs/promises";
 import { basename, resolve } from "node:path";
 import { catalogPackageSchema, type CatalogPackagePart, type CatalogRole } from "../../src/contracts/catalog-package.js";
 import { rebrickableKeywordIds } from "./ldraw-keywords.js";
+import {
+  ambiguousMappingKey,
+  readAmbiguousMappingResolutions,
+  selectedAmbiguousMappings,
+} from "./ldraw-ambiguous-mapping-resolutions.js";
 import { resolveOfficialLDrawMappingFile } from "./ldraw-official-mapping.js";
 
 const SOURCE_POLICY = "Nur Rebrickable Catalog Downloads/CSV, keine MOC-Dateien." as const;
@@ -14,7 +19,7 @@ const packages = [
   ["handAccessory", "hand-accessory.json"],
 ] as const satisfies ReadonlyArray<readonly [CatalogRole, string]>;
 
-type MatchType = "exact-filename" | "explicit-keyword" | "rebrickable-print-parent";
+type MatchType = "curated-official-metadata" | "exact-filename" | "explicit-keyword" | "rebrickable-print-parent";
 type RemainingClassification =
   | "builder-blocked"
   | "render-failed"
@@ -112,6 +117,8 @@ export async function buildLDrawCatalogCoverage(
     archiveSha256: string;
   }>(resolve(root, "data/ldraw-source.lock.json"));
   if (ldrawLock.sourcePolicy !== SOURCE_POLICY) throw new Error("LDraw source policy mismatch");
+  const ambiguousMappingResolutions = await readAmbiguousMappingResolutions(root);
+  const ambiguousMappingSelections = selectedAmbiguousMappings(ambiguousMappingResolutions);
 
   const catalogManifest = await readJson<{
     sourcePolicy: string;
@@ -238,7 +245,12 @@ export async function buildLDrawCatalogCoverage(
 
       const candidates = candidateIndex.get(normalize(part.rebrickablePartNum)) ?? [];
       const rawDirectFiles = [...new Set(candidates.map(({ file }) => file))].sort();
-      const resolvedFile = resolveOfficialLDrawMappingFile(candidates, sourceByFile, fileIndex);
+      const curatedSelection = ambiguousMappingSelections.get(ambiguousMappingKey(role, part.rebrickablePartNum));
+      if (curatedSelection && !candidates.some(({ file }) => file === curatedSelection.selectedFile)) {
+        throw new Error(`Curated official mapping is not a candidate: ${key}`);
+      }
+      const resolvedFile = curatedSelection?.selectedFile
+        ?? resolveOfficialLDrawMappingFile(candidates, sourceByFile, fileIndex);
       const directFiles = resolvedFile ? [resolvedFile] : rawDirectFiles;
       if (directFiles.length === 1) uniqueOfficialMappingCount += 1;
       if (directFiles.length > 1) ambiguousOfficialMappingCount += 1;
@@ -263,7 +275,7 @@ export async function buildLDrawCatalogCoverage(
         classification,
         ldrawFiles: reportFiles,
         mappingEvidence: directFiles.length > 0
-          ? [...new Set(candidates.map(({ matchType }) => matchType))].sort()
+          ? curatedSelection ? ["curated-official-metadata"] : [...new Set(candidates.map(({ matchType }) => matchType))].sort()
           : renderFailures.length > 0 ? ["rebrickable-print-parent"] : [],
         reason,
       });
@@ -301,6 +313,7 @@ export async function buildLDrawCatalogCoverage(
       "Catalog scope is limited to the five minifigure-relevant packages derived from locked Rebrickable Catalog Downloads/CSV.",
       "Official LDraw matches require either an exact top-level parts/*.dat filename or an explicit !KEYWORDS Rebrickable identifier.",
       "When an LDraw filename collides with an explicit Rebrickable keyword mapping, the explicit mapping wins; official Part Alias and ~Moved to wrappers are reduced to their canonical target before uniqueness is assessed. Genuinely different keyword targets remain ambiguous.",
+      "Ambiguous official mappings are selected only through the audited curated resolution table when the locked catalog name or official redirect/description distinguishes one candidate; collapsed colour, mould and pose variants remain blocked.",
       "Head, headwear, complete torso-assembly and complete legs-assembly print variants may reuse a unique unprinted parent geometry only when part_relationships.csv explicitly declares the print relationship.",
       "Torso entries become builder-ready only when the official LDraw file is a complete shortcut: either a 973-family torso with both arms and hands, or one of the explicitly recognized complete wing, flipper, pirate-hook, mechanical-arm or short-torso component signatures.",
       "Lower-body entries become builder-ready only when the official top-level LDraw title explicitly declares a complete Minifig Hips and Legs assembly, an allowlisted complete Hips replacement family (Ghost, Skirt, Tentacles, Mermaid Tail or Genie), or an allowlisted complete legs family with a centered torso-compatible stud (Minecraft Enderman or Bionicle).",

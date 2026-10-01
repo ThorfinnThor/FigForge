@@ -41,6 +41,11 @@ import {
   type HandPlacementCandidate,
 } from "./lib/ldraw-placement-candidates.js";
 import { collectVendoredLDCadHandGripEvidence } from "./lib/ldcad-shadow-connectivity.js";
+import {
+  ambiguousMappingKey,
+  readAmbiguousMappingResolutions,
+  selectedAmbiguousMappings,
+} from "./lib/ldraw-ambiguous-mapping-resolutions.js";
 import { resolveOfficialLDrawMappingFile } from "./lib/ldraw-official-mapping.js";
 import { writeLDrawRuntimePackages } from "./lib/ldraw-runtime-packages.js";
 
@@ -99,6 +104,7 @@ type SourceLock = {
 type Candidate = {
   file: string;
   matchType:
+    | "curated-official-metadata"
     | "exact-filename"
     | "explicit-keyword"
     | "official-assembly-wrapper"
@@ -351,8 +357,16 @@ for (const file of topLevelParts) {
   }
 }
 const topLevelSourceByFile = new Map(topLevelParts.map((file) => [file, sourceCache.get(file)!]));
-const resolvedCandidatesFor = (partNum: string): Candidate[] => {
+const ambiguousMappingResolutions = await readAmbiguousMappingResolutions(root);
+const ambiguousMappingSelections = selectedAmbiguousMappings(ambiguousMappingResolutions);
+const resolvedCandidatesFor = (partNum: string, role: CatalogRole): Candidate[] => {
   const candidates = candidateIndex.get(normalize(partNum)) ?? [];
+  const curated = ambiguousMappingSelections.get(ambiguousMappingKey(role, partNum));
+  if (curated) {
+    const selected = candidates.find(({ file }) => file === curated.selectedFile);
+    if (!selected) throw new Error(`Curated official mapping is not a candidate: ${role}:${partNum}`);
+    return [{ ...selected, matchType: "curated-official-metadata" }];
+  }
   const resolvedFile = resolveOfficialLDrawMappingFile(candidates, topLevelSourceByFile, fileIndex);
   if (!resolvedFile) return candidates;
   const existing = candidates.find(({ file, matchType }) => file === resolvedFile && matchType === "explicit-keyword")
@@ -444,6 +458,30 @@ const isTorsoPrintPart = async (file: string): Promise<boolean> => {
   return /^0\s+!LDRAW_ORG\s+Part\b/mu.test(source) && /^0\s+Minifig Torso\b/u.test(source.trimStart());
 };
 
+const uniquePrintedLegComponents = async (
+  files: string[],
+): Promise<Map<"3815b" | "3816c" | "3817c", string> | null> => {
+  const candidates = new Map<"3815b" | "3816c" | "3817c", string[]>();
+  for (const file of files) {
+    const description = (await sourceFor(file)).split(/\r?\n/u)[0] ?? "";
+    const component = /^0 Minifig Hips\b/u.test(description)
+      ? "3815b"
+      : /^0 Minifig Leg Right\b/u.test(description)
+        ? "3816c"
+        : /^0 Minifig Leg Left\b/u.test(description) ? "3817c" : null;
+    if (component) candidates.set(component, [...(candidates.get(component) ?? []), file]);
+  }
+  const right = candidates.get("3816c") ?? [];
+  const left = candidates.get("3817c") ?? [];
+  const hips = candidates.get("3815b") ?? [];
+  if (right.length !== 1 || left.length !== 1 || hips.length > 1) return null;
+  return new Map([
+    ...(hips.length === 1 ? [["3815b", hips[0]!] as const] : []),
+    ["3816c", right[0]!],
+    ["3817c", left[0]!],
+  ]);
+};
+
 // Builds a standard assembly from official parts when the Rebrickable number and name both state its colours.
 const composeColorCodedAssembly = async (
   part: CatalogPackagePart,
@@ -459,11 +497,16 @@ const composeColorCodedAssembly = async (
   );
   if (!colors) return null;
   const officialFiles = [...new Set((candidateIndex.get(normalize(part.rebrickablePartNum)) ?? []).map(({ file }) => file))];
+  const printedLegComponents = parsed.kind === "legs" && parsed.printed && !parsed.bootCode
+    ? await uniquePrintedLegComponents(officialFiles)
+    : null;
   const plainBodyFile = colors.kind === "torso" ? "parts/973.dat" : "parts/3815b.dat";
   let bodyFile: string;
   if (colors.kind === "torso" && parsed.printed && officialFiles.length === 1) {
     if (!(await isTorsoPrintPart(officialFiles[0]!))) return null;
     bodyFile = officialFiles[0]!;
+  } else if (printedLegComponents) {
+    bodyFile = printedLegComponents.get("3815b") ?? plainBodyFile;
   } else if ((parsed.kind === "legs" && parsed.bootCode) || parsed.kind === "splitLegs") {
     // Exact keyword matches for these numbers are the separate left/right leg files,
     // never a complete lower body. The official dual-mould shortcut is expanded below.
@@ -473,7 +516,7 @@ const composeColorCodedAssembly = async (
     if (officialFiles.length > 0 && !obsoleteLDrawLegAliasCollisions.has(part.rebrickablePartNum)) return null;
     bodyFile = plainBodyFile;
   }
-  const printRendered = !parsed.printed || bodyFile !== plainBodyFile;
+  const printRendered = !parsed.printed || bodyFile !== plainBodyFile || Boolean(printedLegComponents);
   const colorVariants = normalizedByPartNum.get(normalize(part.rebrickablePartNum))?.colorVariants ?? [];
   const catalogRgbs = [...new Set(colorVariants
     .map(({ rgb }) => rgb)
@@ -505,7 +548,8 @@ const composeColorCodedAssembly = async (
     : colors.kind === "torso" ? referenceAssemblies.torso : referenceAssemblies.legs;
   const components = reference.lines.map(({ component, transform }) => {
     const { colorRole, colorName } = colorFor(component);
-    const file = component === "973" || component === "3815b" ? bodyFile : plainComponentFiles[component];
+    const file = printedLegComponents?.get(component as "3815b" | "3816c" | "3817c")
+      ?? (component === "973" || component === "3815b" ? bodyFile : plainComponentFiles[component]);
     if (!file) throw new Error(`Missing assembly component file: ${component}`);
     return {
       file,
@@ -567,7 +611,7 @@ const uniqueOfficialAssemblyWrapper = (
   part: CatalogPackagePart,
   role: CatalogRole,
 ): { candidate: Candidate | null; candidateCount: number } => {
-  const mapped = resolvedCandidatesFor(part.rebrickablePartNum);
+  const mapped = resolvedCandidatesFor(part.rebrickablePartNum, role);
   const mappedFiles = [...new Set(mapped.map(({ file }) => file))];
   if (mappedFiles.length !== 1) return { candidate: null, candidateCount: 0 };
   const mappedFile = mappedFiles[0]!;
@@ -636,7 +680,7 @@ for (const role of BUILD_ROLES) {
           continue;
         }
       }
-      const resolved = resolvedCandidatesFor(part.rebrickablePartNum);
+      const resolved = resolvedCandidatesFor(part.rebrickablePartNum, role);
       const resolvedSupported = [];
       for (const candidate of resolved) {
         if (await supportsRoleAssembly(role, candidate)) resolvedSupported.push(candidate);
