@@ -22,9 +22,9 @@
     "automaticBuilderEnablements": 0
   },
   "summary": {
-    "placementProfileRequiredCount": 487,
+    "placementProfileRequiredCount": 484,
     "uniqueRadius4CandidateCount": 13,
-    "multipleRadius4CandidateCount": 107,
+    "multipleRadius4CandidateCount": 104,
     "noRadius4CylinderDetectedCount": 270,
     "roleSpecificAssemblyProfileRequiredCount": 97,
     "noOfficialMappingQueueCount": 4904,
@@ -8964,90 +8964,6 @@
       "limitation": "Several possible shafts exist; selecting one automatically would guess the intended grip."
     },
     {
-      "catalogId": "part:30092",
-      "role": "handAccessory",
-      "rebrickablePartNum": "30092",
-      "name": "Equipment Underwater Scooter, 2 Bar Handles, Octagonal End",
-      "ldrawFiles": [
-        "parts/30092.dat"
-      ],
-      "mappingEvidence": [
-        "exact-filename"
-      ],
-      "analysis": "multiple-radius-4-cylinder-candidates",
-      "evidence": [
-        {
-          "primitive": "p/4-4cyli.dat",
-          "radiusLdu": 4,
-          "lengthLdu": 12,
-          "centerLdu": [
-            0,
-            58,
-            0
-          ],
-          "axis": [
-            0,
-            -1,
-            0
-          ],
-          "sourceConnectorTransformLdu": [
-            -1,
-            0,
-            0,
-            0,
-            0,
-            -1,
-            0,
-            0,
-            0,
-            0,
-            -1,
-            0,
-            0,
-            58,
-            0,
-            1
-          ]
-        },
-        {
-          "primitive": "p/4-4cyli.dat",
-          "radiusLdu": 4,
-          "lengthLdu": 16,
-          "centerLdu": [
-            0,
-            44,
-            0
-          ],
-          "axis": [
-            0,
-            1,
-            0
-          ],
-          "sourceConnectorTransformLdu": [
-            -1,
-            0,
-            0,
-            0,
-            0,
-            1,
-            0,
-            0,
-            0,
-            0,
-            -1,
-            0,
-            0,
-            44,
-            0,
-            1
-          ]
-        }
-      ],
-      "proposedPlacementTransformLdu": null,
-      "automaticBuilderEnablement": false,
-      "limitation": "Several possible shafts exist; selecting one automatically would guess the intended grip."
-    },
-    {
       "catalogId": "part:30106",
       "role": "handAccessory",
       "rebrickablePartNum": "30106",
@@ -12723,91 +12639,6 @@
       "limitation": "Official LDraw files can encode shafts as direct mesh triangles, so absence of a cylinder primitive is not proof that no grip exists."
     },
     {
-      "catalogId": "part:56619",
-      "role": "handAccessory",
-      "rebrickablePartNum": "56619",
-      "name": "Equipment Handcuffs Long [Batman]",
-      "ldrawFiles": [
-        "parts/55707d.dat"
-      ],
-      "mappingEvidence": [
-        "exact-filename",
-        "explicit-keyword"
-      ],
-      "analysis": "multiple-radius-4-cylinder-candidates",
-      "evidence": [
-        {
-          "primitive": "p/4-4cyli.dat",
-          "radiusLdu": 4,
-          "lengthLdu": 8,
-          "centerLdu": [
-            -4,
-            0,
-            0
-          ],
-          "axis": [
-            1,
-            0,
-            0
-          ],
-          "sourceConnectorTransformLdu": [
-            0,
-            0,
-            -1,
-            0,
-            1,
-            0,
-            0,
-            0,
-            0,
-            -1,
-            0,
-            0,
-            -4,
-            0,
-            0,
-            1
-          ]
-        },
-        {
-          "primitive": "p/4-4cyli.dat",
-          "radiusLdu": 4,
-          "lengthLdu": 8,
-          "centerLdu": [
-            4,
-            0,
-            0
-          ],
-          "axis": [
-            -1,
-            0,
-            0
-          ],
-          "sourceConnectorTransformLdu": [
-            0,
-            0,
-            1,
-            0,
-            -1,
-            0,
-            0,
-            0,
-            0,
-            -1,
-            0,
-            0,
-            4,
-            0,
-            0,
-            1
-          ]
-        }
-      ],
-      "proposedPlacementTransformLdu": null,
-      "automaticBuilderEnablement": false,
-      "limitation": "Several possible shafts exist; selecting one automatically would guess the intended grip."
-    },
-    {
       "catalogId": "part:57503",
       "role": "handAccessory",
       "rebrickablePartNum": "57503",
@@ -13378,91 +13209,6 @@
       "proposedPlacementTransformLdu": null,
       "automaticBuilderEnablement": false,
       "limitation": "Official LDraw files can encode shafts as direct mesh triangles, so absence of a cylinder primitive is not proof that no grip exists."
-    },
-    {
-      "catalogId": "part:61190f",
-      "role": "handAccessory",
-      "rebrickablePartNum": "61190f",
-      "name": "Weapon Gun / Blaster Small DC-17 (Star Wars Accessory)",
-      "ldrawFiles": [
-        "parts/61190a.dat"
-      ],
-      "mappingEvidence": [
-        "exact-filename",
-        "explicit-keyword"
-      ],
-      "analysis": "multiple-radius-4-cylinder-candidates",
-      "evidence": [
-        {
-          "primitive": "p/4-4cylc.dat",
-          "radiusLdu": 4,
-          "lengthLdu": 15,
-          "centerLdu": [
-            0,
-            -0.5,
-            0.002
-          ],
-          "axis": [
-            0,
-            -1,
-            0
-          ],
-          "sourceConnectorTransformLdu": [
-            0,
-            0,
-            -1,
-            0,
-            0,
-            -1,
-            0,
-            0,
-            -1,
-            0,
-            0,
-            0,
-            0,
-            -0.5,
-            0.002,
-            1
-          ]
-        },
-        {
-          "primitive": "p/4-4cylc.dat",
-          "radiusLdu": 4.000108,
-          "lengthLdu": 11.250397,
-          "centerLdu": [
-            0,
-            -16.81,
-            -17.5585
-          ],
-          "axis": [
-            0,
-            0.258835,
-            0.965921
-          ],
-          "sourceConnectorTransformLdu": [
-            0,
-            -0.965948,
-            0.258736,
-            0,
-            0,
-            0.258835,
-            0.965921,
-            0,
-            -1,
-            0,
-            0,
-            0,
-            0,
-            -16.81,
-            -17.5585,
-            1
-          ]
-        }
-      ],
-      "proposedPlacementTransformLdu": null,
-      "automaticBuilderEnablement": false,
-      "limitation": "Several possible shafts exist; selecting one automatically would guess the intended grip."
     },
     {
       "catalogId": "part:61199",

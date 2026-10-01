@@ -32,17 +32,17 @@
   },
   "summary": {
     "catalogPartCount": 20202,
-    "visualizedPartCount": 14798,
-    "builderReadyPartCount": 14796,
-    "remainingCatalogPartCount": 5406,
-    "remainingWithoutVisualizationCount": 5404,
+    "visualizedPartCount": 14801,
+    "builderReadyPartCount": 14799,
+    "remainingCatalogPartCount": 5403,
+    "remainingWithoutVisualizationCount": 5401,
     "uniqueOfficialMappingCount": 2834,
     "ambiguousOfficialMappingCount": 168,
     "noOfficialMappingCount": 17200,
     "remainingClassifications": {
       "builder-blocked": 2,
       "render-failed": 0,
-      "placement-profile-required": 487,
+      "placement-profile-required": 484,
       "ambiguous-official-mapping": 13,
       "no-official-mapping": 4904
     }
@@ -98,12 +98,12 @@
     },
     "handAccessory": {
       "catalogPartCount": 1308,
-      "builderReadyPartCount": 293,
-      "remainingCatalogPartCount": 1015,
+      "builderReadyPartCount": 296,
+      "remainingCatalogPartCount": 1012,
       "remainingClassifications": {
         "builder-blocked": 1,
         "render-failed": 0,
-        "placement-profile-required": 390,
+        "placement-profile-required": 387,
         "ambiguous-official-mapping": 4,
         "no-official-mapping": 620
       }
@@ -49541,20 +49541,6 @@
       "reason": null
     },
     {
-      "catalogId": "part:30092",
-      "role": "handAccessory",
-      "rebrickablePartNum": "30092",
-      "name": "Equipment Underwater Scooter, 2 Bar Handles, Octagonal End",
-      "classification": "placement-profile-required",
-      "ldrawFiles": [
-        "parts/30092.dat"
-      ],
-      "mappingEvidence": [
-        "exact-filename"
-      ],
-      "reason": null
-    },
-    {
       "catalogId": "part:30106",
       "role": "handAccessory",
       "rebrickablePartNum": "30106",
@@ -51670,21 +51656,6 @@
       "reason": null
     },
     {
-      "catalogId": "part:56619",
-      "role": "handAccessory",
-      "rebrickablePartNum": "56619",
-      "name": "Equipment Handcuffs Long [Batman]",
-      "classification": "placement-profile-required",
-      "ldrawFiles": [
-        "parts/55707d.dat"
-      ],
-      "mappingEvidence": [
-        "exact-filename",
-        "explicit-keyword"
-      ],
-      "reason": null
-    },
-    {
       "catalogId": "part:57099",
       "role": "handAccessory",
       "rebrickablePartNum": "57099",
@@ -51893,21 +51864,6 @@
       "classification": "no-official-mapping",
       "ldrawFiles": [],
       "mappingEvidence": [],
-      "reason": null
-    },
-    {
-      "catalogId": "part:61190f",
-      "role": "handAccessory",
-      "rebrickablePartNum": "61190f",
-      "name": "Weapon Gun / Blaster Small DC-17 (Star Wars Accessory)",
-      "classification": "placement-profile-required",
-      "ldrawFiles": [
-        "parts/61190a.dat"
-      ],
-      "mappingEvidence": [
-        "exact-filename",
-        "explicit-keyword"
-      ],
       "reason": null
     },
     {

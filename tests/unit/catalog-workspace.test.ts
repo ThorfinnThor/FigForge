@@ -45,7 +45,7 @@ describe("FF-14 responsive catalog workspace", () => {
       legsAssembly: 3_231,
       handAccessory: 1_308,
     });
-    expect(allParts.filter(builderComponentForCatalogPart)).toHaveLength(14_805);
+    expect(allParts.filter(builderComponentForCatalogPart)).toHaveLength(14_808);
   }, 15_000);
 
   it("defines responsive tabs, drawer focus return and keyboard dismissal", async () => {
@@ -96,11 +96,11 @@ describe("FF-14 responsive catalog workspace", () => {
     expect(allParts.filter((part) => {
       const builderComponent = builderComponentForCatalogPart(part);
       return builderComponent && verifiedLDrawEntryForComponent(builderComponent.id);
-    })).toHaveLength(14_798);
+    })).toHaveLength(14_801);
     expect(allParts.filter((part) => {
       const builderComponent = builderComponentForCatalogPart(part);
       return builderComponent && digitallySupportedLDrawEntryForComponent(builderComponent.id);
-    })).toHaveLength(14_796);
+    })).toHaveLength(14_799);
     expect(cardSource).toContain("Geometrie ohne Druck");
     expect(cardSource).toContain('disabled={connectionStatus !== "digitally-supported"}');
     expect(cardSource).toContain("In Figur einsetzen");
@@ -241,6 +241,20 @@ describe("FF-14 responsive catalog workspace", () => {
       expect(expandedCatalog.entries.find((entry) => entry.rebrickablePartNum === partNum)?.digitalValidation)
         .toMatchObject({ clearanceMode: "closed-mesh", collisionSampleCount: 0 });
     }
+    for (const partNum of blocked) expect(entryFor(partNum)).toBeUndefined();
+  });
+
+  it("uses unique pinned snap evidence to resolve only three multi-cylinder accessories", async () => {
+    const accessories = await loadCatalogParts("handAccessory");
+    const passed = ["30092", "56619", "61190f"];
+    const blocked = ["4341", "10172", "10172pr0001", "89801"];
+    const entryFor = (partNum: string) => {
+      const part = accessories.find(({ rebrickablePartNum }) => rebrickablePartNum === partNum);
+      const component = part ? builderComponentForCatalogPart(part) : undefined;
+      return component ? digitallySupportedLDrawEntryForComponent(component.id) : undefined;
+    };
+
+    for (const partNum of passed) expect(entryFor(partNum)).toBeDefined();
     for (const partNum of blocked) expect(entryFor(partNum)).toBeUndefined();
   });
 

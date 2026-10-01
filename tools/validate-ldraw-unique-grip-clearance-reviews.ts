@@ -2,10 +2,12 @@ import assert from "node:assert/strict";
 import { readFile } from "node:fs/promises";
 import { resolve } from "node:path";
 import { catalogPackageSchema } from "../src/contracts/catalog-package.js";
+import { readMultipleGripClearanceReviews } from "./lib/ldraw-multiple-grip-clearance-reviews.js";
 import { readUniqueGripClearanceReviews } from "./lib/ldraw-unique-grip-clearance-reviews.js";
 
 const root = process.cwd();
 const reviews = await readUniqueGripClearanceReviews(root);
+const multipleGripReviews = await readMultipleGripClearanceReviews(root);
 const catalogSource: unknown = JSON.parse(await readFile(
   resolve(root, "data/generated/catalog-packages/hand-accessory.json"),
   "utf8",
@@ -96,7 +98,12 @@ const closedMeshEntries = expanded.entries.filter(({ digitalValidation }) =>
 );
 assert.deepEqual(
   new Set(closedMeshEntries.map(({ rebrickablePartNum }) => rebrickablePartNum)),
-  new Set(passed.map(({ rebrickablePartNum }) => rebrickablePartNum)),
+  new Set([
+    ...passed.map(({ rebrickablePartNum }) => rebrickablePartNum),
+    ...multipleGripReviews.reviews
+      .filter(({ expectedResult }) => expectedResult === "passed")
+      .map(({ rebrickablePartNum }) => rebrickablePartNum),
+  ]),
 );
 assert.equal(placement.summary.uniqueRadius4CandidateCount, blocked.length);
 assert.deepEqual(remainingUnique, new Set(blocked.map(({ rebrickablePartNum }) => rebrickablePartNum)));
