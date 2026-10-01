@@ -98,9 +98,15 @@ type SourceLock = {
 
 type Candidate = {
   file: string;
-  matchType: "exact-filename" | "explicit-keyword" | "rebrickable-print-parent" | "rebrickable-assembly-code";
+  matchType:
+    | "exact-filename"
+    | "explicit-keyword"
+    | "official-assembly-wrapper"
+    | "rebrickable-print-parent"
+    | "rebrickable-assembly-code";
   update: string;
   printParentPartNums?: string[];
+  wrappedPartFile?: string;
 };
 
 type NormalizedPart = {
@@ -530,6 +536,55 @@ const supportsRoleAssembly = async (role: CatalogRole, candidate: Candidate): Pr
   return true;
 };
 
+const roleAssemblyWrappersByComponent = new Map<string, Candidate[]>();
+for (const wrapperFile of topLevelParts) {
+  const wrapperSource = await sourceFor(wrapperFile);
+  for (const role of ["torsoAssembly", "legsAssembly"] as const) {
+    const wrapper = { file: wrapperFile, matchType: "official-assembly-wrapper", update: ldrawUpdateFromSource(wrapperSource) } as const;
+    if (!(await supportsRoleAssembly(role, wrapper))) continue;
+    for (const line of wrapperSource.split(/\r?\n/u)) {
+      if (!line.startsWith("1 ")) continue;
+      const reference = line.trim().split(/\s+/u).at(-1);
+      if (!reference) continue;
+      let componentFile: string;
+      try {
+        componentFile = resolveReference(reference, fileIndex);
+      } catch {
+        continue;
+      }
+      if (!topLevelSourceByFile.has(componentFile)) continue;
+      const key = `${role}:${componentFile.toLowerCase()}`;
+      const candidates = roleAssemblyWrappersByComponent.get(key) ?? [];
+      if (!candidates.some(({ file }) => file === wrapperFile)) {
+        candidates.push({ ...wrapper, wrappedPartFile: componentFile });
+        roleAssemblyWrappersByComponent.set(key, candidates);
+      }
+    }
+  }
+}
+
+const uniqueOfficialAssemblyWrapper = (
+  part: CatalogPackagePart,
+  role: CatalogRole,
+): { candidate: Candidate | null; candidateCount: number } => {
+  const mapped = resolvedCandidatesFor(part.rebrickablePartNum);
+  const mappedFiles = [...new Set(mapped.map(({ file }) => file))];
+  if (mappedFiles.length !== 1) return { candidate: null, candidateCount: 0 };
+  const mappedFile = mappedFiles[0]!;
+  const eligible = role === "torsoAssembly"
+    ? /^973p[a-z0-9]+$/iu.test(part.rebrickablePartNum) && /^parts\/973p[a-z0-9]+\.dat$/iu.test(mappedFile)
+    : role === "legsAssembly"
+      ? /^970c\d{2}(?:pat\d{2})?pr\d+$/iu.test(part.rebrickablePartNum) && /^Hips\b/u.test(part.name)
+      : false;
+  if (!eligible) return { candidate: null, candidateCount: 0 };
+  const wrappers = roleAssemblyWrappersByComponent.get(`${role}:${mappedFile.toLowerCase()}`) ?? [];
+  const wrapperFiles = [...new Set(wrappers.map(({ file }) => file))];
+  return {
+    candidate: wrapperFiles.length === 1 ? wrappers.find(({ file }) => file === wrapperFiles[0]) ?? null : null,
+    candidateCount: wrapperFiles.length,
+  };
+};
+
 const matchedParts: Array<{
   part: CatalogPackagePart;
   candidate: Candidate;
@@ -548,6 +603,7 @@ let accessoryGripCandidatesExcluded = 0;
 let accessoryMultipleGripCandidatesEvaluated = 0;
 let accessoryLdcadGripCandidatesDisambiguated = 0;
 let accessoryLdcadPrintParentGripCandidatesEvaluated = 0;
+let ambiguousAssemblyWrappersExcluded = 0;
 for (const role of BUILD_ROLES) {
   const raw: unknown = JSON.parse(await readFile(resolve(root, "data/generated/catalog-packages", packageFileByRole[role]), "utf8"));
   const catalogPackage = catalogPackageSchema.parse(raw);
@@ -674,6 +730,24 @@ for (const role of BUILD_ROLES) {
     }
 
     if (role === "handAccessory") continue;
+
+    const officialWrapper = uniqueOfficialAssemblyWrapper(part, role);
+    if (officialWrapper.candidate) {
+      const placementTransformLdu = placementByRole.get(role);
+      if (!placementTransformLdu) throw new Error(`Missing ${role} placement transform`);
+      matchedParts.push({
+        part: { ...part, role },
+        candidate: officialWrapper.candidate,
+        placementMode: "prototype-family-origin",
+        placementTransformLdu,
+        gripCandidates: [],
+        selectedGripEvidence: null,
+        selectedGripCandidateIndex: null,
+        composition: null,
+      });
+      continue;
+    }
+    if (officialWrapper.candidateCount > 1) ambiguousAssemblyWrappersExcluded += 1;
 
     const parentCandidates = [];
     for (const parentPartNum of normalizedPart?.printParentPartNums ?? []) {
@@ -984,6 +1058,7 @@ for (const [index, match] of matchedParts.entries()) {
     ldrawFile: candidate.file,
     ldrawUpdate: candidate.update,
     mappingEvidence: candidate.matchType,
+    assemblyWrapperFor: candidate.matchType === "official-assembly-wrapper" ? candidate.wrappedPartFile : null,
     geometryFallback: isPrintParentFallback ? {
       kind: "unprinted-print-parent",
       parentPartNums: candidate.printParentPartNums,
@@ -1059,6 +1134,8 @@ const output = {
       mappingEvidence !== "rebrickable-print-parent" && mappingEvidence !== "rebrickable-assembly-code"
     ).length,
     colorCodedAssemblyCount: outputEntries.filter(({ mappingEvidence }) => mappingEvidence === "rebrickable-assembly-code").length,
+    officialAssemblyWrapperCount: outputEntries.filter(({ mappingEvidence }) => mappingEvidence === "official-assembly-wrapper").length,
+    ambiguousAssemblyWrappersExcluded,
     unprintedColorCodedAssemblyCount: outputEntries.filter(({ geometryFallback }) =>
       (geometryFallback as { kind?: string } | null)?.kind === "unprinted-assembly-code"
     ).length,

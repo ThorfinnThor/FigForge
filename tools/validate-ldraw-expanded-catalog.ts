@@ -13,6 +13,7 @@ import {
 import { handGripEvidenceFromLDCadShadow } from "./lib/ldcad-shadow-connectivity.js";
 
 const root = process.cwd();
+const libraryRoot = resolve(root, "public/assets/ldraw/official-2608");
 const sha256 = (content: string | Buffer): string => createHash("sha256").update(content).digest("hex");
 
 const lock = JSON.parse(await readFile(resolve(root, "data/ldraw-source.lock.json"), "utf8")) as {
@@ -33,6 +34,7 @@ const catalog = JSON.parse(await readFile(resolve(root, "data/generated/ldraw-ex
     ldrawFile: string;
     ldrawUpdate: string;
     mappingEvidence: string;
+    assemblyWrapperFor: string | null;
     modelUrl: string;
     modelSha256: string;
     thumbnailUrl: string;
@@ -82,6 +84,8 @@ const catalog = JSON.parse(await readFile(resolve(root, "data/generated/ldraw-ex
     handAccessoryCount: number;
     directMappingCount: number;
     colorCodedAssemblyCount: number;
+    officialAssemblyWrapperCount: number;
+    ambiguousAssemblyWrappersExcluded: number;
     unprintedColorCodedAssemblyCount: number;
     printParentGeometryFallbackCount: number;
     generatedAssetCount: number;
@@ -335,7 +339,18 @@ for (const entry of catalog.entries) {
   assert(entry.componentId.startsWith(`catalog:${entry.role}:`));
   assert(entry.ldrawFile.startsWith("parts/"));
   assert(!entry.ldrawFile.toLowerCase().includes("moc"));
-  assert(["exact-filename", "explicit-keyword", "rebrickable-print-parent", "rebrickable-assembly-code"].includes(entry.mappingEvidence));
+  assert(["exact-filename", "explicit-keyword", "official-assembly-wrapper", "rebrickable-print-parent", "rebrickable-assembly-code"].includes(entry.mappingEvidence));
+  if (entry.mappingEvidence === "official-assembly-wrapper") {
+    const assemblyWrapperFor = entry.assemblyWrapperFor;
+    if (!assemblyWrapperFor?.startsWith("parts/")) throw new Error(`Missing assembly wrapper source: ${entry.componentId}`);
+    const wrapperSource = await readFile(resolve(libraryRoot, entry.ldrawFile), "utf8");
+    const wrappedReference = assemblyWrapperFor.slice("parts/".length).toLowerCase();
+    assert(wrapperSource.split(/\r?\n/u).some((line) =>
+      line.startsWith("1 ") && line.trim().split(/\s+/u).at(-1)?.replaceAll("\\", "/").toLowerCase() === wrappedReference
+    ));
+  } else {
+    assert.equal(entry.assemblyWrapperFor, null);
+  }
   const isPrintParentFallback = entry.mappingEvidence === "rebrickable-print-parent";
   if (entry.mappingEvidence === "rebrickable-assembly-code") {
     const composition = assemblyCompositions[entry.componentId];
@@ -485,6 +500,8 @@ assert.equal(
   catalog.entries.length,
 );
 assert.equal(catalog.summary.colorCodedAssemblyCount, catalog.entries.filter(({ mappingEvidence }) => mappingEvidence === "rebrickable-assembly-code").length);
+assert.equal(catalog.summary.officialAssemblyWrapperCount, catalog.entries.filter(({ mappingEvidence }) => mappingEvidence === "official-assembly-wrapper").length);
+assert.equal(catalog.summary.ambiguousAssemblyWrappersExcluded, 6);
 assert.equal(Object.keys(assemblyCompositions).length, catalog.summary.colorCodedAssemblyCount);
 assert.equal(
   catalog.summary.unprintedColorCodedAssemblyCount,
