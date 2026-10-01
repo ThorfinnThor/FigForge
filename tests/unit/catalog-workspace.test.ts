@@ -45,7 +45,7 @@ describe("FF-14 responsive catalog workspace", () => {
       legsAssembly: 3_231,
       handAccessory: 1_308,
     });
-    expect(allParts.filter(builderComponentForCatalogPart)).toHaveLength(14_709);
+    expect(allParts.filter(builderComponentForCatalogPart)).toHaveLength(14_785);
   }, 15_000);
 
   it("defines responsive tabs, drawer focus return and keyboard dismissal", async () => {
@@ -96,11 +96,11 @@ describe("FF-14 responsive catalog workspace", () => {
     expect(allParts.filter((part) => {
       const builderComponent = builderComponentForCatalogPart(part);
       return builderComponent && verifiedLDrawEntryForComponent(builderComponent.id);
-    })).toHaveLength(14_702);
+    })).toHaveLength(14_778);
     expect(allParts.filter((part) => {
       const builderComponent = builderComponentForCatalogPart(part);
       return builderComponent && digitallySupportedLDrawEntryForComponent(builderComponent.id);
-    })).toHaveLength(14_700);
+    })).toHaveLength(14_776);
     expect(cardSource).toContain("Geometrie ohne Druck");
     expect(cardSource).toContain('disabled={connectionStatus !== "digitally-supported"}');
     expect(cardSource).toContain("In Figur einsetzen");
@@ -256,6 +256,30 @@ describe("FF-14 responsive catalog workspace", () => {
     expect(entry?.geometryFallback).toBeNull();
     expect(auditEntry?.digitalValidation?.orientationCandidatesTested).toBeGreaterThan(8);
     expect(auditEntry?.digitalValidation?.selectedOrientationIndex).toBeGreaterThanOrEqual(8);
+  });
+
+  it("uses only unique official complete assembly wrappers for legacy printed bodies", async () => {
+    const torsos = await loadCatalogParts("torsoAssembly");
+    const legs = await loadCatalogParts("legsAssembly");
+    const exactTorso = torsos.find(({ rebrickablePartNum }) => rebrickablePartNum === "973p2d");
+    const ambiguousTorso = torsos.find(({ rebrickablePartNum }) => rebrickablePartNum === "973p1e");
+    const exactLegs = legs.find(({ rebrickablePartNum }) => rebrickablePartNum === "970c19pr0033");
+    const componentOnlyLeg = legs.find(({ rebrickablePartNum }) => rebrickablePartNum === "15447");
+
+    const entryFor = (part: typeof exactTorso) => {
+      const component = part ? builderComponentForCatalogPart(part) : undefined;
+      return component ? digitallySupportedLDrawEntryForComponent(component.id) : undefined;
+    };
+    expect(entryFor(exactTorso)).toMatchObject({
+      ldrawFile: "parts/76382p2d.dat",
+      geometryFallback: null,
+    });
+    expect(entryFor(ambiguousTorso)).toBeUndefined();
+    expect(entryFor(exactLegs)).toMatchObject({
+      ldrawFile: "parts/73200bps5.dat",
+      geometryFallback: null,
+    });
+    expect(entryFor(componentOnlyLeg)).toBeUndefined();
   });
 
   it("enables asymmetric legs only when both leg colours and one hip colour are catalog-backed", async () => {
