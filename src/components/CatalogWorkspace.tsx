@@ -160,7 +160,8 @@ export function CatalogWorkspace() {
         setSemanticHits(hits);
         setSemanticQuery(deferredQuery);
       })
-      .catch(() => {
+      .catch((error: unknown) => {
+        console.error("Semantic search request failed", error);
         if (requestId === semanticRequestRef.current) setSemanticStatus("error");
       })
       .finally(() => {
@@ -179,7 +180,10 @@ export function CatalogWorkspace() {
         setSemanticStatus("ready");
         setSemanticMissingBytes(0);
       })
-      .catch(() => setSemanticStatus("error"));
+      .catch((error: unknown) => {
+        console.error("Semantic search initialization failed", error);
+        setSemanticStatus("error");
+      });
   };
 
   const cancelSemanticSearch = (): void => {

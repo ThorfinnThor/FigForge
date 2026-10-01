@@ -78,6 +78,10 @@ async function initialize(requestId: number): Promise<void> {
 
   env.allowLocalModels = true;
   env.allowRemoteModels = false;
+  // Keep ONNX on its direct, same-origin module URL. Transformers' optional
+  // WASM preloader rewrites that module to a blob URL, which violates the
+  // production CSP even though the original runtime asset is self-hosted.
+  env.useWasmCache = false;
   env.localModelPath = `${scope.location.origin}/search/models/`;
   const releaseCache = await releaseCachePromise;
   if (releaseCache) {
