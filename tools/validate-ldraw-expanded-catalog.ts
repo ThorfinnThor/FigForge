@@ -60,6 +60,7 @@ const catalog = JSON.parse(await readFile(resolve(root, "data/generated/ldraw-ex
       gripPrimitive: string;
       gripEvidenceSource: "official-ldraw-geometry" | "ldcad-shadow-snap";
       limits: { minimumGripLengthLdu: number };
+      clearanceMode?: "closed-mesh";
     };
     geometryFallback: null | { kind: string; parentPartNums: string[] };
     name: string;
@@ -447,6 +448,9 @@ for (const entry of catalog.entries) {
         && entry.digitalValidation.selectedOrientationIndex < entry.digitalValidation.orientationCandidatesTested,
     );
     assert.equal(entry.digitalValidation.physicalFitGuaranteed, false);
+    if (entry.digitalValidation.clearanceMode !== undefined) {
+      assert.equal(entry.digitalValidation.clearanceMode, "closed-mesh");
+    }
     if (entry.digitalValidation.gripEvidenceSource === "ldcad-shadow-snap") {
       assert.match(entry.digitalValidation.gripPrimitive, /^ldcad-shadow:parts\/[a-z0-9]+\.dat#SNAP_CYL:\d+$/u);
       const match = /^ldcad-shadow:(parts\/[a-z0-9]+\.dat)#SNAP_CYL:\d+$/u.exec(

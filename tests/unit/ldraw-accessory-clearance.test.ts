@@ -80,6 +80,30 @@ describe("automated LDraw hand-accessory clearance", () => {
     expect(result.collisionSampleCount).toBeGreaterThan(0);
   });
 
+  it("does not reject geometry that enters only an empty corner of a coarse body bound", () => {
+    const figure = new Group();
+    const diagonalBody = new Group();
+    diagonalBody.name = "973.dat";
+    const diamond = new Mesh(new BoxGeometry(4, 4, 4), new MeshBasicMaterial());
+    diamond.rotation.z = Math.PI / 4;
+    diagonalBody.add(diamond);
+    figure.add(diagonalBody);
+
+    const accessory = new Group();
+    const corner = mesh("accessory.dat", [0.2, 0.2, 0.2]);
+    corner.position.set(2.5, 2.5, 0);
+    accessory.add(corner);
+
+    expect(validateDigitalAccessoryPlacement(
+      accessory,
+      figure,
+      new Matrix4().toArray(),
+      [2.5, 2.5, 0],
+      12,
+      "closed-mesh",
+    )).toMatchObject({ status: "passed", collisionSampleCount: 0 });
+  });
+
   it("rejects a shaft shorter than the reference-hand digital grip span", () => {
     const accessory = new Group();
     accessory.add(mesh("accessory.dat", [2, 4, 2]));

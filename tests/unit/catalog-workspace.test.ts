@@ -45,7 +45,7 @@ describe("FF-14 responsive catalog workspace", () => {
       legsAssembly: 3_231,
       handAccessory: 1_308,
     });
-    expect(allParts.filter(builderComponentForCatalogPart)).toHaveLength(14_798);
+    expect(allParts.filter(builderComponentForCatalogPart)).toHaveLength(14_805);
   }, 15_000);
 
   it("defines responsive tabs, drawer focus return and keyboard dismissal", async () => {
@@ -96,11 +96,11 @@ describe("FF-14 responsive catalog workspace", () => {
     expect(allParts.filter((part) => {
       const builderComponent = builderComponentForCatalogPart(part);
       return builderComponent && verifiedLDrawEntryForComponent(builderComponent.id);
-    })).toHaveLength(14_791);
+    })).toHaveLength(14_798);
     expect(allParts.filter((part) => {
       const builderComponent = builderComponentForCatalogPart(part);
       return builderComponent && digitallySupportedLDrawEntryForComponent(builderComponent.id);
-    })).toHaveLength(14_789);
+    })).toHaveLength(14_796);
     expect(cardSource).toContain("Geometrie ohne Druck");
     expect(cardSource).toContain('disabled={connectionStatus !== "digitally-supported"}');
     expect(cardSource).toContain("In Figur einsetzen");
@@ -215,6 +215,33 @@ describe("FF-14 responsive catalog workspace", () => {
       expect(entry?.ldrawFile).toBe(expectedFile);
       expect(entry?.geometryFallback).toBeNull();
     }
+  });
+
+  it("enables only the seven audited unique grips that clear the closed reference mesh", async () => {
+    const accessories = await loadCatalogParts("handAccessory");
+    const expandedCatalog = JSON.parse(await readFile("data/generated/ldraw-expanded-catalog.json", "utf8")) as {
+      entries: Array<{
+        rebrickablePartNum: string;
+        digitalValidation: null | { clearanceMode?: string; collisionSampleCount: number };
+      }>;
+    };
+    const passed = ["23306", "6254", "64567", "73117", "93549", "95228", "95228pr0001"];
+    const blocked = [
+      "2343", "2614a", "25975pr0001", "25975pr0002", "29596", "33061", "68504",
+      "80716pr0001", "87997", "87997pr0001", "87997pr0002", "87997pr0003", "87997pr0004",
+    ];
+    const entryFor = (partNum: string) => {
+      const part = accessories.find(({ rebrickablePartNum }) => rebrickablePartNum === partNum);
+      const component = part ? builderComponentForCatalogPart(part) : undefined;
+      return component ? digitallySupportedLDrawEntryForComponent(component.id) : undefined;
+    };
+
+    for (const partNum of passed) {
+      expect(entryFor(partNum)).toBeDefined();
+      expect(expandedCatalog.entries.find((entry) => entry.rebrickablePartNum === partNum)?.digitalValidation)
+        .toMatchObject({ clearanceMode: "closed-mesh", collisionSampleCount: 0 });
+    }
+    for (const partNum of blocked) expect(entryFor(partNum)).toBeUndefined();
   });
 
   it("keeps exact mug prints while inheriting their uniquely declared parent grip", async () => {
