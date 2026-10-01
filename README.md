@@ -47,6 +47,14 @@ npm run review:ff18
 
 Danach `http://127.0.0.1:4179` öffnen. Die Oberfläche zeigt ausschließlich die 80 Entwicklungsfälle, speichert jede 0/1/2-Bewertung lokal und gibt den Export erst nach vollständiger Bewertung frei. Der Holdout wird weder angezeigt noch vom Bewertungsendpunkt akzeptiert.
 
+Für den kompakten Relevanztest des tatsächlich ausgelieferten 2.726-Teile-Index:
+
+```bash
+npm run review:semantic-release
+```
+
+Danach `http://127.0.0.1:4183` öffnen. Die lokale Oberfläche zeigt 20 verblindete Development-Anfragen mit vorhandenen Teilebildern. Zehn Holdout-Anfragen und die Herkunft aus Basis- oder Hybridsuche bleiben verborgen. Nach vollständiger 0/1/2-Bewertung stehen die Rohurteile und der Bericht mit nDCG@5 und Success@5 zum Download bereit.
+
 `npm run data:validate:ff03` prüft das Testsortiment gegen den exakten Source-Lock-Hash. `npm run data:validate:ff05` prüft die vier synthetischen Anker einschließlich Hierarchie und Veröffentlichungssperre. `npm run data:validate:ff06` prüft die ersten Beschaffungsrezepte gegen FF-03 und vergleicht die berechnete Teileliste mit dem festgeschriebenen Ergebnis. `npm run data:validate:ff16` prüft die hashgebundene Kompatibilitätsmatrix, vollständige FF-03-Abdeckung, Fixture-Warnungen und Ausschlüsse. `npm run assets:build:connectivity` erzeugt die digitale Anschluss-Registry aus gepinnten LDraw-/LDCad-Daten; `npm run assets:validate:connectivity` prüft Hashes, Lizenzheader, Transformmatrizen und Default-Deny-Sperren. `npm run data:validate:ff17` prüft Lexikon, Normalizer-Version, Regression-Fixtures, unbekannte Wörter und exakte ID-Suche. `npm run data:build:ff21` erzeugt die deterministischen FF-21-Suchartefakte; `npm run data:validate:ff21` prüft Dokumente, Lexikon-Delta, 80/80-Split und Holdout-Sperre. `npm run data:build:ff18` erzeugt aus lokal vorgeprüften, gepinnten Modelldateien zwei getrennte Indizes und das blinde Review-Artefakt; `npm run data:validate:ff18` prüft Hashketten, L2-Normen, Profiltrennung und Entscheidungssperre. `npm run search:benchmark:preflight` endet bis zu den menschlichen Relevanzurteilen absichtlich mit Exitcode 2. `npm run data:review:mappings` erzeugt den deterministischen FF-09-Report; `npm run data:validate:mappings` prüft ihn gegen die aktuellen Quelldateien und verbietet erfundene Kandidaten. `npm run assets:build` erzeugt das reproduzierbare synthetische FF-10-Fixturepaket; `npm run assets:validate` prüft Quellhashes, Bytegleichheit, Pfade und Thumbnail-Budget. `npm run licenses:build` erzeugt das FF-11-Assetmanifest und öffentliche Quellenhinweise; `npm run licenses:validate` prüft Manifest, Lizenz-Hashes, Provenienz und blockierte Freigabe. `npm run data:refresh` führt einen netzwerkfreien Grenzcheck aus. `npm run data:refresh:remote` ist ausschließlich für den geplanten GitHub-Actions-Lauf vorgesehen und schreibt generierte Katalogdaten für den Review-Pull-Request. Roharchive bleiben transient.
 
 `npm run assets:analyze:ldraw-coverage` erzeugt den vollständigen LDraw-Restbestandsbericht. `npm run assets:validate:ldraw-coverage` gleicht ihn mit Katalog, Connectivity und der gepinnten offiziellen LDraw-Bibliothek ab.
@@ -76,6 +84,7 @@ Gedruckte Kopf- und Kopfbedeckungsvarianten ohne eigenes offizielles LDraw-Model
 - `docs/test-reports/FF-17-search-report.md`: FF-17-Basissuche, Normalizer und Regression-Fixtures.
 - `docs/test-reports/FF-18-preflight-report.md`: FF-18-Indexnachweis und begründete Entscheidungssperre.
 - `docs/test-reports/semantic-search-beta-report.md`: App-Integration, Paketgrößen, Integritätsprüfung und verbleibende Entscheidungssperre.
+- `docs/test-reports/semantic-search-release-review-report.md`: kompakter, blinder Release-Test gegen den 2.726-Teile-Index.
 - `docs/test-reports/FF-21-search-report.md`: FF-21-Suchdokumente, Lexikon-Delta und 160-Fälle-Split.
 - `docs/test-reports/FF-22-FF-23-local-figure-report.md`: lokales Autosave sowie sicherer JSON-Import/-Export des aktuellen Entwurfs.
 - `data/curated/ff21-search-documents.json`: kataloggebundene englische Suchdokumente mit Quellen-Evidence.
@@ -86,6 +95,7 @@ Gedruckte Kopf- und Kopfbedeckungsvarianten ohne eigenes offizielles LDraw-Model
 - `data/generated/semantic-search-release.json`: gehashter Vertrag des ausgelieferten MiniLM-Betapakets.
 - `public/search/`: statisches MiniLM-Modell, Tokenizer, ONNX-WASM-Laufzeit und 2.726-Teile-Index.
 - `data/review/ff18-relevance-review.json`: blindes, noch vollständig unbeschriftetes menschliches Review-Artefakt.
+- `data/review/semantic-search-release-review.json`: kompakter, noch unbeschrifteter Basis-/Hybridvergleich für den ausgelieferten Index.
 - `tools/review-ui/` und `tools/ff18-review-server.ts`: ausschließlich lokale Review-Oberfläche mit getrenntem Autosave und Holdout-Sperre.
 - `data/curated/ff03-test-assortment.json`: gelockte Katalogkandidaten und Varianten.
 - `data/curated/ff05-anchor-registry.json`: nicht veröffentlichbares Ankerprofil der synthetischen Prüfgeometrie.
