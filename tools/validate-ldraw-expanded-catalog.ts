@@ -13,7 +13,7 @@ import {
 import { handGripEvidenceFromLDCadShadow } from "./lib/ldcad-shadow-connectivity.js";
 
 const root = process.cwd();
-const libraryRoot = resolve(root, "data/incoming/ldraw-official/extracted/ldraw");
+const libraryRoot = resolve(root, "public/assets/ldraw/official-2608");
 const sha256 = (content: string | Buffer): string => createHash("sha256").update(content).digest("hex");
 
 const lock = JSON.parse(await readFile(resolve(root, "data/ldraw-source.lock.json"), "utf8")) as {
