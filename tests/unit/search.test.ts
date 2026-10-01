@@ -11,7 +11,22 @@ describe("FF-17 base search", () => {
     expect(query.englishText).toContain("tusks");
     expect(query.colorNames).toEqual(["green"]);
     expect(query.categoryRole).toBe("head");
-    expect(query.unknownTerms).toEqual(["großer", "mit"]);
+    expect(query.englishText).toBe("large green ogre head with tusks");
+    expect(query.unknownTerms).toEqual([]);
+  });
+
+  it.each([
+    ["gelber Kopf mit Sonnenbrille", "yellow head with sunglasses"],
+    ["lächelndes Gesicht mit Sommersprossen", "smiling face with freckles"],
+    ["Kopf mit Augenklappe und Bart", "head with eyepatch and beard"],
+    ["rote Haare mit Pferdeschwanz", "red hair with ponytail"],
+    ["schwarzer Piratenhut", "black pirate hat"],
+    ["schwarzer Ritter Torso", "black knight torso"],
+    ["roter Piraten Torso ohne Rüstung", "red pirate torso without armor"],
+    ["schwarze Beine mit roten Stiefeln", "black legs with red boots"],
+    ["Zauberstab", "magic wand"],
+  ])("expands reviewed German domain query %s", (input, expected) => {
+    expect(normalizeSearchQuery(input).englishText).toBe(expected);
   });
 
   it("keeps negation structured and does not translate ambiguous shield blindly", () => {
@@ -34,6 +49,30 @@ describe("FF-17 base search", () => {
     expect(idResult.results[0]?.component.rebrickablePartNum).toBe("3626cpr0001");
     expect(filtered.results.every(({ component }) => component.role === "head")).toBe(true);
     expect(filtered.results.map(({ component }) => component.rebrickablePartNum)).toEqual(["3626c"]);
+  });
+
+  it("matches color words without treating Reddish Brown as Red", () => {
+    const parts = [
+      {
+        id: "reddish-brown-hair",
+        role: "headwear" as const,
+        rebrickablePartNum: "hair-1",
+        name: "Hair Ponytail",
+        rebrickableCategoryName: "Minifig Headwear",
+        colorNames: ["Reddish Brown"],
+      },
+      {
+        id: "dark-red-hair",
+        role: "headwear" as const,
+        rebrickablePartNum: "hair-2",
+        name: "Hair Ponytail",
+        rebrickableCategoryName: "Minifig Headwear",
+        colorNames: ["Dark Red"],
+      },
+    ];
+
+    expect(searchCatalog(parts, "rote Haare mit Pferdeschwanz").results.map(({ component }) => component.id))
+      .toEqual(["dark-red-hair"]);
   });
 });
 

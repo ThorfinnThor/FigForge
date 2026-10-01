@@ -47,8 +47,15 @@ function documentText(component: CatalogSearchItem): string {
 }
 
 function colorMatches(component: CatalogSearchItem, colorNames: readonly string[]): boolean {
-  const colors = componentColorNames(component).map((colorName) => colorName.toLocaleLowerCase("en-US"));
-  return colorNames.every((wanted) => colors.some((color) => color.includes(wanted) || wanted.includes(color)));
+  const colors: string[][] = componentColorNames(component).map((colorName) => (
+    colorName.toLocaleLowerCase("en-US").match(/[\p{L}\p{N}]+/gu) ?? []
+  ));
+  return colorNames.every((wanted) => {
+    const wantedTokens: string[] = wanted.toLocaleLowerCase("en-US").match(/[\p{L}\p{N}]+/gu) ?? [];
+    return wantedTokens.length > 0 && colors.some((colorTokens) => (
+      wantedTokens.every((token) => colorTokens.includes(token))
+    ));
+  });
 }
 
 export function searchCatalog<T extends CatalogSearchItem>(

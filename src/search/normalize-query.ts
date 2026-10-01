@@ -21,6 +21,10 @@ export type NormalizedQuery = {
 type Token = { value: string; index: number };
 
 const NEGATION_WORDS = new Set(["ohne", "kein", "keine", "keinen", "keinem", "keiner", "nicht"]);
+const FUNCTION_WORD_TRANSLATIONS = new Map([
+  ["mit", "with"],
+  ["und", "and"],
+]);
 
 function unique(values: readonly string[]): string[] {
   return [...new Set(values)];
@@ -97,6 +101,13 @@ export function normalizeSearchQuery(input: string): NormalizedQuery {
         index += negated.count + 1;
         continue;
       }
+    }
+
+    const translatedFunctionWord = FUNCTION_WORD_TRANSLATIONS.get(token);
+    if (translatedFunctionWord) {
+      englishParts.push(translatedFunctionWord);
+      index += 1;
+      continue;
     }
 
     const match = findEntry(tokens, index);

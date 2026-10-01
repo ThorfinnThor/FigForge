@@ -2,10 +2,10 @@
   "schemaVersion": 1,
   "ticket": "FF-17",
   "normalizerVersion": "de-en-domain-v1",
-  "updatedAt": "2026-09-27T15:30:00Z",
+  "updatedAt": "2026-10-01T19:45:00Z",
   "sourcePolicy": "Nur Rebrickable Catalog Downloads/CSV, keine MOC-Dateien.",
   "fixtures": [
-    {"id":"fixture:oger-head-tusks","query":"Ogerkopf mit Hauern","expectation":{"englishIncludes":["ogre head","tusks"],"relatedTerms":[],"categoryRole":"head","colorNames":[],"excludedTerms":[],"idMatches":[],"warningCodes":[],"unknownTerms":["mit"]}},
+    {"id":"fixture:oger-head-tusks","query":"Ogerkopf mit Hauern","expectation":{"englishIncludes":["ogre head with tusks"],"relatedTerms":[],"categoryRole":"head","colorNames":[],"excludedTerms":[],"idMatches":[],"warningCodes":[],"unknownTerms":[]}},
     {"id":"fixture:inflected-tusks","query":"Hauern","expectation":{"englishIncludes":["tusks"],"relatedTerms":["fangs"],"categoryRole":null,"colorNames":[],"excludedTerms":[],"idMatches":[],"warningCodes":[],"unknownTerms":[]}},
     {"id":"fixture:long-sword","query":"langes Schwert","expectation":{"englishIncludes":["long sword"],"relatedTerms":[],"categoryRole":"handAccessory","colorNames":[],"excludedTerms":[],"idMatches":[],"warningCodes":[],"unknownTerms":[]}},
     {"id":"fixture:messy-black-hair","query":"zerzauste schwarze Haare","expectation":{"englishIncludes":["messy black hair"],"relatedTerms":[],"categoryRole":"headwear","colorNames":["black"],"excludedTerms":[],"idMatches":[],"warningCodes":[],"unknownTerms":[]}},
@@ -13,6 +13,15 @@
     {"id":"fixture:exact-id","query":"3626cpr0001","expectation":{"englishIncludes":["3626cpr0001"],"relatedTerms":[],"categoryRole":null,"colorNames":[],"excludedTerms":[],"idMatches":["3626cpr0001"],"warningCodes":[],"unknownTerms":[]}},
     {"id":"fixture:category-and-color","query":"Köpfe schwarz","expectation":{"englishIncludes":["head black"],"relatedTerms":[],"categoryRole":"head","colorNames":["black"],"excludedTerms":[],"idMatches":[],"warningCodes":[],"unknownTerms":[]}},
     {"id":"fixture:ambiguous-shield","query":"Schild","expectation":{"englishIncludes":[],"relatedTerms":[],"categoryRole":"handAccessory","colorNames":[],"excludedTerms":[],"idMatches":[],"warningCodes":["ambiguous:schild"],"unknownTerms":[]}},
-    {"id":"fixture:unknown-preserved","query":"mystisches Teil","expectation":{"englishIncludes":["mystisches teil"],"relatedTerms":[],"categoryRole":null,"colorNames":[],"excludedTerms":[],"idMatches":[],"warningCodes":[],"unknownTerms":["mystisches","teil"]}}
+    {"id":"fixture:unknown-preserved","query":"mystisches Teil","expectation":{"englishIncludes":["mystisches teil"],"relatedTerms":[],"categoryRole":null,"colorNames":[],"excludedTerms":[],"idMatches":[],"warningCodes":[],"unknownTerms":["mystisches","teil"]}},
+    {"id":"fixture:yellow-sunglasses-head","query":"gelber Kopf mit Sonnenbrille","expectation":{"englishIncludes":["yellow head with sunglasses"],"relatedTerms":["glasses"],"categoryRole":"head","colorNames":["yellow"],"excludedTerms":[],"idMatches":[],"warningCodes":[],"unknownTerms":[]}},
+    {"id":"fixture:smiling-freckles","query":"lächelndes Gesicht mit Sommersprossen","expectation":{"englishIncludes":["smiling face with freckles"],"relatedTerms":["smile","freckle"],"categoryRole":"head","colorNames":[],"excludedTerms":[],"idMatches":[],"warningCodes":[],"unknownTerms":[]}},
+    {"id":"fixture:eyepatch-beard","query":"Kopf mit Augenklappe und Bart","expectation":{"englishIncludes":["head with eyepatch and beard"],"relatedTerms":["eye patch","bearded"],"categoryRole":"head","colorNames":[],"excludedTerms":[],"idMatches":[],"warningCodes":[],"unknownTerms":[]}},
+    {"id":"fixture:red-ponytail","query":"rote Haare mit Pferdeschwanz","expectation":{"englishIncludes":["red hair with ponytail"],"relatedTerms":[],"categoryRole":"headwear","colorNames":["red"],"excludedTerms":[],"idMatches":[],"warningCodes":[],"unknownTerms":[]}},
+    {"id":"fixture:black-pirate-hat","query":"schwarzer Piratenhut","expectation":{"englishIncludes":["black pirate hat"],"relatedTerms":[],"categoryRole":"headwear","colorNames":["black"],"excludedTerms":[],"idMatches":[],"warningCodes":[],"unknownTerms":[]}},
+    {"id":"fixture:black-knight-torso","query":"schwarzer Ritter Torso","expectation":{"englishIncludes":["black knight torso"],"relatedTerms":[],"categoryRole":"torsoAssembly","colorNames":["black"],"excludedTerms":[],"idMatches":[],"warningCodes":[],"unknownTerms":[]}},
+    {"id":"fixture:red-pirate-no-armor","query":"roter Piraten Torso ohne Rüstung","expectation":{"englishIncludes":["red pirate torso without armor"],"relatedTerms":[],"categoryRole":"torsoAssembly","colorNames":["red"],"excludedTerms":["armor"],"idMatches":[],"warningCodes":[],"unknownTerms":[]}},
+    {"id":"fixture:black-red-boots","query":"schwarze Beine mit roten Stiefeln","expectation":{"englishIncludes":["black legs with red boots"],"relatedTerms":["boot"],"categoryRole":"legsAssembly","colorNames":["black","red"],"excludedTerms":[],"idMatches":[],"warningCodes":[],"unknownTerms":[]}},
+    {"id":"fixture:magic-wand","query":"Zauberstab","expectation":{"englishIncludes":["magic wand"],"relatedTerms":["wizard"],"categoryRole":"handAccessory","colorNames":[],"excludedTerms":[],"idMatches":[],"warningCodes":[],"unknownTerms":[]}}
   ]
 }
