@@ -1,7 +1,7 @@
 import type { CatalogCategory } from "../components/catalog-workspace-data.js";
 import { normalizeSearchQuery, type NormalizedQuery } from "./normalize-query.js";
 
-type CatalogSearchItem = {
+export type CatalogSearchItem = {
   id: string;
   role: Exclude<CatalogCategory, "all">;
   rebrickablePartNum: string;
@@ -20,10 +20,10 @@ export type SearchResult<T extends CatalogSearchItem = CatalogSearchItem> = {
 export type CatalogSearchResult<T extends CatalogSearchItem = CatalogSearchItem> = {
   query: NormalizedQuery;
   results: SearchResult<T>[];
-  mode: "keyword";
+  mode: "keyword" | "semantic";
 };
 
-type SearchOptions = { category?: Exclude<CatalogCategory, "all"> };
+export type SearchOptions = { category?: Exclude<CatalogCategory, "all"> };
 type RankedResult<T extends CatalogSearchItem> = SearchResult<T> & {
   index: number;
   categoryMatches: boolean;
@@ -93,4 +93,38 @@ export function searchCatalog<T extends CatalogSearchItem>(
     .map(({ component, score, matchedTerms }) => ({ component, score, matchedTerms }));
 
   return { query, results, mode: "keyword" };
+}
+
+export function mergeSemanticCatalogResults<T extends CatalogSearchItem>(
+  components: readonly T[],
+  input: string,
+  semanticHits: readonly { componentId: string; score: number }[],
+  options: SearchOptions = {},
+): CatalogSearchResult<T> {
+  const keyword = searchCatalog(components, input, options);
+  if (input.trim().length === 0 || keyword.query.idMatches.length > 0) return keyword;
+
+  const requestedCategory = options.category ?? keyword.query.categoryRole ?? undefined;
+  const componentById = new Map(components.map((component) => [component.id, component]));
+  const keywordById = new Map(keyword.results
+    .filter(({ score }) => score > 0)
+    .map((result) => [result.component.id, result]));
+  const semanticById = new Map(semanticHits.map((hit) => [hit.componentId, hit.score]));
+  const candidateIds = new Set([...keywordById.keys(), ...semanticById.keys()]);
+  const results = [...candidateIds].flatMap((componentId): SearchResult<T>[] => {
+    const component = componentById.get(componentId);
+    if (!component || (requestedCategory && component.role !== requestedCategory)) return [];
+    const text = documentText(component);
+    if (!colorMatches(component, keyword.query.colorNames)) return [];
+    if (keyword.query.excludedTerms.some((term) => text.includes(term))) return [];
+    const lexical = keywordById.get(componentId);
+    const semanticScore = semanticById.get(componentId) ?? 0;
+    return [{
+      component,
+      score: (lexical?.score ?? 0) + semanticScore * 8,
+      matchedTerms: lexical?.matchedTerms ?? [],
+    }];
+  }).sort((left, right) => right.score - left.score || left.component.id.localeCompare(right.component.id));
+
+  return { query: keyword.query, results, mode: "semantic" };
 }

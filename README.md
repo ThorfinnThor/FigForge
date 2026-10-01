@@ -23,6 +23,7 @@ Backendloser, kuratierter Minifiguren-Konfigurator mit digital verbundenen LDraw
 - Digitale LDraw-Verbindung: Köpfe, Kopfbedeckungen und zwei Handaccessoires werden reproduzierbar aus offiziellen Baugruppen- und LDCad-Snapdaten platziert. Dafür ist keine menschliche Eingabe nötig; eine physische Klemmkraftgarantie wird nicht behauptet.
 - FF-17: Lokale Basissuche mit versioniertem Deutsch→Englisch-Normalizer, ID-Schutz, Zusammensetzungen, Negationen, Kategorien, Farben und Regression-Fixtures.
 - FF-18: Gepinnte MiniLM-/E5-Modelle, zwei getrennte 384-dimensionale FP32-Indizes, Modell-/Index-Sperre und blindes Review-Artefakt; Metriken, ADR und Profilwahl bleiben bis zur menschlichen Relevanzfreigabe blockiert.
+- Semantische Suche (Beta): Der kompakte MiniLM-Kandidat ist optional über einen Web-Worker in die App integriert. 2.726 exakt dargestellte Teile sind vorab eingebettet; Suchtexte verlassen das Gerät nicht. Das 42,44-MB-Paket wird erst nach Zustimmung geladen. Die endgültige Profilfreigabe bleibt bis zum menschlichen FF-18-Relevanzreview blockiert.
 - FF-21: 17 kataloggebundene englische Suchdokumente, ein getrenntes deutsches Lexikon-Delta und 160 Fälle mit 80 Entwicklungs- und 80 Holdout-Fällen; Relevanzlabels bleiben ausdrücklich menschliche Arbeit.
 - FF-22/FF-23 MVP: Der aktuelle Entwurf wird verzögert in IndexedDB gespeichert. Versionierter JSON-Import/-Export ist auf drei digitale Slots, 64 KiB und bekannte FigForge-Komponenten begrenzt; unbekannte Teile werden nicht still ersetzt.
 - Kein öffentliches Deployment.
@@ -74,6 +75,7 @@ Gedruckte Kopf- und Kopfbedeckungsvarianten ohne eigenes offizielles LDraw-Model
 - `docs/test-reports/FF-05-FF-16-digital-connectivity-report.md`: digitale Anschlussprofile, abgedeckte Modelle und verbleibende Default-Deny-Sperren.
 - `docs/test-reports/FF-17-search-report.md`: FF-17-Basissuche, Normalizer und Regression-Fixtures.
 - `docs/test-reports/FF-18-preflight-report.md`: FF-18-Indexnachweis und begründete Entscheidungssperre.
+- `docs/test-reports/semantic-search-beta-report.md`: App-Integration, Paketgrößen, Integritätsprüfung und verbleibende Entscheidungssperre.
 - `docs/test-reports/FF-21-search-report.md`: FF-21-Suchdokumente, Lexikon-Delta und 160-Fälle-Split.
 - `docs/test-reports/FF-22-FF-23-local-figure-report.md`: lokales Autosave sowie sicherer JSON-Import/-Export des aktuellen Entwurfs.
 - `data/curated/ff21-search-documents.json`: kataloggebundene englische Suchdokumente mit Quellen-Evidence.
@@ -81,6 +83,8 @@ Gedruckte Kopf- und Kopfbedeckungsvarianten ohne eigenes offizielles LDraw-Model
 - `data/curated/ff21-search-testset.json`: 160 Fälle, getrennte Entwicklungs-/Holdout-Hälfte ohne Relevanzlabels.
 - `data/search-models.lock.json`: gepinnte Modellrevisionen, Dateigrößen und SHA-256-Werte.
 - `data/generated/search-indices/`: getrennte FP32-Indizes und Profilmanifeste für MiniLM und E5.
+- `data/generated/semantic-search-release.json`: gehashter Vertrag des ausgelieferten MiniLM-Betapakets.
+- `public/search/`: statisches MiniLM-Modell, Tokenizer, ONNX-WASM-Laufzeit und 2.726-Teile-Index.
 - `data/review/ff18-relevance-review.json`: blindes, noch vollständig unbeschriftetes menschliches Review-Artefakt.
 - `tools/review-ui/` und `tools/ff18-review-server.ts`: ausschließlich lokale Review-Oberfläche mit getrenntem Autosave und Holdout-Sperre.
 - `data/curated/ff03-test-assortment.json`: gelockte Katalogkandidaten und Varianten.
