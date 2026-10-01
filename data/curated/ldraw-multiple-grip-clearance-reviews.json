@@ -1,0 +1,14 @@
+{
+  "schemaVersion": 1,
+  "sourcePolicy": "Nur Rebrickable Catalog Downloads/CSV, keine MOC-Dateien.",
+  "methodology": "The 107 remaining multi-cylinder accessories are compared with the pinned LDCad Shadow Library. Only the seven catalog parts for which the pinned source identifies exactly one male round hand-grip connector are eligible for closed-mesh clearance. Parts with zero or multiple documented grips remain blocked without guessing.",
+  "reviews": [
+    { "rebrickablePartNum": "4341", "catalogName": "Equipment Pot / Cauldron 3 x 3 x 1 & 3/4 with Handles", "ldrawFile": "parts/4341.dat", "gripEvidenceFile": "parts/4341.dat", "expectedResult": "blocked" },
+    { "rebrickablePartNum": "10172", "catalogName": "Equipment Trophy Cup Small", "ldrawFile": "parts/10172.dat", "gripEvidenceFile": "parts/10172.dat", "expectedResult": "blocked" },
+    { "rebrickablePartNum": "10172pr0001", "catalogName": "Equipment Trophy Cup Small with Black Terrier Dog Print", "ldrawFile": "parts/10172p01.dat", "gripEvidenceFile": "parts/10172.dat", "expectedResult": "blocked" },
+    { "rebrickablePartNum": "30092", "catalogName": "Equipment Underwater Scooter, 2 Bar Handles, Octagonal End", "ldrawFile": "parts/30092.dat", "gripEvidenceFile": "parts/30092.dat", "expectedResult": "passed" },
+    { "rebrickablePartNum": "56619", "catalogName": "Equipment Handcuffs Long [Batman]", "ldrawFile": "parts/55707d.dat", "gripEvidenceFile": "parts/55707d.dat", "expectedResult": "passed" },
+    { "rebrickablePartNum": "61190f", "catalogName": "Weapon Gun / Blaster Small DC-17 (Star Wars Accessory)", "ldrawFile": "parts/61190a.dat", "gripEvidenceFile": "parts/61190a.dat", "expectedResult": "passed" },
+    { "rebrickablePartNum": "89801", "catalogName": "Equipment Trophy Cup [Plain]", "ldrawFile": "parts/89801.dat", "gripEvidenceFile": "parts/89801.dat", "expectedResult": "blocked" }
+  ]
+}
