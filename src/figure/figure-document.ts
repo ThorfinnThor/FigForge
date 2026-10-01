@@ -18,7 +18,7 @@ export const createFigureDocument = (
   kind: "figforge-figure",
   name,
   updatedAt,
-  selections: (["head", "headwear", "handAccessory"] as const).flatMap((slot) => {
+  selections: (["head", "headwear", "torsoAssembly", "legsAssembly", "handAccessory"] as const).flatMap((slot) => {
     const componentId = selections[slot];
     return componentId ? [{ slot, componentId }] : [];
   }),

@@ -2,7 +2,13 @@ import { z } from "zod";
 
 export const FIGURE_DOCUMENT_MAX_BYTES = 64 * 1024;
 
-export const figureDocumentSlotSchema = z.enum(["head", "headwear", "handAccessory"]);
+export const figureDocumentSlotSchema = z.enum([
+  "head",
+  "headwear",
+  "torsoAssembly",
+  "legsAssembly",
+  "handAccessory",
+]);
 
 export const figureDocumentSchema = z
   .object({
@@ -13,9 +19,9 @@ export const figureDocumentSchema = z
     selections: z
       .array(z.object({
         slot: figureDocumentSlotSchema,
-        componentId: z.string().regex(/^(?:ff03-[a-z0-9-]+|catalog:(?:head|headwear|handAccessory):[a-z0-9._-]+)$/u),
+        componentId: z.string().regex(/^(?:ff03-[a-z0-9-]+|catalog:(?:head|headwear|torsoAssembly|legsAssembly|handAccessory):[a-z0-9._-]+)$/u),
       }).strict())
-      .max(3),
+      .max(5),
   })
   .strict()
   .superRefine((document, context) => {
