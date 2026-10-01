@@ -25,7 +25,14 @@ export function isCompleteStandardTorsoAssembly(source: string): boolean {
 
 export function isCompleteTorsoAssembly(source: string): boolean {
   if (isCompleteStandardTorsoAssembly(source)) return true;
-  if (!/^0\s+!LDRAW_ORG\s+Shortcut\b/mu.test(source)) return false;
+  const title = source.split(/\r?\n/u).find((line) => line.trim().length > 0)?.trim() ?? "";
+  const isOfficialPart = /^0\s+!LDRAW_ORG\s+Part\b/mu.test(source);
+  const isOfficialShortcut = /^0\s+!LDRAW_ORG\s+Shortcut\b/mu.test(source);
+
+  // The original 1975 torso is one physical part with integral arms. It has no
+  // child arm/hand references to count, but it is a complete torso-slot body.
+  if (isOfficialPart && title === "0 Minifig Torso with Integral Arms") return true;
+  if (!isOfficialShortcut) return false;
 
   const references = source.split(/\r?\n/u).flatMap((line) => {
     const reference = referenceName(line);
@@ -36,6 +43,7 @@ export function isCompleteTorsoAssembly(source: string): boolean {
 
   const hasStandardTorso = has(/^973[a-z0-9-]*\.dat$/u);
   const hasShortTorso = has(/^98127[a-z0-9-]*\.dat$/u);
+  const hasBrickSuitTorso = has(/^37191[a-z0-9-]*\.dat$/u);
   const hasStandardArmPair = has(/^3818[a-z0-9-]*\.dat$/u) && has(/^3819[a-z0-9-]*\.dat$/u);
   const hasDualMouldArmPair = has(/^16000[a-z0-9-]*\.dat$/u) && has(/^16001[a-z0-9-]*\.dat$/u);
   const handCount = count(/^3820[a-z0-9-]*\.dat$/u);
@@ -51,5 +59,6 @@ export function isCompleteTorsoAssembly(source: string): boolean {
     || (hasStandardTorso && hasFlipperPair)
     || (hasStandardTorso && hasStandardArmPair && handCount === 1 && hasPirateHook)
     || (hasStandardTorso && has(/^3819[a-z0-9-]*\.dat$/u) && handCount === 1 && hasMechanicalArm)
-    || (hasShortTorso && hasDualMouldArmPair && handCount === 2);
+    || (hasShortTorso && hasDualMouldArmPair && handCount === 2)
+    || (hasBrickSuitTorso && hasStandardArmPair && handCount === 2);
 }

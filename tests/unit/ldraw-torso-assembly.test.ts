@@ -50,6 +50,7 @@ describe("complete special torso assembly detection", () => {
     ["pirate hook", ["973p3k.dat", "3818.dat", "3819.dat", "3820.dat", "2531.dat"]],
     ["mechanical arm", ["973p91.dat", "62691.dat", "3819.dat", "3820.dat"]],
     ["short torso", ["98127pd7f.dat", "16000p04.dat", "16001p04.dat", "3820.dat", "3820.dat"]],
+    ["brick suit torso", ["37191.dat", "3818.dat", "3819.dat", "3820.dat", "3820.dat"]],
   ])("accepts a complete %s shortcut", (_label, references) => {
     expect(isCompleteTorsoAssembly(shortcut(references))).toBe(true);
   });
@@ -61,5 +62,20 @@ describe("complete special torso assembly detection", () => {
     ["short torso with mixed arms", ["98127pd7f.dat", "16000p04.dat", "3819.dat", "3820.dat", "3820.dat"]],
   ])("rejects an incomplete %s shortcut", (_label, references) => {
     expect(isCompleteTorsoAssembly(shortcut(references))).toBe(false);
+  });
+
+  it("accepts the official one-piece torso with integral arms", () => {
+    expect(isCompleteTorsoAssembly([
+      "0 Minifig Torso with Integral Arms",
+      "0 !LDRAW_ORG Part UPDATE 2011-01",
+      "1 16 0 0 0 1 0 0 0 1 0 0 0 1 stud.dat",
+    ].join("\n"))).toBe(true);
+  });
+
+  it("does not accept another part merely because it contains arms", () => {
+    expect(isCompleteTorsoAssembly([
+      "0 Minifig Torso Skeleton with Shoulder Pins",
+      "0 !LDRAW_ORG Part UPDATE 2025-10",
+    ].join("\n"))).toBe(false);
   });
 });
