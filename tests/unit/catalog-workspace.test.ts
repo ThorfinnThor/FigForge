@@ -102,6 +102,10 @@ describe("FF-14 responsive catalog workspace", () => {
       return builderComponent && digitallySupportedLDrawEntryForComponent(builderComponent.id);
     })).toHaveLength(14_824);
     expect(cardSource).toContain("Geometrie ohne Druck");
+    expect(cardSource).toContain("Original auf Rebrickable ansehen");
+    expect(cardSource).toContain("https://rebrickable.com/parts/${encodeURIComponent(component.rebrickablePartNum)}/");
+    expect(cardSource).toContain('rel="noopener noreferrer"');
+    expect(cardSource).toContain('target="_blank"');
     expect(cardSource).toContain('disabled={connectionStatus !== "digitally-supported"}');
     expect(cardSource).toContain("In Figur einsetzen");
     expect(cardSource).toContain("Kein offizielles LDraw-Modell");
