@@ -1,5 +1,5 @@
 import { basename } from "node:path";
-import { Box3, BufferGeometry, Group, Matrix4, Material, Mesh, Vector3 } from "three";
+import { Box3, BufferGeometry, Group, Matrix4, Material, Mesh, Ray, Triangle, Vector3 } from "three";
 
 export const MIN_DIGITAL_HAND_GRIP_LENGTH_LDU = 8;
 const MAX_ACCESSORY_EXTENT_LDU = 240;
@@ -7,6 +7,19 @@ const GRIP_NEIGHBORHOOD_RADIUS_LDU = 7;
 const BODY_BOX_INSET_LDU = 0.25;
 
 type LDrawMesh = Mesh<BufferGeometry, Material | Material[]>;
+
+export type DigitalAccessoryClearanceMode = "bounds" | "closed-mesh";
+
+type ProtectedReferenceBody = {
+  box: Box3;
+  inverseMatrixWorld: Matrix4;
+  partName: string;
+  triangles: Triangle[];
+};
+
+const protectedReferenceCache = new WeakMap<Group, ProtectedReferenceBody[]>();
+const insideTestDirection = new Vector3(1, 0.431, 0.239).normalize();
+const intersectionEpsilon = 1e-5;
 
 export type DigitalAccessoryValidation = {
   status: "passed" | "rejected";
@@ -100,11 +113,29 @@ function sampledPoints(model: Group, placement: Matrix4): Vector3[] {
   return points;
 }
 
-function protectedReferenceBoxes(referenceFigure: Group): Array<{ box: Box3; partName: string }> {
-  const boxes: Array<{ box: Box3; partName: string }> = [];
+function localTriangles(mesh: LDrawMesh): Triangle[] {
+  const triangles: Triangle[] = [];
+  const position = mesh.geometry.getAttribute("position");
+  const index = mesh.geometry.getIndex();
+  const count = index?.count ?? position.count;
+  for (let offset = 0; offset + 2 < count; offset += 3) {
+    const points = [offset, offset + 1, offset + 2].map((positionIndex) => {
+      const vertexIndex = index ? index.getX(positionIndex) : positionIndex;
+      return new Vector3().fromBufferAttribute(position, vertexIndex);
+    }) as [Vector3, Vector3, Vector3];
+    triangles.push(new Triangle(...points));
+  }
+  return triangles;
+}
+
+function protectedReferenceBodies(referenceFigure: Group): ProtectedReferenceBody[] {
+  const cached = protectedReferenceCache.get(referenceFigure);
+  if (cached) return cached;
+  const bodies: ProtectedReferenceBody[] = [];
   referenceFigure.updateMatrixWorld(true);
   referenceFigure.traverse((object) => {
     if (!(object instanceof Mesh)) return;
+    const mesh = object as LDrawMesh;
     const box = new Box3().setFromObject(object);
     const center = box.getCenter(new Vector3());
     const sourceName = object.name || object.parent?.name || "unnamed-mesh";
@@ -115,9 +146,33 @@ function protectedReferenceBoxes(referenceFigure: Group): Array<{ box: Box3; par
     // used as conservative collision volumes without rejecting valid wrist grips.
     if (isTargetHand || isTargetArm) return;
     const inset = box.clone().expandByScalar(-BODY_BOX_INSET_LDU);
-    boxes.push({ box: inset.isEmpty() ? box : inset, partName: partName || "unnamed-mesh" });
+    bodies.push({
+      box: inset.isEmpty() ? box : inset,
+      inverseMatrixWorld: mesh.matrixWorld.clone().invert(),
+      partName: partName || "unnamed-mesh",
+      triangles: localTriangles(mesh),
+    });
   });
-  return boxes;
+  protectedReferenceCache.set(referenceFigure, bodies);
+  return bodies;
+}
+
+function pointInsideBody(point: Vector3, body: ProtectedReferenceBody): boolean {
+  const localPoint = point.clone().applyMatrix4(body.inverseMatrixWorld);
+  const localDirection = insideTestDirection.clone().transformDirection(body.inverseMatrixWorld);
+  const ray = new Ray(localPoint, localDirection);
+  const distances: number[] = [];
+  const hit = new Vector3();
+  for (const triangle of body.triangles) {
+    const intersection = ray.intersectTriangle(triangle.a, triangle.b, triangle.c, false, hit);
+    if (!intersection) continue;
+    const distance = intersection.clone().sub(localPoint).dot(localDirection);
+    if (distance <= intersectionEpsilon) continue;
+    if (!distances.some((existing) => Math.abs(existing - distance) <= intersectionEpsilon)) {
+      distances.push(distance);
+    }
+  }
+  return distances.length % 2 === 1;
 }
 
 function rejected(reasonCode: string, gripLengthLdu: number): DigitalAccessoryValidation {
@@ -139,6 +194,7 @@ export function validateDigitalAccessoryPlacement(
   placementTransformLdu: readonly number[],
   sourceGripCenterLdu: readonly [number, number, number],
   gripLengthLdu: number,
+  clearanceMode: DigitalAccessoryClearanceMode = "bounds",
 ): DigitalAccessoryValidation {
   if (gripLengthLdu < MIN_DIGITAL_HAND_GRIP_LENGTH_LDU) return rejected("grip-too-short", gripLengthLdu);
   if (placementTransformLdu.length !== 16 || placementTransformLdu.some((value) => !Number.isFinite(value))) {
@@ -165,12 +221,14 @@ export function validateDigitalAccessoryPlacement(
 
   const placedPoints = sampledPoints(model, placement);
   const targetGripCenter = sourceGripCenter.clone().applyMatrix4(placement);
-  const bodyBoxes = protectedReferenceBoxes(referenceFigure);
+  const protectedBodies = protectedReferenceBodies(referenceFigure);
   const collisionSamplesByPart: Record<string, number> = {};
   let collisionSampleCount = 0;
   for (const point of placedPoints) {
     if (point.distanceTo(targetGripCenter) <= GRIP_NEIGHBORHOOD_RADIUS_LDU) continue;
-    const collisions = bodyBoxes.filter(({ box }) => box.containsPoint(point));
+    const collisions = protectedBodies.filter((body) =>
+      body.box.containsPoint(point) && (clearanceMode === "bounds" || pointInsideBody(point, body))
+    );
     if (collisions.length === 0) continue;
     collisionSampleCount += 1;
     for (const { partName } of collisions) {
@@ -188,7 +246,7 @@ export function validateDigitalAccessoryPlacement(
       size: roundedVector(size),
     },
     sampledPointCount: placedPoints.length,
-    protectedBodyBoxCount: bodyBoxes.length,
+    protectedBodyBoxCount: protectedBodies.length,
     collisionSampleCount,
     collisionSamplesByPart,
   };

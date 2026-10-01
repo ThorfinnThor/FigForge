@@ -1,0 +1,27 @@
+{
+  "schemaVersion": 1,
+  "sourcePolicy": "Nur Rebrickable Catalog Downloads/CSV, keine MOC-Dateien.",
+  "methodology": "The 20 remaining accessories with exactly one official radius-4 cylinder are rechecked against the closed reference-figure meshes after the conservative bounding-box pass rejected them. A part passes only when at least one deterministic axial contact and orientation has zero points inside the closed body meshes. Physical clutch force is not asserted.",
+  "reviews": [
+    { "rebrickablePartNum": "2343", "catalogName": "Equipment Goblet / Glass", "ldrawFile": "parts/2343.dat", "expectedResult": "blocked" },
+    { "rebrickablePartNum": "2614a", "catalogName": "Equipment Fishing Rod 12L, Horizontal Line Hole", "ldrawFile": "parts/2614.dat", "expectedResult": "blocked" },
+    { "rebrickablePartNum": "6254", "catalogName": "Food Ice Cream Scoops", "ldrawFile": "parts/6254.dat", "expectedResult": "passed" },
+    { "rebrickablePartNum": "23306", "catalogName": "Weapon Lightsaber Hilt without Bottom Ring", "ldrawFile": "parts/23306.dat", "expectedResult": "passed" },
+    { "rebrickablePartNum": "25975pr0001", "catalogName": "Musical Instrument Guitar Acoustic with Black Neck and Silver Strings Print", "ldrawFile": "parts/25975p01.dat", "expectedResult": "blocked" },
+    { "rebrickablePartNum": "25975pr0002", "catalogName": "Musical Instrument Guitar Acoustic with Silver Strings Print", "ldrawFile": "parts/25975p02.dat", "expectedResult": "blocked" },
+    { "rebrickablePartNum": "29596", "catalogName": "Sports Barbells [Plain]", "ldrawFile": "parts/29592.dat", "expectedResult": "blocked" },
+    { "rebrickablePartNum": "33061", "catalogName": "Equipment Goblet Large", "ldrawFile": "parts/33061.dat", "expectedResult": "blocked" },
+    { "rebrickablePartNum": "64567", "catalogName": "Weapon Lightsaber Hilt with Bottom Ring", "ldrawFile": "parts/64567a.dat", "expectedResult": "passed" },
+    { "rebrickablePartNum": "68504", "catalogName": "Equipment Ice Cream Sundae Glass", "ldrawFile": "parts/68504.dat", "expectedResult": "blocked" },
+    { "rebrickablePartNum": "73117", "catalogName": "Candlestick", "ldrawFile": "parts/73117.dat", "expectedResult": "passed" },
+    { "rebrickablePartNum": "80716pr0001", "catalogName": "Musical Instrument Banjo with White Board, Light Bluish Grey/Black Snares print", "ldrawFile": "parts/80716p01.dat", "expectedResult": "blocked" },
+    { "rebrickablePartNum": "87997", "catalogName": "Equipment Cheerleader Pom Pom [Plain]", "ldrawFile": "parts/87997.dat", "expectedResult": "blocked" },
+    { "rebrickablePartNum": "87997pr0001", "catalogName": "Equipment Cheerleader Pom Pom with Blue Top", "ldrawFile": "parts/87997p01.dat", "expectedResult": "blocked" },
+    { "rebrickablePartNum": "87997pr0002", "catalogName": "Equipment Cheerleader Pom Pom with Red Top", "ldrawFile": "parts/87997p02.dat", "expectedResult": "blocked" },
+    { "rebrickablePartNum": "87997pr0003", "catalogName": "Equipment Cheerleader Pom Pom with Dark Green Top", "ldrawFile": "parts/87997p03.dat", "expectedResult": "blocked" },
+    { "rebrickablePartNum": "87997pr0004", "catalogName": "Equipment Cheerleader Pom Pom with Green Top", "ldrawFile": "parts/87997p04.dat", "expectedResult": "blocked" },
+    { "rebrickablePartNum": "93549", "catalogName": "Equipment Bottle / Erlenmeyer Flask [Plain]", "ldrawFile": "parts/u9180c01.dat", "expectedResult": "passed" },
+    { "rebrickablePartNum": "95228", "catalogName": "Equipment Bottle", "ldrawFile": "parts/95228.dat", "expectedResult": "passed" },
+    { "rebrickablePartNum": "95228pr0001", "catalogName": "Equipment Bottle with Black Sailing Ship Print", "ldrawFile": "parts/95228p01.dat", "expectedResult": "passed" }
+  ]
+}

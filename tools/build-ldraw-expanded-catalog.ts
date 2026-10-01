@@ -48,6 +48,7 @@ import {
 } from "./lib/ldraw-ambiguous-mapping-resolutions.js";
 import { resolveOfficialLDrawMappingFile } from "./lib/ldraw-official-mapping.js";
 import { writeLDrawRuntimePackages } from "./lib/ldraw-runtime-packages.js";
+import { readUniqueGripClearanceReviews } from "./lib/ldraw-unique-grip-clearance-reviews.js";
 
 const root = process.cwd();
 const libraryRoot = resolve(root, "data/incoming/ldraw-official/extracted/ldraw");
@@ -359,6 +360,10 @@ for (const file of topLevelParts) {
 const topLevelSourceByFile = new Map(topLevelParts.map((file) => [file, sourceCache.get(file)!]));
 const ambiguousMappingResolutions = await readAmbiguousMappingResolutions(root);
 const ambiguousMappingSelections = selectedAmbiguousMappings(ambiguousMappingResolutions);
+const uniqueGripClearanceReviews = await readUniqueGripClearanceReviews(root);
+const closedMeshClearancePartNums = new Set(uniqueGripClearanceReviews.reviews.map(({ rebrickablePartNum }) =>
+  normalize(rebrickablePartNum)
+));
 const resolvedCandidatesFor = (partNum: string, role: CatalogRole): Candidate[] => {
   const candidates = candidateIndex.get(normalize(partNum)) ?? [];
   const curated = ambiguousMappingSelections.get(ambiguousMappingKey(role, partNum));
@@ -911,6 +916,9 @@ const fallbackFailureCache = new Map<string, string>();
 
 for (const [index, match] of matchedParts.entries()) {
   const { part, candidate } = match;
+  const clearanceMode = closedMeshClearancePartNums.has(normalize(part.rebrickablePartNum))
+    ? "closed-mesh"
+    : "bounds";
   const normalizedPart = normalizedByPartNum.get(normalize(part.rebrickablePartNum));
   const colorVariant = normalizedPart?.colorVariants[0];
   const colorRgb = colorVariant?.rgb && /^[A-F0-9]{6}$/u.test(colorVariant.rgb) ? colorVariant.rgb : "A0A8A4";
@@ -988,6 +996,7 @@ for (const [index, match] of matchedParts.entries()) {
               placementTransformLdu,
               sourceGripCenterLdu,
               evidence.lengthLdu,
+              clearanceMode,
             ),
           })),
         }));
@@ -1125,6 +1134,7 @@ for (const [index, match] of matchedParts.entries()) {
         : "official-ldraw-geometry",
       limits: digitalAccessoryLimits,
       physicalFitGuaranteed: false,
+      ...(clearanceMode === "closed-mesh" ? { clearanceMode } : {}),
     } : null,
   });
   if ((index + 1) % 50 === 0 || index + 1 === matchedParts.length) {

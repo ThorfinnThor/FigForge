@@ -32,17 +32,17 @@
   },
   "summary": {
     "catalogPartCount": 20202,
-    "visualizedPartCount": 14791,
-    "builderReadyPartCount": 14789,
-    "remainingCatalogPartCount": 5413,
-    "remainingWithoutVisualizationCount": 5411,
+    "visualizedPartCount": 14798,
+    "builderReadyPartCount": 14796,
+    "remainingCatalogPartCount": 5406,
+    "remainingWithoutVisualizationCount": 5404,
     "uniqueOfficialMappingCount": 2834,
     "ambiguousOfficialMappingCount": 168,
     "noOfficialMappingCount": 17200,
     "remainingClassifications": {
       "builder-blocked": 2,
       "render-failed": 0,
-      "placement-profile-required": 494,
+      "placement-profile-required": 487,
       "ambiguous-official-mapping": 13,
       "no-official-mapping": 4904
     }
@@ -98,12 +98,12 @@
     },
     "handAccessory": {
       "catalogPartCount": 1308,
-      "builderReadyPartCount": 286,
-      "remainingCatalogPartCount": 1022,
+      "builderReadyPartCount": 293,
+      "remainingCatalogPartCount": 1015,
       "remainingClassifications": {
         "builder-blocked": 1,
         "render-failed": 0,
-        "placement-profile-required": 397,
+        "placement-profile-required": 390,
         "ambiguous-official-mapping": 4,
         "no-official-mapping": 620
       }
@@ -46974,20 +46974,6 @@
       "reason": null
     },
     {
-      "catalogId": "part:6254",
-      "role": "handAccessory",
-      "rebrickablePartNum": "6254",
-      "name": "Food Ice Cream Scoops",
-      "classification": "placement-profile-required",
-      "ldrawFiles": [
-        "parts/6254.dat"
-      ],
-      "mappingEvidence": [
-        "exact-filename"
-      ],
-      "reason": null
-    },
-    {
       "catalogId": "part:6256",
       "role": "handAccessory",
       "rebrickablePartNum": "6256",
@@ -48574,20 +48560,6 @@
       "classification": "no-official-mapping",
       "ldrawFiles": [],
       "mappingEvidence": [],
-      "reason": null
-    },
-    {
-      "catalogId": "part:23306",
-      "role": "handAccessory",
-      "rebrickablePartNum": "23306",
-      "name": "Weapon Lightsaber Hilt without Bottom Ring",
-      "classification": "placement-profile-required",
-      "ldrawFiles": [
-        "parts/23306.dat"
-      ],
-      "mappingEvidence": [
-        "exact-filename"
-      ],
       "reason": null
     },
     {
@@ -52091,20 +52063,6 @@
       "reason": null
     },
     {
-      "catalogId": "part:64567",
-      "role": "handAccessory",
-      "rebrickablePartNum": "64567",
-      "name": "Weapon Lightsaber Hilt with Bottom Ring",
-      "classification": "placement-profile-required",
-      "ldrawFiles": [
-        "parts/64567a.dat"
-      ],
-      "mappingEvidence": [
-        "explicit-keyword"
-      ],
-      "reason": null
-    },
-    {
       "catalogId": "part:64728",
       "role": "handAccessory",
       "rebrickablePartNum": "64728",
@@ -52898,20 +52856,6 @@
       "classification": "no-official-mapping",
       "ldrawFiles": [],
       "mappingEvidence": [],
-      "reason": null
-    },
-    {
-      "catalogId": "part:73117",
-      "role": "handAccessory",
-      "rebrickablePartNum": "73117",
-      "name": "Candlestick",
-      "classification": "placement-profile-required",
-      "ldrawFiles": [
-        "parts/73117.dat"
-      ],
-      "mappingEvidence": [
-        "exact-filename"
-      ],
       "reason": null
     },
     {
@@ -54980,21 +54924,6 @@
       "reason": null
     },
     {
-      "catalogId": "part:93549",
-      "role": "handAccessory",
-      "rebrickablePartNum": "93549",
-      "name": "Equipment Bottle / Erlenmeyer Flask [Plain]",
-      "classification": "placement-profile-required",
-      "ldrawFiles": [
-        "parts/u9180c01.dat"
-      ],
-      "mappingEvidence": [
-        "exact-filename",
-        "explicit-keyword"
-      ],
-      "reason": null
-    },
-    {
       "catalogId": "part:93549pat0001",
       "role": "handAccessory",
       "rebrickablePartNum": "93549pat0001",
@@ -55337,34 +55266,6 @@
       ],
       "mappingEvidence": [
         "exact-filename"
-      ],
-      "reason": null
-    },
-    {
-      "catalogId": "part:95228",
-      "role": "handAccessory",
-      "rebrickablePartNum": "95228",
-      "name": "Equipment Bottle",
-      "classification": "placement-profile-required",
-      "ldrawFiles": [
-        "parts/95228.dat"
-      ],
-      "mappingEvidence": [
-        "exact-filename"
-      ],
-      "reason": null
-    },
-    {
-      "catalogId": "part:95228pr0001",
-      "role": "handAccessory",
-      "rebrickablePartNum": "95228pr0001",
-      "name": "Equipment Bottle with Black Sailing Ship Print",
-      "classification": "placement-profile-required",
-      "ldrawFiles": [
-        "parts/95228p01.dat"
-      ],
-      "mappingEvidence": [
-        "explicit-keyword"
       ],
       "reason": null
     },
