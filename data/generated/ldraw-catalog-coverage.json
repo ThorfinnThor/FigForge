@@ -32,17 +32,17 @@
   },
   "summary": {
     "catalogPartCount": 20202,
-    "visualizedPartCount": 14801,
-    "builderReadyPartCount": 14799,
-    "remainingCatalogPartCount": 5403,
-    "remainingWithoutVisualizationCount": 5401,
+    "visualizedPartCount": 14824,
+    "builderReadyPartCount": 14822,
+    "remainingCatalogPartCount": 5380,
+    "remainingWithoutVisualizationCount": 5378,
     "uniqueOfficialMappingCount": 2834,
     "ambiguousOfficialMappingCount": 168,
     "noOfficialMappingCount": 17200,
     "remainingClassifications": {
       "builder-blocked": 2,
       "render-failed": 0,
-      "placement-profile-required": 484,
+      "placement-profile-required": 461,
       "ambiguous-official-mapping": 13,
       "no-official-mapping": 4904
     }
@@ -98,12 +98,12 @@
     },
     "handAccessory": {
       "catalogPartCount": 1308,
-      "builderReadyPartCount": 296,
-      "remainingCatalogPartCount": 1012,
+      "builderReadyPartCount": 319,
+      "remainingCatalogPartCount": 989,
       "remainingClassifications": {
         "builder-blocked": 1,
         "render-failed": 0,
-        "placement-profile-required": 387,
+        "placement-profile-required": 364,
         "ambiguous-official-mapping": 4,
         "no-official-mapping": 620
       }
@@ -44463,35 +44463,6 @@
       "reason": null
     },
     {
-      "catalogId": "part:37",
-      "role": "handAccessory",
-      "rebrickablePartNum": "37",
-      "name": "Weapon Dagger / Knife",
-      "classification": "placement-profile-required",
-      "ldrawFiles": [
-        "parts/44658.dat"
-      ],
-      "mappingEvidence": [
-        "exact-filename",
-        "explicit-keyword"
-      ],
-      "reason": null
-    },
-    {
-      "catalogId": "part:59",
-      "role": "handAccessory",
-      "rebrickablePartNum": "59",
-      "name": "Weapon Sword / Greatsword Round",
-      "classification": "placement-profile-required",
-      "ldrawFiles": [
-        "parts/59.dat"
-      ],
-      "mappingEvidence": [
-        "exact-filename"
-      ],
-      "reason": null
-    },
-    {
       "catalogId": "part:69c01",
       "role": "handAccessory",
       "rebrickablePartNum": "69c01",
@@ -46337,20 +46308,6 @@
       "reason": null
     },
     {
-      "catalogId": "part:4342",
-      "role": "handAccessory",
-      "rebrickablePartNum": "4342",
-      "name": "Food Bread",
-      "classification": "placement-profile-required",
-      "ldrawFiles": [
-        "parts/4342.dat"
-      ],
-      "mappingEvidence": [
-        "exact-filename"
-      ],
-      "reason": null
-    },
-    {
       "catalogId": "part:4429",
       "role": "handAccessory",
       "rebrickablePartNum": "4429",
@@ -46375,20 +46332,6 @@
       "reason": null
     },
     {
-      "catalogId": "part:4449",
-      "role": "handAccessory",
-      "rebrickablePartNum": "4449",
-      "name": "Bag / Briefcase",
-      "classification": "placement-profile-required",
-      "ldrawFiles": [
-        "parts/4449-f1.dat"
-      ],
-      "mappingEvidence": [
-        "curated-official-metadata"
-      ],
-      "reason": null
-    },
-    {
       "catalogId": "part:4479",
       "role": "handAccessory",
       "rebrickablePartNum": "4479",
@@ -46400,20 +46343,6 @@
       "mappingEvidence": [
         "exact-filename",
         "explicit-keyword"
-      ],
-      "reason": null
-    },
-    {
-      "catalogId": "part:4499",
-      "role": "handAccessory",
-      "rebrickablePartNum": "4499",
-      "name": "Weapon Bow and Arrow [Large]",
-      "classification": "placement-profile-required",
-      "ldrawFiles": [
-        "parts/4499.dat"
-      ],
-      "mappingEvidence": [
-        "exact-filename"
       ],
       "reason": null
     },
@@ -48167,62 +48096,6 @@
       "reason": null
     },
     {
-      "catalogId": "part:18787",
-      "role": "handAccessory",
-      "rebrickablePartNum": "18787",
-      "name": "Weapon Sword Blocky",
-      "classification": "placement-profile-required",
-      "ldrawFiles": [
-        "parts/18787.dat"
-      ],
-      "mappingEvidence": [
-        "exact-filename"
-      ],
-      "reason": null
-    },
-    {
-      "catalogId": "part:18788",
-      "role": "handAccessory",
-      "rebrickablePartNum": "18788",
-      "name": "Weapon Axe Blocky",
-      "classification": "placement-profile-required",
-      "ldrawFiles": [
-        "parts/18788.dat"
-      ],
-      "mappingEvidence": [
-        "exact-filename"
-      ],
-      "reason": null
-    },
-    {
-      "catalogId": "part:18789",
-      "role": "handAccessory",
-      "rebrickablePartNum": "18789",
-      "name": "Tool Pickaxe Blocky, Double",
-      "classification": "placement-profile-required",
-      "ldrawFiles": [
-        "parts/18789.dat"
-      ],
-      "mappingEvidence": [
-        "exact-filename"
-      ],
-      "reason": null
-    },
-    {
-      "catalogId": "part:18791",
-      "role": "handAccessory",
-      "rebrickablePartNum": "18791",
-      "name": "Equipment Shovel Blocky",
-      "classification": "placement-profile-required",
-      "ldrawFiles": [
-        "parts/18791.dat"
-      ],
-      "mappingEvidence": [
-        "exact-filename"
-      ],
-      "reason": null
-    },
-    {
       "catalogId": "part:18792",
       "role": "handAccessory",
       "rebrickablePartNum": "18792",
@@ -48638,20 +48511,6 @@
       "classification": "no-official-mapping",
       "ldrawFiles": [],
       "mappingEvidence": [],
-      "reason": null
-    },
-    {
-      "catalogId": "part:23986",
-      "role": "handAccessory",
-      "rebrickablePartNum": "23986",
-      "name": "Equipment Teapot",
-      "classification": "placement-profile-required",
-      "ldrawFiles": [
-        "parts/23986.dat"
-      ],
-      "mappingEvidence": [
-        "exact-filename"
-      ],
       "reason": null
     },
     {
@@ -49625,34 +49484,6 @@
       "reason": null
     },
     {
-      "catalogId": "part:30173a",
-      "role": "handAccessory",
-      "rebrickablePartNum": "30173a",
-      "name": "Weapon Sword / Katana [Octagonal Guard]",
-      "classification": "placement-profile-required",
-      "ldrawFiles": [
-        "parts/30173a.dat"
-      ],
-      "mappingEvidence": [
-        "exact-filename"
-      ],
-      "reason": null
-    },
-    {
-      "catalogId": "part:30173b",
-      "role": "handAccessory",
-      "rebrickablePartNum": "30173b",
-      "name": "Weapon Sword / Katana / Shamshir with Uncapped Pommel [Square Guard]",
-      "classification": "placement-profile-required",
-      "ldrawFiles": [
-        "parts/30173b.dat"
-      ],
-      "mappingEvidence": [
-        "exact-filename"
-      ],
-      "reason": null
-    },
-    {
       "catalogId": "part:30191",
       "role": "handAccessory",
       "rebrickablePartNum": "30191",
@@ -49730,20 +49561,6 @@
       "classification": "placement-profile-required",
       "ldrawFiles": [
         "parts/30228.dat"
-      ],
-      "mappingEvidence": [
-        "exact-filename"
-      ],
-      "reason": null
-    },
-    {
-      "catalogId": "part:30229",
-      "role": "handAccessory",
-      "rebrickablePartNum": "30229",
-      "name": "Equipment Zip Line Handle",
-      "classification": "placement-profile-required",
-      "ldrawFiles": [
-        "parts/30229.dat"
       ],
       "mappingEvidence": [
         "exact-filename"
@@ -50434,20 +50251,6 @@
       "reason": null
     },
     {
-      "catalogId": "part:38014",
-      "role": "handAccessory",
-      "rebrickablePartNum": "38014",
-      "name": "Equipment Cup / Teacup",
-      "classification": "placement-profile-required",
-      "ldrawFiles": [
-        "parts/38014.dat"
-      ],
-      "mappingEvidence": [
-        "exact-filename"
-      ],
-      "reason": null
-    },
-    {
       "catalogId": "part:38014pr1005",
       "role": "handAccessory",
       "rebrickablePartNum": "38014pr1005",
@@ -50723,20 +50526,6 @@
       "classification": "no-official-mapping",
       "ldrawFiles": [],
       "mappingEvidence": [],
-      "reason": null
-    },
-    {
-      "catalogId": "part:43887",
-      "role": "handAccessory",
-      "rebrickablePartNum": "43887",
-      "name": "Weapon Sword / Scimitar",
-      "classification": "placement-profile-required",
-      "ldrawFiles": [
-        "parts/43887.dat"
-      ],
-      "mappingEvidence": [
-        "exact-filename"
-      ],
       "reason": null
     },
     {
@@ -51065,20 +50854,6 @@
       "classification": "no-official-mapping",
       "ldrawFiles": [],
       "mappingEvidence": [],
-      "reason": null
-    },
-    {
-      "catalogId": "part:48495",
-      "role": "handAccessory",
-      "rebrickablePartNum": "48495",
-      "name": "Weapon Sword / Greatsword Angular",
-      "classification": "placement-profile-required",
-      "ldrawFiles": [
-        "parts/48495.dat"
-      ],
-      "mappingEvidence": [
-        "exact-filename"
-      ],
       "reason": null
     },
     {
@@ -52665,20 +52440,6 @@
       "reason": null
     },
     {
-      "catalogId": "part:71342",
-      "role": "handAccessory",
-      "rebrickablePartNum": "71342",
-      "name": "Musical Instrument Bugle",
-      "classification": "placement-profile-required",
-      "ldrawFiles": [
-        "parts/71342.dat"
-      ],
-      "mappingEvidence": [
-        "exact-filename"
-      ],
-      "reason": null
-    },
-    {
       "catalogId": "part:71594c01",
       "role": "handAccessory",
       "rebrickablePartNum": "71594c01",
@@ -53429,20 +53190,6 @@
       "reason": null
     },
     {
-      "catalogId": "part:76764",
-      "role": "handAccessory",
-      "rebrickablePartNum": "76764",
-      "name": "Weapon Sword / Shortsword Elaborate Hilt",
-      "classification": "placement-profile-required",
-      "ldrawFiles": [
-        "parts/76764.dat"
-      ],
-      "mappingEvidence": [
-        "exact-filename"
-      ],
-      "reason": null
-    },
-    {
       "catalogId": "part:77179pr0001",
       "role": "handAccessory",
       "rebrickablePartNum": "77179pr0001",
@@ -53490,20 +53237,6 @@
       "classification": "placement-profile-required",
       "ldrawFiles": [
         "parts/79735.dat"
-      ],
-      "mappingEvidence": [
-        "exact-filename"
-      ],
-      "reason": null
-    },
-    {
-      "catalogId": "part:79741",
-      "role": "handAccessory",
-      "rebrickablePartNum": "79741",
-      "name": "Equipment Cutlery - Fork",
-      "classification": "placement-profile-required",
-      "ldrawFiles": [
-        "parts/79741.dat"
       ],
       "mappingEvidence": [
         "exact-filename"
@@ -54579,20 +54312,6 @@
       "reason": null
     },
     {
-      "catalogId": "part:93055",
-      "role": "handAccessory",
-      "rebrickablePartNum": "93055",
-      "name": "Weapon Sword Katana with Dragon Guard (The Sword of Fire)",
-      "classification": "placement-profile-required",
-      "ldrawFiles": [
-        "parts/93055.dat"
-      ],
-      "mappingEvidence": [
-        "exact-filename"
-      ],
-      "reason": null
-    },
-    {
       "catalogId": "part:93058",
       "role": "handAccessory",
       "rebrickablePartNum": "93058",
@@ -54852,20 +54571,6 @@
       "reason": null
     },
     {
-      "catalogId": "part:93247",
-      "role": "handAccessory",
-      "rebrickablePartNum": "93247",
-      "name": "Weapon Sword / Khopesh",
-      "classification": "placement-profile-required",
-      "ldrawFiles": [
-        "parts/93247.dat"
-      ],
-      "mappingEvidence": [
-        "exact-filename"
-      ],
-      "reason": null
-    },
-    {
       "catalogId": "part:93251",
       "role": "handAccessory",
       "rebrickablePartNum": "93251",
@@ -54987,20 +54692,6 @@
       "classification": "placement-profile-required",
       "ldrawFiles": [
         "parts/93555.dat"
-      ],
-      "mappingEvidence": [
-        "exact-filename"
-      ],
-      "reason": null
-    },
-    {
-      "catalogId": "part:93559",
-      "role": "handAccessory",
-      "rebrickablePartNum": "93559",
-      "name": "Sports Hockey Stick, Flat Shaft",
-      "classification": "placement-profile-required",
-      "ldrawFiles": [
-        "parts/93559.dat"
       ],
       "mappingEvidence": [
         "exact-filename"
@@ -55297,20 +54988,6 @@
       "classification": "no-official-mapping",
       "ldrawFiles": [],
       "mappingEvidence": [],
-      "reason": null
-    },
-    {
-      "catalogId": "part:95673",
-      "role": "handAccessory",
-      "rebrickablePartNum": "95673",
-      "name": "Weapon Sword with Thin Crossguard (Roman Gladius)",
-      "classification": "placement-profile-required",
-      "ldrawFiles": [
-        "parts/95673.dat"
-      ],
-      "mappingEvidence": [
-        "exact-filename"
-      ],
       "reason": null
     },
     {
