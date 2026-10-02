@@ -31,7 +31,15 @@ import {
   selectionsFromFigureDocument,
   serializeFigureDocument,
 } from "../figure/figure-document.js";
-import { loadCurrentFigureDraft, saveCurrentFigureDraft } from "../storage/figure-draft-store.js";
+import {
+  clearLocalFigureData,
+  deleteSavedFigure,
+  listSavedFigures,
+  loadCurrentFigureDraft,
+  saveCurrentFigureDraft,
+  saveFigureToCollection,
+  type SavedFigure,
+} from "../storage/figure-draft-store.js";
 import type { CatalogPackagePart } from "../contracts/catalog-package.js";
 import type { LDrawCatalogRole, LDrawCatalogSelection } from "../scene/types.js";
 import { useI18n } from "../i18n.js";
@@ -92,6 +100,7 @@ export function CatalogWorkspace() {
   const [selectedByRole, setSelectedByRole] = useState(initialSelectionByRole);
   const [draftHydrated, setDraftHydrated] = useState(false);
   const [saveStatus, setSaveStatus] = useState<"loading" | "saved" | "error">("loading");
+  const [savedFigures, setSavedFigures] = useState<readonly SavedFigure[]>([]);
   const [transferMessage, setTransferMessage] = useState<string | null>(null);
   const [semanticStatus, setSemanticStatus] = useState<SemanticSearchStatus>("disabled");
   const [semanticProgress, setSemanticProgress] = useState({ loaded: 0, total: semanticSearchRelease.requiredDownloadBytes });
@@ -254,9 +263,10 @@ export function CatalogWorkspace() {
 
   useEffect(() => {
     let active = true;
-    void loadCurrentFigureDraft()
-      .then(async (document) => {
+    void Promise.all([loadCurrentFigureDraft(), listSavedFigures()])
+      .then(async ([document, collection]) => {
         if (!active || !document) return;
+        setSavedFigures(collection);
         await Promise.all([...new Set(document.selections.map(({ slot }) => slot))].map(loadCatalogParts));
         if (!active) return;
         const restored = selectionsFromFigureDocument(document, isSupportedDocumentSelection);
@@ -268,7 +278,10 @@ export function CatalogWorkspace() {
         if (active) setSaveStatus("error");
       })
       .finally(() => {
-        if (active) setDraftHydrated(true);
+        if (active) {
+          setDraftHydrated(true);
+          void listSavedFigures().then(setSavedFigures).catch(() => undefined);
+        }
       });
     return () => { active = false; };
   }, []);
@@ -311,6 +324,50 @@ export function CatalogWorkspace() {
       setTransferMessage(t("figure.transfer.loaded", { name: document.name }));
     } catch (error) {
       setTransferMessage(`${t("figure.transfer.errorPrefix")}: ${error instanceof Error ? error.message : t("figure.transfer.invalid")}`);
+    }
+  };
+
+  const saveToCollection = async (): Promise<void> => {
+    try {
+      await saveFigureToCollection(createFigureDocument(selectedByRole));
+      setSavedFigures(await listSavedFigures());
+      setTransferMessage(t("figure.collection.saved"));
+    } catch {
+      setTransferMessage(t("figure.collection.error"));
+    }
+  };
+
+  const loadFromCollection = async (saved: SavedFigure): Promise<void> => {
+    try {
+      await Promise.all([...new Set(saved.document.selections.map(({ slot }) => slot))].map(loadCatalogParts));
+      const restored = selectionsFromFigureDocument(saved.document, isSupportedDocumentSelection);
+      if (Object.keys(restored).length !== saved.document.selections.length) {
+        throw new Error("unsupported");
+      }
+      setSelectedByRole(restored);
+      setTransferMessage(t("figure.collection.loaded", { name: saved.document.name }));
+    } catch {
+      setTransferMessage(t("figure.transfer.unsupported"));
+    }
+  };
+
+  const removeFromCollection = async (id: string): Promise<void> => {
+    try {
+      await deleteSavedFigure(id);
+      setSavedFigures(await listSavedFigures());
+    } catch {
+      setTransferMessage(t("figure.collection.error"));
+    }
+  };
+
+  const clearLocalData = async (): Promise<void> => {
+    if (!window.confirm(t("figure.collection.clearConfirm"))) return;
+    try {
+      await clearLocalFigureData();
+      setSavedFigures([]);
+      setTransferMessage(t("figure.collection.cleared"));
+    } catch {
+      setTransferMessage(t("figure.collection.error"));
     }
   };
 
@@ -494,7 +551,12 @@ export function CatalogWorkspace() {
       onClose={closeFigurePanel}
       onExport={exportFigure}
       onImport={importFigure}
+      onSaveToCollection={saveToCollection}
+      onLoadFromCollection={loadFromCollection}
+      onDeleteFromCollection={removeFromCollection}
+      onClearLocalData={clearLocalData}
       saveStatus={saveStatus}
+      savedFigures={savedFigures}
       slots={figureSlots}
       transferMessage={transferMessage}
     />
