@@ -15,6 +15,7 @@
     "catalog:local:test": "python3 -m unittest tests/python/test_local_catalog_pipeline.py",
     "review:ff18": "tsx tools/ff18-review-server.ts",
     "review:semantic-release": "tsx tools/semantic-search-review-server.ts",
+    "review:semantic-holdout": "FIGFORGE_SEARCH_REVIEW_SPLIT=holdout tsx tools/semantic-search-review-server.ts",
     "review:semantic-release:import": "tsx tools/import-semantic-search-release-judgments.ts",
     "typecheck": "tsc -b --pretty false",
     "lint": "eslint .",

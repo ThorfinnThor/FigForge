@@ -51,9 +51,40 @@ describe("semantic search release relevance review", () => {
     expect(JSON.stringify(state)).not.toContain("holdout");
   });
 
+  it("exposes only holdout cases after the development tuning is frozen", () => {
+    const state = buildReleaseReviewState(review, createReleaseReviewProgress("a".repeat(64)), "holdout");
+    expect(state.split).toBe("holdout");
+    expect(state.cases.map(({ caseId }) => caseId)).toEqual(["holdout"]);
+    expect(state.cases[0]).not.toHaveProperty("systems");
+    expect(JSON.stringify(state)).not.toContain('"caseId":"dev"');
+  });
+
   it("rejects ratings outside the visible development split", () => {
     const progress = createReleaseReviewProgress("a".repeat(64));
     expect(() => applyReleaseReviewRating(review, progress, "candidate:holdout:c", "2")).toThrow(/not part/u);
+  });
+
+  it("keeps holdout ratings separate from development progress", () => {
+    let progress = createReleaseReviewProgress("a".repeat(64));
+    expect(() => applyReleaseReviewRating(
+      review,
+      progress,
+      "candidate:dev:a",
+      "2",
+      new Date("2026-10-02T09:00:00Z"),
+      "holdout",
+    )).toThrow(/not part/u);
+    progress = applyReleaseReviewRating(
+      review,
+      progress,
+      "candidate:holdout:c",
+      "2",
+      new Date("2026-10-02T09:01:00Z"),
+      "holdout",
+    );
+    const report = buildReleaseReviewReport(review, progress, "holdout");
+    expect(report.split).toBe("holdout");
+    expect(report.overall.hybrid.ndcgAt5).toBe(1);
   });
 
   it("exports only a complete review and computes deterministic metrics", () => {
