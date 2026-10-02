@@ -5,7 +5,7 @@
   "reviewStatus": "pending-human-review",
   "blindedSystems": true,
   "querySetSha256": "56c9a287a380df56d27ff7ecf061514e537ea1be4821f6f6e1f7b41ce397bf97",
-  "releaseManifestSha256": "c038f94336959cbe09db3bb4eb972c7963e54d5fb7312d7adee44bdd9f346cae",
+  "releaseManifestSha256": "686190a0f53190525af0012288b811131ba262f29c00e298ddfb9635a32050fa",
   "releaseProfileId": "compact-minilm",
   "releaseDocumentCount": 2726,
   "instructions": "Bewerte jeden Treffer blind mit 0 (unpassend), 1 (akzeptabel) oder 2 (sehr passend). Maßgeblich sind Suchtext, sichtbare Geometrie, Katalogname, Kategorie und belegte Farbe. Die Herkunft aus Basis- oder Hybridsuche bleibt verborgen; der Holdout wird nicht ausgeliefert.",
@@ -26,10 +26,10 @@
         ],
         "hybrid": [
           "part:28621pr4236",
-          "part:3626bpr0032",
           "part:27956pr0001",
-          "part:85947pr0003",
-          "part:3626bpr0203"
+          "part:3626bpr0032",
+          "part:3626bpr0678",
+          "part:27456pr0001"
         ]
       },
       "candidates": [
@@ -60,6 +60,18 @@
           "relevance": null
         },
         {
+          "candidateKey": "candidate:release-dev-en-green-alien-face:part:3626bpr0678",
+          "componentId": "part:3626bpr0678",
+          "rebrickablePartNum": "3626bpr0678",
+          "originalName": "Minifig Head Portal Emperor, Large Blue Eyes, Turtle Mouth and Gills Print [Blocked Open Stud]",
+          "categoryRole": "head",
+          "colorNames": [
+            "Sand Green"
+          ],
+          "thumbnailUrl": "/assets/thumbnails/ldraw-expanded/head-3626bpr0678.webp",
+          "relevance": null
+        },
+        {
           "candidateKey": "candidate:release-dev-en-green-alien-face:part:3626bpr0032",
           "componentId": "part:3626bpr0032",
           "rebrickablePartNum": "3626bpr0032",
@@ -67,6 +79,18 @@
           "categoryRole": "head",
           "colorNames": [],
           "thumbnailUrl": "/assets/thumbnails/ldraw-expanded/head-3626bpr0032.webp",
+          "relevance": null
+        },
+        {
+          "candidateKey": "candidate:release-dev-en-green-alien-face:part:27456pr0001",
+          "componentId": "part:27456pr0001",
+          "rebrickablePartNum": "27456pr0001",
+          "originalName": "Minifig Head Special, Sonic the Hedgehog with Green Eyes, Tan Face and Ears, Black Nose and Half Smile Print",
+          "categoryRole": "head",
+          "colorNames": [
+            "Blue"
+          ],
+          "thumbnailUrl": "/assets/thumbnails/ldraw-expanded/head-27456pr0001.webp",
           "relevance": null
         },
         {
@@ -128,28 +152,6 @@
           ],
           "thumbnailUrl": "/assets/thumbnails/ldraw/ff03-head-3626cpr0001.svg",
           "relevance": null
-        },
-        {
-          "candidateKey": "candidate:release-dev-en-green-alien-face:part:3626bpr0203",
-          "componentId": "part:3626bpr0203",
-          "rebrickablePartNum": "3626bpr0203",
-          "originalName": "Minifig Head Alien, Gray Mask and Mouth Grille Print [Blocked Open Stud]",
-          "categoryRole": "head",
-          "colorNames": [],
-          "thumbnailUrl": "/assets/thumbnails/ldraw-expanded/head-3626bpr0203.webp",
-          "relevance": null
-        },
-        {
-          "candidateKey": "candidate:release-dev-en-green-alien-face:part:85947pr0003",
-          "componentId": "part:85947pr0003",
-          "rebrickablePartNum": "85947pr0003",
-          "originalName": "Minifig Head Special, Alien with Black Eyes & Lines Print (Squidman)",
-          "categoryRole": "head",
-          "colorNames": [
-            "Lime"
-          ],
-          "thumbnailUrl": "/assets/thumbnails/ldraw-expanded/head-85947pr0003.webp",
-          "relevance": null
         }
       ]
     },
@@ -168,14 +170,26 @@
           "part:105196pr0001"
         ],
         "hybrid": [
-          "part:3626bpr0251",
           "part:3626cpr2011",
-          "part:3626cpr0983",
-          "part:3626bpr0274",
-          "part:3626bpr0389"
+          "part:3626bpr0251",
+          "part:28621pr0061",
+          "part:3626cpr0961",
+          "part:3626cpr0983"
         ]
       },
       "candidates": [
+        {
+          "candidateKey": "candidate:release-dev-en-angry-bearded-face:part:3626cpr0961",
+          "componentId": "part:3626cpr0961",
+          "rebrickablePartNum": "3626cpr0961",
+          "originalName": "Minifig Head Iron Man (Tony Stark), Moustache, Goatee and Cheek Lines, Determined / Angry Print",
+          "categoryRole": "head",
+          "colorNames": [
+            "Light Nougat"
+          ],
+          "thumbnailUrl": "/assets/thumbnails/ldraw-expanded/head-3626cpr0961.webp",
+          "relevance": null
+        },
         {
           "candidateKey": "candidate:release-dev-en-angry-bearded-face:part:3626cpr0983",
           "componentId": "part:3626cpr0983",
@@ -213,19 +227,6 @@
           "relevance": null
         },
         {
-          "candidateKey": "candidate:release-dev-en-angry-bearded-face:part:3626bpr0274",
-          "componentId": "part:3626bpr0274",
-          "rebrickablePartNum": "3626bpr0274",
-          "originalName": "Minifig Head Qui-Gon Jinn, Beard with Brown Eyebrows, Moustache and Beard, Black Chin Dimple Print [Blocked Open Stud]",
-          "categoryRole": "head",
-          "colorNames": [
-            "Light Nougat",
-            "Yellow"
-          ],
-          "thumbnailUrl": "/assets/thumbnails/ldraw-expanded/head-3626bpr0274.webp",
-          "relevance": null
-        },
-        {
           "candidateKey": "candidate:release-dev-en-angry-bearded-face:part:105196pr0001",
           "componentId": "part:105196pr0001",
           "rebrickablePartNum": "105196pr0001",
@@ -235,6 +236,18 @@
             "Medium Nougat"
           ],
           "thumbnailUrl": "/assets/thumbnails/ldraw-expanded/head-105196pr0001.webp",
+          "relevance": null
+        },
+        {
+          "candidateKey": "candidate:release-dev-en-angry-bearded-face:part:28621pr0061",
+          "componentId": "part:28621pr0061",
+          "rebrickablePartNum": "28621pr0061",
+          "originalName": "Minifig Head Captain Haddock, Black Eyebrows, Beard, Crow's Feet, Angry / Annoyed",
+          "categoryRole": "head",
+          "colorNames": [
+            "Light Nougat"
+          ],
+          "thumbnailUrl": "/assets/thumbnails/ldraw-expanded/head-28621pr0061.webp",
           "relevance": null
         },
         {
@@ -286,18 +299,6 @@
           ],
           "thumbnailUrl": "/assets/thumbnails/ldraw-expanded/head-3626bpr0251.webp",
           "relevance": null
-        },
-        {
-          "candidateKey": "candidate:release-dev-en-angry-bearded-face:part:3626bpr0389",
-          "componentId": "part:3626bpr0389",
-          "rebrickablePartNum": "3626bpr0389",
-          "originalName": "Minifig Head, Smirk, Pupils, Stubble Beard and Moustache and Sideburns Print",
-          "categoryRole": "head",
-          "colorNames": [
-            "Yellow"
-          ],
-          "thumbnailUrl": "/assets/thumbnails/ldraw-expanded/head-3626bpr0389.webp",
-          "relevance": null
         }
       ]
     },
@@ -316,11 +317,11 @@
           "part:3626cpr1614"
         ],
         "hybrid": [
+          "part:3626cpr0914",
           "part:3626bpr0049",
+          "part:3626cpr0889",
           "part:3626cpr2141",
-          "part:3626bpr0282",
-          "part:3626cpr1664",
-          "part:3626cpr1663"
+          "part:3626bpr0282"
         ]
       },
       "candidates": [
@@ -346,18 +347,6 @@
             "Yellow"
           ],
           "thumbnailUrl": "/assets/thumbnails/ldraw-expanded/head-3626cpr2141.webp",
-          "relevance": null
-        },
-        {
-          "candidateKey": "candidate:release-dev-de-yellow-sunglasses-head:part:3626cpr1664",
-          "componentId": "part:3626cpr1664",
-          "rebrickablePartNum": "3626cpr1664",
-          "originalName": "Minifig Head, Silver Sunglasses, Eyebrows and Thin Grin Print",
-          "categoryRole": "head",
-          "colorNames": [
-            "Yellow"
-          ],
-          "thumbnailUrl": "/assets/thumbnails/ldraw-expanded/head-3626cpr1664.webp",
           "relevance": null
         },
         {
@@ -397,18 +386,6 @@
           "relevance": null
         },
         {
-          "candidateKey": "candidate:release-dev-de-yellow-sunglasses-head:part:3626cpr1663",
-          "componentId": "part:3626cpr1663",
-          "rebrickablePartNum": "3626cpr1663",
-          "originalName": "Minifig Head, Black and Silver Sunglasses, Chin Dimple, Grim Mouth Print",
-          "categoryRole": "head",
-          "colorNames": [
-            "Yellow"
-          ],
-          "thumbnailUrl": "/assets/thumbnails/ldraw-expanded/head-3626cpr1663.webp",
-          "relevance": null
-        },
-        {
           "candidateKey": "candidate:release-dev-de-yellow-sunglasses-head:part:3626cpr0914",
           "componentId": "part:3626cpr0914",
           "rebrickablePartNum": "3626cpr0914",
@@ -439,9 +416,9 @@
         "hybrid": [
           "part:3626cpr1260",
           "part:3626bpr0756",
-          "part:3626cpr1738",
-          "part:3626cpr0677",
-          "part:3626cpr1635"
+          "part:3626cpr0752",
+          "part:685pr0003",
+          "part:3626cpr1738"
         ]
       },
       "candidates": [
@@ -455,6 +432,16 @@
             "Yellow"
           ],
           "thumbnailUrl": "/assets/thumbnails/ldraw-expanded/head-3626bpr0677.webp",
+          "relevance": null
+        },
+        {
+          "candidateKey": "candidate:release-dev-de-smiling-freckles:part:685pr0003",
+          "componentId": "part:685pr0003",
+          "rebrickablePartNum": "685pr0003",
+          "originalName": "Homemaker Figure Head with Eyes, Freckles and Smile Print",
+          "categoryRole": "head",
+          "colorNames": [],
+          "thumbnailUrl": "/assets/thumbnails/ldraw-expanded/head-685pr0003.webp",
           "relevance": null
         },
         {
@@ -516,18 +503,6 @@
           ],
           "thumbnailUrl": "/assets/thumbnails/ldraw-expanded/head-3626cpr1738.webp",
           "relevance": null
-        },
-        {
-          "candidateKey": "candidate:release-dev-de-smiling-freckles:part:3626cpr1635",
-          "componentId": "part:3626cpr1635",
-          "rebrickablePartNum": "3626cpr1635",
-          "originalName": "Minifig Head Sally, Girl, Eyelashes, Freckles, Smile",
-          "categoryRole": "head",
-          "colorNames": [
-            "Yellow"
-          ],
-          "thumbnailUrl": "/assets/thumbnails/ldraw-expanded/head-3626cpr1635.webp",
-          "relevance": null
         }
       ]
     },
@@ -546,22 +521,24 @@
           "part:105196pr0001"
         ],
         "hybrid": [
-          "part:98384pr0001",
           "part:3626cpr1442",
-          "part:3626cpr1361",
+          "part:98384pr0001",
           "part:3626cpr1338",
-          "part:3626bpr0046"
+          "part:3626cpr1361",
+          "part:3626cpr1307"
         ]
       },
       "candidates": [
         {
-          "candidateKey": "candidate:release-dev-en-robot-red-eyes:part:3626bpr0046",
-          "componentId": "part:3626bpr0046",
-          "rebrickablePartNum": "3626bpr0046",
-          "originalName": "Minifig Head Pharaoh Hotep, Mummy, Eyebrows, Red around Eyes, Pupils Print",
+          "candidateKey": "candidate:release-dev-en-robot-red-eyes:part:3626cpr1307",
+          "componentId": "part:3626cpr1307",
+          "rebrickablePartNum": "3626cpr1307",
+          "originalName": "Minifig Head Wiley Fusebot, Red Eyes, Metal Eyebrows with Rivets, Broken Teeth and Stubble Bolts Print [Hollow Stud]",
           "categoryRole": "head",
-          "colorNames": [],
-          "thumbnailUrl": "/assets/thumbnails/ldraw-expanded/head-3626bpr0046.webp",
+          "colorNames": [
+            "Flat Silver"
+          ],
+          "thumbnailUrl": "/assets/thumbnails/ldraw-expanded/head-3626cpr1307.webp",
           "relevance": null
         },
         {
@@ -695,7 +672,7 @@
           "part:3626bpr0029",
           "part:3626cpr1557",
           "part:3626bpr0564",
-          "part:3626bpr0027"
+          "part:3626bpr0026"
         ]
       },
       "candidates": [
@@ -734,13 +711,13 @@
           "relevance": null
         },
         {
-          "candidateKey": "candidate:release-dev-de-eyepatch-beard:part:3626bpr0027",
-          "componentId": "part:3626bpr0027",
-          "rebrickablePartNum": "3626bpr0027",
-          "originalName": "Minifig Head Pirate, Eyepatch, Stubble and Reddish-Brown Hair Print [Blocked Open Stud]",
+          "candidateKey": "candidate:release-dev-de-eyepatch-beard:part:3626bpr0026",
+          "componentId": "part:3626bpr0026",
+          "rebrickablePartNum": "3626bpr0026",
+          "originalName": "Minifig Head Pirate / Wolfpack, Eyepatch, Stubble, Black Hair Print [Blocked Open Stud]",
           "categoryRole": "head",
           "colorNames": [],
-          "thumbnailUrl": "/assets/thumbnails/ldraw-expanded/head-3626bpr0027.webp",
+          "thumbnailUrl": "/assets/thumbnails/ldraw-expanded/head-3626bpr0026.webp",
           "relevance": null
         },
         {
@@ -782,11 +759,11 @@
           "part:10051pr0001"
         ],
         "hybrid": [
-          "part:3896",
-          "part:48493",
           "part:15864pat0001",
           "part:79230",
-          "part:6122"
+          "part:6122",
+          "part:3896",
+          "part:11538pr0003"
         ]
       },
       "candidates": [
@@ -895,23 +872,6 @@
           "relevance": null
         },
         {
-          "candidateKey": "candidate:release-dev-en-black-knight-helmet:part:48493",
-          "componentId": "part:48493",
-          "rebrickablePartNum": "48493",
-          "originalName": "Helmet Castle with Cheek Protection Angled",
-          "categoryRole": "headwear",
-          "colorNames": [
-            "Black",
-            "Flat Silver",
-            "Pearl Gold",
-            "Pearl Titanium",
-            "Speckle Black-Copper",
-            "Speckle Black-Silver"
-          ],
-          "thumbnailUrl": "/assets/thumbnails/ldraw-expanded/headwear-48493.webp",
-          "relevance": null
-        },
-        {
           "candidateKey": "candidate:release-dev-en-black-knight-helmet:part:10051pr0001",
           "componentId": "part:10051pr0001",
           "rebrickablePartNum": "10051pr0001",
@@ -921,6 +881,18 @@
             "Pearl Titanium"
           ],
           "thumbnailUrl": "/assets/thumbnails/ldraw-expanded/headwear-10051pr0001.webp",
+          "relevance": null
+        },
+        {
+          "candidateKey": "candidate:release-dev-en-black-knight-helmet:part:11538pr0003",
+          "componentId": "part:11538pr0003",
+          "rebrickablePartNum": "11538pr0003",
+          "originalName": "Helmet Rebel with Check Protectors with Dark Brown and Dark Tan Print",
+          "categoryRole": "headwear",
+          "colorNames": [
+            "White"
+          ],
+          "thumbnailUrl": "/assets/thumbnails/ldraw-expanded/headwear-11538pr0003.webp",
           "relevance": null
         }
       ]
@@ -941,10 +913,10 @@
         ],
         "hybrid": [
           "part:62696",
-          "part:13785",
-          "part:15675",
+          "part:92257",
+          "part:6093",
           "part:88286",
-          "part:92257"
+          "part:13785"
         ]
       },
       "candidates": [
@@ -1106,9 +1078,9 @@
         "hybrid": [
           "part:6131pr0004",
           "part:6131",
-          "part:4485pr0002",
           "part:90460",
-          "part:3629pr0002"
+          "part:17349",
+          "part:4485pr0002"
         ]
       },
       "candidates": [
@@ -1122,18 +1094,6 @@
             "Blue"
           ],
           "thumbnailUrl": "/assets/thumbnails/ldraw-expanded/headwear-6131pr0004.webp",
-          "relevance": null
-        },
-        {
-          "candidateKey": "candidate:release-dev-en-wizard-hat-stars:part:3629pr0002",
-          "componentId": "part:3629pr0002",
-          "rebrickablePartNum": "3629pr0002",
-          "originalName": "Hat Cowboy with Silver Star Print",
-          "categoryRole": "headwear",
-          "colorNames": [
-            "Light Gray"
-          ],
-          "thumbnailUrl": "/assets/thumbnails/ldraw-expanded/headwear-3629pr0002.webp",
           "relevance": null
         },
         {
@@ -1220,6 +1180,20 @@
           "relevance": null
         },
         {
+          "candidateKey": "candidate:release-dev-en-wizard-hat-stars:part:17349",
+          "componentId": "part:17349",
+          "rebrickablePartNum": "17349",
+          "originalName": "Hat Cone Drooping [Plain]",
+          "categoryRole": "headwear",
+          "colorNames": [
+            "Black",
+            "Red",
+            "Reddish Brown"
+          ],
+          "thumbnailUrl": "/assets/thumbnails/ldraw-expanded/headwear-17349.webp",
+          "relevance": null
+        },
+        {
           "candidateKey": "candidate:release-dev-en-wizard-hat-stars:part:10051",
           "componentId": "part:10051",
           "rebrickablePartNum": "10051",
@@ -1262,11 +1236,11 @@
           "part:10051pr0001"
         ],
         "hybrid": [
-          "part:53126",
           "part:2640",
-          "part:30114",
-          "part:35714pr0002",
-          "part:3201"
+          "part:53126",
+          "part:3201",
+          "part:59363",
+          "part:13750"
         ]
       },
       "candidates": [
@@ -1309,27 +1283,15 @@
           "relevance": null
         },
         {
-          "candidateKey": "candidate:release-dev-en-blonde-braided-hair:part:30114",
-          "componentId": "part:30114",
-          "rebrickablePartNum": "30114",
-          "originalName": "Hair Long and Side Braided with Headband",
+          "candidateKey": "candidate:release-dev-en-blonde-braided-hair:part:13750",
+          "componentId": "part:13750",
+          "rebrickablePartNum": "13750",
+          "originalName": "Hair Long and Braided on Right, Hole on Top",
           "categoryRole": "headwear",
           "colorNames": [
-            "Black"
+            "Dark Orange"
           ],
-          "thumbnailUrl": "/assets/thumbnails/ldraw-expanded/headwear-30114.webp",
-          "relevance": null
-        },
-        {
-          "candidateKey": "candidate:release-dev-en-blonde-braided-hair:part:35714pr0002",
-          "componentId": "part:35714pr0002",
-          "rebrickablePartNum": "35714pr0002",
-          "originalName": "Hair Parted in Center, Two Front Braids with White Bands print",
-          "categoryRole": "headwear",
-          "colorNames": [
-            "Reddish Brown"
-          ],
-          "thumbnailUrl": "/assets/thumbnails/ldraw-expanded/headwear-35714pr0002.webp",
+          "thumbnailUrl": "/assets/thumbnails/ldraw-expanded/headwear-13750.webp",
           "relevance": null
         },
         {
@@ -1395,6 +1357,24 @@
           ],
           "thumbnailUrl": "/assets/thumbnails/ldraw-expanded/headwear-2640.webp",
           "relevance": null
+        },
+        {
+          "candidateKey": "candidate:release-dev-en-blonde-braided-hair:part:59363",
+          "componentId": "part:59363",
+          "rebrickablePartNum": "59363",
+          "originalName": "Hair Mid-Length with Braid around Sides",
+          "categoryRole": "headwear",
+          "colorNames": [
+            "Black",
+            "Bright Light Yellow",
+            "Dark Orange",
+            "Medium Nougat",
+            "Pearl Gold",
+            "Red",
+            "Reddish Brown"
+          ],
+          "thumbnailUrl": "/assets/thumbnails/ldraw-expanded/headwear-59363.webp",
+          "relevance": null
         }
       ]
     },
@@ -1413,11 +1393,11 @@
           "part:2528pr0004"
         ],
         "hybrid": [
-          "part:2528pr0002",
           "part:2528pr0011",
+          "part:2528pr0002",
+          "part:2528",
           "part:2528pr0001",
-          "part:2528pr0005",
-          "part:2528pr0004"
+          "part:2528pr0007"
         ]
       },
       "candidates": [
@@ -1431,18 +1411,6 @@
             "Black"
           ],
           "thumbnailUrl": "/assets/thumbnails/ldraw-expanded/headwear-2528pr0001.webp",
-          "relevance": null
-        },
-        {
-          "candidateKey": "candidate:release-dev-de-black-pirate-hat:part:2528pr0005",
-          "componentId": "part:2528pr0005",
-          "rebrickablePartNum": "2528pr0005",
-          "originalName": "Hat Pirate Bicorne with Robotic Jolly Roger Skull and Crossbones Print",
-          "categoryRole": "headwear",
-          "colorNames": [
-            "Black"
-          ],
-          "thumbnailUrl": "/assets/thumbnails/ldraw-expanded/headwear-2528pr0005.webp",
           "relevance": null
         },
         {
@@ -1511,6 +1479,18 @@
           ],
           "thumbnailUrl": "/assets/thumbnails/ldraw-expanded/headwear-2528pr0004.webp",
           "relevance": null
+        },
+        {
+          "candidateKey": "candidate:release-dev-de-black-pirate-hat:part:2528pr0007",
+          "componentId": "part:2528pr0007",
+          "rebrickablePartNum": "2528pr0007",
+          "originalName": "Hat Pirate Bicorne with Skull and Crossed Cutlasses Print",
+          "categoryRole": "headwear",
+          "colorNames": [
+            "Black"
+          ],
+          "thumbnailUrl": "/assets/thumbnails/ldraw-expanded/headwear-2528pr0007.webp",
+          "relevance": null
         }
       ]
     },
@@ -1531,24 +1511,12 @@
         "hybrid": [
           "part:973c29h01pr3747",
           "part:973c32h01pr1697",
-          "part:973c32h01pr2557",
           "part:973c05h01pr4945",
-          "part:973c03h01pr0091"
+          "part:973c32h01pr2557",
+          "part:973c05h01pr5390"
         ]
       },
       "candidates": [
-        {
-          "candidateKey": "candidate:release-dev-en-blue-police-uniform:part:973c03h01pr0091",
-          "componentId": "part:973c03h01pr0091",
-          "rebrickablePartNum": "973c03h01pr0091",
-          "originalName": "Torso Jacket, Police Uniform with White Badge and Pocket Print, Black Arms, Yellow Hands",
-          "categoryRole": "torsoAssembly",
-          "colorNames": [
-            "Black"
-          ],
-          "thumbnailUrl": "/assets/thumbnails/ldraw-expanded/torso-973c03h01pr0091.webp",
-          "relevance": null
-        },
         {
           "candidateKey": "candidate:release-dev-en-blue-police-uniform:part:973c32h01pr1697",
           "componentId": "part:973c32h01pr1697",
@@ -1644,6 +1612,18 @@
           "relevance": null
         },
         {
+          "candidateKey": "candidate:release-dev-en-blue-police-uniform:part:973c05h01pr5390",
+          "componentId": "part:973c05h01pr5390",
+          "rebrickablePartNum": "973c05h01pr5390",
+          "originalName": "Torso Jacket with Gold Police Badge and Buttons, Belt with Gold Buckle Print, Dark Blue Arms, Yellow Hands",
+          "categoryRole": "torsoAssembly",
+          "colorNames": [
+            "Dark Blue"
+          ],
+          "thumbnailUrl": "/assets/thumbnails/ldraw-expanded/torso-973c05h01pr5390.webp",
+          "relevance": null
+        },
+        {
           "candidateKey": "candidate:release-dev-en-blue-police-uniform:part:11938",
           "componentId": "part:11938",
           "rebrickablePartNum": "11938",
@@ -1674,11 +1654,11 @@
           "part:973c01h01pr1449"
         ],
         "hybrid": [
-          "part:973c03h03pr3350",
-          "part:973c03h03pr2077",
-          "part:973c03h03pr1342",
+          "part:973c03h03pr6396",
           "part:973c03h01pr3207",
-          "part:973c22h03pr2859"
+          "part:973c22h03pr2859",
+          "part:973c03h03pr1340",
+          "part:973c03h03pr1274"
         ]
       },
       "candidates": [
@@ -1719,18 +1699,6 @@
           "relevance": null
         },
         {
-          "candidateKey": "candidate:release-dev-de-black-knight-torso:part:973c03h03pr3350",
-          "componentId": "part:973c03h03pr3350",
-          "rebrickablePartNum": "973c03h03pr3350",
-          "originalName": "Torso Armor with Pointed (Teeth) Collar Print, Black Arms and Hands",
-          "categoryRole": "torsoAssembly",
-          "colorNames": [
-            "Black"
-          ],
-          "thumbnailUrl": "/assets/thumbnails/ldraw-expanded/torso-973c03h03pr3350.webp",
-          "relevance": null
-        },
-        {
           "candidateKey": "candidate:release-dev-de-black-knight-torso:part:24319pr9822",
           "componentId": "part:24319pr9822",
           "rebrickablePartNum": "24319pr9822",
@@ -1755,27 +1723,15 @@
           "relevance": null
         },
         {
-          "candidateKey": "candidate:release-dev-de-black-knight-torso:part:973c03h03pr1342",
-          "componentId": "part:973c03h03pr1342",
-          "rebrickablePartNum": "973c03h03pr1342",
-          "originalName": "Torso Armor Shadow Trooper Print, Short Line on Back, Black Arms and Hands",
+          "candidateKey": "candidate:release-dev-de-black-knight-torso:part:973c03h03pr1340",
+          "componentId": "part:973c03h03pr1340",
+          "rebrickablePartNum": "973c03h03pr1340",
+          "originalName": "Torso Layered Shirt, White Undershirt, Waist Sash Print, Black Arms and Hands",
           "categoryRole": "torsoAssembly",
           "colorNames": [
             "Black"
           ],
-          "thumbnailUrl": "/assets/thumbnails/ldraw-expanded/torso-973c03h03pr1342.webp",
-          "relevance": null
-        },
-        {
-          "candidateKey": "candidate:release-dev-de-black-knight-torso:part:973c03h03pr2077",
-          "componentId": "part:973c03h03pr2077",
-          "rebrickablePartNum": "973c03h03pr2077",
-          "originalName": "Torso Cloak with Gray Folds Print, Black Arms and Hands",
-          "categoryRole": "torsoAssembly",
-          "colorNames": [
-            "Black"
-          ],
-          "thumbnailUrl": "/assets/thumbnails/ldraw-expanded/torso-973c03h03pr2077.webp",
+          "thumbnailUrl": "/assets/thumbnails/ldraw-expanded/torso-973c03h03pr1340.webp",
           "relevance": null
         },
         {
@@ -1791,6 +1747,18 @@
           "relevance": null
         },
         {
+          "candidateKey": "candidate:release-dev-de-black-knight-torso:part:973c03h03pr6396",
+          "componentId": "part:973c03h03pr6396",
+          "rebrickablePartNum": "973c03h03pr6396",
+          "originalName": "Torso, Classic Blacktron Re-issue, White Space Suit, Black Arms and Hands",
+          "categoryRole": "torsoAssembly",
+          "colorNames": [
+            "Black"
+          ],
+          "thumbnailUrl": "/assets/thumbnails/ldraw-expanded/torso-973c03h03pr6396.webp",
+          "relevance": null
+        },
+        {
           "candidateKey": "candidate:release-dev-de-black-knight-torso:part:973c01h01pr1449",
           "componentId": "part:973c01h01pr1449",
           "rebrickablePartNum": "973c01h01pr1449",
@@ -1800,6 +1768,18 @@
             "Black"
           ],
           "thumbnailUrl": "/assets/thumbnails/ldraw-expanded/torso-973c01h01pr1449.webp",
+          "relevance": null
+        },
+        {
+          "candidateKey": "candidate:release-dev-de-black-knight-torso:part:973c03h03pr1274",
+          "componentId": "part:973c03h03pr1274",
+          "rebrickablePartNum": "973c03h03pr1274",
+          "originalName": "Torso Batman Logo in Gold Oval with Muscles and Gold Belt Print, Black Arms and Hands",
+          "categoryRole": "torsoAssembly",
+          "colorNames": [
+            "Black"
+          ],
+          "thumbnailUrl": "/assets/thumbnails/ldraw-expanded/torso-973c03h03pr1274.webp",
           "relevance": null
         }
       ]
@@ -1820,10 +1800,10 @@
         ],
         "hybrid": [
           "part:973c03h03pr1148",
-          "part:973c22h01pr1783",
-          "part:973c27h28pr0061",
-          "part:973c27h28pr0062",
-          "part:973c27h27pr4746"
+          "part:973c05h02pr3130",
+          "part:973c34h19pr4193",
+          "part:973c03h01pr1238",
+          "part:973c03h03pr6396"
         ]
       },
       "candidates": [
@@ -1852,13 +1832,15 @@
           "relevance": null
         },
         {
-          "candidateKey": "candidate:release-dev-en-space-control-panel:part:973c27h28pr0061",
-          "componentId": "part:973c27h28pr0061",
-          "rebrickablePartNum": "973c27h28pr0061",
-          "originalName": "Torso Space Suit, Ice Planet Gold Print, White Arms, Blue Hands",
+          "candidateKey": "candidate:release-dev-en-space-control-panel:part:973c03h01pr1238",
+          "componentId": "part:973c03h01pr1238",
+          "rebrickablePartNum": "973c03h01pr1238",
+          "originalName": "Torso Double Breasted Suit with Gold Buttons and Airplane Logo Pin, Red Tie Print, Black Arms, Yellow Hands",
           "categoryRole": "torsoAssembly",
-          "colorNames": [],
-          "thumbnailUrl": "/assets/thumbnails/ldraw-expanded/torso-973c27h28pr0061.webp",
+          "colorNames": [
+            "Black"
+          ],
+          "thumbnailUrl": "/assets/thumbnails/ldraw-expanded/torso-973c03h01pr1238.webp",
           "relevance": null
         },
         {
@@ -1884,25 +1866,27 @@
           "relevance": null
         },
         {
-          "candidateKey": "candidate:release-dev-en-space-control-panel:part:973c27h27pr4746",
-          "componentId": "part:973c27h27pr4746",
-          "rebrickablePartNum": "973c27h27pr4746",
-          "originalName": "Torso Spacesuit with NASA Logo Print (Apollo 11), White Arms and Hands",
+          "candidateKey": "candidate:release-dev-en-space-control-panel:part:973c34h19pr4193",
+          "componentId": "part:973c34h19pr4193",
+          "rebrickablePartNum": "973c34h19pr4193",
+          "originalName": "Torso Astronaut Spacesuit Print, Orange Arms, Reddish Brown Hands",
           "categoryRole": "torsoAssembly",
           "colorNames": [
-            "White"
+            "Orange"
           ],
-          "thumbnailUrl": "/assets/thumbnails/ldraw-expanded/torso-973c27h27pr4746.webp",
+          "thumbnailUrl": "/assets/thumbnails/ldraw-expanded/torso-973c34h19pr4193.webp",
           "relevance": null
         },
         {
-          "candidateKey": "candidate:release-dev-en-space-control-panel:part:973c27h28pr0062",
-          "componentId": "part:973c27h28pr0062",
-          "rebrickablePartNum": "973c27h28pr0062",
-          "originalName": "Torso Space Suit, Ice Planet Silver Print, White Arms, Blue Hands",
+          "candidateKey": "candidate:release-dev-en-space-control-panel:part:973c03h03pr6396",
+          "componentId": "part:973c03h03pr6396",
+          "rebrickablePartNum": "973c03h03pr6396",
+          "originalName": "Torso, Classic Blacktron Re-issue, White Space Suit, Black Arms and Hands",
           "categoryRole": "torsoAssembly",
-          "colorNames": [],
-          "thumbnailUrl": "/assets/thumbnails/ldraw-expanded/torso-973c27h28pr0062.webp",
+          "colorNames": [
+            "Black"
+          ],
+          "thumbnailUrl": "/assets/thumbnails/ldraw-expanded/torso-973c03h03pr6396.webp",
           "relevance": null
         },
         {
@@ -1918,18 +1902,6 @@
           "relevance": null
         },
         {
-          "candidateKey": "candidate:release-dev-en-space-control-panel:part:973c22h01pr1783",
-          "componentId": "part:973c22h01pr1783",
-          "rebrickablePartNum": "973c22h01pr1783",
-          "originalName": "Torso Suit Jacket, Two Buttons, Necklace, 'Press' Pass Print, Red Arms, Yellow Hands",
-          "categoryRole": "torsoAssembly",
-          "colorNames": [
-            "Red"
-          ],
-          "thumbnailUrl": "/assets/thumbnails/ldraw-expanded/torso-973c22h01pr1783.webp",
-          "relevance": null
-        },
-        {
           "candidateKey": "candidate:release-dev-en-space-control-panel:part:11938",
           "componentId": "part:11938",
           "rebrickablePartNum": "11938",
@@ -1941,6 +1913,18 @@
             "Yellow"
           ],
           "thumbnailUrl": "/assets/thumbnails/ldraw-expanded/torso-11938.webp",
+          "relevance": null
+        },
+        {
+          "candidateKey": "candidate:release-dev-en-space-control-panel:part:973c05h02pr3130",
+          "componentId": "part:973c05h02pr3130",
+          "rebrickablePartNum": "973c05h02pr3130",
+          "originalName": "Torso Suit Jacket with Lapels, Buttons and Dark Red Lining over White Shirt with Collar Print, Dark Blue Arms, Light Nougat Hands",
+          "categoryRole": "torsoAssembly",
+          "colorNames": [
+            "Dark Blue"
+          ],
+          "thumbnailUrl": "/assets/thumbnails/ldraw-expanded/torso-973c05h02pr3130.webp",
           "relevance": null
         }
       ]
@@ -1961,10 +1945,10 @@
         ],
         "hybrid": [
           "part:973c22h03pr1264",
-          "part:973c22h27pr2112",
-          "part:973c22h02pr2091",
           "part:973c22h01pr1783",
-          "part:973c22h01pr0012"
+          "part:973c22h27pr2112",
+          "part:973c22h01pr1832",
+          "part:973c12h02pr2069"
         ]
       },
       "candidates": [
@@ -2007,15 +1991,15 @@
           "relevance": null
         },
         {
-          "candidateKey": "candidate:release-dev-de-red-pirate-no-armor:part:973c22h01pr0012",
-          "componentId": "part:973c22h01pr0012",
-          "rebrickablePartNum": "973c22h01pr0012",
-          "originalName": "Torso Jacket with Straight Zipper Print, Red Arms, Yellow Hands",
+          "candidateKey": "candidate:release-dev-de-red-pirate-no-armor:part:973c12h02pr2069",
+          "componentId": "part:973c12h02pr2069",
+          "rebrickablePartNum": "973c12h02pr2069",
+          "originalName": "Torso Armour and Gold Belt Buckle Print (Eomer), Dark Bluish Gray Arms, Light Nougat Hands",
           "categoryRole": "torsoAssembly",
           "colorNames": [
-            "Red"
+            "Dark Red"
           ],
-          "thumbnailUrl": "/assets/thumbnails/ldraw-expanded/torso-973c22h01pr0012.webp",
+          "thumbnailUrl": "/assets/thumbnails/ldraw-expanded/torso-973c12h02pr2069.webp",
           "relevance": null
         },
         {
@@ -2043,18 +2027,6 @@
           "relevance": null
         },
         {
-          "candidateKey": "candidate:release-dev-de-red-pirate-no-armor:part:973c22h02pr2091",
-          "componentId": "part:973c22h02pr2091",
-          "rebrickablePartNum": "973c22h02pr2091",
-          "originalName": "Torso Dress with Gold Ornaments Print, Red Arms, Light Nougat Hands",
-          "categoryRole": "torsoAssembly",
-          "colorNames": [
-            "Red"
-          ],
-          "thumbnailUrl": "/assets/thumbnails/ldraw-expanded/torso-973c22h02pr2091.webp",
-          "relevance": null
-        },
-        {
           "candidateKey": "candidate:release-dev-de-red-pirate-no-armor:part:973c22h03pr1264",
           "componentId": "part:973c22h03pr1264",
           "rebrickablePartNum": "973c22h03pr1264",
@@ -2064,6 +2036,18 @@
             "Red"
           ],
           "thumbnailUrl": "/assets/thumbnails/ldraw-expanded/torso-973c22h03pr1264.webp",
+          "relevance": null
+        },
+        {
+          "candidateKey": "candidate:release-dev-de-red-pirate-no-armor:part:973c22h01pr1832",
+          "componentId": "part:973c22h01pr1832",
+          "rebrickablePartNum": "973c22h01pr1832",
+          "originalName": "Torso Royal Guard Uniform with Gold Buttons and White Belt Print, Red Arms, Yellow Hands",
+          "categoryRole": "torsoAssembly",
+          "colorNames": [
+            "Red"
+          ],
+          "thumbnailUrl": "/assets/thumbnails/ldraw-expanded/torso-973c22h01pr1832.webp",
           "relevance": null
         },
         {
@@ -2109,9 +2093,9 @@
         "hybrid": [
           "part:970c22pr0019",
           "part:970c03pr0001",
-          "part:970c50",
-          "part:970c30",
-          "part:970c22pr0001"
+          "part:970e09",
+          "part:970c14pr0288",
+          "part:970c50"
         ]
       },
       "candidates": [
@@ -2166,15 +2150,15 @@
           "relevance": null
         },
         {
-          "candidateKey": "candidate:release-dev-en-silver-robot-legs:part:970c30",
-          "componentId": "part:970c30",
-          "rebrickablePartNum": "970c30",
-          "originalName": "Hips and Flat Silver Legs",
+          "candidateKey": "candidate:release-dev-en-silver-robot-legs:part:970c14pr0288",
+          "componentId": "part:970c14pr0288",
+          "rebrickablePartNum": "970c14pr0288",
+          "originalName": "Hips and Light Bluish Gray Legs with Silver Mechanical Belt, Shock Absorbers and Feet Print",
           "categoryRole": "legsAssembly",
           "colorNames": [
-            "Flat Silver"
+            "Medium Azure"
           ],
-          "thumbnailUrl": "/assets/thumbnails/ldraw-expanded/legs-970c30.webp",
+          "thumbnailUrl": "/assets/thumbnails/ldraw-expanded/legs-970c14pr0288.webp",
           "relevance": null
         },
         {
@@ -2187,6 +2171,18 @@
             "Dark Gray"
           ],
           "thumbnailUrl": "/assets/thumbnails/ldraw-expanded/legs-970c03pr0001.webp",
+          "relevance": null
+        },
+        {
+          "candidateKey": "candidate:release-dev-en-silver-robot-legs:part:970e09",
+          "componentId": "part:970e09",
+          "rebrickablePartNum": "970e09",
+          "originalName": "Left Leg, Flat Silver Mechanical Peg Leg and Sand Green Hips (Rodney Rathbone)",
+          "categoryRole": "legsAssembly",
+          "colorNames": [
+            "Sand Green"
+          ],
+          "thumbnailUrl": "/assets/thumbnails/ldraw-expanded/legs-970e09.webp",
           "relevance": null
         },
         {
@@ -2222,18 +2218,6 @@
             "Chrome Silver"
           ],
           "thumbnailUrl": "/assets/thumbnails/ldraw-expanded/legs-970c50.webp",
-          "relevance": null
-        },
-        {
-          "candidateKey": "candidate:release-dev-en-silver-robot-legs:part:970c22pr0001",
-          "componentId": "part:970c22pr0001",
-          "rebrickablePartNum": "970c22pr0001",
-          "originalName": "Hips and Red Legs with Silver Circuitry Print LEGO P",
-          "categoryRole": "legsAssembly",
-          "colorNames": [
-            "Black"
-          ],
-          "thumbnailUrl": "/assets/thumbnails/ldraw-expanded/legs-970c22pr0001.webp",
           "relevance": null
         }
       ]
@@ -2450,26 +2434,14 @@
           "part:16709pat19"
         ],
         "hybrid": [
-          "part:970c05pr9967",
-          "part:970c03pr2418",
-          "part:970c14pr0288",
-          "part:970c05pr0293",
-          "part:970c08pr0001"
+          "part:970c65",
+          "part:970c08pr0001",
+          "part:970c29pat05",
+          "part:970c32",
+          "part:970c03pr2418"
         ]
       },
       "candidates": [
-        {
-          "candidateKey": "candidate:release-dev-en-blue-jeans:part:970c14pr0288",
-          "componentId": "part:970c14pr0288",
-          "rebrickablePartNum": "970c14pr0288",
-          "originalName": "Hips and Light Bluish Gray Legs with Silver Mechanical Belt, Shock Absorbers and Feet Print",
-          "categoryRole": "legsAssembly",
-          "colorNames": [
-            "Medium Azure"
-          ],
-          "thumbnailUrl": "/assets/thumbnails/ldraw-expanded/legs-970c14pr0288.webp",
-          "relevance": null
-        },
         {
           "candidateKey": "candidate:release-dev-en-blue-jeans:part:15",
           "componentId": "part:15",
@@ -2505,6 +2477,22 @@
           "relevance": null
         },
         {
+          "candidateKey": "candidate:release-dev-en-blue-jeans:part:970c32",
+          "componentId": "part:970c32",
+          "rebrickablePartNum": "970c32",
+          "originalName": "Hips and Medium Blue Legs",
+          "categoryRole": "legsAssembly",
+          "colorNames": [
+            "Black",
+            "Brown",
+            "Dark Blue",
+            "Light Bluish Gray",
+            "Medium Blue"
+          ],
+          "thumbnailUrl": "/assets/thumbnails/ldraw-expanded/legs-970c32.webp",
+          "relevance": null
+        },
+        {
           "candidateKey": "candidate:release-dev-en-blue-jeans:part:970c03pr2418",
           "componentId": "part:970c03pr2418",
           "rebrickablePartNum": "970c03pr2418",
@@ -2514,18 +2502,6 @@
             "Black"
           ],
           "thumbnailUrl": "/assets/thumbnails/ldraw-expanded/legs-970c03pr2418.webp",
-          "relevance": null
-        },
-        {
-          "candidateKey": "candidate:release-dev-en-blue-jeans:part:970c05pr0293",
-          "componentId": "part:970c05pr0293",
-          "rebrickablePartNum": "970c05pr0293",
-          "originalName": "Hips and Dark Blue Legs with Topographical Map and Zippered Pocket Print",
-          "categoryRole": "legsAssembly",
-          "colorNames": [
-            "Dark Blue"
-          ],
-          "thumbnailUrl": "/assets/thumbnails/ldraw-expanded/legs-970c05pr0293.webp",
           "relevance": null
         },
         {
@@ -2555,6 +2531,30 @@
           "relevance": null
         },
         {
+          "candidateKey": "candidate:release-dev-en-blue-jeans:part:970c65",
+          "componentId": "part:970c65",
+          "rebrickablePartNum": "970c65",
+          "originalName": "Hips and Trans-Light Blue Legs",
+          "categoryRole": "legsAssembly",
+          "colorNames": [
+            "Dark Azure"
+          ],
+          "thumbnailUrl": "/assets/thumbnails/ldraw-expanded/legs-970c65.webp",
+          "relevance": null
+        },
+        {
+          "candidateKey": "candidate:release-dev-en-blue-jeans:part:970c29pat05",
+          "componentId": "part:970c29pat05",
+          "rebrickablePartNum": "970c29pat05",
+          "originalName": "Hips with Bright Light Blue Legs and Dark Blue Boots Pattern",
+          "categoryRole": "legsAssembly",
+          "colorNames": [
+            "Bright Light Blue"
+          ],
+          "thumbnailUrl": "/assets/thumbnails/ldraw-expanded/legs-970c29pat05.webp",
+          "relevance": null
+        },
+        {
           "candidateKey": "candidate:release-dev-en-blue-jeans:part:16709pat01",
           "componentId": "part:16709pat01",
           "rebrickablePartNum": "16709pat01",
@@ -2565,18 +2565,6 @@
             "White"
           ],
           "thumbnailUrl": "/assets/thumbnails/ldraw-expanded/legs-16709pat01.webp",
-          "relevance": null
-        },
-        {
-          "candidateKey": "candidate:release-dev-en-blue-jeans:part:970c05pr9967",
-          "componentId": "part:970c05pr9967",
-          "rebrickablePartNum": "970c05pr9967",
-          "originalName": "Hips and Dark Blue Legs with Black Belt, Pockets, Shoes print",
-          "categoryRole": "legsAssembly",
-          "colorNames": [
-            "Dark Blue"
-          ],
-          "thumbnailUrl": "/assets/thumbnails/ldraw-expanded/legs-970c05pr9967.webp",
           "relevance": null
         }
       ]
@@ -2597,26 +2585,24 @@
         ],
         "hybrid": [
           "part:24108pat0003",
-          "part:30173b",
-          "part:93055",
+          "part:59",
           "part:10050",
-          "part:11103"
+          "part:11156",
+          "part:24108pat0001"
         ]
       },
       "candidates": [
         {
-          "candidateKey": "candidate:release-dev-en-golden-sword:part:30173b",
-          "componentId": "part:30173b",
-          "rebrickablePartNum": "30173b",
-          "originalName": "Weapon Sword / Katana / Shamshir with Uncapped Pommel [Square Guard]",
+          "candidateKey": "candidate:release-dev-en-golden-sword:part:24108pat0001",
+          "componentId": "part:24108pat0001",
+          "rebrickablePartNum": "24108pat0001",
+          "originalName": "Weapon Sword Long with Angular Crossguard Flat Silver Pattern",
           "categoryRole": "handAccessory",
           "colorNames": [
-            "Flat Silver",
-            "Pearl Gold",
-            "Pearl Titanium",
-            "Tan"
+            "Trans-Dark Blue",
+            "Trans-Neon Orange"
           ],
-          "thumbnailUrl": "/assets/thumbnails/ldraw-expanded/handAccessory-30173b.webp",
+          "thumbnailUrl": "/assets/thumbnails/ldraw-expanded/handAccessory-24108pat0001.webp",
           "relevance": null
         },
         {
@@ -2652,6 +2638,20 @@
           "relevance": null
         },
         {
+          "candidateKey": "candidate:release-dev-en-golden-sword:part:59",
+          "componentId": "part:59",
+          "rebrickablePartNum": "59",
+          "originalName": "Weapon Sword / Greatsword Round",
+          "categoryRole": "handAccessory",
+          "colorNames": [
+            "Chrome Gold",
+            "Chrome Silver",
+            "Pearl Light Gold"
+          ],
+          "thumbnailUrl": "/assets/thumbnails/ldraw-expanded/handAccessory-59.webp",
+          "relevance": null
+        },
+        {
           "candidateKey": "candidate:release-dev-en-golden-sword:part:10169pr0001",
           "componentId": "part:10169pr0001",
           "rebrickablePartNum": "10169pr0001",
@@ -2661,19 +2661,6 @@
             "Green"
           ],
           "thumbnailUrl": "/assets/thumbnails/ldraw-expanded/handAccessory-10169pr0001.webp",
-          "relevance": null
-        },
-        {
-          "candidateKey": "candidate:release-dev-en-golden-sword:part:93055",
-          "componentId": "part:93055",
-          "rebrickablePartNum": "93055",
-          "originalName": "Weapon Sword Katana with Dragon Guard (The Sword of Fire)",
-          "categoryRole": "handAccessory",
-          "colorNames": [
-            "Pearl Gold",
-            "Pearl Titanium"
-          ],
-          "thumbnailUrl": "/assets/thumbnails/ldraw-expanded/handAccessory-93055.webp",
           "relevance": null
         },
         {
@@ -2689,20 +2676,6 @@
           "relevance": null
         },
         {
-          "candidateKey": "candidate:release-dev-en-golden-sword:part:11103",
-          "componentId": "part:11103",
-          "rebrickablePartNum": "11103",
-          "originalName": "Weapon Sword Double Blade with Bar Holder [Chi Sword]",
-          "categoryRole": "handAccessory",
-          "colorNames": [
-            "Black",
-            "Flat Silver",
-            "Pearl Gold"
-          ],
-          "thumbnailUrl": "/assets/thumbnails/ldraw-expanded/handAccessory-11103.webp",
-          "relevance": null
-        },
-        {
           "candidateKey": "candidate:release-dev-en-golden-sword:ff03-hand-10053",
           "componentId": "ff03-hand-10053",
           "rebrickablePartNum": "10053",
@@ -2712,6 +2685,19 @@
             "Flat Silver"
           ],
           "thumbnailUrl": "/assets/thumbnails/ldraw/ff03-hand-10053.svg",
+          "relevance": null
+        },
+        {
+          "candidateKey": "candidate:release-dev-en-golden-sword:part:11156",
+          "componentId": "part:11156",
+          "rebrickablePartNum": "11156",
+          "originalName": "Weapon Sword (Elven Warrior)",
+          "categoryRole": "handAccessory",
+          "colorNames": [
+            "Pearl Copper",
+            "Pearl Gold"
+          ],
+          "thumbnailUrl": "/assets/thumbnails/ldraw-expanded/handAccessory-11156.webp",
           "relevance": null
         },
         {
@@ -2743,9 +2729,9 @@
         ],
         "hybrid": [
           "part:102498pat0001",
-          "part:96480",
-          "part:3852a",
           "part:3836",
+          "part:3852a",
+          "part:96480",
           "part:3852b"
         ]
       },
@@ -2845,9 +2831,9 @@
         "hybrid": [
           "part:28621pr4236",
           "part:27956pr0001",
+          "part:3626bpr1066",
           "part:85947pr0003",
-          "part:3626bpr0035",
-          "part:3626bpr0032"
+          "part:3626bpr0678"
         ]
       },
       "candidates": [
@@ -2864,6 +2850,18 @@
           "relevance": null
         },
         {
+          "candidateKey": "candidate:release-holdout-en-three-eyed-alien:part:3626bpr1066",
+          "componentId": "part:3626bpr1066",
+          "rebrickablePartNum": "3626bpr1066",
+          "originalName": "Minifig Head Cyclops, Lower Fangs, Single Orange Eye Open / Eye Half Closed Print",
+          "categoryRole": "head",
+          "colorNames": [
+            "Olive Green"
+          ],
+          "thumbnailUrl": "/assets/thumbnails/ldraw-expanded/head-3626bpr1066.webp",
+          "relevance": null
+        },
+        {
           "candidateKey": "candidate:release-holdout-en-three-eyed-alien:ff03-head-3626cpr0387",
           "componentId": "ff03-head-3626cpr0387",
           "rebrickablePartNum": "3626cpr0387",
@@ -2873,16 +2871,6 @@
             "Yellow"
           ],
           "thumbnailUrl": "/assets/thumbnails/ldraw/ff03-head-3626cpr0387.svg",
-          "relevance": null
-        },
-        {
-          "candidateKey": "candidate:release-holdout-en-three-eyed-alien:part:3626bpr0032",
-          "componentId": "part:3626bpr0032",
-          "rebrickablePartNum": "3626bpr0032",
-          "originalName": "Minifig Head Alien, Green Brain and Yellow Mouth Print [Blocked Open Stud]",
-          "categoryRole": "head",
-          "colorNames": [],
-          "thumbnailUrl": "/assets/thumbnails/ldraw-expanded/head-3626bpr0032.webp",
           "relevance": null
         },
         {
@@ -2924,6 +2912,18 @@
           "relevance": null
         },
         {
+          "candidateKey": "candidate:release-holdout-en-three-eyed-alien:part:3626bpr0678",
+          "componentId": "part:3626bpr0678",
+          "rebrickablePartNum": "3626bpr0678",
+          "originalName": "Minifig Head Portal Emperor, Large Blue Eyes, Turtle Mouth and Gills Print [Blocked Open Stud]",
+          "categoryRole": "head",
+          "colorNames": [
+            "Sand Green"
+          ],
+          "thumbnailUrl": "/assets/thumbnails/ldraw-expanded/head-3626bpr0678.webp",
+          "relevance": null
+        },
+        {
           "candidateKey": "candidate:release-holdout-en-three-eyed-alien:part:27956pr0001",
           "componentId": "part:27956pr0001",
           "rebrickablePartNum": "27956pr0001",
@@ -2945,16 +2945,6 @@
             "Lime"
           ],
           "thumbnailUrl": "/assets/thumbnails/ldraw-expanded/head-28621pr4236.webp",
-          "relevance": null
-        },
-        {
-          "candidateKey": "candidate:release-holdout-en-three-eyed-alien:part:3626bpr0035",
-          "componentId": "part:3626bpr0035",
-          "rebrickablePartNum": "3626bpr0035",
-          "originalName": "Minifig Head Alien, Gold Paint and Slanted Eyes Print [Blocked Open Stud]",
-          "categoryRole": "head",
-          "colorNames": [],
-          "thumbnailUrl": "/assets/thumbnails/ldraw-expanded/head-3626bpr0035.webp",
           "relevance": null
         },
         {
@@ -2987,13 +2977,35 @@
         ],
         "hybrid": [
           "part:3626cpr1769",
+          "part:685pr0001",
           "part:3626bpr0324",
-          "part:3626bpr9980",
-          "part:3626bpr9976",
-          "part:3626bpr0014"
+          "part:3626bpr0014",
+          "part:3626cpr2122"
         ]
       },
       "candidates": [
+        {
+          "candidateKey": "candidate:release-holdout-de-sad-glasses:part:3626cpr2122",
+          "componentId": "part:3626cpr2122",
+          "rebrickablePartNum": "3626cpr2122",
+          "originalName": "Minifig Head Calendar Man, Balaclava, Black Eyemask, Light Nougat Face and Scowl Print",
+          "categoryRole": "head",
+          "colorNames": [
+            "Red"
+          ],
+          "thumbnailUrl": "/assets/thumbnails/ldraw-expanded/head-3626cpr2122.webp",
+          "relevance": null
+        },
+        {
+          "candidateKey": "candidate:release-holdout-de-sad-glasses:part:685pr0001",
+          "componentId": "part:685pr0001",
+          "rebrickablePartNum": "685pr0001",
+          "originalName": "Homemaker Figure Head with Face Print",
+          "categoryRole": "head",
+          "colorNames": [],
+          "thumbnailUrl": "/assets/thumbnails/ldraw-expanded/head-685pr0001.webp",
+          "relevance": null
+        },
         {
           "candidateKey": "candidate:release-holdout-de-sad-glasses:part:3626cpr1769",
           "componentId": "part:3626cpr1769",
@@ -3026,16 +3038,6 @@
             "White"
           ],
           "thumbnailUrl": "/assets/thumbnails/ldraw-expanded/head-19727pr0004.webp",
-          "relevance": null
-        },
-        {
-          "candidateKey": "candidate:release-holdout-de-sad-glasses:part:3626bpr9980",
-          "componentId": "part:3626bpr9980",
-          "rebrickablePartNum": "3626bpr9980",
-          "originalName": "Minifig Head Indian, Face Paint with Red and Blue Painted Lines, Eyebrows, Pupils, Nose Print [Blocked Open Stud]",
-          "categoryRole": "head",
-          "colorNames": [],
-          "thumbnailUrl": "/assets/thumbnails/ldraw-expanded/head-3626bpr9980.webp",
           "relevance": null
         },
         {
@@ -3074,16 +3076,6 @@
             "Reddish Brown"
           ],
           "thumbnailUrl": "/assets/thumbnails/ldraw-expanded/head-19727pr0001.webp",
-          "relevance": null
-        },
-        {
-          "candidateKey": "candidate:release-holdout-de-sad-glasses:part:3626bpr9976",
-          "componentId": "part:3626bpr9976",
-          "rebrickablePartNum": "3626bpr9976",
-          "originalName": "Minifig Head Indian, Face Paint with Green and Orange Painted Face Print [Blocked Open Stud]",
-          "categoryRole": "head",
-          "colorNames": [],
-          "thumbnailUrl": "/assets/thumbnails/ldraw-expanded/head-3626bpr9976.webp",
           "relevance": null
         },
         {
@@ -3128,8 +3120,8 @@
           "part:98128",
           "part:30175",
           "part:71591",
-          "part:10051",
-          "part:92761"
+          "part:98129",
+          "part:10054"
         ]
       },
       "candidates": [
@@ -3170,6 +3162,19 @@
           "relevance": null
         },
         {
+          "candidateKey": "candidate:release-holdout-en-samurai-helmet:part:10054",
+          "componentId": "part:10054",
+          "rebrickablePartNum": "10054",
+          "originalName": "Helmet with Cheek Protection and Horsehead Comb (Rohan Style)",
+          "categoryRole": "headwear",
+          "colorNames": [
+            "Dark Brown",
+            "Flat Silver"
+          ],
+          "thumbnailUrl": "/assets/thumbnails/ldraw-expanded/headwear-10054.webp",
+          "relevance": null
+        },
+        {
           "candidateKey": "candidate:release-holdout-en-samurai-helmet:part:98128",
           "componentId": "part:98128",
           "rebrickablePartNum": "98128",
@@ -3199,6 +3204,20 @@
           "relevance": null
         },
         {
+          "candidateKey": "candidate:release-holdout-en-samurai-helmet:part:98129",
+          "componentId": "part:98129",
+          "rebrickablePartNum": "98129",
+          "originalName": "Headwear Accessory Visor / Chin Guard",
+          "categoryRole": "headwear",
+          "colorNames": [
+            "Pearl Gold",
+            "Red",
+            "White"
+          ],
+          "thumbnailUrl": "/assets/thumbnails/ldraw-expanded/headwear-98129.webp",
+          "relevance": null
+        },
+        {
           "candidateKey": "candidate:release-holdout-en-samurai-helmet:part:10051pr0001",
           "componentId": "part:10051pr0001",
           "rebrickablePartNum": "10051pr0001",
@@ -3208,18 +3227,6 @@
             "Pearl Titanium"
           ],
           "thumbnailUrl": "/assets/thumbnails/ldraw-expanded/headwear-10051pr0001.webp",
-          "relevance": null
-        },
-        {
-          "candidateKey": "candidate:release-holdout-en-samurai-helmet:part:92761",
-          "componentId": "part:92761",
-          "rebrickablePartNum": "92761",
-          "originalName": "Head Top Zabrak Horns (Star Wars)",
-          "categoryRole": "headwear",
-          "colorNames": [
-            "Medium Nougat"
-          ],
-          "thumbnailUrl": "/assets/thumbnails/ldraw-expanded/headwear-92761.webp",
           "relevance": null
         },
         {
@@ -3270,53 +3277,13 @@
         ],
         "hybrid": [
           "part:98371",
+          "part:15443",
           "part:93230pr0002",
-          "part:3886",
-          "part:20597",
-          "part:2644"
+          "part:99240",
+          "part:69857"
         ]
       },
       "candidates": [
-        {
-          "candidateKey": "candidate:release-holdout-de-brown-curly-hair:part:3886",
-          "componentId": "part:3886",
-          "rebrickablePartNum": "3886",
-          "originalName": "Hair Long Curly",
-          "categoryRole": "headwear",
-          "colorNames": [
-            "Dark Brown"
-          ],
-          "thumbnailUrl": "/assets/thumbnails/ldraw-expanded/headwear-3886.webp",
-          "relevance": null
-        },
-        {
-          "candidateKey": "candidate:release-holdout-de-brown-curly-hair:part:20597",
-          "componentId": "part:20597",
-          "rebrickablePartNum": "20597",
-          "originalName": "Hair Short Tousled with Side Part and Lock Sticking Up",
-          "categoryRole": "headwear",
-          "colorNames": [
-            "Black",
-            "Blue",
-            "Dark Brown",
-            "Medium Nougat"
-          ],
-          "thumbnailUrl": "/assets/thumbnails/ldraw-expanded/headwear-20597.webp",
-          "relevance": null
-        },
-        {
-          "candidateKey": "candidate:release-holdout-de-brown-curly-hair:part:2644",
-          "componentId": "part:2644",
-          "rebrickablePartNum": "2644",
-          "originalName": "Hair Big Curly, Braids",
-          "categoryRole": "headwear",
-          "colorNames": [
-            "Black",
-            "Dark Brown"
-          ],
-          "thumbnailUrl": "/assets/thumbnails/ldraw-expanded/headwear-2644.webp",
-          "relevance": null
-        },
         {
           "candidateKey": "candidate:release-holdout-de-brown-curly-hair:part:13251",
           "componentId": "part:13251",
@@ -3373,6 +3340,20 @@
           "relevance": null
         },
         {
+          "candidateKey": "candidate:release-holdout-de-brown-curly-hair:part:69857",
+          "componentId": "part:69857",
+          "rebrickablePartNum": "69857",
+          "originalName": "Hair Tail High, Curly",
+          "categoryRole": "headwear",
+          "colorNames": [
+            "Black",
+            "Dark Brown",
+            "Tan"
+          ],
+          "thumbnailUrl": "/assets/thumbnails/ldraw-expanded/headwear-69857.webp",
+          "relevance": null
+        },
+        {
           "candidateKey": "candidate:release-holdout-de-brown-curly-hair:part:10055pr0001",
           "componentId": "part:10055pr0001",
           "rebrickablePartNum": "10055pr0001",
@@ -3400,6 +3381,22 @@
           "relevance": null
         },
         {
+          "candidateKey": "candidate:release-holdout-de-brown-curly-hair:part:15443",
+          "componentId": "part:15443",
+          "rebrickablePartNum": "15443",
+          "originalName": "Hair Rear Cowlick",
+          "categoryRole": "headwear",
+          "colorNames": [
+            "Black",
+            "Dark Brown",
+            "Medium Nougat",
+            "Reddish Brown",
+            "Yellow"
+          ],
+          "thumbnailUrl": "/assets/thumbnails/ldraw-expanded/headwear-15443.webp",
+          "relevance": null
+        },
+        {
           "candidateKey": "candidate:release-holdout-de-brown-curly-hair:part:11256",
           "componentId": "part:11256",
           "rebrickablePartNum": "11256",
@@ -3421,6 +3418,21 @@
           ],
           "thumbnailUrl": "/assets/thumbnails/ldraw-expanded/headwear-11256.webp",
           "relevance": null
+        },
+        {
+          "candidateKey": "candidate:release-holdout-de-brown-curly-hair:part:99240",
+          "componentId": "part:99240",
+          "rebrickablePartNum": "99240",
+          "originalName": "Hair Swept Back Into Bun, Hole on Top",
+          "categoryRole": "headwear",
+          "colorNames": [
+            "Black",
+            "Dark Bluish Gray",
+            "Dark Brown",
+            "Reddish Brown"
+          ],
+          "thumbnailUrl": "/assets/thumbnails/ldraw-expanded/headwear-99240.webp",
+          "relevance": null
         }
       ]
     },
@@ -3440,10 +3452,10 @@
         ],
         "hybrid": [
           "part:973c03h01pr0121",
-          "part:973c11h05pr4522",
-          "part:973c03h01pr0099",
           "part:973c38h12pr4505",
-          "part:973c03h01pr1187"
+          "part:973c03h01pr0099",
+          "part:973c11h05pr4522",
+          "part:973c03h12pr2188"
         ]
       },
       "candidates": [
@@ -3544,15 +3556,15 @@
           "relevance": null
         },
         {
-          "candidateKey": "candidate:release-holdout-en-firefighter-jacket:part:973c03h01pr1187",
-          "componentId": "part:973c03h01pr1187",
-          "rebrickablePartNum": "973c03h01pr1187",
-          "originalName": "Torso Fire Uniform, Badge, Stripes and Radio Print, Black Arms, Yellow Hands",
+          "candidateKey": "candidate:release-holdout-en-firefighter-jacket:part:973c03h12pr2188",
+          "componentId": "part:973c03h12pr2188",
+          "rebrickablePartNum": "973c03h12pr2188",
+          "originalName": "Torso Coat with Reflective Stripes with Utility Belt / Fire Badge on Back Print, Black Arms, Dark Bluish Gray Hands",
           "categoryRole": "torsoAssembly",
           "colorNames": [
             "Black"
           ],
-          "thumbnailUrl": "/assets/thumbnails/ldraw-expanded/torso-973c03h01pr1187.webp",
+          "thumbnailUrl": "/assets/thumbnails/ldraw-expanded/torso-973c03h12pr2188.webp",
           "relevance": null
         },
         {
@@ -3585,10 +3597,10 @@
         ],
         "hybrid": [
           "part:973c25h01pr1704",
-          "part:973c25h27pr5890",
-          "part:973c31h03pr0055",
           "part:973c35h01pr4009",
-          "part:973c06h06pr2266"
+          "part:973c25h27pr5890",
+          "part:973c06h06pr2266",
+          "part:973c31h03pr0055"
         ]
       },
       "candidates": [
@@ -3722,10 +3734,10 @@
         ],
         "hybrid": [
           "part:41879apr0005",
+          "part:41879a",
           "part:16709pats14",
           "part:16709pats12",
-          "part:16709pat02",
-          "part:41879a"
+          "part:16709pat14"
         ]
       },
       "candidates": [
@@ -3895,10 +3907,10 @@
         ],
         "hybrid": [
           "part:19732",
-          "part:41879apr0007",
-          "part:970c17pr0026",
           "part:87749",
-          "part:99131c00"
+          "part:99131c00",
+          "part:41879apr0007",
+          "part:970c17pr0026"
         ]
       },
       "candidates": [
@@ -4042,8 +4054,8 @@
           "part:22408",
           "part:22409",
           "part:24108",
-          "part:98721",
-          "part:93550"
+          "part:93055",
+          "part:95052"
         ]
       },
       "candidates": [
@@ -4072,6 +4084,16 @@
           "relevance": null
         },
         {
+          "candidateKey": "candidate:release-holdout-en-lion-shield:part:95052",
+          "componentId": "part:95052",
+          "rebrickablePartNum": "95052",
+          "originalName": "Weapon Axe with Twin-Blade",
+          "categoryRole": "handAccessory",
+          "colorNames": [],
+          "thumbnailUrl": "/assets/thumbnails/ldraw-expanded/handAccessory-95052.webp",
+          "relevance": null
+        },
+        {
           "candidateKey": "candidate:release-holdout-en-lion-shield:part:10169pr0001",
           "componentId": "part:10169pr0001",
           "rebrickablePartNum": "10169pr0001",
@@ -4081,23 +4103,6 @@
             "Green"
           ],
           "thumbnailUrl": "/assets/thumbnails/ldraw-expanded/handAccessory-10169pr0001.webp",
-          "relevance": null
-        },
-        {
-          "candidateKey": "candidate:release-holdout-en-lion-shield:part:93550",
-          "componentId": "part:93550",
-          "rebrickablePartNum": "93550",
-          "originalName": "Weapon Sword / Foil / Épée",
-          "categoryRole": "handAccessory",
-          "colorNames": [
-            "Black",
-            "Dark Purple",
-            "Flat Silver",
-            "Pearl Gold",
-            "Tan",
-            "White"
-          ],
-          "thumbnailUrl": "/assets/thumbnails/ldraw-expanded/handAccessory-93550.webp",
           "relevance": null
         },
         {
@@ -4134,6 +4139,19 @@
           "relevance": null
         },
         {
+          "candidateKey": "candidate:release-holdout-en-lion-shield:part:93055",
+          "componentId": "part:93055",
+          "rebrickablePartNum": "93055",
+          "originalName": "Weapon Sword Katana with Dragon Guard (The Sword of Fire)",
+          "categoryRole": "handAccessory",
+          "colorNames": [
+            "Pearl Gold",
+            "Pearl Titanium"
+          ],
+          "thumbnailUrl": "/assets/thumbnails/ldraw-expanded/handAccessory-93055.webp",
+          "relevance": null
+        },
+        {
           "candidateKey": "candidate:release-holdout-en-lion-shield:part:10050",
           "componentId": "part:10050",
           "rebrickablePartNum": "10050",
@@ -4159,22 +4177,6 @@
             "Pearl Gold"
           ],
           "thumbnailUrl": "/assets/thumbnails/ldraw-expanded/handAccessory-22409.webp",
-          "relevance": null
-        },
-        {
-          "candidateKey": "candidate:release-holdout-en-lion-shield:part:98721",
-          "componentId": "part:98721",
-          "rebrickablePartNum": "98721",
-          "originalName": "Weapon Batarang",
-          "categoryRole": "handAccessory",
-          "colorNames": [
-            "Black",
-            "Blue",
-            "Dark Pink",
-            "Flat Silver",
-            "Yellow"
-          ],
-          "thumbnailUrl": "/assets/thumbnails/ldraw-expanded/handAccessory-98721.webp",
           "relevance": null
         },
         {
@@ -4207,56 +4209,25 @@
         ],
         "hybrid": [
           "part:4438",
-          "part:3835",
-          "part:6123",
+          "part:90370pr0001",
           "part:3848",
-          "part:64727"
+          "part:3835",
+          "part:80179"
         ]
       },
       "candidates": [
         {
-          "candidateKey": "candidate:release-holdout-de-black-axe:part:6123",
-          "componentId": "part:6123",
-          "rebrickablePartNum": "6123",
-          "originalName": "Weapon Halberd / Axe Elaborate",
+          "candidateKey": "candidate:release-holdout-de-black-axe:part:80179",
+          "componentId": "part:80179",
+          "rebrickablePartNum": "80179",
+          "originalName": "Equipment Cutlery - Spoon, Flat Bottom",
           "categoryRole": "handAccessory",
           "colorNames": [
             "Black",
-            "Dark Bluish Gray",
-            "Dark Gray",
-            "Dark Purple",
-            "Light Bluish Gray",
-            "Yellow"
+            "Flat Silver",
+            "Red"
           ],
-          "thumbnailUrl": "/assets/thumbnails/ldraw-expanded/handAccessory-6123.webp",
-          "relevance": null
-        },
-        {
-          "candidateKey": "candidate:release-holdout-de-black-axe:part:64727",
-          "componentId": "part:64727",
-          "rebrickablePartNum": "64727",
-          "originalName": "Weapon Spike Flexible 3.5L",
-          "categoryRole": "handAccessory",
-          "colorNames": [
-            "Black",
-            "Blue",
-            "Bright Light Orange",
-            "Dark Azure",
-            "Dark Blue",
-            "Dark Purple",
-            "Green",
-            "Light Bluish Gray",
-            "Lime",
-            "Medium Azure",
-            "Medium Nougat",
-            "Orange",
-            "Pearl Gold",
-            "Red",
-            "Tan",
-            "White",
-            "Yellow"
-          ],
-          "thumbnailUrl": "/assets/thumbnails/ldraw-expanded/handAccessory-64727.webp",
+          "thumbnailUrl": "/assets/thumbnails/ldraw-expanded/handAccessory-80179.webp",
           "relevance": null
         },
         {
@@ -4390,6 +4361,18 @@
             "Light Gray"
           ],
           "thumbnailUrl": "/assets/thumbnails/ldraw-expanded/handAccessory-3835.webp",
+          "relevance": null
+        },
+        {
+          "candidateKey": "candidate:release-holdout-de-black-axe:part:90370pr0001",
+          "componentId": "part:90370pr0001",
+          "rebrickablePartNum": "90370pr0001",
+          "originalName": "Musical Instrument Microphone with Metallic Silver Top Print",
+          "categoryRole": "handAccessory",
+          "colorNames": [
+            "Black"
+          ],
+          "thumbnailUrl": "/assets/thumbnails/ldraw-expanded/handAccessory-90370pr0001.webp",
           "relevance": null
         }
       ]

@@ -8,6 +8,7 @@ import type { CatalogPackagePart, CatalogRole } from "../src/contracts/catalog-p
 type RuntimeEntry = {
   componentId: string;
   rebrickablePartNum: string;
+  ldrawFile: string;
   geometryFallback?: Record<string, unknown> | null;
 };
 type ModelLock = {
@@ -79,15 +80,31 @@ const supportedCuratedIds = new Set(connectivity.entries
   .map(({ componentId }) => componentId));
 const curatedByKey = new Map(curated.components.map((part) => [keyFor(part.role, part.rebrickablePartNum), part]));
 const documentsByKey = new Map<string, SearchDocument>();
+const ldrawFileByKey = new Map<string, string>();
+const ldrawDescriptionCache = new Map<string, string>();
 
-const addDocument = (part: CatalogPackagePart, componentId: string, colors: readonly string[]): void => {
+const ldrawDescriptionFor = async (ldrawFile: string | undefined): Promise<string> => {
+  if (!ldrawFile) return "";
+  const cached = ldrawDescriptionCache.get(ldrawFile);
+  if (cached !== undefined) return cached;
+  const sourcePath = resolve(root, "data/incoming/ldraw-official/extracted/ldraw", ldrawFile);
+  const source = await readFile(sourcePath, "utf8");
+  const firstLine = source.split(/\r?\n/u).find((line) => /^0\s+(?!Name:|Author:|!)/u.test(line)) ?? "";
+  const description = firstLine.replace(/^0\s+/u, "").trim().slice(0, 320);
+  ldrawDescriptionCache.set(ldrawFile, description);
+  return description;
+};
+
+const addDocument = async (part: CatalogPackagePart, componentId: string, colors: readonly string[], ldrawFile?: string): Promise<void> => {
   const uniqueColors = [...new Set(colors)].sort((left, right) => left.localeCompare(right, "en"));
+  const ldrawDescription = await ldrawDescriptionFor(ldrawFile);
   documentsByKey.set(keyFor(part.role, part.rebrickablePartNum), {
     componentId,
     role: part.role,
     rebrickablePartNum: part.rebrickablePartNum,
     englishText: [
       part.name,
+      ldrawDescription ? `Official LDraw description: ${ldrawDescription}.` : "",
       `Category: ${part.rebrickableCategoryName}.`,
       `Type: ${roleText[part.role]}.`,
       uniqueColors.length > 0 ? `Colors: ${uniqueColors.join(", ")}.` : "",
@@ -105,14 +122,15 @@ for (const [role, fileName] of Object.entries(roleFiles) as Array<[CatalogRole, 
     const part = parts.get(entry.rebrickablePartNum.toLowerCase());
     if (!part) throw new Error(`Runtime entry has no catalog document: ${entry.componentId}`);
     const curatedPart = curatedByKey.get(keyFor(role, part.rebrickablePartNum));
-    addDocument(curatedPart ?? part, curatedPart?.id ?? part.id, curatedPart
+    ldrawFileByKey.set(keyFor(role, part.rebrickablePartNum), entry.ldrawFile);
+    await addDocument(curatedPart ?? part, curatedPart?.id ?? part.id, curatedPart
       ? curatedPart.colorEvidence.map(({ colorName }) => colorName)
-      : part.colorNames);
+      : part.colorNames, entry.ldrawFile);
   }
 }
 for (const part of curated.components) {
   if (!exactCuratedIds.has(part.id) || !supportedCuratedIds.has(part.id)) continue;
-  addDocument(part, part.id, part.colorEvidence.map(({ colorName }) => colorName));
+  await addDocument(part, part.id, part.colorEvidence.map(({ colorName }) => colorName), ldrawFileByKey.get(keyFor(part.role, part.rebrickablePartNum)));
 }
 
 const documents = [...documentsByKey.values()].sort((left, right) => left.componentId.localeCompare(right.componentId, "en"));

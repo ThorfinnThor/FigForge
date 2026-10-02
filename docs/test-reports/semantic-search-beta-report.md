@@ -4,6 +4,7 @@
 
 - Profil: `compact-minilm`, gelockte Revision `751bff37182d3f1213fa05d7196b954e230abad9`
 - Suchbestand: 2.726 builderfähige Teile mit exakter Druckgeometrie
+- Der Embedding-Text wird pro Teil aus Katalogname, offizieller LDraw-Beschreibung, Kategorie, Rolle, Farbe und Teilenummer zusammengesetzt; die Beschreibung ist kein separates Rankingfeld.
 - Index: 384 Dimensionen, Float32 little endian, 4.187.136 Byte
 - Gesamtdownload: 42.443.717 Byte einschließlich Modell, Tokenizer, Mapping und ONNX-WASM-Laufzeit
 - Ausführung: lokaler Web-Worker, kein Backend, keine externe Inferenz-API
