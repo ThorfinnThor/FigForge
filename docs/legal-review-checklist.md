@@ -9,6 +9,7 @@ Diese Checkliste ersetzt keine anwaltliche Prüfung.
 - [ ] Jede LDraw-Datei und transitive Abhängigkeit hat Revision, Hash und Lizenzheader.
 - [ ] Konkrete Formen, Aufdrucke und Franchise-Bezüge für den Veröffentlichungskontext geprüft.
 - [ ] BrickLink-Bezeichnungen und XML-Integration sachlich geprüft.
+- [ ] LEGO-Pick-a-Brick- und Rebrickable-Export (ADR-012) sachlich benannt; Partnerprogrammbedingungen und Werbekennzeichnung vor Aktivierung eines Partnerlinks geprüft.
 - [ ] Font-, Software-, Modell- und Assetlizenzen mitgeführt.
 - [ ] Projektname, Domain und unabhängiges Branding geprüft.
 - [ ] Anbieterinformationen und Datenschutzhinweise mit echten Angaben erstellt.

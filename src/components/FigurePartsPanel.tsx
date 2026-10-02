@@ -3,7 +3,7 @@ import { Button } from "./ui/Button.js";
 import { StatusMessage } from "./ui/StatusMessage.js";
 import type { CatalogPackagePart } from "../contracts/catalog-package.js";
 import type { SavedFigure } from "../storage/figure-draft-store.js";
-import { useRef, type RefObject } from "react";
+import { useRef, type ReactNode, type RefObject } from "react";
 import { useI18n } from "../i18n.js";
 
 type FigureSlot = {
@@ -26,6 +26,7 @@ type FigurePartsPanelProps = {
   onClearLocalData: () => Promise<void>;
   saveStatus: "loading" | "saved" | "error";
   savedFigures: readonly SavedFigure[];
+  shopExport?: ReactNode;
   transferMessage: string | null;
   shareLink: string | null;
   slots: readonly FigureSlot[];
@@ -44,6 +45,7 @@ export function FigurePartsPanel({
   onClearLocalData,
   saveStatus,
   savedFigures,
+  shopExport,
   slots,
   transferMessage,
   shareLink,
@@ -89,6 +91,7 @@ export function FigurePartsPanel({
           </Card>
         ))}
       </div>
+      {shopExport}
       <div className="figure-panel__actions">
         <Button onClick={() => void onSaveToCollection()} size="sm" variant="primary">{t("figure.collection.save")}</Button>
         <Button onClick={onExport} size="sm" variant="secondary">{t("figure.export")}</Button>
