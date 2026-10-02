@@ -25,7 +25,7 @@ Backendloser, kuratierter Minifiguren-Konfigurator mit digital verbundenen LDraw
 - FF-18: Gepinnte MiniLM-/E5-Modelle, zwei getrennte 384-dimensionale FP32-Indizes, Modell-/Index-Sperre und blindes Review-Artefakt; Metriken, ADR und Profilwahl bleiben bis zur menschlichen Relevanzfreigabe blockiert.
 - Semantische Suche (Beta): Der kompakte MiniLM-Kandidat ist optional über einen Web-Worker in die App integriert. 2.726 exakt dargestellte Teile sind vorab eingebettet; Suchtexte verlassen das Gerät nicht. Das 42,44-MB-Paket wird erst nach Zustimmung geladen. Die endgültige Profilfreigabe bleibt bis zum menschlichen FF-18-Relevanzreview blockiert.
 - FF-21: 17 kataloggebundene englische Suchdokumente, ein getrenntes deutsches Lexikon-Delta und 160 Fälle mit 80 Entwicklungs- und 80 Holdout-Fällen; Relevanzlabels bleiben ausdrücklich menschliche Arbeit.
-- FF-22/FF-23 MVP: Der aktuelle Entwurf wird verzögert in IndexedDB gespeichert. Versionierter JSON-Import/-Export ist auf drei digitale Slots, 64 KiB und bekannte FigForge-Komponenten begrenzt; unbekannte Teile werden nicht still ersetzt.
+- FF-22/FF-23 MVP: Der aktuelle Entwurf und eine lokale Sammlung werden verzögert in IndexedDB gespeichert. Versionierter JSON-Import/-Export ist auf fünf digitale Slots, 64 KiB und bekannte FigForge-Komponenten begrenzt; unbekannte Teile werden nicht still ersetzt. Die Datenbankmigration auf Version 2 erhält bestehende Entwürfe.
 - Kein öffentliches Deployment.
 - Keine Rebrickable API und keine MOC-Dateien.
 - Cloudflare ist nur als Workers-Static-Assets-Konfiguration vorbereitet.
