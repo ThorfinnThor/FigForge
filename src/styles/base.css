@@ -1042,6 +1042,43 @@ legend {
   text-transform: uppercase;
 }
 
+.figure-slot__color {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: var(--space-1);
+  align-items: center;
+  margin-top: 3px;
+  color: var(--ink-muted);
+  font-size: 0.68rem;
+  font-weight: 700;
+}
+
+.figure-slot__color select {
+  width: 100%;
+  min-width: 0;
+  padding: 3px 20px 3px 6px;
+  border: 1px solid var(--line);
+  border-radius: 5px;
+  color: var(--ink);
+  background: #fff;
+  font: inherit;
+  font-weight: 600;
+}
+
+.figure-slot__color small {
+  grid-column: 1 / -1;
+  color: var(--ink-muted);
+  font-size: 0.68rem;
+  font-weight: 500;
+  line-height: 1.25;
+}
+
+.figure-slot__color-name {
+  margin-top: 3px !important;
+  color: var(--ink-muted);
+  font-size: 0.68rem;
+}
+
 .figure-slot__name {
   overflow: hidden;
   color: var(--ink);

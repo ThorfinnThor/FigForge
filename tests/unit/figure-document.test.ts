@@ -1,6 +1,7 @@
 import { describe, expect, it } from "vitest";
 import {
   createFigureDocument,
+  colorsFromFigureDocument,
   parseFigureDocument,
   selectionsFromFigureDocument,
   serializeFigureDocument,
@@ -14,7 +15,10 @@ describe("FF-22/FF-23 local figure document", () => {
       torsoAssembly: "catalog:torsoAssembly:37191",
       legsAssembly: "catalog:legsAssembly:970c01",
       handAccessory: "ff03-hand-10053",
-    }, "Testfigur", "2026-09-27T20:00:00.000Z");
+    }, "Testfigur", "2026-09-27T20:00:00.000Z", {
+      head: 14,
+      headwear: 70,
+    });
 
     expect(parseFigureDocument(serializeFigureDocument(source))).toEqual(source);
     expect(source.selections.map(({ slot }) => slot)).toEqual([
@@ -24,6 +28,8 @@ describe("FF-22/FF-23 local figure document", () => {
       "legsAssembly",
       "handAccessory",
     ]);
+    expect(source.schemaVersion).toBe(2);
+    expect(colorsFromFigureDocument(source, () => true)).toEqual({ head: 14, headwear: 70 });
   });
 
   it("continues to accept existing three-slot version-1 documents", () => {
@@ -39,7 +45,10 @@ describe("FF-22/FF-23 local figure document", () => {
       ],
     });
 
-    expect(parseFigureDocument(existing).selections).toHaveLength(3);
+    const migrated = parseFigureDocument(existing);
+    expect(migrated.schemaVersion).toBe(2);
+    expect(migrated.selections).toHaveLength(3);
+    expect(colorsFromFigureDocument(migrated, () => true)).toEqual({});
   });
 
   it("persists expanded hand accessories selected from the catalog", () => {
