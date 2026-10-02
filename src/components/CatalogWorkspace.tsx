@@ -31,6 +31,7 @@ import {
   selectionsFromFigureDocument,
   serializeFigureDocument,
 } from "../figure/figure-document.js";
+import { createFigureShareLink, hasFigureShareLink, parseFigureShareLink } from "../figure/share-link.js";
 import {
   clearLocalFigureData,
   deleteSavedFigure,
@@ -102,6 +103,7 @@ export function CatalogWorkspace() {
   const [saveStatus, setSaveStatus] = useState<"loading" | "saved" | "error">("loading");
   const [savedFigures, setSavedFigures] = useState<readonly SavedFigure[]>([]);
   const [transferMessage, setTransferMessage] = useState<string | null>(null);
+  const [shareLink, setShareLink] = useState<string | null>(null);
   const [semanticStatus, setSemanticStatus] = useState<SemanticSearchStatus>("disabled");
   const [semanticProgress, setSemanticProgress] = useState({ loaded: 0, total: semanticSearchRelease.requiredDownloadBytes });
   const [semanticMissingBytes, setSemanticMissingBytes] = useState(semanticSearchRelease.requiredDownloadBytes);
@@ -265,13 +267,24 @@ export function CatalogWorkspace() {
     let active = true;
     void Promise.all([loadCurrentFigureDraft(), listSavedFigures()])
       .then(async ([document, collection]) => {
-        if (!active || !document) return;
-        setSavedFigures(collection);
-        await Promise.all([...new Set(document.selections.map(({ slot }) => slot))].map(loadCatalogParts));
         if (!active) return;
-        const restored = selectionsFromFigureDocument(document, isSupportedDocumentSelection);
-        if (Object.keys(restored).length === document.selections.length) {
+        setSavedFigures(collection);
+        let shared: ReturnType<typeof parseFigureShareLink> | null = null;
+        if (hasFigureShareLink(window.location.href)) {
+          try {
+            shared = parseFigureShareLink(window.location.href);
+          } catch {
+            setTransferMessage(t("figure.share.invalid"));
+          }
+        }
+        const initialDocument = shared ?? document;
+        if (!initialDocument) return;
+        await Promise.all([...new Set(initialDocument.selections.map(({ slot }) => slot))].map(loadCatalogParts));
+        if (!active) return;
+        const restored = selectionsFromFigureDocument(initialDocument, isSupportedDocumentSelection);
+        if (Object.keys(restored).length === initialDocument.selections.length) {
           setSelectedByRole(restored);
+          if (shared) setTransferMessage(t("figure.share.loaded", { name: initialDocument.name }));
         }
       })
       .catch(() => {
@@ -322,6 +335,21 @@ export function CatalogWorkspace() {
       }
       setSelectedByRole(restored);
       setTransferMessage(t("figure.transfer.loaded", { name: document.name }));
+    } catch (error) {
+      setTransferMessage(`${t("figure.transfer.errorPrefix")}: ${error instanceof Error ? error.message : t("figure.transfer.invalid")}`);
+    }
+  };
+
+  const shareFigure = async (): Promise<void> => {
+    try {
+      const link = createFigureShareLink(createFigureDocument(selectedByRole), window.location.href);
+      setShareLink(link);
+      if (navigator.clipboard?.writeText) {
+        await navigator.clipboard.writeText(link);
+        setTransferMessage(t("figure.share.copied"));
+      } else {
+        setTransferMessage(t("figure.share.ready"));
+      }
     } catch (error) {
       setTransferMessage(`${t("figure.transfer.errorPrefix")}: ${error instanceof Error ? error.message : t("figure.transfer.invalid")}`);
     }
@@ -550,6 +578,7 @@ export function CatalogWorkspace() {
       drawer={isDrawerLayout}
       onClose={closeFigurePanel}
       onExport={exportFigure}
+      onShare={shareFigure}
       onImport={importFigure}
       onSaveToCollection={saveToCollection}
       onLoadFromCollection={loadFromCollection}
@@ -557,6 +586,7 @@ export function CatalogWorkspace() {
       onClearLocalData={clearLocalData}
       saveStatus={saveStatus}
       savedFigures={savedFigures}
+      shareLink={shareLink}
       slots={figureSlots}
       transferMessage={transferMessage}
     />
