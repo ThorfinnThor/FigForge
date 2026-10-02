@@ -1068,6 +1068,26 @@ legend {
   box-shadow: var(--lift-navy);
 }
 
+.figure-panel__share-link {
+  display: grid;
+  gap: var(--space-1);
+  margin: var(--space-2) var(--space-4) 0;
+  color: var(--ink-muted);
+  font-size: 0.72rem;
+  font-weight: 700;
+}
+
+.figure-panel__share-link input {
+  width: 100%;
+  min-width: 0;
+  padding: 0.45rem 0.55rem;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  color: var(--ink);
+  font: inherit;
+  font-weight: 500;
+}
+
 .figure-collection {
   display: grid;
   gap: var(--space-2);

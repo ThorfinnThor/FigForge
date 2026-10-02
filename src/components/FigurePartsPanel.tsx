@@ -18,6 +18,7 @@ type FigurePartsPanelProps = {
   drawer?: boolean;
   onClose?: () => void;
   onExport: () => void;
+  onShare: () => Promise<void>;
   onImport: (file: File) => Promise<void>;
   onSaveToCollection: () => Promise<void>;
   onLoadFromCollection: (saved: SavedFigure) => Promise<void>;
@@ -26,6 +27,7 @@ type FigurePartsPanelProps = {
   saveStatus: "loading" | "saved" | "error";
   savedFigures: readonly SavedFigure[];
   transferMessage: string | null;
+  shareLink: string | null;
   slots: readonly FigureSlot[];
 };
 
@@ -34,6 +36,7 @@ export function FigurePartsPanel({
   drawer = false,
   onClose,
   onExport,
+  onShare,
   onImport,
   onSaveToCollection,
   onLoadFromCollection,
@@ -43,6 +46,7 @@ export function FigurePartsPanel({
   savedFigures,
   slots,
   transferMessage,
+  shareLink,
 }: FigurePartsPanelProps) {
   const importInputRef = useRef<HTMLInputElement>(null);
   const { t } = useI18n();
@@ -88,6 +92,7 @@ export function FigurePartsPanel({
       <div className="figure-panel__actions">
         <Button onClick={() => void onSaveToCollection()} size="sm" variant="primary">{t("figure.collection.save")}</Button>
         <Button onClick={onExport} size="sm" variant="secondary">{t("figure.export")}</Button>
+        <Button onClick={() => void onShare()} size="sm" variant="secondary">{t("figure.share")}</Button>
         <Button onClick={() => importInputRef.current?.click()} size="sm" variant="ghost">{t("figure.import")}</Button>
         <input
           accept="application/json,.json"
@@ -102,6 +107,12 @@ export function FigurePartsPanel({
           type="file"
         />
       </div>
+      {shareLink ? (
+        <label className="figure-panel__share-link">
+          <span>{t("figure.shareLink")}</span>
+          <input readOnly onFocus={(event) => event.currentTarget.select()} value={shareLink} />
+        </label>
+      ) : null}
       <div className="figure-collection" aria-labelledby="figure-collection-heading">
         <div className="figure-collection__header">
           <h3 id="figure-collection-heading">{t("figure.collection.title")}</h3>
