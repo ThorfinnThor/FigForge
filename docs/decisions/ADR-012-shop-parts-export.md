@@ -2,6 +2,7 @@
 
 **Status:** akzeptiert
 **Datum:** 2026-09-30
+**Erweitert:** 2026-10-02
 
 ## Kontext
 
@@ -43,9 +44,11 @@ Recherche zu Zielseiten (Stand 2026-09-30, ohne praktischen Importtest):
    eindeutige Rebrickable-Farbe und deren LEGO-Elementnummern. Die App lädt ein
    Paket erst, wenn die Rolle in der Figur belegt ist.
 4. Nichts wird geraten:
-   - Hat ein Teil im Katalog keine oder mehrere Farben, ist es für beide Formate
-     blockiert („Farbe nicht eindeutig“). Die Vorschaufarbe ist keine Nutzerwahl
-     und wird nicht exportiert.
+   - Hat ein Teil im Katalog keine Farbe, ist es für beide Formate blockiert.
+   - Hat ein Teil mehrere belegte Katalogfarben, muss die Person eine davon im
+     Figurenpanel ausdrücklich als Einkaufsfarbe wählen. Die Vorschaufarbe ist
+     keine Nutzerwahl und wird nicht exportiert. Die Auswahl färbt die
+     3D-Vorschau noch nicht um; die Oberfläche weist darauf hin.
    - Hat die Teil-Farb-Kombination keine oder mehrere LEGO-Elementnummern, ist
      sie nur für Pick a Brick blockiert.
    - Blockierte Teile erscheinen sichtbar in der Liste. Ein Download ohne sie ist
@@ -69,5 +72,10 @@ Recherche zu Zielseiten (Stand 2026-09-30, ohne praktischen Importtest):
   die Rebrickable-Liste. Der Rebrickable-Import ist noch ungetestet.
 - Vor der Aktivierung eines Partnerlinks sind die Programmbedingungen,
   insbesondere für Pick a Brick, und die Werbekennzeichnung rechtlich zu prüfen.
-- Eine spätere Farbauswahl im Builder würde die Zahl eindeutig exportierbarer
-  Teile erhöhen; sie ist nicht Teil dieser Entscheidung.
+- Die Farbauswahl wird in neuen Figurenprojekten und Share-Links mit
+  `schemaVersion: 2` gespeichert. V1-Projekte und V1-Links bleiben lesbar und
+  werden beim Laden ohne erfundene Farbe migriert.
+- Von 14.829 builder-fertigen Teilen besitzen 13.317 genau eine Katalogfarbe
+  und 526 mehrere belegte Katalogfarben. Damit sind 13.843 Teile grundsätzlich
+  als Rebrickable-Zeile exportierbar; bei den 526 mehrfarbigen Teilen erst nach
+  der ausdrücklichen Auswahl. 986 Teile ohne Katalogfarbe bleiben blockiert.

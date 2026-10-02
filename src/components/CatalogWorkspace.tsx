@@ -25,8 +25,9 @@ import {
   semanticSearchMissingBytes,
   semanticSearchRelease,
 } from "../search/semantic-search-client.js";
-import { FIGURE_DOCUMENT_MAX_BYTES, type FigureDocumentSlot } from "../contracts/figure-document.js";
+import { FIGURE_DOCUMENT_MAX_BYTES, type FigureDocument, type FigureDocumentSlot } from "../contracts/figure-document.js";
 import {
+  colorsFromFigureDocument,
   createFigureDocument,
   parseFigureDocument,
   selectionsFromFigureDocument,
@@ -46,6 +47,8 @@ import type { CatalogPackagePart } from "../contracts/catalog-package.js";
 import type { LDrawCatalogRole, LDrawCatalogSelection } from "../scene/types.js";
 import { useI18n } from "../i18n.js";
 import type { ShopExportSelection } from "../procurement/shop-export.js";
+import { loadShopExportLookup } from "../procurement/shop-export-data.js";
+import type { ShopExportColor } from "../contracts/shop-export.js";
 
 type MobileTab = "parts" | "figure" | "list";
 type CatalogRole = CatalogPackagePart["role"];
@@ -101,6 +104,8 @@ export function CatalogWorkspace() {
   const [mobileTab, setMobileTab] = useState<MobileTab>("parts");
   const [isFigurePanelOpen, setIsFigurePanelOpen] = useState(false);
   const [selectedByRole, setSelectedByRole] = useState(initialSelectionByRole);
+  const [selectedColorByRole, setSelectedColorByRole] = useState<Partial<Record<CatalogRole, number>>>({});
+  const [colorOptionsByRole, setColorOptionsByRole] = useState<Partial<Record<CatalogRole, readonly ShopExportColor[]>>>({});
   const [draftHydrated, setDraftHydrated] = useState(false);
   const [saveStatus, setSaveStatus] = useState<"loading" | "saved" | "error">("loading");
   const [savedFigures, setSavedFigures] = useState<readonly SavedFigure[]>([]);
@@ -221,7 +226,14 @@ export function CatalogWorkspace() {
   const figureSlot = (id: CatalogRole, label: string) => {
     const componentId = selectedByRole[id];
     const component = componentId ? builderComponentForId(componentId) : undefined;
-    return { id, label, component, thumbnailUrl: component ? thumbnailForComponent(component) : undefined };
+    return {
+      id,
+      label,
+      component,
+      thumbnailUrl: component ? thumbnailForComponent(component) : undefined,
+      colors: colorOptionsByRole[id] ?? [],
+      selectedColorId: selectedColorByRole[id],
+    };
   };
   const figureSlots = [
     figureSlot("head", t("figure.head")),
@@ -255,13 +267,23 @@ export function CatalogWorkspace() {
 
   // Shop lines use the real Rebrickable part number, also for parts shown as "Geometrie ohne Druck".
   const shopExportSelections = figureSlots.flatMap(({ id, component }) => component
-    ? [{ slot: id, name: component.name, rebrickablePartNum: component.rebrickablePartNum } satisfies ShopExportSelection]
+    ? [{
+      slot: id,
+      name: component.name,
+      rebrickablePartNum: component.rebrickablePartNum,
+      ...(selectedColorByRole[id] === undefined ? {} : { rebrickableColorId: selectedColorByRole[id] }),
+    } satisfies ShopExportSelection]
     : []);
 
   const selectForPreview = (component: CatalogPackagePart): void => {
     if (!digitallySupportedLDrawEntryForComponent(component.id)) {
       return;
     }
+    setSelectedColorByRole((current) => {
+      const next = { ...current };
+      delete next[component.role];
+      return next;
+    });
     setSelectedByRole((current) => ({ ...current, [component.role]: component.id }));
   };
 
@@ -269,6 +291,62 @@ export function CatalogWorkspace() {
     const component = builderComponentForId(componentId);
     return component?.role === slot && Boolean(digitallySupportedLDrawEntryForComponent(componentId));
   };
+
+  useEffect(() => {
+    let active = true;
+    const selected = Object.entries(selectedByRole).flatMap(([slot, componentId]) => {
+      const component = componentId ? builderComponentForId(componentId) : undefined;
+      return component ? [{ slot: slot as CatalogRole, component }] : [];
+    });
+    if (selected.length === 0) {
+      setColorOptionsByRole({});
+      setSelectedColorByRole({});
+      return () => { active = false; };
+    }
+    void loadShopExportLookup(selected.map(({ slot }) => slot)).then((lookup) => {
+      if (!active) return;
+      const options = Object.fromEntries(selected.map(({ component, slot }) => [
+        slot,
+        lookup(slot, component.rebrickablePartNum)?.colors ?? [],
+      ])) as Partial<Record<CatalogRole, readonly ShopExportColor[]>>;
+      setColorOptionsByRole(options);
+      setSelectedColorByRole((current) => Object.fromEntries(selected.flatMap(({ slot }) => {
+        const colors = options[slot] ?? [];
+        const existing = current[slot];
+        if (existing !== undefined && colors.some(({ rebrickableColorId }) => rebrickableColorId === existing)) {
+          return [[slot, existing]];
+        }
+        return colors.length === 1 ? [[slot, colors[0]!.rebrickableColorId]] : [];
+      })));
+    }).catch(() => {
+      if (active) setColorOptionsByRole({});
+    });
+    return () => { active = false; };
+  }, [selectedByRole]);
+
+  const restoreFigureDocument = async (document: FigureDocument): Promise<void> => {
+    const roles = [...new Set(document.selections.map(({ slot }) => slot))];
+    await Promise.all(roles.map(loadCatalogParts));
+    const restored = selectionsFromFigureDocument(document, isSupportedDocumentSelection);
+    if (Object.keys(restored).length !== document.selections.length) throw new Error("unsupported");
+    const lookup = await loadShopExportLookup(roles);
+    const restoredColors = colorsFromFigureDocument(document, (componentId, slot, colorId) => {
+      const component = builderComponentForId(componentId);
+      return Boolean(component && lookup(slot, component.rebrickablePartNum)?.colors
+        .some(({ rebrickableColorId }) => rebrickableColorId === colorId));
+    });
+    const declaredColorCount = document.selections.filter(({ rebrickableColorId }) => rebrickableColorId !== undefined).length;
+    if (Object.keys(restoredColors).length !== declaredColorCount) throw new Error("unsupported-color");
+    setSelectedByRole(restored);
+    setSelectedColorByRole(restoredColors);
+  };
+
+  const currentFigureDocument = (): FigureDocument => createFigureDocument(
+    selectedByRole,
+    undefined,
+    undefined,
+    selectedColorByRole,
+  );
 
   useEffect(() => {
     let active = true;
@@ -286,13 +364,9 @@ export function CatalogWorkspace() {
         }
         const initialDocument = shared ?? document;
         if (!initialDocument) return;
-        await Promise.all([...new Set(initialDocument.selections.map(({ slot }) => slot))].map(loadCatalogParts));
         if (!active) return;
-        const restored = selectionsFromFigureDocument(initialDocument, isSupportedDocumentSelection);
-        if (Object.keys(restored).length === initialDocument.selections.length) {
-          setSelectedByRole(restored);
-          if (shared) setTransferMessage(t("figure.share.loaded", { name: initialDocument.name }));
-        }
+        await restoreFigureDocument(initialDocument);
+        if (shared) setTransferMessage(t("figure.share.loaded", { name: initialDocument.name }));
       })
       .catch(() => {
         if (active) setSaveStatus("error");
@@ -310,15 +384,15 @@ export function CatalogWorkspace() {
     if (!draftHydrated) return;
     const timeout = window.setTimeout(() => {
       setSaveStatus("loading");
-      void saveCurrentFigureDraft(createFigureDocument(selectedByRole))
+      void saveCurrentFigureDraft(currentFigureDocument())
         .then(() => setSaveStatus("saved"))
         .catch(() => setSaveStatus("error"));
     }, 300);
     return () => window.clearTimeout(timeout);
-  }, [draftHydrated, selectedByRole]);
+  }, [draftHydrated, selectedByRole, selectedColorByRole]);
 
   const exportFigure = (): void => {
-    const content = serializeFigureDocument(createFigureDocument(selectedByRole));
+    const content = serializeFigureDocument(currentFigureDocument());
     const url = URL.createObjectURL(new Blob([content], { type: "application/json;charset=utf-8" }));
     const link = document.createElement("a");
     link.href = url;
@@ -336,11 +410,7 @@ export function CatalogWorkspace() {
         throw new Error(t("figure.transfer.fileTooLarge"));
       }
       const document = parseFigureDocument(await file.text());
-      const restored = selectionsFromFigureDocument(document, isSupportedDocumentSelection);
-      if (Object.keys(restored).length !== document.selections.length) {
-        throw new Error(t("figure.transfer.unsupported"));
-      }
-      setSelectedByRole(restored);
+      await restoreFigureDocument(document);
       setTransferMessage(t("figure.transfer.loaded", { name: document.name }));
     } catch (error) {
       setTransferMessage(`${t("figure.transfer.errorPrefix")}: ${error instanceof Error ? error.message : t("figure.transfer.invalid")}`);
@@ -349,7 +419,7 @@ export function CatalogWorkspace() {
 
   const shareFigure = async (): Promise<void> => {
     try {
-      const link = createFigureShareLink(createFigureDocument(selectedByRole), window.location.href);
+      const link = createFigureShareLink(currentFigureDocument(), window.location.href);
       setShareLink(link);
       if (navigator.clipboard?.writeText) {
         await navigator.clipboard.writeText(link);
@@ -364,7 +434,7 @@ export function CatalogWorkspace() {
 
   const saveToCollection = async (): Promise<void> => {
     try {
-      await saveFigureToCollection(createFigureDocument(selectedByRole));
+      await saveFigureToCollection(currentFigureDocument());
       setSavedFigures(await listSavedFigures());
       setTransferMessage(t("figure.collection.saved"));
     } catch {
@@ -374,12 +444,7 @@ export function CatalogWorkspace() {
 
   const loadFromCollection = async (saved: SavedFigure): Promise<void> => {
     try {
-      await Promise.all([...new Set(saved.document.selections.map(({ slot }) => slot))].map(loadCatalogParts));
-      const restored = selectionsFromFigureDocument(saved.document, isSupportedDocumentSelection);
-      if (Object.keys(restored).length !== saved.document.selections.length) {
-        throw new Error("unsupported");
-      }
-      setSelectedByRole(restored);
+      await restoreFigureDocument(saved.document);
       setTransferMessage(t("figure.collection.loaded", { name: saved.document.name }));
     } catch {
       setTransferMessage(t("figure.transfer.unsupported"));
@@ -596,6 +661,12 @@ export function CatalogWorkspace() {
       shareLink={shareLink}
       shopExport={<ShopExportPanel selections={shopExportSelections} />}
       slots={figureSlots}
+      onColorChange={(slot, colorId) => setSelectedColorByRole((current) => {
+        const next = { ...current };
+        if (colorId === undefined) delete next[slot];
+        else next[slot] = colorId;
+        return next;
+      })}
       transferMessage={transferMessage}
     />
   );

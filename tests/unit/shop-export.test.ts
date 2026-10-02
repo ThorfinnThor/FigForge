@@ -27,8 +27,13 @@ const entries: Record<string, ShopExportEntry> = {
   "legsAssembly:l1": { rebrickablePartNum: "l1", colors: [] },
 };
 const lookup: ShopExportLookup = (slot, partNum) => entries[`${slot}:${partNum}`];
-const select = (slot: ShopExportSelection["slot"], partNum: string): ShopExportSelection =>
-  ({ slot, name: `Teil ${partNum}`, rebrickablePartNum: partNum });
+const select = (slot: ShopExportSelection["slot"], partNum: string, rebrickableColorId?: number): ShopExportSelection =>
+  ({
+    slot,
+    name: `Teil ${partNum}`,
+    rebrickablePartNum: partNum,
+    ...(rebrickableColorId === undefined ? {} : { rebrickableColorId }),
+  });
 
 describe("ADR-012 shop parts export", () => {
   it("exports a fully resolvable figure to both formats", () => {
@@ -66,6 +71,16 @@ describe("ADR-012 shop parts export", () => {
     expect(rebrickable.blockers.map(({ reason }) => reason))
       .toEqual(["multiple-colors", "no-color", "not-indexed"]);
     expect(serializeRebrickableCsv(rebrickable)).toBe("Part,Color,Quantity\nh1,14,1\nt1,1,1\n");
+  });
+
+  it("exports an explicitly selected documented colour and rejects an unknown one", () => {
+    const selected = compileShopExport("rebrickable", [select("headwear", "w1", 4)], lookup);
+    const invalid = compileShopExport("rebrickable", [select("headwear", "w1", 999)], lookup);
+
+    expect(selected.status).toBe("complete");
+    expect(serializeRebrickableCsv(selected)).toBe("Part,Color,Quantity\nw1,4,1\n");
+    expect(invalid.status).toBe("blocked");
+    expect(invalid.blockers[0]?.reason).toBe("invalid-color");
   });
 
   it("reports empty and fully blocked figures", () => {

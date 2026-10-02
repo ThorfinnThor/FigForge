@@ -7,12 +7,15 @@ export type ShopExportSelection = {
   slot: CatalogRole;
   name: string;
   rebrickablePartNum: string;
+  /** Explicit user choice in the Rebrickable colour namespace. */
+  rebrickableColorId?: number;
 };
 
 export type ShopExportBlockReason =
   | "not-indexed"
   | "no-color"
   | "multiple-colors"
+  | "invalid-color"
   | "no-element-id"
   | "multiple-element-ids";
 
@@ -45,6 +48,7 @@ const blockMessages: Record<ShopExportBlockReason, string> = {
   "not-indexed": "Für dieses Teil liegen noch keine Exportdaten vor.",
   "no-color": "Der Katalog nennt für dieses Teil keine Farbe.",
   "multiple-colors": "Das Teil gibt es in mehreren Farben; die Vorschaufarbe ist keine bestätigte Auswahl.",
+  "invalid-color": "Die gewählte Farbe ist für dieses Teil nicht im Katalog belegt.",
   "no-element-id": "Für diese Teil-Farb-Kombination ist keine LEGO-Elementnummer bekannt.",
   "multiple-element-ids": "Für diese Teil-Farb-Kombination gibt es mehrere LEGO-Elementnummern; welche Pick a Brick führt, ist offen.",
 };
@@ -73,12 +77,19 @@ export const compileShopExport = (
       blockers.push(block(selection, "not-indexed"));
       continue;
     }
-    const [color, ...otherColors] = entry.colors;
-    if (!color) {
+    const [onlyColor, ...otherColors] = entry.colors;
+    if (!onlyColor) {
       blockers.push(block(selection, "no-color"));
       continue;
     }
-    if (otherColors.length > 0) {
+    const color = selection.rebrickableColorId === undefined
+      ? otherColors.length === 0 ? onlyColor : undefined
+      : entry.colors.find(({ rebrickableColorId }) => rebrickableColorId === selection.rebrickableColorId);
+    if (selection.rebrickableColorId !== undefined && !color) {
+      blockers.push(block(selection, "invalid-color"));
+      continue;
+    }
+    if (!color) {
       blockers.push(block(selection, "multiple-colors"));
       continue;
     }

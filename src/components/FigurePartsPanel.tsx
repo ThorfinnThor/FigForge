@@ -2,15 +2,18 @@ import { Card } from "./ui/Card.js";
 import { Button } from "./ui/Button.js";
 import { StatusMessage } from "./ui/StatusMessage.js";
 import type { CatalogPackagePart } from "../contracts/catalog-package.js";
+import type { ShopExportColor } from "../contracts/shop-export.js";
 import type { SavedFigure } from "../storage/figure-draft-store.js";
 import { useRef, type ReactNode, type RefObject } from "react";
 import { useI18n } from "../i18n.js";
 
 type FigureSlot = {
-  id: string;
+  id: CatalogPackagePart["role"];
   label: string;
   component: CatalogPackagePart | undefined;
   thumbnailUrl?: string | undefined;
+  colors: readonly ShopExportColor[];
+  selectedColorId?: number | undefined;
 };
 
 type FigurePartsPanelProps = {
@@ -24,6 +27,7 @@ type FigurePartsPanelProps = {
   onLoadFromCollection: (saved: SavedFigure) => Promise<void>;
   onDeleteFromCollection: (id: string) => Promise<void>;
   onClearLocalData: () => Promise<void>;
+  onColorChange: (slot: CatalogPackagePart["role"], colorId: number | undefined) => void;
   saveStatus: "loading" | "saved" | "error";
   savedFigures: readonly SavedFigure[];
   shopExport?: ReactNode;
@@ -43,6 +47,7 @@ export function FigurePartsPanel({
   onLoadFromCollection,
   onDeleteFromCollection,
   onClearLocalData,
+  onColorChange,
   saveStatus,
   savedFigures,
   shopExport,
@@ -87,6 +92,31 @@ export function FigurePartsPanel({
               <p className="figure-slot__label">{slot.label}</p>
               <p className="figure-slot__name">{slot.component?.name ?? t("figure.empty")}</p>
               <p className="figure-slot__meta">{slot.component ? `Rebrickable · ${slot.component.rebrickablePartNum}` : t("figure.none")}</p>
+              {slot.component ? slot.colors.length > 1 ? (
+                <label className="figure-slot__color">
+                  <span>{t("figure.color")}</span>
+                  <select
+                    aria-label={t("figure.colorLabel", { part: slot.component.name })}
+                    onChange={(event) => onColorChange(
+                      slot.id,
+                      event.currentTarget.value === "" ? undefined : Number(event.currentTarget.value),
+                    )}
+                    value={slot.selectedColorId ?? ""}
+                  >
+                    <option value="">{t("figure.colorChoose")}</option>
+                    {slot.colors.map((color) => (
+                      <option key={color.rebrickableColorId} value={color.rebrickableColorId}>
+                        {color.colorName}
+                      </option>
+                    ))}
+                  </select>
+                  <small>{t("figure.colorPurchaseHint")}</small>
+                </label>
+              ) : (
+                <p className="figure-slot__color-name">
+                  {t("figure.color")}: {slot.colors[0]?.colorName ?? t("figure.colorUnknown")}
+                </p>
+              ) : null}
             </div>
           </Card>
         ))}

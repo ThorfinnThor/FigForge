@@ -1,11 +1,11 @@
 import { FIGURE_DOCUMENT_MAX_BYTES, figureDocumentSchema, type FigureDocument } from "../contracts/figure-document.js";
 import { parseFigureDocument, serializeFigureDocument } from "./figure-document.js";
 
-export const FIGURE_SHARE_LINK_VERSION = "v1";
+export const FIGURE_SHARE_LINK_VERSION = "v2";
 export const FIGURE_SHARE_LINK_PREFIX = "figforge";
 export const FIGURE_SHARE_LINK_MAX_CHARS = 8 * 1024;
 
-const SHARE_HASH_PATTERN = /^figforge=(v1)\.([A-Za-z0-9_-]+)$/u;
+const SHARE_HASH_PATTERN = /^figforge=(v1|v2)\.([A-Za-z0-9_-]+)$/u;
 
 const bytesToBase64Url = (bytes: Uint8Array): string => {
   let binary = "";
@@ -40,7 +40,7 @@ export const parseFigureShareLink = (value: string): FigureDocument => {
   if (value.length > FIGURE_SHARE_LINK_MAX_CHARS) throw new Error("Der Share-Link überschreitet das Größenlimit.");
   const url = new URL(value, "https://figforge.invalid/");
   const match = SHARE_HASH_PATTERN.exec(url.hash.slice(1));
-  if (!match || match[1] !== FIGURE_SHARE_LINK_VERSION) throw new Error("Ungültiger oder veralteter Share-Link.");
+  if (!match) throw new Error("Ungültiger oder veralteter Share-Link.");
   const payload = match[2];
   if (!payload) throw new Error("Ungültige Share-Link-Daten.");
   const bytes = base64UrlToBytes(payload);
