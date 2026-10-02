@@ -11,16 +11,23 @@ import {
   createReleaseReviewProgress,
   releaseRelevanceRatingSchema,
   releaseReviewProgressSchema,
+  type ReleaseReviewSplit,
 } from "./lib/semantic-search-release-review.js";
 
 const host = "127.0.0.1";
-const port = Number.parseInt(process.env.FIGFORGE_SEARCH_REVIEW_PORT ?? "4183", 10);
+const reviewSplitRaw = process.env.FIGFORGE_SEARCH_REVIEW_SPLIT ?? "development";
+if (reviewSplitRaw !== "development" && reviewSplitRaw !== "holdout") {
+  throw new Error("FIGFORGE_SEARCH_REVIEW_SPLIT must be development or holdout");
+}
+const reviewSplit: ReleaseReviewSplit = reviewSplitRaw;
+const port = Number.parseInt(process.env.FIGFORGE_SEARCH_REVIEW_PORT ?? (reviewSplit === "holdout" ? "4185" : "4183"), 10);
 if (!Number.isInteger(port) || port < 1 || port > 65_535) throw new Error("FIGFORGE_SEARCH_REVIEW_PORT must be a valid TCP port");
 
 const reviewPath = resolve(process.cwd(), "data/review/semantic-search-release-review.json");
 const progressPath = resolve(
   process.cwd(),
-  process.env.FIGFORGE_SEARCH_REVIEW_PROGRESS ?? "data/review/semantic-search-release-progress.json",
+  process.env.FIGFORGE_SEARCH_REVIEW_PROGRESS
+    ?? `data/review/semantic-search-${reviewSplit === "holdout" ? "holdout" : "release"}-progress.json`,
 );
 const uiRoot = resolve(process.cwd(), "tools/semantic-search-review-ui");
 const thumbnailRoot = resolve(process.cwd(), "public/assets/thumbnails");
@@ -87,7 +94,7 @@ const handleRequest = async (
   try {
     const requestUrl = new URL(request.url ?? "/", `http://${host}:${port}`);
     if (request.method === "GET" && requestUrl.pathname === "/api/state") {
-      sendJson(response, 200, buildReleaseReviewState(review, progress));
+      sendJson(response, 200, buildReleaseReviewState(review, progress, reviewSplit));
       return;
     }
     if (request.method === "POST" && requestUrl.pathname === "/api/rating") {
@@ -102,17 +109,18 @@ const handleRequest = async (
         String(body.candidateKey),
         releaseRelevanceRatingSchema.parse(body.relevance),
         new Date(),
+        reviewSplit,
       );
       await saveProgress();
-      sendJson(response, 200, buildReleaseReviewState(review, progress));
+      sendJson(response, 200, buildReleaseReviewState(review, progress, reviewSplit));
       return;
     }
     if (request.method === "GET" && requestUrl.pathname === "/api/export") {
-      sendDownload(response, "figforge-semantic-development-judgments.json", buildReleaseReviewExport(review, progress));
+      sendDownload(response, `figforge-semantic-${reviewSplit}-judgments.json`, buildReleaseReviewExport(review, progress, reviewSplit));
       return;
     }
     if (request.method === "GET" && requestUrl.pathname === "/api/report") {
-      sendDownload(response, "figforge-semantic-development-report.json", buildReleaseReviewReport(review, progress));
+      sendDownload(response, `figforge-semantic-${reviewSplit}-report.json`, buildReleaseReviewReport(review, progress, reviewSplit));
       return;
     }
     if (request.method === "GET" && requestUrl.pathname.startsWith("/assets/thumbnails/")) {
@@ -143,7 +151,7 @@ const handleRequest = async (
     sendJson(response, 404, { error: "Not found" });
   } catch (error) {
     const message = error instanceof Error ? error.message : "Unknown review server error";
-    sendJson(response, message === "Development review is not complete" ? 409 : 400, { error: message });
+    sendJson(response, message.endsWith("review is not complete") ? 409 : 400, { error: message });
   }
 };
 
@@ -151,6 +159,5 @@ const server = createServer((request, response) => { void handleRequest(request,
 server.listen(port, host, () => {
   console.log(`Semantic search release review is available locally at http://${host}:${port}`);
   console.log(`Progress is stored in ${progressPath}`);
-  console.log("Only development cases are exposed; holdout cases and system origins remain hidden.");
+  console.log(`Only ${reviewSplit} cases are exposed; system origins remain hidden.`);
 });
-

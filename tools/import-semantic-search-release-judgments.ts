@@ -11,16 +11,12 @@ if (!judgmentsPathArgument) {
 }
 
 const reviewPath = resolve(process.cwd(), "data/review/semantic-search-release-review.json");
-const progressPath = resolve(
-  process.cwd(),
-  process.env.FIGFORGE_SEARCH_REVIEW_PROGRESS ?? "data/review/semantic-search-release-progress.json",
-);
 const judgmentsPath = resolve(process.cwd(), judgmentsPathArgument);
 const exportedJudgmentsSchema = z.object({
   schemaVersion: z.literal(1),
   sourceReviewSha256: z.string().regex(/^[a-f0-9]{64}$/u),
   completedAt: z.iso.datetime(),
-  split: z.literal("development"),
+  split: z.enum(["development", "holdout"]),
   reviewStatus: z.literal("human-reviewed"),
   cases: z.array(z.object({
     caseId: z.string().min(1),
@@ -38,16 +34,21 @@ const [reviewRaw, judgmentsRaw] = await Promise.all([
 ]);
 const review = semanticSearchReleaseReviewSchema.parse(JSON.parse(reviewRaw.toString("utf8")) as unknown);
 const judgments = exportedJudgmentsSchema.parse(JSON.parse(judgmentsRaw) as unknown);
+const progressPath = resolve(
+  process.cwd(),
+  process.env.FIGFORGE_SEARCH_REVIEW_PROGRESS
+    ?? `data/review/semantic-search-${judgments.split === "holdout" ? "holdout" : "release"}-progress.json`,
+);
 const sourceReviewSha256 = createHash("sha256").update(reviewRaw).digest("hex");
 const importedByKey = new Map(judgments.cases.flatMap(({ candidates }) => (
   candidates.map(({ candidateKey, componentId, relevance }) => [candidateKey, { componentId, relevance }] as const)
 )));
 const ratings: Record<string, z.infer<typeof releaseRelevanceRatingSchema>> = {};
-const developmentCandidates = review.cases
-  .filter(({ split }) => split === "development")
+const splitCandidates = review.cases
+  .filter(({ split }) => split === judgments.split)
   .flatMap(({ candidates }) => candidates);
 
-for (const candidate of developmentCandidates) {
+for (const candidate of splitCandidates) {
   const imported = importedByKey.get(candidate.candidateKey);
   if (!imported) continue;
   if (imported.componentId !== candidate.componentId) {
@@ -68,9 +69,10 @@ await rename(temporaryPath, progressPath);
 
 console.log(JSON.stringify({
   message: "semantic search release judgments imported",
+  split: judgments.split,
   previousSourceReviewSha256: judgments.sourceReviewSha256,
   currentSourceReviewSha256: sourceReviewSha256,
-  candidateCount: developmentCandidates.length,
+  candidateCount: splitCandidates.length,
   carriedForwardRatingCount: Object.keys(ratings).length,
-  remainingRatingCount: developmentCandidates.length - Object.keys(ratings).length,
+  remainingRatingCount: splitCandidates.length - Object.keys(ratings).length,
 }));

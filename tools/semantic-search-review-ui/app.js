@@ -31,7 +31,8 @@ function renderNavigation() {
 function renderProgress() {
   progressBar.max = state.totalCandidates;
   progressBar.value = state.ratedCandidates;
-  progressLabel.textContent = `${state.ratedCandidates} von ${state.totalCandidates} Treffern bewertet`;
+  const phase = state.split === "holdout" ? "Holdout" : "Development";
+  progressLabel.textContent = `${phase}: ${state.ratedCandidates} von ${state.totalCandidates} Treffern bewertet`;
   for (const [link, href] of [[exportLink, "/api/export"], [reportLink, "/api/report"]]) {
     link.classList.toggle("disabled", !state.complete);
     link.setAttribute("aria-disabled", String(!state.complete));
@@ -94,4 +95,3 @@ nextUnansweredButton.addEventListener("click", () => {
   window.scrollTo({ top: 0 });
 });
 loadState().catch((error) => { status.textContent = error.message; });
-

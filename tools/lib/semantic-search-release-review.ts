@@ -12,6 +12,7 @@ export const releaseReviewProgressSchema = z.object({
 
 export type ReleaseReviewProgress = z.infer<typeof releaseReviewProgressSchema>;
 export type ReleaseRelevanceRating = z.infer<typeof releaseRelevanceRatingSchema>;
+export type ReleaseReviewSplit = "development" | "holdout";
 
 export function createReleaseReviewProgress(sourceReviewSha256: string): ReleaseReviewProgress {
   return {
@@ -22,8 +23,8 @@ export function createReleaseReviewProgress(sourceReviewSha256: string): Release
   };
 }
 
-const developmentCandidates = (review: SemanticSearchReleaseReview) => review.cases
-  .filter(({ split }) => split === "development")
+const splitCandidates = (review: SemanticSearchReleaseReview, reviewSplit: ReleaseReviewSplit) => review.cases
+  .filter(({ split }) => split === reviewSplit)
   .flatMap(({ candidates }) => candidates);
 
 export function applyReleaseReviewRating(
@@ -32,10 +33,11 @@ export function applyReleaseReviewRating(
   candidateKey: string,
   relevance: ReleaseRelevanceRating,
   now = new Date(),
+  reviewSplit: ReleaseReviewSplit = "development",
 ): ReleaseReviewProgress {
   releaseRelevanceRatingSchema.parse(relevance);
-  if (!developmentCandidates(review).some((candidate) => candidate.candidateKey === candidateKey)) {
-    throw new Error("Candidate is not part of the visible development review");
+  if (!splitCandidates(review, reviewSplit).some((candidate) => candidate.candidateKey === candidateKey)) {
+    throw new Error(`Candidate is not part of the visible ${reviewSplit} review`);
   }
   return releaseReviewProgressSchema.parse({
     ...progress,
@@ -47,9 +49,10 @@ export function applyReleaseReviewRating(
 export function buildReleaseReviewState(
   review: SemanticSearchReleaseReview,
   progress: ReleaseReviewProgress,
+  reviewSplit: ReleaseReviewSplit = "development",
 ) {
   const cases = review.cases
-    .filter(({ split }) => split === "development")
+    .filter(({ split }) => split === reviewSplit)
     .map(({ caseId, language, role, query, candidates }) => ({
       caseId,
       language,
@@ -73,7 +76,7 @@ export function buildReleaseReviewState(
   );
   return {
     instructions: review.instructions,
-    split: "development" as const,
+    split: reviewSplit,
     cases,
     totalCases: cases.length,
     totalCandidates,
@@ -85,14 +88,15 @@ export function buildReleaseReviewState(
 export function buildReleaseReviewExport(
   review: SemanticSearchReleaseReview,
   progress: ReleaseReviewProgress,
+  reviewSplit: ReleaseReviewSplit = "development",
 ) {
-  const state = buildReleaseReviewState(review, progress);
-  if (!state.complete) throw new Error("Development review is not complete");
+  const state = buildReleaseReviewState(review, progress, reviewSplit);
+  if (!state.complete) throw new Error(`${reviewSplit} review is not complete`);
   return {
     schemaVersion: 1,
     sourceReviewSha256: progress.sourceReviewSha256,
     completedAt: progress.updatedAt,
-    split: "development" as const,
+    split: reviewSplit,
     reviewStatus: "human-reviewed" as const,
     cases: state.cases,
   };
@@ -119,11 +123,12 @@ function scoreRun(
 export function buildReleaseReviewReport(
   review: SemanticSearchReleaseReview,
   progress: ReleaseReviewProgress,
+  reviewSplit: ReleaseReviewSplit = "development",
 ) {
-  const exported = buildReleaseReviewExport(review, progress);
+  const exported = buildReleaseReviewExport(review, progress, reviewSplit);
   const exportedByCase = new Map(exported.cases.map((reviewCase) => [reviewCase.caseId, reviewCase]));
   const scoredCases = review.cases
-    .filter(({ split }) => split === "development")
+    .filter(({ split }) => split === reviewSplit)
     .map((reviewCase) => {
       const judged = exportedByCase.get(reviewCase.caseId);
       if (!judged) throw new Error(`Missing reviewed case ${reviewCase.caseId}`);
@@ -156,7 +161,7 @@ export function buildReleaseReviewReport(
     schemaVersion: 1,
     sourceReviewSha256: progress.sourceReviewSha256,
     completedAt: progress.updatedAt,
-    split: "development" as const,
+    split: reviewSplit,
     metrics: "nDCG@5 and Success@5; human relevance levels 0/1/2" as const,
     overall: aggregate(scoredCases),
     byLanguage: {
@@ -166,4 +171,3 @@ export function buildReleaseReviewReport(
     cases: scoredCases,
   };
 }
-
