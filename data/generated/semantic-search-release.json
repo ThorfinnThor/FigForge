@@ -9,15 +9,15 @@
   "queryNormalizerVersion": "de-en-domain-v1",
   "embeddingDimension": 384,
   "documentCount": 2726,
-  "documentsSha256": "cf3b84f7e8d54f09e7d884384233ccb38f2871e01cbfd2e817bfe0b4d3723293",
+  "documentsSha256": "40f363ce5667be849fbc15064146dd12e3d8528ce8c9fe7bac008742c5ff96b0",
   "orderedComponentIdsSha256": "077fc9d1311ea84ee4bd23cb7441631bddf69230079f78cc3b182362e630e6cb",
-  "indexSha256": "e039a8978e44a342dba844ac27fadb8c613f91476521f1e50a1dedd4796d994a",
+  "indexSha256": "e1c964d35c471986705f7611aa68622160ee4d4e7bf53a24994bb35c1a075ad4",
   "requiredDownloadBytes": 42443717,
   "assets": [
     {
       "url": "/search/compact-minilm/index.f32",
       "byteLength": 4187136,
-      "sha256": "e039a8978e44a342dba844ac27fadb8c613f91476521f1e50a1dedd4796d994a",
+      "sha256": "e1c964d35c471986705f7611aa68622160ee4d4e7bf53a24994bb35c1a075ad4",
       "kind": "index"
     },
     {
