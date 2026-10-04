@@ -3,9 +3,13 @@ export type CsvTable = {
   rows: Record<string, string>[];
 };
 
-export const parseCsv = (input: string, fileName: string): CsvTable => {
+export type CsvVisitResult = {
+  headers: string[];
+  rowCount: number;
+};
+
+function* csvRecords(input: string, fileName: string): Generator<string[]> {
   const text = input.replace(/^\uFEFF/u, "");
-  const records: string[][] = [];
   let record: string[] = [];
   let field = "";
   let quoted = false;
@@ -30,7 +34,7 @@ export const parseCsv = (input: string, fileName: string): CsvTable => {
     } else if (character === "\n") {
       record.push(field.endsWith("\r") ? field.slice(0, -1) : field);
       if (record.some((value) => value.length > 0)) {
-        records.push(record);
+        yield record;
       }
       record = [];
       field = "";
@@ -45,26 +49,44 @@ export const parseCsv = (input: string, fileName: string): CsvTable => {
   if (field.length > 0 || record.length > 0) {
     record.push(field);
     if (record.some((value) => value.length > 0)) {
-      records.push(record);
+      yield record;
     }
   }
-  if (records.length === 0) {
+}
+
+export const visitCsvRows = (
+  input: string,
+  fileName: string,
+  visit: (row: Record<string, string>, rowNumber: number) => void,
+): CsvVisitResult => {
+  const records = csvRecords(input, fileName);
+  const first = records.next();
+  if (first.done) {
     throw new Error(`CSV ${fileName} is empty`);
   }
 
-  const headers = records[0]!.map((header) => header.trim());
+  const headers = first.value.map((header) => header.trim());
   if (headers.some((header) => header.length === 0) || new Set(headers).size !== headers.length) {
     throw new Error(`CSV ${fileName} has empty or duplicate headers`);
   }
 
-  const rows = records.slice(1).map((values, rowIndex) => {
+  let rowCount = 0;
+  for (const values of records) {
     if (values.length !== headers.length) {
       throw new Error(
-        `CSV ${fileName} row ${rowIndex + 2} has ${values.length} fields; expected ${headers.length}`,
+        `CSV ${fileName} row ${rowCount + 2} has ${values.length} fields; expected ${headers.length}`,
       );
     }
-    return Object.fromEntries(headers.map((header, index) => [header, values[index] ?? ""]));
-  });
+    visit(Object.fromEntries(headers.map((header, index) => [header, values[index] ?? ""])), rowCount + 2);
+    rowCount += 1;
+  }
+
+  return { headers, rowCount };
+};
+
+export const parseCsv = (input: string, fileName: string): CsvTable => {
+  const rows: Record<string, string>[] = [];
+  const { headers } = visitCsvRows(input, fileName, (row) => rows.push(row));
 
   return { headers, rows };
 };

@@ -4,20 +4,28 @@ import { Card } from "./ui/Card.js";
 import { StatusMessage } from "./ui/StatusMessage.js";
 import type { LDrawPrototypeSceneController } from "../scene/LDrawPrototypeSceneController.js";
 import type { CameraPreset, LDrawCatalogRole, LDrawCatalogSelection } from "../scene/types.js";
+import { useI18n } from "../i18n.js";
 import { CAMERA_PRESETS } from "./figure-poc-options.js";
 
 type FigureViewportProps = {
   selectedParts: readonly LDrawCatalogSelection[];
 };
 
-const selectionStatus = (selectedParts: readonly LDrawCatalogSelection[]): string => {
+type ViewportStatus = {
+  key: string;
+  values?: Record<string, string | number>;
+};
+
+const selectionStatus = (selectedParts: readonly LDrawCatalogSelection[]): ViewportStatus => {
   const accessoryIsConnected = selectedParts.some(({ role }) => role === "handAccessory");
-  return `${selectedParts.length} belegte LDraw-Katalogmodelle aktiv.${accessoryIsConnected
-    ? " Zubehör ist über das digitale Snap-Profil mit der Referenzhand verbunden."
-    : ""}`;
+  return {
+    key: accessoryIsConnected ? "viewport.status.selectedAccessory" : "viewport.status.selected",
+    values: { count: selectedParts.length },
+  };
 };
 
 export function FigureViewport({ selectedParts }: FigureViewportProps) {
+  const { t } = useI18n();
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const controllerRef = useRef<LDrawPrototypeSceneController | null>(null);
   const selectionRef = useRef(selectedParts);
@@ -26,7 +34,7 @@ export function FigureViewport({ selectedParts }: FigureViewportProps) {
   const [sceneState, setSceneState] = useState<"loading" | "ready" | "context-lost" | "error">("loading");
   const [statusTone, setStatusTone] = useState<"info" | "danger">("info");
   const [cameraPreset, setCameraPreset] = useState<CameraPreset>("three-quarter");
-  const [status, setStatus] = useState("Offizielle LDraw-Geometrie wird geladen …");
+  const [status, setStatus] = useState<ViewportStatus>({ key: "viewport.status.loading" });
   selectionRef.current = selectedParts;
   const selectionKey = selectedParts
     .map(({ componentId, role }) => `${role}:${componentId}`)
@@ -44,7 +52,7 @@ export function FigureViewport({ selectedParts }: FigureViewportProps) {
     let controller: LDrawPrototypeSceneController | null = null;
     setSceneState("loading");
     setStatusTone("info");
-    setStatus("Offizielle LDraw-Geometrie wird geladen …");
+    setStatus({ key: "viewport.status.loading" });
 
     void (async () => {
       try {
@@ -59,12 +67,12 @@ export function FigureViewport({ selectedParts }: FigureViewportProps) {
           onContextLost: () => {
             setSceneState("context-lost");
             setStatusTone("danger");
-            setStatus("WebGL-Kontext verloren. Browserwiederherstellung wird abgewartet.");
+            setStatus({ key: "viewport.status.contextLost" });
           },
           onContextRestored: () => {
             setSceneState("ready");
             setStatusTone("info");
-            setStatus("LDraw-Prototyp wiederhergestellt.");
+            setStatus({ key: "viewport.status.restored" });
           },
         });
         controller = createdController;
@@ -82,7 +90,8 @@ export function FigureViewport({ selectedParts }: FigureViewportProps) {
           controllerRef.current = null;
           setSceneState("error");
           setStatusTone("danger");
-          setStatus(error instanceof Error ? error.message : "3D-Szene konnte nicht geladen werden.");
+          console.error("3D scene failed to load", error);
+          setStatus({ key: "viewport.status.sceneError" });
         }
       }
     })();
@@ -114,7 +123,8 @@ export function FigureViewport({ selectedParts }: FigureViewportProps) {
       .catch((error: unknown) => {
         if (selectionApplyRevisionRef.current === revision) {
           setStatusTone("danger");
-          setStatus(error instanceof Error ? error.message : "Katalogmodell konnte nicht geladen werden.");
+          console.error("Catalog model failed to load", error);
+          setStatus({ key: "viewport.status.partError" });
         }
       });
   }, [sceneState, selectionKey]);
@@ -123,13 +133,13 @@ export function FigureViewport({ selectedParts }: FigureViewportProps) {
     controllerRef.current?.setCameraPreset(preset);
     setCameraPreset(preset);
     setStatusTone("info");
-    setStatus(`Kameraansicht ${CAMERA_PRESETS.find(({ id }) => id === preset)?.label ?? preset}.`);
+    setStatus({ key: `viewport.status.camera.${preset}` });
   };
 
   const recoverScene = (): void => {
     if (sceneState === "context-lost" && controllerRef.current?.requestContextRestore()) {
       setStatusTone("info");
-      setStatus("Wiederherstellung des WebGL-Kontexts wurde angefordert …");
+      setStatus({ key: "viewport.status.recovering" });
       return;
     }
     setSceneRevision((revision) => revision + 1);
@@ -139,15 +149,14 @@ export function FigureViewport({ selectedParts }: FigureViewportProps) {
     <section className="scene-lab" aria-labelledby="scene-heading">
       <Card className="viewport-shell">
         <span className="viewport-shell__beam" aria-hidden="true" />
-        <h2 className="viewport-shell__label" id="scene-heading">Vorschau</h2>
-        <div className="fixture-badge">Offizielle LDraw-Geometrie · lokaler Prototyp</div>
+        <h2 className="viewport-shell__label" id="scene-heading">{t("viewport.title")}</h2>
         <canvas
           ref={canvasRef}
           className="viewport"
-          aria-label="Interaktive 3D-Vorschau einer aus offiziellen LDraw-Teilen zusammengesetzten Minifigur"
+          aria-label={t("viewport.canvasLabel")}
         />
         <fieldset className="camera-controls">
-          <legend>Kamera</legend>
+          <legend>{t("viewport.camera.legend")}</legend>
           <div className="control-list control-list--compact">
             {CAMERA_PRESETS.map((preset) => (
               <Button
@@ -157,52 +166,44 @@ export function FigureViewport({ selectedParts }: FigureViewportProps) {
                 onClick={() => chooseCamera(preset.id)}
                 aria-pressed={cameraPreset === preset.id}
               >
-                {preset.label}
+                {t(`viewport.camera.${preset.id}`)}
               </Button>
             ))}
           </div>
         </fieldset>
-        <p className="viewport-help">Ziehen zum Drehen · Mausrad oder Trackpad zum Zoomen</p>
+        <p className="viewport-help">{t("viewport.help")}</p>
       </Card>
 
       <div className="scene-copy">
-        <StatusMessage tone={statusTone}>{status}</StatusMessage>
+        <StatusMessage tone={statusTone}>{t(status.key, status.values)}</StatusMessage>
         {sceneState === "context-lost" || sceneState === "error" ? (
           <Button onClick={recoverScene} variant="secondary">
-            3D-Szene wiederherstellen
+            {t("viewport.recover")}
           </Button>
         ) : null}
         <details className="scene-details">
-          <summary>Eingesetzte LDraw-Modelle</summary>
+          <summary>{t("viewport.parts.title")}</summary>
           <dl className="prototype-part-list">
             {(["legsAssembly", "torsoAssembly", "head", "headwear", "handAccessory"] as const).map((role) => {
               const part = selectedForRole(role);
-              const labels: Record<LDrawCatalogRole, string> = {
-                handAccessory: "Zubehör",
-                head: "Kopf",
-                headwear: "Haare",
-                legsAssembly: "Beine",
-                torsoAssembly: "Torso",
+              const labelKeys: Record<LDrawCatalogRole, string> = {
+                handAccessory: "viewport.parts.handAccessory",
+                head: "viewport.parts.head",
+                headwear: "viewport.parts.headwear",
+                legsAssembly: "viewport.parts.legsAssembly",
+                torsoAssembly: "viewport.parts.torsoAssembly",
               };
               return (
                 <div key={role}>
-                  <dt>{labels[role]}</dt>
+                  <dt>{t(labelKeys[role])}</dt>
                   <dd>{part
-                    ? `${part.rebrickablePartNum} · LDraw ${part.ldrawUpdate}${role === "handAccessory" ? " · rechte Hand" : ""}`
-                    : role === "legsAssembly" ? "Basisprototyp · kein Katalogmodell ausgewählt" : "Kein belegtes Modell ausgewählt"}</dd>
+                    ? `${part.rebrickablePartNum} · LDraw ${part.ldrawUpdate}${role === "handAccessory" ? ` · ${t("viewport.parts.rightHand")}` : ""}`
+                    : role === "legsAssembly" ? t("viewport.parts.basePrototype") : t("viewport.parts.empty")}</dd>
                 </div>
               );
             })}
           </dl>
-          <p className="lede">
-            Belegte Katalogmodelle werden über versionierte digitale Anschlussprofile zusammengesetzt.
-            Das ist eine digitale Platzierung, keine Garantie für reale Klemmkraft oder Materialspannung.
-          </p>
         </details>
-        <StatusMessage tone="warning">
-          Lokaler MVP: Standardteile mit belegtem Anschlussprofil werden digital zusammengesetzt.
-          Nicht belegte Teile bleiben gesperrt.
-        </StatusMessage>
       </div>
     </section>
   );

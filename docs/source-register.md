@@ -1,6 +1,6 @@
 # Quellen- und Lizenzregister
 
-Stand: 30. September 2026. Dieses Register ist ein technischer Arbeitsstand, keine abschließende Rechtsfreigabe.
+Stand: 3. Oktober 2026. Dieses Register ist ein technischer Arbeitsstand, keine abschließende Rechtsfreigabe.
 
 ## Verbindliche Rebrickable-Grenze
 
@@ -24,15 +24,20 @@ Stand: 30. September 2026. Dieses Register ist ein technischer Arbeitsstand, kei
 
 ## Automatisierte Allowlist
 
-`data/sources.lock.json` erlaubt derzeit ausschließlich:
+`data/sources.lock.json` und `data/set-sources.lock.json` erlauben zusammen ausschließlich:
 
 - `colors.csv.gz`
 - `part_categories.csv.gz`
 - `parts.csv.gz`
 - `part_relationships.csv.gz`
 - `elements.csv.gz`
+- `sets.csv.gz`
+- `inventories.csv.gz`
+- `inventory_parts.csv.gz`
+- `inventory_minifigs.csv.gz`
+- `minifigs.csv.gz`
 
-Für FF-03 wurden die fünf Allowlist-Archive am 27. September 2026 vom Rebrickable-CDN abgerufen und mit URL, Abrufzeit und SHA-256 im Source-Lock festgehalten. FF-08 verwendet diese Allowlist für den geplanten Refresh; aktuelle Hashes und normalisierte Daten landen in `data/generated/` und werden ausschließlich per Review-Pull-Request vorgeschlagen. Inventar-, Set-, Minifig- und MOC-Dateien sind nicht Teil dieser Allowlist.
+Die fünf ursprünglichen FF-03-Archive wurden am 27. September 2026 vom Rebrickable-CDN abgerufen. ADR-020 ergänzt einen separaten Bootstrap-Lock für fünf offizielle Set-, Inventar- und Minifiguren-Katalogarchive. Der Refresh führt beide Locks zum generierten Katalog-Lock zusammen. URL, Abrufzeit und SHA-256 bleiben damit vollständig prüfbar, ohne historische FF-03-Artefakte sachfremd zu invalidieren. Aktuelle Hashes, normalisierte Daten und der separate Set-Index landen in `data/generated/` und werden ausschließlich per Review-Pull-Request vorgeschlagen. Rebrickable-MOC-Dateien und die API bleiben ausgeschlossen.
 
 | Datei | Download-URL | SHA-256 |
 |---|---|---|
@@ -41,3 +46,8 @@ Für FF-03 wurden die fünf Allowlist-Archive am 27. September 2026 vom Rebricka
 | `parts.csv.gz` | `https://cdn.rebrickable.com/media/downloads/parts.csv.gz` | `7fb9e560e5fde2af836b9eeb7ccada150f19e344ba7814c602cc2e119905cddc` |
 | `part_relationships.csv.gz` | `https://cdn.rebrickable.com/media/downloads/part_relationships.csv.gz` | `85cf1f4817f87a6b2341cd4ee300908bad3060212d7a9fba5125d890c76bdae7` |
 | `elements.csv.gz` | `https://cdn.rebrickable.com/media/downloads/elements.csv.gz` | `8790eedab240a3e1323462cb27ace3ba6c17fb94348d0fafee7851310bba626d` |
+| `sets.csv.gz` | `https://cdn.rebrickable.com/media/downloads/sets.csv.gz` | `53a158fc6b6007e2ee700066787800ce214d6f5a1a200c816c88648ed0c55a1b` |
+| `inventories.csv.gz` | `https://cdn.rebrickable.com/media/downloads/inventories.csv.gz` | `c392305fc7ed828628b3c1fc537ed0e94728737b816a802c18f20e54dae238f7` |
+| `inventory_parts.csv.gz` | `https://cdn.rebrickable.com/media/downloads/inventory_parts.csv.gz` | `9d70f84672575a392d22bd23865ad6a07b6822ef8118284c08d413a1a78b0972` |
+| `inventory_minifigs.csv.gz` | `https://cdn.rebrickable.com/media/downloads/inventory_minifigs.csv.gz` | `4280b8ab46b16f0434e7e22292649da9409011e52890809f6e23d659b4af1d80` |
+| `minifigs.csv.gz` | `https://cdn.rebrickable.com/media/downloads/minifigs.csv.gz` | `e7e5a64ddc09349054069caf98bbc924cdcd48b8ee0cabc97f93e102a7a71645` |

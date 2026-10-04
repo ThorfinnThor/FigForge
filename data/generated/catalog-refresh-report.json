@@ -2,12 +2,19 @@
   "schemaVersion": 1,
   "ticket": "FF-08",
   "sourcePolicy": "Nur Rebrickable Catalog Downloads/CSV, keine MOC-Dateien.",
-  "sourceLockUpdatedAt": "2026-09-27",
+  "sourceLockUpdatedAt": "2026-09-28",
   "changedArtifacts": [],
   "normalizedPartCount": 64675,
   "packagedMinifigPartCount": 20202,
+  "setIndex": {
+    "relevantPartCount": 20202,
+    "mappedPartCount": 19640,
+    "unmappedPartCount": 562,
+    "setCount": 11555,
+    "associationCount": 123025
+  },
   "catalogPackageCount": 5,
-  "artifactCount": 5,
+  "artifactCount": 10,
   "apiUsed": false,
   "mocFilesAllowed": false
 }

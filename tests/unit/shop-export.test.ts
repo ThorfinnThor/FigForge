@@ -4,6 +4,7 @@ import type { ShopExportEntry } from "../../src/contracts/shop-export.js";
 import { shopExportPackageSchema } from "../../src/contracts/shop-export.js";
 import {
   compileShopExport,
+  describeShopExportCoverage,
   serializePickABrickCsv,
   serializeRebrickableCsv,
   type ShopExportLookup,
@@ -71,6 +72,23 @@ describe("ADR-012 shop parts export", () => {
     expect(rebrickable.blockers.map(({ reason }) => reason))
       .toEqual(["multiple-colors", "no-color", "not-indexed"]);
     expect(serializeRebrickableCsv(rebrickable)).toBe("Part,Color,Quantity\nh1,14,1\nt1,1,1\n");
+
+    expect(describeShopExportCoverage(figure, pickABrick).map(({ reason, status }) => ({ reason, status })))
+      .toEqual([
+        { status: "included" },
+        { reason: "multiple-colors", status: "blocked" },
+        { reason: "multiple-element-ids", status: "blocked" },
+        { reason: "no-color", status: "blocked" },
+        { reason: "not-indexed", status: "blocked" },
+      ]);
+    expect(describeShopExportCoverage(figure, rebrickable).map(({ reason, status }) => ({ reason, status })))
+      .toEqual([
+        { status: "included" },
+        { reason: "multiple-colors", status: "blocked" },
+        { status: "included" },
+        { reason: "no-color", status: "blocked" },
+        { reason: "not-indexed", status: "blocked" },
+      ]);
   });
 
   it("exports an explicitly selected documented colour and rejects an unknown one", () => {

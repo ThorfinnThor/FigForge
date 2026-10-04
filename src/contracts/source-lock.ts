@@ -6,6 +6,11 @@ const catalogFileNameSchema = z.enum([
   "parts.csv.gz",
   "part_relationships.csv.gz",
   "elements.csv.gz",
+  "sets.csv.gz",
+  "inventories.csv.gz",
+  "inventory_parts.csv.gz",
+  "inventory_minifigs.csv.gz",
+  "minifigs.csv.gz",
 ]);
 
 const catalogArtifactSchema = z

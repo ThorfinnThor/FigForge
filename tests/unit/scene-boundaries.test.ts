@@ -24,7 +24,7 @@ describe("FF-04 scene boundaries", () => {
     const viewportSource = await readFile("src/components/FigureViewport.tsx", "utf8");
     const controllerSource = await readFile("src/scene/FigureSceneController.ts", "utf8");
 
-    expect(viewportSource).toContain("3D-Szene wiederherstellen");
+    expect(viewportSource).toContain('t("viewport.recover")');
     expect(viewportSource).toContain('sceneState === "context-lost"');
     expect(controllerSource).toContain("requestContextRestore");
     expect(controllerSource).toContain("forceContextLoss");
@@ -34,5 +34,14 @@ describe("FF-04 scene boundaries", () => {
     const controllerSource = await readFile("src/scene/LDrawPrototypeSceneController.ts", "utf8");
 
     expect(controllerSource).toContain('fetch(url, { cache: "no-store" })');
+  });
+
+  it("removes missing catalog roles and invalidates in-flight model loads", async () => {
+    const controllerSource = await readFile("src/scene/LDrawPrototypeSceneController.ts", "utf8");
+
+    expect(controllerSource).toContain("if (!roles.has(role)) this.#removeCatalogPart(role)");
+    expect(controllerSource).toContain("this.#selectionRevisions.set(role");
+    expect(controllerSource).toContain("this.#selectedComponentIds.delete(role)");
+    expect(controllerSource).toContain("this.#slotObjects.delete(role)");
   });
 });

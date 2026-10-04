@@ -78,13 +78,13 @@ const digitalConnectivityByComponentId = new Map<
 
 export type CatalogCategory = "all" | CatalogRole;
 
-export const CATALOG_CATEGORIES: ReadonlyArray<{ id: CatalogCategory; label: string }> = [
-  { id: "all", label: "Alle Teile" },
-  { id: "head", label: "Köpfe" },
-  { id: "headwear", label: "Kopfbedeckung" },
-  { id: "torsoAssembly", label: "Oberkörper" },
-  { id: "legsAssembly", label: "Beine" },
-  { id: "handAccessory", label: "Zubehör" },
+export const CATALOG_CATEGORIES: ReadonlyArray<{ id: CatalogCategory }> = [
+  { id: "all" },
+  { id: "head" },
+  { id: "headwear" },
+  { id: "torsoAssembly" },
+  { id: "legsAssembly" },
+  { id: "handAccessory" },
 ];
 
 const catalogPackageLoaders: Record<CatalogRole, () => Promise<unknown>> = {

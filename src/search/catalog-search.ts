@@ -15,12 +15,14 @@ export type SearchResult<T extends CatalogSearchItem = CatalogSearchItem> = {
   component: T;
   score: number;
   matchedTerms: string[];
+  matchTier: "direct" | "suggestion";
 };
 
 export type CatalogSearchResult<T extends CatalogSearchItem = CatalogSearchItem> = {
   query: NormalizedQuery;
   results: SearchResult<T>[];
   mode: "keyword" | "semantic";
+  outcome: "direct" | "suggestions" | "none";
 };
 
 export type SearchOptions = { category?: Exclude<CatalogCategory, "all"> };
@@ -31,6 +33,18 @@ type RankedResult<T extends CatalogSearchItem> = SearchResult<T> & {
   excluded: boolean;
   idMatches: boolean;
 };
+
+// Calibrated on the human-reviewed development set (relevance >= 1: recall
+// 94.7%, precision 71.7%) and checked once on the holdout (recall 78.6%,
+// precision 66.7%). A semantic score is never promoted to a direct match because the reviewed
+// score distributions overlap even at the top end.
+export const SEMANTIC_SUGGESTION_MIN_SCORE = 0.42;
+export const SEMANTIC_SUGGESTION_LIMIT = 3;
+
+function outcomeFor<T extends CatalogSearchItem>(results: readonly SearchResult<T>[]): CatalogSearchResult<T>["outcome"] {
+  if (results.some(({ matchTier }) => matchTier === "direct")) return "direct";
+  return results.length > 0 ? "suggestions" : "none";
+}
 
 const componentColorNames = (component: CatalogSearchItem): readonly string[] =>
   component.colorNames ?? component.colorEvidence?.map(({ colorName }) => colorName) ?? [];
@@ -65,6 +79,7 @@ export function searchCatalog<T extends CatalogSearchItem>(
 ): CatalogSearchResult<T> {
   const query = normalizeSearchQuery(input);
   const requestedCategory = options.category ?? query.categoryRole ?? undefined;
+  const hasUserText = input.trim().length > 0;
   const hasPositiveTerms = query.terms.length > 0 || query.relatedTerms.length > 0 || query.idMatches.length > 0;
   const results = components
     .map((component, index): RankedResult<T> => {
@@ -76,6 +91,9 @@ export function searchCatalog<T extends CatalogSearchItem>(
       const excluded = query.excludedTerms.some((term) => text.includes(term));
       const matchedTerms = query.terms.filter((term) => text.includes(term));
       const matchedRelatedTerms = query.relatedTerms.filter((term) => text.includes(term));
+      const hasCompleteLexicalEvidence = query.unknownTerms.length === 0
+        && query.terms.length > 0
+        && query.terms.every((term) => text.includes(term));
       let score = 0;
       if (exactId) score += 1000;
       else if (idContained) score += 500;
@@ -86,6 +104,7 @@ export function searchCatalog<T extends CatalogSearchItem>(
         component,
         score,
         matchedTerms: [...matchedTerms, ...matchedRelatedTerms],
+        matchTier: !hasUserText || exactId || hasCompleteLexicalEvidence ? "direct" : "suggestion",
         index,
         categoryMatches,
         colorsMatch,
@@ -94,12 +113,15 @@ export function searchCatalog<T extends CatalogSearchItem>(
       };
     })
     .filter(({ categoryMatches, colorsMatch, excluded, idMatches, score }) => (
-      categoryMatches && colorsMatch && !excluded && (!hasPositiveTerms || (idMatches && score > 0))
+      categoryMatches
+      && colorsMatch
+      && !excluded
+      && (!hasUserText || (hasPositiveTerms && idMatches && score > 0))
     ))
     .sort((left, right) => right.score - left.score || left.index - right.index)
-    .map(({ component, score, matchedTerms }) => ({ component, score, matchedTerms }));
+    .map(({ component, score, matchedTerms, matchTier }) => ({ component, score, matchedTerms, matchTier }));
 
-  return { query, results, mode: "keyword" };
+  return { query, results, mode: "keyword", outcome: outcomeFor(results) };
 }
 
 export function mergeSemanticCatalogResults<T extends CatalogSearchItem>(
@@ -117,8 +139,13 @@ export function mergeSemanticCatalogResults<T extends CatalogSearchItem>(
     .filter(({ score }) => score > 0)
     .map((result) => [result.component.id, result]));
   const semanticById = new Map(semanticHits.map((hit) => [hit.componentId, hit.score]));
-  const candidateIds = new Set([...keywordById.keys(), ...semanticById.keys()]);
-  const results = [...candidateIds].flatMap((componentId): SearchResult<T>[] => {
+  const candidateIds = new Set([
+    ...keywordById.keys(),
+    ...semanticHits
+      .filter(({ score }) => score >= SEMANTIC_SUGGESTION_MIN_SCORE)
+      .map(({ componentId }) => componentId),
+  ]);
+  const rankedResults = [...candidateIds].flatMap((componentId): SearchResult<T>[] => {
     const component = componentById.get(componentId);
     if (!component || (requestedCategory && component.role !== requestedCategory)) return [];
     const text = documentText(component);
@@ -130,8 +157,15 @@ export function mergeSemanticCatalogResults<T extends CatalogSearchItem>(
       component,
       score: (lexical?.score ?? 0) + semanticScore * 8,
       matchedTerms: lexical?.matchedTerms ?? [],
+      matchTier: lexical?.matchTier ?? "suggestion",
     }];
   }).sort((left, right) => right.score - left.score || left.component.id.localeCompare(right.component.id));
+  const results = [
+    ...rankedResults.filter(({ matchTier }) => matchTier === "direct"),
+    ...rankedResults
+      .filter(({ matchTier }) => matchTier === "suggestion")
+      .slice(0, SEMANTIC_SUGGESTION_LIMIT),
+  ];
 
-  return { query: keyword.query, results, mode: "semantic" };
+  return { query: keyword.query, results, mode: "semantic", outcome: outcomeFor(results) };
 }

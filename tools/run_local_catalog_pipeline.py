@@ -426,7 +426,11 @@ def main(argv: list[str] | None = None) -> int:
     timestamp = dt.datetime.now().strftime("%Y%m%d-%H%M%S")
     run_dir = root / "work/local-catalog-pipeline" / timestamp
     commands: list[list[str]] = []
-    if not (root / "package.json").is_file() or not (root / "data/sources.lock.json").is_file():
+    if (
+        not (root / "package.json").is_file()
+        or not (root / "data/sources.lock.json").is_file()
+        or not (root / "data/set-sources.lock.json").is_file()
+    ):
         raise RuntimeError(f"FigForge repository root is incomplete: {root}")
 
     check_runtime(root, skip_install=args.skip_install, dry_run=args.dry_run)

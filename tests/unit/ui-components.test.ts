@@ -6,13 +6,16 @@ import { Button } from "../../src/components/ui/Button.js";
 import { Card } from "../../src/components/ui/Card.js";
 import { StatusMessage } from "../../src/components/ui/StatusMessage.js";
 import { TextInput } from "../../src/components/ui/TextInput.js";
+import { I18nProvider } from "../../src/i18n.js";
 
 describe("FF-12 shared UI primitives", () => {
   it("renders accessible button, input, card and status states", () => {
-    const button = renderToStaticMarkup(createElement(Button, {
-      loading: true,
-      variant: "primary",
-      children: "Prüfen",
+    const button = renderToStaticMarkup(createElement(I18nProvider, {
+      children: createElement(Button, {
+        loading: true,
+        variant: "primary",
+        children: "Prüfen",
+      }),
     }));
     const input = renderToStaticMarkup(createElement(TextInput, {
       error: "Bitte einen Begriff eingeben.",

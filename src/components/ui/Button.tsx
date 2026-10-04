@@ -1,4 +1,5 @@
 import type { ButtonHTMLAttributes, ReactNode } from "react";
+import { useI18n } from "../../i18n.js";
 
 type ButtonVariant = "primary" | "secondary" | "ghost" | "danger";
 type ButtonSize = "sm" | "md" | "lg";
@@ -20,6 +21,7 @@ export function Button({
   variant = "secondary",
   ...props
 }: ButtonProps) {
+  const { t } = useI18n();
   const classes = [
     "ff-button",
     `ff-button--${variant}`,
@@ -35,7 +37,7 @@ export function Button({
       type={type}
       aria-busy={loading || undefined}
     >
-      {loading ? "Lädt …" : children}
+      {loading ? t("button.loading") : children}
     </button>
   );
 }

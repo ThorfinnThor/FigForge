@@ -30,8 +30,8 @@ export const RIGHT_HAND_OPTIONS: readonly ScenePartDefinition[] = HAND_ACCESSORY
   ({ key: _key, ...option }) => ({ ...option, id: `ff03-hand-${_key}-right`, slot: "rightHandAccessory" as const }),
 );
 
-export const CAMERA_PRESETS: ReadonlyArray<{ id: CameraPreset; label: string }> = [
-  { id: "three-quarter", label: "Dreiviertel" },
-  { id: "front", label: "Vorne" },
-  { id: "back", label: "Hinten" },
+export const CAMERA_PRESETS: ReadonlyArray<{ id: CameraPreset }> = [
+  { id: "three-quarter" },
+  { id: "front" },
+  { id: "back" },
 ];

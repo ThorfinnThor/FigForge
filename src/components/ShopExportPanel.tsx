@@ -3,6 +3,7 @@ import { Button } from "./ui/Button.js";
 import { StatusMessage } from "./ui/StatusMessage.js";
 import {
   compileShopExport,
+  describeShopExportCoverage,
   serializePickABrickCsv,
   serializeRebrickableCsv,
   type ShopExportLookup,
@@ -46,25 +47,6 @@ const downloadTextFile = (content: string, fileName: string, type: string): void
 const partCount = (result: ShopExportResult): number =>
   result.lines.reduce((sum, line) => sum + line.quantity, 0);
 
-type BlockedPart = {
-  key: string;
-  name: string;
-  reason: ShopExportResult["blockers"][number]["reason"];
-  onlyPickABrick: boolean;
-};
-
-/** One list for both shops: a part blocked everywhere is named once, Pick-a-Brick-only gaps are marked. */
-const blockedParts = (targets: readonly ShopTarget[]): BlockedPart[] => {
-  const [pickABrick, rebrickable] = targets.map(({ result }) => result);
-  const rebrickableBlocked = new Set(rebrickable?.blockers.map(({ slot }) => slot));
-  return (pickABrick?.blockers ?? []).map((blocker) => ({
-    key: `${blocker.slot}:${blocker.rebrickablePartNum}`,
-    name: blocker.name,
-    reason: blocker.reason,
-    onlyPickABrick: !rebrickableBlocked.has(blocker.slot),
-  }));
-};
-
 export function ShopExportPanel({ selections }: ShopExportPanelProps) {
   const { t } = useI18n();
   const [lookup, setLookup] = useState<ShopExportLookup | null>(null);
@@ -103,6 +85,13 @@ export function ShopExportPanel({ selections }: ShopExportPanelProps) {
       hint: t("shop.rebrickable.hint"),
     },
   ] : null, [lookup, selections, t]);
+  const coverage = useMemo(() => targets ? selections.map((selection) => ({
+    selection,
+    targets: targets.map((target) => ({
+      target,
+      coverage: describeShopExportCoverage([selection], target.result)[0]!,
+    })),
+  })) : [], [selections, targets]);
 
   return (
     <section className="shop-export" aria-labelledby="shop-export-heading">
@@ -115,19 +104,36 @@ export function ShopExportPanel({ selections }: ShopExportPanelProps) {
         <p className="shop-export__empty">{t("shop.loading")}</p>
       ) : (
         <>
-          {blockedParts(targets).length > 0 ? (
-            <div className="shop-export__blocked">
-              <p className="shop-export__title">{t("shop.blocked.title")}</p>
-              <ul className="shop-export__blockers">
-                {blockedParts(targets).map((part) => (
-                  <li key={part.key}>
-                    <strong>{part.name}</strong>
-                    {part.onlyPickABrick ? ` ${t("shop.blocked.pickOnly")}` : ""}: {t(`shop.blocked.${part.reason}`)}
-                  </li>
-                ))}
-              </ul>
+          <div className="shop-export__coverage">
+            <div>
+              <p className="shop-export__title">{t("shop.coverage.title")}</p>
+              <p className="shop-export__coverage-hint">{t("shop.coverage.hint", { count: selections.length })}</p>
             </div>
-          ) : null}
+            <ul className="shop-export__coverage-list">
+              {coverage.map(({ selection, targets: selectionTargets }) => (
+                <li className="shop-export__coverage-part" key={`${selection.slot}:${selection.rebrickablePartNum}`}>
+                  <p className="shop-export__coverage-name">
+                    <span>{t(`figure.${selection.slot}`)}</span>
+                    <strong>{selection.name}</strong>
+                  </p>
+                  <dl className="shop-export__coverage-targets">
+                    {selectionTargets.map(({ coverage: targetCoverage, target }) => (
+                      <div data-status={targetCoverage.status} key={target.result.target}>
+                        <dt>{target.title}</dt>
+                        <dd>
+                          <strong>
+                            <span aria-hidden="true">{targetCoverage.status === "included" ? "✓" : "×"}</span>
+                            {t(`shop.coverage.${targetCoverage.status}`)}
+                          </strong>
+                          {targetCoverage.reason ? <small>{t(`shop.blocked.${targetCoverage.reason}`)}</small> : null}
+                        </dd>
+                      </div>
+                    ))}
+                  </dl>
+                </li>
+              ))}
+            </ul>
+          </div>
           {targets.map((target) => (
             <div className="shop-export__target" data-target={target.result.target} key={target.result.target}>
               <div className="shop-export__row">

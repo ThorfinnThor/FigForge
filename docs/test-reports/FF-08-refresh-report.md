@@ -1,10 +1,10 @@
 # FF-08 Verifikationsbericht: Catalog-Refresh und Normalisierung
 
-Stand: 27. September 2026.
+Stand: 3. Oktober 2026; ursprünglicher FF-08-Abschluss am 27. September 2026.
 
 ## Ergebnis
 
-FF-08 implementiert einen strikt begrenzten Adapter für die fünf erlaubten Rebrickable Catalog Downloads/CSV-Dateien. Der Adapter akzeptiert ausschließlich `cdn.rebrickable.com` über HTTPS und die festgeschriebenen `/media/downloads/<datei>`-Pfade. Er verwirft MOC-/API-Bezüge, prüft GZip/UTF-8/CSV-Struktur, Pflichtspalten, Duplikate, Integer-/RGB-Werte, Referenzen und SHA-256-Provenienz.
+FF-08 implementiert einen strikt begrenzten Adapter für erlaubte Rebrickable Catalog Downloads/CSV-Dateien. ADR-020 ergänzt die fünf ursprünglichen Archive um fünf Set-, Inventar- und Minifiguren-Katalogarchive in einem separaten Bootstrap-Lock. Der Adapter akzeptiert ausschließlich `cdn.rebrickable.com` über HTTPS und die festgeschriebenen `/media/downloads/<datei>`-Pfade. Er verwirft MOC-/API-Bezüge, prüft GZip/UTF-8/CSV-Struktur, Pflichtspalten, Duplikate, Integer-/RGB-Werte, Referenzen und SHA-256-Provenienz.
 
 Die Normalisierung erzeugt deterministisches `data/generated/catalog-normalized.json`, einen generierten Source-Lock und einen maschinenlesbaren Refresh-Bericht. Roharchive werden nicht gespeichert. Ein neuer Hash wird nicht in den Baseline-Lock geschrieben; der Action-Lauf führt ihn im generierten Lock in den Review-Pull-Request über. Dadurch bleiben die manuell kuratierten FF-03-Daten gegen ihren ursprünglichen Source-Lock reproduzierbar.
 
@@ -14,7 +14,7 @@ Die GitHub Action verwendet `npm run data:refresh:remote`, validiert anschließe
 
 - Verbindliche Grenze: **Nur Rebrickable Catalog Downloads/CSV, keine MOC-Dateien.**
 - Keine Rebrickable API, keine API-URL und kein API-Key.
-- Erlaubte Dateien: `colors.csv.gz`, `part_categories.csv.gz`, `parts.csv.gz`, `part_relationships.csv.gz`, `elements.csv.gz`.
+- Erlaubte Dateien: `colors.csv.gz`, `part_categories.csv.gz`, `parts.csv.gz`, `part_relationships.csv.gz`, `elements.csv.gz`, `sets.csv.gz`, `inventories.csv.gz`, `inventory_parts.csv.gz`, `inventory_minifigs.csv.gz`, `minifigs.csv.gz`.
 - Pflichtdateien: Farben, Kategorien und Teile.
 - Ein unvollständiger Datensatz, unbekannte Kategorie/Farbe, doppelte ID oder Hashabweichung im lokalen Check bricht ab.
 - `npm run data:refresh` ist lokal netzwerkfrei; Netzwerk und generierte Schreibvorgänge liegen ausschließlich hinter `data:refresh:remote`.

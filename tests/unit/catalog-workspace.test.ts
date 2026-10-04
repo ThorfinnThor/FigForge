@@ -12,6 +12,59 @@ import {
 } from "../../src/components/catalog-workspace-data.js";
 
 describe("FF-14 responsive catalog workspace", () => {
+  it("keeps technical methodology out of the figure workflow", async () => {
+    const workspaceSource = await readFile("src/components/CatalogWorkspace.tsx", "utf8");
+    const viewportSource = await readFile("src/components/FigureViewport.tsx", "utf8");
+
+    expect(workspaceSource).toContain('className="workspace-methodology"');
+    expect(workspaceSource).toContain('t("methodology.assembly")');
+    expect(viewportSource).not.toContain("Lokaler MVP:");
+    expect(viewportSource).not.toContain("lokaler Prototyp");
+    expect(viewportSource).not.toContain("keine Garantie für reale Klemmkraft");
+  });
+
+  it("explains an empty filtered set and offers a safe filter reset", async () => {
+    const source = await readFile("src/components/CatalogWorkspace.tsx", "utf8");
+
+    expect(source).toContain("selectedCatalogSet ? (");
+    expect(source).toContain('t("catalog.setFilter.zeroFiltered"');
+    expect(source).toContain("setActiveCategory(\"all\")");
+    expect(source).toContain("setCatalogViewMode(\"all\")");
+    expect(source).toContain("setQuery(\"\")");
+    expect(source).toContain('t("catalog.setFilter.showAll")');
+  });
+
+  it("localizes every user-facing 3D viewport label and status", async () => {
+    const viewportSource = await readFile("src/components/FigureViewport.tsx", "utf8");
+    const messagesSource = await readFile("src/i18n.tsx", "utf8");
+
+    expect(viewportSource).toContain("const { t } = useI18n()");
+    expect(viewportSource).toContain('t("viewport.title")');
+    expect(viewportSource).toContain('t(`viewport.camera.${preset.id}`)');
+    expect(viewportSource).toContain("t(status.key, status.values)");
+    expect(viewportSource).not.toContain(">Vorschau<");
+    expect(viewportSource).not.toContain("Kameraansicht ");
+    expect(viewportSource).not.toContain("Eingesetzte LDraw-Modelle");
+    expect(messagesSource.match(/"viewport\.title":/gu)).toHaveLength(2);
+    expect(messagesSource.match(/"viewport\.status\.selectedAccessory":/gu)).toHaveLength(2);
+  });
+
+  it("keeps compatibility, transfer errors and saved dates in the selected language", async () => {
+    const cardSource = await readFile("src/components/PartCard.tsx", "utf8");
+    const workspaceSource = await readFile("src/components/CatalogWorkspace.tsx", "utf8");
+    const panelSource = await readFile("src/components/FigurePartsPanel.tsx", "utf8");
+    const categorySource = await readFile("src/components/catalog-workspace-data.ts", "utf8");
+
+    expect(cardSource).toContain("compatibility.reasonCode");
+    expect(cardSource).not.toContain("compatibility?.message");
+    expect(workspaceSource).toContain('t("figure.defaultName")');
+    expect(workspaceSource).not.toContain("error.message : t");
+    expect(panelSource).toContain("toLocaleDateString(language)");
+    expect(panelSource).not.toContain('startsWith("Fehler")');
+    expect(panelSource).toContain("tone={transferMessageTone}");
+    expect(categorySource).not.toContain('label: "Alle Teile"');
+  });
+
   it("wires the curated catalog and figure panel without inventing availability", async () => {
     const source = await readFile("src/components/CatalogWorkspace.tsx", "utf8");
     const dataSource = await readFile("src/components/catalog-workspace-data.ts", "utf8");
@@ -23,6 +76,11 @@ describe("FF-14 responsive catalog workspace", () => {
     expect(source).toContain('t("catalog.searchLabel")');
     expect(source).toContain('value={catalogViewMode}');
     expect(source).toContain('value="exact"');
+    expect(source).toContain('className="catalog-toolbar__controls"');
+    expect(source).toContain('className="catalog-toolbar__policy"');
+    expect(source).toContain('data-status={semanticStatus}');
+    expect(source).toContain("<CatalogSetFilter");
+    expect(source).toContain("selectedSetPartNumbers.has(part.rebrickablePartNum");
     expect(source).toContain('t("catalog.policy")');
     expect(source).toContain('t("source.note")');
     expect(source).toContain("onSelect={builderComponent && digitallySupportedLDrawEntryForComponent(builderComponent.id)");
@@ -30,6 +88,8 @@ describe("FF-14 responsive catalog workspace", () => {
     expect(source).toContain("saveCurrentFigureDraft");
     expect(source).toContain("parseFigureDocument");
     expect(source).toContain("document.selections.map(({ slot }) => slot)");
+    expect(source).toContain("onRemove={removeFromFigure}");
+    expect(source.match(/figureSlot\("headwear"/gu)).toHaveLength(1);
     expect(dataSource).not.toContain("ldraw-expanded-catalog.json");
     expect(dataSource).toContain("data/generated/ldraw-runtime/");
   });
@@ -53,6 +113,7 @@ describe("FF-14 responsive catalog workspace", () => {
 
   it("defines responsive tabs, drawer focus return and keyboard dismissal", async () => {
     const source = await readFile("src/components/CatalogWorkspace.tsx", "utf8");
+    const figurePanelSource = await readFile("src/components/FigurePartsPanel.tsx", "utf8");
     const styles = await readFile("src/styles/base.css", "utf8");
 
     expect(source).toContain('role="tablist"');
@@ -62,9 +123,13 @@ describe("FF-14 responsive catalog workspace", () => {
     expect(source).toContain("drawerTriggerRef.current?.focus()");
     expect(source).toContain('t("header.openFigure")');
     expect(styles).toContain("@media (min-width: 768px) and (max-width: 1439px)");
+    expect(styles).toContain("@media (min-width: 1440px)");
     expect(styles).toContain("@media (max-width: 767px)");
     expect(styles).toContain("safe-area-inset-bottom");
     expect(styles).toContain("grid-template-columns: minmax(0, 1fr)");
+    expect(styles).toContain("max-height: calc(100dvh - 130px)");
+    expect(styles).toContain("scrollbar-gutter: stable");
+    expect(figurePanelSource).toContain('className="figure-panel__scroll"');
   });
 
   it("keeps category labels and local thumbnails deterministic", () => {

@@ -59,6 +59,22 @@ describe("FF-22/FF-23 local figure document", () => {
     expect(parseFigureDocument(serializeFigureDocument(source))).toEqual(source);
   });
 
+  it("keeps a removed slot empty across export and import", () => {
+    const withoutTorso: Partial<Record<"head" | "torsoAssembly", string>> = {
+      head: "ff03-head-3626c",
+      torsoAssembly: "catalog:torsoAssembly:37191",
+    };
+    delete withoutTorso.torsoAssembly;
+
+    const restored = parseFigureDocument(serializeFigureDocument(createFigureDocument(
+      withoutTorso,
+      "Figur ohne Torso",
+      "2026-10-03T21:00:00.000Z",
+    )));
+
+    expect(restored.selections).toEqual([{ slot: "head", componentId: "ff03-head-3626c" }]);
+  });
+
   it("rejects duplicate slots, unknown fields and oversized input", () => {
     expect(() => parseFigureDocument(JSON.stringify({
       schemaVersion: 1,
