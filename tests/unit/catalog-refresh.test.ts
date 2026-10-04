@@ -68,6 +68,12 @@ describe("catalog refresh adapter", () => {
       colorName: "Yellow",
       rgb: "F2CD37",
     });
+    expect(result.normalizedCatalog.parts[0]?.catalogColors).toEqual([
+      expect.objectContaining({ colorId: 14, colorName: "Yellow" }),
+    ]);
+    expect(result.normalizedCatalog.parts[1]?.catalogColors).toEqual([
+      expect.objectContaining({ colorId: 1, colorName: "Black" }),
+    ]);
     expect(result.normalizedCatalog.parts[0]?.relationshipCount).toBe(1);
     expect(result.normalizedCatalog.parts[1]?.relationshipCount).toBe(0);
     expect(result.normalizedCatalog.parts[1]?.printParentPartNums).toEqual(["3001"]);

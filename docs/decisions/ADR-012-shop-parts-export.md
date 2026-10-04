@@ -2,7 +2,7 @@
 
 **Status:** akzeptiert
 **Datum:** 2026-09-30
-**Erweitert:** 2026-10-02
+**Erweitert:** 2026-10-04
 
 ## Kontext
 
@@ -14,8 +14,9 @@ ausgeschlossen und BrickLink-IDs dürfen nicht aus anderen Nummernräumen gerate
 werden. Seit FF-06 ist deshalb keine einzige Figur als BrickLink-XML exportierbar.
 
 Die freigegebenen Builder-Teile tragen dagegen belegte Rebrickable-Teilenummern.
-`catalog-normalized.json` enthält aus `elements.csv.gz` zusätzlich die
-Rebrickable-Farbnummer und die LEGO-Elementnummern jeder Teil-Farb-Kombination.
+`catalog-normalized.json` enthält aus `inventory_parts.csv.gz` zusätzlich die
+in offiziellen Inventaren belegten Rebrickable-Farbnummern. `elements.csv.gz`
+liefert, soweit vorhanden, die LEGO-Elementnummern der Teil-Farb-Kombinationen.
 Bei gedruckten Torsos und Beinen, die nach ADR-009 nur als „Geometrie ohne Druck“
 dargestellt werden, bleibt `rebrickablePartNum` die echte Druckvariante; die
 unbedruckte Stellvertretergeometrie betrifft nur das 3D-Modell.
@@ -41,8 +42,9 @@ Recherche zu Zielseiten (Stand 2026-09-30, ohne praktischen Importtest):
    Brick Owl wird erst mit einer belegten ID-Quelle aufgenommen.
 3. Ein Generator erzeugt je Builder-Rolle ein kleines Exportpaket unter
    `data/generated/shop-export/`. Es enthält für jedes builder-fertige Teil die
-   eindeutige Rebrickable-Farbe und deren LEGO-Elementnummern. Die App lädt ein
-   Paket erst, wenn die Rolle in der Figur belegt ist.
+   in offiziellen Inventaren belegten Rebrickable-Farben und – sofern vorhanden
+   – deren LEGO-Elementnummern. Die App lädt ein Paket erst, wenn die Rolle in
+   der Figur belegt ist.
 4. Nichts wird geraten:
    - Hat ein Teil im Katalog keine Farbe, ist es für beide Formate blockiert.
    - Hat ein Teil mehrere belegte Katalogfarben, muss die Person eine davon im
@@ -75,7 +77,9 @@ Recherche zu Zielseiten (Stand 2026-09-30, ohne praktischen Importtest):
 - Die Farbauswahl wird in neuen Figurenprojekten und Share-Links mit
   `schemaVersion: 2` gespeichert. V1-Projekte und V1-Links bleiben lesbar und
   werden beim Laden ohne erfundene Farbe migriert.
-- Von 14.829 builder-fertigen Teilen besitzen 13.317 genau eine Katalogfarbe
-  und 526 mehrere belegte Katalogfarben. Damit sind 13.843 Teile grundsätzlich
-  als Rebrickable-Zeile exportierbar; bei den 526 mehrfarbigen Teilen erst nach
-  der ausdrücklichen Auswahl. 986 Teile ohne Katalogfarbe bleiben blockiert.
+- Von 14.829 builder-fertigen Teilen besitzen 14.054 genau eine Katalogfarbe
+  und 628 mehrere belegte Katalogfarben. Damit sind 14.682 Teile grundsätzlich
+  als Rebrickable-Zeile exportierbar; bei den 628 mehrfarbigen Teilen erst nach
+  der ausdrücklichen Auswahl. 147 Teile ohne belegte Katalogfarbe bleiben
+  blockiert. Vor ADR-022 waren es 986; die Trennung der Farbnachweise von den
+  LEGO-Elementnummern erschließt 839 weitere Rebrickable-Exporte.

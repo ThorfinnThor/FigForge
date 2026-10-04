@@ -52,7 +52,7 @@ export type ShopExportLookup = (slot: CatalogRole, rebrickablePartNum: string) =
 
 const blockMessages: Record<ShopExportBlockReason, string> = {
   "not-indexed": "Für dieses Teil liegen noch keine Exportdaten vor.",
-  "no-color": "Der Katalog nennt für dieses Teil keine Farbe.",
+  "no-color": "Das Teil ist im Rebrickable-Katalog vorhanden, aber die Catalog Downloads belegen keine Farbe für den CSV-Export.",
   "multiple-colors": "Das Teil gibt es in mehreren Farben; die Vorschaufarbe ist keine bestätigte Auswahl.",
   "invalid-color": "Die gewählte Farbe ist für dieses Teil nicht im Katalog belegt.",
   "no-element-id": "Für diese Teil-Farb-Kombination ist keine LEGO-Elementnummer bekannt.",

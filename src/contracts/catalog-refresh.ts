@@ -30,6 +30,15 @@ export const normalizedColorVariantSchema = z
   })
   .strict();
 
+export const normalizedCatalogColorSchema = z
+  .object({
+    colorId: z.number().int().nonnegative(),
+    colorName: z.string().min(1).max(120),
+    rgb: z.string().regex(/^[0-9A-F]{6}$/u),
+    evidenceId: stableId,
+  })
+  .strict();
+
 export const normalizedPartSchema = z
   .object({
     id: stableId,
@@ -39,6 +48,7 @@ export const normalizedPartSchema = z
     categoryName: z.string().min(1).max(160),
     material: z.string().min(1).max(80),
     colorVariants: z.array(normalizedColorVariantSchema),
+    catalogColors: z.array(normalizedCatalogColorSchema),
     relationshipCount: z.number().int().nonnegative(),
     printParentPartNums: z.array(z.string().min(1).max(80)),
     evidenceIds: z.array(stableId).min(1),
@@ -66,6 +76,7 @@ export const normalizedCatalogSchema = z
   .strict();
 
 export type NormalizedColorVariant = z.infer<typeof normalizedColorVariantSchema>;
+export type NormalizedCatalogColor = z.infer<typeof normalizedCatalogColorSchema>;
 export type NormalizedPart = z.infer<typeof normalizedPartSchema>;
 export type NormalizedCatalogArtifact = z.infer<typeof normalizedCatalogArtifactSchema>;
 export type NormalizedCatalog = z.infer<typeof normalizedCatalogSchema>;

@@ -26,6 +26,7 @@ export type CatalogSetIndexArtifact = {
 export type BuiltCatalogSetIndex = {
   index: CatalogSetIndex;
   artifacts: CatalogSetIndexArtifact[];
+  inventoryColorIdsByPartNum: ReadonlyMap<string, ReadonlySet<number>>;
 };
 
 const compareText = (left: string, right: string): number => left < right ? -1 : left > right ? 1 : 0;
@@ -39,6 +40,13 @@ const decodeCsv = (bytes: Uint8Array): string => {
 
 const parseInteger = (value: string, field: string, fileName: string): number => {
   if (!/^\d+$/u.test(value)) throw new Error(`CSV ${fileName} has an invalid integer in ${field}: ${value}`);
+  return Number(value);
+};
+
+const parseColorId = (value: string): number => {
+  if (!/^-?\d+$/u.test(value)) {
+    throw new Error(`CSV inventory_parts.csv.gz has an invalid integer in color_id: ${value}`);
+  }
   return Number(value);
 };
 
@@ -125,6 +133,7 @@ export const buildCatalogSetIndex = ({
   }
 
   const partNumsBySetNum = new Map<string, Set<string>>();
+  const inventoryColorIdsByPartNum = new Map<string, Set<number>>();
   const addAssociation = (setNum: string, partNum: string): void => {
     if (!relevantPartNums.has(partNum)) return;
     const partNums = partNumsBySetNum.get(setNum) ?? new Set<string>();
@@ -137,6 +146,11 @@ export const buildCatalogSetIndex = ({
     (row) => {
       const inventoryId = row.inventory_id ?? "";
       const partNum = row.part_num ?? "";
+      if (relevantPartNums.has(partNum)) {
+        const colorIds = inventoryColorIdsByPartNum.get(partNum) ?? new Set<number>();
+        colorIds.add(parseColorId(row.color_id ?? ""));
+        inventoryColorIdsByPartNum.set(partNum, colorIds);
+      }
       const directSetNum = directSetNumByInventoryId.get(inventoryId);
       if (directSetNum) addAssociation(directSetNum, partNum);
       const figureNum = figureNumByInventoryId.get(inventoryId);
@@ -147,7 +161,7 @@ export const buildCatalogSetIndex = ({
   requireColumns(
     { headers: inventoryPartsVisit.headers, rows: [] },
     "inventory_parts.csv.gz",
-    ["inventory_id", "part_num"],
+    ["inventory_id", "part_num", "color_id"],
   );
   artifactResults.push({
     fileName: "inventory_parts.csv.gz",
@@ -190,5 +204,6 @@ export const buildCatalogSetIndex = ({
       },
     }),
     artifacts: artifactResults.sort((left, right) => compareText(left.fileName, right.fileName)),
+    inventoryColorIdsByPartNum,
   };
 };

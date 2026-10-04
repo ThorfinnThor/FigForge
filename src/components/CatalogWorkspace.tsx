@@ -23,7 +23,6 @@ import { TextInput } from "./ui/TextInput.js";
 import { mergeSemanticCatalogResults, searchCatalog } from "../search/catalog-search.js";
 import {
   SemanticSearchClient,
-  semanticSearchMissingBytes,
   semanticSearchRelease,
 } from "../search/semantic-search-client.js";
 import { FIGURE_DOCUMENT_MAX_BYTES, type FigureDocument, type FigureDocumentSlot } from "../contracts/figure-document.js";
@@ -114,9 +113,8 @@ export function CatalogWorkspace() {
   const [transferMessage, setTransferMessage] = useState<string | null>(null);
   const [transferMessageTone, setTransferMessageTone] = useState<"danger" | "info">("info");
   const [shareLink, setShareLink] = useState<string | null>(null);
-  const [semanticStatus, setSemanticStatus] = useState<SemanticSearchStatus>("disabled");
+  const [semanticStatus, setSemanticStatus] = useState<SemanticSearchStatus>("loading");
   const [semanticProgress, setSemanticProgress] = useState({ loaded: 0, total: semanticSearchRelease.requiredDownloadBytes });
-  const [semanticMissingBytes, setSemanticMissingBytes] = useState(semanticSearchRelease.requiredDownloadBytes);
   const [semanticHits, setSemanticHits] = useState<Array<{ componentId: string; score: number }>>([]);
   const [semanticQuery, setSemanticQuery] = useState("");
   const [semanticSearching, setSemanticSearching] = useState(false);
@@ -172,8 +170,23 @@ export function CatalogWorkspace() {
   }, [activeCategory]);
 
   useEffect(() => {
-    void semanticSearchMissingBytes().then(setSemanticMissingBytes);
-    return () => semanticClientRef.current?.dispose();
+    let active = true;
+    const client = new SemanticSearchClient();
+    semanticClientRef.current = client;
+    void client.initialize((loaded, total) => setSemanticProgress({ loaded, total }))
+      .then(() => {
+        if (!active) return;
+        setSemanticStatus("ready");
+      })
+      .catch((error: unknown) => {
+        if (!active) return;
+        console.error("Semantic search initialization failed", error);
+        setSemanticStatus("error");
+      });
+    return () => {
+      active = false;
+      client.dispose();
+    };
   }, []);
 
   useEffect(() => {
@@ -200,32 +213,6 @@ export function CatalogWorkspace() {
         if (requestId === semanticRequestRef.current) setSemanticSearching(false);
       });
   }, [deferredQuery, semanticStatus]);
-
-  const enableSemanticSearch = (): void => {
-    semanticClientRef.current?.dispose();
-    const client = new SemanticSearchClient();
-    semanticClientRef.current = client;
-    setSemanticStatus("loading");
-    setSemanticProgress({ loaded: 0, total: semanticSearchRelease.requiredDownloadBytes });
-    void client.initialize((loaded, total) => setSemanticProgress({ loaded, total }))
-      .then(() => {
-        setSemanticStatus("ready");
-        setSemanticMissingBytes(0);
-      })
-      .catch((error: unknown) => {
-        console.error("Semantic search initialization failed", error);
-        setSemanticStatus("error");
-      });
-  };
-
-  const cancelSemanticSearch = (): void => {
-    semanticRequestRef.current += 1;
-    semanticClientRef.current?.dispose();
-    semanticClientRef.current = null;
-    setSemanticStatus("disabled");
-    setSemanticSearching(false);
-    void semanticSearchMissingBytes().then(setSemanticMissingBytes);
-  };
 
   const megabytes = (bytes: number): string => (bytes / 1_000_000).toLocaleString(language, {
     minimumFractionDigits: 1,
@@ -602,26 +589,18 @@ export function CatalogWorkspace() {
                   : "catalog.results.none", { shown: filteredComponents.length, total: catalogPartsForView.length })
             : t("catalog.loadingHint")}
         />
-        <div className="semantic-search-controls" data-status={semanticStatus}>
-          {semanticStatus === "disabled" || semanticStatus === "error" ? (
-            <Button onClick={enableSemanticSearch} size="sm" variant="secondary">
-              {t("search.semantic.enable", { downloadMB: megabytes(semanticMissingBytes) })}
-            </Button>
-          ) : null}
-          {semanticStatus === "loading" ? (
-            <>
+        {semanticStatus !== "ready" || semanticSearching ? (
+          <div className="semantic-search-controls" data-status={semanticStatus}>
+            {semanticStatus === "loading" ? (
               <span role="status">{t("search.semantic.loading", {
                 loadedMB: megabytes(semanticProgress.loaded),
                 totalMB: megabytes(semanticProgress.total),
               })}</span>
-              <Button onClick={cancelSemanticSearch} size="sm" variant="ghost">{t("search.semantic.cancel")}</Button>
-            </>
-          ) : null}
-          {semanticStatus === "ready" ? (
-            <span role="status">{semanticSearching ? t("search.semantic.searching") : t("search.semantic.ready")}</span>
-          ) : null}
-          {semanticStatus === "error" ? <span className="semantic-search-error">{t("search.semantic.error")}</span> : null}
-        </div>
+            ) : null}
+            {semanticStatus === "ready" && semanticSearching ? <span role="status">{t("search.semantic.searching")}</span> : null}
+            {semanticStatus === "error" ? <span className="semantic-search-error">{t("search.semantic.error")}</span> : null}
+          </div>
+        ) : null}
       </div>
       <div className="catalog-toolbar" aria-label={t("catalog.categoryFilter")}>
         <div className="catalog-toolbar__controls">
