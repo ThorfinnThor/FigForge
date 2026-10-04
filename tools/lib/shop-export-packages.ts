@@ -17,6 +17,7 @@ type NormalizedCatalog = {
   parts: Array<{
     partNum: string;
     colorVariants: Array<{ elementId: string; colorId: number; colorName: string }>;
+    catalogColors: Array<{ colorId: number; colorName: string }>;
   }>;
 };
 
@@ -35,7 +36,8 @@ const readJson = async <T>(root: string, path: string): Promise<T> =>
 
 /**
  * Builds one shop-export package per builder role from the normalized Rebrickable catalog.
- * Only colours and LEGO element IDs recorded in elements.csv.gz are carried over; nothing is inferred.
+ * Rebrickable colours come from official set inventories. LEGO element IDs are
+ * added only when elements.csv.gz records them; nothing is inferred.
  */
 export async function buildShopExportPackages(root: string): Promise<Map<string, string>> {
   const [normalized, expanded, curated] = await Promise.all([
@@ -64,6 +66,14 @@ export async function buildShopExportPackages(root: string): Promise<Map<string,
         const part = partByNumber.get(rebrickablePartNum.toLowerCase());
         if (!part) throw new Error(`Builder part is missing from the normalized catalog: ${rebrickablePartNum}`);
         const colors = new Map<number, { rebrickableColorId: number; colorName: string; elementIds: string[] }>();
+        for (const catalogColor of part.catalogColors) {
+          if (catalogColor.colorId === REBRICKABLE_NO_COLOR_ID) continue;
+          colors.set(catalogColor.colorId, {
+            rebrickableColorId: catalogColor.colorId,
+            colorName: catalogColor.colorName,
+            elementIds: [],
+          });
+        }
         for (const variant of part.colorVariants) {
           if (variant.colorId === REBRICKABLE_NO_COLOR_ID) continue;
           const color = colors.get(variant.colorId)

@@ -215,7 +215,7 @@ export const normalizeCatalogArtifacts = ({
     }
   }
   const seenParts = new Set<string>();
-  const normalizedParts = parts.rows.map((row) => {
+  const normalizedPartsWithoutInventoryColors = parts.rows.map((row) => {
     const partNum = row.part_num ?? "";
     if (!partNum || seenParts.has(partNum)) throw new Error(`Duplicate or empty part_num in parts.csv.gz: ${partNum}`);
     seenParts.add(partNum);
@@ -250,11 +250,27 @@ export const normalizeCatalogArtifacts = ({
   const relevantCategoryIds = new Set<number>(Object.values(CATALOG_CATEGORY_IDS_BY_ROLE).flat());
   const setIndexResult = buildCatalogSetIndex({
     artifacts,
-    relevantPartNums: new Set(normalizedParts
+    relevantPartNums: new Set(normalizedPartsWithoutInventoryColors
       .filter(({ categoryId }) => relevantCategoryIds.has(categoryId))
       .map(({ partNum }) => partNum)),
     sourceLockSha256,
   });
+  const normalizedParts = normalizedPartsWithoutInventoryColors.map((part) => ({
+    ...part,
+    catalogColors: [...(setIndexResult.inventoryColorIdsByPartNum.get(part.partNum) ?? [])]
+      .filter((colorId) => colorId >= 0 && colorId !== 9999)
+      .map((colorId) => {
+        const color = colorById.get(colorId);
+        if (!color) throw new Error(`Inventory references unknown color ${colorId}`);
+        return {
+          colorId,
+          colorName: color.name,
+          rgb: color.rgb,
+          evidenceId: evidenceId("inventory_parts.csv.gz", "part-color", `${part.partNum}-${colorId}`),
+        };
+      })
+      .sort((left, right) => left.colorId - right.colorId),
+  }));
   const setIndexArtifacts = new Map<string, (typeof setIndexResult.artifacts)[number]>(
     setIndexResult.artifacts.map((artifact) => [artifact.fileName, artifact]),
   );

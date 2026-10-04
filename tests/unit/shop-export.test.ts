@@ -25,6 +25,7 @@ const entries: Record<string, ShopExportEntry> = {
     ],
   },
   "torsoAssembly:t1": { rebrickablePartNum: "t1", colors: [{ rebrickableColorId: 1, colorName: "Blue", elementIds: ["4001", "4002"] }] },
+  "head:h2": { rebrickablePartNum: "h2", colors: [{ rebrickableColorId: 14, colorName: "Yellow", elementIds: [] }] },
   "legsAssembly:l1": { rebrickablePartNum: "l1", colors: [] },
 };
 const lookup: ShopExportLookup = (slot, partNum) => entries[`${slot}:${partNum}`];
@@ -99,6 +100,17 @@ describe("ADR-012 shop parts export", () => {
     expect(serializeRebrickableCsv(selected)).toBe("Part,Color,Quantity\nw1,4,1\n");
     expect(invalid.status).toBe("blocked");
     expect(invalid.blockers[0]?.reason).toBe("invalid-color");
+  });
+
+  it("exports inventory-backed colours to Rebrickable without inventing a Pick a Brick element ID", () => {
+    const figure = [select("head", "h2")];
+    const rebrickable = compileShopExport("rebrickable", figure, lookup);
+    const pickABrick = compileShopExport("lego-pick-a-brick", figure, lookup);
+
+    expect(rebrickable.status).toBe("complete");
+    expect(serializeRebrickableCsv(rebrickable)).toBe("Part,Color,Quantity\nh2,14,1\n");
+    expect(pickABrick.status).toBe("blocked");
+    expect(pickABrick.blockers[0]?.reason).toBe("no-element-id");
   });
 
   it("reports empty and fully blocked figures", () => {

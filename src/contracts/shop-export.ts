@@ -11,7 +11,9 @@ const elementIdSchema = z.string().regex(/^[0-9]{1,16}$/u, "LEGO element IDs are
 export const shopExportColorSchema = z.object({
   rebrickableColorId: z.number().int().nonnegative(),
   colorName: z.string().min(1).max(120),
-  elementIds: z.array(elementIdSchema).min(1),
+  // Rebrickable inventory evidence can prove a part/colour without a LEGO
+  // element ID. Pick a Brick still requires exactly one element ID at export.
+  elementIds: z.array(elementIdSchema),
 }).strict();
 
 export const shopExportEntrySchema = z.object({

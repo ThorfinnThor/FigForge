@@ -273,7 +273,7 @@ Der Tab „Liste“ übernimmt mobil den Export-CTA. Eine fixierte Aktionsleiste
 | `CategoryRail` | Kategorien als Karten mit Kategorienfarbe am Rand; die aktive Kategorie ist vollflächig in ihrer Farbe, leicht versetzt und schräg. Labels sichtbar oder zugänglich; Zustand über `aria-pressed`. Kategorien bilden Fähigkeiten des MVP ab, nicht alle Icons des Mockups. |
 | `SearchBar` | Mindestens 56 px hoch, dunkelblauer Rahmen auf Kartenfläche; sichtbares Label oder klare zugängliche Beschriftung; Suchicon als Button, Enter löst Suche aus. Ladezustand darf Eingabe nicht löschen. |
 | `FilterBar` | Kategorie, belegte Farbe, Sortierung. Jahresfilter nur nach nachgewiesener Datengrundlage. Kein interaktiver „Originalteile“-Schalter, wenn Alternativen gar nicht angeboten werden. |
-| `SearchStatus` | Echte Trefferzahl und Modus „Stichwortsuche“ / „Erweiterte Suche“. Vor Aktivierung echte fehlende Downloadmenge, währenddessen Fortschritt und Abbruch, danach Cachezustand anzeigen. Keine Aufforderung, beide Benchmarkmodelle zu laden. |
+| `SearchStatus` | Echte Trefferzahl. Die erweiterte Suche wird beim Öffnen automatisch vorbereitet; nur während des ersten Downloads erscheint der tatsächliche Fortschritt. Nach erfolgreichem Laden ist sie der Standard und benötigt keinen Bestätigungs- oder Bereitschaftshinweis. Bei Fehlern bleibt die Stichwortsuche aktiv. |
 | `PartCard` | Blisterkarte mit Euro-Aufhängung und Band in der Kategorienfarbe, 12 px Radius, weißer Bildbereich, Name, ID mit Angabe des Systems und Status-Badge. Hauptaktion setzt ein; Detail-/Favoritenbuttons sind getrennte Geschwisterelemente, keine verschachtelten Buttons. |
 | `PartCard:selected` | Dunkelblauer Rahmen und dunkelblaues Band, Badge „Aktiv“ und zugänglicher Zustand. Auswahl nicht nur durch Farbe signalisieren. |
 | `PartDetails` | Varianten, Farben, Datenquelle, Renderstatus und Anschlussstatus; keine erfundenen Preisfelder. Auf Mobil als Bottom Sheet. |
@@ -297,9 +297,9 @@ Der Tab „Liste“ übernimmt mobil den Export-CTA. Eine fixierte Aktionsleiste
 | Untere Markenanmerkung | „Gleiche Teile. Andere Geschichten.“ |
 | Lokales Speichern | „Auf diesem Gerät gespeichert.“ |
 | Kein Treffer | „Kein passender Treffer. Versuche einen allgemeineren Begriff oder ändere die Kategorie.“ |
-| Semantik noch nicht geladen | „Erweiterte Suche laden · ca. {downloadMB} MB“. Die fehlenden Dateien aus dem Manifest summieren, nicht nur die ONNX-Datei. Zusatz: „Danach auf diesem Gerät nutzbar, solange der Cache erhalten bleibt.“ |
-| Modell bereits gespeichert | „Erweiterte Suche bereit — Verarbeitung auf diesem Gerät.“ |
-| Modelldownload | „Suchmodell wird geladen: {loadedMB} / {totalMB} MB“ mit Abbrechen. Der Builder und die Stichwortsuche bleiben bedienbar. |
+| Semantik noch nicht geladen | Kein Bestätigungsdialog. Die benötigten Dateien werden beim Öffnen automatisch geladen und im Browsercache gespeichert. |
+| Modell bereits gespeichert | Kein Sonderhinweis; die erweiterte Suche ist der Standard. |
+| Modelldownload | „Suche wird vorbereitet: {loadedMB} / {totalMB} MB“. Der Builder und die Stichwortsuche bleiben bedienbar. |
 | Semantik ausgefallen | „Die erweiterte Suche ist gerade nicht verfügbar. Stichwortsuche funktioniert weiterhin.“ |
 | Fehlendes Mapping | „Für dieses Teil ist die BrickLink-Zuordnung noch nicht bestätigt.“ |
 | Ungeprüfte Kombination | „Diese Kombination wurde noch nicht auf Passform geprüft.“ |

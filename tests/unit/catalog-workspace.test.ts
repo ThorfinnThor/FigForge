@@ -79,6 +79,9 @@ describe("FF-14 responsive catalog workspace", () => {
     expect(source).toContain('className="catalog-toolbar__controls"');
     expect(source).toContain('className="catalog-toolbar__policy"');
     expect(source).toContain('data-status={semanticStatus}');
+    expect(source).toContain('useState<SemanticSearchStatus>("loading")');
+    expect(source).toContain("void client.initialize");
+    expect(source).not.toContain("enableSemanticSearch");
     expect(source).toContain("<CatalogSetFilter");
     expect(source).toContain("selectedSetPartNumbers.has(part.rebrickablePartNum");
     expect(source).toContain('t("catalog.policy")');
