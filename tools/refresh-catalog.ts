@@ -3,6 +3,11 @@ import { resolve } from "node:path";
 import { parseArgs } from "node:util";
 import { sourceLockSchema, type SourceLock } from "../src/contracts/source-lock.js";
 import {
+  catalogSetSourceLockSchema,
+  type CatalogSetSourceLock,
+} from "../src/contracts/catalog-set-source-lock.js";
+import { mergeCatalogSourceLocks } from "./catalog/merge-source-locks.js";
+import {
   normalizeCatalogArtifacts,
   serializeSourceLock,
   type CatalogArtifactBytes,
@@ -18,6 +23,11 @@ const ALLOWED_FILES = new Set([
   "parts.csv.gz",
   "part_relationships.csv.gz",
   "elements.csv.gz",
+  "sets.csv.gz",
+  "inventories.csv.gz",
+  "inventory_parts.csv.gz",
+  "inventory_minifigs.csv.gz",
+  "minifigs.csv.gz",
 ]);
 const MAX_ARTIFACT_BYTES = 64 * 1024 * 1024;
 
@@ -31,6 +41,8 @@ const { values } = parseArgs({
 
 const readJson = async <T>(path: string): Promise<T> => JSON.parse(await readFile(path, "utf8")) as T;
 const readLock = async (path: string): Promise<SourceLock> => sourceLockSchema.parse(await readJson<unknown>(path));
+const readSetLock = async (path: string): Promise<CatalogSetSourceLock> =>
+  catalogSetSourceLockSchema.parse(await readJson<unknown>(path));
 
 const validateDownloadUrl = (fileName: string, downloadUrl: string): void => {
   const url = new URL(downloadUrl);
@@ -73,12 +85,16 @@ const readArtifacts = async (lock: SourceLock): Promise<CatalogArtifactBytes[]> 
 const generatedDir = resolve(process.cwd(), "data/generated");
 const catalogPackagesDir = resolve(generatedDir, "catalog-packages");
 const baselineLockPath = resolve(process.cwd(), "data/sources.lock.json");
+const setBaselineLockPath = resolve(process.cwd(), "data/set-sources.lock.json");
 const generatedLockPath = resolve(generatedDir, "catalog-source.lock.json");
 
 if (values.refresh && values["check-only"]) throw new Error("Choose either --check-only or --refresh, not both");
 
 if (!values.refresh) {
-  const lock = await readLock(baselineLockPath);
+  const lock = mergeCatalogSourceLocks(
+    await readLock(baselineLockPath),
+    await readSetLock(setBaselineLockPath),
+  );
   const unresolved = lock.sources[0].artifacts.filter(
     (artifact) => artifact.downloadUrl === null || artifact.sha256 === null || artifact.retrievedAt === null,
   );
@@ -90,7 +106,10 @@ if (!values.refresh) {
     await access(generatedLockPath);
     lock = await readLock(generatedLockPath);
   } catch {
-    lock = await readLock(baselineLockPath);
+    lock = mergeCatalogSourceLocks(
+      await readLock(baselineLockPath),
+      await readSetLock(setBaselineLockPath),
+    );
   }
   const artifacts = await readArtifacts(lock);
   const result = normalizeCatalogArtifacts({
@@ -104,6 +123,7 @@ if (!values.refresh) {
   await mkdir(catalogPackagesDir, { recursive: true });
   await writeFile(generatedLockPath, serializeSourceLock(result.sourceLock), "utf8");
   await writeFile(resolve(generatedDir, "catalog-normalized.json"), `${JSON.stringify(result.normalizedCatalog, null, 2)}\n`, "utf8");
+  await writeFile(resolve(generatedDir, "catalog-set-index.json"), `${JSON.stringify(result.catalogSetIndex)}\n`, "utf8");
   await writeFile(
     resolve(catalogPackagesDir, "manifest.json"),
     `${JSON.stringify(catalogPackages.manifest, null, 2)}\n`,
@@ -126,6 +146,7 @@ if (!values.refresh) {
       changedArtifacts: result.changedArtifacts,
       normalizedPartCount: result.normalizedCatalog.parts.length,
       packagedMinifigPartCount: catalogPackages.manifest.includedPartCount,
+      setIndex: result.catalogSetIndex.summary,
       catalogPackageCount: catalogPackages.manifest.packages.length,
       artifactCount: result.normalizedCatalog.artifacts.length,
       apiUsed: false,
@@ -133,5 +154,5 @@ if (!values.refresh) {
     }, null, 2)}\n`,
     "utf8",
   );
-  console.log(JSON.stringify({ message: "catalog refresh normalized; generated outputs are ready for review", changedArtifacts: result.changedArtifacts, normalizedPartCount: result.normalizedCatalog.parts.length, packagedMinifigPartCount: catalogPackages.manifest.includedPartCount, outputDirectory: "data/generated", apiUsed: false, mocFilesAllowed: false }));
+  console.log(JSON.stringify({ message: "catalog refresh normalized; generated outputs are ready for review", changedArtifacts: result.changedArtifacts, normalizedPartCount: result.normalizedCatalog.parts.length, packagedMinifigPartCount: catalogPackages.manifest.includedPartCount, setIndex: result.catalogSetIndex.summary, outputDirectory: "data/generated", apiUsed: false, mocFilesAllowed: false }));
 }

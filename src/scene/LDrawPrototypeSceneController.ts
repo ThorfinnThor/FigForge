@@ -29,6 +29,13 @@ const OFFICIAL_PARTS_LIBRARY_PATH = OFFICIAL_LDRAW_PUBLIC_PATH;
 const OFFICIAL_FILE_MAP_PATH = `${OFFICIAL_LDRAW_PUBLIC_PATH}file-map.json`;
 const MODEL_HEIGHT = 3.08;
 const CAMERA_TARGET = new Vector3(0, 1.66, 0);
+const LDRAW_CATALOG_ROLES: readonly LDrawCatalogRole[] = [
+  "head",
+  "headwear",
+  "torsoAssembly",
+  "legsAssembly",
+  "handAccessory",
+];
 
 type PrototypeReplacementRole = Exclude<LDrawCatalogRole, "handAccessory">;
 
@@ -236,6 +243,9 @@ export class LDrawPrototypeSceneController {
       }
       roles.add(selection.role);
     }
+    for (const role of LDRAW_CATALOG_ROLES) {
+      if (!roles.has(role)) this.#removeCatalogPart(role);
+    }
     await Promise.all(selections.map((selection) => this.#applyCatalogPart(selection)));
     this.#render();
   }
@@ -283,6 +293,15 @@ export class LDrawPrototypeSceneController {
       this.#renderer.render(this.#scene, this.#camera);
     }
   };
+
+  #removeCatalogPart(role: LDrawCatalogRole): void {
+    this.#selectionRevisions.set(role, (this.#selectionRevisions.get(role) ?? 0) + 1);
+    const previousObject = this.#slotObjects.get(role);
+    previousObject?.removeFromParent();
+    if (previousObject) disposeObject3D(previousObject);
+    this.#slotObjects.delete(role);
+    this.#selectedComponentIds.delete(role);
+  }
 
   async #applyCatalogPart(selection: LDrawCatalogSelection): Promise<void> {
     if (this.#selectedComponentIds.get(selection.role) === selection.componentId) {

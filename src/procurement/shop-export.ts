@@ -42,6 +42,12 @@ export type ShopExportResult = {
   blockers: ShopExportBlocker[];
 };
 
+export type ShopExportCoverage = {
+  selection: ShopExportSelection;
+  status: "included" | "blocked";
+  reason?: ShopExportBlockReason;
+};
+
 export type ShopExportLookup = (slot: CatalogRole, rebrickablePartNum: string) => ShopExportEntry | undefined;
 
 const blockMessages: Record<ShopExportBlockReason, string> = {
@@ -136,6 +142,26 @@ export const compileShopExport = (
       : sortedLines.length > 0 ? "partial" : "blocked";
   return { target, status, lines: sortedLines, blockers };
 };
+
+/** Explains the compiled result for every selected figure slot without changing export eligibility. */
+export const describeShopExportCoverage = (
+  selections: readonly ShopExportSelection[],
+  result: ShopExportResult,
+): ShopExportCoverage[] => selections.map((selection) => {
+  const blocker = result.blockers.find((candidate) =>
+    candidate.slot === selection.slot
+    && candidate.rebrickablePartNum === selection.rebrickablePartNum);
+  if (blocker) {
+    return { selection, status: "blocked", reason: blocker.reason };
+  }
+  const included = result.lines.some((line) =>
+    line.rebrickablePartNum === selection.rebrickablePartNum
+    && line.slots.includes(selection.slot));
+  if (!included) {
+    throw new Error(`Export coverage invariant failed for ${selection.slot}:${selection.rebrickablePartNum}`);
+  }
+  return { selection, status: "included" };
+});
 
 const csvCell = (value: string | number): string => {
   const text = String(value);

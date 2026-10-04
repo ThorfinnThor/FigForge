@@ -10,6 +10,11 @@ const fixtureCsv = {
   "parts.csv.gz": "part_num,name,part_cat_id,part_material\n3001,Head Plain,59,Plastic\n3002,\"Shield, Round\",73,Plastic\n",
   "part_relationships.csv.gz": "rel_type,child_part_num,parent_part_num\nP,3002,3001\n",
   "elements.csv.gz": "element_id,part_num,color_id\n9001,3001,14\n9002,3002,1\n9003,3002,-1\n",
+  "sets.csv.gz": "set_num,name,year,theme_id,num_parts,img_url\nTEST-1,Test Figure Set,2026,1,2,https://example.invalid/ignored.jpg\n",
+  "inventories.csv.gz": "id,version,set_num\n10,1,TEST-1\n11,1,fig-test\n",
+  "inventory_parts.csv.gz": "inventory_id,part_num,color_id,quantity,is_spare,img_url\n10,3002,1,1,False,\n11,3001,14,1,False,\n11,9999,1,1,False,\n",
+  "inventory_minifigs.csv.gz": "inventory_id,fig_num,quantity\n10,fig-test,1\n",
+  "minifigs.csv.gz": "fig_num,name,num_parts,img_url\nfig-test,Test Figure,1,\n",
 } as const;
 
 const fixtureArtifacts: CatalogArtifactBytes[] = Object.entries(fixtureCsv).map(([fileName, content]) => ({
@@ -19,18 +24,31 @@ const fixtureArtifacts: CatalogArtifactBytes[] = Object.entries(fixtureCsv).map(
 
 const fixtureLock = (): SourceLock => {
   const parsed = sourceLockSchema.parse(sourceLockFixture);
-  return {
+  const coreArtifacts = parsed.sources[0].artifacts.map((artifact) => ({
+    ...artifact,
+    downloadUrl: null,
+    sha256: null,
+    retrievedAt: null,
+  }));
+  const coreNames = new Set(coreArtifacts.map(({ fileName }) => fileName));
+  return sourceLockSchema.parse({
     ...parsed,
     sources: [{
       ...parsed.sources[0],
-      artifacts: parsed.sources[0].artifacts.map((artifact) => ({
-        ...artifact,
-        downloadUrl: null,
-        sha256: null,
-        retrievedAt: null,
-      })),
+      artifacts: [
+        ...coreArtifacts,
+        ...Object.keys(fixtureCsv)
+          .filter((fileName) => !coreNames.has(fileName as CatalogArtifactBytes["fileName"]))
+          .map((fileName) => ({
+            fileName,
+            required: true,
+            downloadUrl: null,
+            sha256: null,
+            retrievedAt: null,
+          })),
+      ],
     }],
-  };
+  });
 };
 
 describe("catalog refresh adapter", () => {
@@ -43,7 +61,7 @@ describe("catalog refresh adapter", () => {
       retrievedAt: "2026-09-27T10:00:00.000Z",
     });
 
-    expect(result.changedArtifacts).toHaveLength(5);
+    expect(result.changedArtifacts).toHaveLength(10);
     expect(result.normalizedCatalog.parts.map(({ partNum }) => partNum)).toEqual(["3001", "3002"]);
     expect(result.normalizedCatalog.parts[0]?.colorVariants[0]).toMatchObject({
       elementId: "9001",
@@ -58,6 +76,17 @@ describe("catalog refresh adapter", () => {
       colorId: -1,
       colorName: "Unknown",
       rgb: "0033B2",
+    });
+    expect(result.catalogSetIndex).toMatchObject({
+      parts: ["3001", "3002"],
+      sets: [{ setNum: "TEST-1", name: "Test Figure Set", year: 2026, partIndexes: [0, 1] }],
+      summary: {
+        relevantPartCount: 2,
+        mappedPartCount: 2,
+        unmappedPartCount: 0,
+        setCount: 1,
+        associationCount: 2,
+      },
     });
   });
 

@@ -1,6 +1,7 @@
 import { useDeferredValue, useEffect, useMemo, useRef, useState } from "react";
 import { FigurePartsPanel } from "./FigurePartsPanel.js";
 import { FigureViewport } from "./FigureViewport.js";
+import { CatalogSetFilter, type CatalogSetSelection } from "./CatalogSetFilter.js";
 import { PartCard } from "./PartCard.js";
 import { ShopExportPanel } from "./ShopExportPanel.js";
 import {
@@ -100,6 +101,7 @@ export function CatalogWorkspace() {
   const [catalogParts, setCatalogParts] = useState<readonly CatalogPackagePart[]>([]);
   const [catalogLoadState, setCatalogLoadState] = useState<CatalogLoadState>("loading");
   const [catalogViewMode, setCatalogViewMode] = useState<CatalogViewMode>("exact");
+  const [selectedCatalogSet, setSelectedCatalogSet] = useState<CatalogSetSelection | null>(null);
   const [visiblePartCount, setVisiblePartCount] = useState(INITIAL_VISIBLE_PARTS);
   const [mobileTab, setMobileTab] = useState<MobileTab>("parts");
   const [isFigurePanelOpen, setIsFigurePanelOpen] = useState(false);
@@ -110,6 +112,7 @@ export function CatalogWorkspace() {
   const [saveStatus, setSaveStatus] = useState<"loading" | "saved" | "error">("loading");
   const [savedFigures, setSavedFigures] = useState<readonly SavedFigure[]>([]);
   const [transferMessage, setTransferMessage] = useState<string | null>(null);
+  const [transferMessageTone, setTransferMessageTone] = useState<"danger" | "info">("info");
   const [shareLink, setShareLink] = useState<string | null>(null);
   const [semanticStatus, setSemanticStatus] = useState<SemanticSearchStatus>("disabled");
   const [semanticProgress, setSemanticProgress] = useState({ loaded: 0, total: semanticSearchRelease.requiredDownloadBytes });
@@ -123,14 +126,25 @@ export function CatalogWorkspace() {
   const isDrawerLayout = useMediaQuery("(min-width: 768px) and (max-width: 1439px)");
   const drawerTriggerRef = useRef<HTMLButtonElement>(null);
   const drawerCloseRef = useRef<HTMLButtonElement>(null);
+  const selectedSetPartNumbers = useMemo(
+    () => selectedCatalogSet
+      ? new Set(selectedCatalogSet.partNumbers.map((partNum) => partNum.toLocaleLowerCase("en-US")))
+      : null,
+    [selectedCatalogSet],
+  );
   const catalogPartsForView = useMemo(
     () => catalogViewMode === "exact"
       ? catalogParts.filter((part) => {
+        if (selectedSetPartNumbers
+          && !selectedSetPartNumbers.has(part.rebrickablePartNum.toLocaleLowerCase("en-US"))) return false;
         const component = builderComponentForCatalogPart(part);
         return Boolean(component && hasExactPrintedGeometry(component.id));
       })
-      : catalogParts,
-    [catalogParts, catalogViewMode],
+      : selectedSetPartNumbers
+        ? catalogParts.filter((part) =>
+          selectedSetPartNumbers.has(part.rebrickablePartNum.toLocaleLowerCase("en-US")))
+        : catalogParts,
+    [catalogParts, catalogViewMode, selectedSetPartNumbers],
   );
   const searchResult = useMemo(() => {
     const options = activeCategory === "all" ? undefined : { category: activeCategory };
@@ -220,7 +234,7 @@ export function CatalogWorkspace() {
 
   useEffect(() => {
     setVisiblePartCount(INITIAL_VISIBLE_PARTS);
-  }, [activeCategory, catalogViewMode, deferredQuery]);
+  }, [activeCategory, catalogViewMode, deferredQuery, selectedCatalogSet]);
 
   const selectedComponentIds = new Set(Object.values(selectedByRole));
   const figureSlot = (id: CatalogRole, label: string) => {
@@ -287,6 +301,25 @@ export function CatalogWorkspace() {
     setSelectedByRole((current) => ({ ...current, [component.role]: component.id }));
   };
 
+  const removeFromFigure = (slot: CatalogRole): void => {
+    setSelectedByRole((current) => {
+      const next = { ...current };
+      delete next[slot];
+      return next;
+    });
+    setSelectedColorByRole((current) => {
+      const next = { ...current };
+      delete next[slot];
+      return next;
+    });
+  };
+
+  const showAllPartsForSelectedSet = (): void => {
+    setActiveCategory("all");
+    setCatalogViewMode("all");
+    setQuery("");
+  };
+
   const isSupportedDocumentSelection = (componentId: string, slot: FigureDocumentSlot): boolean => {
     const component = builderComponentForId(componentId);
     return component?.role === slot && Boolean(digitallySupportedLDrawEntryForComponent(componentId));
@@ -343,7 +376,7 @@ export function CatalogWorkspace() {
 
   const currentFigureDocument = (): FigureDocument => createFigureDocument(
     selectedByRole,
-    undefined,
+    t("figure.defaultName"),
     undefined,
     selectedColorByRole,
   );
@@ -359,6 +392,7 @@ export function CatalogWorkspace() {
           try {
             shared = parseFigureShareLink(window.location.href);
           } catch {
+            setTransferMessageTone("danger");
             setTransferMessage(t("figure.share.invalid"));
           }
         }
@@ -366,7 +400,10 @@ export function CatalogWorkspace() {
         if (!initialDocument) return;
         if (!active) return;
         await restoreFigureDocument(initialDocument);
-        if (shared) setTransferMessage(t("figure.share.loaded", { name: initialDocument.name }));
+        if (shared) {
+          setTransferMessageTone("info");
+          setTransferMessage(t("figure.share.loaded", { name: initialDocument.name }));
+        }
       })
       .catch(() => {
         if (active) setSaveStatus("error");
@@ -391,6 +428,10 @@ export function CatalogWorkspace() {
     return () => window.clearTimeout(timeout);
   }, [draftHydrated, selectedByRole, selectedColorByRole]);
 
+  useEffect(() => {
+    setShareLink(null);
+  }, [selectedByRole, selectedColorByRole]);
+
   const exportFigure = (): void => {
     const content = serializeFigureDocument(currentFigureDocument());
     const url = URL.createObjectURL(new Blob([content], { type: "application/json;charset=utf-8" }));
@@ -401,19 +442,28 @@ export function CatalogWorkspace() {
     link.click();
     link.remove();
     window.setTimeout(() => URL.revokeObjectURL(url), 1_000);
+    setTransferMessageTone("info");
     setTransferMessage(t("figure.transfer.exported"));
   };
 
   const importFigure = async (file: File): Promise<void> => {
     try {
       if (file.size > FIGURE_DOCUMENT_MAX_BYTES) {
-        throw new Error(t("figure.transfer.fileTooLarge"));
+        throw new Error("file-too-large");
       }
       const document = parseFigureDocument(await file.text());
       await restoreFigureDocument(document);
+      setTransferMessageTone("info");
       setTransferMessage(t("figure.transfer.loaded", { name: document.name }));
     } catch (error) {
-      setTransferMessage(`${t("figure.transfer.errorPrefix")}: ${error instanceof Error ? error.message : t("figure.transfer.invalid")}`);
+      const errorCode = error instanceof Error ? error.message : "invalid";
+      const messageKey = errorCode === "file-too-large"
+        ? "figure.transfer.fileTooLarge"
+        : errorCode === "unsupported" || errorCode === "unsupported-color"
+          ? "figure.transfer.unsupported"
+          : "figure.transfer.invalid";
+      setTransferMessageTone("danger");
+      setTransferMessage(`${t("figure.transfer.errorPrefix")}: ${t(messageKey)}`);
     }
   };
 
@@ -423,12 +473,15 @@ export function CatalogWorkspace() {
       setShareLink(link);
       if (navigator.clipboard?.writeText) {
         await navigator.clipboard.writeText(link);
+        setTransferMessageTone("info");
         setTransferMessage(t("figure.share.copied"));
       } else {
+        setTransferMessageTone("info");
         setTransferMessage(t("figure.share.ready"));
       }
-    } catch (error) {
-      setTransferMessage(`${t("figure.transfer.errorPrefix")}: ${error instanceof Error ? error.message : t("figure.transfer.invalid")}`);
+    } catch {
+      setTransferMessageTone("danger");
+      setTransferMessage(`${t("figure.transfer.errorPrefix")}: ${t("figure.share.error")}`);
     }
   };
 
@@ -436,8 +489,10 @@ export function CatalogWorkspace() {
     try {
       await saveFigureToCollection(currentFigureDocument());
       setSavedFigures(await listSavedFigures());
+      setTransferMessageTone("info");
       setTransferMessage(t("figure.collection.saved"));
     } catch {
+      setTransferMessageTone("danger");
       setTransferMessage(t("figure.collection.error"));
     }
   };
@@ -445,8 +500,10 @@ export function CatalogWorkspace() {
   const loadFromCollection = async (saved: SavedFigure): Promise<void> => {
     try {
       await restoreFigureDocument(saved.document);
+      setTransferMessageTone("info");
       setTransferMessage(t("figure.collection.loaded", { name: saved.document.name }));
     } catch {
+      setTransferMessageTone("danger");
       setTransferMessage(t("figure.transfer.unsupported"));
     }
   };
@@ -456,6 +513,7 @@ export function CatalogWorkspace() {
       await deleteSavedFigure(id);
       setSavedFigures(await listSavedFigures());
     } catch {
+      setTransferMessageTone("danger");
       setTransferMessage(t("figure.collection.error"));
     }
   };
@@ -465,8 +523,10 @@ export function CatalogWorkspace() {
     try {
       await clearLocalFigureData();
       setSavedFigures([]);
+      setTransferMessageTone("info");
       setTransferMessage(t("figure.collection.cleared"));
     } catch {
+      setTransferMessageTone("danger");
       setTransferMessage(t("figure.collection.error"));
     }
   };
@@ -533,10 +593,16 @@ export function CatalogWorkspace() {
           value={query}
           onChange={(event) => setQuery(event.target.value)}
           hint={catalogLoadState === "ready"
-            ? t(searchResult.mode === "semantic" ? "catalog.results.semantic" : "catalog.results.base", { shown: filteredComponents.length, total: catalogPartsForView.length })
+            ? t(deferredQuery.trim().length === 0
+              ? "catalog.results.all"
+              : searchResult.outcome === "direct"
+                ? "catalog.results.direct"
+                : searchResult.outcome === "suggestions"
+                  ? "catalog.results.suggestions"
+                  : "catalog.results.none", { shown: filteredComponents.length, total: catalogPartsForView.length })
             : t("catalog.loadingHint")}
         />
-        <div className="semantic-search-controls">
+        <div className="semantic-search-controls" data-status={semanticStatus}>
           {semanticStatus === "disabled" || semanticStatus === "error" ? (
             <Button onClick={enableSemanticSearch} size="sm" variant="secondary">
               {t("search.semantic.enable", { downloadMB: megabytes(semanticMissingBytes) })}
@@ -558,22 +624,28 @@ export function CatalogWorkspace() {
         </div>
       </div>
       <div className="catalog-toolbar" aria-label={t("catalog.categoryFilter")}>
-        <span className="catalog-toolbar__category">{t(`category.${activeCategory}`)}</span>
-        <label className="catalog-toolbar__view">
-          <span>{t("catalog.mode.label")}</span>
-          <select
-            aria-label={t("catalog.showMode")}
-            value={catalogViewMode}
-            onChange={(event) => setCatalogViewMode(event.currentTarget.value as CatalogViewMode)}
-          >
-            <option value="exact">{t("catalog.mode.exact")}</option>
-            <option value="all">{t("catalog.mode.all")}</option>
-          </select>
-        </label>
-        <span className="catalog-toolbar__mode">
+        <div className="catalog-toolbar__controls">
+          <span className="catalog-toolbar__category">{t(`category.${activeCategory}`)}</span>
+          <label className="catalog-toolbar__view">
+            <span>{t("catalog.mode.label")}</span>
+            <select
+              aria-label={t("catalog.showMode")}
+              value={catalogViewMode}
+              onChange={(event) => setCatalogViewMode(event.currentTarget.value as CatalogViewMode)}
+            >
+              <option value="exact">{t("catalog.mode.exact")}</option>
+              <option value="all">{t("catalog.mode.all")}</option>
+            </select>
+          </label>
+        </div>
+        <p className="catalog-toolbar__mode">
           {catalogViewMode === "exact" ? t("catalog.mode.exactHint") : t("catalog.mode.allHint")}
-        </span>
-        <span className="catalog-toolbar__policy">{t("catalog.policy")}</span>
+        </p>
+        <CatalogSetFilter onChange={setSelectedCatalogSet} selected={selectedCatalogSet} />
+        <p className="catalog-toolbar__policy">
+          <span aria-hidden="true">✓</span>
+          {t("catalog.policy")}
+        </p>
       </div>
       {searchResult.query.warnings.length > 0 || searchResult.query.unknownTerms.length > 0 ? (
         <StatusMessage className="search-status" tone="warning">
@@ -586,6 +658,11 @@ export function CatalogWorkspace() {
           {searchResult.query.unknownTerms.length > 0
             ? ` ${t("catalog.unknownTerms", { terms: searchResult.query.unknownTerms.join(", ") })}`
             : ""}
+        </StatusMessage>
+      ) : null}
+      {deferredQuery.trim().length > 0 && searchResult.outcome === "suggestions" ? (
+        <StatusMessage className="search-status" tone="info">
+          {t("catalog.suggestionsNotice")}
         </StatusMessage>
       ) : null}
       {catalogLoadState === "loading" ? (
@@ -630,10 +707,27 @@ export function CatalogWorkspace() {
           </Button>
         ) : null}
         </>
+      ) : selectedCatalogSet ? (
+        <div className="catalog-set-zero">
+          <StatusMessage tone="warning">
+            {t("catalog.setFilter.zeroFiltered", {
+              count: selectedCatalogSet.partNumbers.length,
+              filters: [
+                t(`category.${activeCategory}`),
+                t(catalogViewMode === "exact" ? "catalog.mode.exact" : "catalog.mode.all"),
+                ...(deferredQuery.trim().length > 0
+                  ? [t("catalog.setFilter.queryContext", { query: deferredQuery.trim() })]
+                  : []),
+              ].join(" · "),
+              set: `${selectedCatalogSet.setNum} · ${selectedCatalogSet.name}`,
+            })}
+          </StatusMessage>
+          <Button onClick={showAllPartsForSelectedSet} variant="secondary">
+            {t("catalog.setFilter.showAll")}
+          </Button>
+        </div>
       ) : (
-        <StatusMessage tone="warning">
-          {t("catalog.noResults")}
-        </StatusMessage>
+        <StatusMessage tone="warning">{t("catalog.noResults")}</StatusMessage>
       )}
     </section>
   );
@@ -667,7 +761,9 @@ export function CatalogWorkspace() {
         else next[slot] = colorId;
         return next;
       })}
+      onRemove={removeFromFigure}
       transferMessage={transferMessage}
+      transferMessageTone={transferMessageTone}
     />
   );
 
@@ -678,7 +774,7 @@ export function CatalogWorkspace() {
          <nav className="app-nav" aria-label={t("nav.label")}>
           <a className="app-nav__link app-nav__link--active" href="#builder" aria-current="page">{t("nav.builder")}</a>
           <a className="app-nav__link" href="#figure-panel">{t("nav.figure")}</a>
-          <a className="app-nav__link" href="#source-hinweis">{t("nav.notes")}</a>
+          <a className="app-nav__link" href="#methodology">{t("nav.notes")}</a>
         </nav>
         <span className="app-header__status">{t("header.status")}</span>
         <label className="language-picker">
@@ -753,12 +849,19 @@ export function CatalogWorkspace() {
         </div>
       )}
 
-      <StatusMessage className="workspace-source-note" id="source-hinweis" tone="info">
-        {t("source.note")}
-        {" "}<a href="/licenses/LDraw-CAreadme.txt" target="_blank" rel="noreferrer">{t("source.ldrawLicense")}</a>
-        {" · "}<a href="/licenses/LDCadShadowLibrary-NOTICE.txt" target="_blank" rel="noreferrer">{t("source.connectionLicense")}</a>
-        {" · "}<a href="/licenses/SemanticSearch-NOTICE.txt" target="_blank" rel="noreferrer">{t("source.searchLicense")}</a>
-      </StatusMessage>
+      <details className="workspace-methodology" id="methodology">
+        <summary>{t("methodology.title")}</summary>
+        <div className="workspace-methodology__body">
+          <p>{t("source.note")}</p>
+          <p>{t("methodology.assembly")}</p>
+          <p>{t("methodology.physical")}</p>
+          <p className="workspace-methodology__links">
+            <a href="/licenses/LDraw-CAreadme.txt" target="_blank" rel="noreferrer">{t("source.ldrawLicense")}</a>
+            <a href="/licenses/LDCadShadowLibrary-NOTICE.txt" target="_blank" rel="noreferrer">{t("source.connectionLicense")}</a>
+            <a href="/licenses/SemanticSearch-NOTICE.txt" target="_blank" rel="noreferrer">{t("source.searchLicense")}</a>
+          </p>
+        </div>
+      </details>
     </div>
   );
 }

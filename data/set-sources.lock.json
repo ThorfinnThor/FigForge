@@ -1,0 +1,50 @@
+{
+  "schemaVersion": 1,
+  "updatedAt": "2026-09-28",
+  "sources": [
+    {
+      "id": "rebrickable-catalog-set-associations",
+      "kind": "rebrickable-catalog-csv",
+      "landingPageUrl": "https://rebrickable.com/downloads/",
+      "apiUsed": false,
+      "commercialUseStatus": "confirmed-by-project-owner-evidence-pending",
+      "artifacts": [
+        {
+          "fileName": "sets.csv.gz",
+          "required": true,
+          "downloadUrl": "https://cdn.rebrickable.com/media/downloads/sets.csv.gz",
+          "sha256": "53a158fc6b6007e2ee700066787800ce214d6f5a1a200c816c88648ed0c55a1b",
+          "retrievedAt": "2026-09-28T17:28:49.899Z"
+        },
+        {
+          "fileName": "inventories.csv.gz",
+          "required": true,
+          "downloadUrl": "https://cdn.rebrickable.com/media/downloads/inventories.csv.gz",
+          "sha256": "c392305fc7ed828628b3c1fc537ed0e94728737b816a802c18f20e54dae238f7",
+          "retrievedAt": "2026-09-28T17:28:49.899Z"
+        },
+        {
+          "fileName": "inventory_parts.csv.gz",
+          "required": true,
+          "downloadUrl": "https://cdn.rebrickable.com/media/downloads/inventory_parts.csv.gz",
+          "sha256": "9d70f84672575a392d22bd23865ad6a07b6822ef8118284c08d413a1a78b0972",
+          "retrievedAt": "2026-09-28T17:28:49.899Z"
+        },
+        {
+          "fileName": "inventory_minifigs.csv.gz",
+          "required": true,
+          "downloadUrl": "https://cdn.rebrickable.com/media/downloads/inventory_minifigs.csv.gz",
+          "sha256": "4280b8ab46b16f0434e7e22292649da9409011e52890809f6e23d659b4af1d80",
+          "retrievedAt": "2026-09-28T17:28:49.899Z"
+        },
+        {
+          "fileName": "minifigs.csv.gz",
+          "required": true,
+          "downloadUrl": "https://cdn.rebrickable.com/media/downloads/minifigs.csv.gz",
+          "sha256": "e7e5a64ddc09349054069caf98bbc924cdcd48b8ee0cabc97f93e102a7a71645",
+          "retrievedAt": "2026-09-28T17:28:49.899Z"
+        }
+      ]
+    }
+  ]
+}

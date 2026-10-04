@@ -2,6 +2,8 @@ export * from "./anchor-registry.js";
 export * from "./asset-manifest.js";
 export * from "./catalog.js";
 export * from "./catalog-package.js";
+export * from "./catalog-set-index.js";
+export * from "./catalog-set-source-lock.js";
 export * from "./model-package.js";
 export * from "./procurement.js";
 export * from "./source-lock.js";

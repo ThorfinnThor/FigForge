@@ -16,6 +16,17 @@ type PartCardProps = {
   selected?: boolean;
 };
 
+const compatibilityReasonMessageKey: Record<string, string> = {
+  "attachment-unverified": "part.compatibility.attachmentUnverified",
+  "fixture-only": "part.compatibility.fixtureOnly",
+  "non-standard-body-system": "part.compatibility.nonStandardBodySystem",
+  "single-slot-replacement": "part.compatibility.singleSlotReplacement",
+  "unsupported-flexible-part": "part.compatibility.unsupportedFlexiblePart",
+  "unverified-combination": "part.compatibility.unverifiedCombination",
+  "unverified-neck-geometry": "part.compatibility.unverifiedNeckGeometry",
+  "wrong-slot": "part.compatibility.wrongSlot",
+};
+
 export function PartCard({
   builderComponentId,
   component,
@@ -31,6 +42,10 @@ export function PartCard({
   const compatibility = builderComponentId
     ? evaluateCatalogPlacement(builderComponentId, targetSlot)
     : undefined;
+  const compatibilityMessage = compatibility
+    ? t(compatibilityReasonMessageKey[compatibility.reasonCode]
+      ?? "part.compatibility.unverifiedCombination")
+    : "";
 
   return (
     <Card
@@ -91,7 +106,7 @@ export function PartCard({
           disabled={connectionStatus !== "digitally-supported"}
           onClick={onSelect}
           title={connectionStatus === "digitally-supported"
-            ? `${geometryOnlyPreview ? t("part.geometryTitle") : ""}${t("part.connectedTitle")}${compatibility?.message ?? ""}`
+            ? `${geometryOnlyPreview ? t("part.geometryTitle") : ""}${t("part.connectedTitle")}${compatibilityMessage}`
             : builderComponentId && ldrawAvailable
               ? t("part.profileMissingTitle")
               : builderComponentId

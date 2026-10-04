@@ -20,6 +20,7 @@
     "eslint.config.js",
     "src/contracts/**/*.ts",
     "src/components/ui/**/*.tsx",
+    "src/i18n.tsx",
     "src/components/catalog-workspace-data.ts",
     "src/components/**/*.ts",
     "src/catalog/**/*.ts",

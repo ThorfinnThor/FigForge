@@ -47,6 +47,8 @@ describe("FF-17 base search", () => {
 
     expect(idResult.results).toHaveLength(1);
     expect(idResult.results[0]?.component.rebrickablePartNum).toBe("3626cpr0001");
+    expect(idResult.results[0]?.matchTier).toBe("direct");
+    expect(idResult.outcome).toBe("direct");
     expect(filtered.results.every(({ component }) => component.role === "head")).toBe(true);
     expect(filtered.results.map(({ component }) => component.rebrickablePartNum)).toEqual(["3626c"]);
   });
@@ -77,14 +79,15 @@ describe("FF-17 base search", () => {
 });
 
 describe("semantic result merge", () => {
-  it("adds semantic discoveries while preserving stronger lexical matches", () => {
+  it("adds semantic discoveries and ranks them by the combined score", () => {
     const result = mergeSemanticCatalogResults(curatedCatalogParts, "grin", [
       { componentId: "ff03-head-3626cpr0495", score: 0.9 },
       { componentId: "ff03-head-3626cpr0001", score: 0.8 },
     ], { category: "head" });
     expect(result.mode).toBe("semantic");
     expect(result.results.some(({ component }) => component.id === "ff03-head-3626cpr0495")).toBe(true);
-    expect(result.results[0]?.component.id).toBe("ff03-head-3626cpr0001");
+    expect(result.results[0]?.component.id).toBe("ff03-head-3626cpr0495");
+    expect(result.results.find(({ component }) => component.id === "ff03-head-3626cpr0495")?.matchTier).toBe("suggestion");
   });
 
   it("never lets semantics weaken exact ID behavior or category filters", () => {
@@ -106,5 +109,50 @@ describe("semantic result merge", () => {
       { componentId: "ff03-head-3626cpr0008", score: 0.8 },
     ], { category: "head" });
     expect(result.results.map(({ component }) => component.id)).toEqual(["ff03-head-3626cpr0008"]);
+    expect(result.outcome).toBe("suggestions");
+  });
+
+  it("returns no base-search results for text with no recognized lexical evidence", () => {
+    const result = searchCatalog(curatedCatalogParts, "shrek");
+
+    expect(result.results).toEqual([]);
+    expect(result.outcome).toBe("none");
+  });
+
+  it("drops low-confidence semantic noise and keeps the calibrated boundary as a suggestion", () => {
+    const below = mergeSemanticCatalogResults(curatedCatalogParts, "unlisted character", [
+      { componentId: "ff03-head-3626cpr0008", score: 0.4199 },
+    ], { category: "head" });
+    const boundary = mergeSemanticCatalogResults(curatedCatalogParts, "unlisted character", [
+      { componentId: "ff03-head-3626cpr0008", score: 0.42 },
+    ], { category: "head" });
+
+    expect(below.results).toEqual([]);
+    expect(below.outcome).toBe("none");
+    expect(boundary.results).toHaveLength(1);
+    expect(boundary.results[0]?.matchTier).toBe("suggestion");
+    expect(boundary.outcome).toBe("suggestions");
+  });
+
+  it("does not present a high semantic score as direct evidence", () => {
+    const result = mergeSemanticCatalogResults(curatedCatalogParts, "unknown story character", [
+      { componentId: "ff03-head-3626cpr0008", score: 0.95 },
+    ], { category: "head" });
+
+    expect(result.results[0]?.matchTier).toBe("suggestion");
+    expect(result.outcome).toBe("suggestions");
+  });
+
+  it("limits semantic suggestions while keeping direct lexical matches", () => {
+    const result = mergeSemanticCatalogResults(curatedCatalogParts, "green alien face", [
+      { componentId: "ff03-head-3626cpr0001", score: 0.95 },
+      { componentId: "ff03-head-3626cpr0008", score: 0.94 },
+      { componentId: "ff03-head-3626cpr0387", score: 0.93 },
+      { componentId: "ff03-head-3626cpr0495", score: 0.92 },
+      { componentId: "ff03-head-3626c", score: 0.91 },
+    ], { category: "head" });
+
+    expect(result.results).toHaveLength(3);
+    expect(result.results.every(({ matchTier }) => matchTier === "suggestion")).toBe(true);
   });
 });
