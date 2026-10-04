@@ -71,8 +71,7 @@ export function CatalogSetFilter({ onChange, selected }: CatalogSetFilterProps) 
     onChange(null);
   };
 
-  const hasQuery = query.trim().length > 0;
-  const showSuggestions = open && loadStatus === "ready" && hasQuery && !selected;
+  const showSuggestions = open && loadStatus === "ready" && !selected;
   const activeSuggestion = suggestions[highlightedIndex];
 
   return (
@@ -127,6 +126,19 @@ export function CatalogSetFilter({ onChange, selected }: CatalogSetFilterProps) 
           type="search"
           value={query}
         />
+        <button
+          aria-expanded={showSuggestions}
+          aria-label={t("catalog.setFilter.toggle")}
+          className="catalog-set-filter__toggle"
+          onClick={() => {
+            ensureLoaded();
+            setOpen((current) => !current);
+          }}
+          onMouseDown={(event) => event.preventDefault()}
+          type="button"
+        >
+          <span aria-hidden="true">▾</span>
+        </button>
         {showSuggestions ? (
           <ul className="catalog-set-filter__suggestions" id={listboxId} role="listbox">
             {suggestions.map((set, suggestionIndex) => (

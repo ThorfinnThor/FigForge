@@ -621,7 +621,7 @@ legend {
 .catalog-set-filter__input {
   width: 100%;
   min-height: 42px;
-  padding: 7px 12px;
+  padding: 7px 48px 7px 12px;
   border: 1.5px solid var(--card-rule);
   border-radius: 8px;
   color: var(--ink);
@@ -631,6 +631,30 @@ legend {
 
 .catalog-set-filter__input::-webkit-search-cancel-button {
   display: none;
+}
+
+.catalog-set-filter__toggle {
+  position: absolute;
+  z-index: 1;
+  top: 5px;
+  right: 5px;
+  display: grid;
+  width: 34px;
+  height: 32px;
+  place-items: center;
+  border: 0;
+  border-radius: 6px;
+  color: var(--navy);
+  background: var(--surface-soft);
+  font: 800 1.1rem/1 var(--font-body);
+  cursor: pointer;
+}
+
+.catalog-set-filter__toggle:hover,
+.catalog-set-filter__toggle:focus-visible,
+.catalog-set-filter__toggle[aria-expanded="true"] {
+  color: #fff;
+  background: var(--navy);
 }
 
 .catalog-set-filter__suggestions {

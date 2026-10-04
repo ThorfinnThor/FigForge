@@ -15,7 +15,14 @@ export function findCatalogSets(
   limit = 8,
 ): CatalogSetEntry[] {
   const query = normalize(input);
-  if (!query || limit <= 0) return [];
+  if (limit <= 0) return [];
+
+  if (!query) {
+    return [...index.sets]
+      .sort((left, right) => right.year - left.year
+        || right.setNum.localeCompare(left.setNum, "en", { numeric: true }))
+      .slice(0, limit);
+  }
 
   return index.sets
     .flatMap((set) => {

@@ -80,7 +80,8 @@ export function searchCatalog<T extends CatalogSearchItem>(
   const query = normalizeSearchQuery(input);
   const requestedCategory = options.category ?? query.categoryRole ?? undefined;
   const hasUserText = input.trim().length > 0;
-  const hasPositiveTerms = query.terms.length > 0 || query.relatedTerms.length > 0 || query.idMatches.length > 0;
+  const literalTerms = [...query.terms, ...query.unknownTerms];
+  const hasPositiveTerms = literalTerms.length > 0 || query.relatedTerms.length > 0 || query.idMatches.length > 0;
   const results = components
     .map((component, index): RankedResult<T> => {
       const text = documentText(component);
@@ -89,11 +90,10 @@ export function searchCatalog<T extends CatalogSearchItem>(
       const categoryMatches = !requestedCategory || component.role === requestedCategory;
       const colorsMatch = colorMatches(component, query.colorNames);
       const excluded = query.excludedTerms.some((term) => text.includes(term));
-      const matchedTerms = query.terms.filter((term) => text.includes(term));
+      const matchedTerms = literalTerms.filter((term) => text.includes(term));
       const matchedRelatedTerms = query.relatedTerms.filter((term) => text.includes(term));
-      const hasCompleteLexicalEvidence = query.unknownTerms.length === 0
-        && query.terms.length > 0
-        && query.terms.every((term) => text.includes(term));
+      const hasCompleteLexicalEvidence = literalTerms.length > 0
+        && literalTerms.every((term) => text.includes(term));
       let score = 0;
       if (exactId) score += 1000;
       else if (idContained) score += 500;

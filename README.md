@@ -23,12 +23,12 @@ Backendloser, kuratierter Minifiguren-Konfigurator mit digital verbundenen LDraw
 - Digitale LDraw-Verbindung: Köpfe, Kopfbedeckungen und zwei Handaccessoires werden reproduzierbar aus offiziellen Baugruppen- und LDCad-Snapdaten platziert. Dafür ist keine menschliche Eingabe nötig; eine physische Klemmkraftgarantie wird nicht behauptet.
 - FF-17: Lokale Basissuche mit versioniertem Deutsch→Englisch-Normalizer, ID-Schutz, Zusammensetzungen, Negationen, Kategorien, Farben und Regression-Fixtures.
 - FF-18: Gepinnte MiniLM-/E5-Modelle, zwei getrennte 384-dimensionale FP32-Indizes, Modell-/Index-Sperre und blindes Review-Artefakt; Metriken, ADR und Profilwahl bleiben bis zur menschlichen Relevanzfreigabe blockiert.
-- Semantische Suche (Beta): Der kompakte MiniLM-Kandidat ist optional über einen Web-Worker in die App integriert. 2.726 exakt dargestellte Teile sind vorab eingebettet; derselbe Embedding-Text enthält Katalogname, offizielle LDraw-Beschreibung, Kategorie, Rolle, Farbe und Teilenummer. Suchtexte verlassen das Gerät nicht. Das 42,44-MB-Paket wird erst nach Zustimmung geladen. Die endgültige Profilfreigabe bleibt bis zum menschlichen FF-18-Relevanzreview blockiert.
+- Semantische Suche (Beta): Der kompakte MiniLM-Kandidat ist über einen Web-Worker in die App integriert. 2.726 exakt dargestellte Teile sind vorab eingebettet; derselbe Embedding-Text enthält Katalogname, offizielle LDraw-Beschreibung, Kategorie, Rolle, Farbe und Teilenummer. Suchtexte verlassen das Gerät nicht. Das 42,44-MB-Paket wird beim Öffnen des Builders automatisch geladen und danach im Browsercache wiederverwendet. Die endgültige Profilfreigabe bleibt bis zum menschlichen FF-18-Relevanzreview blockiert.
 - FF-21: 17 kataloggebundene englische Suchdokumente, ein getrenntes deutsches Lexikon-Delta und 160 Fälle mit 80 Entwicklungs- und 80 Holdout-Fällen; Relevanzlabels bleiben ausdrücklich menschliche Arbeit.
 - FF-22/FF-23 MVP: Der aktuelle Entwurf und eine lokale Sammlung werden verzögert in IndexedDB gespeichert. Versionierter JSON-Import/-Export ist auf fünf digitale Slots, 64 KiB und bekannte FigForge-Komponenten begrenzt; unbekannte Teile werden nicht still ersetzt. Die Datenbankmigration auf Version 2 erhält bestehende Entwürfe.
-- Kein öffentliches Deployment.
+- Das öffentliche Deployment wird nach einem freigegebenen Merge ausschließlich durch Cloudflare Workers Builds aktualisiert.
 - Keine Rebrickable API und keine MOC-Dateien.
-- Cloudflare ist nur als Workers-Static-Assets-Konfiguration vorbereitet.
+- Cloudflare liefert ausschließlich die gebauten statischen Assets aus; GitHub Actions führt kein Produktionsdeployment aus.
 
 ## Lokale Prüfung
 

@@ -32,4 +32,26 @@ describe("catalog set filter", () => {
     expect(new Set(parts).size).toBe(parts.length);
     expect(parts.every((partNum) => index.parts.includes(partNum))).toBe(true);
   });
+
+  it("offers recent sets when the editable dropdown opens without a query", async () => {
+    const index = catalogSetIndexSchema.parse(JSON.parse(
+      await readFile("data/generated/catalog-set-index.json", "utf8"),
+    ) as unknown);
+    const suggestions = findCatalogSets(index, "", 8);
+
+    expect(suggestions).toHaveLength(8);
+    expect(suggestions[0]?.year).toBe(Math.max(...index.sets.map(({ year }) => year)));
+    expect(suggestions.map(({ year }) => year)).toEqual(
+      [...suggestions].map(({ year }) => year).sort((left, right) => right - left),
+    );
+  });
+
+  it("keeps the set picker editable and exposes a separate dropdown control", async () => {
+    const source = await readFile("src/components/CatalogSetFilter.tsx", "utf8");
+
+    expect(source).toContain('role="combobox"');
+    expect(source).toContain('type="search"');
+    expect(source).toContain('className="catalog-set-filter__toggle"');
+    expect(source).toContain('t("catalog.setFilter.toggle")');
+  });
 });
