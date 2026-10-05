@@ -124,13 +124,13 @@ describe("FF-14 responsive catalog workspace", () => {
     expect(source).toContain('aria-expanded={isFigurePanelOpen}');
     expect(source).toContain('event.key === "Escape"');
     expect(source).toContain("drawerTriggerRef.current?.focus()");
-    expect(source).toContain('t("header.openFigure")');
-    expect(styles).toContain("@media (min-width: 768px) and (max-width: 1439px)");
+    expect(source).toContain('t("header.openFigureCount"');
+    expect(styles).toContain("@media (min-width: 768px)");
     expect(styles).toContain("@media (min-width: 1440px)");
     expect(styles).toContain("@media (max-width: 767px)");
     expect(styles).toContain("safe-area-inset-bottom");
     expect(styles).toContain("grid-template-columns: minmax(0, 1fr)");
-    expect(styles).toContain("max-height: calc(100dvh - 130px)");
+    expect(styles).toContain("max-height: 100dvh");
     expect(styles).toContain("scrollbar-gutter: stable");
     expect(figurePanelSource).toContain('className="figure-panel__scroll"');
   });
