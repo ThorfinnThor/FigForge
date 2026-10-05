@@ -1,4 +1,5 @@
 import type { CatalogCategory } from "../components/catalog-workspace-data.js";
+import { buildCatalogSearchText } from "./catalog-search-document.js";
 import { normalizeSearchQuery, type NormalizedQuery } from "./normalize-query.js";
 
 export type CatalogSearchItem = {
@@ -9,6 +10,7 @@ export type CatalogSearchItem = {
   rebrickableCategoryName: string;
   colorNames?: readonly string[];
   colorEvidence?: readonly { colorName: string }[];
+  searchText?: string | undefined;
 };
 
 export type SearchResult<T extends CatalogSearchItem = CatalogSearchItem> = {
@@ -50,14 +52,10 @@ const componentColorNames = (component: CatalogSearchItem): readonly string[] =>
   component.colorNames ?? component.colorEvidence?.map(({ colorName }) => colorName) ?? [];
 
 function documentText(component: CatalogSearchItem): string {
-  return [
-    component.id,
-    component.rebrickablePartNum,
-    component.name,
-    component.rebrickableCategoryName,
-    component.role,
-    ...componentColorNames(component),
-  ].join(" ").toLocaleLowerCase("en-US");
+  return (component.searchText ?? buildCatalogSearchText({
+    ...component,
+    colorNames: componentColorNames(component),
+  })).toLocaleLowerCase("en-US");
 }
 
 function colorMatches(component: CatalogSearchItem, colorNames: readonly string[]): boolean {
@@ -80,7 +78,8 @@ export function searchCatalog<T extends CatalogSearchItem>(
   const query = normalizeSearchQuery(input);
   const requestedCategory = options.category ?? query.categoryRole ?? undefined;
   const hasUserText = input.trim().length > 0;
-  const hasPositiveTerms = query.terms.length > 0 || query.relatedTerms.length > 0 || query.idMatches.length > 0;
+  const literalTerms = [...query.terms, ...query.unknownTerms];
+  const hasPositiveTerms = literalTerms.length > 0 || query.relatedTerms.length > 0 || query.idMatches.length > 0;
   const results = components
     .map((component, index): RankedResult<T> => {
       const text = documentText(component);
@@ -89,11 +88,10 @@ export function searchCatalog<T extends CatalogSearchItem>(
       const categoryMatches = !requestedCategory || component.role === requestedCategory;
       const colorsMatch = colorMatches(component, query.colorNames);
       const excluded = query.excludedTerms.some((term) => text.includes(term));
-      const matchedTerms = query.terms.filter((term) => text.includes(term));
+      const matchedTerms = literalTerms.filter((term) => text.includes(term));
       const matchedRelatedTerms = query.relatedTerms.filter((term) => text.includes(term));
-      const hasCompleteLexicalEvidence = query.unknownTerms.length === 0
-        && query.terms.length > 0
-        && query.terms.every((term) => text.includes(term));
+      const hasCompleteLexicalEvidence = literalTerms.length > 0
+        && literalTerms.every((term) => text.includes(term));
       let score = 0;
       if (exactId) score += 1000;
       else if (idContained) score += 500;

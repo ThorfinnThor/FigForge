@@ -24,6 +24,7 @@ export const catalogPackagePartSchema = z
     rebrickableCategoryName: z.string().min(1).max(160),
     material: z.string().min(1).max(80),
     colorNames: z.array(z.string().min(1).max(120)),
+    searchText: z.string().min(1).max(4_000).optional(),
   })
   .strict();
 

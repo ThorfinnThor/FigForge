@@ -76,11 +76,29 @@ describe("FF-17 base search", () => {
     expect(searchCatalog(parts, "rote Haare mit Pferdeschwanz").results.map(({ component }) => component.id))
       .toEqual(["dark-red-hair"]);
   });
+
+  it("searches untranslated catalog words literally instead of discarding them", () => {
+    const parts = [{
+      id: "pirate-head",
+      role: "head" as const,
+      rebrickablePartNum: "head-1",
+      name: "Minifig Head Pirate with Eyepatch Print",
+      rebrickableCategoryName: "Minifig Heads",
+      colorNames: ["Yellow"],
+    }];
+
+    const result = searchCatalog(parts, "pirate");
+
+    expect(result.query.unknownTerms).toEqual(["pirate"]);
+    expect(result.results.map(({ component }) => component.id)).toEqual(["pirate-head"]);
+    expect(result.results[0]?.matchTier).toBe("direct");
+    expect(result.outcome).toBe("direct");
+  });
 });
 
 describe("semantic result merge", () => {
   it("adds semantic discoveries and ranks them by the combined score", () => {
-    const result = mergeSemanticCatalogResults(curatedCatalogParts, "grin", [
+    const result = mergeSemanticCatalogResults(curatedCatalogParts, "cheerful expression", [
       { componentId: "ff03-head-3626cpr0495", score: 0.9 },
       { componentId: "ff03-head-3626cpr0001", score: 0.8 },
     ], { category: "head" });

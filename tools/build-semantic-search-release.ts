@@ -4,11 +4,12 @@ import { dirname, resolve } from "node:path";
 import { env, pipeline } from "@huggingface/transformers";
 import { semanticSearchReleaseSchema } from "../src/contracts/semantic-search-release.js";
 import type { CatalogPackagePart, CatalogRole } from "../src/contracts/catalog-package.js";
+import { buildCatalogSearchText } from "../src/search/catalog-search-document.js";
 
 type RuntimeEntry = {
   componentId: string;
   rebrickablePartNum: string;
-  ldrawFile: string;
+  searchText: string;
   geometryFallback?: Record<string, unknown> | null;
 };
 type ModelLock = {
@@ -43,13 +44,6 @@ const roleFiles: Record<CatalogRole, string> = {
   legsAssembly: "legs-assembly",
   handAccessory: "hand-accessory",
 };
-const roleText: Record<CatalogRole, string> = {
-  head: "minifigure head",
-  headwear: "minifigure hair helmet or headwear",
-  torsoAssembly: "minifigure torso body",
-  legsAssembly: "minifigure hips and legs",
-  handAccessory: "minifigure hand accessory",
-};
 const sha256 = (content: Uint8Array | string): string => createHash("sha256").update(content).digest("hex");
 const keyFor = (role: CatalogRole, partNum: string): string => `${role}:${partNum.toLowerCase()}`;
 const serializeFloat32Le = (values: Float32Array): Uint8Array => {
@@ -80,36 +74,13 @@ const supportedCuratedIds = new Set(connectivity.entries
   .map(({ componentId }) => componentId));
 const curatedByKey = new Map(curated.components.map((part) => [keyFor(part.role, part.rebrickablePartNum), part]));
 const documentsByKey = new Map<string, SearchDocument>();
-const ldrawFileByKey = new Map<string, string>();
-const ldrawDescriptionCache = new Map<string, string>();
 
-const ldrawDescriptionFor = async (ldrawFile: string | undefined): Promise<string> => {
-  if (!ldrawFile) return "";
-  const cached = ldrawDescriptionCache.get(ldrawFile);
-  if (cached !== undefined) return cached;
-  const sourcePath = resolve(root, "data/incoming/ldraw-official/extracted/ldraw", ldrawFile);
-  const source = await readFile(sourcePath, "utf8");
-  const firstLine = source.split(/\r?\n/u).find((line) => /^0\s+(?!Name:|Author:|!)/u.test(line)) ?? "";
-  const description = firstLine.replace(/^0\s+/u, "").trim().slice(0, 320);
-  ldrawDescriptionCache.set(ldrawFile, description);
-  return description;
-};
-
-const addDocument = async (part: CatalogPackagePart, componentId: string, colors: readonly string[], ldrawFile?: string): Promise<void> => {
-  const uniqueColors = [...new Set(colors)].sort((left, right) => left.localeCompare(right, "en"));
-  const ldrawDescription = await ldrawDescriptionFor(ldrawFile);
+const addDocument = (part: CatalogPackagePart, componentId: string, colors: readonly string[], searchText?: string): void => {
   documentsByKey.set(keyFor(part.role, part.rebrickablePartNum), {
     componentId,
     role: part.role,
     rebrickablePartNum: part.rebrickablePartNum,
-    englishText: [
-      part.name,
-      ldrawDescription ? `Official LDraw description: ${ldrawDescription}.` : "",
-      `Category: ${part.rebrickableCategoryName}.`,
-      `Type: ${roleText[part.role]}.`,
-      uniqueColors.length > 0 ? `Colors: ${uniqueColors.join(", ")}.` : "",
-      `Part ID: ${part.rebrickablePartNum}.`,
-    ].filter(Boolean).join(" "),
+    englishText: searchText ?? buildCatalogSearchText({ ...part, colorNames: colors }),
   });
 };
 
@@ -122,15 +93,15 @@ for (const [role, fileName] of Object.entries(roleFiles) as Array<[CatalogRole, 
     const part = parts.get(entry.rebrickablePartNum.toLowerCase());
     if (!part) throw new Error(`Runtime entry has no catalog document: ${entry.componentId}`);
     const curatedPart = curatedByKey.get(keyFor(role, part.rebrickablePartNum));
-    ldrawFileByKey.set(keyFor(role, part.rebrickablePartNum), entry.ldrawFile);
-    await addDocument(curatedPart ?? part, curatedPart?.id ?? part.id, curatedPart
+    addDocument(curatedPart ?? part, curatedPart?.id ?? part.id, curatedPart
       ? curatedPart.colorEvidence.map(({ colorName }) => colorName)
-      : part.colorNames, entry.ldrawFile);
+      : part.colorNames, entry.searchText);
   }
 }
 for (const part of curated.components) {
   if (!exactCuratedIds.has(part.id) || !supportedCuratedIds.has(part.id)) continue;
-  await addDocument(part, part.id, part.colorEvidence.map(({ colorName }) => colorName), ldrawFileByKey.get(keyFor(part.role, part.rebrickablePartNum)));
+  if (documentsByKey.has(keyFor(part.role, part.rebrickablePartNum))) continue;
+  addDocument(part, part.id, part.colorEvidence.map(({ colorName }) => colorName));
 }
 
 const documents = [...documentsByKey.values()].sort((left, right) => left.componentId.localeCompare(right.componentId, "en"));
