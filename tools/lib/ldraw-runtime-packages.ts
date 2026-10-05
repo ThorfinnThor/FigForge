@@ -2,6 +2,7 @@ import { createHash } from "node:crypto";
 import { mkdir, readFile, rm, writeFile } from "node:fs/promises";
 import { resolve } from "node:path";
 import type { CatalogRole } from "../../src/contracts/catalog-package.js";
+import { buildCatalogSearchText } from "../../src/search/catalog-search-document.js";
 
 const SOURCE_POLICY = "Nur Rebrickable Catalog Downloads/CSV, keine MOC-Dateien." as const;
 
@@ -17,6 +18,9 @@ type ExpandedRuntimeSourceEntry = {
   componentId: string;
   role: CatalogRole;
   rebrickablePartNum: string;
+  name: string;
+  rebrickableCategoryName: string;
+  colorNames: string[];
   status: "verified";
   ldrawFile: string;
   ldrawUpdate: string;
@@ -48,15 +52,26 @@ export async function writeLDrawRuntimePackages(root: string): Promise<{
   if (catalog.sourcePolicy !== SOURCE_POLICY) throw new Error("Expanded catalog source policy mismatch");
 
   const catalogEntriesSha256 = sha256(JSON.stringify(catalog.entries));
+  const ldrawRoot = resolve(root, "data/incoming/ldraw-official/extracted/ldraw");
+  const descriptionCache = new Map<string, string>();
+  const ldrawDescriptionFor = async (file: string): Promise<string> => {
+    const cached = descriptionCache.get(file);
+    if (cached !== undefined) return cached;
+    const source = await readFile(resolve(ldrawRoot, file), "utf8");
+    const firstLine = source.split(/\r?\n/u).find((line) => /^0\s+(?!Name:|Author:|!)/u.test(line)) ?? "";
+    const description = firstLine.replace(/^0\s+/u, "").trim().slice(0, 320);
+    descriptionCache.set(file, description);
+    return description;
+  };
   const runtimeDirectory = resolve(root, "data/generated/ldraw-runtime");
   await rm(runtimeDirectory, { force: true, recursive: true });
   await mkdir(runtimeDirectory, { recursive: true });
   const packages = [];
 
   for (const [role, fileName] of Object.entries(runtimeFileByRole) as Array<[CatalogRole, string]>) {
-    const entries = catalog.entries
-      .filter((entry) => entry.role === role)
-      .map((entry) => ({
+    const entries = [];
+    for (const entry of catalog.entries.filter((candidate) => candidate.role === role)) {
+      entries.push({
         componentId: entry.componentId,
         rebrickablePartNum: entry.rebrickablePartNum,
         status: entry.status,
@@ -64,12 +79,14 @@ export async function writeLDrawRuntimePackages(root: string): Promise<{
         ldrawUpdate: entry.ldrawUpdate,
         modelUrl: entry.modelUrl,
         thumbnailUrl: entry.thumbnailUrl,
+        searchText: buildCatalogSearchText(entry, await ldrawDescriptionFor(entry.ldrawFile)),
         geometryFallback: entry.geometryFallback,
         placementMode: entry.placementMode,
         placementTransformLdu: entry.placementTransformLdu,
-      }));
+      });
+    }
     await writeFile(resolve(runtimeDirectory, fileName), `${JSON.stringify({
-      schemaVersion: 1,
+      schemaVersion: 2,
       sourcePolicy: SOURCE_POLICY,
       catalogEntriesSha256,
       role,
@@ -80,7 +97,7 @@ export async function writeLDrawRuntimePackages(root: string): Promise<{
   }
 
   const manifest = {
-    schemaVersion: 1,
+    schemaVersion: 2,
     sourcePolicy: SOURCE_POLICY,
     catalogEntriesSha256,
     totalEntryCount: catalog.entries.length,

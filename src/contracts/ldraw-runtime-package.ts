@@ -15,6 +15,7 @@ export const ldrawRuntimeEntrySchema = z.object({
   ldrawUpdate: z.string().min(1).max(80),
   modelUrl: z.string().startsWith("/assets/"),
   thumbnailUrl: z.string().startsWith("/assets/"),
+  searchText: z.string().min(1).max(4_000),
   geometryFallback: z.object({
     kind: z.enum(["unprinted-print-parent", "unprinted-assembly-code"]),
     parentPartNums: z.array(z.string().min(1).max(80)),
@@ -24,7 +25,7 @@ export const ldrawRuntimeEntrySchema = z.object({
 }).strict();
 
 export const ldrawRuntimePackageSchema = z.object({
-  schemaVersion: z.literal(1),
+  schemaVersion: z.literal(2),
   sourcePolicy: z.literal("Nur Rebrickable Catalog Downloads/CSV, keine MOC-Dateien."),
   catalogEntriesSha256: z.string().regex(/^[a-f0-9]{64}$/u),
   role: catalogRoleSchema,

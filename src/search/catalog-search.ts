@@ -1,4 +1,5 @@
 import type { CatalogCategory } from "../components/catalog-workspace-data.js";
+import { buildCatalogSearchText } from "./catalog-search-document.js";
 import { normalizeSearchQuery, type NormalizedQuery } from "./normalize-query.js";
 
 export type CatalogSearchItem = {
@@ -9,6 +10,7 @@ export type CatalogSearchItem = {
   rebrickableCategoryName: string;
   colorNames?: readonly string[];
   colorEvidence?: readonly { colorName: string }[];
+  searchText?: string | undefined;
 };
 
 export type SearchResult<T extends CatalogSearchItem = CatalogSearchItem> = {
@@ -50,14 +52,10 @@ const componentColorNames = (component: CatalogSearchItem): readonly string[] =>
   component.colorNames ?? component.colorEvidence?.map(({ colorName }) => colorName) ?? [];
 
 function documentText(component: CatalogSearchItem): string {
-  return [
-    component.id,
-    component.rebrickablePartNum,
-    component.name,
-    component.rebrickableCategoryName,
-    component.role,
-    ...componentColorNames(component),
-  ].join(" ").toLocaleLowerCase("en-US");
+  return (component.searchText ?? buildCatalogSearchText({
+    ...component,
+    colorNames: componentColorNames(component),
+  })).toLocaleLowerCase("en-US");
 }
 
 function colorMatches(component: CatalogSearchItem, colorNames: readonly string[]): boolean {

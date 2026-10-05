@@ -142,6 +142,7 @@ const hydrateRuntimeEntries = (
     if (!part || part.role !== role) {
       throw new Error(`Runtime LDraw entry has no catalog part: ${entry.componentId}`);
     }
+    part.searchText = entry.searchText;
     const component = { ...part, id: entry.componentId } satisfies CatalogPackagePart;
     expandedComponentByCatalogKey.set(catalogKey(component), component);
     builderComponentById.set(component.id, component);

@@ -64,6 +64,8 @@ const catalog = JSON.parse(await readFile(resolve(root, "data/generated/ldraw-ex
     };
     geometryFallback: null | { kind: string; parentPartNums: string[] };
     name: string;
+    rebrickableCategoryName: string;
+    colorNames: string[];
   }>;
   assemblyColorCodes: {
     codes: Array<{ code: string; colorName: string; colorRgb: string; evidencePartNums: string[] }>;
@@ -193,7 +195,7 @@ const runtimeManifest = JSON.parse(
   totalEntryCount: number;
   packages: Array<{ role: CatalogRole; fileName: string; entryCount: number }>;
 };
-assert.equal(runtimeManifest.schemaVersion, 1);
+assert.equal(runtimeManifest.schemaVersion, 2);
 assert.equal(runtimeManifest.sourcePolicy, catalog.sourcePolicy);
 assert.equal(runtimeManifest.catalogEntriesSha256, catalogEntriesSha256);
 assert.equal(runtimeManifest.totalEntryCount, catalog.entries.length);
@@ -203,6 +205,10 @@ for (const [role, fileName] of Object.entries(runtimeFileByRole) as Array<[Catal
   const runtimePackage = ldrawRuntimePackageSchema.parse(JSON.parse(
     await readFile(resolve(root, "data/generated/ldraw-runtime", fileName), "utf8"),
   ));
+  const runtimeSearchTextById = new Map(runtimePackage.entries.map((entry) => [
+    entry.componentId,
+    entry.searchText,
+  ]));
   const expectedEntries = catalog.entries
     .filter((entry) => entry.role === role)
     .map((entry) => ({
@@ -213,6 +219,7 @@ for (const [role, fileName] of Object.entries(runtimeFileByRole) as Array<[Catal
       ldrawUpdate: entry.ldrawUpdate,
       modelUrl: entry.modelUrl,
       thumbnailUrl: entry.thumbnailUrl,
+      searchText: runtimeSearchTextById.get(entry.componentId),
       geometryFallback: entry.geometryFallback,
       placementMode: entry.placementMode,
       placementTransformLdu: entry.placementTransformLdu,
@@ -221,6 +228,17 @@ for (const [role, fileName] of Object.entries(runtimeFileByRole) as Array<[Catal
   assert.equal(runtimePackage.catalogEntriesSha256, catalogEntriesSha256);
   assert.equal(runtimePackage.role, role);
   assert.deepEqual(runtimePackage.entries, expectedEntries);
+  for (const runtimeEntry of runtimePackage.entries) {
+    const catalogEntry = catalog.entries.find(({ componentId }) => componentId === runtimeEntry.componentId);
+    assert(catalogEntry, `Runtime search document has no expanded catalog entry: ${runtimeEntry.componentId}`);
+    assert(runtimeEntry.searchText.includes(catalogEntry.name));
+    assert(runtimeEntry.searchText.includes(`Category: ${catalogEntry.rebrickableCategoryName}.`));
+    assert(runtimeEntry.searchText.includes(`Part ID: ${catalogEntry.rebrickablePartNum}.`));
+    assert.match(runtimeEntry.searchText, /Official LDraw description: .+\./u);
+    for (const colorName of new Set(catalogEntry.colorNames)) {
+      assert(runtimeEntry.searchText.includes(colorName));
+    }
+  }
   const manifestEntry = runtimeManifest.packages.find((entry) => entry.role === role);
   assert.deepEqual(manifestEntry, { role, fileName, entryCount: expectedEntries.length });
   runtimeEntryCount += runtimePackage.entryCount;
