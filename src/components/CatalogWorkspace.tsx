@@ -121,7 +121,7 @@ export function CatalogWorkspace() {
   const semanticClientRef = useRef<SemanticSearchClient | null>(null);
   const semanticRequestRef = useRef(0);
   const isMobileLayout = useMediaQuery("(max-width: 767px)");
-  const isDrawerLayout = useMediaQuery("(min-width: 768px) and (max-width: 1439px)");
+  const isDesktopDrawerLayout = useMediaQuery("(min-width: 768px)");
   const drawerTriggerRef = useRef<HTMLButtonElement>(null);
   const drawerCloseRef = useRef<HTMLButtonElement>(null);
   const selectedSetPartNumbers = useMemo(
@@ -519,10 +519,10 @@ export function CatalogWorkspace() {
   };
 
   useEffect(() => {
-    if (!isDrawerLayout) {
+    if (!isDesktopDrawerLayout) {
       setIsFigurePanelOpen(false);
     }
-  }, [isDrawerLayout]);
+  }, [isDesktopDrawerLayout]);
 
   const closeFigurePanel = () => {
     setIsFigurePanelOpen(false);
@@ -530,7 +530,7 @@ export function CatalogWorkspace() {
   };
 
   useEffect(() => {
-    if (!isDrawerLayout || !isFigurePanelOpen) {
+    if (!isDesktopDrawerLayout || !isFigurePanelOpen) {
       return;
     }
 
@@ -543,7 +543,7 @@ export function CatalogWorkspace() {
     };
     document.addEventListener("keydown", onKeyDown);
     return () => document.removeEventListener("keydown", onKeyDown);
-  }, [isDrawerLayout, isFigurePanelOpen]);
+  }, [isDesktopDrawerLayout, isFigurePanelOpen]);
 
   const categoryRail = (
     <aside className="category-rail" aria-label={t("categories.title")}>
@@ -602,30 +602,39 @@ export function CatalogWorkspace() {
           </div>
         ) : null}
       </div>
-      <div className="catalog-toolbar" aria-label={t("catalog.categoryFilter")}>
-        <div className="catalog-toolbar__controls">
-          <span className="catalog-toolbar__category">{t(`category.${activeCategory}`)}</span>
-          <label className="catalog-toolbar__view">
-            <span>{t("catalog.mode.label")}</span>
-            <select
-              aria-label={t("catalog.showMode")}
-              value={catalogViewMode}
-              onChange={(event) => setCatalogViewMode(event.currentTarget.value as CatalogViewMode)}
-            >
-              <option value="exact">{t("catalog.mode.exact")}</option>
-              <option value="all">{t("catalog.mode.all")}</option>
-            </select>
-          </label>
+      {categoryRail}
+      <details className="catalog-toolbar">
+        <summary className="catalog-toolbar__summary">
+          <span>{t("catalog.filters.title")}</span>
+          <small>
+            {t(`category.${activeCategory}`)} · {t(catalogViewMode === "exact" ? "catalog.mode.exact" : "catalog.mode.all")}
+            {selectedCatalogSet ? ` · ${selectedCatalogSet.setNum}` : ""}
+          </small>
+        </summary>
+        <div className="catalog-toolbar__body" aria-label={t("catalog.categoryFilter")}>
+          <div className="catalog-toolbar__controls">
+            <label className="catalog-toolbar__view">
+              <span>{t("catalog.mode.label")}</span>
+              <select
+                aria-label={t("catalog.showMode")}
+                value={catalogViewMode}
+                onChange={(event) => setCatalogViewMode(event.currentTarget.value as CatalogViewMode)}
+              >
+                <option value="exact">{t("catalog.mode.exact")}</option>
+                <option value="all">{t("catalog.mode.all")}</option>
+              </select>
+            </label>
+          </div>
+          <p className="catalog-toolbar__mode">
+            {catalogViewMode === "exact" ? t("catalog.mode.exactHint") : t("catalog.mode.allHint")}
+          </p>
+          <CatalogSetFilter onChange={setSelectedCatalogSet} selected={selectedCatalogSet} />
+          <p className="catalog-toolbar__policy">
+            <span aria-hidden="true">✓</span>
+            {t("catalog.policy")}
+          </p>
         </div>
-        <p className="catalog-toolbar__mode">
-          {catalogViewMode === "exact" ? t("catalog.mode.exactHint") : t("catalog.mode.allHint")}
-        </p>
-        <CatalogSetFilter onChange={setSelectedCatalogSet} selected={selectedCatalogSet} />
-        <p className="catalog-toolbar__policy">
-          <span aria-hidden="true">✓</span>
-          {t("catalog.policy")}
-        </p>
-      </div>
+      </details>
       {searchResult.query.warnings.length > 0 || searchResult.query.unknownTerms.length > 0 ? (
         <StatusMessage className="search-status" tone="warning">
            {searchResult.query.warnings.map((warning) => {
@@ -720,7 +729,7 @@ export function CatalogWorkspace() {
   const figurePanel = (
     <FigurePartsPanel
       closeButtonRef={drawerCloseRef}
-      drawer={isDrawerLayout}
+      drawer={isDesktopDrawerLayout}
       onClose={closeFigurePanel}
       onExport={exportFigure}
       onShare={shareFigure}
@@ -752,7 +761,6 @@ export function CatalogWorkspace() {
         <a className="wordmark" href="#builder">Fig<span>Forge</span></a>
          <nav className="app-nav" aria-label={t("nav.label")}>
           <a className="app-nav__link app-nav__link--active" href="#builder" aria-current="page">{t("nav.builder")}</a>
-          <a className="app-nav__link" href="#figure-panel">{t("nav.figure")}</a>
           <a className="app-nav__link" href="#methodology">{t("nav.notes")}</a>
         </nav>
         <span className="app-header__status">{t("header.status")}</span>
@@ -763,7 +771,7 @@ export function CatalogWorkspace() {
             <option value="en">{t("language.en")}</option>
           </select>
         </label>
-        {!isMobileLayout && isDrawerLayout ? (
+        {!isMobileLayout ? (
           <button
             aria-expanded={isFigurePanelOpen}
             className="ff-button ff-button--secondary ff-button--sm workspace-drawer-trigger"
@@ -771,7 +779,7 @@ export function CatalogWorkspace() {
             ref={drawerTriggerRef}
             type="button"
           >
-            {t("header.openFigure")}
+            {t("header.openFigureCount", { count: selectedComponentIds.size })}
           </button>
         ) : null}
       </header>
@@ -801,7 +809,6 @@ export function CatalogWorkspace() {
           </div>
           {mobileTab === "parts" ? (
             <div className="mobile-tab-panel mobile-parts-panel" id="mobile-panel-parts" role="tabpanel" aria-labelledby="mobile-tab-parts">
-              {categoryRail}
               {catalogPanel}
             </div>
           ) : null}
@@ -818,13 +825,12 @@ export function CatalogWorkspace() {
         </div>
       ) : (
          <div className="workspace" aria-label={t("mobile.workspaceLabel")}>
-          {categoryRail}
           {catalogPanel}
           {viewport}
-          {isDrawerLayout && isFigurePanelOpen ? (
+          {isDesktopDrawerLayout && isFigurePanelOpen ? (
           <button aria-label={t("figure.panelClose")} className="figure-panel-backdrop" onClick={closeFigurePanel} type="button" />
           ) : null}
-          {!isDrawerLayout || isFigurePanelOpen ? figurePanel : null}
+          {isFigurePanelOpen ? figurePanel : null}
         </div>
       )}
 
