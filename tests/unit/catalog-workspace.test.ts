@@ -14,10 +14,15 @@ import {
 describe("FF-14 responsive catalog workspace", () => {
   it("keeps technical methodology out of the figure workflow", async () => {
     const workspaceSource = await readFile("src/components/CatalogWorkspace.tsx", "utf8");
+    const methodologySource = await readFile("src/components/MethodologyPage.tsx", "utf8");
+    const appSource = await readFile("src/app/App.tsx", "utf8");
     const viewportSource = await readFile("src/components/FigureViewport.tsx", "utf8");
 
-    expect(workspaceSource).toContain('className="workspace-methodology"');
-    expect(workspaceSource).toContain('t("methodology.assembly")');
+    expect(workspaceSource).not.toContain('className="workspace-methodology"');
+    expect(methodologySource).toContain('className="workspace-methodology"');
+    expect(methodologySource).toContain('t("source.note")');
+    expect(methodologySource).toContain('t("methodology.assembly")');
+    expect(appSource).toContain('pathname === "/methodology"');
     expect(viewportSource).not.toContain("Lokaler MVP:");
     expect(viewportSource).not.toContain("lokaler Prototyp");
     expect(viewportSource).not.toContain("keine Garantie für reale Klemmkraft");
@@ -85,7 +90,6 @@ describe("FF-14 responsive catalog workspace", () => {
     expect(source).toContain("<CatalogSetFilter");
     expect(source).toContain("selectedSetPartNumbers.has(part.rebrickablePartNum");
     expect(source).toContain('t("catalog.policy")');
-    expect(source).toContain('t("source.note")');
     expect(source).toContain("onSelect={builderComponent && digitallySupportedLDrawEntryForComponent(builderComponent.id)");
     expect(source).toContain("<FigureViewport selectedParts={selectedLDrawParts}");
     expect(source).toContain("saveCurrentFigureDraft");

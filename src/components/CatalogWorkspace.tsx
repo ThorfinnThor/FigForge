@@ -55,6 +55,10 @@ type CatalogRole = CatalogPackagePart["role"];
 type CatalogLoadState = "loading" | "ready" | "error";
 type CatalogViewMode = "exact" | "all";
 type SemanticSearchStatus = "disabled" | "loading" | "ready" | "error";
+type FigureSnapshot = {
+  selectedByRole: Partial<Record<CatalogRole, string>>;
+  selectedColorByRole: Partial<Record<CatalogRole, number>>;
+};
 
 const INITIAL_VISIBLE_PARTS = 80;
 const LDRAW_CATALOG_ROLES: ReadonlySet<string> = new Set([
@@ -106,6 +110,7 @@ export function CatalogWorkspace() {
   const [isFigurePanelOpen, setIsFigurePanelOpen] = useState(false);
   const [selectedByRole, setSelectedByRole] = useState(initialSelectionByRole);
   const [selectedColorByRole, setSelectedColorByRole] = useState<Partial<Record<CatalogRole, number>>>({});
+  const [undoSnapshot, setUndoSnapshot] = useState<FigureSnapshot | null>(null);
   const [colorOptionsByRole, setColorOptionsByRole] = useState<Partial<Record<CatalogRole, readonly ShopExportColor[]>>>({});
   const [draftHydrated, setDraftHydrated] = useState(false);
   const [saveStatus, setSaveStatus] = useState<"loading" | "saved" | "error">("loading");
@@ -276,10 +281,19 @@ export function CatalogWorkspace() {
     } satisfies ShopExportSelection]
     : []);
 
+  const rememberFigureState = (): void => {
+    setUndoSnapshot({
+      selectedByRole: { ...selectedByRole },
+      selectedColorByRole: { ...selectedColorByRole },
+    });
+  };
+
   const selectForPreview = (component: CatalogPackagePart): void => {
     if (!digitallySupportedLDrawEntryForComponent(component.id)) {
       return;
     }
+    if (selectedByRole[component.role] === component.id) return;
+    rememberFigureState();
     setSelectedColorByRole((current) => {
       const next = { ...current };
       delete next[component.role];
@@ -289,6 +303,8 @@ export function CatalogWorkspace() {
   };
 
   const removeFromFigure = (slot: CatalogRole): void => {
+    if (!selectedByRole[slot]) return;
+    rememberFigureState();
     setSelectedByRole((current) => {
       const next = { ...current };
       delete next[slot];
@@ -299,6 +315,24 @@ export function CatalogWorkspace() {
       delete next[slot];
       return next;
     });
+  };
+
+  const changeSelectedColor = (slot: CatalogRole, colorId: number | undefined): void => {
+    if (selectedColorByRole[slot] === colorId) return;
+    rememberFigureState();
+    setSelectedColorByRole((current) => {
+      const next = { ...current };
+      if (colorId === undefined) delete next[slot];
+      else next[slot] = colorId;
+      return next;
+    });
+  };
+
+  const undoLastFigureChange = (): void => {
+    if (!undoSnapshot) return;
+    setSelectedByRole({ ...undoSnapshot.selectedByRole });
+    setSelectedColorByRole({ ...undoSnapshot.selectedColorByRole });
+    setUndoSnapshot(null);
   };
 
   const showAllPartsForSelectedSet = (): void => {
@@ -344,7 +378,7 @@ export function CatalogWorkspace() {
     return () => { active = false; };
   }, [selectedByRole]);
 
-  const restoreFigureDocument = async (document: FigureDocument): Promise<void> => {
+  const restoreFigureDocument = async (document: FigureDocument, recordUndo = true): Promise<void> => {
     const roles = [...new Set(document.selections.map(({ slot }) => slot))];
     await Promise.all(roles.map(loadCatalogParts));
     const restored = selectionsFromFigureDocument(document, isSupportedDocumentSelection);
@@ -357,6 +391,7 @@ export function CatalogWorkspace() {
     });
     const declaredColorCount = document.selections.filter(({ rebrickableColorId }) => rebrickableColorId !== undefined).length;
     if (Object.keys(restoredColors).length !== declaredColorCount) throw new Error("unsupported-color");
+    if (recordUndo) rememberFigureState();
     setSelectedByRole(restored);
     setSelectedColorByRole(restoredColors);
   };
@@ -386,7 +421,8 @@ export function CatalogWorkspace() {
         const initialDocument = shared ?? document;
         if (!initialDocument) return;
         if (!active) return;
-        await restoreFigureDocument(initialDocument);
+        await restoreFigureDocument(initialDocument, false);
+        setUndoSnapshot(null);
         if (shared) {
           setTransferMessageTone("info");
           setTransferMessage(t("figure.share.loaded", { name: initialDocument.name }));
@@ -743,12 +779,7 @@ export function CatalogWorkspace() {
       shareLink={shareLink}
       shopExport={<ShopExportPanel selections={shopExportSelections} />}
       slots={figureSlots}
-      onColorChange={(slot, colorId) => setSelectedColorByRole((current) => {
-        const next = { ...current };
-        if (colorId === undefined) delete next[slot];
-        else next[slot] = colorId;
-        return next;
-      })}
+      onColorChange={changeSelectedColor}
       onRemove={removeFromFigure}
       transferMessage={transferMessage}
       transferMessageTone={transferMessageTone}
@@ -758,10 +789,10 @@ export function CatalogWorkspace() {
   return (
     <div className="app-shell" id="builder">
       <header className="app-header">
-        <a className="wordmark" href="#builder">Fig<span>Forge</span></a>
+        <a className="wordmark" href="/">Fig<span>Forge</span></a>
          <nav className="app-nav" aria-label={t("nav.label")}>
-          <a className="app-nav__link app-nav__link--active" href="#builder" aria-current="page">{t("nav.builder")}</a>
-          <a className="app-nav__link" href="#methodology">{t("nav.notes")}</a>
+          <a className="app-nav__link app-nav__link--active" href="/" aria-current="page">{t("nav.builder")}</a>
+          <a className="app-nav__link" href="/methodology">{t("nav.notes")}</a>
         </nav>
         <span className="app-header__status">{t("header.status")}</span>
         <label className="language-picker">
@@ -771,6 +802,18 @@ export function CatalogWorkspace() {
             <option value="en">{t("language.en")}</option>
           </select>
         </label>
+        <Button
+          aria-label={undoSnapshot ? t("figure.undo") : t("figure.undoUnavailable")}
+          className="workspace-undo"
+          disabled={!undoSnapshot}
+          onClick={undoLastFigureChange}
+          size="sm"
+          title={undoSnapshot ? t("figure.undo") : t("figure.undoUnavailable")}
+          variant="ghost"
+        >
+          <span aria-hidden="true">↶</span>
+          <span>{t("figure.undo")}</span>
+        </Button>
         {!isMobileLayout ? (
           <button
             aria-expanded={isFigurePanelOpen}
@@ -834,19 +877,6 @@ export function CatalogWorkspace() {
         </div>
       )}
 
-      <details className="workspace-methodology" id="methodology">
-        <summary>{t("methodology.title")}</summary>
-        <div className="workspace-methodology__body">
-          <p>{t("source.note")}</p>
-          <p>{t("methodology.assembly")}</p>
-          <p>{t("methodology.physical")}</p>
-          <p className="workspace-methodology__links">
-            <a href="/licenses/LDraw-CAreadme.txt" target="_blank" rel="noreferrer">{t("source.ldrawLicense")}</a>
-            <a href="/licenses/LDCadShadowLibrary-NOTICE.txt" target="_blank" rel="noreferrer">{t("source.connectionLicense")}</a>
-            <a href="/licenses/SemanticSearch-NOTICE.txt" target="_blank" rel="noreferrer">{t("source.searchLicense")}</a>
-          </p>
-        </div>
-      </details>
     </div>
   );
 }
