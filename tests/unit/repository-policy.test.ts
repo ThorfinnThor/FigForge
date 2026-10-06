@@ -47,6 +47,17 @@ describe("repository delivery policy", () => {
     expect(workflow).not.toContain('gh pr view "$branch"');
   });
 
+  it("dispatches the required verification for action-created catalog PRs", async () => {
+    const [ciWorkflow, catalogWorkflow] = await Promise.all([
+      readProjectFile(".github/workflows/ci.yml"),
+      readProjectFile(".github/workflows/refresh-catalog.yml"),
+    ]);
+
+    expect(ciWorkflow).toContain("workflow_dispatch:");
+    expect(catalogWorkflow).toContain("actions: write");
+    expect(catalogWorkflow).toContain('gh workflow run ci.yml --ref "$branch"');
+  });
+
   it("keeps Cloudflare branch previews explicitly configured", async () => {
     const wrangler = JSON.parse(await readProjectFile("wrangler.jsonc")) as {
       previews?: Record<string, unknown>;
