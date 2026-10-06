@@ -4,13 +4,595 @@
   "ldrawRelease": "2026-08",
   "methodology": "The complete role-specific queue was reviewed against the catalog role and the official top-level LDraw model. Only complete assemblies that use the existing standard minifigure torso-slot origin may become builder-ready. Individual body components and assemblies that require a different figure family or counterpart remain explicitly incompatible instead of receiving a guessed placement.",
   "builderEligible": [
-    { "role": "torsoAssembly", "rebrickablePartNum": "17", "ldrawFile": "parts/17.dat", "evidence": "Official one-piece Minifig Torso with Integral Arms at the standard torso origin." },
-    { "role": "torsoAssembly", "rebrickablePartNum": "37191", "ldrawFile": "parts/37191c01.dat", "evidence": "Official complete Minifig Torso Brick shortcut containing the body, both arms and both hands." }
+    {
+      "role": "torsoAssembly",
+      "rebrickablePartNum": "17",
+      "ldrawFile": "parts/17.dat",
+      "evidence": "Official one-piece Minifig Torso with Integral Arms at the standard torso origin.",
+      "sourceSha256": "d7d1e8a9321bb8e1233a1232458e76e928d246d46cf60b52be03c12591c89bef"
+    },
+    {
+      "role": "torsoAssembly",
+      "rebrickablePartNum": "37191",
+      "ldrawFile": "parts/37191c01.dat",
+      "evidence": "Official complete Minifig Torso Brick shortcut containing the body, both arms and both hands.",
+      "sourceSha256": "d8292bcc6a9d4425d904c6715a0b1b5f6b0469f23651f1cd7c798742e1fc26a4"
+    }
   ],
-  "reviewedIncompatibleQueue": {
-    "count": 95,
-    "sha256": "25b0562c5aa8bad745a810a12f7c807daf56e1c444cad9142e90da6533038708",
+  "reviewedIncompatible": {
     "reasonCode": "not-a-complete-compatible-role-assembly",
-    "reason": "The unique official model is an individual component or requires a non-standard figure-family counterpart/anchor; it is not a complete drop-in assembly for the current minifigure builder slot."
+    "reason": "The unique official model is an individual component or requires a non-standard figure-family counterpart/anchor; it is not a complete drop-in assembly for the current minifigure builder slot.",
+    "entries": [
+      {
+        "role": "torsoAssembly",
+        "rebrickablePartNum": "973p1e",
+        "ldrawFile": "parts/973p1e.dat",
+        "sourceSha256": "9fbac19f377d695ea254a589fee970be81bcf6dd26b39bf8e5287493d010e93d"
+      },
+      {
+        "role": "torsoAssembly",
+        "rebrickablePartNum": "973p1r",
+        "ldrawFile": "parts/973p1r.dat",
+        "sourceSha256": "0bc1914738681194f1cc77c0493dffd78902cd896491d414629bc0a940c78e8c"
+      },
+      {
+        "role": "torsoAssembly",
+        "rebrickablePartNum": "973p8h",
+        "ldrawFile": "parts/973p8h.dat",
+        "sourceSha256": "1944ce8610b281862b01fe9a6eb40f80f2e43f06dd4855ce70dc63d53763775f"
+      },
+      {
+        "role": "torsoAssembly",
+        "rebrickablePartNum": "973p28",
+        "ldrawFile": "parts/973p28.dat",
+        "sourceSha256": "ff92c94c12abb2eae0c96bd8a65ea182aaa3ef00ed121ceb2cb69db91c42156b"
+      },
+      {
+        "role": "torsoAssembly",
+        "rebrickablePartNum": "973p46",
+        "ldrawFile": "parts/973p46.dat",
+        "sourceSha256": "b034e921c8595dfb2df6095a7403ea50d7717da3e68c6df3c793f5fe3234d2db"
+      },
+      {
+        "role": "torsoAssembly",
+        "rebrickablePartNum": "973psq",
+        "ldrawFile": "parts/973psq.dat",
+        "sourceSha256": "e7bc96ae927f2004f2547cc8d202264f1b3b2c4f9d65e06ed48592f58154dcf4"
+      },
+      {
+        "role": "torsoAssembly",
+        "rebrickablePartNum": "973pss",
+        "ldrawFile": "parts/973pss.dat",
+        "sourceSha256": "2209deed70be03cbe5064a009fb2e95ef213b2bf81e584bb2b21b4d36da13ae4"
+      },
+      {
+        "role": "torsoAssembly",
+        "rebrickablePartNum": "1881",
+        "ldrawFile": "parts/1881.dat",
+        "sourceSha256": "0637e8228b4d19dde32415367e050a741bc886f8716019a03d3905902607d83d"
+      },
+      {
+        "role": "torsoAssembly",
+        "rebrickablePartNum": "2531",
+        "ldrawFile": "parts/2531.dat",
+        "sourceSha256": "4c2b63c039047549716d0660821498bb168f38bfb3a4ae2fe10b0190c7996a02"
+      },
+      {
+        "role": "torsoAssembly",
+        "rebrickablePartNum": "2699",
+        "ldrawFile": "parts/2699.dat",
+        "sourceSha256": "9c2e1e5d65c46e2d7a0af6394f3b3d8508025c08b5d1c1c4be8a956f7fddd038"
+      },
+      {
+        "role": "torsoAssembly",
+        "rebrickablePartNum": "2701",
+        "ldrawFile": "parts/2701.dat",
+        "sourceSha256": "472552fb7ef91bba503cc961e353b32768a55d91e592c88804e3773f9c91c20d"
+      },
+      {
+        "role": "torsoAssembly",
+        "rebrickablePartNum": "2702",
+        "ldrawFile": "parts/2702.dat",
+        "sourceSha256": "bba916a401f1768b0b3ac5b06561abb4731e2067e77ba7a2e9778bc796638198"
+      },
+      {
+        "role": "torsoAssembly",
+        "rebrickablePartNum": "2705",
+        "ldrawFile": "parts/2705.dat",
+        "sourceSha256": "a9d9cce495d26adeaf0b8a46460a1a45e3b7f856e13423623b00fadcb22101d0"
+      },
+      {
+        "role": "torsoAssembly",
+        "rebrickablePartNum": "3818",
+        "ldrawFile": "parts/3818.dat",
+        "sourceSha256": "26c380709d59d175ef5441a3014aad60392b40f4c7c94db6651450b03b58d088"
+      },
+      {
+        "role": "torsoAssembly",
+        "rebrickablePartNum": "3819",
+        "ldrawFile": "parts/3819.dat",
+        "sourceSha256": "604c257daffba455d0a57523d7f2a36700a4ca25328714a555bf93d8f2c9b4cb"
+      },
+      {
+        "role": "torsoAssembly",
+        "rebrickablePartNum": "3820",
+        "ldrawFile": "parts/3820.dat",
+        "sourceSha256": "13959ac6763f2a1b5d8b076c99e73951b6eb9586ad486e32bf772a69a726f42f"
+      },
+      {
+        "role": "torsoAssembly",
+        "rebrickablePartNum": "6260",
+        "ldrawFile": "parts/6260.dat",
+        "sourceSha256": "e916ba635aaa26884231304a1d5cd541fb6e622bdb5eaa14f9e050d9aef4bd73"
+      },
+      {
+        "role": "torsoAssembly",
+        "rebrickablePartNum": "6265",
+        "ldrawFile": "parts/6265.dat",
+        "sourceSha256": "837a54145ae86c8a3e5433c0681391c9e2ed30e0a7732d75c0bfac9f1d122a8b"
+      },
+      {
+        "role": "torsoAssembly",
+        "rebrickablePartNum": "10058",
+        "ldrawFile": "parts/10058.dat",
+        "sourceSha256": "e446417daf73d8ccadd3ebb90271f128f2aa60f958686fb49f15a2b285f92914"
+      },
+      {
+        "role": "torsoAssembly",
+        "rebrickablePartNum": "10124",
+        "ldrawFile": "parts/10124.dat",
+        "sourceSha256": "d1a88b2980e22829edc5e2d86225ae762ec00b25a20bf123a34dc2121f6ab690"
+      },
+      {
+        "role": "torsoAssembly",
+        "rebrickablePartNum": "10126",
+        "ldrawFile": "parts/10126.dat",
+        "sourceSha256": "5f1ef0d91cdb650b90d666a5cb9c0a7b11d24d1177b50c25c9b96b534a029a63"
+      },
+      {
+        "role": "torsoAssembly",
+        "rebrickablePartNum": "10127",
+        "ldrawFile": "parts/10127.dat",
+        "sourceSha256": "1e74d04277fd508f42657bec9b5cb84474fb47d2183afcb33d3d55d3dd2a3c0c"
+      },
+      {
+        "role": "torsoAssembly",
+        "rebrickablePartNum": "10154",
+        "ldrawFile": "parts/10154.dat",
+        "sourceSha256": "b9062979c096fb7594c860152c4f2779fd56dd1486c0145c07b6f4f4c22c66a1"
+      },
+      {
+        "role": "torsoAssembly",
+        "rebrickablePartNum": "15341",
+        "ldrawFile": "parts/15341.dat",
+        "sourceSha256": "15f629ff168598464d905fc1afbf2514f7b2553d89da08ada6c381b57bdd0eed"
+      },
+      {
+        "role": "torsoAssembly",
+        "rebrickablePartNum": "22392",
+        "ldrawFile": "parts/22392.dat",
+        "sourceSha256": "623a4dd689f69e351f48b68b0bec0f18d20c58e8a6a5dc3d3e6eb2e4ca1f388b"
+      },
+      {
+        "role": "torsoAssembly",
+        "rebrickablePartNum": "24074",
+        "ldrawFile": "parts/24074.dat",
+        "sourceSha256": "a43de558a37a666c4d4c6da13b5f07799987c77e73db1d684ff3f60c5751ed64"
+      },
+      {
+        "role": "torsoAssembly",
+        "rebrickablePartNum": "24078",
+        "ldrawFile": "parts/24078.dat",
+        "sourceSha256": "f4f665f0e5dcbd7b05bb82d034e25e6b9e0ecc91c54fcb086b8fac0e6604cb47"
+      },
+      {
+        "role": "torsoAssembly",
+        "rebrickablePartNum": "28660",
+        "ldrawFile": "parts/28660.dat",
+        "sourceSha256": "771124836fb06e161658dfc8ec810b2731c383581f46348bae5fef9495302a56"
+      },
+      {
+        "role": "torsoAssembly",
+        "rebrickablePartNum": "30375",
+        "ldrawFile": "parts/30375.dat",
+        "sourceSha256": "c181c5bc260e3fd8b8ff55ead0f5e5e11b3bc1e89a51224d898d16e89cc02daf"
+      },
+      {
+        "role": "torsoAssembly",
+        "rebrickablePartNum": "30375pr0001",
+        "ldrawFile": "parts/30375ps4.dat",
+        "sourceSha256": "ffd9984a7d866bd7e72521a03dd45300c381146f0a5bc735bfa65207f6878689"
+      },
+      {
+        "role": "torsoAssembly",
+        "rebrickablePartNum": "30375pr0002",
+        "ldrawFile": "parts/30375ps6.dat",
+        "sourceSha256": "392b8e20953dc48b15ee44c6cf1d76a3f88798845725291bc7c5148bad875cec"
+      },
+      {
+        "role": "torsoAssembly",
+        "rebrickablePartNum": "30375pr0003",
+        "ldrawFile": "parts/30375ps5.dat",
+        "sourceSha256": "428ae5f43eda643f11e89712105b504c76657db1dddef9ebf8cf39f7558a04a3"
+      },
+      {
+        "role": "torsoAssembly",
+        "rebrickablePartNum": "30375pr0004",
+        "ldrawFile": "parts/30375ps1.dat",
+        "sourceSha256": "44b2686ccfe3ee9f984a61b9747dcd0c45820cc3722d54364a94656dec4402fa"
+      },
+      {
+        "role": "torsoAssembly",
+        "rebrickablePartNum": "30375pr0005",
+        "ldrawFile": "parts/30375ps7.dat",
+        "sourceSha256": "9e29ac93a82bcdc98339ea737f0f8dec9af1d0e5796efd0f12466e0b1fcb6574"
+      },
+      {
+        "role": "torsoAssembly",
+        "rebrickablePartNum": "30375pr0006",
+        "ldrawFile": "parts/30375ps2.dat",
+        "sourceSha256": "29d1726a70cd4385d8743a5d8595c69e03277c6f290e12a361edc82280289bfa"
+      },
+      {
+        "role": "torsoAssembly",
+        "rebrickablePartNum": "30375pr0007",
+        "ldrawFile": "parts/30375ps3.dat",
+        "sourceSha256": "ede187bb1039d168b70ccebda3cc84323b0bc8607cd8f088c07d54c16cb3ace4"
+      },
+      {
+        "role": "torsoAssembly",
+        "rebrickablePartNum": "30377",
+        "ldrawFile": "parts/30377.dat",
+        "sourceSha256": "edf6230a554b71111bf3ac49f5f9f0651418561adcf93bb9c1cb129fb1938a5f"
+      },
+      {
+        "role": "torsoAssembly",
+        "rebrickablePartNum": "37777pr0002",
+        "ldrawFile": "parts/37777p01.dat",
+        "sourceSha256": "cec6bfb0513cc84d9aaeab5d9a47d818488b212b813daec3e26138c871c297a9"
+      },
+      {
+        "role": "torsoAssembly",
+        "rebrickablePartNum": "41850",
+        "ldrawFile": "parts/41850.dat",
+        "sourceSha256": "319b4c1be3269862d549f7c32fab304ff971bed8979d004887de369b7cdcf37c"
+      },
+      {
+        "role": "torsoAssembly",
+        "rebrickablePartNum": "41890",
+        "ldrawFile": "parts/41890.dat",
+        "sourceSha256": "f3b2be64f798cb9dcaa55fb502e9c2fa70ffdb62b94b0df8edad03f4aef66420"
+      },
+      {
+        "role": "torsoAssembly",
+        "rebrickablePartNum": "53989",
+        "ldrawFile": "parts/53989.dat",
+        "sourceSha256": "2b9d6fd1d3a443b8ecad7c0078dd695304214b7108a1870952ee51dbaec41b64"
+      },
+      {
+        "role": "torsoAssembly",
+        "rebrickablePartNum": "54275",
+        "ldrawFile": "parts/54275.dat",
+        "sourceSha256": "dbfad4d20e5c65746154110ec41224a08dbb8bab8a585551e886e818c7059728"
+      },
+      {
+        "role": "torsoAssembly",
+        "rebrickablePartNum": "57588",
+        "ldrawFile": "parts/57588.dat",
+        "sourceSha256": "2a49634640948a4d6b44e571751aa03d34dd8a893667d95f3caa46cde9232442"
+      },
+      {
+        "role": "torsoAssembly",
+        "rebrickablePartNum": "59230",
+        "ldrawFile": "parts/59230.dat",
+        "sourceSha256": "a12f203e5eb44f09155e4fca9b61d8fb4ad2b5280cb1c096adb9dd5f4b0785ff"
+      },
+      {
+        "role": "torsoAssembly",
+        "rebrickablePartNum": "60115",
+        "ldrawFile": "parts/60115.dat",
+        "sourceSha256": "897cb9023187d3fe4b8131438fd3440a94b702d71b351c587f88e19b536ec345"
+      },
+      {
+        "role": "torsoAssembly",
+        "rebrickablePartNum": "60639c01",
+        "ldrawFile": "parts/60672c02.dat",
+        "sourceSha256": "89f69a4331ec59d5258fcb5ec78c876e043ac78fca268eb9328b500453ee55cd"
+      },
+      {
+        "role": "torsoAssembly",
+        "rebrickablePartNum": "60639c02",
+        "ldrawFile": "parts/60672c01.dat",
+        "sourceSha256": "4fa20de08b951529a4460bc0b9b1804f92cfd21496ca27daf3895590bd295475"
+      },
+      {
+        "role": "torsoAssembly",
+        "rebrickablePartNum": "60639c03pr0001",
+        "ldrawFile": "parts/60672c03p01.dat",
+        "sourceSha256": "d9a87ecd087406f409ce645a0c8fcdd09a16fa178ad7d1ff6edd1ee8de8e4b35"
+      },
+      {
+        "role": "torsoAssembly",
+        "rebrickablePartNum": "60640",
+        "ldrawFile": "parts/60640.dat",
+        "sourceSha256": "991bcdce126468e2d3c12ed8eff1784de0f49b2cf979b1de9a9454fc061eb0ad"
+      },
+      {
+        "role": "torsoAssembly",
+        "rebrickablePartNum": "60641",
+        "ldrawFile": "parts/60641.dat",
+        "sourceSha256": "8d1aa72fee2b75c1f2cacc266a1098ec3a057f1a371a3e6839d84faa8c54b57a"
+      },
+      {
+        "role": "torsoAssembly",
+        "rebrickablePartNum": "60642c01",
+        "ldrawFile": "parts/60673c02.dat",
+        "sourceSha256": "a1c823c605d0e5b7bbc458acd9dd47fdc2ec0e2668547b38d48b30c7cc04c035"
+      },
+      {
+        "role": "torsoAssembly",
+        "rebrickablePartNum": "60642c02",
+        "ldrawFile": "parts/60673c01.dat",
+        "sourceSha256": "d9b2814c175e2e45fc25472f5d3c55df586482126c75957b32e84fb97103b1c5"
+      },
+      {
+        "role": "torsoAssembly",
+        "rebrickablePartNum": "60642c03pr0001",
+        "ldrawFile": "parts/60673c03p01.dat",
+        "sourceSha256": "d6af623b930b289f386d760c3bb174641d7afd4f3161876743ff386e1febfbe5"
+      },
+      {
+        "role": "torsoAssembly",
+        "rebrickablePartNum": "62691",
+        "ldrawFile": "parts/62691.dat",
+        "sourceSha256": "de8bd770d260fc66d8174c22bece392dc3272624a8be8338831dc51fda043579"
+      },
+      {
+        "role": "torsoAssembly",
+        "rebrickablePartNum": "64796",
+        "ldrawFile": "parts/64796.dat",
+        "sourceSha256": "7079afb91d7d1a9b1308437718432f4c620e7ccceae25e8b4b595e3dfd87f81a"
+      },
+      {
+        "role": "torsoAssembly",
+        "rebrickablePartNum": "66788",
+        "ldrawFile": "parts/66788.dat",
+        "sourceSha256": "018cd8fa3af4bc9a56d210a3aedd36abac1127bcdf8b53fe85e2ed3054d1ded2"
+      },
+      {
+        "role": "torsoAssembly",
+        "rebrickablePartNum": "67906",
+        "ldrawFile": "parts/67906.dat",
+        "sourceSha256": "b2c5e98b0d8a107a09d0c86f491c19876c38331c33d17e4b51d7c62471b6763a"
+      },
+      {
+        "role": "torsoAssembly",
+        "rebrickablePartNum": "67906c01pr0001",
+        "ldrawFile": "parts/67906p01.dat",
+        "sourceSha256": "60c8116337a7f3c882038e96af1bd538effd591ba337bbdab0db47554dab5e30"
+      },
+      {
+        "role": "torsoAssembly",
+        "rebrickablePartNum": "87566pr0001",
+        "ldrawFile": "parts/87566p02.dat",
+        "sourceSha256": "4862489ad55bbcf3707cce3600a754238b466146308a3ec74b48a2e342dd9465"
+      },
+      {
+        "role": "torsoAssembly",
+        "rebrickablePartNum": "87566pr0002",
+        "ldrawFile": "parts/87566p01.dat",
+        "sourceSha256": "17f4a312157664f72f37e593b9dc9f70f97c38f6e3fe4faa55338de1509d4723"
+      },
+      {
+        "role": "torsoAssembly",
+        "rebrickablePartNum": "87568",
+        "ldrawFile": "parts/87568.dat",
+        "sourceSha256": "62ed7d46b68e3eea22c74a0df929f1ec63c2f54976b96235ae4afc2db07da6be"
+      },
+      {
+        "role": "torsoAssembly",
+        "rebrickablePartNum": "87568pr0001",
+        "ldrawFile": "parts/87568p02.dat",
+        "sourceSha256": "a66d2ddd2a7298e517b36574c23bd13e74ba5b0ca36baca3659014edba2fefe7"
+      },
+      {
+        "role": "torsoAssembly",
+        "rebrickablePartNum": "87568pr0002",
+        "ldrawFile": "parts/87568p01.dat",
+        "sourceSha256": "9c00269d4bbfa7a08cab7c5ebcd0c2d681ee8f834a297a787dac671ca62c56fe"
+      },
+      {
+        "role": "torsoAssembly",
+        "rebrickablePartNum": "87568pr0003",
+        "ldrawFile": "parts/87568p03.dat",
+        "sourceSha256": "e575da6977a8e917b6393bf5aaa28e9777329ae427db5303ddb08781d9d547c0"
+      },
+      {
+        "role": "torsoAssembly",
+        "rebrickablePartNum": "87568pr0004",
+        "ldrawFile": "parts/87568p04.dat",
+        "sourceSha256": "7ee04cf83dc57bd510004c6dbdc8f315b33072bb5298aa0ab2b3b11be51e63cb"
+      },
+      {
+        "role": "torsoAssembly",
+        "rebrickablePartNum": "92754pr0001",
+        "ldrawFile": "parts/92754p01.dat",
+        "sourceSha256": "fdd841aa95614f7113acf67b064162feea05985702f9ec8d98dc08e2c84397ad"
+      },
+      {
+        "role": "torsoAssembly",
+        "rebrickablePartNum": "93061",
+        "ldrawFile": "parts/93061.dat",
+        "sourceSha256": "479503c873494afa851a4e6b532f9bf97e2ad3cfd60d7ed3f05e7d3c2f31ef7c"
+      },
+      {
+        "role": "torsoAssembly",
+        "rebrickablePartNum": "93609",
+        "ldrawFile": "parts/93609.dat",
+        "sourceSha256": "150b6e1632258ce69da194a4c9149fd56ad42fc5a01739e8ea3c4e3d7ae8b696"
+      },
+      {
+        "role": "torsoAssembly",
+        "rebrickablePartNum": "98313",
+        "ldrawFile": "parts/98313.dat",
+        "sourceSha256": "e7d23ed980a512f63d76f39c94afc37ecf6f3888b24a58e80a7d7ecbcea7c315"
+      },
+      {
+        "role": "torsoAssembly",
+        "rebrickablePartNum": "102195c27pr0001",
+        "ldrawFile": "parts/973pdhh.dat",
+        "sourceSha256": "6ae7bb10333a9eef8df20555b6b509d4217016033662fc5e091c8ab13854f3fc"
+      },
+      {
+        "role": "legsAssembly",
+        "rebrickablePartNum": "2703",
+        "ldrawFile": "parts/2703.dat",
+        "sourceSha256": "31607e871bae94ff3e9592348dbea278d4745ba5b0de4031c44472c2335d2dd3"
+      },
+      {
+        "role": "legsAssembly",
+        "rebrickablePartNum": "2704",
+        "ldrawFile": "parts/2704.dat",
+        "sourceSha256": "190b34324c33a6471f82d413c9966da9d6d52ec3ce6b584ecee909c1eb7f35f0"
+      },
+      {
+        "role": "legsAssembly",
+        "rebrickablePartNum": "2706",
+        "ldrawFile": "parts/2706.dat",
+        "sourceSha256": "95fd8a2b13fe9a0f0cf847108f760b5f8a8471269c48fa1f11a620fdef5cc6fd"
+      },
+      {
+        "role": "legsAssembly",
+        "rebrickablePartNum": "2709",
+        "ldrawFile": "parts/2709.dat",
+        "sourceSha256": "b5c4be4215afcadc3d6737dbda36b996eec7fff05c4eb5c5fc7d607a08f44205"
+      },
+      {
+        "role": "legsAssembly",
+        "rebrickablePartNum": "2710",
+        "ldrawFile": "parts/2710.dat",
+        "sourceSha256": "c8d09118d10297bf2e968458237bce67d76544b1e9b541c13fc9c78df77c1ed6"
+      },
+      {
+        "role": "legsAssembly",
+        "rebrickablePartNum": "3815",
+        "ldrawFile": "parts/3815b.dat",
+        "sourceSha256": "8777d3d10eccc89c6b57c35e45e91be928f147785454876cea0724f2bd34d4ca"
+      },
+      {
+        "role": "legsAssembly",
+        "rebrickablePartNum": "3816",
+        "ldrawFile": "parts/3816c.dat",
+        "sourceSha256": "c72b564585237d068e89eed878760267c2194cd74b57fab0be8984d2443ba9b8"
+      },
+      {
+        "role": "legsAssembly",
+        "rebrickablePartNum": "3817",
+        "ldrawFile": "parts/3817c.dat",
+        "sourceSha256": "028cd95b1fb74b7a721a4e19ffc5f1aba9c780d72a3a6302fdd2a4ef5f77c781"
+      },
+      {
+        "role": "legsAssembly",
+        "rebrickablePartNum": "6266",
+        "ldrawFile": "parts/6266.dat",
+        "sourceSha256": "1126aa53353753880826fd6138e6f31e6767737994950e6e8e9a97922cd61867"
+      },
+      {
+        "role": "legsAssembly",
+        "rebrickablePartNum": "15447",
+        "ldrawFile": "parts/15447.dat",
+        "sourceSha256": "6d753fc12e84d3d2f5526e91222c1a048d98e34e330601efc9b82a127b5636ea"
+      },
+      {
+        "role": "legsAssembly",
+        "rebrickablePartNum": "17486",
+        "ldrawFile": "parts/17486.dat",
+        "sourceSha256": "beb793c2ab6d4f165a6c2c9b58e21b09ab6a41989fc979b9dc059f5cbdb4f06b"
+      },
+      {
+        "role": "legsAssembly",
+        "rebrickablePartNum": "23769",
+        "ldrawFile": "parts/23769.dat",
+        "sourceSha256": "6e019c0f06c4af0b6a7a11a6ca23886eef3f1022a3e0d479b3f8fe4d34bda66c"
+      },
+      {
+        "role": "legsAssembly",
+        "rebrickablePartNum": "30362",
+        "ldrawFile": "parts/30362a.dat",
+        "sourceSha256": "ee152236627381d63fc46097801ebfc342c1c3f122714561de8031fa9302401f"
+      },
+      {
+        "role": "legsAssembly",
+        "rebrickablePartNum": "30376",
+        "ldrawFile": "parts/30376.dat",
+        "sourceSha256": "5a26611dd6fe203ded8bca443ca9bb858e802ee9144519975ae8ecd009b8b5be"
+      },
+      {
+        "role": "legsAssembly",
+        "rebrickablePartNum": "30530",
+        "ldrawFile": "parts/30530.dat",
+        "sourceSha256": "05fa492cd1d7d2a4b62d2628c81e72d33a7165d2063e6a8e80fdd20605ded9ab"
+      },
+      {
+        "role": "legsAssembly",
+        "rebrickablePartNum": "37365",
+        "ldrawFile": "parts/37365.dat",
+        "sourceSha256": "658f0ac1dcc517048850a70936aeb962567157f5ca5435be22c7abb5db1264a5"
+      },
+      {
+        "role": "legsAssembly",
+        "rebrickablePartNum": "42687",
+        "ldrawFile": "parts/42687.dat",
+        "sourceSha256": "cbc0653df255c65c5bfd6ad91f489a4ba664c6d4aa6766852909e59fe3caf1f4"
+      },
+      {
+        "role": "legsAssembly",
+        "rebrickablePartNum": "53984",
+        "ldrawFile": "parts/53984.dat",
+        "sourceSha256": "4e2250272411c580a0a66a143759039a03038c3b51a613a839b04ea7405d59c2"
+      },
+      {
+        "role": "legsAssembly",
+        "rebrickablePartNum": "66858",
+        "ldrawFile": "parts/66858.dat",
+        "sourceSha256": "1290ae016cf31898952d20051246fab4c57bec8398f03fdc6eaabd38ffc04cc3"
+      },
+      {
+        "role": "legsAssembly",
+        "rebrickablePartNum": "66858pr0001",
+        "ldrawFile": "parts/66858p01.dat",
+        "sourceSha256": "46eb4cef153e29cd06616e8726a42b5f65ddd488451d7f74339b6f34b47a7679"
+      },
+      {
+        "role": "legsAssembly",
+        "rebrickablePartNum": "66859",
+        "ldrawFile": "parts/66859.dat",
+        "sourceSha256": "422947172f380e3ad15b77a5d0897f1c90b493865ded07fed76c7c3c643c514a"
+      },
+      {
+        "role": "legsAssembly",
+        "rebrickablePartNum": "84867",
+        "ldrawFile": "parts/84867.dat",
+        "sourceSha256": "16adcf27afd0c75b5fae551f5b0bfd28f74b4dd67d8cc5014d1a575450f17cf0"
+      },
+      {
+        "role": "legsAssembly",
+        "rebrickablePartNum": "87569pr0001",
+        "ldrawFile": "parts/87569p01.dat",
+        "sourceSha256": "03b79b958909bd2a7a5b2eac7fa4913486c6a26a47ea35c78aba6e7d9c57b760"
+      },
+      {
+        "role": "legsAssembly",
+        "rebrickablePartNum": "93062c01",
+        "ldrawFile": "parts/93062p01.dat",
+        "sourceSha256": "20c422b2780a2d66b3b7aa12e8d98abf503104bcbed3e6f4113dc723c744fb7a"
+      },
+      {
+        "role": "legsAssembly",
+        "rebrickablePartNum": "93062c02",
+        "ldrawFile": "parts/93062p02.dat",
+        "sourceSha256": "c61edf70d92aeeed0c5233fc60b00b1841dd451fd8ee1a5000a9257071ee1386"
+      }
+    ]
   }
 }

@@ -660,9 +660,11 @@ let accessoryMultipleGripCandidatesEvaluated = 0;
 let accessoryLdcadGripCandidatesDisambiguated = 0;
 let accessoryLdcadPrintParentGripCandidatesEvaluated = 0;
 let ambiguousAssemblyWrappersExcluded = 0;
+let catalogPartCount = 0;
 for (const role of BUILD_ROLES) {
   const raw: unknown = JSON.parse(await readFile(resolve(root, "data/generated/catalog-packages", packageFileByRole[role]), "utf8"));
   const catalogPackage = catalogPackageSchema.parse(raw);
+  catalogPartCount += catalogPackage.parts.length;
   for (const part of catalogPackage.parts) {
     if (curatedKeys.has(`${role}:${normalize(part.rebrickablePartNum)}`)) continue;
     const normalizedPart = normalizedByPartNum.get(normalize(part.rebrickablePartNum));
@@ -1184,7 +1186,7 @@ const output = {
   },
   entries: outputEntries,
   summary: {
-    catalogPartCount: 20_202,
+    catalogPartCount,
     digitallySupportedCount: outputEntries.length,
     headCount: outputEntries.filter(({ role }) => role === "head").length,
     headwearCount: outputEntries.filter(({ role }) => role === "headwear").length,

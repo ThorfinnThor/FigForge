@@ -42,6 +42,11 @@ jobs:
       - name: Rebuild official LDraw catalog assets and coverage report
         run: npm run assets:ldraw-expanded && npm run assets:analyze:ldraw-coverage && npm run assets:analyze:placement-candidates
 
+      - name: Rebuild local semantic-search release and review worksheet
+        env:
+          FIGFORGE_MODEL_CACHE: ${{ github.workspace }}/public/search/models
+        run: npm run search:build:release && npm run search:build:review
+
       - name: Validate proposed data and repository
         run: npm run verify
 
@@ -49,7 +54,7 @@ jobs:
         id: changes
         shell: bash
         run: |
-          if [[ -n "$(git status --porcelain --untracked-files=all -- data docs/ldraw-catalog-coverage.md public/assets/ldraw public/assets/thumbnails/ldraw-expanded)" ]]; then
+          if [[ -n "$(git status --porcelain --untracked-files=all -- data docs/ldraw-catalog-coverage.md public/assets/ldraw public/assets/thumbnails/ldraw-expanded public/search)" ]]; then
             echo "changed=true" >> "$GITHUB_OUTPUT"
           else
             echo "changed=false" >> "$GITHUB_OUTPUT"
@@ -64,7 +69,7 @@ jobs:
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git fetch origin "$branch" || true
           git switch -C "$branch"
-          git add -- data docs/ldraw-catalog-coverage.md public/assets/ldraw public/assets/thumbnails/ldraw-expanded
+          git add -- data docs/ldraw-catalog-coverage.md public/assets/ldraw public/assets/thumbnails/ldraw-expanded public/search
           git commit -m "chore(data): propose Rebrickable catalog refresh"
           git push --force-with-lease origin "HEAD:refs/heads/$branch"
 

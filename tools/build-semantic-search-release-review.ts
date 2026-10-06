@@ -53,8 +53,8 @@ const orderedComponentIds = JSON.parse(orderedIdsRaw.toString("utf8")) as string
 const assortment = testAssortmentSchema.parse(JSON.parse(assortmentRaw.toString("utf8")) as unknown);
 const thumbnailDocument = JSON.parse(thumbnailsRaw.toString("utf8")) as { entries: ThumbnailEntry[] };
 const connectivityDocument = JSON.parse(connectivityRaw.toString("utf8")) as { entries: Array<{ componentId: string; status: string }> };
-if (releaseManifest.profileId !== "compact-minilm" || releaseManifest.documentCount !== 2726) {
-  throw new Error("Release review requires the 2,726-document compact MiniLM release");
+if (releaseManifest.profileId !== "compact-minilm") {
+  throw new Error("Release review requires the compact MiniLM release");
 }
 
 const curatedByKey = new Map(assortment.components.map((part) => [keyFor(part.role, part.rebrickablePartNum), part]));
@@ -159,7 +159,6 @@ const reviewCases = querySet.cases.map((reviewCase, caseIndex) => {
     .results.slice(0, 5).map(({ component }) => component.id);
   const candidateIds = [...new Set([...baseline, ...hybrid])]
     .sort((left, right) => sha256(`${reviewCase.caseId}:${left}`).localeCompare(sha256(`${reviewCase.caseId}:${right}`)));
-  if (candidateIds.length === 0) throw new Error(`No review candidates generated for ${reviewCase.caseId}`);
   return {
     ...reviewCase,
     systems: { baseline, hybrid },

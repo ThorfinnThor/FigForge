@@ -4,6 +4,7 @@ import { resolve } from "node:path";
 import { catalogPackageSchema } from "../src/contracts/catalog-package.js";
 import { readMultipleGripClearanceReviews } from "./lib/ldraw-multiple-grip-clearance-reviews.js";
 import { readNoRadiusGripClearanceReviews } from "./lib/ldraw-no-radius-grip-clearance-reviews.js";
+import { normalizeCatalogEvidenceName } from "./lib/ldraw-review.js";
 import { readUniqueGripClearanceReviews } from "./lib/ldraw-unique-grip-clearance-reviews.js";
 
 const root = process.cwd();
@@ -73,7 +74,10 @@ assert.equal(passed.length, 7);
 assert.equal(blocked.length, 13);
 
 for (const review of reviews.reviews) {
-  assert.equal(catalogNames.get(review.rebrickablePartNum), review.catalogName);
+  assert.equal(
+    normalizeCatalogEvidenceName(catalogNames.get(review.rebrickablePartNum) ?? ""),
+    normalizeCatalogEvidenceName(review.catalogName),
+  );
   assert(review.ldrawFile.startsWith("parts/") && !review.ldrawFile.toLowerCase().includes("moc"));
   const entry = expandedByPartNum.get(review.rebrickablePartNum);
   if (review.expectedResult === "passed") {

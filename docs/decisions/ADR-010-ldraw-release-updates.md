@@ -15,9 +15,11 @@
 2. Der veröffentlichte Bibliotheksordner heißt nach der gesperrten Version (`/assets/ldraw/official-YYMM/`). Browser und Werkzeuge leiten den Pfad aus dem Lock ab. Der Generator entfernt Ordner früherer Versionen, der Validator erlaubt genau einen.
 3. Der wöchentliche Workflow nutzt dieses Werkzeug, erzeugt Modelle, Abdeckung und Platzierungskandidaten neu, führt `npm run verify` aus und schlägt Änderungen wie bisher nur als Review-Pull-Request vor. Gemergt wird weiterhin von Hand.
 4. Die lokale Pipeline (`npm run catalog:local`) bleibt beim gesperrten Hash.
+5. Kuratierte Baugruppenprüfungen werden nicht pauschal an eine Release-Bezeichnung gebunden. Jede geprüfte Zuordnung nennt ihre Rolle, Rebrickable-Nummer, LDraw-Datei und den SHA-256 des geprüften Dateiinhalts. Ein neues Release darf eine bestehende Entscheidung nur weiterverwenden, wenn Zuordnung und Quelldatei unverändert sind. Neue Kandidaten erscheinen konservativ als noch ungeprüft im Datenvorschlag; geänderte bereits geprüfte Kandidaten stoppen den Lauf.
 
 ## Konsequenzen
 
 - Neue offizielle LDraw-Dateien erscheinen ohne Handarbeit im nächsten Daten-PR. Unbedruckt angezeigte Teile wechseln dann automatisch auf den echten Aufdruck.
 - Ein Versionswechsel ersetzt den ganzen Ordner mit tausenden Dateien. Der Review-PR wird dann groß.
+- Eine reine neue Release-Bezeichnung und zusätzliche ungeprüfte Kandidaten blockieren den Vorschlagslauf nicht mehr. Geänderte bereits geprüfte Zuordnungen oder Dateien blockieren ihn weiterhin.
 - Weiterhin keine inoffiziellen LDraw-Dateien, keine MOC-Dateien und kein Deployment aus GitHub Actions.

@@ -105,7 +105,7 @@ for (const part of curated.components) {
 }
 
 const documents = [...documentsByKey.values()].sort((left, right) => left.componentId.localeCompare(right.componentId, "en"));
-if (documents.length !== 2_726) throw new Error(`Expected 2,726 exact searchable parts, received ${documents.length}`);
+if (documents.length === 0) throw new Error("No exact searchable parts were generated");
 const documentSource = `${documents.map(({ componentId, englishText }) => `${componentId}\t${englishText}`).join("\n")}\n`;
 const orderedIdsContent = `${JSON.stringify(documents.map(({ componentId }) => componentId))}\n`;
 
@@ -131,8 +131,9 @@ for (const file of compact.files) {
   const source = resolve(modelCache, compact.exportRepository, file.path);
   const bytes = await readFile(source);
   if (bytes.byteLength !== file.byteLength || sha256(bytes) !== file.sha256) throw new Error(`Locked model file mismatch: ${file.path}`);
-  await mkdir(dirname(resolve(outputRoot, "models", compact.exportRepository, file.path)), { recursive: true });
-  await cp(source, resolve(outputRoot, "models", compact.exportRepository, file.path));
+  const destination = resolve(outputRoot, "models", compact.exportRepository, file.path);
+  await mkdir(dirname(destination), { recursive: true });
+  if (source !== destination) await cp(source, destination);
 }
 const runtimeFiles = ["ort-wasm-simd-threaded.mjs", "ort-wasm-simd-threaded.wasm"];
 await mkdir(resolve(outputRoot, "runtime"), { recursive: true });
