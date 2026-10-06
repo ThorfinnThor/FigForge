@@ -80,11 +80,13 @@ jobs:
         shell: bash
         run: |
           branch="automation/rebrickable-catalog-refresh"
-          if gh pr view "$branch" >/dev/null 2>&1; then
-            gh pr comment "$branch" --body "Catalog-Daten wurden neu validiert und der bestehende Review-PR wurde aktualisiert."
+          base="${{ github.event.repository.default_branch }}"
+          open_pr="$(gh pr list --state open --base "$base" --head "$branch" --json number --jq '.[0].number // empty')"
+          if [[ -n "$open_pr" ]]; then
+            gh pr comment "$open_pr" --body "Catalog-Daten wurden neu validiert und der bestehende Review-PR wurde aktualisiert."
           else
             gh pr create \
-              --base "${{ github.event.repository.default_branch }}" \
+              --base "$base" \
               --head "$branch" \
               --title "chore(data): Rebrickable catalog refresh" \
               --body "Automatisch erzeugter Vorschlag. Nur Rebrickable Catalog Downloads/CSV und die offizielle LDraw-Bibliothek; keine MOC-Dateien und keine API. Eine neuere LDraw-Version wird mit neuem Hash in data/ldraw-source.lock.json übernommen. Vor dem Merge sind Quellen-, Schema- und Diff-Review erforderlich."

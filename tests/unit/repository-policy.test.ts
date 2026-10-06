@@ -39,6 +39,14 @@ describe("repository delivery policy", () => {
     expect(workflow).not.toContain("git diff --quiet -- data");
   });
 
+  it("does not mistake a merged automation PR for an open review PR", async () => {
+    const workflow = await readProjectFile(".github/workflows/refresh-catalog.yml");
+
+    expect(workflow).toContain("gh pr list --state open");
+    expect(workflow).toContain('--head "$branch"');
+    expect(workflow).not.toContain('gh pr view "$branch"');
+  });
+
   it("keeps Cloudflare branch previews explicitly configured", async () => {
     const wrangler = JSON.parse(await readProjectFile("wrangler.jsonc")) as {
       previews?: Record<string, unknown>;
