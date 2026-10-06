@@ -6,6 +6,7 @@ on:
   workflow_dispatch:
 
 permissions:
+  actions: write
   contents: write
   pull-requests: write
 
@@ -91,6 +92,15 @@ jobs:
               --title "chore(data): Rebrickable catalog refresh" \
               --body "Automatisch erzeugter Vorschlag. Nur Rebrickable Catalog Downloads/CSV und die offizielle LDraw-Bibliothek; keine MOC-Dateien und keine API. Eine neuere LDraw-Version wird mit neuem Hash in data/ldraw-source.lock.json übernommen. Vor dem Merge sind Quellen-, Schema- und Diff-Review erforderlich."
           fi
+
+      - name: Trigger required pull-request verification
+        if: steps.changes.outputs.changed == 'true'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        shell: bash
+        run: |
+          branch="automation/rebrickable-catalog-refresh"
+          gh workflow run ci.yml --ref "$branch"
 
       - name: Report no change
         if: steps.changes.outputs.changed != 'true'
