@@ -4,6 +4,7 @@ import { resolve } from "node:path";
 import { catalogPackageSchema } from "../src/contracts/catalog-package.js";
 import { handGripEvidenceFromLDCadShadow, vendoredAccessoryGripFiles } from "./lib/ldcad-shadow-connectivity.js";
 import { readMultipleGripClearanceReviews } from "./lib/ldraw-multiple-grip-clearance-reviews.js";
+import { normalizeCatalogEvidenceName } from "./lib/ldraw-review.js";
 
 const root = process.cwd();
 const reviews = await readMultipleGripClearanceReviews(root);
@@ -59,7 +60,10 @@ assert.equal(passed.length, 4);
 assert.equal(blocked.length, 4);
 
 for (const review of reviews.reviews) {
-  assert.equal(catalogNames.get(review.rebrickablePartNum), review.catalogName);
+  assert.equal(
+    normalizeCatalogEvidenceName(catalogNames.get(review.rebrickablePartNum) ?? ""),
+    normalizeCatalogEvidenceName(review.catalogName),
+  );
   assert((vendoredAccessoryGripFiles as readonly string[]).includes(review.gripEvidenceFile));
   const shadowSource = await readFile(resolve(root, "data/vendor/ldcad-shadow", review.gripEvidenceFile), "utf8");
   const evidence = handGripEvidenceFromLDCadShadow(review.gripEvidenceFile, shadowSource);

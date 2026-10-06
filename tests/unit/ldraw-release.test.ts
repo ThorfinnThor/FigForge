@@ -1,6 +1,10 @@
 import { describe, expect, it } from "vitest";
 import { ldrawReleaseSlug } from "../../src/scene/ldraw-release.js";
 import { decideLDrawLockUpdate, releaseFromArchiveEntries } from "../../tools/lib/ldraw-release.js";
+import {
+  ldrawSourceSha256,
+  normalizeCatalogEvidenceName,
+} from "../../tools/lib/ldraw-review.js";
 
 const lockedHash = "a".repeat(64);
 const newHash = "b".repeat(64);
@@ -50,5 +54,17 @@ describe("official LDraw release handling", () => {
       { release: "2026-08", archiveSha256: lockedHash },
       { release: "2026-11", archiveSha256: "not-a-hash" },
     )).toThrow();
+  });
+
+  it("binds a curated review to exact official source content", () => {
+    expect(ldrawSourceSha256("0 Minifig Torso with Integral Arms\n"))
+      .not.toBe(ldrawSourceSha256("0 Minifig Torso with Integral Arms changed\n"));
+  });
+
+  it("ignores catalog-name casing and whitespace without hiding semantic changes", () => {
+    expect(normalizeCatalogEvidenceName("  Yellow/Silver  Stripes Print "))
+      .toBe(normalizeCatalogEvidenceName("yellow/silver stripes print"));
+    expect(normalizeCatalogEvidenceName("yellow/silver stripes"))
+      .not.toBe(normalizeCatalogEvidenceName("yellow/gold stripes"));
   });
 });

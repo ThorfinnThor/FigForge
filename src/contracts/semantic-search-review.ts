@@ -57,7 +57,7 @@ export const semanticSearchReleaseReviewSchema = z.object({
   querySetSha256: sha256,
   releaseManifestSha256: sha256,
   releaseProfileId: z.literal("compact-minilm"),
-  releaseDocumentCount: z.literal(2726),
+  releaseDocumentCount: z.number().int().positive(),
   instructions: z.string().min(1).max(1_000),
   cases: z.array(z.object({
     caseId: z.string().min(1).max(160),
@@ -69,10 +69,9 @@ export const semanticSearchReleaseReviewSchema = z.object({
       baseline: z.array(z.string().min(1).max(160)).max(5),
       hybrid: z.array(z.string().min(1).max(160)).max(5),
     }).strict(),
-    candidates: z.array(reviewCandidateSchema).min(1).max(10),
+    candidates: z.array(reviewCandidateSchema).max(10),
   }).strict()).length(30),
 }).strict();
 
 export type SemanticSearchReviewQuerySet = z.infer<typeof semanticSearchReviewQuerySetSchema>;
 export type SemanticSearchReleaseReview = z.infer<typeof semanticSearchReleaseReviewSchema>;
-

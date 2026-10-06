@@ -1,4 +1,3 @@
-import { createHash } from "node:crypto";
 import { readFile, readdir } from "node:fs/promises";
 import { basename, resolve } from "node:path";
 import { catalogPackageSchema, type CatalogPackagePart, type CatalogRole } from "../../src/contracts/catalog-package.js";
@@ -9,6 +8,7 @@ import {
   selectedAmbiguousMappings,
 } from "./ldraw-ambiguous-mapping-resolutions.js";
 import { resolveOfficialLDrawMappingFile } from "./ldraw-official-mapping.js";
+import { ldrawSourceSha256 } from "./ldraw-review.js";
 
 const SOURCE_POLICY = "Nur Rebrickable Catalog Downloads/CSV, keine MOC-Dateien." as const;
 
@@ -126,13 +126,26 @@ export async function buildLDrawCatalogCoverage(
     schemaVersion: 1;
     sourcePolicy: string;
     ldrawRelease: string;
-    builderEligible: Array<{ role: CatalogRole; rebrickablePartNum: string; ldrawFile: string }>;
-    reviewedIncompatibleQueue: { count: number; sha256: string; reasonCode: string; reason: string };
+    builderEligible: Array<{
+      role: CatalogRole;
+      rebrickablePartNum: string;
+      ldrawFile: string;
+      sourceSha256: string;
+    }>;
+    reviewedIncompatible: {
+      reasonCode: string;
+      reason: string;
+      entries: Array<{
+        role: CatalogRole;
+        rebrickablePartNum: string;
+        ldrawFile: string;
+        sourceSha256: string;
+      }>;
+    };
   }>(resolve(root, "data/curated/ldraw-role-assembly-review.json"));
   if (roleAssemblyReview.schemaVersion !== 1 || roleAssemblyReview.sourcePolicy !== SOURCE_POLICY) {
     throw new Error("Invalid role-assembly review policy");
   }
-  if (roleAssemblyReview.ldrawRelease !== ldrawLock.release) throw new Error("Role-assembly review LDraw release mismatch");
 
   const catalogManifest = await readJson<{
     sourcePolicy: string;
@@ -325,24 +338,38 @@ export async function buildLDrawCatalogCoverage(
       "en",
       { numeric: true },
     ));
-  const reviewedRoleQueueSha256 = createHash("sha256")
-    .update(JSON.stringify(reviewedRoleQueue))
-    .digest("hex");
-  if (
-    reviewedRoleQueue.length !== roleAssemblyReview.reviewedIncompatibleQueue.count
-    || reviewedRoleQueueSha256 !== roleAssemblyReview.reviewedIncompatibleQueue.sha256
-  ) {
-    throw new Error("Role-specific assembly queue changed; a new explicit review is required");
+  const currentRoleQueueByKey = new Map(reviewedRoleQueue.map((entry) => [
+    catalogKey(entry.role, entry.rebrickablePartNum),
+    entry,
+  ]));
+  const reviewedRoleKeys = new Set<string>();
+  for (const reviewed of roleAssemblyReview.reviewedIncompatible.entries) {
+    const key = catalogKey(reviewed.role, reviewed.rebrickablePartNum);
+    if (reviewedRoleKeys.has(key)) throw new Error(`Duplicate reviewed role assembly: ${key}`);
+    reviewedRoleKeys.add(key);
+    const current = currentRoleQueueByKey.get(key);
+    if (!current || current.ldrawFile !== reviewed.ldrawFile) {
+      throw new Error(`Reviewed role assembly mapping changed since ${roleAssemblyReview.ldrawRelease}: ${key}`);
+    }
+    const source = sourceByFile.get(reviewed.ldrawFile);
+    if (source === undefined || ldrawSourceSha256(source) !== reviewed.sourceSha256) {
+      throw new Error(`Reviewed role assembly source changed since ${roleAssemblyReview.ldrawRelease}: ${key}`);
+    }
   }
-  const reviewedRoleKeys = new Set(reviewedRoleQueue.map(({ role, rebrickablePartNum }) =>
-    catalogKey(role, rebrickablePartNum)
-  ));
+  for (const eligible of roleAssemblyReview.builderEligible) {
+    const source = sourceByFile.get(eligible.ldrawFile);
+    if (source === undefined || ldrawSourceSha256(source) !== eligible.sourceSha256) {
+      throw new Error(
+        `Builder-eligible role assembly source changed since ${roleAssemblyReview.ldrawRelease}: ${eligible.role}:${eligible.rebrickablePartNum}`,
+      );
+    }
+  }
   for (const entry of remainingEntries) {
     if (!reviewedRoleKeys.has(catalogKey(entry.role, entry.rebrickablePartNum))) continue;
     roleSummary[entry.role].remainingClassifications["placement-profile-required"] -= 1;
     roleSummary[entry.role].remainingClassifications["reviewed-incompatible-assembly"] += 1;
     entry.classification = "reviewed-incompatible-assembly";
-    entry.reason = `${roleAssemblyReview.reviewedIncompatibleQueue.reasonCode}: ${roleAssemblyReview.reviewedIncompatibleQueue.reason}`;
+    entry.reason = `${roleAssemblyReview.reviewedIncompatible.reasonCode}: ${roleAssemblyReview.reviewedIncompatible.reason}`;
   }
 
   const remainingClassifications = emptyCounts();

@@ -1,11 +1,13 @@
 import assert from "node:assert/strict";
 import { readFile } from "node:fs/promises";
 import { resolve } from "node:path";
+import { OFFICIAL_LDRAW_PUBLIC_PATH } from "../src/scene/ldraw-release.js";
 import { catalogPackageSchema, type CatalogRole } from "../src/contracts/catalog-package.js";
 import {
   ambiguousMappingKey,
   readAmbiguousMappingResolutions,
 } from "./lib/ldraw-ambiguous-mapping-resolutions.js";
+import { normalizeCatalogEvidenceName } from "./lib/ldraw-review.js";
 
 const root = process.cwd();
 const resolutions = await readAmbiguousMappingResolutions(root);
@@ -66,7 +68,11 @@ const record = (role: CatalogRole, partNum: string, catalogName: string): string
   const key = ambiguousMappingKey(role, partNum);
   assert(!adjudicatedKeys.has(key), `Duplicate ambiguous mapping adjudication: ${key}`);
   adjudicatedKeys.add(key);
-  assert.equal(catalogNames.get(key), catalogName, `Catalog name changed for ${key}`);
+  assert.equal(
+    normalizeCatalogEvidenceName(catalogNames.get(key) ?? ""),
+    normalizeCatalogEvidenceName(catalogName),
+    `Catalog name changed for ${key}`,
+  );
   return key;
 };
 
@@ -80,7 +86,10 @@ for (const selection of resolutions.selections) {
   assert(output || remaining?.classification === "placement-profile-required", `Selected mapping was not processed: ${key}`);
   if (output) {
     assert.equal(output.mappingEvidence, "curated-official-metadata");
-    const officialSource = await readFile(resolve(root, "public/assets/ldraw/official-2608", selection.selectedFile), "utf8");
+    const officialSource = await readFile(
+      resolve(root, "public", OFFICIAL_LDRAW_PUBLIC_PATH.slice(1), selection.selectedFile),
+      "utf8",
+    );
     assert.equal((officialSource.split(/\r?\n/u)[0] ?? "").replace(/^0\s+/u, ""), selection.officialDescription);
   }
   if (remaining) assert.deepEqual(remaining.ldrawFiles, [selection.selectedFile]);

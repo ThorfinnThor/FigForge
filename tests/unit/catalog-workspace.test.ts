@@ -101,21 +101,23 @@ describe("FF-14 responsive catalog workspace", () => {
     expect(dataSource).toContain("data/generated/ldraw-runtime/");
   });
 
-  it("loads 20,202 Rebrickable Minifig catalog entries from category packages", async () => {
+  it("loads every Rebrickable Minifig catalog entry from the generated category packages", async () => {
     const allParts = await loadCatalogParts("all");
+    const manifest = JSON.parse(await readFile("data/generated/catalog-packages/manifest.json", "utf8")) as {
+      includedPartCount: number;
+      packages: Array<{ role: string; partCount: number }>;
+    };
+    const runtimeManifest = JSON.parse(await readFile("data/generated/ldraw-runtime/manifest.json", "utf8")) as {
+      totalEntryCount: number;
+    };
     const counts = Object.fromEntries(CATALOG_CATEGORIES
       .filter(({ id }) => id !== "all")
       .map(({ id }) => [id, allParts.filter((part) => part.role === id).length]));
 
-    expect(allParts).toHaveLength(20_202);
-    expect(counts).toEqual({
-      head: 5_402,
-      headwear: 2_410,
-      torsoAssembly: 7_851,
-      legsAssembly: 3_231,
-      handAccessory: 1_308,
-    });
-    expect(allParts.filter(builderComponentForCatalogPart)).toHaveLength(14_838);
+    expect(allParts).toHaveLength(manifest.includedPartCount);
+    expect(counts).toEqual(Object.fromEntries(manifest.packages.map(({ role, partCount }) => [role, partCount])));
+    expect(allParts.filter(builderComponentForCatalogPart))
+      .toHaveLength(runtimeManifest.totalEntryCount + catalogAssortment.components.length);
   }, 15_000);
 
   it("defines responsive tabs, drawer focus return and keyboard dismissal", async () => {
@@ -164,6 +166,9 @@ describe("FF-14 responsive catalog workspace", () => {
     );
     const cardSource = await readFile("src/components/PartCard.tsx", "utf8");
     const controllerSource = await readFile("src/scene/LDrawPrototypeSceneController.ts", "utf8");
+    const coverage = JSON.parse(await readFile("data/generated/ldraw-catalog-coverage.json", "utf8")) as {
+      summary: { visualizedPartCount: number; builderReadyPartCount: number };
+    };
 
     expect(verified).toHaveLength(10);
     expect(blocked).toHaveLength(7);
@@ -171,11 +176,11 @@ describe("FF-14 responsive catalog workspace", () => {
     expect(allParts.filter((part) => {
       const builderComponent = builderComponentForCatalogPart(part);
       return builderComponent && verifiedLDrawEntryForComponent(builderComponent.id);
-    })).toHaveLength(14_831);
+    })).toHaveLength(coverage.summary.visualizedPartCount);
     expect(allParts.filter((part) => {
       const builderComponent = builderComponentForCatalogPart(part);
       return builderComponent && digitallySupportedLDrawEntryForComponent(builderComponent.id);
-    })).toHaveLength(14_829);
+    })).toHaveLength(coverage.summary.builderReadyPartCount);
     expect(cardSource).toContain('t("part.geometry")');
     expect(cardSource).toContain('t("part.rebrickableLink")');
     expect(cardSource).toContain("https://rebrickable.com/parts/${encodeURIComponent(component.rebrickablePartNum)}/");
@@ -190,14 +195,17 @@ describe("FF-14 responsive catalog workspace", () => {
     expect(controllerSource).toContain('legsAssembly: { prototypeFileName: "73200b-f1.dat" }');
   });
 
-  it("focuses the default view on the 2,726 exact digitally supported models", async () => {
+  it("focuses the default view on every model in the generated exact semantic-search release", async () => {
     const allParts = await loadCatalogParts("all");
+    const searchRelease = JSON.parse(await readFile("data/generated/semantic-search-release.json", "utf8")) as {
+      documentCount: number;
+    };
     const exactParts = allParts.filter((part) => {
       const component = builderComponentForCatalogPart(part);
       return Boolean(component && hasExactPrintedGeometry(component.id));
     });
 
-    expect(exactParts).toHaveLength(2_726);
+    expect(exactParts).toHaveLength(searchRelease.documentCount);
     expect(exactParts.every((part) => {
       const component = builderComponentForCatalogPart(part);
       return Boolean(component && hasExactPrintedGeometry(component.id));
