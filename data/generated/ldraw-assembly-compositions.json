@@ -32835,6 +32835,114 @@
         }
       ]
     },
+    "catalog:torsoAssembly:973c02h02pr0017": {
+      "kind": "rebrickable-color-coded-assembly",
+      "printRendered": false,
+      "referenceShortcutCount": 809,
+      "agreeingReferenceShortcutCount": 804,
+      "components": [
+        {
+          "file": "parts/3818.dat",
+          "colorRole": "arms",
+          "colorName": "Light Nougat",
+          "colorRgb": "F6D7B3",
+          "transform": [
+            -15.552,
+            9,
+            0,
+            0.985,
+            -0.17,
+            0,
+            0.17,
+            0.985,
+            0,
+            0,
+            0,
+            1
+          ]
+        },
+        {
+          "file": "parts/3819.dat",
+          "colorRole": "arms",
+          "colorName": "Light Nougat",
+          "colorRgb": "F6D7B3",
+          "transform": [
+            15.552,
+            9,
+            0,
+            0.985,
+            0.17,
+            0,
+            -0.17,
+            0.985,
+            0,
+            0,
+            0,
+            1
+          ]
+        },
+        {
+          "file": "parts/3820.dat",
+          "colorRole": "hands",
+          "colorName": "Light Nougat",
+          "colorRgb": "F6D7B3",
+          "transform": [
+            -23.69,
+            26.774,
+            -9.898,
+            0.985,
+            -0.12,
+            0.12,
+            0.17,
+            0.696,
+            -0.696,
+            0,
+            0.707,
+            0.707
+          ]
+        },
+        {
+          "file": "parts/3820.dat",
+          "colorRole": "hands",
+          "colorName": "Light Nougat",
+          "colorRgb": "F6D7B3",
+          "transform": [
+            23.69,
+            26.774,
+            -9.898,
+            0.985,
+            0.12,
+            -0.12,
+            -0.17,
+            0.696,
+            -0.696,
+            0,
+            0.707,
+            0.707
+          ]
+        },
+        {
+          "file": "parts/973.dat",
+          "colorRole": "catalog",
+          "colorName": null,
+          "colorRgb": null,
+          "transform": [
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1
+          ]
+        }
+      ]
+    },
     "catalog:torsoAssembly:973c02h02pr0019": {
       "kind": "rebrickable-color-coded-assembly",
       "printRendered": false,
@@ -53679,6 +53787,330 @@
         }
       ]
     },
+    "catalog:torsoAssembly:973c03h02pr0025": {
+      "kind": "rebrickable-color-coded-assembly",
+      "printRendered": false,
+      "referenceShortcutCount": 809,
+      "agreeingReferenceShortcutCount": 804,
+      "components": [
+        {
+          "file": "parts/3818.dat",
+          "colorRole": "arms",
+          "colorName": "Black",
+          "colorRgb": "05131D",
+          "transform": [
+            -15.552,
+            9,
+            0,
+            0.985,
+            -0.17,
+            0,
+            0.17,
+            0.985,
+            0,
+            0,
+            0,
+            1
+          ]
+        },
+        {
+          "file": "parts/3819.dat",
+          "colorRole": "arms",
+          "colorName": "Black",
+          "colorRgb": "05131D",
+          "transform": [
+            15.552,
+            9,
+            0,
+            0.985,
+            0.17,
+            0,
+            -0.17,
+            0.985,
+            0,
+            0,
+            0,
+            1
+          ]
+        },
+        {
+          "file": "parts/3820.dat",
+          "colorRole": "hands",
+          "colorName": "Light Nougat",
+          "colorRgb": "F6D7B3",
+          "transform": [
+            -23.69,
+            26.774,
+            -9.898,
+            0.985,
+            -0.12,
+            0.12,
+            0.17,
+            0.696,
+            -0.696,
+            0,
+            0.707,
+            0.707
+          ]
+        },
+        {
+          "file": "parts/3820.dat",
+          "colorRole": "hands",
+          "colorName": "Light Nougat",
+          "colorRgb": "F6D7B3",
+          "transform": [
+            23.69,
+            26.774,
+            -9.898,
+            0.985,
+            0.12,
+            -0.12,
+            -0.17,
+            0.696,
+            -0.696,
+            0,
+            0.707,
+            0.707
+          ]
+        },
+        {
+          "file": "parts/973.dat",
+          "colorRole": "catalog",
+          "colorName": null,
+          "colorRgb": null,
+          "transform": [
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1
+          ]
+        }
+      ]
+    },
+    "catalog:torsoAssembly:973c03h02pr0026": {
+      "kind": "rebrickable-color-coded-assembly",
+      "printRendered": false,
+      "referenceShortcutCount": 809,
+      "agreeingReferenceShortcutCount": 804,
+      "components": [
+        {
+          "file": "parts/3818.dat",
+          "colorRole": "arms",
+          "colorName": "Black",
+          "colorRgb": "05131D",
+          "transform": [
+            -15.552,
+            9,
+            0,
+            0.985,
+            -0.17,
+            0,
+            0.17,
+            0.985,
+            0,
+            0,
+            0,
+            1
+          ]
+        },
+        {
+          "file": "parts/3819.dat",
+          "colorRole": "arms",
+          "colorName": "Black",
+          "colorRgb": "05131D",
+          "transform": [
+            15.552,
+            9,
+            0,
+            0.985,
+            0.17,
+            0,
+            -0.17,
+            0.985,
+            0,
+            0,
+            0,
+            1
+          ]
+        },
+        {
+          "file": "parts/3820.dat",
+          "colorRole": "hands",
+          "colorName": "Light Nougat",
+          "colorRgb": "F6D7B3",
+          "transform": [
+            -23.69,
+            26.774,
+            -9.898,
+            0.985,
+            -0.12,
+            0.12,
+            0.17,
+            0.696,
+            -0.696,
+            0,
+            0.707,
+            0.707
+          ]
+        },
+        {
+          "file": "parts/3820.dat",
+          "colorRole": "hands",
+          "colorName": "Light Nougat",
+          "colorRgb": "F6D7B3",
+          "transform": [
+            23.69,
+            26.774,
+            -9.898,
+            0.985,
+            0.12,
+            -0.12,
+            -0.17,
+            0.696,
+            -0.696,
+            0,
+            0.707,
+            0.707
+          ]
+        },
+        {
+          "file": "parts/973.dat",
+          "colorRole": "catalog",
+          "colorName": null,
+          "colorRgb": null,
+          "transform": [
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1
+          ]
+        }
+      ]
+    },
+    "catalog:torsoAssembly:973c03h02pr0027": {
+      "kind": "rebrickable-color-coded-assembly",
+      "printRendered": false,
+      "referenceShortcutCount": 809,
+      "agreeingReferenceShortcutCount": 804,
+      "components": [
+        {
+          "file": "parts/3818.dat",
+          "colorRole": "arms",
+          "colorName": "Black",
+          "colorRgb": "05131D",
+          "transform": [
+            -15.552,
+            9,
+            0,
+            0.985,
+            -0.17,
+            0,
+            0.17,
+            0.985,
+            0,
+            0,
+            0,
+            1
+          ]
+        },
+        {
+          "file": "parts/3819.dat",
+          "colorRole": "arms",
+          "colorName": "Black",
+          "colorRgb": "05131D",
+          "transform": [
+            15.552,
+            9,
+            0,
+            0.985,
+            0.17,
+            0,
+            -0.17,
+            0.985,
+            0,
+            0,
+            0,
+            1
+          ]
+        },
+        {
+          "file": "parts/3820.dat",
+          "colorRole": "hands",
+          "colorName": "Light Nougat",
+          "colorRgb": "F6D7B3",
+          "transform": [
+            -23.69,
+            26.774,
+            -9.898,
+            0.985,
+            -0.12,
+            0.12,
+            0.17,
+            0.696,
+            -0.696,
+            0,
+            0.707,
+            0.707
+          ]
+        },
+        {
+          "file": "parts/3820.dat",
+          "colorRole": "hands",
+          "colorName": "Light Nougat",
+          "colorRgb": "F6D7B3",
+          "transform": [
+            23.69,
+            26.774,
+            -9.898,
+            0.985,
+            0.12,
+            -0.12,
+            -0.17,
+            0.696,
+            -0.696,
+            0,
+            0.707,
+            0.707
+          ]
+        },
+        {
+          "file": "parts/973.dat",
+          "colorRole": "catalog",
+          "colorName": null,
+          "colorRgb": null,
+          "transform": [
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1
+          ]
+        }
+      ]
+    },
     "catalog:torsoAssembly:973c03h02pr0300": {
       "kind": "rebrickable-color-coded-assembly",
       "printRendered": false,
@@ -65884,6 +66316,222 @@
       ]
     },
     "catalog:torsoAssembly:973c03h03pr0029": {
+      "kind": "rebrickable-color-coded-assembly",
+      "printRendered": false,
+      "referenceShortcutCount": 809,
+      "agreeingReferenceShortcutCount": 804,
+      "components": [
+        {
+          "file": "parts/3818.dat",
+          "colorRole": "arms",
+          "colorName": "Black",
+          "colorRgb": "05131D",
+          "transform": [
+            -15.552,
+            9,
+            0,
+            0.985,
+            -0.17,
+            0,
+            0.17,
+            0.985,
+            0,
+            0,
+            0,
+            1
+          ]
+        },
+        {
+          "file": "parts/3819.dat",
+          "colorRole": "arms",
+          "colorName": "Black",
+          "colorRgb": "05131D",
+          "transform": [
+            15.552,
+            9,
+            0,
+            0.985,
+            0.17,
+            0,
+            -0.17,
+            0.985,
+            0,
+            0,
+            0,
+            1
+          ]
+        },
+        {
+          "file": "parts/3820.dat",
+          "colorRole": "hands",
+          "colorName": "Black",
+          "colorRgb": "05131D",
+          "transform": [
+            -23.69,
+            26.774,
+            -9.898,
+            0.985,
+            -0.12,
+            0.12,
+            0.17,
+            0.696,
+            -0.696,
+            0,
+            0.707,
+            0.707
+          ]
+        },
+        {
+          "file": "parts/3820.dat",
+          "colorRole": "hands",
+          "colorName": "Black",
+          "colorRgb": "05131D",
+          "transform": [
+            23.69,
+            26.774,
+            -9.898,
+            0.985,
+            0.12,
+            -0.12,
+            -0.17,
+            0.696,
+            -0.696,
+            0,
+            0.707,
+            0.707
+          ]
+        },
+        {
+          "file": "parts/973.dat",
+          "colorRole": "catalog",
+          "colorName": null,
+          "colorRgb": null,
+          "transform": [
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1
+          ]
+        }
+      ]
+    },
+    "catalog:torsoAssembly:973c03h03pr0030": {
+      "kind": "rebrickable-color-coded-assembly",
+      "printRendered": false,
+      "referenceShortcutCount": 809,
+      "agreeingReferenceShortcutCount": 804,
+      "components": [
+        {
+          "file": "parts/3818.dat",
+          "colorRole": "arms",
+          "colorName": "Black",
+          "colorRgb": "05131D",
+          "transform": [
+            -15.552,
+            9,
+            0,
+            0.985,
+            -0.17,
+            0,
+            0.17,
+            0.985,
+            0,
+            0,
+            0,
+            1
+          ]
+        },
+        {
+          "file": "parts/3819.dat",
+          "colorRole": "arms",
+          "colorName": "Black",
+          "colorRgb": "05131D",
+          "transform": [
+            15.552,
+            9,
+            0,
+            0.985,
+            0.17,
+            0,
+            -0.17,
+            0.985,
+            0,
+            0,
+            0,
+            1
+          ]
+        },
+        {
+          "file": "parts/3820.dat",
+          "colorRole": "hands",
+          "colorName": "Black",
+          "colorRgb": "05131D",
+          "transform": [
+            -23.69,
+            26.774,
+            -9.898,
+            0.985,
+            -0.12,
+            0.12,
+            0.17,
+            0.696,
+            -0.696,
+            0,
+            0.707,
+            0.707
+          ]
+        },
+        {
+          "file": "parts/3820.dat",
+          "colorRole": "hands",
+          "colorName": "Black",
+          "colorRgb": "05131D",
+          "transform": [
+            23.69,
+            26.774,
+            -9.898,
+            0.985,
+            0.12,
+            -0.12,
+            -0.17,
+            0.696,
+            -0.696,
+            0,
+            0.707,
+            0.707
+          ]
+        },
+        {
+          "file": "parts/973.dat",
+          "colorRole": "catalog",
+          "colorName": null,
+          "colorRgb": null,
+          "transform": [
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1
+          ]
+        }
+      ]
+    },
+    "catalog:torsoAssembly:973c03h03pr0031": {
       "kind": "rebrickable-color-coded-assembly",
       "printRendered": false,
       "referenceShortcutCount": 809,
@@ -159951,6 +160599,114 @@
         }
       ]
     },
+    "catalog:torsoAssembly:973c07h11pr0001": {
+      "kind": "rebrickable-color-coded-assembly",
+      "printRendered": false,
+      "referenceShortcutCount": 809,
+      "agreeingReferenceShortcutCount": 804,
+      "components": [
+        {
+          "file": "parts/3818.dat",
+          "colorRole": "arms",
+          "colorName": "Dark Brown",
+          "colorRgb": "352100",
+          "transform": [
+            -15.552,
+            9,
+            0,
+            0.985,
+            -0.17,
+            0,
+            0.17,
+            0.985,
+            0,
+            0,
+            0,
+            1
+          ]
+        },
+        {
+          "file": "parts/3819.dat",
+          "colorRole": "arms",
+          "colorName": "Dark Brown",
+          "colorRgb": "352100",
+          "transform": [
+            15.552,
+            9,
+            0,
+            0.985,
+            0.17,
+            0,
+            -0.17,
+            0.985,
+            0,
+            0,
+            0,
+            1
+          ]
+        },
+        {
+          "file": "parts/3820.dat",
+          "colorRole": "hands",
+          "colorName": "Dark Tan",
+          "colorRgb": "958A73",
+          "transform": [
+            -23.69,
+            26.774,
+            -9.898,
+            0.985,
+            -0.12,
+            0.12,
+            0.17,
+            0.696,
+            -0.696,
+            0,
+            0.707,
+            0.707
+          ]
+        },
+        {
+          "file": "parts/3820.dat",
+          "colorRole": "hands",
+          "colorName": "Dark Tan",
+          "colorRgb": "958A73",
+          "transform": [
+            23.69,
+            26.774,
+            -9.898,
+            0.985,
+            0.12,
+            -0.12,
+            -0.17,
+            0.696,
+            -0.696,
+            0,
+            0.707,
+            0.707
+          ]
+        },
+        {
+          "file": "parts/973.dat",
+          "colorRole": "catalog",
+          "colorName": null,
+          "colorRgb": null,
+          "transform": [
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1
+          ]
+        }
+      ]
+    },
     "catalog:torsoAssembly:973c07h11pr4679": {
       "kind": "rebrickable-color-coded-assembly",
       "printRendered": false,
@@ -161750,6 +162506,114 @@
           "colorRole": "hands",
           "colorName": "Tan",
           "colorRgb": "E4CD9E",
+          "transform": [
+            23.69,
+            26.774,
+            -9.898,
+            0.985,
+            0.12,
+            -0.12,
+            -0.17,
+            0.696,
+            -0.696,
+            0,
+            0.707,
+            0.707
+          ]
+        },
+        {
+          "file": "parts/973.dat",
+          "colorRole": "catalog",
+          "colorName": null,
+          "colorRgb": null,
+          "transform": [
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1
+          ]
+        }
+      ]
+    },
+    "catalog:torsoAssembly:973c07h27pr0001": {
+      "kind": "rebrickable-color-coded-assembly",
+      "printRendered": false,
+      "referenceShortcutCount": 809,
+      "agreeingReferenceShortcutCount": 804,
+      "components": [
+        {
+          "file": "parts/3818.dat",
+          "colorRole": "arms",
+          "colorName": "Dark Brown",
+          "colorRgb": "352100",
+          "transform": [
+            -15.552,
+            9,
+            0,
+            0.985,
+            -0.17,
+            0,
+            0.17,
+            0.985,
+            0,
+            0,
+            0,
+            1
+          ]
+        },
+        {
+          "file": "parts/3819.dat",
+          "colorRole": "arms",
+          "colorName": "Dark Brown",
+          "colorRgb": "352100",
+          "transform": [
+            15.552,
+            9,
+            0,
+            0.985,
+            0.17,
+            0,
+            -0.17,
+            0.985,
+            0,
+            0,
+            0,
+            1
+          ]
+        },
+        {
+          "file": "parts/3820.dat",
+          "colorRole": "hands",
+          "colorName": "White",
+          "colorRgb": "FFFFFF",
+          "transform": [
+            -23.69,
+            26.774,
+            -9.898,
+            0.985,
+            -0.12,
+            0.12,
+            0.17,
+            0.696,
+            -0.696,
+            0,
+            0.707,
+            0.707
+          ]
+        },
+        {
+          "file": "parts/3820.dat",
+          "colorRole": "hands",
+          "colorName": "White",
+          "colorRgb": "FFFFFF",
           "transform": [
             23.69,
             26.774,
@@ -187168,6 +188032,114 @@
       ]
     },
     "catalog:torsoAssembly:973c10h10pr0009": {
+      "kind": "rebrickable-color-coded-assembly",
+      "printRendered": false,
+      "referenceShortcutCount": 809,
+      "agreeingReferenceShortcutCount": 804,
+      "components": [
+        {
+          "file": "parts/3818.dat",
+          "colorRole": "arms",
+          "colorName": "Dark Red",
+          "colorRgb": "720E0F",
+          "transform": [
+            -15.552,
+            9,
+            0,
+            0.985,
+            -0.17,
+            0,
+            0.17,
+            0.985,
+            0,
+            0,
+            0,
+            1
+          ]
+        },
+        {
+          "file": "parts/3819.dat",
+          "colorRole": "arms",
+          "colorName": "Dark Red",
+          "colorRgb": "720E0F",
+          "transform": [
+            15.552,
+            9,
+            0,
+            0.985,
+            0.17,
+            0,
+            -0.17,
+            0.985,
+            0,
+            0,
+            0,
+            1
+          ]
+        },
+        {
+          "file": "parts/3820.dat",
+          "colorRole": "hands",
+          "colorName": "Dark Red",
+          "colorRgb": "720E0F",
+          "transform": [
+            -23.69,
+            26.774,
+            -9.898,
+            0.985,
+            -0.12,
+            0.12,
+            0.17,
+            0.696,
+            -0.696,
+            0,
+            0.707,
+            0.707
+          ]
+        },
+        {
+          "file": "parts/3820.dat",
+          "colorRole": "hands",
+          "colorName": "Dark Red",
+          "colorRgb": "720E0F",
+          "transform": [
+            23.69,
+            26.774,
+            -9.898,
+            0.985,
+            0.12,
+            -0.12,
+            -0.17,
+            0.696,
+            -0.696,
+            0,
+            0.707,
+            0.707
+          ]
+        },
+        {
+          "file": "parts/973.dat",
+          "colorRole": "catalog",
+          "colorName": null,
+          "colorRgb": null,
+          "transform": [
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1
+          ]
+        }
+      ]
+    },
+    "catalog:torsoAssembly:973c10h10pr0010": {
       "kind": "rebrickable-color-coded-assembly",
       "printRendered": false,
       "referenceShortcutCount": 809,
@@ -216867,6 +217839,222 @@
         }
       ]
     },
+    "catalog:torsoAssembly:973c12h03pr0010": {
+      "kind": "rebrickable-color-coded-assembly",
+      "printRendered": false,
+      "referenceShortcutCount": 809,
+      "agreeingReferenceShortcutCount": 804,
+      "components": [
+        {
+          "file": "parts/3818.dat",
+          "colorRole": "arms",
+          "colorName": "Dark Bluish Gray",
+          "colorRgb": "6C6E68",
+          "transform": [
+            -15.552,
+            9,
+            0,
+            0.985,
+            -0.17,
+            0,
+            0.17,
+            0.985,
+            0,
+            0,
+            0,
+            1
+          ]
+        },
+        {
+          "file": "parts/3819.dat",
+          "colorRole": "arms",
+          "colorName": "Dark Bluish Gray",
+          "colorRgb": "6C6E68",
+          "transform": [
+            15.552,
+            9,
+            0,
+            0.985,
+            0.17,
+            0,
+            -0.17,
+            0.985,
+            0,
+            0,
+            0,
+            1
+          ]
+        },
+        {
+          "file": "parts/3820.dat",
+          "colorRole": "hands",
+          "colorName": "Black",
+          "colorRgb": "05131D",
+          "transform": [
+            -23.69,
+            26.774,
+            -9.898,
+            0.985,
+            -0.12,
+            0.12,
+            0.17,
+            0.696,
+            -0.696,
+            0,
+            0.707,
+            0.707
+          ]
+        },
+        {
+          "file": "parts/3820.dat",
+          "colorRole": "hands",
+          "colorName": "Black",
+          "colorRgb": "05131D",
+          "transform": [
+            23.69,
+            26.774,
+            -9.898,
+            0.985,
+            0.12,
+            -0.12,
+            -0.17,
+            0.696,
+            -0.696,
+            0,
+            0.707,
+            0.707
+          ]
+        },
+        {
+          "file": "parts/973.dat",
+          "colorRole": "catalog",
+          "colorName": null,
+          "colorRgb": null,
+          "transform": [
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1
+          ]
+        }
+      ]
+    },
+    "catalog:torsoAssembly:973c12h03pr0011": {
+      "kind": "rebrickable-color-coded-assembly",
+      "printRendered": false,
+      "referenceShortcutCount": 809,
+      "agreeingReferenceShortcutCount": 804,
+      "components": [
+        {
+          "file": "parts/3818.dat",
+          "colorRole": "arms",
+          "colorName": "Dark Bluish Gray",
+          "colorRgb": "6C6E68",
+          "transform": [
+            -15.552,
+            9,
+            0,
+            0.985,
+            -0.17,
+            0,
+            0.17,
+            0.985,
+            0,
+            0,
+            0,
+            1
+          ]
+        },
+        {
+          "file": "parts/3819.dat",
+          "colorRole": "arms",
+          "colorName": "Dark Bluish Gray",
+          "colorRgb": "6C6E68",
+          "transform": [
+            15.552,
+            9,
+            0,
+            0.985,
+            0.17,
+            0,
+            -0.17,
+            0.985,
+            0,
+            0,
+            0,
+            1
+          ]
+        },
+        {
+          "file": "parts/3820.dat",
+          "colorRole": "hands",
+          "colorName": "Black",
+          "colorRgb": "05131D",
+          "transform": [
+            -23.69,
+            26.774,
+            -9.898,
+            0.985,
+            -0.12,
+            0.12,
+            0.17,
+            0.696,
+            -0.696,
+            0,
+            0.707,
+            0.707
+          ]
+        },
+        {
+          "file": "parts/3820.dat",
+          "colorRole": "hands",
+          "colorName": "Black",
+          "colorRgb": "05131D",
+          "transform": [
+            23.69,
+            26.774,
+            -9.898,
+            0.985,
+            0.12,
+            -0.12,
+            -0.17,
+            0.696,
+            -0.696,
+            0,
+            0.707,
+            0.707
+          ]
+        },
+        {
+          "file": "parts/973.dat",
+          "colorRole": "catalog",
+          "colorName": null,
+          "colorRgb": null,
+          "transform": [
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1
+          ]
+        }
+      ]
+    },
     "catalog:torsoAssembly:973c12h03pr1208": {
       "kind": "rebrickable-color-coded-assembly",
       "printRendered": false,
@@ -231123,6 +232311,114 @@
         }
       ]
     },
+    "catalog:torsoAssembly:973c13h13pr0003": {
+      "kind": "rebrickable-color-coded-assembly",
+      "printRendered": false,
+      "referenceShortcutCount": 809,
+      "agreeingReferenceShortcutCount": 804,
+      "components": [
+        {
+          "file": "parts/3818.dat",
+          "colorRole": "arms",
+          "colorName": "Nougat",
+          "colorRgb": "D09168",
+          "transform": [
+            -15.552,
+            9,
+            0,
+            0.985,
+            -0.17,
+            0,
+            0.17,
+            0.985,
+            0,
+            0,
+            0,
+            1
+          ]
+        },
+        {
+          "file": "parts/3819.dat",
+          "colorRole": "arms",
+          "colorName": "Nougat",
+          "colorRgb": "D09168",
+          "transform": [
+            15.552,
+            9,
+            0,
+            0.985,
+            0.17,
+            0,
+            -0.17,
+            0.985,
+            0,
+            0,
+            0,
+            1
+          ]
+        },
+        {
+          "file": "parts/3820.dat",
+          "colorRole": "hands",
+          "colorName": "Nougat",
+          "colorRgb": "D09168",
+          "transform": [
+            -23.69,
+            26.774,
+            -9.898,
+            0.985,
+            -0.12,
+            0.12,
+            0.17,
+            0.696,
+            -0.696,
+            0,
+            0.707,
+            0.707
+          ]
+        },
+        {
+          "file": "parts/3820.dat",
+          "colorRole": "hands",
+          "colorName": "Nougat",
+          "colorRgb": "D09168",
+          "transform": [
+            23.69,
+            26.774,
+            -9.898,
+            0.985,
+            0.12,
+            -0.12,
+            -0.17,
+            0.696,
+            -0.696,
+            0,
+            0.707,
+            0.707
+          ]
+        },
+        {
+          "file": "parts/973.dat",
+          "colorRole": "catalog",
+          "colorName": null,
+          "colorRgb": null,
+          "transform": [
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1
+          ]
+        }
+      ]
+    },
     "catalog:torsoAssembly:973c13h13pr1505": {
       "kind": "rebrickable-color-coded-assembly",
       "printRendered": false,
@@ -236092,6 +237388,114 @@
       ]
     },
     "catalog:torsoAssembly:973c14h02pr0010": {
+      "kind": "rebrickable-color-coded-assembly",
+      "printRendered": false,
+      "referenceShortcutCount": 809,
+      "agreeingReferenceShortcutCount": 804,
+      "components": [
+        {
+          "file": "parts/3818.dat",
+          "colorRole": "arms",
+          "colorName": "Light Bluish Gray",
+          "colorRgb": "A0A5A9",
+          "transform": [
+            -15.552,
+            9,
+            0,
+            0.985,
+            -0.17,
+            0,
+            0.17,
+            0.985,
+            0,
+            0,
+            0,
+            1
+          ]
+        },
+        {
+          "file": "parts/3819.dat",
+          "colorRole": "arms",
+          "colorName": "Light Bluish Gray",
+          "colorRgb": "A0A5A9",
+          "transform": [
+            15.552,
+            9,
+            0,
+            0.985,
+            0.17,
+            0,
+            -0.17,
+            0.985,
+            0,
+            0,
+            0,
+            1
+          ]
+        },
+        {
+          "file": "parts/3820.dat",
+          "colorRole": "hands",
+          "colorName": "Light Nougat",
+          "colorRgb": "F6D7B3",
+          "transform": [
+            -23.69,
+            26.774,
+            -9.898,
+            0.985,
+            -0.12,
+            0.12,
+            0.17,
+            0.696,
+            -0.696,
+            0,
+            0.707,
+            0.707
+          ]
+        },
+        {
+          "file": "parts/3820.dat",
+          "colorRole": "hands",
+          "colorName": "Light Nougat",
+          "colorRgb": "F6D7B3",
+          "transform": [
+            23.69,
+            26.774,
+            -9.898,
+            0.985,
+            0.12,
+            -0.12,
+            -0.17,
+            0.696,
+            -0.696,
+            0,
+            0.707,
+            0.707
+          ]
+        },
+        {
+          "file": "parts/973.dat",
+          "colorRole": "catalog",
+          "colorName": null,
+          "colorRgb": null,
+          "transform": [
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1
+          ]
+        }
+      ]
+    },
+    "catalog:torsoAssembly:973c14h02pr0012": {
       "kind": "rebrickable-color-coded-assembly",
       "printRendered": false,
       "referenceShortcutCount": 809,
@@ -284438,6 +285842,114 @@
           "colorRole": "hands",
           "colorName": "Yellow",
           "colorRgb": "F2CD37",
+          "transform": [
+            23.69,
+            26.774,
+            -9.898,
+            0.985,
+            0.12,
+            -0.12,
+            -0.17,
+            0.696,
+            -0.696,
+            0,
+            0.707,
+            0.707
+          ]
+        },
+        {
+          "file": "parts/973.dat",
+          "colorRole": "catalog",
+          "colorName": null,
+          "colorRgb": null,
+          "transform": [
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1
+          ]
+        }
+      ]
+    },
+    "catalog:torsoAssembly:973c21h02pr0001": {
+      "kind": "rebrickable-color-coded-assembly",
+      "printRendered": false,
+      "referenceShortcutCount": 809,
+      "agreeingReferenceShortcutCount": 804,
+      "components": [
+        {
+          "file": "parts/3818.dat",
+          "colorRole": "arms",
+          "colorName": "Pearl Gold",
+          "colorRgb": "AA7F2E",
+          "transform": [
+            -15.552,
+            9,
+            0,
+            0.985,
+            -0.17,
+            0,
+            0.17,
+            0.985,
+            0,
+            0,
+            0,
+            1
+          ]
+        },
+        {
+          "file": "parts/3819.dat",
+          "colorRole": "arms",
+          "colorName": "Pearl Gold",
+          "colorRgb": "AA7F2E",
+          "transform": [
+            15.552,
+            9,
+            0,
+            0.985,
+            0.17,
+            0,
+            -0.17,
+            0.985,
+            0,
+            0,
+            0,
+            1
+          ]
+        },
+        {
+          "file": "parts/3820.dat",
+          "colorRole": "hands",
+          "colorName": "Light Nougat",
+          "colorRgb": "F6D7B3",
+          "transform": [
+            -23.69,
+            26.774,
+            -9.898,
+            0.985,
+            -0.12,
+            0.12,
+            0.17,
+            0.696,
+            -0.696,
+            0,
+            0.707,
+            0.707
+          ]
+        },
+        {
+          "file": "parts/3820.dat",
+          "colorRole": "hands",
+          "colorName": "Light Nougat",
+          "colorRgb": "F6D7B3",
           "transform": [
             23.69,
             26.774,
@@ -345711,6 +347223,114 @@
         }
       ]
     },
+    "catalog:torsoAssembly:973c26h01pr0018": {
+      "kind": "rebrickable-color-coded-assembly",
+      "printRendered": false,
+      "referenceShortcutCount": 809,
+      "agreeingReferenceShortcutCount": 804,
+      "components": [
+        {
+          "file": "parts/3818.dat",
+          "colorRole": "arms",
+          "colorName": "Tan",
+          "colorRgb": "E4CD9E",
+          "transform": [
+            -15.552,
+            9,
+            0,
+            0.985,
+            -0.17,
+            0,
+            0.17,
+            0.985,
+            0,
+            0,
+            0,
+            1
+          ]
+        },
+        {
+          "file": "parts/3819.dat",
+          "colorRole": "arms",
+          "colorName": "Tan",
+          "colorRgb": "E4CD9E",
+          "transform": [
+            15.552,
+            9,
+            0,
+            0.985,
+            0.17,
+            0,
+            -0.17,
+            0.985,
+            0,
+            0,
+            0,
+            1
+          ]
+        },
+        {
+          "file": "parts/3820.dat",
+          "colorRole": "hands",
+          "colorName": "Yellow",
+          "colorRgb": "F2CD37",
+          "transform": [
+            -23.69,
+            26.774,
+            -9.898,
+            0.985,
+            -0.12,
+            0.12,
+            0.17,
+            0.696,
+            -0.696,
+            0,
+            0.707,
+            0.707
+          ]
+        },
+        {
+          "file": "parts/3820.dat",
+          "colorRole": "hands",
+          "colorName": "Yellow",
+          "colorRgb": "F2CD37",
+          "transform": [
+            23.69,
+            26.774,
+            -9.898,
+            0.985,
+            0.12,
+            -0.12,
+            -0.17,
+            0.696,
+            -0.696,
+            0,
+            0.707,
+            0.707
+          ]
+        },
+        {
+          "file": "parts/973.dat",
+          "colorRole": "catalog",
+          "colorName": null,
+          "colorRgb": null,
+          "transform": [
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1
+          ]
+        }
+      ]
+    },
     "catalog:torsoAssembly:973c26h01pr0110": {
       "kind": "rebrickable-color-coded-assembly",
       "printRendered": false,
@@ -387507,6 +389127,114 @@
         }
       ]
     },
+    "catalog:torsoAssembly:973c27h02pr0031": {
+      "kind": "rebrickable-color-coded-assembly",
+      "printRendered": false,
+      "referenceShortcutCount": 809,
+      "agreeingReferenceShortcutCount": 804,
+      "components": [
+        {
+          "file": "parts/3818.dat",
+          "colorRole": "arms",
+          "colorName": "White",
+          "colorRgb": "FFFFFF",
+          "transform": [
+            -15.552,
+            9,
+            0,
+            0.985,
+            -0.17,
+            0,
+            0.17,
+            0.985,
+            0,
+            0,
+            0,
+            1
+          ]
+        },
+        {
+          "file": "parts/3819.dat",
+          "colorRole": "arms",
+          "colorName": "White",
+          "colorRgb": "FFFFFF",
+          "transform": [
+            15.552,
+            9,
+            0,
+            0.985,
+            0.17,
+            0,
+            -0.17,
+            0.985,
+            0,
+            0,
+            0,
+            1
+          ]
+        },
+        {
+          "file": "parts/3820.dat",
+          "colorRole": "hands",
+          "colorName": "Light Nougat",
+          "colorRgb": "F6D7B3",
+          "transform": [
+            -23.69,
+            26.774,
+            -9.898,
+            0.985,
+            -0.12,
+            0.12,
+            0.17,
+            0.696,
+            -0.696,
+            0,
+            0.707,
+            0.707
+          ]
+        },
+        {
+          "file": "parts/3820.dat",
+          "colorRole": "hands",
+          "colorName": "Light Nougat",
+          "colorRgb": "F6D7B3",
+          "transform": [
+            23.69,
+            26.774,
+            -9.898,
+            0.985,
+            0.12,
+            -0.12,
+            -0.17,
+            0.696,
+            -0.696,
+            0,
+            0.707,
+            0.707
+          ]
+        },
+        {
+          "file": "parts/973.dat",
+          "colorRole": "catalog",
+          "colorName": null,
+          "colorRgb": null,
+          "transform": [
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1
+          ]
+        }
+      ]
+    },
     "catalog:torsoAssembly:973c27h02pr0321": {
       "kind": "rebrickable-color-coded-assembly",
       "printRendered": false,
@@ -427251,6 +428979,114 @@
         }
       ]
     },
+    "catalog:torsoAssembly:973c27h28pr0001": {
+      "kind": "rebrickable-color-coded-assembly",
+      "printRendered": false,
+      "referenceShortcutCount": 809,
+      "agreeingReferenceShortcutCount": 804,
+      "components": [
+        {
+          "file": "parts/3818.dat",
+          "colorRole": "arms",
+          "colorName": "White",
+          "colorRgb": "FFFFFF",
+          "transform": [
+            -15.552,
+            9,
+            0,
+            0.985,
+            -0.17,
+            0,
+            0.17,
+            0.985,
+            0,
+            0,
+            0,
+            1
+          ]
+        },
+        {
+          "file": "parts/3819.dat",
+          "colorRole": "arms",
+          "colorName": "White",
+          "colorRgb": "FFFFFF",
+          "transform": [
+            15.552,
+            9,
+            0,
+            0.985,
+            0.17,
+            0,
+            -0.17,
+            0.985,
+            0,
+            0,
+            0,
+            1
+          ]
+        },
+        {
+          "file": "parts/3820.dat",
+          "colorRole": "hands",
+          "colorName": "Blue",
+          "colorRgb": "0055BF",
+          "transform": [
+            -23.69,
+            26.774,
+            -9.898,
+            0.985,
+            -0.12,
+            0.12,
+            0.17,
+            0.696,
+            -0.696,
+            0,
+            0.707,
+            0.707
+          ]
+        },
+        {
+          "file": "parts/3820.dat",
+          "colorRole": "hands",
+          "colorName": "Blue",
+          "colorRgb": "0055BF",
+          "transform": [
+            23.69,
+            26.774,
+            -9.898,
+            0.985,
+            0.12,
+            -0.12,
+            -0.17,
+            0.696,
+            -0.696,
+            0,
+            0.707,
+            0.707
+          ]
+        },
+        {
+          "file": "parts/973.dat",
+          "colorRole": "catalog",
+          "colorName": null,
+          "colorRgb": null,
+          "transform": [
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1
+          ]
+        }
+      ]
+    },
     "catalog:torsoAssembly:973c27h28pr4761": {
       "kind": "rebrickable-color-coded-assembly",
       "printRendered": false,
@@ -428332,6 +430168,114 @@
       ]
     },
     "catalog:torsoAssembly:973c27h34pr0001": {
+      "kind": "rebrickable-color-coded-assembly",
+      "printRendered": false,
+      "referenceShortcutCount": 809,
+      "agreeingReferenceShortcutCount": 804,
+      "components": [
+        {
+          "file": "parts/3818.dat",
+          "colorRole": "arms",
+          "colorName": "White",
+          "colorRgb": "FFFFFF",
+          "transform": [
+            -15.552,
+            9,
+            0,
+            0.985,
+            -0.17,
+            0,
+            0.17,
+            0.985,
+            0,
+            0,
+            0,
+            1
+          ]
+        },
+        {
+          "file": "parts/3819.dat",
+          "colorRole": "arms",
+          "colorName": "White",
+          "colorRgb": "FFFFFF",
+          "transform": [
+            15.552,
+            9,
+            0,
+            0.985,
+            0.17,
+            0,
+            -0.17,
+            0.985,
+            0,
+            0,
+            0,
+            1
+          ]
+        },
+        {
+          "file": "parts/3820.dat",
+          "colorRole": "hands",
+          "colorName": "Orange",
+          "colorRgb": "FE8A18",
+          "transform": [
+            -23.69,
+            26.774,
+            -9.898,
+            0.985,
+            -0.12,
+            0.12,
+            0.17,
+            0.696,
+            -0.696,
+            0,
+            0.707,
+            0.707
+          ]
+        },
+        {
+          "file": "parts/3820.dat",
+          "colorRole": "hands",
+          "colorName": "Orange",
+          "colorRgb": "FE8A18",
+          "transform": [
+            23.69,
+            26.774,
+            -9.898,
+            0.985,
+            0.12,
+            -0.12,
+            -0.17,
+            0.696,
+            -0.696,
+            0,
+            0.707,
+            0.707
+          ]
+        },
+        {
+          "file": "parts/973.dat",
+          "colorRole": "catalog",
+          "colorName": null,
+          "colorRgb": null,
+          "transform": [
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1
+          ]
+        }
+      ]
+    },
+    "catalog:torsoAssembly:973c27h34pr0002": {
       "kind": "rebrickable-color-coded-assembly",
       "printRendered": false,
       "referenceShortcutCount": 809,
@@ -437946,6 +439890,114 @@
     "catalog:torsoAssembly:973c28h03": {
       "kind": "rebrickable-color-coded-assembly",
       "printRendered": true,
+      "referenceShortcutCount": 809,
+      "agreeingReferenceShortcutCount": 804,
+      "components": [
+        {
+          "file": "parts/3818.dat",
+          "colorRole": "arms",
+          "colorName": "Blue",
+          "colorRgb": "0055BF",
+          "transform": [
+            -15.552,
+            9,
+            0,
+            0.985,
+            -0.17,
+            0,
+            0.17,
+            0.985,
+            0,
+            0,
+            0,
+            1
+          ]
+        },
+        {
+          "file": "parts/3819.dat",
+          "colorRole": "arms",
+          "colorName": "Blue",
+          "colorRgb": "0055BF",
+          "transform": [
+            15.552,
+            9,
+            0,
+            0.985,
+            0.17,
+            0,
+            -0.17,
+            0.985,
+            0,
+            0,
+            0,
+            1
+          ]
+        },
+        {
+          "file": "parts/3820.dat",
+          "colorRole": "hands",
+          "colorName": "Black",
+          "colorRgb": "05131D",
+          "transform": [
+            -23.69,
+            26.774,
+            -9.898,
+            0.985,
+            -0.12,
+            0.12,
+            0.17,
+            0.696,
+            -0.696,
+            0,
+            0.707,
+            0.707
+          ]
+        },
+        {
+          "file": "parts/3820.dat",
+          "colorRole": "hands",
+          "colorName": "Black",
+          "colorRgb": "05131D",
+          "transform": [
+            23.69,
+            26.774,
+            -9.898,
+            0.985,
+            0.12,
+            -0.12,
+            -0.17,
+            0.696,
+            -0.696,
+            0,
+            0.707,
+            0.707
+          ]
+        },
+        {
+          "file": "parts/973.dat",
+          "colorRole": "catalog",
+          "colorName": null,
+          "colorRgb": null,
+          "transform": [
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1
+          ]
+        }
+      ]
+    },
+    "catalog:torsoAssembly:973c28h03pr0001": {
+      "kind": "rebrickable-color-coded-assembly",
+      "printRendered": false,
       "referenceShortcutCount": 809,
       "agreeingReferenceShortcutCount": 804,
       "components": [
@@ -462244,6 +464296,114 @@
       ]
     },
     "catalog:torsoAssembly:973c30h30pr0010": {
+      "kind": "rebrickable-color-coded-assembly",
+      "printRendered": false,
+      "referenceShortcutCount": 809,
+      "agreeingReferenceShortcutCount": 804,
+      "components": [
+        {
+          "file": "parts/3818.dat",
+          "colorRole": "arms",
+          "colorName": "Flat Silver",
+          "colorRgb": "898788",
+          "transform": [
+            -15.552,
+            9,
+            0,
+            0.985,
+            -0.17,
+            0,
+            0.17,
+            0.985,
+            0,
+            0,
+            0,
+            1
+          ]
+        },
+        {
+          "file": "parts/3819.dat",
+          "colorRole": "arms",
+          "colorName": "Flat Silver",
+          "colorRgb": "898788",
+          "transform": [
+            15.552,
+            9,
+            0,
+            0.985,
+            0.17,
+            0,
+            -0.17,
+            0.985,
+            0,
+            0,
+            0,
+            1
+          ]
+        },
+        {
+          "file": "parts/3820.dat",
+          "colorRole": "hands",
+          "colorName": "Flat Silver",
+          "colorRgb": "898788",
+          "transform": [
+            -23.69,
+            26.774,
+            -9.898,
+            0.985,
+            -0.12,
+            0.12,
+            0.17,
+            0.696,
+            -0.696,
+            0,
+            0.707,
+            0.707
+          ]
+        },
+        {
+          "file": "parts/3820.dat",
+          "colorRole": "hands",
+          "colorName": "Flat Silver",
+          "colorRgb": "898788",
+          "transform": [
+            23.69,
+            26.774,
+            -9.898,
+            0.985,
+            0.12,
+            -0.12,
+            -0.17,
+            0.696,
+            -0.696,
+            0,
+            0.707,
+            0.707
+          ]
+        },
+        {
+          "file": "parts/973.dat",
+          "colorRole": "catalog",
+          "colorName": null,
+          "colorRgb": null,
+          "transform": [
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1
+          ]
+        }
+      ]
+    },
+    "catalog:torsoAssembly:973c30h30pr0011": {
       "kind": "rebrickable-color-coded-assembly",
       "printRendered": false,
       "referenceShortcutCount": 809,
@@ -490000,6 +492160,114 @@
       ]
     },
     "catalog:torsoAssembly:973c34h34pr0001": {
+      "kind": "rebrickable-color-coded-assembly",
+      "printRendered": false,
+      "referenceShortcutCount": 809,
+      "agreeingReferenceShortcutCount": 804,
+      "components": [
+        {
+          "file": "parts/3818.dat",
+          "colorRole": "arms",
+          "colorName": "Orange",
+          "colorRgb": "FE8A18",
+          "transform": [
+            -15.552,
+            9,
+            0,
+            0.985,
+            -0.17,
+            0,
+            0.17,
+            0.985,
+            0,
+            0,
+            0,
+            1
+          ]
+        },
+        {
+          "file": "parts/3819.dat",
+          "colorRole": "arms",
+          "colorName": "Orange",
+          "colorRgb": "FE8A18",
+          "transform": [
+            15.552,
+            9,
+            0,
+            0.985,
+            0.17,
+            0,
+            -0.17,
+            0.985,
+            0,
+            0,
+            0,
+            1
+          ]
+        },
+        {
+          "file": "parts/3820.dat",
+          "colorRole": "hands",
+          "colorName": "Orange",
+          "colorRgb": "FE8A18",
+          "transform": [
+            -23.69,
+            26.774,
+            -9.898,
+            0.985,
+            -0.12,
+            0.12,
+            0.17,
+            0.696,
+            -0.696,
+            0,
+            0.707,
+            0.707
+          ]
+        },
+        {
+          "file": "parts/3820.dat",
+          "colorRole": "hands",
+          "colorName": "Orange",
+          "colorRgb": "FE8A18",
+          "transform": [
+            23.69,
+            26.774,
+            -9.898,
+            0.985,
+            0.12,
+            -0.12,
+            -0.17,
+            0.696,
+            -0.696,
+            0,
+            0.707,
+            0.707
+          ]
+        },
+        {
+          "file": "parts/973.dat",
+          "colorRole": "catalog",
+          "colorName": null,
+          "colorRgb": null,
+          "transform": [
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1
+          ]
+        }
+      ]
+    },
+    "catalog:torsoAssembly:973c34h34pr0003": {
       "kind": "rebrickable-color-coded-assembly",
       "printRendered": false,
       "referenceShortcutCount": 809,
@@ -539139,114 +541407,6 @@
         }
       ]
     },
-    "catalog:torsoAssembly:973c68h44": {
-      "kind": "rebrickable-color-coded-assembly",
-      "printRendered": true,
-      "referenceShortcutCount": 809,
-      "agreeingReferenceShortcutCount": 804,
-      "components": [
-        {
-          "file": "parts/3818.dat",
-          "colorRole": "arms",
-          "colorName": "Trans-Yellow",
-          "colorRgb": "F5CD2F",
-          "transform": [
-            -15.552,
-            9,
-            0,
-            0.985,
-            -0.17,
-            0,
-            0.17,
-            0.985,
-            0,
-            0,
-            0,
-            1
-          ]
-        },
-        {
-          "file": "parts/3819.dat",
-          "colorRole": "arms",
-          "colorName": "Trans-Yellow",
-          "colorRgb": "F5CD2F",
-          "transform": [
-            15.552,
-            9,
-            0,
-            0.985,
-            0.17,
-            0,
-            -0.17,
-            0.985,
-            0,
-            0,
-            0,
-            1
-          ]
-        },
-        {
-          "file": "parts/3820.dat",
-          "colorRole": "hands",
-          "colorName": "Bright Light Yellow",
-          "colorRgb": "FFF03A",
-          "transform": [
-            -23.69,
-            26.774,
-            -9.898,
-            0.985,
-            -0.12,
-            0.12,
-            0.17,
-            0.696,
-            -0.696,
-            0,
-            0.707,
-            0.707
-          ]
-        },
-        {
-          "file": "parts/3820.dat",
-          "colorRole": "hands",
-          "colorName": "Bright Light Yellow",
-          "colorRgb": "FFF03A",
-          "transform": [
-            23.69,
-            26.774,
-            -9.898,
-            0.985,
-            0.12,
-            -0.12,
-            -0.17,
-            0.696,
-            -0.696,
-            0,
-            0.707,
-            0.707
-          ]
-        },
-        {
-          "file": "parts/973.dat",
-          "colorRole": "catalog",
-          "colorName": null,
-          "colorRgb": null,
-          "transform": [
-            0,
-            0,
-            0,
-            1,
-            0,
-            0,
-            0,
-            1,
-            0,
-            0,
-            0,
-            1
-          ]
-        }
-      ]
-    },
     "catalog:torsoAssembly:973c68h44pr0001": {
       "kind": "rebrickable-color-coded-assembly",
       "printRendered": false,
@@ -544539,6 +546699,114 @@
         }
       ]
     },
+    "catalog:torsoAssembly:973c75h12pr0003": {
+      "kind": "rebrickable-color-coded-assembly",
+      "printRendered": false,
+      "referenceShortcutCount": 809,
+      "agreeingReferenceShortcutCount": 804,
+      "components": [
+        {
+          "file": "parts/3818.dat",
+          "colorRole": "arms",
+          "colorName": "Pearl Titanium",
+          "colorRgb": "3E3C39",
+          "transform": [
+            -15.552,
+            9,
+            0,
+            0.985,
+            -0.17,
+            0,
+            0.17,
+            0.985,
+            0,
+            0,
+            0,
+            1
+          ]
+        },
+        {
+          "file": "parts/3819.dat",
+          "colorRole": "arms",
+          "colorName": "Pearl Titanium",
+          "colorRgb": "3E3C39",
+          "transform": [
+            15.552,
+            9,
+            0,
+            0.985,
+            0.17,
+            0,
+            -0.17,
+            0.985,
+            0,
+            0,
+            0,
+            1
+          ]
+        },
+        {
+          "file": "parts/3820.dat",
+          "colorRole": "hands",
+          "colorName": "Dark Bluish Gray",
+          "colorRgb": "6C6E68",
+          "transform": [
+            -23.69,
+            26.774,
+            -9.898,
+            0.985,
+            -0.12,
+            0.12,
+            0.17,
+            0.696,
+            -0.696,
+            0,
+            0.707,
+            0.707
+          ]
+        },
+        {
+          "file": "parts/3820.dat",
+          "colorRole": "hands",
+          "colorName": "Dark Bluish Gray",
+          "colorRgb": "6C6E68",
+          "transform": [
+            23.69,
+            26.774,
+            -9.898,
+            0.985,
+            0.12,
+            -0.12,
+            -0.17,
+            0.696,
+            -0.696,
+            0,
+            0.707,
+            0.707
+          ]
+        },
+        {
+          "file": "parts/973.dat",
+          "colorRole": "catalog",
+          "colorName": null,
+          "colorRgb": null,
+          "transform": [
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1
+          ]
+        }
+      ]
+    },
     "catalog:torsoAssembly:973c75h12pr2808": {
       "kind": "rebrickable-color-coded-assembly",
       "printRendered": false,
@@ -548518,6 +550786,114 @@
           "colorRole": "boots",
           "colorName": "Dark Purple",
           "colorRgb": "3F3691",
+          "transform": [
+            0,
+            12,
+            0,
+            -1,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1
+          ]
+        }
+      ]
+    },
+    "catalog:legsAssembly:970c01pat11pr0001": {
+      "kind": "rebrickable-color-coded-assembly",
+      "printRendered": false,
+      "referenceShortcutCount": 1,
+      "agreeingReferenceShortcutCount": 1,
+      "components": [
+        {
+          "file": "parts/3815b.dat",
+          "colorRole": "catalog",
+          "colorName": null,
+          "colorRgb": null,
+          "transform": [
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1
+          ]
+        },
+        {
+          "file": "parts/s/20460bs01.dat",
+          "colorRole": "legs",
+          "colorName": "Yellow",
+          "colorRgb": "F2CD37",
+          "transform": [
+            0,
+            12,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1
+          ]
+        },
+        {
+          "file": "parts/s/20460bs02.dat",
+          "colorRole": "boots",
+          "colorName": "Dark Tan",
+          "colorRgb": "958A73",
+          "transform": [
+            0,
+            12,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1
+          ]
+        },
+        {
+          "file": "parts/s/20460bs01.dat",
+          "colorRole": "legs",
+          "colorName": "Yellow",
+          "colorRgb": "F2CD37",
+          "transform": [
+            0,
+            12,
+            0,
+            -1,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1
+          ]
+        },
+        {
+          "file": "parts/s/20460bs02.dat",
+          "colorRole": "boots",
+          "colorName": "Dark Tan",
+          "colorRgb": "958A73",
           "transform": [
             0,
             12,
@@ -559180,6 +561556,210 @@
       ]
     },
     "catalog:legsAssembly:970c03pr0093": {
+      "kind": "rebrickable-color-coded-assembly",
+      "printRendered": false,
+      "referenceShortcutCount": 112,
+      "agreeingReferenceShortcutCount": 111,
+      "components": [
+        {
+          "file": "parts/3815b.dat",
+          "colorRole": "catalog",
+          "colorName": null,
+          "colorRgb": null,
+          "transform": [
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1
+          ]
+        },
+        {
+          "file": "parts/3816c.dat",
+          "colorRole": "legs",
+          "colorName": "Black",
+          "colorRgb": "05131D",
+          "transform": [
+            0,
+            12,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1
+          ]
+        },
+        {
+          "file": "parts/3817c.dat",
+          "colorRole": "legs",
+          "colorName": "Black",
+          "colorRgb": "05131D",
+          "transform": [
+            0,
+            12,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1
+          ]
+        }
+      ]
+    },
+    "catalog:legsAssembly:970c03pr0094": {
+      "kind": "rebrickable-color-coded-assembly",
+      "printRendered": false,
+      "referenceShortcutCount": 112,
+      "agreeingReferenceShortcutCount": 111,
+      "components": [
+        {
+          "file": "parts/3815b.dat",
+          "colorRole": "catalog",
+          "colorName": null,
+          "colorRgb": null,
+          "transform": [
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1
+          ]
+        },
+        {
+          "file": "parts/3816c.dat",
+          "colorRole": "legs",
+          "colorName": "Black",
+          "colorRgb": "05131D",
+          "transform": [
+            0,
+            12,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1
+          ]
+        },
+        {
+          "file": "parts/3817c.dat",
+          "colorRole": "legs",
+          "colorName": "Black",
+          "colorRgb": "05131D",
+          "transform": [
+            0,
+            12,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1
+          ]
+        }
+      ]
+    },
+    "catalog:legsAssembly:970c03pr0095": {
+      "kind": "rebrickable-color-coded-assembly",
+      "printRendered": false,
+      "referenceShortcutCount": 112,
+      "agreeingReferenceShortcutCount": 111,
+      "components": [
+        {
+          "file": "parts/3815b.dat",
+          "colorRole": "catalog",
+          "colorName": null,
+          "colorRgb": null,
+          "transform": [
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1
+          ]
+        },
+        {
+          "file": "parts/3816c.dat",
+          "colorRole": "legs",
+          "colorName": "Black",
+          "colorRgb": "05131D",
+          "transform": [
+            0,
+            12,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1
+          ]
+        },
+        {
+          "file": "parts/3817c.dat",
+          "colorRole": "legs",
+          "colorName": "Black",
+          "colorRgb": "05131D",
+          "transform": [
+            0,
+            12,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1
+          ]
+        }
+      ]
+    },
+    "catalog:legsAssembly:970c03pr0096": {
       "kind": "rebrickable-color-coded-assembly",
       "printRendered": false,
       "referenceShortcutCount": 112,
@@ -580327,6 +582907,114 @@
         }
       ]
     },
+    "catalog:legsAssembly:970c04pat13": {
+      "kind": "rebrickable-color-coded-assembly",
+      "printRendered": true,
+      "referenceShortcutCount": 1,
+      "agreeingReferenceShortcutCount": 1,
+      "components": [
+        {
+          "file": "parts/3815b.dat",
+          "colorRole": "catalog",
+          "colorName": null,
+          "colorRgb": null,
+          "transform": [
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1
+          ]
+        },
+        {
+          "file": "parts/s/20460bs01.dat",
+          "colorRole": "legs",
+          "colorName": "Dark Azure",
+          "colorRgb": "078BC9",
+          "transform": [
+            0,
+            12,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1
+          ]
+        },
+        {
+          "file": "parts/s/20460bs02.dat",
+          "colorRole": "boots",
+          "colorName": "Nougat",
+          "colorRgb": "D09168",
+          "transform": [
+            0,
+            12,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1
+          ]
+        },
+        {
+          "file": "parts/s/20460bs01.dat",
+          "colorRole": "legs",
+          "colorName": "Dark Azure",
+          "colorRgb": "078BC9",
+          "transform": [
+            0,
+            12,
+            0,
+            -1,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1
+          ]
+        },
+        {
+          "file": "parts/s/20460bs02.dat",
+          "colorRole": "boots",
+          "colorName": "Nougat",
+          "colorRgb": "D09168",
+          "transform": [
+            0,
+            12,
+            0,
+            -1,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1
+          ]
+        }
+      ]
+    },
     "catalog:legsAssembly:970c04pat18pr1773": {
       "kind": "rebrickable-color-coded-assembly",
       "printRendered": false,
@@ -591027,6 +593715,114 @@
         }
       ]
     },
+    "catalog:legsAssembly:970c06pat27pr0001": {
+      "kind": "rebrickable-color-coded-assembly",
+      "printRendered": false,
+      "referenceShortcutCount": 1,
+      "agreeingReferenceShortcutCount": 1,
+      "components": [
+        {
+          "file": "parts/3815b.dat",
+          "colorRole": "catalog",
+          "colorName": null,
+          "colorRgb": null,
+          "transform": [
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1
+          ]
+        },
+        {
+          "file": "parts/s/20460bs01.dat",
+          "colorRole": "legs",
+          "colorName": "Bright Green",
+          "colorRgb": "4B9F4A",
+          "transform": [
+            0,
+            12,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1
+          ]
+        },
+        {
+          "file": "parts/s/20460bs02.dat",
+          "colorRole": "boots",
+          "colorName": "White",
+          "colorRgb": "FFFFFF",
+          "transform": [
+            0,
+            12,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1
+          ]
+        },
+        {
+          "file": "parts/s/20460bs01.dat",
+          "colorRole": "legs",
+          "colorName": "Bright Green",
+          "colorRgb": "4B9F4A",
+          "transform": [
+            0,
+            12,
+            0,
+            -1,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1
+          ]
+        },
+        {
+          "file": "parts/s/20460bs02.dat",
+          "colorRole": "boots",
+          "colorName": "White",
+          "colorRgb": "FFFFFF",
+          "transform": [
+            0,
+            12,
+            0,
+            -1,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1
+          ]
+        }
+      ]
+    },
     "catalog:legsAssembly:970c06pat31": {
       "kind": "rebrickable-color-coded-assembly",
       "printRendered": true,
@@ -593636,6 +596432,74 @@
       ]
     },
     "catalog:legsAssembly:970c07pr0014": {
+      "kind": "rebrickable-color-coded-assembly",
+      "printRendered": false,
+      "referenceShortcutCount": 112,
+      "agreeingReferenceShortcutCount": 111,
+      "components": [
+        {
+          "file": "parts/3815b.dat",
+          "colorRole": "catalog",
+          "colorName": null,
+          "colorRgb": null,
+          "transform": [
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1
+          ]
+        },
+        {
+          "file": "parts/3816c.dat",
+          "colorRole": "legs",
+          "colorName": "Dark Brown",
+          "colorRgb": "352100",
+          "transform": [
+            0,
+            12,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1
+          ]
+        },
+        {
+          "file": "parts/3817c.dat",
+          "colorRole": "legs",
+          "colorName": "Dark Brown",
+          "colorRgb": "352100",
+          "transform": [
+            0,
+            12,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1
+          ]
+        }
+      ]
+    },
+    "catalog:legsAssembly:970c07pr0015": {
       "kind": "rebrickable-color-coded-assembly",
       "printRendered": false,
       "referenceShortcutCount": 112,
@@ -603347,6 +606211,142 @@
         }
       ]
     },
+    "catalog:legsAssembly:970c10pr0016": {
+      "kind": "rebrickable-color-coded-assembly",
+      "printRendered": false,
+      "referenceShortcutCount": 112,
+      "agreeingReferenceShortcutCount": 111,
+      "components": [
+        {
+          "file": "parts/3815b.dat",
+          "colorRole": "catalog",
+          "colorName": null,
+          "colorRgb": null,
+          "transform": [
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1
+          ]
+        },
+        {
+          "file": "parts/3816c.dat",
+          "colorRole": "legs",
+          "colorName": "Dark Red",
+          "colorRgb": "720E0F",
+          "transform": [
+            0,
+            12,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1
+          ]
+        },
+        {
+          "file": "parts/3817c.dat",
+          "colorRole": "legs",
+          "colorName": "Dark Red",
+          "colorRgb": "720E0F",
+          "transform": [
+            0,
+            12,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1
+          ]
+        }
+      ]
+    },
+    "catalog:legsAssembly:970c10pr0017": {
+      "kind": "rebrickable-color-coded-assembly",
+      "printRendered": false,
+      "referenceShortcutCount": 112,
+      "agreeingReferenceShortcutCount": 111,
+      "components": [
+        {
+          "file": "parts/3815b.dat",
+          "colorRole": "catalog",
+          "colorName": null,
+          "colorRgb": null,
+          "transform": [
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1
+          ]
+        },
+        {
+          "file": "parts/3816c.dat",
+          "colorRole": "legs",
+          "colorName": "Dark Red",
+          "colorRgb": "720E0F",
+          "transform": [
+            0,
+            12,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1
+          ]
+        },
+        {
+          "file": "parts/3817c.dat",
+          "colorRole": "legs",
+          "colorName": "Dark Red",
+          "colorRgb": "720E0F",
+          "transform": [
+            0,
+            12,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1
+          ]
+        }
+      ]
+    },
     "catalog:legsAssembly:970c10pr0063": {
       "kind": "rebrickable-color-coded-assembly",
       "printRendered": false,
@@ -612480,6 +615480,114 @@
       ]
     },
     "catalog:legsAssembly:970c12pat03pr0004": {
+      "kind": "rebrickable-color-coded-assembly",
+      "printRendered": false,
+      "referenceShortcutCount": 1,
+      "agreeingReferenceShortcutCount": 1,
+      "components": [
+        {
+          "file": "parts/3815b.dat",
+          "colorRole": "catalog",
+          "colorName": null,
+          "colorRgb": null,
+          "transform": [
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1
+          ]
+        },
+        {
+          "file": "parts/s/20460bs01.dat",
+          "colorRole": "legs",
+          "colorName": "Dark Bluish Gray",
+          "colorRgb": "6C6E68",
+          "transform": [
+            0,
+            12,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1
+          ]
+        },
+        {
+          "file": "parts/s/20460bs02.dat",
+          "colorRole": "boots",
+          "colorName": "Black",
+          "colorRgb": "05131D",
+          "transform": [
+            0,
+            12,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1
+          ]
+        },
+        {
+          "file": "parts/s/20460bs01.dat",
+          "colorRole": "legs",
+          "colorName": "Dark Bluish Gray",
+          "colorRgb": "6C6E68",
+          "transform": [
+            0,
+            12,
+            0,
+            -1,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1
+          ]
+        },
+        {
+          "file": "parts/s/20460bs02.dat",
+          "colorRole": "boots",
+          "colorName": "Black",
+          "colorRgb": "05131D",
+          "transform": [
+            0,
+            12,
+            0,
+            -1,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1
+          ]
+        }
+      ]
+    },
+    "catalog:legsAssembly:970c12pat03pr0005": {
       "kind": "rebrickable-color-coded-assembly",
       "printRendered": false,
       "referenceShortcutCount": 1,
@@ -637204,6 +640312,74 @@
       ]
     },
     "catalog:legsAssembly:970c21pr0006": {
+      "kind": "rebrickable-color-coded-assembly",
+      "printRendered": false,
+      "referenceShortcutCount": 112,
+      "agreeingReferenceShortcutCount": 111,
+      "components": [
+        {
+          "file": "parts/3815b.dat",
+          "colorRole": "catalog",
+          "colorName": null,
+          "colorRgb": null,
+          "transform": [
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1
+          ]
+        },
+        {
+          "file": "parts/3816c.dat",
+          "colorRole": "legs",
+          "colorName": "Pearl Gold",
+          "colorRgb": "AA7F2E",
+          "transform": [
+            0,
+            12,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1
+          ]
+        },
+        {
+          "file": "parts/3817c.dat",
+          "colorRole": "legs",
+          "colorName": "Pearl Gold",
+          "colorRgb": "AA7F2E",
+          "transform": [
+            0,
+            12,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1
+          ]
+        }
+      ]
+    },
+    "catalog:legsAssembly:970c21pr0007": {
       "kind": "rebrickable-color-coded-assembly",
       "printRendered": false,
       "referenceShortcutCount": 112,
@@ -664755,6 +667931,114 @@
         }
       ]
     },
+    "catalog:legsAssembly:970c27pat11pr0001": {
+      "kind": "rebrickable-color-coded-assembly",
+      "printRendered": false,
+      "referenceShortcutCount": 1,
+      "agreeingReferenceShortcutCount": 1,
+      "components": [
+        {
+          "file": "parts/3815b.dat",
+          "colorRole": "catalog",
+          "colorName": null,
+          "colorRgb": null,
+          "transform": [
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1
+          ]
+        },
+        {
+          "file": "parts/s/20460bs01.dat",
+          "colorRole": "legs",
+          "colorName": "White",
+          "colorRgb": "FFFFFF",
+          "transform": [
+            0,
+            12,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1
+          ]
+        },
+        {
+          "file": "parts/s/20460bs02.dat",
+          "colorRole": "boots",
+          "colorName": "Dark Tan",
+          "colorRgb": "958A73",
+          "transform": [
+            0,
+            12,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1
+          ]
+        },
+        {
+          "file": "parts/s/20460bs01.dat",
+          "colorRole": "legs",
+          "colorName": "White",
+          "colorRgb": "FFFFFF",
+          "transform": [
+            0,
+            12,
+            0,
+            -1,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1
+          ]
+        },
+        {
+          "file": "parts/s/20460bs02.dat",
+          "colorRole": "boots",
+          "colorName": "Dark Tan",
+          "colorRgb": "958A73",
+          "transform": [
+            0,
+            12,
+            0,
+            -1,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1
+          ]
+        }
+      ]
+    },
     "catalog:legsAssembly:970c27pat14pr0001": {
       "kind": "rebrickable-color-coded-assembly",
       "printRendered": false,
@@ -670944,6 +674228,74 @@
       ]
     },
     "catalog:legsAssembly:970c27pr0070": {
+      "kind": "rebrickable-color-coded-assembly",
+      "printRendered": false,
+      "referenceShortcutCount": 112,
+      "agreeingReferenceShortcutCount": 111,
+      "components": [
+        {
+          "file": "parts/3815b.dat",
+          "colorRole": "catalog",
+          "colorName": null,
+          "colorRgb": null,
+          "transform": [
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1
+          ]
+        },
+        {
+          "file": "parts/3816c.dat",
+          "colorRole": "legs",
+          "colorName": "White",
+          "colorRgb": "FFFFFF",
+          "transform": [
+            0,
+            12,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1
+          ]
+        },
+        {
+          "file": "parts/3817c.dat",
+          "colorRole": "legs",
+          "colorName": "White",
+          "colorRgb": "FFFFFF",
+          "transform": [
+            0,
+            12,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1
+          ]
+        }
+      ]
+    },
+    "catalog:legsAssembly:970c27pr0071": {
       "kind": "rebrickable-color-coded-assembly",
       "printRendered": false,
       "referenceShortcutCount": 112,
@@ -687411,6 +690763,142 @@
         }
       ]
     },
+    "catalog:legsAssembly:970c28pr0008": {
+      "kind": "rebrickable-color-coded-assembly",
+      "printRendered": false,
+      "referenceShortcutCount": 112,
+      "agreeingReferenceShortcutCount": 111,
+      "components": [
+        {
+          "file": "parts/3815b.dat",
+          "colorRole": "catalog",
+          "colorName": null,
+          "colorRgb": null,
+          "transform": [
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1
+          ]
+        },
+        {
+          "file": "parts/3816c.dat",
+          "colorRole": "legs",
+          "colorName": "Blue",
+          "colorRgb": "0055BF",
+          "transform": [
+            0,
+            12,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1
+          ]
+        },
+        {
+          "file": "parts/3817c.dat",
+          "colorRole": "legs",
+          "colorName": "Blue",
+          "colorRgb": "0055BF",
+          "transform": [
+            0,
+            12,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1
+          ]
+        }
+      ]
+    },
+    "catalog:legsAssembly:970c28pr0009": {
+      "kind": "rebrickable-color-coded-assembly",
+      "printRendered": false,
+      "referenceShortcutCount": 112,
+      "agreeingReferenceShortcutCount": 111,
+      "components": [
+        {
+          "file": "parts/3815b.dat",
+          "colorRole": "catalog",
+          "colorName": null,
+          "colorRgb": null,
+          "transform": [
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1
+          ]
+        },
+        {
+          "file": "parts/3816c.dat",
+          "colorRole": "legs",
+          "colorName": "Blue",
+          "colorRgb": "0055BF",
+          "transform": [
+            0,
+            12,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1
+          ]
+        },
+        {
+          "file": "parts/3817c.dat",
+          "colorRole": "legs",
+          "colorName": "Blue",
+          "colorRgb": "0055BF",
+          "transform": [
+            0,
+            12,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1
+          ]
+        }
+      ]
+    },
     "catalog:legsAssembly:970c28pr0011": {
       "kind": "rebrickable-color-coded-assembly",
       "printRendered": false,
@@ -701756,6 +705244,74 @@
       ]
     },
     "catalog:legsAssembly:970c34pr0006": {
+      "kind": "rebrickable-color-coded-assembly",
+      "printRendered": false,
+      "referenceShortcutCount": 112,
+      "agreeingReferenceShortcutCount": 111,
+      "components": [
+        {
+          "file": "parts/3815b.dat",
+          "colorRole": "catalog",
+          "colorName": null,
+          "colorRgb": null,
+          "transform": [
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1
+          ]
+        },
+        {
+          "file": "parts/3816c.dat",
+          "colorRole": "legs",
+          "colorName": "Orange",
+          "colorRgb": "FE8A18",
+          "transform": [
+            0,
+            12,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1
+          ]
+        },
+        {
+          "file": "parts/3817c.dat",
+          "colorRole": "legs",
+          "colorName": "Orange",
+          "colorRgb": "FE8A18",
+          "transform": [
+            0,
+            12,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1
+          ]
+        }
+      ]
+    },
+    "catalog:legsAssembly:970c34pr0008": {
       "kind": "rebrickable-color-coded-assembly",
       "printRendered": false,
       "referenceShortcutCount": 112,
@@ -721388,6 +724944,74 @@
       ]
     },
     "catalog:legsAssembly:970c75pr0028": {
+      "kind": "rebrickable-color-coded-assembly",
+      "printRendered": false,
+      "referenceShortcutCount": 112,
+      "agreeingReferenceShortcutCount": 111,
+      "components": [
+        {
+          "file": "parts/3815b.dat",
+          "colorRole": "catalog",
+          "colorName": null,
+          "colorRgb": null,
+          "transform": [
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1
+          ]
+        },
+        {
+          "file": "parts/3816c.dat",
+          "colorRole": "legs",
+          "colorName": "Pearl Titanium",
+          "colorRgb": "3E3C39",
+          "transform": [
+            0,
+            12,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1
+          ]
+        },
+        {
+          "file": "parts/3817c.dat",
+          "colorRole": "legs",
+          "colorName": "Pearl Titanium",
+          "colorRgb": "3E3C39",
+          "transform": [
+            0,
+            12,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1
+          ]
+        }
+      ]
+    },
+    "catalog:legsAssembly:970c75pr0029": {
       "kind": "rebrickable-color-coded-assembly",
       "printRendered": false,
       "referenceShortcutCount": 112,
