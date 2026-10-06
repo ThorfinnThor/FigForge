@@ -3,7 +3,7 @@ import { loadCatalogSetIndex } from "../catalog/catalog-set-index-data.js";
 import {
   findCatalogSets,
   partNumbersForCatalogSet,
-  type CatalogSetEntry,
+  type CatalogSetSearchEntry,
 } from "../catalog/catalog-set-filter.js";
 import type { CatalogSetIndex } from "../contracts/catalog-set-index.js";
 import { useI18n } from "../i18n.js";
@@ -14,6 +14,7 @@ export type CatalogSetSelection = {
   name: string;
   year: number;
   partNumbers: readonly string[];
+  groupSize?: number;
 };
 
 type CatalogSetFilterProps = {
@@ -22,6 +23,7 @@ type CatalogSetFilterProps = {
 };
 
 type LoadStatus = "idle" | "loading" | "ready" | "error";
+const SET_SUGGESTION_LIMIT = 120;
 
 const selectionLabel = (set: Pick<CatalogSetSelection, "setNum" | "name">): string =>
   `${set.setNum} · ${set.name}`;
@@ -36,7 +38,7 @@ export function CatalogSetFilter({ onChange, selected }: CatalogSetFilterProps) 
   const [highlightedIndex, setHighlightedIndex] = useState(0);
 
   const suggestions = useMemo(
-    () => index && !selected ? findCatalogSets(index, query) : [],
+    () => index && !selected ? findCatalogSets(index, query, SET_SUGGESTION_LIMIT) : [],
     [index, query, selected],
   );
 
@@ -51,13 +53,14 @@ export function CatalogSetFilter({ onChange, selected }: CatalogSetFilterProps) 
       .catch(() => setLoadStatus("error"));
   };
 
-  const chooseSet = (set: CatalogSetEntry): void => {
+  const chooseSet = (set: CatalogSetSearchEntry): void => {
     if (!index) return;
     const selection = {
       setNum: set.setNum,
       name: set.name,
       year: set.year,
       partNumbers: partNumbersForCatalogSet(index, set),
+      ...(set.groupSize === undefined ? {} : { groupSize: set.groupSize }),
     } satisfies CatalogSetSelection;
     setQuery(selectionLabel(selection));
     setOpen(false);
@@ -155,7 +158,12 @@ export function CatalogSetFilter({ onChange, selected }: CatalogSetFilterProps) 
                 >
                   <strong>{set.setNum}</strong>
                   <span>{set.name}</span>
-                  <small>{set.year}</small>
+                  <small>
+                    {set.year}
+                    {set.groupSize === undefined
+                      ? ""
+                      : ` · ${t("catalog.setFilter.groupSize", { count: set.groupSize })}`}
+                  </small>
                 </button>
               </li>
             ))}
