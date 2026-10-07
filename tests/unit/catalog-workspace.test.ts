@@ -94,6 +94,8 @@ describe("FF-14 responsive catalog workspace", () => {
     expect(source).toContain("<FigureViewport selectedParts={selectedLDrawParts}");
     expect(source).toContain("saveCurrentFigureDraft");
     expect(source).toContain("parseFigureDocument");
+    expect(source).toContain('new URLSearchParams(window.location.search).get("figureId")');
+    expect(source).toContain("requestedSavedFigure?.document");
     expect(source).toContain("document.selections.map(({ slot }) => slot)");
     expect(source).toContain("onRemove={removeFromFigure}");
     expect(source.match(/figureSlot\("headwear"/gu)).toHaveLength(1);

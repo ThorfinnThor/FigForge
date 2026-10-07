@@ -1,12 +1,15 @@
 import { z } from "zod";
 import { figureDocumentSchema, type FigureDocument } from "../contracts/figure-document.js";
+import { playgroundLayoutSchema, type PlaygroundLayout } from "../contracts/playground-layout.js";
 
 const DATABASE_NAME = "figforge";
-export const FIGURE_STORAGE_VERSION = 2;
+export const FIGURE_STORAGE_VERSION = 3;
 const DATABASE_VERSION = FIGURE_STORAGE_VERSION;
 const DRAFT_STORE_NAME = "figure-drafts";
 const COLLECTION_STORE_NAME = "figure-collection";
+const PLAYGROUND_STORE_NAME = "playground-layout";
 const CURRENT_DRAFT_KEY = "current";
+const CURRENT_PLAYGROUND_KEY = "current";
 
 export const savedFigureSchema = z.object({
   id: z.string().min(1).max(120),
@@ -28,6 +31,11 @@ const openDatabase = (): Promise<IDBDatabase> => new Promise((resolve, reject) =
     // Keeping the draft store and key stable is the migration guarantee for v1 data.
     if (!database.objectStoreNames.contains(COLLECTION_STORE_NAME)) {
       database.createObjectStore(COLLECTION_STORE_NAME, { keyPath: "id" });
+    }
+    // Version 3 stores only ordered collection references for the playground.
+    // Saved figure documents remain in the version-2 collection store.
+    if (!database.objectStoreNames.contains(PLAYGROUND_STORE_NAME)) {
+      database.createObjectStore(PLAYGROUND_STORE_NAME);
     }
   };
   request.onsuccess = () => resolve(request.result);
@@ -115,13 +123,43 @@ export const deleteSavedFigure = async (id: string): Promise<void> => {
   }
 };
 
+export const loadCurrentPlaygroundLayout = async (): Promise<PlaygroundLayout | null> => {
+  const database = await openDatabase();
+  try {
+    const raw = await requestResult<unknown>(
+      database.transaction(PLAYGROUND_STORE_NAME).objectStore(PLAYGROUND_STORE_NAME).get(CURRENT_PLAYGROUND_KEY),
+    );
+    return raw === undefined ? null : playgroundLayoutSchema.parse(raw);
+  } finally {
+    database.close();
+  }
+};
+
+export const saveCurrentPlaygroundLayout = async (layout: PlaygroundLayout): Promise<void> => {
+  const database = await openDatabase();
+  try {
+    await requestResult(
+      database.transaction(PLAYGROUND_STORE_NAME, "readwrite").objectStore(PLAYGROUND_STORE_NAME).put(
+        playgroundLayoutSchema.parse(layout),
+        CURRENT_PLAYGROUND_KEY,
+      ),
+    );
+  } finally {
+    database.close();
+  }
+};
+
 export const clearLocalFigureData = async (): Promise<void> => {
   const database = await openDatabase();
   try {
-    const transaction = database.transaction([DRAFT_STORE_NAME, COLLECTION_STORE_NAME], "readwrite");
+    const transaction = database.transaction(
+      [DRAFT_STORE_NAME, COLLECTION_STORE_NAME, PLAYGROUND_STORE_NAME],
+      "readwrite",
+    );
     await Promise.all([
       requestResult(transaction.objectStore(DRAFT_STORE_NAME).clear()),
       requestResult(transaction.objectStore(COLLECTION_STORE_NAME).clear()),
+      requestResult(transaction.objectStore(PLAYGROUND_STORE_NAME).clear()),
     ]);
   } finally {
     database.close();

@@ -418,7 +418,11 @@ export function CatalogWorkspace() {
             setTransferMessage(t("figure.share.invalid"));
           }
         }
-        const initialDocument = shared ?? document;
+        const requestedFigureId = new URLSearchParams(window.location.search).get("figureId");
+        const requestedSavedFigure = requestedFigureId
+          ? collection.find(({ id }) => id === requestedFigureId)
+          : undefined;
+        const initialDocument = shared ?? requestedSavedFigure?.document ?? document;
         if (!initialDocument) return;
         if (!active) return;
         await restoreFigureDocument(initialDocument, false);
@@ -426,6 +430,9 @@ export function CatalogWorkspace() {
         if (shared) {
           setTransferMessageTone("info");
           setTransferMessage(t("figure.share.loaded", { name: initialDocument.name }));
+        } else if (requestedSavedFigure) {
+          setTransferMessageTone("info");
+          setTransferMessage(t("figure.collection.loaded", { name: initialDocument.name }));
         }
       })
       .catch(() => {
@@ -792,6 +799,7 @@ export function CatalogWorkspace() {
         <a className="wordmark" href="/">Fig<span>Forge</span></a>
          <nav className="app-nav" aria-label={t("nav.label")}>
           <a className="app-nav__link app-nav__link--active" href="/" aria-current="page">{t("nav.builder")}</a>
+          <a className="app-nav__link" href="/collection">{t("nav.collection")}</a>
           <a className="app-nav__link" href="/methodology">{t("nav.notes")}</a>
         </nav>
         <span className="app-header__status">{t("header.status")}</span>
