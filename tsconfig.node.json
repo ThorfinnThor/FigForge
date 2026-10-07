@@ -24,6 +24,7 @@
     "src/components/catalog-workspace-data.ts",
     "src/components/**/*.ts",
     "src/catalog/**/*.ts",
+    "src/collection/**/*.ts",
     "src/compatibility/**/*.ts",
     "src/search/**/*.ts",
     "src/figure/**/*.ts",

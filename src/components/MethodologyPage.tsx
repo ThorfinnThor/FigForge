@@ -9,6 +9,7 @@ export function MethodologyPage() {
         <a className="wordmark" href="/">Fig<span>Forge</span></a>
         <nav className="app-nav" aria-label={t("nav.label")}>
           <a className="app-nav__link" href="/">{t("nav.builder")}</a>
+          <a className="app-nav__link" href="/collection">{t("nav.collection")}</a>
           <a className="app-nav__link app-nav__link--active" href="/methodology" aria-current="page">
             {t("nav.notes")}
           </a>

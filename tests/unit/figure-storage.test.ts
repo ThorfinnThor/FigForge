@@ -4,6 +4,12 @@ import {
   FIGURE_STORAGE_VERSION,
   savedFigureSchema,
 } from "../../src/storage/figure-draft-store.js";
+import {
+  PLAYGROUND_LAYOUT_MAX_FIGURES,
+  createEmptyPlaygroundLayout,
+  playgroundLayoutSchema,
+  reconcilePlaygroundLayout,
+} from "../../src/contracts/playground-layout.js";
 import { createFigureDocument } from "../../src/figure/figure-document.js";
 
 describe("FF-22 local figure storage", () => {
@@ -15,7 +21,7 @@ describe("FF-22 local figure storage", () => {
       legsAssembly: "catalog:legsAssembly:970c01",
     }, "Gespeicherte Figur", "2026-10-02T10:00:00.000Z");
 
-    expect(FIGURE_STORAGE_VERSION).toBe(2);
+    expect(FIGURE_STORAGE_VERSION).toBe(3);
     expect(savedFigureSchema.parse({
       id: "figure-1",
       document,
@@ -24,6 +30,47 @@ describe("FF-22 local figure storage", () => {
     }).document).toEqual(document);
     expect(source).toContain('createObjectStore(COLLECTION_STORE_NAME, { keyPath: "id" })');
     expect(source).toContain("Keeping the draft store and key stable");
+    expect(source).toContain("createObjectStore(PLAYGROUND_STORE_NAME)");
     expect(source).toContain("clearLocalFigureData");
+  });
+
+  it("stores an ordered playground of at most six unique collection references", () => {
+    const layout = playgroundLayoutSchema.parse({
+      schemaVersion: 1,
+      kind: "figforge-playground-layout",
+      updatedAt: "2026-10-06T20:00:00.000Z",
+      savedFigureIds: ["figure-c", "figure-a", "figure-b"],
+    });
+
+    expect(PLAYGROUND_LAYOUT_MAX_FIGURES).toBe(6);
+    expect(layout.savedFigureIds).toEqual(["figure-c", "figure-a", "figure-b"]);
+    expect(createEmptyPlaygroundLayout("2026-10-06T20:00:00.000Z").savedFigureIds).toEqual([]);
+    expect(() => playgroundLayoutSchema.parse({
+      ...layout,
+      savedFigureIds: ["figure-a", "figure-a"],
+    })).toThrow("Playground figures must be unique");
+    expect(() => playgroundLayoutSchema.parse({
+      ...layout,
+      savedFigureIds: Array.from({ length: 7 }, (_, index) => `figure-${index}`),
+    })).toThrow();
+  });
+
+  it("removes unavailable collection references without changing the remaining order", () => {
+    const layout = playgroundLayoutSchema.parse({
+      schemaVersion: 1,
+      kind: "figforge-playground-layout",
+      updatedAt: "2026-10-06T20:00:00.000Z",
+      savedFigureIds: ["figure-c", "figure-a", "figure-b"],
+    });
+
+    expect(reconcilePlaygroundLayout(
+      layout,
+      new Set(["figure-b", "figure-c"]),
+      "2026-10-06T20:05:00.000Z",
+    )).toEqual({
+      ...layout,
+      updatedAt: "2026-10-06T20:05:00.000Z",
+      savedFigureIds: ["figure-c", "figure-b"],
+    });
   });
 });
