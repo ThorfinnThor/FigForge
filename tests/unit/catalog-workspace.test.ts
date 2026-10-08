@@ -91,7 +91,8 @@ describe("FF-14 responsive catalog workspace", () => {
     expect(source).toContain("selectedSetPartNumbers.has(part.rebrickablePartNum");
     expect(source).toContain('t("catalog.policy")');
     expect(source).toContain("onSelect={builderComponent && digitallySupportedLDrawEntryForComponent(builderComponent.id)");
-    expect(source).toContain("<FigureViewport selectedParts={selectedLDrawParts}");
+    expect(source).toContain("<FigureViewport");
+    expect(source).toContain("onSaveToCollection={saveToCollection}");
     expect(source).toContain("saveCurrentFigureDraft");
     expect(source).toContain("parseFigureDocument");
     expect(source).toContain('new URLSearchParams(window.location.search).get("figureId")');

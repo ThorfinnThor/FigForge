@@ -765,7 +765,10 @@ export function CatalogWorkspace() {
 
   const viewport = (
     <section className="workspace-viewport" aria-label={t("mobile.figure")}>
-      <FigureViewport selectedParts={selectedLDrawParts} />
+      <FigureViewport
+        onSaveToCollection={saveToCollection}
+        selectedParts={selectedLDrawParts}
+      />
     </section>
   );
 

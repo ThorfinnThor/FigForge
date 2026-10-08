@@ -1135,6 +1135,12 @@ legend {
   gap: var(--space-2);
 }
 
+.scene-copy__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+}
+
 .scene-details {
   padding: 10px 14px;
   border-radius: 10px;

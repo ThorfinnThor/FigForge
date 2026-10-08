@@ -9,6 +9,7 @@ import { CAMERA_PRESETS } from "./figure-poc-options.js";
 
 type FigureViewportProps = {
   selectedParts: readonly LDrawCatalogSelection[];
+  onSaveToCollection: () => Promise<void>;
 };
 
 type ViewportStatus = {
@@ -24,7 +25,7 @@ const selectionStatus = (selectedParts: readonly LDrawCatalogSelection[]): Viewp
   };
 };
 
-export function FigureViewport({ selectedParts }: FigureViewportProps) {
+export function FigureViewport({ selectedParts, onSaveToCollection }: FigureViewportProps) {
   const { t } = useI18n();
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const controllerRef = useRef<LDrawPrototypeSceneController | null>(null);
@@ -35,6 +36,7 @@ export function FigureViewport({ selectedParts }: FigureViewportProps) {
   const [statusTone, setStatusTone] = useState<"info" | "danger">("info");
   const [cameraPreset, setCameraPreset] = useState<CameraPreset>("three-quarter");
   const [status, setStatus] = useState<ViewportStatus>({ key: "viewport.status.loading" });
+  const [collectionSavePending, setCollectionSavePending] = useState(false);
   selectionRef.current = selectedParts;
   const selectionKey = selectedParts
     .map(({ componentId, role }) => `${role}:${componentId}`)
@@ -145,6 +147,15 @@ export function FigureViewport({ selectedParts }: FigureViewportProps) {
     setSceneRevision((revision) => revision + 1);
   };
 
+  const saveCollection = async (): Promise<void> => {
+    setCollectionSavePending(true);
+    try {
+      await onSaveToCollection();
+    } finally {
+      setCollectionSavePending(false);
+    }
+  };
+
   return (
     <section className="scene-lab" aria-labelledby="scene-heading">
       <Card className="viewport-shell">
@@ -181,6 +192,16 @@ export function FigureViewport({ selectedParts }: FigureViewportProps) {
             {t("viewport.recover")}
           </Button>
         ) : null}
+        <div className="scene-copy__actions">
+          <Button
+            loading={collectionSavePending}
+            onClick={() => void saveCollection()}
+            size="md"
+            variant="primary"
+          >
+            {t("figure.collection.save")}
+          </Button>
+        </div>
         <details className="scene-details">
           <summary>{t("viewport.parts.title")}</summary>
           <dl className="prototype-part-list">
