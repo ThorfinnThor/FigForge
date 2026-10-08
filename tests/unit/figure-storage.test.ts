@@ -3,6 +3,7 @@ import { describe, expect, it } from "vitest";
 import {
   FIGURE_STORAGE_VERSION,
   savedFigureSchema,
+  transactionCompletion,
 } from "../../src/storage/figure-draft-store.js";
 import {
   PLAYGROUND_LAYOUT_MAX_FIGURES,
@@ -13,6 +14,33 @@ import {
 import { createFigureDocument } from "../../src/figure/figure-document.js";
 
 describe("FF-22 local figure storage", () => {
+  const transactionDouble = () => ({
+    error: null,
+    onabort: null,
+    oncomplete: null,
+    onerror: null,
+  }) as unknown as IDBTransaction;
+
+  it("does not report a mutation as committed before transaction completion", async () => {
+    const transaction = transactionDouble();
+    let settled = false;
+    const completion = transactionCompletion(transaction).finally(() => { settled = true; });
+
+    await Promise.resolve();
+    expect(settled).toBe(false);
+    transaction.oncomplete?.(new Event("complete"));
+    await expect(completion).resolves.toBeUndefined();
+    expect(settled).toBe(true);
+  });
+
+  it("rejects a mutation when the transaction aborts after request success", async () => {
+    const transaction = transactionDouble();
+    const completion = transactionCompletion(transaction);
+
+    transaction.onabort?.(new Event("abort"));
+    await expect(completion).rejects.toThrow("IndexedDB-Transaktion wurde abgebrochen");
+  });
+
   it("keeps a versioned collection record separate from the current draft", async () => {
     const source = await readFile("src/storage/figure-draft-store.ts", "utf8");
     const document = createFigureDocument({

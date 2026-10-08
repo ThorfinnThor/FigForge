@@ -39,6 +39,16 @@ describe("FF-14 responsive catalog workspace", () => {
     expect(source).toContain('t("catalog.setFilter.showAll")');
   });
 
+  it("evicts rejected catalog loads and exposes an in-place retry", async () => {
+    const workspaceSource = await readFile("src/components/CatalogWorkspace.tsx", "utf8");
+    const dataSource = await readFile("src/components/catalog-workspace-data.ts", "utf8");
+
+    expect(dataSource).toContain("catalogPackageCache.get(role) === promise");
+    expect(dataSource).toContain("catalogPackageCache.delete(role)");
+    expect(workspaceSource).toContain("catalogLoadRevision");
+    expect(workspaceSource).toContain('t("catalog.retry")');
+  });
+
   it("localizes every user-facing 3D viewport label and status", async () => {
     const viewportSource = await readFile("src/components/FigureViewport.tsx", "utf8");
     const messagesSource = await readFile("src/i18n.tsx", "utf8");
@@ -47,6 +57,10 @@ describe("FF-14 responsive catalog workspace", () => {
     expect(viewportSource).toContain('t("viewport.title")');
     expect(viewportSource).toContain('t(`viewport.camera.${preset.id}`)');
     expect(viewportSource).toContain("t(status.key, status.values)");
+    expect(viewportSource).toContain("createdController.setCameraPreset(cameraPresetRef.current)");
+    expect(viewportSource).toContain("if (selectionError) return");
+    expect(viewportSource).toContain('t("viewport.retrySelection")');
+    expect(viewportSource).toContain("onSynchronizationChange(false)");
     expect(viewportSource).not.toContain(">Vorschau<");
     expect(viewportSource).not.toContain("Kameraansicht ");
     expect(viewportSource).not.toContain("Eingesetzte LDraw-Modelle");
@@ -70,6 +84,19 @@ describe("FF-14 responsive catalog workspace", () => {
     expect(categorySource).not.toContain('label: "Alle Teile"');
   });
 
+  it("protects draft recovery, consumes imported snapshots and preserves names", async () => {
+    const workspaceSource = await readFile("src/components/CatalogWorkspace.tsx", "utf8");
+    const panelSource = await readFile("src/components/FigurePartsPanel.tsx", "utf8");
+
+    expect(workspaceSource).toContain('DraftHydrationState = "loading" | "ready" | "recovery-required"');
+    expect(workspaceSource).toContain('draftHydrationState !== "ready" || draftPersistencePaused');
+    expect(workspaceSource).toContain("consumedFigureImportPath(window.location.href)");
+    expect(workspaceSource).toContain("setFigureName(document.name)");
+    expect(workspaceSource).toContain("collectionSavePendingRef.current");
+    expect(panelSource).toContain("loading={collectionSavePending}");
+    expect(panelSource).toContain('t("figure.preview.stale")');
+  });
+
   it("wires the curated catalog and figure panel without inventing availability", async () => {
     const source = await readFile("src/components/CatalogWorkspace.tsx", "utf8");
     const dataSource = await readFile("src/components/catalog-workspace-data.ts", "utf8");
@@ -91,7 +118,8 @@ describe("FF-14 responsive catalog workspace", () => {
     expect(source).toContain("selectedSetPartNumbers.has(part.rebrickablePartNum");
     expect(source).toContain('t("catalog.policy")');
     expect(source).toContain("onSelect={builderComponent && digitallySupportedLDrawEntryForComponent(builderComponent.id)");
-    expect(source).toContain("<FigureViewport selectedParts={selectedLDrawParts}");
+    expect(source).toContain("onSynchronizationChange={setPreviewSynchronized}");
+    expect(source).toContain("selectedParts={selectedLDrawParts}");
     expect(source).toContain("saveCurrentFigureDraft");
     expect(source).toContain("parseFigureDocument");
     expect(source).toContain('new URLSearchParams(window.location.search).get("figureId")');
@@ -129,6 +157,8 @@ describe("FF-14 responsive catalog workspace", () => {
 
     expect(source).toContain('role="tablist"');
     expect(source).toContain('role="tabpanel"');
+    expect(source).toContain("moveMobileTabFocus");
+    expect(source).toContain("mobileTabForKey(tab, event.key)");
     expect(source).toContain('aria-expanded={isFigurePanelOpen}');
     expect(source).toContain('event.key === "Escape"');
     expect(source).toContain("drawerTriggerRef.current?.focus()");
