@@ -180,6 +180,11 @@ const loadCatalogRole = (role: CatalogRole): Promise<readonly CatalogPackagePart
       return left.rebrickablePartNum.localeCompare(right.rebrickablePartNum, "en", { numeric: true });
     });
   });
+  void promise.catch(() => {
+    if (catalogPackageCache.get(role) === promise) {
+      catalogPackageCache.delete(role);
+    }
+  });
   catalogPackageCache.set(role, promise);
   return promise;
 };

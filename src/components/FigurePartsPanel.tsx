@@ -27,6 +27,8 @@ type FigurePartsPanelProps = {
   onLoadFromCollection: (saved: SavedFigure) => Promise<void>;
   onDeleteFromCollection: (id: string) => Promise<void>;
   onClearLocalData: () => Promise<void>;
+  collectionSavePending: boolean;
+  previewSynchronized: boolean;
   onColorChange: (slot: CatalogPackagePart["role"], colorId: number | undefined) => void;
   onRemove: (slot: CatalogPackagePart["role"]) => void;
   saveStatus: "loading" | "saved" | "error";
@@ -49,6 +51,8 @@ export function FigurePartsPanel({
   onLoadFromCollection,
   onDeleteFromCollection,
   onClearLocalData,
+  collectionSavePending,
+  previewSynchronized,
   onColorChange,
   onRemove,
   saveStatus,
@@ -138,8 +142,11 @@ export function FigurePartsPanel({
           ))}
         </div>
         {shopExport}
+        {!previewSynchronized ? (
+          <StatusMessage tone="warning">{t("figure.preview.stale")}</StatusMessage>
+        ) : null}
         <div className="figure-panel__actions">
-          <Button onClick={() => void onSaveToCollection()} size="sm" variant="primary">{t("figure.collection.save")}</Button>
+          <Button loading={collectionSavePending} onClick={() => void onSaveToCollection()} size="sm" variant="primary">{t("figure.collection.save")}</Button>
           <Button onClick={onExport} size="sm" variant="secondary">{t("figure.export")}</Button>
           <Button onClick={() => void onShare()} size="sm" variant="secondary">{t("figure.share")}</Button>
           <Button onClick={() => importInputRef.current?.click()} size="sm" variant="ghost">{t("figure.import")}</Button>
