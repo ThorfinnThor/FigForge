@@ -16,14 +16,14 @@ type CollectionFigureCardProps = {
     moveUp: string;
     moveDown: string;
     openBuilder: string;
-    exportJson: string;
+    buyFigure: string;
     onStage: string;
     partCount: string;
     savedAt: string;
   };
   onToggleStage: () => void;
   onMove: (direction: -1 | 1) => void;
-  onExport: () => void;
+  onBuy: () => void;
 };
 
 export function CollectionFigureCard({
@@ -37,7 +37,7 @@ export function CollectionFigureCard({
   labels,
   onToggleStage,
   onMove,
-  onExport,
+  onBuy,
 }: CollectionFigureCardProps) {
   const thumbnails = saved.document.selections.flatMap(({ componentId, slot }) => {
     const component = builderComponentForId(componentId);
@@ -78,8 +78,8 @@ export function CollectionFigureCard({
           <a className="ff-button ff-button--sm ff-button--ghost" href={`/?figureId=${encodeURIComponent(saved.id)}`}>
             {labels.openBuilder}
           </a>
-          <Button onClick={onExport} size="sm" variant="ghost">
-            ↓ {labels.exportJson}
+          <Button onClick={onBuy} size="sm" variant="primary">
+            {labels.buyFigure}
           </Button>
         </div>
         {onStage ? (
