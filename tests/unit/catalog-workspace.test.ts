@@ -60,6 +60,9 @@ describe("FF-14 responsive catalog workspace", () => {
     expect(viewportSource).toContain("createdController.setCameraPreset(cameraPresetRef.current)");
     expect(viewportSource).toContain("if (selectionError) return");
     expect(viewportSource).toContain('t("viewport.retrySelection")');
+    expect(viewportSource).toMatch(/const retrySelection[\s\S]+setSceneRevision/gu);
+    expect(viewportSource).not.toContain("Catalog model retry failed");
+    expect(viewportSource).toContain("key={sceneRevision}");
     expect(viewportSource).toContain("onSynchronizationChange(false)");
     expect(viewportSource).not.toContain(">Vorschau<");
     expect(viewportSource).not.toContain("Kameraansicht ");
