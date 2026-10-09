@@ -62,6 +62,8 @@ describe("FF-14 responsive catalog workspace", () => {
     expect(viewportSource).toContain('t("viewport.retrySelection")');
     expect(viewportSource).toContain('t("figure.collection.save")');
     expect(viewportSource).toContain("loading={collectionSavePending}");
+    expect(viewportSource).toContain('statusTone === "danger"');
+    expect(viewportSource).not.toContain('className="scene-details"');
     expect(viewportSource).toMatch(/const retrySelection[\s\S]+setSceneRevision/gu);
     expect(viewportSource).not.toContain("Catalog model retry failed");
     expect(viewportSource).toContain("key={sceneRevision}");
@@ -71,6 +73,8 @@ describe("FF-14 responsive catalog workspace", () => {
     expect(viewportSource).not.toContain("Eingesetzte LDraw-Modelle");
     expect(messagesSource.match(/"viewport\.title":/gu)).toHaveLength(2);
     expect(messagesSource.match(/"viewport\.status\.selectedAccessory":/gu)).toHaveLength(2);
+    expect(messagesSource).toContain("accessory is connected to the left hand");
+    expect(messagesSource).not.toContain("accessory is connected to the right hand");
   });
 
   it("keeps compatibility, transfer errors and saved dates in the selected language", async () => {
