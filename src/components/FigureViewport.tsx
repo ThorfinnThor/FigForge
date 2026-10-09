@@ -186,7 +186,12 @@ export function FigureViewport({
   };
 
   return (
-    <section className="scene-lab" aria-labelledby="scene-heading">
+    <section
+      className="scene-lab"
+      aria-labelledby="scene-heading"
+      data-scene-state={sceneState}
+      data-selection-state={sceneState === "ready" && !selectionError ? "synchronized" : "pending"}
+    >
       <Card className="viewport-shell">
         <span className="viewport-shell__beam" aria-hidden="true" />
         <h2 className="viewport-shell__label" id="scene-heading">{t("viewport.title")}</h2>

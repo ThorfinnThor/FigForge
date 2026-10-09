@@ -420,7 +420,7 @@ const clickButtonWithText = async (client: CdpClient, text: string): Promise<boo
 
 const testLDrawAndWebGlFailures = async (client: CdpClient, origin: string): Promise<void> => {
   await navigate(client, origin);
-  await waitFor(client, `${textIncludes("Bauteilen in der Vorschau")} && Boolean(document.querySelector('canvas.viewport'))`, "initial 3D preview", 60_000);
+  await waitFor(client, `Boolean(document.querySelector('.scene-lab[data-scene-state="ready"][data-selection-state="synchronized"] canvas.viewport'))`, "initial 3D preview", 60_000);
 
   await evaluate(client, `(() => {
     const originalFetch = window.fetch.bind(window);
@@ -463,7 +463,7 @@ const testLDrawAndWebGlFailures = async (client: CdpClient, origin: string): Pro
 
   assert.equal(await clickButtonWithText(client, "Aktuelle Auswahl erneut laden"), true);
   try {
-    await waitFor(client, `!${textIncludes("Die 3D-Vorschau konnte die aktuelle Auswahl nicht übernehmen")} && ${textIncludes("Bauteilen in der Vorschau")}`, "successful LDraw retry", 20_000);
+    await waitFor(client, `!${textIncludes("Die 3D-Vorschau konnte die aktuelle Auswahl nicht übernehmen")} && Boolean(document.querySelector('.scene-lab[data-scene-state="ready"][data-selection-state="synchronized"]'))`, "successful LDraw retry", 20_000);
   } catch (error) {
     const diagnosis = await evaluate(client, `(() => ({
       sceneCopy: document.querySelector('.scene-copy')?.innerText ?? null,
@@ -488,7 +488,7 @@ const testLDrawAndWebGlFailures = async (client: CdpClient, origin: string): Pro
   assert.equal(contextLossAvailable, true, "headless Chrome must expose WEBGL_lose_context");
   await waitFor(client, textIncludes("Die 3D-Darstellung wurde unterbrochen"), "WebGL context-loss UI");
   assert.equal(await clickButtonWithText(client, "3D-Vorschau wiederherstellen"), true);
-  await waitFor(client, `!${textIncludes("Die 3D-Darstellung wurde unterbrochen")} && ${textIncludes("Bauteilen in der Vorschau")}`, "WebGL scene rebuild", 60_000);
+  await waitFor(client, `!${textIncludes("Die 3D-Darstellung wurde unterbrochen")} && Boolean(document.querySelector('.scene-lab[data-scene-state="ready"][data-selection-state="synchronized"]'))`, "WebGL scene rebuild", 60_000);
 };
 
 const run = async (): Promise<void> => {
