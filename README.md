@@ -48,6 +48,12 @@ npm ci
 npm run verify
 ```
 
+`npm run verify` enthält zusätzlich reale Chromium-Regressionen für IndexedDB,
+mobile Tastaturnavigation und WebGL-/LDraw-Fehlerbehandlung. Lokal wird dafür
+Google Chrome oder Chromium über `CHROME_BIN` verwendet. Ist kein startfähiger
+Browser verfügbar, wird dieser Teil lokal sichtbar übersprungen; in GitHub
+Actions (`CI=true`) ist der Browserlauf verpflichtend.
+
 Für die lokale menschliche FF-18-Entwicklungsbewertung:
 
 ```bash

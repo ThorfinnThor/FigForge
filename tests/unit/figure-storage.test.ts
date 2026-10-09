@@ -14,12 +14,10 @@ import {
 import { createFigureDocument } from "../../src/figure/figure-document.js";
 
 describe("FF-22 local figure storage", () => {
-  const transactionDouble = () => ({
-    error: null,
-    onabort: null,
-    oncomplete: null,
-    onerror: null,
-  }) as unknown as IDBTransaction;
+  const transactionDouble = () => {
+    const target = new EventTarget();
+    return Object.assign(target, { error: null }) as unknown as IDBTransaction;
+  };
 
   it("does not report a mutation as committed before transaction completion", async () => {
     const transaction = transactionDouble();
@@ -28,7 +26,7 @@ describe("FF-22 local figure storage", () => {
 
     await Promise.resolve();
     expect(settled).toBe(false);
-    transaction.oncomplete?.(new Event("complete"));
+    transaction.dispatchEvent(new Event("complete"));
     await expect(completion).resolves.toBeUndefined();
     expect(settled).toBe(true);
   });
@@ -37,7 +35,7 @@ describe("FF-22 local figure storage", () => {
     const transaction = transactionDouble();
     const completion = transactionCompletion(transaction);
 
-    transaction.onabort?.(new Event("abort"));
+    transaction.dispatchEvent(new Event("abort"));
     await expect(completion).rejects.toThrow("IndexedDB-Transaktion wurde abgebrochen");
   });
 

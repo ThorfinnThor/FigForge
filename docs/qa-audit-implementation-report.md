@@ -329,9 +329,9 @@ Changes:
 - Added transaction completion/abort tests, URL-consumption tests, mobile-tab behavior tests, semantic-worker lifecycle tests, and source-boundary regressions for component wiring.
 - Performed mounted local-browser checks against real browser IndexedDB for ordinary commits, collection persistence, navigation persistence, and collection-link consumption.
 
-Limitation: `fake-indexeddb@6.2.4` could not be installed because npm TLS verification failed with `UNABLE_TO_GET_ISSUER_CERT_LOCALLY`. TLS verification was not disabled. Therefore the suite does not yet inject an abort into a real IndexedDB implementation or provide a full Playwright CI gate; transaction abort behavior is tested with a deterministic transaction double, while normal commits were exercised in the browser.
+Follow-up closure (2026-10-09): A dependency-free Chrome DevTools runner now exercises native browser IndexedDB, including an abort after the request-success event and rollback verification. The same mounted runner sends real keyboard events at a 390 × 844 viewport and injects both a failed LDraw `.dat` request and a WebGL context loss. It is part of `npm run verify`; a missing browser may only skip locally, while `CI=true` makes the browser gate mandatory. The npm certificate chain was not bypassed and no new package was installed.
 
-Files: `tests/unit/figure-storage.test.ts`, `tests/unit/import-location.test.ts`, `tests/unit/mobile-tab-navigation.test.ts`, `tests/unit/semantic-search-client.test.ts`, `tests/unit/catalog-workspace.test.ts`.
+Files: `src/storage/figure-draft-store.ts`, `tools/run-browser-regressions.ts`, `tests/unit/figure-storage.test.ts`, `tests/unit/import-location.test.ts`, `tests/unit/mobile-tab-navigation.test.ts`, `tests/unit/semantic-search-client.test.ts`, `tests/unit/catalog-workspace.test.ts`.
 
 #### I03 — Camera state after scene recreation
 
@@ -391,12 +391,9 @@ The production build retains the pre-existing Vite advisory for chunks larger th
 
 ### Remaining risks and human decisions
 
-1. A real IndexedDB abort-after-request-success integration test remains desirable once the npm certificate chain is fixed or an approved existing browser test harness is available.
-2. A mounted narrow-viewport keyboard E2E test is still missing; the navigation algorithm and component wiring are covered separately.
-3. Model-request failure and WebGL context-loss paths are covered by state/source regressions but were not fault-injected in a live WebGL browser session.
-4. The semantic package still has no measured startup budget; this is intentionally unresolved under `I02`.
-5. The figure drawer remains deliberately non-modal. Converting it to a focus-trapped modal requires a product/accessibility decision.
-6. Saving an opened collection record still creates a new copy rather than updating it. Changing that identity model requires a product decision.
+1. The semantic package still has no measured startup budget; this is intentionally unresolved under `I02`.
+2. The figure drawer remains deliberately non-modal. Converting it to a focus-trapped modal requires a product/accessibility decision.
+3. Saving an opened collection record still creates a new copy rather than updating it. Changing that identity model requires a product decision.
 
 ### Changed files
 
