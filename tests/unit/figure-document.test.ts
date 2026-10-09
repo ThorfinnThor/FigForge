@@ -6,8 +6,16 @@ import {
   selectionsFromFigureDocument,
   serializeFigureDocument,
 } from "../../src/figure/figure-document.js";
+import { figureDocumentFileName } from "../../src/figure/download-figure-document.js";
 
 describe("FF-22/FF-23 local figure document", () => {
+  it("creates a stable JSON filename from the saved figure name", () => {
+    expect(figureDocumentFileName("Weltraum-Pirat ÄÖÜ!"))
+      .toBe("figforge-weltraum-pirat-aou.json");
+    expect(figureDocumentFileName("宇宙"))
+      .toBe("figforge-figure.json");
+  });
+
   it("round-trips all five versioned builder slots and component IDs", () => {
     const source = createFigureDocument({
       head: "ff03-head-3626c",

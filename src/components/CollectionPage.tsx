@@ -7,6 +7,7 @@ import {
   type PlaygroundLayout,
 } from "../contracts/playground-layout.js";
 import { useI18n } from "../i18n.js";
+import { downloadFigureDocument } from "../figure/download-figure-document.js";
 import {
   clearLocalFigureData,
   listSavedFigures,
@@ -15,6 +16,7 @@ import {
   type SavedFigure,
 } from "../storage/figure-draft-store.js";
 import { CollectionFigureCard } from "./CollectionFigureCard.js";
+import { CollectionPurchaseDialog } from "./CollectionPurchaseDialog.js";
 import { CollectionViewport } from "./CollectionViewport.js";
 import { Button } from "./ui/Button.js";
 
@@ -25,6 +27,8 @@ export function CollectionPage() {
   const [layout, setLayout] = useState<PlaygroundLayout | null>(null);
   const [loadState, setLoadState] = useState<"loading" | "ready" | "error">("loading");
   const [actionError, setActionError] = useState(false);
+  const [exportError, setExportError] = useState(false);
+  const [purchaseFigure, setPurchaseFigure] = useState<SavedFigure | null>(null);
   const [isSavingLayout, setIsSavingLayout] = useState(false);
 
   useEffect(() => {
@@ -119,6 +123,20 @@ export function CollectionPage() {
     }
   };
 
+  const exportFigure = (saved: SavedFigure): void => {
+    setExportError(false);
+    try {
+      downloadFigureDocument(saved.document);
+    } catch {
+      setExportError(true);
+    }
+  };
+
+  const openPurchaseDialog = (saved: SavedFigure): void => {
+    setExportError(false);
+    setPurchaseFigure(saved);
+  };
+
   const stageIds = new Set(layout?.savedFigureIds ?? []);
 
   return (
@@ -200,12 +218,14 @@ export function CollectionPage() {
                         moveUp: t("collection.moveUp"),
                         moveDown: t("collection.moveDown"),
                         openBuilder: t("collection.openBuilder"),
+                        buyFigure: t("collection.buyFigure"),
                         onStage: t("collection.onStage"),
                         partCount: t("collection.partCount", { count: saved.document.selections.length }),
                         savedAt: t("collection.savedAt"),
                       }}
                       language={language}
                       onMove={(direction) => moveOnStage(saved.id, direction)}
+                      onBuy={() => openPurchaseDialog(saved)}
                       onStage={onStage}
                       onToggleStage={() => onStage ? removeFromStage(saved.id) : addToStage(saved.id)}
                       saved={saved}
@@ -233,6 +253,14 @@ export function CollectionPage() {
           </details>
         ) : null}
       </div>
+      {purchaseFigure ? (
+        <CollectionPurchaseDialog
+          exportError={exportError}
+          onClose={() => setPurchaseFigure(null)}
+          onExportJson={() => exportFigure(purchaseFigure)}
+          saved={purchaseFigure}
+        />
+      ) : null}
     </div>
   );
 }

@@ -2132,13 +2132,95 @@ legend {
 
 .collection-card__actions {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(0, auto);
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: var(--space-2);
+}
+
+.collection-card__actions > :first-child {
+  grid-column: 1 / -1;
 }
 
 .collection-card__actions .ff-button {
   min-width: 0;
   text-decoration: none;
+}
+
+.collection-purchase-dialog__backdrop {
+  position: fixed;
+  z-index: 100;
+  inset: 0;
+  display: grid;
+  align-items: center;
+  justify-items: center;
+  padding: var(--space-5);
+  background: rgb(8 18 46 / 72%);
+  backdrop-filter: blur(5px);
+}
+
+.collection-purchase-dialog {
+  width: min(100%, 900px);
+  max-height: min(92vh, 900px);
+  overflow-y: auto;
+  padding: clamp(22px, 4vw, 38px);
+  border: 3px solid var(--navy);
+  border-radius: var(--radius-lg);
+  background: var(--card);
+  box-shadow: 0 18px 0 rgb(8 18 46 / 28%);
+}
+
+.collection-purchase-dialog__header {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: var(--space-4);
+  align-items: start;
+  margin-bottom: var(--space-5);
+}
+
+.collection-purchase-dialog__header h2,
+.collection-purchase-dialog__header p,
+.collection-purchase-dialog__backup p {
+  margin: 0;
+}
+
+.collection-purchase-dialog__header h2 {
+  margin-block: var(--space-1) var(--space-2);
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 6vw, 3.25rem);
+  font-weight: 400;
+  line-height: 1;
+}
+
+.collection-purchase-dialog__header > .ff-button {
+  min-width: 48px;
+  font-size: 1.4rem;
+}
+
+.collection-purchase-dialog__backup {
+  margin-top: var(--space-5);
+  padding-top: var(--space-4);
+  border-top: 2px solid var(--line);
+}
+
+.collection-purchase-dialog__backup summary {
+  margin-bottom: var(--space-3);
+  font-weight: 800;
+  cursor: pointer;
+}
+
+.collection-purchase-dialog__backup .ff-button {
+  margin-top: var(--space-3);
+}
+
+@media (max-width: 640px) {
+  .collection-purchase-dialog__backdrop {
+    align-items: end;
+    padding: var(--space-2);
+  }
+
+  .collection-purchase-dialog {
+    max-height: 96vh;
+    border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+  }
 }
 
 .collection-card__order {
