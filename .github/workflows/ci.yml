@@ -33,3 +33,6 @@ jobs:
 
       - name: Verify contracts, tests, build, and Cloudflare configuration
         run: npm run verify
+
+      - name: Run mandatory browser regressions
+        run: npm run test:browser
