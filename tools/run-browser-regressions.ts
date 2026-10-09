@@ -381,6 +381,7 @@ const testLDrawAndWebGlFailures = async (client: CdpClient, origin: string): Pro
       : { requestId });
   });
   await client.send("Fetch.enable", { patterns: [{ urlPattern: "*" }] });
+  let fetchEnabled = true;
   try {
     const clicked = await evaluate<boolean>(client, `(() => {
       const button = [...document.querySelectorAll('.part-card[data-role="head"] button')]
@@ -392,6 +393,9 @@ const testLDrawAndWebGlFailures = async (client: CdpClient, origin: string): Pro
     assert.equal(clicked, true, "a second loadable head must be available for fault injection");
     await waitFor(client, textIncludes("Die 3D-Vorschau konnte die aktuelle Auswahl nicht übernehmen"), "LDraw selection error");
     assert.equal(failNextDat, false, "the injected .dat failure must have been consumed");
+    await client.send("Fetch.disable");
+    removeFetchListener();
+    fetchEnabled = false;
 
     assert.equal(await clickButtonWithText(client, "Vorne"), true);
     assert.equal(await evaluate<boolean>(client, textIncludes("Die 3D-Vorschau konnte die aktuelle Auswahl nicht übernehmen")), true,
@@ -410,8 +414,10 @@ const testLDrawAndWebGlFailures = async (client: CdpClient, origin: string): Pro
     assert.equal(await clickButtonWithText(client, "Aktuelle Auswahl erneut laden"), true);
     await waitFor(client, `!${textIncludes("Die 3D-Vorschau konnte die aktuelle Auswahl nicht übernehmen")} && ${textIncludes("Bauteilen in der Vorschau")}`, "successful LDraw retry", 60_000);
   } finally {
-    await client.send("Fetch.disable");
-    removeFetchListener();
+    if (fetchEnabled) {
+      await client.send("Fetch.disable");
+      removeFetchListener();
+    }
   }
 
   const contextLossAvailable = await evaluate<boolean>(client, `(() => {
