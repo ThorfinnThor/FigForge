@@ -10,6 +10,7 @@ import { CAMERA_PRESETS } from "./figure-poc-options.js";
 type FigureViewportProps = {
   selectedParts: readonly LDrawCatalogSelection[];
   onSaveToCollection: () => Promise<void>;
+  onSynchronizationChange: (synchronized: boolean) => void;
 };
 
 type ViewportStatus = {
@@ -25,16 +26,23 @@ const selectionStatus = (selectedParts: readonly LDrawCatalogSelection[]): Viewp
   };
 };
 
-export function FigureViewport({ selectedParts, onSaveToCollection }: FigureViewportProps) {
+export function FigureViewport({
+  selectedParts,
+  onSaveToCollection,
+  onSynchronizationChange,
+}: FigureViewportProps) {
   const { t } = useI18n();
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const controllerRef = useRef<LDrawPrototypeSceneController | null>(null);
   const selectionRef = useRef(selectedParts);
   const selectionApplyRevisionRef = useRef(0);
+  const cameraPresetRef = useRef<CameraPreset>("three-quarter");
+  const selectionErrorRef = useRef(false);
   const [sceneRevision, setSceneRevision] = useState(0);
   const [sceneState, setSceneState] = useState<"loading" | "ready" | "context-lost" | "error">("loading");
   const [statusTone, setStatusTone] = useState<"info" | "danger">("info");
   const [cameraPreset, setCameraPreset] = useState<CameraPreset>("three-quarter");
+  const [selectionError, setSelectionError] = useState(false);
   const [status, setStatus] = useState<ViewportStatus>({ key: "viewport.status.loading" });
   const [collectionSavePending, setCollectionSavePending] = useState(false);
   selectionRef.current = selectedParts;
@@ -53,6 +61,7 @@ export function FigureViewport({ selectedParts, onSaveToCollection }: FigureView
     let disposed = false;
     let controller: LDrawPrototypeSceneController | null = null;
     setSceneState("loading");
+    onSynchronizationChange(false);
     setStatusTone("info");
     setStatus({ key: "viewport.status.loading" });
 
@@ -68,11 +77,13 @@ export function FigureViewport({ selectedParts, onSaveToCollection }: FigureView
           canvas,
           onContextLost: () => {
             setSceneState("context-lost");
+            onSynchronizationChange(false);
             setStatusTone("danger");
             setStatus({ key: "viewport.status.contextLost" });
           },
           onContextRestored: () => {
             setSceneState("ready");
+            onSynchronizationChange(!selectionErrorRef.current);
             setStatusTone("info");
             setStatus({ key: "viewport.status.restored" });
           },
@@ -80,10 +91,14 @@ export function FigureViewport({ selectedParts, onSaveToCollection }: FigureView
         controller = createdController;
         controllerRef.current = createdController;
         await createdController.load();
+        createdController.setCameraPreset(cameraPresetRef.current);
         await createdController.applyCatalogSelection(selectionRef.current);
         if (!disposed) {
           setSceneState("ready");
           setStatusTone("info");
+          selectionErrorRef.current = false;
+          setSelectionError(false);
+          onSynchronizationChange(true);
           setStatus(selectionStatus(selectionRef.current));
         }
       } catch (error) {
@@ -91,6 +106,7 @@ export function FigureViewport({ selectedParts, onSaveToCollection }: FigureView
           controller?.dispose();
           controllerRef.current = null;
           setSceneState("error");
+          onSynchronizationChange(false);
           setStatusTone("danger");
           console.error("3D scene failed to load", error);
           setStatus({ key: "viewport.status.sceneError" });
@@ -115,16 +131,27 @@ export function FigureViewport({ selectedParts, onSaveToCollection }: FigureView
     }
     const revision = selectionApplyRevisionRef.current + 1;
     selectionApplyRevisionRef.current = revision;
+    onSynchronizationChange(false);
+    selectionErrorRef.current = false;
+    setSelectionError(false);
+    setStatusTone("info");
+    setStatus({ key: "viewport.status.loading" });
     void controller.applyCatalogSelection(selectionRef.current)
       .then(() => {
         if (selectionApplyRevisionRef.current === revision) {
           setStatusTone("info");
+          selectionErrorRef.current = false;
+          setSelectionError(false);
+          onSynchronizationChange(true);
           setStatus(selectionStatus(selectionRef.current));
         }
       })
       .catch((error: unknown) => {
         if (selectionApplyRevisionRef.current === revision) {
           setStatusTone("danger");
+          selectionErrorRef.current = true;
+          setSelectionError(true);
+          onSynchronizationChange(false);
           console.error("Catalog model failed to load", error);
           setStatus({ key: "viewport.status.partError" });
         }
@@ -133,17 +160,22 @@ export function FigureViewport({ selectedParts, onSaveToCollection }: FigureView
 
   const chooseCamera = (preset: CameraPreset): void => {
     controllerRef.current?.setCameraPreset(preset);
+    cameraPresetRef.current = preset;
     setCameraPreset(preset);
+    if (selectionError) return;
     setStatusTone("info");
     setStatus({ key: `viewport.status.camera.${preset}` });
   };
 
   const recoverScene = (): void => {
-    if (sceneState === "context-lost" && controllerRef.current?.requestContextRestore()) {
-      setStatusTone("info");
-      setStatus({ key: "viewport.status.recovering" });
-      return;
-    }
+    setSceneRevision((revision) => revision + 1);
+  };
+
+  const retrySelection = (): void => {
+    selectionApplyRevisionRef.current += 1;
+    selectionErrorRef.current = false;
+    setSelectionError(false);
+    onSynchronizationChange(false);
     setSceneRevision((revision) => revision + 1);
   };
 
@@ -162,6 +194,7 @@ export function FigureViewport({ selectedParts, onSaveToCollection }: FigureView
         <span className="viewport-shell__beam" aria-hidden="true" />
         <h2 className="viewport-shell__label" id="scene-heading">{t("viewport.title")}</h2>
         <canvas
+          key={sceneRevision}
           ref={canvasRef}
           className="viewport"
           aria-label={t("viewport.canvasLabel")}
@@ -202,6 +235,11 @@ export function FigureViewport({ selectedParts, onSaveToCollection }: FigureView
             {t("figure.collection.save")}
           </Button>
         </div>
+        {selectionError ? (
+          <Button onClick={retrySelection} variant="secondary">
+            {t("viewport.retrySelection")}
+          </Button>
+        ) : null}
         <details className="scene-details">
           <summary>{t("viewport.parts.title")}</summary>
           <dl className="prototype-part-list">

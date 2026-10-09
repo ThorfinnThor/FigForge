@@ -48,6 +48,23 @@ const requestResult = <T>(request: IDBRequest<T>): Promise<T> => new Promise((re
   request.onerror = () => reject(request.error ?? new Error("IndexedDB-Anfrage fehlgeschlagen."));
 });
 
+export const transactionCompletion = (transaction: IDBTransaction): Promise<void> => new Promise((resolve, reject) => {
+  transaction.addEventListener("complete", () => resolve(), { once: true });
+  transaction.addEventListener("abort", () => reject(transaction.error ?? new Error("IndexedDB-Transaktion wurde abgebrochen.")), { once: true });
+  transaction.addEventListener("error", () => reject(transaction.error ?? new Error("IndexedDB-Transaktion fehlgeschlagen.")), { once: true });
+});
+
+export const committedMutation = async <T>(
+  transaction: IDBTransaction,
+  requests: readonly IDBRequest<T>[],
+): Promise<void> => {
+  const completion = transactionCompletion(transaction);
+  await Promise.all([
+    ...requests.map(requestResult),
+    completion,
+  ]);
+};
+
 export const loadCurrentFigureDraft = async (): Promise<FigureDocument | null> => {
   const database = await openDatabase();
   try {
@@ -61,10 +78,13 @@ export const loadCurrentFigureDraft = async (): Promise<FigureDocument | null> =
 export const saveCurrentFigureDraft = async (document: FigureDocument): Promise<void> => {
   const database = await openDatabase();
   try {
-    await requestResult(database.transaction(DRAFT_STORE_NAME, "readwrite").objectStore(DRAFT_STORE_NAME).put(
-      figureDocumentSchema.parse(document),
-      CURRENT_DRAFT_KEY,
-    ));
+    const transaction = database.transaction(DRAFT_STORE_NAME, "readwrite");
+    await committedMutation(transaction, [
+      transaction.objectStore(DRAFT_STORE_NAME).put(
+        figureDocumentSchema.parse(document),
+        CURRENT_DRAFT_KEY,
+      ),
+    ]);
   } finally {
     database.close();
   }
@@ -105,9 +125,8 @@ export const saveFigureToCollection = async (document: FigureDocument, id = coll
       createdAt: previous?.createdAt ?? now,
       updatedAt: now,
     });
-    await requestResult(
-      database.transaction(COLLECTION_STORE_NAME, "readwrite").objectStore(COLLECTION_STORE_NAME).put(saved),
-    );
+    const transaction = database.transaction(COLLECTION_STORE_NAME, "readwrite");
+    await committedMutation(transaction, [transaction.objectStore(COLLECTION_STORE_NAME).put(saved)]);
     return saved;
   } finally {
     database.close();
@@ -117,7 +136,8 @@ export const saveFigureToCollection = async (document: FigureDocument, id = coll
 export const deleteSavedFigure = async (id: string): Promise<void> => {
   const database = await openDatabase();
   try {
-    await requestResult(database.transaction(COLLECTION_STORE_NAME, "readwrite").objectStore(COLLECTION_STORE_NAME).delete(id));
+    const transaction = database.transaction(COLLECTION_STORE_NAME, "readwrite");
+    await committedMutation(transaction, [transaction.objectStore(COLLECTION_STORE_NAME).delete(id)]);
   } finally {
     database.close();
   }
@@ -138,12 +158,13 @@ export const loadCurrentPlaygroundLayout = async (): Promise<PlaygroundLayout | 
 export const saveCurrentPlaygroundLayout = async (layout: PlaygroundLayout): Promise<void> => {
   const database = await openDatabase();
   try {
-    await requestResult(
-      database.transaction(PLAYGROUND_STORE_NAME, "readwrite").objectStore(PLAYGROUND_STORE_NAME).put(
+    const transaction = database.transaction(PLAYGROUND_STORE_NAME, "readwrite");
+    await committedMutation(transaction, [
+      transaction.objectStore(PLAYGROUND_STORE_NAME).put(
         playgroundLayoutSchema.parse(layout),
         CURRENT_PLAYGROUND_KEY,
       ),
-    );
+    ]);
   } finally {
     database.close();
   }
@@ -156,10 +177,10 @@ export const clearLocalFigureData = async (): Promise<void> => {
       [DRAFT_STORE_NAME, COLLECTION_STORE_NAME, PLAYGROUND_STORE_NAME],
       "readwrite",
     );
-    await Promise.all([
-      requestResult(transaction.objectStore(DRAFT_STORE_NAME).clear()),
-      requestResult(transaction.objectStore(COLLECTION_STORE_NAME).clear()),
-      requestResult(transaction.objectStore(PLAYGROUND_STORE_NAME).clear()),
+    await committedMutation(transaction, [
+      transaction.objectStore(DRAFT_STORE_NAME).clear(),
+      transaction.objectStore(COLLECTION_STORE_NAME).clear(),
+      transaction.objectStore(PLAYGROUND_STORE_NAME).clear(),
     ]);
   } finally {
     database.close();

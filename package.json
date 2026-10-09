@@ -20,6 +20,7 @@
     "typecheck": "tsc -b --pretty false",
     "lint": "eslint .",
     "test": "vitest run",
+    "test:browser": "npm run build && tsx tools/run-browser-regressions.ts",
     "data:validate": "tsx tools/validate-sources.ts",
     "data:validate:ff03": "tsx tools/validate-ff03-assortment.ts",
     "data:validate:ff05": "tsx tools/validate-ff05-anchors.ts",

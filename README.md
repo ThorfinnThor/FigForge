@@ -2,6 +2,15 @@
 
 Backendloser, kuratierter Minifiguren-Konfigurator mit digital verbundenen LDraw-Modellen. Dieses Repository enthält den lokal ausführbaren Stand bis FF-17, FF-21 sowie den technisch vorbereiteten FF-18-Vergleich.
 
+## Aktueller technischer Stand
+
+- Routen: `/` (Builder), `/collection` (lokale Sammlung/Playground), `/methodology` (Methodik).
+- Figur-Dokument: Schema-Version 2, maximal fünf eindeutige Slots und 64 KiB pro Import/Share-Dokument.
+- Lokaler Speicher: IndexedDB-Schema 3 mit aktuellem Entwurf, gespeicherten Figuren und geordnetem Playground-Layout.
+- Unterstützte Slots: Kopf, Kopfbedeckung, Oberkörper-Baugruppe, Beine-Baugruppe und Handzubehör.
+- Datenquellen: ausschließlich Rebrickable Catalog Downloads/CSV sowie die dokumentierten offiziellen LDraw-/LDCad-Artefakte; keine Rebrickable API und keine MOC-Dateien.
+- Release-Grenzen: lokale Speicherung ohne Konto oder Cloud-Synchronisierung; unbekannte Zuordnungen bleiben gesperrt; semantische Suche bleibt Beta; physische Passform wird nicht garantiert.
+
 ## Status
 
 - Kein vollständiger Katalog.
@@ -38,6 +47,12 @@ Voraussetzung: Node.js 24 und npm 11.
 npm ci
 npm run verify
 ```
+
+`npm run test:browser` führt reale Chromium-Regressionen für IndexedDB, mobile
+Tastaturnavigation und WebGL-/LDraw-Fehlerbehandlung aus. Lokal wird dafür
+Google Chrome oder Chromium über `CHROME_BIN` verwendet. Ist kein startfähiger
+Browser verfügbar, wird dieser Teil lokal sichtbar übersprungen; GitHub Actions
+führt ihn nach `npm run verify` als verpflichtenden eigenen Schritt aus.
 
 Für die lokale menschliche FF-18-Entwicklungsbewertung:
 

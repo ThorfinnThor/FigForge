@@ -1,4 +1,4 @@
-import { useDeferredValue, useEffect, useMemo, useRef, useState } from "react";
+import { useDeferredValue, useEffect, useMemo, useRef, useState, type MouseEvent as ReactMouseEvent } from "react";
 import { FigurePartsPanel } from "./FigurePartsPanel.js";
 import { FigureViewport } from "./FigureViewport.js";
 import { CatalogSetFilter, type CatalogSetSelection } from "./CatalogSetFilter.js";
@@ -34,6 +34,7 @@ import {
   serializeFigureDocument,
 } from "../figure/figure-document.js";
 import { createFigureShareLink, hasFigureShareLink, parseFigureShareLink } from "../figure/share-link.js";
+import { consumedFigureImportPath } from "../figure/import-location.js";
 import {
   clearLocalFigureData,
   deleteSavedFigure,
@@ -49,18 +50,20 @@ import { useI18n } from "../i18n.js";
 import type { ShopExportSelection } from "../procurement/shop-export.js";
 import { loadShopExportLookup } from "../procurement/shop-export-data.js";
 import type { ShopExportColor } from "../contracts/shop-export.js";
+import { MOBILE_TAB_ORDER, mobileTabForKey, type MobileTab } from "./mobile-tab-navigation.js";
 
-type MobileTab = "parts" | "figure" | "list";
 type CatalogRole = CatalogPackagePart["role"];
 type CatalogLoadState = "loading" | "ready" | "error";
 type CatalogViewMode = "exact" | "all";
 type SemanticSearchStatus = "disabled" | "loading" | "ready" | "error";
+type DraftHydrationState = "loading" | "ready" | "recovery-required";
 type FigureSnapshot = {
   selectedByRole: Partial<Record<CatalogRole, string>>;
   selectedColorByRole: Partial<Record<CatalogRole, number>>;
 };
 
 const INITIAL_VISIBLE_PARTS = 80;
+const RESTORE_SUPERSEDED_ERROR = "restore-superseded";
 const LDRAW_CATALOG_ROLES: ReadonlySet<string> = new Set([
   "head",
   "headwear",
@@ -103,6 +106,7 @@ export function CatalogWorkspace() {
   const deferredQuery = useDeferredValue(query);
   const [catalogParts, setCatalogParts] = useState<readonly CatalogPackagePart[]>([]);
   const [catalogLoadState, setCatalogLoadState] = useState<CatalogLoadState>("loading");
+  const [catalogLoadRevision, setCatalogLoadRevision] = useState(0);
   const [catalogViewMode, setCatalogViewMode] = useState<CatalogViewMode>("exact");
   const [selectedCatalogSet, setSelectedCatalogSet] = useState<CatalogSetSelection | null>(null);
   const [visiblePartCount, setVisiblePartCount] = useState(INITIAL_VISIBLE_PARTS);
@@ -110,25 +114,35 @@ export function CatalogWorkspace() {
   const [isFigurePanelOpen, setIsFigurePanelOpen] = useState(false);
   const [selectedByRole, setSelectedByRole] = useState(initialSelectionByRole);
   const [selectedColorByRole, setSelectedColorByRole] = useState<Partial<Record<CatalogRole, number>>>({});
+  const [figureName, setFigureName] = useState(() => t("figure.defaultName"));
   const [undoSnapshot, setUndoSnapshot] = useState<FigureSnapshot | null>(null);
   const [colorOptionsByRole, setColorOptionsByRole] = useState<Partial<Record<CatalogRole, readonly ShopExportColor[]>>>({});
-  const [draftHydrated, setDraftHydrated] = useState(false);
+  const [draftHydrationState, setDraftHydrationState] = useState<DraftHydrationState>("loading");
+  const [draftHydrationRevision, setDraftHydrationRevision] = useState(0);
+  const [draftPersistencePaused, setDraftPersistencePaused] = useState(false);
   const [saveStatus, setSaveStatus] = useState<"loading" | "saved" | "error">("loading");
   const [savedFigures, setSavedFigures] = useState<readonly SavedFigure[]>([]);
   const [transferMessage, setTransferMessage] = useState<string | null>(null);
   const [transferMessageTone, setTransferMessageTone] = useState<"danger" | "info">("info");
   const [shareLink, setShareLink] = useState<string | null>(null);
   const [semanticStatus, setSemanticStatus] = useState<SemanticSearchStatus>("loading");
+  const [semanticClientRevision, setSemanticClientRevision] = useState(0);
   const [semanticProgress, setSemanticProgress] = useState({ loaded: 0, total: semanticSearchRelease.requiredDownloadBytes });
   const [semanticHits, setSemanticHits] = useState<Array<{ componentId: string; score: number }>>([]);
   const [semanticQuery, setSemanticQuery] = useState("");
   const [semanticSearching, setSemanticSearching] = useState(false);
   const semanticClientRef = useRef<SemanticSearchClient | null>(null);
   const semanticRequestRef = useRef(0);
+  const restoreOperationRef = useRef(0);
+  const draftWriteRevisionRef = useRef(0);
+  const collectionSavePendingRef = useRef(false);
+  const [collectionSavePending, setCollectionSavePending] = useState(false);
+  const [previewSynchronized, setPreviewSynchronized] = useState(false);
   const isMobileLayout = useMediaQuery("(max-width: 767px)");
   const isDesktopDrawerLayout = useMediaQuery("(min-width: 768px)");
   const drawerTriggerRef = useRef<HTMLButtonElement>(null);
   const drawerCloseRef = useRef<HTMLButtonElement>(null);
+  const mobileTabRefs = useRef(new Map<MobileTab, HTMLButtonElement>());
   const selectedSetPartNumbers = useMemo(
     () => selectedCatalogSet
       ? new Set(selectedCatalogSet.partNumbers.map((partNum) => partNum.toLocaleLowerCase("en-US")))
@@ -172,10 +186,12 @@ export function CatalogWorkspace() {
         if (active) setCatalogLoadState("error");
       });
     return () => { active = false; };
-  }, [activeCategory]);
+  }, [activeCategory, catalogLoadRevision]);
 
   useEffect(() => {
     let active = true;
+    setSemanticStatus("loading");
+    setSemanticProgress({ loaded: 0, total: semanticSearchRelease.requiredDownloadBytes });
     const client = new SemanticSearchClient();
     semanticClientRef.current = client;
     void client.initialize((loaded, total) => setSemanticProgress({ loaded, total }))
@@ -192,7 +208,7 @@ export function CatalogWorkspace() {
       active = false;
       client.dispose();
     };
-  }, []);
+  }, [semanticClientRevision]);
 
   useEffect(() => {
     if (semanticStatus !== "ready") return;
@@ -288,11 +304,18 @@ export function CatalogWorkspace() {
     });
   };
 
+  const markFigureEdited = (): void => {
+    restoreOperationRef.current += 1;
+    setDraftPersistencePaused(false);
+    setSaveStatus("loading");
+  };
+
   const selectForPreview = (component: CatalogPackagePart): void => {
     if (!digitallySupportedLDrawEntryForComponent(component.id)) {
       return;
     }
     if (selectedByRole[component.role] === component.id) return;
+    markFigureEdited();
     rememberFigureState();
     setSelectedColorByRole((current) => {
       const next = { ...current };
@@ -304,6 +327,7 @@ export function CatalogWorkspace() {
 
   const removeFromFigure = (slot: CatalogRole): void => {
     if (!selectedByRole[slot]) return;
+    markFigureEdited();
     rememberFigureState();
     setSelectedByRole((current) => {
       const next = { ...current };
@@ -319,6 +343,7 @@ export function CatalogWorkspace() {
 
   const changeSelectedColor = (slot: CatalogRole, colorId: number | undefined): void => {
     if (selectedColorByRole[slot] === colorId) return;
+    markFigureEdited();
     rememberFigureState();
     setSelectedColorByRole((current) => {
       const next = { ...current };
@@ -330,6 +355,7 @@ export function CatalogWorkspace() {
 
   const undoLastFigureChange = (): void => {
     if (!undoSnapshot) return;
+    markFigureEdited();
     setSelectedByRole({ ...undoSnapshot.selectedByRole });
     setSelectedColorByRole({ ...undoSnapshot.selectedColorByRole });
     setUndoSnapshot(null);
@@ -378,12 +404,19 @@ export function CatalogWorkspace() {
     return () => { active = false; };
   }, [selectedByRole]);
 
-  const restoreFigureDocument = async (document: FigureDocument, recordUndo = true): Promise<void> => {
+  const restoreFigureDocument = async (
+    document: FigureDocument,
+    recordUndo = true,
+    operation = restoreOperationRef.current + 1,
+  ): Promise<void> => {
+    restoreOperationRef.current = operation;
     const roles = [...new Set(document.selections.map(({ slot }) => slot))];
     await Promise.all(roles.map(loadCatalogParts));
+    if (restoreOperationRef.current !== operation) throw new Error(RESTORE_SUPERSEDED_ERROR);
     const restored = selectionsFromFigureDocument(document, isSupportedDocumentSelection);
     if (Object.keys(restored).length !== document.selections.length) throw new Error("unsupported");
     const lookup = await loadShopExportLookup(roles);
+    if (restoreOperationRef.current !== operation) throw new Error(RESTORE_SUPERSEDED_ERROR);
     const restoredColors = colorsFromFigureDocument(document, (componentId, slot, colorId) => {
       const component = builderComponentForId(componentId);
       return Boolean(component && lookup(slot, component.rebrickablePartNum)?.colors
@@ -394,17 +427,23 @@ export function CatalogWorkspace() {
     if (recordUndo) rememberFigureState();
     setSelectedByRole(restored);
     setSelectedColorByRole(restoredColors);
+    setFigureName(document.name);
+    setDraftPersistencePaused(false);
   };
 
   const currentFigureDocument = (): FigureDocument => createFigureDocument(
     selectedByRole,
-    t("figure.defaultName"),
+    figureName,
     undefined,
     selectedColorByRole,
   );
 
   useEffect(() => {
     let active = true;
+    const operation = restoreOperationRef.current + 1;
+    restoreOperationRef.current = operation;
+    setDraftHydrationState("loading");
+    setSaveStatus("loading");
     void Promise.all([loadCurrentFigureDraft(), listSavedFigures()])
       .then(async ([document, collection]) => {
         if (!active) return;
@@ -423,40 +462,70 @@ export function CatalogWorkspace() {
           ? collection.find(({ id }) => id === requestedFigureId)
           : undefined;
         const initialDocument = shared ?? requestedSavedFigure?.document ?? document;
-        if (!initialDocument) return;
+        if (!initialDocument) {
+          setDraftHydrationState("ready");
+          setSaveStatus("saved");
+          return;
+        }
         if (!active) return;
-        await restoreFigureDocument(initialDocument, false);
+        await restoreFigureDocument(initialDocument, false, operation);
+        if (!active || restoreOperationRef.current !== operation) return;
         setUndoSnapshot(null);
         if (shared) {
+          await saveCurrentFigureDraft(initialDocument);
+          if (!active || restoreOperationRef.current !== operation) return;
           setTransferMessageTone("info");
           setTransferMessage(t("figure.share.loaded", { name: initialDocument.name }));
         } else if (requestedSavedFigure) {
+          await saveCurrentFigureDraft(initialDocument);
+          if (!active || restoreOperationRef.current !== operation) return;
           setTransferMessageTone("info");
           setTransferMessage(t("figure.collection.loaded", { name: initialDocument.name }));
         }
+        if (shared || requestedSavedFigure) {
+          window.history.replaceState(
+            window.history.state,
+            "",
+            consumedFigureImportPath(window.location.href),
+          );
+        }
+        setDraftHydrationState("ready");
+        setSaveStatus("saved");
       })
-      .catch(() => {
-        if (active) setSaveStatus("error");
+      .catch((error: unknown) => {
+        if (!active) return;
+        if (error instanceof Error && error.message === RESTORE_SUPERSEDED_ERROR) {
+          setDraftHydrationState("ready");
+          return;
+        }
+        setSaveStatus("error");
+        setDraftHydrationState("recovery-required");
       })
       .finally(() => {
         if (active) {
-          setDraftHydrated(true);
           void listSavedFigures().then(setSavedFigures).catch(() => undefined);
         }
       });
     return () => { active = false; };
-  }, []);
+  }, [draftHydrationRevision]);
 
   useEffect(() => {
-    if (!draftHydrated) return;
+    if (draftHydrationState !== "ready" || draftPersistencePaused) return;
+    const revision = draftWriteRevisionRef.current + 1;
+    draftWriteRevisionRef.current = revision;
+    setSaveStatus("loading");
     const timeout = window.setTimeout(() => {
-      setSaveStatus("loading");
+      if (draftWriteRevisionRef.current !== revision) return;
       void saveCurrentFigureDraft(currentFigureDocument())
-        .then(() => setSaveStatus("saved"))
-        .catch(() => setSaveStatus("error"));
+        .then(() => {
+          if (draftWriteRevisionRef.current === revision) setSaveStatus("saved");
+        })
+        .catch(() => {
+          if (draftWriteRevisionRef.current === revision) setSaveStatus("error");
+        });
     }, 300);
     return () => window.clearTimeout(timeout);
-  }, [draftHydrated, selectedByRole, selectedColorByRole]);
+  }, [draftHydrationState, draftPersistencePaused, figureName, selectedByRole, selectedColorByRole]);
 
   useEffect(() => {
     setShareLink(null);
@@ -487,6 +556,7 @@ export function CatalogWorkspace() {
       setTransferMessage(t("figure.transfer.loaded", { name: document.name }));
     } catch (error) {
       const errorCode = error instanceof Error ? error.message : "invalid";
+      if (errorCode === RESTORE_SUPERSEDED_ERROR) return;
       const messageKey = errorCode === "file-too-large"
         ? "figure.transfer.fileTooLarge"
         : errorCode === "unsupported" || errorCode === "unsupported-color"
@@ -516,6 +586,9 @@ export function CatalogWorkspace() {
   };
 
   const saveToCollection = async (): Promise<void> => {
+    if (collectionSavePendingRef.current) return;
+    collectionSavePendingRef.current = true;
+    setCollectionSavePending(true);
     try {
       await saveFigureToCollection(currentFigureDocument());
       setSavedFigures(await listSavedFigures());
@@ -524,6 +597,9 @@ export function CatalogWorkspace() {
     } catch {
       setTransferMessageTone("danger");
       setTransferMessage(t("figure.collection.error"));
+    } finally {
+      collectionSavePendingRef.current = false;
+      setCollectionSavePending(false);
     }
   };
 
@@ -532,7 +608,8 @@ export function CatalogWorkspace() {
       await restoreFigureDocument(saved.document);
       setTransferMessageTone("info");
       setTransferMessage(t("figure.collection.loaded", { name: saved.document.name }));
-    } catch {
+    } catch (error) {
+      if (error instanceof Error && error.message === RESTORE_SUPERSEDED_ERROR) return;
       setTransferMessageTone("danger");
       setTransferMessage(t("figure.transfer.unsupported"));
     }
@@ -550,14 +627,35 @@ export function CatalogWorkspace() {
 
   const clearLocalData = async (): Promise<void> => {
     if (!window.confirm(t("figure.collection.clearConfirm"))) return;
+    restoreOperationRef.current += 1;
+    draftWriteRevisionRef.current += 1;
+    setDraftPersistencePaused(true);
     try {
       await clearLocalFigureData();
       setSavedFigures([]);
       setTransferMessageTone("info");
       setTransferMessage(t("figure.collection.cleared"));
     } catch {
+      setDraftPersistencePaused(false);
       setTransferMessageTone("danger");
       setTransferMessage(t("figure.collection.error"));
+    }
+  };
+
+  const navigateAfterDraftCommit = async (event: ReactMouseEvent<HTMLAnchorElement>): Promise<void> => {
+    if (event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+    if (draftHydrationState !== "ready" || draftPersistencePaused) return;
+    event.preventDefault();
+    const destination = event.currentTarget.href;
+    const revision = draftWriteRevisionRef.current + 1;
+    draftWriteRevisionRef.current = revision;
+    setSaveStatus("loading");
+    try {
+      await saveCurrentFigureDraft(currentFigureDocument());
+      if (draftWriteRevisionRef.current === revision) setSaveStatus("saved");
+      window.location.assign(destination);
+    } catch {
+      if (draftWriteRevisionRef.current === revision) setSaveStatus("error");
     }
   };
 
@@ -570,6 +668,13 @@ export function CatalogWorkspace() {
   const closeFigurePanel = () => {
     setIsFigurePanelOpen(false);
     requestAnimationFrame(() => drawerTriggerRef.current?.focus());
+  };
+
+  const moveMobileTabFocus = (current: MobileTab, key: string): void => {
+    const next = mobileTabForKey(current, key);
+    if (!next) return;
+    setMobileTab(next);
+    mobileTabRefs.current.get(next)?.focus();
   };
 
   useEffect(() => {
@@ -641,7 +746,14 @@ export function CatalogWorkspace() {
               })}</span>
             ) : null}
             {semanticStatus === "ready" && semanticSearching ? <span role="status">{t("search.semantic.searching")}</span> : null}
-            {semanticStatus === "error" ? <span className="semantic-search-error">{t("search.semantic.error")}</span> : null}
+            {semanticStatus === "error" ? (
+              <span className="semantic-search-error">
+                {t("search.semantic.error")}
+                <Button onClick={() => setSemanticClientRevision((revision) => revision + 1)} size="sm" variant="secondary">
+                  {t("search.semantic.retry")}
+                </Button>
+              </span>
+            ) : null}
           </div>
         ) : null}
       </div>
@@ -691,6 +803,14 @@ export function CatalogWorkspace() {
             : ""}
         </StatusMessage>
       ) : null}
+      {draftHydrationState === "recovery-required" ? (
+        <div className="draft-recovery">
+          <StatusMessage tone="danger">{t("figure.restore.failed")}</StatusMessage>
+          <Button onClick={() => setDraftHydrationRevision((revision) => revision + 1)} variant="secondary">
+            {t("figure.restore.retry")}
+          </Button>
+        </div>
+      ) : null}
       {deferredQuery.trim().length > 0 && searchResult.outcome === "suggestions" ? (
         <StatusMessage className="search-status" tone="info">
           {t("catalog.suggestionsNotice")}
@@ -699,9 +819,14 @@ export function CatalogWorkspace() {
       {catalogLoadState === "loading" ? (
         <StatusMessage tone="info">{t("catalog.loading")}</StatusMessage>
       ) : catalogLoadState === "error" ? (
-        <StatusMessage tone="danger">
-          {t("catalog.loadError")}
-        </StatusMessage>
+        <div className="catalog-load-error">
+          <StatusMessage tone="danger">
+            {t("catalog.loadError")}
+          </StatusMessage>
+          <Button onClick={() => setCatalogLoadRevision((revision) => revision + 1)} variant="secondary">
+            {t("catalog.retry")}
+          </Button>
+        </div>
       ) : filteredComponents.length > 0 ? (
         <>
         <div className="part-grid">
@@ -767,6 +892,7 @@ export function CatalogWorkspace() {
     <section className="workspace-viewport" aria-label={t("mobile.figure")}>
       <FigureViewport
         onSaveToCollection={saveToCollection}
+        onSynchronizationChange={setPreviewSynchronized}
         selectedParts={selectedLDrawParts}
       />
     </section>
@@ -781,6 +907,8 @@ export function CatalogWorkspace() {
       onShare={shareFigure}
       onImport={importFigure}
       onSaveToCollection={saveToCollection}
+      collectionSavePending={collectionSavePending}
+      previewSynchronized={previewSynchronized}
       onLoadFromCollection={loadFromCollection}
       onDeleteFromCollection={removeFromCollection}
       onClearLocalData={clearLocalData}
@@ -799,11 +927,11 @@ export function CatalogWorkspace() {
   return (
     <div className="app-shell" id="builder">
       <header className="app-header">
-        <a className="wordmark" href="/">Fig<span>Forge</span></a>
+        <a className="wordmark" href="/" onClick={(event) => void navigateAfterDraftCommit(event)}>Fig<span>Forge</span></a>
          <nav className="app-nav" aria-label={t("nav.label")}>
-          <a className="app-nav__link app-nav__link--active" href="/" aria-current="page">{t("nav.builder")}</a>
-          <a className="app-nav__link" href="/collection">{t("nav.collection")}</a>
-          <a className="app-nav__link" href="/methodology">{t("nav.notes")}</a>
+          <a className="app-nav__link app-nav__link--active" href="/" aria-current="page" onClick={(event) => void navigateAfterDraftCommit(event)}>{t("nav.builder")}</a>
+          <a className="app-nav__link" href="/collection" onClick={(event) => void navigateAfterDraftCommit(event)}>{t("nav.collection")}</a>
+          <a className="app-nav__link" href="/methodology" onClick={(event) => void navigateAfterDraftCommit(event)}>{t("nav.notes")}</a>
         </nav>
         <span className="app-header__status">{t("header.status")}</span>
         <label className="language-picker">
@@ -841,11 +969,7 @@ export function CatalogWorkspace() {
       {isMobileLayout ? (
          <div className="mobile-workspace" aria-label={t("mobile.workspaceLabel")}>
            <div className="mobile-tabs" role="tablist" aria-label={t("mobile.tabsLabel")}>
-            {([
-              ["parts", t("mobile.parts")],
-              ["figure", t("mobile.figure")],
-              ["list", t("mobile.list")],
-            ] as const).map(([tab, label]) => (
+            {MOBILE_TAB_ORDER.map((tab) => (
               <button
                 aria-controls={`mobile-panel-${tab}`}
                 aria-selected={mobileTab === tab}
@@ -853,11 +977,20 @@ export function CatalogWorkspace() {
                 id={`mobile-tab-${tab}`}
                 key={tab}
                 onClick={() => setMobileTab(tab)}
+                onKeyDown={(event) => {
+                  if (!mobileTabForKey(tab, event.key)) return;
+                  event.preventDefault();
+                  moveMobileTabFocus(tab, event.key);
+                }}
+                ref={(element) => {
+                  if (element) mobileTabRefs.current.set(tab, element);
+                  else mobileTabRefs.current.delete(tab);
+                }}
                 role="tab"
                 tabIndex={mobileTab === tab ? 0 : -1}
                 type="button"
               >
-                {label}
+                {t(`mobile.${tab}`)}
               </button>
             ))}
           </div>
