@@ -422,56 +422,47 @@ const testLDrawAndWebGlFailures = async (client: CdpClient, origin: string): Pro
   await navigate(client, origin);
   await waitFor(client, `${textIncludes("Bauteilen in der Vorschau")} && Boolean(document.querySelector('canvas.viewport'))`, "initial 3D preview", 60_000);
 
-  let failNextDat = true;
-  const removeFetchListener = client.on("Fetch.requestPaused", (params) => {
-    const requestId = params.requestId;
-    const request = params.request as { url?: string } | undefined;
-    if (typeof requestId !== "string") return;
-    const shouldFail = failNextDat && Boolean(request?.url?.includes("/assets/ldraw/") && request.url.endsWith(".dat"));
-    if (shouldFail) failNextDat = false;
-    void client.send(shouldFail ? "Fetch.failRequest" : "Fetch.continueRequest", shouldFail
-      ? { requestId, errorReason: "Aborted" }
-      : { requestId });
-  });
-  await client.send("Fetch.enable", { patterns: [{ urlPattern: "*" }] });
-  let fetchEnabled = true;
-  try {
-    const clicked = await evaluate<boolean>(client, `(() => {
-      const button = [...document.querySelectorAll('.part-card[data-role="head"] button')]
-        .find((candidate) => candidate instanceof HTMLButtonElement && !candidate.disabled && candidate.getAttribute('aria-pressed') !== 'true');
-      if (!(button instanceof HTMLButtonElement)) return false;
-      button.click();
-      return true;
-    })()`);
-    assert.equal(clicked, true, "a second loadable head must be available for fault injection");
-    await waitFor(client, textIncludes("Die 3D-Vorschau konnte die aktuelle Auswahl nicht übernehmen"), "LDraw selection error");
-    assert.equal(failNextDat, false, "the injected .dat failure must have been consumed");
-    await client.send("Fetch.disable");
-    removeFetchListener();
-    fetchEnabled = false;
+  await evaluate(client, `(() => {
+    const originalFetch = window.fetch.bind(window);
+    window.__figforgeLdrawFailureInjected = false;
+    window.fetch = async (input, init) => {
+      const url = typeof input === 'string' ? input : input instanceof URL ? input.href : input.url;
+      if (!window.__figforgeLdrawFailureInjected && url.includes('/assets/ldraw/') && url.endsWith('.dat')) {
+        window.__figforgeLdrawFailureInjected = true;
+        window.fetch = originalFetch;
+        throw new TypeError('Injected one-shot LDraw request failure');
+      }
+      return originalFetch(input, init);
+    };
+  })()`);
+  const clicked = await evaluate<boolean>(client, `(() => {
+    const button = [...document.querySelectorAll('.part-card[data-role="head"] button')]
+      .find((candidate) => candidate instanceof HTMLButtonElement && !candidate.disabled && candidate.getAttribute('aria-pressed') !== 'true');
+    if (!(button instanceof HTMLButtonElement)) return false;
+    button.click();
+    return true;
+  })()`);
+  assert.equal(clicked, true, "a second loadable head must be available for fault injection");
+  await waitFor(client, textIncludes("Die 3D-Vorschau konnte die aktuelle Auswahl nicht übernehmen"), "LDraw selection error");
+  assert.equal(await evaluate<boolean>(client, "window.__figforgeLdrawFailureInjected === true"), true,
+    "the injected .dat failure must have been consumed");
 
-    assert.equal(await clickButtonWithText(client, "Vorne"), true);
-    assert.equal(await evaluate<boolean>(client, textIncludes("Die 3D-Vorschau konnte die aktuelle Auswahl nicht übernehmen")), true,
-      "camera changes must not hide a selection error");
+  assert.equal(await clickButtonWithText(client, "Vorne"), true);
+  assert.equal(await evaluate<boolean>(client, textIncludes("Die 3D-Vorschau konnte die aktuelle Auswahl nicht übernehmen")), true,
+    "camera changes must not hide a selection error");
 
-    const drawerOpened = await evaluate<boolean>(client, `(() => {
-      const button = document.querySelector('.workspace-drawer-trigger');
-      if (!(button instanceof HTMLButtonElement)) return false;
-      button.click();
-      return true;
-    })()`);
-    assert.equal(drawerOpened, true);
-    await waitFor(client, textIncludes("Die Teileliste entspricht der aktuellen Auswahl"), "stale preview warning");
-    await evaluate(client, `document.querySelector('.figure-panel-backdrop')?.click()`);
+  const drawerOpened = await evaluate<boolean>(client, `(() => {
+    const button = document.querySelector('.workspace-drawer-trigger');
+    if (!(button instanceof HTMLButtonElement)) return false;
+    button.click();
+    return true;
+  })()`);
+  assert.equal(drawerOpened, true);
+  await waitFor(client, textIncludes("Die Teileliste entspricht der aktuellen Auswahl"), "stale preview warning");
+  await evaluate(client, `document.querySelector('.figure-panel-backdrop')?.click()`);
 
-    assert.equal(await clickButtonWithText(client, "Aktuelle Auswahl erneut laden"), true);
-    await waitFor(client, `!${textIncludes("Die 3D-Vorschau konnte die aktuelle Auswahl nicht übernehmen")} && ${textIncludes("Bauteilen in der Vorschau")}`, "successful LDraw retry", 60_000);
-  } finally {
-    if (fetchEnabled) {
-      await client.send("Fetch.disable");
-      removeFetchListener();
-    }
-  }
+  assert.equal(await clickButtonWithText(client, "Aktuelle Auswahl erneut laden"), true);
+  await waitFor(client, `!${textIncludes("Die 3D-Vorschau konnte die aktuelle Auswahl nicht übernehmen")} && ${textIncludes("Bauteilen in der Vorschau")}`, "successful LDraw retry", 60_000);
 
   const contextLossAvailable = await evaluate<boolean>(client, `(() => {
     const canvas = document.querySelector('canvas.viewport');
