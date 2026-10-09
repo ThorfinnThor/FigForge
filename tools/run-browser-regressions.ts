@@ -5,7 +5,7 @@ import { createServer as createNetServer } from "node:net";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
 import { setTimeout as delay } from "node:timers/promises";
-import { createServer, type ViteDevServer } from "vite";
+import { createServer, preview, type Plugin, type PreviewServer, type ViteDevServer } from "vite";
 
 const ROOT_URL = "about:blank";
 const DEFAULT_TIMEOUT_MS = 30_000;
@@ -179,16 +179,48 @@ const waitForJson = async <T>(url: string, timeoutMs = DEFAULT_TIMEOUT_MS): Prom
   throw new Error(`Timed out waiting for ${url}: ${String(lastError)}`);
 };
 
-const startVite = async (): Promise<{ server: ViteDevServer; origin: string }> => {
-  const server = await createServer({
+const startVitePreview = async (): Promise<{ server: PreviewServer; origin: string }> => {
+  const server = await preview({
     logLevel: "error",
-    server: { host: "127.0.0.1", port: 0, strictPort: false },
+    preview: { host: "127.0.0.1", port: 0, strictPort: false },
   });
-  await server.listen();
-  const address = server.httpServer?.address();
+  const address = server.httpServer.address();
   if (!address || typeof address === "string") {
     await server.close();
     throw new Error("Vite did not expose a local TCP address");
+  }
+  return { server, origin: `http://127.0.0.1:${address.port}` };
+};
+
+const startStorageHarness = async (): Promise<{ server: ViteDevServer; origin: string }> => {
+  const harnessPlugin: Plugin = {
+    name: "figforge-storage-browser-harness",
+    configureServer(server) {
+      server.middlewares.use((request, response, next) => {
+        if (request.url !== "/__browser-storage-qa") {
+          next();
+          return;
+        }
+        response.statusCode = 200;
+        response.setHeader("Content-Type", "text/html; charset=utf-8");
+        response.end("<!doctype html><html><body>FigForge storage browser QA</body></html>");
+      });
+    },
+  };
+  const server = await createServer({
+    logLevel: "error",
+    plugins: [harnessPlugin],
+    server: { host: "127.0.0.1", port: 0, strictPort: false },
+  });
+  await server.listen();
+  await Promise.all([
+    server.warmupRequest("/src/storage/figure-draft-store.ts"),
+    server.warmupRequest("/src/figure/figure-document.ts"),
+  ]);
+  const address = server.httpServer?.address();
+  if (!address || typeof address === "string") {
+    await server.close();
+    throw new Error("Vite storage harness did not expose a local TCP address");
   }
   return { server, origin: `http://127.0.0.1:${address.port}` };
 };
@@ -457,28 +489,29 @@ const testLDrawAndWebGlFailures = async (client: CdpClient, origin: string): Pro
 };
 
 const run = async (): Promise<void> => {
-  const { server, origin } = await startVite();
+  const storageHarness = await startStorageHarness();
+  const previewServer = await startVitePreview();
   let chrome: Awaited<ReturnType<typeof launchChrome>>;
   try {
     chrome = await launchChrome();
   } catch (error) {
-    await server.close();
+    await Promise.all([storageHarness.server.close(), previewServer.server.close()]);
     if (process.env.CI) throw error;
     process.stdout.write(`↷ browser regressions skipped: ${error instanceof Error ? error.message : String(error)}\n`);
     return;
   }
   const client = await createPage(chrome.debuggingOrigin);
   try {
-    await testIndexedDbCommitAndAbort(client, origin);
+    await testIndexedDbCommitAndAbort(client, `${storageHarness.origin}/__browser-storage-qa`);
     process.stdout.write("✓ real IndexedDB commit and abort-after-request-success\n");
-    await testMountedMobileKeyboard(client, origin);
+    await testMountedMobileKeyboard(client, previewServer.origin);
     process.stdout.write("✓ mounted mobile ArrowLeft/ArrowRight/Home/End navigation\n");
-    await testLDrawAndWebGlFailures(client, origin);
+    await testLDrawAndWebGlFailures(client, previewServer.origin);
     process.stdout.write("✓ browser LDraw request failure and WebGL context-loss recovery\n");
   } finally {
     client.close();
     chrome.process.kill("SIGTERM");
-    await server.close();
+    await Promise.all([storageHarness.server.close(), previewServer.server.close()]);
     await rm(chrome.profileDirectory, { force: true, recursive: true });
   }
 };

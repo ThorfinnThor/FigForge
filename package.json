@@ -20,7 +20,7 @@
     "typecheck": "tsc -b --pretty false",
     "lint": "eslint .",
     "test": "vitest run",
-    "test:browser": "tsx tools/run-browser-regressions.ts",
+    "test:browser": "npm run build && tsx tools/run-browser-regressions.ts",
     "data:validate": "tsx tools/validate-sources.ts",
     "data:validate:ff03": "tsx tools/validate-ff03-assortment.ts",
     "data:validate:ff05": "tsx tools/validate-ff05-anchors.ts",
@@ -68,7 +68,7 @@
     "data:refresh": "tsx tools/refresh-catalog.ts --check-only",
     "data:refresh:remote": "tsx tools/refresh-catalog.ts --refresh",
     "cf:check": "tsx tools/check-cloudflare.ts",
-    "verify": "npm run catalog:local:test && npm run data:validate && npm run data:validate:ff03 && npm run data:validate:ff05 && npm run data:validate:ff06 && npm run data:validate:ff16 && npm run data:validate:ff17 && npm run data:validate:ff18 && npm run data:validate:ff21 && npm run search:validate:release && npm run search:validate:review && npm run data:validate:generated && npm run data:validate:mappings && npm run assets:validate && npm run assets:validate:fit-review && npm run assets:validate:connectivity && npm run assets:validate:ldraw-expanded && npm run assets:validate:ambiguous-mappings && npm run assets:validate:unique-grip-clearance && npm run assets:validate:multiple-grip-clearance && npm run assets:validate:no-radius-grip-clearance && npm run assets:validate:ldraw-coverage && npm run assets:validate:placement-candidates && npm run assets:validate:shop-export && npm run licenses:validate && npm run typecheck && npm run lint && npm run test && npm run test:browser && npm run build && npm run cf:check"
+    "verify": "npm run catalog:local:test && npm run data:validate && npm run data:validate:ff03 && npm run data:validate:ff05 && npm run data:validate:ff06 && npm run data:validate:ff16 && npm run data:validate:ff17 && npm run data:validate:ff18 && npm run data:validate:ff21 && npm run search:validate:release && npm run search:validate:review && npm run data:validate:generated && npm run data:validate:mappings && npm run assets:validate && npm run assets:validate:fit-review && npm run assets:validate:connectivity && npm run assets:validate:ldraw-expanded && npm run assets:validate:ambiguous-mappings && npm run assets:validate:unique-grip-clearance && npm run assets:validate:multiple-grip-clearance && npm run assets:validate:no-radius-grip-clearance && npm run assets:validate:ldraw-coverage && npm run assets:validate:placement-candidates && npm run assets:validate:shop-export && npm run licenses:validate && npm run typecheck && npm run lint && npm run test && npm run test:browser && npm run cf:check"
   },
   "dependencies": {
     "@fontsource/lilita-one": "^5.3.0",
