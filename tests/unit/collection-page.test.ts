@@ -23,6 +23,8 @@ describe("Collection page shell", () => {
     expect(collectionSource).toContain("clearLocalFigureData");
     expect(collectionSource).toContain("collection.dataTitle");
     expect(cardSource).toContain("figureId=");
+    expect(collectionSource).toContain("downloadFigureDocument(saved.document)");
+    expect(cardSource).toContain("labels.exportJson");
     expect(collectionSource).toContain("<CollectionFigureCard");
     expect(cardSource).toContain("thumbnailForComponent");
     expect(cardSource).toContain("collection-card__stage-badge");

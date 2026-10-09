@@ -32,8 +32,8 @@ import {
   createFigureDocument,
   parseFigureDocument,
   selectionsFromFigureDocument,
-  serializeFigureDocument,
 } from "../figure/figure-document.js";
+import { downloadFigureDocument } from "../figure/download-figure-document.js";
 import { createFigureShareLink, hasFigureShareLink, parseFigureShareLink } from "../figure/share-link.js";
 import { consumedFigureImportPath } from "../figure/import-location.js";
 import {
@@ -525,15 +525,7 @@ export function CatalogWorkspace() {
   }, [selectedByRole, selectedColorByRole]);
 
   const exportFigure = (): void => {
-    const content = serializeFigureDocument(currentFigureDocument());
-    const url = URL.createObjectURL(new Blob([content], { type: "application/json;charset=utf-8" }));
-    const link = document.createElement("a");
-    link.href = url;
-    link.download = "figforge-figur.json";
-    document.body.append(link);
-    link.click();
-    link.remove();
-    window.setTimeout(() => URL.revokeObjectURL(url), 1_000);
+    downloadFigureDocument(currentFigureDocument(), "figforge-figur.json");
     setTransferMessageTone("info");
     setTransferMessage(t("figure.transfer.exported"));
   };

@@ -7,6 +7,7 @@ import {
   type PlaygroundLayout,
 } from "../contracts/playground-layout.js";
 import { useI18n } from "../i18n.js";
+import { downloadFigureDocument } from "../figure/download-figure-document.js";
 import {
   clearLocalFigureData,
   listSavedFigures,
@@ -25,6 +26,7 @@ export function CollectionPage() {
   const [layout, setLayout] = useState<PlaygroundLayout | null>(null);
   const [loadState, setLoadState] = useState<"loading" | "ready" | "error">("loading");
   const [actionError, setActionError] = useState(false);
+  const [exportError, setExportError] = useState(false);
   const [isSavingLayout, setIsSavingLayout] = useState(false);
 
   useEffect(() => {
@@ -119,6 +121,15 @@ export function CollectionPage() {
     }
   };
 
+  const exportFigure = (saved: SavedFigure): void => {
+    setExportError(false);
+    try {
+      downloadFigureDocument(saved.document);
+    } catch {
+      setExportError(true);
+    }
+  };
+
   const stageIds = new Set(layout?.savedFigureIds ?? []);
 
   return (
@@ -183,6 +194,7 @@ export function CollectionPage() {
               </span>
             </header>
             {actionError ? <p className="collection-library__error" role="alert">{t("collection.actionError")}</p> : null}
+            {exportError ? <p className="collection-library__error" role="alert">{t("collection.exportError")}</p> : null}
             {collection.length === 0 ? (
               <p className="collection-viewport__empty">{t("collection.libraryEmpty")}</p>
             ) : (
@@ -200,12 +212,14 @@ export function CollectionPage() {
                         moveUp: t("collection.moveUp"),
                         moveDown: t("collection.moveDown"),
                         openBuilder: t("collection.openBuilder"),
+                        exportJson: t("collection.exportJson"),
                         onStage: t("collection.onStage"),
                         partCount: t("collection.partCount", { count: saved.document.selections.length }),
                         savedAt: t("collection.savedAt"),
                       }}
                       language={language}
                       onMove={(direction) => moveOnStage(saved.id, direction)}
+                      onExport={() => exportFigure(saved)}
                       onStage={onStage}
                       onToggleStage={() => onStage ? removeFromStage(saved.id) : addToStage(saved.id)}
                       saved={saved}
