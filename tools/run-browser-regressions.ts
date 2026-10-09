@@ -488,7 +488,7 @@ const testLDrawAndWebGlFailures = async (client: CdpClient, origin: string): Pro
   assert.equal(contextLossAvailable, true, "headless Chrome must expose WEBGL_lose_context");
   await waitFor(client, textIncludes("Die 3D-Darstellung wurde unterbrochen"), "WebGL context-loss UI");
   assert.equal(await clickButtonWithText(client, "3D-Vorschau wiederherstellen"), true);
-  await waitFor(client, textIncludes("3D-Vorschau wiederhergestellt"), "WebGL context restoration", 60_000);
+  await waitFor(client, `!${textIncludes("Die 3D-Darstellung wurde unterbrochen")} && ${textIncludes("Bauteilen in der Vorschau")}`, "WebGL scene rebuild", 60_000);
 };
 
 const run = async (): Promise<void> => {

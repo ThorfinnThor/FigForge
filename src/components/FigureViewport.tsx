@@ -162,11 +162,6 @@ export function FigureViewport({ selectedParts, onSynchronizationChange }: Figur
   };
 
   const recoverScene = (): void => {
-    if (sceneState === "context-lost" && controllerRef.current?.requestContextRestore()) {
-      setStatusTone("info");
-      setStatus({ key: "viewport.status.recovering" });
-      return;
-    }
     setSceneRevision((revision) => revision + 1);
   };
 
