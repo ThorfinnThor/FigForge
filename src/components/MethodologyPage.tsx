@@ -37,6 +37,8 @@ export function MethodologyPage() {
             <p>{t("source.note")}</p>
             <p>{t("methodology.assembly")}</p>
             <p>{t("methodology.physical")}</p>
+            <p>{t("methodology.localStorage")}</p>
+            <p>{t("methodology.figureExport")}</p>
             <p className="workspace-methodology__links">
               <a href="/licenses/LDraw-CAreadme.txt" target="_blank" rel="noreferrer">{t("source.ldrawLicense")}</a>
               <a href="/licenses/LDCadShadowLibrary-NOTICE.txt" target="_blank" rel="noreferrer">{t("source.connectionLicense")}</a>

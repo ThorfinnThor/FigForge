@@ -8,11 +8,13 @@ import {
 } from "../contracts/playground-layout.js";
 import { useI18n } from "../i18n.js";
 import {
+  clearLocalFigureData,
   listSavedFigures,
   loadCurrentPlaygroundLayout,
   saveCurrentPlaygroundLayout,
   type SavedFigure,
 } from "../storage/figure-draft-store.js";
+import { CollectionFigureCard } from "./CollectionFigureCard.js";
 import { CollectionViewport } from "./CollectionViewport.js";
 import { Button } from "./ui/Button.js";
 
@@ -101,6 +103,22 @@ export function CollectionPage() {
     void updateLayout(createPlaygroundLayout(ids));
   };
 
+  const clearLocalData = async (): Promise<void> => {
+    if (!window.confirm(t("figure.collection.clearConfirm"))) return;
+    setActionError(false);
+    setIsSavingLayout(true);
+    try {
+      await clearLocalFigureData();
+      setCollection([]);
+      setFigures([]);
+      setLayout(createPlaygroundLayout([]));
+    } catch {
+      setActionError(true);
+    } finally {
+      setIsSavingLayout(false);
+    }
+  };
+
   const stageIds = new Set(layout?.savedFigureIds ?? []);
 
   return (
@@ -130,74 +148,90 @@ export function CollectionPage() {
 
       <div className="collection-page">
         <section className="collection-page__hero" aria-labelledby="collection-title">
-          <p className="collection-page__eyebrow">FigForge</p>
-          <h1 id="collection-title">{t("collection.title")}</h1>
-          <p>{t("collection.lede")}</p>
+          <div>
+            <p className="collection-page__eyebrow">FigForge</p>
+            <h1 id="collection-title">{t("collection.title")}</h1>
+            <p>{t("collection.lede")}</p>
+          </div>
+          <a className="ff-button ff-button--primary" href="/">{t("collection.backToBuilder")}</a>
         </section>
         <section className="collection-page__stage" aria-labelledby="collection-stage-title">
           <header className="collection-page__stage-header">
             <div>
-            <p className="collection-page__eyebrow">{t("collection.stageEyebrow")}</p>
-            <h2 id="collection-stage-title">{t("collection.stageTitle")}</h2>
+              <p className="collection-page__eyebrow">{t("collection.stageEyebrow")}</p>
+              <h2 id="collection-stage-title">{t("collection.stageTitle")}</h2>
             </div>
-            <a className="ff-button ff-button--primary" href="/">{t("collection.backToBuilder")}</a>
+            <span className="collection-page__stage-count">
+              {t("collection.stageCount", { count: layout?.savedFigureIds.length ?? 0, max: PLAYGROUND_LAYOUT_MAX_FIGURES })}
+            </span>
           </header>
           {loadState === "loading" ? <p>{t("collection.loading")}</p> : null}
           {loadState === "error" ? <p>{t("collection.loadError")}</p> : null}
           {loadState === "ready" ? <CollectionViewport figures={figures} /> : null}
-          {loadState === "ready" ? (
-            <section className="collection-library" aria-labelledby="collection-library-title">
-              <header className="collection-library__header">
-                <div>
-                  <p className="collection-page__eyebrow">{t("collection.libraryEyebrow")}</p>
-                  <h3 id="collection-library-title">{t("collection.libraryTitle")}</h3>
-                </div>
-                <span className="collection-library__count">
-                  {t("collection.stageCount", { count: layout?.savedFigureIds.length ?? 0, max: PLAYGROUND_LAYOUT_MAX_FIGURES })}
-                </span>
-              </header>
-              {actionError ? <p className="collection-library__error" role="alert">{t("collection.actionError")}</p> : null}
-              {collection.length === 0 ? (
-                <p className="collection-viewport__empty">{t("collection.libraryEmpty")}</p>
-              ) : (
-                <ul className="collection-library__list">
-                  {collection.map((saved) => {
-                    const onStage = stageIds.has(saved.id);
-                    const stageIndex = layout?.savedFigureIds.indexOf(saved.id) ?? -1;
-                    return (
-                      <li className="collection-library__item" key={saved.id}>
-                        <div className="collection-library__copy">
-                          <strong>{saved.document.name}</strong>
-                          <small>{new Date(saved.updatedAt).toLocaleDateString(language)}</small>
-                        </div>
-                        <div className="collection-library__actions">
-                          <Button
-                            aria-pressed={onStage}
-                            disabled={isSavingLayout || (!onStage && (layout?.savedFigureIds.length ?? PLAYGROUND_LAYOUT_MAX_FIGURES) >= PLAYGROUND_LAYOUT_MAX_FIGURES)}
-                            onClick={() => onStage ? removeFromStage(saved.id) : addToStage(saved.id)}
-                            size="sm"
-                            variant={onStage ? "secondary" : "primary"}
-                          >
-                            {onStage ? t("collection.removeFromStage") : t("collection.addToStage")}
-                          </Button>
-                          {onStage ? (
-                            <>
-                              <Button aria-label={t("collection.moveUp")} disabled={isSavingLayout || stageIndex <= 0} onClick={() => moveOnStage(saved.id, -1)} size="sm" variant="ghost">↑</Button>
-                              <Button aria-label={t("collection.moveDown")} disabled={isSavingLayout || stageIndex < 0 || stageIndex >= (layout?.savedFigureIds.length ?? 1) - 1} onClick={() => moveOnStage(saved.id, 1)} size="sm" variant="ghost">↓</Button>
-                            </>
-                          ) : null}
-                          <a className="ff-button ff-button--sm ff-button--ghost" href={`/?figureId=${encodeURIComponent(saved.id)}`}>
-                            {t("collection.openBuilder")}
-                          </a>
-                        </div>
-                      </li>
-                    );
-                  })}
-                </ul>
-              )}
-            </section>
-          ) : null}
         </section>
+
+        {loadState === "ready" ? (
+          <section className="collection-library" aria-labelledby="collection-library-title">
+            <header className="collection-library__header">
+              <div>
+                <p className="collection-page__eyebrow">{t("collection.libraryEyebrow")}</p>
+                <h2 id="collection-library-title">{t("collection.libraryTitle")}</h2>
+                <p>{t("collection.libraryLede")}</p>
+              </div>
+              <span className="collection-library__count">
+                {t("collection.figureCount", { count: collection.length })}
+              </span>
+            </header>
+            {actionError ? <p className="collection-library__error" role="alert">{t("collection.actionError")}</p> : null}
+            {collection.length === 0 ? (
+              <p className="collection-viewport__empty">{t("collection.libraryEmpty")}</p>
+            ) : (
+              <ul className="collection-library__list">
+                {collection.map((saved) => {
+                  const onStage = stageIds.has(saved.id);
+                  const stageIndex = layout?.savedFigureIds.indexOf(saved.id) ?? -1;
+                  return (
+                    <CollectionFigureCard
+                      busy={isSavingLayout}
+                      key={saved.id}
+                      labels={{
+                        addToStage: t("collection.addToStage"),
+                        removeFromStage: t("collection.removeFromStage"),
+                        moveUp: t("collection.moveUp"),
+                        moveDown: t("collection.moveDown"),
+                        openBuilder: t("collection.openBuilder"),
+                        onStage: t("collection.onStage"),
+                        partCount: t("collection.partCount", { count: saved.document.selections.length }),
+                        savedAt: t("collection.savedAt"),
+                      }}
+                      language={language}
+                      onMove={(direction) => moveOnStage(saved.id, direction)}
+                      onStage={onStage}
+                      onToggleStage={() => onStage ? removeFromStage(saved.id) : addToStage(saved.id)}
+                      saved={saved}
+                      stageFull={(layout?.savedFigureIds.length ?? PLAYGROUND_LAYOUT_MAX_FIGURES) >= PLAYGROUND_LAYOUT_MAX_FIGURES}
+                      stageIndex={stageIndex}
+                      stageSize={layout?.savedFigureIds.length ?? 0}
+                    />
+                  );
+                })}
+              </ul>
+            )}
+          </section>
+        ) : null}
+
+        {loadState === "ready" ? (
+          <details className="collection-data">
+            <summary>{t("collection.dataTitle")}</summary>
+            <div className="collection-data__body">
+              <p>{t("figure.save.saved")}</p>
+              <p>{t("figure.transfer.default")}</p>
+              <Button disabled={isSavingLayout} onClick={() => void clearLocalData()} size="sm" variant="danger">
+                {t("figure.collection.clear")}
+              </Button>
+            </div>
+          </details>
+        ) : null}
       </div>
     </div>
   );

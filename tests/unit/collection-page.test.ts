@@ -5,6 +5,7 @@ describe("Collection page shell", () => {
   it("exposes the collection route and localized navigation", async () => {
     const appSource = await readFile("src/app/App.tsx", "utf8");
     const collectionSource = await readFile("src/components/CollectionPage.tsx", "utf8");
+    const cardSource = await readFile("src/components/CollectionFigureCard.tsx", "utf8");
     const builderSource = await readFile("src/components/CatalogWorkspace.tsx", "utf8");
     const methodologySource = await readFile("src/components/MethodologyPage.tsx", "utf8");
     const messagesSource = await readFile("src/i18n.tsx", "utf8");
@@ -19,7 +20,12 @@ describe("Collection page shell", () => {
     expect(collectionSource).toContain("removeFromStage");
     expect(collectionSource).toContain("moveOnStage");
     expect(collectionSource).toContain("isSavingLayout");
-    expect(collectionSource).toContain("figureId=");
+    expect(collectionSource).toContain("clearLocalFigureData");
+    expect(collectionSource).toContain("collection.dataTitle");
+    expect(cardSource).toContain("figureId=");
+    expect(collectionSource).toContain("<CollectionFigureCard");
+    expect(cardSource).toContain("thumbnailForComponent");
+    expect(cardSource).toContain("collection-card__stage-badge");
     expect(builderSource).toContain('t("nav.collection")');
     expect(methodologySource).toContain('t("nav.collection")');
     expect(messagesSource.match(/"nav\.collection":/gu)).toHaveLength(2);
