@@ -9,7 +9,7 @@ import { CAMERA_PRESETS } from "./figure-poc-options.js";
 
 type FigureViewportProps = {
   selectedParts: readonly LDrawCatalogSelection[];
-  onSaveToCollection: () => Promise<void>;
+  onSaveToCollection: () => void;
   onSynchronizationChange: (synchronized: boolean) => void;
 };
 
@@ -44,7 +44,6 @@ export function FigureViewport({
   const [cameraPreset, setCameraPreset] = useState<CameraPreset>("three-quarter");
   const [selectionError, setSelectionError] = useState(false);
   const [status, setStatus] = useState<ViewportStatus>({ key: "viewport.status.loading" });
-  const [collectionSavePending, setCollectionSavePending] = useState(false);
   selectionRef.current = selectedParts;
   const selectionKey = selectedParts
     .map(({ componentId, role }) => `${role}:${componentId}`)
@@ -176,15 +175,6 @@ export function FigureViewport({
     setSceneRevision((revision) => revision + 1);
   };
 
-  const saveCollection = async (): Promise<void> => {
-    setCollectionSavePending(true);
-    try {
-      await onSaveToCollection();
-    } finally {
-      setCollectionSavePending(false);
-    }
-  };
-
   return (
     <section
       className="scene-lab"
@@ -231,8 +221,7 @@ export function FigureViewport({
         ) : null}
         <div className="scene-copy__actions">
           <Button
-            loading={collectionSavePending}
-            onClick={() => void saveCollection()}
+            onClick={onSaveToCollection}
             size="md"
             variant="primary"
           >

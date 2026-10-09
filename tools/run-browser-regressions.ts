@@ -418,6 +418,29 @@ const clickButtonWithText = async (client: CdpClient, text: string): Promise<boo
   return true;
 })()`);
 
+const testNamedCollectionSave = async (client: CdpClient, origin: string): Promise<void> => {
+  const figureName = "Browser Named Hero";
+  await navigate(client, origin);
+  await waitFor(client, `Boolean([...document.querySelectorAll('button')].find((button) => button.textContent?.trim() === 'In Sammlung speichern'))`, "collection save action");
+  assert.equal(await clickButtonWithText(client, "In Sammlung speichern"), true);
+  await waitFor(client, `Boolean(document.querySelector('.collection-save-dialog input'))`, "collection naming dialog");
+  const nameEntered = await evaluate<boolean>(client, `(() => {
+    const input = document.querySelector('.collection-save-dialog input');
+    if (!(input instanceof HTMLInputElement)) return false;
+    const setter = Object.getOwnPropertyDescriptor(HTMLInputElement.prototype, 'value')?.set;
+    setter?.call(input, ${JSON.stringify(figureName)});
+    input.dispatchEvent(new Event('input', { bubbles: true }));
+    return input.value === ${JSON.stringify(figureName)};
+  })()`);
+  assert.equal(nameEntered, true, "the collection name must be editable");
+  assert.equal(await clickButtonWithText(client, "Figur speichern"), true);
+  await waitFor(client, `${textIncludes("Zur Collection hinzugefügt")} && ${textIncludes(figureName)}`, "named collection save confirmation");
+  assert.equal(await clickButtonWithText(client, "Fertig"), true);
+  await waitFor(client, "!document.querySelector('.collection-save-dialog')", "collection confirmation close");
+  await navigate(client, `${origin}/collection`);
+  await waitFor(client, textIncludes(figureName), "named figure in collection");
+};
+
 const testLDrawAndWebGlFailures = async (client: CdpClient, origin: string): Promise<void> => {
   await navigate(client, origin);
   await waitFor(client, `Boolean(document.querySelector('.scene-lab[data-scene-state="ready"][data-selection-state="synchronized"] canvas.viewport'))`, "initial 3D preview", 60_000);
@@ -509,6 +532,8 @@ const run = async (): Promise<void> => {
     process.stdout.write("✓ real IndexedDB commit and abort-after-request-success\n");
     await testMountedMobileKeyboard(client, previewServer.origin);
     process.stdout.write("✓ mounted mobile ArrowLeft/ArrowRight/Home/End navigation\n");
+    await testNamedCollectionSave(client, previewServer.origin);
+    process.stdout.write("✓ named collection save and success confirmation\n");
     await testLDrawAndWebGlFailures(client, previewServer.origin);
     process.stdout.write("✓ browser LDraw request failure and WebGL context-loss recovery\n");
   } finally {

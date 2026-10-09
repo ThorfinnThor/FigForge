@@ -23,7 +23,7 @@ type FigurePartsPanelProps = {
   onExport: () => void;
   onShare: () => Promise<void>;
   onImport: (file: File) => Promise<void>;
-  onSaveToCollection: () => Promise<void>;
+  onSaveToCollection: () => void;
   onLoadFromCollection: (saved: SavedFigure) => Promise<void>;
   onDeleteFromCollection: (id: string) => Promise<void>;
   onClearLocalData: () => Promise<void>;
@@ -146,7 +146,7 @@ export function FigurePartsPanel({
           <StatusMessage tone="warning">{t("figure.preview.stale")}</StatusMessage>
         ) : null}
         <div className="figure-panel__actions">
-          <Button loading={collectionSavePending} onClick={() => void onSaveToCollection()} size="sm" variant="primary">{t("figure.collection.save")}</Button>
+          <Button loading={collectionSavePending} onClick={onSaveToCollection} size="sm" variant="primary">{t("figure.collection.save")}</Button>
           <Button onClick={onExport} size="sm" variant="secondary">{t("figure.export")}</Button>
           <Button onClick={() => void onShare()} size="sm" variant="secondary">{t("figure.share")}</Button>
           <Button onClick={() => importInputRef.current?.click()} size="sm" variant="ghost">{t("figure.import")}</Button>
