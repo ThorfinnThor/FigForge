@@ -462,7 +462,19 @@ const testLDrawAndWebGlFailures = async (client: CdpClient, origin: string): Pro
   await evaluate(client, `document.querySelector('.figure-panel-backdrop')?.click()`);
 
   assert.equal(await clickButtonWithText(client, "Aktuelle Auswahl erneut laden"), true);
-  await waitFor(client, `!${textIncludes("Die 3D-Vorschau konnte die aktuelle Auswahl nicht übernehmen")} && ${textIncludes("Bauteilen in der Vorschau")}`, "successful LDraw retry", 60_000);
+  try {
+    await waitFor(client, `!${textIncludes("Die 3D-Vorschau konnte die aktuelle Auswahl nicht übernehmen")} && ${textIncludes("Bauteilen in der Vorschau")}`, "successful LDraw retry", 20_000);
+  } catch (error) {
+    const diagnosis = await evaluate(client, `(() => ({
+      sceneCopy: document.querySelector('.scene-copy')?.innerText ?? null,
+      buttons: [...document.querySelectorAll('.scene-copy button')].map((button) => button.textContent?.trim()),
+      canvasCount: document.querySelectorAll('canvas.viewport').length,
+      contextLost: document.querySelector('canvas.viewport') instanceof HTMLCanvasElement
+        ? document.querySelector('canvas.viewport').getContext('webgl2')?.isContextLost() ?? null
+        : null,
+    }))()`);
+    throw new Error(`LDraw retry did not recover: ${JSON.stringify(diagnosis)}`, { cause: error });
+  }
 
   const contextLossAvailable = await evaluate<boolean>(client, `(() => {
     const canvas = document.querySelector('canvas.viewport');
