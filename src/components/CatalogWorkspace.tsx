@@ -4,6 +4,7 @@ import { FigureViewport } from "./FigureViewport.js";
 import { CatalogSetFilter, type CatalogSetSelection } from "./CatalogSetFilter.js";
 import { PartCard } from "./PartCard.js";
 import { ShopExportPanel } from "./ShopExportPanel.js";
+import { SaveToCollectionDialog } from "./SaveToCollectionDialog.js";
 import {
   CATALOG_CATEGORIES,
   builderComponentForCatalogPart,
@@ -137,6 +138,8 @@ export function CatalogWorkspace() {
   const draftWriteRevisionRef = useRef(0);
   const collectionSavePendingRef = useRef(false);
   const [collectionSavePending, setCollectionSavePending] = useState(false);
+  const [collectionSaveDialogOpen, setCollectionSaveDialogOpen] = useState(false);
+  const [collectionSaveResult, setCollectionSaveResult] = useState<"idle" | "saved" | "error">("idle");
   const [previewSynchronized, setPreviewSynchronized] = useState(false);
   const isMobileLayout = useMediaQuery("(max-width: 767px)");
   const isDesktopDrawerLayout = useMediaQuery("(min-width: 768px)");
@@ -431,9 +434,9 @@ export function CatalogWorkspace() {
     setDraftPersistencePaused(false);
   };
 
-  const currentFigureDocument = (): FigureDocument => createFigureDocument(
+  const currentFigureDocument = (name = figureName): FigureDocument => createFigureDocument(
     selectedByRole,
-    figureName,
+    name,
     undefined,
     selectedColorByRole,
   );
@@ -585,18 +588,27 @@ export function CatalogWorkspace() {
     }
   };
 
-  const saveToCollection = async (): Promise<void> => {
+  const openCollectionSaveDialog = (): void => {
+    setCollectionSaveResult("idle");
+    setCollectionSaveDialogOpen(true);
+  };
+
+  const saveToCollection = async (name: string): Promise<void> => {
     if (collectionSavePendingRef.current) return;
     collectionSavePendingRef.current = true;
     setCollectionSavePending(true);
+    setCollectionSaveResult("idle");
     try {
-      await saveFigureToCollection(currentFigureDocument());
+      setFigureName(name);
+      await saveFigureToCollection(currentFigureDocument(name));
       setSavedFigures(await listSavedFigures());
       setTransferMessageTone("info");
-      setTransferMessage(t("figure.collection.saved"));
+      setTransferMessage(t("figure.collection.saved", { name }));
+      setCollectionSaveResult("saved");
     } catch {
       setTransferMessageTone("danger");
       setTransferMessage(t("figure.collection.error"));
+      setCollectionSaveResult("error");
     } finally {
       collectionSavePendingRef.current = false;
       setCollectionSavePending(false);
@@ -891,7 +903,7 @@ export function CatalogWorkspace() {
   const viewport = (
     <section className="workspace-viewport" aria-label={t("mobile.figure")}>
       <FigureViewport
-        onSaveToCollection={saveToCollection}
+        onSaveToCollection={openCollectionSaveDialog}
         onSynchronizationChange={setPreviewSynchronized}
         selectedParts={selectedLDrawParts}
       />
@@ -906,7 +918,7 @@ export function CatalogWorkspace() {
       onExport={exportFigure}
       onShare={shareFigure}
       onImport={importFigure}
-      onSaveToCollection={saveToCollection}
+      onSaveToCollection={openCollectionSaveDialog}
       collectionSavePending={collectionSavePending}
       previewSynchronized={previewSynchronized}
       onLoadFromCollection={loadFromCollection}
@@ -1020,6 +1032,19 @@ export function CatalogWorkspace() {
           {isFigurePanelOpen ? figurePanel : null}
         </div>
       )}
+
+      {collectionSaveDialogOpen ? (
+        <SaveToCollectionDialog
+          error={collectionSaveResult === "error"}
+          initialName={figureName}
+          onClose={() => {
+            if (!collectionSavePending) setCollectionSaveDialogOpen(false);
+          }}
+          onSave={saveToCollection}
+          pending={collectionSavePending}
+          saved={collectionSaveResult === "saved"}
+        />
+      ) : null}
 
     </div>
   );

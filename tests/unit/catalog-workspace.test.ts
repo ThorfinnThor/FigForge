@@ -61,7 +61,7 @@ describe("FF-14 responsive catalog workspace", () => {
     expect(viewportSource).toContain("if (selectionError) return");
     expect(viewportSource).toContain('t("viewport.retrySelection")');
     expect(viewportSource).toContain('t("figure.collection.save")');
-    expect(viewportSource).toContain("loading={collectionSavePending}");
+    expect(viewportSource).toContain("onClick={onSaveToCollection}");
     expect(viewportSource).toContain('statusTone === "danger"');
     expect(viewportSource).toContain('data-scene-state={sceneState}');
     expect(viewportSource).toContain('data-selection-state={sceneState === "ready" && !selectionError ? "synchronized" : "pending"}');
@@ -98,12 +98,20 @@ describe("FF-14 responsive catalog workspace", () => {
   it("protects draft recovery, consumes imported snapshots and preserves names", async () => {
     const workspaceSource = await readFile("src/components/CatalogWorkspace.tsx", "utf8");
     const panelSource = await readFile("src/components/FigurePartsPanel.tsx", "utf8");
+    const collectionDialogSource = await readFile("src/components/SaveToCollectionDialog.tsx", "utf8");
 
     expect(workspaceSource).toContain('DraftHydrationState = "loading" | "ready" | "recovery-required"');
     expect(workspaceSource).toContain('draftHydrationState !== "ready" || draftPersistencePaused');
     expect(workspaceSource).toContain("consumedFigureImportPath(window.location.href)");
     expect(workspaceSource).toContain("setFigureName(document.name)");
     expect(workspaceSource).toContain("collectionSavePendingRef.current");
+    expect(workspaceSource).toContain("setFigureName(name)");
+    expect(workspaceSource).toContain("saveFigureToCollection(currentFigureDocument(name))");
+    expect(workspaceSource).toContain("<SaveToCollectionDialog");
+    expect(collectionDialogSource).toContain('role="dialog"');
+    expect(collectionDialogSource).toContain("maxLength={80}");
+    expect(collectionDialogSource).toContain('className="collection-save-dialog__check">✓');
+    expect(collectionDialogSource).toContain('t("figure.collection.successMessage", { name: normalizedName })');
     expect(panelSource).toContain("loading={collectionSavePending}");
     expect(panelSource).toContain('t("figure.preview.stale")');
   });
@@ -129,7 +137,7 @@ describe("FF-14 responsive catalog workspace", () => {
     expect(source).toContain("selectedSetPartNumbers.has(part.rebrickablePartNum");
     expect(source).toContain('t("catalog.policy")');
     expect(source).toContain("onSelect={builderComponent && digitallySupportedLDrawEntryForComponent(builderComponent.id)");
-    expect(source).toContain("onSaveToCollection={saveToCollection}");
+    expect(source).toContain("onSaveToCollection={openCollectionSaveDialog}");
     expect(source).toContain("onSynchronizationChange={setPreviewSynchronized}");
     expect(source).toContain("selectedParts={selectedLDrawParts}");
     expect(source).toContain("saveCurrentFigureDraft");
