@@ -184,6 +184,7 @@ export function FigureViewport({ selectedParts, onSynchronizationChange }: Figur
         <span className="viewport-shell__beam" aria-hidden="true" />
         <h2 className="viewport-shell__label" id="scene-heading">{t("viewport.title")}</h2>
         <canvas
+          key={sceneRevision}
           ref={canvasRef}
           className="viewport"
           aria-label={t("viewport.canvasLabel")}
