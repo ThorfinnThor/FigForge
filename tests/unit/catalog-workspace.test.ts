@@ -60,6 +60,8 @@ describe("FF-14 responsive catalog workspace", () => {
     expect(viewportSource).toContain("createdController.setCameraPreset(cameraPresetRef.current)");
     expect(viewportSource).toContain("if (selectionError) return");
     expect(viewportSource).toContain('t("viewport.retrySelection")');
+    expect(viewportSource).toContain('t("figure.collection.save")');
+    expect(viewportSource).toContain("loading={collectionSavePending}");
     expect(viewportSource).toMatch(/const retrySelection[\s\S]+setSceneRevision/gu);
     expect(viewportSource).not.toContain("Catalog model retry failed");
     expect(viewportSource).toContain("key={sceneRevision}");
@@ -121,6 +123,7 @@ describe("FF-14 responsive catalog workspace", () => {
     expect(source).toContain("selectedSetPartNumbers.has(part.rebrickablePartNum");
     expect(source).toContain('t("catalog.policy")');
     expect(source).toContain("onSelect={builderComponent && digitallySupportedLDrawEntryForComponent(builderComponent.id)");
+    expect(source).toContain("onSaveToCollection={saveToCollection}");
     expect(source).toContain("onSynchronizationChange={setPreviewSynchronized}");
     expect(source).toContain("selectedParts={selectedLDrawParts}");
     expect(source).toContain("saveCurrentFigureDraft");

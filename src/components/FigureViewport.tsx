@@ -9,6 +9,7 @@ import { CAMERA_PRESETS } from "./figure-poc-options.js";
 
 type FigureViewportProps = {
   selectedParts: readonly LDrawCatalogSelection[];
+  onSaveToCollection: () => Promise<void>;
   onSynchronizationChange: (synchronized: boolean) => void;
 };
 
@@ -25,7 +26,11 @@ const selectionStatus = (selectedParts: readonly LDrawCatalogSelection[]): Viewp
   };
 };
 
-export function FigureViewport({ selectedParts, onSynchronizationChange }: FigureViewportProps) {
+export function FigureViewport({
+  selectedParts,
+  onSaveToCollection,
+  onSynchronizationChange,
+}: FigureViewportProps) {
   const { t } = useI18n();
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const controllerRef = useRef<LDrawPrototypeSceneController | null>(null);
@@ -39,6 +44,7 @@ export function FigureViewport({ selectedParts, onSynchronizationChange }: Figur
   const [cameraPreset, setCameraPreset] = useState<CameraPreset>("three-quarter");
   const [selectionError, setSelectionError] = useState(false);
   const [status, setStatus] = useState<ViewportStatus>({ key: "viewport.status.loading" });
+  const [collectionSavePending, setCollectionSavePending] = useState(false);
   selectionRef.current = selectedParts;
   const selectionKey = selectedParts
     .map(({ componentId, role }) => `${role}:${componentId}`)
@@ -173,6 +179,15 @@ export function FigureViewport({ selectedParts, onSynchronizationChange }: Figur
     setSceneRevision((revision) => revision + 1);
   };
 
+  const saveCollection = async (): Promise<void> => {
+    setCollectionSavePending(true);
+    try {
+      await onSaveToCollection();
+    } finally {
+      setCollectionSavePending(false);
+    }
+  };
+
   return (
     <section className="scene-lab" aria-labelledby="scene-heading">
       <Card className="viewport-shell">
@@ -210,6 +225,16 @@ export function FigureViewport({ selectedParts, onSynchronizationChange }: Figur
             {t("viewport.recover")}
           </Button>
         ) : null}
+        <div className="scene-copy__actions">
+          <Button
+            loading={collectionSavePending}
+            onClick={() => void saveCollection()}
+            size="md"
+            variant="primary"
+          >
+            {t("figure.collection.save")}
+          </Button>
+        </div>
         {selectionError ? (
           <Button onClick={retrySelection} variant="secondary">
             {t("viewport.retrySelection")}
