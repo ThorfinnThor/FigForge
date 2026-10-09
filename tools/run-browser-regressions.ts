@@ -103,6 +103,12 @@ const evaluate = async <T>(client: CdpClient, expression: string): Promise<T> =>
   return response.result.value as T;
 };
 
+const isNavigationRace = (error: unknown): boolean => error instanceof Error && [
+  "Inspected target navigated or closed",
+  "Cannot find context with specified id",
+  "Execution context was destroyed",
+].some((message) => error.message.includes(message));
+
 const waitFor = async (
   client: CdpClient,
   expression: string,
@@ -111,7 +117,11 @@ const waitFor = async (
 ): Promise<void> => {
   const deadline = Date.now() + timeoutMs;
   while (Date.now() < deadline) {
-    if (await evaluate<boolean>(client, expression)) return;
+    try {
+      if (await evaluate<boolean>(client, expression)) return;
+    } catch (error) {
+      if (!isNavigationRace(error)) throw error;
+    }
     await delay(100);
   }
   throw new Error(`Timed out waiting for ${label}`);
@@ -249,7 +259,18 @@ const createPage = async (debuggingOrigin: string): Promise<CdpClient> => {
 };
 
 const navigate = async (client: CdpClient, url: string): Promise<void> => {
+  let removeLoadListener = () => {};
+  const loaded = new Promise<void>((resolve) => {
+    removeLoadListener = client.on("Page.loadEventFired", () => {
+      removeLoadListener();
+      resolve();
+    });
+  });
   await client.send("Page.navigate", { url });
+  await Promise.race([
+    loaded,
+    delay(DEFAULT_TIMEOUT_MS).then(() => { throw new Error(`Timed out navigating to ${url}`); }),
+  ]);
   await waitFor(client, "document.readyState === 'complete'", `page ${url}`);
 };
 
