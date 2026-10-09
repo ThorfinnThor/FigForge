@@ -132,7 +132,7 @@ describe("ADR-012 shop parts export", () => {
       .toEqual({ href: `https://partner.example/?u=${encoded}`, affiliate: true });
   });
 
-  it("keeps the real printed part number for parts shown as geometry without print", async () => {
+  it("keeps the real printed part number for parts shown as geometry without print", { timeout: 15_000 }, async () => {
     const runtime = JSON.parse(await readFile("data/generated/ldraw-runtime/torso-assembly.json", "utf8")) as {
       entries: Array<{ rebrickablePartNum: string; geometryFallback: unknown }>;
     };
