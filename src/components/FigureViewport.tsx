@@ -3,7 +3,7 @@ import { Button } from "./ui/Button.js";
 import { Card } from "./ui/Card.js";
 import { StatusMessage } from "./ui/StatusMessage.js";
 import type { LDrawPrototypeSceneController } from "../scene/LDrawPrototypeSceneController.js";
-import type { CameraPreset, LDrawCatalogRole, LDrawCatalogSelection } from "../scene/types.js";
+import type { CameraPreset, LDrawCatalogSelection } from "../scene/types.js";
 import { useI18n } from "../i18n.js";
 import { CAMERA_PRESETS } from "./figure-poc-options.js";
 
@@ -50,9 +50,6 @@ export function FigureViewport({
     .map(({ componentId, role }) => `${role}:${componentId}`)
     .sort()
     .join("|");
-  const selectedForRole = (role: LDrawCatalogRole) =>
-    selectedParts.find((part) => part.role === role);
-
   useEffect(() => {
     const canvas = canvasRef.current;
     if (!canvas) {
@@ -189,7 +186,12 @@ export function FigureViewport({
   };
 
   return (
-    <section className="scene-lab" aria-labelledby="scene-heading">
+    <section
+      className="scene-lab"
+      aria-labelledby="scene-heading"
+      data-scene-state={sceneState}
+      data-selection-state={sceneState === "ready" && !selectionError ? "synchronized" : "pending"}
+    >
       <Card className="viewport-shell">
         <span className="viewport-shell__beam" aria-hidden="true" />
         <h2 className="viewport-shell__label" id="scene-heading">{t("viewport.title")}</h2>
@@ -219,7 +221,9 @@ export function FigureViewport({
       </Card>
 
       <div className="scene-copy">
-        <StatusMessage tone={statusTone}>{t(status.key, status.values)}</StatusMessage>
+        {statusTone === "danger" ? (
+          <StatusMessage tone="danger">{t(status.key, status.values)}</StatusMessage>
+        ) : null}
         {sceneState === "context-lost" || sceneState === "error" ? (
           <Button onClick={recoverScene} variant="secondary">
             {t("viewport.recover")}
@@ -240,29 +244,6 @@ export function FigureViewport({
             {t("viewport.retrySelection")}
           </Button>
         ) : null}
-        <details className="scene-details">
-          <summary>{t("viewport.parts.title")}</summary>
-          <dl className="prototype-part-list">
-            {(["legsAssembly", "torsoAssembly", "head", "headwear", "handAccessory"] as const).map((role) => {
-              const part = selectedForRole(role);
-              const labelKeys: Record<LDrawCatalogRole, string> = {
-                handAccessory: "viewport.parts.handAccessory",
-                head: "viewport.parts.head",
-                headwear: "viewport.parts.headwear",
-                legsAssembly: "viewport.parts.legsAssembly",
-                torsoAssembly: "viewport.parts.torsoAssembly",
-              };
-              return (
-                <div key={role}>
-                  <dt>{t(labelKeys[role])}</dt>
-                  <dd>{part
-                    ? `${part.rebrickablePartNum} · LDraw ${part.ldrawUpdate}${role === "handAccessory" ? ` · ${t("viewport.parts.rightHand")}` : ""}`
-                    : role === "legsAssembly" ? t("viewport.parts.basePrototype") : t("viewport.parts.empty")}</dd>
-                </div>
-              );
-            })}
-          </dl>
-        </details>
       </div>
     </section>
   );
