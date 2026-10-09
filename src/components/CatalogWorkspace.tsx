@@ -37,13 +37,10 @@ import {
 import { createFigureShareLink, hasFigureShareLink, parseFigureShareLink } from "../figure/share-link.js";
 import { consumedFigureImportPath } from "../figure/import-location.js";
 import {
-  clearLocalFigureData,
-  deleteSavedFigure,
   listSavedFigures,
   loadCurrentFigureDraft,
   saveCurrentFigureDraft,
   saveFigureToCollection,
-  type SavedFigure,
 } from "../storage/figure-draft-store.js";
 import type { CatalogPackagePart } from "../contracts/catalog-package.js";
 import type { LDrawCatalogRole, LDrawCatalogSelection } from "../scene/types.js";
@@ -122,7 +119,6 @@ export function CatalogWorkspace() {
   const [draftHydrationRevision, setDraftHydrationRevision] = useState(0);
   const [draftPersistencePaused, setDraftPersistencePaused] = useState(false);
   const [saveStatus, setSaveStatus] = useState<"loading" | "saved" | "error">("loading");
-  const [savedFigures, setSavedFigures] = useState<readonly SavedFigure[]>([]);
   const [transferMessage, setTransferMessage] = useState<string | null>(null);
   const [transferMessageTone, setTransferMessageTone] = useState<"danger" | "info">("info");
   const [shareLink, setShareLink] = useState<string | null>(null);
@@ -450,7 +446,6 @@ export function CatalogWorkspace() {
     void Promise.all([loadCurrentFigureDraft(), listSavedFigures()])
       .then(async ([document, collection]) => {
         if (!active) return;
-        setSavedFigures(collection);
         let shared: ReturnType<typeof parseFigureShareLink> | null = null;
         if (hasFigureShareLink(window.location.href)) {
           try {
@@ -503,11 +498,6 @@ export function CatalogWorkspace() {
         }
         setSaveStatus("error");
         setDraftHydrationState("recovery-required");
-      })
-      .finally(() => {
-        if (active) {
-          void listSavedFigures().then(setSavedFigures).catch(() => undefined);
-        }
       });
     return () => { active = false; };
   }, [draftHydrationRevision]);
@@ -601,7 +591,6 @@ export function CatalogWorkspace() {
     try {
       setFigureName(name);
       await saveFigureToCollection(currentFigureDocument(name));
-      setSavedFigures(await listSavedFigures());
       setTransferMessageTone("info");
       setTransferMessage(t("figure.collection.saved", { name }));
       setCollectionSaveResult("saved");
@@ -612,45 +601,6 @@ export function CatalogWorkspace() {
     } finally {
       collectionSavePendingRef.current = false;
       setCollectionSavePending(false);
-    }
-  };
-
-  const loadFromCollection = async (saved: SavedFigure): Promise<void> => {
-    try {
-      await restoreFigureDocument(saved.document);
-      setTransferMessageTone("info");
-      setTransferMessage(t("figure.collection.loaded", { name: saved.document.name }));
-    } catch (error) {
-      if (error instanceof Error && error.message === RESTORE_SUPERSEDED_ERROR) return;
-      setTransferMessageTone("danger");
-      setTransferMessage(t("figure.transfer.unsupported"));
-    }
-  };
-
-  const removeFromCollection = async (id: string): Promise<void> => {
-    try {
-      await deleteSavedFigure(id);
-      setSavedFigures(await listSavedFigures());
-    } catch {
-      setTransferMessageTone("danger");
-      setTransferMessage(t("figure.collection.error"));
-    }
-  };
-
-  const clearLocalData = async (): Promise<void> => {
-    if (!window.confirm(t("figure.collection.clearConfirm"))) return;
-    restoreOperationRef.current += 1;
-    draftWriteRevisionRef.current += 1;
-    setDraftPersistencePaused(true);
-    try {
-      await clearLocalFigureData();
-      setSavedFigures([]);
-      setTransferMessageTone("info");
-      setTransferMessage(t("figure.collection.cleared"));
-    } catch {
-      setDraftPersistencePaused(false);
-      setTransferMessageTone("danger");
-      setTransferMessage(t("figure.collection.error"));
     }
   };
 
@@ -921,11 +871,7 @@ export function CatalogWorkspace() {
       onSaveToCollection={openCollectionSaveDialog}
       collectionSavePending={collectionSavePending}
       previewSynchronized={previewSynchronized}
-      onLoadFromCollection={loadFromCollection}
-      onDeleteFromCollection={removeFromCollection}
-      onClearLocalData={clearLocalData}
       saveStatus={saveStatus}
-      savedFigures={savedFigures}
       shareLink={shareLink}
       shopExport={<ShopExportPanel selections={shopExportSelections} />}
       slots={figureSlots}

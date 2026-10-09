@@ -20,6 +20,8 @@ describe("Collection page shell", () => {
     expect(collectionSource).toContain("removeFromStage");
     expect(collectionSource).toContain("moveOnStage");
     expect(collectionSource).toContain("isSavingLayout");
+    expect(collectionSource).toContain("clearLocalFigureData");
+    expect(collectionSource).toContain("collection.dataTitle");
     expect(cardSource).toContain("figureId=");
     expect(collectionSource).toContain("<CollectionFigureCard");
     expect(cardSource).toContain("thumbnailForComponent");

@@ -75,7 +75,7 @@ describe("FF-14 responsive catalog workspace", () => {
     expect(viewportSource).not.toContain("Eingesetzte LDraw-Modelle");
     expect(messagesSource.match(/"viewport\.title":/gu)).toHaveLength(2);
     expect(messagesSource.match(/"viewport\.status\.selectedAccessory":/gu)).toHaveLength(2);
-    expect(messagesSource).toContain("accessory is connected to the left hand");
+    expect(messagesSource).toContain("accessory grip is connected to the left hand; its rotation is not yet verified");
     expect(messagesSource).not.toContain("accessory is connected to the right hand");
   });
 
@@ -89,9 +89,9 @@ describe("FF-14 responsive catalog workspace", () => {
     expect(cardSource).not.toContain("compatibility?.message");
     expect(workspaceSource).toContain('t("figure.defaultName")');
     expect(workspaceSource).not.toContain("error.message : t");
-    expect(panelSource).toContain("toLocaleDateString(language)");
+    expect(panelSource).not.toContain("figure-collection__list");
     expect(panelSource).not.toContain('startsWith("Fehler")');
-    expect(panelSource).toContain("tone={transferMessageTone}");
+    expect(panelSource).toContain("transferMessage ?");
     expect(categorySource).not.toContain('label: "Alle Teile"');
   });
 

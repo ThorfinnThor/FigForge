@@ -8,6 +8,7 @@ import {
 } from "../contracts/playground-layout.js";
 import { useI18n } from "../i18n.js";
 import {
+  clearLocalFigureData,
   listSavedFigures,
   loadCurrentPlaygroundLayout,
   saveCurrentPlaygroundLayout,
@@ -15,6 +16,7 @@ import {
 } from "../storage/figure-draft-store.js";
 import { CollectionFigureCard } from "./CollectionFigureCard.js";
 import { CollectionViewport } from "./CollectionViewport.js";
+import { Button } from "./ui/Button.js";
 
 export function CollectionPage() {
   const { language, setLanguage, t } = useI18n();
@@ -99,6 +101,22 @@ export function CollectionPage() {
     ids[index] = target;
     ids[targetIndex] = current;
     void updateLayout(createPlaygroundLayout(ids));
+  };
+
+  const clearLocalData = async (): Promise<void> => {
+    if (!window.confirm(t("figure.collection.clearConfirm"))) return;
+    setActionError(false);
+    setIsSavingLayout(true);
+    try {
+      await clearLocalFigureData();
+      setCollection([]);
+      setFigures([]);
+      setLayout(createPlaygroundLayout([]));
+    } catch {
+      setActionError(true);
+    } finally {
+      setIsSavingLayout(false);
+    }
   };
 
   const stageIds = new Set(layout?.savedFigureIds ?? []);
@@ -200,6 +218,19 @@ export function CollectionPage() {
               </ul>
             )}
           </section>
+        ) : null}
+
+        {loadState === "ready" ? (
+          <details className="collection-data">
+            <summary>{t("collection.dataTitle")}</summary>
+            <div className="collection-data__body">
+              <p>{t("figure.save.saved")}</p>
+              <p>{t("figure.transfer.default")}</p>
+              <Button disabled={isSavingLayout} onClick={() => void clearLocalData()} size="sm" variant="danger">
+                {t("figure.collection.clear")}
+              </Button>
+            </div>
+          </details>
         ) : null}
       </div>
     </div>

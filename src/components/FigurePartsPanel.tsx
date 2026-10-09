@@ -3,7 +3,6 @@ import { Button } from "./ui/Button.js";
 import { StatusMessage } from "./ui/StatusMessage.js";
 import type { CatalogPackagePart } from "../contracts/catalog-package.js";
 import type { ShopExportColor } from "../contracts/shop-export.js";
-import type { SavedFigure } from "../storage/figure-draft-store.js";
 import { useRef, type ReactNode, type RefObject } from "react";
 import { useI18n } from "../i18n.js";
 
@@ -24,15 +23,11 @@ type FigurePartsPanelProps = {
   onShare: () => Promise<void>;
   onImport: (file: File) => Promise<void>;
   onSaveToCollection: () => void;
-  onLoadFromCollection: (saved: SavedFigure) => Promise<void>;
-  onDeleteFromCollection: (id: string) => Promise<void>;
-  onClearLocalData: () => Promise<void>;
   collectionSavePending: boolean;
   previewSynchronized: boolean;
   onColorChange: (slot: CatalogPackagePart["role"], colorId: number | undefined) => void;
   onRemove: (slot: CatalogPackagePart["role"]) => void;
   saveStatus: "loading" | "saved" | "error";
-  savedFigures: readonly SavedFigure[];
   shopExport?: ReactNode;
   transferMessage: string | null;
   transferMessageTone: "danger" | "info";
@@ -48,15 +43,11 @@ export function FigurePartsPanel({
   onShare,
   onImport,
   onSaveToCollection,
-  onLoadFromCollection,
-  onDeleteFromCollection,
-  onClearLocalData,
   collectionSavePending,
   previewSynchronized,
   onColorChange,
   onRemove,
   saveStatus,
-  savedFigures,
   shopExport,
   slots,
   transferMessage,
@@ -64,7 +55,7 @@ export function FigurePartsPanel({
   shareLink,
 }: FigurePartsPanelProps) {
   const importInputRef = useRef<HTMLInputElement>(null);
-  const { language, t } = useI18n();
+  const { t } = useI18n();
 
   return (
     <aside className={["figure-panel", drawer ? "figure-panel--drawer" : ""].filter(Boolean).join(" ")} id="figure-panel" aria-labelledby="figure-panel-heading">
@@ -169,40 +160,12 @@ export function FigurePartsPanel({
             <input readOnly onFocus={(event) => event.currentTarget.select()} value={shareLink} />
           </label>
         ) : null}
-        <div className="figure-collection" aria-labelledby="figure-collection-heading">
-          <div className="figure-collection__header">
-            <h3 id="figure-collection-heading">{t("figure.collection.title")}</h3>
-            <Button onClick={() => void onClearLocalData()} size="sm" variant="danger">{t("figure.collection.clear")}</Button>
-          </div>
-          {savedFigures.length === 0 ? (
-            <p className="figure-collection__empty">{t("figure.collection.empty")}</p>
-          ) : (
-            <ul className="figure-collection__list">
-              {savedFigures.map((saved) => (
-                <li className="figure-collection__item" key={saved.id}>
-                  <span>
-                    <strong>{saved.document.name}</strong>
-                    <small>{new Date(saved.updatedAt).toLocaleDateString(language)}</small>
-                  </span>
-                  <span className="figure-collection__item-actions">
-                    <Button onClick={() => void onLoadFromCollection(saved)} size="sm" variant="ghost">{t("figure.collection.load")}</Button>
-                    <Button onClick={() => void onDeleteFromCollection(saved.id)} size="sm" variant="danger">{t("figure.collection.delete")}</Button>
-                  </span>
-                </li>
-              ))}
-            </ul>
-          )}
-        </div>
-        <StatusMessage className="figure-panel__status" tone={saveStatus === "error" ? "danger" : "success"}>
-          {saveStatus === "loading"
-            ? t("figure.save.loading")
-            : saveStatus === "saved"
-              ? t("figure.save.saved")
-              : t("figure.save.error")}
-        </StatusMessage>
-        <StatusMessage className="figure-panel__status" tone={transferMessageTone}>
-          {transferMessage ?? t("figure.transfer.default")}
-        </StatusMessage>
+        {saveStatus === "error" ? (
+          <StatusMessage className="figure-panel__status" tone="danger">{t("figure.save.error")}</StatusMessage>
+        ) : null}
+        {transferMessage ? (
+          <StatusMessage className="figure-panel__status" tone={transferMessageTone}>{transferMessage}</StatusMessage>
+        ) : null}
       </div>
     </aside>
   );

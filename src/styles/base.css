@@ -1503,74 +1503,6 @@ legend {
   font-weight: 500;
 }
 
-.figure-collection {
-  display: grid;
-  gap: var(--space-2);
-  margin: var(--space-3) var(--space-4) 0;
-  padding-top: var(--space-3);
-  border-top: 1px solid var(--line);
-}
-
-.figure-collection__header,
-.figure-collection__item,
-.figure-collection__item-actions {
-  display: flex;
-  align-items: center;
-  gap: var(--space-2);
-}
-
-.figure-collection__header,
-.figure-collection__item {
-  justify-content: space-between;
-}
-
-.figure-collection__header h3 {
-  margin: 0;
-  font-size: 0.85rem;
-}
-
-.figure-collection__empty {
-  margin: 0;
-  color: var(--ink-muted);
-  font-size: 0.78rem;
-}
-
-.figure-collection__list {
-  display: grid;
-  gap: var(--space-2);
-  margin: 0;
-  padding: 0;
-  list-style: none;
-}
-
-.figure-collection__item {
-  min-width: 0;
-  padding: var(--space-2);
-  border: 1px solid var(--line);
-  border-radius: var(--radius-sm);
-}
-
-.figure-collection__item > span:first-child {
-  display: grid;
-  min-width: 0;
-}
-
-.figure-collection__item strong,
-.figure-collection__item small {
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-}
-
-.figure-collection__item small {
-  color: var(--ink-muted);
-  font-size: 0.7rem;
-}
-
-.figure-collection__item-actions {
-  flex-shrink: 0;
-}
-
 .figure-panel__status.ff-status {
   margin: 0 var(--space-4);
   padding: 0 0 0 10px;
@@ -2224,6 +2156,37 @@ legend {
 .collection-card__order .ff-button {
   min-height: 36px;
   padding-inline: 8px;
+}
+
+.collection-data {
+  border: 2px solid var(--navy);
+  border-radius: var(--radius-md);
+  color: var(--navy);
+  background: var(--card);
+  box-shadow: var(--lift);
+}
+
+.collection-data summary {
+  padding: var(--space-4) var(--space-5);
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.collection-data__body {
+  display: grid;
+  gap: var(--space-3);
+  padding: 0 var(--space-5) var(--space-5);
+  border-top: 1.5px dashed var(--card-rule);
+}
+
+.collection-data__body p {
+  margin: var(--space-3) 0 0;
+  color: var(--ink-muted);
+  font-size: 0.9rem;
+}
+
+.collection-data__body .ff-button {
+  justify-self: start;
 }
 
 @media (max-width: 959px) {
