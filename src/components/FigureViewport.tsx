@@ -171,31 +171,11 @@ export function FigureViewport({ selectedParts, onSynchronizationChange }: Figur
   };
 
   const retrySelection = (): void => {
-    const controller = controllerRef.current;
-    if (!controller || sceneState !== "ready") return;
-    const revision = selectionApplyRevisionRef.current + 1;
-    selectionApplyRevisionRef.current = revision;
+    selectionApplyRevisionRef.current += 1;
+    selectionErrorRef.current = false;
+    setSelectionError(false);
     onSynchronizationChange(false);
-    setStatusTone("info");
-    setStatus({ key: "viewport.status.loading" });
-    void controller.applyCatalogSelection(selectionRef.current)
-      .then(() => {
-        if (selectionApplyRevisionRef.current !== revision) return;
-        selectionErrorRef.current = false;
-        setSelectionError(false);
-        onSynchronizationChange(true);
-        setStatusTone("info");
-        setStatus(selectionStatus(selectionRef.current));
-      })
-      .catch((error: unknown) => {
-        if (selectionApplyRevisionRef.current !== revision) return;
-        console.error("Catalog model retry failed", error);
-        selectionErrorRef.current = true;
-        setSelectionError(true);
-        onSynchronizationChange(false);
-        setStatusTone("danger");
-        setStatus({ key: "viewport.status.partError" });
-      });
+    setSceneRevision((revision) => revision + 1);
   };
 
   return (
