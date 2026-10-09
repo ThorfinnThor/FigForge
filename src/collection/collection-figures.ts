@@ -1,5 +1,5 @@
 import type { FigureDocument } from "../contracts/figure-document.js";
-import type { PlaygroundLayout } from "../contracts/playground-layout.js";
+import type { PlaygroundStage } from "../contracts/playground-layout.js";
 import type { SavedFigure } from "../storage/figure-draft-store.js";
 import type { LDrawCatalogRole, LDrawCatalogSelection } from "../scene/types.js";
 import {
@@ -46,13 +46,13 @@ export const ldrawSelectionsForFigureDocument = (
   } satisfies LDrawCatalogSelection];
 });
 
-export const collectionFiguresForLayout = async (
+export const collectionFiguresForStage = async (
   collection: readonly SavedFigure[],
-  layout: PlaygroundLayout,
+  stage: PlaygroundStage,
 ): Promise<readonly CollectionFigure[]> => {
   await loadCatalogParts("all");
   const byId = new Map(collection.map((saved) => [saved.id, saved]));
-  return layout.savedFigureIds.flatMap((id) => {
+  return stage.savedFigureIds.flatMap((id) => {
     const saved = byId.get(id);
     return saved ? [{
       id,

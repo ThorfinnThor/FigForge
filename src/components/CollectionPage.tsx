@@ -1,57 +1,78 @@
 import { useEffect, useState } from "react";
-import { collectionFiguresForLayout, type CollectionFigure } from "../collection/collection-figures.js";
+import { collectionFiguresForStage, type CollectionFigure } from "../collection/collection-figures.js";
 import {
   PLAYGROUND_LAYOUT_MAX_FIGURES,
-  createPlaygroundLayout,
-  reconcilePlaygroundLayout,
-  type PlaygroundLayout,
+  PLAYGROUND_MAX_STAGES,
+  createPlaygroundStage,
+  createPlaygroundStages,
+  reconcilePlaygroundStages,
+  type PlaygroundStage,
+  type PlaygroundStages,
 } from "../contracts/playground-layout.js";
 import { useI18n } from "../i18n.js";
 import { downloadFigureDocument } from "../figure/download-figure-document.js";
 import {
   clearLocalFigureData,
   listSavedFigures,
-  loadCurrentPlaygroundLayout,
-  saveCurrentPlaygroundLayout,
+  loadCurrentPlaygroundStages,
+  saveCurrentPlaygroundStages,
   type SavedFigure,
 } from "../storage/figure-draft-store.js";
 import { CollectionFigureCard } from "./CollectionFigureCard.js";
 import { CollectionPurchaseDialog } from "./CollectionPurchaseDialog.js";
 import { CollectionViewport } from "./CollectionViewport.js";
+import { StageNameDialog } from "./StageNameDialog.js";
 import { Button } from "./ui/Button.js";
+
+const createStageId = (): string => {
+  if (typeof crypto !== "undefined" && "randomUUID" in crypto) return `stage-${crypto.randomUUID()}`;
+  return `stage-${Date.now()}-${Math.random().toString(36).slice(2)}`;
+};
 
 export function CollectionPage() {
   const { language, setLanguage, t } = useI18n();
+  const defaultStageName = t("collection.defaultStageName");
   const [figures, setFigures] = useState<readonly CollectionFigure[]>([]);
   const [collection, setCollection] = useState<readonly SavedFigure[]>([]);
-  const [layout, setLayout] = useState<PlaygroundLayout | null>(null);
+  const [playground, setPlayground] = useState<PlaygroundStages | null>(null);
   const [loadState, setLoadState] = useState<"loading" | "ready" | "error">("loading");
   const [actionError, setActionError] = useState(false);
   const [exportError, setExportError] = useState(false);
   const [purchaseFigure, setPurchaseFigure] = useState<SavedFigure | null>(null);
+  const [stageDialogMode, setStageDialogMode] = useState<"create" | "rename" | null>(null);
   const [isSavingLayout, setIsSavingLayout] = useState(false);
 
   useEffect(() => {
     let cancelled = false;
-    void Promise.all([listSavedFigures(), loadCurrentPlaygroundLayout()])
-      .then(async ([collection, storedLayout]) => {
+    void Promise.all([listSavedFigures(), loadCurrentPlaygroundStages(defaultStageName)])
+      .then(async ([collection, storedPlayground]) => {
         const availableIds = new Set(collection.map(({ id }) => id));
-        const initialLayout = storedLayout ?? createPlaygroundLayout(
+        const defaultStage = createPlaygroundStage(
+          "stage-main",
+          defaultStageName,
           collection.slice(0, PLAYGROUND_LAYOUT_MAX_FIGURES).map(({ id }) => id),
         );
-        const layout = reconcilePlaygroundLayout(
-          initialLayout,
+        const initialPlayground = storedPlayground ?? createPlaygroundStages([defaultStage], defaultStage.id);
+        const playground = reconcilePlaygroundStages(
+          initialPlayground,
           availableIds,
         );
-        if (!storedLayout && layout.savedFigureIds.length > 0) {
-          await saveCurrentPlaygroundLayout(layout);
-        } else if (storedLayout && layout.savedFigureIds.length !== storedLayout.savedFigureIds.length) {
-          await saveCurrentPlaygroundLayout({ ...layout, updatedAt: new Date().toISOString() });
+        const storedReferenceCount = storedPlayground?.stages.reduce(
+          (count, stage) => count + stage.savedFigureIds.length,
+          0,
+        ) ?? 0;
+        const reconciledReferenceCount = playground.stages.reduce(
+          (count, stage) => count + stage.savedFigureIds.length,
+          0,
+        );
+        if (!storedPlayground || storedReferenceCount !== reconciledReferenceCount) {
+          await saveCurrentPlaygroundStages({ ...playground, updatedAt: new Date().toISOString() });
         }
-        const resolvedFigures = await collectionFiguresForLayout(collection, layout);
+        const activeStage = playground.stages.find(({ id }) => id === playground.activeStageId)!;
+        const resolvedFigures = await collectionFiguresForStage(collection, activeStage);
         if (!cancelled) {
           setCollection(collection);
-          setLayout(layout);
+          setPlayground(playground);
           setFigures(resolvedFigures);
           setLoadState("ready");
         }
@@ -67,14 +88,15 @@ export function CollectionPage() {
     };
   }, []);
 
-  const updateLayout = async (nextLayout: PlaygroundLayout): Promise<void> => {
-    if (!layout || isSavingLayout) return;
+  const updatePlayground = async (nextPlayground: PlaygroundStages): Promise<void> => {
+    if (!playground || isSavingLayout) return;
     setActionError(false);
     setIsSavingLayout(true);
     try {
-      await saveCurrentPlaygroundLayout(nextLayout);
-      const resolvedFigures = await collectionFiguresForLayout(collection, nextLayout);
-      setLayout(nextLayout);
+      await saveCurrentPlaygroundStages(nextPlayground);
+      const nextActiveStage = nextPlayground.stages.find(({ id }) => id === nextPlayground.activeStageId)!;
+      const resolvedFigures = await collectionFiguresForStage(collection, nextActiveStage);
+      setPlayground(nextPlayground);
       setFigures(resolvedFigures);
     } catch {
       setActionError(true);
@@ -83,28 +105,84 @@ export function CollectionPage() {
     }
   };
 
+  const activeStage = playground?.stages.find(({ id }) => id === playground.activeStageId) ?? null;
+
+  const replaceActiveStage = (nextStage: PlaygroundStage): PlaygroundStages | null => {
+    if (!playground || !activeStage) return null;
+    return createPlaygroundStages(
+      playground.stages.map((stage) => stage.id === activeStage.id ? nextStage : stage),
+      playground.activeStageId,
+    );
+  };
+
   const addToStage = (id: string): void => {
-    if (!layout || layout.savedFigureIds.includes(id) || layout.savedFigureIds.length >= PLAYGROUND_LAYOUT_MAX_FIGURES) return;
-    void updateLayout(createPlaygroundLayout([...layout.savedFigureIds, id]));
+    if (!activeStage
+      || activeStage.savedFigureIds.includes(id)
+      || activeStage.savedFigureIds.length >= PLAYGROUND_LAYOUT_MAX_FIGURES) return;
+    const next = replaceActiveStage(createPlaygroundStage(
+      activeStage.id,
+      activeStage.name,
+      [...activeStage.savedFigureIds, id],
+    ));
+    if (next) void updatePlayground(next);
   };
 
   const removeFromStage = (id: string): void => {
-    if (!layout || !layout.savedFigureIds.includes(id)) return;
-    void updateLayout(createPlaygroundLayout(layout.savedFigureIds.filter((figureId) => figureId !== id)));
+    if (!activeStage || !activeStage.savedFigureIds.includes(id)) return;
+    const next = replaceActiveStage(createPlaygroundStage(
+      activeStage.id,
+      activeStage.name,
+      activeStage.savedFigureIds.filter((figureId) => figureId !== id),
+    ));
+    if (next) void updatePlayground(next);
   };
 
   const moveOnStage = (id: string, direction: -1 | 1): void => {
-    if (!layout) return;
-    const index = layout.savedFigureIds.indexOf(id);
+    if (!activeStage) return;
+    const index = activeStage.savedFigureIds.indexOf(id);
     const targetIndex = index + direction;
-    if (index < 0 || targetIndex < 0 || targetIndex >= layout.savedFigureIds.length) return;
-    const ids = [...layout.savedFigureIds];
+    if (index < 0 || targetIndex < 0 || targetIndex >= activeStage.savedFigureIds.length) return;
+    const ids = [...activeStage.savedFigureIds];
     const current = ids[index];
     const target = ids[targetIndex];
     if (!current || !target) return;
     ids[index] = target;
     ids[targetIndex] = current;
-    void updateLayout(createPlaygroundLayout(ids));
+    const next = replaceActiveStage(createPlaygroundStage(activeStage.id, activeStage.name, ids));
+    if (next) void updatePlayground(next);
+  };
+
+  const selectStage = (stageId: string): void => {
+    if (!playground || playground.activeStageId === stageId) return;
+    void updatePlayground(createPlaygroundStages(playground.stages, stageId));
+  };
+
+  const saveStageName = (name: string): void => {
+    if (!playground) return;
+    if (stageDialogMode === "create") {
+      const stage = createPlaygroundStage(createStageId(), name);
+      setStageDialogMode(null);
+      void updatePlayground(createPlaygroundStages([...playground.stages, stage], stage.id));
+      return;
+    }
+    if (stageDialogMode === "rename" && activeStage) {
+      const next = replaceActiveStage(createPlaygroundStage(
+        activeStage.id,
+        name,
+        activeStage.savedFigureIds,
+      ));
+      setStageDialogMode(null);
+      if (next) void updatePlayground(next);
+    }
+  };
+
+  const deleteActiveStage = (): void => {
+    if (!playground || !activeStage || playground.stages.length <= 1) return;
+    if (!window.confirm(t("collection.deleteStageConfirm", { name: activeStage.name }))) return;
+    const activeIndex = playground.stages.findIndex(({ id }) => id === activeStage.id);
+    const remainingStages = playground.stages.filter(({ id }) => id !== activeStage.id);
+    const nextActiveStage = remainingStages[Math.min(activeIndex, remainingStages.length - 1)]!;
+    void updatePlayground(createPlaygroundStages(remainingStages, nextActiveStage.id));
   };
 
   const clearLocalData = async (): Promise<void> => {
@@ -115,7 +193,8 @@ export function CollectionPage() {
       await clearLocalFigureData();
       setCollection([]);
       setFigures([]);
-      setLayout(createPlaygroundLayout([]));
+      const stage = createPlaygroundStage("stage-main", defaultStageName);
+      setPlayground(createPlaygroundStages([stage], stage.id));
     } catch {
       setActionError(true);
     } finally {
@@ -137,7 +216,8 @@ export function CollectionPage() {
     setPurchaseFigure(saved);
   };
 
-  const stageIds = new Set(layout?.savedFigureIds ?? []);
+  const stageIds = new Set(activeStage?.savedFigureIds ?? []);
+  const stageFull = (activeStage?.savedFigureIds.length ?? 0) >= PLAYGROUND_LAYOUT_MAX_FIGURES;
 
   return (
     <div className="app-shell collection-shell">
@@ -177,12 +257,51 @@ export function CollectionPage() {
           <header className="collection-page__stage-header">
             <div>
               <p className="collection-page__eyebrow">{t("collection.stageEyebrow")}</p>
-              <h2 id="collection-stage-title">{t("collection.stageTitle")}</h2>
+              <h2 id="collection-stage-title">{activeStage?.name ?? t("collection.stageTitle")}</h2>
             </div>
             <span className="collection-page__stage-count">
-              {t("collection.stageCount", { count: layout?.savedFigureIds.length ?? 0, max: PLAYGROUND_LAYOUT_MAX_FIGURES })}
+              {t("collection.stageCount", { count: activeStage?.savedFigureIds.length ?? 0, max: PLAYGROUND_LAYOUT_MAX_FIGURES })}
             </span>
           </header>
+          {loadState === "ready" && playground && activeStage ? (
+            <div className="collection-stage-controls">
+              <label className="collection-stage-controls__picker">
+                <span>{t("collection.stagePickerLabel")}</span>
+                <select
+                  disabled={isSavingLayout}
+                  onChange={(event) => selectStage(event.currentTarget.value)}
+                  value={activeStage.id}
+                >
+                  {playground.stages.map((stage) => (
+                    <option key={stage.id} value={stage.id}>
+                      {stage.name} ({stage.savedFigureIds.length}/{PLAYGROUND_LAYOUT_MAX_FIGURES})
+                    </option>
+                  ))}
+                </select>
+              </label>
+              <div className="collection-stage-controls__actions">
+                <Button
+                  disabled={isSavingLayout || playground.stages.length >= PLAYGROUND_MAX_STAGES}
+                  onClick={() => setStageDialogMode("create")}
+                  size="sm"
+                  variant="primary"
+                >
+                  + {t("collection.newStage")}
+                </Button>
+                <Button disabled={isSavingLayout} onClick={() => setStageDialogMode("rename")} size="sm" variant="ghost">
+                  {t("collection.renameStage")}
+                </Button>
+                <Button
+                  disabled={isSavingLayout || playground.stages.length <= 1}
+                  onClick={deleteActiveStage}
+                  size="sm"
+                  variant="danger"
+                >
+                  {t("collection.deleteStage")}
+                </Button>
+              </div>
+            </div>
+          ) : null}
           {loadState === "loading" ? <p>{t("collection.loading")}</p> : null}
           {loadState === "error" ? <p>{t("collection.loadError")}</p> : null}
           {loadState === "ready" ? <CollectionViewport figures={figures} /> : null}
@@ -207,7 +326,7 @@ export function CollectionPage() {
               <ul className="collection-library__list">
                 {collection.map((saved) => {
                   const onStage = stageIds.has(saved.id);
-                  const stageIndex = layout?.savedFigureIds.indexOf(saved.id) ?? -1;
+                  const stageIndex = activeStage?.savedFigureIds.indexOf(saved.id) ?? -1;
                   return (
                     <CollectionFigureCard
                       busy={isSavingLayout}
@@ -219,6 +338,7 @@ export function CollectionPage() {
                         moveDown: t("collection.moveDown"),
                         openBuilder: t("collection.openBuilder"),
                         buyFigure: t("collection.buyFigure"),
+                        stageFull: t("collection.stageFull"),
                         onStage: t("collection.onStage"),
                         partCount: t("collection.partCount", { count: saved.document.selections.length }),
                         savedAt: t("collection.savedAt"),
@@ -229,9 +349,9 @@ export function CollectionPage() {
                       onStage={onStage}
                       onToggleStage={() => onStage ? removeFromStage(saved.id) : addToStage(saved.id)}
                       saved={saved}
-                      stageFull={(layout?.savedFigureIds.length ?? PLAYGROUND_LAYOUT_MAX_FIGURES) >= PLAYGROUND_LAYOUT_MAX_FIGURES}
+                      stageFull={stageFull}
                       stageIndex={stageIndex}
-                      stageSize={layout?.savedFigureIds.length ?? 0}
+                      stageSize={activeStage?.savedFigureIds.length ?? 0}
                     />
                   );
                 })}
@@ -259,6 +379,14 @@ export function CollectionPage() {
           onClose={() => setPurchaseFigure(null)}
           onExportJson={() => exportFigure(purchaseFigure)}
           saved={purchaseFigure}
+        />
+      ) : null}
+      {stageDialogMode ? (
+        <StageNameDialog
+          initialName={stageDialogMode === "rename" ? activeStage?.name ?? "" : ""}
+          mode={stageDialogMode}
+          onClose={() => setStageDialogMode(null)}
+          onSubmit={saveStageName}
         />
       ) : null}
     </div>

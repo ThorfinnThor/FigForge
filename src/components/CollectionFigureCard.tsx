@@ -17,6 +17,7 @@ type CollectionFigureCardProps = {
     moveDown: string;
     openBuilder: string;
     buyFigure: string;
+    stageFull: string;
     onStage: string;
     partCount: string;
     savedAt: string;
@@ -73,7 +74,7 @@ export function CollectionFigureCard({
             size="sm"
             variant={onStage ? "secondary" : "primary"}
           >
-            {onStage ? labels.removeFromStage : labels.addToStage}
+            {onStage ? labels.removeFromStage : stageFull ? labels.stageFull : labels.addToStage}
           </Button>
           <a className="ff-button ff-button--sm ff-button--ghost" href={`/?figureId=${encodeURIComponent(saved.id)}`}>
             {labels.openBuilder}
