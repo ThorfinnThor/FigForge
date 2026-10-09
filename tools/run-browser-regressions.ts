@@ -367,7 +367,7 @@ const clickButtonWithText = async (client: CdpClient, text: string): Promise<boo
 
 const testLDrawAndWebGlFailures = async (client: CdpClient, origin: string): Promise<void> => {
   await navigate(client, origin);
-  await waitFor(client, `${textIncludes("Bauteilen in der Vorschau")} && document.querySelector('canvas.viewport')`, "initial 3D preview", 60_000);
+  await waitFor(client, `${textIncludes("Bauteilen in der Vorschau")} && Boolean(document.querySelector('canvas.viewport'))`, "initial 3D preview", 60_000);
 
   let failNextDat = true;
   const removeFetchListener = client.on("Fetch.requestPaused", (params) => {
