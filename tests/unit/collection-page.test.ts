@@ -14,8 +14,11 @@ describe("Collection page shell", () => {
 
     expect(appSource).toContain('pathname === "/collection"');
     expect(collectionSource).toContain('href="/collection"');
-    expect(collectionSource).toContain("loadCurrentPlaygroundLayout");
-    expect(collectionSource).toContain("collectionFiguresForLayout");
+    expect(collectionSource).toContain("loadCurrentPlaygroundStages");
+    expect(collectionSource).toContain("collectionFiguresForStage");
+    expect(collectionSource).toContain("<StageNameDialog");
+    expect(collectionSource).toContain("selectStage");
+    expect(collectionSource).toContain("deleteActiveStage");
     expect(collectionSource).toContain("<CollectionViewport figures={figures}");
     expect(collectionSource).toContain("addToStage");
     expect(collectionSource).toContain("removeFromStage");

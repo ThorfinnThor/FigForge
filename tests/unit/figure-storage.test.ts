@@ -8,8 +8,13 @@ import {
 import {
   PLAYGROUND_LAYOUT_MAX_FIGURES,
   createEmptyPlaygroundLayout,
+  createPlaygroundStage,
+  createPlaygroundStages,
+  migratePlaygroundLayout,
   playgroundLayoutSchema,
+  playgroundStagesSchema,
   reconcilePlaygroundLayout,
+  reconcilePlaygroundStages,
 } from "../../src/contracts/playground-layout.js";
 import { createFigureDocument } from "../../src/figure/figure-document.js";
 
@@ -47,7 +52,7 @@ describe("FF-22 local figure storage", () => {
       legsAssembly: "catalog:legsAssembly:970c01",
     }, "Gespeicherte Figur", "2026-10-02T10:00:00.000Z");
 
-    expect(FIGURE_STORAGE_VERSION).toBe(3);
+    expect(FIGURE_STORAGE_VERSION).toBe(4);
     expect(savedFigureSchema.parse({
       id: "figure-1",
       document,
@@ -98,5 +103,51 @@ describe("FF-22 local figure storage", () => {
       updatedAt: "2026-10-06T20:05:00.000Z",
       savedFigureIds: ["figure-c", "figure-b"],
     });
+  });
+
+  it("migrates the former single playground into one named stage", () => {
+    const legacy = playgroundLayoutSchema.parse({
+      schemaVersion: 1,
+      kind: "figforge-playground-layout",
+      updatedAt: "2026-10-06T20:00:00.000Z",
+      savedFigureIds: ["figure-c", "figure-a"],
+    });
+
+    expect(migratePlaygroundLayout(legacy, "My stage", "stage-main")).toEqual({
+      schemaVersion: 2,
+      kind: "figforge-playground-stages",
+      updatedAt: legacy.updatedAt,
+      activeStageId: "stage-main",
+      stages: [{
+        id: "stage-main",
+        name: "My stage",
+        savedFigureIds: ["figure-c", "figure-a"],
+      }],
+    });
+  });
+
+  it("stores several named stages while keeping six figures per stage", () => {
+    const pirates = createPlaygroundStage("stage-pirates", "Pirates", ["figure-a", "figure-b"]);
+    const clowns = createPlaygroundStage("stage-clowns", "Clowns", ["figure-b", "figure-c"]);
+    const playground = createPlaygroundStages(
+      [pirates, clowns],
+      clowns.id,
+      "2026-10-09T18:00:00.000Z",
+    );
+
+    expect(playgroundStagesSchema.parse(playground).activeStageId).toBe("stage-clowns");
+    expect(reconcilePlaygroundStages(
+      playground,
+      new Set(["figure-a", "figure-c"]),
+      "2026-10-09T18:05:00.000Z",
+    ).stages).toEqual([
+      { ...pirates, savedFigureIds: ["figure-a"] },
+      { ...clowns, savedFigureIds: ["figure-c"] },
+    ]);
+    expect(() => createPlaygroundStage(
+      "stage-too-full",
+      "Too full",
+      Array.from({ length: 7 }, (_, index) => `figure-${index}`),
+    )).toThrow();
   });
 });

@@ -1,9 +1,14 @@
 import { z } from "zod";
 import { figureDocumentSchema, type FigureDocument } from "../contracts/figure-document.js";
-import { playgroundLayoutSchema, type PlaygroundLayout } from "../contracts/playground-layout.js";
+import {
+  migratePlaygroundLayout,
+  playgroundLayoutSchema,
+  playgroundStagesSchema,
+  type PlaygroundStages,
+} from "../contracts/playground-layout.js";
 
 const DATABASE_NAME = "figforge";
-export const FIGURE_STORAGE_VERSION = 3;
+export const FIGURE_STORAGE_VERSION = 4;
 const DATABASE_VERSION = FIGURE_STORAGE_VERSION;
 const DRAFT_STORE_NAME = "figure-drafts";
 const COLLECTION_STORE_NAME = "figure-collection";
@@ -37,6 +42,8 @@ const openDatabase = (): Promise<IDBDatabase> => new Promise((resolve, reject) =
     if (!database.objectStoreNames.contains(PLAYGROUND_STORE_NAME)) {
       database.createObjectStore(PLAYGROUND_STORE_NAME);
     }
+    // Version 4 upgrades the value in the existing playground store from one
+    // layout to a named-stage collection. The object store itself stays stable.
   };
   request.onsuccess = () => resolve(request.result);
   request.onerror = () => reject(request.error ?? new Error("IndexedDB konnte nicht geöffnet werden."));
@@ -143,25 +150,35 @@ export const deleteSavedFigure = async (id: string): Promise<void> => {
   }
 };
 
-export const loadCurrentPlaygroundLayout = async (): Promise<PlaygroundLayout | null> => {
+export const loadCurrentPlaygroundStages = async (
+  migratedStageName = "My stage",
+): Promise<PlaygroundStages | null> => {
   const database = await openDatabase();
   try {
     const raw = await requestResult<unknown>(
       database.transaction(PLAYGROUND_STORE_NAME).objectStore(PLAYGROUND_STORE_NAME).get(CURRENT_PLAYGROUND_KEY),
     );
-    return raw === undefined ? null : playgroundLayoutSchema.parse(raw);
+    if (raw === undefined) return null;
+    const current = playgroundStagesSchema.safeParse(raw);
+    if (current.success) return current.data;
+    const migrated = migratePlaygroundLayout(playgroundLayoutSchema.parse(raw), migratedStageName);
+    const transaction = database.transaction(PLAYGROUND_STORE_NAME, "readwrite");
+    await committedMutation(transaction, [
+      transaction.objectStore(PLAYGROUND_STORE_NAME).put(migrated, CURRENT_PLAYGROUND_KEY),
+    ]);
+    return migrated;
   } finally {
     database.close();
   }
 };
 
-export const saveCurrentPlaygroundLayout = async (layout: PlaygroundLayout): Promise<void> => {
+export const saveCurrentPlaygroundStages = async (playground: PlaygroundStages): Promise<void> => {
   const database = await openDatabase();
   try {
     const transaction = database.transaction(PLAYGROUND_STORE_NAME, "readwrite");
     await committedMutation(transaction, [
       transaction.objectStore(PLAYGROUND_STORE_NAME).put(
-        playgroundLayoutSchema.parse(layout),
+        playgroundStagesSchema.parse(playground),
         CURRENT_PLAYGROUND_KEY,
       ),
     ]);
