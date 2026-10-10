@@ -203,7 +203,9 @@ describe("FF-14 responsive catalog workspace", () => {
     expect(styles).toContain("@media (max-width: 767px)");
     expect(styles).toContain("safe-area-inset-bottom");
     expect(styles).toContain("grid-template-columns: minmax(0, 1fr)");
-    expect(styles).toContain("max-height: 100dvh");
+    expect(styles).toContain("grid-template-rows: minmax(0, 1fr)");
+    expect(styles).toContain("height: 100dvh");
+    expect(styles).toContain("scroll-padding-bottom: calc(var(--space-8) + env(safe-area-inset-bottom))");
     expect(styles).toContain("scrollbar-gutter: stable");
     expect(figurePanelSource).toContain('className="figure-panel__scroll"');
   });

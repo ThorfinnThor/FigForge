@@ -2707,23 +2707,28 @@ legend {
     z-index: 20;
     top: 0;
     right: 0;
-    bottom: 0;
     display: grid;
+    grid-template-rows: minmax(0, 1fr);
     width: min(560px, 94vw);
+    height: 100dvh;
+    min-height: 0;
     max-width: 100%;
+    max-height: 100dvh;
     margin: 0;
-    align-content: start;
+    align-content: stretch;
     overflow: hidden;
     border-radius: var(--radius-lg) 0 0 var(--radius-lg);
     box-shadow: -8px 0 0 rgb(0 0 0 / 25%);
   }
 
   .figure-panel--drawer .figure-panel__scroll {
-    height: 100dvh;
+    height: 100%;
     min-height: 0;
-    max-height: 100dvh;
+    max-height: none;
     overflow-y: auto;
+    padding-bottom: calc(var(--space-8) + env(safe-area-inset-bottom));
     overscroll-behavior: contain;
+    scroll-padding-bottom: calc(var(--space-8) + env(safe-area-inset-bottom));
     scrollbar-gutter: stable;
     border-radius: var(--radius-lg) 0 0 var(--radius-lg);
     box-shadow: none;
