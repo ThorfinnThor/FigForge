@@ -56,6 +56,9 @@ export function FigurePartsPanel({
 }: FigurePartsPanelProps) {
   const importInputRef = useRef<HTMLInputElement>(null);
   const { t } = useI18n();
+  const filledSlots = slots.filter((slot) => slot.component);
+  const configurableColorSlots = filledSlots.filter((slot) => slot.colors.length > 1);
+  const missingColorCount = configurableColorSlots.filter((slot) => slot.selectedColorId === undefined).length;
 
   return (
     <aside className={["figure-panel", drawer ? "figure-panel--drawer" : ""].filter(Boolean).join(" ")} id="figure-panel" aria-labelledby="figure-panel-heading">
@@ -92,29 +95,14 @@ export function FigurePartsPanel({
                 <p className="figure-slot__label">{slot.label}</p>
                 <p className="figure-slot__name">{slot.component?.name ?? t("figure.empty")}</p>
                 <p className="figure-slot__meta">{slot.component ? `Rebrickable · ${slot.component.rebrickablePartNum}` : t("figure.none")}</p>
-                {slot.component ? slot.colors.length > 1 ? (
-                  <label className="figure-slot__color">
-                    <span>{t("figure.color")}</span>
-                    <select
-                      aria-label={t("figure.colorLabel", { part: slot.component.name })}
-                      onChange={(event) => onColorChange(
-                        slot.id,
-                        event.currentTarget.value === "" ? undefined : Number(event.currentTarget.value),
-                      )}
-                      value={slot.selectedColorId ?? ""}
-                    >
-                      <option value="">{t("figure.colorChoose")}</option>
-                      {slot.colors.map((color) => (
-                        <option key={color.rebrickableColorId} value={color.rebrickableColorId}>
-                          {color.colorName}
-                        </option>
-                      ))}
-                    </select>
-                    <small>{t("figure.colorPurchaseHint")}</small>
-                  </label>
-                ) : (
-                  <p className="figure-slot__color-name">
-                    {t("figure.color")}: {slot.colors[0]?.colorName ?? t("figure.colorUnknown")}
+                {slot.component ? (
+                  <p
+                    className="figure-slot__color-name"
+                    data-status={slot.colors.length > 1 && slot.selectedColorId === undefined ? "attention" : "ready"}
+                  >
+                    {slot.colors.length > 1 && slot.selectedColorId === undefined
+                      ? t("figure.purchaseColors.chooseBelow")
+                      : `${t("figure.color")}: ${slot.colors.find((color) => color.rebrickableColorId === slot.selectedColorId)?.colorName ?? slot.colors[0]?.colorName ?? t("figure.colorUnknown")}`}
                   </p>
                 ) : null}
                 {slot.component ? (
@@ -132,6 +120,63 @@ export function FigurePartsPanel({
             </Card>
           ))}
         </div>
+        {filledSlots.length > 0 ? (
+          <section className="purchase-colors" aria-labelledby="purchase-colors-heading">
+            <div className="purchase-step-heading">
+              <span className="purchase-step-heading__number" aria-hidden="true">1</span>
+              <div>
+                <h3 id="purchase-colors-heading">{t("figure.purchaseColors.title")}</h3>
+                <p>{t("figure.purchaseColors.intro")}</p>
+              </div>
+            </div>
+            {configurableColorSlots.length === 0 ? (
+              <p aria-live="polite" className="purchase-colors__status" data-status="ready" role="status">
+                <span aria-hidden="true">✓</span>
+                {t("figure.purchaseColors.automatic")}
+              </p>
+            ) : (
+              <>
+                <p
+                  aria-live="polite"
+                  className="purchase-colors__status"
+                  data-status={missingColorCount === 0 ? "ready" : "attention"}
+                  role="status"
+                >
+                  <span aria-hidden="true">{missingColorCount === 0 ? "✓" : "!"}</span>
+                  {missingColorCount === 0
+                    ? t("figure.purchaseColors.ready")
+                    : t("figure.purchaseColors.missing", { count: missingColorCount })}
+                </p>
+                <div className="purchase-colors__choices">
+                  {configurableColorSlots.map((slot) => (
+                    <label className="purchase-color-choice" data-missing={slot.selectedColorId === undefined || undefined} key={slot.id}>
+                      <span className="purchase-color-choice__part">
+                        <strong>{slot.label}</strong>
+                        <small>{slot.component?.name}</small>
+                      </span>
+                      <select
+                        aria-label={t("figure.colorLabel", { part: slot.component?.name ?? slot.label })}
+                        onChange={(event) => onColorChange(
+                          slot.id,
+                          event.currentTarget.value === "" ? undefined : Number(event.currentTarget.value),
+                        )}
+                        value={slot.selectedColorId ?? ""}
+                      >
+                        <option value="">{t("figure.colorChoose")}</option>
+                        {slot.colors.map((color) => (
+                          <option key={color.rebrickableColorId} value={color.rebrickableColorId}>
+                            {color.colorName}
+                          </option>
+                        ))}
+                      </select>
+                    </label>
+                  ))}
+                </div>
+              </>
+            )}
+            <p className="purchase-colors__help">{t("figure.colorPurchaseHint")}</p>
+          </section>
+        ) : null}
         {shopExport}
         {!previewSynchronized ? (
           <StatusMessage tone="warning">{t("figure.preview.stale")}</StatusMessage>

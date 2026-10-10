@@ -12,6 +12,21 @@ import {
 } from "../../src/components/catalog-workspace-data.js";
 
 describe("FF-14 responsive catalog workspace", () => {
+  it("presents purchasing as a clear color-first funnel with optional technical details", async () => {
+    const panelSource = await readFile("src/components/FigurePartsPanel.tsx", "utf8");
+    const shopSource = await readFile("src/components/ShopExportPanel.tsx", "utf8");
+    const stylesSource = await readFile("src/styles/base.css", "utf8");
+
+    expect(panelSource).toContain('aria-labelledby="purchase-colors-heading"');
+    expect(panelSource).toContain('t("figure.purchaseColors.missing"');
+    expect(panelSource).toContain('className="purchase-color-choice"');
+    expect(shopSource.indexOf('compileShopExport("rebrickable"')).toBeLessThan(shopSource.indexOf('compileShopExport("lego-pick-a-brick"'));
+    expect(shopSource).toContain('data-recommended={target.recommended || undefined}');
+    expect(shopSource).toContain('<details className="shop-export__details">');
+    expect(shopSource).toContain('tone="success"');
+    expect(stylesSource).toContain("width: min(560px, 94vw)");
+  });
+
   it("keeps technical methodology out of the figure workflow", async () => {
     const workspaceSource = await readFile("src/components/CatalogWorkspace.tsx", "utf8");
     const methodologySource = await readFile("src/components/MethodologyPage.tsx", "utf8");
@@ -188,7 +203,9 @@ describe("FF-14 responsive catalog workspace", () => {
     expect(styles).toContain("@media (max-width: 767px)");
     expect(styles).toContain("safe-area-inset-bottom");
     expect(styles).toContain("grid-template-columns: minmax(0, 1fr)");
-    expect(styles).toContain("max-height: 100dvh");
+    expect(styles).toContain("grid-template-rows: minmax(0, 1fr)");
+    expect(styles).toContain("height: 100dvh");
+    expect(styles).toContain("scroll-padding-bottom: calc(var(--space-8) + env(safe-area-inset-bottom))");
     expect(styles).toContain("scrollbar-gutter: stable");
     expect(figurePanelSource).toContain('className="figure-panel__scroll"');
   });
