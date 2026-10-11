@@ -34,17 +34,17 @@
   },
   "summary": {
     "catalogPartCount": 20271,
-    "visualizedPartCount": 14892,
-    "builderReadyPartCount": 14890,
-    "remainingCatalogPartCount": 5381,
-    "remainingWithoutVisualizationCount": 5379,
+    "visualizedPartCount": 14891,
+    "builderReadyPartCount": 14889,
+    "remainingCatalogPartCount": 5382,
+    "remainingWithoutVisualizationCount": 5380,
     "uniqueOfficialMappingCount": 2841,
     "ambiguousOfficialMappingCount": 168,
     "noOfficialMappingCount": 17262,
     "remainingClassifications": {
       "builder-blocked": 2,
       "render-failed": 0,
-      "placement-profile-required": 361,
+      "placement-profile-required": 362,
       "reviewed-incompatible-assembly": 95,
       "ambiguous-official-mapping": 13,
       "no-official-mapping": 4910
@@ -105,12 +105,12 @@
     },
     "handAccessory": {
       "catalogPartCount": 1310,
-      "builderReadyPartCount": 324,
-      "remainingCatalogPartCount": 986,
+      "builderReadyPartCount": 323,
+      "remainingCatalogPartCount": 987,
       "remainingClassifications": {
         "builder-blocked": 1,
         "render-failed": 0,
-        "placement-profile-required": 359,
+        "placement-profile-required": 360,
         "reviewed-incompatible-assembly": 0,
         "ambiguous-official-mapping": 4,
         "no-official-mapping": 622
@@ -44782,6 +44782,20 @@
       "classification": "no-official-mapping",
       "ldrawFiles": [],
       "mappingEvidence": [],
+      "reason": null
+    },
+    {
+      "catalogId": "part:2561",
+      "role": "handAccessory",
+      "rebrickablePartNum": "2561",
+      "name": "Weapon Gun / Flintlock / Musket (Pirate)",
+      "classification": "placement-profile-required",
+      "ldrawFiles": [
+        "parts/2561.dat"
+      ],
+      "mappingEvidence": [
+        "exact-filename"
+      ],
       "reason": null
     },
     {

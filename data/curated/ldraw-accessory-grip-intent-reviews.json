@@ -1,0 +1,17 @@
+{
+  "schemaVersion": 1,
+  "sourcePolicy": "Nur Rebrickable Catalog Downloads/CSV, keine MOC-Dateien.",
+  "methodology": "A collision-free radius-4 cylinder is not sufficient evidence that the cylinder is the intended minifigure hand grip. Visually confirmed false-positive grip features are versioned here and remain blocked until a source-backed intended connector or a separately reviewed placement profile exists.",
+  "reviews": [
+    {
+      "rebrickablePartNum": "2561",
+      "catalogName": "Weapon Gun / Flintlock / Musket (Pirate)",
+      "ldrawFile": "parts/2561.dat",
+      "detectedGripPrimitive": "p/4-4cyli.dat",
+      "detectedGripLengthLdu": 56,
+      "decision": "blocked",
+      "reasonCode": "detected-feature-is-not-intended-hand-grip",
+      "note": "The detected long cylinder follows the musket barrel rather than the intended stock grip, so the resulting placement crosses the figure instead of being held by the handle."
+    }
+  ]
+}
