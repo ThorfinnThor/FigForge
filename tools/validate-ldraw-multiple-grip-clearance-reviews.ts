@@ -3,11 +3,13 @@ import { readFile } from "node:fs/promises";
 import { resolve } from "node:path";
 import { catalogPackageSchema } from "../src/contracts/catalog-package.js";
 import { handGripEvidenceFromLDCadShadow, vendoredAccessoryGripFiles } from "./lib/ldcad-shadow-connectivity.js";
+import { readAccessoryGripIntentReviews } from "./lib/ldraw-accessory-grip-intent-reviews.js";
 import { readMultipleGripClearanceReviews } from "./lib/ldraw-multiple-grip-clearance-reviews.js";
 import { normalizeCatalogEvidenceName } from "./lib/ldraw-review.js";
 
 const root = process.cwd();
 const reviews = await readMultipleGripClearanceReviews(root);
+const intentReviews = await readAccessoryGripIntentReviews(root);
 const catalog = catalogPackageSchema.parse(JSON.parse(await readFile(
   resolve(root, "data/generated/catalog-packages/hand-accessory.json"),
   "utf8",
@@ -91,9 +93,13 @@ for (const review of reviews.reviews) {
   }
 }
 
-assert.equal(placement.summary.multipleRadius4CandidateCount, 103);
+assert.equal(placement.summary.multipleRadius4CandidateCount, remainingMultiple.size);
+const remainingWithoutReviewedGrip = [...remainingMultiple].filter((partNum) =>
+  !blocked.some((review) => review.rebrickablePartNum === partNum)
+    && !intentReviews.reviews.some((review) => review.rebrickablePartNum === partNum)
+);
 assert.equal(
-  [...remainingMultiple].filter((partNum) => !blocked.some((review) => review.rebrickablePartNum === partNum)).length,
+  remainingWithoutReviewedGrip.length,
   99,
 );
 
@@ -102,6 +108,6 @@ console.log(JSON.stringify({
   reviewed: reviews.reviews.length,
   passed: passed.length,
   blocked: blocked.length,
-  remainingWithoutUniqueDocumentedGrip: 99,
+  remainingWithoutUniqueDocumentedGrip: remainingWithoutReviewedGrip.length,
   sourcePolicy: reviews.sourcePolicy,
 }));

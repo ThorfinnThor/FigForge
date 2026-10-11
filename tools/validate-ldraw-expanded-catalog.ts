@@ -102,6 +102,7 @@ const catalog = JSON.parse(await readFile(resolve(root, "data/generated/ldraw-ex
     accessoryMultipleGripCandidatesAmbiguous: number;
     accessoryMultipleGripCandidatesNoSafe: number;
     accessoryMultipleGripCandidatesRenderFailed: number;
+    accessoryMultipleGripCandidatesSemanticRejected: number;
     accessoryPlacementCandidatesEvaluated: number;
     accessoryPlacementRenderFailuresExcluded: number;
     accessorySemanticGripRejectionsExcluded: number;
@@ -183,7 +184,8 @@ assert.equal(
   catalog.summary.accessoryMultipleGripCandidatesPassed
     + catalog.summary.accessoryMultipleGripCandidatesAmbiguous
     + catalog.summary.accessoryMultipleGripCandidatesNoSafe
-    + catalog.summary.accessoryMultipleGripCandidatesRenderFailed,
+    + catalog.summary.accessoryMultipleGripCandidatesRenderFailed
+    + catalog.summary.accessoryMultipleGripCandidatesSemanticRejected,
 );
 
 const catalogEntriesSha256 = sha256(JSON.stringify(catalog.entries));

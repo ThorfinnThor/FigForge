@@ -730262,104 +730262,6 @@
       }
     },
     {
-      "componentId": "catalog:handAccessory:2516",
-      "role": "handAccessory",
-      "rebrickablePartNum": "2516",
-      "name": "Tool Chainsaw / Drill Body",
-      "rebrickableCategoryId": 73,
-      "rebrickableCategoryName": "Minifig Shields, Weapons, & Tools",
-      "material": "Plastic",
-      "colorNames": [
-        "Black",
-        "Blue",
-        "Brown",
-        "Dark Gray",
-        "Green",
-        "Light Bluish Gray",
-        "Light Gray",
-        "Red",
-        "Tan",
-        "Trans-Dark Blue",
-        "Trans-Red",
-        "Trans-Yellow",
-        "White",
-        "Yellow"
-      ],
-      "previewColorName": "Light Gray",
-      "previewColorRgb": "9BA19D",
-      "previewColorEvidence": "rebrickable-elements-first",
-      "status": "verified",
-      "ldrawFile": "parts/2516.dat",
-      "ldrawUpdate": "2014-01",
-      "mappingEvidence": "exact-filename",
-      "assemblyWrapperFor": null,
-      "geometryFallback": null,
-      "modelUrl": "/assets/ldraw/official-2609/models/handAccessory-2516.ldr",
-      "modelSha256": "85d9c30224937c413a5dd95b53d9a49147d418ebc13a41590b9d7377d891f411",
-      "thumbnailUrl": "/assets/thumbnails/ldraw-expanded/handAccessory-2516.webp",
-      "thumbnailSha256": "85f41ec0e7d0aac5e2a235672961e9317ac75738318703e6318445c0390e231c",
-      "thumbnailBytes": 2612,
-      "placementMode": "snap-connector",
-      "placementTransformLdu": [
-        0.146464,
-        0.848563,
-        -0.507414,
-        0,
-        0.086268,
-        0.499806,
-        0.86148,
-        0,
-        -0.985,
-        0.17,
-        0,
-        0,
-        32.733011,
-        20.396246,
-        -36.428269,
-        1
-      ],
-      "digitalValidation": {
-        "status": "passed",
-        "reasonCode": null,
-        "gripLengthLdu": 12,
-        "modelBoundsLdu": {
-          "min": [
-            -30,
-            -4,
-            -24
-          ],
-          "max": [
-            30,
-            28,
-            24
-          ],
-          "size": [
-            60,
-            32,
-            48
-          ]
-        },
-        "sampledPointCount": 16848,
-        "protectedBodyBoxCount": 8,
-        "collisionSampleCount": 0,
-        "collisionSamplesByPart": {},
-        "gripCandidatesTested": 2,
-        "safeGripCandidatesFound": 1,
-        "selectedGripCandidateIndex": 0,
-        "orientationCandidatesTested": 8,
-        "selectedOrientationIndex": 5,
-        "gripPrimitive": "p/4-4cylc.dat",
-        "gripEvidenceSource": "official-ldraw-geometry",
-        "limits": {
-          "minimumGripLengthLdu": 8,
-          "maximumAccessoryExtentLdu": 240,
-          "gripNeighborhoodRadiusLdu": 7,
-          "bodyBoxInsetLdu": 0.25
-        },
-        "physicalFitGuaranteed": false
-      }
-    },
-    {
       "componentId": "catalog:handAccessory:2530",
       "role": "handAccessory",
       "rebrickablePartNum": "2530",
@@ -751451,177 +751353,6 @@
       }
     },
     {
-      "componentId": "catalog:handAccessory:98368",
-      "role": "handAccessory",
-      "rebrickablePartNum": "98368",
-      "name": "Toolbox",
-      "rebrickableCategoryId": 73,
-      "rebrickableCategoryName": "Minifig Shields, Weapons, & Tools",
-      "material": "Plastic",
-      "colorNames": [
-        "Dark Blue",
-        "Red"
-      ],
-      "previewColorName": "Red",
-      "previewColorRgb": "C91A09",
-      "previewColorEvidence": "rebrickable-elements-first",
-      "status": "verified",
-      "ldrawFile": "parts/98368.dat",
-      "ldrawUpdate": "2020-02",
-      "mappingEvidence": "exact-filename",
-      "assemblyWrapperFor": null,
-      "geometryFallback": null,
-      "modelUrl": "/assets/ldraw/official-2609/models/handAccessory-98368.ldr",
-      "modelSha256": "c76daedf3d29bc996d400b92e8142c58dac3c131ea769e81379c03a5e61b6310",
-      "thumbnailUrl": "/assets/thumbnails/ldraw-expanded/handAccessory-98368.webp",
-      "thumbnailSha256": "23cbfbdfdc6ba212a25e832652d75d97a5d19c20b721efc99fb3aefd2a583736",
-      "thumbnailBytes": 3230,
-      "placementMode": "snap-connector",
-      "placementTransformLdu": [
-        -0.086268,
-        -0.499806,
-        -0.861479,
-        0,
-        0.985,
-        -0.17,
-        0,
-        0,
-        -0.146464,
-        -0.848563,
-        0.507414,
-        0,
-        24.780896,
-        33.091985,
-        -17.47572,
-        1
-      ],
-      "digitalValidation": {
-        "status": "passed",
-        "reasonCode": null,
-        "gripLengthLdu": 12,
-        "modelBoundsLdu": {
-          "min": [
-            -30,
-            -4,
-            -10.0002
-          ],
-          "max": [
-            30,
-            30,
-            10
-          ],
-          "size": [
-            60,
-            34,
-            20.0002
-          ]
-        },
-        "sampledPointCount": 2344,
-        "protectedBodyBoxCount": 8,
-        "collisionSampleCount": 0,
-        "collisionSamplesByPart": {},
-        "gripCandidatesTested": 3,
-        "safeGripCandidatesFound": 1,
-        "selectedGripCandidateIndex": 0,
-        "orientationCandidatesTested": 8,
-        "selectedOrientationIndex": 3,
-        "gripPrimitive": "p/4-4cyli.dat",
-        "gripEvidenceSource": "official-ldraw-geometry",
-        "limits": {
-          "minimumGripLengthLdu": 8,
-          "maximumAccessoryExtentLdu": 240,
-          "gripNeighborhoodRadiusLdu": 7,
-          "bodyBoxInsetLdu": 0.25
-        },
-        "physicalFitGuaranteed": false
-      }
-    },
-    {
-      "componentId": "catalog:handAccessory:98368pr0002",
-      "role": "handAccessory",
-      "rebrickablePartNum": "98368pr0002",
-      "name": "Toolbox with Classic Space Logo Print",
-      "rebrickableCategoryId": 73,
-      "rebrickableCategoryName": "Minifig Shields, Weapons, & Tools",
-      "material": "Plastic",
-      "colorNames": [
-        "Red"
-      ],
-      "previewColorName": "Red",
-      "previewColorRgb": "C91A09",
-      "previewColorEvidence": "rebrickable-elements-first",
-      "status": "verified",
-      "ldrawFile": "parts/98368p01.dat",
-      "ldrawUpdate": "2020-02",
-      "mappingEvidence": "explicit-keyword",
-      "assemblyWrapperFor": null,
-      "geometryFallback": null,
-      "modelUrl": "/assets/ldraw/official-2609/models/handAccessory-98368pr0002.ldr",
-      "modelSha256": "eb045168a79741d67a75bf9f3bc1cd506d3fcff3f83918b7149af0801f1849b9",
-      "thumbnailUrl": "/assets/thumbnails/ldraw-expanded/handAccessory-98368pr0002.webp",
-      "thumbnailSha256": "ae73af2f253f5e3397895d7e71e091f405b1792e4bd63cba8977586b4c00101f",
-      "thumbnailBytes": 3248,
-      "placementMode": "snap-connector",
-      "placementTransformLdu": [
-        -0.086268,
-        -0.499806,
-        -0.861479,
-        0,
-        0.985,
-        -0.17,
-        0,
-        0,
-        -0.146464,
-        -0.848563,
-        0.507414,
-        0,
-        24.780896,
-        33.091985,
-        -17.47572,
-        1
-      ],
-      "digitalValidation": {
-        "status": "passed",
-        "reasonCode": null,
-        "gripLengthLdu": 12,
-        "modelBoundsLdu": {
-          "min": [
-            -30,
-            -4,
-            -10.0002
-          ],
-          "max": [
-            30,
-            30,
-            10
-          ],
-          "size": [
-            60,
-            34,
-            20.0002
-          ]
-        },
-        "sampledPointCount": 3392,
-        "protectedBodyBoxCount": 8,
-        "collisionSampleCount": 0,
-        "collisionSamplesByPart": {},
-        "gripCandidatesTested": 3,
-        "safeGripCandidatesFound": 1,
-        "selectedGripCandidateIndex": 0,
-        "orientationCandidatesTested": 8,
-        "selectedOrientationIndex": 3,
-        "gripPrimitive": "p/4-4cyli.dat",
-        "gripEvidenceSource": "official-ldraw-geometry",
-        "limits": {
-          "minimumGripLengthLdu": 8,
-          "maximumAccessoryExtentLdu": 240,
-          "gripNeighborhoodRadiusLdu": 7,
-          "bodyBoxInsetLdu": 0.25
-        },
-        "physicalFitGuaranteed": false
-      }
-    },
-    {
       "componentId": "catalog:handAccessory:98369",
       "role": "handAccessory",
       "rebrickablePartNum": "98369",
@@ -752479,34 +752210,35 @@
   ],
   "summary": {
     "catalogPartCount": 20271,
-    "digitallySupportedCount": 14881,
+    "digitallySupportedCount": 14878,
     "headCount": 4878,
     "headwearCount": 781,
     "torsoAssemblyCount": 6013,
     "legsAssemblyCount": 2888,
-    "handAccessoryCount": 321,
-    "directMappingCount": 2515,
+    "handAccessoryCount": 318,
+    "directMappingCount": 2512,
     "colorCodedAssemblyCount": 7601,
     "officialAssemblyWrapperCount": 76,
     "ambiguousAssemblyWrappersExcluded": 6,
     "unprintedColorCodedAssemblyCount": 7394,
     "printParentGeometryFallbackCount": 4765,
-    "generatedAssetCount": 5216,
-    "sharedOfficialFileCount": 5683,
+    "generatedAssetCount": 5213,
+    "sharedOfficialFileCount": 5677,
     "ambiguousMappingsExcluded": 127,
     "accessoryGripCandidatesExcluded": 243,
     "accessoryLdcadGripCandidatesDisambiguated": 39,
     "accessoryLdcadPrintParentGripCandidatesEvaluated": 12,
     "accessoryMultipleGripCandidatesEvaluated": 108,
-    "accessoryMultipleGripCandidatesPassed": 9,
+    "accessoryMultipleGripCandidatesPassed": 6,
     "accessoryMultipleGripCandidatesAmbiguous": 97,
     "accessoryMultipleGripCandidatesNoSafe": 2,
     "accessoryMultipleGripCandidatesRenderFailed": 0,
+    "accessoryMultipleGripCandidatesSemanticRejected": 3,
     "accessoryPlacementCandidatesEvaluated": 438,
     "accessoryPlacementRenderFailuresExcluded": 0,
-    "accessorySemanticGripRejectionsExcluded": 1,
-    "digitalPlacementPassedCount": 321,
-    "digitalPlacementRejectionsExcluded": 117,
+    "accessorySemanticGripRejectionsExcluded": 4,
+    "digitalPlacementPassedCount": 318,
+    "digitalPlacementRejectionsExcluded": 120,
     "renderFailuresExcluded": 0,
     "mocFilesUsed": 0
   },
@@ -754341,6 +754073,37 @@
           86,
           73,
           69
+        ]
+      ]
+    },
+    {
+      "rebrickablePartNum": "2516",
+      "ldrawFile": "parts/2516.dat",
+      "reasonCode": "detected-feature-is-not-intended-hand-grip",
+      "collisionSampleCount": 0,
+      "collisionSamplesByPart": {},
+      "gripCandidatesTested": 2,
+      "safeGripCandidatesFound": 1,
+      "orientationCollisionCountsByGrip": [
+        [
+          75,
+          7719,
+          6874,
+          492,
+          175,
+          0,
+          0,
+          0
+        ],
+        [
+          62,
+          164,
+          62,
+          164,
+          4478,
+          666,
+          4499,
+          564
         ]
       ]
     },
@@ -759713,6 +759476,88 @@
           262,
           0,
           0
+        ]
+      ]
+    },
+    {
+      "rebrickablePartNum": "98368",
+      "ldrawFile": "parts/98368.dat",
+      "reasonCode": "detected-feature-is-not-intended-hand-grip",
+      "collisionSampleCount": 0,
+      "collisionSamplesByPart": {},
+      "gripCandidatesTested": 3,
+      "safeGripCandidatesFound": 1,
+      "orientationCollisionCountsByGrip": [
+        [
+          1,
+          728,
+          203,
+          0,
+          156,
+          0,
+          0,
+          654
+        ],
+        [
+          232,
+          74,
+          612,
+          383,
+          16,
+          16,
+          114,
+          143
+        ],
+        [
+          701,
+          232,
+          95,
+          213,
+          111,
+          368,
+          16,
+          15
+        ]
+      ]
+    },
+    {
+      "rebrickablePartNum": "98368pr0002",
+      "ldrawFile": "parts/98368p01.dat",
+      "reasonCode": "detected-feature-is-not-intended-hand-grip",
+      "collisionSampleCount": 0,
+      "collisionSamplesByPart": {},
+      "gripCandidatesTested": 3,
+      "safeGripCandidatesFound": 1,
+      "orientationCollisionCountsByGrip": [
+        [
+          1,
+          740,
+          948,
+          0,
+          156,
+          0,
+          0,
+          1063
+        ],
+        [
+          237,
+          74,
+          612,
+          436,
+          16,
+          22,
+          558,
+          143
+        ],
+        [
+          713,
+          232,
+          95,
+          213,
+          111,
+          844,
+          30,
+          15
         ]
       ]
     }

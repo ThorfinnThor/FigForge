@@ -4,6 +4,16 @@
   "methodology": "A collision-free radius-4 cylinder is not sufficient evidence that the cylinder is the intended minifigure hand grip. Visually confirmed false-positive grip features are versioned here and remain blocked until a source-backed intended connector or a separately reviewed placement profile exists.",
   "reviews": [
     {
+      "rebrickablePartNum": "2516",
+      "catalogName": "Tool Chainsaw / Drill Body",
+      "ldrawFile": "parts/2516.dat",
+      "detectedGripPrimitive": "p/4-4cylc.dat",
+      "detectedGripLengthLdu": 12,
+      "decision": "blocked",
+      "reasonCode": "detected-feature-is-not-intended-hand-grip",
+      "note": "Three-view inspection on 2026-10-11 confirmed that the selected cylinder places the tool body across the figure instead of seating the intended handle in the hand."
+    },
+    {
       "rebrickablePartNum": "2561",
       "catalogName": "Weapon Gun / Flintlock / Musket (Pirate)",
       "ldrawFile": "parts/2561.dat",
@@ -12,6 +22,26 @@
       "decision": "blocked",
       "reasonCode": "detected-feature-is-not-intended-hand-grip",
       "note": "The detected long cylinder follows the musket barrel rather than the intended stock grip, so the resulting placement crosses the figure instead of being held by the handle."
+    },
+    {
+      "rebrickablePartNum": "98368",
+      "catalogName": "Toolbox",
+      "ldrawFile": "parts/98368.dat",
+      "detectedGripPrimitive": "p/4-4cyli.dat",
+      "detectedGripLengthLdu": 12,
+      "decision": "blocked",
+      "reasonCode": "detected-feature-is-not-intended-hand-grip",
+      "note": "Three-view inspection on 2026-10-11 confirmed that the selected internal cylinder rotates the toolbox onto its side instead of suspending it from the top handle."
+    },
+    {
+      "rebrickablePartNum": "98368pr0002",
+      "catalogName": "Toolbox with Classic Space Logo Print",
+      "ldrawFile": "parts/98368p01.dat",
+      "detectedGripPrimitive": "p/4-4cyli.dat",
+      "detectedGripLengthLdu": 12,
+      "decision": "blocked",
+      "reasonCode": "detected-feature-is-not-intended-hand-grip",
+      "note": "This printed toolbox reuses the same visually rejected grip feature as 98368 and would otherwise be rotated onto its side instead of hanging from the top handle."
     }
   ]
 }

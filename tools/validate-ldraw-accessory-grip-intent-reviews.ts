@@ -79,10 +79,14 @@ for (const review of reviews.reviews) {
   assert(placement.placementCandidates.some((entry) =>
     entry.role === "handAccessory"
       && entry.rebrickablePartNum === review.rebrickablePartNum
-      && entry.analysis === "unique-radius-4-cylinder-candidate"
-      && entry.evidence.length === 1
-      && entry.evidence[0]?.primitive === review.detectedGripPrimitive
-      && entry.evidence[0]?.lengthLdu === review.detectedGripLengthLdu
+      && (
+        entry.analysis === "unique-radius-4-cylinder-candidate"
+        || entry.analysis === "multiple-radius-4-cylinder-candidates"
+      )
+      && entry.evidence.some((evidence) =>
+        evidence.primitive === review.detectedGripPrimitive
+          && evidence.lengthLdu === review.detectedGripLengthLdu
+      )
   ));
 }
 assert.equal(expanded.summary.accessorySemanticGripRejectionsExcluded, reviews.reviews.length);

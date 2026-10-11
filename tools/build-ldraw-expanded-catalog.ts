@@ -901,6 +901,7 @@ let accessoryMultipleGripCandidatesPassed = 0;
 let accessoryMultipleGripCandidatesAmbiguous = 0;
 let accessoryMultipleGripCandidatesNoSafe = 0;
 let accessoryMultipleGripCandidatesRenderFailed = 0;
+let accessoryMultipleGripCandidatesSemanticRejected = 0;
 let accessoryPlacementRenderFailuresExcluded = 0;
 let accessorySemanticGripRejectionsExcluded = 0;
 type GeneratedAsset = {
@@ -1069,6 +1070,7 @@ for (const [index, match] of matchedParts.entries()) {
               orientations.map(({ validation }) => validation.collisionSampleCount)
             ),
           });
+          if (match.gripCandidates.length > 1) accessoryMultipleGripCandidatesSemanticRejected += 1;
           accessorySemanticGripRejectionsExcluded += 1;
           continue;
         }
@@ -1245,6 +1247,7 @@ const output = {
     accessoryMultipleGripCandidatesAmbiguous,
     accessoryMultipleGripCandidatesNoSafe,
     accessoryMultipleGripCandidatesRenderFailed,
+    accessoryMultipleGripCandidatesSemanticRejected,
     accessoryPlacementCandidatesEvaluated: matchedParts.filter(({ part }) => part.role === "handAccessory").length,
     accessoryPlacementRenderFailuresExcluded,
     accessorySemanticGripRejectionsExcluded,

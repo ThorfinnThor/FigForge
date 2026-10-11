@@ -34,17 +34,17 @@
   },
   "summary": {
     "catalogPartCount": 20271,
-    "visualizedPartCount": 14891,
-    "builderReadyPartCount": 14889,
-    "remainingCatalogPartCount": 5382,
-    "remainingWithoutVisualizationCount": 5380,
+    "visualizedPartCount": 14888,
+    "builderReadyPartCount": 14886,
+    "remainingCatalogPartCount": 5385,
+    "remainingWithoutVisualizationCount": 5383,
     "uniqueOfficialMappingCount": 2841,
     "ambiguousOfficialMappingCount": 168,
     "noOfficialMappingCount": 17262,
     "remainingClassifications": {
       "builder-blocked": 2,
       "render-failed": 0,
-      "placement-profile-required": 362,
+      "placement-profile-required": 365,
       "reviewed-incompatible-assembly": 95,
       "ambiguous-official-mapping": 13,
       "no-official-mapping": 4910
@@ -105,12 +105,12 @@
     },
     "handAccessory": {
       "catalogPartCount": 1310,
-      "builderReadyPartCount": 323,
-      "remainingCatalogPartCount": 987,
+      "builderReadyPartCount": 320,
+      "remainingCatalogPartCount": 990,
       "remainingClassifications": {
         "builder-blocked": 1,
         "render-failed": 0,
-        "placement-profile-required": 360,
+        "placement-profile-required": 363,
         "reviewed-incompatible-assembly": 0,
         "ambiguous-official-mapping": 4,
         "no-official-mapping": 622
@@ -44775,6 +44775,20 @@
       "reason": null
     },
     {
+      "catalogId": "part:2516",
+      "role": "handAccessory",
+      "rebrickablePartNum": "2516",
+      "name": "Tool Chainsaw / Drill Body",
+      "classification": "placement-profile-required",
+      "ldrawFiles": [
+        "parts/2516.dat"
+      ],
+      "mappingEvidence": [
+        "exact-filename"
+      ],
+      "reason": null
+    },
+    {
       "catalogId": "part:2519pr0001",
       "role": "handAccessory",
       "rebrickablePartNum": "2519pr0001",
@@ -55465,6 +55479,20 @@
       "reason": null
     },
     {
+      "catalogId": "part:98368",
+      "role": "handAccessory",
+      "rebrickablePartNum": "98368",
+      "name": "Toolbox",
+      "classification": "placement-profile-required",
+      "ldrawFiles": [
+        "parts/98368.dat"
+      ],
+      "mappingEvidence": [
+        "exact-filename"
+      ],
+      "reason": null
+    },
+    {
       "catalogId": "part:98368pr0001",
       "role": "handAccessory",
       "rebrickablePartNum": "98368pr0001",
@@ -55472,6 +55500,20 @@
       "classification": "no-official-mapping",
       "ldrawFiles": [],
       "mappingEvidence": [],
+      "reason": null
+    },
+    {
+      "catalogId": "part:98368pr0002",
+      "role": "handAccessory",
+      "rebrickablePartNum": "98368pr0002",
+      "name": "Toolbox with Classic Space Logo Print",
+      "classification": "placement-profile-required",
+      "ldrawFiles": [
+        "parts/98368p01.dat"
+      ],
+      "mappingEvidence": [
+        "explicit-keyword"
+      ],
       "reason": null
     },
     {

@@ -118,7 +118,9 @@ assert.deepEqual(
 );
 const expectedRemainingUnique = new Set([
   ...blocked.map(({ rebrickablePartNum }) => rebrickablePartNum),
-  ...intentReviews.reviews.map(({ rebrickablePartNum }) => rebrickablePartNum),
+  ...intentReviews.reviews
+    .filter(({ rebrickablePartNum }) => remainingUnique.has(rebrickablePartNum))
+    .map(({ rebrickablePartNum }) => rebrickablePartNum),
 ]);
 assert.equal(placement.summary.uniqueRadius4CandidateCount, expectedRemainingUnique.size);
 assert.deepEqual(remainingUnique, expectedRemainingUnique);
