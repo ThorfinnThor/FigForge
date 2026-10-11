@@ -35,6 +35,11 @@ for (const entry of review.entries) {
   if (entry.reviewStatus !== "pending-human-visual-review" || entry.reviewer !== null || entry.reviewedAt !== null) {
     throw new Error(`Review queue contains an unreviewed entry with a result: ${entry.componentId}`);
   }
+  const expectedScore = 1
+    + (entry.riskFlags.includes("non-default-orientation") ? 1 : 0)
+    + (entry.riskFlags.includes("long-accessory-extent") ? 1 : 0)
+    + (entry.riskFlags.includes("multiple-grip-candidates") ? 2 : 0);
+  if (entry.priorityScore !== expectedScore) throw new Error(`Priority score is stale: ${entry.componentId}`);
   if (entry.reviewViews.join(",") !== "three-quarter,front,back") throw new Error(`Review views are incomplete: ${entry.componentId}`);
 }
 

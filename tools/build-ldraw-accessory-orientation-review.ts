@@ -71,6 +71,10 @@ const entries = runtime.entries.map((runtimeEntry) => {
     ...(Math.max(...validation.modelBoundsLdu.size) > 120 ? ["long-accessory-extent" as const] : []),
     ...(validation.gripCandidatesTested > 1 ? ["multiple-grip-candidates" as const] : []),
   ];
+  const priorityScore = 1
+    + (riskFlags.includes("non-default-orientation") ? 1 : 0)
+    + (riskFlags.includes("long-accessory-extent") ? 1 : 0)
+    + (riskFlags.includes("multiple-grip-candidates") ? 2 : 0);
   return {
     id: `accessory-orientation-review:${runtimeEntry.rebrickablePartNum}`,
     componentId: runtimeEntry.componentId,
@@ -92,13 +96,18 @@ const entries = runtime.entries.map((runtimeEntry) => {
     },
     reviewViews: ["three-quarter", "front", "back"] as const,
     riskFlags,
+    priorityScore,
+    priorityTier: priorityScore >= 3 ? "high" as const : priorityScore === 2 ? "medium" as const : "standard" as const,
+    queueRank: 0,
     reviewStatus: "pending-human-visual-review" as const,
     requiredChecks,
     reviewer: null,
     reviewedAt: null,
     evidenceReference: null,
   };
-});
+}).sort((left, right) => right.priorityScore - left.priorityScore || left.rebrickablePartNum.localeCompare(right.rebrickablePartNum));
+
+entries.forEach((entry, index) => { entry.queueRank = index + 1; });
 
 const document = ldrawAccessoryOrientationReviewSchema.parse({
   schemaVersion: 1,
@@ -117,6 +126,8 @@ const document = ldrawAccessoryOrientationReviewSchema.parse({
     nonDefaultOrientationCount: entries.filter(({ riskFlags }) => riskFlags.includes("non-default-orientation")).length,
     longAccessoryExtentCount: entries.filter(({ riskFlags }) => riskFlags.includes("long-accessory-extent")).length,
     multipleGripCandidateCount: entries.filter(({ riskFlags }) => riskFlags.includes("multiple-grip-candidates")).length,
+    highPriorityCount: entries.filter(({ priorityTier }) => priorityTier === "high").length,
+    mediumPriorityCount: entries.filter(({ priorityTier }) => priorityTier === "medium").length,
   },
   limitations: [
     "Die Warteschlange beweist keine physische Passform und keine visuell richtige Ausrichtung.",

@@ -11,6 +11,11 @@ describe("accessory orientation review queue", () => {
   it("covers every digitally connected hand accessory without approving visual fit", () => {
     expect(review.entries).toHaveLength(runtimeJson.entries.length);
     expect(review.summary.pendingReviewCount).toBe(review.entries.length);
+    expect(review.summary.highPriorityCount).toBeGreaterThan(0);
+    expect(review.entries[0]?.priorityTier).toBe("high");
+    expect(review.entries.map(({ queueRank }) => queueRank)).toEqual(
+      review.entries.map((_, index) => index + 1),
+    );
     expect(review.entries.every(({ reviewStatus, reviewer }) =>
       reviewStatus === "pending-human-visual-review" && reviewer === null,
     )).toBe(true);

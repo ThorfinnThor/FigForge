@@ -14,6 +14,7 @@ const componentIdSchema = z
 
 const sha256Schema = z.string().regex(/^[a-f0-9]{64}$/u);
 const reviewViewSchema = z.enum(["three-quarter", "front", "back"]);
+const priorityTierSchema = z.enum(["high", "medium", "standard"]);
 const riskFlagSchema = z.enum([
   "non-default-orientation",
   "long-accessory-extent",
@@ -44,6 +45,9 @@ const entrySchema = z
       .strict(),
     reviewViews: z.array(reviewViewSchema).length(3),
     riskFlags: z.array(riskFlagSchema),
+    priorityScore: z.number().int().positive(),
+    priorityTier: priorityTierSchema,
+    queueRank: z.number().int().positive(),
     reviewStatus: z.literal("pending-human-visual-review"),
     requiredChecks: z.array(z.string().min(1).max(300)).min(3),
     reviewer: z.null(),
@@ -73,6 +77,8 @@ export const ldrawAccessoryOrientationReviewSchema = z
         nonDefaultOrientationCount: z.number().int().nonnegative(),
         longAccessoryExtentCount: z.number().int().nonnegative(),
         multipleGripCandidateCount: z.number().int().nonnegative(),
+        highPriorityCount: z.number().int().nonnegative(),
+        mediumPriorityCount: z.number().int().nonnegative(),
       })
       .strict(),
     limitations: z.array(z.string().min(1).max(800)).min(2),
@@ -88,6 +94,17 @@ export const ldrawAccessoryOrientationReviewSchema = z
     const ids = document.entries.map(({ componentId }) => componentId);
     if (new Set(ids).size !== ids.length) {
       context.addIssue({ code: "custom", path: ["entries"], message: "Review queue component IDs must be unique" });
+    }
+    const derivedTier = (score: number): "high" | "medium" | "standard" =>
+      score >= 3 ? "high" : score === 2 ? "medium" : "standard";
+    for (const [index, entry] of document.entries.entries()) {
+      const expectedScore = 1
+        + (entry.riskFlags.includes("non-default-orientation") ? 1 : 0)
+        + (entry.riskFlags.includes("long-accessory-extent") ? 1 : 0)
+        + (entry.riskFlags.includes("multiple-grip-candidates") ? 2 : 0);
+      if (entry.priorityScore !== expectedScore || entry.priorityTier !== derivedTier(expectedScore) || entry.queueRank !== index + 1) {
+        context.addIssue({ code: "custom", path: ["entries", index], message: "Priority metadata is stale" });
+      }
     }
     for (const entry of document.entries) {
       if (entry.reviewViews.join(",") !== "three-quarter,front,back") {

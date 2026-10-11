@@ -10,7 +10,7 @@ Der digitale LDraw-Check kann Kollisionsfreiheit, Griffkandidaten und einen repr
 
 ## Entscheidung
 
-Für alle aktuell digital verbundenen Handzubehörteile wird aus den generierten Laufzeit- und Validierungsdaten eine nicht veröffentlichbare Review-Warteschlange erzeugt. Jeder Eintrag enthält die drei verbindlichen Ansichten, den verwendeten Transformationskandidaten, die digitale Evidenz und Risikomarker wie nicht standardmäßige Orientierung, große Ausdehnung oder mehrere Griffkandidaten. Alle Einträge bleiben bis zur dokumentierten Sichtprüfung im Status `pending-human-visual-review`.
+Für alle aktuell digital verbundenen Handzubehörteile wird aus den generierten Laufzeit- und Validierungsdaten eine nicht veröffentlichbare Review-Warteschlange erzeugt. Jeder Eintrag enthält die drei verbindlichen Ansichten, den verwendeten Transformationskandidaten, die digitale Evidenz und Risikomarker wie nicht standardmäßige Orientierung, große Ausdehnung oder mehrere Griffkandidaten. Ein reproduzierbarer Prioritätswert sortiert Fälle mit mehreren Griffkandidaten zuerst, danach ungewöhnliche Rotation und große Ausdehnung. Alle Einträge bleiben bis zur dokumentierten Sichtprüfung im Status `pending-human-visual-review`.
 
 Die Warteschlange ergänzt die bestehenden Clearance- und Semantic-Grip-Prüfungen. Sie aktiviert keine zusätzlichen Teile automatisch und ersetzt keine physische Passformprüfung.
 
