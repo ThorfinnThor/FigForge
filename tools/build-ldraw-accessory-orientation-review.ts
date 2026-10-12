@@ -82,6 +82,7 @@ const entries = runtime.entries.map((runtimeEntry) => {
     + (riskFlags.includes("long-accessory-extent") ? 1 : 0)
     + (riskFlags.includes("multiple-grip-candidates") ? 2 : 0);
   const placementReview = placementReviewByPartNum.get(runtimeEntry.rebrickablePartNum.trim().toLowerCase());
+  const approvedPlacementReview = placementReview?.decision === "approved" ? placementReview : undefined;
   return {
     id: `accessory-orientation-review:${runtimeEntry.rebrickablePartNum}`,
     componentId: runtimeEntry.componentId,
@@ -106,11 +107,11 @@ const entries = runtime.entries.map((runtimeEntry) => {
     priorityScore,
     priorityTier: priorityScore >= 3 ? "high" as const : priorityScore === 2 ? "medium" as const : "standard" as const,
     queueRank: 0,
-    reviewStatus: placementReview ? "approved-browser-visual-review" as const : "pending-human-visual-review" as const,
+    reviewStatus: approvedPlacementReview ? "approved-browser-visual-review" as const : "pending-human-visual-review" as const,
     requiredChecks,
-    reviewer: placementReview?.reviewer ?? null,
-    reviewedAt: placementReview?.reviewedAt ?? null,
-    evidenceReference: placementReview?.evidenceReference ?? null,
+    reviewer: approvedPlacementReview?.reviewer ?? null,
+    reviewedAt: approvedPlacementReview?.reviewedAt ?? null,
+    evidenceReference: approvedPlacementReview?.evidenceReference ?? null,
   };
 }).sort((left, right) => right.priorityScore - left.priorityScore || left.rebrickablePartNum.localeCompare(right.rebrickablePartNum));
 

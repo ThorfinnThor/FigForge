@@ -34,17 +34,17 @@
   },
   "summary": {
     "catalogPartCount": 20271,
-    "visualizedPartCount": 14879,
-    "builderReadyPartCount": 14877,
-    "remainingCatalogPartCount": 5394,
-    "remainingWithoutVisualizationCount": 5392,
+    "visualizedPartCount": 14875,
+    "builderReadyPartCount": 14873,
+    "remainingCatalogPartCount": 5398,
+    "remainingWithoutVisualizationCount": 5396,
     "uniqueOfficialMappingCount": 2841,
     "ambiguousOfficialMappingCount": 168,
     "noOfficialMappingCount": 17262,
     "remainingClassifications": {
       "builder-blocked": 2,
       "render-failed": 0,
-      "placement-profile-required": 374,
+      "placement-profile-required": 378,
       "reviewed-incompatible-assembly": 95,
       "ambiguous-official-mapping": 13,
       "no-official-mapping": 4910
@@ -105,12 +105,12 @@
     },
     "handAccessory": {
       "catalogPartCount": 1310,
-      "builderReadyPartCount": 311,
-      "remainingCatalogPartCount": 999,
+      "builderReadyPartCount": 307,
+      "remainingCatalogPartCount": 1003,
       "remainingClassifications": {
         "builder-blocked": 1,
         "render-failed": 0,
-        "placement-profile-required": 372,
+        "placement-profile-required": 376,
         "reviewed-incompatible-assembly": 0,
         "ambiguous-official-mapping": 4,
         "no-official-mapping": 622
@@ -47975,6 +47975,34 @@
       "reason": null
     },
     {
+      "catalogId": "part:13808",
+      "role": "handAccessory",
+      "rebrickablePartNum": "13808",
+      "name": "Musical Instrument Saxophone",
+      "classification": "placement-profile-required",
+      "ldrawFiles": [
+        "parts/13808.dat"
+      ],
+      "mappingEvidence": [
+        "exact-filename"
+      ],
+      "reason": null
+    },
+    {
+      "catalogId": "part:13808pr0001",
+      "role": "handAccessory",
+      "rebrickablePartNum": "13808pr0001",
+      "name": "Musical Instrument Saxophone with Black Mouthpiece Print",
+      "classification": "placement-profile-required",
+      "ldrawFiles": [
+        "parts/13808p01.dat"
+      ],
+      "mappingEvidence": [
+        "explicit-keyword"
+      ],
+      "reason": null
+    },
+    {
       "catalogId": "part:13882",
       "role": "handAccessory",
       "rebrickablePartNum": "13882",
@@ -48361,6 +48389,20 @@
       ],
       "mappingEvidence": [
         "explicit-keyword"
+      ],
+      "reason": null
+    },
+    {
+      "catalogId": "part:19141",
+      "role": "handAccessory",
+      "rebrickablePartNum": "19141",
+      "name": "Equipment Scabbard for Two Swords",
+      "classification": "placement-profile-required",
+      "ldrawFiles": [
+        "parts/19141.dat"
+      ],
+      "mappingEvidence": [
+        "exact-filename"
       ],
       "reason": null
     },
@@ -51802,6 +51844,20 @@
       "mappingEvidence": [
         "exact-filename",
         "explicit-keyword"
+      ],
+      "reason": null
+    },
+    {
+      "catalogId": "part:60674",
+      "role": "handAccessory",
+      "rebrickablePartNum": "60674",
+      "name": "Weapon Club Large (Troll)",
+      "classification": "placement-profile-required",
+      "ldrawFiles": [
+        "parts/60674.dat"
+      ],
+      "mappingEvidence": [
+        "exact-filename"
       ],
       "reason": null
     },

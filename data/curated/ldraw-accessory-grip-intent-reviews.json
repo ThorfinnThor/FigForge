@@ -132,6 +132,16 @@
       "decision": "blocked",
       "reasonCode": "detected-feature-is-not-intended-hand-grip",
       "note": "Three-view inspection on 2026-10-12 confirmed that the detected cylinder is the axle hole for a separate handle, not a complete minifigure hand grip."
+    },
+    {
+      "rebrickablePartNum": "19141",
+      "catalogName": "Equipment Scabbard for Two Swords",
+      "ldrawFile": "parts/19141.dat",
+      "detectedGripPrimitive": "p/4-4cylc.dat",
+      "detectedGripLengthLdu": 10,
+      "decision": "blocked",
+      "reasonCode": "detected-feature-is-not-intended-hand-grip",
+      "note": "Three-view inspection on 2026-10-12 confirmed that this is a worn two-sword scabbard, not a hand-held accessory; the detected cylinder must not be used as a minifigure hand grip."
     }
   ]
 }

@@ -911,6 +911,7 @@ let accessoryMultipleGripCandidatesRenderFailed = 0;
 let accessoryMultipleGripCandidatesSemanticRejected = 0;
 let accessoryPlacementRenderFailuresExcluded = 0;
 let accessorySemanticGripRejectionsExcluded = 0;
+let accessoryVisualPlacementRejectionsExcluded = 0;
 type GeneratedAsset = {
   modelUrl: string;
   modelSha256: string;
@@ -1035,8 +1036,7 @@ for (const [index, match] of matchedParts.entries()) {
           : undefined;
         if (placementReview) {
           if (
-            placementReview.decision !== "approved"
-            || candidate.file !== placementReview.ldrawFile
+            candidate.file !== placementReview.ldrawFile
             || match.gripCandidates.length !== placementReview.gripCandidatesTested
             || reviewedGrip?.evidence.primitive !== placementReview.detectedGripPrimitive
             || reviewedGrip.evidence.lengthLdu !== placementReview.detectedGripLengthLdu
@@ -1044,6 +1044,16 @@ for (const [index, match] of matchedParts.entries()) {
             || !reviewedOrientation
           ) {
             throw new Error(`Stale visual placement review for ${part.rebrickablePartNum}`);
+          }
+          if (
+            placementReview.decision === "blocked"
+            && (
+              automaticSelection.status !== "passed"
+              || automaticSelection.selectedGripCandidateIndex !== placementReview.selectedGripCandidateIndex
+              || automaticSelection.selectedOrientationIndex !== placementReview.selectedOrientationIndex
+            )
+          ) {
+            throw new Error(`Stale blocked visual placement review for ${part.rebrickablePartNum}`);
           }
           if (reviewedOrientation.validation.status !== "passed") {
             const safeOrientationIndexes = gripEvaluations[placementReview.selectedGripCandidateIndex]!
@@ -1057,7 +1067,7 @@ for (const [index, match] of matchedParts.entries()) {
             );
           }
         }
-        const selection = placementReview
+        const selection = placementReview?.decision === "approved"
           ? {
             status: "passed" as const,
             reasonCode: null,
@@ -1097,6 +1107,23 @@ for (const [index, match] of matchedParts.entries()) {
         const selectedGrip = match.gripCandidates[selection.selectedGripCandidateIndex];
         const selected = gripEvaluations[selection.selectedGripCandidateIndex]?.orientations[selection.selectedOrientationIndex];
         if (!selectedGrip || !selected) throw new Error("Selected accessory placement is missing");
+        if (placementReview?.decision === "blocked") {
+          digitalPlacementRejections.push({
+            rebrickablePartNum: part.rebrickablePartNum,
+            ldrawFile: candidate.file,
+            reasonCode: placementReview.reasonCode,
+            collisionSampleCount: selected.validation.collisionSampleCount,
+            collisionSamplesByPart: selected.validation.collisionSamplesByPart,
+            gripCandidatesTested: gripEvaluations.length,
+            safeGripCandidatesFound: selection.safeGripCandidatesFound,
+            orientationCollisionCountsByGrip: gripEvaluations.map(({ orientations }) =>
+              orientations.map(({ validation }) => validation.collisionSampleCount)
+            ),
+            selectedGripEvidence: selectedGrip.evidence,
+          });
+          accessoryVisualPlacementRejectionsExcluded += 1;
+          continue;
+        }
         const intentReview = accessoryGripIntentReviewByPartNum.get(normalize(part.rebrickablePartNum));
         if (intentReview?.decision === "blocked") {
           if (
@@ -1307,6 +1334,7 @@ const output = {
     accessoryPlacementCandidatesEvaluated: matchedParts.filter(({ part }) => part.role === "handAccessory").length,
     accessoryPlacementRenderFailuresExcluded,
     accessorySemanticGripRejectionsExcluded,
+    accessoryVisualPlacementRejectionsExcluded,
     digitalPlacementPassedCount: outputEntries.filter(({ role }) => role === "handAccessory").length,
     digitalPlacementRejectionsExcluded: digitalPlacementRejections.length,
     renderFailuresExcluded: skippedEntries.length,

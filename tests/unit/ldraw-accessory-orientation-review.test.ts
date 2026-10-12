@@ -12,14 +12,15 @@ describe("accessory orientation review queue", () => {
   it("covers every digitally connected hand accessory and preserves curated visual approvals", () => {
     expect(review.entries).toHaveLength(runtimeJson.entries.length);
     expect(review.summary.pendingReviewCount + review.summary.approvedReviewCount).toBe(review.entries.length);
-    expect(review.summary.approvedReviewCount).toBe(placementReviewsJson.reviews.length);
+    const approvedReviews = placementReviewsJson.reviews.filter(({ decision }) => decision === "approved");
+    expect(review.summary.approvedReviewCount).toBe(approvedReviews.length);
     expect(
       review.entries
         .filter(({ reviewStatus }) => reviewStatus === "approved-browser-visual-review")
         .map(({ rebrickablePartNum }) => rebrickablePartNum)
         .sort(),
     ).toEqual(
-      placementReviewsJson.reviews
+      approvedReviews
         .map(({ rebrickablePartNum }) => rebrickablePartNum)
         .sort(),
     );

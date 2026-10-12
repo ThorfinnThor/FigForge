@@ -22,8 +22,8 @@
     "automaticBuilderEnablements": 0
   },
   "summary": {
-    "placementProfileRequiredCount": 374,
-    "uniqueRadius4CandidateCount": 16,
+    "placementProfileRequiredCount": 378,
+    "uniqueRadius4CandidateCount": 20,
     "multipleRadius4CandidateCount": 113,
     "noRadius4CylinderDetectedCount": 243,
     "roleSpecificAssemblyProfileRequiredCount": 2,
@@ -6530,6 +6530,142 @@
       "limitation": "Official LDraw files can encode shafts as direct mesh triangles, so absence of a cylinder primitive is not proof that no grip exists."
     },
     {
+      "catalogId": "part:13808",
+      "role": "handAccessory",
+      "rebrickablePartNum": "13808",
+      "name": "Musical Instrument Saxophone",
+      "ldrawFiles": [
+        "parts/13808.dat"
+      ],
+      "mappingEvidence": [
+        "exact-filename"
+      ],
+      "analysis": "unique-radius-4-cylinder-candidate",
+      "evidence": [
+        {
+          "primitive": "p/4-4cyli.dat",
+          "radiusLdu": 4,
+          "lengthLdu": 14.622,
+          "centerLdu": [
+            0,
+            -7.311,
+            0
+          ],
+          "axis": [
+            0,
+            -1,
+            0
+          ],
+          "sourceConnectorTransformLdu": [
+            0,
+            0,
+            1,
+            0,
+            0,
+            -1,
+            0,
+            0,
+            -1,
+            0,
+            0,
+            0,
+            0,
+            -7.311,
+            0,
+            1
+          ]
+        }
+      ],
+      "proposedPlacementTransformLdu": [
+        0.146464,
+        0.848563,
+        -0.507414,
+        0,
+        -0.086268,
+        -0.499806,
+        -0.861479,
+        0,
+        0.985,
+        -0.17,
+        0,
+        0,
+        24.150194,
+        29.437901,
+        -23.773997,
+        1
+      ],
+      "automaticBuilderEnablement": false,
+      "limitation": "A radius-4 cylinder is geometric evidence only; it may be decorative or unsuitable as the intended hand grip."
+    },
+    {
+      "catalogId": "part:13808pr0001",
+      "role": "handAccessory",
+      "rebrickablePartNum": "13808pr0001",
+      "name": "Musical Instrument Saxophone with Black Mouthpiece Print",
+      "ldrawFiles": [
+        "parts/13808p01.dat"
+      ],
+      "mappingEvidence": [
+        "explicit-keyword"
+      ],
+      "analysis": "unique-radius-4-cylinder-candidate",
+      "evidence": [
+        {
+          "primitive": "p/4-4cyli.dat",
+          "radiusLdu": 4,
+          "lengthLdu": 14.622,
+          "centerLdu": [
+            0,
+            -7.311,
+            0
+          ],
+          "axis": [
+            0,
+            -1,
+            0
+          ],
+          "sourceConnectorTransformLdu": [
+            0,
+            0,
+            1,
+            0,
+            0,
+            -1,
+            0,
+            0,
+            -1,
+            0,
+            0,
+            0,
+            0,
+            -7.311,
+            0,
+            1
+          ]
+        }
+      ],
+      "proposedPlacementTransformLdu": [
+        0.146464,
+        0.848563,
+        -0.507414,
+        0,
+        -0.086268,
+        -0.499806,
+        -0.861479,
+        0,
+        0.985,
+        -0.17,
+        0,
+        0,
+        24.150194,
+        29.437901,
+        -23.773997,
+        1
+      ],
+      "automaticBuilderEnablement": false,
+      "limitation": "A radius-4 cylinder is geometric evidence only; it may be decorative or unsuitable as the intended hand grip."
+    },
+    {
       "catalogId": "part:15496",
       "role": "handAccessory",
       "rebrickablePartNum": "15496",
@@ -6765,6 +6901,74 @@
       "proposedPlacementTransformLdu": null,
       "automaticBuilderEnablement": false,
       "limitation": "Official LDraw files can encode shafts as direct mesh triangles, so absence of a cylinder primitive is not proof that no grip exists."
+    },
+    {
+      "catalogId": "part:19141",
+      "role": "handAccessory",
+      "rebrickablePartNum": "19141",
+      "name": "Equipment Scabbard for Two Swords",
+      "ldrawFiles": [
+        "parts/19141.dat"
+      ],
+      "mappingEvidence": [
+        "exact-filename"
+      ],
+      "analysis": "unique-radius-4-cylinder-candidate",
+      "evidence": [
+        {
+          "primitive": "p/4-4cylc.dat",
+          "radiusLdu": 4,
+          "lengthLdu": 10,
+          "centerLdu": [
+            0,
+            5,
+            0
+          ],
+          "axis": [
+            0,
+            -1,
+            0
+          ],
+          "sourceConnectorTransformLdu": [
+            1,
+            0,
+            0,
+            0,
+            0,
+            -1,
+            0,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            5,
+            0,
+            1
+          ]
+        }
+      ],
+      "proposedPlacementTransformLdu": [
+        0.985,
+        -0.17,
+        0,
+        0,
+        -0.086268,
+        -0.499806,
+        -0.861479,
+        0,
+        -0.146464,
+        -0.848563,
+        0.507414,
+        0,
+        25.212234,
+        35.591016,
+        -13.168322,
+        1
+      ],
+      "automaticBuilderEnablement": false,
+      "limitation": "A radius-4 cylinder is geometric evidence only; it may be decorative or unsuitable as the intended hand grip."
     },
     {
       "catalogId": "part:20398c01",
@@ -12125,6 +12329,74 @@
       "proposedPlacementTransformLdu": null,
       "automaticBuilderEnablement": false,
       "limitation": "Official LDraw files can encode shafts as direct mesh triangles, so absence of a cylinder primitive is not proof that no grip exists."
+    },
+    {
+      "catalogId": "part:60674",
+      "role": "handAccessory",
+      "rebrickablePartNum": "60674",
+      "name": "Weapon Club Large (Troll)",
+      "ldrawFiles": [
+        "parts/60674.dat"
+      ],
+      "mappingEvidence": [
+        "exact-filename"
+      ],
+      "analysis": "unique-radius-4-cylinder-candidate",
+      "evidence": [
+        {
+          "primitive": "p/4-4cylc.dat",
+          "radiusLdu": 4,
+          "lengthLdu": 25.9,
+          "centerLdu": [
+            0,
+            0.05,
+            0
+          ],
+          "axis": [
+            0,
+            -1,
+            0
+          ],
+          "sourceConnectorTransformLdu": [
+            1,
+            0,
+            0,
+            0,
+            0,
+            -1,
+            0,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0.05,
+            0,
+            1
+          ]
+        }
+      ],
+      "proposedPlacementTransformLdu": [
+        0.985,
+        -0.17,
+        0,
+        0,
+        -0.086268,
+        -0.499806,
+        -0.861479,
+        0,
+        -0.146464,
+        -0.848563,
+        0.507414,
+        0,
+        24.78521,
+        33.116975,
+        -17.432646,
+        1
+      ],
+      "automaticBuilderEnablement": false,
+      "limitation": "A radius-4 cylinder is geometric evidence only; it may be decorative or unsuitable as the intended hand grip."
     },
     {
       "catalogId": "part:61856",
