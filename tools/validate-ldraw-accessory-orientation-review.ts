@@ -32,8 +32,12 @@ for (const entry of review.entries) {
   if (!expandedEntry || expandedEntry.role !== "handAccessory" || expandedEntry.digitalValidation?.status !== "passed") {
     throw new Error(`Review queue entry has no passed expanded evidence: ${entry.componentId}`);
   }
-  if (entry.reviewStatus !== "pending-human-visual-review" || entry.reviewer !== null || entry.reviewedAt !== null) {
-    throw new Error(`Review queue contains an unreviewed entry with a result: ${entry.componentId}`);
+  const pending = entry.reviewStatus === "pending-human-visual-review";
+  if (
+    (pending && (entry.reviewer !== null || entry.reviewedAt !== null || entry.evidenceReference !== null))
+    || (!pending && (entry.reviewer === null || entry.reviewedAt === null || entry.evidenceReference === null))
+  ) {
+    throw new Error(`Review queue evidence does not match status: ${entry.componentId}`);
   }
   const expectedScore = 1
     + (entry.riskFlags.includes("non-default-orientation") ? 1 : 0)

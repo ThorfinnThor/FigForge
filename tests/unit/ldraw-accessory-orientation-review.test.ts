@@ -8,17 +8,20 @@ import { ldrawAccessoryOrientationReviewSchema } from "../../src/contracts/ldraw
 const review = ldrawAccessoryOrientationReviewSchema.parse(reviewJson);
 
 describe("accessory orientation review queue", () => {
-  it("covers every digitally connected hand accessory without approving visual fit", () => {
+  it("covers every digitally connected hand accessory and preserves curated visual approvals", () => {
     expect(review.entries).toHaveLength(runtimeJson.entries.length);
-    expect(review.summary.pendingReviewCount).toBe(review.entries.length);
+    expect(review.summary.pendingReviewCount + review.summary.approvedReviewCount).toBe(review.entries.length);
+    expect(review.summary.approvedReviewCount).toBe(1);
     expect(review.summary.highPriorityCount).toBeGreaterThan(0);
     expect(review.entries[0]?.priorityTier).toBe("high");
     expect(review.entries.map(({ queueRank }) => queueRank)).toEqual(
       review.entries.map((_, index) => index + 1),
     );
-    expect(review.entries.every(({ reviewStatus, reviewer }) =>
-      reviewStatus === "pending-human-visual-review" && reviewer === null,
-    )).toBe(true);
+    expect(review.entries.find(({ rebrickablePartNum }) => rebrickablePartNum === "2530")).toMatchObject({
+      reviewStatus: "approved-browser-visual-review",
+      reviewer: "Codex Sol browser QA",
+      reviewedAt: "2026-10-12",
+    });
     expect(review.entries.every(({ reviewViews }) =>
       reviewViews.join(",") === "three-quarter,front,back",
     )).toBe(true);
