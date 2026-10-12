@@ -1,6 +1,7 @@
 import { createHash } from "node:crypto";
 import { readFile } from "node:fs/promises";
 import { describe, expect, it } from "vitest";
+import placementReviewsJson from "../../data/curated/ldraw-accessory-placement-reviews.json" with { type: "json" };
 import reviewJson from "../../data/generated/ldraw-accessory-orientation-review.json" with { type: "json" };
 import runtimeJson from "../../data/generated/ldraw-runtime/hand-accessory.json" with { type: "json" };
 import { ldrawAccessoryOrientationReviewSchema } from "../../src/contracts/ldraw-accessory-orientation-review.js";
@@ -11,7 +12,17 @@ describe("accessory orientation review queue", () => {
   it("covers every digitally connected hand accessory and preserves curated visual approvals", () => {
     expect(review.entries).toHaveLength(runtimeJson.entries.length);
     expect(review.summary.pendingReviewCount + review.summary.approvedReviewCount).toBe(review.entries.length);
-    expect(review.summary.approvedReviewCount).toBe(1);
+    expect(review.summary.approvedReviewCount).toBe(placementReviewsJson.reviews.length);
+    expect(
+      review.entries
+        .filter(({ reviewStatus }) => reviewStatus === "approved-browser-visual-review")
+        .map(({ rebrickablePartNum }) => rebrickablePartNum)
+        .sort(),
+    ).toEqual(
+      placementReviewsJson.reviews
+        .map(({ rebrickablePartNum }) => rebrickablePartNum)
+        .sort(),
+    );
     expect(review.summary.highPriorityCount).toBeGreaterThan(0);
     expect(review.entries[0]?.priorityTier).toBe("high");
     expect(review.entries.map(({ queueRank }) => queueRank)).toEqual(
