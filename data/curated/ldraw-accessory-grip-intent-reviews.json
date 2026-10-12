@@ -1,0 +1,117 @@
+{
+  "schemaVersion": 1,
+  "sourcePolicy": "Nur Rebrickable Catalog Downloads/CSV, keine MOC-Dateien.",
+  "methodology": "A collision-free radius-4 cylinder is not sufficient evidence that the cylinder is the intended minifigure hand grip. Visually confirmed false-positive grip features are versioned here and remain blocked until a source-backed intended connector or a separately reviewed placement profile exists.",
+  "reviews": [
+    {
+      "rebrickablePartNum": "2516",
+      "catalogName": "Tool Chainsaw / Drill Body",
+      "ldrawFile": "parts/2516.dat",
+      "detectedGripPrimitive": "p/4-4cylc.dat",
+      "detectedGripLengthLdu": 12,
+      "decision": "blocked",
+      "reasonCode": "detected-feature-is-not-intended-hand-grip",
+      "note": "Three-view inspection on 2026-10-11 confirmed that the selected cylinder places the tool body across the figure instead of seating the intended handle in the hand."
+    },
+    {
+      "rebrickablePartNum": "2561",
+      "catalogName": "Weapon Gun / Flintlock / Musket (Pirate)",
+      "ldrawFile": "parts/2561.dat",
+      "detectedGripPrimitive": "p/4-4cyli.dat",
+      "detectedGripLengthLdu": 56,
+      "decision": "blocked",
+      "reasonCode": "detected-feature-is-not-intended-hand-grip",
+      "note": "The detected long cylinder follows the musket barrel rather than the intended stock grip, so the resulting placement crosses the figure instead of being held by the handle."
+    },
+    {
+      "rebrickablePartNum": "30092",
+      "catalogName": "Equipment Underwater Scooter, 2 Bar Handles, Octagonal End",
+      "ldrawFile": "parts/30092.dat",
+      "detectedGripPrimitive": "ldcad-shadow:parts/30092.dat#SNAP_CYL:8",
+      "detectedGripLengthLdu": 12,
+      "decision": "blocked",
+      "reasonCode": "detected-feature-is-not-intended-hand-grip",
+      "note": "Three-view inspection on 2026-10-12 confirmed that the single selected handle places the two-handed scooter behind and through the figure instead of in front of both hands."
+    },
+    {
+      "rebrickablePartNum": "30148",
+      "catalogName": "Equipment Camera / Camcorder [Movie Style]",
+      "ldrawFile": "parts/30148.dat",
+      "detectedGripPrimitive": "ldcad-shadow:parts/30148.dat#SNAP_CYL:8",
+      "detectedGripLengthLdu": 24,
+      "decision": "blocked",
+      "reasonCode": "detected-feature-is-not-intended-hand-grip",
+      "note": "Three-view inspection on 2026-10-12 confirmed that the selected cylinder embeds the camcorder across the figure's waist instead of placing its intended handle in the hand."
+    },
+    {
+      "rebrickablePartNum": "37704",
+      "catalogName": "Sports Quidditch Ball, Golden Snitch",
+      "ldrawFile": "parts/37704.dat",
+      "detectedGripPrimitive": "p/4-4cylc.dat",
+      "detectedGripLengthLdu": 8,
+      "decision": "blocked",
+      "reasonCode": "detected-feature-is-not-intended-hand-grip",
+      "note": "Three-view inspection on 2026-10-12 confirmed that the selected cylinder places the Snitch across the figure's waist and torso instead of presenting it plausibly at the hand."
+    },
+    {
+      "rebrickablePartNum": "4349pr0001",
+      "catalogName": "Equipment / Weapon, Loudhailer / Blaster / Space Gun with Orange Stripe Print",
+      "ldrawFile": "parts/4349p01.dat",
+      "detectedGripPrimitive": "p/4-4cylc.dat",
+      "detectedGripLengthLdu": 14.0467,
+      "decision": "blocked",
+      "reasonCode": "detected-feature-is-not-intended-hand-grip",
+      "note": "Three-view inspection on 2026-10-12 confirmed that the selected cylinder places the loudhailer horizontally through the figure's waist instead of seating the intended handle in the hand."
+    },
+    {
+      "rebrickablePartNum": "5330pat0001",
+      "catalogName": "Weapon Hilt with Bar, Hourglass Opal Trans-Light Blue",
+      "ldrawFile": "parts/5330p01.dat",
+      "detectedGripPrimitive": "p/4-4cylc.dat",
+      "detectedGripLengthLdu": 11.4,
+      "decision": "blocked",
+      "reasonCode": "detected-feature-is-not-intended-hand-grip",
+      "note": "Three-view inspection on 2026-10-12 confirmed that the selected bar places the hilt horizontally through the figure's waist instead of presenting it as a hand-held weapon."
+    },
+    {
+      "rebrickablePartNum": "5330pat0002",
+      "catalogName": "Weapon Hilt with Bar, Hourglass Trans-Bright Green",
+      "ldrawFile": "parts/5330p02.dat",
+      "detectedGripPrimitive": "p/4-4cylc.dat",
+      "detectedGripLengthLdu": 11.4,
+      "decision": "blocked",
+      "reasonCode": "detected-feature-is-not-intended-hand-grip",
+      "note": "Same geometry and placement transform as 5330pat0001; the identical three-view false-positive placement is blocked for this color variant as well."
+    },
+    {
+      "rebrickablePartNum": "97793",
+      "catalogName": "Equipment Hand Mixer [Kitchen Implements Kit]",
+      "ldrawFile": "parts/97793.dat",
+      "detectedGripPrimitive": "p/4-4cyli.dat",
+      "detectedGripLengthLdu": 12.5,
+      "decision": "blocked",
+      "reasonCode": "detected-feature-is-not-intended-hand-grip",
+      "note": "Three-view inspection on 2026-10-12 confirmed that the mixer is placed horizontally through the figure's waist instead of being held by its intended handle."
+    },
+    {
+      "rebrickablePartNum": "98368",
+      "catalogName": "Toolbox",
+      "ldrawFile": "parts/98368.dat",
+      "detectedGripPrimitive": "p/4-4cyli.dat",
+      "detectedGripLengthLdu": 12,
+      "decision": "blocked",
+      "reasonCode": "detected-feature-is-not-intended-hand-grip",
+      "note": "Three-view inspection on 2026-10-11 confirmed that the selected internal cylinder rotates the toolbox onto its side instead of suspending it from the top handle."
+    },
+    {
+      "rebrickablePartNum": "98368pr0002",
+      "catalogName": "Toolbox with Classic Space Logo Print",
+      "ldrawFile": "parts/98368p01.dat",
+      "detectedGripPrimitive": "p/4-4cyli.dat",
+      "detectedGripLengthLdu": 12,
+      "decision": "blocked",
+      "reasonCode": "detected-feature-is-not-intended-hand-grip",
+      "note": "This printed toolbox reuses the same visually rejected grip feature as 98368 and would otherwise be rotated onto its side instead of hanging from the top handle."
+    }
+  ]
+}

@@ -62,7 +62,7 @@ export function CollectionPurchaseDialog({
           </Button>
         </header>
 
-        <ShopExportPanel selections={selections} />
+          <ShopExportPanel selections={selections} stepNumber={1} />
 
         <details className="collection-purchase-dialog__backup">
           <summary>{t("collection.purchaseBackupTitle")}</summary>

@@ -34,17 +34,17 @@
   },
   "summary": {
     "catalogPartCount": 20271,
-    "visualizedPartCount": 14892,
-    "builderReadyPartCount": 14890,
-    "remainingCatalogPartCount": 5381,
-    "remainingWithoutVisualizationCount": 5379,
+    "visualizedPartCount": 14881,
+    "builderReadyPartCount": 14879,
+    "remainingCatalogPartCount": 5392,
+    "remainingWithoutVisualizationCount": 5390,
     "uniqueOfficialMappingCount": 2841,
     "ambiguousOfficialMappingCount": 168,
     "noOfficialMappingCount": 17262,
     "remainingClassifications": {
       "builder-blocked": 2,
       "render-failed": 0,
-      "placement-profile-required": 361,
+      "placement-profile-required": 372,
       "reviewed-incompatible-assembly": 95,
       "ambiguous-official-mapping": 13,
       "no-official-mapping": 4910
@@ -105,12 +105,12 @@
     },
     "handAccessory": {
       "catalogPartCount": 1310,
-      "builderReadyPartCount": 324,
-      "remainingCatalogPartCount": 986,
+      "builderReadyPartCount": 313,
+      "remainingCatalogPartCount": 997,
       "remainingClassifications": {
         "builder-blocked": 1,
         "render-failed": 0,
-        "placement-profile-required": 359,
+        "placement-profile-required": 370,
         "reviewed-incompatible-assembly": 0,
         "ambiguous-official-mapping": 4,
         "no-official-mapping": 622
@@ -44775,6 +44775,20 @@
       "reason": null
     },
     {
+      "catalogId": "part:2516",
+      "role": "handAccessory",
+      "rebrickablePartNum": "2516",
+      "name": "Tool Chainsaw / Drill Body",
+      "classification": "placement-profile-required",
+      "ldrawFiles": [
+        "parts/2516.dat"
+      ],
+      "mappingEvidence": [
+        "exact-filename"
+      ],
+      "reason": null
+    },
+    {
       "catalogId": "part:2519pr0001",
       "role": "handAccessory",
       "rebrickablePartNum": "2519pr0001",
@@ -44782,6 +44796,20 @@
       "classification": "no-official-mapping",
       "ldrawFiles": [],
       "mappingEvidence": [],
+      "reason": null
+    },
+    {
+      "catalogId": "part:2561",
+      "role": "handAccessory",
+      "rebrickablePartNum": "2561",
+      "name": "Weapon Gun / Flintlock / Musket (Pirate)",
+      "classification": "placement-profile-required",
+      "ldrawFiles": [
+        "parts/2561.dat"
+      ],
+      "mappingEvidence": [
+        "exact-filename"
+      ],
       "reason": null
     },
     {
@@ -46355,6 +46383,20 @@
       "reason": null
     },
     {
+      "catalogId": "part:4349pr0001",
+      "role": "handAccessory",
+      "rebrickablePartNum": "4349pr0001",
+      "name": "Equipment / Weapon, Loudhailer / Blaster / Space Gun with Orange Stripe Print",
+      "classification": "placement-profile-required",
+      "ldrawFiles": [
+        "parts/4349p01.dat"
+      ],
+      "mappingEvidence": [
+        "explicit-keyword"
+      ],
+      "reason": null
+    },
+    {
       "catalogId": "part:4429",
       "role": "handAccessory",
       "rebrickablePartNum": "4429",
@@ -46606,6 +46648,34 @@
       "classification": "no-official-mapping",
       "ldrawFiles": [],
       "mappingEvidence": [],
+      "reason": null
+    },
+    {
+      "catalogId": "part:5330pat0001",
+      "role": "handAccessory",
+      "rebrickablePartNum": "5330pat0001",
+      "name": "Weapon Hilt with Bar, Hourglass Opal Trans-Light Blue",
+      "classification": "placement-profile-required",
+      "ldrawFiles": [
+        "parts/5330p01.dat"
+      ],
+      "mappingEvidence": [
+        "explicit-keyword"
+      ],
+      "reason": null
+    },
+    {
+      "catalogId": "part:5330pat0002",
+      "role": "handAccessory",
+      "rebrickablePartNum": "5330pat0002",
+      "name": "Weapon Hilt with Bar, Hourglass Trans-Bright Green",
+      "classification": "placement-profile-required",
+      "ldrawFiles": [
+        "parts/5330p02.dat"
+      ],
+      "mappingEvidence": [
+        "explicit-keyword"
+      ],
       "reason": null
     },
     {
@@ -49448,6 +49518,20 @@
       "reason": null
     },
     {
+      "catalogId": "part:30092",
+      "role": "handAccessory",
+      "rebrickablePartNum": "30092",
+      "name": "Equipment Underwater Scooter, 2 Bar Handles, Octagonal End",
+      "classification": "placement-profile-required",
+      "ldrawFiles": [
+        "parts/30092.dat"
+      ],
+      "mappingEvidence": [
+        "exact-filename"
+      ],
+      "reason": null
+    },
+    {
       "catalogId": "part:30106",
       "role": "handAccessory",
       "rebrickablePartNum": "30106",
@@ -49511,6 +49595,20 @@
       "classification": "placement-profile-required",
       "ldrawFiles": [
         "parts/30141.dat"
+      ],
+      "mappingEvidence": [
+        "exact-filename"
+      ],
+      "reason": null
+    },
+    {
+      "catalogId": "part:30148",
+      "role": "handAccessory",
+      "rebrickablePartNum": "30148",
+      "name": "Equipment Camera / Camcorder [Movie Style]",
+      "classification": "placement-profile-required",
+      "ldrawFiles": [
+        "parts/30148.dat"
       ],
       "mappingEvidence": [
         "exact-filename"
@@ -50205,6 +50303,20 @@
       ],
       "mappingEvidence": [
         "explicit-keyword"
+      ],
+      "reason": null
+    },
+    {
+      "catalogId": "part:37704",
+      "role": "handAccessory",
+      "rebrickablePartNum": "37704",
+      "name": "Sports Quidditch Ball, Golden Snitch",
+      "classification": "placement-profile-required",
+      "ldrawFiles": [
+        "parts/37704.dat"
+      ],
+      "mappingEvidence": [
+        "exact-filename"
       ],
       "reason": null
     },
@@ -55111,6 +55223,20 @@
       "reason": null
     },
     {
+      "catalogId": "part:97793",
+      "role": "handAccessory",
+      "rebrickablePartNum": "97793",
+      "name": "Equipment Hand Mixer [Kitchen Implements Kit]",
+      "classification": "placement-profile-required",
+      "ldrawFiles": [
+        "parts/97793.dat"
+      ],
+      "mappingEvidence": [
+        "exact-filename"
+      ],
+      "reason": null
+    },
+    {
       "catalogId": "part:98134",
       "role": "handAccessory",
       "rebrickablePartNum": "98134",
@@ -55451,6 +55577,20 @@
       "reason": null
     },
     {
+      "catalogId": "part:98368",
+      "role": "handAccessory",
+      "rebrickablePartNum": "98368",
+      "name": "Toolbox",
+      "classification": "placement-profile-required",
+      "ldrawFiles": [
+        "parts/98368.dat"
+      ],
+      "mappingEvidence": [
+        "exact-filename"
+      ],
+      "reason": null
+    },
+    {
       "catalogId": "part:98368pr0001",
       "role": "handAccessory",
       "rebrickablePartNum": "98368pr0001",
@@ -55458,6 +55598,20 @@
       "classification": "no-official-mapping",
       "ldrawFiles": [],
       "mappingEvidence": [],
+      "reason": null
+    },
+    {
+      "catalogId": "part:98368pr0002",
+      "role": "handAccessory",
+      "rebrickablePartNum": "98368pr0002",
+      "name": "Toolbox with Classic Space Logo Print",
+      "classification": "placement-profile-required",
+      "ldrawFiles": [
+        "parts/98368p01.dat"
+      ],
+      "mappingEvidence": [
+        "explicit-keyword"
+      ],
       "reason": null
     },
     {

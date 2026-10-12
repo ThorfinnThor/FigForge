@@ -11,7 +11,7 @@ import {
   type ShopExportSelection,
 } from "../../src/procurement/shop-export.js";
 import { loadShopExportLookup } from "../../src/procurement/shop-export-data.js";
-import { applyAffiliateTemplate, PICK_A_BRICK_URL } from "../../src/procurement/shop-links.js";
+import { applyAffiliateTemplate, PICK_A_BRICK_URL, REBRICKABLE_URL } from "../../src/procurement/shop-links.js";
 
 // Synthetic fixture values; they are not real catalogue numbers.
 const entries: Record<string, ShopExportEntry> = {
@@ -130,6 +130,10 @@ describe("ADR-012 shop parts export", () => {
       .toEqual({ href: PICK_A_BRICK_URL, affiliate: false });
     expect(applyAffiliateTemplate(PICK_A_BRICK_URL, "https://partner.example/?u={url}"))
       .toEqual({ href: `https://partner.example/?u=${encoded}`, affiliate: true });
+  });
+
+  it("opens the signed-in user's Rebrickable part lists", () => {
+    expect(REBRICKABLE_URL).toBe("https://rebrickable.com/users/_ME_/partlists/");
   });
 
   it("keeps the real printed part number for parts shown as geometry without print", { timeout: 15_000 }, async () => {

@@ -22,9 +22,9 @@
     "automaticBuilderEnablements": 0
   },
   "summary": {
-    "placementProfileRequiredCount": 361,
-    "uniqueRadius4CandidateCount": 13,
-    "multipleRadius4CandidateCount": 103,
+    "placementProfileRequiredCount": 372,
+    "uniqueRadius4CandidateCount": 15,
+    "multipleRadius4CandidateCount": 112,
     "noRadius4CylinderDetectedCount": 243,
     "roleSpecificAssemblyProfileRequiredCount": 2,
     "noOfficialMappingQueueCount": 4910,
@@ -669,6 +669,158 @@
       "proposedPlacementTransformLdu": null,
       "automaticBuilderEnablement": false,
       "limitation": "Several possible shafts exist; selecting one automatically would guess the intended grip."
+    },
+    {
+      "catalogId": "part:2516",
+      "role": "handAccessory",
+      "rebrickablePartNum": "2516",
+      "name": "Tool Chainsaw / Drill Body",
+      "ldrawFiles": [
+        "parts/2516.dat"
+      ],
+      "mappingEvidence": [
+        "exact-filename"
+      ],
+      "analysis": "multiple-radius-4-cylinder-candidates",
+      "evidence": [
+        {
+          "primitive": "p/4-4cylc.dat",
+          "radiusLdu": 4,
+          "lengthLdu": 12,
+          "centerLdu": [
+            0,
+            22,
+            10
+          ],
+          "axis": [
+            0,
+            -1,
+            0
+          ],
+          "sourceConnectorTransformLdu": [
+            1,
+            0,
+            0,
+            0,
+            0,
+            -1,
+            0,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            22,
+            10,
+            1
+          ]
+        },
+        {
+          "primitive": "p/4-4cyli.dat",
+          "radiusLdu": 4,
+          "lengthLdu": 40,
+          "centerLdu": [
+            0,
+            8,
+            0
+          ],
+          "axis": [
+            0,
+            0,
+            1
+          ],
+          "sourceConnectorTransformLdu": [
+            1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            8,
+            0,
+            1
+          ]
+        }
+      ],
+      "proposedPlacementTransformLdu": null,
+      "automaticBuilderEnablement": false,
+      "limitation": "Several possible shafts exist; selecting one automatically would guess the intended grip."
+    },
+    {
+      "catalogId": "part:2561",
+      "role": "handAccessory",
+      "rebrickablePartNum": "2561",
+      "name": "Weapon Gun / Flintlock / Musket (Pirate)",
+      "ldrawFiles": [
+        "parts/2561.dat"
+      ],
+      "mappingEvidence": [
+        "exact-filename"
+      ],
+      "analysis": "unique-radius-4-cylinder-candidate",
+      "evidence": [
+        {
+          "primitive": "p/4-4cyli.dat",
+          "radiusLdu": 4,
+          "lengthLdu": 56,
+          "centerLdu": [
+            0,
+            -2,
+            0
+          ],
+          "axis": [
+            0,
+            -1,
+            0
+          ],
+          "sourceConnectorTransformLdu": [
+            1,
+            0,
+            0,
+            0,
+            0,
+            -1,
+            0,
+            0,
+            0,
+            0,
+            -1,
+            0,
+            0,
+            -2,
+            0,
+            1
+          ]
+        }
+      ],
+      "proposedPlacementTransformLdu": [
+        0.985,
+        -0.17,
+        0,
+        0,
+        -0.086268,
+        -0.499806,
+        -0.861479,
+        0,
+        0.146464,
+        0.848563,
+        -0.507414,
+        0,
+        24.608361,
+        32.092372,
+        -19.198679,
+        1
+      ],
+      "automaticBuilderEnablement": false,
+      "limitation": "A radius-4 cylinder is geometric evidence only; it may be decorative or unsuitable as the intended hand grip."
     },
     {
       "catalogId": "part:2562",
@@ -4541,6 +4693,90 @@
       "limitation": "Several possible shafts exist; selecting one automatically would guess the intended grip."
     },
     {
+      "catalogId": "part:4349pr0001",
+      "role": "handAccessory",
+      "rebrickablePartNum": "4349pr0001",
+      "name": "Equipment / Weapon, Loudhailer / Blaster / Space Gun with Orange Stripe Print",
+      "ldrawFiles": [
+        "parts/4349p01.dat"
+      ],
+      "mappingEvidence": [
+        "explicit-keyword"
+      ],
+      "analysis": "multiple-radius-4-cylinder-candidates",
+      "evidence": [
+        {
+          "primitive": "p/4-4cylc.dat",
+          "radiusLdu": 4,
+          "lengthLdu": 14.0467,
+          "centerLdu": [
+            0,
+            12.92965,
+            0
+          ],
+          "axis": [
+            0,
+            -1,
+            0
+          ],
+          "sourceConnectorTransformLdu": [
+            -1,
+            0,
+            0,
+            0,
+            0,
+            -1,
+            0,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            12.92965,
+            0,
+            1
+          ]
+        },
+        {
+          "primitive": "p/4-4cylc.dat",
+          "radiusLdu": 4,
+          "lengthLdu": 18,
+          "centerLdu": [
+            0,
+            0,
+            5
+          ],
+          "axis": [
+            0,
+            0,
+            -1
+          ],
+          "sourceConnectorTransformLdu": [
+            1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            -1,
+            0,
+            0,
+            -1,
+            0,
+            0,
+            0,
+            0,
+            5,
+            1
+          ]
+        }
+      ],
+      "proposedPlacementTransformLdu": null,
+      "automaticBuilderEnablement": false,
+      "limitation": "Several possible shafts exist; selecting one automatically would guess the intended grip."
+    },
+    {
       "catalogId": "part:4429",
       "role": "handAccessory",
       "rebrickablePartNum": "4429",
@@ -5103,6 +5339,174 @@
             0,
             0,
             87,
+            0,
+            1
+          ]
+        }
+      ],
+      "proposedPlacementTransformLdu": null,
+      "automaticBuilderEnablement": false,
+      "limitation": "Several possible shafts exist; selecting one automatically would guess the intended grip."
+    },
+    {
+      "catalogId": "part:5330pat0001",
+      "role": "handAccessory",
+      "rebrickablePartNum": "5330pat0001",
+      "name": "Weapon Hilt with Bar, Hourglass Opal Trans-Light Blue",
+      "ldrawFiles": [
+        "parts/5330p01.dat"
+      ],
+      "mappingEvidence": [
+        "explicit-keyword"
+      ],
+      "analysis": "multiple-radius-4-cylinder-candidates",
+      "evidence": [
+        {
+          "primitive": "p/4-4cylc.dat",
+          "radiusLdu": 4,
+          "lengthLdu": 11.4,
+          "centerLdu": [
+            0,
+            23.3,
+            0
+          ],
+          "axis": [
+            0,
+            -1,
+            0
+          ],
+          "sourceConnectorTransformLdu": [
+            1,
+            0,
+            0,
+            0,
+            0,
+            -1,
+            0,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            23.3,
+            0,
+            1
+          ]
+        },
+        {
+          "primitive": "p/4-4cyli.dat",
+          "radiusLdu": 4,
+          "lengthLdu": 12,
+          "centerLdu": [
+            0,
+            0,
+            0
+          ],
+          "axis": [
+            1,
+            0,
+            0
+          ],
+          "sourceConnectorTransformLdu": [
+            0,
+            -1,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0,
+            1
+          ]
+        }
+      ],
+      "proposedPlacementTransformLdu": null,
+      "automaticBuilderEnablement": false,
+      "limitation": "Several possible shafts exist; selecting one automatically would guess the intended grip."
+    },
+    {
+      "catalogId": "part:5330pat0002",
+      "role": "handAccessory",
+      "rebrickablePartNum": "5330pat0002",
+      "name": "Weapon Hilt with Bar, Hourglass Trans-Bright Green",
+      "ldrawFiles": [
+        "parts/5330p02.dat"
+      ],
+      "mappingEvidence": [
+        "explicit-keyword"
+      ],
+      "analysis": "multiple-radius-4-cylinder-candidates",
+      "evidence": [
+        {
+          "primitive": "p/4-4cylc.dat",
+          "radiusLdu": 4,
+          "lengthLdu": 11.4,
+          "centerLdu": [
+            0,
+            23.3,
+            0
+          ],
+          "axis": [
+            0,
+            -1,
+            0
+          ],
+          "sourceConnectorTransformLdu": [
+            1,
+            0,
+            0,
+            0,
+            0,
+            -1,
+            0,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            23.3,
+            0,
+            1
+          ]
+        },
+        {
+          "primitive": "p/4-4cyli.dat",
+          "radiusLdu": 4,
+          "lengthLdu": 12,
+          "centerLdu": [
+            0,
+            0,
+            0
+          ],
+          "axis": [
+            1,
+            0,
+            0
+          ],
+          "sourceConnectorTransformLdu": [
+            0,
+            -1,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
             0,
             1
           ]
@@ -7174,6 +7578,90 @@
       "limitation": "Several possible shafts exist; selecting one automatically would guess the intended grip."
     },
     {
+      "catalogId": "part:30092",
+      "role": "handAccessory",
+      "rebrickablePartNum": "30092",
+      "name": "Equipment Underwater Scooter, 2 Bar Handles, Octagonal End",
+      "ldrawFiles": [
+        "parts/30092.dat"
+      ],
+      "mappingEvidence": [
+        "exact-filename"
+      ],
+      "analysis": "multiple-radius-4-cylinder-candidates",
+      "evidence": [
+        {
+          "primitive": "p/4-4cyli.dat",
+          "radiusLdu": 4,
+          "lengthLdu": 12,
+          "centerLdu": [
+            0,
+            58,
+            0
+          ],
+          "axis": [
+            0,
+            -1,
+            0
+          ],
+          "sourceConnectorTransformLdu": [
+            -1,
+            0,
+            0,
+            0,
+            0,
+            -1,
+            0,
+            0,
+            0,
+            0,
+            -1,
+            0,
+            0,
+            58,
+            0,
+            1
+          ]
+        },
+        {
+          "primitive": "p/4-4cyli.dat",
+          "radiusLdu": 4,
+          "lengthLdu": 16,
+          "centerLdu": [
+            0,
+            44,
+            0
+          ],
+          "axis": [
+            0,
+            1,
+            0
+          ],
+          "sourceConnectorTransformLdu": [
+            -1,
+            0,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0,
+            -1,
+            0,
+            0,
+            44,
+            0,
+            1
+          ]
+        }
+      ],
+      "proposedPlacementTransformLdu": null,
+      "automaticBuilderEnablement": false,
+      "limitation": "Several possible shafts exist; selecting one automatically would guess the intended grip."
+    },
+    {
       "catalogId": "part:30106",
       "role": "handAccessory",
       "rebrickablePartNum": "30106",
@@ -7417,6 +7905,123 @@
             0,
             -10,
             -46,
+            1
+          ]
+        }
+      ],
+      "proposedPlacementTransformLdu": null,
+      "automaticBuilderEnablement": false,
+      "limitation": "Several possible shafts exist; selecting one automatically would guess the intended grip."
+    },
+    {
+      "catalogId": "part:30148",
+      "role": "handAccessory",
+      "rebrickablePartNum": "30148",
+      "name": "Equipment Camera / Camcorder [Movie Style]",
+      "ldrawFiles": [
+        "parts/30148.dat"
+      ],
+      "mappingEvidence": [
+        "exact-filename"
+      ],
+      "analysis": "multiple-radius-4-cylinder-candidates",
+      "evidence": [
+        {
+          "primitive": "p/4-4cyli.dat",
+          "radiusLdu": 4,
+          "lengthLdu": 8,
+          "centerLdu": [
+            -4,
+            -50,
+            -10
+          ],
+          "axis": [
+            1,
+            0,
+            0
+          ],
+          "sourceConnectorTransformLdu": [
+            0,
+            1,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            1,
+            0,
+            -4,
+            -50,
+            -10,
+            1
+          ]
+        },
+        {
+          "primitive": "p/4-4cyli.dat",
+          "radiusLdu": 4,
+          "lengthLdu": 8,
+          "centerLdu": [
+            -4,
+            -50,
+            10
+          ],
+          "axis": [
+            1,
+            0,
+            0
+          ],
+          "sourceConnectorTransformLdu": [
+            0,
+            1,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            1,
+            0,
+            -4,
+            -50,
+            10,
+            1
+          ]
+        },
+        {
+          "primitive": "p/4-4cylc.dat",
+          "radiusLdu": 4,
+          "lengthLdu": 24,
+          "centerLdu": [
+            0,
+            0,
+            0
+          ],
+          "axis": [
+            0,
+            -1,
+            0
+          ],
+          "sourceConnectorTransformLdu": [
+            1,
+            0,
+            0,
+            0,
+            0,
+            -1,
+            0,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0,
             1
           ]
         }
@@ -8383,6 +8988,74 @@
       "proposedPlacementTransformLdu": null,
       "automaticBuilderEnablement": false,
       "limitation": "Official LDraw files can encode shafts as direct mesh triangles, so absence of a cylinder primitive is not proof that no grip exists."
+    },
+    {
+      "catalogId": "part:37704",
+      "role": "handAccessory",
+      "rebrickablePartNum": "37704",
+      "name": "Sports Quidditch Ball, Golden Snitch",
+      "ldrawFiles": [
+        "parts/37704.dat"
+      ],
+      "mappingEvidence": [
+        "exact-filename"
+      ],
+      "analysis": "unique-radius-4-cylinder-candidate",
+      "evidence": [
+        {
+          "primitive": "p/4-4cylc.dat",
+          "radiusLdu": 4,
+          "lengthLdu": 8,
+          "centerLdu": [
+            0,
+            -4,
+            0
+          ],
+          "axis": [
+            0,
+            -1,
+            0
+          ],
+          "sourceConnectorTransformLdu": [
+            1,
+            0,
+            0,
+            0,
+            0,
+            -1,
+            0,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            -4,
+            0,
+            1
+          ]
+        }
+      ],
+      "proposedPlacementTransformLdu": [
+        0.985,
+        -0.17,
+        0,
+        0,
+        -0.086268,
+        -0.499806,
+        -0.861479,
+        0,
+        -0.146464,
+        -0.848563,
+        0.507414,
+        0,
+        24.435826,
+        31.092759,
+        -20.921638,
+        1
+      ],
+      "automaticBuilderEnablement": false,
+      "limitation": "A radius-4 cylinder is geometric evidence only; it may be decorative or unsuitable as the intended hand grip."
     },
     {
       "catalogId": "part:37720a",
@@ -15879,6 +16552,90 @@
       "limitation": "Official LDraw files can encode shafts as direct mesh triangles, so absence of a cylinder primitive is not proof that no grip exists."
     },
     {
+      "catalogId": "part:97793",
+      "role": "handAccessory",
+      "rebrickablePartNum": "97793",
+      "name": "Equipment Hand Mixer [Kitchen Implements Kit]",
+      "ldrawFiles": [
+        "parts/97793.dat"
+      ],
+      "mappingEvidence": [
+        "exact-filename"
+      ],
+      "analysis": "multiple-radius-4-cylinder-candidates",
+      "evidence": [
+        {
+          "primitive": "p/4-4cyli.dat",
+          "radiusLdu": 4,
+          "lengthLdu": 8.6,
+          "centerLdu": [
+            0,
+            23.617,
+            -6.25
+          ],
+          "axis": [
+            0,
+            1,
+            0
+          ],
+          "sourceConnectorTransformLdu": [
+            1,
+            0,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0,
+            -1,
+            0,
+            0,
+            23.617,
+            -6.25,
+            1
+          ]
+        },
+        {
+          "primitive": "p/4-4cyli.dat",
+          "radiusLdu": 4,
+          "lengthLdu": 12.5,
+          "centerLdu": [
+            0,
+            0,
+            -0.013
+          ],
+          "axis": [
+            0,
+            0,
+            1
+          ],
+          "sourceConnectorTransformLdu": [
+            1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0,
+            -0.013,
+            1
+          ]
+        }
+      ],
+      "proposedPlacementTransformLdu": null,
+      "automaticBuilderEnablement": false,
+      "limitation": "Several possible shafts exist; selecting one automatically would guess the intended grip."
+    },
+    {
       "catalogId": "part:98288",
       "role": "handAccessory",
       "rebrickablePartNum": "98288",
@@ -16095,6 +16852,240 @@
       "proposedPlacementTransformLdu": null,
       "automaticBuilderEnablement": false,
       "limitation": "Official LDraw files can encode shafts as direct mesh triangles, so absence of a cylinder primitive is not proof that no grip exists."
+    },
+    {
+      "catalogId": "part:98368",
+      "role": "handAccessory",
+      "rebrickablePartNum": "98368",
+      "name": "Toolbox",
+      "ldrawFiles": [
+        "parts/98368.dat"
+      ],
+      "mappingEvidence": [
+        "exact-filename"
+      ],
+      "analysis": "multiple-radius-4-cylinder-candidates",
+      "evidence": [
+        {
+          "primitive": "p/4-4cyli.dat",
+          "radiusLdu": 4,
+          "lengthLdu": 12,
+          "centerLdu": [
+            0,
+            0,
+            0
+          ],
+          "axis": [
+            -1,
+            0,
+            0
+          ],
+          "sourceConnectorTransformLdu": [
+            0,
+            0,
+            1,
+            0,
+            -1,
+            0,
+            0,
+            0,
+            0,
+            -1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            1
+          ]
+        },
+        {
+          "primitive": "p/4-4cyli.dat",
+          "radiusLdu": 4,
+          "lengthLdu": 16,
+          "centerLdu": [
+            -10,
+            22,
+            0
+          ],
+          "axis": [
+            0,
+            -1,
+            0
+          ],
+          "sourceConnectorTransformLdu": [
+            1,
+            0,
+            0,
+            0,
+            0,
+            -1,
+            0,
+            0,
+            0,
+            0,
+            1,
+            0,
+            -10,
+            22,
+            0,
+            1
+          ]
+        },
+        {
+          "primitive": "p/4-4cyli.dat",
+          "radiusLdu": 4,
+          "lengthLdu": 16,
+          "centerLdu": [
+            10,
+            22,
+            0
+          ],
+          "axis": [
+            0,
+            -1,
+            0
+          ],
+          "sourceConnectorTransformLdu": [
+            1,
+            0,
+            0,
+            0,
+            0,
+            -1,
+            0,
+            0,
+            0,
+            0,
+            1,
+            0,
+            10,
+            22,
+            0,
+            1
+          ]
+        }
+      ],
+      "proposedPlacementTransformLdu": null,
+      "automaticBuilderEnablement": false,
+      "limitation": "Several possible shafts exist; selecting one automatically would guess the intended grip."
+    },
+    {
+      "catalogId": "part:98368pr0002",
+      "role": "handAccessory",
+      "rebrickablePartNum": "98368pr0002",
+      "name": "Toolbox with Classic Space Logo Print",
+      "ldrawFiles": [
+        "parts/98368p01.dat"
+      ],
+      "mappingEvidence": [
+        "explicit-keyword"
+      ],
+      "analysis": "multiple-radius-4-cylinder-candidates",
+      "evidence": [
+        {
+          "primitive": "p/4-4cyli.dat",
+          "radiusLdu": 4,
+          "lengthLdu": 12,
+          "centerLdu": [
+            0,
+            0,
+            0
+          ],
+          "axis": [
+            -1,
+            0,
+            0
+          ],
+          "sourceConnectorTransformLdu": [
+            0,
+            0,
+            1,
+            0,
+            -1,
+            0,
+            0,
+            0,
+            0,
+            -1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            1
+          ]
+        },
+        {
+          "primitive": "p/4-4cyli.dat",
+          "radiusLdu": 4,
+          "lengthLdu": 16,
+          "centerLdu": [
+            -10,
+            22,
+            0
+          ],
+          "axis": [
+            0,
+            -1,
+            0
+          ],
+          "sourceConnectorTransformLdu": [
+            1,
+            0,
+            0,
+            0,
+            0,
+            -1,
+            0,
+            0,
+            0,
+            0,
+            1,
+            0,
+            -10,
+            22,
+            0,
+            1
+          ]
+        },
+        {
+          "primitive": "p/4-4cyli.dat",
+          "radiusLdu": 4,
+          "lengthLdu": 16,
+          "centerLdu": [
+            10,
+            22,
+            0
+          ],
+          "axis": [
+            0,
+            -1,
+            0
+          ],
+          "sourceConnectorTransformLdu": [
+            1,
+            0,
+            0,
+            0,
+            0,
+            -1,
+            0,
+            0,
+            0,
+            0,
+            1,
+            0,
+            10,
+            22,
+            0,
+            1
+          ]
+        }
+      ],
+      "proposedPlacementTransformLdu": null,
+      "automaticBuilderEnablement": false,
+      "limitation": "Several possible shafts exist; selecting one automatically would guess the intended grip."
     },
     {
       "catalogId": "part:98375",

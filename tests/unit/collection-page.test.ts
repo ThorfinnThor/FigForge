@@ -29,7 +29,7 @@ describe("Collection page shell", () => {
     expect(cardSource).toContain("figureId=");
     expect(collectionSource).toContain("downloadFigureDocument(saved.document)");
     expect(cardSource).toContain("labels.buyFigure");
-    expect(purchaseDialogSource).toContain('<ShopExportPanel selections={selections} />');
+    expect(purchaseDialogSource).toContain('<ShopExportPanel selections={selections} stepNumber={1} />');
     expect(purchaseDialogSource).toContain('role="dialog"');
     expect(purchaseDialogSource).toContain("onExportJson");
     expect(collectionSource).toContain("<CollectionFigureCard");

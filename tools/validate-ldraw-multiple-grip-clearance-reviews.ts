@@ -3,11 +3,13 @@ import { readFile } from "node:fs/promises";
 import { resolve } from "node:path";
 import { catalogPackageSchema } from "../src/contracts/catalog-package.js";
 import { handGripEvidenceFromLDCadShadow, vendoredAccessoryGripFiles } from "./lib/ldcad-shadow-connectivity.js";
+import { readAccessoryGripIntentReviews } from "./lib/ldraw-accessory-grip-intent-reviews.js";
 import { readMultipleGripClearanceReviews } from "./lib/ldraw-multiple-grip-clearance-reviews.js";
 import { normalizeCatalogEvidenceName } from "./lib/ldraw-review.js";
 
 const root = process.cwd();
 const reviews = await readMultipleGripClearanceReviews(root);
+const intentReviews = await readAccessoryGripIntentReviews(root);
 const catalog = catalogPackageSchema.parse(JSON.parse(await readFile(
   resolve(root, "data/generated/catalog-packages/hand-accessory.json"),
   "utf8",
@@ -51,6 +53,7 @@ const placement = JSON.parse(await readFile(
 const remainingMultiple = new Set(placement.placementCandidates
   .filter(({ analysis }) => analysis === "multiple-radius-4-cylinder-candidates")
   .map(({ rebrickablePartNum }) => rebrickablePartNum));
+const intentBlockedPartNums = new Set(intentReviews.reviews.map(({ rebrickablePartNum }) => rebrickablePartNum));
 
 assert.equal(reviews.reviews.length, 8);
 assert.equal(new Set(reviews.reviews.map(({ rebrickablePartNum }) => rebrickablePartNum)).size, 8);
@@ -69,6 +72,18 @@ for (const review of reviews.reviews) {
   const evidence = handGripEvidenceFromLDCadShadow(review.gripEvidenceFile, shadowSource);
   assert.equal(evidence.length, 1, `Expected one documented grip for ${review.rebrickablePartNum}`);
   const entry = expandedByPartNum.get(review.rebrickablePartNum);
+  if (intentBlockedPartNums.has(review.rebrickablePartNum)) {
+    assert(!entry, `Semantically blocked multiple grip became builder-ready: ${review.rebrickablePartNum}`);
+    const rejection = rejectionByPartNum.get(review.rebrickablePartNum);
+    assert.equal(rejection?.reasonCode, "detected-feature-is-not-intended-hand-grip");
+    assert.equal(rejection?.collisionSampleCount, 0);
+    assert.equal(rejection?.safeGripCandidatesFound, 1);
+    // Intent-blocked parts remain in the placement queue until a reviewed
+    // placement profile exists; they are excluded from the builder catalog,
+    // not removed from the evidence-backed follow-up queue.
+    assert(remainingMultiple.has(review.rebrickablePartNum));
+    continue;
+  }
   if (review.expectedResult === "passed") {
     assert(entry, `Reviewed multiple grip is not builder-ready: ${review.rebrickablePartNum}`);
     assert.equal(entry.ldrawFile, review.ldrawFile);
@@ -91,17 +106,22 @@ for (const review of reviews.reviews) {
   }
 }
 
-assert.equal(placement.summary.multipleRadius4CandidateCount, 103);
+assert.equal(placement.summary.multipleRadius4CandidateCount, remainingMultiple.size);
+const remainingWithoutReviewedGrip = [...remainingMultiple].filter((partNum) =>
+  !blocked.some((review) => review.rebrickablePartNum === partNum)
+    && !intentBlockedPartNums.has(partNum)
+);
 assert.equal(
-  [...remainingMultiple].filter((partNum) => !blocked.some((review) => review.rebrickablePartNum === partNum)).length,
+  remainingWithoutReviewedGrip.length,
   99,
 );
 
 console.log(JSON.stringify({
   message: "reviewed multiple-grip LDCad clearance valid",
   reviewed: reviews.reviews.length,
-  passed: passed.length,
+  passed: passed.filter(({ rebrickablePartNum }) => !intentBlockedPartNums.has(rebrickablePartNum)).length,
+  intentBlocked: passed.filter(({ rebrickablePartNum }) => intentBlockedPartNums.has(rebrickablePartNum)).length,
   blocked: blocked.length,
-  remainingWithoutUniqueDocumentedGrip: 99,
+  remainingWithoutUniqueDocumentedGrip: remainingWithoutReviewedGrip.length,
   sourcePolicy: reviews.sourcePolicy,
 }));

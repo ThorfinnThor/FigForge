@@ -41,6 +41,7 @@ import {
   type HandPlacementCandidate,
 } from "./lib/ldraw-placement-candidates.js";
 import { collectVendoredLDCadHandGripEvidence } from "./lib/ldcad-shadow-connectivity.js";
+import { readAccessoryGripIntentReviews } from "./lib/ldraw-accessory-grip-intent-reviews.js";
 import {
   ambiguousMappingKey,
   readAmbiguousMappingResolutions,
@@ -366,6 +367,11 @@ const ambiguousMappingSelections = selectedAmbiguousMappings(ambiguousMappingRes
 const uniqueGripClearanceReviews = await readUniqueGripClearanceReviews(root);
 const multipleGripClearanceReviews = await readMultipleGripClearanceReviews(root);
 const noRadiusGripClearanceReviews = await readNoRadiusGripClearanceReviews(root);
+const accessoryGripIntentReviews = await readAccessoryGripIntentReviews(root);
+const accessoryGripIntentReviewByPartNum = new Map(accessoryGripIntentReviews.reviews.map((review) => [
+  normalize(review.rebrickablePartNum),
+  review,
+]));
 const closedMeshClearancePartNums = new Set([
   ...uniqueGripClearanceReviews.reviews,
   ...multipleGripClearanceReviews.reviews,
@@ -890,12 +896,15 @@ const digitalPlacementRejections: Array<{
   gripCandidatesTested: number;
   safeGripCandidatesFound: number;
   orientationCollisionCountsByGrip: number[][];
+  selectedGripEvidence?: { primitive: string; lengthLdu: number };
 }> = [];
 let accessoryMultipleGripCandidatesPassed = 0;
 let accessoryMultipleGripCandidatesAmbiguous = 0;
 let accessoryMultipleGripCandidatesNoSafe = 0;
 let accessoryMultipleGripCandidatesRenderFailed = 0;
+let accessoryMultipleGripCandidatesSemanticRejected = 0;
 let accessoryPlacementRenderFailuresExcluded = 0;
+let accessorySemanticGripRejectionsExcluded = 0;
 type GeneratedAsset = {
   modelUrl: string;
   modelSha256: string;
@@ -1041,6 +1050,32 @@ for (const [index, match] of matchedParts.entries()) {
         const selectedGrip = match.gripCandidates[selection.selectedGripCandidateIndex];
         const selected = gripEvaluations[selection.selectedGripCandidateIndex]?.orientations[selection.selectedOrientationIndex];
         if (!selectedGrip || !selected) throw new Error("Selected accessory placement is missing");
+        const intentReview = accessoryGripIntentReviewByPartNum.get(normalize(part.rebrickablePartNum));
+        if (intentReview?.decision === "blocked") {
+          if (
+            candidate.file !== intentReview.ldrawFile
+            || selectedGrip.evidence.primitive !== intentReview.detectedGripPrimitive
+            || selectedGrip.evidence.lengthLdu !== intentReview.detectedGripLengthLdu
+          ) {
+            throw new Error(`Stale semantic grip review for ${part.rebrickablePartNum}`);
+          }
+          digitalPlacementRejections.push({
+            rebrickablePartNum: part.rebrickablePartNum,
+            ldrawFile: candidate.file,
+            reasonCode: intentReview.reasonCode,
+            collisionSampleCount: selected.validation.collisionSampleCount,
+            collisionSamplesByPart: selected.validation.collisionSamplesByPart,
+            gripCandidatesTested: gripEvaluations.length,
+            safeGripCandidatesFound: selection.safeGripCandidatesFound,
+            orientationCollisionCountsByGrip: gripEvaluations.map(({ orientations }) =>
+              orientations.map(({ validation }) => validation.collisionSampleCount)
+            ),
+            selectedGripEvidence: selectedGrip.evidence,
+          });
+          if (match.gripCandidates.length > 1) accessoryMultipleGripCandidatesSemanticRejected += 1;
+          accessorySemanticGripRejectionsExcluded += 1;
+          continue;
+        }
         digitalValidation = {
           ...selected.validation,
           gripCandidatesTested: gripEvaluations.length,
@@ -1214,8 +1249,10 @@ const output = {
     accessoryMultipleGripCandidatesAmbiguous,
     accessoryMultipleGripCandidatesNoSafe,
     accessoryMultipleGripCandidatesRenderFailed,
+    accessoryMultipleGripCandidatesSemanticRejected,
     accessoryPlacementCandidatesEvaluated: matchedParts.filter(({ part }) => part.role === "handAccessory").length,
     accessoryPlacementRenderFailuresExcluded,
+    accessorySemanticGripRejectionsExcluded,
     digitalPlacementPassedCount: outputEntries.filter(({ role }) => role === "handAccessory").length,
     digitalPlacementRejectionsExcluded: digitalPlacementRejections.length,
     renderFailuresExcluded: skippedEntries.length,
@@ -1263,7 +1300,7 @@ const output = {
     "Asymmetric 970lNNrMM legs are composed from the official LDraw hip, left-leg and right-leg geometry only when both leg colours are confirmed by the Rebrickable assembly code and entry name and exactly one catalog-backed hip colour exists.",
     "Printed torso and legs assemblies without any official LDraw file for their number use the same composition with the plain official body in the catalog colour; they are marked as not rendering their print and share one generated asset per colour combination.",
     "Family-origin placement is a digital convention, not a physical clutch-force guarantee.",
-    "Hand accessories pass only when exactly one radius-4 grip candidate from official LDraw geometry or the pinned LDCad Shadow Library satisfies deterministic minimum-length, rigid-transform, model-bounds and reference-figure clearance checks; exact printed geometry may reuse one pinned LDCad grip only when locked Rebrickable part_relationships.csv declares exactly one print parent. Physical clutch force remains unverified.",
+    "Hand accessories pass only when exactly one radius-4 grip candidate from official LDraw geometry or the pinned LDCad Shadow Library satisfies deterministic minimum-length, rigid-transform, model-bounds and reference-figure clearance checks and is not rejected by the versioned semantic grip-intent review; exact printed geometry may reuse one pinned LDCad grip only when locked Rebrickable part_relationships.csv declares exactly one print parent. Physical clutch force remains unverified.",
     "The first catalog-backed color is used for preview; parts without color evidence use neutral gray.",
   ],
 };

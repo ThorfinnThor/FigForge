@@ -2,6 +2,7 @@ import assert from "node:assert/strict";
 import { readFile } from "node:fs/promises";
 import { resolve } from "node:path";
 import type { LDrawCatalogCoverageReport } from "./lib/ldraw-catalog-coverage.js";
+import { readAccessoryGripIntentReviews } from "./lib/ldraw-accessory-grip-intent-reviews.js";
 import type { LDrawPlacementCandidateReport } from "./lib/ldraw-placement-candidates.js";
 
 const root = process.cwd();
@@ -12,6 +13,7 @@ const report = await readJson<LDrawPlacementCandidateReport>(
 const coverage = await readJson<LDrawCatalogCoverageReport>(
   resolve(root, "data/generated/ldraw-catalog-coverage.json"),
 );
+const intentReviews = await readAccessoryGripIntentReviews(root);
 const key = (entry: { role: string; rebrickablePartNum: string }): string =>
   `${entry.role}:${entry.rebrickablePartNum.toLowerCase()}`;
 
@@ -32,7 +34,14 @@ const expectedNoMapping = coverage.remainingEntries.filter(({ classification }) 
 const expectedAmbiguous = coverage.remainingEntries.filter(({ classification }) =>
   classification === "ambiguous-official-mapping"
 );
-assert.deepEqual(new Set(report.placementCandidates.map(key)), new Set(expectedPlacement.map(key)));
+const reportedPlacementKeys = new Set(report.placementCandidates.map(key));
+const reviewedPlacementKeys = intentReviews.reviews.map(({ rebrickablePartNum }) =>
+  key({ role: "handAccessory", rebrickablePartNum })
+);
+assert.deepEqual(
+  new Set([...reportedPlacementKeys, ...reviewedPlacementKeys]),
+  new Set(expectedPlacement.map(key)),
+);
 assert.deepEqual(new Set(report.sourceQueue.noOfficialMapping.map(key)), new Set(expectedNoMapping.map(key)));
 assert.deepEqual(new Set(report.sourceQueue.ambiguousOfficialMapping.map(key)), new Set(expectedAmbiguous.map(key)));
 assert.equal(report.summary.placementProfileRequiredCount, report.placementCandidates.length);
