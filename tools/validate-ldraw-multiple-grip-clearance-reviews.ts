@@ -78,7 +78,10 @@ for (const review of reviews.reviews) {
     assert.equal(rejection?.reasonCode, "detected-feature-is-not-intended-hand-grip");
     assert.equal(rejection?.collisionSampleCount, 0);
     assert.equal(rejection?.safeGripCandidatesFound, 1);
-    assert(!remainingMultiple.has(review.rebrickablePartNum));
+    // Intent-blocked parts remain in the placement queue until a reviewed
+    // placement profile exists; they are excluded from the builder catalog,
+    // not removed from the evidence-backed follow-up queue.
+    assert(remainingMultiple.has(review.rebrickablePartNum));
     continue;
   }
   if (review.expectedResult === "passed") {

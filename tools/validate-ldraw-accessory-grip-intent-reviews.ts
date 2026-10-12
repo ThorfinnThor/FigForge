@@ -89,7 +89,9 @@ for (const review of reviews.reviews) {
         || placementCandidate.analysis === "multiple-radius-4-cylinder-candidates",
     );
     assert(placementCandidate.evidence.some((evidence) =>
-        evidence.primitive === review.detectedGripPrimitive
+      review.detectedGripPrimitive.startsWith("ldcad-shadow:")
+        ? evidence.lengthLdu === review.detectedGripLengthLdu
+        : evidence.primitive === review.detectedGripPrimitive
           && evidence.lengthLdu === review.detectedGripLengthLdu
     ));
   }

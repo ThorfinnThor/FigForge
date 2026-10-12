@@ -54,6 +54,46 @@
       "note": "Three-view inspection on 2026-10-12 confirmed that the selected cylinder places the Snitch across the figure's waist and torso instead of presenting it plausibly at the hand."
     },
     {
+      "rebrickablePartNum": "4349pr0001",
+      "catalogName": "Equipment / Weapon, Loudhailer / Blaster / Space Gun with Orange Stripe Print",
+      "ldrawFile": "parts/4349p01.dat",
+      "detectedGripPrimitive": "p/4-4cylc.dat",
+      "detectedGripLengthLdu": 14.0467,
+      "decision": "blocked",
+      "reasonCode": "detected-feature-is-not-intended-hand-grip",
+      "note": "Three-view inspection on 2026-10-12 confirmed that the selected cylinder places the loudhailer horizontally through the figure's waist instead of seating the intended handle in the hand."
+    },
+    {
+      "rebrickablePartNum": "5330pat0001",
+      "catalogName": "Weapon Hilt with Bar, Hourglass Opal Trans-Light Blue",
+      "ldrawFile": "parts/5330p01.dat",
+      "detectedGripPrimitive": "p/4-4cylc.dat",
+      "detectedGripLengthLdu": 11.4,
+      "decision": "blocked",
+      "reasonCode": "detected-feature-is-not-intended-hand-grip",
+      "note": "Three-view inspection on 2026-10-12 confirmed that the selected bar places the hilt horizontally through the figure's waist instead of presenting it as a hand-held weapon."
+    },
+    {
+      "rebrickablePartNum": "5330pat0002",
+      "catalogName": "Weapon Hilt with Bar, Hourglass Trans-Bright Green",
+      "ldrawFile": "parts/5330p02.dat",
+      "detectedGripPrimitive": "p/4-4cylc.dat",
+      "detectedGripLengthLdu": 11.4,
+      "decision": "blocked",
+      "reasonCode": "detected-feature-is-not-intended-hand-grip",
+      "note": "Same geometry and placement transform as 5330pat0001; the identical three-view false-positive placement is blocked for this color variant as well."
+    },
+    {
+      "rebrickablePartNum": "97793",
+      "catalogName": "Equipment Hand Mixer [Kitchen Implements Kit]",
+      "ldrawFile": "parts/97793.dat",
+      "detectedGripPrimitive": "p/4-4cyli.dat",
+      "detectedGripLengthLdu": 12.5,
+      "decision": "blocked",
+      "reasonCode": "detected-feature-is-not-intended-hand-grip",
+      "note": "Three-view inspection on 2026-10-12 confirmed that the mixer is placed horizontally through the figure's waist instead of being held by its intended handle."
+    },
+    {
       "rebrickablePartNum": "98368",
       "catalogName": "Toolbox",
       "ldrawFile": "parts/98368.dat",
