@@ -36,3 +36,16 @@ jobs:
 
       - name: Run mandatory browser regressions
         run: npm run test:browser
+
+      - name: Build accessory review contact sheets
+        if: startsWith(github.head_ref, 'fix/accessory-review-') || startsWith(github.ref_name, 'fix/accessory-review-')
+        run: npm run review:accessories -- --batch 1 --size 12 --output artifacts/accessory-review
+
+      - name: Upload accessory review contact sheets
+        if: startsWith(github.head_ref, 'fix/accessory-review-') || startsWith(github.ref_name, 'fix/accessory-review-')
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
+        with:
+          name: accessory-review-contact-sheets
+          path: artifacts/accessory-review
+          if-no-files-found: error
+          retention-days: 14
