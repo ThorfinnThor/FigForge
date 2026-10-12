@@ -9,6 +9,8 @@ import { preview, type PreviewServer } from "vite";
 import { ldrawAccessoryOrientationReviewSchema } from "../src/contracts/ldraw-accessory-orientation-review.js";
 import {
   createRiskReviewGroups,
+  createPendingReviewGroups,
+  selectRequestedReviewGroups,
   type AccessoryOrientationReviewEntry as ReviewEntry,
   type AccessoryOrientationReviewGroup as ReviewGroup,
 } from "./lib/ldraw-accessory-review-batches.js";
@@ -254,6 +256,11 @@ const readStringFlag = (name: string, fallback: string): string => {
   return index < 0 ? fallback : process.argv[index + 1] ?? fallback;
 };
 
+const readOptionalStringFlag = (name: string): string | null => {
+  const index = process.argv.indexOf(name);
+  return index < 0 ? null : process.argv[index + 1] ?? null;
+};
+
 const escapeXml = (value: string): string => value
   .replaceAll("&", "&amp;")
   .replaceAll("<", "&lt;")
@@ -332,11 +339,49 @@ const run = async (): Promise<void> => {
   const batchNumber = readPositiveIntegerFlag("--batch", 1);
   const batchSize = readPositiveIntegerFlag("--size", DEFAULT_BATCH_SIZE);
   const outputDirectory = resolve(root, readStringFlag("--output", "artifacts/accessory-review"));
+  const partsFile = readOptionalStringFlag("--parts-file");
   const queue = ldrawAccessoryOrientationReviewSchema.parse(JSON.parse(await readFile(queuePath, "utf8")) as unknown);
-  const groups = createRiskReviewGroups(queue.entries);
+  const requestedPartNums = partsFile
+    ? (await readFile(resolve(root, partsFile), "utf8"))
+      .split(/\r?\n/u)
+      .map((line) => line.trim())
+      .filter((line) => line.length > 0 && !line.startsWith("#"))
+    : null;
+  const groups = requestedPartNums
+    ? selectRequestedReviewGroups(createPendingReviewGroups(queue.entries), requestedPartNums)
+    : createRiskReviewGroups(queue.entries);
+  await mkdir(outputDirectory, { recursive: true });
+  if (partsFile && requestedPartNums?.length === 0) {
+    const manifest = {
+      schemaVersion: 1,
+      generatedAt: new Date().toISOString(),
+      batchNumber,
+      batchSize,
+      totalPendingPartCount: queue.summary.pendingReviewCount,
+      automatedLowRiskPartCount: queue.entries.filter((entry) =>
+        entry.reviewStatus === "pending-human-visual-review" && entry.riskFlags.length === 0).length,
+      manualRiskPartCount: queue.entries.filter((entry) =>
+        entry.reviewStatus === "pending-human-visual-review" && entry.riskFlags.length > 0).length,
+      manualRiskRepresentativeCount: 0,
+      selectionSource: resolve(root, partsFile),
+      entries: [],
+    };
+    await writeFile(
+      resolve(outputDirectory, `accessory-review-batch-${String(batchNumber).padStart(2, "0")}.json`),
+      `${JSON.stringify(manifest, null, 2)}\n`,
+      "utf8",
+    );
+    process.stdout.write(`${JSON.stringify({
+      message: "no manual accessory review contact sheets needed",
+      batchNumber,
+      reviewedRepresentatives: 0,
+      outputDirectory,
+    })}\n`);
+    return;
+  }
+  if (groups.length === 0) throw new Error("Accessory review selection is empty");
   const batch = groups.slice((batchNumber - 1) * batchSize, batchNumber * batchSize);
   if (batch.length === 0) throw new Error(`Accessory review batch ${batchNumber} is empty`);
-  await mkdir(outputDirectory, { recursive: true });
 
   const previewServer = await startPreview();
   let chrome: Awaited<ReturnType<typeof launchChrome>> | null = null;
@@ -388,6 +433,7 @@ const run = async (): Promise<void> => {
       manualRiskPartCount: queue.entries.filter((entry) =>
         entry.reviewStatus === "pending-human-visual-review" && entry.riskFlags.length > 0).length,
       manualRiskRepresentativeCount: groups.length,
+      selectionSource: partsFile ? resolve(root, partsFile) : "all-pending-risk-groups",
       entries: captured.map(({ group }) => ({
         representativePartNum: group.representative.rebrickablePartNum,
         priorityTier: group.representative.priorityTier,

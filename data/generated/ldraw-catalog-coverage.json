@@ -34,17 +34,17 @@
   },
   "summary": {
     "catalogPartCount": 20271,
-    "visualizedPartCount": 14875,
-    "builderReadyPartCount": 14873,
-    "remainingCatalogPartCount": 5398,
-    "remainingWithoutVisualizationCount": 5396,
+    "visualizedPartCount": 14872,
+    "builderReadyPartCount": 14870,
+    "remainingCatalogPartCount": 5401,
+    "remainingWithoutVisualizationCount": 5399,
     "uniqueOfficialMappingCount": 2841,
     "ambiguousOfficialMappingCount": 168,
     "noOfficialMappingCount": 17262,
     "remainingClassifications": {
       "builder-blocked": 2,
       "render-failed": 0,
-      "placement-profile-required": 378,
+      "placement-profile-required": 381,
       "reviewed-incompatible-assembly": 95,
       "ambiguous-official-mapping": 13,
       "no-official-mapping": 4910
@@ -105,12 +105,12 @@
     },
     "handAccessory": {
       "catalogPartCount": 1310,
-      "builderReadyPartCount": 307,
-      "remainingCatalogPartCount": 1003,
+      "builderReadyPartCount": 304,
+      "remainingCatalogPartCount": 1006,
       "remainingClassifications": {
         "builder-blocked": 1,
         "render-failed": 0,
-        "placement-profile-required": 376,
+        "placement-profile-required": 379,
         "reviewed-incompatible-assembly": 0,
         "ambiguous-official-mapping": 4,
         "no-official-mapping": 622
@@ -50745,6 +50745,20 @@
       "reason": null
     },
     {
+      "catalogId": "part:43899",
+      "role": "handAccessory",
+      "rebrickablePartNum": "43899",
+      "name": "Weapon Pike / Spear [4 Side Blades]",
+      "classification": "placement-profile-required",
+      "ldrawFiles": [
+        "parts/43899.dat"
+      ],
+      "mappingEvidence": [
+        "exact-filename"
+      ],
+      "reason": null
+    },
+    {
       "catalogId": "part:44333",
       "role": "handAccessory",
       "rebrickablePartNum": "44333",
@@ -51833,6 +51847,20 @@
       "reason": null
     },
     {
+      "catalogId": "part:59232",
+      "role": "handAccessory",
+      "rebrickablePartNum": "59232",
+      "name": "Weapon Mace / Flail Spiked",
+      "classification": "placement-profile-required",
+      "ldrawFiles": [
+        "parts/59232.dat"
+      ],
+      "mappingEvidence": [
+        "exact-filename"
+      ],
+      "reason": null
+    },
+    {
       "catalogId": "part:59275",
       "role": "handAccessory",
       "rebrickablePartNum": "59275",
@@ -52652,6 +52680,20 @@
       ],
       "mappingEvidence": [
         "explicit-keyword"
+      ],
+      "reason": null
+    },
+    {
+      "catalogId": "part:71342",
+      "role": "handAccessory",
+      "rebrickablePartNum": "71342",
+      "name": "Musical Instrument Bugle",
+      "classification": "placement-profile-required",
+      "ldrawFiles": [
+        "parts/71342.dat"
+      ],
+      "mappingEvidence": [
+        "exact-filename"
       ],
       "reason": null
     },

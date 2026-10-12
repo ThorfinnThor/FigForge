@@ -70,6 +70,11 @@ const remainingUnique = new Set(placement.placementCandidates
   .filter(({ role, analysis }) => role === "handAccessory" && analysis === "unique-radius-4-cylinder-candidate")
   .map(({ rebrickablePartNum }) => rebrickablePartNum));
 const intentBlockedPartNums = new Set(intentReviews.reviews.map(({ rebrickablePartNum }) => rebrickablePartNum));
+const placementBlockedPartNums = new Set(placementReviews.reviews
+  .filter(({ decision }) => decision === "blocked")
+  .map(({ rebrickablePartNum }) => rebrickablePartNum));
+const isReleaseBlocked = (rebrickablePartNum: string): boolean =>
+  intentBlockedPartNums.has(rebrickablePartNum) || placementBlockedPartNums.has(rebrickablePartNum);
 
 assert.equal(reviews.reviews.length, 20);
 assert.equal(new Set(reviews.reviews.map(({ rebrickablePartNum }) => rebrickablePartNum)).size, 20);
@@ -85,6 +90,12 @@ for (const review of reviews.reviews) {
   );
   assert(review.ldrawFile.startsWith("parts/") && !review.ldrawFile.toLowerCase().includes("moc"));
   const entry = expandedByPartNum.get(review.rebrickablePartNum);
+  if (placementBlockedPartNums.has(review.rebrickablePartNum)) {
+    assert(!entry, `Visually blocked unique grip became builder-ready: ${review.rebrickablePartNum}`);
+    assert.equal(rejectionByPartNum.get(review.rebrickablePartNum)?.reasonCode, "visually-implausible-placement");
+    assert(remainingUnique.has(review.rebrickablePartNum));
+    continue;
+  }
   if (review.expectedResult === "passed") {
     assert(entry, `Reviewed unique grip is not builder-ready: ${review.rebrickablePartNum}`);
     assert.equal(entry.ldrawFile, review.ldrawFile);
@@ -111,16 +122,16 @@ assert.deepEqual(
   new Set(closedMeshEntries.map(({ rebrickablePartNum }) => rebrickablePartNum)),
   new Set([
     ...passed
-      .filter(({ rebrickablePartNum }) => !intentBlockedPartNums.has(rebrickablePartNum))
+      .filter(({ rebrickablePartNum }) => !isReleaseBlocked(rebrickablePartNum))
       .map(({ rebrickablePartNum }) => rebrickablePartNum),
     ...multipleGripReviews.reviews
       .filter(({ expectedResult, rebrickablePartNum }) => (
-        expectedResult === "passed" && !intentBlockedPartNums.has(rebrickablePartNum)
+        expectedResult === "passed" && !isReleaseBlocked(rebrickablePartNum)
       ))
       .map(({ rebrickablePartNum }) => rebrickablePartNum),
     ...noRadiusGripReviews.reviews
       .filter(({ expectedResult, rebrickablePartNum }) => (
-        expectedResult === "passed" && !intentBlockedPartNums.has(rebrickablePartNum)
+        expectedResult === "passed" && !isReleaseBlocked(rebrickablePartNum)
       ))
       .map(({ rebrickablePartNum }) => rebrickablePartNum),
   ]),

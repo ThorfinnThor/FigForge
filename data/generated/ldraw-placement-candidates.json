@@ -22,10 +22,10 @@
     "automaticBuilderEnablements": 0
   },
   "summary": {
-    "placementProfileRequiredCount": 378,
-    "uniqueRadius4CandidateCount": 20,
+    "placementProfileRequiredCount": 381,
+    "uniqueRadius4CandidateCount": 22,
     "multipleRadius4CandidateCount": 113,
-    "noRadius4CylinderDetectedCount": 243,
+    "noRadius4CylinderDetectedCount": 244,
     "roleSpecificAssemblyProfileRequiredCount": 2,
     "noOfficialMappingQueueCount": 4910,
     "ambiguousOfficialMappingQueueCount": 13
@@ -9668,6 +9668,74 @@
       "limitation": "Official LDraw files can encode shafts as direct mesh triangles, so absence of a cylinder primitive is not proof that no grip exists."
     },
     {
+      "catalogId": "part:43899",
+      "role": "handAccessory",
+      "rebrickablePartNum": "43899",
+      "name": "Weapon Pike / Spear [4 Side Blades]",
+      "ldrawFiles": [
+        "parts/43899.dat"
+      ],
+      "mappingEvidence": [
+        "exact-filename"
+      ],
+      "analysis": "unique-radius-4-cylinder-candidate",
+      "evidence": [
+        {
+          "primitive": "p/4-4cyli.dat",
+          "radiusLdu": 4,
+          "lengthLdu": 140,
+          "centerLdu": [
+            0,
+            130,
+            0
+          ],
+          "axis": [
+            0,
+            1,
+            0
+          ],
+          "sourceConnectorTransformLdu": [
+            1,
+            0,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            130,
+            0,
+            1
+          ]
+        }
+      ],
+      "proposedPlacementTransformLdu": [
+        0.985,
+        -0.17,
+        0,
+        0,
+        0.086268,
+        0.499806,
+        0.86148,
+        0,
+        -0.146464,
+        -0.848563,
+        0.507414,
+        0,
+        13.566116,
+        -31.882832,
+        -129.468055,
+        1
+      ],
+      "automaticBuilderEnablement": false,
+      "limitation": "A radius-4 cylinder is geometric evidence only; it may be decorative or unsuitable as the intended hand grip."
+    },
+    {
       "catalogId": "part:45917",
       "role": "handAccessory",
       "rebrickablePartNum": "45917",
@@ -12313,6 +12381,74 @@
       "limitation": "Several possible shafts exist; selecting one automatically would guess the intended grip."
     },
     {
+      "catalogId": "part:59232",
+      "role": "handAccessory",
+      "rebrickablePartNum": "59232",
+      "name": "Weapon Mace / Flail Spiked",
+      "ldrawFiles": [
+        "parts/59232.dat"
+      ],
+      "mappingEvidence": [
+        "exact-filename"
+      ],
+      "analysis": "unique-radius-4-cylinder-candidate",
+      "evidence": [
+        {
+          "primitive": "p/4-4cyli.dat",
+          "radiusLdu": 4,
+          "lengthLdu": 13.75,
+          "centerLdu": [
+            0,
+            -6.875,
+            0
+          ],
+          "axis": [
+            0,
+            1,
+            0
+          ],
+          "sourceConnectorTransformLdu": [
+            1,
+            0,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            -6.875,
+            0,
+            1
+          ]
+        }
+      ],
+      "proposedPlacementTransformLdu": [
+        0.985,
+        -0.17,
+        0,
+        0,
+        0.086268,
+        0.499806,
+        0.86148,
+        0,
+        -0.146464,
+        -0.848563,
+        0.507414,
+        0,
+        25.373986,
+        36.528153,
+        -11.553048,
+        1
+      ],
+      "automaticBuilderEnablement": false,
+      "limitation": "A radius-4 cylinder is geometric evidence only; it may be decorative or unsuitable as the intended hand grip."
+    },
+    {
       "catalogId": "part:59275",
       "role": "handAccessory",
       "rebrickablePartNum": "59275",
@@ -12883,6 +13019,23 @@
       ],
       "mappingEvidence": [
         "explicit-keyword"
+      ],
+      "analysis": "no-radius-4-cylinder-detected",
+      "evidence": [],
+      "proposedPlacementTransformLdu": null,
+      "automaticBuilderEnablement": false,
+      "limitation": "Official LDraw files can encode shafts as direct mesh triangles, so absence of a cylinder primitive is not proof that no grip exists."
+    },
+    {
+      "catalogId": "part:71342",
+      "role": "handAccessory",
+      "rebrickablePartNum": "71342",
+      "name": "Musical Instrument Bugle",
+      "ldrawFiles": [
+        "parts/71342.dat"
+      ],
+      "mappingEvidence": [
+        "exact-filename"
       ],
       "analysis": "no-radius-4-cylinder-detected",
       "evidence": [],
