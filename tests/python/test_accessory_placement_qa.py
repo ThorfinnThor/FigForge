@@ -54,6 +54,15 @@ class AccessoryPlacementQaTest(unittest.TestCase):
         self.assertEqual(calibration["falseBlockCount"], 0)
         self.assertGreaterEqual(calibration["curatedReviewCount"], 30)
 
+    def test_legacy_long_review_metadata_stays_out_of_low_risk(self) -> None:
+        review = {
+            "selectedOrientationIndex": 0,
+            "gripCandidatesTested": 1,
+            "detectedGripLengthLdu": 140,
+            "orientationCandidatesTested": 1064,
+        }
+        self.assertIn("long-accessory-extent", MODULE.risk_flags_for_review(review))
+
     def test_current_queue_is_completely_classified_and_fail_closed(self) -> None:
         report = MODULE.build_report(
             MODULE.load_json(MODULE.DEFAULT_QUEUE),

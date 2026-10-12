@@ -112,6 +112,14 @@ def risk_flags_for_review(review: dict[str, Any]) -> list[str]:
         flags.append("non-default-orientation")
     if int(review.get("gripCandidatesTested", 1)) > 1:
         flags.append("multiple-grip-candidates")
+    # Older curated rows predate the generated riskFlags field. A long detected
+    # grip or a large orientation search space is enough to keep calibration
+    # conservative; it must never turn a known blocked placement into low risk.
+    if (
+        float(review.get("detectedGripLengthLdu", 0)) >= 48
+        or int(review.get("orientationCandidatesTested", 0)) >= 328
+    ):
+        flags.append("long-accessory-extent")
     return flags
 
 

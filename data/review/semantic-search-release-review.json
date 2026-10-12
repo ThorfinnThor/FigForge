@@ -5,9 +5,9 @@
   "reviewStatus": "pending-human-review",
   "blindedSystems": true,
   "querySetSha256": "56c9a287a380df56d27ff7ecf061514e537ea1be4821f6f6e1f7b41ce397bf97",
-  "releaseManifestSha256": "3d67a61f63992c6192537288c40c11c1a4cf92e980db65ff9e916febaff4863d",
+  "releaseManifestSha256": "cec41ea535e37f01fdc7f1bbc343adbac10cd4d0fdffa78e40a5253e0fe19011",
   "releaseProfileId": "compact-minilm",
-  "releaseDocumentCount": 2714,
+  "releaseDocumentCount": 2711,
   "instructions": "Bewerte jeden Treffer blind mit 0 (unpassend), 1 (akzeptabel) oder 2 (sehr passend). Maßgeblich sind Suchtext, sichtbare Geometrie, Katalogname, Kategorie und belegte Farbe. Die Herkunft aus Basis- oder Hybridsuche bleibt verborgen; der Holdout wird nicht ausgeliefert.",
   "cases": [
     {
@@ -1969,7 +1969,7 @@
         "hybrid": [
           "part:970c65",
           "part:970c08pr0001",
-          "part:970c32"
+          "part:970c29pat05"
         ]
       },
       "candidates": [
@@ -1983,22 +1983,6 @@
             "Blue"
           ],
           "thumbnailUrl": "/assets/thumbnails/ldraw-expanded/legs-970c08pr0001.webp",
-          "relevance": null
-        },
-        {
-          "candidateKey": "candidate:release-dev-en-blue-jeans:part:970c32",
-          "componentId": "part:970c32",
-          "rebrickablePartNum": "970c32",
-          "originalName": "Hips and Medium Blue Legs",
-          "categoryRole": "legsAssembly",
-          "colorNames": [
-            "Black",
-            "Brown",
-            "Dark Blue",
-            "Light Bluish Gray",
-            "Medium Blue"
-          ],
-          "thumbnailUrl": "/assets/thumbnails/ldraw-expanded/legs-970c32.webp",
           "relevance": null
         },
         {
@@ -2061,6 +2045,18 @@
             "Bright Light Blue"
           ],
           "thumbnailUrl": "/assets/thumbnails/ldraw-expanded/legs-16709pats01pr0014.webp",
+          "relevance": null
+        },
+        {
+          "candidateKey": "candidate:release-dev-en-blue-jeans:part:970c29pat05",
+          "componentId": "part:970c29pat05",
+          "rebrickablePartNum": "970c29pat05",
+          "originalName": "Hips with Bright Light Blue Legs and Dark Blue Boots Pattern",
+          "categoryRole": "legsAssembly",
+          "colorNames": [
+            "Bright Light Blue"
+          ],
+          "thumbnailUrl": "/assets/thumbnails/ldraw-expanded/legs-970c29pat05.webp",
           "relevance": null
         },
         {

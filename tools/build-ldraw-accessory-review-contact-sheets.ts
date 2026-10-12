@@ -350,10 +350,38 @@ const run = async (): Promise<void> => {
   const groups = requestedPartNums
     ? selectRequestedReviewGroups(createPendingReviewGroups(queue.entries), requestedPartNums)
     : createRiskReviewGroups(queue.entries);
+  await mkdir(outputDirectory, { recursive: true });
+  if (partsFile && requestedPartNums?.length === 0) {
+    const manifest = {
+      schemaVersion: 1,
+      generatedAt: new Date().toISOString(),
+      batchNumber,
+      batchSize,
+      totalPendingPartCount: queue.summary.pendingReviewCount,
+      automatedLowRiskPartCount: queue.entries.filter((entry) =>
+        entry.reviewStatus === "pending-human-visual-review" && entry.riskFlags.length === 0).length,
+      manualRiskPartCount: queue.entries.filter((entry) =>
+        entry.reviewStatus === "pending-human-visual-review" && entry.riskFlags.length > 0).length,
+      manualRiskRepresentativeCount: 0,
+      selectionSource: resolve(root, partsFile),
+      entries: [],
+    };
+    await writeFile(
+      resolve(outputDirectory, `accessory-review-batch-${String(batchNumber).padStart(2, "0")}.json`),
+      `${JSON.stringify(manifest, null, 2)}\n`,
+      "utf8",
+    );
+    process.stdout.write(`${JSON.stringify({
+      message: "no manual accessory review contact sheets needed",
+      batchNumber,
+      reviewedRepresentatives: 0,
+      outputDirectory,
+    })}\n`);
+    return;
+  }
   if (groups.length === 0) throw new Error("Accessory review selection is empty");
   const batch = groups.slice((batchNumber - 1) * batchSize, batchNumber * batchSize);
   if (batch.length === 0) throw new Error(`Accessory review batch ${batchNumber} is empty`);
-  await mkdir(outputDirectory, { recursive: true });
 
   const previewServer = await startPreview();
   let chrome: Awaited<ReturnType<typeof launchChrome>> | null = null;

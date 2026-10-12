@@ -34,5 +34,6 @@ describe("accessory review batches", () => {
     expect(() => selectRequestedReviewGroups(groups, ["not-a-pending-part"])).toThrow(
       "Requested accessory review part is not pending",
     );
+    expect(selectRequestedReviewGroups(groups, [])).toEqual([]);
   });
 });

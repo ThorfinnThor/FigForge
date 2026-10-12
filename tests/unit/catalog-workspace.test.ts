@@ -428,13 +428,14 @@ describe("FF-14 responsive catalog workspace", () => {
     for (const partNum of blocked) expect(entryFor(partNum)).toBeUndefined();
   });
 
-  it("uses pinned snap evidence to resolve 27 accessories without cylinder primitives", async () => {
+  it("uses pinned snap evidence while honoring visual placement blocks", async () => {
     const accessories = await loadCatalogParts("handAccessory");
     const passed = [
       "37", "59", "4342", "4449", "4499", "18787", "18788", "18789", "18791", "23986",
-      "30173a", "30173b", "30229", "38014", "43887", "48495", "71342", "76764", "79741",
+      "30173a", "30173b", "30229", "38014", "43887", "48495", "76764", "79741",
       "30193", "61199", "87989", "93055", "93216", "93247", "93559", "95673",
     ];
+    const blocked = ["71342"];
     const entryFor = (partNum: string) => {
       const part = accessories.find(({ rebrickablePartNum }) => rebrickablePartNum === partNum);
       const component = part ? builderComponentForCatalogPart(part) : undefined;
@@ -442,6 +443,7 @@ describe("FF-14 responsive catalog workspace", () => {
     };
 
     for (const partNum of passed) expect(entryFor(partNum)).toBeDefined();
+    for (const partNum of blocked) expect(entryFor(partNum)).toBeUndefined();
   });
 
   it("keeps exact mug prints while inheriting their uniquely declared parent grip", async () => {
