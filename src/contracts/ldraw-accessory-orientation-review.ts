@@ -48,11 +48,11 @@ const entrySchema = z
     priorityScore: z.number().int().positive(),
     priorityTier: priorityTierSchema,
     queueRank: z.number().int().positive(),
-    reviewStatus: z.literal("pending-human-visual-review"),
+    reviewStatus: z.enum(["pending-human-visual-review", "approved-browser-visual-review"]),
     requiredChecks: z.array(z.string().min(1).max(300)).min(3),
-    reviewer: z.null(),
-    reviewedAt: z.null(),
-    evidenceReference: z.null(),
+    reviewer: z.string().min(1).max(120).nullable(),
+    reviewedAt: z.iso.date().nullable(),
+    evidenceReference: z.string().min(1).max(300).nullable(),
   })
   .strict();
 
@@ -73,7 +73,8 @@ export const ldrawAccessoryOrientationReviewSchema = z
     summary: z
       .object({
         entryCount: z.number().int().positive(),
-        pendingReviewCount: z.number().int().positive(),
+        pendingReviewCount: z.number().int().nonnegative(),
+        approvedReviewCount: z.number().int().nonnegative(),
         nonDefaultOrientationCount: z.number().int().nonnegative(),
         longAccessoryExtentCount: z.number().int().nonnegative(),
         multipleGripCandidateCount: z.number().int().nonnegative(),
@@ -91,6 +92,9 @@ export const ldrawAccessoryOrientationReviewSchema = z
     if (document.summary.pendingReviewCount !== document.entries.filter(({ reviewStatus }) => reviewStatus === "pending-human-visual-review").length) {
       context.addIssue({ code: "custom", path: ["summary", "pendingReviewCount"], message: "Pending review count is stale" });
     }
+    if (document.summary.approvedReviewCount !== document.entries.filter(({ reviewStatus }) => reviewStatus === "approved-browser-visual-review").length) {
+      context.addIssue({ code: "custom", path: ["summary", "approvedReviewCount"], message: "Approved review count is stale" });
+    }
     const ids = document.entries.map(({ componentId }) => componentId);
     if (new Set(ids).size !== ids.length) {
       context.addIssue({ code: "custom", path: ["entries"], message: "Review queue component IDs must be unique" });
@@ -104,6 +108,13 @@ export const ldrawAccessoryOrientationReviewSchema = z
         + (entry.riskFlags.includes("multiple-grip-candidates") ? 2 : 0);
       if (entry.priorityScore !== expectedScore || entry.priorityTier !== derivedTier(expectedScore) || entry.queueRank !== index + 1) {
         context.addIssue({ code: "custom", path: ["entries", index], message: "Priority metadata is stale" });
+      }
+      const pending = entry.reviewStatus === "pending-human-visual-review";
+      if (
+        (pending && (entry.reviewer !== null || entry.reviewedAt !== null || entry.evidenceReference !== null))
+        || (!pending && (entry.reviewer === null || entry.reviewedAt === null || entry.evidenceReference === null))
+      ) {
+        context.addIssue({ code: "custom", path: ["entries", index], message: "Review evidence does not match review status" });
       }
     }
     for (const entry of document.entries) {

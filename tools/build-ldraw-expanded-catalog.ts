@@ -42,6 +42,7 @@ import {
 } from "./lib/ldraw-placement-candidates.js";
 import { collectVendoredLDCadHandGripEvidence } from "./lib/ldcad-shadow-connectivity.js";
 import { readAccessoryGripIntentReviews } from "./lib/ldraw-accessory-grip-intent-reviews.js";
+import { readAccessoryPlacementReviews } from "./lib/ldraw-accessory-placement-reviews.js";
 import {
   ambiguousMappingKey,
   readAmbiguousMappingResolutions,
@@ -369,6 +370,11 @@ const multipleGripClearanceReviews = await readMultipleGripClearanceReviews(root
 const noRadiusGripClearanceReviews = await readNoRadiusGripClearanceReviews(root);
 const accessoryGripIntentReviews = await readAccessoryGripIntentReviews(root);
 const accessoryGripIntentReviewByPartNum = new Map(accessoryGripIntentReviews.reviews.map((review) => [
+  normalize(review.rebrickablePartNum),
+  review,
+]));
+const accessoryPlacementReviews = await readAccessoryPlacementReviews(root);
+const accessoryPlacementReviewByPartNum = new Map(accessoryPlacementReviews.reviews.map((review) => [
   normalize(review.rebrickablePartNum),
   review,
 ]));
@@ -1018,7 +1024,48 @@ for (const [index, match] of matchedParts.entries()) {
             ),
           })),
         }));
-        const selection = selectUnambiguousDigitalAccessoryGrip(gripEvaluations);
+        const placementReview = accessoryPlacementReviewByPartNum.get(normalize(part.rebrickablePartNum));
+        const automaticSelection = selectUnambiguousDigitalAccessoryGrip(gripEvaluations);
+        const reviewedGrip = placementReview
+          ? match.gripCandidates[placementReview.selectedGripCandidateIndex]
+          : undefined;
+        const reviewedOrientation = placementReview
+          ? gripEvaluations[placementReview.selectedGripCandidateIndex]
+            ?.orientations[placementReview.selectedOrientationIndex]
+          : undefined;
+        if (placementReview) {
+          if (
+            placementReview.decision !== "approved"
+            || candidate.file !== placementReview.ldrawFile
+            || match.gripCandidates.length !== placementReview.gripCandidatesTested
+            || reviewedGrip?.evidence.primitive !== placementReview.detectedGripPrimitive
+            || reviewedGrip.evidence.lengthLdu !== placementReview.detectedGripLengthLdu
+            || reviewedGrip.placementCandidates.length !== placementReview.orientationCandidatesTested
+            || !reviewedOrientation
+          ) {
+            throw new Error(`Stale visual placement review for ${part.rebrickablePartNum}`);
+          }
+          if (reviewedOrientation.validation.status !== "passed") {
+            const safeOrientationIndexes = gripEvaluations[placementReview.selectedGripCandidateIndex]!
+              .orientations.flatMap(({ validation }, orientationIndex) =>
+                validation.status === "passed" ? [orientationIndex] : []
+              );
+            throw new Error(
+              `Unsafe visual placement review for ${part.rebrickablePartNum}: candidate ${placementReview.selectedOrientationIndex} `
+              + `has ${reviewedOrientation.validation.collisionSampleCount} collision sample(s); `
+              + `safe candidates: ${safeOrientationIndexes.join(",") || "none"}`,
+            );
+          }
+        }
+        const selection = placementReview
+          ? {
+            status: "passed" as const,
+            reasonCode: null,
+            safeGripCandidatesFound: automaticSelection.safeGripCandidatesFound,
+            selectedGripCandidateIndex: placementReview.selectedGripCandidateIndex,
+            selectedOrientationIndex: placementReview.selectedOrientationIndex,
+          }
+          : automaticSelection;
         if (selection.status === "rejected") {
           const allOrientations = gripEvaluations.flatMap(({ orientations }) => orientations);
           const bestRejected = allOrientations.reduce((best, current) =>
@@ -1108,6 +1155,13 @@ for (const [index, match] of matchedParts.entries()) {
       thumbnail = previousThumbnail
         ?? await sharp(renderedSvg).webp({ quality: 82, effort: 4 }).toBuffer();
     } catch (error) {
+      if (
+        error instanceof Error
+        && (error.message.startsWith("Stale visual placement review")
+          || error.message.startsWith("Unsafe visual placement review"))
+      ) {
+        throw error;
+      }
       const reason = error instanceof Error ? error.message : "Unknown render failure";
       if (isSharedAsset) fallbackFailureCache.set(assetKey, reason);
       if (part.role === "handAccessory") {

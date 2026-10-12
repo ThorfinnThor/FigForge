@@ -1,0 +1,23 @@
+{
+  "schemaVersion": 1,
+  "sourcePolicy": "Nur Rebrickable Catalog Downloads/CSV, keine MOC-Dateien.",
+  "methodology": "A collision-free connector transform does not prove that an accessory is presented in a visually plausible direction. Three-view human reviews may approve one deterministic grip and orientation candidate. Every review pins the source geometry and candidate counts so a changed generator or LDraw file fails closed instead of silently reusing stale visual judgment.",
+  "reviews": [
+    {
+      "rebrickablePartNum": "2530",
+      "catalogName": "Weapon Sword / Cutlass",
+      "ldrawFile": "parts/2530.dat",
+      "detectedGripPrimitive": "p/4-4cylc.dat",
+      "detectedGripLengthLdu": 12,
+      "gripCandidatesTested": 1,
+      "orientationCandidatesTested": 40,
+      "selectedGripCandidateIndex": 0,
+      "selectedOrientationIndex": 6,
+      "decision": "approved",
+      "reviewedAt": "2026-10-12",
+      "reviewer": "Codex Sol browser QA",
+      "evidenceReference": "three-quarter,front,back local browser inspection",
+      "note": "Three-view browser inspection on 2026-10-12 confirmed that candidate 6 seats the grip in the hand, keeps the blade outside the body in front view, and hides the blade behind the body silhouette in back view. The automatic candidate 0 instead pointed the blade behind the figure."
+    }
+  ]
+}

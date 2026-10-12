@@ -3,6 +3,7 @@ import { readFile, writeFile } from "node:fs/promises";
 import { resolve } from "node:path";
 import { ldrawAccessoryOrientationReviewSchema } from "../src/contracts/ldraw-accessory-orientation-review.js";
 import { ldrawRuntimePackageSchema } from "../src/contracts/ldraw-runtime-package.js";
+import { readAccessoryPlacementReviews } from "./lib/ldraw-accessory-placement-reviews.js";
 
 const root = process.cwd();
 const runtimePath = resolve(root, "data/generated/ldraw-runtime/hand-accessory.json");
@@ -39,6 +40,11 @@ const expanded = JSON.parse(expandedRaw.toString("utf8")) as {
   }>;
 };
 const expandedByComponent = new Map(expanded.entries.map((entry) => [entry.componentId, entry]));
+const placementReviews = await readAccessoryPlacementReviews(root);
+const placementReviewByPartNum = new Map(placementReviews.reviews.map((review) => [
+  review.rebrickablePartNum.trim().toLowerCase(),
+  review,
+]));
 
 const requiredChecks = [
   "Prüfe in Dreiviertel-, Vorder- und Rückansicht, ob das Zubehör sichtbar an der Hand statt am Lauf, Körper oder außerhalb der Hand sitzt.",
@@ -75,6 +81,7 @@ const entries = runtime.entries.map((runtimeEntry) => {
     + (riskFlags.includes("non-default-orientation") ? 1 : 0)
     + (riskFlags.includes("long-accessory-extent") ? 1 : 0)
     + (riskFlags.includes("multiple-grip-candidates") ? 2 : 0);
+  const placementReview = placementReviewByPartNum.get(runtimeEntry.rebrickablePartNum.trim().toLowerCase());
   return {
     id: `accessory-orientation-review:${runtimeEntry.rebrickablePartNum}`,
     componentId: runtimeEntry.componentId,
@@ -99,11 +106,11 @@ const entries = runtime.entries.map((runtimeEntry) => {
     priorityScore,
     priorityTier: priorityScore >= 3 ? "high" as const : priorityScore === 2 ? "medium" as const : "standard" as const,
     queueRank: 0,
-    reviewStatus: "pending-human-visual-review" as const,
+    reviewStatus: placementReview ? "approved-browser-visual-review" as const : "pending-human-visual-review" as const,
     requiredChecks,
-    reviewer: null,
-    reviewedAt: null,
-    evidenceReference: null,
+    reviewer: placementReview?.reviewer ?? null,
+    reviewedAt: placementReview?.reviewedAt ?? null,
+    evidenceReference: placementReview?.evidenceReference ?? null,
   };
 }).sort((left, right) => right.priorityScore - left.priorityScore || left.rebrickablePartNum.localeCompare(right.rebrickablePartNum));
 
@@ -122,7 +129,8 @@ const document = ldrawAccessoryOrientationReviewSchema.parse({
   entries,
   summary: {
     entryCount: entries.length,
-    pendingReviewCount: entries.length,
+    pendingReviewCount: entries.filter(({ reviewStatus }) => reviewStatus === "pending-human-visual-review").length,
+    approvedReviewCount: entries.filter(({ reviewStatus }) => reviewStatus === "approved-browser-visual-review").length,
     nonDefaultOrientationCount: entries.filter(({ riskFlags }) => riskFlags.includes("non-default-orientation")).length,
     longAccessoryExtentCount: entries.filter(({ riskFlags }) => riskFlags.includes("long-accessory-extent")).length,
     multipleGripCandidateCount: entries.filter(({ riskFlags }) => riskFlags.includes("multiple-grip-candidates")).length,
