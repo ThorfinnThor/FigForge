@@ -37,12 +37,23 @@ jobs:
       - name: Run mandatory browser regressions
         run: npm run test:browser
 
+      - name: Run automated accessory placement preflight
+        run: npm run review:accessories:auto -- --output artifacts/accessory-auto-qa
+
+      - name: Upload accessory placement preflight
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
+        with:
+          name: accessory-placement-preflight
+          path: artifacts/accessory-auto-qa
+          if-no-files-found: error
+          retention-days: 14
+
       - name: Build accessory review contact sheets
-        if: startsWith(github.head_ref, 'fix/accessory-review-') || startsWith(github.ref_name, 'fix/accessory-review-')
-        run: npm run review:accessories -- --batch 1 --size 12 --output artifacts/accessory-review
+        if: startsWith(github.head_ref, 'fix/accessory-review-') || startsWith(github.ref_name, 'fix/accessory-review-') || startsWith(github.head_ref, 'feat/automated-accessory-placement-') || startsWith(github.ref_name, 'feat/automated-accessory-placement-')
+        run: npm run review:accessories -- --batch 1 --size 60 --parts-file artifacts/accessory-auto-qa/manual-review-parts.txt --output artifacts/accessory-review
 
       - name: Upload accessory review contact sheets
-        if: startsWith(github.head_ref, 'fix/accessory-review-') || startsWith(github.ref_name, 'fix/accessory-review-')
+        if: startsWith(github.head_ref, 'fix/accessory-review-') || startsWith(github.ref_name, 'fix/accessory-review-') || startsWith(github.head_ref, 'feat/automated-accessory-placement-') || startsWith(github.ref_name, 'feat/automated-accessory-placement-')
         uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
         with:
           name: accessory-review-contact-sheets
