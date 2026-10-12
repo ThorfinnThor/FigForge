@@ -34,17 +34,17 @@
   },
   "summary": {
     "catalogPartCount": 20271,
-    "visualizedPartCount": 14881,
-    "builderReadyPartCount": 14879,
-    "remainingCatalogPartCount": 5392,
-    "remainingWithoutVisualizationCount": 5390,
+    "visualizedPartCount": 14879,
+    "builderReadyPartCount": 14877,
+    "remainingCatalogPartCount": 5394,
+    "remainingWithoutVisualizationCount": 5392,
     "uniqueOfficialMappingCount": 2841,
     "ambiguousOfficialMappingCount": 168,
     "noOfficialMappingCount": 17262,
     "remainingClassifications": {
       "builder-blocked": 2,
       "render-failed": 0,
-      "placement-profile-required": 372,
+      "placement-profile-required": 374,
       "reviewed-incompatible-assembly": 95,
       "ambiguous-official-mapping": 13,
       "no-official-mapping": 4910
@@ -105,12 +105,12 @@
     },
     "handAccessory": {
       "catalogPartCount": 1310,
-      "builderReadyPartCount": 313,
-      "remainingCatalogPartCount": 997,
+      "builderReadyPartCount": 311,
+      "remainingCatalogPartCount": 999,
       "remainingClassifications": {
         "builder-blocked": 1,
         "render-failed": 0,
-        "placement-profile-required": 370,
+        "placement-profile-required": 372,
         "reviewed-incompatible-assembly": 0,
         "ambiguous-official-mapping": 4,
         "no-official-mapping": 622
@@ -46383,6 +46383,20 @@
       "reason": null
     },
     {
+      "catalogId": "part:4349",
+      "role": "handAccessory",
+      "rebrickablePartNum": "4349",
+      "name": "Equipment Weapon, Loudhailer / Speaker / Blaster / Space Gun",
+      "classification": "placement-profile-required",
+      "ldrawFiles": [
+        "parts/4349.dat"
+      ],
+      "mappingEvidence": [
+        "exact-filename"
+      ],
+      "reason": null
+    },
+    {
       "catalogId": "part:4349pr0001",
       "role": "handAccessory",
       "rebrickablePartNum": "4349pr0001",
@@ -47611,6 +47625,20 @@
       "classification": "placement-profile-required",
       "ldrawFiles": [
         "parts/11010.dat"
+      ],
+      "mappingEvidence": [
+        "exact-filename"
+      ],
+      "reason": null
+    },
+    {
+      "catalogId": "part:11096",
+      "role": "handAccessory",
+      "rebrickablePartNum": "11096",
+      "name": "Weapon Axe Head with Twin-Blade",
+      "classification": "placement-profile-required",
+      "ldrawFiles": [
+        "parts/11096.dat"
       ],
       "mappingEvidence": [
         "exact-filename"

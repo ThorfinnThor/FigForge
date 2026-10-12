@@ -22,9 +22,9 @@
     "automaticBuilderEnablements": 0
   },
   "summary": {
-    "placementProfileRequiredCount": 372,
-    "uniqueRadius4CandidateCount": 15,
-    "multipleRadius4CandidateCount": 112,
+    "placementProfileRequiredCount": 374,
+    "uniqueRadius4CandidateCount": 16,
+    "multipleRadius4CandidateCount": 113,
     "noRadius4CylinderDetectedCount": 243,
     "roleSpecificAssemblyProfileRequiredCount": 2,
     "noOfficialMappingQueueCount": 4910,
@@ -4693,6 +4693,90 @@
       "limitation": "Several possible shafts exist; selecting one automatically would guess the intended grip."
     },
     {
+      "catalogId": "part:4349",
+      "role": "handAccessory",
+      "rebrickablePartNum": "4349",
+      "name": "Equipment Weapon, Loudhailer / Speaker / Blaster / Space Gun",
+      "ldrawFiles": [
+        "parts/4349.dat"
+      ],
+      "mappingEvidence": [
+        "exact-filename"
+      ],
+      "analysis": "multiple-radius-4-cylinder-candidates",
+      "evidence": [
+        {
+          "primitive": "p/4-4cyli.dat",
+          "radiusLdu": 4,
+          "lengthLdu": 14.0467,
+          "centerLdu": [
+            0,
+            12.97665,
+            0
+          ],
+          "axis": [
+            0,
+            1,
+            0
+          ],
+          "sourceConnectorTransformLdu": [
+            1,
+            0,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            12.97665,
+            0,
+            1
+          ]
+        },
+        {
+          "primitive": "p/4-4cyli.dat",
+          "radiusLdu": 4,
+          "lengthLdu": 18,
+          "centerLdu": [
+            0,
+            0,
+            5
+          ],
+          "axis": [
+            0,
+            0,
+            1
+          ],
+          "sourceConnectorTransformLdu": [
+            1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0,
+            5,
+            1
+          ]
+        }
+      ],
+      "proposedPlacementTransformLdu": null,
+      "automaticBuilderEnablement": false,
+      "limitation": "Several possible shafts exist; selecting one automatically would guess the intended grip."
+    },
+    {
       "catalogId": "part:4349pr0001",
       "role": "handAccessory",
       "rebrickablePartNum": "4349pr0001",
@@ -6121,6 +6205,74 @@
       "proposedPlacementTransformLdu": null,
       "automaticBuilderEnablement": false,
       "limitation": "Official LDraw files can encode shafts as direct mesh triangles, so absence of a cylinder primitive is not proof that no grip exists."
+    },
+    {
+      "catalogId": "part:11096",
+      "role": "handAccessory",
+      "rebrickablePartNum": "11096",
+      "name": "Weapon Axe Head with Twin-Blade",
+      "ldrawFiles": [
+        "parts/11096.dat"
+      ],
+      "mappingEvidence": [
+        "exact-filename"
+      ],
+      "analysis": "unique-radius-4-cylinder-candidate",
+      "evidence": [
+        {
+          "primitive": "p/4-4cyli.dat",
+          "radiusLdu": 4,
+          "lengthLdu": 10,
+          "centerLdu": [
+            0,
+            20,
+            0
+          ],
+          "axis": [
+            0,
+            1,
+            0
+          ],
+          "sourceConnectorTransformLdu": [
+            1,
+            0,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            20,
+            0,
+            1
+          ]
+        }
+      ],
+      "proposedPlacementTransformLdu": [
+        0.985,
+        -0.17,
+        0,
+        0,
+        0.086268,
+        0.499806,
+        0.86148,
+        0,
+        -0.146464,
+        -0.848563,
+        0.507414,
+        0,
+        23.055546,
+        23.095859,
+        -34.70531,
+        1
+      ],
+      "automaticBuilderEnablement": false,
+      "limitation": "A radius-4 cylinder is geometric evidence only; it may be decorative or unsuitable as the intended hand grip."
     },
     {
       "catalogId": "part:11187",

@@ -725385,92 +725385,6 @@
       }
     },
     {
-      "componentId": "catalog:handAccessory:11096",
-      "role": "handAccessory",
-      "rebrickablePartNum": "11096",
-      "name": "Weapon Axe Head with Twin-Blade",
-      "rebrickableCategoryId": 73,
-      "rebrickableCategoryName": "Minifig Shields, Weapons, & Tools",
-      "material": "Plastic",
-      "colorNames": [
-        "Flat Silver",
-        "Pearl Gold"
-      ],
-      "previewColorName": "Pearl Gold",
-      "previewColorRgb": "AA7F2E",
-      "previewColorEvidence": "rebrickable-elements-first",
-      "status": "verified",
-      "ldrawFile": "parts/11096.dat",
-      "ldrawUpdate": "2024-02",
-      "mappingEvidence": "exact-filename",
-      "assemblyWrapperFor": null,
-      "geometryFallback": null,
-      "modelUrl": "/assets/ldraw/official-2609/models/handAccessory-11096.ldr",
-      "modelSha256": "6d788bdbdc48e25fa15f9f6b77a73a2272e8e480c5a43f8d0c58fb4fa4b038bf",
-      "thumbnailUrl": "/assets/thumbnails/ldraw-expanded/handAccessory-11096.webp",
-      "thumbnailSha256": "b0a55820ac4b3491b863c5f2a1713bc5b9aad3975d054e880ff7185c1ec7de38",
-      "thumbnailBytes": 3314,
-      "placementMode": "snap-connector",
-      "placementTransformLdu": [
-        0.146464,
-        0.848563,
-        -0.507414,
-        0,
-        0.086268,
-        0.499806,
-        0.86148,
-        0,
-        0.985,
-        -0.17,
-        0,
-        0,
-        23.055546,
-        23.095859,
-        -34.70531,
-        1
-      ],
-      "digitalValidation": {
-        "status": "passed",
-        "reasonCode": null,
-        "gripLengthLdu": 10,
-        "modelBoundsLdu": {
-          "min": [
-            -23.65,
-            -19,
-            -8.4
-          ],
-          "max": [
-            23.65,
-            35.8,
-            8.4
-          ],
-          "size": [
-            47.3,
-            54.8,
-            16.8
-          ]
-        },
-        "sampledPointCount": 4928,
-        "protectedBodyBoxCount": 8,
-        "collisionSampleCount": 0,
-        "collisionSamplesByPart": {},
-        "gripCandidatesTested": 1,
-        "safeGripCandidatesFound": 1,
-        "selectedGripCandidateIndex": 0,
-        "orientationCandidatesTested": 24,
-        "selectedOrientationIndex": 1,
-        "gripPrimitive": "p/4-4cyli.dat",
-        "gripEvidenceSource": "official-ldraw-geometry",
-        "limits": {
-          "minimumGripLengthLdu": 8,
-          "maximumAccessoryExtentLdu": 240,
-          "gripNeighborhoodRadiusLdu": 7,
-          "bodyBoxInsetLdu": 0.25
-        },
-        "physicalFitGuaranteed": false
-      }
-    },
-    {
       "componentId": "catalog:handAccessory:11103",
       "role": "handAccessory",
       "rebrickablePartNum": "11103",
@@ -737106,103 +737020,6 @@
         },
         "physicalFitGuaranteed": false,
         "clearanceMode": "closed-mesh"
-      }
-    },
-    {
-      "componentId": "catalog:handAccessory:4349",
-      "role": "handAccessory",
-      "rebrickablePartNum": "4349",
-      "name": "Equipment Weapon, Loudhailer / Speaker / Blaster / Space Gun",
-      "rebrickableCategoryId": 27,
-      "rebrickableCategoryName": "Minifig Accessories",
-      "material": "Plastic",
-      "colorNames": [
-        "Black",
-        "Blue",
-        "Brown",
-        "Dark Bluish Gray",
-        "Dark Gray",
-        "Green",
-        "Light Bluish Gray",
-        "Light Gray",
-        "Red",
-        "Salmon",
-        "Tan",
-        "White",
-        "Yellow"
-      ],
-      "previewColorName": "Salmon",
-      "previewColorRgb": "F2705E",
-      "previewColorEvidence": "rebrickable-elements-first",
-      "status": "verified",
-      "ldrawFile": "parts/4349.dat",
-      "ldrawUpdate": "2010-01",
-      "mappingEvidence": "exact-filename",
-      "assemblyWrapperFor": null,
-      "geometryFallback": null,
-      "modelUrl": "/assets/ldraw/official-2609/models/handAccessory-4349.ldr",
-      "modelSha256": "ec0fed93d7e67789f8a2036d840f937413e09988a7198cd7880d873d8c902846",
-      "thumbnailUrl": "/assets/thumbnails/ldraw-expanded/handAccessory-4349.webp",
-      "thumbnailSha256": "b4958ed02e39d569ac19c11e445a7b1d5f7f93521e3d8318334042feb318154b",
-      "thumbnailBytes": 3336,
-      "placementMode": "snap-connector",
-      "placementTransformLdu": [
-        0.985,
-        -0.17,
-        0,
-        0,
-        0.086268,
-        0.499806,
-        0.86148,
-        0,
-        -0.146464,
-        -0.848563,
-        0.507414,
-        0,
-        23.661433,
-        26.606173,
-        -28.654838,
-        1
-      ],
-      "digitalValidation": {
-        "status": "passed",
-        "reasonCode": null,
-        "gripLengthLdu": 14.0467,
-        "modelBoundsLdu": {
-          "min": [
-            -10,
-            -10,
-            -22
-          ],
-          "max": [
-            10,
-            20,
-            22
-          ],
-          "size": [
-            20,
-            30,
-            44
-          ]
-        },
-        "sampledPointCount": 4544,
-        "protectedBodyBoxCount": 8,
-        "collisionSampleCount": 0,
-        "collisionSamplesByPart": {},
-        "gripCandidatesTested": 2,
-        "safeGripCandidatesFound": 1,
-        "selectedGripCandidateIndex": 0,
-        "orientationCandidatesTested": 8,
-        "selectedOrientationIndex": 0,
-        "gripPrimitive": "p/4-4cyli.dat",
-        "gripEvidenceSource": "official-ldraw-geometry",
-        "limits": {
-          "minimumGripLengthLdu": 8,
-          "maximumAccessoryExtentLdu": 240,
-          "gripNeighborhoodRadiusLdu": 7,
-          "bodyBoxInsetLdu": 0.25
-        },
-        "physicalFitGuaranteed": false
       }
     },
     {
@@ -751604,35 +751421,35 @@
   ],
   "summary": {
     "catalogPartCount": 20271,
-    "digitallySupportedCount": 14871,
+    "digitallySupportedCount": 14869,
     "headCount": 4878,
     "headwearCount": 781,
     "torsoAssemblyCount": 6013,
     "legsAssemblyCount": 2888,
-    "handAccessoryCount": 311,
-    "directMappingCount": 2505,
+    "handAccessoryCount": 309,
+    "directMappingCount": 2503,
     "colorCodedAssemblyCount": 7601,
     "officialAssemblyWrapperCount": 76,
     "ambiguousAssemblyWrappersExcluded": 6,
     "unprintedColorCodedAssemblyCount": 7394,
     "printParentGeometryFallbackCount": 4765,
-    "generatedAssetCount": 5206,
-    "sharedOfficialFileCount": 5662,
+    "generatedAssetCount": 5204,
+    "sharedOfficialFileCount": 5658,
     "ambiguousMappingsExcluded": 127,
     "accessoryGripCandidatesExcluded": 243,
     "accessoryLdcadGripCandidatesDisambiguated": 39,
     "accessoryLdcadPrintParentGripCandidatesEvaluated": 12,
     "accessoryMultipleGripCandidatesEvaluated": 108,
-    "accessoryMultipleGripCandidatesPassed": 2,
+    "accessoryMultipleGripCandidatesPassed": 1,
     "accessoryMultipleGripCandidatesAmbiguous": 97,
     "accessoryMultipleGripCandidatesNoSafe": 2,
     "accessoryMultipleGripCandidatesRenderFailed": 0,
-    "accessoryMultipleGripCandidatesSemanticRejected": 7,
+    "accessoryMultipleGripCandidatesSemanticRejected": 8,
     "accessoryPlacementCandidatesEvaluated": 438,
     "accessoryPlacementRenderFailuresExcluded": 0,
-    "accessorySemanticGripRejectionsExcluded": 11,
-    "digitalPlacementPassedCount": 311,
-    "digitalPlacementRejectionsExcluded": 127,
+    "accessorySemanticGripRejectionsExcluded": 13,
+    "digitalPlacementPassedCount": 309,
+    "digitalPlacementRejectionsExcluded": 129,
     "renderFailuresExcluded": 0,
     "mocFilesUsed": 0
   },
@@ -753193,6 +753010,76 @@
           50
         ]
       ]
+    },
+    {
+      "rebrickablePartNum": "11096",
+      "ldrawFile": "parts/11096.dat",
+      "reasonCode": "detected-feature-is-not-intended-hand-grip",
+      "collisionSampleCount": 0,
+      "collisionSamplesByPart": {},
+      "gripCandidatesTested": 1,
+      "safeGripCandidatesFound": 1,
+      "orientationCollisionCountsByGrip": [
+        [
+          110,
+          0,
+          110,
+          0,
+          390,
+          211,
+          390,
+          211,
+          114,
+          0,
+          114,
+          0,
+          385,
+          223,
+          385,
+          223,
+          97,
+          0,
+          97,
+          0,
+          372,
+          211,
+          372,
+          211
+        ]
+      ],
+      "selectedGripEvidence": {
+        "primitive": "p/4-4cyli.dat",
+        "radiusLdu": 4,
+        "lengthLdu": 10,
+        "centerLdu": [
+          0,
+          20,
+          0
+        ],
+        "axis": [
+          0,
+          1,
+          0
+        ],
+        "sourceConnectorTransformLdu": [
+          1,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          20,
+          0,
+          1
+        ]
+      }
     },
     {
       "rebrickablePartNum": "12885",
@@ -756599,6 +756486,70 @@
           35
         ]
       ]
+    },
+    {
+      "rebrickablePartNum": "4349",
+      "ldrawFile": "parts/4349.dat",
+      "reasonCode": "detected-feature-is-not-intended-hand-grip",
+      "collisionSampleCount": 0,
+      "collisionSamplesByPart": {},
+      "gripCandidatesTested": 2,
+      "safeGripCandidatesFound": 1,
+      "orientationCollisionCountsByGrip": [
+        [
+          0,
+          0,
+          6,
+          0,
+          273,
+          1551,
+          648,
+          301
+        ],
+        [
+          109,
+          109,
+          109,
+          109,
+          60,
+          96,
+          70,
+          60
+        ]
+      ],
+      "selectedGripEvidence": {
+        "primitive": "p/4-4cyli.dat",
+        "radiusLdu": 4,
+        "lengthLdu": 14.0467,
+        "centerLdu": [
+          0,
+          12.97665,
+          0
+        ],
+        "axis": [
+          0,
+          1,
+          0
+        ],
+        "sourceConnectorTransformLdu": [
+          1,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          12.97665,
+          0,
+          1
+        ]
+      }
     },
     {
       "rebrickablePartNum": "4349pr0001",
