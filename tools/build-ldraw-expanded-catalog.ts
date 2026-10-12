@@ -896,6 +896,7 @@ const digitalPlacementRejections: Array<{
   gripCandidatesTested: number;
   safeGripCandidatesFound: number;
   orientationCollisionCountsByGrip: number[][];
+  selectedGripEvidence?: { primitive: string; lengthLdu: number };
 }> = [];
 let accessoryMultipleGripCandidatesPassed = 0;
 let accessoryMultipleGripCandidatesAmbiguous = 0;
@@ -1069,6 +1070,7 @@ for (const [index, match] of matchedParts.entries()) {
             orientationCollisionCountsByGrip: gripEvaluations.map(({ orientations }) =>
               orientations.map(({ validation }) => validation.collisionSampleCount)
             ),
+            selectedGripEvidence: selectedGrip.evidence,
           });
           if (match.gripCandidates.length > 1) accessoryMultipleGripCandidatesSemanticRejected += 1;
           accessorySemanticGripRejectionsExcluded += 1;

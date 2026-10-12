@@ -753837,7 +753837,40 @@
           4499,
           564
         ]
-      ]
+      ],
+      "selectedGripEvidence": {
+        "primitive": "p/4-4cylc.dat",
+        "radiusLdu": 4,
+        "lengthLdu": 12,
+        "centerLdu": [
+          0,
+          22,
+          10
+        ],
+        "axis": [
+          0,
+          -1,
+          0
+        ],
+        "sourceConnectorTransformLdu": [
+          1,
+          0,
+          0,
+          0,
+          0,
+          -1,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          22,
+          10,
+          1
+        ]
+      }
     },
     {
       "rebrickablePartNum": "2561",
@@ -754242,7 +754275,40 @@
           0,
           0
         ]
-      ]
+      ],
+      "selectedGripEvidence": {
+        "primitive": "p/4-4cyli.dat",
+        "radiusLdu": 4,
+        "lengthLdu": 56,
+        "centerLdu": [
+          0,
+          -2,
+          0
+        ],
+        "axis": [
+          0,
+          -1,
+          0
+        ],
+        "sourceConnectorTransformLdu": [
+          1,
+          0,
+          0,
+          0,
+          0,
+          -1,
+          0,
+          0,
+          0,
+          0,
+          -1,
+          0,
+          0,
+          -2,
+          0,
+          1
+        ]
+      }
     },
     {
       "rebrickablePartNum": "2562",
@@ -754948,7 +755014,40 @@
           104,
           0
         ]
-      ]
+      ],
+      "selectedGripEvidence": {
+        "primitive": "ldcad-shadow:parts/30092.dat#SNAP_CYL:8",
+        "radiusLdu": 4,
+        "lengthLdu": 12,
+        "centerLdu": [
+          0,
+          18,
+          -8
+        ],
+        "axis": [
+          0,
+          -12,
+          0
+        ],
+        "sourceConnectorTransformLdu": [
+          -1,
+          0,
+          0,
+          0,
+          0,
+          -1,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          18,
+          -8,
+          1
+        ]
+      }
     },
     {
       "rebrickablePartNum": "30132",
@@ -755169,7 +755268,40 @@
           125,
           151
         ]
-      ]
+      ],
+      "selectedGripEvidence": {
+        "primitive": "ldcad-shadow:parts/30148.dat#SNAP_CYL:8",
+        "radiusLdu": 4,
+        "lengthLdu": 24,
+        "centerLdu": [
+          0,
+          0,
+          0
+        ],
+        "axis": [
+          0,
+          24,
+          0
+        ],
+        "sourceConnectorTransformLdu": [
+          -1,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          -1,
+          0,
+          0,
+          0,
+          0,
+          1
+        ]
+      }
     },
     {
       "rebrickablePartNum": "30154",
@@ -755515,7 +755647,40 @@
           0,
           0
         ]
-      ]
+      ],
+      "selectedGripEvidence": {
+        "primitive": "p/4-4cylc.dat",
+        "radiusLdu": 4,
+        "lengthLdu": 8,
+        "centerLdu": [
+          0,
+          -4,
+          0
+        ],
+        "axis": [
+          0,
+          -1,
+          0
+        ],
+        "sourceConnectorTransformLdu": [
+          1,
+          0,
+          0,
+          0,
+          0,
+          -1,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          -4,
+          0,
+          1
+        ]
+      }
     },
     {
       "rebrickablePartNum": "37720c",
@@ -759473,7 +759638,40 @@
           16,
           15
         ]
-      ]
+      ],
+      "selectedGripEvidence": {
+        "primitive": "p/4-4cyli.dat",
+        "radiusLdu": 4,
+        "lengthLdu": 12,
+        "centerLdu": [
+          0,
+          0,
+          0
+        ],
+        "axis": [
+          -1,
+          0,
+          0
+        ],
+        "sourceConnectorTransformLdu": [
+          0,
+          0,
+          1,
+          0,
+          -1,
+          0,
+          0,
+          0,
+          0,
+          -1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1
+        ]
+      }
     },
     {
       "rebrickablePartNum": "98368pr0002",
@@ -759514,7 +759712,40 @@
           30,
           15
         ]
-      ]
+      ],
+      "selectedGripEvidence": {
+        "primitive": "p/4-4cyli.dat",
+        "radiusLdu": 4,
+        "lengthLdu": 12,
+        "centerLdu": [
+          0,
+          0,
+          0
+        ],
+        "axis": [
+          -1,
+          0,
+          0
+        ],
+        "sourceConnectorTransformLdu": [
+          0,
+          0,
+          1,
+          0,
+          -1,
+          0,
+          0,
+          0,
+          0,
+          -1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1
+        ]
+      }
     }
   ],
   "limitations": [

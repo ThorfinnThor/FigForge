@@ -2,9 +2,7 @@ import assert from "node:assert/strict";
 import { readFile } from "node:fs/promises";
 import { resolve } from "node:path";
 import { catalogPackageSchema } from "../src/contracts/catalog-package.js";
-import { collectVendoredLDCadHandGripEvidence } from "./lib/ldcad-shadow-connectivity.js";
 import { readAccessoryGripIntentReviews } from "./lib/ldraw-accessory-grip-intent-reviews.js";
-import { collectCylinderEvidence } from "./lib/ldraw-placement-candidates.js";
 import { normalizeCatalogEvidenceName } from "./lib/ldraw-review.js";
 
 const root = process.cwd();
@@ -24,6 +22,7 @@ const expanded = JSON.parse(await readFile(
     ldrawFile: string;
     reasonCode: string;
     safeGripCandidatesFound: number;
+    selectedGripEvidence?: { primitive: string; lengthLdu: number };
   }>;
   summary: { accessorySemanticGripRejectionsExcluded: number };
 };
@@ -70,6 +69,8 @@ for (const review of reviews.reviews) {
       && rejection.ldrawFile === review.ldrawFile
       && rejection.reasonCode === review.reasonCode
       && rejection.safeGripCandidatesFound === 1
+      && rejection.selectedGripEvidence?.primitive === review.detectedGripPrimitive
+      && rejection.selectedGripEvidence.lengthLdu === review.detectedGripLengthLdu
   ));
   assert(coverage.remainingEntries.some((entry) =>
     entry.role === "handAccessory"
@@ -90,20 +91,6 @@ for (const review of reviews.reviews) {
     assert(placementCandidate.evidence.some((evidence) =>
         evidence.primitive === review.detectedGripPrimitive
           && evidence.lengthLdu === review.detectedGripLengthLdu
-    ));
-  } else {
-    const evidence = review.detectedGripPrimitive.startsWith("ldcad-shadow:")
-      ? await collectVendoredLDCadHandGripEvidence(
-          resolve(root, "data/vendor/ldcad-shadow"),
-          review.ldrawFile,
-        )
-      : await collectCylinderEvidence(
-          resolve(root, "data/incoming/ldraw-official/extracted/ldraw"),
-          review.ldrawFile,
-        );
-    assert(evidence.some((candidate) =>
-      candidate.primitive === review.detectedGripPrimitive
-        && candidate.lengthLdu === review.detectedGripLengthLdu
     ));
   }
 }
