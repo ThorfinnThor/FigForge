@@ -17,6 +17,7 @@
     "review:semantic-release": "tsx tools/semantic-search-review-server.ts",
     "review:semantic-holdout": "FIGFORGE_SEARCH_REVIEW_SPLIT=holdout tsx tools/semantic-search-review-server.ts",
     "review:semantic-release:import": "tsx tools/import-semantic-search-release-judgments.ts",
+    "review:accessories": "tsx tools/build-ldraw-accessory-review-contact-sheets.ts",
     "typecheck": "tsc -b --pretty false",
     "lint": "eslint .",
     "test": "vitest run",

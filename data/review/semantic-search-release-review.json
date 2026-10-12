@@ -5,9 +5,9 @@
   "reviewStatus": "pending-human-review",
   "blindedSystems": true,
   "querySetSha256": "56c9a287a380df56d27ff7ecf061514e537ea1be4821f6f6e1f7b41ce397bf97",
-  "releaseManifestSha256": "0dbc977553834e53447c759537003f7bc728ee3abb3ea7bb385b2de909de1c75",
+  "releaseManifestSha256": "ac4dcff452e2e38685caf617a10df332ba70a32881ad95cda3727bd82d5ee2d1",
   "releaseProfileId": "compact-minilm",
-  "releaseDocumentCount": 2720,
+  "releaseDocumentCount": 2718,
   "instructions": "Bewerte jeden Treffer blind mit 0 (unpassend), 1 (akzeptabel) oder 2 (sehr passend). Maßgeblich sind Suchtext, sichtbare Geometrie, Katalogname, Kategorie und belegte Farbe. Die Herkunft aus Basis- oder Hybridsuche bleibt verborgen; der Holdout wird nicht ausgeliefert.",
   "cases": [
     {
@@ -1969,7 +1969,7 @@
         "hybrid": [
           "part:970c65",
           "part:970c08pr0001",
-          "part:970c29pat05"
+          "part:970c32"
         ]
       },
       "candidates": [
@@ -1983,6 +1983,22 @@
             "Blue"
           ],
           "thumbnailUrl": "/assets/thumbnails/ldraw-expanded/legs-970c08pr0001.webp",
+          "relevance": null
+        },
+        {
+          "candidateKey": "candidate:release-dev-en-blue-jeans:part:970c32",
+          "componentId": "part:970c32",
+          "rebrickablePartNum": "970c32",
+          "originalName": "Hips and Medium Blue Legs",
+          "categoryRole": "legsAssembly",
+          "colorNames": [
+            "Black",
+            "Brown",
+            "Dark Blue",
+            "Light Bluish Gray",
+            "Medium Blue"
+          ],
+          "thumbnailUrl": "/assets/thumbnails/ldraw-expanded/legs-970c32.webp",
           "relevance": null
         },
         {
@@ -2045,18 +2061,6 @@
             "Bright Light Blue"
           ],
           "thumbnailUrl": "/assets/thumbnails/ldraw-expanded/legs-16709pats01pr0014.webp",
-          "relevance": null
-        },
-        {
-          "candidateKey": "candidate:release-dev-en-blue-jeans:part:970c29pat05",
-          "componentId": "part:970c29pat05",
-          "rebrickablePartNum": "970c29pat05",
-          "originalName": "Hips with Bright Light Blue Legs and Dark Blue Boots Pattern",
-          "categoryRole": "legsAssembly",
-          "colorNames": [
-            "Bright Light Blue"
-          ],
-          "thumbnailUrl": "/assets/thumbnails/ldraw-expanded/legs-970c29pat05.webp",
           "relevance": null
         },
         {
@@ -3074,11 +3078,11 @@
       "query": "shield with lion",
       "systems": {
         "baseline": [
-          "part:11096",
           "part:11103",
           "part:11601",
           "part:13571pr0001",
-          "part:15071"
+          "part:15071",
+          "part:18031"
         ],
         "hybrid": [
           "part:22409",
@@ -3087,19 +3091,6 @@
         ]
       },
       "candidates": [
-        {
-          "candidateKey": "candidate:release-holdout-en-lion-shield:part:11096",
-          "componentId": "part:11096",
-          "rebrickablePartNum": "11096",
-          "originalName": "Weapon Axe Head with Twin-Blade",
-          "categoryRole": "handAccessory",
-          "colorNames": [
-            "Flat Silver",
-            "Pearl Gold"
-          ],
-          "thumbnailUrl": "/assets/thumbnails/ldraw-expanded/handAccessory-11096.webp",
-          "relevance": null
-        },
         {
           "candidateKey": "candidate:release-holdout-en-lion-shield:part:13571pr0001",
           "componentId": "part:13571pr0001",
@@ -3123,6 +3114,23 @@
             "Light Bluish Gray"
           ],
           "thumbnailUrl": "/assets/thumbnails/ldraw-expanded/handAccessory-24108.webp",
+          "relevance": null
+        },
+        {
+          "candidateKey": "candidate:release-holdout-en-lion-shield:part:18031",
+          "componentId": "part:18031",
+          "rebrickablePartNum": "18031",
+          "originalName": "Weapon Sword / Greatsword Pointed with Thick Crossguard",
+          "categoryRole": "handAccessory",
+          "colorNames": [
+            "Black",
+            "Dark Bluish Gray",
+            "Flat Silver",
+            "Pearl Gold",
+            "Pearl Titanium",
+            "White"
+          ],
+          "thumbnailUrl": "/assets/thumbnails/ldraw-expanded/handAccessory-18031.webp",
           "relevance": null
         },
         {
@@ -3211,7 +3219,7 @@
         "hybrid": [
           "part:4438",
           "part:90370pr0001",
-          "part:3848"
+          "part:3835"
         ]
       },
       "candidates": [
@@ -3259,28 +3267,6 @@
             "Black"
           ],
           "thumbnailUrl": "/assets/thumbnails/ldraw-expanded/handAccessory-10830pat0001.webp",
-          "relevance": null
-        },
-        {
-          "candidateKey": "candidate:release-holdout-de-black-axe:part:3848",
-          "componentId": "part:3848",
-          "rebrickablePartNum": "3848",
-          "originalName": "Weapon Halberd / Axe",
-          "categoryRole": "handAccessory",
-          "colorNames": [
-            "Black",
-            "Brown",
-            "Dark Bluish Gray",
-            "Green",
-            "Light Bluish Gray",
-            "Light Gray",
-            "Pearl Dark Gray",
-            "Pearl Gold",
-            "Pearl Titanium",
-            "Reddish Brown",
-            "Speckle Black-Silver"
-          ],
-          "thumbnailUrl": "/assets/thumbnails/ldraw-expanded/handAccessory-3848.webp",
           "relevance": null
         },
         {
@@ -3332,6 +3318,20 @@
             "White"
           ],
           "thumbnailUrl": "/assets/thumbnails/ldraw-expanded/handAccessory-102498pat0001.webp",
+          "relevance": null
+        },
+        {
+          "candidateKey": "candidate:release-holdout-de-black-axe:part:3835",
+          "componentId": "part:3835",
+          "rebrickablePartNum": "3835",
+          "originalName": "Weapon Axe",
+          "categoryRole": "handAccessory",
+          "colorNames": [
+            "Black",
+            "Light Bluish Gray",
+            "Light Gray"
+          ],
+          "thumbnailUrl": "/assets/thumbnails/ldraw-expanded/handAccessory-3835.webp",
           "relevance": null
         },
         {

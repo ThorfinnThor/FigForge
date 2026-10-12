@@ -112,6 +112,26 @@
       "decision": "blocked",
       "reasonCode": "detected-feature-is-not-intended-hand-grip",
       "note": "This printed toolbox reuses the same visually rejected grip feature as 98368 and would otherwise be rotated onto its side instead of hanging from the top handle."
+    },
+    {
+      "rebrickablePartNum": "4349",
+      "catalogName": "Equipment Weapon, Loudhailer / Speaker / Blaster / Space Gun",
+      "ldrawFile": "parts/4349.dat",
+      "detectedGripPrimitive": "p/4-4cyli.dat",
+      "detectedGripLengthLdu": 14.0467,
+      "decision": "blocked",
+      "reasonCode": "detected-feature-is-not-intended-hand-grip",
+      "note": "Three-view inspection on 2026-10-12 confirmed that the selected cylinder is the loudhailer barrel: the hand covers the ribbed barrel while the intended handle remains unused."
+    },
+    {
+      "rebrickablePartNum": "11096",
+      "catalogName": "Weapon Axe Head with Twin-Blade",
+      "ldrawFile": "parts/11096.dat",
+      "detectedGripPrimitive": "p/4-4cyli.dat",
+      "detectedGripLengthLdu": 10,
+      "decision": "blocked",
+      "reasonCode": "detected-feature-is-not-intended-hand-grip",
+      "note": "Three-view inspection on 2026-10-12 confirmed that the detected cylinder is the axle hole for a separate handle, not a complete minifigure hand grip."
     }
   ]
 }
