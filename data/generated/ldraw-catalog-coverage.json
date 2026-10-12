@@ -34,17 +34,17 @@
   },
   "summary": {
     "catalogPartCount": 20271,
-    "visualizedPartCount": 14888,
-    "builderReadyPartCount": 14886,
-    "remainingCatalogPartCount": 5385,
-    "remainingWithoutVisualizationCount": 5383,
+    "visualizedPartCount": 14885,
+    "builderReadyPartCount": 14883,
+    "remainingCatalogPartCount": 5388,
+    "remainingWithoutVisualizationCount": 5386,
     "uniqueOfficialMappingCount": 2841,
     "ambiguousOfficialMappingCount": 168,
     "noOfficialMappingCount": 17262,
     "remainingClassifications": {
       "builder-blocked": 2,
       "render-failed": 0,
-      "placement-profile-required": 365,
+      "placement-profile-required": 368,
       "reviewed-incompatible-assembly": 95,
       "ambiguous-official-mapping": 13,
       "no-official-mapping": 4910
@@ -105,12 +105,12 @@
     },
     "handAccessory": {
       "catalogPartCount": 1310,
-      "builderReadyPartCount": 320,
-      "remainingCatalogPartCount": 990,
+      "builderReadyPartCount": 317,
+      "remainingCatalogPartCount": 993,
       "remainingClassifications": {
         "builder-blocked": 1,
         "render-failed": 0,
-        "placement-profile-required": 363,
+        "placement-profile-required": 366,
         "reviewed-incompatible-assembly": 0,
         "ambiguous-official-mapping": 4,
         "no-official-mapping": 622
@@ -49476,6 +49476,20 @@
       "reason": null
     },
     {
+      "catalogId": "part:30092",
+      "role": "handAccessory",
+      "rebrickablePartNum": "30092",
+      "name": "Equipment Underwater Scooter, 2 Bar Handles, Octagonal End",
+      "classification": "placement-profile-required",
+      "ldrawFiles": [
+        "parts/30092.dat"
+      ],
+      "mappingEvidence": [
+        "exact-filename"
+      ],
+      "reason": null
+    },
+    {
       "catalogId": "part:30106",
       "role": "handAccessory",
       "rebrickablePartNum": "30106",
@@ -49539,6 +49553,20 @@
       "classification": "placement-profile-required",
       "ldrawFiles": [
         "parts/30141.dat"
+      ],
+      "mappingEvidence": [
+        "exact-filename"
+      ],
+      "reason": null
+    },
+    {
+      "catalogId": "part:30148",
+      "role": "handAccessory",
+      "rebrickablePartNum": "30148",
+      "name": "Equipment Camera / Camcorder [Movie Style]",
+      "classification": "placement-profile-required",
+      "ldrawFiles": [
+        "parts/30148.dat"
       ],
       "mappingEvidence": [
         "exact-filename"
@@ -50233,6 +50261,20 @@
       ],
       "mappingEvidence": [
         "explicit-keyword"
+      ],
+      "reason": null
+    },
+    {
+      "catalogId": "part:37704",
+      "role": "handAccessory",
+      "rebrickablePartNum": "37704",
+      "name": "Sports Quidditch Ball, Golden Snitch",
+      "classification": "placement-profile-required",
+      "ldrawFiles": [
+        "parts/37704.dat"
+      ],
+      "mappingEvidence": [
+        "exact-filename"
       ],
       "reason": null
     },

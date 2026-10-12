@@ -67,6 +67,7 @@ const placement = JSON.parse(await readFile(resolve(root, "data/generated/ldraw-
 const remainingUnique = new Set(placement.placementCandidates
   .filter(({ role, analysis }) => role === "handAccessory" && analysis === "unique-radius-4-cylinder-candidate")
   .map(({ rebrickablePartNum }) => rebrickablePartNum));
+const intentBlockedPartNums = new Set(intentReviews.reviews.map(({ rebrickablePartNum }) => rebrickablePartNum));
 
 assert.equal(reviews.reviews.length, 20);
 assert.equal(new Set(reviews.reviews.map(({ rebrickablePartNum }) => rebrickablePartNum)).size, 20);
@@ -107,12 +108,18 @@ const closedMeshEntries = expanded.entries.filter(({ digitalValidation }) =>
 assert.deepEqual(
   new Set(closedMeshEntries.map(({ rebrickablePartNum }) => rebrickablePartNum)),
   new Set([
-    ...passed.map(({ rebrickablePartNum }) => rebrickablePartNum),
+    ...passed
+      .filter(({ rebrickablePartNum }) => !intentBlockedPartNums.has(rebrickablePartNum))
+      .map(({ rebrickablePartNum }) => rebrickablePartNum),
     ...multipleGripReviews.reviews
-      .filter(({ expectedResult }) => expectedResult === "passed")
+      .filter(({ expectedResult, rebrickablePartNum }) => (
+        expectedResult === "passed" && !intentBlockedPartNums.has(rebrickablePartNum)
+      ))
       .map(({ rebrickablePartNum }) => rebrickablePartNum),
     ...noRadiusGripReviews.reviews
-      .filter(({ expectedResult }) => expectedResult === "passed")
+      .filter(({ expectedResult, rebrickablePartNum }) => (
+        expectedResult === "passed" && !intentBlockedPartNums.has(rebrickablePartNum)
+      ))
       .map(({ rebrickablePartNum }) => rebrickablePartNum),
   ]),
 );

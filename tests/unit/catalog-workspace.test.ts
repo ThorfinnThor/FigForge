@@ -414,10 +414,10 @@ describe("FF-14 responsive catalog workspace", () => {
     for (const partNum of blocked) expect(entryFor(partNum)).toBeUndefined();
   });
 
-  it("uses unique pinned snap evidence to resolve only four multi-cylinder accessories", async () => {
+  it("uses unique pinned snap evidence and semantic review to resolve only three multi-cylinder accessories", async () => {
     const accessories = await loadCatalogParts("handAccessory");
-    const passed = ["30092", "56619", "61190f", "95052"];
-    const blocked = ["4341", "10172", "10172pr0001", "89801"];
+    const passed = ["56619", "61190f", "95052"];
+    const blocked = ["30092", "4341", "10172", "10172pr0001", "89801"];
     const entryFor = (partNum: string) => {
       const part = accessories.find(({ rebrickablePartNum }) => rebrickablePartNum === partNum);
       const component = part ? builderComponentForCatalogPart(part) : undefined;

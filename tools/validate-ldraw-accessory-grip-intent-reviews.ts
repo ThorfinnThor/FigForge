@@ -2,7 +2,9 @@ import assert from "node:assert/strict";
 import { readFile } from "node:fs/promises";
 import { resolve } from "node:path";
 import { catalogPackageSchema } from "../src/contracts/catalog-package.js";
+import { collectVendoredLDCadHandGripEvidence } from "./lib/ldcad-shadow-connectivity.js";
 import { readAccessoryGripIntentReviews } from "./lib/ldraw-accessory-grip-intent-reviews.js";
+import { collectCylinderEvidence } from "./lib/ldraw-placement-candidates.js";
 import { normalizeCatalogEvidenceName } from "./lib/ldraw-review.js";
 
 const root = process.cwd();
@@ -76,18 +78,34 @@ for (const review of reviews.reviews) {
       && entry.ldrawFiles.length === 1
       && entry.ldrawFiles[0] === review.ldrawFile
   ));
-  assert(placement.placementCandidates.some((entry) =>
+  const placementCandidate = placement.placementCandidates.find((entry) =>
     entry.role === "handAccessory"
       && entry.rebrickablePartNum === review.rebrickablePartNum
-      && (
-        entry.analysis === "unique-radius-4-cylinder-candidate"
-        || entry.analysis === "multiple-radius-4-cylinder-candidates"
-      )
-      && entry.evidence.some((evidence) =>
+  );
+  if (placementCandidate) {
+    assert(
+      placementCandidate.analysis === "unique-radius-4-cylinder-candidate"
+        || placementCandidate.analysis === "multiple-radius-4-cylinder-candidates",
+    );
+    assert(placementCandidate.evidence.some((evidence) =>
         evidence.primitive === review.detectedGripPrimitive
           && evidence.lengthLdu === review.detectedGripLengthLdu
-      )
-  ));
+    ));
+  } else {
+    const evidence = review.detectedGripPrimitive.startsWith("ldcad-shadow:")
+      ? await collectVendoredLDCadHandGripEvidence(
+          resolve(root, "data/vendor/ldcad-shadow"),
+          review.ldrawFile,
+        )
+      : await collectCylinderEvidence(
+          resolve(root, "data/incoming/ldraw-official/extracted/ldraw"),
+          review.ldrawFile,
+        );
+    assert(evidence.some((candidate) =>
+      candidate.primitive === review.detectedGripPrimitive
+        && candidate.lengthLdu === review.detectedGripLengthLdu
+    ));
+  }
 }
 assert.equal(expanded.summary.accessorySemanticGripRejectionsExcluded, reviews.reviews.length);
 

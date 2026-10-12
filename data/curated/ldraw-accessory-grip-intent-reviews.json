@@ -24,6 +24,36 @@
       "note": "The detected long cylinder follows the musket barrel rather than the intended stock grip, so the resulting placement crosses the figure instead of being held by the handle."
     },
     {
+      "rebrickablePartNum": "30092",
+      "catalogName": "Equipment Underwater Scooter, 2 Bar Handles, Octagonal End",
+      "ldrawFile": "parts/30092.dat",
+      "detectedGripPrimitive": "ldcad-shadow:parts/30092.dat#SNAP_CYL:8",
+      "detectedGripLengthLdu": 12,
+      "decision": "blocked",
+      "reasonCode": "detected-feature-is-not-intended-hand-grip",
+      "note": "Three-view inspection on 2026-10-12 confirmed that the single selected handle places the two-handed scooter behind and through the figure instead of in front of both hands."
+    },
+    {
+      "rebrickablePartNum": "30148",
+      "catalogName": "Equipment Camera / Camcorder [Movie Style]",
+      "ldrawFile": "parts/30148.dat",
+      "detectedGripPrimitive": "ldcad-shadow:parts/30148.dat#SNAP_CYL:8",
+      "detectedGripLengthLdu": 24,
+      "decision": "blocked",
+      "reasonCode": "detected-feature-is-not-intended-hand-grip",
+      "note": "Three-view inspection on 2026-10-12 confirmed that the selected cylinder embeds the camcorder across the figure's waist instead of placing its intended handle in the hand."
+    },
+    {
+      "rebrickablePartNum": "37704",
+      "catalogName": "Sports Quidditch Ball, Golden Snitch",
+      "ldrawFile": "parts/37704.dat",
+      "detectedGripPrimitive": "p/4-4cylc.dat",
+      "detectedGripLengthLdu": 8,
+      "decision": "blocked",
+      "reasonCode": "detected-feature-is-not-intended-hand-grip",
+      "note": "Three-view inspection on 2026-10-12 confirmed that the selected cylinder places the Snitch across the figure's waist and torso instead of presenting it plausibly at the hand."
+    },
+    {
       "rebrickablePartNum": "98368",
       "catalogName": "Toolbox",
       "ldrawFile": "parts/98368.dat",

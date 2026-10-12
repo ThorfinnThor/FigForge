@@ -5,9 +5,9 @@
   "reviewStatus": "pending-human-review",
   "blindedSystems": true,
   "querySetSha256": "56c9a287a380df56d27ff7ecf061514e537ea1be4821f6f6e1f7b41ce397bf97",
-  "releaseManifestSha256": "af1710c718f1e2698a477a31ea6d7ef4d18f01da747769eabebe0cf72617e7e3",
+  "releaseManifestSha256": "7e00c1bff20fc8b0bd1edab7ba38eeb9a462dc34812b44c46a957a7ed3607a83",
   "releaseProfileId": "compact-minilm",
-  "releaseDocumentCount": 2727,
+  "releaseDocumentCount": 2724,
   "instructions": "Bewerte jeden Treffer blind mit 0 (unpassend), 1 (akzeptabel) oder 2 (sehr passend). Maßgeblich sind Suchtext, sichtbare Geometrie, Katalogname, Kategorie und belegte Farbe. Die Herkunft aus Basis- oder Hybridsuche bleibt verborgen; der Holdout wird nicht ausgeliefert.",
   "cases": [
     {
