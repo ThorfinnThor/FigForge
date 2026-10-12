@@ -3,6 +3,7 @@ import { readFile } from "node:fs/promises";
 import { resolve } from "node:path";
 import { catalogPackageSchema } from "../src/contracts/catalog-package.js";
 import { readAccessoryGripIntentReviews } from "./lib/ldraw-accessory-grip-intent-reviews.js";
+import { readAccessoryPlacementReviews } from "./lib/ldraw-accessory-placement-reviews.js";
 import { readMultipleGripClearanceReviews } from "./lib/ldraw-multiple-grip-clearance-reviews.js";
 import { readNoRadiusGripClearanceReviews } from "./lib/ldraw-no-radius-grip-clearance-reviews.js";
 import { normalizeCatalogEvidenceName } from "./lib/ldraw-review.js";
@@ -11,6 +12,7 @@ import { readUniqueGripClearanceReviews } from "./lib/ldraw-unique-grip-clearanc
 const root = process.cwd();
 const reviews = await readUniqueGripClearanceReviews(root);
 const intentReviews = await readAccessoryGripIntentReviews(root);
+const placementReviews = await readAccessoryPlacementReviews(root);
 const multipleGripReviews = await readMultipleGripClearanceReviews(root);
 const noRadiusGripReviews = await readNoRadiusGripClearanceReviews(root);
 const catalogSource: unknown = JSON.parse(await readFile(
@@ -125,6 +127,9 @@ assert.deepEqual(
 );
 const expectedRemainingUnique = new Set([
   ...blocked.map(({ rebrickablePartNum }) => rebrickablePartNum),
+  ...placementReviews.reviews
+    .filter(({ decision, rebrickablePartNum }) => decision === "blocked" && remainingUnique.has(rebrickablePartNum))
+    .map(({ rebrickablePartNum }) => rebrickablePartNum),
   ...intentReviews.reviews
     .filter(({ rebrickablePartNum }) => remainingUnique.has(rebrickablePartNum))
     .map(({ rebrickablePartNum }) => rebrickablePartNum),

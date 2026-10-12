@@ -71,10 +71,15 @@ describe("repository delivery policy", () => {
       readProjectFile(".github/workflows/ci.yml"),
       readProjectFile(".github/workflows/refresh-catalog.yml"),
     ]);
-    const actionReferences = workflows
-      .flatMap((workflow) => workflow.match(/actions\/[a-z-]+@[a-f0-9]{40}/gu) ?? []);
+    const actionReferences = workflows.flatMap((workflow) =>
+      [...workflow.matchAll(/uses:\s*(actions\/[a-z-]+)@([^\s#]+)/gu)]
+        .map((match) => ({ action: match[1], reference: match[2] })),
+    );
 
-    expect(actionReferences).toHaveLength(4);
+    expect(actionReferences.length).toBeGreaterThan(0);
+    for (const { action, reference } of actionReferences) {
+      expect(reference, `${action} must use an immutable commit SHA`).toMatch(/^[a-f0-9]{40}$/u);
+    }
   });
 
   it("documents the immutable catalog boundary", async () => {

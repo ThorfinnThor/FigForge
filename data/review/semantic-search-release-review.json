@@ -5,9 +5,9 @@
   "reviewStatus": "pending-human-review",
   "blindedSystems": true,
   "querySetSha256": "56c9a287a380df56d27ff7ecf061514e537ea1be4821f6f6e1f7b41ce397bf97",
-  "releaseManifestSha256": "ac4dcff452e2e38685caf617a10df332ba70a32881ad95cda3727bd82d5ee2d1",
+  "releaseManifestSha256": "3d67a61f63992c6192537288c40c11c1a4cf92e980db65ff9e916febaff4863d",
   "releaseProfileId": "compact-minilm",
-  "releaseDocumentCount": 2718,
+  "releaseDocumentCount": 2714,
   "instructions": "Bewerte jeden Treffer blind mit 0 (unpassend), 1 (akzeptabel) oder 2 (sehr passend). Maßgeblich sind Suchtext, sichtbare Geometrie, Katalogname, Kategorie und belegte Farbe. Die Herkunft aus Basis- oder Hybridsuche bleibt verborgen; der Holdout wird nicht ausgeliefert.",
   "cases": [
     {
@@ -217,8 +217,8 @@
         "hybrid": [
           "part:3626cpr0914",
           "part:3626bpr0049",
-          "part:3626cpr0889",
           "part:3626cpr2141",
+          "part:3626cpr0889",
           "part:3626bpr0282"
         ]
       },
@@ -571,7 +571,7 @@
         "hybrid": [
           "part:15864pat0001",
           "part:79230",
-          "part:6122"
+          "part:3896"
         ]
       },
       "candidates": [
@@ -670,19 +670,19 @@
           "relevance": null
         },
         {
-          "candidateKey": "candidate:release-dev-en-black-knight-helmet:part:6122",
-          "componentId": "part:6122",
-          "rebrickablePartNum": "6122",
-          "originalName": "Helmet Castle - Dragon Crown Top with Clip",
+          "candidateKey": "candidate:release-dev-en-black-knight-helmet:part:3896",
+          "componentId": "part:3896",
+          "rebrickablePartNum": "3896",
+          "originalName": "Helmet Castle with Chin Guard",
           "categoryRole": "headwear",
           "colorNames": [
             "Black",
-            "Blue",
-            "Chrome Gold",
-            "Chrome Silver",
+            "Dark Gray",
+            "Dark Purple",
+            "Light Bluish Gray",
             "Red"
           ],
-          "thumbnailUrl": "/assets/thumbnails/ldraw-expanded/headwear-6122.webp",
+          "thumbnailUrl": "/assets/thumbnails/ldraw-expanded/headwear-3896.webp",
           "relevance": null
         }
       ]
@@ -1075,9 +1075,9 @@
         "hybrid": [
           "part:2528pr0011",
           "part:2528pr0002",
+          "part:2528pr0007",
           "part:2528",
-          "part:2528pr0001",
-          "part:2528pr0007"
+          "part:2528pr0001"
         ]
       },
       "candidates": [
@@ -1496,7 +1496,7 @@
         "hybrid": [
           "part:973c22h03pr1264",
           "part:973c22h01pr1783",
-          "part:973c22h27pr2112"
+          "part:973c22h01pr1832"
         ]
       },
       "candidates": [
@@ -1524,18 +1524,6 @@
             "Red"
           ],
           "thumbnailUrl": "/assets/thumbnails/ldraw-expanded/torso-37191.webp",
-          "relevance": null
-        },
-        {
-          "candidateKey": "candidate:release-dev-de-red-pirate-no-armor:part:973c22h27pr2112",
-          "componentId": "part:973c22h27pr2112",
-          "rebrickablePartNum": "973c22h27pr2112",
-          "originalName": "Torso Santa Jacket with Fur and Black Belt Print, Red Arms, White Hands",
-          "categoryRole": "torsoAssembly",
-          "colorNames": [
-            "Red"
-          ],
-          "thumbnailUrl": "/assets/thumbnails/ldraw-expanded/torso-973c22h27pr2112.webp",
           "relevance": null
         },
         {
@@ -1572,6 +1560,18 @@
             "Red"
           ],
           "thumbnailUrl": "/assets/thumbnails/ldraw-expanded/torso-973c22h03pr1264.webp",
+          "relevance": null
+        },
+        {
+          "candidateKey": "candidate:release-dev-de-red-pirate-no-armor:part:973c22h01pr1832",
+          "componentId": "part:973c22h01pr1832",
+          "rebrickablePartNum": "973c22h01pr1832",
+          "originalName": "Torso Royal Guard Uniform with Gold Buttons and White Belt Print, Red Arms, Yellow Hands",
+          "categoryRole": "torsoAssembly",
+          "colorNames": [
+            "Red"
+          ],
+          "thumbnailUrl": "/assets/thumbnails/ldraw-expanded/torso-973c22h01pr1832.webp",
           "relevance": null
         },
         {
@@ -2338,8 +2338,8 @@
         ],
         "hybrid": [
           "part:3626cpr1769",
-          "part:685pr0001",
-          "part:3626bpr0324"
+          "part:3626bpr0324",
+          "part:685pr0001"
         ]
       },
       "candidates": [

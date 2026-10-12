@@ -106,6 +106,7 @@ const catalog = JSON.parse(await readFile(resolve(root, "data/generated/ldraw-ex
     accessoryPlacementCandidatesEvaluated: number;
     accessoryPlacementRenderFailuresExcluded: number;
     accessorySemanticGripRejectionsExcluded: number;
+    accessoryVisualPlacementRejectionsExcluded: number;
     digitalPlacementPassedCount: number;
     digitalPlacementRejectionsExcluded: number;
     mocFilesUsed: number;
@@ -256,13 +257,17 @@ for (const rejection of catalog.digitalPlacementRejections) {
     "no-safe-grip-candidate",
     "multiple-safe-grip-candidates",
     "detected-feature-is-not-intended-hand-grip",
+    "visually-implausible-placement",
   ].includes(rejection.reasonCode));
   assert(rejection.gripCandidatesTested >= 1);
   assert.equal(rejection.orientationCollisionCountsByGrip.length, rejection.gripCandidatesTested);
   assert(rejection.orientationCollisionCountsByGrip.every((counts) => counts.length >= 8 && counts.length % 8 === 0));
   if (rejection.reasonCode === "multiple-safe-grip-candidates") {
     assert(rejection.safeGripCandidatesFound > 1);
-  } else if (rejection.reasonCode === "detected-feature-is-not-intended-hand-grip") {
+  } else if (
+    rejection.reasonCode === "detected-feature-is-not-intended-hand-grip"
+    || rejection.reasonCode === "visually-implausible-placement"
+  ) {
     assert.equal(rejection.safeGripCandidatesFound, 1);
   } else {
     assert.equal(rejection.safeGripCandidatesFound, 0);

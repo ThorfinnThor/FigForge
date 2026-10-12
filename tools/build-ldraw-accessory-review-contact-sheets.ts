@@ -194,6 +194,17 @@ const launchChrome = async (): Promise<{
   return { process: chrome, profileDirectory, debuggingOrigin };
 };
 
+const stopChrome = async (chrome: ChildProcess): Promise<void> => {
+  if (chrome.exitCode !== null) return;
+  const exited = new Promise<void>((resolveExit) => chrome.once("exit", () => resolveExit()));
+  chrome.kill("SIGTERM");
+  await Promise.race([exited, delay(2_000)]);
+  if (chrome.exitCode === null) {
+    chrome.kill("SIGKILL");
+    await Promise.race([exited, delay(2_000)]);
+  }
+};
+
 const createPage = async (debuggingOrigin: string): Promise<CdpClient> => {
   const response = await fetch(`${debuggingOrigin}/json/new?${encodeURIComponent("about:blank")}`, { method: "PUT" });
   if (!response.ok) throw new Error(`Could not create Chrome target (${response.status})`);
@@ -397,9 +408,11 @@ const run = async (): Promise<void> => {
     })}\n`);
   } finally {
     client?.close();
-    chrome?.process.kill("SIGTERM");
     await previewServer.server.close();
-    if (chrome) await rm(chrome.profileDirectory, { force: true, recursive: true });
+    if (chrome) {
+      await stopChrome(chrome.process);
+      await rm(chrome.profileDirectory, { force: true, recursive: true, maxRetries: 5, retryDelay: 100 });
+    }
   }
 };
 

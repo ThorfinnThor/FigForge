@@ -21,6 +21,13 @@ const catalog = JSON.parse(await readFile(
       collisionSampleCount: number;
     };
   }>;
+  digitalPlacementRejections: Array<{
+    rebrickablePartNum: string;
+    ldrawFile: string;
+    reasonCode: string;
+    selectedGripEvidence?: { primitive: string; lengthLdu: number };
+  }>;
+  summary: { accessoryVisualPlacementRejectionsExcluded: number };
 };
 const seen = new Set<string>();
 
@@ -29,7 +36,8 @@ for (const review of reviews.reviews) {
   if (!key || seen.has(key)) throw new Error(`Duplicate or empty accessory-placement review: ${review.rebrickablePartNum}`);
   seen.add(key);
   if (
-    review.decision !== "approved"
+    !["approved", "blocked"].includes(review.decision)
+    || (review.decision === "blocked" && review.reasonCode !== "visually-implausible-placement")
     || !review.catalogName.trim()
     || !review.ldrawFile.startsWith("parts/")
     || !review.detectedGripPrimitive.trim()
@@ -50,6 +58,23 @@ for (const review of reviews.reviews) {
   const generated = catalog.entries.find(({ rebrickablePartNum }) =>
     rebrickablePartNum.trim().toLowerCase() === key
   );
+  if (review.decision === "blocked") {
+    if (generated) {
+      throw new Error(`Blocked accessory placement remains in generated catalog: ${review.rebrickablePartNum}`);
+    }
+    const rejection = catalog.digitalPlacementRejections.find(({ rebrickablePartNum }) =>
+      rebrickablePartNum.trim().toLowerCase() === key
+    );
+    if (
+      rejection?.ldrawFile !== review.ldrawFile
+      || rejection.reasonCode !== review.reasonCode
+      || rejection.selectedGripEvidence?.primitive !== review.detectedGripPrimitive
+      || rejection.selectedGripEvidence.lengthLdu !== review.detectedGripLengthLdu
+    ) {
+      throw new Error(`Generated catalog does not enforce blocked accessory placement: ${review.rebrickablePartNum}`);
+    }
+    continue;
+  }
   const validation = generated?.digitalValidation;
   if (
     generated?.ldrawFile !== review.ldrawFile
@@ -65,4 +90,9 @@ for (const review of reviews.reviews) {
   }
 }
 
-console.log(`Validated ${reviews.reviews.length} curated accessory-placement review(s).`);
+const blockedReviewCount = reviews.reviews.filter(({ decision }) => decision === "blocked").length;
+if (catalog.summary.accessoryVisualPlacementRejectionsExcluded !== blockedReviewCount) {
+  throw new Error("Generated catalog visual-placement rejection count does not match curated reviews");
+}
+
+console.log(`Validated ${reviews.reviews.length} curated accessory-placement review(s), including ${blockedReviewCount} blocked placement(s).`);

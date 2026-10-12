@@ -3,7 +3,7 @@ import { resolve } from "node:path";
 
 export const ACCESSORY_PLACEMENT_REVIEW_SOURCE_POLICY = "Nur Rebrickable Catalog Downloads/CSV, keine MOC-Dateien." as const;
 
-export type AccessoryPlacementReview = {
+type AccessoryPlacementReviewEvidence = {
   rebrickablePartNum: string;
   catalogName: string;
   ldrawFile: string;
@@ -13,12 +13,16 @@ export type AccessoryPlacementReview = {
   orientationCandidatesTested: number;
   selectedGripCandidateIndex: number;
   selectedOrientationIndex: number;
-  decision: "approved";
   reviewedAt: string;
   reviewer: string;
   evidenceReference: string;
   note: string;
 };
+
+export type AccessoryPlacementReview = AccessoryPlacementReviewEvidence & (
+  | { decision: "approved"; reasonCode?: never }
+  | { decision: "blocked"; reasonCode: "visually-implausible-placement" }
+);
 
 export type AccessoryPlacementReviews = {
   schemaVersion: 1;
