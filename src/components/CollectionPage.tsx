@@ -38,7 +38,11 @@ export function CollectionPage() {
   const [loadState, setLoadState] = useState<"loading" | "ready" | "error">("loading");
   const [actionError, setActionError] = useState(false);
   const [exportError, setExportError] = useState(false);
-  const [purchaseFigure, setPurchaseFigure] = useState<SavedFigure | null>(null);
+  const [purchaseSelection, setPurchaseSelection] = useState<{
+    figures: readonly SavedFigure[];
+    jsonFigure?: SavedFigure;
+    title: string;
+  } | null>(null);
   const [stageDialogMode, setStageDialogMode] = useState<"create" | "rename" | null>(null);
   const [isSavingLayout, setIsSavingLayout] = useState(false);
 
@@ -213,11 +217,29 @@ export function CollectionPage() {
 
   const openPurchaseDialog = (saved: SavedFigure): void => {
     setExportError(false);
-    setPurchaseFigure(saved);
+    setPurchaseSelection({
+      figures: [saved],
+      jsonFigure: saved,
+      title: t("collection.purchaseTitle", { name: saved.document.name }),
+    });
   };
 
   const stageIds = new Set(activeStage?.savedFigureIds ?? []);
   const stageFull = (activeStage?.savedFigureIds.length ?? 0) >= PLAYGROUND_LAYOUT_MAX_FIGURES;
+  const stageFigures = activeStage?.savedFigureIds.flatMap((id) => {
+    const saved = collection.find((candidate) => candidate.id === id);
+    return saved ? [saved] : [];
+  }) ?? [];
+
+  const openStagePurchaseDialog = (): void => {
+    if (!activeStage || stageFigures.length === 0) return;
+    setExportError(false);
+    setPurchaseSelection({
+      figures: stageFigures,
+      title: t("collection.purchaseStageTitle", { name: activeStage.name }),
+    });
+  };
+  const purchaseJsonFigure = purchaseSelection?.jsonFigure;
 
   return (
     <div className="app-shell collection-shell">
@@ -259,9 +281,19 @@ export function CollectionPage() {
               <p className="collection-page__eyebrow">{t("collection.stageEyebrow")}</p>
               <h2 id="collection-stage-title">{activeStage?.name ?? t("collection.stageTitle")}</h2>
             </div>
-            <span className="collection-page__stage-count">
-              {t("collection.stageCount", { count: activeStage?.savedFigureIds.length ?? 0, max: PLAYGROUND_LAYOUT_MAX_FIGURES })}
-            </span>
+            <div className="collection-page__stage-actions">
+              <span className="collection-page__stage-count">
+                {t("collection.stageCount", { count: activeStage?.savedFigureIds.length ?? 0, max: PLAYGROUND_LAYOUT_MAX_FIGURES })}
+              </span>
+              <Button
+                disabled={stageFigures.length === 0}
+                onClick={openStagePurchaseDialog}
+                size="md"
+                variant="primary"
+              >
+                {t("collection.buyStage")}
+              </Button>
+            </div>
           </header>
           {loadState === "ready" && playground && activeStage ? (
             <div className="collection-stage-controls">
@@ -373,12 +405,15 @@ export function CollectionPage() {
           </details>
         ) : null}
       </div>
-      {purchaseFigure ? (
+      {purchaseSelection ? (
         <CollectionPurchaseDialog
           exportError={exportError}
-          onClose={() => setPurchaseFigure(null)}
-          onExportJson={() => exportFigure(purchaseFigure)}
-          saved={purchaseFigure}
+          onClose={() => setPurchaseSelection(null)}
+          {...(purchaseJsonFigure
+            ? { onExportJson: () => exportFigure(purchaseJsonFigure) }
+            : {})}
+          savedFigures={purchaseSelection.figures}
+          title={purchaseSelection.title}
         />
       ) : null}
       {stageDialogMode ? (

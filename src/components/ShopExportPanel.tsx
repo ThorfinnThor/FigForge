@@ -168,10 +168,13 @@ export function ShopExportPanel({ selections, stepNumber = 2 }: ShopExportPanelP
                 <p className="shop-export__coverage-hint">{t("shop.coverage.hint", { count: selections.length })}</p>
               </div>
               <ul className="shop-export__coverage-list">
-                {coverage.map(({ selection, targets: selectionTargets }) => (
-                  <li className="shop-export__coverage-part" key={`${selection.slot}:${selection.rebrickablePartNum}`}>
+                {coverage.map(({ selection, targets: selectionTargets }, index) => (
+                  <li className="shop-export__coverage-part" key={`${selection.sourceFigureId ?? "figure"}:${selection.slot}:${selection.rebrickablePartNum}:${index}`}>
                     <p className="shop-export__coverage-name">
-                      <span>{t(`figure.${selection.slot}`)}</span>
+                      <span>
+                        {selection.sourceFigureName ? `${selection.sourceFigureName} · ` : ""}
+                        {t(`figure.${selection.slot}`)}
+                      </span>
                       <strong>{selection.name}</strong>
                     </p>
                     <dl className="shop-export__coverage-targets">

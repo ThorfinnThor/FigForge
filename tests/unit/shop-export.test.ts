@@ -56,6 +56,24 @@ describe("ADR-012 shop parts export", () => {
     expect(result.lines[0]?.quantity).toBe(2);
   });
 
+  it("aggregates identical parts across figures while preserving coverage provenance", () => {
+    const selections = [
+      { ...select("head", "h1"), sourceFigureId: "one", sourceFigureName: "Pirate" },
+      { ...select("head", "h1"), sourceFigureId: "two", sourceFigureName: "Captain" },
+    ];
+    const result = compileShopExport("rebrickable", selections, lookup);
+
+    expect(result.lines).toHaveLength(1);
+    expect(result.lines[0]?.quantity).toBe(2);
+    expect(describeShopExportCoverage(selections, result).map(({ selection, status }) => ({
+      source: selection.sourceFigureName,
+      status,
+    }))).toEqual([
+      { source: "Pirate", status: "included" },
+      { source: "Captain", status: "included" },
+    ]);
+  });
+
   it("never guesses a colour or an element ID", () => {
     const figure = [
       select("head", "h1"),

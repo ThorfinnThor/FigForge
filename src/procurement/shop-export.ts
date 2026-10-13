@@ -7,6 +7,9 @@ export type ShopExportSelection = {
   slot: CatalogRole;
   name: string;
   rebrickablePartNum: string;
+  /** Optional provenance for combined collection exports. */
+  sourceFigureId?: string;
+  sourceFigureName?: string;
   /** Explicit user choice in the Rebrickable colour namespace. */
   rebrickableColorId?: number;
 };
@@ -150,7 +153,9 @@ export const describeShopExportCoverage = (
 ): ShopExportCoverage[] => selections.map((selection) => {
   const blocker = result.blockers.find((candidate) =>
     candidate.slot === selection.slot
-    && candidate.rebrickablePartNum === selection.rebrickablePartNum);
+    && candidate.rebrickablePartNum === selection.rebrickablePartNum
+    && candidate.rebrickableColorId === selection.rebrickableColorId
+    && (selection.sourceFigureId === undefined || candidate.sourceFigureId === selection.sourceFigureId));
   if (blocker) {
     return { selection, status: "blocked", reason: blocker.reason };
   }
