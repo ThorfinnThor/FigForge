@@ -432,7 +432,16 @@ const testMountedMobilePurchaseFlow = async (client: CdpClient, origin: string):
     "document.querySelector('#mobile-tab-figure')?.getAttribute('aria-selected') === 'true'",
     "mobile figure panel",
   );
-  await waitFor(client, "Boolean(document.querySelector('.scene-copy__actions button'))", "mobile purchase action");
+  await waitFor(
+    client,
+    `Boolean([...document.querySelectorAll('.scene-copy__actions button')].find((candidate) =>
+      ['Teile kaufen', 'Buy parts'].includes(candidate.textContent?.trim() ?? '') &&
+      candidate instanceof HTMLButtonElement &&
+      !candidate.disabled
+    ))`,
+    "synchronized mobile purchase action",
+    60_000,
+  );
   const opened = await evaluate<boolean>(client, `(() => {
     const button = [...document.querySelectorAll('.scene-copy__actions button')].find((candidate) =>
       ['Teile kaufen', 'Buy parts'].includes(candidate.textContent?.trim() ?? '')
