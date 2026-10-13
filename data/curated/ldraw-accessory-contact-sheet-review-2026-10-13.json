@@ -1,0 +1,33 @@
+{
+  "schemaVersion": 1,
+  "reviewedAt": "2026-10-13",
+  "reviewer": "Codex Sol browser QA",
+  "evidenceReference": "three-quarter,front,back complete CI contact-sheet inspection (PR #92 artifact complete-accessory-review-contact-sheets)",
+  "reviewedRepresentativeCount": 199,
+  "reviewedPendingPartCount": 242,
+  "reviewTopologySha256": "552eb258a0f1e88530cc7b545ac1208fd4e90f2927aa8ef547999b5f56c2a035",
+  "defaultDecision": "approved",
+  "defaultNote": "Three-view CI contact-sheet inspection confirmed that the detected grip is seated in the right hand and the accessory remains outside the protected head and torso geometry in the reviewed placement.",
+  "blockedRepresentatives": [
+    {
+      "rebrickablePartNum": "56619",
+      "note": "The long handcuff assembly arcs upward across the face in the three-quarter view and obscures facial geometry. It remains blocked until a visually reviewed alternative orientation exists."
+    },
+    {
+      "rebrickablePartNum": "13770",
+      "note": "The complete dual-handle tap is a building fixture rather than a plausible one-hand prop; the detected cylinder leaves the tap body and mounting base floating across the figure."
+    },
+    {
+      "rebrickablePartNum": "24324",
+      "note": "The book-binding construction subpart is not a plausible standalone hand prop; the detected cylinder leaves the binding plate and studs hanging from the hand."
+    },
+    {
+      "rebrickablePartNum": "30488c01",
+      "note": "The complete soccer minifigure stand is not a hand accessory and its selected placement covers the head and torso with the stand assembly."
+    },
+    {
+      "rebrickablePartNum": "6936",
+      "note": "The complete dual-handle tap is a building fixture rather than a plausible one-hand prop; the detected cylinder leaves the tap body and mounting base floating across the figure."
+    }
+  ]
+}

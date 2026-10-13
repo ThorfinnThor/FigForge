@@ -34,17 +34,17 @@
   },
   "summary": {
     "catalogPartCount": 20271,
-    "visualizedPartCount": 14872,
-    "builderReadyPartCount": 14870,
-    "remainingCatalogPartCount": 5401,
-    "remainingWithoutVisualizationCount": 5399,
+    "visualizedPartCount": 14867,
+    "builderReadyPartCount": 14865,
+    "remainingCatalogPartCount": 5406,
+    "remainingWithoutVisualizationCount": 5404,
     "uniqueOfficialMappingCount": 2841,
     "ambiguousOfficialMappingCount": 168,
     "noOfficialMappingCount": 17262,
     "remainingClassifications": {
       "builder-blocked": 2,
       "render-failed": 0,
-      "placement-profile-required": 381,
+      "placement-profile-required": 386,
       "reviewed-incompatible-assembly": 95,
       "ambiguous-official-mapping": 13,
       "no-official-mapping": 4910
@@ -105,12 +105,12 @@
     },
     "handAccessory": {
       "catalogPartCount": 1310,
-      "builderReadyPartCount": 304,
-      "remainingCatalogPartCount": 1006,
+      "builderReadyPartCount": 299,
+      "remainingCatalogPartCount": 1011,
       "remainingClassifications": {
         "builder-blocked": 1,
         "render-failed": 0,
-        "placement-profile-required": 379,
+        "placement-profile-required": 384,
         "reviewed-incompatible-assembly": 0,
         "ambiguous-official-mapping": 4,
         "no-official-mapping": 622
@@ -47308,6 +47308,20 @@
       "reason": null
     },
     {
+      "catalogId": "part:6936",
+      "role": "handAccessory",
+      "rebrickablePartNum": "6936",
+      "name": "Tap 1 x 2 with Dual Handles",
+      "classification": "placement-profile-required",
+      "ldrawFiles": [
+        "parts/6936.dat"
+      ],
+      "mappingEvidence": [
+        "exact-filename"
+      ],
+      "reason": null
+    },
+    {
       "catalogId": "part:7182pat0001",
       "role": "handAccessory",
       "rebrickablePartNum": "7182pat0001",
@@ -47962,6 +47976,21 @@
       "classification": "no-official-mapping",
       "ldrawFiles": [],
       "mappingEvidence": [],
+      "reason": null
+    },
+    {
+      "catalogId": "part:13770",
+      "role": "handAccessory",
+      "rebrickablePartNum": "13770",
+      "name": "Tap 1 x 2 with Dual Handles, Small",
+      "classification": "placement-profile-required",
+      "ldrawFiles": [
+        "parts/28920.dat"
+      ],
+      "mappingEvidence": [
+        "exact-filename",
+        "explicit-keyword"
+      ],
       "reason": null
     },
     {
@@ -49212,6 +49241,20 @@
       "reason": null
     },
     {
+      "catalogId": "part:24324",
+      "role": "handAccessory",
+      "rebrickablePartNum": "24324",
+      "name": "Book Binding with Two Studs",
+      "classification": "placement-profile-required",
+      "ldrawFiles": [
+        "parts/24324.dat"
+      ],
+      "mappingEvidence": [
+        "exact-filename"
+      ],
+      "reason": null
+    },
+    {
       "catalogId": "part:24946",
       "role": "handAccessory",
       "rebrickablePartNum": "24946",
@@ -49808,6 +49851,20 @@
       ],
       "mappingEvidence": [
         "exact-filename"
+      ],
+      "reason": null
+    },
+    {
+      "catalogId": "part:30488c01",
+      "role": "handAccessory",
+      "rebrickablePartNum": "30488c01",
+      "name": "Sports Soccer Minifig Stand with Spring and Green Pin [Complete Assembly]",
+      "classification": "placement-profile-required",
+      "ldrawFiles": [
+        "parts/76407p01.dat"
+      ],
+      "mappingEvidence": [
+        "curated-official-metadata"
       ],
       "reason": null
     },
@@ -51657,6 +51714,21 @@
       ],
       "mappingEvidence": [
         "exact-filename"
+      ],
+      "reason": null
+    },
+    {
+      "catalogId": "part:56619",
+      "role": "handAccessory",
+      "rebrickablePartNum": "56619",
+      "name": "Equipment Handcuffs Long [Batman]",
+      "classification": "placement-profile-required",
+      "ldrawFiles": [
+        "parts/55707d.dat"
+      ],
+      "mappingEvidence": [
+        "exact-filename",
+        "explicit-keyword"
       ],
       "reason": null
     },

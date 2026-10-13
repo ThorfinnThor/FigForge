@@ -33,6 +33,9 @@ BLOCK = "block-recommended"
 INCOMPATIBLE_HAND_PROP_PATTERNS = (
     re.compile(r"\bscabbard\b", re.IGNORECASE),
     re.compile(r"\bquiver\b", re.IGNORECASE),
+    re.compile(r"\bhandcuffs?\s+long\b", re.IGNORECASE),
+    re.compile(r"\btap\s+1\s+x\s+2\s+with\s+dual\s+handles\b", re.IGNORECASE),
+    re.compile(r"\bsoccer\s+minifig\s+stand\b", re.IGNORECASE),
 )
 
 # These objects have a visually meaningful front, mouthpiece, blade, head, or

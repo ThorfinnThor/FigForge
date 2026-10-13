@@ -57,6 +57,11 @@ const placementBlockedPartNums = new Set(placementReviews.reviews
 const placementBlockedReviews = reviews.reviews.filter(({ rebrickablePartNum }) =>
   placementBlockedPartNums.has(rebrickablePartNum)
 );
+const remainingPlacementBlockedPartNums = new Set(
+  [...remainingNoRadius].filter((partNum) => placementBlockedPartNums.has(partNum)),
+);
+const blockedOutsideAuditedReviews = [...remainingPlacementBlockedPartNums]
+  .filter((partNum) => !reviews.reviews.some(({ rebrickablePartNum }) => rebrickablePartNum === partNum));
 
 assert.equal(reviews.auditedQueueCount, 270);
 assert.equal(reviews.uniqueDocumentedGripCount, 27);
@@ -94,10 +99,16 @@ for (const review of reviews.reviews) {
   assert(!remainingNoRadius.has(review.rebrickablePartNum));
 }
 
-const expectedRemainingCount = reviews.withoutUniqueDocumentedGripCount + placementBlockedReviews.length;
+const expectedRemainingCount = reviews.withoutUniqueDocumentedGripCount + remainingPlacementBlockedPartNums.size;
 assert.equal(placement.summary.noRadius4CylinderDetectedCount, expectedRemainingCount);
 assert.equal(remainingNoRadius.size, expectedRemainingCount);
-assert.equal(reviews.reviews.length - placementBlockedReviews.length + remainingNoRadius.size, reviews.auditedQueueCount);
+assert.equal(
+  reviews.reviews.length
+    - placementBlockedReviews.length
+    + remainingNoRadius.size
+    - blockedOutsideAuditedReviews.length,
+  reviews.auditedQueueCount,
+);
 
 console.log(JSON.stringify({
   message: "reviewed no-radius LDCad clearance valid",
@@ -105,6 +116,7 @@ console.log(JSON.stringify({
   documented: reviews.uniqueDocumentedGripCount,
   passed: reviews.reviews.length - placementBlockedReviews.length,
   placementBlocked: placementBlockedReviews.length,
+  placementBlockedOutsideAuditedReviews: blockedOutsideAuditedReviews.length,
   remainingWithoutUniqueDocumentedGrip: remainingNoRadius.size,
   sourcePolicy: reviews.sourcePolicy,
 }));
