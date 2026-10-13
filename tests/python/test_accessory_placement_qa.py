@@ -78,6 +78,15 @@ class AccessoryPlacementQaTest(unittest.TestCase):
         )
         self.assertEqual(classified, summary["pendingPartCount"])
         self.assertFalse(report["releaseEligible"])
+        self.assertEqual(
+            summary["pendingRepresentativeCount"],
+            len(report["pendingRepresentativePartNums"]),
+        )
+        self.assertEqual(
+            summary["pendingRepresentativeCount"],
+            len(set(report["pendingRepresentativePartNums"])),
+        )
+        self.assertLessEqual(summary["pendingRepresentativeCount"], summary["pendingPartCount"])
         self.assertLessEqual(
             summary["manualRepresentativeCount"],
             summary["manualThreeViewPartCount"] + summary["blockRecommendedPartCount"],
