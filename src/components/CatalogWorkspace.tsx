@@ -141,6 +141,8 @@ export function CatalogWorkspace() {
   const isDesktopDrawerLayout = useMediaQuery("(min-width: 768px)");
   const drawerTriggerRef = useRef<HTMLButtonElement>(null);
   const drawerCloseRef = useRef<HTMLButtonElement>(null);
+  const purchaseSectionRef = useRef<HTMLElement>(null);
+  const [purchaseFlowRequested, setPurchaseFlowRequested] = useState(false);
   const mobileTabRefs = useRef(new Map<MobileTab, HTMLButtonElement>());
   const selectedSetPartNumbers = useMemo(
     () => selectedCatalogSet
@@ -620,9 +622,31 @@ export function CatalogWorkspace() {
   }, [isDesktopDrawerLayout]);
 
   const closeFigurePanel = () => {
+    setPurchaseFlowRequested(false);
     setIsFigurePanelOpen(false);
     requestAnimationFrame(() => drawerTriggerRef.current?.focus());
   };
+
+  const openPurchaseFlow = (): void => {
+    setPurchaseFlowRequested(true);
+    if (isMobileLayout) {
+      setMobileTab("list");
+    } else {
+      setIsFigurePanelOpen(true);
+    }
+  };
+
+  useEffect(() => {
+    const purchaseFlowIsVisible = isMobileLayout
+      ? mobileTab === "list"
+      : isFigurePanelOpen;
+    if (!purchaseFlowRequested || !purchaseFlowIsVisible) return;
+    const frame = requestAnimationFrame(() => {
+      purchaseSectionRef.current?.scrollIntoView({ block: "start" });
+      setPurchaseFlowRequested(false);
+    });
+    return () => cancelAnimationFrame(frame);
+  }, [isFigurePanelOpen, isMobileLayout, mobileTab, purchaseFlowRequested]);
 
   const moveMobileTabFocus = (current: MobileTab, key: string): void => {
     const next = mobileTabForKey(current, key);
@@ -639,6 +663,7 @@ export function CatalogWorkspace() {
     requestAnimationFrame(() => drawerCloseRef.current?.focus());
     const onKeyDown = (event: KeyboardEvent) => {
       if (event.key === "Escape") {
+        setPurchaseFlowRequested(false);
         setIsFigurePanelOpen(false);
         requestAnimationFrame(() => drawerTriggerRef.current?.focus());
       }
@@ -845,6 +870,7 @@ export function CatalogWorkspace() {
   const viewport = (
     <section className="workspace-viewport" aria-label={t("mobile.figure")}>
       <FigureViewport
+        onBuyParts={openPurchaseFlow}
         onSaveToCollection={openCollectionSaveDialog}
         onSynchronizationChange={setPreviewSynchronized}
         selectedParts={selectedLDrawParts}
@@ -863,6 +889,7 @@ export function CatalogWorkspace() {
       onSaveToCollection={openCollectionSaveDialog}
       collectionSavePending={collectionSavePending}
       previewSynchronized={previewSynchronized}
+      purchaseSectionRef={purchaseSectionRef}
       saveStatus={saveStatus}
       shareLink={shareLink}
       shopExport={<ShopExportPanel selections={shopExportSelections} />}

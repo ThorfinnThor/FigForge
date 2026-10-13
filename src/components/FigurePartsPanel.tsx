@@ -6,7 +6,7 @@ import type { ShopExportColor } from "../contracts/shop-export.js";
 import { useRef, type ReactNode, type RefObject } from "react";
 import { useI18n } from "../i18n.js";
 
-type FigureSlot = {
+export type FigureSlot = {
   id: CatalogPackagePart["role"];
   label: string;
   component: CatalogPackagePart | undefined;
@@ -25,6 +25,7 @@ type FigurePartsPanelProps = {
   onSaveToCollection: () => void;
   collectionSavePending: boolean;
   previewSynchronized: boolean;
+  purchaseSectionRef?: RefObject<HTMLElement | null>;
   onColorChange: (slot: CatalogPackagePart["role"], colorId: number | undefined) => void;
   onRemove: (slot: CatalogPackagePart["role"]) => void;
   saveStatus: "loading" | "saved" | "error";
@@ -45,6 +46,7 @@ export function FigurePartsPanel({
   onSaveToCollection,
   collectionSavePending,
   previewSynchronized,
+  purchaseSectionRef,
   onColorChange,
   onRemove,
   saveStatus,
@@ -121,7 +123,11 @@ export function FigurePartsPanel({
           ))}
         </div>
         {filledSlots.length > 0 ? (
-          <section className="purchase-colors" aria-labelledby="purchase-colors-heading">
+          <section
+            className="purchase-colors"
+            aria-labelledby="purchase-colors-heading"
+            ref={purchaseSectionRef}
+          >
             <div className="purchase-step-heading">
               <span className="purchase-step-heading__number" aria-hidden="true">1</span>
               <div>

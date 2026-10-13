@@ -77,6 +77,8 @@ describe("FF-14 responsive catalog workspace", () => {
     expect(viewportSource).toContain('t("viewport.retrySelection")');
     expect(viewportSource).toContain('t("figure.collection.save")');
     expect(viewportSource).toContain("onClick={onSaveToCollection}");
+    expect(viewportSource).toContain('t("figure.buyParts")');
+    expect(viewportSource).toContain("onClick={onBuyParts}");
     expect(viewportSource).toContain('statusTone === "danger"');
     expect(viewportSource).toContain('data-scene-state={sceneState}');
     expect(viewportSource).toContain('data-selection-state={sceneState === "ready" && !selectionError ? "synchronized" : "pending"}');
@@ -153,6 +155,9 @@ describe("FF-14 responsive catalog workspace", () => {
     expect(source).toContain('t("catalog.policy")');
     expect(source).toContain("onSelect={builderComponent && digitallySupportedLDrawEntryForComponent(builderComponent.id)");
     expect(source).toContain("onSaveToCollection={openCollectionSaveDialog}");
+    expect(source).toContain("onBuyParts={openPurchaseFlow}");
+    expect(source).toContain('setMobileTab("list")');
+    expect(source).toContain("purchaseSectionRef.current?.scrollIntoView");
     expect(source).toContain("onSynchronizationChange={setPreviewSynchronized}");
     expect(source).toContain("selectedParts={selectedLDrawParts}");
     expect(source).toContain("saveCurrentFigureDraft");

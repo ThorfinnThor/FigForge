@@ -9,6 +9,7 @@ import { CAMERA_PRESETS } from "./figure-poc-options.js";
 
 type FigureViewportProps = {
   selectedParts: readonly LDrawCatalogSelection[];
+  onBuyParts: () => void;
   onSaveToCollection: () => void;
   onSynchronizationChange: (synchronized: boolean) => void;
 };
@@ -28,6 +29,7 @@ const selectionStatus = (selectedParts: readonly LDrawCatalogSelection[]): Viewp
 
 export function FigureViewport({
   selectedParts,
+  onBuyParts,
   onSaveToCollection,
   onSynchronizationChange,
 }: FigureViewportProps) {
@@ -221,9 +223,17 @@ export function FigureViewport({
         ) : null}
         <div className="scene-copy__actions">
           <Button
-            onClick={onSaveToCollection}
+            disabled={selectedParts.length === 0}
+            onClick={onBuyParts}
             size="md"
             variant="primary"
+          >
+            {t("figure.buyParts")}
+          </Button>
+          <Button
+            onClick={onSaveToCollection}
+            size="md"
+            variant="secondary"
           >
             {t("figure.collection.save")}
           </Button>

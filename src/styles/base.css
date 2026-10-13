@@ -1137,6 +1137,8 @@ legend {
 
 .scene-copy__actions {
   display: grid;
+  grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr);
+  gap: var(--space-3);
   width: 100%;
 }
 
@@ -2980,6 +2982,10 @@ legend {
 
   .purchase-color-choice,
   .shop-export__actions {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .scene-copy__actions {
     grid-template-columns: minmax(0, 1fr);
   }
 
