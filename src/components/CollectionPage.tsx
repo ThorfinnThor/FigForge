@@ -256,6 +256,7 @@ export function CollectionPage() {
         <a className="wordmark" href="/">Fig<span>Forge</span></a>
         <nav className="app-nav" aria-label={t("nav.label")}>
           <a className="app-nav__link" href="/">{t("nav.builder")}</a>
+          <a className="app-nav__link" href="/ideas">{t("nav.ideas")}</a>
           <a className="app-nav__link app-nav__link--active" href="/collection" aria-current="page">
             {t("nav.collection")}
           </a>

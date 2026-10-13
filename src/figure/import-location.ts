@@ -4,6 +4,7 @@ import { FIGURE_SHARE_LINK_PREFIX } from "./share-link.js";
 export const consumedFigureImportPath = (currentUrl: string): string => {
   const url = new URL(currentUrl);
   url.searchParams.delete("figureId");
+  url.searchParams.delete("template");
   if (url.hash.startsWith(`#${FIGURE_SHARE_LINK_PREFIX}=`)) {
     url.hash = "";
   }

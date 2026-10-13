@@ -36,6 +36,7 @@ import {
 import { downloadFigureDocument } from "../figure/download-figure-document.js";
 import { createFigureShareLink, hasFigureShareLink, parseFigureShareLink } from "../figure/share-link.js";
 import { consumedFigureImportPath } from "../figure/import-location.js";
+import { figureTemplateForId } from "../ideas/figure-templates.js";
 import {
   listSavedFigures,
   loadCurrentFigureDraft,
@@ -458,10 +459,11 @@ export function CatalogWorkspace() {
           }
         }
         const requestedFigureId = new URLSearchParams(window.location.search).get("figureId");
+        const requestedTemplate = figureTemplateForId(new URLSearchParams(window.location.search).get("template"));
         const requestedSavedFigure = requestedFigureId
           ? collection.find(({ id }) => id === requestedFigureId)
           : undefined;
-        const initialDocument = shared ?? requestedSavedFigure?.document ?? document;
+        const initialDocument = shared ?? requestedSavedFigure?.document ?? requestedTemplate?.document ?? document;
         if (!initialDocument) {
           setDraftHydrationState("ready");
           setSaveStatus("saved");
@@ -481,8 +483,13 @@ export function CatalogWorkspace() {
           if (!active || restoreOperationRef.current !== operation) return;
           setTransferMessageTone("info");
           setTransferMessage(t("figure.collection.loaded", { name: initialDocument.name }));
+        } else if (requestedTemplate) {
+          await saveCurrentFigureDraft(initialDocument);
+          if (!active || restoreOperationRef.current !== operation) return;
+          setTransferMessageTone("info");
+          setTransferMessage(t("figure.template.loaded", { name: t(requestedTemplate.nameKey) }));
         }
-        if (shared || requestedSavedFigure) {
+        if (shared || requestedSavedFigure || requestedTemplate) {
           window.history.replaceState(
             window.history.state,
             "",
@@ -907,6 +914,7 @@ export function CatalogWorkspace() {
         <a className="wordmark" href="/" onClick={(event) => void navigateAfterDraftCommit(event)}>Fig<span>Forge</span></a>
          <nav className="app-nav" aria-label={t("nav.label")}>
           <a className="app-nav__link app-nav__link--active" href="/" aria-current="page" onClick={(event) => void navigateAfterDraftCommit(event)}>{t("nav.builder")}</a>
+          <a className="app-nav__link" href="/ideas" onClick={(event) => void navigateAfterDraftCommit(event)}>{t("nav.ideas")}</a>
           <a className="app-nav__link" href="/collection" onClick={(event) => void navigateAfterDraftCommit(event)}>{t("nav.collection")}</a>
           <a className="app-nav__link" href="/methodology" onClick={(event) => void navigateAfterDraftCommit(event)}>{t("nav.notes")}</a>
         </nav>

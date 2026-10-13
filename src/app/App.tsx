@@ -1,5 +1,6 @@
 import { CatalogWorkspace } from "../components/CatalogWorkspace.js";
 import { CollectionPage } from "../components/CollectionPage.js";
+import { IdeasPage } from "../components/IdeasPage.js";
 import { MethodologyPage } from "../components/MethodologyPage.js";
 import { I18nProvider } from "../i18n.js";
 
@@ -8,7 +9,9 @@ export function App() {
   return (
     <I18nProvider>
       <main>
-        {pathname === "/methodology"
+        {pathname === "/ideas"
+          ? <IdeasPage />
+          : pathname === "/methodology"
           ? <MethodologyPage />
           : pathname === "/collection"
             ? <CollectionPage />
