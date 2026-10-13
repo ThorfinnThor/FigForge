@@ -25,6 +25,7 @@ describe("Collection page shell", () => {
     expect(collectionSource).toContain("moveOnStage");
     expect(collectionSource).toContain("isSavingLayout");
     expect(collectionSource).toContain("clearLocalFigureData");
+    expect(collectionSource).toContain("<CollectionInventoryPanel");
     expect(collectionSource).toContain("collection.dataTitle");
     expect(cardSource).toContain("figureId=");
     expect(collectionSource).toContain("downloadFigureDocument(saved.document)");

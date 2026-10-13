@@ -2425,6 +2425,40 @@ legend {
   backdrop-filter: blur(5px);
 }
 
+.collection-inventory {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: var(--space-4);
+  align-items: center;
+  padding: clamp(22px, 4vw, 36px);
+  border: 3px solid var(--navy);
+  border-radius: var(--radius-lg);
+  background: var(--card);
+  box-shadow: 0 8px 0 rgb(8 18 46 / 18%);
+}
+
+.collection-inventory h2,
+.collection-inventory p {
+  margin: 0;
+}
+
+.collection-inventory h2 {
+  margin-block: var(--space-1) var(--space-2);
+  font-family: var(--font-display);
+  font-size: clamp(1.8rem, 4vw, 2.6rem);
+  font-weight: 400;
+}
+
+.collection-inventory__count {
+  margin-top: var(--space-3) !important;
+  color: var(--success);
+  font-weight: 800;
+}
+
+.collection-inventory .status-message {
+  grid-column: 1 / -1;
+}
+
 .collection-purchase-dialog {
   width: min(100%, 900px);
   max-height: min(92vh, 900px);
@@ -2480,6 +2514,9 @@ legend {
 }
 
 @media (max-width: 640px) {
+  .collection-inventory {
+    grid-template-columns: minmax(0, 1fr);
+  }
   .collection-page__stage-header {
     align-items: stretch;
     flex-direction: column;

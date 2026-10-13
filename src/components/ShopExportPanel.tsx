@@ -18,6 +18,9 @@ import {
   type ShopLink,
 } from "../procurement/shop-links.js";
 import { useI18n } from "../i18n.js";
+import type { PartInventory } from "../contracts/part-inventory.js";
+import { inventoryCoverage, subtractPartInventory } from "../procurement/part-inventory.js";
+import { loadPartInventory } from "../storage/figure-draft-store.js";
 
 type ShopExportPanelProps = {
   selections: readonly ShopExportSelection[];
@@ -26,6 +29,7 @@ type ShopExportPanelProps = {
 
 type ShopTarget = {
   result: ShopExportResult;
+  downloadResult: ShopExportResult;
   title: string;
   recommended: boolean;
   fileName: string;
@@ -55,6 +59,7 @@ export function ShopExportPanel({ selections, stepNumber = 2 }: ShopExportPanelP
   const [lookup, setLookup] = useState<ShopExportLookup | null>(null);
   const [loadFailed, setLoadFailed] = useState(false);
   const [message, setMessage] = useState<string | null>(null);
+  const [inventory, setInventory] = useState<PartInventory | null>(null);
   const rolesKey = [...new Set(selections.map(({ slot }) => slot))].sort().join(",");
 
   useEffect(() => {
@@ -68,9 +73,22 @@ export function ShopExportPanel({ selections, stepNumber = 2 }: ShopExportPanelP
     return () => { active = false; };
   }, [rolesKey]);
 
-  const targets = useMemo<ShopTarget[] | null>(() => lookup ? [
+  useEffect(() => {
+    let active = true;
+    void loadPartInventory()
+      .then((loaded) => { if (active) setInventory(loaded); })
+      .catch(() => { if (active) setInventory(null); });
+    return () => { active = false; };
+  }, []);
+
+  const targets = useMemo<ShopTarget[] | null>(() => {
+    if (!lookup) return null;
+    const rebrickable = compileShopExport("rebrickable", selections, lookup);
+    const pickABrick = compileShopExport("lego-pick-a-brick", selections, lookup);
+    return [
     {
-      result: compileShopExport("rebrickable", selections, lookup),
+      result: rebrickable,
+      downloadResult: inventory ? subtractPartInventory(rebrickable, inventory) : rebrickable,
       title: t("shop.rebrickable.title"),
       recommended: true,
       fileName: "figforge-rebrickable.csv",
@@ -81,7 +99,8 @@ export function ShopExportPanel({ selections, stepNumber = 2 }: ShopExportPanelP
       downloadLabel: t("shop.rebrickable.download"),
     },
     {
-      result: compileShopExport("lego-pick-a-brick", selections, lookup),
+      result: pickABrick,
+      downloadResult: inventory ? subtractPartInventory(pickABrick, inventory) : pickABrick,
       title: "LEGO Pick a Brick",
       recommended: false,
       fileName: "figforge-pick-a-brick.csv",
@@ -91,7 +110,12 @@ export function ShopExportPanel({ selections, stepNumber = 2 }: ShopExportPanelP
       summary: t("shop.pickABrick.summary"),
       downloadLabel: t("shop.pickABrick.download"),
     },
-  ] : null, [lookup, selections, t]);
+  ];
+  }, [inventory, lookup, selections, t]);
+  const ownedSummary = useMemo(() => {
+    if (!inventory || !targets) return null;
+    return inventoryCoverage(targets[0]!.result, inventory);
+  }, [inventory, targets]);
   const coverage = useMemo(() => targets ? selections.map((selection) => ({
     selection,
     targets: targets.map((target) => ({
@@ -117,6 +141,11 @@ export function ShopExportPanel({ selections, stepNumber = 2 }: ShopExportPanelP
         <p className="shop-export__empty">{t("shop.loading")}</p>
       ) : (
         <>
+          {ownedSummary ? (
+            <StatusMessage tone="success">
+              {t("inventory.coverage", { owned: ownedSummary.owned, missing: ownedSummary.missing })}
+            </StatusMessage>
+          ) : null}
           <div className="shop-export__targets">
             {targets.map((target) => (
               <article className="shop-export__target" data-recommended={target.recommended || undefined} data-target={target.result.target} key={target.result.target}>
@@ -133,9 +162,9 @@ export function ShopExportPanel({ selections, stepNumber = 2 }: ShopExportPanelP
                 <div className="shop-export__actions">
                   <Button
                     className="shop-export__download"
-                    disabled={target.result.lines.length === 0}
+                    disabled={target.downloadResult.lines.length === 0}
                     onClick={() => {
-                      downloadTextFile(target.serialize(target.result), target.fileName, "text/csv;charset=utf-8");
+                      downloadTextFile(target.serialize(target.downloadResult), target.fileName, "text/csv;charset=utf-8");
                       setMessage(target.result.status === "partial"
                         ? t("shop.downloaded.partial", { fileName: target.fileName, count: target.result.blockers.length })
                         : t("shop.downloaded.complete", { fileName: target.fileName }));
@@ -143,7 +172,7 @@ export function ShopExportPanel({ selections, stepNumber = 2 }: ShopExportPanelP
                     size="md"
                     variant={target.recommended ? "primary" : "secondary"}
                   >
-                    {target.downloadLabel}
+                    {inventory ? t("inventory.downloadMissing") : target.downloadLabel}
                   </Button>
                   <a
                     className="ff-button ff-button--ghost ff-button--md shop-export__link"

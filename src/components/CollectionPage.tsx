@@ -10,15 +10,18 @@ import {
   type PlaygroundStages,
 } from "../contracts/playground-layout.js";
 import { useI18n } from "../i18n.js";
+import type { PartInventory } from "../contracts/part-inventory.js";
 import { downloadFigureDocument } from "../figure/download-figure-document.js";
 import {
   clearLocalFigureData,
   listSavedFigures,
+  loadPartInventory,
   loadCurrentPlaygroundStages,
   saveCurrentPlaygroundStages,
   type SavedFigure,
 } from "../storage/figure-draft-store.js";
 import { CollectionFigureCard } from "./CollectionFigureCard.js";
+import { CollectionInventoryPanel } from "./CollectionInventoryPanel.js";
 import { CollectionPurchaseDialog } from "./CollectionPurchaseDialog.js";
 import { CollectionViewport } from "./CollectionViewport.js";
 import { StageNameDialog } from "./StageNameDialog.js";
@@ -34,6 +37,7 @@ export function CollectionPage() {
   const defaultStageName = t("collection.defaultStageName");
   const [figures, setFigures] = useState<readonly CollectionFigure[]>([]);
   const [collection, setCollection] = useState<readonly SavedFigure[]>([]);
+  const [inventory, setInventory] = useState<PartInventory | null>(null);
   const [playground, setPlayground] = useState<PlaygroundStages | null>(null);
   const [loadState, setLoadState] = useState<"loading" | "ready" | "error">("loading");
   const [actionError, setActionError] = useState(false);
@@ -48,8 +52,12 @@ export function CollectionPage() {
 
   useEffect(() => {
     let cancelled = false;
-    void Promise.all([listSavedFigures(), loadCurrentPlaygroundStages(defaultStageName)])
-      .then(async ([collection, storedPlayground]) => {
+    void Promise.all([
+      listSavedFigures(),
+      loadCurrentPlaygroundStages(defaultStageName),
+      loadPartInventory().catch(() => null),
+    ])
+      .then(async ([collection, storedPlayground, inventory]) => {
         const availableIds = new Set(collection.map(({ id }) => id));
         const defaultStage = createPlaygroundStage(
           "stage-main",
@@ -76,6 +84,7 @@ export function CollectionPage() {
         const resolvedFigures = await collectionFiguresForStage(collection, activeStage);
         if (!cancelled) {
           setCollection(collection);
+          setInventory(inventory);
           setPlayground(playground);
           setFigures(resolvedFigures);
           setLoadState("ready");
@@ -390,6 +399,10 @@ export function CollectionPage() {
               </ul>
             )}
           </section>
+        ) : null}
+
+        {loadState === "ready" ? (
+          <CollectionInventoryPanel inventory={inventory} onImported={setInventory} />
         ) : null}
 
         {loadState === "ready" ? (
