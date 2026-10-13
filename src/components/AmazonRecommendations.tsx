@@ -1,4 +1,5 @@
 import { useI18n } from "../i18n.js";
+import { AMAZON_AFFILIATE_CONFIG } from "../procurement/amazon-config.js";
 import { amazonSearchLink } from "../procurement/amazon-links.js";
 
 const recommendations = [
@@ -20,8 +21,8 @@ export function AmazonRecommendations() {
         {recommendations.map(({ icon, id, query }) => {
           const link = amazonSearchLink(
             query,
-            import.meta.env.VITE_AMAZON_ASSOCIATE_TAG,
-            import.meta.env.VITE_AMAZON_ASSOCIATE_SEARCH_URL,
+            AMAZON_AFFILIATE_CONFIG.trackingId,
+            AMAZON_AFFILIATE_CONFIG.searchUrl,
           );
           return (
             <a
