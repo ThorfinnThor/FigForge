@@ -36,6 +36,7 @@ import {
 import { downloadFigureDocument } from "../figure/download-figure-document.js";
 import { createFigureShareLink, hasFigureShareLink, parseFigureShareLink } from "../figure/share-link.js";
 import { consumedFigureImportPath } from "../figure/import-location.js";
+import { figureTemplateForId } from "../ideas/figure-templates.js";
 import {
   listSavedFigures,
   loadCurrentFigureDraft,
@@ -141,6 +142,8 @@ export function CatalogWorkspace() {
   const isDesktopDrawerLayout = useMediaQuery("(min-width: 768px)");
   const drawerTriggerRef = useRef<HTMLButtonElement>(null);
   const drawerCloseRef = useRef<HTMLButtonElement>(null);
+  const purchaseSectionRef = useRef<HTMLElement>(null);
+  const [purchaseFlowRequested, setPurchaseFlowRequested] = useState(false);
   const mobileTabRefs = useRef(new Map<MobileTab, HTMLButtonElement>());
   const selectedSetPartNumbers = useMemo(
     () => selectedCatalogSet
@@ -456,10 +459,11 @@ export function CatalogWorkspace() {
           }
         }
         const requestedFigureId = new URLSearchParams(window.location.search).get("figureId");
+        const requestedTemplate = figureTemplateForId(new URLSearchParams(window.location.search).get("template"));
         const requestedSavedFigure = requestedFigureId
           ? collection.find(({ id }) => id === requestedFigureId)
           : undefined;
-        const initialDocument = shared ?? requestedSavedFigure?.document ?? document;
+        const initialDocument = shared ?? requestedSavedFigure?.document ?? requestedTemplate?.document ?? document;
         if (!initialDocument) {
           setDraftHydrationState("ready");
           setSaveStatus("saved");
@@ -479,8 +483,13 @@ export function CatalogWorkspace() {
           if (!active || restoreOperationRef.current !== operation) return;
           setTransferMessageTone("info");
           setTransferMessage(t("figure.collection.loaded", { name: initialDocument.name }));
+        } else if (requestedTemplate) {
+          await saveCurrentFigureDraft(initialDocument);
+          if (!active || restoreOperationRef.current !== operation) return;
+          setTransferMessageTone("info");
+          setTransferMessage(t("figure.template.loaded", { name: t(requestedTemplate.nameKey) }));
         }
-        if (shared || requestedSavedFigure) {
+        if (shared || requestedSavedFigure || requestedTemplate) {
           window.history.replaceState(
             window.history.state,
             "",
@@ -620,9 +629,31 @@ export function CatalogWorkspace() {
   }, [isDesktopDrawerLayout]);
 
   const closeFigurePanel = () => {
+    setPurchaseFlowRequested(false);
     setIsFigurePanelOpen(false);
     requestAnimationFrame(() => drawerTriggerRef.current?.focus());
   };
+
+  const openPurchaseFlow = (): void => {
+    setPurchaseFlowRequested(true);
+    if (isMobileLayout) {
+      setMobileTab("list");
+    } else {
+      setIsFigurePanelOpen(true);
+    }
+  };
+
+  useEffect(() => {
+    const purchaseFlowIsVisible = isMobileLayout
+      ? mobileTab === "list"
+      : isFigurePanelOpen;
+    if (!purchaseFlowRequested || !purchaseFlowIsVisible) return;
+    const frame = requestAnimationFrame(() => {
+      purchaseSectionRef.current?.scrollIntoView({ block: "start" });
+      setPurchaseFlowRequested(false);
+    });
+    return () => cancelAnimationFrame(frame);
+  }, [isFigurePanelOpen, isMobileLayout, mobileTab, purchaseFlowRequested]);
 
   const moveMobileTabFocus = (current: MobileTab, key: string): void => {
     const next = mobileTabForKey(current, key);
@@ -639,6 +670,7 @@ export function CatalogWorkspace() {
     requestAnimationFrame(() => drawerCloseRef.current?.focus());
     const onKeyDown = (event: KeyboardEvent) => {
       if (event.key === "Escape") {
+        setPurchaseFlowRequested(false);
         setIsFigurePanelOpen(false);
         requestAnimationFrame(() => drawerTriggerRef.current?.focus());
       }
@@ -845,6 +877,7 @@ export function CatalogWorkspace() {
   const viewport = (
     <section className="workspace-viewport" aria-label={t("mobile.figure")}>
       <FigureViewport
+        onBuyParts={openPurchaseFlow}
         onSaveToCollection={openCollectionSaveDialog}
         onSynchronizationChange={setPreviewSynchronized}
         selectedParts={selectedLDrawParts}
@@ -863,6 +896,7 @@ export function CatalogWorkspace() {
       onSaveToCollection={openCollectionSaveDialog}
       collectionSavePending={collectionSavePending}
       previewSynchronized={previewSynchronized}
+      purchaseSectionRef={purchaseSectionRef}
       saveStatus={saveStatus}
       shareLink={shareLink}
       shopExport={<ShopExportPanel selections={shopExportSelections} />}
@@ -880,6 +914,7 @@ export function CatalogWorkspace() {
         <a className="wordmark" href="/" onClick={(event) => void navigateAfterDraftCommit(event)}>Fig<span>Forge</span></a>
          <nav className="app-nav" aria-label={t("nav.label")}>
           <a className="app-nav__link app-nav__link--active" href="/" aria-current="page" onClick={(event) => void navigateAfterDraftCommit(event)}>{t("nav.builder")}</a>
+          <a className="app-nav__link" href="/ideas" onClick={(event) => void navigateAfterDraftCommit(event)}>{t("nav.ideas")}</a>
           <a className="app-nav__link" href="/collection" onClick={(event) => void navigateAfterDraftCommit(event)}>{t("nav.collection")}</a>
           <a className="app-nav__link" href="/methodology" onClick={(event) => void navigateAfterDraftCommit(event)}>{t("nav.notes")}</a>
         </nav>

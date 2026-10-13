@@ -52,7 +52,7 @@ describe("FF-22 local figure storage", () => {
       legsAssembly: "catalog:legsAssembly:970c01",
     }, "Gespeicherte Figur", "2026-10-02T10:00:00.000Z");
 
-    expect(FIGURE_STORAGE_VERSION).toBe(4);
+    expect(FIGURE_STORAGE_VERSION).toBe(5);
     expect(savedFigureSchema.parse({
       id: "figure-1",
       document,
@@ -62,6 +62,7 @@ describe("FF-22 local figure storage", () => {
     expect(source).toContain('createObjectStore(COLLECTION_STORE_NAME, { keyPath: "id" })');
     expect(source).toContain("Keeping the draft store and key stable");
     expect(source).toContain("createObjectStore(PLAYGROUND_STORE_NAME)");
+    expect(source).toContain("createObjectStore(PART_INVENTORY_STORE_NAME)");
     expect(source).toContain("clearLocalFigureData");
   });
 

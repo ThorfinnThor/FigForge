@@ -28,6 +28,7 @@
     "src/compatibility/**/*.ts",
     "src/search/**/*.ts",
     "src/figure/**/*.ts",
+    "src/ideas/**/*.ts",
     "src/storage/**/*.ts",
     "src/procurement/**/*.ts",
     "src/scene/**/*.ts",

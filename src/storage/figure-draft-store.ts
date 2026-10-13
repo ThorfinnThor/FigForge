@@ -6,15 +6,18 @@ import {
   playgroundStagesSchema,
   type PlaygroundStages,
 } from "../contracts/playground-layout.js";
+import { partInventorySchema, type PartInventory } from "../contracts/part-inventory.js";
 
 const DATABASE_NAME = "figforge";
-export const FIGURE_STORAGE_VERSION = 4;
+export const FIGURE_STORAGE_VERSION = 5;
 const DATABASE_VERSION = FIGURE_STORAGE_VERSION;
 const DRAFT_STORE_NAME = "figure-drafts";
 const COLLECTION_STORE_NAME = "figure-collection";
 const PLAYGROUND_STORE_NAME = "playground-layout";
+const PART_INVENTORY_STORE_NAME = "part-inventory";
 const CURRENT_DRAFT_KEY = "current";
 const CURRENT_PLAYGROUND_KEY = "current";
+const CURRENT_PART_INVENTORY_KEY = "current";
 
 export const savedFigureSchema = z.object({
   id: z.string().min(1).max(120),
@@ -44,6 +47,9 @@ const openDatabase = (): Promise<IDBDatabase> => new Promise((resolve, reject) =
     }
     // Version 4 upgrades the value in the existing playground store from one
     // layout to a named-stage collection. The object store itself stays stable.
+    if (!database.objectStoreNames.contains(PART_INVENTORY_STORE_NAME)) {
+      database.createObjectStore(PART_INVENTORY_STORE_NAME);
+    }
   };
   request.onsuccess = () => resolve(request.result);
   request.onerror = () => reject(request.error ?? new Error("IndexedDB konnte nicht geöffnet werden."));
@@ -187,17 +193,40 @@ export const saveCurrentPlaygroundStages = async (playground: PlaygroundStages):
   }
 };
 
+export const loadPartInventory = async (): Promise<PartInventory | null> => {
+  const database = await openDatabase();
+  try {
+    const raw = await requestResult<unknown>(database.transaction(PART_INVENTORY_STORE_NAME)
+      .objectStore(PART_INVENTORY_STORE_NAME).get(CURRENT_PART_INVENTORY_KEY));
+    return raw === undefined ? null : partInventorySchema.parse(raw);
+  } finally {
+    database.close();
+  }
+};
+
+export const savePartInventory = async (inventory: PartInventory): Promise<void> => {
+  const database = await openDatabase();
+  try {
+    const transaction = database.transaction(PART_INVENTORY_STORE_NAME, "readwrite");
+    await committedMutation(transaction, [transaction.objectStore(PART_INVENTORY_STORE_NAME)
+      .put(partInventorySchema.parse(inventory), CURRENT_PART_INVENTORY_KEY)]);
+  } finally {
+    database.close();
+  }
+};
+
 export const clearLocalFigureData = async (): Promise<void> => {
   const database = await openDatabase();
   try {
     const transaction = database.transaction(
-      [DRAFT_STORE_NAME, COLLECTION_STORE_NAME, PLAYGROUND_STORE_NAME],
+      [DRAFT_STORE_NAME, COLLECTION_STORE_NAME, PLAYGROUND_STORE_NAME, PART_INVENTORY_STORE_NAME],
       "readwrite",
     );
     await committedMutation(transaction, [
       transaction.objectStore(DRAFT_STORE_NAME).clear(),
       transaction.objectStore(COLLECTION_STORE_NAME).clear(),
       transaction.objectStore(PLAYGROUND_STORE_NAME).clear(),
+      transaction.objectStore(PART_INVENTORY_STORE_NAME).clear(),
     ]);
   } finally {
     database.close();

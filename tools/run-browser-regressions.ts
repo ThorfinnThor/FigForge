@@ -411,6 +411,57 @@ const testMountedMobileKeyboard = async (client: CdpClient, origin: string): Pro
   await client.send("Emulation.clearDeviceMetricsOverride");
 };
 
+const testMountedMobilePurchaseFlow = async (client: CdpClient, origin: string): Promise<void> => {
+  await client.send("Emulation.setDeviceMetricsOverride", {
+    width: 390,
+    height: 844,
+    deviceScaleFactor: 1,
+    mobile: true,
+  });
+  await navigate(client, origin);
+  await waitFor(client, "Boolean(document.querySelector('#mobile-tab-figure'))", "mobile figure tab");
+  const figureTabOpened = await evaluate<boolean>(client, `(() => {
+    const button = document.querySelector('#mobile-tab-figure');
+    if (!(button instanceof HTMLButtonElement)) return false;
+    button.click();
+    return true;
+  })()`);
+  assert.equal(figureTabOpened, true, "the mounted figure tab must be available");
+  await waitFor(
+    client,
+    "document.querySelector('#mobile-tab-figure')?.getAttribute('aria-selected') === 'true'",
+    "mobile figure panel",
+  );
+  await waitFor(client, "Boolean(document.querySelector('.scene-copy__actions button'))", "mobile purchase action");
+  const opened = await evaluate<boolean>(client, `(() => {
+    const button = [...document.querySelectorAll('.scene-copy__actions button')].find((candidate) =>
+      ['Teile kaufen', 'Buy parts'].includes(candidate.textContent?.trim() ?? '')
+    );
+    if (!(button instanceof HTMLButtonElement) || button.disabled) return false;
+    button.click();
+    return true;
+  })()`);
+  assert.equal(opened, true, "the purchase action must be enabled for the mounted figure");
+  await waitFor(
+    client,
+    "document.querySelector('#mobile-tab-list')?.getAttribute('aria-selected') === 'true'",
+    "mobile purchase list tab",
+  );
+  await assertSelectedPanel(client, "list");
+  const purchaseState = await evaluate<{ colors: boolean; exports: boolean; inViewport: boolean }>(client, `(() => {
+    const colors = document.querySelector('.purchase-colors');
+    const exports = document.querySelector('.shop-export');
+    const bounds = colors?.getBoundingClientRect();
+    return {
+      colors: Boolean(colors),
+      exports: Boolean(exports),
+      inViewport: Boolean(bounds && bounds.top < window.innerHeight && bounds.bottom > 0),
+    };
+  })()`);
+  assert.deepEqual(purchaseState, { colors: true, exports: true, inViewport: true });
+  await client.send("Emulation.clearDeviceMetricsOverride");
+};
+
 const clickButtonWithText = async (client: CdpClient, text: string): Promise<boolean> => await evaluate(client, `(() => {
   const button = [...document.querySelectorAll('button')].find((candidate) => candidate.textContent?.trim() === ${JSON.stringify(text)});
   if (!(button instanceof HTMLButtonElement) || button.disabled) return false;
@@ -532,6 +583,8 @@ const run = async (): Promise<void> => {
     process.stdout.write("✓ real IndexedDB commit and abort-after-request-success\n");
     await testMountedMobileKeyboard(client, previewServer.origin);
     process.stdout.write("✓ mounted mobile ArrowLeft/ArrowRight/Home/End navigation\n");
+    await testMountedMobilePurchaseFlow(client, previewServer.origin);
+    process.stdout.write("✓ mounted mobile purchase flow reveals colors and exports\n");
     await testNamedCollectionSave(client, previewServer.origin);
     process.stdout.write("✓ named collection save and success confirmation\n");
     await testLDrawAndWebGlFailures(client, previewServer.origin);

@@ -25,11 +25,16 @@ describe("Collection page shell", () => {
     expect(collectionSource).toContain("moveOnStage");
     expect(collectionSource).toContain("isSavingLayout");
     expect(collectionSource).toContain("clearLocalFigureData");
+    expect(collectionSource).toContain("<CollectionInventoryPanel");
     expect(collectionSource).toContain("collection.dataTitle");
     expect(cardSource).toContain("figureId=");
     expect(collectionSource).toContain("downloadFigureDocument(saved.document)");
     expect(cardSource).toContain("labels.buyFigure");
     expect(purchaseDialogSource).toContain('<ShopExportPanel selections={selections} stepNumber={1} />');
+    expect(purchaseDialogSource).toContain("shopExportSelectionsForSavedFigures");
+    expect(collectionSource).toContain("openStagePurchaseDialog");
+    expect(collectionSource).toContain('t("collection.buyStage")');
+    expect(collectionSource).toContain("savedFigures={purchaseSelection.figures}");
     expect(purchaseDialogSource).toContain('role="dialog"');
     expect(purchaseDialogSource).toContain("onExportJson");
     expect(collectionSource).toContain("<CollectionFigureCard");

@@ -9,30 +9,39 @@ import { Button } from "./ui/Button.js";
 type CollectionPurchaseDialogProps = {
   exportError: boolean;
   onClose: () => void;
-  onExportJson: () => void;
-  saved: SavedFigure;
+  onExportJson?: () => void;
+  savedFigures: readonly SavedFigure[];
+  title: string;
 };
 
-export function CollectionPurchaseDialog({
-  exportError,
-  onClose,
-  onExportJson,
-  saved,
-}: CollectionPurchaseDialogProps) {
-  const { t } = useI18n();
-  const titleId = useId();
-  const descriptionId = useId();
-  const selections = saved.document.selections.flatMap((selection) => {
+export const shopExportSelectionsForSavedFigures = (
+  savedFigures: readonly SavedFigure[],
+): ShopExportSelection[] => savedFigures.flatMap((saved) =>
+  saved.document.selections.flatMap((selection) => {
     const component = builderComponentForId(selection.componentId);
     return component ? [{
       slot: selection.slot,
       name: component.name,
       rebrickablePartNum: component.rebrickablePartNum,
+      sourceFigureId: saved.id,
+      sourceFigureName: saved.document.name,
       ...(selection.rebrickableColorId === undefined
         ? {}
         : { rebrickableColorId: selection.rebrickableColorId }),
     } satisfies ShopExportSelection] : [];
-  });
+  }));
+
+export function CollectionPurchaseDialog({
+  exportError,
+  onClose,
+  onExportJson,
+  savedFigures,
+  title,
+}: CollectionPurchaseDialogProps) {
+  const { t } = useI18n();
+  const titleId = useId();
+  const descriptionId = useId();
+  const selections = shopExportSelectionsForSavedFigures(savedFigures);
 
   useEffect(() => {
     const closeOnEscape = (event: KeyboardEvent): void => {
@@ -54,7 +63,7 @@ export function CollectionPurchaseDialog({
         <header className="collection-purchase-dialog__header">
           <div>
             <p className="collection-page__eyebrow">{t("collection.purchaseEyebrow")}</p>
-            <h2 id={titleId}>{t("collection.purchaseTitle", { name: saved.document.name })}</h2>
+            <h2 id={titleId}>{title}</h2>
             <p id={descriptionId}>{t("collection.purchaseDescription")}</p>
           </div>
           <Button autoFocus aria-label={t("collection.purchaseClose")} onClick={onClose} size="sm" variant="ghost">
@@ -64,14 +73,16 @@ export function CollectionPurchaseDialog({
 
           <ShopExportPanel selections={selections} stepNumber={1} />
 
-        <details className="collection-purchase-dialog__backup">
-          <summary>{t("collection.purchaseBackupTitle")}</summary>
-          <p>{t("figure.transfer.default")}</p>
-          {exportError ? <p className="collection-library__error" role="alert">{t("collection.exportError")}</p> : null}
-          <Button onClick={onExportJson} size="sm" variant="ghost">
-            ↓ {t("collection.exportJson")}
-          </Button>
-        </details>
+        {onExportJson ? (
+          <details className="collection-purchase-dialog__backup">
+            <summary>{t("collection.purchaseBackupTitle")}</summary>
+            <p>{t("figure.transfer.default")}</p>
+            {exportError ? <p className="collection-library__error" role="alert">{t("collection.exportError")}</p> : null}
+            <Button onClick={onExportJson} size="sm" variant="ghost">
+              ↓ {t("collection.exportJson")}
+            </Button>
+          </details>
+        ) : null}
       </section>
     </div>
   );
