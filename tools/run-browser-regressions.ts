@@ -419,6 +419,19 @@ const testMountedMobilePurchaseFlow = async (client: CdpClient, origin: string):
     mobile: true,
   });
   await navigate(client, origin);
+  await waitFor(client, "document.querySelector('#mobile-tab-figure')", "mobile figure tab");
+  const figureTabOpened = await evaluate<boolean>(client, `(() => {
+    const button = document.querySelector('#mobile-tab-figure');
+    if (!(button instanceof HTMLButtonElement)) return false;
+    button.click();
+    return true;
+  })()`);
+  assert.equal(figureTabOpened, true, "the mounted figure tab must be available");
+  await waitFor(
+    client,
+    "document.querySelector('#mobile-tab-figure')?.getAttribute('aria-selected') === 'true'",
+    "mobile figure panel",
+  );
   await waitFor(client, "document.querySelector('.scene-copy__actions button')", "mobile purchase action");
   const opened = await evaluate<boolean>(client, `(() => {
     const button = [...document.querySelectorAll('.scene-copy__actions button')].find((candidate) =>
