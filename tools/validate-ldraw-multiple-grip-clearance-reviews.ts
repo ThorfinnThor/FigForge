@@ -59,6 +59,12 @@ const intentBlockedPartNums = new Set(intentReviews.reviews.map(({ rebrickablePa
 const placementBlockedPartNums = new Set(placementReviews.reviews
   .filter(({ decision }) => decision === "blocked")
   .map(({ rebrickablePartNum }) => rebrickablePartNum));
+const placementApprovedPartNums = new Set(placementReviews.reviews
+  .filter(({ decision }) => decision === "approved")
+  .map(({ rebrickablePartNum }) => rebrickablePartNum));
+const remainingPlacementApprovedPartNums = new Set(
+  [...remainingMultiple].filter((partNum) => placementApprovedPartNums.has(partNum)),
+);
 
 assert.equal(reviews.reviews.length, 8);
 assert.equal(new Set(reviews.reviews.map(({ rebrickablePartNum }) => rebrickablePartNum)).size, 8);
@@ -106,7 +112,11 @@ for (const review of reviews.reviews) {
     assert.equal(entry.digitalValidation?.gripEvidenceSource, "ldcad-shadow-snap");
     assert.equal(entry.digitalValidation?.gripPrimitive, evidence[0]?.primitive);
     assert.equal(entry.digitalValidation?.physicalFitGuaranteed, false);
-    assert(!remainingMultiple.has(review.rebrickablePartNum));
+    if (remainingPlacementApprovedPartNums.has(review.rebrickablePartNum)) {
+      assert(remainingMultiple.has(review.rebrickablePartNum));
+    } else {
+      assert(!remainingMultiple.has(review.rebrickablePartNum));
+    }
   } else {
     assert(!entry, `Blocked multiple grip became builder-ready: ${review.rebrickablePartNum}`);
     const rejection = rejectionByPartNum.get(review.rebrickablePartNum);
@@ -122,6 +132,7 @@ const remainingWithoutReviewedGrip = [...remainingMultiple].filter((partNum) =>
   !blocked.some((review) => review.rebrickablePartNum === partNum)
     && !intentBlockedPartNums.has(partNum)
     && !placementBlockedPartNums.has(partNum)
+    && !remainingPlacementApprovedPartNums.has(partNum)
 );
 assert.equal(
   remainingWithoutReviewedGrip.length,

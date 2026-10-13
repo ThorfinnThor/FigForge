@@ -38,10 +38,17 @@ class AccessoryPlacementQaTest(unittest.TestCase):
                 self.assertEqual(MODULE.assess(name, flags, validation).decision, MODULE.MANUAL)
 
     def test_non_hand_held_semantics_and_collisions_recommend_block(self) -> None:
-        self.assertEqual(
-            MODULE.assess("Equipment Scabbard", [], self.validation()).decision,
-            MODULE.BLOCK,
+        incompatible_names = (
+            "Equipment Scabbard",
+            "Tap 1 x 2 with Dual Handles, Small",
+            "Sports Soccer Minifig Stand with Spring and Green Pin [Complete Assembly]",
         )
+        for name in incompatible_names:
+            with self.subTest(name=name):
+                self.assertEqual(
+                    MODULE.assess(name, [], self.validation()).decision,
+                    MODULE.BLOCK,
+                )
         self.assertEqual(
             MODULE.assess("Equipment Generic", [], self.validation(collisions=1)).decision,
             MODULE.BLOCK,
@@ -78,6 +85,15 @@ class AccessoryPlacementQaTest(unittest.TestCase):
         )
         self.assertEqual(classified, summary["pendingPartCount"])
         self.assertFalse(report["releaseEligible"])
+        self.assertEqual(
+            summary["pendingRepresentativeCount"],
+            len(report["pendingRepresentativePartNums"]),
+        )
+        self.assertEqual(
+            summary["pendingRepresentativeCount"],
+            len(set(report["pendingRepresentativePartNums"])),
+        )
+        self.assertLessEqual(summary["pendingRepresentativeCount"], summary["pendingPartCount"])
         self.assertLessEqual(
             summary["manualRepresentativeCount"],
             summary["manualThreeViewPartCount"] + summary["blockRecommendedPartCount"],

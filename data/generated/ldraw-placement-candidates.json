@@ -22,10 +22,10 @@
     "automaticBuilderEnablements": 0
   },
   "summary": {
-    "placementProfileRequiredCount": 381,
-    "uniqueRadius4CandidateCount": 22,
-    "multipleRadius4CandidateCount": 113,
-    "noRadius4CylinderDetectedCount": 244,
+    "placementProfileRequiredCount": 386,
+    "uniqueRadius4CandidateCount": 25,
+    "multipleRadius4CandidateCount": 114,
+    "noRadius4CylinderDetectedCount": 245,
     "roleSpecificAssemblyProfileRequiredCount": 2,
     "noOfficialMappingQueueCount": 4910,
     "ambiguousOfficialMappingQueueCount": 13
@@ -5905,6 +5905,74 @@
       "limitation": "Official LDraw files can encode shafts as direct mesh triangles, so absence of a cylinder primitive is not proof that no grip exists."
     },
     {
+      "catalogId": "part:6936",
+      "role": "handAccessory",
+      "rebrickablePartNum": "6936",
+      "name": "Tap 1 x 2 with Dual Handles",
+      "ldrawFiles": [
+        "parts/6936.dat"
+      ],
+      "mappingEvidence": [
+        "exact-filename"
+      ],
+      "analysis": "unique-radius-4-cylinder-candidate",
+      "evidence": [
+        {
+          "primitive": "p/4-4cyli.dat",
+          "radiusLdu": 4,
+          "lengthLdu": 13.985,
+          "centerLdu": [
+            0,
+            -14.2,
+            -13.1925
+          ],
+          "axis": [
+            0,
+            0,
+            -1
+          ],
+          "sourceConnectorTransformLdu": [
+            -1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            -1,
+            0,
+            0,
+            -1,
+            0,
+            0,
+            0,
+            -14.2,
+            -13.1925,
+            1
+          ]
+        }
+      ],
+      "proposedPlacementTransformLdu": [
+        -0.985,
+        0.17,
+        0,
+        0,
+        0.146464,
+        0.848563,
+        -0.507414,
+        0,
+        -0.086268,
+        -0.499806,
+        -0.861479,
+        0,
+        25.722596,
+        38.54789,
+        -36.046066,
+        1
+      ],
+      "automaticBuilderEnablement": false,
+      "limitation": "A radius-4 cylinder is geometric evidence only; it may be decorative or unsuitable as the intended hand grip."
+    },
+    {
       "catalogId": "part:10049",
       "role": "handAccessory",
       "rebrickablePartNum": "10049",
@@ -6528,6 +6596,75 @@
       "proposedPlacementTransformLdu": null,
       "automaticBuilderEnablement": false,
       "limitation": "Official LDraw files can encode shafts as direct mesh triangles, so absence of a cylinder primitive is not proof that no grip exists."
+    },
+    {
+      "catalogId": "part:13770",
+      "role": "handAccessory",
+      "rebrickablePartNum": "13770",
+      "name": "Tap 1 x 2 with Dual Handles, Small",
+      "ldrawFiles": [
+        "parts/28920.dat"
+      ],
+      "mappingEvidence": [
+        "exact-filename",
+        "explicit-keyword"
+      ],
+      "analysis": "unique-radius-4-cylinder-candidate",
+      "evidence": [
+        {
+          "primitive": "p/4-4cyli.dat",
+          "radiusLdu": 4,
+          "lengthLdu": 13.985,
+          "centerLdu": [
+            0,
+            -14.2,
+            -13.1925
+          ],
+          "axis": [
+            0,
+            0,
+            -1
+          ],
+          "sourceConnectorTransformLdu": [
+            -1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            -1,
+            0,
+            0,
+            -1,
+            0,
+            0,
+            0,
+            -14.2,
+            -13.1925,
+            1
+          ]
+        }
+      ],
+      "proposedPlacementTransformLdu": [
+        -0.985,
+        0.17,
+        0,
+        0,
+        0.146464,
+        0.848563,
+        -0.507414,
+        0,
+        -0.086268,
+        -0.499806,
+        -0.861479,
+        0,
+        25.722596,
+        38.54789,
+        -36.046066,
+        1
+      ],
+      "automaticBuilderEnablement": false,
+      "limitation": "A radius-4 cylinder is geometric evidence only; it may be decorative or unsuitable as the intended hand grip."
     },
     {
       "catalogId": "part:13808",
@@ -7400,6 +7537,23 @@
       "name": "Equipment Medical Wheelchair with Clips for Wheels",
       "ldrawFiles": [
         "parts/24312.dat"
+      ],
+      "mappingEvidence": [
+        "exact-filename"
+      ],
+      "analysis": "no-radius-4-cylinder-detected",
+      "evidence": [],
+      "proposedPlacementTransformLdu": null,
+      "automaticBuilderEnablement": false,
+      "limitation": "Official LDraw files can encode shafts as direct mesh triangles, so absence of a cylinder primitive is not proof that no grip exists."
+    },
+    {
+      "catalogId": "part:24324",
+      "role": "handAccessory",
+      "rebrickablePartNum": "24324",
+      "name": "Book Binding with Two Studs",
+      "ldrawFiles": [
+        "parts/24324.dat"
       ],
       "mappingEvidence": [
         "exact-filename"
@@ -8938,6 +9092,74 @@
       "proposedPlacementTransformLdu": null,
       "automaticBuilderEnablement": false,
       "limitation": "Official LDraw files can encode shafts as direct mesh triangles, so absence of a cylinder primitive is not proof that no grip exists."
+    },
+    {
+      "catalogId": "part:30488c01",
+      "role": "handAccessory",
+      "rebrickablePartNum": "30488c01",
+      "name": "Sports Soccer Minifig Stand with Spring and Green Pin [Complete Assembly]",
+      "ldrawFiles": [
+        "parts/76407p01.dat"
+      ],
+      "mappingEvidence": [
+        "curated-official-metadata"
+      ],
+      "analysis": "unique-radius-4-cylinder-candidate",
+      "evidence": [
+        {
+          "primitive": "p/4-4cyli.dat",
+          "radiusLdu": 4,
+          "lengthLdu": 8,
+          "centerLdu": [
+            0,
+            30.5,
+            0
+          ],
+          "axis": [
+            0,
+            1,
+            0
+          ],
+          "sourceConnectorTransformLdu": [
+            -1,
+            0,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            30.5,
+            0,
+            1
+          ]
+        }
+      ],
+      "proposedPlacementTransformLdu": [
+        -0.985,
+        0.17,
+        0,
+        0,
+        0.086268,
+        0.499806,
+        0.86148,
+        0,
+        -0.146464,
+        -0.848563,
+        0.507414,
+        0,
+        22.149737,
+        17.847893,
+        -43.750845,
+        1
+      ],
+      "automaticBuilderEnablement": false,
+      "limitation": "A radius-4 cylinder is geometric evidence only; it may be decorative or unsuitable as the intended hand grip."
     },
     {
       "catalogId": "part:30593",
@@ -11825,6 +12047,91 @@
       "proposedPlacementTransformLdu": null,
       "automaticBuilderEnablement": false,
       "limitation": "Official LDraw files can encode shafts as direct mesh triangles, so absence of a cylinder primitive is not proof that no grip exists."
+    },
+    {
+      "catalogId": "part:56619",
+      "role": "handAccessory",
+      "rebrickablePartNum": "56619",
+      "name": "Equipment Handcuffs Long [Batman]",
+      "ldrawFiles": [
+        "parts/55707d.dat"
+      ],
+      "mappingEvidence": [
+        "exact-filename",
+        "explicit-keyword"
+      ],
+      "analysis": "multiple-radius-4-cylinder-candidates",
+      "evidence": [
+        {
+          "primitive": "p/4-4cyli.dat",
+          "radiusLdu": 4,
+          "lengthLdu": 8,
+          "centerLdu": [
+            -4,
+            0,
+            0
+          ],
+          "axis": [
+            1,
+            0,
+            0
+          ],
+          "sourceConnectorTransformLdu": [
+            0,
+            0,
+            -1,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0,
+            -1,
+            0,
+            0,
+            -4,
+            0,
+            0,
+            1
+          ]
+        },
+        {
+          "primitive": "p/4-4cyli.dat",
+          "radiusLdu": 4,
+          "lengthLdu": 8,
+          "centerLdu": [
+            4,
+            0,
+            0
+          ],
+          "axis": [
+            -1,
+            0,
+            0
+          ],
+          "sourceConnectorTransformLdu": [
+            0,
+            0,
+            1,
+            0,
+            -1,
+            0,
+            0,
+            0,
+            0,
+            -1,
+            0,
+            0,
+            4,
+            0,
+            0,
+            1
+          ]
+        }
+      ],
+      "proposedPlacementTransformLdu": null,
+      "automaticBuilderEnablement": false,
+      "limitation": "Several possible shafts exist; selecting one automatically would guess the intended grip."
     },
     {
       "catalogId": "part:57503",

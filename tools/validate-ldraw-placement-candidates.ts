@@ -3,6 +3,7 @@ import { readFile } from "node:fs/promises";
 import { resolve } from "node:path";
 import type { LDrawCatalogCoverageReport } from "./lib/ldraw-catalog-coverage.js";
 import { readAccessoryGripIntentReviews } from "./lib/ldraw-accessory-grip-intent-reviews.js";
+import { readAccessoryPlacementReviews } from "./lib/ldraw-accessory-placement-reviews.js";
 import type { LDrawPlacementCandidateReport } from "./lib/ldraw-placement-candidates.js";
 
 const root = process.cwd();
@@ -14,6 +15,7 @@ const coverage = await readJson<LDrawCatalogCoverageReport>(
   resolve(root, "data/generated/ldraw-catalog-coverage.json"),
 );
 const intentReviews = await readAccessoryGripIntentReviews(root);
+const placementReviews = await readAccessoryPlacementReviews(root);
 const key = (entry: { role: string; rebrickablePartNum: string }): string =>
   `${entry.role}:${entry.rebrickablePartNum.toLowerCase()}`;
 
@@ -38,9 +40,15 @@ const reportedPlacementKeys = new Set(report.placementCandidates.map(key));
 const reviewedPlacementKeys = intentReviews.reviews.map(({ rebrickablePartNum }) =>
   key({ role: "handAccessory", rebrickablePartNum })
 );
+const approvedPlacementKeys = placementReviews.reviews
+  .filter(({ decision, rebrickablePartNum }) => (
+    decision === "approved"
+      && reportedPlacementKeys.has(key({ role: "handAccessory", rebrickablePartNum }))
+  ))
+  .map(({ rebrickablePartNum }) => key({ role: "handAccessory", rebrickablePartNum }));
 assert.deepEqual(
   new Set([...reportedPlacementKeys, ...reviewedPlacementKeys]),
-  new Set(expectedPlacement.map(key)),
+  new Set([...expectedPlacement.map(key), ...approvedPlacementKeys]),
 );
 assert.deepEqual(new Set(report.sourceQueue.noOfficialMapping.map(key)), new Set(expectedNoMapping.map(key)));
 assert.deepEqual(new Set(report.sourceQueue.ambiguousOfficialMapping.map(key)), new Set(expectedAmbiguous.map(key)));

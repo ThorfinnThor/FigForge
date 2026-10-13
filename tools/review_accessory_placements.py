@@ -33,6 +33,8 @@ BLOCK = "block-recommended"
 INCOMPATIBLE_HAND_PROP_PATTERNS = (
     re.compile(r"\bscabbard\b", re.IGNORECASE),
     re.compile(r"\bquiver\b", re.IGNORECASE),
+    re.compile(r"\btap\s+1\s+x\s+2\s+with\s+dual\s+handles\b", re.IGNORECASE),
+    re.compile(r"\bsoccer\s+minifig\s+stand\b", re.IGNORECASE),
 )
 
 # These objects have a visually meaningful front, mouthpiece, blade, head, or
@@ -204,6 +206,7 @@ def build_report(queue: dict[str, Any], reviews: dict[str, Any], queue_path: Pat
 
     by_component = {item["componentId"]: item for item in assessed}
     grouped = group_entries(pending)
+    pending_representatives = [members[0]["rebrickablePartNum"] for members in grouped]
     manual_groups: list[dict[str, Any]] = []
     for members in grouped:
         assessments = [by_component[member["componentId"]] for member in members]
@@ -240,12 +243,14 @@ def build_report(queue: dict[str, Any], reviews: dict[str, Any], queue_path: Pat
         },
         "summary": {
             "pendingPartCount": len(pending),
+            "pendingRepresentativeCount": len(pending_representatives),
             "screenedLowRiskPartCount": counts[LOW_RISK],
             "manualThreeViewPartCount": counts[MANUAL],
             "blockRecommendedPartCount": counts[BLOCK],
             "manualRepresentativeCount": len(manual_groups),
         },
         "calibration": calibration,
+        "pendingRepresentativePartNums": pending_representatives,
         "manualReviewGroups": manual_groups,
         "entries": assessed,
         "limitations": [
@@ -265,6 +270,7 @@ def markdown_summary(report: dict[str, Any]) -> str:
         f"Generated: {report['generatedAt']}",
         "",
         f"- Pending parts checked: {summary['pendingPartCount']}",
+        f"- Pending geometry representatives: {summary['pendingRepresentativeCount']}",
         f"- Screened low-risk (not approved): {summary['screenedLowRiskPartCount']}",
         f"- Still needs three-view review: {summary['manualThreeViewPartCount']}",
         f"- Block recommended: {summary['blockRecommendedPartCount']}",
@@ -291,6 +297,10 @@ def write_outputs(report: dict[str, Any], output: Path) -> None:
     ]
     (output / "manual-review-parts.txt").write_text(
         "".join(f"{part_num}\n" for part_num in representatives),
+        encoding="utf-8",
+    )
+    (output / "pending-review-parts.txt").write_text(
+        "".join(f"{part_num}\n" for part_num in report["pendingRepresentativePartNums"]),
         encoding="utf-8",
     )
 

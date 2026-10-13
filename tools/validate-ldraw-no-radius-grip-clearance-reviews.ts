@@ -54,9 +54,23 @@ const remainingNoRadius = new Set(placement.placementCandidates
 const placementBlockedPartNums = new Set(placementReviews.reviews
   .filter(({ decision }) => decision === "blocked")
   .map(({ rebrickablePartNum }) => rebrickablePartNum));
+const placementApprovedPartNums = new Set(placementReviews.reviews
+  .filter(({ decision }) => decision === "approved")
+  .map(({ rebrickablePartNum }) => rebrickablePartNum));
+const remainingPlacementApprovedPartNums = new Set(
+  [...remainingNoRadius].filter((partNum) => placementApprovedPartNums.has(partNum)),
+);
 const placementBlockedReviews = reviews.reviews.filter(({ rebrickablePartNum }) =>
   placementBlockedPartNums.has(rebrickablePartNum)
 );
+const placementApprovedReviews = reviews.reviews.filter(({ rebrickablePartNum }) =>
+  remainingPlacementApprovedPartNums.has(rebrickablePartNum)
+);
+const remainingPlacementBlockedPartNums = new Set(
+  [...remainingNoRadius].filter((partNum) => placementBlockedPartNums.has(partNum)),
+);
+const blockedOutsideAuditedReviews = [...remainingPlacementBlockedPartNums]
+  .filter((partNum) => !reviews.reviews.some(({ rebrickablePartNum }) => rebrickablePartNum === partNum));
 
 assert.equal(reviews.auditedQueueCount, 270);
 assert.equal(reviews.uniqueDocumentedGripCount, 27);
@@ -91,13 +105,26 @@ for (const review of reviews.reviews) {
   assert.equal(entry.digitalValidation?.gripEvidenceSource, "ldcad-shadow-snap");
   assert.equal(entry.digitalValidation?.gripPrimitive, evidence[0]?.primitive);
   assert.equal(entry.digitalValidation?.physicalFitGuaranteed, false);
-  assert(!remainingNoRadius.has(review.rebrickablePartNum));
+  if (remainingPlacementApprovedPartNums.has(review.rebrickablePartNum)) {
+    assert(remainingNoRadius.has(review.rebrickablePartNum));
+  } else {
+    assert(!remainingNoRadius.has(review.rebrickablePartNum));
+  }
 }
 
-const expectedRemainingCount = reviews.withoutUniqueDocumentedGripCount + placementBlockedReviews.length;
+const expectedRemainingCount = reviews.withoutUniqueDocumentedGripCount
+  + remainingPlacementBlockedPartNums.size
+  + remainingPlacementApprovedPartNums.size;
 assert.equal(placement.summary.noRadius4CylinderDetectedCount, expectedRemainingCount);
 assert.equal(remainingNoRadius.size, expectedRemainingCount);
-assert.equal(reviews.reviews.length - placementBlockedReviews.length + remainingNoRadius.size, reviews.auditedQueueCount);
+assert.equal(
+  reviews.reviews.length
+    - placementBlockedReviews.length
+    + remainingNoRadius.size
+    - blockedOutsideAuditedReviews.length
+    - placementApprovedReviews.length,
+  reviews.auditedQueueCount,
+);
 
 console.log(JSON.stringify({
   message: "reviewed no-radius LDCad clearance valid",
@@ -105,6 +132,7 @@ console.log(JSON.stringify({
   documented: reviews.uniqueDocumentedGripCount,
   passed: reviews.reviews.length - placementBlockedReviews.length,
   placementBlocked: placementBlockedReviews.length,
+  placementBlockedOutsideAuditedReviews: blockedOutsideAuditedReviews.length,
   remainingWithoutUniqueDocumentedGrip: remainingNoRadius.size,
   sourcePolicy: reviews.sourcePolicy,
 }));
