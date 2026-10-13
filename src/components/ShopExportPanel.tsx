@@ -21,6 +21,7 @@ import { useI18n } from "../i18n.js";
 import type { PartInventory } from "../contracts/part-inventory.js";
 import { inventoryCoverage, subtractPartInventory } from "../procurement/part-inventory.js";
 import { loadPartInventory } from "../storage/figure-draft-store.js";
+import { AmazonRecommendations } from "./AmazonRecommendations.js";
 
 type ShopExportPanelProps = {
   selections: readonly ShopExportSelection[];
@@ -226,6 +227,7 @@ export function ShopExportPanel({ selections, stepNumber = 2 }: ShopExportPanelP
             </div>
             <p className="shop-export__hint">{t("shop.disclaimer")}</p>
           </details>
+          <AmazonRecommendations />
         </>
       )}
       {message ? <StatusMessage className="shop-export__message" tone="success">{message}</StatusMessage> : null}
