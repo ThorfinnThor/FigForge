@@ -5,9 +5,9 @@
   "reviewStatus": "pending-human-review",
   "blindedSystems": true,
   "querySetSha256": "56c9a287a380df56d27ff7ecf061514e537ea1be4821f6f6e1f7b41ce397bf97",
-  "releaseManifestSha256": "0ab568ce65d65cda2a1cc58c47150eddeb460aa782e48ffc98a728cbb6283393",
+  "releaseManifestSha256": "49020a0f87732758131dc746db1a01e12e5c3aceba9edbe0261276552f3050d0",
   "releaseProfileId": "compact-minilm",
-  "releaseDocumentCount": 2706,
+  "releaseDocumentCount": 2713,
   "instructions": "Bewerte jeden Treffer blind mit 0 (unpassend), 1 (akzeptabel) oder 2 (sehr passend). Maßgeblich sind Suchtext, sichtbare Geometrie, Katalogname, Kategorie und belegte Farbe. Die Herkunft aus Basis- oder Hybridsuche bleibt verborgen; der Holdout wird nicht ausgeliefert.",
   "cases": [
     {
@@ -215,8 +215,8 @@
           "part:3626cpr1614"
         ],
         "hybrid": [
-          "part:3626bpr0049",
           "part:3626cpr0914",
+          "part:3626bpr0049",
           "part:3626cpr2141",
           "part:3626cpr0889",
           "part:3626bpr0282"
@@ -704,8 +704,8 @@
         "hybrid": [
           "part:62696",
           "part:92257",
-          "part:87990",
           "part:6093",
+          "part:88286",
           "part:13785"
         ]
       },
@@ -742,6 +742,26 @@
             "Red"
           ],
           "thumbnailUrl": "/assets/thumbnails/ldraw-expanded/headwear-92257.webp",
+          "relevance": null
+        },
+        {
+          "candidateKey": "candidate:release-dev-de-red-ponytail:part:88286",
+          "componentId": "part:88286",
+          "rebrickablePartNum": "88286",
+          "originalName": "Hair Ponytail Long French Braided",
+          "categoryRole": "headwear",
+          "colorNames": [
+            "Black",
+            "Dark Bluish Gray",
+            "Dark Brown",
+            "Dark Tan",
+            "Medium Nougat",
+            "Red",
+            "Reddish Brown",
+            "Tan",
+            "White"
+          ],
+          "thumbnailUrl": "/assets/thumbnails/ldraw-expanded/headwear-88286.webp",
           "relevance": null
         },
         {
@@ -794,34 +814,6 @@
             "White"
           ],
           "thumbnailUrl": "/assets/thumbnails/ldraw-expanded/headwear-22411.webp",
-          "relevance": null
-        },
-        {
-          "candidateKey": "candidate:release-dev-de-red-ponytail:part:87990",
-          "componentId": "part:87990",
-          "rebrickablePartNum": "87990",
-          "originalName": "Hair Ponytail and Swept Sideways Fringe",
-          "categoryRole": "headwear",
-          "colorNames": [
-            "Black",
-            "Bright Light Yellow",
-            "Dark Azure",
-            "Dark Brown",
-            "Dark Orange",
-            "Dark Red",
-            "Dark Tan",
-            "Magenta",
-            "Medium Nougat",
-            "Nougat",
-            "Orange",
-            "Red",
-            "Reddish Brown",
-            "Reddish Orange",
-            "Sand Green",
-            "Tan",
-            "White"
-          ],
-          "thumbnailUrl": "/assets/thumbnails/ldraw-expanded/headwear-87990.webp",
           "relevance": null
         },
         {
@@ -1624,8 +1616,8 @@
         ],
         "hybrid": [
           "part:970c22pr0019",
-          "part:970c03pr0001",
           "part:970e09",
+          "part:970c03pr0001",
           "part:970c14pr0288"
         ]
       },
@@ -2342,8 +2334,8 @@
         ],
         "hybrid": [
           "part:3626cpr1769",
-          "part:685pr0001",
-          "part:3626bpr0324"
+          "part:3626bpr0324",
+          "part:685pr0001"
         ]
       },
       "candidates": [
@@ -3091,7 +3083,7 @@
         "hybrid": [
           "part:22409",
           "part:24108",
-          "part:95052"
+          "part:93055"
         ]
       },
       "candidates": [
@@ -3118,16 +3110,6 @@
             "Light Bluish Gray"
           ],
           "thumbnailUrl": "/assets/thumbnails/ldraw-expanded/handAccessory-24108.webp",
-          "relevance": null
-        },
-        {
-          "candidateKey": "candidate:release-holdout-en-lion-shield:part:95052",
-          "componentId": "part:95052",
-          "rebrickablePartNum": "95052",
-          "originalName": "Weapon Axe with Twin-Blade",
-          "categoryRole": "handAccessory",
-          "colorNames": [],
-          "thumbnailUrl": "/assets/thumbnails/ldraw-expanded/handAccessory-95052.webp",
           "relevance": null
         },
         {
@@ -3159,6 +3141,19 @@
             "Trans-Yellow"
           ],
           "thumbnailUrl": "/assets/thumbnails/ldraw-expanded/handAccessory-11601.webp",
+          "relevance": null
+        },
+        {
+          "candidateKey": "candidate:release-holdout-en-lion-shield:part:93055",
+          "componentId": "part:93055",
+          "rebrickablePartNum": "93055",
+          "originalName": "Weapon Sword Katana with Dragon Guard (The Sword of Fire)",
+          "categoryRole": "handAccessory",
+          "colorNames": [
+            "Pearl Gold",
+            "Pearl Titanium"
+          ],
+          "thumbnailUrl": "/assets/thumbnails/ldraw-expanded/handAccessory-93055.webp",
           "relevance": null
         },
         {

@@ -5,8 +5,8 @@
   "sourcePolicy": "Nur Rebrickable Catalog Downloads/CSV, keine MOC-Dateien.",
   "publishable": false,
   "sourceHashes": {
-    "runtimePackageSha256": "5e9e298dffd69c2b871a1f1f3a72c918252da8eb2876f5154bf52ff8ce340821",
-    "expandedCatalogSha256": "5924906a86fb6e362574476ffe73f49d48b743c1f93b80f27cc7291e709679ea"
+    "runtimePackageSha256": "9330a34a73b8158da54ebf157ce5a4aaaffc12fff11f092fba1b1322b4be88e0",
+    "expandedCatalogSha256": "502d5efb59d48e5da857b28909eb65d8cc8f0ba922fb92e56d0c68f2700b5088"
   },
   "entries": [
     {
@@ -358,6 +358,64 @@
       "evidenceReference": "same reviewed geometry and transform as 24108; three-quarter,front,back local browser inspection"
     },
     {
+      "id": "accessory-orientation-review:43899",
+      "componentId": "catalog:handAccessory:43899",
+      "rebrickablePartNum": "43899",
+      "name": "Weapon Pike / Spear [4 Side Blades]",
+      "ldrawFile": "parts/43899.dat",
+      "modelUrl": "/assets/ldraw/official-2609/models/handAccessory-43899.ldr",
+      "thumbnailUrl": "/assets/thumbnails/ldraw-expanded/handAccessory-43899.webp",
+      "placementMode": "snap-connector",
+      "placementTransformLdu": [
+        0.146464,
+        0.848563,
+        -0.507414,
+        0,
+        0.086268,
+        0.499806,
+        0.86148,
+        0,
+        0.985,
+        -0.17,
+        0,
+        0,
+        13.566116,
+        -31.882832,
+        -129.468055,
+        1
+      ],
+      "digitalValidation": {
+        "status": "passed",
+        "selectedOrientationIndex": 1,
+        "orientationCandidatesTested": 1064,
+        "collisionSampleCount": 0,
+        "gripCandidatesTested": 1,
+        "gripLengthLdu": 140,
+        "gripPrimitive": "p/4-4cyli.dat"
+      },
+      "reviewViews": [
+        "three-quarter",
+        "front",
+        "back"
+      ],
+      "riskFlags": [
+        "non-default-orientation",
+        "long-accessory-extent"
+      ],
+      "priorityScore": 3,
+      "priorityTier": "high",
+      "queueRank": 7,
+      "reviewStatus": "approved-browser-visual-review",
+      "requiredChecks": [
+        "Prüfe in Dreiviertel-, Vorder- und Rückansicht, ob das Zubehör sichtbar an der Hand statt am Lauf, Körper oder außerhalb der Hand sitzt.",
+        "Prüfe Griffachse, Einstecktiefe und Rotation auf eine visuell plausible Haltung; geometrische Kollisionsfreiheit allein genügt nicht.",
+        "Dokumentiere bei einem Fehler die Ansicht, eine kurze Begründung und einen Screenshot oder eine reproduzierbare Referenz."
+      ],
+      "reviewer": "Codex Sol browser QA",
+      "reviewedAt": "2026-10-13",
+      "evidenceReference": "interactive three-quarter browser comparison of candidates 0 and 1"
+    },
+    {
       "id": "accessory-orientation-review:55237e",
       "componentId": "catalog:handAccessory:55237e",
       "rebrickablePartNum": "55237e",
@@ -404,7 +462,7 @@
       ],
       "priorityScore": 3,
       "priorityTier": "high",
-      "queueRank": 7,
+      "queueRank": 8,
       "reviewStatus": "approved-browser-visual-review",
       "requiredChecks": [
         "Prüfe in Dreiviertel-, Vorder- und Rückansicht, ob das Zubehör sichtbar an der Hand statt am Lauf, Körper oder außerhalb der Hand sitzt.",
@@ -462,7 +520,7 @@
       ],
       "priorityScore": 3,
       "priorityTier": "high",
-      "queueRank": 8,
+      "queueRank": 9,
       "reviewStatus": "approved-browser-visual-review",
       "requiredChecks": [
         "Prüfe in Dreiviertel-, Vorder- und Rückansicht, ob das Zubehör sichtbar an der Hand statt am Lauf, Körper oder außerhalb der Hand sitzt.",
@@ -472,6 +530,64 @@
       "reviewer": "Codex Sol browser QA",
       "reviewedAt": "2026-10-12",
       "evidenceReference": "three-quarter,front,back CI contact-sheet inspection"
+    },
+    {
+      "id": "accessory-orientation-review:60674",
+      "componentId": "catalog:handAccessory:60674",
+      "rebrickablePartNum": "60674",
+      "name": "Weapon Club Large (Troll)",
+      "ldrawFile": "parts/60674.dat",
+      "modelUrl": "/assets/ldraw/official-2609/models/handAccessory-60674.ldr",
+      "thumbnailUrl": "/assets/thumbnails/ldraw-expanded/handAccessory-60674.webp",
+      "placementMode": "snap-connector",
+      "placementTransformLdu": [
+        0.985,
+        -0.17,
+        0,
+        0,
+        0.086268,
+        0.499806,
+        0.861479,
+        0,
+        0.146464,
+        0.848563,
+        -0.507414,
+        0,
+        24.776583,
+        33.066994,
+        -17.518794,
+        1
+      ],
+      "digitalValidation": {
+        "status": "passed",
+        "selectedOrientationIndex": 4,
+        "orientationCandidatesTested": 152,
+        "collisionSampleCount": 0,
+        "gripCandidatesTested": 1,
+        "gripLengthLdu": 25.9,
+        "gripPrimitive": "p/4-4cylc.dat"
+      },
+      "reviewViews": [
+        "three-quarter",
+        "front",
+        "back"
+      ],
+      "riskFlags": [
+        "non-default-orientation",
+        "long-accessory-extent"
+      ],
+      "priorityScore": 3,
+      "priorityTier": "high",
+      "queueRank": 10,
+      "reviewStatus": "approved-browser-visual-review",
+      "requiredChecks": [
+        "Prüfe in Dreiviertel-, Vorder- und Rückansicht, ob das Zubehör sichtbar an der Hand statt am Lauf, Körper oder außerhalb der Hand sitzt.",
+        "Prüfe Griffachse, Einstecktiefe und Rotation auf eine visuell plausible Haltung; geometrische Kollisionsfreiheit allein genügt nicht.",
+        "Dokumentiere bei einem Fehler die Ansicht, eine kurze Begründung und einen Screenshot oder eine reproduzierbare Referenz."
+      ],
+      "reviewer": "Codex Sol browser QA",
+      "reviewedAt": "2026-10-13",
+      "evidenceReference": "interactive three-quarter browser comparison of collision-free candidates"
     },
     {
       "id": "accessory-orientation-review:98137",
@@ -520,7 +636,7 @@
       ],
       "priorityScore": 3,
       "priorityTier": "high",
-      "queueRank": 9,
+      "queueRank": 11,
       "reviewStatus": "approved-browser-visual-review",
       "requiredChecks": [
         "Prüfe in Dreiviertel-, Vorder- und Rückansicht, ob das Zubehör sichtbar an der Hand statt am Lauf, Körper oder außerhalb der Hand sitzt.",
@@ -577,7 +693,7 @@
       ],
       "priorityScore": 2,
       "priorityTier": "medium",
-      "queueRank": 10,
+      "queueRank": 12,
       "reviewStatus": "approved-browser-visual-review",
       "requiredChecks": [
         "Prüfe in Dreiviertel-, Vorder- und Rückansicht, ob das Zubehör sichtbar an der Hand statt am Lauf, Körper oder außerhalb der Hand sitzt.",
@@ -634,7 +750,7 @@
       ],
       "priorityScore": 2,
       "priorityTier": "medium",
-      "queueRank": 11,
+      "queueRank": 13,
       "reviewStatus": "approved-browser-visual-review",
       "requiredChecks": [
         "Prüfe in Dreiviertel-, Vorder- und Rückansicht, ob das Zubehör sichtbar an der Hand statt am Lauf, Körper oder außerhalb der Hand sitzt.",
@@ -691,7 +807,7 @@
       ],
       "priorityScore": 2,
       "priorityTier": "medium",
-      "queueRank": 12,
+      "queueRank": 14,
       "reviewStatus": "approved-browser-visual-review",
       "requiredChecks": [
         "Prüfe in Dreiviertel-, Vorder- und Rückansicht, ob das Zubehör sichtbar an der Hand statt am Lauf, Körper oder außerhalb der Hand sitzt.",
@@ -748,7 +864,7 @@
       ],
       "priorityScore": 2,
       "priorityTier": "medium",
-      "queueRank": 13,
+      "queueRank": 15,
       "reviewStatus": "approved-browser-visual-review",
       "requiredChecks": [
         "Prüfe in Dreiviertel-, Vorder- und Rückansicht, ob das Zubehör sichtbar an der Hand statt am Lauf, Körper oder außerhalb der Hand sitzt.",
@@ -805,7 +921,7 @@
       ],
       "priorityScore": 2,
       "priorityTier": "medium",
-      "queueRank": 14,
+      "queueRank": 16,
       "reviewStatus": "approved-browser-visual-review",
       "requiredChecks": [
         "Prüfe in Dreiviertel-, Vorder- und Rückansicht, ob das Zubehör sichtbar an der Hand statt am Lauf, Körper oder außerhalb der Hand sitzt.",
@@ -862,7 +978,7 @@
       ],
       "priorityScore": 2,
       "priorityTier": "medium",
-      "queueRank": 15,
+      "queueRank": 17,
       "reviewStatus": "approved-browser-visual-review",
       "requiredChecks": [
         "Prüfe in Dreiviertel-, Vorder- und Rückansicht, ob das Zubehör sichtbar an der Hand statt am Lauf, Körper oder außerhalb der Hand sitzt.",
@@ -919,7 +1035,7 @@
       ],
       "priorityScore": 2,
       "priorityTier": "medium",
-      "queueRank": 16,
+      "queueRank": 18,
       "reviewStatus": "approved-browser-visual-review",
       "requiredChecks": [
         "Prüfe in Dreiviertel-, Vorder- und Rückansicht, ob das Zubehör sichtbar an der Hand statt am Lauf, Körper oder außerhalb der Hand sitzt.",
@@ -976,7 +1092,7 @@
       ],
       "priorityScore": 2,
       "priorityTier": "medium",
-      "queueRank": 17,
+      "queueRank": 19,
       "reviewStatus": "approved-browser-visual-review",
       "requiredChecks": [
         "Prüfe in Dreiviertel-, Vorder- und Rückansicht, ob das Zubehör sichtbar an der Hand statt am Lauf, Körper oder außerhalb der Hand sitzt.",
@@ -1033,7 +1149,7 @@
       ],
       "priorityScore": 2,
       "priorityTier": "medium",
-      "queueRank": 18,
+      "queueRank": 20,
       "reviewStatus": "approved-browser-visual-review",
       "requiredChecks": [
         "Prüfe in Dreiviertel-, Vorder- und Rückansicht, ob das Zubehör sichtbar an der Hand statt am Lauf, Körper oder außerhalb der Hand sitzt.",
@@ -1090,7 +1206,7 @@
       ],
       "priorityScore": 2,
       "priorityTier": "medium",
-      "queueRank": 19,
+      "queueRank": 21,
       "reviewStatus": "approved-browser-visual-review",
       "requiredChecks": [
         "Prüfe in Dreiviertel-, Vorder- und Rückansicht, ob das Zubehör sichtbar an der Hand statt am Lauf, Körper oder außerhalb der Hand sitzt.",
@@ -1147,7 +1263,7 @@
       ],
       "priorityScore": 2,
       "priorityTier": "medium",
-      "queueRank": 20,
+      "queueRank": 22,
       "reviewStatus": "approved-browser-visual-review",
       "requiredChecks": [
         "Prüfe in Dreiviertel-, Vorder- und Rückansicht, ob das Zubehör sichtbar an der Hand statt am Lauf, Körper oder außerhalb der Hand sitzt.",
@@ -1204,7 +1320,7 @@
       ],
       "priorityScore": 2,
       "priorityTier": "medium",
-      "queueRank": 21,
+      "queueRank": 23,
       "reviewStatus": "approved-browser-visual-review",
       "requiredChecks": [
         "Prüfe in Dreiviertel-, Vorder- und Rückansicht, ob das Zubehör sichtbar an der Hand statt am Lauf, Körper oder außerhalb der Hand sitzt.",
@@ -1214,6 +1330,120 @@
       "reviewer": "Codex Sol browser QA",
       "reviewedAt": "2026-10-12",
       "evidenceReference": "same reviewed geometry and transform as 11640; three-quarter,front,back CI contact-sheet inspection"
+    },
+    {
+      "id": "accessory-orientation-review:13808",
+      "componentId": "catalog:handAccessory:13808",
+      "rebrickablePartNum": "13808",
+      "name": "Musical Instrument Saxophone",
+      "ldrawFile": "parts/13808.dat",
+      "modelUrl": "/assets/ldraw/official-2609/models/handAccessory-13808.ldr",
+      "thumbnailUrl": "/assets/thumbnails/ldraw-expanded/handAccessory-13808.webp",
+      "placementMode": "snap-connector",
+      "placementTransformLdu": [
+        -0.985,
+        0.17,
+        0,
+        0,
+        0.086268,
+        0.499806,
+        0.86148,
+        0,
+        -0.146464,
+        -0.848563,
+        0.507414,
+        0,
+        25.411598,
+        36.746068,
+        -11.177443,
+        1
+      ],
+      "digitalValidation": {
+        "status": "passed",
+        "selectedOrientationIndex": 7,
+        "orientationCandidatesTested": 72,
+        "collisionSampleCount": 0,
+        "gripCandidatesTested": 1,
+        "gripLengthLdu": 14.622,
+        "gripPrimitive": "p/4-4cyli.dat"
+      },
+      "reviewViews": [
+        "three-quarter",
+        "front",
+        "back"
+      ],
+      "riskFlags": [
+        "non-default-orientation"
+      ],
+      "priorityScore": 2,
+      "priorityTier": "medium",
+      "queueRank": 24,
+      "reviewStatus": "approved-browser-visual-review",
+      "requiredChecks": [
+        "Prüfe in Dreiviertel-, Vorder- und Rückansicht, ob das Zubehör sichtbar an der Hand statt am Lauf, Körper oder außerhalb der Hand sitzt.",
+        "Prüfe Griffachse, Einstecktiefe und Rotation auf eine visuell plausible Haltung; geometrische Kollisionsfreiheit allein genügt nicht.",
+        "Dokumentiere bei einem Fehler die Ansicht, eine kurze Begründung und einen Screenshot oder eine reproduzierbare Referenz."
+      ],
+      "reviewer": "Codex Sol browser QA",
+      "reviewedAt": "2026-10-13",
+      "evidenceReference": "interactive three-quarter browser comparison of candidates 2, 3, and 7"
+    },
+    {
+      "id": "accessory-orientation-review:13808pr0001",
+      "componentId": "catalog:handAccessory:13808pr0001",
+      "rebrickablePartNum": "13808pr0001",
+      "name": "Musical Instrument Saxophone with Black Mouthpiece Print",
+      "ldrawFile": "parts/13808p01.dat",
+      "modelUrl": "/assets/ldraw/official-2609/models/handAccessory-13808pr0001.ldr",
+      "thumbnailUrl": "/assets/thumbnails/ldraw-expanded/handAccessory-13808pr0001.webp",
+      "placementMode": "snap-connector",
+      "placementTransformLdu": [
+        -0.985,
+        0.17,
+        0,
+        0,
+        0.086268,
+        0.499806,
+        0.86148,
+        0,
+        -0.146464,
+        -0.848563,
+        0.507414,
+        0,
+        25.411598,
+        36.746068,
+        -11.177443,
+        1
+      ],
+      "digitalValidation": {
+        "status": "passed",
+        "selectedOrientationIndex": 7,
+        "orientationCandidatesTested": 72,
+        "collisionSampleCount": 0,
+        "gripCandidatesTested": 1,
+        "gripLengthLdu": 14.622,
+        "gripPrimitive": "p/4-4cyli.dat"
+      },
+      "reviewViews": [
+        "three-quarter",
+        "front",
+        "back"
+      ],
+      "riskFlags": [
+        "non-default-orientation"
+      ],
+      "priorityScore": 2,
+      "priorityTier": "medium",
+      "queueRank": 25,
+      "reviewStatus": "approved-browser-visual-review",
+      "requiredChecks": [
+        "Prüfe in Dreiviertel-, Vorder- und Rückansicht, ob das Zubehör sichtbar an der Hand statt am Lauf, Körper oder außerhalb der Hand sitzt.",
+        "Prüfe Griffachse, Einstecktiefe und Rotation auf eine visuell plausible Haltung; geometrische Kollisionsfreiheit allein genügt nicht.",
+        "Dokumentiere bei einem Fehler die Ansicht, eine kurze Begründung und einen Screenshot oder eine reproduzierbare Referenz."
+      ],
+      "reviewer": "Codex Sol browser QA",
+      "reviewedAt": "2026-10-13",
+      "evidenceReference": "same geometry and visually approved candidate 7 as base part 13808"
     },
     {
       "id": "accessory-orientation-review:15071",
@@ -1261,7 +1491,7 @@
       ],
       "priorityScore": 2,
       "priorityTier": "medium",
-      "queueRank": 22,
+      "queueRank": 26,
       "reviewStatus": "approved-browser-visual-review",
       "requiredChecks": [
         "Prüfe in Dreiviertel-, Vorder- und Rückansicht, ob das Zubehör sichtbar an der Hand statt am Lauf, Körper oder außerhalb der Hand sitzt.",
@@ -1318,7 +1548,7 @@
       ],
       "priorityScore": 2,
       "priorityTier": "medium",
-      "queueRank": 23,
+      "queueRank": 27,
       "reviewStatus": "approved-browser-visual-review",
       "requiredChecks": [
         "Prüfe in Dreiviertel-, Vorder- und Rückansicht, ob das Zubehör sichtbar an der Hand statt am Lauf, Körper oder außerhalb der Hand sitzt.",
@@ -1375,7 +1605,7 @@
       ],
       "priorityScore": 2,
       "priorityTier": "medium",
-      "queueRank": 24,
+      "queueRank": 28,
       "reviewStatus": "approved-browser-visual-review",
       "requiredChecks": [
         "Prüfe in Dreiviertel-, Vorder- und Rückansicht, ob das Zubehör sichtbar an der Hand statt am Lauf, Körper oder außerhalb der Hand sitzt.",
@@ -1432,7 +1662,7 @@
       ],
       "priorityScore": 2,
       "priorityTier": "medium",
-      "queueRank": 25,
+      "queueRank": 29,
       "reviewStatus": "approved-browser-visual-review",
       "requiredChecks": [
         "Prüfe in Dreiviertel-, Vorder- und Rückansicht, ob das Zubehör sichtbar an der Hand statt am Lauf, Körper oder außerhalb der Hand sitzt.",
@@ -1489,7 +1719,7 @@
       ],
       "priorityScore": 2,
       "priorityTier": "medium",
-      "queueRank": 26,
+      "queueRank": 30,
       "reviewStatus": "approved-browser-visual-review",
       "requiredChecks": [
         "Prüfe in Dreiviertel-, Vorder- und Rückansicht, ob das Zubehör sichtbar an der Hand statt am Lauf, Körper oder außerhalb der Hand sitzt.",
@@ -1546,7 +1776,7 @@
       ],
       "priorityScore": 2,
       "priorityTier": "medium",
-      "queueRank": 27,
+      "queueRank": 31,
       "reviewStatus": "approved-browser-visual-review",
       "requiredChecks": [
         "Prüfe in Dreiviertel-, Vorder- und Rückansicht, ob das Zubehör sichtbar an der Hand statt am Lauf, Körper oder außerhalb der Hand sitzt.",
@@ -1603,7 +1833,7 @@
       ],
       "priorityScore": 2,
       "priorityTier": "medium",
-      "queueRank": 28,
+      "queueRank": 32,
       "reviewStatus": "approved-browser-visual-review",
       "requiredChecks": [
         "Prüfe in Dreiviertel-, Vorder- und Rückansicht, ob das Zubehör sichtbar an der Hand statt am Lauf, Körper oder außerhalb der Hand sitzt.",
@@ -1660,7 +1890,7 @@
       ],
       "priorityScore": 2,
       "priorityTier": "medium",
-      "queueRank": 29,
+      "queueRank": 33,
       "reviewStatus": "approved-browser-visual-review",
       "requiredChecks": [
         "Prüfe in Dreiviertel-, Vorder- und Rückansicht, ob das Zubehör sichtbar an der Hand statt am Lauf, Körper oder außerhalb der Hand sitzt.",
@@ -1717,7 +1947,7 @@
       ],
       "priorityScore": 2,
       "priorityTier": "medium",
-      "queueRank": 30,
+      "queueRank": 34,
       "reviewStatus": "approved-browser-visual-review",
       "requiredChecks": [
         "Prüfe in Dreiviertel-, Vorder- und Rückansicht, ob das Zubehör sichtbar an der Hand statt am Lauf, Körper oder außerhalb der Hand sitzt.",
@@ -1774,7 +2004,7 @@
       ],
       "priorityScore": 2,
       "priorityTier": "medium",
-      "queueRank": 31,
+      "queueRank": 35,
       "reviewStatus": "approved-browser-visual-review",
       "requiredChecks": [
         "Prüfe in Dreiviertel-, Vorder- und Rückansicht, ob das Zubehör sichtbar an der Hand statt am Lauf, Körper oder außerhalb der Hand sitzt.",
@@ -1831,7 +2061,7 @@
       ],
       "priorityScore": 2,
       "priorityTier": "medium",
-      "queueRank": 32,
+      "queueRank": 36,
       "reviewStatus": "approved-browser-visual-review",
       "requiredChecks": [
         "Prüfe in Dreiviertel-, Vorder- und Rückansicht, ob das Zubehör sichtbar an der Hand statt am Lauf, Körper oder außerhalb der Hand sitzt.",
@@ -1888,7 +2118,7 @@
       ],
       "priorityScore": 2,
       "priorityTier": "medium",
-      "queueRank": 33,
+      "queueRank": 37,
       "reviewStatus": "approved-browser-visual-review",
       "requiredChecks": [
         "Prüfe in Dreiviertel-, Vorder- und Rückansicht, ob das Zubehör sichtbar an der Hand statt am Lauf, Körper oder außerhalb der Hand sitzt.",
@@ -1945,7 +2175,7 @@
       ],
       "priorityScore": 2,
       "priorityTier": "medium",
-      "queueRank": 34,
+      "queueRank": 38,
       "reviewStatus": "approved-browser-visual-review",
       "requiredChecks": [
         "Prüfe in Dreiviertel-, Vorder- und Rückansicht, ob das Zubehör sichtbar an der Hand statt am Lauf, Körper oder außerhalb der Hand sitzt.",
@@ -2002,7 +2232,7 @@
       ],
       "priorityScore": 2,
       "priorityTier": "medium",
-      "queueRank": 35,
+      "queueRank": 39,
       "reviewStatus": "approved-browser-visual-review",
       "requiredChecks": [
         "Prüfe in Dreiviertel-, Vorder- und Rückansicht, ob das Zubehör sichtbar an der Hand statt am Lauf, Körper oder außerhalb der Hand sitzt.",
@@ -2059,7 +2289,7 @@
       ],
       "priorityScore": 2,
       "priorityTier": "medium",
-      "queueRank": 36,
+      "queueRank": 40,
       "reviewStatus": "approved-browser-visual-review",
       "requiredChecks": [
         "Prüfe in Dreiviertel-, Vorder- und Rückansicht, ob das Zubehör sichtbar an der Hand statt am Lauf, Körper oder außerhalb der Hand sitzt.",
@@ -2116,7 +2346,7 @@
       ],
       "priorityScore": 2,
       "priorityTier": "medium",
-      "queueRank": 37,
+      "queueRank": 41,
       "reviewStatus": "approved-browser-visual-review",
       "requiredChecks": [
         "Prüfe in Dreiviertel-, Vorder- und Rückansicht, ob das Zubehör sichtbar an der Hand statt am Lauf, Körper oder außerhalb der Hand sitzt.",
@@ -2173,7 +2403,7 @@
       ],
       "priorityScore": 2,
       "priorityTier": "medium",
-      "queueRank": 38,
+      "queueRank": 42,
       "reviewStatus": "approved-browser-visual-review",
       "requiredChecks": [
         "Prüfe in Dreiviertel-, Vorder- und Rückansicht, ob das Zubehör sichtbar an der Hand statt am Lauf, Körper oder außerhalb der Hand sitzt.",
@@ -2230,7 +2460,7 @@
       ],
       "priorityScore": 2,
       "priorityTier": "medium",
-      "queueRank": 39,
+      "queueRank": 43,
       "reviewStatus": "approved-browser-visual-review",
       "requiredChecks": [
         "Prüfe in Dreiviertel-, Vorder- und Rückansicht, ob das Zubehör sichtbar an der Hand statt am Lauf, Körper oder außerhalb der Hand sitzt.",
@@ -2287,7 +2517,7 @@
       ],
       "priorityScore": 2,
       "priorityTier": "medium",
-      "queueRank": 40,
+      "queueRank": 44,
       "reviewStatus": "approved-browser-visual-review",
       "requiredChecks": [
         "Prüfe in Dreiviertel-, Vorder- und Rückansicht, ob das Zubehör sichtbar an der Hand statt am Lauf, Körper oder außerhalb der Hand sitzt.",
@@ -2344,7 +2574,7 @@
       ],
       "priorityScore": 2,
       "priorityTier": "medium",
-      "queueRank": 41,
+      "queueRank": 45,
       "reviewStatus": "approved-browser-visual-review",
       "requiredChecks": [
         "Prüfe in Dreiviertel-, Vorder- und Rückansicht, ob das Zubehör sichtbar an der Hand statt am Lauf, Körper oder außerhalb der Hand sitzt.",
@@ -2401,7 +2631,7 @@
       ],
       "priorityScore": 2,
       "priorityTier": "medium",
-      "queueRank": 42,
+      "queueRank": 46,
       "reviewStatus": "approved-browser-visual-review",
       "requiredChecks": [
         "Prüfe in Dreiviertel-, Vorder- und Rückansicht, ob das Zubehör sichtbar an der Hand statt am Lauf, Körper oder außerhalb der Hand sitzt.",
@@ -2458,7 +2688,7 @@
       ],
       "priorityScore": 2,
       "priorityTier": "medium",
-      "queueRank": 43,
+      "queueRank": 47,
       "reviewStatus": "approved-browser-visual-review",
       "requiredChecks": [
         "Prüfe in Dreiviertel-, Vorder- und Rückansicht, ob das Zubehör sichtbar an der Hand statt am Lauf, Körper oder außerhalb der Hand sitzt.",
@@ -2515,7 +2745,7 @@
       ],
       "priorityScore": 2,
       "priorityTier": "medium",
-      "queueRank": 44,
+      "queueRank": 48,
       "reviewStatus": "approved-browser-visual-review",
       "requiredChecks": [
         "Prüfe in Dreiviertel-, Vorder- und Rückansicht, ob das Zubehör sichtbar an der Hand statt am Lauf, Körper oder außerhalb der Hand sitzt.",
@@ -2572,7 +2802,7 @@
       ],
       "priorityScore": 2,
       "priorityTier": "medium",
-      "queueRank": 45,
+      "queueRank": 49,
       "reviewStatus": "approved-browser-visual-review",
       "requiredChecks": [
         "Prüfe in Dreiviertel-, Vorder- und Rückansicht, ob das Zubehör sichtbar an der Hand statt am Lauf, Körper oder außerhalb der Hand sitzt.",
@@ -2629,7 +2859,7 @@
       ],
       "priorityScore": 2,
       "priorityTier": "medium",
-      "queueRank": 46,
+      "queueRank": 50,
       "reviewStatus": "approved-browser-visual-review",
       "requiredChecks": [
         "Prüfe in Dreiviertel-, Vorder- und Rückansicht, ob das Zubehör sichtbar an der Hand statt am Lauf, Körper oder außerhalb der Hand sitzt.",
@@ -2686,7 +2916,7 @@
       ],
       "priorityScore": 2,
       "priorityTier": "medium",
-      "queueRank": 47,
+      "queueRank": 51,
       "reviewStatus": "approved-browser-visual-review",
       "requiredChecks": [
         "Prüfe in Dreiviertel-, Vorder- und Rückansicht, ob das Zubehör sichtbar an der Hand statt am Lauf, Körper oder außerhalb der Hand sitzt.",
@@ -2743,7 +2973,7 @@
       ],
       "priorityScore": 2,
       "priorityTier": "medium",
-      "queueRank": 48,
+      "queueRank": 52,
       "reviewStatus": "approved-browser-visual-review",
       "requiredChecks": [
         "Prüfe in Dreiviertel-, Vorder- und Rückansicht, ob das Zubehör sichtbar an der Hand statt am Lauf, Körper oder außerhalb der Hand sitzt.",
@@ -2800,7 +3030,7 @@
       ],
       "priorityScore": 2,
       "priorityTier": "medium",
-      "queueRank": 49,
+      "queueRank": 53,
       "reviewStatus": "approved-browser-visual-review",
       "requiredChecks": [
         "Prüfe in Dreiviertel-, Vorder- und Rückansicht, ob das Zubehör sichtbar an der Hand statt am Lauf, Körper oder außerhalb der Hand sitzt.",
@@ -2857,7 +3087,7 @@
       ],
       "priorityScore": 2,
       "priorityTier": "medium",
-      "queueRank": 50,
+      "queueRank": 54,
       "reviewStatus": "approved-browser-visual-review",
       "requiredChecks": [
         "Prüfe in Dreiviertel-, Vorder- und Rückansicht, ob das Zubehör sichtbar an der Hand statt am Lauf, Körper oder außerhalb der Hand sitzt.",
@@ -2914,7 +3144,7 @@
       ],
       "priorityScore": 2,
       "priorityTier": "medium",
-      "queueRank": 51,
+      "queueRank": 55,
       "reviewStatus": "approved-browser-visual-review",
       "requiredChecks": [
         "Prüfe in Dreiviertel-, Vorder- und Rückansicht, ob das Zubehör sichtbar an der Hand statt am Lauf, Körper oder außerhalb der Hand sitzt.",
@@ -2971,7 +3201,7 @@
       ],
       "priorityScore": 2,
       "priorityTier": "medium",
-      "queueRank": 52,
+      "queueRank": 56,
       "reviewStatus": "approved-browser-visual-review",
       "requiredChecks": [
         "Prüfe in Dreiviertel-, Vorder- und Rückansicht, ob das Zubehör sichtbar an der Hand statt am Lauf, Körper oder außerhalb der Hand sitzt.",
@@ -3028,7 +3258,7 @@
       ],
       "priorityScore": 2,
       "priorityTier": "medium",
-      "queueRank": 53,
+      "queueRank": 57,
       "reviewStatus": "approved-browser-visual-review",
       "requiredChecks": [
         "Prüfe in Dreiviertel-, Vorder- und Rückansicht, ob das Zubehör sichtbar an der Hand statt am Lauf, Körper oder außerhalb der Hand sitzt.",
@@ -3085,7 +3315,7 @@
       ],
       "priorityScore": 2,
       "priorityTier": "medium",
-      "queueRank": 54,
+      "queueRank": 58,
       "reviewStatus": "approved-browser-visual-review",
       "requiredChecks": [
         "Prüfe in Dreiviertel-, Vorder- und Rückansicht, ob das Zubehör sichtbar an der Hand statt am Lauf, Körper oder außerhalb der Hand sitzt.",
@@ -3142,7 +3372,7 @@
       ],
       "priorityScore": 2,
       "priorityTier": "medium",
-      "queueRank": 55,
+      "queueRank": 59,
       "reviewStatus": "approved-browser-visual-review",
       "requiredChecks": [
         "Prüfe in Dreiviertel-, Vorder- und Rückansicht, ob das Zubehör sichtbar an der Hand statt am Lauf, Körper oder außerhalb der Hand sitzt.",
@@ -3199,7 +3429,7 @@
       ],
       "priorityScore": 2,
       "priorityTier": "medium",
-      "queueRank": 56,
+      "queueRank": 60,
       "reviewStatus": "approved-browser-visual-review",
       "requiredChecks": [
         "Prüfe in Dreiviertel-, Vorder- und Rückansicht, ob das Zubehör sichtbar an der Hand statt am Lauf, Körper oder außerhalb der Hand sitzt.",
@@ -3256,7 +3486,7 @@
       ],
       "priorityScore": 2,
       "priorityTier": "medium",
-      "queueRank": 57,
+      "queueRank": 61,
       "reviewStatus": "approved-browser-visual-review",
       "requiredChecks": [
         "Prüfe in Dreiviertel-, Vorder- und Rückansicht, ob das Zubehör sichtbar an der Hand statt am Lauf, Körper oder außerhalb der Hand sitzt.",
@@ -3313,7 +3543,7 @@
       ],
       "priorityScore": 2,
       "priorityTier": "medium",
-      "queueRank": 58,
+      "queueRank": 62,
       "reviewStatus": "approved-browser-visual-review",
       "requiredChecks": [
         "Prüfe in Dreiviertel-, Vorder- und Rückansicht, ob das Zubehör sichtbar an der Hand statt am Lauf, Körper oder außerhalb der Hand sitzt.",
@@ -3370,7 +3600,7 @@
       ],
       "priorityScore": 2,
       "priorityTier": "medium",
-      "queueRank": 59,
+      "queueRank": 63,
       "reviewStatus": "approved-browser-visual-review",
       "requiredChecks": [
         "Prüfe in Dreiviertel-, Vorder- und Rückansicht, ob das Zubehör sichtbar an der Hand statt am Lauf, Körper oder außerhalb der Hand sitzt.",
@@ -3427,7 +3657,7 @@
       ],
       "priorityScore": 2,
       "priorityTier": "medium",
-      "queueRank": 60,
+      "queueRank": 64,
       "reviewStatus": "approved-browser-visual-review",
       "requiredChecks": [
         "Prüfe in Dreiviertel-, Vorder- und Rückansicht, ob das Zubehör sichtbar an der Hand statt am Lauf, Körper oder außerhalb der Hand sitzt.",
@@ -3484,7 +3714,7 @@
       ],
       "priorityScore": 2,
       "priorityTier": "medium",
-      "queueRank": 61,
+      "queueRank": 65,
       "reviewStatus": "approved-browser-visual-review",
       "requiredChecks": [
         "Prüfe in Dreiviertel-, Vorder- und Rückansicht, ob das Zubehör sichtbar an der Hand statt am Lauf, Körper oder außerhalb der Hand sitzt.",
@@ -3541,7 +3771,7 @@
       ],
       "priorityScore": 2,
       "priorityTier": "medium",
-      "queueRank": 62,
+      "queueRank": 66,
       "reviewStatus": "approved-browser-visual-review",
       "requiredChecks": [
         "Prüfe in Dreiviertel-, Vorder- und Rückansicht, ob das Zubehör sichtbar an der Hand statt am Lauf, Körper oder außerhalb der Hand sitzt.",
@@ -3598,7 +3828,7 @@
       ],
       "priorityScore": 2,
       "priorityTier": "medium",
-      "queueRank": 63,
+      "queueRank": 67,
       "reviewStatus": "approved-browser-visual-review",
       "requiredChecks": [
         "Prüfe in Dreiviertel-, Vorder- und Rückansicht, ob das Zubehör sichtbar an der Hand statt am Lauf, Körper oder außerhalb der Hand sitzt.",
@@ -3655,7 +3885,7 @@
       ],
       "priorityScore": 2,
       "priorityTier": "medium",
-      "queueRank": 64,
+      "queueRank": 68,
       "reviewStatus": "approved-browser-visual-review",
       "requiredChecks": [
         "Prüfe in Dreiviertel-, Vorder- und Rückansicht, ob das Zubehör sichtbar an der Hand statt am Lauf, Körper oder außerhalb der Hand sitzt.",
@@ -3712,7 +3942,7 @@
       ],
       "priorityScore": 2,
       "priorityTier": "medium",
-      "queueRank": 65,
+      "queueRank": 69,
       "reviewStatus": "approved-browser-visual-review",
       "requiredChecks": [
         "Prüfe in Dreiviertel-, Vorder- und Rückansicht, ob das Zubehör sichtbar an der Hand statt am Lauf, Körper oder außerhalb der Hand sitzt.",
@@ -3769,7 +3999,7 @@
       ],
       "priorityScore": 2,
       "priorityTier": "medium",
-      "queueRank": 66,
+      "queueRank": 70,
       "reviewStatus": "approved-browser-visual-review",
       "requiredChecks": [
         "Prüfe in Dreiviertel-, Vorder- und Rückansicht, ob das Zubehör sichtbar an der Hand statt am Lauf, Körper oder außerhalb der Hand sitzt.",
@@ -3826,7 +4056,7 @@
       ],
       "priorityScore": 2,
       "priorityTier": "medium",
-      "queueRank": 67,
+      "queueRank": 71,
       "reviewStatus": "approved-browser-visual-review",
       "requiredChecks": [
         "Prüfe in Dreiviertel-, Vorder- und Rückansicht, ob das Zubehör sichtbar an der Hand statt am Lauf, Körper oder außerhalb der Hand sitzt.",
@@ -3883,7 +4113,7 @@
       ],
       "priorityScore": 2,
       "priorityTier": "medium",
-      "queueRank": 68,
+      "queueRank": 72,
       "reviewStatus": "approved-browser-visual-review",
       "requiredChecks": [
         "Prüfe in Dreiviertel-, Vorder- und Rückansicht, ob das Zubehör sichtbar an der Hand statt am Lauf, Körper oder außerhalb der Hand sitzt.",
@@ -3940,7 +4170,7 @@
       ],
       "priorityScore": 2,
       "priorityTier": "medium",
-      "queueRank": 69,
+      "queueRank": 73,
       "reviewStatus": "approved-browser-visual-review",
       "requiredChecks": [
         "Prüfe in Dreiviertel-, Vorder- und Rückansicht, ob das Zubehör sichtbar an der Hand statt am Lauf, Körper oder außerhalb der Hand sitzt.",
@@ -3997,7 +4227,7 @@
       ],
       "priorityScore": 2,
       "priorityTier": "medium",
-      "queueRank": 70,
+      "queueRank": 74,
       "reviewStatus": "approved-browser-visual-review",
       "requiredChecks": [
         "Prüfe in Dreiviertel-, Vorder- und Rückansicht, ob das Zubehör sichtbar an der Hand statt am Lauf, Körper oder außerhalb der Hand sitzt.",
@@ -4054,7 +4284,7 @@
       ],
       "priorityScore": 2,
       "priorityTier": "medium",
-      "queueRank": 71,
+      "queueRank": 75,
       "reviewStatus": "approved-browser-visual-review",
       "requiredChecks": [
         "Prüfe in Dreiviertel-, Vorder- und Rückansicht, ob das Zubehör sichtbar an der Hand statt am Lauf, Körper oder außerhalb der Hand sitzt.",
@@ -4111,7 +4341,7 @@
       ],
       "priorityScore": 2,
       "priorityTier": "medium",
-      "queueRank": 72,
+      "queueRank": 76,
       "reviewStatus": "approved-browser-visual-review",
       "requiredChecks": [
         "Prüfe in Dreiviertel-, Vorder- und Rückansicht, ob das Zubehör sichtbar an der Hand statt am Lauf, Körper oder außerhalb der Hand sitzt.",
@@ -4168,7 +4398,7 @@
       ],
       "priorityScore": 2,
       "priorityTier": "medium",
-      "queueRank": 73,
+      "queueRank": 77,
       "reviewStatus": "approved-browser-visual-review",
       "requiredChecks": [
         "Prüfe in Dreiviertel-, Vorder- und Rückansicht, ob das Zubehör sichtbar an der Hand statt am Lauf, Körper oder außerhalb der Hand sitzt.",
@@ -4225,7 +4455,7 @@
       ],
       "priorityScore": 2,
       "priorityTier": "medium",
-      "queueRank": 74,
+      "queueRank": 78,
       "reviewStatus": "approved-browser-visual-review",
       "requiredChecks": [
         "Prüfe in Dreiviertel-, Vorder- und Rückansicht, ob das Zubehör sichtbar an der Hand statt am Lauf, Körper oder außerhalb der Hand sitzt.",
@@ -4282,7 +4512,7 @@
       ],
       "priorityScore": 2,
       "priorityTier": "medium",
-      "queueRank": 75,
+      "queueRank": 79,
       "reviewStatus": "approved-browser-visual-review",
       "requiredChecks": [
         "Prüfe in Dreiviertel-, Vorder- und Rückansicht, ob das Zubehör sichtbar an der Hand statt am Lauf, Körper oder außerhalb der Hand sitzt.",
@@ -4339,7 +4569,7 @@
       ],
       "priorityScore": 2,
       "priorityTier": "medium",
-      "queueRank": 76,
+      "queueRank": 80,
       "reviewStatus": "approved-browser-visual-review",
       "requiredChecks": [
         "Prüfe in Dreiviertel-, Vorder- und Rückansicht, ob das Zubehör sichtbar an der Hand statt am Lauf, Körper oder außerhalb der Hand sitzt.",
@@ -4396,7 +4626,7 @@
       ],
       "priorityScore": 2,
       "priorityTier": "medium",
-      "queueRank": 77,
+      "queueRank": 81,
       "reviewStatus": "approved-browser-visual-review",
       "requiredChecks": [
         "Prüfe in Dreiviertel-, Vorder- und Rückansicht, ob das Zubehör sichtbar an der Hand statt am Lauf, Körper oder außerhalb der Hand sitzt.",
@@ -4453,7 +4683,7 @@
       ],
       "priorityScore": 2,
       "priorityTier": "medium",
-      "queueRank": 78,
+      "queueRank": 82,
       "reviewStatus": "approved-browser-visual-review",
       "requiredChecks": [
         "Prüfe in Dreiviertel-, Vorder- und Rückansicht, ob das Zubehör sichtbar an der Hand statt am Lauf, Körper oder außerhalb der Hand sitzt.",
@@ -4510,7 +4740,7 @@
       ],
       "priorityScore": 2,
       "priorityTier": "medium",
-      "queueRank": 79,
+      "queueRank": 83,
       "reviewStatus": "approved-browser-visual-review",
       "requiredChecks": [
         "Prüfe in Dreiviertel-, Vorder- und Rückansicht, ob das Zubehör sichtbar an der Hand statt am Lauf, Körper oder außerhalb der Hand sitzt.",
@@ -4567,7 +4797,7 @@
       ],
       "priorityScore": 2,
       "priorityTier": "medium",
-      "queueRank": 80,
+      "queueRank": 84,
       "reviewStatus": "approved-browser-visual-review",
       "requiredChecks": [
         "Prüfe in Dreiviertel-, Vorder- und Rückansicht, ob das Zubehör sichtbar an der Hand statt am Lauf, Körper oder außerhalb der Hand sitzt.",
@@ -4624,7 +4854,7 @@
       ],
       "priorityScore": 2,
       "priorityTier": "medium",
-      "queueRank": 81,
+      "queueRank": 85,
       "reviewStatus": "approved-browser-visual-review",
       "requiredChecks": [
         "Prüfe in Dreiviertel-, Vorder- und Rückansicht, ob das Zubehör sichtbar an der Hand statt am Lauf, Körper oder außerhalb der Hand sitzt.",
@@ -4681,7 +4911,7 @@
       ],
       "priorityScore": 2,
       "priorityTier": "medium",
-      "queueRank": 82,
+      "queueRank": 86,
       "reviewStatus": "approved-browser-visual-review",
       "requiredChecks": [
         "Prüfe in Dreiviertel-, Vorder- und Rückansicht, ob das Zubehör sichtbar an der Hand statt am Lauf, Körper oder außerhalb der Hand sitzt.",
@@ -4738,7 +4968,7 @@
       ],
       "priorityScore": 2,
       "priorityTier": "medium",
-      "queueRank": 83,
+      "queueRank": 87,
       "reviewStatus": "approved-browser-visual-review",
       "requiredChecks": [
         "Prüfe in Dreiviertel-, Vorder- und Rückansicht, ob das Zubehör sichtbar an der Hand statt am Lauf, Körper oder außerhalb der Hand sitzt.",
@@ -4795,7 +5025,7 @@
       ],
       "priorityScore": 2,
       "priorityTier": "medium",
-      "queueRank": 84,
+      "queueRank": 88,
       "reviewStatus": "approved-browser-visual-review",
       "requiredChecks": [
         "Prüfe in Dreiviertel-, Vorder- und Rückansicht, ob das Zubehör sichtbar an der Hand statt am Lauf, Körper oder außerhalb der Hand sitzt.",
@@ -4852,7 +5082,7 @@
       ],
       "priorityScore": 2,
       "priorityTier": "medium",
-      "queueRank": 85,
+      "queueRank": 89,
       "reviewStatus": "approved-browser-visual-review",
       "requiredChecks": [
         "Prüfe in Dreiviertel-, Vorder- und Rückansicht, ob das Zubehör sichtbar an der Hand statt am Lauf, Körper oder außerhalb der Hand sitzt.",
@@ -4909,7 +5139,7 @@
       ],
       "priorityScore": 2,
       "priorityTier": "medium",
-      "queueRank": 86,
+      "queueRank": 90,
       "reviewStatus": "approved-browser-visual-review",
       "requiredChecks": [
         "Prüfe in Dreiviertel-, Vorder- und Rückansicht, ob das Zubehör sichtbar an der Hand statt am Lauf, Körper oder außerhalb der Hand sitzt.",
@@ -4919,6 +5149,63 @@
       "reviewer": "Codex Sol browser QA",
       "reviewedAt": "2026-10-13",
       "evidenceReference": "three-quarter,front,back complete CI contact-sheet inspection (PR #92 artifact complete-accessory-review-contact-sheets)"
+    },
+    {
+      "id": "accessory-orientation-review:56619",
+      "componentId": "catalog:handAccessory:56619",
+      "rebrickablePartNum": "56619",
+      "name": "Equipment Handcuffs Long [Batman]",
+      "ldrawFile": "parts/55707d.dat",
+      "modelUrl": "/assets/ldraw/official-2609/models/handAccessory-56619.ldr",
+      "thumbnailUrl": "/assets/thumbnails/ldraw-expanded/handAccessory-56619.webp",
+      "placementMode": "snap-connector",
+      "placementTransformLdu": [
+        -0.086268,
+        -0.499806,
+        -0.861479,
+        0,
+        -0.146464,
+        -0.848563,
+        0.507414,
+        0,
+        -0.985,
+        0.17,
+        0,
+        0,
+        24.780896,
+        33.091985,
+        -17.47572,
+        1
+      ],
+      "digitalValidation": {
+        "status": "passed",
+        "selectedOrientationIndex": 3,
+        "orientationCandidatesTested": 72,
+        "collisionSampleCount": 0,
+        "gripCandidatesTested": 1,
+        "gripLengthLdu": 16,
+        "gripPrimitive": "ldcad-shadow:parts/55707d.dat#SNAP_CYL:8"
+      },
+      "reviewViews": [
+        "three-quarter",
+        "front",
+        "back"
+      ],
+      "riskFlags": [
+        "non-default-orientation"
+      ],
+      "priorityScore": 2,
+      "priorityTier": "medium",
+      "queueRank": 91,
+      "reviewStatus": "approved-browser-visual-review",
+      "requiredChecks": [
+        "Prüfe in Dreiviertel-, Vorder- und Rückansicht, ob das Zubehör sichtbar an der Hand statt am Lauf, Körper oder außerhalb der Hand sitzt.",
+        "Prüfe Griffachse, Einstecktiefe und Rotation auf eine visuell plausible Haltung; geometrische Kollisionsfreiheit allein genügt nicht.",
+        "Dokumentiere bei einem Fehler die Ansicht, eine kurze Begründung und einen Screenshot oder eine reproduzierbare Referenz."
+      ],
+      "reviewer": "Codex Sol browser QA",
+      "reviewedAt": "2026-10-13",
+      "evidenceReference": "interactive three-quarter browser comparison of candidates 1 and 3"
     },
     {
       "id": "accessory-orientation-review:59229",
@@ -4966,7 +5253,7 @@
       ],
       "priorityScore": 2,
       "priorityTier": "medium",
-      "queueRank": 87,
+      "queueRank": 92,
       "reviewStatus": "approved-browser-visual-review",
       "requiredChecks": [
         "Prüfe in Dreiviertel-, Vorder- und Rückansicht, ob das Zubehör sichtbar an der Hand statt am Lauf, Körper oder außerhalb der Hand sitzt.",
@@ -5023,7 +5310,7 @@
       ],
       "priorityScore": 2,
       "priorityTier": "medium",
-      "queueRank": 88,
+      "queueRank": 93,
       "reviewStatus": "approved-browser-visual-review",
       "requiredChecks": [
         "Prüfe in Dreiviertel-, Vorder- und Rückansicht, ob das Zubehör sichtbar an der Hand statt am Lauf, Körper oder außerhalb der Hand sitzt.",
@@ -5080,7 +5367,7 @@
       ],
       "priorityScore": 2,
       "priorityTier": "medium",
-      "queueRank": 89,
+      "queueRank": 94,
       "reviewStatus": "approved-browser-visual-review",
       "requiredChecks": [
         "Prüfe in Dreiviertel-, Vorder- und Rückansicht, ob das Zubehör sichtbar an der Hand statt am Lauf, Körper oder außerhalb der Hand sitzt.",
@@ -5137,7 +5424,7 @@
       ],
       "priorityScore": 2,
       "priorityTier": "medium",
-      "queueRank": 90,
+      "queueRank": 95,
       "reviewStatus": "approved-browser-visual-review",
       "requiredChecks": [
         "Prüfe in Dreiviertel-, Vorder- und Rückansicht, ob das Zubehör sichtbar an der Hand statt am Lauf, Körper oder außerhalb der Hand sitzt.",
@@ -5194,7 +5481,7 @@
       ],
       "priorityScore": 2,
       "priorityTier": "medium",
-      "queueRank": 91,
+      "queueRank": 96,
       "reviewStatus": "approved-browser-visual-review",
       "requiredChecks": [
         "Prüfe in Dreiviertel-, Vorder- und Rückansicht, ob das Zubehör sichtbar an der Hand statt am Lauf, Körper oder außerhalb der Hand sitzt.",
@@ -5251,7 +5538,7 @@
       ],
       "priorityScore": 2,
       "priorityTier": "medium",
-      "queueRank": 92,
+      "queueRank": 97,
       "reviewStatus": "approved-browser-visual-review",
       "requiredChecks": [
         "Prüfe in Dreiviertel-, Vorder- und Rückansicht, ob das Zubehör sichtbar an der Hand statt am Lauf, Körper oder außerhalb der Hand sitzt.",
@@ -5308,7 +5595,7 @@
       ],
       "priorityScore": 2,
       "priorityTier": "medium",
-      "queueRank": 93,
+      "queueRank": 98,
       "reviewStatus": "approved-browser-visual-review",
       "requiredChecks": [
         "Prüfe in Dreiviertel-, Vorder- und Rückansicht, ob das Zubehör sichtbar an der Hand statt am Lauf, Körper oder außerhalb der Hand sitzt.",
@@ -5365,7 +5652,7 @@
       ],
       "priorityScore": 2,
       "priorityTier": "medium",
-      "queueRank": 94,
+      "queueRank": 99,
       "reviewStatus": "approved-browser-visual-review",
       "requiredChecks": [
         "Prüfe in Dreiviertel-, Vorder- und Rückansicht, ob das Zubehör sichtbar an der Hand statt am Lauf, Körper oder außerhalb der Hand sitzt.",
@@ -5422,7 +5709,7 @@
       ],
       "priorityScore": 2,
       "priorityTier": "medium",
-      "queueRank": 95,
+      "queueRank": 100,
       "reviewStatus": "approved-browser-visual-review",
       "requiredChecks": [
         "Prüfe in Dreiviertel-, Vorder- und Rückansicht, ob das Zubehör sichtbar an der Hand statt am Lauf, Körper oder außerhalb der Hand sitzt.",
@@ -5479,7 +5766,7 @@
       ],
       "priorityScore": 2,
       "priorityTier": "medium",
-      "queueRank": 96,
+      "queueRank": 101,
       "reviewStatus": "approved-browser-visual-review",
       "requiredChecks": [
         "Prüfe in Dreiviertel-, Vorder- und Rückansicht, ob das Zubehör sichtbar an der Hand statt am Lauf, Körper oder außerhalb der Hand sitzt.",
@@ -5536,7 +5823,7 @@
       ],
       "priorityScore": 2,
       "priorityTier": "medium",
-      "queueRank": 97,
+      "queueRank": 102,
       "reviewStatus": "approved-browser-visual-review",
       "requiredChecks": [
         "Prüfe in Dreiviertel-, Vorder- und Rückansicht, ob das Zubehör sichtbar an der Hand statt am Lauf, Körper oder außerhalb der Hand sitzt.",
@@ -5593,7 +5880,7 @@
       ],
       "priorityScore": 2,
       "priorityTier": "medium",
-      "queueRank": 98,
+      "queueRank": 103,
       "reviewStatus": "approved-browser-visual-review",
       "requiredChecks": [
         "Prüfe in Dreiviertel-, Vorder- und Rückansicht, ob das Zubehör sichtbar an der Hand statt am Lauf, Körper oder außerhalb der Hand sitzt.",
@@ -5603,6 +5890,63 @@
       "reviewer": "Codex Sol browser QA",
       "reviewedAt": "2026-10-13",
       "evidenceReference": "three-quarter,front,back complete CI contact-sheet inspection (PR #92 artifact complete-accessory-review-contact-sheets)"
+    },
+    {
+      "id": "accessory-orientation-review:71342",
+      "componentId": "catalog:handAccessory:71342",
+      "rebrickablePartNum": "71342",
+      "name": "Musical Instrument Bugle",
+      "ldrawFile": "parts/71342.dat",
+      "modelUrl": "/assets/ldraw/official-2609/models/handAccessory-71342.ldr",
+      "thumbnailUrl": "/assets/thumbnails/ldraw-expanded/handAccessory-71342.webp",
+      "placementMode": "snap-connector",
+      "placementTransformLdu": [
+        -0.985,
+        0.17,
+        0,
+        0,
+        -0.086268,
+        -0.499806,
+        -0.861479,
+        0,
+        -0.146464,
+        -0.848563,
+        0.507414,
+        0,
+        24.888731,
+        33.716742,
+        -16.398871,
+        1
+      ],
+      "digitalValidation": {
+        "status": "passed",
+        "selectedOrientationIndex": 7,
+        "orientationCandidatesTested": 72,
+        "collisionSampleCount": 0,
+        "gripCandidatesTested": 1,
+        "gripLengthLdu": 14.5,
+        "gripPrimitive": "ldcad-shadow:parts/71342.dat#SNAP_CYL:9"
+      },
+      "reviewViews": [
+        "three-quarter",
+        "front",
+        "back"
+      ],
+      "riskFlags": [
+        "non-default-orientation"
+      ],
+      "priorityScore": 2,
+      "priorityTier": "medium",
+      "queueRank": 104,
+      "reviewStatus": "approved-browser-visual-review",
+      "requiredChecks": [
+        "Prüfe in Dreiviertel-, Vorder- und Rückansicht, ob das Zubehör sichtbar an der Hand statt am Lauf, Körper oder außerhalb der Hand sitzt.",
+        "Prüfe Griffachse, Einstecktiefe und Rotation auf eine visuell plausible Haltung; geometrische Kollisionsfreiheit allein genügt nicht.",
+        "Dokumentiere bei einem Fehler die Ansicht, eine kurze Begründung und einen Screenshot oder eine reproduzierbare Referenz."
+      ],
+      "reviewer": "Codex Sol browser QA",
+      "reviewedAt": "2026-10-13",
+      "evidenceReference": "interactive three-quarter browser comparison of candidates 3 and 7"
     },
     {
       "id": "accessory-orientation-review:73117",
@@ -5650,7 +5994,7 @@
       ],
       "priorityScore": 2,
       "priorityTier": "medium",
-      "queueRank": 99,
+      "queueRank": 105,
       "reviewStatus": "approved-browser-visual-review",
       "requiredChecks": [
         "Prüfe in Dreiviertel-, Vorder- und Rückansicht, ob das Zubehör sichtbar an der Hand statt am Lauf, Körper oder außerhalb der Hand sitzt.",
@@ -5707,7 +6051,7 @@
       ],
       "priorityScore": 2,
       "priorityTier": "medium",
-      "queueRank": 100,
+      "queueRank": 106,
       "reviewStatus": "approved-browser-visual-review",
       "requiredChecks": [
         "Prüfe in Dreiviertel-, Vorder- und Rückansicht, ob das Zubehör sichtbar an der Hand statt am Lauf, Körper oder außerhalb der Hand sitzt.",
@@ -5764,7 +6108,7 @@
       ],
       "priorityScore": 2,
       "priorityTier": "medium",
-      "queueRank": 101,
+      "queueRank": 107,
       "reviewStatus": "approved-browser-visual-review",
       "requiredChecks": [
         "Prüfe in Dreiviertel-, Vorder- und Rückansicht, ob das Zubehör sichtbar an der Hand statt am Lauf, Körper oder außerhalb der Hand sitzt.",
@@ -5821,7 +6165,7 @@
       ],
       "priorityScore": 2,
       "priorityTier": "medium",
-      "queueRank": 102,
+      "queueRank": 108,
       "reviewStatus": "approved-browser-visual-review",
       "requiredChecks": [
         "Prüfe in Dreiviertel-, Vorder- und Rückansicht, ob das Zubehör sichtbar an der Hand statt am Lauf, Körper oder außerhalb der Hand sitzt.",
@@ -5878,7 +6222,7 @@
       ],
       "priorityScore": 2,
       "priorityTier": "medium",
-      "queueRank": 103,
+      "queueRank": 109,
       "reviewStatus": "approved-browser-visual-review",
       "requiredChecks": [
         "Prüfe in Dreiviertel-, Vorder- und Rückansicht, ob das Zubehör sichtbar an der Hand statt am Lauf, Körper oder außerhalb der Hand sitzt.",
@@ -5935,7 +6279,7 @@
       ],
       "priorityScore": 2,
       "priorityTier": "medium",
-      "queueRank": 104,
+      "queueRank": 110,
       "reviewStatus": "approved-browser-visual-review",
       "requiredChecks": [
         "Prüfe in Dreiviertel-, Vorder- und Rückansicht, ob das Zubehör sichtbar an der Hand statt am Lauf, Körper oder außerhalb der Hand sitzt.",
@@ -5992,7 +6336,7 @@
       ],
       "priorityScore": 2,
       "priorityTier": "medium",
-      "queueRank": 105,
+      "queueRank": 111,
       "reviewStatus": "approved-browser-visual-review",
       "requiredChecks": [
         "Prüfe in Dreiviertel-, Vorder- und Rückansicht, ob das Zubehör sichtbar an der Hand statt am Lauf, Körper oder außerhalb der Hand sitzt.",
@@ -6049,7 +6393,7 @@
       ],
       "priorityScore": 2,
       "priorityTier": "medium",
-      "queueRank": 106,
+      "queueRank": 112,
       "reviewStatus": "approved-browser-visual-review",
       "requiredChecks": [
         "Prüfe in Dreiviertel-, Vorder- und Rückansicht, ob das Zubehör sichtbar an der Hand statt am Lauf, Körper oder außerhalb der Hand sitzt.",
@@ -6106,7 +6450,7 @@
       ],
       "priorityScore": 2,
       "priorityTier": "medium",
-      "queueRank": 107,
+      "queueRank": 113,
       "reviewStatus": "approved-browser-visual-review",
       "requiredChecks": [
         "Prüfe in Dreiviertel-, Vorder- und Rückansicht, ob das Zubehör sichtbar an der Hand statt am Lauf, Körper oder außerhalb der Hand sitzt.",
@@ -6163,7 +6507,7 @@
       ],
       "priorityScore": 2,
       "priorityTier": "medium",
-      "queueRank": 108,
+      "queueRank": 114,
       "reviewStatus": "approved-browser-visual-review",
       "requiredChecks": [
         "Prüfe in Dreiviertel-, Vorder- und Rückansicht, ob das Zubehör sichtbar an der Hand statt am Lauf, Körper oder außerhalb der Hand sitzt.",
@@ -6220,7 +6564,7 @@
       ],
       "priorityScore": 2,
       "priorityTier": "medium",
-      "queueRank": 109,
+      "queueRank": 115,
       "reviewStatus": "approved-browser-visual-review",
       "requiredChecks": [
         "Prüfe in Dreiviertel-, Vorder- und Rückansicht, ob das Zubehör sichtbar an der Hand statt am Lauf, Körper oder außerhalb der Hand sitzt.",
@@ -6277,7 +6621,7 @@
       ],
       "priorityScore": 2,
       "priorityTier": "medium",
-      "queueRank": 110,
+      "queueRank": 116,
       "reviewStatus": "approved-browser-visual-review",
       "requiredChecks": [
         "Prüfe in Dreiviertel-, Vorder- und Rückansicht, ob das Zubehör sichtbar an der Hand statt am Lauf, Körper oder außerhalb der Hand sitzt.",
@@ -6334,7 +6678,7 @@
       ],
       "priorityScore": 2,
       "priorityTier": "medium",
-      "queueRank": 111,
+      "queueRank": 117,
       "reviewStatus": "approved-browser-visual-review",
       "requiredChecks": [
         "Prüfe in Dreiviertel-, Vorder- und Rückansicht, ob das Zubehör sichtbar an der Hand statt am Lauf, Körper oder außerhalb der Hand sitzt.",
@@ -6391,7 +6735,7 @@
       ],
       "priorityScore": 2,
       "priorityTier": "medium",
-      "queueRank": 112,
+      "queueRank": 118,
       "reviewStatus": "approved-browser-visual-review",
       "requiredChecks": [
         "Prüfe in Dreiviertel-, Vorder- und Rückansicht, ob das Zubehör sichtbar an der Hand statt am Lauf, Körper oder außerhalb der Hand sitzt.",
@@ -6448,7 +6792,7 @@
       ],
       "priorityScore": 2,
       "priorityTier": "medium",
-      "queueRank": 113,
+      "queueRank": 119,
       "reviewStatus": "approved-browser-visual-review",
       "requiredChecks": [
         "Prüfe in Dreiviertel-, Vorder- und Rückansicht, ob das Zubehör sichtbar an der Hand statt am Lauf, Körper oder außerhalb der Hand sitzt.",
@@ -6505,7 +6849,7 @@
       ],
       "priorityScore": 2,
       "priorityTier": "medium",
-      "queueRank": 114,
+      "queueRank": 120,
       "reviewStatus": "approved-browser-visual-review",
       "requiredChecks": [
         "Prüfe in Dreiviertel-, Vorder- und Rückansicht, ob das Zubehör sichtbar an der Hand statt am Lauf, Körper oder außerhalb der Hand sitzt.",
@@ -6562,7 +6906,7 @@
       ],
       "priorityScore": 2,
       "priorityTier": "medium",
-      "queueRank": 115,
+      "queueRank": 121,
       "reviewStatus": "approved-browser-visual-review",
       "requiredChecks": [
         "Prüfe in Dreiviertel-, Vorder- und Rückansicht, ob das Zubehör sichtbar an der Hand statt am Lauf, Körper oder außerhalb der Hand sitzt.",
@@ -6619,7 +6963,7 @@
       ],
       "priorityScore": 2,
       "priorityTier": "medium",
-      "queueRank": 116,
+      "queueRank": 122,
       "reviewStatus": "approved-browser-visual-review",
       "requiredChecks": [
         "Prüfe in Dreiviertel-, Vorder- und Rückansicht, ob das Zubehör sichtbar an der Hand statt am Lauf, Körper oder außerhalb der Hand sitzt.",
@@ -6676,7 +7020,7 @@
       ],
       "priorityScore": 2,
       "priorityTier": "medium",
-      "queueRank": 117,
+      "queueRank": 123,
       "reviewStatus": "approved-browser-visual-review",
       "requiredChecks": [
         "Prüfe in Dreiviertel-, Vorder- und Rückansicht, ob das Zubehör sichtbar an der Hand statt am Lauf, Körper oder außerhalb der Hand sitzt.",
@@ -6733,7 +7077,7 @@
       ],
       "priorityScore": 2,
       "priorityTier": "medium",
-      "queueRank": 118,
+      "queueRank": 124,
       "reviewStatus": "approved-browser-visual-review",
       "requiredChecks": [
         "Prüfe in Dreiviertel-, Vorder- und Rückansicht, ob das Zubehör sichtbar an der Hand statt am Lauf, Körper oder außerhalb der Hand sitzt.",
@@ -6790,7 +7134,7 @@
       ],
       "priorityScore": 2,
       "priorityTier": "medium",
-      "queueRank": 119,
+      "queueRank": 125,
       "reviewStatus": "approved-browser-visual-review",
       "requiredChecks": [
         "Prüfe in Dreiviertel-, Vorder- und Rückansicht, ob das Zubehör sichtbar an der Hand statt am Lauf, Körper oder außerhalb der Hand sitzt.",
@@ -6847,7 +7191,7 @@
       ],
       "priorityScore": 2,
       "priorityTier": "medium",
-      "queueRank": 120,
+      "queueRank": 126,
       "reviewStatus": "approved-browser-visual-review",
       "requiredChecks": [
         "Prüfe in Dreiviertel-, Vorder- und Rückansicht, ob das Zubehör sichtbar an der Hand statt am Lauf, Körper oder außerhalb der Hand sitzt.",
@@ -6904,7 +7248,7 @@
       ],
       "priorityScore": 2,
       "priorityTier": "medium",
-      "queueRank": 121,
+      "queueRank": 127,
       "reviewStatus": "approved-browser-visual-review",
       "requiredChecks": [
         "Prüfe in Dreiviertel-, Vorder- und Rückansicht, ob das Zubehör sichtbar an der Hand statt am Lauf, Körper oder außerhalb der Hand sitzt.",
@@ -6961,7 +7305,7 @@
       ],
       "priorityScore": 2,
       "priorityTier": "medium",
-      "queueRank": 122,
+      "queueRank": 128,
       "reviewStatus": "approved-browser-visual-review",
       "requiredChecks": [
         "Prüfe in Dreiviertel-, Vorder- und Rückansicht, ob das Zubehör sichtbar an der Hand statt am Lauf, Körper oder außerhalb der Hand sitzt.",
@@ -7018,7 +7362,7 @@
       ],
       "priorityScore": 2,
       "priorityTier": "medium",
-      "queueRank": 123,
+      "queueRank": 129,
       "reviewStatus": "approved-browser-visual-review",
       "requiredChecks": [
         "Prüfe in Dreiviertel-, Vorder- und Rückansicht, ob das Zubehör sichtbar an der Hand statt am Lauf, Körper oder außerhalb der Hand sitzt.",
@@ -7075,7 +7419,7 @@
       ],
       "priorityScore": 2,
       "priorityTier": "medium",
-      "queueRank": 124,
+      "queueRank": 130,
       "reviewStatus": "approved-browser-visual-review",
       "requiredChecks": [
         "Prüfe in Dreiviertel-, Vorder- und Rückansicht, ob das Zubehör sichtbar an der Hand statt am Lauf, Körper oder außerhalb der Hand sitzt.",
@@ -7132,7 +7476,7 @@
       ],
       "priorityScore": 2,
       "priorityTier": "medium",
-      "queueRank": 125,
+      "queueRank": 131,
       "reviewStatus": "approved-browser-visual-review",
       "requiredChecks": [
         "Prüfe in Dreiviertel-, Vorder- und Rückansicht, ob das Zubehör sichtbar an der Hand statt am Lauf, Körper oder außerhalb der Hand sitzt.",
@@ -7189,7 +7533,7 @@
       ],
       "priorityScore": 2,
       "priorityTier": "medium",
-      "queueRank": 126,
+      "queueRank": 132,
       "reviewStatus": "approved-browser-visual-review",
       "requiredChecks": [
         "Prüfe in Dreiviertel-, Vorder- und Rückansicht, ob das Zubehör sichtbar an der Hand statt am Lauf, Körper oder außerhalb der Hand sitzt.",
@@ -7246,7 +7590,7 @@
       ],
       "priorityScore": 2,
       "priorityTier": "medium",
-      "queueRank": 127,
+      "queueRank": 133,
       "reviewStatus": "approved-browser-visual-review",
       "requiredChecks": [
         "Prüfe in Dreiviertel-, Vorder- und Rückansicht, ob das Zubehör sichtbar an der Hand statt am Lauf, Körper oder außerhalb der Hand sitzt.",
@@ -7303,7 +7647,7 @@
       ],
       "priorityScore": 2,
       "priorityTier": "medium",
-      "queueRank": 128,
+      "queueRank": 134,
       "reviewStatus": "approved-browser-visual-review",
       "requiredChecks": [
         "Prüfe in Dreiviertel-, Vorder- und Rückansicht, ob das Zubehör sichtbar an der Hand statt am Lauf, Körper oder außerhalb der Hand sitzt.",
@@ -7360,7 +7704,7 @@
       ],
       "priorityScore": 2,
       "priorityTier": "medium",
-      "queueRank": 129,
+      "queueRank": 135,
       "reviewStatus": "approved-browser-visual-review",
       "requiredChecks": [
         "Prüfe in Dreiviertel-, Vorder- und Rückansicht, ob das Zubehör sichtbar an der Hand statt am Lauf, Körper oder außerhalb der Hand sitzt.",
@@ -7417,7 +7761,7 @@
       ],
       "priorityScore": 2,
       "priorityTier": "medium",
-      "queueRank": 130,
+      "queueRank": 136,
       "reviewStatus": "approved-browser-visual-review",
       "requiredChecks": [
         "Prüfe in Dreiviertel-, Vorder- und Rückansicht, ob das Zubehör sichtbar an der Hand statt am Lauf, Körper oder außerhalb der Hand sitzt.",
@@ -7474,7 +7818,7 @@
       ],
       "priorityScore": 2,
       "priorityTier": "medium",
-      "queueRank": 131,
+      "queueRank": 137,
       "reviewStatus": "approved-browser-visual-review",
       "requiredChecks": [
         "Prüfe in Dreiviertel-, Vorder- und Rückansicht, ob das Zubehör sichtbar an der Hand statt am Lauf, Körper oder außerhalb der Hand sitzt.",
@@ -7531,7 +7875,7 @@
       ],
       "priorityScore": 2,
       "priorityTier": "medium",
-      "queueRank": 132,
+      "queueRank": 138,
       "reviewStatus": "approved-browser-visual-review",
       "requiredChecks": [
         "Prüfe in Dreiviertel-, Vorder- und Rückansicht, ob das Zubehör sichtbar an der Hand statt am Lauf, Körper oder außerhalb der Hand sitzt.",
@@ -7588,7 +7932,7 @@
       ],
       "priorityScore": 2,
       "priorityTier": "medium",
-      "queueRank": 133,
+      "queueRank": 139,
       "reviewStatus": "approved-browser-visual-review",
       "requiredChecks": [
         "Prüfe in Dreiviertel-, Vorder- und Rückansicht, ob das Zubehör sichtbar an der Hand statt am Lauf, Körper oder außerhalb der Hand sitzt.",
@@ -7645,7 +7989,7 @@
       ],
       "priorityScore": 2,
       "priorityTier": "medium",
-      "queueRank": 134,
+      "queueRank": 140,
       "reviewStatus": "approved-browser-visual-review",
       "requiredChecks": [
         "Prüfe in Dreiviertel-, Vorder- und Rückansicht, ob das Zubehör sichtbar an der Hand statt am Lauf, Körper oder außerhalb der Hand sitzt.",
@@ -7702,7 +8046,7 @@
       ],
       "priorityScore": 2,
       "priorityTier": "medium",
-      "queueRank": 135,
+      "queueRank": 141,
       "reviewStatus": "approved-browser-visual-review",
       "requiredChecks": [
         "Prüfe in Dreiviertel-, Vorder- und Rückansicht, ob das Zubehör sichtbar an der Hand statt am Lauf, Körper oder außerhalb der Hand sitzt.",
@@ -7759,7 +8103,7 @@
       ],
       "priorityScore": 2,
       "priorityTier": "medium",
-      "queueRank": 136,
+      "queueRank": 142,
       "reviewStatus": "approved-browser-visual-review",
       "requiredChecks": [
         "Prüfe in Dreiviertel-, Vorder- und Rückansicht, ob das Zubehör sichtbar an der Hand statt am Lauf, Körper oder außerhalb der Hand sitzt.",
@@ -7816,7 +8160,7 @@
       ],
       "priorityScore": 2,
       "priorityTier": "medium",
-      "queueRank": 137,
+      "queueRank": 143,
       "reviewStatus": "approved-browser-visual-review",
       "requiredChecks": [
         "Prüfe in Dreiviertel-, Vorder- und Rückansicht, ob das Zubehör sichtbar an der Hand statt am Lauf, Körper oder außerhalb der Hand sitzt.",
@@ -7873,7 +8217,7 @@
       ],
       "priorityScore": 2,
       "priorityTier": "medium",
-      "queueRank": 138,
+      "queueRank": 144,
       "reviewStatus": "approved-browser-visual-review",
       "requiredChecks": [
         "Prüfe in Dreiviertel-, Vorder- und Rückansicht, ob das Zubehör sichtbar an der Hand statt am Lauf, Körper oder außerhalb der Hand sitzt.",
@@ -7930,7 +8274,7 @@
       ],
       "priorityScore": 2,
       "priorityTier": "medium",
-      "queueRank": 139,
+      "queueRank": 145,
       "reviewStatus": "approved-browser-visual-review",
       "requiredChecks": [
         "Prüfe in Dreiviertel-, Vorder- und Rückansicht, ob das Zubehör sichtbar an der Hand statt am Lauf, Körper oder außerhalb der Hand sitzt.",
@@ -7987,7 +8331,7 @@
       ],
       "priorityScore": 2,
       "priorityTier": "medium",
-      "queueRank": 140,
+      "queueRank": 146,
       "reviewStatus": "approved-browser-visual-review",
       "requiredChecks": [
         "Prüfe in Dreiviertel-, Vorder- und Rückansicht, ob das Zubehör sichtbar an der Hand statt am Lauf, Körper oder außerhalb der Hand sitzt.",
@@ -8044,7 +8388,7 @@
       ],
       "priorityScore": 2,
       "priorityTier": "medium",
-      "queueRank": 141,
+      "queueRank": 147,
       "reviewStatus": "approved-browser-visual-review",
       "requiredChecks": [
         "Prüfe in Dreiviertel-, Vorder- und Rückansicht, ob das Zubehör sichtbar an der Hand statt am Lauf, Körper oder außerhalb der Hand sitzt.",
@@ -8101,7 +8445,7 @@
       ],
       "priorityScore": 2,
       "priorityTier": "medium",
-      "queueRank": 142,
+      "queueRank": 148,
       "reviewStatus": "approved-browser-visual-review",
       "requiredChecks": [
         "Prüfe in Dreiviertel-, Vorder- und Rückansicht, ob das Zubehör sichtbar an der Hand statt am Lauf, Körper oder außerhalb der Hand sitzt.",
@@ -8158,7 +8502,7 @@
       ],
       "priorityScore": 2,
       "priorityTier": "medium",
-      "queueRank": 143,
+      "queueRank": 149,
       "reviewStatus": "approved-browser-visual-review",
       "requiredChecks": [
         "Prüfe in Dreiviertel-, Vorder- und Rückansicht, ob das Zubehör sichtbar an der Hand statt am Lauf, Körper oder außerhalb der Hand sitzt.",
@@ -8215,7 +8559,7 @@
       ],
       "priorityScore": 2,
       "priorityTier": "medium",
-      "queueRank": 144,
+      "queueRank": 150,
       "reviewStatus": "approved-browser-visual-review",
       "requiredChecks": [
         "Prüfe in Dreiviertel-, Vorder- und Rückansicht, ob das Zubehör sichtbar an der Hand statt am Lauf, Körper oder außerhalb der Hand sitzt.",
@@ -8272,7 +8616,7 @@
       ],
       "priorityScore": 2,
       "priorityTier": "medium",
-      "queueRank": 145,
+      "queueRank": 151,
       "reviewStatus": "approved-browser-visual-review",
       "requiredChecks": [
         "Prüfe in Dreiviertel-, Vorder- und Rückansicht, ob das Zubehör sichtbar an der Hand statt am Lauf, Körper oder außerhalb der Hand sitzt.",
@@ -8329,7 +8673,7 @@
       ],
       "priorityScore": 2,
       "priorityTier": "medium",
-      "queueRank": 146,
+      "queueRank": 152,
       "reviewStatus": "approved-browser-visual-review",
       "requiredChecks": [
         "Prüfe in Dreiviertel-, Vorder- und Rückansicht, ob das Zubehör sichtbar an der Hand statt am Lauf, Körper oder außerhalb der Hand sitzt.",
@@ -8386,7 +8730,7 @@
       ],
       "priorityScore": 2,
       "priorityTier": "medium",
-      "queueRank": 147,
+      "queueRank": 153,
       "reviewStatus": "approved-browser-visual-review",
       "requiredChecks": [
         "Prüfe in Dreiviertel-, Vorder- und Rückansicht, ob das Zubehör sichtbar an der Hand statt am Lauf, Körper oder außerhalb der Hand sitzt.",
@@ -8441,7 +8785,7 @@
       "riskFlags": [],
       "priorityScore": 1,
       "priorityTier": "standard",
-      "queueRank": 148,
+      "queueRank": 154,
       "reviewStatus": "approved-browser-visual-review",
       "requiredChecks": [
         "Prüfe in Dreiviertel-, Vorder- und Rückansicht, ob das Zubehör sichtbar an der Hand statt am Lauf, Körper oder außerhalb der Hand sitzt.",
@@ -8496,7 +8840,7 @@
       "riskFlags": [],
       "priorityScore": 1,
       "priorityTier": "standard",
-      "queueRank": 149,
+      "queueRank": 155,
       "reviewStatus": "approved-browser-visual-review",
       "requiredChecks": [
         "Prüfe in Dreiviertel-, Vorder- und Rückansicht, ob das Zubehör sichtbar an der Hand statt am Lauf, Körper oder außerhalb der Hand sitzt.",
@@ -8551,7 +8895,7 @@
       "riskFlags": [],
       "priorityScore": 1,
       "priorityTier": "standard",
-      "queueRank": 150,
+      "queueRank": 156,
       "reviewStatus": "approved-browser-visual-review",
       "requiredChecks": [
         "Prüfe in Dreiviertel-, Vorder- und Rückansicht, ob das Zubehör sichtbar an der Hand statt am Lauf, Körper oder außerhalb der Hand sitzt.",
@@ -8606,7 +8950,7 @@
       "riskFlags": [],
       "priorityScore": 1,
       "priorityTier": "standard",
-      "queueRank": 151,
+      "queueRank": 157,
       "reviewStatus": "approved-browser-visual-review",
       "requiredChecks": [
         "Prüfe in Dreiviertel-, Vorder- und Rückansicht, ob das Zubehör sichtbar an der Hand statt am Lauf, Körper oder außerhalb der Hand sitzt.",
@@ -8661,7 +9005,7 @@
       "riskFlags": [],
       "priorityScore": 1,
       "priorityTier": "standard",
-      "queueRank": 152,
+      "queueRank": 158,
       "reviewStatus": "approved-browser-visual-review",
       "requiredChecks": [
         "Prüfe in Dreiviertel-, Vorder- und Rückansicht, ob das Zubehör sichtbar an der Hand statt am Lauf, Körper oder außerhalb der Hand sitzt.",
@@ -8716,7 +9060,7 @@
       "riskFlags": [],
       "priorityScore": 1,
       "priorityTier": "standard",
-      "queueRank": 153,
+      "queueRank": 159,
       "reviewStatus": "approved-browser-visual-review",
       "requiredChecks": [
         "Prüfe in Dreiviertel-, Vorder- und Rückansicht, ob das Zubehör sichtbar an der Hand statt am Lauf, Körper oder außerhalb der Hand sitzt.",
@@ -8771,7 +9115,7 @@
       "riskFlags": [],
       "priorityScore": 1,
       "priorityTier": "standard",
-      "queueRank": 154,
+      "queueRank": 160,
       "reviewStatus": "approved-browser-visual-review",
       "requiredChecks": [
         "Prüfe in Dreiviertel-, Vorder- und Rückansicht, ob das Zubehör sichtbar an der Hand statt am Lauf, Körper oder außerhalb der Hand sitzt.",
@@ -8826,7 +9170,7 @@
       "riskFlags": [],
       "priorityScore": 1,
       "priorityTier": "standard",
-      "queueRank": 155,
+      "queueRank": 161,
       "reviewStatus": "approved-browser-visual-review",
       "requiredChecks": [
         "Prüfe in Dreiviertel-, Vorder- und Rückansicht, ob das Zubehör sichtbar an der Hand statt am Lauf, Körper oder außerhalb der Hand sitzt.",
@@ -8881,7 +9225,7 @@
       "riskFlags": [],
       "priorityScore": 1,
       "priorityTier": "standard",
-      "queueRank": 156,
+      "queueRank": 162,
       "reviewStatus": "approved-browser-visual-review",
       "requiredChecks": [
         "Prüfe in Dreiviertel-, Vorder- und Rückansicht, ob das Zubehör sichtbar an der Hand statt am Lauf, Körper oder außerhalb der Hand sitzt.",
@@ -8936,7 +9280,7 @@
       "riskFlags": [],
       "priorityScore": 1,
       "priorityTier": "standard",
-      "queueRank": 157,
+      "queueRank": 163,
       "reviewStatus": "approved-browser-visual-review",
       "requiredChecks": [
         "Prüfe in Dreiviertel-, Vorder- und Rückansicht, ob das Zubehör sichtbar an der Hand statt am Lauf, Körper oder außerhalb der Hand sitzt.",
@@ -8991,7 +9335,7 @@
       "riskFlags": [],
       "priorityScore": 1,
       "priorityTier": "standard",
-      "queueRank": 158,
+      "queueRank": 164,
       "reviewStatus": "approved-browser-visual-review",
       "requiredChecks": [
         "Prüfe in Dreiviertel-, Vorder- und Rückansicht, ob das Zubehör sichtbar an der Hand statt am Lauf, Körper oder außerhalb der Hand sitzt.",
@@ -9046,7 +9390,7 @@
       "riskFlags": [],
       "priorityScore": 1,
       "priorityTier": "standard",
-      "queueRank": 159,
+      "queueRank": 165,
       "reviewStatus": "approved-browser-visual-review",
       "requiredChecks": [
         "Prüfe in Dreiviertel-, Vorder- und Rückansicht, ob das Zubehör sichtbar an der Hand statt am Lauf, Körper oder außerhalb der Hand sitzt.",
@@ -9101,7 +9445,7 @@
       "riskFlags": [],
       "priorityScore": 1,
       "priorityTier": "standard",
-      "queueRank": 160,
+      "queueRank": 166,
       "reviewStatus": "approved-browser-visual-review",
       "requiredChecks": [
         "Prüfe in Dreiviertel-, Vorder- und Rückansicht, ob das Zubehör sichtbar an der Hand statt am Lauf, Körper oder außerhalb der Hand sitzt.",
@@ -9156,7 +9500,7 @@
       "riskFlags": [],
       "priorityScore": 1,
       "priorityTier": "standard",
-      "queueRank": 161,
+      "queueRank": 167,
       "reviewStatus": "approved-browser-visual-review",
       "requiredChecks": [
         "Prüfe in Dreiviertel-, Vorder- und Rückansicht, ob das Zubehör sichtbar an der Hand statt am Lauf, Körper oder außerhalb der Hand sitzt.",
@@ -9211,7 +9555,7 @@
       "riskFlags": [],
       "priorityScore": 1,
       "priorityTier": "standard",
-      "queueRank": 162,
+      "queueRank": 168,
       "reviewStatus": "approved-browser-visual-review",
       "requiredChecks": [
         "Prüfe in Dreiviertel-, Vorder- und Rückansicht, ob das Zubehör sichtbar an der Hand statt am Lauf, Körper oder außerhalb der Hand sitzt.",
@@ -9266,7 +9610,7 @@
       "riskFlags": [],
       "priorityScore": 1,
       "priorityTier": "standard",
-      "queueRank": 163,
+      "queueRank": 169,
       "reviewStatus": "approved-browser-visual-review",
       "requiredChecks": [
         "Prüfe in Dreiviertel-, Vorder- und Rückansicht, ob das Zubehör sichtbar an der Hand statt am Lauf, Körper oder außerhalb der Hand sitzt.",
@@ -9321,7 +9665,7 @@
       "riskFlags": [],
       "priorityScore": 1,
       "priorityTier": "standard",
-      "queueRank": 164,
+      "queueRank": 170,
       "reviewStatus": "approved-browser-visual-review",
       "requiredChecks": [
         "Prüfe in Dreiviertel-, Vorder- und Rückansicht, ob das Zubehör sichtbar an der Hand statt am Lauf, Körper oder außerhalb der Hand sitzt.",
@@ -9376,7 +9720,7 @@
       "riskFlags": [],
       "priorityScore": 1,
       "priorityTier": "standard",
-      "queueRank": 165,
+      "queueRank": 171,
       "reviewStatus": "approved-browser-visual-review",
       "requiredChecks": [
         "Prüfe in Dreiviertel-, Vorder- und Rückansicht, ob das Zubehör sichtbar an der Hand statt am Lauf, Körper oder außerhalb der Hand sitzt.",
@@ -9431,7 +9775,7 @@
       "riskFlags": [],
       "priorityScore": 1,
       "priorityTier": "standard",
-      "queueRank": 166,
+      "queueRank": 172,
       "reviewStatus": "approved-browser-visual-review",
       "requiredChecks": [
         "Prüfe in Dreiviertel-, Vorder- und Rückansicht, ob das Zubehör sichtbar an der Hand statt am Lauf, Körper oder außerhalb der Hand sitzt.",
@@ -9486,7 +9830,7 @@
       "riskFlags": [],
       "priorityScore": 1,
       "priorityTier": "standard",
-      "queueRank": 167,
+      "queueRank": 173,
       "reviewStatus": "approved-browser-visual-review",
       "requiredChecks": [
         "Prüfe in Dreiviertel-, Vorder- und Rückansicht, ob das Zubehör sichtbar an der Hand statt am Lauf, Körper oder außerhalb der Hand sitzt.",
@@ -9541,7 +9885,7 @@
       "riskFlags": [],
       "priorityScore": 1,
       "priorityTier": "standard",
-      "queueRank": 168,
+      "queueRank": 174,
       "reviewStatus": "approved-browser-visual-review",
       "requiredChecks": [
         "Prüfe in Dreiviertel-, Vorder- und Rückansicht, ob das Zubehör sichtbar an der Hand statt am Lauf, Körper oder außerhalb der Hand sitzt.",
@@ -9596,7 +9940,7 @@
       "riskFlags": [],
       "priorityScore": 1,
       "priorityTier": "standard",
-      "queueRank": 169,
+      "queueRank": 175,
       "reviewStatus": "approved-browser-visual-review",
       "requiredChecks": [
         "Prüfe in Dreiviertel-, Vorder- und Rückansicht, ob das Zubehör sichtbar an der Hand statt am Lauf, Körper oder außerhalb der Hand sitzt.",
@@ -9651,7 +9995,7 @@
       "riskFlags": [],
       "priorityScore": 1,
       "priorityTier": "standard",
-      "queueRank": 170,
+      "queueRank": 176,
       "reviewStatus": "approved-browser-visual-review",
       "requiredChecks": [
         "Prüfe in Dreiviertel-, Vorder- und Rückansicht, ob das Zubehör sichtbar an der Hand statt am Lauf, Körper oder außerhalb der Hand sitzt.",
@@ -9706,7 +10050,7 @@
       "riskFlags": [],
       "priorityScore": 1,
       "priorityTier": "standard",
-      "queueRank": 171,
+      "queueRank": 177,
       "reviewStatus": "approved-browser-visual-review",
       "requiredChecks": [
         "Prüfe in Dreiviertel-, Vorder- und Rückansicht, ob das Zubehör sichtbar an der Hand statt am Lauf, Körper oder außerhalb der Hand sitzt.",
@@ -9761,7 +10105,7 @@
       "riskFlags": [],
       "priorityScore": 1,
       "priorityTier": "standard",
-      "queueRank": 172,
+      "queueRank": 178,
       "reviewStatus": "approved-browser-visual-review",
       "requiredChecks": [
         "Prüfe in Dreiviertel-, Vorder- und Rückansicht, ob das Zubehör sichtbar an der Hand statt am Lauf, Körper oder außerhalb der Hand sitzt.",
@@ -9816,7 +10160,7 @@
       "riskFlags": [],
       "priorityScore": 1,
       "priorityTier": "standard",
-      "queueRank": 173,
+      "queueRank": 179,
       "reviewStatus": "approved-browser-visual-review",
       "requiredChecks": [
         "Prüfe in Dreiviertel-, Vorder- und Rückansicht, ob das Zubehör sichtbar an der Hand statt am Lauf, Körper oder außerhalb der Hand sitzt.",
@@ -9871,7 +10215,7 @@
       "riskFlags": [],
       "priorityScore": 1,
       "priorityTier": "standard",
-      "queueRank": 174,
+      "queueRank": 180,
       "reviewStatus": "approved-browser-visual-review",
       "requiredChecks": [
         "Prüfe in Dreiviertel-, Vorder- und Rückansicht, ob das Zubehör sichtbar an der Hand statt am Lauf, Körper oder außerhalb der Hand sitzt.",
@@ -9926,7 +10270,7 @@
       "riskFlags": [],
       "priorityScore": 1,
       "priorityTier": "standard",
-      "queueRank": 175,
+      "queueRank": 181,
       "reviewStatus": "approved-browser-visual-review",
       "requiredChecks": [
         "Prüfe in Dreiviertel-, Vorder- und Rückansicht, ob das Zubehör sichtbar an der Hand statt am Lauf, Körper oder außerhalb der Hand sitzt.",
@@ -9981,7 +10325,7 @@
       "riskFlags": [],
       "priorityScore": 1,
       "priorityTier": "standard",
-      "queueRank": 176,
+      "queueRank": 182,
       "reviewStatus": "approved-browser-visual-review",
       "requiredChecks": [
         "Prüfe in Dreiviertel-, Vorder- und Rückansicht, ob das Zubehör sichtbar an der Hand statt am Lauf, Körper oder außerhalb der Hand sitzt.",
@@ -10036,7 +10380,7 @@
       "riskFlags": [],
       "priorityScore": 1,
       "priorityTier": "standard",
-      "queueRank": 177,
+      "queueRank": 183,
       "reviewStatus": "approved-browser-visual-review",
       "requiredChecks": [
         "Prüfe in Dreiviertel-, Vorder- und Rückansicht, ob das Zubehör sichtbar an der Hand statt am Lauf, Körper oder außerhalb der Hand sitzt.",
@@ -10091,7 +10435,7 @@
       "riskFlags": [],
       "priorityScore": 1,
       "priorityTier": "standard",
-      "queueRank": 178,
+      "queueRank": 184,
       "reviewStatus": "approved-browser-visual-review",
       "requiredChecks": [
         "Prüfe in Dreiviertel-, Vorder- und Rückansicht, ob das Zubehör sichtbar an der Hand statt am Lauf, Körper oder außerhalb der Hand sitzt.",
@@ -10146,7 +10490,7 @@
       "riskFlags": [],
       "priorityScore": 1,
       "priorityTier": "standard",
-      "queueRank": 179,
+      "queueRank": 185,
       "reviewStatus": "approved-browser-visual-review",
       "requiredChecks": [
         "Prüfe in Dreiviertel-, Vorder- und Rückansicht, ob das Zubehör sichtbar an der Hand statt am Lauf, Körper oder außerhalb der Hand sitzt.",
@@ -10201,7 +10545,7 @@
       "riskFlags": [],
       "priorityScore": 1,
       "priorityTier": "standard",
-      "queueRank": 180,
+      "queueRank": 186,
       "reviewStatus": "approved-browser-visual-review",
       "requiredChecks": [
         "Prüfe in Dreiviertel-, Vorder- und Rückansicht, ob das Zubehör sichtbar an der Hand statt am Lauf, Körper oder außerhalb der Hand sitzt.",
@@ -10256,7 +10600,7 @@
       "riskFlags": [],
       "priorityScore": 1,
       "priorityTier": "standard",
-      "queueRank": 181,
+      "queueRank": 187,
       "reviewStatus": "approved-browser-visual-review",
       "requiredChecks": [
         "Prüfe in Dreiviertel-, Vorder- und Rückansicht, ob das Zubehör sichtbar an der Hand statt am Lauf, Körper oder außerhalb der Hand sitzt.",
@@ -10311,7 +10655,7 @@
       "riskFlags": [],
       "priorityScore": 1,
       "priorityTier": "standard",
-      "queueRank": 182,
+      "queueRank": 188,
       "reviewStatus": "approved-browser-visual-review",
       "requiredChecks": [
         "Prüfe in Dreiviertel-, Vorder- und Rückansicht, ob das Zubehör sichtbar an der Hand statt am Lauf, Körper oder außerhalb der Hand sitzt.",
@@ -10366,7 +10710,7 @@
       "riskFlags": [],
       "priorityScore": 1,
       "priorityTier": "standard",
-      "queueRank": 183,
+      "queueRank": 189,
       "reviewStatus": "approved-browser-visual-review",
       "requiredChecks": [
         "Prüfe in Dreiviertel-, Vorder- und Rückansicht, ob das Zubehör sichtbar an der Hand statt am Lauf, Körper oder außerhalb der Hand sitzt.",
@@ -10421,7 +10765,7 @@
       "riskFlags": [],
       "priorityScore": 1,
       "priorityTier": "standard",
-      "queueRank": 184,
+      "queueRank": 190,
       "reviewStatus": "approved-browser-visual-review",
       "requiredChecks": [
         "Prüfe in Dreiviertel-, Vorder- und Rückansicht, ob das Zubehör sichtbar an der Hand statt am Lauf, Körper oder außerhalb der Hand sitzt.",
@@ -10476,7 +10820,7 @@
       "riskFlags": [],
       "priorityScore": 1,
       "priorityTier": "standard",
-      "queueRank": 185,
+      "queueRank": 191,
       "reviewStatus": "approved-browser-visual-review",
       "requiredChecks": [
         "Prüfe in Dreiviertel-, Vorder- und Rückansicht, ob das Zubehör sichtbar an der Hand statt am Lauf, Körper oder außerhalb der Hand sitzt.",
@@ -10531,7 +10875,7 @@
       "riskFlags": [],
       "priorityScore": 1,
       "priorityTier": "standard",
-      "queueRank": 186,
+      "queueRank": 192,
       "reviewStatus": "approved-browser-visual-review",
       "requiredChecks": [
         "Prüfe in Dreiviertel-, Vorder- und Rückansicht, ob das Zubehör sichtbar an der Hand statt am Lauf, Körper oder außerhalb der Hand sitzt.",
@@ -10586,7 +10930,7 @@
       "riskFlags": [],
       "priorityScore": 1,
       "priorityTier": "standard",
-      "queueRank": 187,
+      "queueRank": 193,
       "reviewStatus": "approved-browser-visual-review",
       "requiredChecks": [
         "Prüfe in Dreiviertel-, Vorder- und Rückansicht, ob das Zubehör sichtbar an der Hand statt am Lauf, Körper oder außerhalb der Hand sitzt.",
@@ -10641,7 +10985,7 @@
       "riskFlags": [],
       "priorityScore": 1,
       "priorityTier": "standard",
-      "queueRank": 188,
+      "queueRank": 194,
       "reviewStatus": "approved-browser-visual-review",
       "requiredChecks": [
         "Prüfe in Dreiviertel-, Vorder- und Rückansicht, ob das Zubehör sichtbar an der Hand statt am Lauf, Körper oder außerhalb der Hand sitzt.",
@@ -10696,7 +11040,7 @@
       "riskFlags": [],
       "priorityScore": 1,
       "priorityTier": "standard",
-      "queueRank": 189,
+      "queueRank": 195,
       "reviewStatus": "approved-browser-visual-review",
       "requiredChecks": [
         "Prüfe in Dreiviertel-, Vorder- und Rückansicht, ob das Zubehör sichtbar an der Hand statt am Lauf, Körper oder außerhalb der Hand sitzt.",
@@ -10751,7 +11095,7 @@
       "riskFlags": [],
       "priorityScore": 1,
       "priorityTier": "standard",
-      "queueRank": 190,
+      "queueRank": 196,
       "reviewStatus": "approved-browser-visual-review",
       "requiredChecks": [
         "Prüfe in Dreiviertel-, Vorder- und Rückansicht, ob das Zubehör sichtbar an der Hand statt am Lauf, Körper oder außerhalb der Hand sitzt.",
@@ -10806,7 +11150,7 @@
       "riskFlags": [],
       "priorityScore": 1,
       "priorityTier": "standard",
-      "queueRank": 191,
+      "queueRank": 197,
       "reviewStatus": "approved-browser-visual-review",
       "requiredChecks": [
         "Prüfe in Dreiviertel-, Vorder- und Rückansicht, ob das Zubehör sichtbar an der Hand statt am Lauf, Körper oder außerhalb der Hand sitzt.",
@@ -10861,7 +11205,7 @@
       "riskFlags": [],
       "priorityScore": 1,
       "priorityTier": "standard",
-      "queueRank": 192,
+      "queueRank": 198,
       "reviewStatus": "approved-browser-visual-review",
       "requiredChecks": [
         "Prüfe in Dreiviertel-, Vorder- und Rückansicht, ob das Zubehör sichtbar an der Hand statt am Lauf, Körper oder außerhalb der Hand sitzt.",
@@ -10916,7 +11260,7 @@
       "riskFlags": [],
       "priorityScore": 1,
       "priorityTier": "standard",
-      "queueRank": 193,
+      "queueRank": 199,
       "reviewStatus": "approved-browser-visual-review",
       "requiredChecks": [
         "Prüfe in Dreiviertel-, Vorder- und Rückansicht, ob das Zubehör sichtbar an der Hand statt am Lauf, Körper oder außerhalb der Hand sitzt.",
@@ -10971,7 +11315,7 @@
       "riskFlags": [],
       "priorityScore": 1,
       "priorityTier": "standard",
-      "queueRank": 194,
+      "queueRank": 200,
       "reviewStatus": "approved-browser-visual-review",
       "requiredChecks": [
         "Prüfe in Dreiviertel-, Vorder- und Rückansicht, ob das Zubehör sichtbar an der Hand statt am Lauf, Körper oder außerhalb der Hand sitzt.",
@@ -11026,7 +11370,7 @@
       "riskFlags": [],
       "priorityScore": 1,
       "priorityTier": "standard",
-      "queueRank": 195,
+      "queueRank": 201,
       "reviewStatus": "approved-browser-visual-review",
       "requiredChecks": [
         "Prüfe in Dreiviertel-, Vorder- und Rückansicht, ob das Zubehör sichtbar an der Hand statt am Lauf, Körper oder außerhalb der Hand sitzt.",
@@ -11081,7 +11425,7 @@
       "riskFlags": [],
       "priorityScore": 1,
       "priorityTier": "standard",
-      "queueRank": 196,
+      "queueRank": 202,
       "reviewStatus": "approved-browser-visual-review",
       "requiredChecks": [
         "Prüfe in Dreiviertel-, Vorder- und Rückansicht, ob das Zubehör sichtbar an der Hand statt am Lauf, Körper oder außerhalb der Hand sitzt.",
@@ -11136,7 +11480,7 @@
       "riskFlags": [],
       "priorityScore": 1,
       "priorityTier": "standard",
-      "queueRank": 197,
+      "queueRank": 203,
       "reviewStatus": "approved-browser-visual-review",
       "requiredChecks": [
         "Prüfe in Dreiviertel-, Vorder- und Rückansicht, ob das Zubehör sichtbar an der Hand statt am Lauf, Körper oder außerhalb der Hand sitzt.",
@@ -11191,7 +11535,7 @@
       "riskFlags": [],
       "priorityScore": 1,
       "priorityTier": "standard",
-      "queueRank": 198,
+      "queueRank": 204,
       "reviewStatus": "approved-browser-visual-review",
       "requiredChecks": [
         "Prüfe in Dreiviertel-, Vorder- und Rückansicht, ob das Zubehör sichtbar an der Hand statt am Lauf, Körper oder außerhalb der Hand sitzt.",
@@ -11246,7 +11590,7 @@
       "riskFlags": [],
       "priorityScore": 1,
       "priorityTier": "standard",
-      "queueRank": 199,
+      "queueRank": 205,
       "reviewStatus": "approved-browser-visual-review",
       "requiredChecks": [
         "Prüfe in Dreiviertel-, Vorder- und Rückansicht, ob das Zubehör sichtbar an der Hand statt am Lauf, Körper oder außerhalb der Hand sitzt.",
@@ -11301,7 +11645,7 @@
       "riskFlags": [],
       "priorityScore": 1,
       "priorityTier": "standard",
-      "queueRank": 200,
+      "queueRank": 206,
       "reviewStatus": "approved-browser-visual-review",
       "requiredChecks": [
         "Prüfe in Dreiviertel-, Vorder- und Rückansicht, ob das Zubehör sichtbar an der Hand statt am Lauf, Körper oder außerhalb der Hand sitzt.",
@@ -11356,7 +11700,7 @@
       "riskFlags": [],
       "priorityScore": 1,
       "priorityTier": "standard",
-      "queueRank": 201,
+      "queueRank": 207,
       "reviewStatus": "approved-browser-visual-review",
       "requiredChecks": [
         "Prüfe in Dreiviertel-, Vorder- und Rückansicht, ob das Zubehör sichtbar an der Hand statt am Lauf, Körper oder außerhalb der Hand sitzt.",
@@ -11411,7 +11755,7 @@
       "riskFlags": [],
       "priorityScore": 1,
       "priorityTier": "standard",
-      "queueRank": 202,
+      "queueRank": 208,
       "reviewStatus": "approved-browser-visual-review",
       "requiredChecks": [
         "Prüfe in Dreiviertel-, Vorder- und Rückansicht, ob das Zubehör sichtbar an der Hand statt am Lauf, Körper oder außerhalb der Hand sitzt.",
@@ -11466,7 +11810,7 @@
       "riskFlags": [],
       "priorityScore": 1,
       "priorityTier": "standard",
-      "queueRank": 203,
+      "queueRank": 209,
       "reviewStatus": "approved-browser-visual-review",
       "requiredChecks": [
         "Prüfe in Dreiviertel-, Vorder- und Rückansicht, ob das Zubehör sichtbar an der Hand statt am Lauf, Körper oder außerhalb der Hand sitzt.",
@@ -11521,7 +11865,7 @@
       "riskFlags": [],
       "priorityScore": 1,
       "priorityTier": "standard",
-      "queueRank": 204,
+      "queueRank": 210,
       "reviewStatus": "approved-browser-visual-review",
       "requiredChecks": [
         "Prüfe in Dreiviertel-, Vorder- und Rückansicht, ob das Zubehör sichtbar an der Hand statt am Lauf, Körper oder außerhalb der Hand sitzt.",
@@ -11576,7 +11920,7 @@
       "riskFlags": [],
       "priorityScore": 1,
       "priorityTier": "standard",
-      "queueRank": 205,
+      "queueRank": 211,
       "reviewStatus": "approved-browser-visual-review",
       "requiredChecks": [
         "Prüfe in Dreiviertel-, Vorder- und Rückansicht, ob das Zubehör sichtbar an der Hand statt am Lauf, Körper oder außerhalb der Hand sitzt.",
@@ -11631,7 +11975,7 @@
       "riskFlags": [],
       "priorityScore": 1,
       "priorityTier": "standard",
-      "queueRank": 206,
+      "queueRank": 212,
       "reviewStatus": "approved-browser-visual-review",
       "requiredChecks": [
         "Prüfe in Dreiviertel-, Vorder- und Rückansicht, ob das Zubehör sichtbar an der Hand statt am Lauf, Körper oder außerhalb der Hand sitzt.",
@@ -11686,7 +12030,7 @@
       "riskFlags": [],
       "priorityScore": 1,
       "priorityTier": "standard",
-      "queueRank": 207,
+      "queueRank": 213,
       "reviewStatus": "approved-browser-visual-review",
       "requiredChecks": [
         "Prüfe in Dreiviertel-, Vorder- und Rückansicht, ob das Zubehör sichtbar an der Hand statt am Lauf, Körper oder außerhalb der Hand sitzt.",
@@ -11741,7 +12085,7 @@
       "riskFlags": [],
       "priorityScore": 1,
       "priorityTier": "standard",
-      "queueRank": 208,
+      "queueRank": 214,
       "reviewStatus": "approved-browser-visual-review",
       "requiredChecks": [
         "Prüfe in Dreiviertel-, Vorder- und Rückansicht, ob das Zubehör sichtbar an der Hand statt am Lauf, Körper oder außerhalb der Hand sitzt.",
@@ -11796,7 +12140,7 @@
       "riskFlags": [],
       "priorityScore": 1,
       "priorityTier": "standard",
-      "queueRank": 209,
+      "queueRank": 215,
       "reviewStatus": "approved-browser-visual-review",
       "requiredChecks": [
         "Prüfe in Dreiviertel-, Vorder- und Rückansicht, ob das Zubehör sichtbar an der Hand statt am Lauf, Körper oder außerhalb der Hand sitzt.",
@@ -11851,7 +12195,7 @@
       "riskFlags": [],
       "priorityScore": 1,
       "priorityTier": "standard",
-      "queueRank": 210,
+      "queueRank": 216,
       "reviewStatus": "approved-browser-visual-review",
       "requiredChecks": [
         "Prüfe in Dreiviertel-, Vorder- und Rückansicht, ob das Zubehör sichtbar an der Hand statt am Lauf, Körper oder außerhalb der Hand sitzt.",
@@ -11906,7 +12250,7 @@
       "riskFlags": [],
       "priorityScore": 1,
       "priorityTier": "standard",
-      "queueRank": 211,
+      "queueRank": 217,
       "reviewStatus": "approved-browser-visual-review",
       "requiredChecks": [
         "Prüfe in Dreiviertel-, Vorder- und Rückansicht, ob das Zubehör sichtbar an der Hand statt am Lauf, Körper oder außerhalb der Hand sitzt.",
@@ -11961,7 +12305,7 @@
       "riskFlags": [],
       "priorityScore": 1,
       "priorityTier": "standard",
-      "queueRank": 212,
+      "queueRank": 218,
       "reviewStatus": "approved-browser-visual-review",
       "requiredChecks": [
         "Prüfe in Dreiviertel-, Vorder- und Rückansicht, ob das Zubehör sichtbar an der Hand statt am Lauf, Körper oder außerhalb der Hand sitzt.",
@@ -12016,7 +12360,7 @@
       "riskFlags": [],
       "priorityScore": 1,
       "priorityTier": "standard",
-      "queueRank": 213,
+      "queueRank": 219,
       "reviewStatus": "approved-browser-visual-review",
       "requiredChecks": [
         "Prüfe in Dreiviertel-, Vorder- und Rückansicht, ob das Zubehör sichtbar an der Hand statt am Lauf, Körper oder außerhalb der Hand sitzt.",
@@ -12071,7 +12415,7 @@
       "riskFlags": [],
       "priorityScore": 1,
       "priorityTier": "standard",
-      "queueRank": 214,
+      "queueRank": 220,
       "reviewStatus": "approved-browser-visual-review",
       "requiredChecks": [
         "Prüfe in Dreiviertel-, Vorder- und Rückansicht, ob das Zubehör sichtbar an der Hand statt am Lauf, Körper oder außerhalb der Hand sitzt.",
@@ -12126,7 +12470,7 @@
       "riskFlags": [],
       "priorityScore": 1,
       "priorityTier": "standard",
-      "queueRank": 215,
+      "queueRank": 221,
       "reviewStatus": "approved-browser-visual-review",
       "requiredChecks": [
         "Prüfe in Dreiviertel-, Vorder- und Rückansicht, ob das Zubehör sichtbar an der Hand statt am Lauf, Körper oder außerhalb der Hand sitzt.",
@@ -12181,7 +12525,7 @@
       "riskFlags": [],
       "priorityScore": 1,
       "priorityTier": "standard",
-      "queueRank": 216,
+      "queueRank": 222,
       "reviewStatus": "approved-browser-visual-review",
       "requiredChecks": [
         "Prüfe in Dreiviertel-, Vorder- und Rückansicht, ob das Zubehör sichtbar an der Hand statt am Lauf, Körper oder außerhalb der Hand sitzt.",
@@ -12236,7 +12580,7 @@
       "riskFlags": [],
       "priorityScore": 1,
       "priorityTier": "standard",
-      "queueRank": 217,
+      "queueRank": 223,
       "reviewStatus": "approved-browser-visual-review",
       "requiredChecks": [
         "Prüfe in Dreiviertel-, Vorder- und Rückansicht, ob das Zubehör sichtbar an der Hand statt am Lauf, Körper oder außerhalb der Hand sitzt.",
@@ -12291,7 +12635,7 @@
       "riskFlags": [],
       "priorityScore": 1,
       "priorityTier": "standard",
-      "queueRank": 218,
+      "queueRank": 224,
       "reviewStatus": "approved-browser-visual-review",
       "requiredChecks": [
         "Prüfe in Dreiviertel-, Vorder- und Rückansicht, ob das Zubehör sichtbar an der Hand statt am Lauf, Körper oder außerhalb der Hand sitzt.",
@@ -12346,7 +12690,7 @@
       "riskFlags": [],
       "priorityScore": 1,
       "priorityTier": "standard",
-      "queueRank": 219,
+      "queueRank": 225,
       "reviewStatus": "approved-browser-visual-review",
       "requiredChecks": [
         "Prüfe in Dreiviertel-, Vorder- und Rückansicht, ob das Zubehör sichtbar an der Hand statt am Lauf, Körper oder außerhalb der Hand sitzt.",
@@ -12401,7 +12745,7 @@
       "riskFlags": [],
       "priorityScore": 1,
       "priorityTier": "standard",
-      "queueRank": 220,
+      "queueRank": 226,
       "reviewStatus": "approved-browser-visual-review",
       "requiredChecks": [
         "Prüfe in Dreiviertel-, Vorder- und Rückansicht, ob das Zubehör sichtbar an der Hand statt am Lauf, Körper oder außerhalb der Hand sitzt.",
@@ -12456,7 +12800,7 @@
       "riskFlags": [],
       "priorityScore": 1,
       "priorityTier": "standard",
-      "queueRank": 221,
+      "queueRank": 227,
       "reviewStatus": "approved-browser-visual-review",
       "requiredChecks": [
         "Prüfe in Dreiviertel-, Vorder- und Rückansicht, ob das Zubehör sichtbar an der Hand statt am Lauf, Körper oder außerhalb der Hand sitzt.",
@@ -12511,7 +12855,7 @@
       "riskFlags": [],
       "priorityScore": 1,
       "priorityTier": "standard",
-      "queueRank": 222,
+      "queueRank": 228,
       "reviewStatus": "approved-browser-visual-review",
       "requiredChecks": [
         "Prüfe in Dreiviertel-, Vorder- und Rückansicht, ob das Zubehör sichtbar an der Hand statt am Lauf, Körper oder außerhalb der Hand sitzt.",
@@ -12566,7 +12910,7 @@
       "riskFlags": [],
       "priorityScore": 1,
       "priorityTier": "standard",
-      "queueRank": 223,
+      "queueRank": 229,
       "reviewStatus": "approved-browser-visual-review",
       "requiredChecks": [
         "Prüfe in Dreiviertel-, Vorder- und Rückansicht, ob das Zubehör sichtbar an der Hand statt am Lauf, Körper oder außerhalb der Hand sitzt.",
@@ -12621,7 +12965,7 @@
       "riskFlags": [],
       "priorityScore": 1,
       "priorityTier": "standard",
-      "queueRank": 224,
+      "queueRank": 230,
       "reviewStatus": "approved-browser-visual-review",
       "requiredChecks": [
         "Prüfe in Dreiviertel-, Vorder- und Rückansicht, ob das Zubehör sichtbar an der Hand statt am Lauf, Körper oder außerhalb der Hand sitzt.",
@@ -12676,7 +13020,7 @@
       "riskFlags": [],
       "priorityScore": 1,
       "priorityTier": "standard",
-      "queueRank": 225,
+      "queueRank": 231,
       "reviewStatus": "approved-browser-visual-review",
       "requiredChecks": [
         "Prüfe in Dreiviertel-, Vorder- und Rückansicht, ob das Zubehör sichtbar an der Hand statt am Lauf, Körper oder außerhalb der Hand sitzt.",
@@ -12731,7 +13075,7 @@
       "riskFlags": [],
       "priorityScore": 1,
       "priorityTier": "standard",
-      "queueRank": 226,
+      "queueRank": 232,
       "reviewStatus": "approved-browser-visual-review",
       "requiredChecks": [
         "Prüfe in Dreiviertel-, Vorder- und Rückansicht, ob das Zubehör sichtbar an der Hand statt am Lauf, Körper oder außerhalb der Hand sitzt.",
@@ -12786,7 +13130,7 @@
       "riskFlags": [],
       "priorityScore": 1,
       "priorityTier": "standard",
-      "queueRank": 227,
+      "queueRank": 233,
       "reviewStatus": "approved-browser-visual-review",
       "requiredChecks": [
         "Prüfe in Dreiviertel-, Vorder- und Rückansicht, ob das Zubehör sichtbar an der Hand statt am Lauf, Körper oder außerhalb der Hand sitzt.",
@@ -12841,7 +13185,7 @@
       "riskFlags": [],
       "priorityScore": 1,
       "priorityTier": "standard",
-      "queueRank": 228,
+      "queueRank": 234,
       "reviewStatus": "approved-browser-visual-review",
       "requiredChecks": [
         "Prüfe in Dreiviertel-, Vorder- und Rückansicht, ob das Zubehör sichtbar an der Hand statt am Lauf, Körper oder außerhalb der Hand sitzt.",
@@ -12896,7 +13240,7 @@
       "riskFlags": [],
       "priorityScore": 1,
       "priorityTier": "standard",
-      "queueRank": 229,
+      "queueRank": 235,
       "reviewStatus": "approved-browser-visual-review",
       "requiredChecks": [
         "Prüfe in Dreiviertel-, Vorder- und Rückansicht, ob das Zubehör sichtbar an der Hand statt am Lauf, Körper oder außerhalb der Hand sitzt.",
@@ -12951,7 +13295,7 @@
       "riskFlags": [],
       "priorityScore": 1,
       "priorityTier": "standard",
-      "queueRank": 230,
+      "queueRank": 236,
       "reviewStatus": "approved-browser-visual-review",
       "requiredChecks": [
         "Prüfe in Dreiviertel-, Vorder- und Rückansicht, ob das Zubehör sichtbar an der Hand statt am Lauf, Körper oder außerhalb der Hand sitzt.",
@@ -13006,7 +13350,7 @@
       "riskFlags": [],
       "priorityScore": 1,
       "priorityTier": "standard",
-      "queueRank": 231,
+      "queueRank": 237,
       "reviewStatus": "approved-browser-visual-review",
       "requiredChecks": [
         "Prüfe in Dreiviertel-, Vorder- und Rückansicht, ob das Zubehör sichtbar an der Hand statt am Lauf, Körper oder außerhalb der Hand sitzt.",
@@ -13061,7 +13405,7 @@
       "riskFlags": [],
       "priorityScore": 1,
       "priorityTier": "standard",
-      "queueRank": 232,
+      "queueRank": 238,
       "reviewStatus": "approved-browser-visual-review",
       "requiredChecks": [
         "Prüfe in Dreiviertel-, Vorder- und Rückansicht, ob das Zubehör sichtbar an der Hand statt am Lauf, Körper oder außerhalb der Hand sitzt.",
@@ -13116,7 +13460,7 @@
       "riskFlags": [],
       "priorityScore": 1,
       "priorityTier": "standard",
-      "queueRank": 233,
+      "queueRank": 239,
       "reviewStatus": "approved-browser-visual-review",
       "requiredChecks": [
         "Prüfe in Dreiviertel-, Vorder- und Rückansicht, ob das Zubehör sichtbar an der Hand statt am Lauf, Körper oder außerhalb der Hand sitzt.",
@@ -13171,7 +13515,7 @@
       "riskFlags": [],
       "priorityScore": 1,
       "priorityTier": "standard",
-      "queueRank": 234,
+      "queueRank": 240,
       "reviewStatus": "approved-browser-visual-review",
       "requiredChecks": [
         "Prüfe in Dreiviertel-, Vorder- und Rückansicht, ob das Zubehör sichtbar an der Hand statt am Lauf, Körper oder außerhalb der Hand sitzt.",
@@ -13181,6 +13525,61 @@
       "reviewer": "Codex Sol browser QA",
       "reviewedAt": "2026-10-13",
       "evidenceReference": "three-quarter,front,back complete CI contact-sheet inspection (PR #92 artifact complete-accessory-review-contact-sheets)"
+    },
+    {
+      "id": "accessory-orientation-review:59232",
+      "componentId": "catalog:handAccessory:59232",
+      "rebrickablePartNum": "59232",
+      "name": "Weapon Mace / Flail Spiked",
+      "ldrawFile": "parts/59232.dat",
+      "modelUrl": "/assets/ldraw/official-2609/models/handAccessory-59232.ldr",
+      "thumbnailUrl": "/assets/thumbnails/ldraw-expanded/handAccessory-59232.webp",
+      "placementMode": "snap-connector",
+      "placementTransformLdu": [
+        0.985,
+        -0.17,
+        0,
+        0,
+        0.086268,
+        0.499806,
+        0.86148,
+        0,
+        -0.146464,
+        -0.848563,
+        0.507414,
+        0,
+        25.373986,
+        36.528153,
+        -11.553048,
+        1
+      ],
+      "digitalValidation": {
+        "status": "passed",
+        "selectedOrientationIndex": 0,
+        "orientationCandidatesTested": 56,
+        "collisionSampleCount": 0,
+        "gripCandidatesTested": 1,
+        "gripLengthLdu": 13.75,
+        "gripPrimitive": "p/4-4cyli.dat"
+      },
+      "reviewViews": [
+        "three-quarter",
+        "front",
+        "back"
+      ],
+      "riskFlags": [],
+      "priorityScore": 1,
+      "priorityTier": "standard",
+      "queueRank": 241,
+      "reviewStatus": "approved-browser-visual-review",
+      "requiredChecks": [
+        "Prüfe in Dreiviertel-, Vorder- und Rückansicht, ob das Zubehör sichtbar an der Hand statt am Lauf, Körper oder außerhalb der Hand sitzt.",
+        "Prüfe Griffachse, Einstecktiefe und Rotation auf eine visuell plausible Haltung; geometrische Kollisionsfreiheit allein genügt nicht.",
+        "Dokumentiere bei einem Fehler die Ansicht, eine kurze Begründung und einen Screenshot oder eine reproduzierbare Referenz."
+      ],
+      "reviewer": "Codex Sol browser QA",
+      "reviewedAt": "2026-10-13",
+      "evidenceReference": "interactive three-quarter browser comparison of candidates 0 and 3"
     },
     {
       "id": "accessory-orientation-review:604550",
@@ -13226,7 +13625,7 @@
       "riskFlags": [],
       "priorityScore": 1,
       "priorityTier": "standard",
-      "queueRank": 235,
+      "queueRank": 242,
       "reviewStatus": "approved-browser-visual-review",
       "requiredChecks": [
         "Prüfe in Dreiviertel-, Vorder- und Rückansicht, ob das Zubehör sichtbar an der Hand statt am Lauf, Körper oder außerhalb der Hand sitzt.",
@@ -13281,7 +13680,7 @@
       "riskFlags": [],
       "priorityScore": 1,
       "priorityTier": "standard",
-      "queueRank": 236,
+      "queueRank": 243,
       "reviewStatus": "approved-browser-visual-review",
       "requiredChecks": [
         "Prüfe in Dreiviertel-, Vorder- und Rückansicht, ob das Zubehör sichtbar an der Hand statt am Lauf, Körper oder außerhalb der Hand sitzt.",
@@ -13336,7 +13735,7 @@
       "riskFlags": [],
       "priorityScore": 1,
       "priorityTier": "standard",
-      "queueRank": 237,
+      "queueRank": 244,
       "reviewStatus": "approved-browser-visual-review",
       "requiredChecks": [
         "Prüfe in Dreiviertel-, Vorder- und Rückansicht, ob das Zubehör sichtbar an der Hand statt am Lauf, Körper oder außerhalb der Hand sitzt.",
@@ -13391,7 +13790,7 @@
       "riskFlags": [],
       "priorityScore": 1,
       "priorityTier": "standard",
-      "queueRank": 238,
+      "queueRank": 245,
       "reviewStatus": "approved-browser-visual-review",
       "requiredChecks": [
         "Prüfe in Dreiviertel-, Vorder- und Rückansicht, ob das Zubehör sichtbar an der Hand statt am Lauf, Körper oder außerhalb der Hand sitzt.",
@@ -13446,7 +13845,7 @@
       "riskFlags": [],
       "priorityScore": 1,
       "priorityTier": "standard",
-      "queueRank": 239,
+      "queueRank": 246,
       "reviewStatus": "approved-browser-visual-review",
       "requiredChecks": [
         "Prüfe in Dreiviertel-, Vorder- und Rückansicht, ob das Zubehör sichtbar an der Hand statt am Lauf, Körper oder außerhalb der Hand sitzt.",
@@ -13501,7 +13900,7 @@
       "riskFlags": [],
       "priorityScore": 1,
       "priorityTier": "standard",
-      "queueRank": 240,
+      "queueRank": 247,
       "reviewStatus": "approved-browser-visual-review",
       "requiredChecks": [
         "Prüfe in Dreiviertel-, Vorder- und Rückansicht, ob das Zubehör sichtbar an der Hand statt am Lauf, Körper oder außerhalb der Hand sitzt.",
@@ -13556,7 +13955,7 @@
       "riskFlags": [],
       "priorityScore": 1,
       "priorityTier": "standard",
-      "queueRank": 241,
+      "queueRank": 248,
       "reviewStatus": "approved-browser-visual-review",
       "requiredChecks": [
         "Prüfe in Dreiviertel-, Vorder- und Rückansicht, ob das Zubehör sichtbar an der Hand statt am Lauf, Körper oder außerhalb der Hand sitzt.",
@@ -13611,7 +14010,7 @@
       "riskFlags": [],
       "priorityScore": 1,
       "priorityTier": "standard",
-      "queueRank": 242,
+      "queueRank": 249,
       "reviewStatus": "approved-browser-visual-review",
       "requiredChecks": [
         "Prüfe in Dreiviertel-, Vorder- und Rückansicht, ob das Zubehör sichtbar an der Hand statt am Lauf, Körper oder außerhalb der Hand sitzt.",
@@ -13666,7 +14065,7 @@
       "riskFlags": [],
       "priorityScore": 1,
       "priorityTier": "standard",
-      "queueRank": 243,
+      "queueRank": 250,
       "reviewStatus": "approved-browser-visual-review",
       "requiredChecks": [
         "Prüfe in Dreiviertel-, Vorder- und Rückansicht, ob das Zubehör sichtbar an der Hand statt am Lauf, Körper oder außerhalb der Hand sitzt.",
@@ -13721,7 +14120,7 @@
       "riskFlags": [],
       "priorityScore": 1,
       "priorityTier": "standard",
-      "queueRank": 244,
+      "queueRank": 251,
       "reviewStatus": "approved-browser-visual-review",
       "requiredChecks": [
         "Prüfe in Dreiviertel-, Vorder- und Rückansicht, ob das Zubehör sichtbar an der Hand statt am Lauf, Körper oder außerhalb der Hand sitzt.",
@@ -13776,7 +14175,7 @@
       "riskFlags": [],
       "priorityScore": 1,
       "priorityTier": "standard",
-      "queueRank": 245,
+      "queueRank": 252,
       "reviewStatus": "approved-browser-visual-review",
       "requiredChecks": [
         "Prüfe in Dreiviertel-, Vorder- und Rückansicht, ob das Zubehör sichtbar an der Hand statt am Lauf, Körper oder außerhalb der Hand sitzt.",
@@ -13831,7 +14230,7 @@
       "riskFlags": [],
       "priorityScore": 1,
       "priorityTier": "standard",
-      "queueRank": 246,
+      "queueRank": 253,
       "reviewStatus": "approved-browser-visual-review",
       "requiredChecks": [
         "Prüfe in Dreiviertel-, Vorder- und Rückansicht, ob das Zubehör sichtbar an der Hand statt am Lauf, Körper oder außerhalb der Hand sitzt.",
@@ -13886,7 +14285,7 @@
       "riskFlags": [],
       "priorityScore": 1,
       "priorityTier": "standard",
-      "queueRank": 247,
+      "queueRank": 254,
       "reviewStatus": "approved-browser-visual-review",
       "requiredChecks": [
         "Prüfe in Dreiviertel-, Vorder- und Rückansicht, ob das Zubehör sichtbar an der Hand statt am Lauf, Körper oder außerhalb der Hand sitzt.",
@@ -13941,7 +14340,7 @@
       "riskFlags": [],
       "priorityScore": 1,
       "priorityTier": "standard",
-      "queueRank": 248,
+      "queueRank": 255,
       "reviewStatus": "approved-browser-visual-review",
       "requiredChecks": [
         "Prüfe in Dreiviertel-, Vorder- und Rückansicht, ob das Zubehör sichtbar an der Hand statt am Lauf, Körper oder außerhalb der Hand sitzt.",
@@ -13996,7 +14395,7 @@
       "riskFlags": [],
       "priorityScore": 1,
       "priorityTier": "standard",
-      "queueRank": 249,
+      "queueRank": 256,
       "reviewStatus": "approved-browser-visual-review",
       "requiredChecks": [
         "Prüfe in Dreiviertel-, Vorder- und Rückansicht, ob das Zubehör sichtbar an der Hand statt am Lauf, Körper oder außerhalb der Hand sitzt.",
@@ -14051,7 +14450,7 @@
       "riskFlags": [],
       "priorityScore": 1,
       "priorityTier": "standard",
-      "queueRank": 250,
+      "queueRank": 257,
       "reviewStatus": "approved-browser-visual-review",
       "requiredChecks": [
         "Prüfe in Dreiviertel-, Vorder- und Rückansicht, ob das Zubehör sichtbar an der Hand statt am Lauf, Körper oder außerhalb der Hand sitzt.",
@@ -14106,7 +14505,7 @@
       "riskFlags": [],
       "priorityScore": 1,
       "priorityTier": "standard",
-      "queueRank": 251,
+      "queueRank": 258,
       "reviewStatus": "approved-browser-visual-review",
       "requiredChecks": [
         "Prüfe in Dreiviertel-, Vorder- und Rückansicht, ob das Zubehör sichtbar an der Hand statt am Lauf, Körper oder außerhalb der Hand sitzt.",
@@ -14161,7 +14560,7 @@
       "riskFlags": [],
       "priorityScore": 1,
       "priorityTier": "standard",
-      "queueRank": 252,
+      "queueRank": 259,
       "reviewStatus": "approved-browser-visual-review",
       "requiredChecks": [
         "Prüfe in Dreiviertel-, Vorder- und Rückansicht, ob das Zubehör sichtbar an der Hand statt am Lauf, Körper oder außerhalb der Hand sitzt.",
@@ -14216,7 +14615,7 @@
       "riskFlags": [],
       "priorityScore": 1,
       "priorityTier": "standard",
-      "queueRank": 253,
+      "queueRank": 260,
       "reviewStatus": "approved-browser-visual-review",
       "requiredChecks": [
         "Prüfe in Dreiviertel-, Vorder- und Rückansicht, ob das Zubehör sichtbar an der Hand statt am Lauf, Körper oder außerhalb der Hand sitzt.",
@@ -14271,7 +14670,7 @@
       "riskFlags": [],
       "priorityScore": 1,
       "priorityTier": "standard",
-      "queueRank": 254,
+      "queueRank": 261,
       "reviewStatus": "approved-browser-visual-review",
       "requiredChecks": [
         "Prüfe in Dreiviertel-, Vorder- und Rückansicht, ob das Zubehör sichtbar an der Hand statt am Lauf, Körper oder außerhalb der Hand sitzt.",
@@ -14326,7 +14725,7 @@
       "riskFlags": [],
       "priorityScore": 1,
       "priorityTier": "standard",
-      "queueRank": 255,
+      "queueRank": 262,
       "reviewStatus": "approved-browser-visual-review",
       "requiredChecks": [
         "Prüfe in Dreiviertel-, Vorder- und Rückansicht, ob das Zubehör sichtbar an der Hand statt am Lauf, Körper oder außerhalb der Hand sitzt.",
@@ -14381,7 +14780,7 @@
       "riskFlags": [],
       "priorityScore": 1,
       "priorityTier": "standard",
-      "queueRank": 256,
+      "queueRank": 263,
       "reviewStatus": "approved-browser-visual-review",
       "requiredChecks": [
         "Prüfe in Dreiviertel-, Vorder- und Rückansicht, ob das Zubehör sichtbar an der Hand statt am Lauf, Körper oder außerhalb der Hand sitzt.",
@@ -14436,7 +14835,7 @@
       "riskFlags": [],
       "priorityScore": 1,
       "priorityTier": "standard",
-      "queueRank": 257,
+      "queueRank": 264,
       "reviewStatus": "approved-browser-visual-review",
       "requiredChecks": [
         "Prüfe in Dreiviertel-, Vorder- und Rückansicht, ob das Zubehör sichtbar an der Hand statt am Lauf, Körper oder außerhalb der Hand sitzt.",
@@ -14491,7 +14890,7 @@
       "riskFlags": [],
       "priorityScore": 1,
       "priorityTier": "standard",
-      "queueRank": 258,
+      "queueRank": 265,
       "reviewStatus": "approved-browser-visual-review",
       "requiredChecks": [
         "Prüfe in Dreiviertel-, Vorder- und Rückansicht, ob das Zubehör sichtbar an der Hand statt am Lauf, Körper oder außerhalb der Hand sitzt.",
@@ -14546,7 +14945,7 @@
       "riskFlags": [],
       "priorityScore": 1,
       "priorityTier": "standard",
-      "queueRank": 259,
+      "queueRank": 266,
       "reviewStatus": "approved-browser-visual-review",
       "requiredChecks": [
         "Prüfe in Dreiviertel-, Vorder- und Rückansicht, ob das Zubehör sichtbar an der Hand statt am Lauf, Körper oder außerhalb der Hand sitzt.",
@@ -14601,7 +15000,7 @@
       "riskFlags": [],
       "priorityScore": 1,
       "priorityTier": "standard",
-      "queueRank": 260,
+      "queueRank": 267,
       "reviewStatus": "approved-browser-visual-review",
       "requiredChecks": [
         "Prüfe in Dreiviertel-, Vorder- und Rückansicht, ob das Zubehör sichtbar an der Hand statt am Lauf, Körper oder außerhalb der Hand sitzt.",
@@ -14656,7 +15055,7 @@
       "riskFlags": [],
       "priorityScore": 1,
       "priorityTier": "standard",
-      "queueRank": 261,
+      "queueRank": 268,
       "reviewStatus": "approved-browser-visual-review",
       "requiredChecks": [
         "Prüfe in Dreiviertel-, Vorder- und Rückansicht, ob das Zubehör sichtbar an der Hand statt am Lauf, Körper oder außerhalb der Hand sitzt.",
@@ -14711,7 +15110,7 @@
       "riskFlags": [],
       "priorityScore": 1,
       "priorityTier": "standard",
-      "queueRank": 262,
+      "queueRank": 269,
       "reviewStatus": "approved-browser-visual-review",
       "requiredChecks": [
         "Prüfe in Dreiviertel-, Vorder- und Rückansicht, ob das Zubehör sichtbar an der Hand statt am Lauf, Körper oder außerhalb der Hand sitzt.",
@@ -14766,7 +15165,7 @@
       "riskFlags": [],
       "priorityScore": 1,
       "priorityTier": "standard",
-      "queueRank": 263,
+      "queueRank": 270,
       "reviewStatus": "approved-browser-visual-review",
       "requiredChecks": [
         "Prüfe in Dreiviertel-, Vorder- und Rückansicht, ob das Zubehör sichtbar an der Hand statt am Lauf, Körper oder außerhalb der Hand sitzt.",
@@ -14821,7 +15220,7 @@
       "riskFlags": [],
       "priorityScore": 1,
       "priorityTier": "standard",
-      "queueRank": 264,
+      "queueRank": 271,
       "reviewStatus": "approved-browser-visual-review",
       "requiredChecks": [
         "Prüfe in Dreiviertel-, Vorder- und Rückansicht, ob das Zubehör sichtbar an der Hand statt am Lauf, Körper oder außerhalb der Hand sitzt.",
@@ -14876,7 +15275,7 @@
       "riskFlags": [],
       "priorityScore": 1,
       "priorityTier": "standard",
-      "queueRank": 265,
+      "queueRank": 272,
       "reviewStatus": "approved-browser-visual-review",
       "requiredChecks": [
         "Prüfe in Dreiviertel-, Vorder- und Rückansicht, ob das Zubehör sichtbar an der Hand statt am Lauf, Körper oder außerhalb der Hand sitzt.",
@@ -14931,7 +15330,7 @@
       "riskFlags": [],
       "priorityScore": 1,
       "priorityTier": "standard",
-      "queueRank": 266,
+      "queueRank": 273,
       "reviewStatus": "approved-browser-visual-review",
       "requiredChecks": [
         "Prüfe in Dreiviertel-, Vorder- und Rückansicht, ob das Zubehör sichtbar an der Hand statt am Lauf, Körper oder außerhalb der Hand sitzt.",
@@ -14986,7 +15385,7 @@
       "riskFlags": [],
       "priorityScore": 1,
       "priorityTier": "standard",
-      "queueRank": 267,
+      "queueRank": 274,
       "reviewStatus": "approved-browser-visual-review",
       "requiredChecks": [
         "Prüfe in Dreiviertel-, Vorder- und Rückansicht, ob das Zubehör sichtbar an der Hand statt am Lauf, Körper oder außerhalb der Hand sitzt.",
@@ -15041,7 +15440,7 @@
       "riskFlags": [],
       "priorityScore": 1,
       "priorityTier": "standard",
-      "queueRank": 268,
+      "queueRank": 275,
       "reviewStatus": "approved-browser-visual-review",
       "requiredChecks": [
         "Prüfe in Dreiviertel-, Vorder- und Rückansicht, ob das Zubehör sichtbar an der Hand statt am Lauf, Körper oder außerhalb der Hand sitzt.",
@@ -15096,7 +15495,7 @@
       "riskFlags": [],
       "priorityScore": 1,
       "priorityTier": "standard",
-      "queueRank": 269,
+      "queueRank": 276,
       "reviewStatus": "approved-browser-visual-review",
       "requiredChecks": [
         "Prüfe in Dreiviertel-, Vorder- und Rückansicht, ob das Zubehör sichtbar an der Hand statt am Lauf, Körper oder außerhalb der Hand sitzt.",
@@ -15151,7 +15550,7 @@
       "riskFlags": [],
       "priorityScore": 1,
       "priorityTier": "standard",
-      "queueRank": 270,
+      "queueRank": 277,
       "reviewStatus": "approved-browser-visual-review",
       "requiredChecks": [
         "Prüfe in Dreiviertel-, Vorder- und Rückansicht, ob das Zubehör sichtbar an der Hand statt am Lauf, Körper oder außerhalb der Hand sitzt.",
@@ -15206,7 +15605,7 @@
       "riskFlags": [],
       "priorityScore": 1,
       "priorityTier": "standard",
-      "queueRank": 271,
+      "queueRank": 278,
       "reviewStatus": "approved-browser-visual-review",
       "requiredChecks": [
         "Prüfe in Dreiviertel-, Vorder- und Rückansicht, ob das Zubehör sichtbar an der Hand statt am Lauf, Körper oder außerhalb der Hand sitzt.",
@@ -15261,7 +15660,7 @@
       "riskFlags": [],
       "priorityScore": 1,
       "priorityTier": "standard",
-      "queueRank": 272,
+      "queueRank": 279,
       "reviewStatus": "approved-browser-visual-review",
       "requiredChecks": [
         "Prüfe in Dreiviertel-, Vorder- und Rückansicht, ob das Zubehör sichtbar an der Hand statt am Lauf, Körper oder außerhalb der Hand sitzt.",
@@ -15316,7 +15715,7 @@
       "riskFlags": [],
       "priorityScore": 1,
       "priorityTier": "standard",
-      "queueRank": 273,
+      "queueRank": 280,
       "reviewStatus": "approved-browser-visual-review",
       "requiredChecks": [
         "Prüfe in Dreiviertel-, Vorder- und Rückansicht, ob das Zubehör sichtbar an der Hand statt am Lauf, Körper oder außerhalb der Hand sitzt.",
@@ -15371,7 +15770,7 @@
       "riskFlags": [],
       "priorityScore": 1,
       "priorityTier": "standard",
-      "queueRank": 274,
+      "queueRank": 281,
       "reviewStatus": "approved-browser-visual-review",
       "requiredChecks": [
         "Prüfe in Dreiviertel-, Vorder- und Rückansicht, ob das Zubehör sichtbar an der Hand statt am Lauf, Körper oder außerhalb der Hand sitzt.",
@@ -15426,7 +15825,7 @@
       "riskFlags": [],
       "priorityScore": 1,
       "priorityTier": "standard",
-      "queueRank": 275,
+      "queueRank": 282,
       "reviewStatus": "approved-browser-visual-review",
       "requiredChecks": [
         "Prüfe in Dreiviertel-, Vorder- und Rückansicht, ob das Zubehör sichtbar an der Hand statt am Lauf, Körper oder außerhalb der Hand sitzt.",
@@ -15481,7 +15880,7 @@
       "riskFlags": [],
       "priorityScore": 1,
       "priorityTier": "standard",
-      "queueRank": 276,
+      "queueRank": 283,
       "reviewStatus": "approved-browser-visual-review",
       "requiredChecks": [
         "Prüfe in Dreiviertel-, Vorder- und Rückansicht, ob das Zubehör sichtbar an der Hand statt am Lauf, Körper oder außerhalb der Hand sitzt.",
@@ -15536,7 +15935,7 @@
       "riskFlags": [],
       "priorityScore": 1,
       "priorityTier": "standard",
-      "queueRank": 277,
+      "queueRank": 284,
       "reviewStatus": "approved-browser-visual-review",
       "requiredChecks": [
         "Prüfe in Dreiviertel-, Vorder- und Rückansicht, ob das Zubehör sichtbar an der Hand statt am Lauf, Körper oder außerhalb der Hand sitzt.",
@@ -15591,7 +15990,7 @@
       "riskFlags": [],
       "priorityScore": 1,
       "priorityTier": "standard",
-      "queueRank": 278,
+      "queueRank": 285,
       "reviewStatus": "approved-browser-visual-review",
       "requiredChecks": [
         "Prüfe in Dreiviertel-, Vorder- und Rückansicht, ob das Zubehör sichtbar an der Hand statt am Lauf, Körper oder außerhalb der Hand sitzt.",
@@ -15646,7 +16045,7 @@
       "riskFlags": [],
       "priorityScore": 1,
       "priorityTier": "standard",
-      "queueRank": 279,
+      "queueRank": 286,
       "reviewStatus": "approved-browser-visual-review",
       "requiredChecks": [
         "Prüfe in Dreiviertel-, Vorder- und Rückansicht, ob das Zubehör sichtbar an der Hand statt am Lauf, Körper oder außerhalb der Hand sitzt.",
@@ -15701,7 +16100,7 @@
       "riskFlags": [],
       "priorityScore": 1,
       "priorityTier": "standard",
-      "queueRank": 280,
+      "queueRank": 287,
       "reviewStatus": "approved-browser-visual-review",
       "requiredChecks": [
         "Prüfe in Dreiviertel-, Vorder- und Rückansicht, ob das Zubehör sichtbar an der Hand statt am Lauf, Körper oder außerhalb der Hand sitzt.",
@@ -15756,7 +16155,7 @@
       "riskFlags": [],
       "priorityScore": 1,
       "priorityTier": "standard",
-      "queueRank": 281,
+      "queueRank": 288,
       "reviewStatus": "approved-browser-visual-review",
       "requiredChecks": [
         "Prüfe in Dreiviertel-, Vorder- und Rückansicht, ob das Zubehör sichtbar an der Hand statt am Lauf, Körper oder außerhalb der Hand sitzt.",
@@ -15811,7 +16210,7 @@
       "riskFlags": [],
       "priorityScore": 1,
       "priorityTier": "standard",
-      "queueRank": 282,
+      "queueRank": 289,
       "reviewStatus": "approved-browser-visual-review",
       "requiredChecks": [
         "Prüfe in Dreiviertel-, Vorder- und Rückansicht, ob das Zubehör sichtbar an der Hand statt am Lauf, Körper oder außerhalb der Hand sitzt.",
@@ -15866,7 +16265,7 @@
       "riskFlags": [],
       "priorityScore": 1,
       "priorityTier": "standard",
-      "queueRank": 283,
+      "queueRank": 290,
       "reviewStatus": "approved-browser-visual-review",
       "requiredChecks": [
         "Prüfe in Dreiviertel-, Vorder- und Rückansicht, ob das Zubehör sichtbar an der Hand statt am Lauf, Körper oder außerhalb der Hand sitzt.",
@@ -15921,7 +16320,7 @@
       "riskFlags": [],
       "priorityScore": 1,
       "priorityTier": "standard",
-      "queueRank": 284,
+      "queueRank": 291,
       "reviewStatus": "approved-browser-visual-review",
       "requiredChecks": [
         "Prüfe in Dreiviertel-, Vorder- und Rückansicht, ob das Zubehör sichtbar an der Hand statt am Lauf, Körper oder außerhalb der Hand sitzt.",
@@ -15976,7 +16375,7 @@
       "riskFlags": [],
       "priorityScore": 1,
       "priorityTier": "standard",
-      "queueRank": 285,
+      "queueRank": 292,
       "reviewStatus": "approved-browser-visual-review",
       "requiredChecks": [
         "Prüfe in Dreiviertel-, Vorder- und Rückansicht, ob das Zubehör sichtbar an der Hand statt am Lauf, Körper oder außerhalb der Hand sitzt.",
@@ -16031,7 +16430,7 @@
       "riskFlags": [],
       "priorityScore": 1,
       "priorityTier": "standard",
-      "queueRank": 286,
+      "queueRank": 293,
       "reviewStatus": "approved-browser-visual-review",
       "requiredChecks": [
         "Prüfe in Dreiviertel-, Vorder- und Rückansicht, ob das Zubehör sichtbar an der Hand statt am Lauf, Körper oder außerhalb der Hand sitzt.",
@@ -16086,7 +16485,7 @@
       "riskFlags": [],
       "priorityScore": 1,
       "priorityTier": "standard",
-      "queueRank": 287,
+      "queueRank": 294,
       "reviewStatus": "approved-browser-visual-review",
       "requiredChecks": [
         "Prüfe in Dreiviertel-, Vorder- und Rückansicht, ob das Zubehör sichtbar an der Hand statt am Lauf, Körper oder außerhalb der Hand sitzt.",
@@ -16141,7 +16540,7 @@
       "riskFlags": [],
       "priorityScore": 1,
       "priorityTier": "standard",
-      "queueRank": 288,
+      "queueRank": 295,
       "reviewStatus": "approved-browser-visual-review",
       "requiredChecks": [
         "Prüfe in Dreiviertel-, Vorder- und Rückansicht, ob das Zubehör sichtbar an der Hand statt am Lauf, Körper oder außerhalb der Hand sitzt.",
@@ -16196,7 +16595,7 @@
       "riskFlags": [],
       "priorityScore": 1,
       "priorityTier": "standard",
-      "queueRank": 289,
+      "queueRank": 296,
       "reviewStatus": "approved-browser-visual-review",
       "requiredChecks": [
         "Prüfe in Dreiviertel-, Vorder- und Rückansicht, ob das Zubehör sichtbar an der Hand statt am Lauf, Körper oder außerhalb der Hand sitzt.",
@@ -16251,7 +16650,7 @@
       "riskFlags": [],
       "priorityScore": 1,
       "priorityTier": "standard",
-      "queueRank": 290,
+      "queueRank": 297,
       "reviewStatus": "approved-browser-visual-review",
       "requiredChecks": [
         "Prüfe in Dreiviertel-, Vorder- und Rückansicht, ob das Zubehör sichtbar an der Hand statt am Lauf, Körper oder außerhalb der Hand sitzt.",
@@ -16306,7 +16705,7 @@
       "riskFlags": [],
       "priorityScore": 1,
       "priorityTier": "standard",
-      "queueRank": 291,
+      "queueRank": 298,
       "reviewStatus": "approved-browser-visual-review",
       "requiredChecks": [
         "Prüfe in Dreiviertel-, Vorder- und Rückansicht, ob das Zubehör sichtbar an der Hand statt am Lauf, Körper oder außerhalb der Hand sitzt.",
@@ -16361,7 +16760,7 @@
       "riskFlags": [],
       "priorityScore": 1,
       "priorityTier": "standard",
-      "queueRank": 292,
+      "queueRank": 299,
       "reviewStatus": "approved-browser-visual-review",
       "requiredChecks": [
         "Prüfe in Dreiviertel-, Vorder- und Rückansicht, ob das Zubehör sichtbar an der Hand statt am Lauf, Körper oder außerhalb der Hand sitzt.",
@@ -16416,7 +16815,7 @@
       "riskFlags": [],
       "priorityScore": 1,
       "priorityTier": "standard",
-      "queueRank": 293,
+      "queueRank": 300,
       "reviewStatus": "approved-browser-visual-review",
       "requiredChecks": [
         "Prüfe in Dreiviertel-, Vorder- und Rückansicht, ob das Zubehör sichtbar an der Hand statt am Lauf, Körper oder außerhalb der Hand sitzt.",
@@ -16471,7 +16870,7 @@
       "riskFlags": [],
       "priorityScore": 1,
       "priorityTier": "standard",
-      "queueRank": 294,
+      "queueRank": 301,
       "reviewStatus": "approved-browser-visual-review",
       "requiredChecks": [
         "Prüfe in Dreiviertel-, Vorder- und Rückansicht, ob das Zubehör sichtbar an der Hand statt am Lauf, Körper oder außerhalb der Hand sitzt.",
@@ -16526,7 +16925,7 @@
       "riskFlags": [],
       "priorityScore": 1,
       "priorityTier": "standard",
-      "queueRank": 295,
+      "queueRank": 302,
       "reviewStatus": "approved-browser-visual-review",
       "requiredChecks": [
         "Prüfe in Dreiviertel-, Vorder- und Rückansicht, ob das Zubehör sichtbar an der Hand statt am Lauf, Körper oder außerhalb der Hand sitzt.",
@@ -16581,7 +16980,7 @@
       "riskFlags": [],
       "priorityScore": 1,
       "priorityTier": "standard",
-      "queueRank": 296,
+      "queueRank": 303,
       "reviewStatus": "approved-browser-visual-review",
       "requiredChecks": [
         "Prüfe in Dreiviertel-, Vorder- und Rückansicht, ob das Zubehör sichtbar an der Hand statt am Lauf, Körper oder außerhalb der Hand sitzt.",
@@ -16636,7 +17035,7 @@
       "riskFlags": [],
       "priorityScore": 1,
       "priorityTier": "standard",
-      "queueRank": 297,
+      "queueRank": 304,
       "reviewStatus": "approved-browser-visual-review",
       "requiredChecks": [
         "Prüfe in Dreiviertel-, Vorder- und Rückansicht, ob das Zubehör sichtbar an der Hand statt am Lauf, Körper oder außerhalb der Hand sitzt.",
@@ -16649,14 +17048,14 @@
     }
   ],
   "summary": {
-    "entryCount": 297,
+    "entryCount": 304,
     "pendingReviewCount": 0,
-    "approvedReviewCount": 297,
-    "nonDefaultOrientationCount": 130,
-    "longAccessoryExtentCount": 25,
+    "approvedReviewCount": 304,
+    "nonDefaultOrientationCount": 136,
+    "longAccessoryExtentCount": 27,
     "multipleGripCandidateCount": 1,
-    "highPriorityCount": 9,
-    "mediumPriorityCount": 138
+    "highPriorityCount": 11,
+    "mediumPriorityCount": 142
   },
   "limitations": [
     "Die Warteschlange beweist keine physische Passform und keine visuell richtige Ausrichtung.",

@@ -40,7 +40,6 @@ class AccessoryPlacementQaTest(unittest.TestCase):
     def test_non_hand_held_semantics_and_collisions_recommend_block(self) -> None:
         incompatible_names = (
             "Equipment Scabbard",
-            "Equipment Handcuffs Long [Batman]",
             "Tap 1 x 2 with Dual Handles, Small",
             "Sports Soccer Minifig Stand with Spring and Green Pin [Complete Assembly]",
         )

@@ -141,6 +141,9 @@ const expectedRemainingUnique = new Set([
   ...placementReviews.reviews
     .filter(({ decision, rebrickablePartNum }) => decision === "blocked" && remainingUnique.has(rebrickablePartNum))
     .map(({ rebrickablePartNum }) => rebrickablePartNum),
+  ...placementReviews.reviews
+    .filter(({ decision, rebrickablePartNum }) => decision === "approved" && remainingUnique.has(rebrickablePartNum))
+    .map(({ rebrickablePartNum }) => rebrickablePartNum),
   ...intentReviews.reviews
     .filter(({ rebrickablePartNum }) => remainingUnique.has(rebrickablePartNum))
     .map(({ rebrickablePartNum }) => rebrickablePartNum),

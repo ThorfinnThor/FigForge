@@ -414,10 +414,10 @@ describe("FF-14 responsive catalog workspace", () => {
     for (const partNum of blocked) expect(entryFor(partNum)).toBeUndefined();
   });
 
-  it("uses unique pinned snap evidence and semantic review to resolve two multi-cylinder accessories", async () => {
+  it("uses unique pinned snap evidence and semantic review to resolve three multi-cylinder accessories", async () => {
     const accessories = await loadCatalogParts("handAccessory");
-    const passed = ["61190f", "95052"];
-    const blocked = ["56619", "30092", "4341", "10172", "10172pr0001", "89801"];
+    const passed = ["61190f", "95052", "56619"];
+    const blocked = ["30092", "4341", "10172", "10172pr0001", "89801"];
     const entryFor = (partNum: string) => {
       const part = accessories.find(({ rebrickablePartNum }) => rebrickablePartNum === partNum);
       const component = part ? builderComponentForCatalogPart(part) : undefined;
@@ -433,9 +433,9 @@ describe("FF-14 responsive catalog workspace", () => {
     const passed = [
       "37", "59", "4342", "4449", "4499", "18787", "18788", "18789", "18791", "23986",
       "30173a", "30173b", "30229", "38014", "43887", "48495", "76764", "79741",
-      "30193", "61199", "87989", "93055", "93216", "93247", "93559", "95673",
+      "30193", "61199", "87989", "93055", "93216", "93247", "93559", "95673", "71342", "56619",
     ];
-    const blocked = ["71342", "56619", "13770", "24324", "30488c01", "6936"];
+    const blocked = ["13770", "24324", "30488c01", "6936"];
     const entryFor = (partNum: string) => {
       const part = accessories.find(({ rebrickablePartNum }) => rebrickablePartNum === partNum);
       const component = part ? builderComponentForCatalogPart(part) : undefined;

@@ -261,6 +261,13 @@ const readOptionalStringFlag = (name: string): string | null => {
   return index < 0 ? null : process.argv[index + 1] ?? null;
 };
 
+type CandidateManifestEntry = {
+  componentId: string;
+  rebrickablePartNum: string;
+  name: string;
+  candidateIndex: number;
+};
+
 const escapeXml = (value: string): string => value
   .replaceAll("&", "&amp;")
   .replaceAll("<", "&lt;")
@@ -340,6 +347,15 @@ const run = async (): Promise<void> => {
   const batchSize = readPositiveIntegerFlag("--size", DEFAULT_BATCH_SIZE);
   const outputDirectory = resolve(root, readStringFlag("--output", "artifacts/accessory-review"));
   const partsFile = readOptionalStringFlag("--parts-file");
+  const candidateManifestFile = readOptionalStringFlag("--candidate-manifest");
+  const requestedViews = readStringFlag("--views", "three-quarter,front,back")
+    .split(",")
+    .map((view) => view.trim())
+    .filter((view) => view.length > 0);
+  const supportedViews = ["three-quarter", "front", "back"] as const;
+  if (requestedViews.some((view) => !supportedViews.includes(view as typeof supportedViews[number]))) {
+    throw new Error("--views only supports three-quarter,front,back");
+  }
   const queue = ldrawAccessoryOrientationReviewSchema.parse(JSON.parse(await readFile(queuePath, "utf8")) as unknown);
   const requestedPartNums = partsFile
     ? (await readFile(resolve(root, partsFile), "utf8"))
@@ -347,9 +363,23 @@ const run = async (): Promise<void> => {
       .map((line) => line.trim())
       .filter((line) => line.length > 0 && !line.startsWith("#"))
     : null;
-  const groups = requestedPartNums
-    ? selectRequestedReviewGroups(createPendingReviewGroups(queue.entries), requestedPartNums)
-    : createRiskReviewGroups(queue.entries);
+  const candidateEntries = candidateManifestFile
+    ? JSON.parse(await readFile(resolve(root, candidateManifestFile), "utf8")) as CandidateManifestEntry[]
+    : null;
+  const groups: ReviewGroup[] = candidateEntries
+    ? candidateEntries.map((entry) => {
+      const representative = {
+        ...entry,
+        componentId: entry.componentId,
+        name: `${entry.name} · candidate ${entry.candidateIndex}`,
+        priorityTier: "candidate-review",
+        riskFlags: [],
+      } as unknown as ReviewEntry;
+      return { representative, members: [representative] };
+    })
+    : requestedPartNums
+      ? selectRequestedReviewGroups(createPendingReviewGroups(queue.entries), requestedPartNums)
+      : createRiskReviewGroups(queue.entries);
   await mkdir(outputDirectory, { recursive: true });
   if (partsFile && requestedPartNums?.length === 0) {
     const manifest = {
@@ -399,7 +429,8 @@ const run = async (): Promise<void> => {
         `synchronized preview for ${entry.rebrickablePartNum}`,
       );
       const tiles: Buffer[] = [];
-      for (const [viewIndex, view] of ["three-quarter", "front", "back"].entries()) {
+      for (const view of requestedViews) {
+        const viewIndex = supportedViews.indexOf(view as typeof supportedViews[number]);
         const selected = await evaluate<boolean>(client, `(() => {
           const button = document.querySelectorAll('.camera-button')[${viewIndex}];
           if (!(button instanceof HTMLButtonElement) || button.disabled) return false;
@@ -433,7 +464,9 @@ const run = async (): Promise<void> => {
       manualRiskPartCount: queue.entries.filter((entry) =>
         entry.reviewStatus === "pending-human-visual-review" && entry.riskFlags.length > 0).length,
       manualRiskRepresentativeCount: groups.length,
-      selectionSource: partsFile ? resolve(root, partsFile) : "all-pending-risk-groups",
+      selectionSource: candidateManifestFile
+        ? resolve(root, candidateManifestFile)
+        : partsFile ? resolve(root, partsFile) : "all-pending-risk-groups",
       entries: captured.map(({ group }) => ({
         representativePartNum: group.representative.rebrickablePartNum,
         priorityTier: group.representative.priorityTier,

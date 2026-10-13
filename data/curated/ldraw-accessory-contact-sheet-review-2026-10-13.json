@@ -10,10 +10,6 @@
   "defaultNote": "Three-view CI contact-sheet inspection confirmed that the detected grip is seated in the right hand and the accessory remains outside the protected head and torso geometry in the reviewed placement.",
   "blockedRepresentatives": [
     {
-      "rebrickablePartNum": "56619",
-      "note": "The long handcuff assembly arcs upward across the face in the three-quarter view and obscures facial geometry. It remains blocked until a visually reviewed alternative orientation exists."
-    },
-    {
       "rebrickablePartNum": "13770",
       "note": "The complete dual-handle tap is a building fixture rather than a plausible one-hand prop; the detected cylinder leaves the tap body and mounting base floating across the figure."
     },
@@ -28,6 +24,13 @@
     {
       "rebrickablePartNum": "6936",
       "note": "The complete dual-handle tap is a building fixture rather than a plausible one-hand prop; the detected cylinder leaves the tap body and mounting base floating across the figure."
+    }
+  ],
+  "subsequentCorrections": [
+    {
+      "rebrickablePartNum": "56619",
+      "selectedOrientationIndex": 3,
+      "note": "A follow-up browser comparison found a valid alternative that places the grip at the chain end and lets the shackles hang below the hand without covering the face."
     }
   ]
 }

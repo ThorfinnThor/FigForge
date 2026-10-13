@@ -445,12 +445,11 @@
       "orientationCandidatesTested": 152,
       "selectedGripCandidateIndex": 0,
       "selectedOrientationIndex": 4,
-      "decision": "blocked",
-      "reasonCode": "visually-implausible-placement",
-      "reviewedAt": "2026-10-12",
+      "decision": "approved",
+      "reviewedAt": "2026-10-13",
       "reviewer": "Codex Sol browser QA",
-      "evidenceReference": "three-quarter,front,back CI contact-sheet inspection",
-      "note": "The selected collision-free orientation places the club head directly across and in front of the face and torso. It remains blocked until a visually reviewed alternative orientation exists."
+      "evidenceReference": "interactive three-quarter browser comparison of collision-free candidates",
+      "note": "Candidate 4 places the narrow handle through the right hand while keeping the oversized troll-club head outside the grip."
     },
     {
       "rebrickablePartNum": "13808",
@@ -461,13 +460,12 @@
       "gripCandidatesTested": 1,
       "orientationCandidatesTested": 72,
       "selectedGripCandidateIndex": 0,
-      "selectedOrientationIndex": 2,
-      "decision": "blocked",
-      "reasonCode": "visually-implausible-placement",
-      "reviewedAt": "2026-10-12",
+      "selectedOrientationIndex": 7,
+      "decision": "approved",
+      "reviewedAt": "2026-10-13",
       "reviewer": "Codex Sol browser QA",
-      "evidenceReference": "three-quarter,front,back CI contact-sheet inspection",
-      "note": "The selected collision-free orientation holds the saxophone horizontally at the waist with the mouthpiece away from the face. It remains blocked until a visually reviewed alternative orientation exists."
+      "evidenceReference": "interactive three-quarter browser comparison of candidates 2, 3, and 7",
+      "note": "Candidate 7 places the hand around the saxophone grip, with the bell pointing down and the mouthpiece pointing up toward the figure."
     },
     {
       "rebrickablePartNum": "13808pr0001",
@@ -478,13 +476,12 @@
       "gripCandidatesTested": 1,
       "orientationCandidatesTested": 72,
       "selectedGripCandidateIndex": 0,
-      "selectedOrientationIndex": 2,
-      "decision": "blocked",
-      "reasonCode": "visually-implausible-placement",
-      "reviewedAt": "2026-10-12",
+      "selectedOrientationIndex": 7,
+      "decision": "approved",
+      "reviewedAt": "2026-10-13",
       "reviewer": "Codex Sol browser QA",
-      "evidenceReference": "same rejected geometry and transform as 13808; three-quarter,front,back CI contact-sheet inspection",
-      "note": "This printed variant reuses the same visually implausible waist-level horizontal placement as base part 13808 and is blocked with it."
+      "evidenceReference": "same geometry and visually approved candidate 7 as base part 13808",
+      "note": "The printed variant reuses the approved base saxophone grip and orientation."
     },
     {
       "rebrickablePartNum": "2542",
@@ -639,13 +636,12 @@
       "gripCandidatesTested": 1,
       "orientationCandidatesTested": 1064,
       "selectedGripCandidateIndex": 0,
-      "selectedOrientationIndex": 0,
-      "decision": "blocked",
-      "reasonCode": "visually-implausible-placement",
-      "reviewedAt": "2026-10-12",
+      "selectedOrientationIndex": 1,
+      "decision": "approved",
+      "reviewedAt": "2026-10-13",
       "reviewer": "Codex Sol browser QA",
-      "evidenceReference": "three-quarter,front,back CI contact-sheet inspection",
-      "note": "The selected collision-free orientation places the four-blade spear head directly across the face and upper torso. It remains blocked until a visually reviewed alternative orientation exists."
+      "evidenceReference": "interactive three-quarter browser comparison of candidates 0 and 1",
+      "note": "Candidate 1 keeps the hand on the long shaft and presents the four-blade spear head without intersecting the face or torso."
     },
     {
       "rebrickablePartNum": "4496",
@@ -720,13 +716,12 @@
       "gripCandidatesTested": 1,
       "orientationCandidatesTested": 72,
       "selectedGripCandidateIndex": 0,
-      "selectedOrientationIndex": 2,
-      "decision": "blocked",
-      "reasonCode": "visually-implausible-placement",
-      "reviewedAt": "2026-10-12",
+      "selectedOrientationIndex": 7,
+      "decision": "approved",
+      "reviewedAt": "2026-10-13",
       "reviewer": "Codex Sol browser QA",
-      "evidenceReference": "three-quarter,front,back CI contact-sheet inspection",
-      "note": "The selected collision-free orientation holds the bugle horizontally at waist height with the mouthpiece away from the face. It remains blocked until a visually reviewed alternative orientation exists."
+      "evidenceReference": "interactive three-quarter browser comparison of candidates 3 and 7",
+      "note": "Candidate 7 places the hand on the bugle tube while the bell hangs below and remains clear of the legs and torso."
     },
     {
       "rebrickablePartNum": "87585",
@@ -946,12 +941,11 @@
       "orientationCandidatesTested": 56,
       "selectedGripCandidateIndex": 0,
       "selectedOrientationIndex": 0,
-      "decision": "blocked",
-      "reasonCode": "visually-implausible-placement",
-      "reviewedAt": "2026-10-12",
+      "decision": "approved",
+      "reviewedAt": "2026-10-13",
       "reviewer": "Codex Sol browser QA",
-      "evidenceReference": "three-quarter,front,back CI contact-sheet inspection",
-      "note": "The selected collision-free orientation places the spiked flail head directly in front of the face and upper torso. It remains blocked until a visually reviewed alternative orientation exists."
+      "evidenceReference": "interactive three-quarter browser comparison of candidates 0 and 3",
+      "note": "Candidate 0 keeps the hand on the terminal grip segment while the flail chain and spiked head extend outward without covering the face."
     },
     {
       "rebrickablePartNum": "61975",
@@ -1842,13 +1836,12 @@
       "gripCandidatesTested": 1,
       "orientationCandidatesTested": 72,
       "selectedGripCandidateIndex": 0,
-      "selectedOrientationIndex": 1,
-      "decision": "blocked",
-      "reasonCode": "visually-implausible-placement",
+      "selectedOrientationIndex": 3,
+      "decision": "approved",
       "reviewedAt": "2026-10-13",
       "reviewer": "Codex Sol browser QA",
-      "evidenceReference": "three-quarter,front,back complete CI contact-sheet inspection (PR #92 artifact complete-accessory-review-contact-sheets)",
-      "note": "The long handcuff assembly arcs upward across the face in the three-quarter view and obscures facial geometry. It remains blocked until a visually reviewed alternative orientation exists."
+      "evidenceReference": "interactive three-quarter browser comparison of candidates 1 and 3",
+      "note": "Candidate 3 places the hand on the chain end and lets the long shackles hang below the hand instead of arcing across the face."
     },
     {
       "rebrickablePartNum": "59229",
