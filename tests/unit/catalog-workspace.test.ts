@@ -81,7 +81,8 @@ describe("FF-14 responsive catalog workspace", () => {
     expect(viewportSource).toContain("onClick={onBuyParts}");
     expect(viewportSource).toContain('statusTone === "danger"');
     expect(viewportSource).toContain('data-scene-state={sceneState}');
-    expect(viewportSource).toContain('data-selection-state={sceneState === "ready" && !selectionError ? "synchronized" : "pending"}');
+    expect(viewportSource).toContain('data-selection-state={selectionSynchronized && !selectionError ? "synchronized" : "pending"}');
+    expect(viewportSource).toContain('className="viewport-loading" role="status"');
     expect(viewportSource).not.toContain('className="scene-details"');
     expect(viewportSource).toMatch(/const retrySelection[\s\S]+setSceneRevision/gu);
     expect(viewportSource).not.toContain("Catalog model retry failed");

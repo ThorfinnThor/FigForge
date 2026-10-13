@@ -432,7 +432,16 @@ const testMountedMobilePurchaseFlow = async (client: CdpClient, origin: string):
     "document.querySelector('#mobile-tab-figure')?.getAttribute('aria-selected') === 'true'",
     "mobile figure panel",
   );
-  await waitFor(client, "Boolean(document.querySelector('.scene-copy__actions button'))", "mobile purchase action");
+  await waitFor(
+    client,
+    `Boolean([...document.querySelectorAll('.scene-copy__actions button')].find((candidate) =>
+      ['Teile kaufen', 'Buy parts'].includes(candidate.textContent?.trim() ?? '') &&
+      candidate instanceof HTMLButtonElement &&
+      !candidate.disabled
+    ))`,
+    "synchronized mobile purchase action",
+    60_000,
+  );
   const opened = await evaluate<boolean>(client, `(() => {
     const button = [...document.querySelectorAll('.scene-copy__actions button')].find((candidate) =>
       ['Teile kaufen', 'Buy parts'].includes(candidate.textContent?.trim() ?? '')
@@ -462,6 +471,81 @@ const testMountedMobilePurchaseFlow = async (client: CdpClient, origin: string):
   await client.send("Emulation.clearDeviceMetricsOverride");
 };
 
+const testTemplateAndSixFigureStage = async (client: CdpClient, origin: string): Promise<{
+  stageLoadMs: number;
+  templateLoadMs: number;
+}> => {
+  const templateStartedAt = Date.now();
+  await navigate(client, `${origin}/?template=pirate-captain`);
+  await waitFor(
+    client,
+    "Boolean(document.querySelector('.scene-lab[data-scene-state=\"ready\"][data-selection-state=\"synchronized\"]'))",
+    "complete pirate template preview",
+    60_000,
+  );
+  const templateLoadMs = Date.now() - templateStartedAt;
+  const templateState = await evaluate<{ count: string; consumed: boolean }>(client, `({
+    count: document.querySelector('.workspace-drawer-trigger')?.textContent?.trim() ?? '',
+    consumed: !new URLSearchParams(location.search).has('template'),
+  })`);
+  assert.match(templateState.count, /5\/5/u);
+  assert.equal(templateState.consumed, true, "the successful template import must consume its query parameter");
+
+  const seeded = await evaluate<boolean>(client, `(async () => {
+    const database = await new Promise((resolve, reject) => {
+      const request = indexedDB.open('figforge', 5);
+      request.onsuccess = () => resolve(request.result);
+      request.onerror = () => reject(request.error);
+    });
+    const document = await new Promise((resolve, reject) => {
+      const request = database.transaction('figure-drafts').objectStore('figure-drafts').get('current');
+      request.onsuccess = () => resolve(request.result);
+      request.onerror = () => reject(request.error);
+    });
+    if (!document || document.selections?.length !== 5) {
+      database.close();
+      return false;
+    }
+    const now = new Date().toISOString();
+    const ids = Array.from({ length: 6 }, (_, index) => 'browser-stage-' + String(index + 1));
+    await new Promise((resolve, reject) => {
+      const transaction = database.transaction(['figure-collection', 'playground-layout'], 'readwrite');
+      const collection = transaction.objectStore('figure-collection');
+      collection.clear();
+      ids.forEach((id, index) => collection.put({
+        id,
+        document: { ...document, name: 'Browser Stage ' + String(index + 1), updatedAt: now },
+        createdAt: now,
+        updatedAt: now,
+      }));
+      transaction.objectStore('playground-layout').put({
+        schemaVersion: 2,
+        kind: 'figforge-playground-stages',
+        updatedAt: now,
+        activeStageId: 'stage-main',
+        stages: [{ id: 'stage-main', name: 'Browser Stage', savedFigureIds: ids }],
+      }, 'current');
+      transaction.oncomplete = () => resolve();
+      transaction.onabort = () => reject(transaction.error);
+      transaction.onerror = () => reject(transaction.error);
+    });
+    database.close();
+    return true;
+  })()`);
+  assert.equal(seeded, true, "the browser fixture must seed six complete figures");
+
+  const stageStartedAt = Date.now();
+  await navigate(client, `${origin}/collection`);
+  await waitFor(
+    client,
+    "document.querySelector('.collection-viewport')?.getAttribute('data-scene-state') === 'ready'",
+    "six-figure collection stage",
+    60_000,
+  );
+  const stageLoadMs = Date.now() - stageStartedAt;
+  return { stageLoadMs, templateLoadMs };
+};
+
 const clickButtonWithText = async (client: CdpClient, text: string): Promise<boolean> => await evaluate(client, `(() => {
   const button = [...document.querySelectorAll('button')].find((candidate) => candidate.textContent?.trim() === ${JSON.stringify(text)});
   if (!(button instanceof HTMLButtonElement) || button.disabled) return false;
@@ -472,7 +556,16 @@ const clickButtonWithText = async (client: CdpClient, text: string): Promise<boo
 const testNamedCollectionSave = async (client: CdpClient, origin: string): Promise<void> => {
   const figureName = "Browser Named Hero";
   await navigate(client, origin);
-  await waitFor(client, `Boolean([...document.querySelectorAll('button')].find((button) => button.textContent?.trim() === 'In Sammlung speichern'))`, "collection save action");
+  await waitFor(
+    client,
+    `Boolean([...document.querySelectorAll('button')].find((button) =>
+      button.textContent?.trim() === 'In Sammlung speichern' &&
+      button instanceof HTMLButtonElement &&
+      !button.disabled
+    ))`,
+    "synchronized collection save action",
+    60_000,
+  );
   assert.equal(await clickButtonWithText(client, "In Sammlung speichern"), true);
   await waitFor(client, `Boolean(document.querySelector('.collection-save-dialog input'))`, "collection naming dialog");
   const nameEntered = await evaluate<boolean>(client, `(() => {
@@ -585,6 +678,8 @@ const run = async (): Promise<void> => {
     process.stdout.write("✓ mounted mobile ArrowLeft/ArrowRight/Home/End navigation\n");
     await testMountedMobilePurchaseFlow(client, previewServer.origin);
     process.stdout.write("✓ mounted mobile purchase flow reveals colors and exports\n");
+    const timings = await testTemplateAndSixFigureStage(client, previewServer.origin);
+    process.stdout.write(`✓ complete template and six-figure stage (${timings.templateLoadMs} ms / ${timings.stageLoadMs} ms)\n`);
     await testNamedCollectionSave(client, previewServer.origin);
     process.stdout.write("✓ named collection save and success confirmation\n");
     await testLDrawAndWebGlFailures(client, previewServer.origin);

@@ -27,6 +27,11 @@ const selectionStatus = (selectedParts: readonly LDrawCatalogSelection[]): Viewp
   };
 };
 
+const selectionKeyFor = (selectedParts: readonly LDrawCatalogSelection[]): string => selectedParts
+  .map(({ componentId, role }) => `${role}:${componentId}`)
+  .sort()
+  .join("|");
+
 export function FigureViewport({
   selectedParts,
   onBuyParts,
@@ -38,6 +43,7 @@ export function FigureViewport({
   const controllerRef = useRef<LDrawPrototypeSceneController | null>(null);
   const selectionRef = useRef(selectedParts);
   const selectionApplyRevisionRef = useRef(0);
+  const appliedSelectionKeyRef = useRef<string | null>(null);
   const cameraPresetRef = useRef<CameraPreset>("three-quarter");
   const selectionErrorRef = useRef(false);
   const [sceneRevision, setSceneRevision] = useState(0);
@@ -45,12 +51,10 @@ export function FigureViewport({
   const [statusTone, setStatusTone] = useState<"info" | "danger">("info");
   const [cameraPreset, setCameraPreset] = useState<CameraPreset>("three-quarter");
   const [selectionError, setSelectionError] = useState(false);
+  const [selectionSynchronized, setSelectionSynchronized] = useState(false);
   const [status, setStatus] = useState<ViewportStatus>({ key: "viewport.status.loading" });
   selectionRef.current = selectedParts;
-  const selectionKey = selectedParts
-    .map(({ componentId, role }) => `${role}:${componentId}`)
-    .sort()
-    .join("|");
+  const selectionKey = selectionKeyFor(selectedParts);
   useEffect(() => {
     const canvas = canvasRef.current;
     if (!canvas) {
@@ -59,6 +63,8 @@ export function FigureViewport({
     let disposed = false;
     let controller: LDrawPrototypeSceneController | null = null;
     setSceneState("loading");
+    setSelectionSynchronized(false);
+    appliedSelectionKeyRef.current = null;
     onSynchronizationChange(false);
     setStatusTone("info");
     setStatus({ key: "viewport.status.loading" });
@@ -92,10 +98,12 @@ export function FigureViewport({
         createdController.setCameraPreset(cameraPresetRef.current);
         await createdController.applyCatalogSelection(selectionRef.current);
         if (!disposed) {
+          appliedSelectionKeyRef.current = selectionKeyFor(selectionRef.current);
           setSceneState("ready");
           setStatusTone("info");
           selectionErrorRef.current = false;
           setSelectionError(false);
+          setSelectionSynchronized(true);
           onSynchronizationChange(true);
           setStatus(selectionStatus(selectionRef.current));
         }
@@ -127,9 +135,11 @@ export function FigureViewport({
     if (!controller || sceneState !== "ready") {
       return;
     }
+    if (appliedSelectionKeyRef.current === selectionKey) return;
     const revision = selectionApplyRevisionRef.current + 1;
     selectionApplyRevisionRef.current = revision;
     onSynchronizationChange(false);
+    setSelectionSynchronized(false);
     selectionErrorRef.current = false;
     setSelectionError(false);
     setStatusTone("info");
@@ -140,6 +150,8 @@ export function FigureViewport({
           setStatusTone("info");
           selectionErrorRef.current = false;
           setSelectionError(false);
+          setSelectionSynchronized(true);
+          appliedSelectionKeyRef.current = selectionKey;
           onSynchronizationChange(true);
           setStatus(selectionStatus(selectionRef.current));
         }
@@ -149,6 +161,7 @@ export function FigureViewport({
           setStatusTone("danger");
           selectionErrorRef.current = true;
           setSelectionError(true);
+          setSelectionSynchronized(false);
           onSynchronizationChange(false);
           console.error("Catalog model failed to load", error);
           setStatus({ key: "viewport.status.partError" });
@@ -182,7 +195,7 @@ export function FigureViewport({
       className="scene-lab"
       aria-labelledby="scene-heading"
       data-scene-state={sceneState}
-      data-selection-state={sceneState === "ready" && !selectionError ? "synchronized" : "pending"}
+      data-selection-state={selectionSynchronized && !selectionError ? "synchronized" : "pending"}
     >
       <Card className="viewport-shell">
         <span className="viewport-shell__beam" aria-hidden="true" />
@@ -193,6 +206,12 @@ export function FigureViewport({
           className="viewport"
           aria-label={t("viewport.canvasLabel")}
         />
+        {!selectionSynchronized && !selectionError ? (
+          <div className="viewport-loading" role="status">
+            <span className="viewport-loading__spinner" aria-hidden="true" />
+            <span>{t("viewport.status.loading")}</span>
+          </div>
+        ) : null}
         <fieldset className="camera-controls">
           <legend>{t("viewport.camera.legend")}</legend>
           <div className="control-list control-list--compact">
@@ -223,7 +242,7 @@ export function FigureViewport({
         ) : null}
         <div className="scene-copy__actions">
           <Button
-            disabled={selectedParts.length === 0}
+            disabled={selectedParts.length === 0 || !selectionSynchronized}
             onClick={onBuyParts}
             size="md"
             variant="primary"
@@ -231,6 +250,7 @@ export function FigureViewport({
             {t("figure.buyParts")}
           </Button>
           <Button
+            disabled={!selectionSynchronized}
             onClick={onSaveToCollection}
             size="md"
             variant="secondary"

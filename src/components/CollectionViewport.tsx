@@ -11,25 +11,32 @@ type CollectionViewportProps = {
   figures: readonly CollectionFigure[];
 };
 
+const figureKeyFor = (figures: readonly CollectionFigure[]): string => figures.map(({ id, selectedParts }) =>
+  `${id}:${selectedParts.map(({ componentId }) => componentId).join(",")}`).join("|");
+
 export function CollectionViewport({ figures }: CollectionViewportProps) {
   const { t } = useI18n();
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const controllerRef = useRef<CollectionSceneController | null>(null);
   const figuresRef = useRef(figures);
+  const appliedFigureKeyRef = useRef<string | null>(null);
+  const figureApplyRevisionRef = useRef(0);
   const [cameraPreset, setCameraPreset] = useState<CameraPreset>("three-quarter");
   const [sceneState, setSceneState] = useState<"loading" | "ready" | "context-lost" | "error">("loading");
   const [sceneRevision, setSceneRevision] = useState(0);
   const hasFigures = figures.length > 0;
   figuresRef.current = figures;
-  const figureKey = figures.map(({ id, selectedParts }) =>
-    `${id}:${selectedParts.map(({ componentId }) => componentId).join(",")}`).join("|");
+  const figureKey = figureKeyFor(figures);
 
   useEffect(() => {
     const canvas = canvasRef.current;
     if (!canvas || !hasFigures) return;
     let disposed = false;
     let controller: CollectionSceneController | null = null;
+    const applyRevision = figureApplyRevisionRef.current + 1;
+    figureApplyRevisionRef.current = applyRevision;
     setSceneState("loading");
+    appliedFigureKeyRef.current = null;
     void (async () => {
       try {
         const { CollectionSceneController: Controller } = await import("../scene/CollectionSceneController.js");
@@ -42,7 +49,10 @@ export function CollectionViewport({ figures }: CollectionViewportProps) {
         controllerRef.current = controller;
         await controller.load();
         await controller.applyFigures(figuresRef.current);
-        if (!disposed) setSceneState("ready");
+        if (!disposed && figureApplyRevisionRef.current === applyRevision) {
+          appliedFigureKeyRef.current = figureKeyFor(figuresRef.current);
+          setSceneState("ready");
+        }
       } catch (error) {
         if (!disposed) {
           controller?.dispose();
@@ -54,6 +64,7 @@ export function CollectionViewport({ figures }: CollectionViewportProps) {
     })();
     return () => {
       disposed = true;
+      figureApplyRevisionRef.current += 1;
       controller?.dispose();
       if (controllerRef.current === controller) controllerRef.current = null;
     };
@@ -62,10 +73,20 @@ export function CollectionViewport({ figures }: CollectionViewportProps) {
   useEffect(() => {
     const controller = controllerRef.current;
     if (!controller || sceneState !== "ready") return;
-    void controller.applyFigures(figuresRef.current).catch((error: unknown) => {
-      console.error("Collection figures failed to update", error);
-      setSceneState("error");
-    });
+    if (appliedFigureKeyRef.current === figureKey) return;
+    const applyRevision = figureApplyRevisionRef.current + 1;
+    figureApplyRevisionRef.current = applyRevision;
+    void controller.applyFigures(figuresRef.current)
+      .then(() => {
+        if (figureApplyRevisionRef.current === applyRevision) {
+          appliedFigureKeyRef.current = figureKey;
+        }
+      })
+      .catch((error: unknown) => {
+        if (figureApplyRevisionRef.current !== applyRevision) return;
+        console.error("Collection figures failed to update", error);
+        setSceneState("error");
+      });
   }, [figureKey, sceneState]);
 
   if (!hasFigures) {
@@ -83,13 +104,19 @@ export function CollectionViewport({ figures }: CollectionViewportProps) {
   };
 
   return (
-    <div className="collection-viewport">
+    <div className="collection-viewport" data-scene-state={sceneState}>
       <div className="collection-viewport__canvas-shell">
         <canvas
           aria-label={t("collection.canvasLabel")}
           className="collection-viewport__canvas"
           ref={canvasRef}
         />
+        {sceneState === "loading" ? (
+          <div className="viewport-loading" role="status">
+            <span className="viewport-loading__spinner" aria-hidden="true" />
+            <span>{t("collection.status.loading")}</span>
+          </div>
+        ) : null}
         <fieldset className="camera-controls collection-viewport__controls">
           <legend>{t("viewport.camera.legend")}</legend>
           <div className="control-list control-list--compact">
