@@ -556,7 +556,16 @@ const clickButtonWithText = async (client: CdpClient, text: string): Promise<boo
 const testNamedCollectionSave = async (client: CdpClient, origin: string): Promise<void> => {
   const figureName = "Browser Named Hero";
   await navigate(client, origin);
-  await waitFor(client, `Boolean([...document.querySelectorAll('button')].find((button) => button.textContent?.trim() === 'In Sammlung speichern'))`, "collection save action");
+  await waitFor(
+    client,
+    `Boolean([...document.querySelectorAll('button')].find((button) =>
+      button.textContent?.trim() === 'In Sammlung speichern' &&
+      button instanceof HTMLButtonElement &&
+      !button.disabled
+    ))`,
+    "synchronized collection save action",
+    60_000,
+  );
   assert.equal(await clickButtonWithText(client, "In Sammlung speichern"), true);
   await waitFor(client, `Boolean(document.querySelector('.collection-save-dialog input'))`, "collection naming dialog");
   const nameEntered = await evaluate<boolean>(client, `(() => {
