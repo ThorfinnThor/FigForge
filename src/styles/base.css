@@ -2031,7 +2031,7 @@ legend {
 .ideas-page {
   display: grid;
   width: min(100%, 1240px);
-  gap: var(--space-7);
+  gap: var(--space-8);
   margin-inline: auto;
   padding: var(--space-8) var(--space-6);
 }
@@ -2090,7 +2090,6 @@ legend {
   align-items: end;
   justify-content: space-between;
   gap: var(--space-6);
-  margin-bottom: var(--space-5);
   padding: var(--space-4) var(--space-5);
   border: 2px solid var(--navy);
   border-radius: var(--radius-lg);
@@ -2103,7 +2102,20 @@ legend {
   font-size: clamp(2rem, 5vw, 3.25rem);
 }
 
-.ideas-page__section-heading > p {
+.ideas-section {
+  display: grid;
+  gap: var(--space-5);
+}
+
+.ideas-page__section-aside {
+  display: flex;
+  max-width: 440px;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: var(--space-3);
+}
+
+.ideas-page__section-aside > p {
   max-width: 440px;
   margin: 0;
   color: var(--ink-muted);
@@ -2120,14 +2132,7 @@ legend {
   list-style: none;
 }
 
-.ideas-worlds__all {
-  grid-column: 1 / -1;
-  display: flex;
-  justify-content: flex-end;
-  margin-top: calc(var(--space-3) * -1);
-}
-
-.ideas-worlds__all a,
+.ideas-page__all-worlds,
 .idea-world__link {
   text-decoration: none;
 }
@@ -3238,16 +3243,17 @@ legend {
     gap: var(--space-3);
   }
 
-  .ideas-page__section-heading > p {
+  .ideas-page__section-aside {
+    max-width: none;
+    align-items: flex-start;
+  }
+
+  .ideas-page__section-aside > p {
     text-align: left;
   }
 
   .ideas-worlds {
     grid-template-columns: 1fr;
-  }
-
-  .ideas-worlds__all {
-    justify-content: flex-start;
   }
 
   .ideas-grid {

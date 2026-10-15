@@ -90,24 +90,22 @@ export function IdeasPage() {
           <p>{t("ideas.lede")}</p>
         </section>
 
-        <section aria-labelledby="ideas-worlds-title">
+        <section className="ideas-section" aria-labelledby="ideas-worlds-title">
           <div className="ideas-page__section-heading ideas-page__section-heading--worlds">
             <div>
               <p className="ideas-page__eyebrow">{t("ideas.worlds.eyebrow")}</p>
               <h2 id="ideas-worlds-title">{t("ideas.worlds.title")}</h2>
             </div>
-            <p>{t("ideas.worlds.lede")}</p>
+            <div className="ideas-page__section-aside">
+              <p>{t("ideas.worlds.lede")}</p>
+              {selectedTheme ? (
+                <a className="ff-button ff-button--ghost ideas-page__all-worlds" href="/ideas">
+                  {t("ideas.worlds.all")}
+                </a>
+              ) : null}
+            </div>
           </div>
           <ul className="ideas-worlds">
-            <li className="ideas-worlds__all">
-              <a
-                aria-current={selectedTheme === null ? "page" : undefined}
-                className="ff-button ff-button--ghost"
-                href="/ideas"
-              >
-                {t("ideas.worlds.all")}
-              </a>
-            </li>
             {THEME_WORLDS.map((world) => (
               <li className="idea-world" data-accent={world.accent} key={world.id}>
                 <div>
@@ -127,7 +125,7 @@ export function IdeasPage() {
           </ul>
         </section>
 
-        <section aria-labelledby="ideas-grid-title">
+        <section className="ideas-section" aria-labelledby="ideas-grid-title">
           <div className="ideas-page__section-heading">
             <div>
               <p className="ideas-page__eyebrow">{t("ideas.starters.eyebrow")}</p>
