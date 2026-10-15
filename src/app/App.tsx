@@ -9,7 +9,7 @@ export function App() {
   return (
     <I18nProvider>
       <main>
-        {pathname === "/ideas"
+        {pathname === "/ideas" || pathname.startsWith("/ideas/")
           ? <IdeasPage />
           : pathname === "/methodology"
           ? <MethodologyPage />

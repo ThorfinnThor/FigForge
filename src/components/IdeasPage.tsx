@@ -1,37 +1,63 @@
 import { useEffect } from "react";
-import { FIGURE_TEMPLATES, type FigureTemplateId } from "../ideas/figure-templates.js";
+import { FIGURE_TEMPLATES, type FigureThemeId } from "../ideas/figure-templates.js";
 import { useI18n } from "../i18n.js";
 
 const THEME_WORLDS = [
-  { id: "pirate-captain", accent: "gold", nameKey: "ideas.world.pirates.name", descriptionKey: "ideas.world.pirates.description", rolesKey: "ideas.world.pirates.roles" },
-  { id: "castle-knight", accent: "red", nameKey: "ideas.world.castle.name", descriptionKey: "ideas.world.castle.description", rolesKey: "ideas.world.castle.roles" },
-  { id: "space-explorer", accent: "blue", nameKey: "ideas.world.space.name", descriptionKey: "ideas.world.space.description", rolesKey: "ideas.world.space.roles" },
-  { id: "firefighter", accent: "green", nameKey: "ideas.world.fire.name", descriptionKey: "ideas.world.fire.description", rolesKey: "ideas.world.fire.roles" },
+  { id: "pirates", accent: "gold", nameKey: "ideas.world.pirates.name", descriptionKey: "ideas.world.pirates.description", rolesKey: "ideas.world.pirates.roles", metaTitleKey: "ideas.world.pirates.metaTitle", metaDescriptionKey: "ideas.world.pirates.metaDescription" },
+  { id: "castle", accent: "red", nameKey: "ideas.world.castle.name", descriptionKey: "ideas.world.castle.description", rolesKey: "ideas.world.castle.roles", metaTitleKey: "ideas.world.castle.metaTitle", metaDescriptionKey: "ideas.world.castle.metaDescription" },
+  { id: "space", accent: "blue", nameKey: "ideas.world.space.name", descriptionKey: "ideas.world.space.description", rolesKey: "ideas.world.space.roles", metaTitleKey: "ideas.world.space.metaTitle", metaDescriptionKey: "ideas.world.space.metaDescription" },
+  { id: "fire-rescue", accent: "green", nameKey: "ideas.world.fire.name", descriptionKey: "ideas.world.fire.description", rolesKey: "ideas.world.fire.roles", metaTitleKey: "ideas.world.fire.metaTitle", metaDescriptionKey: "ideas.world.fire.metaDescription" },
 ] as const satisfies ReadonlyArray<{
-  id: FigureTemplateId;
+  id: FigureThemeId;
   accent: "gold" | "red" | "blue" | "green";
   nameKey: string;
   descriptionKey: string;
   rolesKey: string;
+  metaTitleKey: string;
+  metaDescriptionKey: string;
 }>;
 
-const selectedThemeFromUrl = (): FigureTemplateId | null => {
-  const value = new URLSearchParams(window.location.search).get("theme");
-  return THEME_WORLDS.some((world) => world.id === value) ? value as FigureTemplateId : null;
+const isThemeId = (value: string | null): value is FigureThemeId => (
+  THEME_WORLDS.some((world) => world.id === value)
+);
+
+const selectedThemeFromUrl = (): FigureThemeId | null => {
+  const pathValue = window.location.pathname.match(/^\/ideas\/([^/]+)\/?$/u)?.[1] ?? null;
+  if (isThemeId(pathValue)) return pathValue;
+
+  const queryValue = new URLSearchParams(window.location.search).get("theme");
+  if (isThemeId(queryValue)) return queryValue;
+
+  return FIGURE_TEMPLATES.find((template) => template.id === queryValue)?.themeId ?? null;
 };
 
 export function IdeasPage() {
   const { language, setLanguage, t } = useI18n();
   const selectedTheme = selectedThemeFromUrl();
+  const selectedWorld = THEME_WORLDS.find((world) => world.id === selectedTheme);
   const visibleTemplates = selectedTheme
-    ? FIGURE_TEMPLATES.filter((template) => template.id === selectedTheme)
+    ? FIGURE_TEMPLATES.filter((template) => template.themeId === selectedTheme)
     : FIGURE_TEMPLATES;
 
   useEffect(() => {
     const previousTitle = document.title;
-    document.title = t("ideas.metaTitle");
-    return () => { document.title = previousTitle; };
-  }, [t]);
+    const existingDescription = document.querySelector<HTMLMetaElement>('meta[name="description"]');
+    const description = existingDescription ?? document.createElement("meta");
+    const previousDescription = existingDescription?.content;
+    if (!existingDescription) {
+      description.name = "description";
+      document.head.append(description);
+    }
+
+    document.title = t(selectedWorld?.metaTitleKey ?? "ideas.metaTitle");
+    description.content = t(selectedWorld?.metaDescriptionKey ?? "ideas.metaDescription");
+
+    return () => {
+      document.title = previousTitle;
+      if (existingDescription) description.content = previousDescription ?? "";
+      else description.remove();
+    };
+  }, [selectedWorld, t]);
 
   return (
     <div className="app-shell ideas-shell">
@@ -92,7 +118,7 @@ export function IdeasPage() {
                 <a
                   aria-current={selectedTheme === world.id ? "page" : undefined}
                   className="idea-world__link"
-                  href={`/ideas?theme=${encodeURIComponent(world.id)}`}
+                  href={`/ideas/${encodeURIComponent(world.id)}`}
                 >
                   {t("ideas.worlds.open")}
                 </a>
@@ -105,9 +131,9 @@ export function IdeasPage() {
           <div className="ideas-page__section-heading">
             <div>
               <p className="ideas-page__eyebrow">{t("ideas.starters.eyebrow")}</p>
-              <h2 id="ideas-grid-title">{selectedTheme ? t("ideas.starters.filteredTitle") : t("ideas.starters.title")}</h2>
+              <h2 id="ideas-grid-title">{selectedWorld ? t(selectedWorld.nameKey) : t("ideas.starters.title")}</h2>
             </div>
-            <p>{t("ideas.starters.hint")}</p>
+            <p>{selectedWorld ? t(selectedWorld.descriptionKey) : t("ideas.starters.hint")}</p>
           </div>
           <ul className="ideas-grid">
             {visibleTemplates.map((template) => (
