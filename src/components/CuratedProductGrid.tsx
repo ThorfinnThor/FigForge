@@ -64,7 +64,6 @@ export function CuratedProductGrid({ products }: CuratedProductGridProps) {
                   </a>
                 ) : null}
               </div>
-              <p className="curated-product__affiliate">{t("products.affiliateShort")}</p>
             </div>
           </li>
         );
