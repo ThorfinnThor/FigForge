@@ -2349,6 +2349,32 @@ legend {
   line-height: 1.55;
 }
 
+.products-filters {
+  display: flex;
+  gap: var(--space-2);
+  overflow-x: auto;
+  padding: var(--space-4) var(--space-6) 0;
+  scrollbar-width: thin;
+}
+
+.products-filters__button {
+  min-height: 44px;
+  flex: 0 0 auto;
+  padding: var(--space-2) var(--space-4);
+  border: 2px solid var(--navy);
+  border-radius: 999px;
+  color: var(--navy);
+  font: inherit;
+  font-weight: 800;
+  background: var(--card);
+  cursor: pointer;
+}
+
+.products-filters__button[aria-pressed="true"] {
+  background: var(--signal);
+  box-shadow: 0 4px 0 var(--navy);
+}
+
 .products-section {
   padding: var(--space-6);
 }
@@ -3148,6 +3174,10 @@ legend {
 }
 
 @media (max-width: 767px) {
+  .products-filters {
+    padding-inline: var(--space-4);
+  }
+
   .collection-page {
     gap: var(--space-4);
     padding: var(--space-6) var(--space-4);
