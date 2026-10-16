@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { FIGURE_TEMPLATES, type FigureThemeId } from "../ideas/figure-templates.js";
 import { useI18n } from "../i18n.js";
-import { StaticFigurePreview } from "./StaticFigurePreview.js";
+import { FigurePreviewCard } from "./FigurePreviewCard.js";
 import { productsForTheme } from "../products/curated-products.js";
 import { CuratedProductGrid } from "./CuratedProductGrid.js";
 
@@ -141,7 +141,7 @@ export function IdeasPage() {
           <ul className="ideas-grid">
             {visibleTemplates.map((template) => (
               <li className="idea-card" data-accent={template.accent} key={template.id}>
-                <StaticFigurePreview
+                <FigurePreviewCard
                   alt={t(template.nameKey)}
                   className="idea-card__preview"
                   src={template.previewImageUrl}

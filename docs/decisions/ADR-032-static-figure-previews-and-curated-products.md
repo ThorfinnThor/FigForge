@@ -35,7 +35,12 @@ Beim Speichern einer frei gebauten Figur rendert der bereits aktive Builder-
 WebGL-Controller einmalig einen komprimierten lokalen Snapshot. Der Snapshot
 wird optional im bestehenden Collection-Datensatz gespeichert; es wird kein
 zusätzlicher WebGL-Kontext pro Collection-Karte erzeugt. Alte Datensätze ohne
-Snapshot bleiben lesbar und verwenden ihre bisherige Fallback-Darstellung.
+Snapshot werden beim nächsten Öffnen der Collection im Browser-Leerlauf
+sequenziell migriert. Dafür wird genau ein temporärer Controller für alle
+fehlenden Bilder wiederverwendet und anschließend freigegeben.
+
+Ideas und Collection verwenden dieselbe React-Komponente `FigurePreviewCard`.
+Teilebilder bleiben ausschließlich im Teilekatalog erhalten.
 
 ## Folgen
 
@@ -46,5 +51,5 @@ Snapshot bleiben lesbar und verwenden ihre bisherige Fallback-Darstellung.
 - Kuratierte Produkte können veralten und müssen anhand offizieller
   Produktseiten überprüft werden; Preise und Lagerstatus bleiben bewusst
   außerhalb des Datenmodells.
-- Neue Collection-Einträge zeigen die vollständige Figur, ohne beim Öffnen der
-  Collection zusätzliche LDraw-Geometrie für jede Karte zu laden.
+- Neue und migrierte Collection-Einträge zeigen die vollständige Figur, ohne
+  für jede Karte einen eigenen WebGL-Kontext zu laden.

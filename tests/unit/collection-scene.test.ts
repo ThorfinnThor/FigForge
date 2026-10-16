@@ -21,6 +21,7 @@ describe("Collection shared 3D scene", () => {
     expect(controllerSource).toContain("#catalogTemplateCache");
     expect(controllerSource).toContain("#resourceTemplates.visible = false");
     expect(controllerSource).toContain("prototype.clone(true)");
+    expect(controllerSource).toContain("capturePreviewDataUrl");
     expect(viewportSource.match(/<canvas/gu)).toHaveLength(1);
   });
 

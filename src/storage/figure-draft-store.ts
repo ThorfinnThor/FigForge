@@ -155,6 +155,28 @@ export const saveFigureToCollection = async (
   }
 };
 
+export const updateSavedFigurePreview = async (
+  id: string,
+  previewImageDataUrl: string,
+): Promise<SavedFigure> => {
+  const database = await openDatabase();
+  try {
+    const raw = await requestResult<unknown>(
+      database.transaction(COLLECTION_STORE_NAME).objectStore(COLLECTION_STORE_NAME).get(id),
+    );
+    if (raw === undefined) throw new Error("Saved figure not found");
+    const saved = savedFigureSchema.parse({
+      ...savedFigureSchema.parse(raw),
+      previewImageDataUrl,
+    });
+    const transaction = database.transaction(COLLECTION_STORE_NAME, "readwrite");
+    await committedMutation(transaction, [transaction.objectStore(COLLECTION_STORE_NAME).put(saved)]);
+    return saved;
+  } finally {
+    database.close();
+  }
+};
+
 export const deleteSavedFigure = async (id: string): Promise<void> => {
   const database = await openDatabase();
   try {

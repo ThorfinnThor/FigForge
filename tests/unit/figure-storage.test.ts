@@ -65,6 +65,7 @@ describe("FF-22 local figure storage", () => {
     expect(source).toContain("createObjectStore(PLAYGROUND_STORE_NAME)");
     expect(source).toContain("createObjectStore(PART_INVENTORY_STORE_NAME)");
     expect(source).toContain("clearLocalFigureData");
+    expect(source).toContain("updateSavedFigurePreview");
   });
 
   it("stores an ordered playground of at most six unique collection references", () => {

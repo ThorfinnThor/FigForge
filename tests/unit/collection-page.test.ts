@@ -6,6 +6,7 @@ describe("Collection page shell", () => {
     const appSource = await readFile("src/app/App.tsx", "utf8");
     const collectionSource = await readFile("src/components/CollectionPage.tsx", "utf8");
     const cardSource = await readFile("src/components/CollectionFigureCard.tsx", "utf8");
+    const migratorSource = await readFile("src/components/LegacyFigurePreviewMigrator.tsx", "utf8");
     const purchaseDialogSource = await readFile("src/components/CollectionPurchaseDialog.tsx", "utf8");
     const shopExportSource = await readFile("src/components/ShopExportPanel.tsx", "utf8");
     const builderSource = await readFile("src/components/CatalogWorkspace.tsx", "utf8");
@@ -44,8 +45,14 @@ describe("Collection page shell", () => {
     expect(purchaseDialogSource).toContain('role="dialog"');
     expect(purchaseDialogSource).toContain("onExportJson");
     expect(collectionSource).toContain("<CollectionFigureCard");
-    expect(cardSource).toContain("thumbnailForComponent");
+    expect(cardSource).toContain("<FigurePreviewCard");
+    expect(cardSource).not.toContain("thumbnailForComponent");
     expect(cardSource).toContain("collection-card__stage-badge");
+    expect(collectionSource).toContain("<LegacyFigurePreviewMigrator");
+    expect(migratorSource.match(/new CollectionSceneController/gu)).toHaveLength(1);
+    expect(migratorSource).toContain("requestIdleCallback");
+    expect(migratorSource).toContain("for (const saved of figuresToMigrate)");
+    expect(migratorSource).toContain("updateSavedFigurePreview(saved.id, previewImageDataUrl)");
     expect(builderSource).toContain('t("nav.collection")');
     expect(methodologySource).toContain('t("nav.collection")');
     expect(messagesSource.match(/"nav\.collection":/gu)).toHaveLength(2);
