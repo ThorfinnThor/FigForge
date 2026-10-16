@@ -3362,6 +3362,10 @@ legend {
     min-width: 0;
   }
 
+  .mobile-tab-panel[hidden] {
+    display: none;
+  }
+
   .mobile-parts-panel {
     display: grid;
     gap: var(--space-4);

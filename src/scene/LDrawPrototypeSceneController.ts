@@ -85,6 +85,7 @@ export class LDrawPrototypeSceneController {
   readonly #canvas: HTMLCanvasElement;
   readonly #controls: OrbitControls;
   readonly #renderer: WebGLRenderer;
+  readonly #pixelRatioCap: number;
   readonly #resizeObserver: ResizeObserver;
   readonly #scene = new Scene();
   readonly #modelRoot = new Group();
@@ -100,6 +101,8 @@ export class LDrawPrototypeSceneController {
 
   constructor(options: PrototypeSceneControllerOptions) {
     this.#canvas = options.canvas;
+    const mobileRendering = globalThis.matchMedia("(max-width: 767px)").matches;
+    this.#pixelRatioCap = mobileRendering ? 1.25 : 2;
     this.#renderer = new WebGLRenderer({ canvas: options.canvas, antialias: true, alpha: true });
     this.#renderer.outputColorSpace = SRGBColorSpace;
     this.#renderer.shadowMap.enabled = true;
@@ -119,7 +122,8 @@ export class LDrawPrototypeSceneController {
     const keyLight = new DirectionalLight(0xfff7e8, 3.1);
     keyLight.position.set(4.5, 7, 5);
     keyLight.castShadow = true;
-    keyLight.shadow.mapSize.set(1024, 1024);
+    const shadowMapSize = mobileRendering ? 512 : 1024;
+    keyLight.shadow.mapSize.set(shadowMapSize, shadowMapSize);
     this.#scene.add(keyLight);
     const fillLight = new DirectionalLight(0xb7d8ff, 1.35);
     fillLight.position.set(-5, 4, 2);
@@ -140,6 +144,7 @@ export class LDrawPrototypeSceneController {
 
     this.#modelRoot.name = "official-ldraw-prototype-root";
     this.#modelRoot.userData.prototypeOnly = true;
+    this.#modelRoot.visible = false;
     this.#scene.add(this.#modelRoot);
 
     this.#onContextLost = (event) => {
@@ -247,6 +252,7 @@ export class LDrawPrototypeSceneController {
       if (!roles.has(role)) this.#removeCatalogPart(role);
     }
     await Promise.all(selections.map((selection) => this.#applyCatalogPart(selection)));
+    this.#modelRoot.visible = true;
     this.#render();
   }
 
@@ -363,7 +369,7 @@ export class LDrawPrototypeSceneController {
     }
     const width = Math.max(1, this.#canvas.clientWidth);
     const height = Math.max(1, this.#canvas.clientHeight);
-    this.#renderer.setPixelRatio(Math.min(globalThis.devicePixelRatio || 1, 2));
+    this.#renderer.setPixelRatio(Math.min(globalThis.devicePixelRatio || 1, this.#pixelRatioCap));
     this.#renderer.setSize(width, height, false);
     this.#camera.aspect = width / height;
     this.#camera.updateProjectionMatrix();

@@ -36,6 +36,15 @@ describe("FF-04 scene boundaries", () => {
     expect(controllerSource).toContain('fetch(url, { cache: "no-store" })');
   });
 
+  it("keeps the prototype hidden until the requested figure is synchronized and lowers mobile render cost", async () => {
+    const controllerSource = await readFile("src/scene/LDrawPrototypeSceneController.ts", "utf8");
+
+    expect(controllerSource).toContain("this.#modelRoot.visible = false");
+    expect(controllerSource).toContain("this.#modelRoot.visible = true");
+    expect(controllerSource).toContain("mobileRendering ? 1.25 : 2");
+    expect(controllerSource).toContain("mobileRendering ? 512 : 1024");
+  });
+
   it("removes missing catalog roles and invalidates in-flight model loads", async () => {
     const controllerSource = await readFile("src/scene/LDrawPrototypeSceneController.ts", "utf8");
 

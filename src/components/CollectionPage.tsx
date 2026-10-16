@@ -32,6 +32,25 @@ const createStageId = (): string => {
   return `stage-${Date.now()}-${Math.random().toString(36).slice(2)}`;
 };
 
+const DEFAULT_STAGE_NAMES = new Set(["Meine Bühne", "My stage"]);
+
+const localizeDefaultStageName = (
+  playground: PlaygroundStages,
+  localizedName: string,
+): PlaygroundStages => {
+  const defaultStage = playground.stages.find(({ id }) => id === "stage-main");
+  if (!defaultStage || !DEFAULT_STAGE_NAMES.has(defaultStage.name) || defaultStage.name === localizedName) {
+    return playground;
+  }
+  return createPlaygroundStages(
+    playground.stages.map((stage) => stage.id === defaultStage.id
+      ? createPlaygroundStage(stage.id, localizedName, stage.savedFigureIds)
+      : stage),
+    playground.activeStageId,
+    playground.updatedAt,
+  );
+};
+
 export function CollectionPage() {
   const { language, setLanguage, t } = useI18n();
   const defaultStageName = t("collection.defaultStageName");
@@ -64,7 +83,10 @@ export function CollectionPage() {
           defaultStageName,
           collection.slice(0, PLAYGROUND_LAYOUT_MAX_FIGURES).map(({ id }) => id),
         );
-        const initialPlayground = storedPlayground ?? createPlaygroundStages([defaultStage], defaultStage.id);
+        const initialPlayground = localizeDefaultStageName(
+          storedPlayground ?? createPlaygroundStages([defaultStage], defaultStage.id),
+          defaultStageName,
+        );
         const playground = reconcilePlaygroundStages(
           initialPlayground,
           availableIds,
@@ -77,7 +99,9 @@ export function CollectionPage() {
           (count, stage) => count + stage.savedFigureIds.length,
           0,
         );
-        if (!storedPlayground || storedReferenceCount !== reconciledReferenceCount) {
+        if (!storedPlayground
+          || storedReferenceCount !== reconciledReferenceCount
+          || initialPlayground !== storedPlayground) {
           await saveCurrentPlaygroundStages({ ...playground, updatedAt: new Date().toISOString() });
         }
         const activeStage = playground.stages.find(({ id }) => id === playground.activeStageId)!;
@@ -99,7 +123,7 @@ export function CollectionPage() {
     return () => {
       cancelled = true;
     };
-  }, []);
+  }, [defaultStageName]);
 
   const updatePlayground = async (nextPlayground: PlaygroundStages): Promise<void> => {
     if (!playground || isSavingLayout) return;

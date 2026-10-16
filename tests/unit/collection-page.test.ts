@@ -25,6 +25,8 @@ describe("Collection page shell", () => {
     expect(collectionSource).toContain("removeFromStage");
     expect(collectionSource).toContain("moveOnStage");
     expect(collectionSource).toContain("isSavingLayout");
+    expect(collectionSource).toContain("localizeDefaultStageName");
+    expect(collectionSource).toContain('["Meine Bühne", "My stage"]');
     expect(collectionSource).toContain("clearLocalFigureData");
     expect(collectionSource).toContain("<CollectionInventoryPanel");
     expect(collectionSource).toContain("collection.dataTitle");
