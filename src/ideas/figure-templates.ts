@@ -24,6 +24,7 @@ export type FigureTemplate = {
   nameKey: string;
   descriptionKey: string;
   document: FigureDocument;
+  previewImageUrl: string;
   thumbnails: readonly string[];
 };
 
@@ -45,6 +46,7 @@ const createTemplate = (
   nameKey,
   descriptionKey,
   document: createFigureDocument(selections, name, TEMPLATE_UPDATED_AT),
+  previewImageUrl: `/assets/figure-previews/${id}.webp`,
   thumbnails,
 });
 

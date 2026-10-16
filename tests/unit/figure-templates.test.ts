@@ -21,6 +21,8 @@ describe("curated figure templates", () => {
       for (const thumbnail of template.thumbnails) {
         await expect(readFile(`public${thumbnail}`)).resolves.toBeInstanceOf(Buffer);
       }
+      expect(template.previewImageUrl).toBe(`/assets/figure-previews/${template.id}.webp`);
+      await expect(readFile(`public${template.previewImageUrl}`)).resolves.toBeInstanceOf(Buffer);
       expect(figureTemplateForId(template.id)).toBe(template);
     }
     expect(figureTemplateForId("not-a-template")).toBeUndefined();

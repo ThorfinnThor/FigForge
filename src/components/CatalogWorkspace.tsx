@@ -157,6 +157,7 @@ export function CatalogWorkspace() {
   const restoreOperationRef = useRef(0);
   const draftWriteRevisionRef = useRef(0);
   const collectionSavePendingRef = useRef(false);
+  const previewCaptureRef = useRef<(() => string) | null>(null);
   const [collectionSavePending, setCollectionSavePending] = useState(false);
   const [collectionSaveDialogOpen, setCollectionSaveDialogOpen] = useState(false);
   const [collectionSaveResult, setCollectionSaveResult] = useState<"idle" | "saved" | "error">("idle");
@@ -620,7 +621,13 @@ export function CatalogWorkspace() {
     setCollectionSaveResult("idle");
     try {
       setFigureName(name);
-      await saveFigureToCollection(currentFigureDocument(name));
+      let previewImageDataUrl: string | undefined;
+      try {
+        previewImageDataUrl = previewCaptureRef.current?.();
+      } catch (error) {
+        console.warn("Figure preview snapshot could not be created", error);
+      }
+      await saveFigureToCollection(currentFigureDocument(name), undefined, previewImageDataUrl);
       setTransferMessageTone("info");
       setTransferMessage(t("figure.collection.saved", { name }));
       setCollectionSaveResult("saved");
@@ -916,6 +923,7 @@ export function CatalogWorkspace() {
     <section className="workspace-viewport" aria-label={t("mobile.figure")}>
       <FigureViewport
         onBuyParts={openPurchaseFlow}
+        onPreviewCaptureReady={(capture) => { previewCaptureRef.current = capture; }}
         onSaveToCollection={openCollectionSaveDialog}
         onSynchronizationChange={setPreviewSynchronized}
         selectedParts={selectedLDrawParts}
@@ -953,6 +961,7 @@ export function CatalogWorkspace() {
          <nav className="app-nav" aria-label={t("nav.label")}>
           <a className="app-nav__link app-nav__link--active" href="/" aria-current="page" onClick={(event) => void navigateAfterDraftCommit(event)}>{t("nav.builder")}</a>
           <a className="app-nav__link" href="/ideas" onClick={(event) => void navigateAfterDraftCommit(event)}>{t("nav.ideas")}</a>
+          <a className="app-nav__link" href="/sets" onClick={(event) => void navigateAfterDraftCommit(event)}>{t("nav.products")}</a>
           <a className="app-nav__link" href="/collection" onClick={(event) => void navigateAfterDraftCommit(event)}>{t("nav.collection")}</a>
           <a className="app-nav__link" href="/methodology" onClick={(event) => void navigateAfterDraftCommit(event)}>{t("nav.notes")}</a>
         </nav>

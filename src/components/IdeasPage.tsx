@@ -1,6 +1,9 @@
 import { useEffect } from "react";
 import { FIGURE_TEMPLATES, type FigureThemeId } from "../ideas/figure-templates.js";
 import { useI18n } from "../i18n.js";
+import { StaticFigurePreview } from "./StaticFigurePreview.js";
+import { productsForTheme } from "../products/curated-products.js";
+import { CuratedProductGrid } from "./CuratedProductGrid.js";
 
 const THEME_WORLDS = [
   { id: "pirates", accent: "gold", nameKey: "ideas.world.pirates.name", descriptionKey: "ideas.world.pirates.description", rolesKey: "ideas.world.pirates.roles", metaTitleKey: "ideas.world.pirates.metaTitle", metaDescriptionKey: "ideas.world.pirates.metaDescription" },
@@ -38,6 +41,7 @@ export function IdeasPage() {
   const visibleTemplates = selectedTheme
     ? FIGURE_TEMPLATES.filter((template) => template.themeId === selectedTheme)
     : FIGURE_TEMPLATES;
+  const matchingProducts = productsForTheme(selectedTheme);
 
   useEffect(() => {
     const previousTitle = document.title;
@@ -66,6 +70,7 @@ export function IdeasPage() {
         <nav className="app-nav" aria-label={t("nav.label")}>
           <a className="app-nav__link" href="/">{t("nav.builder")}</a>
           <a className="app-nav__link app-nav__link--active" href="/ideas" aria-current="page">{t("nav.ideas")}</a>
+          <a className="app-nav__link" href="/sets">{t("nav.products")}</a>
           <a className="app-nav__link" href="/collection">{t("nav.collection")}</a>
           <a className="app-nav__link" href="/methodology">{t("nav.notes")}</a>
         </nav>
@@ -136,13 +141,12 @@ export function IdeasPage() {
           <ul className="ideas-grid">
             {visibleTemplates.map((template) => (
               <li className="idea-card" data-accent={template.accent} key={template.id}>
-                <div className="idea-card__parts" aria-hidden="true">
-                  {template.thumbnails.map((thumbnail, index) => (
-                    <img alt="" key={thumbnail} loading="lazy" src={thumbnail} style={{ zIndex: index + 1 }} />
-                  ))}
-                </div>
+                <StaticFigurePreview
+                  alt={t(template.nameKey)}
+                  className="idea-card__preview"
+                  src={template.previewImageUrl}
+                />
                 <div className="idea-card__body">
-                  <p className="idea-card__number">{t("ideas.parts", { count: template.document.selections.length })}</p>
                   <h3>{t(template.nameKey)}</h3>
                   <p>{t(template.descriptionKey)}</p>
                   <a className="ff-button ff-button--primary idea-card__cta" href={`/?template=${encodeURIComponent(template.id)}`}>
@@ -152,6 +156,22 @@ export function IdeasPage() {
               </li>
             ))}
           </ul>
+        </section>
+
+        <section className="ideas-section" aria-labelledby="ideas-products-title">
+          <div className="ideas-page__section-heading">
+            <div>
+              <p className="ideas-page__eyebrow">{t("ideas.products.eyebrow")}</p>
+              <h2 id="ideas-products-title">{t("ideas.products.title")}</h2>
+            </div>
+            <div className="ideas-page__section-aside">
+              <p>{t("ideas.products.lede")}</p>
+              <a className="ff-button ff-button--ghost ideas-page__all-worlds" href="/sets">
+                {t("ideas.products.all")}
+              </a>
+            </div>
+          </div>
+          <CuratedProductGrid products={matchingProducts} />
         </section>
       </div>
     </div>

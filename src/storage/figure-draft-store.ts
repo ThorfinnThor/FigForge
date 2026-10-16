@@ -22,6 +22,10 @@ const CURRENT_PART_INVENTORY_KEY = "current";
 export const savedFigureSchema = z.object({
   id: z.string().min(1).max(120),
   document: figureDocumentSchema,
+  previewImageDataUrl: z.string()
+    .max(500_000)
+    .regex(/^data:image\/(?:png|webp);base64,/u)
+    .optional(),
   createdAt: z.iso.datetime(),
   updatedAt: z.iso.datetime(),
 }).strict();
@@ -122,7 +126,11 @@ const collectionId = (): string => {
   return `figure-${Date.now()}-${Math.random().toString(36).slice(2)}`;
 };
 
-export const saveFigureToCollection = async (document: FigureDocument, id = collectionId()): Promise<SavedFigure> => {
+export const saveFigureToCollection = async (
+  document: FigureDocument,
+  id = collectionId(),
+  previewImageDataUrl?: string,
+): Promise<SavedFigure> => {
   const database = await openDatabase();
   try {
     // Read and write use separate transactions: IndexedDB transactions may become
@@ -135,6 +143,7 @@ export const saveFigureToCollection = async (document: FigureDocument, id = coll
     const saved = savedFigureSchema.parse({
       id,
       document: figureDocumentSchema.parse({ ...document, updatedAt: now }),
+      previewImageDataUrl: previewImageDataUrl ?? previous?.previewImageDataUrl,
       createdAt: previous?.createdAt ?? now,
       updatedAt: now,
     });

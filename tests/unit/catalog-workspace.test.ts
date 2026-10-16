@@ -124,7 +124,7 @@ describe("FF-14 responsive catalog workspace", () => {
     expect(workspaceSource).toContain("setFigureName(document.name)");
     expect(workspaceSource).toContain("collectionSavePendingRef.current");
     expect(workspaceSource).toContain("setFigureName(name)");
-    expect(workspaceSource).toContain("saveFigureToCollection(currentFigureDocument(name))");
+    expect(workspaceSource).toContain("saveFigureToCollection(currentFigureDocument(name), undefined, previewImageDataUrl)");
     expect(workspaceSource).toContain("<SaveToCollectionDialog");
     expect(collectionDialogSource).toContain('role="dialog"');
     expect(collectionDialogSource).toContain("maxLength={80}");

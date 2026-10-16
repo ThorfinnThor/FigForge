@@ -48,7 +48,15 @@ export function CollectionFigureCard({
   return (
     <li className={`collection-card${onStage ? " collection-card--on-stage" : ""}`}>
       <div className="collection-card__visual" aria-hidden="true">
-        {thumbnails.length > 0 ? (
+        {saved.previewImageDataUrl ? (
+          <img
+            alt=""
+            className="collection-card__figure-preview"
+            decoding="async"
+            loading="lazy"
+            src={saved.previewImageDataUrl}
+          />
+        ) : thumbnails.length > 0 ? (
           <div className={`collection-card__parts collection-card__parts--${Math.min(thumbnails.length, 5)}`}>
             {thumbnails.map(({ componentId, slot, src }) => (
               <img className={`collection-card__part collection-card__part--${slot}`} src={src} alt="" key={componentId} loading="lazy" />
@@ -57,7 +65,6 @@ export function CollectionFigureCard({
         ) : (
           <span className="collection-card__monogram">{saved.document.name.slice(0, 1).toUpperCase()}</span>
         )}
-        <span className="collection-card__part-count">{labels.partCount}</span>
         {onStage ? <span className="collection-card__stage-badge">✓ {labels.onStage}</span> : null}
       </div>
 

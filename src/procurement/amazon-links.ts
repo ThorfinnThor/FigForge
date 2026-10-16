@@ -24,3 +24,14 @@ export const amazonSearchLink = (
   if (affiliate) url.searchParams.set("tag", tag!);
   return { href: url.href, affiliate };
 };
+
+export const amazonProductLink = (asin: string, tag?: string): AmazonLink => {
+  const normalizedAsin = asin.trim().toUpperCase();
+  if (!/^[A-Z0-9]{10}$/.test(normalizedAsin)) {
+    return amazonSearchLink(asin, tag);
+  }
+  const url = new URL(`/dp/${normalizedAsin}`, "https://www.amazon.de");
+  const affiliate = Boolean(tag && VALID_TAG.test(tag));
+  if (affiliate) url.searchParams.set("tag", tag!);
+  return { href: url.href, affiliate };
+};

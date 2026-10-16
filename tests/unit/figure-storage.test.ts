@@ -56,9 +56,10 @@ describe("FF-22 local figure storage", () => {
     expect(savedFigureSchema.parse({
       id: "figure-1",
       document,
+      previewImageDataUrl: "data:image/webp;base64,YWJj",
       createdAt: "2026-10-02T10:00:00.000Z",
       updatedAt: "2026-10-02T10:01:00.000Z",
-    }).document).toEqual(document);
+    })).toMatchObject({ document, previewImageDataUrl: "data:image/webp;base64,YWJj" });
     expect(source).toContain('createObjectStore(COLLECTION_STORE_NAME, { keyPath: "id" })');
     expect(source).toContain("Keeping the draft store and key stable");
     expect(source).toContain("createObjectStore(PLAYGROUND_STORE_NAME)");

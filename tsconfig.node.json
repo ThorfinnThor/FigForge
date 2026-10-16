@@ -31,6 +31,7 @@
     "src/ideas/**/*.ts",
     "src/storage/**/*.ts",
     "src/procurement/**/*.ts",
+    "src/products/**/*.ts",
     "src/scene/**/*.ts",
     "tools/**/*.ts",
     "tests/**/*.ts"
