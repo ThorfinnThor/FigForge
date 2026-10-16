@@ -12,6 +12,8 @@ describe("curated products", () => {
       expect(product.ageGroup).toMatch(/^\d+\+$/u);
       expect(product.verifiedAt).toMatch(/^\d{4}-\d{2}-\d{2}$/u);
       expect(product.officialUrl).toMatch(/^https:\/\/www\.lego\.com\/en-de\/product\//u);
+      expect(product.imageSrc).toMatch(/^\/assets\/product-images\/sets\/\d{5}\.png$/u);
+      expect(product.imageSourceUrl).toMatch(/^https:\/\/www\.lego\.com\/cdn\/product-assets\//u);
     }
   });
 
@@ -29,6 +31,20 @@ describe("curated products", () => {
   it("includes the verified space-base and fire-boat recommendations", () => {
     expect(CURATED_PRODUCTS.find(({ setNumber }) => setNumber === "60434")?.ageGroup).toBe("8+");
     expect(CURATED_PRODUCTS.find(({ setNumber }) => setNumber === "60373")?.ageGroup).toBe("5+");
+  });
+
+  it("provides an accessible image for every curated product", () => {
+    for (const product of CURATED_PRODUCTS) {
+      expect(product.imageSrc).toMatch(/^\/assets\/product-images\//u);
+      expect(product.imageAltKey).toMatch(/^products\..+\.imageAlt$/u);
+    }
+  });
+
+  it("renders product images lazily instead of number-only placeholders", async () => {
+    const source = await readFile("src/components/CuratedProductGrid.tsx", "utf8");
+    expect(source).toContain('loading="lazy"');
+    expect(source).toContain('alt={t(product.imageAltKey)}');
+    expect(source).not.toContain('product.setNumber ?? "◆"');
   });
 
   it("offers accessible theme and accessory filters on the products page", async () => {
