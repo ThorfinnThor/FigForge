@@ -23,4 +23,11 @@ describe("Collection shared 3D scene", () => {
     expect(controllerSource).toContain("prototype.clone(true)");
     expect(viewportSource.match(/<canvas/gu)).toHaveLength(1);
   });
+
+  it("reduces render resolution and shadow cost on small screens", async () => {
+    const controllerSource = await readFile("src/scene/CollectionSceneController.ts", "utf8");
+
+    expect(controllerSource).toContain("mobileRendering ? 1.25 : 2");
+    expect(controllerSource).toContain("mobileRendering ? 512 : 1024");
+  });
 });

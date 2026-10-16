@@ -84,6 +84,7 @@ export class CollectionSceneController {
   readonly #controls: OrbitControls;
   readonly #displayRoot = new Group();
   readonly #renderer: WebGLRenderer;
+  readonly #pixelRatioCap: number;
   readonly #resizeObserver: ResizeObserver;
   readonly #resourceTemplates = new Group();
   readonly #scene = new Scene();
@@ -101,6 +102,8 @@ export class CollectionSceneController {
 
   constructor(options: CollectionSceneControllerOptions) {
     this.#canvas = options.canvas;
+    const mobileRendering = globalThis.matchMedia("(max-width: 767px)").matches;
+    this.#pixelRatioCap = mobileRendering ? 1.25 : 2;
     this.#renderer = new WebGLRenderer({ canvas: options.canvas, antialias: true, alpha: true });
     this.#renderer.outputColorSpace = SRGBColorSpace;
     this.#renderer.shadowMap.enabled = true;
@@ -118,7 +121,8 @@ export class CollectionSceneController {
     const keyLight = new DirectionalLight(0xfff7e8, 3.1);
     keyLight.position.set(5, 8, 6);
     keyLight.castShadow = true;
-    keyLight.shadow.mapSize.set(1024, 1024);
+    const shadowMapSize = mobileRendering ? 512 : 1024;
+    keyLight.shadow.mapSize.set(shadowMapSize, shadowMapSize);
     this.#scene.add(keyLight);
     const fillLight = new DirectionalLight(0xb7d8ff, 1.35);
     fillLight.position.set(-6, 5, 3);
@@ -382,7 +386,7 @@ export class CollectionSceneController {
     if (this.#disposed) return;
     const width = Math.max(1, this.#canvas.clientWidth);
     const height = Math.max(1, this.#canvas.clientHeight);
-    this.#renderer.setPixelRatio(Math.min(globalThis.devicePixelRatio || 1, 2));
+    this.#renderer.setPixelRatio(Math.min(globalThis.devicePixelRatio || 1, this.#pixelRatioCap));
     this.#renderer.setSize(width, height, false);
     this.#camera.aspect = width / height;
     this.#camera.updateProjectionMatrix();

@@ -62,6 +62,7 @@ type FigureSnapshot = {
 };
 
 const INITIAL_VISIBLE_PARTS = 80;
+const MAX_UNDO_HISTORY = 50;
 const RESTORE_SUPERSEDED_ERROR = "restore-superseded";
 const LDRAW_CATALOG_ROLES: ReadonlySet<string> = new Set([
   "head",
@@ -75,9 +76,29 @@ const initialSelectionByRole = (): Partial<Record<CatalogRole, string>> => refer
   ? {
     head: referenceVariant.headId,
     headwear: referenceVariant.headwearId,
+    torsoAssembly: referenceVariant.torsoAssemblyId,
+    legsAssembly: referenceVariant.legsAssemblyId,
     handAccessory: referenceVariant.handAccessoryId,
   }
   : {};
+
+const isLegacyPartialDefault = (document: FigureDocument): boolean => {
+  if (!referenceVariant || document.selections.length !== 3) return false;
+  const selections = Object.fromEntries(document.selections.map(({ componentId, slot }) => [slot, componentId]));
+  return selections.head === referenceVariant.headId
+    && selections.headwear === referenceVariant.headwearId
+    && selections.handAccessory === referenceVariant.handAccessoryId
+    && selections.torsoAssembly === undefined
+    && selections.legsAssembly === undefined;
+};
+
+const completeLegacyPartialDefault = (document: FigureDocument): FigureDocument => createFigureDocument(
+  initialSelectionByRole(),
+  document.name,
+  document.updatedAt,
+  Object.fromEntries(document.selections.flatMap(({ rebrickableColorId, slot }) =>
+    rebrickableColorId === undefined ? [] : [[slot, rebrickableColorId]])),
+);
 
 const isLDrawCatalogRole = (role: string): role is LDrawCatalogRole =>
   LDRAW_CATALOG_ROLES.has(role);
@@ -110,11 +131,12 @@ export function CatalogWorkspace() {
   const [selectedCatalogSet, setSelectedCatalogSet] = useState<CatalogSetSelection | null>(null);
   const [visiblePartCount, setVisiblePartCount] = useState(INITIAL_VISIBLE_PARTS);
   const [mobileTab, setMobileTab] = useState<MobileTab>("parts");
+  const [openedMobileTabs, setOpenedMobileTabs] = useState<ReadonlySet<MobileTab>>(() => new Set(["parts"]));
   const [isFigurePanelOpen, setIsFigurePanelOpen] = useState(false);
   const [selectedByRole, setSelectedByRole] = useState(initialSelectionByRole);
   const [selectedColorByRole, setSelectedColorByRole] = useState<Partial<Record<CatalogRole, number>>>({});
   const [figureName, setFigureName] = useState(() => t("figure.defaultName"));
-  const [undoSnapshot, setUndoSnapshot] = useState<FigureSnapshot | null>(null);
+  const [undoHistory, setUndoHistory] = useState<FigureSnapshot[]>([]);
   const [colorOptionsByRole, setColorOptionsByRole] = useState<Partial<Record<CatalogRole, readonly ShopExportColor[]>>>({});
   const [draftHydrationState, setDraftHydrationState] = useState<DraftHydrationState>("loading");
   const [draftHydrationRevision, setDraftHydrationRevision] = useState(0);
@@ -302,10 +324,11 @@ export function CatalogWorkspace() {
     : []);
 
   const rememberFigureState = (): void => {
-    setUndoSnapshot({
+    const snapshot = {
       selectedByRole: { ...selectedByRole },
       selectedColorByRole: { ...selectedColorByRole },
-    });
+    };
+    setUndoHistory((current) => [...current, snapshot].slice(-MAX_UNDO_HISTORY));
   };
 
   const markFigureEdited = (): void => {
@@ -358,11 +381,12 @@ export function CatalogWorkspace() {
   };
 
   const undoLastFigureChange = (): void => {
-    if (!undoSnapshot) return;
+    const snapshot = undoHistory.at(-1);
+    if (!snapshot) return;
     markFigureEdited();
-    setSelectedByRole({ ...undoSnapshot.selectedByRole });
-    setSelectedColorByRole({ ...undoSnapshot.selectedColorByRole });
-    setUndoSnapshot(null);
+    setSelectedByRole({ ...snapshot.selectedByRole });
+    setSelectedColorByRole({ ...snapshot.selectedColorByRole });
+    setUndoHistory((current) => current.slice(0, -1));
   };
 
   const showAllPartsForSelectedSet = (): void => {
@@ -465,7 +489,10 @@ export function CatalogWorkspace() {
         const requestedSavedFigure = requestedFigureId
           ? collection.find(({ id }) => id === requestedFigureId)
           : undefined;
-        const initialDocument = shared ?? requestedSavedFigure?.document ?? requestedTemplate?.document ?? document;
+        const storedDocument = document && isLegacyPartialDefault(document)
+          ? completeLegacyPartialDefault(document)
+          : document;
+        const initialDocument = shared ?? requestedSavedFigure?.document ?? requestedTemplate?.document ?? storedDocument;
         if (!initialDocument) {
           setDraftHydrationState("ready");
           setSaveStatus("saved");
@@ -474,7 +501,7 @@ export function CatalogWorkspace() {
         if (!active) return;
         await restoreFigureDocument(initialDocument, false, operation);
         if (!active || restoreOperationRef.current !== operation) return;
-        setUndoSnapshot(null);
+        setUndoHistory([]);
         if (shared) {
           await saveCurrentFigureDraft(initialDocument);
           if (!active || restoreOperationRef.current !== operation) return;
@@ -636,10 +663,15 @@ export function CatalogWorkspace() {
     requestAnimationFrame(() => drawerTriggerRef.current?.focus());
   };
 
+  const activateMobileTab = (tab: MobileTab): void => {
+    setOpenedMobileTabs((current) => current.has(tab) ? current : new Set([...current, tab]));
+    setMobileTab(tab);
+  };
+
   const openPurchaseFlow = (): void => {
     setPurchaseFlowRequested(true);
     if (isMobileLayout) {
-      setMobileTab("list");
+      activateMobileTab("list");
     } else {
       setIsFigurePanelOpen(true);
     }
@@ -660,7 +692,7 @@ export function CatalogWorkspace() {
   const moveMobileTabFocus = (current: MobileTab, key: string): void => {
     const next = mobileTabForKey(current, key);
     if (!next) return;
-    setMobileTab(next);
+    activateMobileTab(next);
     mobileTabRefs.current.get(next)?.focus();
   };
 
@@ -933,12 +965,12 @@ export function CatalogWorkspace() {
           </select>
         </label>
         <Button
-          aria-label={undoSnapshot ? t("figure.undo") : t("figure.undoUnavailable")}
+          aria-label={undoHistory.length > 0 ? t("figure.undo") : t("figure.undoUnavailable")}
           className="workspace-undo"
-          disabled={!undoSnapshot}
+          disabled={undoHistory.length === 0}
           onClick={undoLastFigureChange}
           size="sm"
-          title={undoSnapshot ? t("figure.undo") : t("figure.undoUnavailable")}
+          title={undoHistory.length > 0 ? t("figure.undo") : t("figure.undoUnavailable")}
           variant="ghost"
         >
           <span aria-hidden="true">↶</span>
@@ -967,7 +999,7 @@ export function CatalogWorkspace() {
                 className="mobile-tab"
                 id={`mobile-tab-${tab}`}
                 key={tab}
-                onClick={() => setMobileTab(tab)}
+                onClick={() => activateMobileTab(tab)}
                 onKeyDown={(event) => {
                   if (!mobileTabForKey(tab, event.key)) return;
                   event.preventDefault();
@@ -985,18 +1017,34 @@ export function CatalogWorkspace() {
               </button>
             ))}
           </div>
-          {mobileTab === "parts" ? (
-            <div className="mobile-tab-panel mobile-parts-panel" id="mobile-panel-parts" role="tabpanel" aria-labelledby="mobile-tab-parts">
-              {catalogPanel}
-            </div>
-          ) : null}
-          {mobileTab === "figure" ? (
-            <div className="mobile-tab-panel" id="mobile-panel-figure" role="tabpanel" aria-labelledby="mobile-tab-figure">
+          <div
+            className="mobile-tab-panel mobile-parts-panel"
+            hidden={mobileTab !== "parts"}
+            id="mobile-panel-parts"
+            role="tabpanel"
+            aria-labelledby="mobile-tab-parts"
+          >
+            {catalogPanel}
+          </div>
+          {openedMobileTabs.has("figure") ? (
+            <div
+              className="mobile-tab-panel"
+              hidden={mobileTab !== "figure"}
+              id="mobile-panel-figure"
+              role="tabpanel"
+              aria-labelledby="mobile-tab-figure"
+            >
               {viewport}
             </div>
           ) : null}
-          {mobileTab === "list" ? (
-            <div className="mobile-tab-panel" id="mobile-panel-list" role="tabpanel" aria-labelledby="mobile-tab-list">
+          {openedMobileTabs.has("list") ? (
+            <div
+              className="mobile-tab-panel"
+              hidden={mobileTab !== "list"}
+              id="mobile-panel-list"
+              role="tabpanel"
+              aria-labelledby="mobile-tab-list"
+            >
               {figurePanel}
             </div>
           ) : null}

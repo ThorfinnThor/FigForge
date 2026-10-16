@@ -159,7 +159,7 @@ describe("FF-14 responsive catalog workspace", () => {
     expect(source).toContain("onSelect={builderComponent && digitallySupportedLDrawEntryForComponent(builderComponent.id)");
     expect(source).toContain("onSaveToCollection={openCollectionSaveDialog}");
     expect(source).toContain("onBuyParts={openPurchaseFlow}");
-    expect(source).toContain('setMobileTab("list")');
+    expect(source).toContain('activateMobileTab("list")');
     expect(source).toContain("purchaseSectionRef.current?.scrollIntoView");
     expect(source).toContain("onSynchronizationChange={setPreviewSynchronized}");
     expect(source).toContain("selectedParts={selectedLDrawParts}");
@@ -200,6 +200,13 @@ describe("FF-14 responsive catalog workspace", () => {
 
     expect(source).toContain('role="tablist"');
     expect(source).toContain('role="tabpanel"');
+    expect(source).toContain('hidden={mobileTab !== "figure"}');
+    expect(source).toContain('openedMobileTabs.has("figure")');
+    expect(source).toContain('activateMobileTab("list")');
+    expect(source).toContain("torsoAssembly: referenceVariant.torsoAssemblyId");
+    expect(source).toContain("legsAssembly: referenceVariant.legsAssemblyId");
+    expect(source).toContain("MAX_UNDO_HISTORY = 50");
+    expect(source).toContain("setUndoHistory((current) => current.slice(0, -1))");
     expect(source).toContain("moveMobileTabFocus");
     expect(source).toContain("mobileTabForKey(tab, event.key)");
     expect(source).toContain('aria-expanded={isFigurePanelOpen}');
@@ -215,6 +222,7 @@ describe("FF-14 responsive catalog workspace", () => {
     expect(styles).toContain("height: 100dvh");
     expect(styles).toContain("scroll-padding-bottom: calc(var(--space-8) + env(safe-area-inset-bottom))");
     expect(styles).toContain("scrollbar-gutter: stable");
+    expect(styles).toContain(".mobile-tab-panel[hidden]");
     expect(figurePanelSource).toContain('className="figure-panel__scroll"');
   });
 
