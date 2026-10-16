@@ -21,6 +21,7 @@ import {
   type SavedFigure,
 } from "../storage/figure-draft-store.js";
 import { CollectionFigureCard } from "./CollectionFigureCard.js";
+import { LegacyFigurePreviewMigrator } from "./LegacyFigurePreviewMigrator.js";
 import { CollectionInventoryPanel } from "./CollectionInventoryPanel.js";
 import { CollectionPurchaseDialog } from "./CollectionPurchaseDialog.js";
 import { CollectionViewport } from "./CollectionViewport.js";
@@ -273,6 +274,9 @@ export function CollectionPage() {
     });
   };
   const purchaseJsonFigure = purchaseSelection?.jsonFigure;
+  const acceptMigratedPreview = (migrated: SavedFigure): void => {
+    setCollection((current) => current.map((saved) => saved.id === migrated.id ? migrated : saved));
+  };
 
   return (
     <div className="app-shell collection-shell">
@@ -407,7 +411,6 @@ export function CollectionPage() {
                         buyFigure: t("collection.buyFigure"),
                         stageFull: t("collection.stageFull"),
                         onStage: t("collection.onStage"),
-                        partCount: t("collection.partCount", { count: saved.document.selections.length }),
                         savedAt: t("collection.savedAt"),
                       }}
                       language={language}
@@ -444,6 +447,9 @@ export function CollectionPage() {
           </details>
         ) : null}
       </div>
+      {loadState === "ready" ? (
+        <LegacyFigurePreviewMigrator figures={collection} onMigrated={acceptMigratedPreview} />
+      ) : null}
       {purchaseSelection ? (
         <CollectionPurchaseDialog
           exportError={exportError}

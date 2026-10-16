@@ -1,5 +1,5 @@
 import type { SavedFigure } from "../storage/figure-draft-store.js";
-import { builderComponentForId, thumbnailForComponent } from "./catalog-workspace-data.js";
+import { FigurePreviewCard } from "./FigurePreviewCard.js";
 import { Button } from "./ui/Button.js";
 
 type CollectionFigureCardProps = {
@@ -19,7 +19,6 @@ type CollectionFigureCardProps = {
     buyFigure: string;
     stageFull: string;
     onStage: string;
-    partCount: string;
     savedAt: string;
   };
   onToggleStage: () => void;
@@ -40,33 +39,18 @@ export function CollectionFigureCard({
   onMove,
   onBuy,
 }: CollectionFigureCardProps) {
-  const thumbnails = saved.document.selections.flatMap(({ componentId, slot }) => {
-    const component = builderComponentForId(componentId);
-    return component ? [{ componentId, slot, src: thumbnailForComponent(component) }] : [];
-  });
-
   return (
     <li className={`collection-card${onStage ? " collection-card--on-stage" : ""}`}>
-      <div className="collection-card__visual" aria-hidden="true">
-        {saved.previewImageDataUrl ? (
-          <img
-            alt=""
-            className="collection-card__figure-preview"
-            decoding="async"
-            loading="lazy"
-            src={saved.previewImageDataUrl}
-          />
-        ) : thumbnails.length > 0 ? (
-          <div className={`collection-card__parts collection-card__parts--${Math.min(thumbnails.length, 5)}`}>
-            {thumbnails.map(({ componentId, slot, src }) => (
-              <img className={`collection-card__part collection-card__part--${slot}`} src={src} alt="" key={componentId} loading="lazy" />
-            ))}
-          </div>
-        ) : (
+      <FigurePreviewCard
+        alt={saved.document.name}
+        className="collection-card__visual"
+        src={saved.previewImageDataUrl}
+      >
+        {!saved.previewImageDataUrl ? (
           <span className="collection-card__monogram">{saved.document.name.slice(0, 1).toUpperCase()}</span>
-        )}
+        ) : null}
         {onStage ? <span className="collection-card__stage-badge">✓ {labels.onStage}</span> : null}
-      </div>
+      </FigurePreviewCard>
 
       <div className="collection-card__body">
         <div className="collection-card__copy">
