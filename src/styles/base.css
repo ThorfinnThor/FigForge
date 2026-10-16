@@ -2510,14 +2510,6 @@ legend {
   padding-top: var(--space-5);
 }
 
-.curated-product__affiliate {
-  margin-top: var(--space-2) !important;
-  color: var(--ink-muted);
-  font-size: 0.72rem;
-  font-weight: 700;
-  text-align: center;
-}
-
 .curated-product__actions .ff-button {
   display: inline-flex;
   min-height: 46px;
