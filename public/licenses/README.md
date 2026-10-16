@@ -7,3 +7,5 @@ Die eingebettete offizielle LDraw Parts Library 2026-08 enthält je nach Datei I
 Die LDCad-Verbindungsmetadaten sind separat in `LDCadShadowLibrary-NOTICE.txt` dokumentiert.
 
 Die UI-Schriften Lilita One und Rubik werden selbst gehostet (npm-Pakete `@fontsource/lilita-one` und `@fontsource/rubik`, Latin-Subset) und stehen unter der SIL Open Font License 1.1. Copyright-Hinweise und Lizenztext liegen in `fonts-OFL.txt`.
+
+Die Produktbilder unter `assets/product-images/sets/` stammen vom offiziellen LEGO Produkt-CDN und dienen ausschließlich der redaktionellen Darstellung der jeweils verlinkten LEGO Sets. LEGO® ist eine Marke der LEGO Gruppe; FigForge wird von der LEGO Gruppe weder gesponsert noch autorisiert. Die konkreten Quell-URLs sind im kuratierten Produktdatensatz dokumentiert. Die Zubehörgrafiken im benachbarten Ordner wurden eigens für FigForge erstellt.

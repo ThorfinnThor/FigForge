@@ -22,8 +22,16 @@ export function CuratedProductGrid({ products }: CuratedProductGridProps) {
             );
         return (
           <li className="curated-product" data-accent={product.accent} key={product.id}>
-            <div className="curated-product__visual" aria-hidden="true">
-              <span>{product.setNumber ?? "◆"}</span>
+            <div className="curated-product__visual">
+              <img
+                alt={t(product.imageAltKey)}
+                decoding="async"
+                loading="lazy"
+                src={product.imageSrc}
+              />
+              {product.setNumber ? (
+                <span className="curated-product__set-number">#{product.setNumber}</span>
+              ) : null}
             </div>
             <div className="curated-product__body">
               <p className="curated-product__type">
