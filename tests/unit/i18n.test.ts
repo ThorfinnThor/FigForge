@@ -11,5 +11,8 @@ describe("language selection", () => {
     expect(source).toContain('"catalog.mode.exact": "Exact printed geometry"');
     expect(source).toContain('"language.en": "English"');
     expect(source).toContain('"language.de": "Deutsch"');
+    expect(source).toContain('"collection.title": "Deine Sammlung"');
+    expect(source).toContain('"collection.stageEyebrow": "Bühne"');
+    expect(source).not.toContain('"figure.collection.dialogEyebrow": "Lokale Collection"');
   });
 });

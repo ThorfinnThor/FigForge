@@ -578,7 +578,7 @@ const testNamedCollectionSave = async (client: CdpClient, origin: string): Promi
   })()`);
   assert.equal(nameEntered, true, "the collection name must be editable");
   assert.equal(await clickButtonWithText(client, "Figur speichern"), true);
-  await waitFor(client, `${textIncludes("Zur Collection hinzugefügt")} && ${textIncludes(figureName)}`, "named collection save confirmation");
+  await waitFor(client, `${textIncludes("Zur Sammlung hinzugefügt")} && ${textIncludes(figureName)}`, "named collection save confirmation");
   assert.equal(await clickButtonWithText(client, "Fertig"), true);
   await waitFor(client, "!document.querySelector('.collection-save-dialog')", "collection confirmation close");
   await navigate(client, `${origin}/collection`);
