@@ -46,6 +46,7 @@
     "assets:prototype-map": "tsx tools/build-ldraw-prototype-file-map.ts",
     "assets:prototype-pack": "tsx tools/build-ldraw-prototype-pack.ts",
     "assets:ldraw-thumbnails": "tsx tools/build-ldraw-catalog-thumbnails.ts",
+    "assets:figure-previews": "tsx tools/build-figure-preview-thumbnails.ts",
     "assets:ldraw-refresh": "tsx tools/refresh-ldraw-library.ts",
     "assets:ldraw-expanded": "tsx tools/build-ldraw-expanded-catalog.ts",
     "assets:ldraw-runtime": "tsx tools/build-ldraw-runtime-packages.ts",

@@ -3,7 +3,7 @@ import {
   AMAZON_AFFILIATE_CONFIG,
   validateAmazonAffiliateConfig,
 } from "../../src/procurement/amazon-config.js";
-import { amazonSearchLink } from "../../src/procurement/amazon-links.js";
+import { amazonProductLink, amazonSearchLink } from "../../src/procurement/amazon-links.js";
 
 describe("Amazon recommendation links", () => {
   it("adds a valid Associates tag to an allowlisted Amazon search link", () => {
@@ -24,6 +24,13 @@ describe("Amazon recommendation links", () => {
       destinationStoreIds: { "amazon.com": "seitenhafen36-20" },
       redirectPreference: "close-match",
       checkedAt: "2026-10-13",
+    });
+  });
+
+  it("creates a clean affiliate product link from a validated ASIN", () => {
+    expect(amazonProductLink("B0BBRYHTPS", "figforge-21")).toEqual({
+      href: "https://www.amazon.de/dp/B0BBRYHTPS?tag=figforge-21",
+      affiliate: true,
     });
   });
 

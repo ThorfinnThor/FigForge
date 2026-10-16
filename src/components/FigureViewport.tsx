@@ -12,6 +12,7 @@ type FigureViewportProps = {
   onBuyParts: () => void;
   onSaveToCollection: () => void;
   onSynchronizationChange: (synchronized: boolean) => void;
+  onPreviewCaptureReady: (capture: (() => string) | null) => void;
 };
 
 type ViewportStatus = {
@@ -37,6 +38,7 @@ export function FigureViewport({
   onBuyParts,
   onSaveToCollection,
   onSynchronizationChange,
+  onPreviewCaptureReady,
 }: FigureViewportProps) {
   const { t } = useI18n();
   const canvasRef = useRef<HTMLCanvasElement>(null);
@@ -106,6 +108,7 @@ export function FigureViewport({
           setSelectionSynchronized(true);
           onSynchronizationChange(true);
           setStatus(selectionStatus(selectionRef.current));
+          onPreviewCaptureReady(() => createdController.capturePreviewDataUrl());
         }
       } catch (error) {
         if (!disposed) {
@@ -124,6 +127,7 @@ export function FigureViewport({
       disposed = true;
       selectionApplyRevisionRef.current += 1;
       controller?.dispose();
+      onPreviewCaptureReady(null);
       if (controllerRef.current === controller) {
         controllerRef.current = null;
       }

@@ -14,6 +14,7 @@ import {
   SRGBColorSpace,
   Vector3,
   WebGLRenderer,
+  WebGLRenderTarget,
 } from "three";
 import { OrbitControls } from "three/addons/controls/OrbitControls.js";
 import { LDrawConditionalLineMaterial } from "three/addons/materials/LDrawConditionalLineMaterial.js";
@@ -277,6 +278,49 @@ export class LDrawPrototypeSceneController {
     }
     extension.restoreContext();
     return true;
+  }
+
+  capturePreviewDataUrl(size = 420): string {
+    if (this.#disposed || this.#contextLost || !this.#figureModel) {
+      throw new Error("The figure preview is not ready to capture");
+    }
+    const previewSize = Math.max(240, Math.min(720, Math.round(size)));
+    const target = new WebGLRenderTarget(previewSize, previewSize);
+    target.samples = 4;
+    const pixels = new Uint8Array(previewSize * previewSize * 4);
+    const previousTarget = this.#renderer.getRenderTarget();
+    const previousAspect = this.#camera.aspect;
+    const previousClearColor = this.#renderer.getClearColor(new Color()).clone();
+    const previousClearAlpha = this.#renderer.getClearAlpha();
+    try {
+      this.#camera.aspect = 1;
+      this.#camera.updateProjectionMatrix();
+      this.#renderer.setClearColor(new Color(0x1d2748), 1);
+      this.#renderer.setRenderTarget(target);
+      this.#renderer.render(this.#scene, this.#camera);
+      this.#renderer.readRenderTargetPixels(target, 0, 0, previewSize, previewSize, pixels);
+    } finally {
+      this.#renderer.setRenderTarget(previousTarget);
+      this.#renderer.setClearColor(previousClearColor, previousClearAlpha);
+      this.#camera.aspect = previousAspect;
+      this.#camera.updateProjectionMatrix();
+      target.dispose();
+      this.#render();
+    }
+
+    const flipped = new Uint8ClampedArray(pixels.length);
+    const rowBytes = previewSize * 4;
+    for (let y = 0; y < previewSize; y += 1) {
+      const sourceOffset = (previewSize - y - 1) * rowBytes;
+      flipped.set(pixels.subarray(sourceOffset, sourceOffset + rowBytes), y * rowBytes);
+    }
+    const canvas = document.createElement("canvas");
+    canvas.width = previewSize;
+    canvas.height = previewSize;
+    const context = canvas.getContext("2d");
+    if (!context) throw new Error("A 2D canvas is required to encode the figure preview");
+    context.putImageData(new ImageData(flipped, previewSize, previewSize), 0, 0);
+    return canvas.toDataURL("image/webp", 0.82);
   }
 
   dispose(): void {
