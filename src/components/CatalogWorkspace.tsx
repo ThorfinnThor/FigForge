@@ -123,7 +123,8 @@ export function CatalogWorkspace() {
   const [transferMessage, setTransferMessage] = useState<string | null>(null);
   const [transferMessageTone, setTransferMessageTone] = useState<"danger" | "info">("info");
   const [shareLink, setShareLink] = useState<string | null>(null);
-  const [semanticStatus, setSemanticStatus] = useState<SemanticSearchStatus>("loading");
+  const [semanticStatus, setSemanticStatus] = useState<SemanticSearchStatus>("disabled");
+  const [semanticSearchEnabled, setSemanticSearchEnabled] = useState(false);
   const [semanticClientRevision, setSemanticClientRevision] = useState(0);
   const [semanticProgress, setSemanticProgress] = useState({ loaded: 0, total: semanticSearchRelease.requiredDownloadBytes });
   const [semanticHits, setSemanticHits] = useState<Array<{ componentId: string; score: number }>>([]);
@@ -191,6 +192,7 @@ export function CatalogWorkspace() {
   }, [activeCategory, catalogLoadRevision]);
 
   useEffect(() => {
+    if (!semanticSearchEnabled) return;
     let active = true;
     setSemanticStatus("loading");
     setSemanticProgress({ loaded: 0, total: semanticSearchRelease.requiredDownloadBytes });
@@ -210,7 +212,7 @@ export function CatalogWorkspace() {
       active = false;
       client.dispose();
     };
-  }, [semanticClientRevision]);
+  }, [semanticClientRevision, semanticSearchEnabled]);
 
   useEffect(() => {
     if (semanticStatus !== "ready") return;
@@ -712,7 +714,11 @@ export function CatalogWorkspace() {
           label={t("catalog.searchLabel")}
           placeholder={t("catalog.searchPlaceholder")}
           value={query}
-          onChange={(event) => setQuery(event.target.value)}
+          onChange={(event) => {
+            const nextQuery = event.target.value;
+            setQuery(nextQuery);
+            if (nextQuery.trim().length > 0) setSemanticSearchEnabled(true);
+          }}
           hint={catalogLoadState === "ready"
             ? t(deferredQuery.trim().length === 0
               ? "catalog.results.all"
@@ -723,7 +729,7 @@ export function CatalogWorkspace() {
                   : "catalog.results.none", { shown: filteredComponents.length, total: catalogPartsForView.length })
             : t("catalog.loadingHint")}
         />
-        {semanticStatus !== "ready" || semanticSearching ? (
+        {semanticStatus === "loading" || semanticStatus === "error" || semanticSearching ? (
           <div className="semantic-search-controls" data-status={semanticStatus}>
             {semanticStatus === "loading" ? (
               <span role="status">{t("search.semantic.loading", {
