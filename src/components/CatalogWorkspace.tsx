@@ -61,7 +61,8 @@ type FigureSnapshot = {
   selectedColorByRole: Partial<Record<CatalogRole, number>>;
 };
 
-const INITIAL_VISIBLE_PARTS = 80;
+const DESKTOP_VISIBLE_PARTS_BATCH = 80;
+const MOBILE_VISIBLE_PARTS_BATCH = 24;
 const MAX_UNDO_HISTORY = 50;
 const RESTORE_SUPERSEDED_ERROR = "restore-superseded";
 const LDRAW_CATALOG_ROLES: ReadonlySet<string> = new Set([
@@ -119,6 +120,12 @@ function useMediaQuery(query: string) {
   return matches;
 }
 
+const initialVisiblePartCount = (): number => (
+  typeof window !== "undefined" && window.matchMedia("(max-width: 767px)").matches
+    ? MOBILE_VISIBLE_PARTS_BATCH
+    : DESKTOP_VISIBLE_PARTS_BATCH
+);
+
 export function CatalogWorkspace() {
   const { language, setLanguage, t } = useI18n();
   const [activeCategory, setActiveCategory] = useState<CatalogCategory>("head");
@@ -129,7 +136,7 @@ export function CatalogWorkspace() {
   const [catalogLoadRevision, setCatalogLoadRevision] = useState(0);
   const [catalogViewMode, setCatalogViewMode] = useState<CatalogViewMode>("exact");
   const [selectedCatalogSet, setSelectedCatalogSet] = useState<CatalogSetSelection | null>(null);
-  const [visiblePartCount, setVisiblePartCount] = useState(INITIAL_VISIBLE_PARTS);
+  const [visiblePartCount, setVisiblePartCount] = useState(initialVisiblePartCount);
   const [mobileTab, setMobileTab] = useState<MobileTab>("parts");
   const [openedMobileTabs, setOpenedMobileTabs] = useState<ReadonlySet<MobileTab>>(() => new Set(["parts"]));
   const [isFigurePanelOpen, setIsFigurePanelOpen] = useState(false);
@@ -268,8 +275,8 @@ export function CatalogWorkspace() {
   });
 
   useEffect(() => {
-    setVisiblePartCount(INITIAL_VISIBLE_PARTS);
-  }, [activeCategory, catalogViewMode, deferredQuery, selectedCatalogSet]);
+    setVisiblePartCount(isMobileLayout ? MOBILE_VISIBLE_PARTS_BATCH : DESKTOP_VISIBLE_PARTS_BATCH);
+  }, [activeCategory, catalogViewMode, deferredQuery, isMobileLayout, selectedCatalogSet]);
 
   const selectedComponentIds = new Set(Object.values(selectedByRole));
   const figureSlot = (id: CatalogRole, label: string) => {
@@ -887,7 +894,9 @@ export function CatalogWorkspace() {
         {visibleComponents.length < filteredComponents.length ? (
           <Button
             className="catalog-load-more"
-            onClick={() => setVisiblePartCount((count) => count + INITIAL_VISIBLE_PARTS)}
+            onClick={() => setVisiblePartCount((count) => (
+              count + (isMobileLayout ? MOBILE_VISIBLE_PARTS_BATCH : DESKTOP_VISIBLE_PARTS_BATCH)
+            ))}
             variant="secondary"
           >
             {t("catalog.loadMore", { shown: visibleComponents.length, total: filteredComponents.length })}

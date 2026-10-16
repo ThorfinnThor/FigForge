@@ -25,6 +25,16 @@ body {
   background-size: 28px 28px;
 }
 
+.app-route-loading {
+  min-height: 100dvh;
+  margin: 0;
+  padding: var(--space-8);
+  color: var(--navy);
+  background: var(--peg);
+  font-family: var(--font-display);
+  font-size: clamp(1.5rem, 5vw, 2.5rem);
+}
+
 main {
   width: 100%;
   max-width: none;
@@ -838,6 +848,8 @@ legend {
   min-width: 0;
   flex-direction: column;
   border-radius: 12px 12px 10px 10px;
+  content-visibility: auto;
+  contain-intrinsic-size: auto 470px;
 }
 
 .part-card__hang {

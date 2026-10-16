@@ -12,6 +12,25 @@ import {
 } from "../../src/components/catalog-workspace-data.js";
 
 describe("FF-14 responsive catalog workspace", () => {
+  it("keeps the first mobile catalog render deliberately small", async () => {
+    const source = await readFile("src/components/CatalogWorkspace.tsx", "utf8");
+    const styles = await readFile("src/styles/base.css", "utf8");
+
+    expect(source).toContain("const MOBILE_VISIBLE_PARTS_BATCH = 24");
+    expect(source).toContain("useState(initialVisiblePartCount)");
+    expect(source).toContain('window.matchMedia("(max-width: 767px)").matches');
+    expect(styles).toContain("content-visibility: auto");
+    expect(styles).toContain("contain-intrinsic-size: auto 470px");
+  });
+
+  it("loads each top-level route as its own bundle", async () => {
+    const source = await readFile("src/app/App.tsx", "utf8");
+
+    expect(source.match(/lazy\(\(\) => import\(/gu)).toHaveLength(5);
+    expect(source).toContain("<Suspense");
+    expect(source).toContain('t("app.loading")');
+  });
+
   it("presents purchasing as a clear color-first funnel with optional technical details", async () => {
     const panelSource = await readFile("src/components/FigurePartsPanel.tsx", "utf8");
     const shopSource = await readFile("src/components/ShopExportPanel.tsx", "utf8");

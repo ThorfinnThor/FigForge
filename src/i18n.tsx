@@ -6,6 +6,7 @@ type Messages = Record<string, string>;
 
 const messages: Record<Language, Messages> = {
   de: {
+    "app.loading": "FigForge wird geladen …",
     "language.label": "Sprache",
     "language.de": "Deutsch",
     "language.en": "English",
@@ -437,6 +438,7 @@ const messages: Record<Language, Messages> = {
     "source.searchLicense": "Suchmodell-Hinweise",
   },
   en: {
+    "app.loading": "Loading FigForge …",
     "language.label": "Language",
     "language.de": "Deutsch",
     "language.en": "English",
