@@ -1,6 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 360" role="img" aria-labelledby="title">
-  <title id="title">Minifigure display base illustration</title>
-  <path fill="#11182f" stroke="#1f2b52" stroke-width="10" d="m69 224 178-103 184 106-179 105z"/>
-  <path fill="#2f417a" d="m69 224 181 103v25L69 248z"/><path fill="#172344" d="m250 327 181-100v24L250 352z"/>
-  <g fill="#ffc928" stroke="#1f2b52" stroke-width="7"><ellipse cx="162" cy="220" rx="30" ry="17"/><ellipse cx="250" cy="171" rx="30" ry="17"/><ellipse cx="338" cy="220" rx="30" ry="17"/><ellipse cx="250" cy="270" rx="30" ry="17"/></g>
-</svg>

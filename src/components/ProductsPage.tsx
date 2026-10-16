@@ -96,7 +96,9 @@ export function ProductsPage() {
           </div>
           <CuratedProductGrid products={accessories} />
         </section> : null}
-        <p className="products-disclosure">{t("amazon.disclosure")} {t("products.disclosure")}</p>
+        <footer className="products-legal">
+          <a href="/privacy">{t("products.legalLink")}</a>
+        </footer>
       </div>
     </div>
   );

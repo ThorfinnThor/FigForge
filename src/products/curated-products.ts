@@ -7,6 +7,7 @@ export type CuratedProduct = {
   verifiedAt: string;
   themeId?: FigureThemeId;
   setNumber?: string;
+  productNumber?: string;
   titleKey: string;
   descriptionKey: string;
   imageSrc: string;
@@ -135,37 +136,46 @@ export const CURATED_PRODUCTS: readonly CuratedProduct[] = [
   {
     id: "minifigure-display-case",
     type: "accessory",
-    ageGroup: null,
+    ageGroup: "4+",
     verifiedAt: "2026-10-16",
+    productNumber: "5005375",
     titleKey: "products.displayCase.title",
     descriptionKey: "products.displayCase.description",
-    imageSrc: "/assets/product-images/accessories/display-case.svg",
+    imageSrc: "/assets/product-images/accessories-real/5005375.jpg",
     imageAltKey: "products.displayCase.imageAlt",
-    amazonQuery: "LEGO minifigure display case",
+    imageSourceUrl: "https://www.lego.com/cdn/cs/set/assets/blt0ef22ec88af0aa54/5005375.jpg",
+    amazonQuery: "LEGO 5005375 Minifigure Display Case 16",
+    officialUrl: "https://www.lego.com/en-de/product/lego-minifigure-display-case-16-5005375",
     accent: "purple",
   },
   {
     id: "minifigure-display-base",
     type: "accessory",
-    ageGroup: null,
+    ageGroup: "4+",
     verifiedAt: "2026-10-16",
+    productNumber: "5006157",
     titleKey: "products.displayBase.title",
     descriptionKey: "products.displayBase.description",
-    imageSrc: "/assets/product-images/accessories/display-base.svg",
+    imageSrc: "/assets/product-images/accessories-real/5006157.jpg",
     imageAltKey: "products.displayBase.imageAlt",
-    amazonQuery: "LEGO minifigure display base plate",
+    imageSourceUrl: "https://www.lego.com/cdn/cs/set/assets/bltb86e703480a5131d/5006157.png",
+    amazonQuery: "LEGO 5006157 Play and Display Case Blue",
+    officialUrl: "https://www.lego.com/en-de/product/play-and-display-case-blue-5006157",
     accent: "purple",
   },
   {
     id: "minifigure-storage",
     type: "accessory",
-    ageGroup: null,
+    ageGroup: "4+",
     verifiedAt: "2026-10-16",
+    productNumber: "5006912",
     titleKey: "products.storage.title",
     descriptionKey: "products.storage.description",
-    imageSrc: "/assets/product-images/accessories/storage-box.svg",
+    imageSrc: "/assets/product-images/accessories-real/5006912.jpg",
     imageAltKey: "products.storage.imageAlt",
-    amazonQuery: "LEGO minifigure storage box",
+    imageSourceUrl: "https://www.lego.com/cdn/cs/set/assets/blta396b0d88c8eb259/5006912.png",
+    amazonQuery: "LEGO 5006912 8 Stud Storage Brick Black",
+    officialUrl: "https://www.lego.com/en-de/product/8-stud-storage-brick-black-5006912",
     accent: "purple",
   },
 ];
