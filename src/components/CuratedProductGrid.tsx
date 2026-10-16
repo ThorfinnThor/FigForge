@@ -9,9 +9,12 @@ type CuratedProductGridProps = {
 
 export function CuratedProductGrid({ products }: CuratedProductGridProps) {
   const { t } = useI18n();
+  const gridClassName = products.length < 4
+    ? "curated-products curated-products--compact"
+    : "curated-products";
 
   return (
-    <ul className="curated-products">
+    <ul className={gridClassName}>
       {products.map((product) => {
         const amazonLink = product.amazonAsin
           ? amazonProductLink(product.amazonAsin, AMAZON_AFFILIATE_CONFIG.trackingId)
@@ -29,8 +32,10 @@ export function CuratedProductGrid({ products }: CuratedProductGridProps) {
                 loading="lazy"
                 src={product.imageSrc}
               />
-              {product.setNumber ? (
-                <span className="curated-product__set-number">#{product.setNumber}</span>
+              {product.setNumber || product.productNumber ? (
+                <span className="curated-product__set-number">
+                  #{product.setNumber ?? product.productNumber}
+                </span>
               ) : null}
             </div>
             <div className="curated-product__body">
@@ -59,6 +64,7 @@ export function CuratedProductGrid({ products }: CuratedProductGridProps) {
                   </a>
                 ) : null}
               </div>
+              <p className="curated-product__affiliate">{t("products.affiliateShort")}</p>
             </div>
           </li>
         );

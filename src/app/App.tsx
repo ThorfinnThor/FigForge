@@ -11,6 +11,8 @@ const MethodologyPage = lazy(() => import("../components/MethodologyPage.js")
   .then((module) => ({ default: module.MethodologyPage })));
 const ProductsPage = lazy(() => import("../components/ProductsPage.js")
   .then((module) => ({ default: module.ProductsPage })));
+const PrivacyPage = lazy(() => import("../components/PrivacyPage.js")
+  .then((module) => ({ default: module.PrivacyPage })));
 
 function AppRoutes() {
   const { t } = useI18n();
@@ -19,6 +21,8 @@ function AppRoutes() {
     ? <IdeasPage />
     : pathname === "/sets"
       ? <ProductsPage />
+      : pathname === "/privacy"
+        ? <PrivacyPage />
       : pathname === "/methodology"
         ? <MethodologyPage />
         : pathname === "/collection"

@@ -40,6 +40,18 @@ describe("curated products", () => {
     }
   });
 
+  it("uses concrete official products and real images for every accessory", () => {
+    const accessories = CURATED_PRODUCTS.filter((product) => product.type === "accessory");
+    expect(accessories).toHaveLength(3);
+    for (const product of accessories) {
+      expect(product.productNumber).toMatch(/^\d{7}$/u);
+      expect(product.imageSrc).toMatch(/^\/assets\/product-images\/accessories-real\/\d{7}\.jpg$/u);
+      expect(product.imageSourceUrl).toMatch(/^https:\/\/www\.lego\.com\/cdn\//u);
+      expect(product.officialUrl).toMatch(/^https:\/\/www\.lego\.com\/en-de\/product\//u);
+      expect(product.amazonQuery).toContain(product.productNumber);
+    }
+  });
+
   it("renders product images lazily instead of number-only placeholders", async () => {
     const source = await readFile("src/components/CuratedProductGrid.tsx", "utf8");
     expect(source).toContain('loading="lazy"');
@@ -52,5 +64,29 @@ describe("curated products", () => {
     expect(source).toContain('type ProductCategory = "all" | FigureThemeId | "accessories"');
     expect(source).toContain('aria-pressed={activeCategory === category}');
     expect(source).toContain('t("products.filters.label")');
+    expect(source).toContain('href="/privacy"');
+    expect(source).not.toContain('className="products-disclosure"');
+  });
+
+  it("uses the four-column product layout without forced title hyphenation", async () => {
+    const source = await readFile("src/styles/base.css", "utf8");
+    const titleStyles = source.slice(
+      source.indexOf(".curated-product h3"),
+      source.indexOf(".curated-product__body > p"),
+    );
+    expect(source).toContain("grid-template-columns: repeat(4, minmax(0, 1fr));");
+    expect(titleStyles).toContain("hyphens: none;");
+    expect(titleStyles).not.toContain("hyphens: auto;");
+    expect(titleStyles).not.toContain("overflow-wrap: anywhere;");
+  });
+
+  it("routes affiliate and privacy information to a dedicated page", async () => {
+    const [appSource, privacySource] = await Promise.all([
+      readFile("src/app/App.tsx", "utf8"),
+      readFile("src/components/PrivacyPage.tsx", "utf8"),
+    ]);
+    expect(appSource).toContain('pathname === "/privacy"');
+    expect(privacySource).toContain('t("amazon.disclosure")');
+    expect(privacySource).toContain('t("privacy.local.body")');
   });
 });

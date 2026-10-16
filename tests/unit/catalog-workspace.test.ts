@@ -26,7 +26,7 @@ describe("FF-14 responsive catalog workspace", () => {
   it("loads each top-level route as its own bundle", async () => {
     const source = await readFile("src/app/App.tsx", "utf8");
 
-    expect(source.match(/lazy\(\(\) => import\(/gu)).toHaveLength(5);
+    expect(source.match(/lazy\(\(\) => import\(/gu)).toHaveLength(6);
     expect(source).toContain("<Suspense");
     expect(source).toContain('t("app.loading")');
   });
