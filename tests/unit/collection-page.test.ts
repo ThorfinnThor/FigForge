@@ -7,6 +7,7 @@ describe("Collection page shell", () => {
     const collectionSource = await readFile("src/components/CollectionPage.tsx", "utf8");
     const cardSource = await readFile("src/components/CollectionFigureCard.tsx", "utf8");
     const purchaseDialogSource = await readFile("src/components/CollectionPurchaseDialog.tsx", "utf8");
+    const shopExportSource = await readFile("src/components/ShopExportPanel.tsx", "utf8");
     const builderSource = await readFile("src/components/CatalogWorkspace.tsx", "utf8");
     const methodologySource = await readFile("src/components/MethodologyPage.tsx", "utf8");
     const messagesSource = await readFile("src/i18n.tsx", "utf8");
@@ -32,6 +33,9 @@ describe("Collection page shell", () => {
     expect(cardSource).toContain("labels.buyFigure");
     expect(purchaseDialogSource).toContain('<ShopExportPanel selections={selections} stepNumber={1} />');
     expect(purchaseDialogSource).toContain("shopExportSelectionsForSavedFigures");
+    expect(shopExportSource).toContain('blocker.reason === "multiple-colors"');
+    expect(shopExportSource).toContain('href={`/?figureId=${encodeURIComponent(id)}`}');
+    expect(shopExportSource).toContain('t("shop.collectionColors.open", { name })');
     expect(collectionSource).toContain("openStagePurchaseDialog");
     expect(collectionSource).toContain('t("collection.buyStage")');
     expect(collectionSource).toContain("savedFigures={purchaseSelection.figures}");

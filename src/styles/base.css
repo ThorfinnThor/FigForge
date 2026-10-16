@@ -1693,6 +1693,27 @@ legend {
   gap: var(--space-3);
 }
 
+.shop-export__color-guidance {
+  display: grid;
+  gap: var(--space-2);
+  margin: 0 0 var(--space-3);
+  padding: var(--space-3);
+  border: 2px solid var(--yellow);
+  border-radius: var(--radius-md);
+  background: color-mix(in srgb, var(--yellow) 12%, var(--paper));
+}
+
+.shop-export__color-guidance p {
+  margin: 0;
+  color: var(--muted);
+}
+
+.shop-export__color-guidance-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+}
+
 .shop-export__target {
   display: grid;
   gap: var(--space-3);

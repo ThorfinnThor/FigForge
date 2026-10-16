@@ -117,6 +117,18 @@ export function ShopExportPanel({ selections, stepNumber = 2 }: ShopExportPanelP
     if (!inventory || !targets) return null;
     return inventoryCoverage(targets[0]!.result, inventory);
   }, [inventory, targets]);
+  const figuresNeedingColors = useMemo(() => {
+    if (!targets) return [];
+    const figures = new Map<string, string>();
+    for (const blocker of targets[0]!.result.blockers) {
+      if ((blocker.reason === "multiple-colors" || blocker.reason === "invalid-color")
+        && blocker.sourceFigureId
+        && blocker.sourceFigureName) {
+        figures.set(blocker.sourceFigureId, blocker.sourceFigureName);
+      }
+    }
+    return [...figures].map(([id, name]) => ({ id, name }));
+  }, [targets]);
   const coverage = useMemo(() => targets ? selections.map((selection) => ({
     selection,
     targets: targets.map((target) => ({
@@ -146,6 +158,23 @@ export function ShopExportPanel({ selections, stepNumber = 2 }: ShopExportPanelP
             <StatusMessage tone="success">
               {t("inventory.coverage", { owned: ownedSummary.owned, missing: ownedSummary.missing })}
             </StatusMessage>
+          ) : null}
+          {figuresNeedingColors.length > 0 ? (
+            <aside className="shop-export__color-guidance" role="note">
+              <strong>{t("shop.collectionColors.title")}</strong>
+              <p>{t("shop.collectionColors.description")}</p>
+              <div className="shop-export__color-guidance-actions">
+                {figuresNeedingColors.map(({ id, name }) => (
+                  <a
+                    className="ff-button ff-button--ghost ff-button--sm"
+                    href={`/?figureId=${encodeURIComponent(id)}`}
+                    key={id}
+                  >
+                    {t("shop.collectionColors.open", { name })}
+                  </a>
+                ))}
+              </div>
+            </aside>
           ) : null}
           <div className="shop-export__targets">
             {targets.map((target) => (
