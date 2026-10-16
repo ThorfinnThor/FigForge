@@ -31,6 +31,14 @@ describe("FF-14 responsive catalog workspace", () => {
     expect(source).toContain('t("app.loading")');
   });
 
+  it("keeps every primary navigation destination visible on mobile", async () => {
+    const styles = await readFile("src/styles/base.css", "utf8");
+
+    expect(styles).toContain("grid-template-columns: repeat(2, minmax(0, 1fr));");
+    expect(styles).toContain("white-space: normal;");
+    expect(styles).toContain("overflow: visible;");
+  });
+
   it("presents purchasing as a clear color-first funnel with optional technical details", async () => {
     const panelSource = await readFile("src/components/FigurePartsPanel.tsx", "utf8");
     const shopSource = await readFile("src/components/ShopExportPanel.tsx", "utf8");
