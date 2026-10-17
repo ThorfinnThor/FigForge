@@ -7,8 +7,8 @@ describe("language selection", () => {
 
     expect(source).toContain('useState<Language>("de")');
     expect(source).toContain('LANGUAGE_STORAGE_KEY = "figforge-language"');
-    expect(source).toContain('"catalog.mode.exact": "Exakte Druckgeometrie"');
-    expect(source).toContain('"catalog.mode.exact": "Exact printed geometry"');
+    expect(source).toContain('"catalog.mode.exact": "Mit Aufdruck in der Vorschau"');
+    expect(source).toContain('"catalog.mode.exact": "With print shown in preview"');
     expect(source).toContain('"language.en": "English"');
     expect(source).toContain('"language.de": "Deutsch"');
     expect(source).toContain('"collection.title": "Deine Sammlung"');

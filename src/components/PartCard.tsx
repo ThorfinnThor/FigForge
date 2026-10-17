@@ -3,6 +3,7 @@ import { Card } from "./ui/Card.js";
 import { StatusMessage } from "./ui/StatusMessage.js";
 import { evaluateCatalogPlacement } from "../compatibility/compatibility-evaluator.js";
 import type { CatalogPackagePart } from "../contracts/catalog-package.js";
+import { partDisplay } from "../catalog/part-display.js";
 import { useI18n } from "../i18n.js";
 
 type PartCardProps = {
@@ -42,6 +43,7 @@ export function PartCard({
   const compatibility = builderComponentId
     ? evaluateCatalogPlacement(builderComponentId, targetSlot)
     : undefined;
+  const display = partDisplay(component.name);
   const compatibilityMessage = compatibility
     ? t(compatibilityReasonMessageKey[compatibility.reasonCode]
       ?? "part.compatibility.unverifiedCombination")
@@ -65,30 +67,37 @@ export function PartCard({
         )}
       </div>
       <div className="part-card__body">
-        <span
-          className="part-card__badge"
-          data-tone={connectionStatus === "digitally-supported"
-            ? selected ? "active" : geometryOnlyPreview ? "geometry" : "connected"
-            : "blocked"}
-        >
-          {connectionStatus === "digitally-supported"
-            ? selected ? t("part.active") : geometryOnlyPreview ? t("part.geometry") : t("part.connected")
-            : builderComponentId ? ldrawAvailable ? t("part.locked") : t("part.catalog")
-              : t("part.catalogCsv")}
-        </span>
-        <h3 className="part-card__title">{component.name}</h3>
-        <p className="part-card__id">Rebrickable · {component.rebrickablePartNum}</p>
-        <StatusMessage className="part-card__status" tone="warning">
-          {geometryOnlyPreview
-            ? t("part.geometryStatus")
-            : ldrawAvailable
-            ? connectionStatus === "digitally-supported"
-              ? t("part.connectedStatus")
-              : t("part.profileMissing")
-            : builderComponentId
-              ? t("part.modelMissing")
-              : t("part.catalogStatus")}
-        </StatusMessage>
+        {connectionStatus === "digitally-supported" && !selected && !geometryOnlyPreview ? null : (
+          <span
+            className="part-card__badge"
+            data-tone={connectionStatus === "digitally-supported"
+              ? selected ? "active" : "geometry"
+              : "blocked"}
+          >
+            {connectionStatus === "digitally-supported"
+              ? selected ? t("part.active") : t("part.geometry")
+              : builderComponentId ? ldrawAvailable ? t("part.locked") : t("part.catalog")
+                : t("part.catalog")}
+          </span>
+        )}
+        <h3 className="part-card__title" lang="en" title={[component.name, ...display.notes].join(" · ")}>
+          {display.title}
+        </h3>
+        <p className="part-card__id">
+          {t("part.number", { num: component.rebrickablePartNum })}
+          {display.plain ? ` · ${t("part.plain")}` : ""}
+        </p>
+        {geometryOnlyPreview || connectionStatus !== "digitally-supported" ? (
+          <StatusMessage className="part-card__status" tone="warning">
+            {geometryOnlyPreview
+              ? t("part.geometryStatus")
+              : ldrawAvailable
+                ? t("part.profileMissing")
+                : builderComponentId
+                  ? t("part.modelMissing")
+                  : t("part.catalogStatus")}
+          </StatusMessage>
+        ) : null}
         {geometryOnlyPreview ? (
           <a
             aria-label={t("part.rebrickableLinkLabel", { name: component.name })}

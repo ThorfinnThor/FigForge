@@ -9,6 +9,8 @@ import { CAMERA_PRESETS } from "./figure-poc-options.js";
 
 type FigureViewportProps = {
   selectedParts: readonly LDrawCatalogSelection[];
+  /** Labels of figure slots that are empty, so a partial figure never looks broken. */
+  missingSlotLabels: readonly string[];
   onBuyParts: () => void;
   onSaveToCollection: () => void;
   onSynchronizationChange: (synchronized: boolean) => void;
@@ -35,6 +37,7 @@ const selectionKeyFor = (selectedParts: readonly LDrawCatalogSelection[]): strin
 
 export function FigureViewport({
   selectedParts,
+  missingSlotLabels,
   onBuyParts,
   onSaveToCollection,
   onSynchronizationChange,
@@ -232,6 +235,11 @@ export function FigureViewport({
             ))}
           </div>
         </fieldset>
+        {missingSlotLabels.length > 0 ? (
+          <p className="viewport-missing" role="status">
+            {t("viewport.missing", { slots: missingSlotLabels.join(", ") })}
+          </p>
+        ) : null}
         <p className="viewport-help">{t("viewport.help")}</p>
       </Card>
 

@@ -1,4 +1,5 @@
 import { useDeferredValue, useEffect, useMemo, useRef, useState, type MouseEvent as ReactMouseEvent } from "react";
+import { AppHeader } from "./AppHeader.js";
 import { FigurePartsPanel } from "./FigurePartsPanel.js";
 import { FigureViewport } from "./FigureViewport.js";
 import { CatalogSetFilter, type CatalogSetSelection } from "./CatalogSetFilter.js";
@@ -38,6 +39,11 @@ import { createFigureShareLink, hasFigureShareLink, parseFigureShareLink } from 
 import { consumedFigureImportPath } from "../figure/import-location.js";
 import { figureTemplateForId } from "../ideas/figure-templates.js";
 import {
+  defaultFigureDocument,
+  defaultFigureSelections,
+  isUntouchedLegacyDefault,
+} from "../figure/default-figure.js";
+import {
   listSavedFigures,
   loadCurrentFigureDraft,
   saveCurrentFigureDraft,
@@ -73,33 +79,17 @@ const LDRAW_CATALOG_ROLES: ReadonlySet<string> = new Set([
   "handAccessory",
 ]);
 
-const initialSelectionByRole = (): Partial<Record<CatalogRole, string>> => referenceVariant
-  ? {
-    head: referenceVariant.headId,
-    headwear: referenceVariant.headwearId,
-    torsoAssembly: referenceVariant.torsoAssemblyId,
-    legsAssembly: referenceVariant.legsAssemblyId,
-    handAccessory: referenceVariant.handAccessoryId,
-  }
-  : {};
+const initialSelectionByRole = (): Partial<Record<CatalogRole, string>> => defaultFigureSelections();
 
-const isLegacyPartialDefault = (document: FigureDocument): boolean => {
-  if (!referenceVariant || document.selections.length !== 3) return false;
-  const selections = Object.fromEntries(document.selections.map(({ componentId, slot }) => [slot, componentId]));
-  return selections.head === referenceVariant.headId
-    && selections.headwear === referenceVariant.headwearId
-    && selections.handAccessory === referenceVariant.handAccessoryId
-    && selections.torsoAssembly === undefined
-    && selections.legsAssembly === undefined;
-};
-
-const completeLegacyPartialDefault = (document: FigureDocument): FigureDocument => createFigureDocument(
-  initialSelectionByRole(),
-  document.name,
-  document.updatedAt,
-  Object.fromEntries(document.selections.flatMap(({ rebrickableColorId, slot }) =>
-    rebrickableColorId === undefined ? [] : [[slot, rebrickableColorId]])),
-);
+const LEGACY_DEFAULT_COMPONENT_IDS: ReadonlySet<string> = new Set(referenceVariant
+  ? [
+    referenceVariant.headId,
+    referenceVariant.headwearId,
+    referenceVariant.torsoAssemblyId,
+    referenceVariant.legsAssemblyId,
+    referenceVariant.handAccessoryId,
+  ]
+  : []);
 
 const isLDrawCatalogRole = (role: string): role is LDrawCatalogRole =>
   LDRAW_CATALOG_ROLES.has(role);
@@ -127,7 +117,7 @@ const initialVisiblePartCount = (): number => (
 );
 
 export function CatalogWorkspace() {
-  const { language, setLanguage, t } = useI18n();
+  const { language, t } = useI18n();
   const [activeCategory, setActiveCategory] = useState<CatalogCategory>("head");
   const [query, setQuery] = useState("");
   const deferredQuery = useDeferredValue(query);
@@ -440,17 +430,25 @@ export function CatalogWorkspace() {
     return () => { active = false; };
   }, [selectedByRole]);
 
+  /**
+   * Strict by default: imports and share links with unknown parts are rejected, never
+   * silently replaced. `lenient` is only for the user's own stored draft, where parts
+   * that are no longer available are dropped so the rest of the draft still opens.
+   * Returns how many parts were dropped.
+   */
   const restoreFigureDocument = async (
     document: FigureDocument,
     recordUndo = true,
     operation = restoreOperationRef.current + 1,
-  ): Promise<void> => {
+    lenient = false,
+  ): Promise<number> => {
     restoreOperationRef.current = operation;
     const roles = [...new Set(document.selections.map(({ slot }) => slot))];
     await Promise.all(roles.map(loadCatalogParts));
     if (restoreOperationRef.current !== operation) throw new Error(RESTORE_SUPERSEDED_ERROR);
     const restored = selectionsFromFigureDocument(document, isSupportedDocumentSelection);
-    if (Object.keys(restored).length !== document.selections.length) throw new Error("unsupported");
+    const droppedCount = document.selections.length - Object.keys(restored).length;
+    if (droppedCount > 0 && !lenient) throw new Error("unsupported");
     const lookup = await loadShopExportLookup(roles);
     if (restoreOperationRef.current !== operation) throw new Error(RESTORE_SUPERSEDED_ERROR);
     const restoredColors = colorsFromFigureDocument(document, (componentId, slot, colorId) => {
@@ -458,13 +456,18 @@ export function CatalogWorkspace() {
       return Boolean(component && lookup(slot, component.rebrickablePartNum)?.colors
         .some(({ rebrickableColorId }) => rebrickableColorId === colorId));
     });
-    const declaredColorCount = document.selections.filter(({ rebrickableColorId }) => rebrickableColorId !== undefined).length;
-    if (Object.keys(restoredColors).length !== declaredColorCount) throw new Error("unsupported-color");
+    const declaredColorCount = document.selections
+      .filter(({ rebrickableColorId, slot }) => rebrickableColorId !== undefined && restored[slot] !== undefined)
+      .length;
+    if (!lenient && Object.keys(restoredColors).length !== declaredColorCount) throw new Error("unsupported-color");
     if (recordUndo) rememberFigureState();
     setSelectedByRole(restored);
-    setSelectedColorByRole(restoredColors);
+    setSelectedColorByRole(Object.fromEntries(
+      Object.entries(restoredColors).filter(([slot]) => restored[slot as CatalogRole] !== undefined),
+    ));
     setFigureName(document.name);
     setDraftPersistencePaused(false);
+    return droppedCount;
   };
 
   const currentFigureDocument = (name = figureName): FigureDocument => createFigureDocument(
@@ -497,19 +500,27 @@ export function CatalogWorkspace() {
         const requestedSavedFigure = requestedFigureId
           ? collection.find(({ id }) => id === requestedFigureId)
           : undefined;
-        const storedDocument = document && isLegacyPartialDefault(document)
-          ? completeLegacyPartialDefault(document)
+        const storedDocument = document && isUntouchedLegacyDefault(document, LEGACY_DEFAULT_COMPONENT_IDS)
+          ? defaultFigureDocument(document.name, document.updatedAt)
           : document;
-        const initialDocument = shared ?? requestedSavedFigure?.document ?? requestedTemplate?.document ?? storedDocument;
-        if (!initialDocument) {
-          setDraftHydrationState("ready");
-          setSaveStatus("saved");
-          return;
-        }
+        // A first-time visitor has no draft: the default figure still needs its catalog
+        // packages loaded before slots resolve to parts and the preview can show it.
+        const fallbackDocument = defaultFigureDocument(t("figure.defaultName"));
+        const initialDocument = shared ?? requestedSavedFigure?.document ?? requestedTemplate?.document
+          ?? storedDocument ?? fallbackDocument;
         if (!active) return;
-        await restoreFigureDocument(initialDocument, false, operation);
+        const droppedCount = await restoreFigureDocument(
+          initialDocument,
+          false,
+          operation,
+          initialDocument === storedDocument || initialDocument === fallbackDocument,
+        );
         if (!active || restoreOperationRef.current !== operation) return;
         setUndoHistory([]);
+        if (droppedCount > 0) {
+          setTransferMessageTone("info");
+          setTransferMessage(t("figure.restore.partsDropped", { count: droppedCount }));
+        }
         if (shared) {
           await saveCurrentFigureDraft(initialDocument);
           if (!active || restoreOperationRef.current !== operation) return;
@@ -822,10 +833,6 @@ export function CatalogWorkspace() {
             {catalogViewMode === "exact" ? t("catalog.mode.exactHint") : t("catalog.mode.allHint")}
           </p>
           <CatalogSetFilter onChange={setSelectedCatalogSet} selected={selectedCatalogSet} />
-          <p className="catalog-toolbar__policy">
-            <span aria-hidden="true">✓</span>
-            {t("catalog.policy")}
-          </p>
         </div>
       </details>
       {searchResult.query.warnings.length > 0 || searchResult.query.unknownTerms.length > 0 ? (
@@ -935,6 +942,7 @@ export function CatalogWorkspace() {
         onPreviewCaptureReady={(capture) => { previewCaptureRef.current = capture; }}
         onSaveToCollection={openCollectionSaveDialog}
         onSynchronizationChange={setPreviewSynchronized}
+        missingSlotLabels={figureSlots.filter(({ component }) => !component).map(({ label }) => label)}
         selectedParts={selectedLDrawParts}
       />
     </section>
@@ -965,23 +973,7 @@ export function CatalogWorkspace() {
 
   return (
     <div className="app-shell" id="builder">
-      <header className="app-header">
-        <a className="wordmark" href="/" onClick={(event) => void navigateAfterDraftCommit(event)}>Fig<span>Forge</span></a>
-         <nav className="app-nav" aria-label={t("nav.label")}>
-          <a className="app-nav__link app-nav__link--active" href="/" aria-current="page" onClick={(event) => void navigateAfterDraftCommit(event)}>{t("nav.builder")}</a>
-          <a className="app-nav__link" href="/ideas" onClick={(event) => void navigateAfterDraftCommit(event)}>{t("nav.ideas")}</a>
-          <a className="app-nav__link" href="/sets" onClick={(event) => void navigateAfterDraftCommit(event)}>{t("nav.products")}</a>
-          <a className="app-nav__link" href="/collection" onClick={(event) => void navigateAfterDraftCommit(event)}>{t("nav.collection")}</a>
-          <a className="app-nav__link" href="/methodology" onClick={(event) => void navigateAfterDraftCommit(event)}>{t("nav.notes")}</a>
-        </nav>
-        <span className="app-header__status">{t("header.status")}</span>
-        <label className="language-picker">
-          <span>{t("language.label")}</span>
-          <select aria-label={t("language.label")} value={language} onChange={(event) => setLanguage(event.currentTarget.value as "de" | "en")}>
-            <option value="de">{t("language.de")}</option>
-            <option value="en">{t("language.en")}</option>
-          </select>
-        </label>
+      <AppHeader active="builder" onNavigate={(event) => void navigateAfterDraftCommit(event)}>
         <Button
           aria-label={undoHistory.length > 0 ? t("figure.undo") : t("figure.undoUnavailable")}
           className="workspace-undo"
@@ -1005,7 +997,7 @@ export function CatalogWorkspace() {
             {t("header.openFigureCount", { count: selectedComponentIds.size })}
           </button>
         ) : null}
-      </header>
+      </AppHeader>
 
       {isMobileLayout ? (
          <div className="mobile-workspace" aria-label={t("mobile.workspaceLabel")}>

@@ -1,5 +1,6 @@
 import { useEffect } from "react";
 import { FIGURE_TEMPLATES, type FigureThemeId } from "../ideas/figure-templates.js";
+import { AppHeader } from "./AppHeader.js";
 import { useI18n } from "../i18n.js";
 import { FigurePreviewCard } from "./FigurePreviewCard.js";
 import { productsForTheme } from "../products/curated-products.js";
@@ -35,7 +36,7 @@ const selectedThemeFromUrl = (): FigureThemeId | null => {
 };
 
 export function IdeasPage() {
-  const { language, setLanguage, t } = useI18n();
+  const { t } = useI18n();
   const selectedTheme = selectedThemeFromUrl();
   const selectedWorld = THEME_WORLDS.find((world) => world.id === selectedTheme);
   const visibleTemplates = selectedTheme
@@ -65,28 +66,7 @@ export function IdeasPage() {
 
   return (
     <div className="app-shell ideas-shell">
-      <header className="app-header">
-        <a className="wordmark" href="/">Fig<span>Forge</span></a>
-        <nav className="app-nav" aria-label={t("nav.label")}>
-          <a className="app-nav__link" href="/">{t("nav.builder")}</a>
-          <a className="app-nav__link app-nav__link--active" href="/ideas" aria-current="page">{t("nav.ideas")}</a>
-          <a className="app-nav__link" href="/sets">{t("nav.products")}</a>
-          <a className="app-nav__link" href="/collection">{t("nav.collection")}</a>
-          <a className="app-nav__link" href="/methodology">{t("nav.notes")}</a>
-        </nav>
-        <span className="app-header__status">{t("header.status")}</span>
-        <label className="language-picker">
-          <span>{t("language.label")}</span>
-          <select
-            aria-label={t("language.label")}
-            value={language}
-            onChange={(event) => setLanguage(event.currentTarget.value as "de" | "en")}
-          >
-            <option value="de">{t("language.de")}</option>
-            <option value="en">{t("language.en")}</option>
-          </select>
-        </label>
-      </header>
+      <AppHeader active="ideas" />
 
       <div className="ideas-page">
         <section className="ideas-hero" aria-labelledby="ideas-title">
