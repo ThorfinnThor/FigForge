@@ -15,7 +15,8 @@ describe("Collection page shell", () => {
     const stylesSource = await readFile("src/styles/base.css", "utf8");
 
     expect(appSource).toContain('pathname === "/collection"');
-    expect(collectionSource).toContain('href="/collection"');
+    expect(collectionSource).toContain('<AppHeader active="collection"');
+    expect(await readFile("src/components/AppHeader.tsx", "utf8")).toContain('href: "/collection"');
     expect(collectionSource).toContain("loadCurrentPlaygroundStages");
     expect(collectionSource).toContain("collectionFiguresForStage");
     expect(collectionSource).toContain("<StageNameDialog");
@@ -53,8 +54,10 @@ describe("Collection page shell", () => {
     expect(migratorSource).toContain("requestIdleCallback");
     expect(migratorSource).toContain("for (const saved of figuresToMigrate)");
     expect(migratorSource).toContain("updateSavedFigurePreview(saved.id, previewImageDataUrl)");
-    expect(builderSource).toContain('t("nav.collection")');
-    expect(methodologySource).toContain('t("nav.collection")');
+    const headerSource = await readFile("src/components/AppHeader.tsx", "utf8");
+    expect(headerSource).toContain('labelKey: "nav.collection"');
+    expect(builderSource).toContain('<AppHeader active="builder"');
+    expect(methodologySource).toContain('<AppHeader active="methodology"');
     expect(messagesSource.match(/"nav\.collection":/gu)).toHaveLength(2);
     expect(messagesSource.match(/"collection\.stageTitle":/gu)).toHaveLength(2);
     expect(stylesSource).toContain("grid-column: 1 / -1");

@@ -9,6 +9,7 @@ import {
   type PlaygroundStage,
   type PlaygroundStages,
 } from "../contracts/playground-layout.js";
+import { AppHeader } from "./AppHeader.js";
 import { useI18n } from "../i18n.js";
 import type { PartInventory } from "../contracts/part-inventory.js";
 import { downloadFigureDocument } from "../figure/download-figure-document.js";
@@ -53,7 +54,7 @@ const localizeDefaultStageName = (
 };
 
 export function CollectionPage() {
-  const { language, setLanguage, t } = useI18n();
+  const { language, t } = useI18n();
   const defaultStageName = t("collection.defaultStageName");
   const [figures, setFigures] = useState<readonly CollectionFigure[]>([]);
   const [collection, setCollection] = useState<readonly SavedFigure[]>([]);
@@ -280,30 +281,7 @@ export function CollectionPage() {
 
   return (
     <div className="app-shell collection-shell">
-      <header className="app-header">
-        <a className="wordmark" href="/">Fig<span>Forge</span></a>
-        <nav className="app-nav" aria-label={t("nav.label")}>
-          <a className="app-nav__link" href="/">{t("nav.builder")}</a>
-          <a className="app-nav__link" href="/ideas">{t("nav.ideas")}</a>
-          <a className="app-nav__link" href="/sets">{t("nav.products")}</a>
-          <a className="app-nav__link app-nav__link--active" href="/collection" aria-current="page">
-            {t("nav.collection")}
-          </a>
-          <a className="app-nav__link" href="/methodology">{t("nav.notes")}</a>
-        </nav>
-        <span className="app-header__status">{t("header.status")}</span>
-        <label className="language-picker">
-          <span>{t("language.label")}</span>
-          <select
-            aria-label={t("language.label")}
-            value={language}
-            onChange={(event) => setLanguage(event.currentTarget.value as "de" | "en")}
-          >
-            <option value="de">{t("language.de")}</option>
-            <option value="en">{t("language.en")}</option>
-          </select>
-        </label>
-      </header>
+      <AppHeader active="collection" />
 
       <div className="collection-page">
         <section className="collection-page__hero" aria-labelledby="collection-title">

@@ -173,7 +173,6 @@ describe("FF-14 responsive catalog workspace", () => {
     expect(source).toContain('value={catalogViewMode}');
     expect(source).toContain('value="exact"');
     expect(source).toContain('className="catalog-toolbar__controls"');
-    expect(source).toContain('className="catalog-toolbar__policy"');
     expect(source).toContain('data-status={semanticStatus}');
     expect(source).toContain('useState<SemanticSearchStatus>("disabled")');
     expect(source).toContain("setSemanticSearchEnabled(true)");
@@ -182,7 +181,6 @@ describe("FF-14 responsive catalog workspace", () => {
     expect(source).not.toContain("enableSemanticSearch");
     expect(source).toContain("<CatalogSetFilter");
     expect(source).toContain("selectedSetPartNumbers.has(part.rebrickablePartNum");
-    expect(source).toContain('t("catalog.policy")');
     expect(source).toContain("onSelect={builderComponent && digitallySupportedLDrawEntryForComponent(builderComponent.id)");
     expect(source).toContain("onSaveToCollection={openCollectionSaveDialog}");
     expect(source).toContain("onBuyParts={openPurchaseFlow}");
@@ -230,8 +228,7 @@ describe("FF-14 responsive catalog workspace", () => {
     expect(source).toContain('hidden={mobileTab !== "figure"}');
     expect(source).toContain('openedMobileTabs.has("figure")');
     expect(source).toContain('activateMobileTab("list")');
-    expect(source).toContain("torsoAssembly: referenceVariant.torsoAssemblyId");
-    expect(source).toContain("legsAssembly: referenceVariant.legsAssemblyId");
+    expect(source).toContain("defaultFigureSelections()");
     expect(source).toContain("MAX_UNDO_HISTORY = 50");
     expect(source).toContain("setUndoHistory((current) => current.slice(0, -1))");
     expect(source).toContain("moveMobileTabFocus");

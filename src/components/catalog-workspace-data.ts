@@ -15,6 +15,7 @@ import type {
   LDrawDigitalConnectivity,
   LDrawDigitalConnectivityEntry,
 } from "../contracts/ldraw-digital-connectivity.js";
+import { FIGURE_TEMPLATES } from "../ideas/figure-templates.js";
 import {
   ldrawRuntimePackageSchema,
   type LDrawRuntimeEntry,
@@ -118,6 +119,13 @@ const builderComponentById = new Map<string, CatalogPackagePart>();
 const catalogKey = (part: Pick<CatalogPackagePart, "role" | "rebrickablePartNum">): string =>
   `${part.role}:${part.rebrickablePartNum.toLowerCase()}`;
 
+/** Parts used by the curated figure ideas ("catalog:<role>:<partNum>"); they lead each list. */
+const featuredCatalogKeys: ReadonlySet<string> = new Set(FIGURE_TEMPLATES.flatMap(({ document }) =>
+  document.selections.flatMap(({ componentId }) => {
+    const [prefix, role, partNum] = componentId.split(":");
+    return prefix === "catalog" && role && partNum ? [`${role}:${partNum.toLowerCase()}`] : [];
+  })));
+
 export const curatedCatalogParts: CatalogPackagePart[] = catalogAssortment.components.map((component) => ({
   id: component.id,
   role: component.role,
@@ -177,6 +185,9 @@ const loadCatalogRole = (role: CatalogRole): Promise<readonly CatalogPackagePart
       const leftBuilderReady = componentByCatalogKey.has(catalogKey(left)) || expandedComponentByCatalogKey.has(catalogKey(left));
       const rightBuilderReady = componentByCatalogKey.has(catalogKey(right)) || expandedComponentByCatalogKey.has(catalogKey(right));
       if (leftBuilderReady !== rightBuilderReady) return leftBuilderReady ? -1 : 1;
+      const leftFeatured = featuredCatalogKeys.has(catalogKey(left));
+      const rightFeatured = featuredCatalogKeys.has(catalogKey(right));
+      if (leftFeatured !== rightFeatured) return leftFeatured ? -1 : 1;
       return left.rebrickablePartNum.localeCompare(right.rebrickablePartNum, "en", { numeric: true });
     });
   });
