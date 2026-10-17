@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import type { FigureThemeId } from "../ideas/figure-templates.js";
+import { AppHeader } from "./AppHeader.js";
 import { useI18n } from "../i18n.js";
 import { CURATED_PRODUCTS } from "../products/curated-products.js";
 import { CuratedProductGrid } from "./CuratedProductGrid.js";
@@ -16,7 +17,7 @@ const PRODUCT_CATEGORIES: readonly ProductCategory[] = [
 ];
 
 export function ProductsPage() {
-  const { language, setLanguage, t } = useI18n();
+  const { t } = useI18n();
   const [activeCategory, setActiveCategory] = useState<ProductCategory>("all");
   const sets = CURATED_PRODUCTS.filter((product) => (
     product.type === "set"
@@ -34,28 +35,7 @@ export function ProductsPage() {
 
   return (
     <div className="app-shell products-shell">
-      <header className="app-header">
-        <a className="wordmark" href="/">Fig<span>Forge</span></a>
-        <nav className="app-nav" aria-label={t("nav.label")}>
-          <a className="app-nav__link" href="/">{t("nav.builder")}</a>
-          <a className="app-nav__link" href="/ideas">{t("nav.ideas")}</a>
-          <a className="app-nav__link app-nav__link--active" href="/sets" aria-current="page">{t("nav.products")}</a>
-          <a className="app-nav__link" href="/collection">{t("nav.collection")}</a>
-          <a className="app-nav__link" href="/methodology">{t("nav.notes")}</a>
-        </nav>
-        <span className="app-header__status">{t("header.status")}</span>
-        <label className="language-picker">
-          <span>{t("language.label")}</span>
-          <select
-            aria-label={t("language.label")}
-            value={language}
-            onChange={(event) => setLanguage(event.currentTarget.value as "de" | "en")}
-          >
-            <option value="de">{t("language.de")}</option>
-            <option value="en">{t("language.en")}</option>
-          </select>
-        </label>
-      </header>
+      <AppHeader active="sets" />
 
       <div className="products-page">
         <section className="products-hero" aria-labelledby="products-title">
