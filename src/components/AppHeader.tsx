@@ -15,10 +15,10 @@ const PRIMARY_ROUTES = [
   { id: "builder", href: "/", labelKey: "nav.builder" },
   { id: "ideas", href: "/ideas", labelKey: "nav.ideas" },
   { id: "sets", href: "/sets", labelKey: "nav.products" },
+  { id: "collection", href: "/collection", labelKey: "nav.collection" },
 ] as const;
 
 const SECONDARY_ROUTES = [
-  { id: "collection", href: "/collection", labelKey: "nav.collection" },
   { id: "methodology", href: "/methodology", labelKey: "nav.notes" },
   { id: "privacy", href: "/privacy", labelKey: "nav.privacy" },
 ] as const;

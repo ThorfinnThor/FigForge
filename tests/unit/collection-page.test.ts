@@ -55,7 +55,8 @@ describe("Collection page shell", () => {
     expect(migratorSource).toContain("for (const saved of figuresToMigrate)");
     expect(migratorSource).toContain("updateSavedFigurePreview(saved.id, previewImageDataUrl)");
     const headerSource = await readFile("src/components/AppHeader.tsx", "utf8");
-    expect(headerSource).toContain('labelKey: "nav.collection"');
+    expect(headerSource).toContain('{ id: "collection", href: "/collection", labelKey: "nav.collection" },');
+    expect(headerSource.indexOf('id: "collection"')).toBeLessThan(headerSource.indexOf("const SECONDARY_ROUTES"));
     expect(builderSource).toContain('<AppHeader active="builder"');
     expect(methodologySource).toContain('<AppHeader active="methodology"');
     expect(messagesSource.match(/"nav\.collection":/gu)).toHaveLength(2);
