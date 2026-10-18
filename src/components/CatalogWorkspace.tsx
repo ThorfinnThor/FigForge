@@ -708,7 +708,24 @@ export function CatalogWorkspace() {
       : isFigurePanelOpen;
     if (!purchaseFlowRequested || !purchaseFlowIsVisible) return;
     const frame = requestAnimationFrame(() => {
-      purchaseSectionRef.current?.scrollIntoView({ block: "start" });
+      const purchaseSection = purchaseSectionRef.current;
+      if (purchaseSection && isMobileLayout) {
+        purchaseSection.scrollIntoView({ block: "start" });
+      } else if (purchaseSection) {
+        const scrollContainer = purchaseSection.closest<HTMLElement>(".figure-panel__scroll");
+        const stickyHeader = scrollContainer?.querySelector<HTMLElement>(".figure-panel__header");
+        if (scrollContainer) {
+          const scrollContainerTop = scrollContainer.getBoundingClientRect().top;
+          const purchaseSectionTop = purchaseSection.getBoundingClientRect().top;
+          const headerOffset = stickyHeader?.offsetHeight ?? 0;
+          scrollContainer.scrollTo({
+            behavior: "smooth",
+            top: Math.max(0, scrollContainer.scrollTop + purchaseSectionTop - scrollContainerTop - headerOffset - 16),
+          });
+        } else {
+          purchaseSection.scrollIntoView({ block: "start" });
+        }
+      }
       setPurchaseFlowRequested(false);
     });
     return () => cancelAnimationFrame(frame);
@@ -726,7 +743,7 @@ export function CatalogWorkspace() {
       return;
     }
 
-    requestAnimationFrame(() => drawerCloseRef.current?.focus());
+    requestAnimationFrame(() => drawerCloseRef.current?.focus({ preventScroll: true }));
     const onKeyDown = (event: KeyboardEvent) => {
       if (event.key === "Escape") {
         setPurchaseFlowRequested(false);

@@ -3451,6 +3451,7 @@ legend {
     height: 100%;
     min-height: 0;
     max-height: none;
+    overflow-x: hidden;
     overflow-y: auto;
     padding-bottom: calc(var(--space-8) + env(safe-area-inset-bottom));
     overscroll-behavior: contain;
@@ -3473,6 +3474,21 @@ legend {
 
   .figure-panel--drawer .figure-slot-list {
     min-width: 0;
+  }
+
+  .figure-panel--drawer .amazon-recommendations__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .figure-panel--drawer .amazon-recommendation,
+  .figure-panel--drawer .amazon-recommendation strong,
+  .figure-panel--drawer .amazon-recommendation small {
+    min-width: 0;
+  }
+
+  .figure-panel--drawer .amazon-recommendation strong,
+  .figure-panel--drawer .amazon-recommendation small {
+    overflow-wrap: anywhere;
   }
 }
 
