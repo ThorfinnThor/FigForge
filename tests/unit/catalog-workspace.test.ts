@@ -52,6 +52,16 @@ describe("FF-14 responsive catalog workspace", () => {
     expect(shopSource).toContain('<details className="shop-export__details">');
     expect(shopSource).toContain('tone="success"');
     expect(stylesSource).toContain("width: min(560px, 94vw)");
+    expect(stylesSource).toContain(".figure-panel--drawer .amazon-recommendations__grid");
+    expect(stylesSource).toContain("overflow-wrap: anywhere");
+  });
+
+  it("uses a simple high-coverage police search example in both languages", async () => {
+    const messagesSource = await readFile("src/i18n.tsx", "utf8");
+
+    expect(messagesSource).toContain('"catalog.searchPlaceholder": "Zum Beispiel: Polizist"');
+    expect(messagesSource).toContain('"catalog.searchPlaceholder": "For example: police officer"');
+    expect(messagesSource).not.toContain("Ogerkopf mit Hauern");
   });
 
   it("keeps technical methodology out of the figure workflow", async () => {
@@ -185,7 +195,9 @@ describe("FF-14 responsive catalog workspace", () => {
     expect(source).toContain("onSaveToCollection={openCollectionSaveDialog}");
     expect(source).toContain("onBuyParts={openPurchaseFlow}");
     expect(source).toContain('activateMobileTab("list")');
-    expect(source).toContain("purchaseSectionRef.current?.scrollIntoView");
+    expect(source).toContain('purchaseSection.closest<HTMLElement>(".figure-panel__scroll")');
+    expect(source).toContain("scrollContainer.scrollTo");
+    expect(source).toContain('purchaseSection.scrollIntoView({ block: "start" })');
     expect(source).toContain("onSynchronizationChange={setPreviewSynchronized}");
     expect(source).toContain("selectedParts={selectedLDrawParts}");
     expect(source).toContain("saveCurrentFigureDraft");
@@ -235,6 +247,7 @@ describe("FF-14 responsive catalog workspace", () => {
     expect(source).toContain("mobileTabForKey(tab, event.key)");
     expect(source).toContain('aria-expanded={isFigurePanelOpen}');
     expect(source).toContain('event.key === "Escape"');
+    expect(source).toContain("drawerCloseRef.current?.focus({ preventScroll: true })");
     expect(source).toContain("drawerTriggerRef.current?.focus()");
     expect(source).toContain('t("header.openFigureCount"');
     expect(styles).toContain("@media (min-width: 768px)");
