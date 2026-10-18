@@ -457,6 +457,14 @@ const testMountedMobilePurchaseFlow = async (client: CdpClient, origin: string):
     "mobile purchase list tab",
   );
   await assertSelectedPanel(client, "list");
+  await waitFor(
+    client,
+    `(() => {
+      const bounds = document.querySelector('.purchase-colors')?.getBoundingClientRect();
+      return Boolean(bounds && bounds.top < window.innerHeight && bounds.bottom > 0);
+    })()`,
+    "mobile purchase controls in viewport",
+  );
   const purchaseState = await evaluate<{ colors: boolean; exports: boolean; inViewport: boolean }>(client, `(() => {
     const colors = document.querySelector('.purchase-colors');
     const exports = document.querySelector('.shop-export');
