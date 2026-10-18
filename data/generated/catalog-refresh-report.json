@@ -15,14 +15,14 @@
     "inventory_minifigs.csv.gz",
     "minifigs.csv.gz"
   ],
-  "normalizedPartCount": 64826,
-  "packagedMinifigPartCount": 20271,
+  "normalizedPartCount": 64900,
+  "packagedMinifigPartCount": 20282,
   "setIndex": {
-    "relevantPartCount": 20271,
-    "mappedPartCount": 19731,
+    "relevantPartCount": 20282,
+    "mappedPartCount": 19742,
     "unmappedPartCount": 540,
-    "setCount": 11580,
-    "associationCount": 123341
+    "setCount": 11582,
+    "associationCount": 123383
   },
   "catalogPackageCount": 5,
   "artifactCount": 10,
