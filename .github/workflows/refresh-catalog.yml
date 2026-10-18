@@ -49,7 +49,11 @@ jobs:
           FIGFORGE_MODEL_CACHE: ${{ github.workspace }}/public/search/models
         run: npm run search:build:release && npm run search:build:review
 
+      # A failed guard (for example a renamed audited part) must not hide the data diff:
+      # the review pull request is still opened, as a draft, and the run ends red below.
       - name: Validate proposed data and repository
+        id: verify
+        continue-on-error: true
         run: npm run verify
 
       - name: Detect generated data changes
@@ -84,14 +88,21 @@ jobs:
           branch="automation/rebrickable-catalog-refresh"
           base="${{ github.event.repository.default_branch }}"
           open_pr="$(gh pr list --state open --base "$base" --head "$branch" --json number --jq '.[0].number // empty')"
+          draft_flag=()
+          note=""
+          if [[ "${{ steps.verify.outcome }}" == "failure" ]]; then
+            draft_flag=(--draft)
+            note=" ACHTUNG: Die Validierung ist fehlgeschlagen (Details im Workflow-Lauf und im Issue 'Katalog-Refresh fehlgeschlagen'). Dieser PR ist ein Entwurf; kuratierte Daten (z. B. geprüfte Teilenamen) müssen auf diesem Branch angepasst werden, bis verify grün ist."
+          fi
           if [[ -n "$open_pr" ]]; then
-            gh pr comment "$open_pr" --body "Catalog-Daten wurden neu validiert und der bestehende Review-PR wurde aktualisiert."
+            gh pr comment "$open_pr" --body "Catalog-Daten wurden neu erzeugt und der bestehende Review-PR wurde aktualisiert.${note}"
           else
             gh pr create \
               --base "$base" \
               --head "$branch" \
+              ${draft_flag[@]+"${draft_flag[@]}"} \
               --title "chore(data): Rebrickable catalog refresh" \
-              --body "Automatisch erzeugter Vorschlag. Nur Rebrickable Catalog Downloads/CSV und die offizielle LDraw-Bibliothek; keine MOC-Dateien und keine API. Eine neuere LDraw-Version wird mit neuem Hash in data/ldraw-source.lock.json übernommen. Vor dem Merge sind Quellen-, Schema- und Diff-Review erforderlich."
+              --body "Automatisch erzeugter Vorschlag. Nur Rebrickable Catalog Downloads/CSV und die offizielle LDraw-Bibliothek; keine MOC-Dateien und keine API. Eine neuere LDraw-Version wird mit neuem Hash in data/ldraw-source.lock.json übernommen. Vor dem Merge sind Quellen-, Schema- und Diff-Review erforderlich.${note}"
           fi
 
       - name: Trigger required pull-request verification
@@ -106,6 +117,12 @@ jobs:
       - name: Report no change
         if: steps.changes.outputs.changed != 'true'
         run: echo "No catalog change was proposed."
+
+      - name: Fail the run when validation failed
+        if: steps.verify.outcome == 'failure'
+        run: |
+          echo "::error::Validation of the proposed catalog data failed. A draft review PR was opened if data changed."
+          exit 1
 
       - name: Close open failure issue after a successful run
         if: success()
