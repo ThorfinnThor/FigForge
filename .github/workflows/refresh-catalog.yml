@@ -8,6 +8,7 @@ on:
 permissions:
   actions: write
   contents: write
+  issues: write
   pull-requests: write
 
 concurrency:
@@ -105,3 +106,34 @@ jobs:
       - name: Report no change
         if: steps.changes.outputs.changed != 'true'
         run: echo "No catalog change was proposed."
+
+      - name: Close open failure issue after a successful run
+        if: success()
+        env:
+          GH_TOKEN: ${{ github.token }}
+        shell: bash
+        run: |
+          open_issue="$(gh issue list --state open --label catalog-refresh-failed --json number --jq '.[0].number // empty')"
+          if [[ -n "$open_issue" ]]; then
+            gh issue close "$open_issue" --comment "Der Katalog-Refresh läuft wieder erfolgreich: $GITHUB_SERVER_URL/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID"
+          fi
+
+      - name: Report failure in an issue
+        if: failure()
+        env:
+          GH_TOKEN: ${{ github.token }}
+        shell: bash
+        run: |
+          run_url="$GITHUB_SERVER_URL/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID"
+          gh label create catalog-refresh-failed --description "Automatischer Katalog-Refresh ist fehlgeschlagen" --color B42318 2>/dev/null || true
+          open_issue="$(gh issue list --state open --label catalog-refresh-failed --json number --jq '.[0].number // empty')"
+          if [[ -n "$open_issue" ]]; then
+            gh issue comment "$open_issue" --body "Erneut fehlgeschlagen: $run_url"
+          else
+            gh issue create \
+              --label catalog-refresh-failed \
+              --title "Katalog-Refresh fehlgeschlagen" \
+              --body "Der automatische Katalog-Refresh ist fehlgeschlagen und hat deshalb keinen Review-Pull-Request erzeugt: $run_url
+
+          Meist hat eine Schutzprüfung angeschlagen (geänderter Teilename, neue LDraw-Release, Schema). Log des fehlgeschlagenen Schritts öffnen, Ursache beheben, dann den Workflow erneut starten."
+          fi

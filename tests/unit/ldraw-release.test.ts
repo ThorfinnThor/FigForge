@@ -67,4 +67,11 @@ describe("official LDraw release handling", () => {
     expect(normalizeCatalogEvidenceName("yellow/silver stripes"))
       .not.toBe(normalizeCatalogEvidenceName("yellow/gold stripes"));
   });
+
+  it("ignores comma edits in catalog names (seen on torsoAssembly:973c28h01pr0046)", () => {
+    expect(normalizeCatalogEvidenceName("Torso, Tunic with Tied Lace and Purse Print (Forestman), Blue Arms, Yellow Hands"))
+      .toBe(normalizeCatalogEvidenceName("Torso Tunic with Tied Lace and Purse Print (Forestman), Blue Arms, Yellow Hands"));
+    expect(normalizeCatalogEvidenceName("Torso Tunic, Blue Arms"))
+      .not.toBe(normalizeCatalogEvidenceName("Torso Tunic, Red Arms"));
+  });
 });
