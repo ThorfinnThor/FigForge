@@ -1,12 +1,12 @@
 {
   "schemaVersion": 1,
   "ticket": "FF-ACCESSORY-ORIENTATION",
-  "generatedAt": "2026-10-13",
+  "generatedAt": "2026-10-19",
   "sourcePolicy": "Nur Rebrickable Catalog Downloads/CSV, keine MOC-Dateien.",
   "publishable": false,
   "sourceHashes": {
-    "runtimePackageSha256": "9330a34a73b8158da54ebf157ce5a4aaaffc12fff11f092fba1b1322b4be88e0",
-    "expandedCatalogSha256": "502d5efb59d48e5da857b28909eb65d8cc8f0ba922fb92e56d0c68f2700b5088"
+    "runtimePackageSha256": "98d215887712f91707904df9a9dfd5bf9b2521e2cd72df0abbf778c8faba5b23",
+    "expandedCatalogSha256": "9de44084dd2b1f7f609e2d99cfd6fcd1d623dcbda6b7ae6ddfb8fb03ebafc9b3"
   },
   "entries": [
     {
