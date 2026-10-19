@@ -11,6 +11,8 @@ const result: ShopExportResult = {
     rebrickableColorId: 14,
     colorName: "Yellow",
     elementId: null,
+    bricklinkItemId: null,
+    bricklinkColorId: null,
     quantity: 3,
     names: ["Head", "Head", "Head"],
     slots: ["head", "head", "head"],

@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { rebrickableKeywordIds } from "../../tools/lib/ldraw-keywords.js";
+import { bricklinkKeywordIds, rebrickableKeywordIds } from "../../tools/lib/ldraw-keywords.js";
 
 describe("LDraw Rebrickable keywords", () => {
   it("reads a Rebrickable identifier that follows another keyword", () => {
@@ -24,5 +24,17 @@ describe("LDraw Rebrickable keywords", () => {
     "0 !KEYWORDS Not Rebrickable 3626c",
   ])("ignores lines without a Rebrickable keyword entry: %s", (line) => {
     expect(rebrickableKeywordIds(line)).toEqual([]);
+  });
+});
+
+describe("LDraw BrickLink keywords", () => {
+  it("reads BrickLink identifiers case-insensitively", () => {
+    expect(bricklinkKeywordIds("0 !KEYWORDS Batman, Bricklink 973pb0183c01, Rebrickable 973c03h03pr1274"))
+      .toEqual(["973pb0183c01"]);
+  });
+
+  it("does not reinterpret a Rebrickable identifier as a BrickLink identifier", () => {
+    expect(bricklinkKeywordIds("0 !KEYWORDS Rebrickable 973c03h03pr1274, Batman"))
+      .toEqual([]);
   });
 });
