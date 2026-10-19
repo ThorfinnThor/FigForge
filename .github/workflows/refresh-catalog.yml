@@ -44,6 +44,11 @@ jobs:
       - name: Rebuild official LDraw catalog assets and coverage report
         run: npm run assets:ldraw-expanded && npm run assets:analyze:ldraw-coverage && npm run assets:analyze:placement-candidates
 
+      # Hash-bound to the runtime package and expanded catalog rebuilt above; without this
+      # step `verify` fails with "Accessory review queue is stale" after any accessory change.
+      - name: Rebuild accessory orientation review queue
+        run: npm run assets:build:accessory-review
+
       - name: Rebuild local semantic-search release and review worksheet
         env:
           FIGFORGE_MODEL_CACHE: ${{ github.workspace }}/public/search/models
