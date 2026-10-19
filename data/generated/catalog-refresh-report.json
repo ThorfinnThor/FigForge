@@ -4,11 +4,11 @@
   "sourcePolicy": "Nur Rebrickable Catalog Downloads/CSV, keine MOC-Dateien.",
   "sourceLockUpdatedAt": "2026-09-28",
   "changedArtifacts": [
-    "colors.csv.gz",
-    "part_categories.csv.gz",
+    "part_relationships.csv.gz",
     "elements.csv.gz",
     "inventories.csv.gz",
-    "inventory_parts.csv.gz"
+    "inventory_parts.csv.gz",
+    "inventory_minifigs.csv.gz"
   ],
   "normalizedPartCount": 64900,
   "packagedMinifigPartCount": 20282,
