@@ -39,6 +39,26 @@ describe("repository delivery policy", () => {
     expect(workflow).not.toContain("git diff --quiet -- data");
   });
 
+  it("rebuilds hash-bound generated artifacts before validating the refresh", async () => {
+    const workflow = await readProjectFile(".github/workflows/refresh-catalog.yml");
+    const rebuild = workflow.indexOf("npm run assets:build:accessory-review");
+    const expanded = workflow.indexOf("npm run assets:ldraw-expanded");
+    const verify = workflow.indexOf("run: npm run verify");
+
+    expect(expanded).toBeGreaterThan(-1);
+    expect(rebuild).toBeGreaterThan(expanded);
+    expect(verify).toBeGreaterThan(rebuild);
+  });
+
+  it("opens a draft review PR and fails the run when refresh validation fails", async () => {
+    const workflow = await readProjectFile(".github/workflows/refresh-catalog.yml");
+
+    expect(workflow).toContain("continue-on-error: true");
+    expect(workflow).toContain("--draft");
+    expect(workflow).toContain("steps.verify.outcome == 'failure'");
+    expect(workflow).toContain("catalog-refresh-failed");
+  });
+
   it("does not mistake a merged automation PR for an open review PR", async () => {
     const workflow = await readProjectFile(".github/workflows/refresh-catalog.yml");
 
