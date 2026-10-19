@@ -8,7 +8,7 @@
 
 FigForge V1 bleibt ein backendloser, kuratierter Minifiguren-Konfigurator. Die Laufzeitanwendung verarbeitet statische, vorab geprüfte Daten und speichert Nutzerentwürfe lokal. Sie enthält keine Accounts, Community-Funktionen, Live-Preise, Händlerbestände, Cloud-Datenbank oder serverseitige Suche.
 
-Die verbindliche Rebrickable-Grenze lautet: **Nur Rebrickable Catalog Downloads/CSV, keine MOC-Dateien.** MOC-Anleitungen und sonstige nutzergenerierte MOC-Inhalte sind ebenfalls ausgeschlossen. Die Rebrickable API wird in V1 nicht verwendet.
+Die verbindliche Rebrickable-Grenze lautet: **Nur Rebrickable Catalog Downloads/CSV, keine MOC-Dateien.** MOC-Anleitungen und sonstige nutzergenerierte MOC-Inhalte sind ebenfalls ausgeschlossen. Die Rebrickable API wird in V1 nicht verwendet. Seit 2026-10-19 gilt für BrickLink-Artikelnummern ergänzend ADR-012 (offizieller BrickLink Catalog Download als hashgebundener Snapshot und offizielle LDraw-Header); die BrickLink API wird nicht verwendet.
 
 Eine Katalogvariante, digitale Unterstützung und aktuelle Kaufbarkeit sind getrennte Zustände. Der öffentliche Katalog darf nur Varianten enthalten, deren Quelle, Farbe, Geometrie, Anschlussprofil und Einkaufszuordnung geprüft wurden.
 

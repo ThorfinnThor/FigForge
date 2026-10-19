@@ -4,9 +4,9 @@ Der Implementierungsplan unter `docs/implementation-plan.md` und die Gestaltung 
 
 ## Unveränderliche Grenzen
 
-- Nur Rebrickable Catalog Downloads/CSV; keine MOC-Dateien.
+- Katalogdaten: Rebrickable Catalog Downloads/CSV. Einzige Erweiterung (ADR-012): für BrickLink-Artikelnummern der offizielle BrickLink Catalog Download (Parts, Part and Color Codes) als hashgebundener Snapshot, dessen Rohdateien nicht veröffentlicht werden, sowie offizielle LDraw-Header. Keine MOC-Dateien.
 - Keine MOC-Anleitungen oder sonstigen nutzergenerierten MOC-Inhalte importieren, verarbeiten oder ausliefern.
-- Die Rebrickable API wird in V1 nicht verwendet.
+- Weder die Rebrickable API noch die BrickLink API wird in V1 verwendet.
 - Keine Teilenummern, Produktmerkmale, Preise oder Verfügbarkeiten aus der Designreferenz übernehmen.
 - Unbekannte Rechte und Zuordnungen bleiben unbekannt; sie werden nicht geraten.
 - Keine Produktionsdeployments aus GitHub Actions. Build und Deployment erfolgen später über Cloudflare Workers Builds nach einem freigegebenen Merge.

@@ -59,6 +59,15 @@ describe("repository delivery policy", () => {
     expect(workflow).toContain("catalog-refresh-failed");
   });
 
+  it("asks for a new BrickLink snapshot after 90 days instead of failing the refresh", async () => {
+    const workflow = await readProjectFile(".github/workflows/refresh-catalog.yml");
+
+    expect(workflow).toContain("npm run data:check:bricklink-age");
+    expect(workflow).toContain("bricklink-snapshot-stale");
+    expect(workflow).toContain("steps.bricklink_age.outputs.stale == 'true'");
+    expect(workflow).toContain("steps.bricklink_age.outputs.stale == 'false'");
+  });
+
   it("does not mistake a merged automation PR for an open review PR", async () => {
     const workflow = await readProjectFile(".github/workflows/refresh-catalog.yml");
 
@@ -106,8 +115,11 @@ describe("repository delivery policy", () => {
     const agents = await readProjectFile("AGENTS.md");
     const sourceRegister = await readProjectFile("docs/source-register.md");
 
-    expect(agents).toContain("Nur Rebrickable Catalog Downloads/CSV");
+    expect(agents).toContain("Rebrickable Catalog Downloads/CSV");
+    expect(agents).toContain("BrickLink Catalog Download");
+    expect(agents).toContain("Keine MOC-Dateien");
     expect(sourceRegister).toContain("keine MOC-Dateien");
     expect(sourceRegister).toContain("Rebrickable API");
+    expect(sourceRegister).toContain("BrickLink API");
   });
 });
