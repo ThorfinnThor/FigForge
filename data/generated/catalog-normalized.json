@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "sourcePolicy": "Nur Rebrickable Catalog Downloads/CSV, keine MOC-Dateien.",
-  "sourceLockSha256": "c2a3675e0b1c87efccfe88a194d6f6f4f02a7f7ef64b78ec27983a12796c8af8",
+  "sourceLockSha256": "3a3bc334f62ca67bac6ef155e5b47e81636798e862e99808898d2326e0616c5c",
   "sourceLockUpdatedAt": "2026-09-28",
   "artifacts": [
     {
@@ -41,7 +41,7 @@
     },
     {
       "fileName": "part_relationships.csv.gz",
-      "sha256": "ead9e5049ad114cbe2549b37b54b351e5849e490c068d82571f54abf49c143e2",
+      "sha256": "85a2aed089a91b84b75535787ac58136e8d91643d4d2f0914221dc76c678ec9c",
       "rowCount": 37537,
       "columns": [
         "rel_type",
@@ -51,8 +51,8 @@
     },
     {
       "fileName": "elements.csv.gz",
-      "sha256": "05ef5ae3392ffaf9a15be7cee33037ea6331ed35bcaf602060eb497d1e04fed4",
-      "rowCount": 114661,
+      "sha256": "f691451b0cc128c9c5a197d7623ea1ae9e702c94adad7456d2fcafd81f3119df",
+      "rowCount": 114668,
       "columns": [
         "element_id",
         "part_num",
@@ -75,8 +75,8 @@
     },
     {
       "fileName": "inventories.csv.gz",
-      "sha256": "9c7a723bc60fe000ebafc8db05b1edaac6e88cdd57529d9758b87626100b275d",
-      "rowCount": 47789,
+      "sha256": "34c24bbebc0c91a082bf4d6f9396e7fe327e06ef0db8dd6742fc0ac387a845b4",
+      "rowCount": 47791,
       "columns": [
         "id",
         "version",
@@ -85,8 +85,8 @@
     },
     {
       "fileName": "inventory_parts.csv.gz",
-      "sha256": "cdebd10b8ac805ec983cd7ac9b48d4d3493a96f9b0be2acd15d9e78ba54cef66",
-      "rowCount": 1567185,
+      "sha256": "e3b83cb105c3c6385feb4e88fe80325eae3d6b14f1131770fefec21b01efb347",
+      "rowCount": 1567280,
       "columns": [
         "inventory_id",
         "part_num",
@@ -98,7 +98,7 @@
     },
     {
       "fileName": "inventory_minifigs.csv.gz",
-      "sha256": "aae4697eafb13d0c1003846082de144b689e0f911054be201132f17698a64141",
+      "sha256": "7532c15d2560df9d93cdf76d4772d5cc19061f00d708ceb4beaf28824b236ede",
       "rowCount": 25903,
       "columns": [
         "inventory_id",
@@ -112617,6 +112617,13 @@
           "colorName": "Pearl Gold",
           "rgb": "AA7F2E",
           "evidenceId": "evidence:catalog:elements.csv.gz:element_id:6697723"
+        },
+        {
+          "elementId": "6697724",
+          "colorId": 1103,
+          "colorName": "Pearl Titanium",
+          "rgb": "3E3C39",
+          "evidenceId": "evidence:catalog:elements.csv.gz:element_id:6697724"
         }
       ],
       "catalogColors": [],
@@ -185777,6 +185784,20 @@
           "colorName": "Metallic Gold",
           "rgb": "DBAC34",
           "evidenceId": "evidence:catalog:elements.csv.gz:element_id:6630209"
+        },
+        {
+          "elementId": "6702749",
+          "colorId": 47,
+          "colorName": "Trans-Clear",
+          "rgb": "FCFCFC",
+          "evidenceId": "evidence:catalog:elements.csv.gz:element_id:6702749"
+        },
+        {
+          "elementId": "6702757",
+          "colorId": 36,
+          "colorName": "Trans-Red",
+          "rgb": "C91A09",
+          "evidenceId": "evidence:catalog:elements.csv.gz:element_id:6702757"
         }
       ],
       "catalogColors": [],
@@ -1024646,6 +1024667,13 @@
           "colorName": "Light Bluish Gray",
           "rgb": "A0A5A9",
           "evidenceId": "evidence:catalog:elements.csv.gz:element_id:6671155"
+        },
+        {
+          "elementId": "6700938",
+          "colorId": 272,
+          "colorName": "Dark Blue",
+          "rgb": "0A3463",
+          "evidenceId": "evidence:catalog:elements.csv.gz:element_id:6700938"
         }
       ],
       "catalogColors": [],
@@ -1153798,6 +1153826,13 @@
           "colorName": "Sand Green",
           "rgb": "A0BCAC",
           "evidenceId": "evidence:catalog:elements.csv.gz:element_id:6599347"
+        },
+        {
+          "elementId": "6704765",
+          "colorId": 41,
+          "colorName": "Trans-Light Blue",
+          "rgb": "AEEFEC",
+          "evidenceId": "evidence:catalog:elements.csv.gz:element_id:6704765"
         }
       ],
       "catalogColors": [],
@@ -1973614,6 +1973649,13 @@
           "colorName": "Olive Green",
           "rgb": "9B9A5A",
           "evidenceId": "evidence:catalog:elements.csv.gz:element_id:6458457"
+        },
+        {
+          "elementId": "6677139",
+          "colorId": 28,
+          "colorName": "Dark Tan",
+          "rgb": "958A73",
+          "evidenceId": "evidence:catalog:elements.csv.gz:element_id:6677139"
         }
       ],
       "catalogColors": [],
@@ -1973800,6 +1973842,13 @@
           "colorName": "Olive Green",
           "rgb": "9B9A5A",
           "evidenceId": "evidence:catalog:elements.csv.gz:element_id:6458467"
+        },
+        {
+          "elementId": "6677141",
+          "colorId": 28,
+          "colorName": "Dark Tan",
+          "rgb": "958A73",
+          "evidenceId": "evidence:catalog:elements.csv.gz:element_id:6677141"
         }
       ],
       "catalogColors": [],
