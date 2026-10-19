@@ -123,6 +123,42 @@ jobs:
         if: steps.changes.outputs.changed != 'true'
         run: echo "No catalog change was proposed."
 
+      # The BrickLink catalog download needs a login and stays a manual step. Every refresh keeps
+      # the crosswalk aligned (new parts are mapped via official LDraw headers or stay blocked);
+      # once the downloaded snapshot is older than 90 days an issue asks for a new one.
+      - name: Check BrickLink snapshot age
+        id: bricklink_age
+        if: always()
+        run: npm run data:check:bricklink-age
+
+      - name: Ask for a new BrickLink snapshot
+        if: always() && steps.bricklink_age.outputs.stale == 'true'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        shell: bash
+        run: |
+          gh label create bricklink-snapshot-stale --description "BrickLink-Katalog-Snapshot ist aelter als 90 Tage" --color D4A72C 2>/dev/null || true
+          body="Der BrickLink-Katalog-Snapshot vom ${{ steps.bricklink_age.outputs.snapshot_date }} ist ${{ steps.bricklink_age.outputs.age_days }} Tage alt (Grenze: 90). Seit dem Snapshot sind ${{ steps.bricklink_age.outputs.not_in_snapshot }} Teile ohne BrickLink-Zuordnung hinzugekommen.
+
+          So geht es: auf bricklink.com anmelden, im Catalog Download die Tabellen Parts und Part and Color Codes laden (txt), dann lokal \`npm run data:import:bricklink -- <Parts.txt> <Part-and-Color-Codes.txt> YYYY-MM-DD\` ausfuehren und das Ergebnis per Pull Request einreichen. Rohdateien nicht committen."
+          open_issue="$(gh issue list --state open --label bricklink-snapshot-stale --json number --jq '.[0].number // empty')"
+          if [[ -n "$open_issue" ]]; then
+            gh issue comment "$open_issue" --body "Weiterhin veraltet: ${{ steps.bricklink_age.outputs.age_days }} Tage."
+          else
+            gh issue create --label bricklink-snapshot-stale --title "BrickLink-Katalog-Snapshot erneuern" --body "$body"
+          fi
+
+      - name: Close the snapshot reminder once the snapshot is fresh
+        if: always() && steps.bricklink_age.outputs.stale == 'false'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        shell: bash
+        run: |
+          open_issue="$(gh issue list --state open --label bricklink-snapshot-stale --json number --jq '.[0].number // empty')"
+          if [[ -n "$open_issue" ]]; then
+            gh issue close "$open_issue" --comment "Der BrickLink-Snapshot ist wieder aktuell (${{ steps.bricklink_age.outputs.snapshot_date }})."
+          fi
+
       - name: Fail the run when validation failed
         if: steps.verify.outcome == 'failure'
         run: |

@@ -22,7 +22,11 @@ export type BrickLinkItemCrosswalkEntry = {
 
 export type BrickLinkItemCrosswalkUnresolved = {
   rebrickablePartNum: string;
-  reason: "ambiguous-official-crosswalk" | "no-official-crosswalk";
+  /**
+   * `not-in-snapshot`: the part entered the builder catalog after the BrickLink catalog snapshot
+   * was imported and has no official LDraw header ID. It stays blocked until the snapshot is renewed.
+   */
+  reason: "ambiguous-official-crosswalk" | "no-official-crosswalk" | "not-in-snapshot";
   candidateBricklinkItemIds: string[];
   matchingElementIds: string[];
 };
@@ -30,6 +34,8 @@ export type BrickLinkItemCrosswalkUnresolved = {
 export type BrickLinkItemCrosswalk = {
   schemaVersion: 1;
   sourcePolicy: typeof BRICKLINK_CATALOG_SOURCE_POLICY;
+  /** Day (YYYY-MM-DD) the official BrickLink catalog tables were downloaded and imported. */
+  snapshotDate: string;
   catalogSourceLockSha256: string;
   sources: {
     parts: { fileName: string; sha256: string; rowCount: number };
@@ -42,6 +48,7 @@ export type BrickLinkItemCrosswalk = {
     unresolvedPartCount: number;
     ambiguousPartCount: number;
     noEvidencePartCount: number;
+    notInSnapshotPartCount: number;
     ldrawHeaderMappedPartCount: number;
   };
   entries: BrickLinkItemCrosswalkEntry[];
@@ -66,6 +73,7 @@ type CuratedAssortment = {
 };
 
 type CatalogSources = {
+  snapshotDate: string;
   partsText: string;
   partsFileName: string;
   partColorCodesText: string;
@@ -215,6 +223,7 @@ export function buildBrickLinkItemCrosswalk(
   return {
     schemaVersion: 1,
     sourcePolicy: BRICKLINK_CATALOG_SOURCE_POLICY,
+    snapshotDate: sources.snapshotDate,
     catalogSourceLockSha256: normalized.sourceLockSha256,
     sources: {
       parts: {
@@ -241,6 +250,7 @@ export function buildBrickLinkItemCrosswalk(
       unresolvedPartCount: unresolved.length,
       ambiguousPartCount: unresolved.filter(({ reason }) => reason === "ambiguous-official-crosswalk").length,
       noEvidencePartCount: unresolved.filter(({ reason }) => reason === "no-official-crosswalk").length,
+      notInSnapshotPartCount: unresolved.filter(({ reason }) => reason === "not-in-snapshot").length,
       ldrawHeaderMappedPartCount: entries.filter(({ evidenceMethods }) =>
         evidenceMethods.includes("official-ldraw-header")).length,
     },
@@ -254,6 +264,9 @@ export function validateBrickLinkItemCrosswalk(value: BrickLinkItemCrosswalk): v
     throw new Error("BrickLink item crosswalk schema or source policy mismatch");
   }
   if (!/^[a-f0-9]{64}$/u.test(value.catalogSourceLockSha256)) throw new Error("Invalid catalog source lock hash");
+  if (!/^\d{4}-\d{2}-\d{2}$/u.test(value.snapshotDate) || Number.isNaN(Date.parse(value.snapshotDate))) {
+    throw new Error("Invalid BrickLink snapshot date");
+  }
   for (const source of Object.values(value.sources)) {
     if (source && "sha256" in source
       && (!/^[a-f0-9]{64}$/u.test(source.sha256) || source.rowCount < 1)) {
@@ -277,18 +290,21 @@ export function validateBrickLinkItemCrosswalk(value: BrickLinkItemCrosswalk): v
     }
   }
   for (const entry of value.unresolved) {
-    const expectedReason = entry.candidateBricklinkItemIds.length > 1
-      ? "ambiguous-official-crosswalk"
-      : "no-official-crosswalk";
-    if (entry.reason !== expectedReason) throw new Error(`Invalid unresolved reason: ${entry.rebrickablePartNum}`);
+    const validReason = entry.candidateBricklinkItemIds.length > 1
+      ? entry.reason === "ambiguous-official-crosswalk"
+      : entry.reason === "no-official-crosswalk"
+        || (entry.reason === "not-in-snapshot" && entry.candidateBricklinkItemIds.length === 0);
+    if (!validReason) throw new Error(`Invalid unresolved reason: ${entry.rebrickablePartNum}`);
   }
   const ambiguousPartCount = value.unresolved.filter(({ reason }) => reason === "ambiguous-official-crosswalk").length;
   const noEvidencePartCount = value.unresolved.filter(({ reason }) => reason === "no-official-crosswalk").length;
+  const notInSnapshotPartCount = value.unresolved.filter(({ reason }) => reason === "not-in-snapshot").length;
   if (value.summary.builderPartCount !== allPartNums.length
     || value.summary.mappedPartCount !== value.entries.length
     || value.summary.unresolvedPartCount !== value.unresolved.length
     || value.summary.ambiguousPartCount !== ambiguousPartCount
     || value.summary.noEvidencePartCount !== noEvidencePartCount
+    || value.summary.notInSnapshotPartCount !== notInSnapshotPartCount
     || value.summary.ldrawHeaderMappedPartCount !== value.entries.filter(({ evidenceMethods }) =>
       evidenceMethods.includes("official-ldraw-header")).length) {
     throw new Error("BrickLink crosswalk summary does not match its entries");
@@ -337,6 +353,7 @@ export async function importBrickLinkItemCrosswalk(
   root: string,
   partsPath: string,
   partColorCodesPath: string,
+  snapshotDate: string = new Date().toISOString().slice(0, 10),
 ): Promise<BrickLinkItemCrosswalk> {
   const [normalized, builderCatalog, curated, partsText, partColorCodesText] = await Promise.all([
     readFile(resolve(root, "data/generated/catalog-normalized.json"), "utf8").then((value) => JSON.parse(value) as NormalizedCatalog),
@@ -347,6 +364,7 @@ export async function importBrickLinkItemCrosswalk(
   ]);
   const ldrawEvidence = await readOfficialLDrawBrickLinkEvidence(root, builderCatalog);
   const crosswalk = buildBrickLinkItemCrosswalk(normalized, builderCatalog, curated, {
+    snapshotDate,
     partsText,
     partsFileName: partsPath,
     partColorCodesText,
@@ -355,4 +373,115 @@ export async function importBrickLinkItemCrosswalk(
   validateBrickLinkItemCrosswalk(crosswalk);
   await writeFile(resolve(root, BRICKLINK_ITEM_CROSSWALK_FILE), `${JSON.stringify(crosswalk)}\n`, "utf8");
   return crosswalk;
+}
+
+/**
+ * Keeps the crosswalk aligned with the current catalog without a new BrickLink download.
+ * Existing mappings (the BrickLink snapshot) stay untouched; parts that are new to the builder
+ * catalog are mapped only through official LDraw header IDs and otherwise marked
+ * `not-in-snapshot`. Parts that left the builder catalog are dropped. The result is
+ * deterministic: no timestamps, the snapshot date stays the day of the BrickLink download.
+ */
+export function refreshBrickLinkItemCrosswalk(
+  previous: BrickLinkItemCrosswalk,
+  normalized: NormalizedCatalog,
+  builderCatalog: BuilderCatalog,
+  curated: CuratedAssortment,
+  ldrawEvidence?: LDrawBrickLinkEvidence,
+): BrickLinkItemCrosswalk {
+  const normalizedParts = new Set(normalized.parts.map((part) => part.partNum.toLowerCase()));
+  const builderPartNums = uniqueSorted([
+    ...builderCatalog.entries.map(({ rebrickablePartNum }) => rebrickablePartNum),
+    ...curated.components.map(({ rebrickablePartNum }) => rebrickablePartNum),
+  ]);
+  const previousEntries = new Map(previous.entries.map((entry) => [entry.rebrickablePartNum.toLowerCase(), entry]));
+  const previousUnresolved = new Map(previous.unresolved.map((entry) => [entry.rebrickablePartNum.toLowerCase(), entry]));
+  const entries: BrickLinkItemCrosswalkEntry[] = [];
+  const unresolved: BrickLinkItemCrosswalkUnresolved[] = [];
+
+  for (const rebrickablePartNum of builderPartNums) {
+    const key = rebrickablePartNum.toLowerCase();
+    if (!normalizedParts.has(key)) throw new Error(`Builder part is missing from the normalized catalog: ${rebrickablePartNum}`);
+    const kept = previousEntries.get(key);
+    if (kept) {
+      entries.push({ ...kept, rebrickablePartNum });
+      continue;
+    }
+    const ldrawItemId = ldrawEvidence?.itemIdByRebrickablePartNum.get(key);
+    if (ldrawItemId) {
+      entries.push({
+        rebrickablePartNum,
+        bricklinkItemId: ldrawItemId,
+        evidenceMethods: ["official-ldraw-header"],
+        matchingElementIds: [],
+      });
+      continue;
+    }
+    const open = previousUnresolved.get(key);
+    unresolved.push(open
+      ? { ...open, rebrickablePartNum }
+      : { rebrickablePartNum, reason: "not-in-snapshot", candidateBricklinkItemIds: [], matchingElementIds: [] });
+  }
+
+  return {
+    schemaVersion: 1,
+    sourcePolicy: BRICKLINK_CATALOG_SOURCE_POLICY,
+    snapshotDate: previous.snapshotDate,
+    catalogSourceLockSha256: normalized.sourceLockSha256,
+    sources: {
+      ...previous.sources,
+      ldrawOfficial: ldrawEvidence
+        ? {
+            release: ldrawEvidence.release,
+            archiveSha256: ldrawEvidence.archiveSha256,
+            mappedPartCount: ldrawEvidence.itemIdByRebrickablePartNum.size,
+          }
+        : previous.sources.ldrawOfficial,
+    },
+    summary: {
+      builderPartCount: builderPartNums.length,
+      mappedPartCount: entries.length,
+      unresolvedPartCount: unresolved.length,
+      ambiguousPartCount: unresolved.filter(({ reason }) => reason === "ambiguous-official-crosswalk").length,
+      noEvidencePartCount: unresolved.filter(({ reason }) => reason === "no-official-crosswalk").length,
+      notInSnapshotPartCount: unresolved.filter(({ reason }) => reason === "not-in-snapshot").length,
+      ldrawHeaderMappedPartCount: entries.filter(({ evidenceMethods }) =>
+        evidenceMethods.includes("official-ldraw-header")).length,
+    },
+    entries,
+    unresolved,
+  };
+}
+
+/** Whole days between the BrickLink snapshot and `now`. */
+export const bricklinkSnapshotAgeDays = (snapshotDate: string, now: Date): number =>
+  Math.floor((now.getTime() - Date.parse(`${snapshotDate}T00:00:00Z`)) / 86_400_000);
+
+export const BRICKLINK_SNAPSHOT_MAX_AGE_DAYS = 90;
+
+/**
+ * Rewrites the crosswalk file only when its content changes. Official LDraw header evidence
+ * is used when the pinned LDraw library is extracted (the catalog refresh does that); without it
+ * new parts simply stay `not-in-snapshot`.
+ */
+export async function refreshBrickLinkItemCrosswalkFile(root: string): Promise<{ changed: boolean; crosswalk: BrickLinkItemCrosswalk }> {
+  const [previous, normalized, builderCatalog, curated] = await Promise.all([
+    readBrickLinkItemCrosswalk(root),
+    readFile(resolve(root, "data/generated/catalog-normalized.json"), "utf8").then((value) => JSON.parse(value) as NormalizedCatalog),
+    readFile(resolve(root, "data/generated/ldraw-expanded-catalog.json"), "utf8").then((value) => JSON.parse(value) as BuilderCatalog),
+    readFile(resolve(root, "data/curated/ff03-test-assortment.json"), "utf8").then((value) => JSON.parse(value) as CuratedAssortment),
+  ]);
+  let ldrawEvidence: LDrawBrickLinkEvidence | undefined;
+  try {
+    ldrawEvidence = await readOfficialLDrawBrickLinkEvidence(root, builderCatalog);
+  } catch (error) {
+    if ((error as NodeJS.ErrnoException).code !== "ENOENT") throw error;
+  }
+  const crosswalk = refreshBrickLinkItemCrosswalk(previous, normalized, builderCatalog, curated, ldrawEvidence);
+  validateBrickLinkItemCrosswalk(crosswalk);
+  const next = `${JSON.stringify(crosswalk)}\n`;
+  const current = await readFile(resolve(root, BRICKLINK_ITEM_CROSSWALK_FILE), "utf8");
+  if (next === current) return { changed: false, crosswalk };
+  await writeFile(resolve(root, BRICKLINK_ITEM_CROSSWALK_FILE), next, "utf8");
+  return { changed: true, crosswalk };
 }

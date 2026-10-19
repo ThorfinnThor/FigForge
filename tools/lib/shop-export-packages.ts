@@ -52,7 +52,7 @@ export async function buildShopExportPackages(root: string): Promise<Map<string,
     if (source.sourcePolicy !== SHOP_EXPORT_SOURCE_POLICY) throw new Error("Shop export source policy mismatch");
   }
   if (bricklinkCrosswalk.catalogSourceLockSha256 !== normalized.sourceLockSha256) {
-    throw new Error("BrickLink item crosswalk uses a stale catalog lock");
+    throw new Error("BrickLink item crosswalk uses a stale catalog lock; run `npm run data:refresh:bricklink` (no BrickLink download needed)");
   }
 
   const partByNumber = new Map(normalized.parts.map((part) => [part.partNum.toLowerCase(), part]));

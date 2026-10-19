@@ -53,6 +53,7 @@ import { writeLDrawRuntimePackages } from "./lib/ldraw-runtime-packages.js";
 import { readMultipleGripClearanceReviews } from "./lib/ldraw-multiple-grip-clearance-reviews.js";
 import { readNoRadiusGripClearanceReviews } from "./lib/ldraw-no-radius-grip-clearance-reviews.js";
 import { readUniqueGripClearanceReviews } from "./lib/ldraw-unique-grip-clearance-reviews.js";
+import { refreshBrickLinkItemCrosswalkFile } from "./lib/bricklink-item-crosswalk.js";
 import { writeShopExportPackages } from "./lib/shop-export-packages.js";
 
 const root = process.cwd();
@@ -1388,6 +1389,9 @@ const output = {
 };
 await writeFile(outputPath, `${JSON.stringify(output, null, 2)}\n`, "utf8");
 await writeLDrawRuntimePackages(root);
+// Align the BrickLink crosswalk with the new catalog first (no BrickLink download needed):
+// the shop export reads it and requires it to match the current catalog lock.
+await refreshBrickLinkItemCrosswalkFile(root);
 await writeShopExportPackages(root);
 // Composition evidence stays outside the runtime packages because the browser does not need it.
 await writeFile(compositionsPath, `${JSON.stringify({

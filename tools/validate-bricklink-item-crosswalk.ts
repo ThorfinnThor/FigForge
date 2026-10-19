@@ -1,7 +1,11 @@
 import assert from "node:assert/strict";
 import { readFile } from "node:fs/promises";
 import { resolve } from "node:path";
-import { readBrickLinkItemCrosswalk } from "./lib/bricklink-item-crosswalk.js";
+import {
+  BRICKLINK_SNAPSHOT_MAX_AGE_DAYS,
+  bricklinkSnapshotAgeDays,
+  readBrickLinkItemCrosswalk,
+} from "./lib/bricklink-item-crosswalk.js";
 
 const root = process.cwd();
 const [crosswalk, normalizedText, builderText, curatedText] = await Promise.all([
@@ -21,4 +25,12 @@ const actualParts = new Set([...crosswalk.entries, ...crosswalk.unresolved]
   .map(({ rebrickablePartNum }) => rebrickablePartNum.toLowerCase()));
 assert.deepEqual(actualParts, expectedBuilderParts, "BrickLink crosswalk does not cover the complete builder catalog");
 for (const partNum of actualParts) assert.ok(normalizedParts.has(partNum), `Unknown crosswalk part: ${partNum}`);
-console.log(JSON.stringify({ message: "BrickLink item crosswalk is valid", ...crosswalk.summary }));
+const ageDays = bricklinkSnapshotAgeDays(crosswalk.snapshotDate, new Date());
+// Age is reported, never a failure: the weekly refresh opens an issue once the snapshot is too old.
+console.log(JSON.stringify({
+  message: "BrickLink item crosswalk is valid",
+  snapshotDate: crosswalk.snapshotDate,
+  snapshotAgeDays: ageDays,
+  snapshotStale: ageDays > BRICKLINK_SNAPSHOT_MAX_AGE_DAYS,
+  ...crosswalk.summary,
+}));

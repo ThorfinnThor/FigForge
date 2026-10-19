@@ -126,3 +126,35 @@ Recherche zu Zielseiten (Stand 2026-09-30; praktischer BrickLink-Test vom
   und 621 mehrere belegte Katalogfarben. Damit sind 14.746 Teile grundsätzlich
   als Rebrickable-Zeile exportierbar; bei den 621 mehrfarbigen Teilen erst nach
   der ausdrücklichen Auswahl. 136 Teile ohne belegte Katalogfarbe bleiben blockiert.
+
+## Nachtrag 2026-10-19 (II): Pflege des BrickLink-Crosswalks ohne erneuten Download
+
+**Problem.** Der Crosswalk muss zum aktuellen Katalogstand passen (Prüfsumme, vollständige
+Abdeckung). Der Katalogstand ändert sich bei jedem wöchentlichen Refresh, der BrickLink-
+Download braucht aber eine Anmeldung und bleibt ein manueller Schritt. Ohne Anpassung
+wäre jeder Refresh an dieser Prüfung gescheitert.
+
+**Entscheidung.**
+
+1. Die BrickLink-Tabellen sind ein **Snapshot** mit Download-Datum (`snapshotDate`).
+   Zuordnungen nach Teilenummer ändern sich selten; sie bleiben beim Refresh unverändert.
+2. Der Schritt `assets:ldraw-expanded` gleicht den Crosswalk vor dem Exportbau ab
+   (`refreshBrickLinkItemCrosswalkFile`, auch als `npm run data:refresh:bricklink`):
+   - bestehende Zuordnungen bleiben,
+   - neue Builder-Teile erhalten eine ID nur über eindeutig belegte offizielle LDraw-
+     Header, sonst den Status `not-in-snapshot` und bleiben für BrickLink gesperrt,
+   - nicht mehr vorhandene Teile entfallen,
+   - die Prüfsumme des Katalogstands wird nachgezogen. Das Ergebnis ist deterministisch
+     (keine Zeitstempel).
+3. Ist der Snapshot älter als 90 Tage, öffnet der wöchentliche Lauf ein Issue (Label
+   `bricklink-snapshot-stale`) mit der Anleitung für einen neuen Import
+   (`npm run data:import:bricklink -- <Parts.txt> <Part-and-Color-Codes.txt> <Datum>`)
+   und schließt es nach dem Import wieder. Die Rohdateien werden nicht committet.
+4. Ein automatischer Download mit Anmeldedaten im CI wird bewusst nicht gebaut
+   (Zugangsdaten, Nutzungsbedingungen, Fragilität).
+
+**Folgen.** Neue Teile ohne LDraw-Header sind bis zum nächsten Snapshot nicht per
+BrickLink exportierbar; die Oberfläche nennt den Grund. Die Quellenregel in `AGENTS.md`
+und im Quellenregister nennt den BrickLink Catalog Download nun ausdrücklich. **Offen:**
+die Nutzungsbedingungen des Downloads sind für die Veröffentlichung der abgeleiteten
+Zuordnungstabelle in einem öffentlichen Repository rechtlich nicht geprüft.
