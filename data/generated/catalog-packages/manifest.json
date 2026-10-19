@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
   "sourcePolicy": "Nur Rebrickable Catalog Downloads/CSV, keine MOC-Dateien.",
-  "sourceLockSha256": "aa1c89f8a13d384c5ee63d05c72e5fc04e9135b3c0056347359001dff2cf9482",
-  "includedPartCount": 20271,
+  "sourceLockSha256": "831b156cc0b74bde80557e3ea0a70d0bf77585e3906f2f0166d92acb46e58051",
+  "includedPartCount": 20282,
   "packages": [
     {
       "role": "head",
@@ -10,7 +10,7 @@
       "categoryIds": [
         59
       ],
-      "partCount": 5423
+      "partCount": 5422
     },
     {
       "role": "headwear",
@@ -19,7 +19,7 @@
         65,
         72
       ],
-      "partCount": 2415
+      "partCount": 2416
     },
     {
       "role": "torsoAssembly",
@@ -27,7 +27,7 @@
       "categoryIds": [
         60
       ],
-      "partCount": 7871
+      "partCount": 7880
     },
     {
       "role": "legsAssembly",
@@ -35,7 +35,7 @@
       "categoryIds": [
         61
       ],
-      "partCount": 3252
+      "partCount": 3253
     },
     {
       "role": "handAccessory",
@@ -44,7 +44,7 @@
         27,
         73
       ],
-      "partCount": 1310
+      "partCount": 1311
     }
   ]
 }
