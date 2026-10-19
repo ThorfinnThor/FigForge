@@ -1,6 +1,6 @@
 # LDraw-Katalogabdeckung
 
-Stand: 2026-09-28; Rebrickable-Source-Lock `831b156cc0b74bde80557e3ea0a70d0bf77585e3906f2f0166d92acb46e58051`; offizielle LDraw-Bibliothek 2026-09.
+Stand: 2026-09-28; Rebrickable-Source-Lock `c2a3675e0b1c87efccfe88a194d6f6f4f02a7f7ef64b78ec27983a12796c8af8`; offizielle LDraw-Bibliothek 2026-09.
 
 **Verbindliche Quellenregel: Nur Rebrickable Catalog Downloads/CSV, keine MOC-Dateien.**
 
