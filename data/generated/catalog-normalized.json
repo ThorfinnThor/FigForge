@@ -1,12 +1,12 @@
 {
   "schemaVersion": 1,
   "sourcePolicy": "Nur Rebrickable Catalog Downloads/CSV, keine MOC-Dateien.",
-  "sourceLockSha256": "831b156cc0b74bde80557e3ea0a70d0bf77585e3906f2f0166d92acb46e58051",
+  "sourceLockSha256": "c2a3675e0b1c87efccfe88a194d6f6f4f02a7f7ef64b78ec27983a12796c8af8",
   "sourceLockUpdatedAt": "2026-09-28",
   "artifacts": [
     {
       "fileName": "colors.csv.gz",
-      "sha256": "0dbe237257bcd926d008e0a04ea67bc917f6c55fb4669d1e8449f8f379d8fbe9",
+      "sha256": "a9d1b834ad6b39c26508c3971665660f07eb64bf2d2519a844093f05379da4d5",
       "rowCount": 275,
       "columns": [
         "id",
@@ -21,7 +21,7 @@
     },
     {
       "fileName": "part_categories.csv.gz",
-      "sha256": "e8d262f83c618b092546e2cf81576f7974ad1b3d9546cd869a14506d1a24fea2",
+      "sha256": "3eaf53cc10d24ecdb821fea09c8d37192e96bd69df51bb54978b11e6eef03b9f",
       "rowCount": 76,
       "columns": [
         "id",
@@ -51,7 +51,7 @@
     },
     {
       "fileName": "elements.csv.gz",
-      "sha256": "7b61f74f971ca1eff72e7556309c34c4d12b6a6151a70923d0b2ce5508d72200",
+      "sha256": "05ef5ae3392ffaf9a15be7cee33037ea6331ed35bcaf602060eb497d1e04fed4",
       "rowCount": 114661,
       "columns": [
         "element_id",
@@ -75,7 +75,7 @@
     },
     {
       "fileName": "inventories.csv.gz",
-      "sha256": "fae63331c427694543322195944bc76d251bf02f1ef071f47f9f6592b45521a4",
+      "sha256": "9c7a723bc60fe000ebafc8db05b1edaac6e88cdd57529d9758b87626100b275d",
       "rowCount": 47789,
       "columns": [
         "id",
@@ -85,8 +85,8 @@
     },
     {
       "fileName": "inventory_parts.csv.gz",
-      "sha256": "d1b09d5624f35a425afc72ad665b6fb562e7ab71bed2511a87b537500bc17471",
-      "rowCount": 1567180,
+      "sha256": "cdebd10b8ac805ec983cd7ac9b48d4d3493a96f9b0be2acd15d9e78ba54cef66",
+      "rowCount": 1567185,
       "columns": [
         "inventory_id",
         "part_num",

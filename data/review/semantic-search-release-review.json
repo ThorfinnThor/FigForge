@@ -5,7 +5,7 @@
   "reviewStatus": "pending-human-review",
   "blindedSystems": true,
   "querySetSha256": "56c9a287a380df56d27ff7ecf061514e537ea1be4821f6f6e1f7b41ce397bf97",
-  "releaseManifestSha256": "c12dede72f1f69ee46b010caadf75d1b1687662c21a6e907e35e762378145ff7",
+  "releaseManifestSha256": "fb2b5a7dbbf8c453ec02b09a53f7f5ff596b455d0257a7aa0dae2472a69c2583",
   "releaseProfileId": "compact-minilm",
   "releaseDocumentCount": 2713,
   "instructions": "Bewerte jeden Treffer blind mit 0 (unpassend), 1 (akzeptabel) oder 2 (sehr passend). Maßgeblich sind Suchtext, sichtbare Geometrie, Katalogname, Kategorie und belegte Farbe. Die Herkunft aus Basis- oder Hybridsuche bleibt verborgen; der Holdout wird nicht ausgeliefert.",
@@ -27,7 +27,7 @@
         "hybrid": [
           "part:28621pr4236",
           "part:3626bpr0032",
-          "part:27456pr0001"
+          "part:3626bpr9976"
         ]
       },
       "candidates": [
@@ -87,6 +87,16 @@
             "Blue"
           ],
           "thumbnailUrl": "/assets/thumbnails/ldraw-expanded/head-27456pr0001.webp",
+          "relevance": null
+        },
+        {
+          "candidateKey": "candidate:release-dev-en-green-alien-face:part:3626bpr9976",
+          "componentId": "part:3626bpr9976",
+          "rebrickablePartNum": "3626bpr9976",
+          "originalName": "Minifig Head Indian, Face Paint with Green and Orange Painted Face Print [Blocked Open Stud]",
+          "categoryRole": "head",
+          "colorNames": [],
+          "thumbnailUrl": "/assets/thumbnails/ldraw-expanded/head-3626bpr9976.webp",
           "relevance": null
         }
       ]
@@ -583,7 +593,7 @@
         "hybrid": [
           "part:15864pat0001",
           "part:6122",
-          "part:3896"
+          "part:3844"
         ]
       },
       "candidates": [
@@ -621,6 +631,29 @@
             "Black"
           ],
           "thumbnailUrl": "/assets/thumbnails/ldraw-expanded/headwear-10066pr0002.webp",
+          "relevance": null
+        },
+        {
+          "candidateKey": "candidate:release-dev-en-black-knight-helmet:part:3844",
+          "componentId": "part:3844",
+          "rebrickablePartNum": "3844",
+          "originalName": "Helmet Castle with Neck Protector",
+          "categoryRole": "headwear",
+          "colorNames": [
+            "Black",
+            "Dark Gray",
+            "Dark Red",
+            "Flat Silver",
+            "Green",
+            "Light Bluish Gray",
+            "Light Gray",
+            "Metallic Silver",
+            "Pearl Dark Gray",
+            "Pearl Titanium",
+            "Sand Green",
+            "White"
+          ],
+          "thumbnailUrl": "/assets/thumbnails/ldraw-expanded/headwear-3844.webp",
           "relevance": null
         },
         {
@@ -684,22 +717,6 @@
           ],
           "thumbnailUrl": "/assets/thumbnails/ldraw-expanded/headwear-6122.webp",
           "relevance": null
-        },
-        {
-          "candidateKey": "candidate:release-dev-en-black-knight-helmet:part:3896",
-          "componentId": "part:3896",
-          "rebrickablePartNum": "3896",
-          "originalName": "Helmet Castle with Chin Guard",
-          "categoryRole": "headwear",
-          "colorNames": [
-            "Black",
-            "Dark Gray",
-            "Dark Purple",
-            "Light Bluish Gray",
-            "Red"
-          ],
-          "thumbnailUrl": "/assets/thumbnails/ldraw-expanded/headwear-3896.webp",
-          "relevance": null
         }
       ]
     },
@@ -721,7 +738,7 @@
           "part:62696",
           "part:92257",
           "part:15675",
-          "part:13785",
+          "part:88286",
           "part:6093"
         ]
       },
@@ -758,6 +775,26 @@
             "Red"
           ],
           "thumbnailUrl": "/assets/thumbnails/ldraw-expanded/headwear-92257.webp",
+          "relevance": null
+        },
+        {
+          "candidateKey": "candidate:release-dev-de-red-ponytail:part:88286",
+          "componentId": "part:88286",
+          "rebrickablePartNum": "88286",
+          "originalName": "Hair Ponytail Long French Braided",
+          "categoryRole": "headwear",
+          "colorNames": [
+            "Black",
+            "Dark Bluish Gray",
+            "Dark Brown",
+            "Dark Tan",
+            "Medium Nougat",
+            "Red",
+            "Reddish Brown",
+            "Tan",
+            "White"
+          ],
+          "thumbnailUrl": "/assets/thumbnails/ldraw-expanded/headwear-88286.webp",
           "relevance": null
         },
         {
@@ -1651,9 +1688,9 @@
         ],
         "hybrid": [
           "part:970c22pr0019",
-          "part:970c14pr0288",
           "part:970e09",
-          "part:970c03pr0001"
+          "part:970c03pr0001",
+          "part:970c14pr0288"
         ]
       },
       "candidates": [
@@ -1987,7 +2024,7 @@
         "hybrid": [
           "part:970c29",
           "part:970c08pr0001",
-          "part:970c05pr9967"
+          "part:970c65"
         ]
       },
       "candidates": [
@@ -2055,6 +2092,18 @@
           "relevance": null
         },
         {
+          "candidateKey": "candidate:release-dev-en-blue-jeans:part:970c65",
+          "componentId": "part:970c65",
+          "rebrickablePartNum": "970c65",
+          "originalName": "Hips and Trans-Light Blue Legs",
+          "categoryRole": "legsAssembly",
+          "colorNames": [
+            "Dark Azure"
+          ],
+          "thumbnailUrl": "/assets/thumbnails/ldraw-expanded/legs-970c65.webp",
+          "relevance": null
+        },
+        {
           "candidateKey": "candidate:release-dev-en-blue-jeans:part:16709pats01pr0014",
           "componentId": "part:16709pats01pr0014",
           "rebrickablePartNum": "16709pats01pr0014",
@@ -2074,18 +2123,6 @@
           "categoryRole": "legsAssembly",
           "colorNames": [],
           "thumbnailUrl": "/assets/thumbnails/ldraw-expanded/legs-16709pat28.webp",
-          "relevance": null
-        },
-        {
-          "candidateKey": "candidate:release-dev-en-blue-jeans:part:970c05pr9967",
-          "componentId": "part:970c05pr9967",
-          "rebrickablePartNum": "970c05pr9967",
-          "originalName": "Hips and Dark Blue Legs with Black Belt, Pockets, Shoes Print",
-          "categoryRole": "legsAssembly",
-          "colorNames": [
-            "Dark Blue"
-          ],
-          "thumbnailUrl": "/assets/thumbnails/ldraw-expanded/legs-970c05pr9967.webp",
           "relevance": null
         }
       ]
@@ -2353,8 +2390,8 @@
         ],
         "hybrid": [
           "part:685pr0001",
-          "part:3626bpr0324",
-          "part:3626cpr1296"
+          "part:3626cpr1296",
+          "part:3626bpr0324"
         ]
       },
       "candidates": [
@@ -2594,7 +2631,7 @@
         "hybrid": [
           "part:98371",
           "part:15443",
-          "part:93230pr0002"
+          "part:93352"
         ]
       },
       "candidates": [
@@ -2609,18 +2646,6 @@
             "Flat Silver"
           ],
           "thumbnailUrl": "/assets/thumbnails/ldraw-expanded/headwear-10054.webp",
-          "relevance": null
-        },
-        {
-          "candidateKey": "candidate:release-holdout-de-brown-curly-hair:part:93230pr0002",
-          "componentId": "part:93230pr0002",
-          "rebrickablePartNum": "93230pr0002",
-          "originalName": "Hair Swept Back with Pointy Ears Reddish Brown Print",
-          "categoryRole": "headwear",
-          "colorNames": [
-            "Dark Brown"
-          ],
-          "thumbnailUrl": "/assets/thumbnails/ldraw-expanded/headwear-93230pr0002.webp",
           "relevance": null
         },
         {
@@ -2650,6 +2675,19 @@
             "Reddish Brown"
           ],
           "thumbnailUrl": "/assets/thumbnails/ldraw-expanded/headwear-10055pr0001.webp",
+          "relevance": null
+        },
+        {
+          "candidateKey": "candidate:release-holdout-de-brown-curly-hair:part:93352",
+          "componentId": "part:93352",
+          "rebrickablePartNum": "93352",
+          "originalName": "Hair Long with Curls",
+          "categoryRole": "headwear",
+          "colorNames": [
+            "Dark Brown",
+            "Dark Orange"
+          ],
+          "thumbnailUrl": "/assets/thumbnails/ldraw-expanded/headwear-93352.webp",
           "relevance": null
         },
         {
@@ -2853,7 +2891,7 @@
         "hybrid": [
           "part:973c25h01pr1704",
           "part:973c35h01pr4009",
-          "part:973c31h03pr0055"
+          "part:973c25h27pr5890"
         ]
       },
       "candidates": [
@@ -2867,6 +2905,18 @@
             "Bright Green"
           ],
           "thumbnailUrl": "/assets/thumbnails/ldraw-expanded/torso-973c06h01.webp",
+          "relevance": null
+        },
+        {
+          "candidateKey": "candidate:release-holdout-de-green-ninja-armor:part:973c25h27pr5890",
+          "componentId": "part:973c25h27pr5890",
+          "rebrickablePartNum": "973c25h27pr5890",
+          "originalName": "Torso, Piccolo Suit Jacket, Gold Buttons, Dark Green Trim Print, Sand Green Arms, White Hands",
+          "categoryRole": "torsoAssembly",
+          "colorNames": [
+            "Sand Green"
+          ],
+          "thumbnailUrl": "/assets/thumbnails/ldraw-expanded/torso-973c25h27pr5890.webp",
           "relevance": null
         },
         {
@@ -2891,18 +2941,6 @@
             "Green"
           ],
           "thumbnailUrl": "/assets/thumbnails/ldraw-expanded/torso-973c03h27pr2894.webp",
-          "relevance": null
-        },
-        {
-          "candidateKey": "candidate:release-holdout-de-green-ninja-armor:part:973c31h03pr0055",
-          "componentId": "part:973c31h03pr0055",
-          "rebrickablePartNum": "973c31h03pr0055",
-          "originalName": "Torso Bandit Card Suit Vest and Gold Fob Chain Print, Green Arms, Black Hands",
-          "categoryRole": "torsoAssembly",
-          "colorNames": [
-            "Green"
-          ],
-          "thumbnailUrl": "/assets/thumbnails/ldraw-expanded/torso-973c31h03pr0055.webp",
           "relevance": null
         },
         {
