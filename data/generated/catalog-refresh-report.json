@@ -6,23 +6,18 @@
   "changedArtifacts": [
     "colors.csv.gz",
     "part_categories.csv.gz",
-    "parts.csv.gz",
-    "part_relationships.csv.gz",
     "elements.csv.gz",
-    "sets.csv.gz",
     "inventories.csv.gz",
-    "inventory_parts.csv.gz",
-    "inventory_minifigs.csv.gz",
-    "minifigs.csv.gz"
+    "inventory_parts.csv.gz"
   ],
-  "normalizedPartCount": 64826,
-  "packagedMinifigPartCount": 20271,
+  "normalizedPartCount": 64900,
+  "packagedMinifigPartCount": 20282,
   "setIndex": {
-    "relevantPartCount": 20271,
-    "mappedPartCount": 19731,
+    "relevantPartCount": 20282,
+    "mappedPartCount": 19742,
     "unmappedPartCount": 540,
-    "setCount": 11580,
-    "associationCount": 123341
+    "setCount": 11588,
+    "associationCount": 123410
   },
   "catalogPackageCount": 5,
   "artifactCount": 10,
