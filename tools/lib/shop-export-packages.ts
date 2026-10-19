@@ -10,7 +10,6 @@ import {
 import { runtimeFileByRole } from "./ldraw-runtime-packages.js";
 import { verifiedBrickLinkColorId } from "./bricklink-color-map.js";
 import { readBrickLinkItemCrosswalk } from "./bricklink-item-crosswalk.js";
-import { bricklinkKeywordIds, rebrickableKeywordIds } from "./ldraw-keywords.js";
 
 export const SHOP_EXPORT_DIRECTORY = "data/generated/shop-export";
 
@@ -26,7 +25,7 @@ type NormalizedCatalog = {
 
 type ExpandedCatalog = {
   sourcePolicy: string;
-  entries: Array<{ role: CatalogRole; rebrickablePartNum: string; ldrawFile: string }>;
+  entries: Array<{ role: CatalogRole; rebrickablePartNum: string }>;
 };
 
 type CuratedAssortment = {
@@ -36,35 +35,6 @@ type CuratedAssortment = {
 
 const readJson = async <T>(root: string, path: string): Promise<T> =>
   JSON.parse(await readFile(resolve(root, path), "utf8")) as T;
-
-const ldrawBaseName = (path: string): string =>
-  path.split("/").at(-1)?.replace(/\.(?:dat|ldr)$/iu, "") ?? "";
-
-const unique = <T>(values: readonly T[]): T[] => [...new Set(values)];
-
-/**
- * A BrickLink ID is accepted only when the same official LDraw file also proves
- * which Rebrickable part it represents (or its filename is that exact part ID).
- */
-const bricklinkItemIdFromLDraw = async (
-  root: string,
-  entry: ExpandedCatalog["entries"][number] | undefined,
-  sourceCache: Map<string, Promise<string>>,
-): Promise<string | null> => {
-  if (!entry) return null;
-  let sourcePromise = sourceCache.get(entry.ldrawFile);
-  if (!sourcePromise) {
-    sourcePromise = readFile(resolve(root, "data/incoming/ldraw-official/extracted/ldraw", entry.ldrawFile), "utf8");
-    sourceCache.set(entry.ldrawFile, sourcePromise);
-  }
-  const lines = (await sourcePromise).split(/\r?\n/u);
-  const rebrickableIds = unique(lines.flatMap(rebrickableKeywordIds));
-  const provesPart = rebrickableIds.some((id) => id.toLowerCase() === entry.rebrickablePartNum.toLowerCase())
-    || ldrawBaseName(entry.ldrawFile).toLowerCase() === entry.rebrickablePartNum.toLowerCase();
-  if (!provesPart) return null;
-  const bricklinkIds = unique(lines.flatMap(bricklinkKeywordIds));
-  return bricklinkIds.length === 1 ? bricklinkIds[0]! : null;
-};
 
 /**
  * Builds one shop-export package per builder role from the normalized Rebrickable catalog.
@@ -90,11 +60,6 @@ export async function buildShopExportPackages(root: string): Promise<Map<string,
     entry.rebrickablePartNum.toLowerCase(),
     entry.bricklinkItemId,
   ]));
-  const expandedByRoleAndPart = new Map(expanded.entries.map((entry) => [
-    `${entry.role}:${entry.rebrickablePartNum.toLowerCase()}`,
-    entry,
-  ]));
-  const ldrawSourceCache = new Map<string, Promise<string>>();
   const partNumsByRole = new Map<CatalogRole, Set<string>>();
   for (const { role, rebrickablePartNum } of [...expanded.entries, ...curated.components]) {
     const values = partNumsByRole.get(role) ?? new Set<string>();
@@ -137,16 +102,9 @@ export async function buildShopExportPackages(root: string): Promise<Map<string,
           color.elementIds.push(variant.elementId);
           colors.set(variant.colorId, color);
         }
-        const ldrawBricklinkItemId = await bricklinkItemIdFromLDraw(
-          root,
-          expandedByRoleAndPart.get(`${role}:${rebrickablePartNum.toLowerCase()}`),
-          ldrawSourceCache,
-        );
         entries.push({
           rebrickablePartNum,
-          bricklinkItemId: ldrawBricklinkItemId
-            ?? bricklinkItemIdByPart.get(rebrickablePartNum.toLowerCase())
-            ?? null,
+          bricklinkItemId: bricklinkItemIdByPart.get(rebrickablePartNum.toLowerCase()) ?? null,
           colors: [...colors.values()]
             .map((color) => ({ ...color, elementIds: color.elementIds.sort() }))
             .sort((left, right) => left.rebrickableColorId - right.rebrickableColorId),

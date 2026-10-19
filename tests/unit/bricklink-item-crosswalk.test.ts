@@ -11,7 +11,10 @@ const normalized = {
     { partNum: "rb-missing", colorVariants: [] },
   ],
 };
-const builderCatalog = { entries: normalized.parts.map(({ partNum }) => ({ rebrickablePartNum: partNum })) };
+const builderCatalog = {
+  source: { release: "2026-09", archiveSha256: "b".repeat(64) },
+  entries: normalized.parts.map(({ partNum }) => ({ rebrickablePartNum: partNum, ldrawFile: `parts/${partNum}.dat` })),
+};
 const curated = { components: [] };
 const sources = {
   partsFileName: "Parts.txt",
@@ -62,5 +65,24 @@ describe("BrickLink item crosswalk", () => {
       ...sources,
       partColorCodesText: "Item No\tColor\tCode\r\nunknown\tRed\t1001\r\n",
     })).toThrow("references an unknown item");
+  });
+
+  it("persists a uniquely proven official LDraw header mapping for portable builds", () => {
+    const result = buildBrickLinkItemCrosswalk(normalized, builderCatalog, curated, sources, {
+      release: "2026-09",
+      archiveSha256: "b".repeat(64),
+      itemIdByRebrickablePartNum: new Map([["rb-ambiguous", "ldraw-proven-id"]]),
+    });
+    expect(result.entries.find(({ rebrickablePartNum }) => rebrickablePartNum === "rb-ambiguous")).toEqual({
+      rebrickablePartNum: "rb-ambiguous",
+      bricklinkItemId: "ldraw-proven-id",
+      evidenceMethods: ["official-ldraw-header"],
+      matchingElementIds: [],
+    });
+    expect(result.sources.ldrawOfficial).toEqual({
+      release: "2026-09",
+      archiveSha256: "b".repeat(64),
+      mappedPartCount: 1,
+    });
   });
 });

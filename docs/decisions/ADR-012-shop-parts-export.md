@@ -66,9 +66,11 @@ Recherche zu Zielseiten (Stand 2026-09-30; praktischer BrickLink-Test vom
    in offiziellen Inventaren belegten Rebrickable-Farben, – sofern vorhanden –
    deren LEGO-Elementnummern sowie getrennte belegte BrickLink-Artikel- und
    Farbnummern. `data/generated/bricklink-item-crosswalk.json` dokumentiert den
-   hashgebundenen offiziellen BrickLink-Katalogimport einschließlich aller
-   mehrdeutigen und unbelegten Teile. Die App lädt ein Rollenpaket erst, wenn die
-   Rolle in der Figur belegt ist.
+   hashgebundenen offiziellen BrickLink-Katalogimport, die belegten IDs aus den
+   gepinnten offiziellen LDraw-Headern sowie alle mehrdeutigen und unbelegten
+   Teile. Dadurch benötigt die Validierung in einem sauberen CI-Checkout keine
+   transienten Rohdownloads. Die App lädt ein Rollenpaket erst, wenn die Rolle
+   in der Figur belegt ist.
 4. Nichts wird geraten:
    - Hat ein Teil im Katalog keine Farbe, ist es für alle drei Formate blockiert.
    - Hat ein Teil mehrere belegte Katalogfarben, muss die Person eine davon im

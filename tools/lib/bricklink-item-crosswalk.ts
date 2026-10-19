@@ -1,15 +1,17 @@
 import { createHash } from "node:crypto";
 import { readFile, writeFile } from "node:fs/promises";
 import { basename, resolve } from "node:path";
+import { bricklinkKeywordIds, rebrickableKeywordIds } from "./ldraw-keywords.js";
 
 export const BRICKLINK_ITEM_CROSSWALK_FILE = "data/generated/bricklink-item-crosswalk.json";
 export const BRICKLINK_CATALOG_SOURCE_POLICY =
-  "Official BrickLink Catalog Download: Parts and Part and Color Codes; no API." as const;
+  "Official BrickLink Catalog Download plus hash-locked official LDraw header IDs; no API." as const;
 
 export type BrickLinkCrosswalkEvidenceMethod =
   | "part-color-code"
   | "catalog-primary-item-number"
-  | "catalog-alternate-item-number";
+  | "catalog-alternate-item-number"
+  | "official-ldraw-header";
 
 export type BrickLinkItemCrosswalkEntry = {
   rebrickablePartNum: string;
@@ -32,6 +34,7 @@ export type BrickLinkItemCrosswalk = {
   sources: {
     parts: { fileName: string; sha256: string; rowCount: number };
     partColorCodes: { fileName: string; sha256: string; rowCount: number };
+    ldrawOfficial: { release: string; archiveSha256: string; mappedPartCount: number } | null;
   };
   summary: {
     builderPartCount: number;
@@ -39,6 +42,7 @@ export type BrickLinkItemCrosswalk = {
     unresolvedPartCount: number;
     ambiguousPartCount: number;
     noEvidencePartCount: number;
+    ldrawHeaderMappedPartCount: number;
   };
   entries: BrickLinkItemCrosswalkEntry[];
   unresolved: BrickLinkItemCrosswalkUnresolved[];
@@ -53,7 +57,8 @@ type NormalizedCatalog = {
 };
 
 type BuilderCatalog = {
-  entries: Array<{ rebrickablePartNum: string }>;
+  source: { release: string; archiveSha256: string };
+  entries: Array<{ rebrickablePartNum: string; ldrawFile: string }>;
 };
 
 type CuratedAssortment = {
@@ -67,10 +72,19 @@ type CatalogSources = {
   partColorCodesFileName: string;
 };
 
+type LDrawBrickLinkEvidence = {
+  release: string;
+  archiveSha256: string;
+  itemIdByRebrickablePartNum: ReadonlyMap<string, string>;
+};
+
 const sha256 = (value: string): string => createHash("sha256").update(value).digest("hex");
 
 const uniqueSorted = (values: Iterable<string>): string[] => [...new Set(values)].sort((left, right) =>
   left.localeCompare(right, "en"));
+
+const ldrawBaseName = (path: string): string =>
+  path.split("/").at(-1)?.replace(/\.(?:dat|ldr)$/iu, "") ?? "";
 
 const dataLines = (text: string): string[] => text.replace(/\r/gu, "").split("\n").filter((line) => line.length > 0);
 
@@ -131,6 +145,7 @@ export function buildBrickLinkItemCrosswalk(
   builderCatalog: BuilderCatalog,
   curated: CuratedAssortment,
   sources: CatalogSources,
+  ldrawEvidence?: LDrawBrickLinkEvidence,
 ): BrickLinkItemCrosswalk {
   const partsCatalog = parsePartsCatalog(sources.partsText);
   const partColorCodes = parsePartColorCodes(sources.partColorCodesText, partsCatalog.primaryByLowercase);
@@ -166,6 +181,20 @@ export function buildBrickLinkItemCrosswalk(
       for (const itemId of alternateItemIds) candidateItemIds.add(itemId);
     }
     const candidates = uniqueSorted(candidateItemIds);
+    const ldrawItemId = ldrawEvidence?.itemIdByRebrickablePartNum.get(rebrickablePartNum.toLowerCase());
+    if (ldrawItemId) {
+      const catalogConfirmsSameItem = candidates.length === 1 && candidates[0] === ldrawItemId;
+      entries.push({
+        rebrickablePartNum,
+        bricklinkItemId: ldrawItemId,
+        evidenceMethods: uniqueSorted([
+          "official-ldraw-header",
+          ...(catalogConfirmsSameItem ? evidenceMethods : []),
+        ]) as BrickLinkCrosswalkEvidenceMethod[],
+        matchingElementIds: catalogConfirmsSameItem ? uniqueSorted(matchingElementIds) : [],
+      });
+      continue;
+    }
     if (candidates.length === 1) {
       entries.push({
         rebrickablePartNum,
@@ -198,6 +227,13 @@ export function buildBrickLinkItemCrosswalk(
         sha256: sha256(sources.partColorCodesText),
         rowCount: partColorCodes.rowCount,
       },
+      ldrawOfficial: ldrawEvidence
+        ? {
+            release: ldrawEvidence.release,
+            archiveSha256: ldrawEvidence.archiveSha256,
+            mappedPartCount: ldrawEvidence.itemIdByRebrickablePartNum.size,
+          }
+        : null,
     },
     summary: {
       builderPartCount: builderPartNums.length,
@@ -205,6 +241,8 @@ export function buildBrickLinkItemCrosswalk(
       unresolvedPartCount: unresolved.length,
       ambiguousPartCount: unresolved.filter(({ reason }) => reason === "ambiguous-official-crosswalk").length,
       noEvidencePartCount: unresolved.filter(({ reason }) => reason === "no-official-crosswalk").length,
+      ldrawHeaderMappedPartCount: entries.filter(({ evidenceMethods }) =>
+        evidenceMethods.includes("official-ldraw-header")).length,
     },
     entries,
     unresolved,
@@ -217,7 +255,16 @@ export function validateBrickLinkItemCrosswalk(value: BrickLinkItemCrosswalk): v
   }
   if (!/^[a-f0-9]{64}$/u.test(value.catalogSourceLockSha256)) throw new Error("Invalid catalog source lock hash");
   for (const source of Object.values(value.sources)) {
-    if (!/^[a-f0-9]{64}$/u.test(source.sha256) || source.rowCount < 1) throw new Error("Invalid BrickLink source metadata");
+    if (source && "sha256" in source
+      && (!/^[a-f0-9]{64}$/u.test(source.sha256) || source.rowCount < 1)) {
+      throw new Error("Invalid BrickLink source metadata");
+    }
+  }
+  if (value.sources.ldrawOfficial
+    && (!value.sources.ldrawOfficial.release
+      || !/^[a-f0-9]{64}$/u.test(value.sources.ldrawOfficial.archiveSha256)
+      || value.sources.ldrawOfficial.mappedPartCount < 1)) {
+    throw new Error("Invalid official LDraw source metadata");
   }
   const allPartNums = [...value.entries, ...value.unresolved].map(({ rebrickablePartNum }) => rebrickablePartNum.toLowerCase());
   if (new Set(allPartNums).size !== allPartNums.length) throw new Error("BrickLink crosswalk part numbers must be unique");
@@ -241,9 +288,43 @@ export function validateBrickLinkItemCrosswalk(value: BrickLinkItemCrosswalk): v
     || value.summary.mappedPartCount !== value.entries.length
     || value.summary.unresolvedPartCount !== value.unresolved.length
     || value.summary.ambiguousPartCount !== ambiguousPartCount
-    || value.summary.noEvidencePartCount !== noEvidencePartCount) {
+    || value.summary.noEvidencePartCount !== noEvidencePartCount
+    || value.summary.ldrawHeaderMappedPartCount !== value.entries.filter(({ evidenceMethods }) =>
+      evidenceMethods.includes("official-ldraw-header")).length) {
     throw new Error("BrickLink crosswalk summary does not match its entries");
   }
+}
+
+async function readOfficialLDrawBrickLinkEvidence(
+  root: string,
+  builderCatalog: BuilderCatalog,
+): Promise<LDrawBrickLinkEvidence> {
+  const sourceCache = new Map<string, Promise<string>>();
+  const candidatesByPartNum = new Map<string, Set<string>>();
+  for (const entry of builderCatalog.entries) {
+    let sourcePromise = sourceCache.get(entry.ldrawFile);
+    if (!sourcePromise) {
+      sourcePromise = readFile(resolve(root, "data/incoming/ldraw-official/extracted/ldraw", entry.ldrawFile), "utf8");
+      sourceCache.set(entry.ldrawFile, sourcePromise);
+    }
+    const lines = (await sourcePromise).split(/\r?\n/u);
+    const rebrickableIds = uniqueSorted(lines.flatMap(rebrickableKeywordIds));
+    const provesPart = rebrickableIds.some((id) => id.toLowerCase() === entry.rebrickablePartNum.toLowerCase())
+      || ldrawBaseName(entry.ldrawFile).toLowerCase() === entry.rebrickablePartNum.toLowerCase();
+    if (!provesPart) continue;
+    const bricklinkIds = uniqueSorted(lines.flatMap(bricklinkKeywordIds));
+    if (bricklinkIds.length !== 1) continue;
+    addToSetMap(candidatesByPartNum, entry.rebrickablePartNum.toLowerCase(), bricklinkIds[0]!);
+  }
+  const itemIdByRebrickablePartNum = new Map<string, string>();
+  for (const [partNum, candidates] of candidatesByPartNum) {
+    if (candidates.size === 1) itemIdByRebrickablePartNum.set(partNum, [...candidates][0]!);
+  }
+  return {
+    release: builderCatalog.source.release,
+    archiveSha256: builderCatalog.source.archiveSha256,
+    itemIdByRebrickablePartNum,
+  };
 }
 
 export async function readBrickLinkItemCrosswalk(root: string): Promise<BrickLinkItemCrosswalk> {
@@ -264,12 +345,13 @@ export async function importBrickLinkItemCrosswalk(
     readFile(partsPath, "utf8"),
     readFile(partColorCodesPath, "utf8"),
   ]);
+  const ldrawEvidence = await readOfficialLDrawBrickLinkEvidence(root, builderCatalog);
   const crosswalk = buildBrickLinkItemCrosswalk(normalized, builderCatalog, curated, {
     partsText,
     partsFileName: partsPath,
     partColorCodesText,
     partColorCodesFileName: partColorCodesPath,
-  });
+  }, ldrawEvidence);
   validateBrickLinkItemCrosswalk(crosswalk);
   await writeFile(resolve(root, BRICKLINK_ITEM_CROSSWALK_FILE), `${JSON.stringify(crosswalk)}\n`, "utf8");
   return crosswalk;
