@@ -1,7 +1,7 @@
 import type { CatalogRole } from "../contracts/catalog-package.js";
 import type { ShopExportEntry } from "../contracts/shop-export.js";
 
-export type ShopExportTarget = "lego-pick-a-brick" | "rebrickable";
+export type ShopExportTarget = "bricklink" | "lego-pick-a-brick" | "rebrickable";
 
 export type ShopExportSelection = {
   slot: CatalogRole;
@@ -19,6 +19,8 @@ export type ShopExportBlockReason =
   | "no-color"
   | "multiple-colors"
   | "invalid-color"
+  | "no-bricklink-item-id"
+  | "no-bricklink-color-id"
   | "no-element-id"
   | "multiple-element-ids";
 
@@ -31,8 +33,12 @@ export type ShopExportLine = {
   rebrickablePartNum: string;
   rebrickableColorId: number;
   colorName: string;
-  /** Set only for Pick a Brick lines; Rebrickable lines are keyed by part and colour. */
+  /** Set only for Pick a Brick lines. */
   elementId: string | null;
+  /** Set only when the official LDraw metadata proves one BrickLink item ID. */
+  bricklinkItemId: string | null;
+  /** Set only when the Rebrickable colour has an exact official BrickLink colour match. */
+  bricklinkColorId: number | null;
   quantity: number;
   names: string[];
   slots: CatalogRole[];
@@ -55,9 +61,11 @@ export type ShopExportLookup = (slot: CatalogRole, rebrickablePartNum: string) =
 
 const blockMessages: Record<ShopExportBlockReason, string> = {
   "not-indexed": "Für dieses Teil liegen noch keine Exportdaten vor.",
-  "no-color": "Das Teil ist im Rebrickable-Katalog vorhanden, aber die Catalog Downloads belegen keine Farbe für den CSV-Export.",
+  "no-color": "Das Teil ist im Rebrickable-Katalog vorhanden, aber die Catalog Downloads belegen keine Farbe für den Export.",
   "multiple-colors": "Das Teil gibt es in mehreren Farben; die Vorschaufarbe ist keine bestätigte Auswahl.",
   "invalid-color": "Die gewählte Farbe ist für dieses Teil nicht im Katalog belegt.",
+  "no-bricklink-item-id": "Für dieses Teil ist keine eindeutige BrickLink-Artikelnummer belegt.",
+  "no-bricklink-color-id": "Für diese Farbe ist keine eindeutige BrickLink-Farbnummer belegt.",
   "no-element-id": "Für diese Teil-Farb-Kombination ist keine LEGO-Elementnummer bekannt.",
   "multiple-element-ids": "Für diese Teil-Farb-Kombination gibt es mehrere LEGO-Elementnummern; welche Pick a Brick führt, ist offen.",
 };
@@ -70,7 +78,8 @@ const block = (selection: ShopExportSelection, reason: ShopExportBlockReason): S
 
 /**
  * Turns the parts of a figure into shop lines. Every selection needs exactly one catalogue colour;
- * Pick a Brick additionally needs exactly one LEGO element ID for that colour. Nothing is guessed.
+ * Pick a Brick additionally needs exactly one LEGO element ID for that colour.
+ * BrickLink needs one evidenced item ID and an exact colour mapping. Nothing is guessed.
  */
 export const compileShopExport = (
   target: ShopExportTarget,
@@ -103,6 +112,8 @@ export const compileShopExport = (
       continue;
     }
     let elementId: string | null = null;
+    let bricklinkItemId: string | null = null;
+    let bricklinkColorId: number | null = null;
     if (target === "lego-pick-a-brick") {
       const [onlyElementId, ...otherElementIds] = color.elementIds;
       if (!onlyElementId) {
@@ -114,9 +125,24 @@ export const compileShopExport = (
         continue;
       }
       elementId = onlyElementId;
+    } else if (target === "bricklink") {
+      if (!entry.bricklinkItemId) {
+        blockers.push(block(selection, "no-bricklink-item-id"));
+        continue;
+      }
+      if (color.bricklinkColorId === null) {
+        blockers.push(block(selection, "no-bricklink-color-id"));
+        continue;
+      }
+      bricklinkItemId = entry.bricklinkItemId;
+      bricklinkColorId = color.bricklinkColorId;
     }
 
-    const key = elementId ?? `${entry.rebrickablePartNum}\u0000${color.rebrickableColorId}`;
+    // Keep one internal line per Rebrickable part/colour so local-inventory
+    // subtraction stays exact. The BrickLink serializer aggregates aliases.
+    const key = target === "lego-pick-a-brick"
+      ? elementId!
+      : `${entry.rebrickablePartNum}\u0000${color.rebrickableColorId}`;
     const line = lines.get(key);
     if (line) {
       line.quantity += 1;
@@ -128,6 +154,8 @@ export const compileShopExport = (
         rebrickableColorId: color.rebrickableColorId,
         colorName: color.colorName,
         elementId,
+        bricklinkItemId,
+        bricklinkColorId,
         quantity: 1,
         names: [selection.name],
         slots: [selection.slot],
@@ -195,4 +223,40 @@ export const serializePickABrickCsv = (result: ShopExportResult): string => {
       return [line.elementId, line.quantity];
     }),
   );
+};
+
+const xmlText = (value: string | number): string => String(value)
+  .replaceAll("&", "&amp;")
+  .replaceAll("<", "&lt;")
+  .replaceAll(">", "&gt;")
+  .replaceAll("\"", "&quot;")
+  .replaceAll("'", "&apos;");
+
+/** Official BrickLink Wanted List XML. BrickLink requires the XML declaration to be omitted. */
+export const serializeBrickLinkWantedListXml = (result: ShopExportResult): string => {
+  if (result.target !== "bricklink") throw new Error("Not a BrickLink export");
+  const quantities = new Map<string, { itemId: string; colorId: number; quantity: number }>();
+  for (const line of result.lines) {
+    if (!line.bricklinkItemId || line.bricklinkColorId === null) {
+      throw new Error(`BrickLink line without a verified mapping: ${line.rebrickablePartNum}`);
+    }
+    const key = `${line.bricklinkItemId}\u0000${line.bricklinkColorId}`;
+    const previous = quantities.get(key);
+    quantities.set(key, {
+      itemId: line.bricklinkItemId,
+      colorId: line.bricklinkColorId,
+      quantity: (previous?.quantity ?? 0) + line.quantity,
+    });
+  }
+  const items = [...quantities.values()]
+    .sort((left, right) => left.itemId.localeCompare(right.itemId, "en") || left.colorId - right.colorId)
+    .map(({ colorId, itemId, quantity }) => [
+      "  <ITEM>",
+      "    <ITEMTYPE>P</ITEMTYPE>",
+      `    <ITEMID>${xmlText(itemId)}</ITEMID>`,
+      `    <COLOR>${colorId}</COLOR>`,
+      `    <MINQTY>${quantity}</MINQTY>`,
+      "  </ITEM>",
+    ].join("\n"));
+  return ["<INVENTORY>", ...items, "</INVENTORY>", ""].join("\n");
 };

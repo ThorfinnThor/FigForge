@@ -1,17 +1,34 @@
-# ADR-012: Teilelisten-Export für LEGO Pick a Brick und Rebrickable
+# ADR-012: Teilelisten-Export für LEGO Pick a Brick, Rebrickable und BrickLink
 
 **Status:** akzeptiert
 **Datum:** 2026-09-30
-**Erweitert:** 2026-10-04
+**Erweitert:** 2026-10-19
 
 ## Kontext
 
 Der Implementierungsplan (Kapitel 9.3/9.4) sieht als Einkaufsübergabe ein
 BrickLink-Wanted-List-XML vor. Dafür werden BrickLink-Artikel- und Farbnummern
-benötigt. Diese stehen in keiner zulässigen Quelle: Die Rebrickable Catalog
-Downloads/CSV enthalten keine BrickLink-Nummern, die Rebrickable API ist in V1
-ausgeschlossen und BrickLink-IDs dürfen nicht aus anderen Nummernräumen geraten
-werden. Seit FF-06 ist deshalb keine einzige Figur als BrickLink-XML exportierbar.
+benötigt. Die Rebrickable Catalog Downloads/CSV enthalten keine BrickLink-Nummern,
+die Rebrickable API ist in V1 ausgeschlossen und BrickLink-IDs dürfen nicht aus
+anderen Nummernräumen geraten werden. Seit FF-06 war deshalb zunächst keine Figur
+als BrickLink-XML exportierbar.
+
+Die inzwischen gepinnte offizielle LDraw-Bibliothek enthält bei einem Teil der
+exakt zugeordneten Dateien ausdrückliche `Bricklink <ID>`-Schlüsselwörter. Diese
+ID wird nur übernommen, wenn dieselbe Datei die Rebrickable-Teilenummer ebenfalls
+ausdrücklich nennt oder ihr Dateiname exakt dieser Teilenummer entspricht. Der
+offizielle BrickLink Color Guide liefert einen getrennten Farbnummernraum; eine
+Farbe wird nur bei exakter Namensübereinstimmung übernommen. Druckeltern- und
+Geometrie-Fallbacks belegen keine Einkaufszuordnung.
+
+Ergänzend wurden am 19. Oktober 2026 nach Anmeldung die offiziellen
+BrickLink-Tabellen **Parts** und **Part and Color Codes** über den
+Catalog-Download bezogen. Der Import akzeptiert eine Zuordnung nur, wenn LEGO-
+Elementcode, primäre Artikelnummer und/oder ausdrücklich aufgeführte alternative
+Artikelnummer gemeinsam genau eine im Parts-Katalog vorhandene BrickLink-
+Artikelnummer ergeben. Mehrere Kandidaten bleiben gesperrt. Die Rohdateien sind
+transient und werden nicht veröffentlicht; Hashes, Zeilenzahlen, jeder angenommene
+Belegweg und alle offenen Fälle stehen im generierten Crosswalk.
 
 Die freigegebenen Builder-Teile tragen dagegen belegte Rebrickable-Teilenummern.
 `catalog-normalized.json` enthält aus `inventory_parts.csv.gz` zusätzlich die
@@ -21,7 +38,8 @@ Bei gedruckten Torsos und Beinen, die nach ADR-009 nur als „Geometrie ohne Dru
 dargestellt werden, bleibt `rebrickablePartNum` die echte Druckvariante; die
 unbedruckte Stellvertretergeometrie betrifft nur das 3D-Modell.
 
-Recherche zu Zielseiten (Stand 2026-09-30, ohne praktischen Importtest):
+Recherche zu Zielseiten (Stand 2026-09-30; praktischer BrickLink-Test vom
+2026-10-19):
 
 | Ziel | Importweg | Benötigte IDs | Partnerprogramm |
 | --- | --- | --- | --- |
@@ -32,27 +50,35 @@ Recherche zu Zielseiten (Stand 2026-09-30, ohne praktischen Importtest):
 
 ## Entscheidung
 
-1. FigForge exportiert zusätzlich zwei Formate, deren IDs aus den zulässigen
-   Catalog-Downloads stammen:
+1. FigForge exportiert drei getrennte Formate:
    - **LEGO Pick a Brick CSV** (`elementId,quantity`) – einziges Ziel mit
      bekanntem, öffentlich zugänglichem Partnerprogramm.
    - **Rebrickable-Teilelisten-CSV** (`Part,Color,Quantity`) – ohne Provision,
-     aber Brücke zu BrickLink und Brick Owl, deren IDs FigForge nicht besitzt.
-2. BrickLink-XML bleibt wie in FF-06 an bestätigte Beschaffungsrezepte gebunden.
-   Brick Owl wird erst mit einer belegten ID-Quelle aufgenommen.
-3. Ein Generator erzeugt je Builder-Rolle ein kleines Exportpaket unter
+     aber weiterhin als breiter Katalogweg.
+   - **BrickLink-Wanted-List-XML** (`ITEMTYPE=P`, `ITEMID`, `COLOR`, `MINQTY`) –
+     nur für Teil-/Farb-Kombinationen mit den oben beschriebenen Belegen.
+2. Die XML enthält keine Deklaration und kann auf BrickLinks offizieller
+   Wanted-List-Uploadseite hochgeladen werden. FigForge nutzt keine BrickLink-API,
+   verbindet kein Konto und führt keinen Kauf aus. Brick Owl bleibt ohne eigenen
+   belegten Exportweg außerhalb des Umfangs.
+3. Ein Generator erzeugt je Builder-Rolle ein Exportpaket unter
    `data/generated/shop-export/`. Es enthält für jedes builder-fertige Teil die
-   in offiziellen Inventaren belegten Rebrickable-Farben und – sofern vorhanden
-   – deren LEGO-Elementnummern. Die App lädt ein Paket erst, wenn die Rolle in
-   der Figur belegt ist.
+   in offiziellen Inventaren belegten Rebrickable-Farben, – sofern vorhanden –
+   deren LEGO-Elementnummern sowie getrennte belegte BrickLink-Artikel- und
+   Farbnummern. `data/generated/bricklink-item-crosswalk.json` dokumentiert den
+   hashgebundenen offiziellen BrickLink-Katalogimport einschließlich aller
+   mehrdeutigen und unbelegten Teile. Die App lädt ein Rollenpaket erst, wenn die
+   Rolle in der Figur belegt ist.
 4. Nichts wird geraten:
-   - Hat ein Teil im Katalog keine Farbe, ist es für beide Formate blockiert.
+   - Hat ein Teil im Katalog keine Farbe, ist es für alle drei Formate blockiert.
    - Hat ein Teil mehrere belegte Katalogfarben, muss die Person eine davon im
      Figurenpanel ausdrücklich als Einkaufsfarbe wählen. Die Vorschaufarbe ist
      keine Nutzerwahl und wird nicht exportiert. Die Auswahl färbt die
      3D-Vorschau noch nicht um; die Oberfläche weist darauf hin.
    - Hat die Teil-Farb-Kombination keine oder mehrere LEGO-Elementnummern, ist
      sie nur für Pick a Brick blockiert.
+   - Fehlt eine eindeutige BrickLink-Artikelnummer oder eine exakt abgeglichene
+     BrickLink-Farbe, ist sie nur für BrickLink blockiert.
    - Blockierte Teile erscheinen sichtbar in der Liste. Ein Download ohne sie ist
      möglich, benennt aber vorher, was fehlt (kein stiller Teil-Export).
 5. Partner-IDs werden nicht erfunden. Ein Build-Wert
@@ -72,14 +98,29 @@ Recherche zu Zielseiten (Stand 2026-09-30, ohne praktischen Importtest):
   „currently unavailable on Pick a Brick“ gemeldet. Format und Nummern stimmen;
   das Sortiment ist die Grenze. Die Oberfläche sagt das vorab und verweist auf
   die Rebrickable-Liste. Der Rebrickable-Import ist noch ungetestet.
+- Von 14.882 builder-fertigen Einträgen besitzen nach Zusammenführung der
+  offiziellen BrickLink-Katalogtabellen mit den streng belegten LDraw-Metadaten
+  14.087 eine eindeutige BrickLink-Artikelnummer. Zusammen mit den exakt
+  abgeglichenen Farben ergeben sich 16.213 exportierbare Teil-Farb-Kombinationen.
+  795 Artikelnummern bleiben mangels eindeutigen Belegs sichtbar blockiert;
+  insbesondere werden mehrdeutige Kandidaten nicht geraten.
+- Im aktuell ausgelieferten Suchkatalog mit 2.713 sichtbaren 3D-Teilen sind
+  2.544 Artikelnummern eindeutig belegt; 169 bleiben aus demselben Grund
+  blockiert. Damit ist die zuvor als „ca. 2.700“ bezeichnete Nutzeroberfläche
+  vollständig geprüft, ohne fehlende Zuordnungen zu erfinden.
+- Praktischer BrickLink-Test (2026-10-19): Die offizielle Uploadseite hat eine
+  von FigForge erzeugte XML-Zeile (`ITEMTYPE=P`, `ITEMID=3626`, `COLOR=3`,
+  `MINQTY=1`) als „Minifigure, Head (Plain)“, Yellow, Menge 1 erkannt und in die
+  getrennte Wanted List „FigForge XML test 2026-10-19“ übernommen. Es wurde kein
+  Kauf ausgelöst. BrickLink-IDs und Farbnamen können sich in späteren
+  LDraw-/BrickLink-Ständen ändern und müssen bei Aktualisierung erneut geprüft
+  werden.
 - Vor der Aktivierung eines Partnerlinks sind die Programmbedingungen,
   insbesondere für Pick a Brick, und die Werbekennzeichnung rechtlich zu prüfen.
 - Die Farbauswahl wird in neuen Figurenprojekten und Share-Links mit
   `schemaVersion: 2` gespeichert. V1-Projekte und V1-Links bleiben lesbar und
   werden beim Laden ohne erfundene Farbe migriert.
-- Von 14.829 builder-fertigen Teilen besitzen 14.054 genau eine Katalogfarbe
-  und 628 mehrere belegte Katalogfarben. Damit sind 14.682 Teile grundsätzlich
-  als Rebrickable-Zeile exportierbar; bei den 628 mehrfarbigen Teilen erst nach
-  der ausdrücklichen Auswahl. 147 Teile ohne belegte Katalogfarbe bleiben
-  blockiert. Vor ADR-022 waren es 986; die Trennung der Farbnachweise von den
-  LEGO-Elementnummern erschließt 839 weitere Rebrickable-Exporte.
+- Von 14.882 builder-fertigen Teilen besitzen 14.125 genau eine Katalogfarbe
+  und 621 mehrere belegte Katalogfarben. Damit sind 14.746 Teile grundsätzlich
+  als Rebrickable-Zeile exportierbar; bei den 621 mehrfarbigen Teilen erst nach
+  der ausdrücklichen Auswahl. 136 Teile ohne belegte Katalogfarbe bleiben blockiert.

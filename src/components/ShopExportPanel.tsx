@@ -4,6 +4,7 @@ import { StatusMessage } from "./ui/StatusMessage.js";
 import {
   compileShopExport,
   describeShopExportCoverage,
+  serializeBrickLinkWantedListXml,
   serializePickABrickCsv,
   serializeRebrickableCsv,
   type ShopExportLookup,
@@ -13,6 +14,7 @@ import {
 import { loadShopExportLookup } from "../procurement/shop-export-data.js";
 import {
   applyAffiliateTemplate,
+  BRICKLINK_WANTED_LIST_UPLOAD_URL,
   PICK_A_BRICK_URL,
   REBRICKABLE_URL,
   type ShopLink,
@@ -39,6 +41,7 @@ type ShopTarget = {
   linkLabel: string;
   summary: string;
   downloadLabel: string;
+  mimeType: string;
 };
 
 const downloadTextFile = (content: string, fileName: string, type: string): void => {
@@ -85,6 +88,7 @@ export function ShopExportPanel({ selections, stepNumber = 2 }: ShopExportPanelP
   const targets = useMemo<ShopTarget[] | null>(() => {
     if (!lookup) return null;
     const rebrickable = compileShopExport("rebrickable", selections, lookup);
+    const bricklink = compileShopExport("bricklink", selections, lookup);
     const pickABrick = compileShopExport("lego-pick-a-brick", selections, lookup);
     return [
     {
@@ -98,6 +102,20 @@ export function ShopExportPanel({ selections, stepNumber = 2 }: ShopExportPanelP
       linkLabel: t("shop.rebrickable.open"),
       summary: t("shop.rebrickable.summary"),
       downloadLabel: t("shop.rebrickable.download"),
+      mimeType: "text/csv;charset=utf-8",
+    },
+    {
+      result: bricklink,
+      downloadResult: inventory ? subtractPartInventory(bricklink, inventory) : bricklink,
+      title: t("shop.bricklink.title"),
+      recommended: false,
+      fileName: "figforge-bricklink-wanted-list.xml",
+      serialize: serializeBrickLinkWantedListXml,
+      link: { href: BRICKLINK_WANTED_LIST_UPLOAD_URL, affiliate: false },
+      linkLabel: t("shop.bricklink.open"),
+      summary: t("shop.bricklink.summary"),
+      downloadLabel: t("shop.bricklink.download"),
+      mimeType: "application/xml;charset=utf-8",
     },
     {
       result: pickABrick,
@@ -110,6 +128,7 @@ export function ShopExportPanel({ selections, stepNumber = 2 }: ShopExportPanelP
       linkLabel: t("shop.pickABrick.open"),
       summary: t("shop.pickABrick.summary"),
       downloadLabel: t("shop.pickABrick.download"),
+      mimeType: "text/csv;charset=utf-8",
     },
   ];
   }, [inventory, lookup, selections, t]);
@@ -194,7 +213,7 @@ export function ShopExportPanel({ selections, stepNumber = 2 }: ShopExportPanelP
                     className="shop-export__download"
                     disabled={target.downloadResult.lines.length === 0}
                     onClick={() => {
-                      downloadTextFile(target.serialize(target.downloadResult), target.fileName, "text/csv;charset=utf-8");
+                      downloadTextFile(target.serialize(target.downloadResult), target.fileName, target.mimeType);
                       setMessage(target.result.status === "partial"
                         ? t("shop.downloaded.partial", { fileName: target.fileName, count: target.result.blockers.length })
                         : t("shop.downloaded.complete", { fileName: target.fileName }));

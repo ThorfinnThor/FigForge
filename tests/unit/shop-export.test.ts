@@ -5,28 +5,61 @@ import { shopExportPackageSchema } from "../../src/contracts/shop-export.js";
 import {
   compileShopExport,
   describeShopExportCoverage,
+  serializeBrickLinkWantedListXml,
   serializePickABrickCsv,
   serializeRebrickableCsv,
   type ShopExportLookup,
   type ShopExportSelection,
 } from "../../src/procurement/shop-export.js";
 import { loadShopExportLookup } from "../../src/procurement/shop-export-data.js";
-import { applyAffiliateTemplate, PICK_A_BRICK_URL, REBRICKABLE_URL } from "../../src/procurement/shop-links.js";
+import {
+  applyAffiliateTemplate,
+  BRICKLINK_WANTED_LIST_UPLOAD_URL,
+  PICK_A_BRICK_URL,
+  REBRICKABLE_URL,
+} from "../../src/procurement/shop-links.js";
 
 // Synthetic fixture values; they are not real catalogue numbers.
 const entries: Record<string, ShopExportEntry> = {
-  "head:h1": { rebrickablePartNum: "h1", colors: [{ rebrickableColorId: 14, colorName: "Yellow", elementIds: ["1001"] }] },
-  "handAccessory:a1": { rebrickablePartNum: "a1", colors: [{ rebrickableColorId: 0, colorName: "Black", elementIds: ["2001"] }] },
+  "head:h1": {
+    rebrickablePartNum: "h1",
+    bricklinkItemId: "h1-bl",
+    colors: [{ rebrickableColorId: 14, colorName: "Yellow", elementIds: ["1001"], bricklinkColorId: 3 }],
+  },
+  "handAccessory:a1": {
+    rebrickablePartNum: "a1",
+    bricklinkItemId: "a1-bl",
+    colors: [{ rebrickableColorId: 0, colorName: "Black", elementIds: ["2001"], bricklinkColorId: 11 }],
+  },
   "headwear:w1": {
     rebrickablePartNum: "w1",
+    bricklinkItemId: "w1-bl",
     colors: [
-      { rebrickableColorId: 0, colorName: "Black", elementIds: ["3001"] },
-      { rebrickableColorId: 4, colorName: "Red", elementIds: ["3002"] },
+      { rebrickableColorId: 0, colorName: "Black", elementIds: ["3001"], bricklinkColorId: 11 },
+      { rebrickableColorId: 4, colorName: "Red", elementIds: ["3002"], bricklinkColorId: 5 },
     ],
   },
-  "torsoAssembly:t1": { rebrickablePartNum: "t1", colors: [{ rebrickableColorId: 1, colorName: "Blue", elementIds: ["4001", "4002"] }] },
-  "head:h2": { rebrickablePartNum: "h2", colors: [{ rebrickableColorId: 14, colorName: "Yellow", elementIds: [] }] },
-  "legsAssembly:l1": { rebrickablePartNum: "l1", colors: [] },
+  "torsoAssembly:t1": {
+    rebrickablePartNum: "t1",
+    bricklinkItemId: "t1-bl",
+    colors: [{ rebrickableColorId: 1, colorName: "Blue", elementIds: ["4001", "4002"], bricklinkColorId: 7 }],
+  },
+  "head:h2": {
+    rebrickablePartNum: "h2",
+    bricklinkItemId: "h2-bl",
+    colors: [{ rebrickableColorId: 14, colorName: "Yellow", elementIds: [], bricklinkColorId: 3 }],
+  },
+  "head:h3": {
+    rebrickablePartNum: "h3",
+    bricklinkItemId: null,
+    colors: [{ rebrickableColorId: 14, colorName: "Yellow", elementIds: [], bricklinkColorId: 3 }],
+  },
+  "head:h4": {
+    rebrickablePartNum: "h4",
+    bricklinkItemId: "h4-bl",
+    colors: [{ rebrickableColorId: 14, colorName: "Yellow", elementIds: [], bricklinkColorId: null }],
+  },
+  "legsAssembly:l1": { rebrickablePartNum: "l1", bricklinkItemId: null, colors: [] },
 };
 const lookup: ShopExportLookup = (slot, partNum) => entries[`${slot}:${partNum}`];
 const select = (slot: ShopExportSelection["slot"], partNum: string, rebrickableColorId?: number): ShopExportSelection =>
@@ -38,15 +71,34 @@ const select = (slot: ShopExportSelection["slot"], partNum: string, rebrickableC
   });
 
 describe("ADR-012 shop parts export", () => {
-  it("exports a fully resolvable figure to both formats", () => {
+  it("exports a fully resolvable figure to all formats", () => {
     const figure = [select("head", "h1"), select("handAccessory", "a1")];
     const pickABrick = compileShopExport("lego-pick-a-brick", figure, lookup);
     const rebrickable = compileShopExport("rebrickable", figure, lookup);
+    const bricklink = compileShopExport("bricklink", figure, lookup);
 
     expect(pickABrick.status).toBe("complete");
     expect(serializePickABrickCsv(pickABrick)).toBe("elementId,quantity\n2001,1\n1001,1\n");
     expect(rebrickable.status).toBe("complete");
     expect(serializeRebrickableCsv(rebrickable)).toBe("Part,Color,Quantity\na1,0,1\nh1,14,1\n");
+    expect(bricklink.status).toBe("complete");
+    expect(serializeBrickLinkWantedListXml(bricklink)).toBe([
+      "<INVENTORY>",
+      "  <ITEM>",
+      "    <ITEMTYPE>P</ITEMTYPE>",
+      "    <ITEMID>a1-bl</ITEMID>",
+      "    <COLOR>11</COLOR>",
+      "    <MINQTY>1</MINQTY>",
+      "  </ITEM>",
+      "  <ITEM>",
+      "    <ITEMTYPE>P</ITEMTYPE>",
+      "    <ITEMID>h1-bl</ITEMID>",
+      "    <COLOR>3</COLOR>",
+      "    <MINQTY>1</MINQTY>",
+      "  </ITEM>",
+      "</INVENTORY>",
+      "",
+    ].join("\n"));
   });
 
   it("aggregates identical parts into one line", () => {
@@ -131,6 +183,15 @@ describe("ADR-012 shop parts export", () => {
     expect(pickABrick.blockers[0]?.reason).toBe("no-element-id");
   });
 
+  it("blocks BrickLink export when either item or color mapping is unverified", () => {
+    const result = compileShopExport("bricklink", [select("head", "h3"), select("head", "h4")], lookup);
+
+    expect(result.status).toBe("blocked");
+    expect(result.blockers.map(({ reason }) => reason))
+      .toEqual(["no-bricklink-item-id", "no-bricklink-color-id"]);
+    expect(serializeBrickLinkWantedListXml(result)).toBe("<INVENTORY>\n</INVENTORY>\n");
+  });
+
   it("reports empty and fully blocked figures", () => {
     expect(compileShopExport("rebrickable", [], lookup).status).toBe("empty");
     const blocked = compileShopExport("lego-pick-a-brick", [select("legsAssembly", "l1")], lookup);
@@ -154,6 +215,10 @@ describe("ADR-012 shop parts export", () => {
     expect(REBRICKABLE_URL).toBe("https://rebrickable.com/users/_ME_/partlists/");
   });
 
+  it("opens BrickLink's official Wanted List upload", () => {
+    expect(BRICKLINK_WANTED_LIST_UPLOAD_URL).toBe("https://www.bricklink.com/v2/wanted/upload.page");
+  });
+
   it("keeps the real printed part number for parts shown as geometry without print", { timeout: 15_000 }, async () => {
     const runtime = JSON.parse(await readFile("data/generated/ldraw-runtime/torso-assembly.json", "utf8")) as {
       entries: Array<{ rebrickablePartNum: string; geometryFallback: unknown }>;
@@ -172,6 +237,23 @@ describe("ADR-012 shop parts export", () => {
     expect(printed).toBeDefined();
     const result = compileShopExport("rebrickable", [select("torsoAssembly", printed!.rebrickablePartNum)], realLookup);
     expect(result.lines[0]?.rebrickablePartNum).toBe(printed!.rebrickablePartNum);
+  });
+
+  it("keeps BrickLink and Rebrickable identifiers in separate verified namespaces", async () => {
+    const exportPackage = shopExportPackageSchema.parse(
+      JSON.parse(await readFile("data/generated/shop-export/torso-assembly.json", "utf8")),
+    );
+    const batmanTorso = exportPackage.entries.find(({ rebrickablePartNum }) =>
+      rebrickablePartNum === "973c03h03pr1274");
+
+    expect(batmanTorso).toMatchObject({
+      rebrickablePartNum: "973c03h03pr1274",
+      bricklinkItemId: "973pb0183c01",
+      colors: [expect.objectContaining({
+        rebrickableColorId: 0,
+        bricklinkColorId: 11,
+      })],
+    });
   });
 
   it("covers every builder-ready part with an export entry", async () => {

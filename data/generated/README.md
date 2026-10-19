@@ -8,6 +8,7 @@ FF-08 befüllt dieses Verzeichnis ausschließlich durch den geprüften Quellenad
 - `catalog-packages/`: fünf kompakte, nach Builder-Slot getrennte Browserpakete mit 20.202 Minifig-Teilen; ohne Bilder, MOC-Inhalte oder API-Daten.
 - `catalog-set-index.json`: kompakter, separat nachladbarer Index von Rebrickable-Setnummern und -namen auf die relevanten Builder-Teile; direkte Set-Inventare und enthaltene Minifiguren werden berücksichtigt.
 - `shop-export/`: je Builder-Rolle Rebrickable-Farben und LEGO-Elementnummern der builder-fertigen Teile aus `elements.csv.gz` für den Shop-Export (ADR-012); erzeugt mit `npm run assets:shop-export`.
+- `bricklink-item-crosswalk.json`: hashgebundene, eindeutige Zuordnungen und offene Fälle aus den offiziellen BrickLink-Catalog-Downloads **Parts** und **Part and Color Codes**; erzeugt mit `npm run data:import:bricklink -- <Parts.txt> <Part-and-Color-Codes.txt>`. Die Rohdownloads bleiben unter `data/incoming/` und werden nicht eingecheckt.
 - `mapping-review.json`: deterministischer FF-09-Report zu offenen Mappings und Dublettensignalen.
 - `model-packages.json`: FF-10-Index des reproduzierbaren, ausdrücklich nicht veröffentlichbaren FF-04-Fixturepakets und seiner SVG-Thumbnails.
 - `asset-manifest.json`: FF-11-Manifest mit Artefakt-Hashes, Provenienz, Lizenzstatus und offenen Freigabeblockern.

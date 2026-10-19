@@ -1,5 +1,6 @@
 export const PICK_A_BRICK_URL = "https://www.lego.com/pick-and-build/pick-a-brick";
 export const REBRICKABLE_URL = "https://rebrickable.com/users/_ME_/partlists/";
+export const BRICKLINK_WANTED_LIST_UPLOAD_URL = "https://www.bricklink.com/v2/wanted/upload.page";
 
 export type ShopLink = {
   href: string;

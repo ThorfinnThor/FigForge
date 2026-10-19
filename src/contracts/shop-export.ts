@@ -7,6 +7,7 @@ export const SHOP_EXPORT_SOURCE_POLICY = "Nur Rebrickable Catalog Downloads/CSV,
 export const REBRICKABLE_NO_COLOR_ID = 9999;
 
 const elementIdSchema = z.string().regex(/^[0-9]{1,16}$/u, "LEGO element IDs are numeric");
+const bricklinkItemIdSchema = z.string().regex(/^[A-Za-z0-9._-]{1,64}$/u, "Invalid BrickLink item ID");
 
 export const shopExportColorSchema = z.object({
   rebrickableColorId: z.number().int().nonnegative(),
@@ -14,10 +15,14 @@ export const shopExportColorSchema = z.object({
   // Rebrickable inventory evidence can prove a part/colour without a LEGO
   // element ID. Pick a Brick still requires exactly one element ID at export.
   elementIds: z.array(elementIdSchema),
+  /** Exact-name mapping from the official BrickLink Color Guide, otherwise null. */
+  bricklinkColorId: z.number().int().nonnegative().nullable(),
 }).strict();
 
 export const shopExportEntrySchema = z.object({
   rebrickablePartNum: z.string().min(1).max(80),
+  /** ID from matching official LDraw metadata or the locked official BrickLink catalog crosswalk. */
+  bricklinkItemId: bricklinkItemIdSchema.nullable(),
   colors: z.array(shopExportColorSchema),
 }).strict().superRefine((value, context) => {
   const colorIds = value.colors.map(({ rebrickableColorId }) => rebrickableColorId);
