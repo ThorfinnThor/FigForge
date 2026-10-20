@@ -38,7 +38,7 @@ describe("Collection page shell", () => {
     expect(purchaseDialogSource).toContain('<ShopExportPanel selections={selections} stepNumber={1} />');
     expect(purchaseDialogSource).toContain("shopExportSelectionsForSavedFigures");
     expect(shopExportSource).toContain('blocker.reason === "multiple-colors"');
-    expect(shopExportSource).toContain('href={`/?figureId=${encodeURIComponent(id)}`}');
+    expect(shopExportSource).toContain('href={`/builder?figureId=${encodeURIComponent(id)}`}');
     expect(shopExportSource).toContain('t("shop.collectionColors.open", { name })');
     expect(collectionSource).toContain("openStagePurchaseDialog");
     expect(collectionSource).toContain('t("collection.buyStage")');

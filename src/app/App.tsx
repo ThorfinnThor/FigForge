@@ -1,6 +1,8 @@
 import { lazy, Suspense } from "react";
 import { I18nProvider, useI18n } from "../i18n.js";
 
+const LandingPage = lazy(() => import("../components/LandingPage.js")
+  .then((module) => ({ default: module.LandingPage })));
 const CatalogWorkspace = lazy(() => import("../components/CatalogWorkspace.js")
   .then((module) => ({ default: module.CatalogWorkspace })));
 const CollectionPage = lazy(() => import("../components/CollectionPage.js")
@@ -13,6 +15,13 @@ const ProductsPage = lazy(() => import("../components/ProductsPage.js")
   .then((module) => ({ default: module.ProductsPage })));
 const PrivacyPage = lazy(() => import("../components/PrivacyPage.js")
   .then((module) => ({ default: module.PrivacyPage })));
+
+/** Links from before the landing page pointed the builder at "/"; keep them working. */
+const hasLegacyBuilderIntent = (): boolean => {
+  const { hash, search } = window.location;
+  const params = new URLSearchParams(search);
+  return params.has("template") || params.has("figureId") || hash.startsWith("#figforge=");
+};
 
 function AppRoutes() {
   const { t } = useI18n();
@@ -27,7 +36,9 @@ function AppRoutes() {
         ? <MethodologyPage />
         : pathname === "/collection"
           ? <CollectionPage />
-          : <CatalogWorkspace />;
+          : pathname === "/" && !hasLegacyBuilderIntent()
+            ? <LandingPage />
+            : <CatalogWorkspace />;
 
   return (
     <Suspense fallback={<p className="app-route-loading" role="status">{t("app.loading")}</p>}>

@@ -290,7 +290,7 @@ export function CollectionPage() {
             <h1 id="collection-title">{t("collection.title")}</h1>
             <p>{t("collection.lede")}</p>
           </div>
-          <a className="ff-button ff-button--primary" href="/">{t("collection.backToBuilder")}</a>
+          <a className="ff-button ff-button--primary" href="/builder">{t("collection.backToBuilder")}</a>
         </section>
         <section className="collection-page__stage" aria-labelledby="collection-stage-title">
           <header className="collection-page__stage-header">

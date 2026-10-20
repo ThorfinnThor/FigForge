@@ -3847,3 +3847,82 @@ legend {
     grid-template-columns: minmax(0, 1fr);
   }
 }
+
+/* Landing page (reuses the Ideas page frame) */
+.landing-page__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+  margin-top: var(--space-6);
+}
+
+.landing-page__actions a {
+  text-decoration: none;
+}
+
+.landing-page__ghost {
+  border-color: var(--navy-soft);
+  color: #fff;
+}
+
+.landing-page__steps,
+.landing-page__facts {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: var(--space-5);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.landing-page__step,
+.landing-page__fact {
+  min-height: 0;
+}
+
+.landing-page__legal {
+  margin: 0;
+  color: var(--ink-muted);
+  font-size: 0.85rem;
+  line-height: 1.5;
+}
+
+.idea-card__parts {
+  margin-top: var(--space-3);
+  color: var(--ink-muted);
+  font-size: 0.85rem;
+}
+
+.idea-card__parts summary {
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.idea-card__parts dl {
+  display: grid;
+  gap: var(--space-1);
+  margin: var(--space-2) 0 0;
+}
+
+.idea-card__parts dl > div {
+  display: flex;
+  justify-content: space-between;
+  gap: var(--space-3);
+}
+
+.idea-card__parts dt,
+.idea-card__parts dd {
+  margin: 0;
+}
+
+.idea-card__parts dd {
+  font-variant-numeric: tabular-nums;
+  font-weight: 600;
+}
+
+@media (max-width: 900px) {
+  .landing-page__steps,
+  .landing-page__facts {
+    grid-template-columns: 1fr;
+  }
+}
