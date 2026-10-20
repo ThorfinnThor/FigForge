@@ -36,7 +36,7 @@ Die Website wird bei **Cloudflare, Inc., 101 Townsend St., San Francisco, CA 941
 
 **Zweck und Rechtsgrundlage:** Auslieferung, Stabilität und Sicherheit der Website. Rechtsgrundlage ist Art. 6 Abs. 1 lit. f DSGVO (berechtigtes Interesse an einem sicheren und zuverlässigen Betrieb).
 
-**Auftragsverarbeitung:** Cloudflare stellt einen Vertrag zur Auftragsverarbeitung nach Art. 28 DSGVO bereit (Data Processing Addendum). Er enthält Standardvertragsklauseln der EU und nimmt auf das EU-US Data Privacy Framework Bezug.
+**Auftragsverarbeitung:** Cloudflare stellt einen Vertrag zur Auftragsverarbeitung nach Art. 28 DSGVO bereit (Data Processing Addendum). Nach Cloudflares Angaben gilt er für Kunden mit einem Self-Serve- oder Enterprise-Vertrag und ist Teil dieses Vertrags. Er enthält Standardvertragsklauseln der EU und nimmt auf das EU-US Data Privacy Framework Bezug.
 
 **Speicherdauer:** FigForge selbst speichert diese Zugriffsdaten nicht. Wie lange Cloudflare sie vorhält, steht in der Datenschutzerklärung von Cloudflare: https://www.cloudflare.com/privacypolicy/
 
@@ -61,6 +61,8 @@ Diese Daten verlassen dein Gerät nicht. Wir haben keinen Zugriff darauf und kö
 **Löschen:** In der Sammlung kannst du lokale Entwürfe und gespeicherte Figuren löschen. Außerdem kannst du in den Einstellungen deines Browsers die Website-Daten für `createyourminifig.com` entfernen.
 
 ### 6. Kontakt per E-Mail
+
+Die Adresse info@createyourminifig.com wird über **Cloudflare Email Routing** betrieben. Cloudflare leitet Nachrichten an unser Zielpostfach weiter; nach Cloudflares Angaben speichert oder liest Cloudflare den Inhalt der weitergeleiteten Nachrichten nicht, verarbeitet aber Metadaten zur Zustellung. Beim Anbieter des Zielpostfachs werden die Nachrichten anschließend gespeichert.
 
 Wenn du uns schreibst, verarbeiten wir deine E-Mail-Adresse, den Inhalt deiner Nachricht und die Metadaten der E-Mail, um deine Anfrage zu beantworten. Rechtsgrundlage ist Art. 6 Abs. 1 lit. f DSGVO (berechtigtes Interesse an der Beantwortung von Anfragen), bei vertragsnahen Anfragen Art. 6 Abs. 1 lit. b DSGVO. Wir löschen die Nachrichten, sobald die Anfrage erledigt ist und keine gesetzlichen Aufbewahrungspflichten entgegenstehen.
 
@@ -116,7 +118,8 @@ Diese Angaben habe ich am 2026-10-20 an der Live-Seite und im Code geprüft:
 | Suche lokal | `semantic-search.worker.ts`: `allowRemoteModels = false`, Modelle aus `/search/models/` der eigenen Domain. |
 | Teilen-Link | Die Figur steckt im URL-Fragment (`#figforge=…`), das Browser nicht an den Server senden. |
 | Cloudflare als Hoster | Antwort-Header `server: cloudflare`, `cf-ray …-FRA` (Auslieferung über Frankfurt). |
-| Cloudflare-DPA | https://www.cloudflare.com/cloudflare-customer-dpa/ (abgerufen 2026-10-20, „Version 6.4, effective April 3, 2026“): Klausel 6.2 bindet die EU-Standardvertragsklauseln ein (Modul 2, wenn der Kunde Verantwortlicher ist), Klausel 6.4 hält fest, dass Cloudflare das EU-US Data Privacy Framework einhält. Das DPA gilt, sobald die Parteien zustimmen („from the date on which Customer signed or the parties otherwise agreed“). |
+| Cloudflare-DPA | https://www.cloudflare.com/cloudflare-customer-dpa/ (abgerufen 2026-10-20, „Version 6.4, effective April 3, 2026“): Klausel 6.2 bindet die EU-Standardvertragsklauseln ein (Modul 2, wenn der Kunde Verantwortlicher ist), Klausel 6.4 hält fest, dass Cloudflare das EU-US Data Privacy Framework einhält. Das DPA gilt nach eigener Angabe für Kunden mit Enterprise- oder Self-Serve-Vertrag und ist Teil dieses Vertrags; wirksam wird es „from the date on which Customer signed or the parties otherwise agreed“. |
+| Cloudflare Email Routing | Cloudflare-Produktseite und Einführungsartikel (per Suche, 2026-10-20): Email Routing leitet weiter, Cloudflare speichere oder lese den Inhalt nicht; Metadaten zur Zustellung (weitergeleitet/verworfen) werden ausgewertet, Phishing-Erkennung prüft Nachrichten. Aussage der Betreiber, nicht von mir überprüft. |
 | Aufsichtsbehörde | Impressum der Behörde (https://www.datenschutz-berlin.de/impressum, abgerufen 2026-10-20): Alt-Moabit 59-61, 10555 Berlin, mailbox@datenschutz-berlin.de. |
 | Datenschutzbeauftragter | § 38 Abs. 1 BDSG (gesetze-im-internet.de): Pflicht ab in der Regel 20 Personen, die ständig mit automatisierter Verarbeitung beschäftigt sind, oder bei Datenschutz-Folgenabschätzung bzw. geschäftsmäßiger Übermittlung/Markt- und Meinungsforschung. Ein Einzelunternehmen mit einer Person, das so nichts verarbeitet, fällt voraussichtlich nicht darunter; das ist meine Lesart des Gesetzestextes, keine Rechtsberatung. Der Entwurf nennt deshalb keinen Datenschutzbeauftragten. |
 | Externe Links | Auf `/sets` führen Links zu `www.amazon.de` und `www.lego.com`; im Code außerdem BrickLink und Rebrickable. |
@@ -125,8 +128,8 @@ Diese Angaben habe ich am 2026-10-20 an der Live-Seite und im Code geprüft:
 
 Diese Punkte konnte ich nicht belegen. Sie stehen bewusst nicht als Behauptung im Entwurf:
 
-1. **Cloudflare-DPA im Konto:** Ob das DPA für dein Cloudflare-Konto zugestimmt ist und gilt (es wirkt erst mit Zustimmung). Erst dann darf der Text sagen „Mit Cloudflare besteht ein Vertrag zur Auftragsverarbeitung“. Nur du kannst das im Konto sehen.
-2. **Postfach:** Welcher Anbieter hinter `info@createyourminifig.com` steckt. Ein externer Mailanbieter ist ein weiterer Auftragsverarbeiter und gehört dann in Abschnitt 6.
+1. **Cloudflare-DPA:** Der Eigentümer hat das DPA im Konto nicht gesondert akzeptiert. Cloudflare schreibt, es gelte für Kunden mit Self-Serve- oder Enterprise-Vertrag und sei Teil davon; ob das ohne eigene Zustimmung wirksam ist, ließ sich aus den abrufbaren Seiten nicht eindeutig klären. Zu klären: bei Cloudflare (Support) nachfragen oder in der rechtlichen Prüfung bestätigen lassen und gegebenenfalls Zustimmung bzw. Unterschrift nachholen. Erst dann darf der Text sagen „Mit Cloudflare besteht ein Vertrag zur Auftragsverarbeitung“; jetzt sagt er nur, was Cloudflare über sein DPA angibt.
+2. **Zielpostfach von Email Routing:** Unter Cloudflare Email Routing läuft die Weiterleitung an ein Postfach bei einem anderen Anbieter. Dieser Anbieter speichert die E-Mails und ist ein weiterer Dienstleister (Auftragsverarbeitung, Speicherort). Offen: Welcher Anbieter ist das? Sein Name gehört in Abschnitt 6.
 3. **Amazon-Partnerprogramm:** Die Teilnahmevereinbarung (https://partnernet.amazon.de/help/operating/agreement/) ließ sich für mich nicht abrufen. Offen: Pflichtangaben zu Hinweisen und Datenschutz, und ob Amazon Partnern personenbezogene Daten einzelner Käufer gibt.
 4. **Offizielle DPF-Liste:** Cloudflares Teilnahme habe ich über Cloudflares eigenes DPA und Trust Hub belegt, nicht über dataprivacyframework.gov (die Seite ließ sich nicht abfragen). Der Text sagt deshalb „nach eigenen Angaben“.
 5. **Aufbewahrungsdauer der Cloudflare-Logs:** In der Cloudflare-Datenschutzerklärung nachzulesen; der Text verweist darauf, statt eine Zahl zu nennen.
