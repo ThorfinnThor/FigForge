@@ -1,6 +1,6 @@
 # Datenschutzerklärung – Entwurf (Stand 2026-10-20)
 
-> **Status: Entwurf, nicht rechtlich geprüft und noch nicht auf der Website.** Er ersetzt die kurze Seite `/privacy` erst nach der Prüfung. Stellen mit **[PRÜFEN]** sind Angaben, die ich nicht selbst belegen konnte und die der Eigentümer oder die rechtliche Prüfung bestätigen muss. Der Entwurf beschreibt nur, was die Seite tatsächlich tut (Abschnitt „Belegt“ am Ende).
+> **Status: Entwurf, nicht anwaltlich geprüft und noch nicht auf der Website.** Er ersetzt die kurze Seite `/privacy` erst nach der Prüfung. Der Text behauptet nur, was ich belegen konnte (Abschnitt „Belegt“ am Ende). Was ich nicht belegen konnte oder was nur der Eigentümer weiß, steht nicht im Text, sondern unter „Offen“ am Ende.
 
 ---
 
@@ -36,11 +36,11 @@ Die Website wird bei **Cloudflare, Inc., 101 Townsend St., San Francisco, CA 941
 
 **Zweck und Rechtsgrundlage:** Auslieferung, Stabilität und Sicherheit der Website. Rechtsgrundlage ist Art. 6 Abs. 1 lit. f DSGVO (berechtigtes Interesse an einem sicheren und zuverlässigen Betrieb).
 
-**Auftragsverarbeitung:** Mit Cloudflare besteht ein Vertrag zur Auftragsverarbeitung nach Art. 28 DSGVO (Data Processing Addendum). **[PRÜFEN: im Cloudflare-Konto bestätigen, dass das DPA gilt und welche Fassung.]**
+**Auftragsverarbeitung:** Cloudflare stellt einen Vertrag zur Auftragsverarbeitung nach Art. 28 DSGVO bereit (Data Processing Addendum). Er enthält Standardvertragsklauseln der EU und nimmt auf das EU-US Data Privacy Framework Bezug.
 
-**Speicherdauer:** FigForge selbst speichert diese Zugriffsdaten nicht. Wie lange Cloudflare sie vorhält, richtet sich nach Cloudflares Bedingungen. **[PRÜFEN: Aufbewahrungsdauer der Logs bei Cloudflare nachlesen und hier nennen oder auf Cloudflares Angaben verweisen.]**
+**Speicherdauer:** FigForge selbst speichert diese Zugriffsdaten nicht. Wie lange Cloudflare sie vorhält, steht in der Datenschutzerklärung von Cloudflare: https://www.cloudflare.com/privacypolicy/
 
-**Drittlandübermittlung:** Cloudflare ist ein US-Unternehmen. Eine Übermittlung personenbezogener Daten in die USA kann nicht ausgeschlossen werden, auch wenn Anfragen über Server in Europa laufen. Sie stützt sich auf den Angemessenheitsbeschluss zum EU-US Data Privacy Framework, an dem Cloudflare nach eigenen Angaben teilnimmt, und auf Standardvertragsklauseln. **[PRÜFEN: Teilnahme in der offiziellen DPF-Liste (dataprivacyframework.gov) bestätigen; Standardvertragsklauseln im DPA bestätigen.]**
+**Drittlandübermittlung:** Cloudflare ist ein US-Unternehmen. Eine Übermittlung personenbezogener Daten in die USA kann nicht ausgeschlossen werden, auch wenn Anfragen über Server in Europa laufen. Sie stützt sich auf den Angemessenheitsbeschluss zum EU-US Data Privacy Framework, an dem Cloudflare nach eigenen Angaben teilnimmt, und zusätzlich auf Standardvertragsklauseln.
 
 ### 4. Keine Cookies
 
@@ -56,19 +56,19 @@ Damit der Builder funktioniert, speichert FigForge Daten **ausschließlich lokal
 
 Diese Daten verlassen dein Gerät nicht. Wir haben keinen Zugriff darauf und können sie nicht einsehen. Die Suche mit eigenen Worten läuft vollständig in deinem Browser; deine Suchbegriffe werden nicht an uns oder Dritte gesendet. Ein Link, mit dem du eine Figur teilst, enthält die Figur im Teil nach dem `#`; dieser Teil wird vom Browser nicht an den Server gesendet.
 
-**Rechtsgrundlage:** Die Speicherung auf deinem Endgerät ist technisch erforderlich, damit der von dir gewünschte Dienst funktioniert (§ 25 Abs. 2 Nr. 2 TDDDG). Eine Einwilligung ist dafür nicht nötig. **[PRÜFEN]**
+**Rechtsgrundlage:** Die Speicherung auf deinem Endgerät ist technisch erforderlich, damit der von dir gewünschte Dienst funktioniert (§ 25 Abs. 2 Nr. 2 TDDDG). Eine Einwilligung ist dafür nicht nötig.
 
 **Löschen:** In der Sammlung kannst du lokale Entwürfe und gespeicherte Figuren löschen. Außerdem kannst du in den Einstellungen deines Browsers die Website-Daten für `createyourminifig.com` entfernen.
 
 ### 6. Kontakt per E-Mail
 
-Wenn du uns schreibst, verarbeiten wir deine E-Mail-Adresse, den Inhalt deiner Nachricht und die Metadaten der E-Mail, um deine Anfrage zu beantworten. Rechtsgrundlage ist Art. 6 Abs. 1 lit. f DSGVO (berechtigtes Interesse an der Beantwortung von Anfragen), bei vertragsnahen Anfragen Art. 6 Abs. 1 lit. b DSGVO. Wir löschen die Nachrichten, sobald die Anfrage erledigt ist und keine gesetzlichen Aufbewahrungspflichten entgegenstehen. **[PRÜFEN: Mailanbieter und Speicherort des Postfachs info@createyourminifig.com nennen, falls ein externer Anbieter genutzt wird.]**
+Wenn du uns schreibst, verarbeiten wir deine E-Mail-Adresse, den Inhalt deiner Nachricht und die Metadaten der E-Mail, um deine Anfrage zu beantworten. Rechtsgrundlage ist Art. 6 Abs. 1 lit. f DSGVO (berechtigtes Interesse an der Beantwortung von Anfragen), bei vertragsnahen Anfragen Art. 6 Abs. 1 lit. b DSGVO. Wir löschen die Nachrichten, sobald die Anfrage erledigt ist und keine gesetzlichen Aufbewahrungspflichten entgegenstehen.
 
 ### 7. Externe Links und Partnerlinks
 
 FigForge verlinkt auf Websites Dritter, zum Beispiel LEGO, Amazon, BrickLink, Rebrickable, Brick Owl und Pick a Brick. Mit dem Klick verlässt du FigForge. Ab dann gelten die Datenschutzbestimmungen des jeweiligen Anbieters; dort können Cookies gesetzt und Daten verarbeitet werden, auf die wir keinen Einfluss haben.
 
-Einige Links zu Produkten bei Amazon sind **Partnerlinks** (Amazon-Partnerprogramm) und als Anzeige gekennzeichnet. Wenn du über so einen Link bei Amazon einkaufst, erhalten wir eine Vergütung; für dich ändert sich der Preis nicht. Amazon verarbeitet dabei Daten nach eigener Datenschutzerklärung. **[PRÜFEN: Teilnahmebedingungen von Amazon PartnerNet zu Hinweis- und Datenschutzpflichten abgleichen; die Aussage „Als Amazon-Partner verdiene ich an qualifizierten Verkäufen.“ bleibt als eigener Satz stehen. Ebenso prüfen, ob wir von Amazon personenbezogene Daten einzelner Käufer erhalten (üblich: nein, nur Auswertungen).]**
+Einige Links zu Produkten bei Amazon sind **Partnerlinks** (Amazon-Partnerprogramm) und als Anzeige gekennzeichnet. Wenn du über so einen Link bei Amazon einkaufst, erhalten wir eine Vergütung. Amazon verarbeitet dabei Daten nach seiner eigenen Datenschutzerklärung. Als Amazon-Partner verdiene ich an qualifizierten Verkäufen.
 
 Die Teilelisten, die du herunterlädst oder kopierst, enthalten nur Teilenummern, Farben und Mengen. Sie enthalten keine personenbezogenen Daten. Wenn du sie bei einem Dienst hochlädst, gelten dessen Bedingungen.
 
@@ -115,19 +115,24 @@ Diese Angaben habe ich am 2026-10-20 an der Live-Seite und im Code geprüft:
 | Lokale Speicherung | Code: `indexedDB.open` in `src/storage/figure-draft-store.ts` (Stores für Entwurf, Sammlung, Bühne, Bestandsliste), Cache API für die Such-Modelldateien. Kein `localStorage`, kein `sessionStorage`. |
 | Suche lokal | `semantic-search.worker.ts`: `allowRemoteModels = false`, Modelle aus `/search/models/` der eigenen Domain. |
 | Teilen-Link | Die Figur steckt im URL-Fragment (`#figforge=…`), das Browser nicht an den Server senden. |
-| Cloudflare | Antwort-Header `server: cloudflare`, `cf-ray …-FRA` (Auslieferung über Frankfurt). Die Teilnahme am Data Privacy Framework gibt Cloudflare nach einer Zusammenfassung seiner Datenschutzerklärung an; die offizielle Liste habe ich nicht abgefragt. |
-| Aufsichtsbehörde | Anschrift und E-Mail der BlnBDI aus der Suche („Alt-Moabit 59–61, 10555 Berlin“, Umzug 2022); vor Veröffentlichung auf der Behördenseite gegenprüfen. |
+| Cloudflare als Hoster | Antwort-Header `server: cloudflare`, `cf-ray …-FRA` (Auslieferung über Frankfurt). |
+| Cloudflare-DPA | https://www.cloudflare.com/cloudflare-customer-dpa/ (abgerufen 2026-10-20, „Version 6.4, effective April 3, 2026“): Klausel 6.2 bindet die EU-Standardvertragsklauseln ein (Modul 2, wenn der Kunde Verantwortlicher ist), Klausel 6.4 hält fest, dass Cloudflare das EU-US Data Privacy Framework einhält. Das DPA gilt, sobald die Parteien zustimmen („from the date on which Customer signed or the parties otherwise agreed“). |
+| Aufsichtsbehörde | Impressum der Behörde (https://www.datenschutz-berlin.de/impressum, abgerufen 2026-10-20): Alt-Moabit 59-61, 10555 Berlin, mailbox@datenschutz-berlin.de. |
+| Datenschutzbeauftragter | § 38 Abs. 1 BDSG (gesetze-im-internet.de): Pflicht ab in der Regel 20 Personen, die ständig mit automatisierter Verarbeitung beschäftigt sind, oder bei Datenschutz-Folgenabschätzung bzw. geschäftsmäßiger Übermittlung/Markt- und Meinungsforschung. Ein Einzelunternehmen mit einer Person, das so nichts verarbeitet, fällt voraussichtlich nicht darunter; das ist meine Lesart des Gesetzestextes, keine Rechtsberatung. Der Entwurf nennt deshalb keinen Datenschutzbeauftragten. |
 | Externe Links | Auf `/sets` führen Links zu `www.amazon.de` und `www.lego.com`; im Code außerdem BrickLink und Rebrickable. |
 
-## Offene Punkte (kurz)
+## Offen (steht nicht im Text)
 
-1. Cloudflare: DPA-Fassung, Log-Aufbewahrung, DPF-Eintrag, Standardvertragsklauseln.
-2. Mailanbieter von `info@createyourminifig.com` (Auftragsverarbeitung, Speicherort).
-3. Amazon PartnerNet: Pflichtangaben und Datenschutzhinweise.
-4. § 25 TDDDG-Einschätzung zur lokalen Speicherung.
-5. Ob ein Datenschutzbeauftragter benannt werden muss (bei einem Einzelunternehmen dieser Größe voraussichtlich nicht; **[PRÜFEN]**).
-6. Wenn Search Console oder Bing Webmaster genutzt werden: Das sind Werkzeuge des Eigentümers, keine Dienste auf der Website; sie erfordern keinen Eintrag hier, solange kein Tracking-Code eingebunden wird.
-7. Englische Fassung nach der deutschen Prüfung.
+Diese Punkte konnte ich nicht belegen. Sie stehen bewusst nicht als Behauptung im Entwurf:
+
+1. **Cloudflare-DPA im Konto:** Ob das DPA für dein Cloudflare-Konto zugestimmt ist und gilt (es wirkt erst mit Zustimmung). Erst dann darf der Text sagen „Mit Cloudflare besteht ein Vertrag zur Auftragsverarbeitung“. Nur du kannst das im Konto sehen.
+2. **Postfach:** Welcher Anbieter hinter `info@createyourminifig.com` steckt. Ein externer Mailanbieter ist ein weiterer Auftragsverarbeiter und gehört dann in Abschnitt 6.
+3. **Amazon-Partnerprogramm:** Die Teilnahmevereinbarung (https://partnernet.amazon.de/help/operating/agreement/) ließ sich für mich nicht abrufen. Offen: Pflichtangaben zu Hinweisen und Datenschutz, und ob Amazon Partnern personenbezogene Daten einzelner Käufer gibt.
+4. **Offizielle DPF-Liste:** Cloudflares Teilnahme habe ich über Cloudflares eigenes DPA und Trust Hub belegt, nicht über dataprivacyframework.gov (die Seite ließ sich nicht abfragen). Der Text sagt deshalb „nach eigenen Angaben“.
+5. **Aufbewahrungsdauer der Cloudflare-Logs:** In der Cloudflare-Datenschutzerklärung nachzulesen; der Text verweist darauf, statt eine Zahl zu nennen.
+6. **Rechtliche Würdigung im Ganzen,** insbesondere § 25 TDDDG (lokale Speicherung ohne Einwilligung) und die Rechtsgrundlagen in den Abschnitten 3 und 6.
+7. **Englische Fassung** nach der deutschen Prüfung.
+8. Search Console und Bing Webmaster sind Werkzeuge des Eigentümers und brauchen keinen Eintrag hier, solange kein Tracking-Code auf der Website eingebunden wird.
 
 ## Einbau auf der Website (nach der Prüfung)
 
