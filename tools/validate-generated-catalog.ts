@@ -7,6 +7,7 @@ import {
   catalogPackageSchema,
 } from "../src/contracts/catalog-package.js";
 import { normalizedCatalogSchema } from "../src/contracts/catalog-refresh.js";
+import { setCountsByPartNum } from "../src/catalog/part-popularity.js";
 import { catalogSetIndexSchema } from "../src/contracts/catalog-set-index.js";
 import { sourceLockSchema } from "../src/contracts/source-lock.js";
 
@@ -47,6 +48,7 @@ const packageManifest = catalogPackageManifestSchema.parse(
 );
 assert.equal(packageManifest.sourceLockSha256, catalog.sourceLockSha256);
 const packagedPartIds = new Set<string>();
+const expectedSetCounts = setCountsByPartNum(setIndex);
 for (const manifestEntry of packageManifest.packages) {
   const catalogPackage = catalogPackageSchema.parse(
     JSON.parse(await readFile(resolve(catalogPackagesDir, manifestEntry.fileName), "utf8")) as unknown,
@@ -58,6 +60,11 @@ for (const manifestEntry of packageManifest.packages) {
   for (const part of catalogPackage.parts) {
     assert.equal(packagedPartIds.has(part.id), false, `Catalog package contains duplicate part ${part.id}`);
     packagedPartIds.add(part.id);
+    assert.equal(
+      part.setCount,
+      expectedSetCounts.get(part.rebrickablePartNum),
+      `Catalog package set count is stale for ${part.rebrickablePartNum}`,
+    );
   }
 }
 assert.equal(packagedPartIds.size, packageManifest.includedPartCount);

@@ -15,6 +15,7 @@ import type {
   LDrawDigitalConnectivity,
   LDrawDigitalConnectivityEntry,
 } from "../contracts/ldraw-digital-connectivity.js";
+import { comparePartsByPopularity } from "../catalog/part-popularity.js";
 import { FIGURE_TEMPLATES } from "../ideas/figure-templates.js";
 import {
   ldrawRuntimePackageSchema,
@@ -188,7 +189,7 @@ const loadCatalogRole = (role: CatalogRole): Promise<readonly CatalogPackagePart
       const leftFeatured = featuredCatalogKeys.has(catalogKey(left));
       const rightFeatured = featuredCatalogKeys.has(catalogKey(right));
       if (leftFeatured !== rightFeatured) return leftFeatured ? -1 : 1;
-      return left.rebrickablePartNum.localeCompare(right.rebrickablePartNum, "en", { numeric: true });
+      return comparePartsByPopularity(left, right);
     });
   });
   void promise.catch(() => {

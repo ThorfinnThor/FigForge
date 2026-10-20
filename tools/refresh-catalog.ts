@@ -118,7 +118,7 @@ if (!values.refresh) {
     allowHashUpdates: true,
     retrievedAt: new Date().toISOString(),
   });
-  const catalogPackages = buildCatalogPackages(result.normalizedCatalog);
+  const catalogPackages = buildCatalogPackages(result.normalizedCatalog, result.catalogSetIndex);
   await mkdir(generatedDir, { recursive: true });
   await mkdir(catalogPackagesDir, { recursive: true });
   await writeFile(generatedLockPath, serializeSourceLock(result.sourceLock), "utf8");

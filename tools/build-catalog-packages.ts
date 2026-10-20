@@ -1,6 +1,7 @@
 import { mkdir, readFile, writeFile } from "node:fs/promises";
 import { resolve } from "node:path";
 import { normalizedCatalogSchema } from "../src/contracts/catalog-refresh.js";
+import { catalogSetIndexSchema } from "../src/contracts/catalog-set-index.js";
 import {
   buildCatalogPackages,
   CATALOG_PACKAGE_FILE_BY_ROLE,
@@ -10,7 +11,10 @@ const generatedDir = resolve(process.cwd(), "data/generated");
 const catalog = normalizedCatalogSchema.parse(
   JSON.parse(await readFile(resolve(generatedDir, "catalog-normalized.json"), "utf8")) as unknown,
 );
-const result = buildCatalogPackages(catalog);
+const setIndex = catalogSetIndexSchema.parse(
+  JSON.parse(await readFile(resolve(generatedDir, "catalog-set-index.json"), "utf8")) as unknown,
+);
+const result = buildCatalogPackages(catalog, setIndex);
 const outputDir = resolve(generatedDir, "catalog-packages");
 
 await mkdir(outputDir, { recursive: true });

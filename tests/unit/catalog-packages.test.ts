@@ -81,4 +81,14 @@ describe("browser catalog packages", () => {
       (catalogPackage) => catalogPackage.sourceLockSha256 === fixtureCatalog.sourceLockSha256,
     )).toBe(true);
   });
+
+  it("adds the set count from the set index and omits it for parts in no set", () => {
+    const result = buildCatalogPackages(fixtureCatalog, {
+      parts: ["3626c"],
+      sets: [{ partIndexes: [0] }, { partIndexes: [0] }],
+    });
+
+    expect(result.packages.head.parts[0]?.setCount).toBe(2);
+    expect(result.packages.headwear.parts[0]).not.toHaveProperty("setCount");
+  });
 });

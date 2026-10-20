@@ -1,3 +1,4 @@
+import { setCountsByPartNum, type SetCountSource } from "../../src/catalog/part-popularity.js";
 import type { NormalizedCatalog } from "../../src/contracts/catalog-refresh.js";
 import {
   catalogPackageManifestSchema,
@@ -33,7 +34,11 @@ export type BuiltCatalogPackages = {
   packages: Record<CatalogRole, CatalogPackage>;
 };
 
-export function buildCatalogPackages(catalog: NormalizedCatalog): BuiltCatalogPackages {
+export function buildCatalogPackages(
+  catalog: NormalizedCatalog,
+  setIndex?: SetCountSource,
+): BuiltCatalogPackages {
+  const setCounts = setIndex ? setCountsByPartNum(setIndex) : new Map<string, number>();
   const roleByCategoryId = new Map<number, CatalogRole>();
   for (const role of roles) {
     for (const categoryId of CATALOG_CATEGORY_IDS_BY_ROLE[role]) {
@@ -63,6 +68,7 @@ export function buildCatalogPackages(catalog: NormalizedCatalog): BuiltCatalogPa
       colorNames: [...new Set(part.colorVariants.map(({ colorName }) => colorName))].sort((left, right) =>
         left.localeCompare(right, "en"),
       ),
+      ...(setCounts.has(part.partNum) ? { setCount: setCounts.get(part.partNum)! } : {}),
     });
   }
 
