@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import { FIGURE_TEMPLATES, type FigureThemeId } from "../ideas/figure-templates.js";
 import { AppHeader } from "./AppHeader.js";
+import { germanPath } from "../app/routing.js";
 import { useI18n } from "../i18n.js";
 import { FigurePreviewCard } from "./FigurePreviewCard.js";
 import { productsForTheme } from "../products/curated-products.js";
@@ -44,7 +45,7 @@ const isThemeId = (value: string | null): value is FigureThemeId => (
 );
 
 const selectedThemeFromUrl = (): FigureThemeId | null => {
-  const pathValue = window.location.pathname.match(/^\/ideas\/([^/]+)\/?$/u)?.[1] ?? null;
+  const pathValue = germanPath(window.location.pathname).match(/^\/ideas\/([^/]+)\/?$/u)?.[1] ?? null;
   if (isThemeId(pathValue)) return pathValue;
 
   const queryValue = new URLSearchParams(window.location.search).get("theme");
@@ -54,7 +55,7 @@ const selectedThemeFromUrl = (): FigureThemeId | null => {
 };
 
 export function IdeasPage() {
-  const { t } = useI18n();
+  const { path, t } = useI18n();
   const selectedTheme = selectedThemeFromUrl();
   const selectedWorld = THEME_WORLDS.find((world) => world.id === selectedTheme);
   const visibleTemplates = selectedTheme
@@ -102,7 +103,7 @@ export function IdeasPage() {
             <div className="ideas-page__section-aside">
               <p>{t("ideas.worlds.lede")}</p>
               {selectedTheme ? (
-                <a className="ff-button ff-button--ghost ideas-page__all-worlds" href="/ideas">
+                <a className="ff-button ff-button--ghost ideas-page__all-worlds" href={path("/ideas")}>
                   {t("ideas.worlds.all")}
                 </a>
               ) : null}
@@ -119,7 +120,7 @@ export function IdeasPage() {
                 <a
                   aria-current={selectedTheme === world.id ? "page" : undefined}
                   className="idea-world__link"
-                  href={`/ideas/${encodeURIComponent(world.id)}`}
+                  href={path(`/ideas/${encodeURIComponent(world.id)}`)}
                 >
                   {t("ideas.worlds.open")}
                 </a>
@@ -160,7 +161,7 @@ export function IdeasPage() {
                       </dl>
                     </details>
                   ) : null}
-                  <a className="ff-button ff-button--primary idea-card__cta" href={`/builder?template=${encodeURIComponent(template.id)}`}>
+                  <a className="ff-button ff-button--primary idea-card__cta" href={`${path("/builder")}?template=${encodeURIComponent(template.id)}`}>
                     {t("ideas.customize")}
                   </a>
                 </div>
@@ -191,7 +192,7 @@ export function IdeasPage() {
             </div>
             <div className="ideas-page__section-aside">
               <p>{t("ideas.products.lede")}</p>
-              <a className="ff-button ff-button--ghost ideas-page__all-worlds" href="/sets">
+              <a className="ff-button ff-button--ghost ideas-page__all-worlds" href={path("/sets")}>
                 {t("ideas.products.all")}
               </a>
             </div>

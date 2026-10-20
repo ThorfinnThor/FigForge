@@ -64,7 +64,7 @@ describe("curated products", () => {
     expect(source).toContain('type ProductCategory = "all" | FigureThemeId | "accessories"');
     expect(source).toContain('aria-pressed={activeCategory === category}');
     expect(source).toContain('t("products.filters.label")');
-    expect(source).toContain('href="/privacy"');
+    expect(source).toContain('href={path("/privacy")}');
     expect(source).not.toContain('className="products-disclosure"');
   });
 

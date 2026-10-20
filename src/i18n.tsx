@@ -1,4 +1,5 @@
 import { createContext, useContext, useEffect, useMemo, useState, type ReactNode } from "react";
+import { languageFromPath, localizedPath, switchLanguageUrl } from "./app/routing.js";
 
 export type Language = "de" | "en";
 
@@ -1018,33 +1019,37 @@ export const messages: Record<Language, Messages> = {
 type I18nContextValue = {
   language: Language;
   setLanguage: (language: Language) => void;
+  /** Path of a page (its German path) in the current language, e.g. "/builder" becomes "/en/builder". */
+  path: (germanPath: string) => string;
   t: (key: string, values?: Record<string, string | number>) => string;
 };
 
 const I18nContext = createContext<I18nContextValue | null>(null);
-const LANGUAGE_STORAGE_KEY = "figforge-language";
 
 const interpolate = (template: string, values?: Record<string, string | number>): string => {
   if (!values) return template;
   return template.replace(/\{(\w+)\}/gu, (_, key: string) => String(values[key] ?? `{${key}}`));
 };
 
+/** The URL decides the language; the picker switches the page in place and updates the URL. */
 export function I18nProvider({ children }: { children: ReactNode }) {
-  const [language, setLanguageState] = useState<Language>("de");
+  const [language, setLanguageState] = useState<Language>(() => (
+    typeof window === "undefined" ? "de" : languageFromPath(window.location.pathname)
+  ));
 
   useEffect(() => {
-    const stored = window.localStorage.getItem(LANGUAGE_STORAGE_KEY);
-    if (stored === "de" || stored === "en") setLanguageState(stored);
-  }, []);
+    document.documentElement.lang = language;
+  }, [language]);
 
   const setLanguage = (next: Language) => {
     setLanguageState(next);
-    window.localStorage.setItem(LANGUAGE_STORAGE_KEY, next);
+    window.history.replaceState(window.history.state, "", switchLanguageUrl(window.location, next));
   };
 
   const value = useMemo<I18nContextValue>(() => ({
     language,
     setLanguage,
+    path: (germanPath) => localizedPath(germanPath, language),
     t: (key, values) => interpolate(messages[language][key] ?? messages.de[key] ?? key, values),
   }), [language]);
 

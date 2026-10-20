@@ -14,7 +14,7 @@ const STEPS = ["pick", "check", "export"] as const;
 const FACTS = ["local", "shops", "independent"] as const;
 
 export function LandingPage() {
-  const { t } = useI18n();
+  const { path, t } = useI18n();
 
   return (
     <div className="app-shell ideas-shell">
@@ -26,8 +26,8 @@ export function LandingPage() {
           <h1 id="landing-title">{t("landing.title")}</h1>
           <p>{t("landing.lede")}</p>
           <div className="landing-page__actions">
-            <a className="ff-button ff-button--primary ff-button--lg" href="/builder">{t("landing.cta.start")}</a>
-            <a className="ff-button ff-button--ghost ff-button--lg landing-page__ghost" href="/ideas">{t("landing.cta.ideas")}</a>
+            <a className="ff-button ff-button--primary ff-button--lg" href={path("/builder")}>{t("landing.cta.start")}</a>
+            <a className="ff-button ff-button--ghost ff-button--lg landing-page__ghost" href={path("/ideas")}>{t("landing.cta.ideas")}</a>
           </div>
         </section>
 
@@ -78,7 +78,7 @@ export function LandingPage() {
                     <p>{t(`ideas.world.${world.key}.description`)}</p>
                     <p className="idea-world__roles">{t(`ideas.world.${world.key}.roles`)}</p>
                   </div>
-                  <a className="idea-world__link" href={`/ideas/${world.id}`}>{t("ideas.worlds.open")}</a>
+                  <a className="idea-world__link" href={path(`/ideas/${world.id}`)}>{t("ideas.worlds.open")}</a>
                 </li>
               );
             })}

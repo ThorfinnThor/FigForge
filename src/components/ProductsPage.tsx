@@ -17,7 +17,7 @@ const PRODUCT_CATEGORIES: readonly ProductCategory[] = [
 ];
 
 export function ProductsPage() {
-  const { t } = useI18n();
+  const { path, t } = useI18n();
   const [activeCategory, setActiveCategory] = useState<ProductCategory>("all");
   const sets = CURATED_PRODUCTS.filter((product) => (
     product.type === "set"
@@ -77,7 +77,7 @@ export function ProductsPage() {
           <CuratedProductGrid products={accessories} />
         </section> : null}
         <footer className="products-legal">
-          <a href="/privacy">{t("products.legalLink")}</a>
+          <a href={path("/privacy")}>{t("products.legalLink")}</a>
         </footer>
       </div>
     </div>

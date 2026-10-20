@@ -26,6 +26,7 @@
     "src/catalog/**/*.ts",
     "src/collection/**/*.ts",
     "src/compatibility/**/*.ts",
+    "src/app/routing.ts",
     "src/search/**/*.ts",
     "src/seo/**/*.ts",
     "src/figure/**/*.ts",

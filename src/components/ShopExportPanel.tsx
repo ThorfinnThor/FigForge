@@ -59,7 +59,7 @@ const partCount = (result: ShopExportResult): number =>
   result.lines.reduce((sum, line) => sum + line.quantity, 0);
 
 export function ShopExportPanel({ selections, stepNumber = 2 }: ShopExportPanelProps) {
-  const { t } = useI18n();
+  const { path, t } = useI18n();
   const [lookup, setLookup] = useState<ShopExportLookup | null>(null);
   const [loadFailed, setLoadFailed] = useState(false);
   const [message, setMessage] = useState<string | null>(null);
@@ -186,7 +186,7 @@ export function ShopExportPanel({ selections, stepNumber = 2 }: ShopExportPanelP
                 {figuresNeedingColors.map(({ id, name }) => (
                   <a
                     className="ff-button ff-button--ghost ff-button--sm"
-                    href={`/builder?figureId=${encodeURIComponent(id)}`}
+                    href={`${path("/builder")}?figureId=${encodeURIComponent(id)}`}
                     key={id}
                   >
                     {t("shop.collectionColors.open", { name })}
