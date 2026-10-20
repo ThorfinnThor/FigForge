@@ -38,10 +38,12 @@ export const GUIDE_SECTIONS: Record<GuideId, Record<Language, readonly GuideSect
       {
         heading: "Weg 2: BrickLink-Wanted-List",
         paragraphs: [
-          "Du lädst die XML-Datei bei BrickLink als Wanted List hoch und suchst danach Shops, die deine Teile führen. BrickLink ist ein Marktplatz mit vielen unabhängigen Verkäufern.",
+          "Du fügst den Inhalt der XML-Datei bei BrickLink als Wanted List ein und suchst danach Shops, die deine Teile führen. BrickLink ist ein Marktplatz mit vielen unabhängigen Verkäufern.",
         ],
         items: [
           "Passt, wenn du Shops selbst vergleichen willst.",
+          "So geht der Import: Klicke in FigForge auf „XML kopieren“, öffne bei BrickLink die Seite „Upload to Wanted List“, wechsle zum Tab „Upload BrickLink XML format“ und füge den Text dort ein. Der andere Tab, „Upload a file from your computer“, nimmt nur BrickStock-, LDraw-, Digital-Designer- und Studio-Dateien an, kein XML.",
+          "Hast du die XML-Datei geladen, öffne sie in einem Texteditor und kopiere alles. Text, den du aus der Anzeige im Browser kopierst, enthält die Tags nicht; BrickLink lehnt ihn mit „Content is not allowed in prolog“ ab.",
           "Führt kein Shop alle Teile, besteht die Figur am Ende aus mehreren Bestellungen mit je eigenen Versandkosten.",
           "Prüfe Farbe und Teilenummer in der Wanted List, bevor du kaufst.",
         ],
@@ -53,6 +55,7 @@ export const GUIDE_SECTIONS: Record<GuideId, Record<Language, readonly GuideSect
         ],
         items: [
           "Passt, wenn die Teile aktuell im LEGO Sortiment sind und du nur bei einem Anbieter bestellen willst.",
+          "So geht der Import: Öffne bei Pick a Brick „Upload List“ und wähle die CSV. Teile, die LEGO dort nicht führt, meldet die Seite als „Unavailable Pieces“ mit dem Hinweis, dass die Element-ID aktuell nicht verfügbar ist. Pro Liste sind bis zu 200 verschiedene Teile möglich.",
           "Fehlt ein Teil, nimm die Rebrickable-Liste.",
         ],
       },
@@ -98,10 +101,12 @@ export const GUIDE_SECTIONS: Record<GuideId, Record<Language, readonly GuideSect
       {
         heading: "Option 2: BrickLink wanted list",
         paragraphs: [
-          "You upload the XML file to BrickLink as a wanted list and then look for stores that carry your parts. BrickLink is a marketplace with many independent sellers.",
+          "You paste the contents of the XML file into BrickLink as a wanted list and then look for stores that carry your parts. BrickLink is a marketplace with many independent sellers.",
         ],
         items: [
           "Fits when you want to compare stores yourself.",
+          "This is how the import works: click “Copy XML” in FigForge, open the “Upload to Wanted List” page at BrickLink, switch to the “Upload BrickLink XML format” tab and paste the text there. The other tab, “Upload a file from your computer”, only accepts BrickStock, LDraw, Digital Designer and Studio files, not XML.",
+          "If you downloaded the XML file, open it in a text editor and copy everything. Text copied from the browser's display of the file lacks the tags; BrickLink rejects it with “Content is not allowed in prolog”.",
           "If no single store has every part, the figure ends up as several orders, each with its own shipping cost.",
           "Check color and part number in the wanted list before you buy.",
         ],
@@ -113,6 +118,7 @@ export const GUIDE_SECTIONS: Record<GuideId, Record<Language, readonly GuideSect
         ],
         items: [
           "Fits when the parts are in LEGO's current range and you want to order from a single provider.",
+          "This is how the import works: open “Upload List” at Pick a Brick and choose the CSV. Parts LEGO does not carry there are reported as “Unavailable Pieces”, with the note that the element ID is currently unavailable. A list can hold up to 200 different parts.",
           "If a part is missing, use the Rebrickable list.",
         ],
       },

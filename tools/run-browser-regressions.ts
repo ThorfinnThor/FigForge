@@ -476,6 +476,11 @@ const testMountedMobilePurchaseFlow = async (client: CdpClient, origin: string):
     };
   })()`);
   assert.deepEqual(purchaseState, { colors: true, exports: true, inViewport: true });
+
+  // Clipboard access can be refused in headless Chrome; either outcome must be reported to the user.
+  await waitFor(client, "Boolean(document.querySelector('.shop-export__copy'))", "BrickLink copy button");
+  await evaluate(client, "document.querySelector('.shop-export__copy').click()");
+  await waitFor(client, "Boolean(document.querySelector('.shop-export__message'))", "copy result message");
   await client.send("Emulation.clearDeviceMetricsOverride");
 };
 
