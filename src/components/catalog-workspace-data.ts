@@ -15,6 +15,7 @@ import type {
   LDrawDigitalConnectivity,
   LDrawDigitalConnectivityEntry,
 } from "../contracts/ldraw-digital-connectivity.js";
+import { loadCorePackage } from "../catalog/core-package-data.js";
 import { comparePartsByPopularity } from "../catalog/part-popularity.js";
 import { FIGURE_TEMPLATES } from "../ideas/figure-templates.js";
 import {
@@ -107,6 +108,7 @@ const ldrawRuntimePackageLoaders: Record<CatalogRole, () => Promise<unknown>> = 
 
 const catalogRoles = CATALOG_CATEGORIES.flatMap(({ id }) => id === "all" ? [] : [id]);
 const catalogPackageCache = new Map<CatalogRole, Promise<readonly CatalogPackagePart[]>>();
+const corePartListCache = new Map<CatalogRole, Promise<readonly CatalogPackagePart[]>>();
 const componentByCatalogKey = new Map(
   catalogAssortment.components.map((component) => [
     `${component.role}:${component.rebrickablePartNum.toLowerCase()}`,
@@ -165,10 +167,45 @@ const hydrateRuntimeEntries = (
   }
 };
 
-const loadCatalogRole = (role: CatalogRole): Promise<readonly CatalogPackagePart[]> => {
-  const cached = catalogPackageCache.get(role);
+/** Merges curated parts, hydrates the runtime entries and returns the list in builder order. */
+const prepareRolePartList = (
+  role: CatalogRole,
+  catalogParts: readonly CatalogPackagePart[],
+  runtimeEntries: readonly LDrawRuntimeEntry[],
+): readonly CatalogPackagePart[] => {
+  const partsByKey = new Map(catalogParts.map((part) => [catalogKey(part), part]));
+  for (const part of curatedCatalogParts.filter((entry) => entry.role === role)) {
+    partsByKey.set(catalogKey(part), part);
+  }
+  hydrateRuntimeEntries(role, [...partsByKey.values()], runtimeEntries);
+  return [...partsByKey.values()].sort((left, right) => {
+    const leftBuilderReady = componentByCatalogKey.has(catalogKey(left)) || expandedComponentByCatalogKey.has(catalogKey(left));
+    const rightBuilderReady = componentByCatalogKey.has(catalogKey(right)) || expandedComponentByCatalogKey.has(catalogKey(right));
+    if (leftBuilderReady !== rightBuilderReady) return leftBuilderReady ? -1 : 1;
+    const leftFeatured = featuredCatalogKeys.has(catalogKey(left));
+    const rightFeatured = featuredCatalogKeys.has(catalogKey(right));
+    if (leftFeatured !== rightFeatured) return leftFeatured ? -1 : 1;
+    return comparePartsByPopularity(left, right);
+  });
+};
+
+const cachedLoad = <T>(
+  cache: Map<CatalogRole, Promise<T>>,
+  role: CatalogRole,
+  load: () => Promise<T>,
+): Promise<T> => {
+  const cached = cache.get(role);
   if (cached) return cached;
-  const promise = Promise.all([
+  const promise = load();
+  void promise.catch(() => {
+    if (cache.get(role) === promise) cache.delete(role);
+  });
+  cache.set(role, promise);
+  return promise;
+};
+
+const loadCatalogRole = (role: CatalogRole): Promise<readonly CatalogPackagePart[]> =>
+  cachedLoad(catalogPackageCache, role, () => Promise.all([
     catalogPackageLoaders[role](),
     ldrawRuntimePackageLoaders[role](),
   ]).then(([catalogModule, runtimeModule]) => {
@@ -177,33 +214,43 @@ const loadCatalogRole = (role: CatalogRole): Promise<readonly CatalogPackagePart
     if (parsed.role !== role || runtimePackage.role !== role) {
       throw new Error(`Catalog package role mismatch: ${role}`);
     }
-    const partsByKey = new Map(parsed.parts.map((part) => [catalogKey(part), part]));
-    for (const part of curatedCatalogParts.filter((entry) => entry.role === role)) {
-      partsByKey.set(catalogKey(part), part);
-    }
-    hydrateRuntimeEntries(role, [...partsByKey.values()], runtimePackage.entries);
-    return [...partsByKey.values()].sort((left, right) => {
-      const leftBuilderReady = componentByCatalogKey.has(catalogKey(left)) || expandedComponentByCatalogKey.has(catalogKey(left));
-      const rightBuilderReady = componentByCatalogKey.has(catalogKey(right)) || expandedComponentByCatalogKey.has(catalogKey(right));
-      if (leftBuilderReady !== rightBuilderReady) return leftBuilderReady ? -1 : 1;
-      const leftFeatured = featuredCatalogKeys.has(catalogKey(left));
-      const rightFeatured = featuredCatalogKeys.has(catalogKey(right));
-      if (leftFeatured !== rightFeatured) return leftFeatured ? -1 : 1;
-      return comparePartsByPopularity(left, right);
-    });
-  });
-  void promise.catch(() => {
-    if (catalogPackageCache.get(role) === promise) {
-      catalogPackageCache.delete(role);
-    }
-  });
-  catalogPackageCache.set(role, promise);
-  return promise;
-};
+    return prepareRolePartList(role, parsed.parts, runtimePackage.entries);
+  }));
 
+const loadCatalogRoleCore = (role: CatalogRole): Promise<readonly CatalogPackagePart[]> =>
+  cachedLoad(corePartListCache, role, async () => {
+    const core = await loadCorePackage(role);
+    return prepareRolePartList(role, core.catalog.parts, core.runtime.entries);
+  });
+
+/** Every part of the category, in builder order. Loads the full role packages. */
 export const loadCatalogParts = async (category: CatalogCategory): Promise<readonly CatalogPackagePart[]> => {
   const roles = category === "all" ? catalogRoles : [category];
   return (await Promise.all(roles.map(loadCatalogRole))).flat();
+};
+
+/**
+ * The head of the builder order: starter-figure parts and the most popular parts of each
+ * role. Small enough to show first; `loadCatalogParts` returns the complete list.
+ */
+export const loadCatalogCoreParts = async (category: CatalogCategory): Promise<readonly CatalogPackagePart[]> => {
+  const roles = category === "all" ? catalogRoles : [category];
+  return (await Promise.all(roles.map(loadCatalogRoleCore))).flat();
+};
+
+/**
+ * Makes the given selections resolvable through `builderComponentForId`. The core packages
+ * almost always suffice; the full role package is only fetched for a part they do not hold.
+ */
+export const loadComponentsForSelections = async (
+  selections: ReadonlyArray<{ slot: CatalogRole; componentId: string }>,
+): Promise<void> => {
+  const roles = [...new Set(selections.map(({ slot }) => slot))];
+  await Promise.all(roles.map(loadCatalogRoleCore));
+  const missingRoles = [...new Set(selections
+    .filter(({ componentId }) => !builderComponentById.has(componentId))
+    .map(({ slot }) => slot))];
+  await Promise.all(missingRoles.map(loadCatalogRole));
 };
 
 export const builderComponentForCatalogPart = (

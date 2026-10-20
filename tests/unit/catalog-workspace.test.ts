@@ -95,8 +95,8 @@ describe("FF-14 responsive catalog workspace", () => {
     const workspaceSource = await readFile("src/components/CatalogWorkspace.tsx", "utf8");
     const dataSource = await readFile("src/components/catalog-workspace-data.ts", "utf8");
 
-    expect(dataSource).toContain("catalogPackageCache.get(role) === promise");
-    expect(dataSource).toContain("catalogPackageCache.delete(role)");
+    expect(dataSource).toContain("cache.get(role) === promise");
+    expect(dataSource).toContain("cache.delete(role)");
     expect(workspaceSource).toContain("catalogLoadRevision");
     expect(workspaceSource).toContain('t("catalog.retry")');
   });
@@ -204,7 +204,7 @@ describe("FF-14 responsive catalog workspace", () => {
     expect(source).toContain("parseFigureDocument");
     expect(source).toContain('new URLSearchParams(window.location.search).get("figureId")');
     expect(source).toContain("requestedSavedFigure?.document");
-    expect(source).toContain("document.selections.map(({ slot }) => slot)");
+    expect(source).toContain("loadComponentsForSelections(document.selections)");
     expect(source).toContain("onRemove={removeFromFigure}");
     expect(source.match(/figureSlot\("headwear"/gu)).toHaveLength(1);
     expect(dataSource).not.toContain("ldraw-expanded-catalog.json");

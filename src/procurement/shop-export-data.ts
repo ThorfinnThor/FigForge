@@ -1,3 +1,4 @@
+import { loadCorePackage } from "../catalog/core-package-data.js";
 import type { CatalogRole } from "../contracts/catalog-package.js";
 import { shopExportPackageSchema, type ShopExportEntry } from "../contracts/shop-export.js";
 import type { ShopExportLookup } from "./shop-export.js";
@@ -30,4 +31,23 @@ export const loadShopExportLookup = async (roles: Iterable<CatalogRole>): Promis
   const uniqueRoles = [...new Set(roles)];
   const packages = new Map(await Promise.all(uniqueRoles.map(async (role) => [role, await loadRole(role)] as const)));
   return (slot, rebrickablePartNum) => packages.get(slot)?.get(rebrickablePartNum.toLowerCase());
+};
+
+/**
+ * Like `loadShopExportLookup`, but answers from the small core packages when they already
+ * cover every requested part, and only then avoids downloading the full role packages.
+ */
+export const loadShopExportLookupForParts = async (
+  parts: ReadonlyArray<{ slot: CatalogRole; rebrickablePartNum: string }>,
+): Promise<ShopExportLookup> => {
+  const roles = [...new Set(parts.map(({ slot }) => slot))];
+  const cores = new Map(await Promise.all(roles.map(async (role) => [role, await loadCorePackage(role)] as const)));
+  const coveredByCore = parts.every(({ slot, rebrickablePartNum }) => cores.get(slot)?.catalog.parts
+    .some((part) => part.rebrickablePartNum.toLowerCase() === rebrickablePartNum.toLowerCase()));
+  if (!coveredByCore) return loadShopExportLookup(roles);
+  const entries = new Map(roles.map((role) => [
+    role,
+    new Map((cores.get(role)?.shopExport.entries ?? []).map((entry) => [entry.rebrickablePartNum.toLowerCase(), entry])),
+  ]));
+  return (slot, rebrickablePartNum) => entries.get(slot)?.get(rebrickablePartNum.toLowerCase());
 };
