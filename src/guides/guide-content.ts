@@ -55,6 +55,7 @@ export const GUIDE_SECTIONS: Record<GuideId, Record<Language, readonly GuideSect
         ],
         items: [
           "Passt, wenn die Teile aktuell im LEGO Sortiment sind und du nur bei einem Anbieter bestellen willst.",
+          "So geht der Import: Öffne bei Pick a Brick „Upload List“ und wähle die CSV. Teile, die LEGO dort nicht führt, meldet die Seite als „Unavailable Pieces“ mit dem Hinweis, dass die Element-ID aktuell nicht verfügbar ist. Pro Liste sind bis zu 200 verschiedene Teile möglich.",
           "Fehlt ein Teil, nimm die Rebrickable-Liste.",
         ],
       },
@@ -117,6 +118,7 @@ export const GUIDE_SECTIONS: Record<GuideId, Record<Language, readonly GuideSect
         ],
         items: [
           "Fits when the parts are in LEGO's current range and you want to order from a single provider.",
+          "This is how the import works: open “Upload List” at Pick a Brick and choose the CSV. Parts LEGO does not carry there are reported as “Unavailable Pieces”, with the note that the element ID is currently unavailable. A list can hold up to 200 different parts.",
           "If a part is missing, use the Rebrickable list.",
         ],
       },
