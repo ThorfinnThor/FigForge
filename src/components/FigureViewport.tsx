@@ -31,7 +31,7 @@ const selectionStatus = (selectedParts: readonly LDrawCatalogSelection[]): Viewp
 };
 
 const selectionKeyFor = (selectedParts: readonly LDrawCatalogSelection[]): string => selectedParts
-  .map(({ componentId, role }) => `${role}:${componentId}`)
+  .map(({ componentId, previewColor, role }) => `${role}:${componentId}:${previewColor?.hex ?? ""}:${previewColor?.alpha ?? ""}`)
   .sort()
   .join("|");
 

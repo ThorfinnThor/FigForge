@@ -22,6 +22,7 @@ import { LDrawLoader } from "three/addons/loaders/LDrawLoader.js";
 import { assertInternalLDrawUrl } from "./ldraw-part-loader.js";
 import { OFFICIAL_LDRAW_PUBLIC_PATH } from "./ldraw-release.js";
 import { disposeObject3D } from "./dispose-object.js";
+import { applyPreviewColor, type PreviewColor } from "./preview-color.js";
 import type { CameraPreset, LDrawCatalogRole, LDrawCatalogSelection } from "./types.js";
 
 const MODEL_PATH = "/assets/ldraw/prototype/models/figforge-minifigure-packed.mpd";
@@ -81,6 +82,9 @@ type PrototypeSceneControllerOptions = {
   onContextRestored: () => void;
 };
 
+const samePreviewColor = (left: PreviewColor | undefined, right: PreviewColor | undefined): boolean =>
+  left?.hex === right?.hex && left?.alpha === right?.alpha;
+
 export class LDrawPrototypeSceneController {
   readonly #camera: PerspectiveCamera;
   readonly #canvas: HTMLCanvasElement;
@@ -97,6 +101,7 @@ export class LDrawPrototypeSceneController {
   #figureModel: Group | null = null;
   #loader: LDrawLoader | null = null;
   readonly #selectedComponentIds = new Map<LDrawCatalogRole, string>();
+  readonly #appliedColors = new Map<LDrawCatalogRole, PreviewColor | undefined>();
   readonly #selectionRevisions = new Map<LDrawCatalogRole, number>();
   readonly #slotObjects = new Map<LDrawCatalogRole, Object3D>();
 
@@ -351,10 +356,17 @@ export class LDrawPrototypeSceneController {
     if (previousObject) disposeObject3D(previousObject);
     this.#slotObjects.delete(role);
     this.#selectedComponentIds.delete(role);
+    this.#appliedColors.delete(role);
   }
 
   async #applyCatalogPart(selection: LDrawCatalogSelection): Promise<void> {
     if (this.#selectedComponentIds.get(selection.role) === selection.componentId) {
+      // Same part: only the colour may have changed, which needs no reload.
+      const slotObject = this.#slotObjects.get(selection.role);
+      if (slotObject && !samePreviewColor(this.#appliedColors.get(selection.role), selection.previewColor)) {
+        applyPreviewColor(slotObject, selection.previewColor);
+        this.#appliedColors.set(selection.role, selection.previewColor);
+      }
       return;
     }
     const loader = this.#loader;
@@ -377,6 +389,8 @@ export class LDrawPrototypeSceneController {
       return;
     }
 
+    applyPreviewColor(object, selection.previewColor);
+    this.#appliedColors.set(selection.role, selection.previewColor);
     object.name = `catalog-preview-${selection.componentId}`;
     object.userData.catalogComponentId = selection.componentId;
     object.userData.digitalConnectionStatus = "supported";

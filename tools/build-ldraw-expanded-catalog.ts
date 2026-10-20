@@ -55,6 +55,7 @@ import { readNoRadiusGripClearanceReviews } from "./lib/ldraw-no-radius-grip-cle
 import { readUniqueGripClearanceReviews } from "./lib/ldraw-unique-grip-clearance-reviews.js";
 import { refreshBrickLinkItemCrosswalkFile } from "./lib/bricklink-item-crosswalk.js";
 import { writeCorePackages } from "./lib/core-packages.js";
+import { writePreviewColors } from "./lib/preview-colors.js";
 import { writeShopExportPackages } from "./lib/shop-export-packages.js";
 
 const root = process.cwd();
@@ -1394,6 +1395,8 @@ await writeLDrawRuntimePackages(root);
 // the shop export reads it and requires it to match the current catalog lock.
 await refreshBrickLinkItemCrosswalkFile(root);
 await writeShopExportPackages(root);
+// Preview colours match the shop-export colours against the locked LDraw colour table.
+await writePreviewColors(root);
 // The core packages are a subset of the three full package families written just above.
 await writeCorePackages(root);
 // Composition evidence stays outside the runtime packages because the browser does not need it.

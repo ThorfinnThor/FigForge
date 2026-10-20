@@ -55,6 +55,7 @@ import type { CatalogPackagePart } from "../contracts/catalog-package.js";
 import type { LDrawCatalogRole, LDrawCatalogSelection } from "../scene/types.js";
 import { useI18n } from "../i18n.js";
 import type { ShopExportSelection } from "../procurement/shop-export.js";
+import { previewColorForRebrickableColor } from "../catalog/preview-colors.js";
 import { loadShopExportLookupForParts } from "../procurement/shop-export-data.js";
 import type { ShopExportColor } from "../contracts/shop-export.js";
 import { MOBILE_TAB_ORDER, mobileTabForKey, type MobileTab } from "./mobile-tab-navigation.js";
@@ -355,6 +356,7 @@ export function CatalogWorkspace() {
       placementTransformLdu: connectivity.placementTransformLdu,
       rebrickablePartNum: component.rebrickablePartNum,
       role,
+      previewColor: previewColorForRebrickableColor(selectedColorByRole[role]),
     } satisfies LDrawCatalogSelection];
   });
 
