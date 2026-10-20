@@ -12,6 +12,8 @@ const GuidePage = lazy(() => import("../components/GuidePage.js")
   .then((module) => ({ default: module.GuidePage })));
 const GuidesIndexPage = lazy(() => import("../components/GuidesIndexPage.js")
   .then((module) => ({ default: module.GuidesIndexPage })));
+const ImprintPage = lazy(() => import("../components/ImprintPage.js")
+  .then((module) => ({ default: module.ImprintPage })));
 const IdeasPage = lazy(() => import("../components/IdeasPage.js")
   .then((module) => ({ default: module.IdeasPage })));
 const MethodologyPage = lazy(() => import("../components/MethodologyPage.js")
@@ -32,8 +34,10 @@ function AppRoutes() {
   const { t } = useI18n();
   // Re-read on every render: switching the language rewrites the URL in place.
   const pathname = germanPath(window.location.pathname);
-  const page = pathname === "/ratgeber"
-    ? <GuidesIndexPage />
+  const page = pathname === "/impressum"
+    ? <ImprintPage />
+    : pathname === "/ratgeber"
+      ? <GuidesIndexPage />
     : pathname.startsWith("/ratgeber/") && guideIdFromPath(pathname) !== null
       ? <GuidePage />
       : pathname === "/ideas" || pathname.startsWith("/ideas/")

@@ -123,7 +123,9 @@ export function LandingPage() {
               </li>
             ))}
           </ul>
-          <p className="landing-page__legal">{t("landing.legal")}</p>
+          <p className="landing-page__legal">
+            {t("landing.legal")} <a href={path("/impressum")}>{t("landing.imprintLink")}</a>
+          </p>
         </section>
       </div>
     </div>
