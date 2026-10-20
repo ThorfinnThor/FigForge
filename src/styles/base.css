@@ -3882,13 +3882,17 @@ legend {
 
 .landing-page__legal {
   margin: 0;
+  padding: var(--space-3) var(--space-5);
+  border: 2px solid var(--navy);
+  border-radius: var(--radius-md);
   color: var(--ink-muted);
+  background: var(--card);
   font-size: 0.85rem;
   line-height: 1.5;
 }
 
 .idea-card__parts {
-  margin-top: var(--space-3);
+  margin: var(--space-3) 0;
   color: var(--ink-muted);
   font-size: 0.85rem;
 }
