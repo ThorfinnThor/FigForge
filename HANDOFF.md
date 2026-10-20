@@ -50,7 +50,7 @@ Geschlossen: #22 (überholt durch ADR-011), #78 (TypeScript 7, siehe #132).
 | PR | Inhalt |
 | --- | --- |
 | #141 | `HANDOFF.md` nach der zweiten Runde aktualisiert. |
-| #142 | Impressum auf `/impressum` und `/en/imprint`: SeitenHafen361 (Einzelunternehmen), Inhaber Schayan Yousefian, Anschrift, Kontakt info@createyourminifig.com, redaktionelle Verantwortung nach § 18 Abs. 2 MStV. Angaben von stargazingindex.com; Eintrag im Menü „Mehr“ und Link auf der Landingpage. |
+| #142 | Impressum auf `/impressum` und `/en/imprint`: SeitenHafen361 (Einzelunternehmen), Inhaber Schayan Yousefian, Anschrift, Kontakt contact@createyourminifig.com, redaktionelle Verantwortung nach § 18 Abs. 2 MStV. Angaben von stargazingindex.com; Eintrag im Menü „Mehr“ und Link auf der Landingpage. |
 | #143 | BrickLink-Anleitung korrigiert: Der Datei-Upload nimmt kein XML an; die XML wird als Text im Tab „Upload BrickLink XML format“ eingefügt. Aus der Browser-Ansicht kopierter Text enthält keine Tags und scheitert mit „Content is not allowed in prolog“. Panel und Ratgeber angepasst. |
 | #144 | Button „XML kopieren“ im BrickLink-Kaufweg (`src/procurement/clipboard.ts`); Ratgeber um den getesteten Pick-a-Brick-Ablauf ergänzt. |
 | #145 | Rechtliche Hinweise: Abschnitt „Verantwortlicher“ in der Datenschutzseite mit Verweis aufs Impressum; Hinweis „Hinweis zu Marken und Rechten“ im Impressum; LEGO-Kurzhinweis (unabhängig, keine Verbindung, kein Sponsoring) auf Landingpage und Sets-Seite. Deutsch und Englisch. |
@@ -111,7 +111,7 @@ Geschlossen: #22 (überholt durch ADR-011), #78 (TypeScript 7, siehe #132).
 
 1. **Token für Refresh-PRs (Entscheidung Eigentümer; Empfehlung: Fine-grained PAT, nur dieses Repo, ein Jahr Laufzeit, als Secret `REFRESH_PR_TOKEN`).** Workflow ist vorbereitet (#146). Anlegen: https://github.com/settings/personal-access-tokens/new (Repository access: nur `FigForge`; Repository permissions: Contents und Pull requests je „Read and write“), dann das Secret unter https://github.com/ThorfinnThor/FigForge/settings/secrets/actions/new speichern. Branch-Schutz auf `main` (geprüft per API): `verify` Pflicht, Branch muss aktuell sein, gilt auch für Administratoren, keine Force-Pushes, keine Pflicht-Reviews.
 2. **Rechtlich ungeprüft:** Nutzungsbedingungen des BrickLink Catalog Downloads für die Veröffentlichung der abgeleiteten Zuordnungstabelle in einem öffentlichen Repository. Vor einem breiten Start klären.
-3. **Rechtstexte:** Impressum (#142), Verantwortlicher im Datenschutz und Marken-Hinweis (#145) sind live, aber **nicht rechtlich geprüft**. Eine vollständige Datenschutzerklärung nach DSGVO fehlt noch (Hosting bei Cloudflare, Rechte der Betroffenen, Fremdanbieter wie Amazon). Das Postfach info@createyourminifig.com ist laut Eigentümer eingerichtet.
+3. **Rechtstexte:** Impressum (#142), Verantwortlicher im Datenschutz und Marken-Hinweis (#145) sind live, aber **nicht rechtlich geprüft**. Eine vollständige Datenschutzerklärung nach DSGVO fehlt noch (Hosting bei Cloudflare, Rechte der Betroffenen, Fremdanbieter wie Amazon). Das Postfach contact@createyourminifig.com ist laut Eigentümer eingerichtet.
 4. **Noch nicht belegt:**
    - ein Refresh-Lauf, bei dem Rebrickable wirklich neue Builder-Teile hinzufügt (die Crosswalk-Logik dafür ist unit-getestet, aber nicht im Echtbetrieb gesehen),
    - dass die Dependabot-Gruppe `react` greift (erst beim nächsten wöchentlichen Dependabot-Lauf sichtbar),

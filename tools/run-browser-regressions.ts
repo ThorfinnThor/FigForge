@@ -753,7 +753,7 @@ const testImprint = async (client: CdpClient, origin: string): Promise<void> => 
     assert.equal(page.heading, heading);
     assert.match(page.text, /SeitenHafen361/u);
     assert.match(page.text, /Freienwalder Str\. 34/u);
-    assert.equal(page.mail, "mailto:info@createyourminifig.com");
+    assert.equal(page.mail, "mailto:contact@createyourminifig.com");
   }
 };
 
