@@ -125,7 +125,7 @@ describe("imprint", () => {
       expect(html).toContain("Schayan Yousefian");
       expect(html).toContain("Freienwalder Str. 34");
       expect(html).toContain("13359 Berlin");
-      expect(html).toContain("info@createyourminifig.com");
+      expect(html).toContain("contact@createyourminifig.com");
     }
     expect(de).toContain("<h2>Diensteanbieter</h2>");
     expect(de).toContain('<link rel="canonical" href="https://createyourminifig.com/impressum" />');

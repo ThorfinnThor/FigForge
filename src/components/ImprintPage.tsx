@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import { useI18n } from "../i18n.js";
 import { AppHeader } from "./AppHeader.js";
 
-const CONTACT_EMAIL = "info@createyourminifig.com";
+const CONTACT_EMAIL = "contact@createyourminifig.com";
 
 function Address({ name }: { name: string }) {
   const { t } = useI18n();

@@ -84,7 +84,7 @@ function renderBody(route: SeoRoute, messages: Messages, language: Language, hea
       `<address>${name}<br>${text("imprint.address.street")}<br>${text("imprint.address.city")}<br>${text("imprint.address.country")}</address>`;
     return `<main>${intro}`
       + `<h2>${text("imprint.provider.title")}</h2><p>${text("imprint.provider.name")}<br>${text("imprint.provider.legalForm")}<br>${text("imprint.provider.owner")}</p>${address("Schayan Yousefian")}`
-      + `<h2>${text("imprint.contact.title")}</h2><p>${text("imprint.contact.email")} info@createyourminifig.com</p>`
+      + `<h2>${text("imprint.contact.title")}</h2><p>${text("imprint.contact.email")} contact@createyourminifig.com</p>`
       + `<h2>${text("imprint.editorial.title")}</h2><p>${text("imprint.editorial.body")}</p>${address(text("imprint.editorial.name"))}`
       + `<h2>${text("imprint.trademark.title")}</h2>`
       + ["independent", "lego", "others", "sources"].map((part) => `<p>${text(`imprint.trademark.${part}`)}</p>`).join("")
