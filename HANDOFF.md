@@ -37,7 +37,11 @@ Eigentümer-Änderungen im selben Zeitraum: #116–#118 (Kaufbereich, mobile Reg
 | #134 | Landingpage unter `/`, Builder unter `/builder`. Alte Links (`/?template=`, `/?figureId=`, `/#figforge=`) öffnen weiter den Builder. Themenseiten zeigen je Figur die LDraw-Nummern und einen Tipp pro Welt. |
 | #135 | Teile nach Beliebtheit (ADR-034): Feld `setCount` je Katalogpaket-Teil, abgeleitet vom Set-Index. Reihenfolge: baubar, Starterfiguren-Teile, `setCount`, Teilenummer. |
 | #136 | Kernpakete (ADR-035): je Rolle ein kleines Paket (Starterfiguren plus 300 beliebteste baubare Teile) für Katalog, LDraw-Laufzeit und Shop-Export. Start, Entwurf und Farboptionen laden nur diese; die vollen Pakete folgen bei Bedarf oder nach 4 s. Entpackt beim ersten Vorschaubild 3,5 statt 20,6 MB. |
+| #133 | Dependabot: Entwicklungsabhängigkeiten ohne TypeScript 7 (nach #132 von Dependabot neu angelegt). |
 | #137 | Einkaufsfarbe in der 3D-Vorschau (ADR-036): 107 von 124 Farben sind über exakte Namensgleichheit mit der LDraw-Farbtabelle zugeordnet; nur die Hauptfarbe eines Teils wird ersetzt. |
+| #138 | `HANDOFF.md` nach der ersten Runde aktualisiert. |
+| #139 | Englische Fassung unter `/en` (ADR-037): Die URL bestimmt die Sprache, `src/app/routing.ts` wandelt Pfade zwischen Deutsch und Englisch um (auch übersetzte Slugs). Alle Seiten werden in beiden Sprachen vorab erzeugt, mit `hreflang` (de, en, `x-default` = Deutsch) und Sitemap-Alternativen. Der Sprachwähler schaltet in place um und schreibt die URL um; der gespeicherte Spracheintrag entfällt. |
+| #140 | Drei Ratgeber auf Deutsch und Englisch (ADR-038): Teile bestellen, Teilenummern verstehen, Minifigur verschenken; Übersicht `/ratgeber` (`/en/guides`), Eintrag im Menü „Mehr“, Teaser auf der Landingpage. Texte in `src/guides/guide-content.ts`, Titel in den i18n-Meldungen; der vollständige Artikel steckt im vorab erzeugten HTML. |
 
 Geschlossen: #22 (überholt durch ADR-011), #78 (TypeScript 7, siehe #132).
 
@@ -71,7 +75,7 @@ Geschlossen: #22 (überholt durch ADR-011), #78 (TypeScript 7, siehe #132).
 - Auf diesem Rechner scheitert Node an der Zertifikatsprüfung der npm-Registry (`UNABLE_TO_GET_ISSUER_CERT_LOCALLY`). Abhilfe ohne Abschalten der Prüfung: `NODE_EXTRA_CA_CERTS=/etc/ssl/cert.pem` vor `npm ci`, `npm run verify` usw. setzen.
 - Volle Prüfung: `npm run verify`. Braucht Python ≥ 3.9 im PATH (das Standard-Python 3.8 scheitert an einem Python-Test, nicht am Projekt).
 - Dev-Server: `npx vite --port 5199`. Die Vorschau der Claude-App kann `/Volumes` nicht lesen (macOS-Datenschutz), daher den Server aus der Shell starten.
-- `npm run test:browser` (Headless-Chrome-Regressionen) läuft lokal durch (zuletzt 2026-10-20) und wird in der CI verpflichtend ausgeführt. Der IndexedDB-Test war dort einmal zufällig rot (`cleared`) und beim Wiederholen grün.
+- `npm run test:browser` (Headless-Chrome-Regressionen) läuft lokal durch (zuletzt 2026-10-20) und wird in der CI verpflichtend ausgeführt. Der IndexedDB-Test war dort einmal zufällig rot (`cleared`) und beim Wiederholen grün. Bei hoher Systemlast (Load 30–50) scheiterte lokal der Template-Test („must consume its query parameter“), auch auf einem Stand, den die CI grün meldete; in einem echten Browser auf der Vorschau ist das Verhalten korrekt. Maßgeblich ist die CI; lokal bei ruhiger Maschine wiederholen.
 - Jeder Branch bekommt eine Cloudflare-Vorschau: `https://<branch-mit-bindestrichen>-figforge.shuu9599.workers.dev`. Die Vorschau-URL steht als Kommentar im PR. Damit lässt sich Optik prüfen, ohne lokal einen Server zu starten.
 - Beim Prüfen im Browser-Pane: Ein verdeckter Pane rendert verzögert und verfälscht Ladezeiten. Zeitmessungen im Vordergrund-Tab machen.
 - Heredocs mit Apostrophen in `$(...)` scheitern in der Shell; PR-Texte besser in eine Datei schreiben und `--body-file` nutzen.
@@ -79,6 +83,8 @@ Geschlossen: #22 (überholt durch ADR-011), #78 (TypeScript 7, siehe #132).
 ## 6. Technische Hinweise
 
 - **Startfigur und Entwurf:** `src/figure/default-figure.ts` (Piratenkapitän aus `figure-templates.ts`). Alte Entwürfe, die nur die frühere Referenzvariante enthalten, werden durch die Startfigur ersetzt. Die Startfigur muss für neue Besucher ebenfalls hydratisiert werden (alle fünf Rollenpakete, ca. 14 MB JSON entpackt, ca. 1,9 MB Transfer; im Vordergrund-Tab ca. 1,1 s mit Cache, ca. 2,9 s bei lokalem Produktionsbuild).
+- **Sprache und Pfade:** Seiten werden über ihren deutschen Pfad identifiziert; `localizedPath`/`germanPath`/`switchLanguageUrl` in `src/app/routing.ts` übersetzen in beide Richtungen, interne Links laufen über `useI18n().path("/builder")`. Ratgeber-Slugs stehen in `GUIDE_SLUGS`. Der Provider liest die Sprache aus der URL (und fällt ohne `window` auf Deutsch zurück). Neue Seiten brauchen Texte in beiden Sprachen.
+- **Ratgeber:** Struktur `GUIDE_SECTIONS[id][language]` in `src/guides/guide-content.ts` (Abschnitte mit Überschrift, Absätzen, Liste). `GuidePage` und `renderBody` in `src/seo/render.ts` nutzen dieselben Daten. Neuer Ratgeber: Eintrag in `GUIDE_SLUGS`, Texte `guide.<id>.metaTitle|metaDescription|title|lede` und Abschnitte in beiden Sprachen; ein Test prüft die Vollständigkeit.
 - **Routen und SEO:** Neue öffentliche Seiten in `src/seo/routes.ts` eintragen (Titel/Beschreibung/`h1`-Schlüssel in `src/i18n.tsx`, deutsch und englisch). Ein Test prüft, dass die Texte existieren. Die vorab erzeugte `index.html` ist nur Text für Suchmaschinen; React ersetzt den Inhalt beim Start.
 - **Kernpakete und Katalog laden:** `data/generated/core-packages/*.json` werden von `tools/lib/core-packages.ts` aus den vollständigen Paketen abgeleitet (am Ende von `assets:ldraw-expanded`; von Hand: `npm run data:build:core-packages`). Der Validator `data:validate:core-packages` baut sie neu und vergleicht. Die Kernliste ist exakt der Anfang der vollen Reihenfolge (Test `core-catalog-loading`). Wer die Sortierung oder die Auswahl ändert, muss die Kernpakete neu bauen.
 - **Beliebtheit:** `setCount` steckt in den Katalogpaketen; `npm run data:build:catalog-packages` liest dafür `catalog-set-index.json`.
@@ -100,12 +106,13 @@ Geschlossen: #22 (überholt durch ADR-011), #78 (TypeScript 7, siehe #132).
    - die Live-Seite nach den letzten Merges wurde nicht erneut mit eigenen Augen geprüft (die CI-Browsertests auf `main` sind grün).
 5. **Vorschau-Farben:** 17 Farben sind nicht zugeordnet (Liste mit Grund in `preview-colors.json`); bei mehrfarbigen Teilen ändert sich nur die Hauptfarbe; die Sammlungsansicht zeigt weiter Modellfarben.
 6. **Refresh-Pfad nach den Änderungen dieser Runde nicht im Echtbetrieb gesehen:** `setCount`, Kernpakete und Vorschau-Farben entstehen im Refresh. Beim nächsten Montags-Lauf prüfen, dass `verify` grün bleibt und die PR-Diffs plausibel sind.
-7. **Search Console / Bing Webmaster** noch nicht eingerichtet; Sitemap dort einreichen (`https://createyourminifig.com/sitemap.xml`).
-8. **Marken-Hinweis** auf der Landingpage („unabhängiges Projekt, nicht verbunden mit der LEGO Gruppe“) ist ein Entwurf und nicht rechtlich geprüft.
+7. **Search Console / Bing Webmaster** noch nicht eingerichtet; Sitemap dort einreichen (`https://createyourminifig.com/sitemap.xml`, 28 URLs). Erst danach lassen sich Indexierung und Nachfrage der neuen Seiten beobachten.
+8. **Ratgeber-Texte** sind Entwürfe und nicht vom Eigentümer gelesen; besonders die Aussagen zu BrickLink, Brick Owl und Rebrickable (Konto nötig, mehrere Bestellungen bei mehreren Shops) und der Sicherheitshinweis zu Kleinteilen.
+9. **Marken-Hinweis** auf der Landingpage („unabhängiges Projekt, nicht verbunden mit der LEGO Gruppe“) ist ein Entwurf und nicht rechtlich geprüft.
 
 ## 8. SEO-Plan
 
-**Stand 2026-10-20:** Schritt 2 (Technik) und die Landingpage samt Themenseiten sind umgesetzt (#131, #134). Offen: Search Console, Impressum, Ratgeber, englische Version. Der folgende Befund beschreibt den Zustand **vor** diesen PRs.
+**Stand 2026-10-20:** Schritt 2 (Technik), Landingpage, Themenseiten, die drei Ratgeber und die englische Fassung sind umgesetzt und live (#131, #134, #139, #140). Offen: Search Console/Bing Webmaster (Schritt 1), Impressum, danach die Auswertung nach 2 und 6 Wochen (Schritt 5). Der folgende Befund beschreibt den Zustand **vor** diesen PRs.
 
 **Befund 2026-10-20 (am Live-HTML geprüft):**
 - Reine JavaScript-App: im Rohzustand nur `<div id="root"></div>`, kein Text, keine Überschrift.
@@ -121,18 +128,17 @@ Geschlossen: #22 (überholt durch ADR-011), #78 (TypeScript 7, siehe #132).
 3. Inhalte (wenige, jeweils eine eigene Suchabsicht):
    - ~~Startseite als Landingpage, Builder unter `/builder`.~~ erledigt (#134)
    - ~~Vier Themenseiten mit eigener URL, je drei Figuren mit Teilenummern, Tipps, passenden Sets.~~ erledigt (#134); Texte sind Entwürfe.
-   - Ratgeber „Minifiguren-Teile bestellen“ (BrickLink, Pick a Brick, Rebrickable im Vergleich; die Uploads wurden praktisch getestet).
-   - Ratgeber „Teilenummern verstehen“ (Kopf 3626, Torso 973, Beine 970, `pr`/`pat`/`c01`).
-   - Ratgeber „Minifigur verschenken“.
+   - ~~Ratgeber „Minifiguren-Teile bestellen“, „Teilenummern verstehen“, „Minifigur verschenken“.~~ erledigt (#140); Texte sind Entwürfe.
    - Impressum, Über uns/Kontakt, sichtbare Datenquellen/Methodik.
-   - Englische Version unter `/en/` erst nach der deutschen.
+   - ~~Englische Version unter `/en/`.~~ erledigt (#139).
 4. **Nicht bauen:** Seiten pro Einzelteil (14.000+) oder pro Filmfigur. Auf den anderen Seiten des Eigentümers führten Massen an Vorlagen-Seiten zu algorithmischer Abwertung (Spam-Updates); lizenzierte Namen sind zusätzlich markenrechtlich heikel. Neue Seiten nur, wenn Search Console Nachfrage zeigt.
 5. Nach 2 und 6 Wochen Search Console prüfen, nur Seiten mit belegter Nachfrage erweitern.
 
 ## 9. Ausgeführte Prüfungen (Auszug)
 
-- `npm run verify` zuletzt grün auf dem Stand von #137 (379 Tests, alle Daten-Validatoren inklusive Kernpakete und Vorschau-Farben, Typecheck, Lint, Build, Cloudflare-Check); `npm run test:browser` lokal grün.
-- Live am 2026-10-20 geprüft: `robots.txt`, Sitemap (10 URLs), Titel/Canonical von `/ideas/pirates`, Landingpage unter `/`, `/builder` mit 3,5 MB entpackt beim ersten Vorschaubild.
+- `npm run verify` zuletzt grün auf dem Stand von #140 (390 Tests, alle Daten-Validatoren inklusive Kernpakete und Vorschau-Farben, Typecheck, Lint, Build, Cloudflare-Check); `npm run test:browser` lokal grün.
+- Live am 2026-10-20 geprüft: `robots.txt`, Sitemap (28 URLs mit Alternativen), Titel/Canonical von `/ideas/pirates`, Landingpage unter `/`, `/builder` mit 3,5 MB entpackt beim ersten Vorschaubild, alle vier Ratgeber-Seiten und `/en/`, `/en/guides`, `/en/guides/order-minifigure-parts` (Status 200, richtiger Titel, `hreflang` auf die deutsche Fassung).
+- CI (`verify` samt verpflichtenden Browser-Regressionen und Cloudflare-Vorschau) war auf allen PRs #131 bis #140 grün; der Test `testGuides` und `testEnglishUrls` laufen dort mit.
 - CI `Verify` (inkl. verpflichtender Browser-Regressionen) auf `main` grün nach #112, #113, #125, #126, #127, #129.
 - Manueller Refresh-Lauf nach #129 am 2026-10-19: grün, neue Schritte (Crosswalk-Validierung, Altersprüfung) ohne Fehler.
 - Der automatische Montags-Lauf vom 2026-10-19 (09:59 UTC) lief erfolgreich, vor den BrickLink-Änderungen.
