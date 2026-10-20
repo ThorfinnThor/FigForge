@@ -16,7 +16,7 @@ Freienwalder Str. 34
 13359 Berlin
 Deutschland
 
-E-Mail: info@createyourminifig.com
+E-Mail: contact@createyourminifig.com
 
 Alle Anfragen zum Datenschutz richtest du an diese Adresse. Weitere Angaben stehen im Impressum.
 
@@ -36,7 +36,7 @@ Die Website wird bei **Cloudflare, Inc., 101 Townsend St., San Francisco, CA 941
 
 **Zweck und Rechtsgrundlage:** Auslieferung, Stabilität und Sicherheit der Website. Rechtsgrundlage ist Art. 6 Abs. 1 lit. f DSGVO (berechtigtes Interesse an einem sicheren und zuverlässigen Betrieb).
 
-**Auftragsverarbeitung:** Cloudflare stellt einen Vertrag zur Auftragsverarbeitung nach Art. 28 DSGVO bereit (Data Processing Addendum). Er enthält Standardvertragsklauseln der EU und nimmt auf das EU-US Data Privacy Framework Bezug.
+**Auftragsverarbeitung:** Cloudflare stellt einen Vertrag zur Auftragsverarbeitung nach Art. 28 DSGVO bereit (Data Processing Addendum). Nach Cloudflares Angaben gilt er für Kunden mit einem Self-Serve- oder Enterprise-Vertrag und ist Teil dieses Vertrags. Er enthält Standardvertragsklauseln der EU und nimmt auf das EU-US Data Privacy Framework Bezug.
 
 **Speicherdauer:** FigForge selbst speichert diese Zugriffsdaten nicht. Wie lange Cloudflare sie vorhält, steht in der Datenschutzerklärung von Cloudflare: https://www.cloudflare.com/privacypolicy/
 
@@ -62,7 +62,9 @@ Diese Daten verlassen dein Gerät nicht. Wir haben keinen Zugriff darauf und kö
 
 ### 6. Kontakt per E-Mail
 
-Wenn du uns schreibst, verarbeiten wir deine E-Mail-Adresse, den Inhalt deiner Nachricht und die Metadaten der E-Mail, um deine Anfrage zu beantworten. Rechtsgrundlage ist Art. 6 Abs. 1 lit. f DSGVO (berechtigtes Interesse an der Beantwortung von Anfragen), bei vertragsnahen Anfragen Art. 6 Abs. 1 lit. b DSGVO. Wir löschen die Nachrichten, sobald die Anfrage erledigt ist und keine gesetzlichen Aufbewahrungspflichten entgegenstehen.
+Die Adresse contact@createyourminifig.com wird bei **Purelymail** betrieben. Purelymail ist ein US-Unternehmen (eingetragen in Delaware); die Server stehen nach Purelymails Angaben bei Amazon Web Services in der Region US-East-1 in Nord-Virginia. Wenn du uns schreibst, werden deine Nachricht und deine E-Mail-Adresse dort gespeichert. Das ist eine Übermittlung in die USA.
+
+Wir verarbeiten deine E-Mail-Adresse, den Inhalt deiner Nachricht und die Metadaten der E-Mail, um deine Anfrage zu beantworten. Rechtsgrundlage ist Art. 6 Abs. 1 lit. f DSGVO (berechtigtes Interesse an der Beantwortung von Anfragen), bei vertragsnahen Anfragen Art. 6 Abs. 1 lit. b DSGVO. Wir löschen die Nachrichten, sobald die Anfrage erledigt ist und keine gesetzlichen Aufbewahrungspflichten entgegenstehen. Purelymail löscht nach eigenen Angaben Diagnoseprotokolle nach 30 Tagen.
 
 ### 7. Externe Links und Partnerlinks
 
@@ -83,7 +85,7 @@ Du hast gegenüber uns das Recht auf
 - Datenübertragbarkeit (Art. 20),
 - Widerspruch gegen die Verarbeitung auf Grundlage berechtigter Interessen (Art. 21).
 
-Wende dich dafür an info@createyourminifig.com. Eine erteilte Einwilligung kannst du jederzeit widerrufen; FigForge arbeitet derzeit ohne Einwilligungen.
+Wende dich dafür an contact@createyourminifig.com. Eine erteilte Einwilligung kannst du jederzeit widerrufen; FigForge arbeitet derzeit ohne Einwilligungen.
 
 ### 9. Beschwerderecht
 
@@ -116,7 +118,9 @@ Diese Angaben habe ich am 2026-10-20 an der Live-Seite und im Code geprüft:
 | Suche lokal | `semantic-search.worker.ts`: `allowRemoteModels = false`, Modelle aus `/search/models/` der eigenen Domain. |
 | Teilen-Link | Die Figur steckt im URL-Fragment (`#figforge=…`), das Browser nicht an den Server senden. |
 | Cloudflare als Hoster | Antwort-Header `server: cloudflare`, `cf-ray …-FRA` (Auslieferung über Frankfurt). |
-| Cloudflare-DPA | https://www.cloudflare.com/cloudflare-customer-dpa/ (abgerufen 2026-10-20, „Version 6.4, effective April 3, 2026“): Klausel 6.2 bindet die EU-Standardvertragsklauseln ein (Modul 2, wenn der Kunde Verantwortlicher ist), Klausel 6.4 hält fest, dass Cloudflare das EU-US Data Privacy Framework einhält. Das DPA gilt, sobald die Parteien zustimmen („from the date on which Customer signed or the parties otherwise agreed“). |
+| Cloudflare-DPA | https://www.cloudflare.com/cloudflare-customer-dpa/ (abgerufen 2026-10-20, „Version 6.4, effective April 3, 2026“): Klausel 6.2 bindet die EU-Standardvertragsklauseln ein (Modul 2, wenn der Kunde Verantwortlicher ist), Klausel 6.4 hält fest, dass Cloudflare das EU-US Data Privacy Framework einhält. Das DPA gilt nach eigener Angabe für Kunden mit Enterprise- oder Self-Serve-Vertrag und ist Teil dieses Vertrags; wirksam wird es „from the date on which Customer signed or the parties otherwise agreed“. |
+| Purelymail | https://purelymail.com/docs/faq (abgerufen 2026-10-20): „Our company is US-based, incorporated in Delaware.“ und „Our servers are currently located in the AWS US-East-1 region, somewhere in northern Virginia.“ https://purelymail.com/privacy: „Diagnostic logs are deleted after 30 days.“ Weder dort noch in den Nutzungsbedingungen fand ich eine Auftragsverarbeitungsvereinbarung, Standardvertragsklauseln oder eine DPF-Teilnahme. |
+| DNS der Domain | `dig` am 2026-10-20: Nameserver `wilson.ns.cloudflare.com` und `collins.ns.cloudflare.com`; MX-Einträge `eforward1` bis `eforward5.registrar-servers.com` (Namecheap-E-Mail-Weiterleitung), SPF `include:spf.efwd.registrar-servers.com`. Registrar laut WHOIS: Namecheap Inc. |
 | Aufsichtsbehörde | Impressum der Behörde (https://www.datenschutz-berlin.de/impressum, abgerufen 2026-10-20): Alt-Moabit 59-61, 10555 Berlin, mailbox@datenschutz-berlin.de. |
 | Datenschutzbeauftragter | § 38 Abs. 1 BDSG (gesetze-im-internet.de): Pflicht ab in der Regel 20 Personen, die ständig mit automatisierter Verarbeitung beschäftigt sind, oder bei Datenschutz-Folgenabschätzung bzw. geschäftsmäßiger Übermittlung/Markt- und Meinungsforschung. Ein Einzelunternehmen mit einer Person, das so nichts verarbeitet, fällt voraussichtlich nicht darunter; das ist meine Lesart des Gesetzestextes, keine Rechtsberatung. Der Entwurf nennt deshalb keinen Datenschutzbeauftragten. |
 | Externe Links | Auf `/sets` führen Links zu `www.amazon.de` und `www.lego.com`; im Code außerdem BrickLink und Rebrickable. |
@@ -125,8 +129,10 @@ Diese Angaben habe ich am 2026-10-20 an der Live-Seite und im Code geprüft:
 
 Diese Punkte konnte ich nicht belegen. Sie stehen bewusst nicht als Behauptung im Entwurf:
 
-1. **Cloudflare-DPA im Konto:** Ob das DPA für dein Cloudflare-Konto zugestimmt ist und gilt (es wirkt erst mit Zustimmung). Erst dann darf der Text sagen „Mit Cloudflare besteht ein Vertrag zur Auftragsverarbeitung“. Nur du kannst das im Konto sehen.
-2. **Postfach:** Welcher Anbieter hinter `info@createyourminifig.com` steckt. Ein externer Mailanbieter ist ein weiterer Auftragsverarbeiter und gehört dann in Abschnitt 6.
+1. **Cloudflare-DPA:** Der Eigentümer hat das DPA im Konto nicht gesondert akzeptiert. Cloudflare schreibt, es gelte für Kunden mit Self-Serve- oder Enterprise-Vertrag und sei Teil davon; ob das ohne eigene Zustimmung wirksam ist, ließ sich aus den abrufbaren Seiten nicht eindeutig klären. Zu klären: bei Cloudflare (Support) nachfragen oder in der rechtlichen Prüfung bestätigen lassen und gegebenenfalls Zustimmung bzw. Unterschrift nachholen. Erst dann darf der Text sagen „Mit Cloudflare besteht ein Vertrag zur Auftragsverarbeitung“; jetzt sagt er nur, was Cloudflare über sein DPA angibt.
+2. **Postfach – Widerspruch in den DNS-Einträgen (zuerst klären):** Die MX-Einträge der Domain zeigen auf die E-Mail-Weiterleitung von Namecheap (`eforward*.registrar-servers.com`), nicht auf Purelymail (dessen Server hießen `mailserver.purelymail.com`, SPF `_spf.purelymail.com`). Möglich: Mails an contact@ laufen aktuell über Namecheaps Weiterleitung an ein anderes Postfach, oder die Purelymail-DNS-Einträge sind bei Cloudflare (der Nameserver) nie gesetzt worden. Der Eigentümer sollte von einer fremden Adresse eine Testmail an contact@ senden und prüfen, wo sie ankommt. Erst danach steht fest, welche Anbieter im Abschnitt 6 genannt werden müssen (Purelymail und gegebenenfalls Namecheap als Weiterleitung).
+2a. **Purelymail als US-Anbieter:** Daten liegen in den USA (AWS US-East-1). Ich fand keine Auftragsverarbeitungsvereinbarung, keine Standardvertragsklauseln und keine DPF-Teilnahme. Welche Grundlage nach Kapitel V DSGVO trägt, ist eine rechtliche Frage; Alternative: ein Postfach bei einem Anbieter in der EU mit Auftragsverarbeitungsvertrag.
+2b. **Namecheap als Registrar:** Der Registrar verarbeitet die Registrierungsdaten des Domain-Inhabers, nicht Besucherdaten dieser Website; ein Eintrag in der Datenschutzerklärung ist dafür nicht nötig. Leitet Namecheap Mails weiter (siehe MX), ist das ein Dienstleister für den E-Mail-Verkehr und gehört in Abschnitt 6.
 3. **Amazon-Partnerprogramm:** Die Teilnahmevereinbarung (https://partnernet.amazon.de/help/operating/agreement/) ließ sich für mich nicht abrufen. Offen: Pflichtangaben zu Hinweisen und Datenschutz, und ob Amazon Partnern personenbezogene Daten einzelner Käufer gibt.
 4. **Offizielle DPF-Liste:** Cloudflares Teilnahme habe ich über Cloudflares eigenes DPA und Trust Hub belegt, nicht über dataprivacyframework.gov (die Seite ließ sich nicht abfragen). Der Text sagt deshalb „nach eigenen Angaben“.
 5. **Aufbewahrungsdauer der Cloudflare-Logs:** In der Cloudflare-Datenschutzerklärung nachzulesen; der Text verweist darauf, statt eine Zahl zu nennen.
