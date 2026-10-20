@@ -1,0 +1,843 @@
+{
+  "schemaVersion": 1,
+  "sourcePolicy": "Nur Rebrickable Catalog Downloads/CSV, keine MOC-Dateien.",
+  "ldrawRelease": "2026-09",
+  "colors": [
+    {
+      "rebrickableColorId": 0,
+      "colorName": "Black",
+      "ldrawCode": 0,
+      "hex": "#1B2A34",
+      "alpha": 1
+    },
+    {
+      "rebrickableColorId": 1,
+      "colorName": "Blue",
+      "ldrawCode": 1,
+      "hex": "#1E5AA8",
+      "alpha": 1
+    },
+    {
+      "rebrickableColorId": 2,
+      "colorName": "Green",
+      "ldrawCode": 2,
+      "hex": "#00852B",
+      "alpha": 1
+    },
+    {
+      "rebrickableColorId": 3,
+      "colorName": "Dark Turquoise",
+      "ldrawCode": 3,
+      "hex": "#069D9F",
+      "alpha": 1
+    },
+    {
+      "rebrickableColorId": 4,
+      "colorName": "Red",
+      "ldrawCode": 4,
+      "hex": "#B40000",
+      "alpha": 1
+    },
+    {
+      "rebrickableColorId": 5,
+      "colorName": "Dark Pink",
+      "ldrawCode": 5,
+      "hex": "#D3359D",
+      "alpha": 1
+    },
+    {
+      "rebrickableColorId": 6,
+      "colorName": "Brown",
+      "ldrawCode": 6,
+      "hex": "#543324",
+      "alpha": 1
+    },
+    {
+      "rebrickableColorId": 7,
+      "colorName": "Light Gray",
+      "ldrawCode": 7,
+      "hex": "#8A928D",
+      "alpha": 1
+    },
+    {
+      "rebrickableColorId": 8,
+      "colorName": "Dark Gray",
+      "ldrawCode": 8,
+      "hex": "#545955",
+      "alpha": 1
+    },
+    {
+      "rebrickableColorId": 10,
+      "colorName": "Bright Green",
+      "ldrawCode": 10,
+      "hex": "#58AB41",
+      "alpha": 1
+    },
+    {
+      "rebrickableColorId": 12,
+      "colorName": "Salmon",
+      "ldrawCode": 12,
+      "hex": "#F06D61",
+      "alpha": 1
+    },
+    {
+      "rebrickableColorId": 13,
+      "colorName": "Pink",
+      "ldrawCode": 13,
+      "hex": "#F6A9BB",
+      "alpha": 1
+    },
+    {
+      "rebrickableColorId": 14,
+      "colorName": "Yellow",
+      "ldrawCode": 14,
+      "hex": "#FAC80A",
+      "alpha": 1
+    },
+    {
+      "rebrickableColorId": 15,
+      "colorName": "White",
+      "ldrawCode": 15,
+      "hex": "#F4F4F4",
+      "alpha": 1
+    },
+    {
+      "rebrickableColorId": 17,
+      "colorName": "Light Green",
+      "ldrawCode": 17,
+      "hex": "#ADD9A8",
+      "alpha": 1
+    },
+    {
+      "rebrickableColorId": 18,
+      "colorName": "Light Yellow",
+      "ldrawCode": 18,
+      "hex": "#FFD67F",
+      "alpha": 1
+    },
+    {
+      "rebrickableColorId": 19,
+      "colorName": "Tan",
+      "ldrawCode": 19,
+      "hex": "#D7BA8C",
+      "alpha": 1
+    },
+    {
+      "rebrickableColorId": 20,
+      "colorName": "Light Violet",
+      "ldrawCode": 20,
+      "hex": "#AFBED6",
+      "alpha": 1
+    },
+    {
+      "rebrickableColorId": 21,
+      "colorName": "Glow In Dark Opaque",
+      "ldrawCode": 21,
+      "hex": "#E0FFB0",
+      "alpha": 0.961
+    },
+    {
+      "rebrickableColorId": 22,
+      "colorName": "Purple",
+      "ldrawCode": 22,
+      "hex": "#671F81",
+      "alpha": 1
+    },
+    {
+      "rebrickableColorId": 23,
+      "colorName": "Dark Blue-Violet",
+      "ldrawCode": 23,
+      "hex": "#0E3E9A",
+      "alpha": 1
+    },
+    {
+      "rebrickableColorId": 25,
+      "colorName": "Orange",
+      "ldrawCode": 25,
+      "hex": "#D67923",
+      "alpha": 1
+    },
+    {
+      "rebrickableColorId": 26,
+      "colorName": "Magenta",
+      "ldrawCode": 26,
+      "hex": "#901F76",
+      "alpha": 1
+    },
+    {
+      "rebrickableColorId": 27,
+      "colorName": "Lime",
+      "ldrawCode": 27,
+      "hex": "#A5CA18",
+      "alpha": 1
+    },
+    {
+      "rebrickableColorId": 28,
+      "colorName": "Dark Tan",
+      "ldrawCode": 28,
+      "hex": "#897D62",
+      "alpha": 1
+    },
+    {
+      "rebrickableColorId": 29,
+      "colorName": "Bright Pink",
+      "ldrawCode": 29,
+      "hex": "#FF9ECD",
+      "alpha": 1
+    },
+    {
+      "rebrickableColorId": 30,
+      "colorName": "Medium Lavender",
+      "ldrawCode": 30,
+      "hex": "#A06EB9",
+      "alpha": 1
+    },
+    {
+      "rebrickableColorId": 31,
+      "colorName": "Lavender",
+      "ldrawCode": 31,
+      "hex": "#CDA4DE",
+      "alpha": 1
+    },
+    {
+      "rebrickableColorId": 33,
+      "colorName": "Trans-Dark Blue",
+      "ldrawCode": 33,
+      "hex": "#0020A0",
+      "alpha": 0.502
+    },
+    {
+      "rebrickableColorId": 34,
+      "colorName": "Trans-Green",
+      "ldrawCode": 34,
+      "hex": "#237841",
+      "alpha": 0.502
+    },
+    {
+      "rebrickableColorId": 35,
+      "colorName": "Trans-Bright Green",
+      "ldrawCode": 35,
+      "hex": "#56E646",
+      "alpha": 0.502
+    },
+    {
+      "rebrickableColorId": 36,
+      "colorName": "Trans-Red",
+      "ldrawCode": 36,
+      "hex": "#C91A09",
+      "alpha": 0.502
+    },
+    {
+      "rebrickableColorId": 40,
+      "colorName": "Trans-Brown",
+      "ldrawCode": 40,
+      "hex": "#635F52",
+      "alpha": 0.502
+    },
+    {
+      "rebrickableColorId": 41,
+      "colorName": "Trans-Light Blue",
+      "ldrawCode": 43,
+      "hex": "#AEE9EF",
+      "alpha": 0.502
+    },
+    {
+      "rebrickableColorId": 42,
+      "colorName": "Trans-Neon Green",
+      "ldrawCode": 42,
+      "hex": "#C0FF00",
+      "alpha": 0.502
+    },
+    {
+      "rebrickableColorId": 45,
+      "colorName": "Trans-Dark Pink",
+      "ldrawCode": 37,
+      "hex": "#DF6695",
+      "alpha": 0.502
+    },
+    {
+      "rebrickableColorId": 46,
+      "colorName": "Trans-Yellow",
+      "ldrawCode": 46,
+      "hex": "#F5CD2F",
+      "alpha": 0.502
+    },
+    {
+      "rebrickableColorId": 47,
+      "colorName": "Trans-Clear",
+      "ldrawCode": 47,
+      "hex": "#FCFCFC",
+      "alpha": 0.502
+    },
+    {
+      "rebrickableColorId": 52,
+      "colorName": "Trans-Purple",
+      "ldrawCode": 52,
+      "hex": "#A5A5CB",
+      "alpha": 0.502
+    },
+    {
+      "rebrickableColorId": 57,
+      "colorName": "Trans-Neon Orange",
+      "ldrawCode": 38,
+      "hex": "#FF800D",
+      "alpha": 0.502
+    },
+    {
+      "rebrickableColorId": 60,
+      "colorName": "Chrome Antique Brass",
+      "ldrawCode": 60,
+      "hex": "#645A4C",
+      "alpha": 1
+    },
+    {
+      "rebrickableColorId": 61,
+      "colorName": "Chrome Blue",
+      "ldrawCode": 61,
+      "hex": "#6C96BF",
+      "alpha": 1
+    },
+    {
+      "rebrickableColorId": 64,
+      "colorName": "Chrome Black",
+      "ldrawCode": 64,
+      "hex": "#1B2A34",
+      "alpha": 1
+    },
+    {
+      "rebrickableColorId": 70,
+      "colorName": "Reddish Brown",
+      "ldrawCode": 70,
+      "hex": "#5F3109",
+      "alpha": 1
+    },
+    {
+      "rebrickableColorId": 71,
+      "colorName": "Light Bluish Gray",
+      "ldrawCode": 71,
+      "hex": "#969696",
+      "alpha": 1
+    },
+    {
+      "rebrickableColorId": 72,
+      "colorName": "Dark Bluish Gray",
+      "ldrawCode": 72,
+      "hex": "#646464",
+      "alpha": 1
+    },
+    {
+      "rebrickableColorId": 73,
+      "colorName": "Medium Blue",
+      "ldrawCode": 73,
+      "hex": "#7396C8",
+      "alpha": 1
+    },
+    {
+      "rebrickableColorId": 74,
+      "colorName": "Medium Green",
+      "ldrawCode": 74,
+      "hex": "#7FC475",
+      "alpha": 1
+    },
+    {
+      "rebrickableColorId": 77,
+      "colorName": "Light Pink",
+      "ldrawCode": 77,
+      "hex": "#FECCCF",
+      "alpha": 1
+    },
+    {
+      "rebrickableColorId": 78,
+      "colorName": "Light Nougat",
+      "ldrawCode": 78,
+      "hex": "#FFC995",
+      "alpha": 1
+    },
+    {
+      "rebrickableColorId": 80,
+      "colorName": "Metallic Silver",
+      "ldrawCode": 80,
+      "hex": "#767676",
+      "alpha": 1
+    },
+    {
+      "rebrickableColorId": 82,
+      "colorName": "Metallic Gold",
+      "ldrawCode": 82,
+      "hex": "#DBAC34",
+      "alpha": 1
+    },
+    {
+      "rebrickableColorId": 84,
+      "colorName": "Medium Nougat",
+      "ldrawCode": 84,
+      "hex": "#AA7D55",
+      "alpha": 1
+    },
+    {
+      "rebrickableColorId": 86,
+      "colorName": "Light Brown",
+      "ldrawCode": 86,
+      "hex": "#7B5D41",
+      "alpha": 1
+    },
+    {
+      "rebrickableColorId": 92,
+      "colorName": "Nougat",
+      "ldrawCode": 92,
+      "hex": "#BB805A",
+      "alpha": 1
+    },
+    {
+      "rebrickableColorId": 100,
+      "colorName": "Light Salmon",
+      "ldrawCode": 100,
+      "hex": "#F9B7A5",
+      "alpha": 1
+    },
+    {
+      "rebrickableColorId": 110,
+      "colorName": "Violet",
+      "ldrawCode": 110,
+      "hex": "#26469A",
+      "alpha": 1
+    },
+    {
+      "rebrickableColorId": 115,
+      "colorName": "Medium Lime",
+      "ldrawCode": 115,
+      "hex": "#B7D425",
+      "alpha": 1
+    },
+    {
+      "rebrickableColorId": 118,
+      "colorName": "Aqua",
+      "ldrawCode": 118,
+      "hex": "#9CD6CC",
+      "alpha": 1
+    },
+    {
+      "rebrickableColorId": 125,
+      "colorName": "Light Orange",
+      "ldrawCode": 121,
+      "hex": "#F89A39",
+      "alpha": 1
+    },
+    {
+      "rebrickableColorId": 134,
+      "colorName": "Copper",
+      "ldrawCode": 134,
+      "hex": "#764D3B",
+      "alpha": 1
+    },
+    {
+      "rebrickableColorId": 135,
+      "colorName": "Pearl Light Gray",
+      "ldrawCode": 135,
+      "hex": "#A0A0A0",
+      "alpha": 1
+    },
+    {
+      "rebrickableColorId": 142,
+      "colorName": "Pearl Light Gold",
+      "ldrawCode": 142,
+      "hex": "#DEAC66",
+      "alpha": 1
+    },
+    {
+      "rebrickableColorId": 143,
+      "colorName": "Trans-Medium Blue",
+      "ldrawCode": 41,
+      "hex": "#559AB7",
+      "alpha": 0.502
+    },
+    {
+      "rebrickableColorId": 148,
+      "colorName": "Pearl Dark Gray",
+      "ldrawCode": 148,
+      "hex": "#484D48",
+      "alpha": 1
+    },
+    {
+      "rebrickableColorId": 151,
+      "colorName": "Very Light Bluish Gray",
+      "ldrawCode": 151,
+      "hex": "#C8C8C8",
+      "alpha": 1
+    },
+    {
+      "rebrickableColorId": 158,
+      "colorName": "Yellowish Green",
+      "ldrawCode": 326,
+      "hex": "#E2F99A",
+      "alpha": 1
+    },
+    {
+      "rebrickableColorId": 179,
+      "colorName": "Flat Silver",
+      "ldrawCode": 315,
+      "hex": "#8C8C8C",
+      "alpha": 1
+    },
+    {
+      "rebrickableColorId": 182,
+      "colorName": "Trans-Orange",
+      "ldrawCode": 57,
+      "hex": "#F08F1C",
+      "alpha": 0.502
+    },
+    {
+      "rebrickableColorId": 191,
+      "colorName": "Bright Light Orange",
+      "ldrawCode": 191,
+      "hex": "#FCAC00",
+      "alpha": 1
+    },
+    {
+      "rebrickableColorId": 212,
+      "colorName": "Bright Light Blue",
+      "ldrawCode": 212,
+      "hex": "#9DC3F7",
+      "alpha": 1
+    },
+    {
+      "rebrickableColorId": 226,
+      "colorName": "Bright Light Yellow",
+      "ldrawCode": 226,
+      "hex": "#FFEC6C",
+      "alpha": 1
+    },
+    {
+      "rebrickableColorId": 272,
+      "colorName": "Dark Blue",
+      "ldrawCode": 272,
+      "hex": "#19325A",
+      "alpha": 1
+    },
+    {
+      "rebrickableColorId": 288,
+      "colorName": "Dark Green",
+      "ldrawCode": 288,
+      "hex": "#00451A",
+      "alpha": 1
+    },
+    {
+      "rebrickableColorId": 294,
+      "colorName": "Glow In Dark Trans",
+      "ldrawCode": 294,
+      "hex": "#BDC6AD",
+      "alpha": 0.784
+    },
+    {
+      "rebrickableColorId": 297,
+      "colorName": "Pearl Gold",
+      "ldrawCode": 297,
+      "hex": "#AA7F2E",
+      "alpha": 1
+    },
+    {
+      "rebrickableColorId": 308,
+      "colorName": "Dark Brown",
+      "ldrawCode": 308,
+      "hex": "#352100",
+      "alpha": 1
+    },
+    {
+      "rebrickableColorId": 313,
+      "colorName": "Maersk Blue",
+      "ldrawCode": 313,
+      "hex": "#ABD9FF",
+      "alpha": 1
+    },
+    {
+      "rebrickableColorId": 320,
+      "colorName": "Dark Red",
+      "ldrawCode": 320,
+      "hex": "#720012",
+      "alpha": 1
+    },
+    {
+      "rebrickableColorId": 321,
+      "colorName": "Dark Azure",
+      "ldrawCode": 321,
+      "hex": "#469BC3",
+      "alpha": 1
+    },
+    {
+      "rebrickableColorId": 322,
+      "colorName": "Medium Azure",
+      "ldrawCode": 322,
+      "hex": "#68C3E2",
+      "alpha": 1
+    },
+    {
+      "rebrickableColorId": 323,
+      "colorName": "Light Aqua",
+      "ldrawCode": 323,
+      "hex": "#D3F2EA",
+      "alpha": 1
+    },
+    {
+      "rebrickableColorId": 326,
+      "colorName": "Olive Green",
+      "ldrawCode": 330,
+      "hex": "#77774E",
+      "alpha": 1
+    },
+    {
+      "rebrickableColorId": 334,
+      "colorName": "Chrome Gold",
+      "ldrawCode": 334,
+      "hex": "#DFC176",
+      "alpha": 1
+    },
+    {
+      "rebrickableColorId": 335,
+      "colorName": "Sand Red",
+      "ldrawCode": 335,
+      "hex": "#88605E",
+      "alpha": 1
+    },
+    {
+      "rebrickableColorId": 351,
+      "colorName": "Medium Dark Pink",
+      "ldrawCode": 351,
+      "hex": "#F785B1",
+      "alpha": 1
+    },
+    {
+      "rebrickableColorId": 366,
+      "colorName": "Earth Orange",
+      "ldrawCode": 366,
+      "hex": "#D86D2C",
+      "alpha": 1
+    },
+    {
+      "rebrickableColorId": 373,
+      "colorName": "Sand Purple",
+      "ldrawCode": 373,
+      "hex": "#75657D",
+      "alpha": 1
+    },
+    {
+      "rebrickableColorId": 378,
+      "colorName": "Sand Green",
+      "ldrawCode": 378,
+      "hex": "#708E7C",
+      "alpha": 1
+    },
+    {
+      "rebrickableColorId": 379,
+      "colorName": "Sand Blue",
+      "ldrawCode": 379,
+      "hex": "#70819A",
+      "alpha": 1
+    },
+    {
+      "rebrickableColorId": 383,
+      "colorName": "Chrome Silver",
+      "ldrawCode": 383,
+      "hex": "#CECECE",
+      "alpha": 1
+    },
+    {
+      "rebrickableColorId": 462,
+      "colorName": "Medium Orange",
+      "ldrawCode": 462,
+      "hex": "#F58624",
+      "alpha": 1
+    },
+    {
+      "rebrickableColorId": 484,
+      "colorName": "Dark Orange",
+      "ldrawCode": 484,
+      "hex": "#91501C",
+      "alpha": 1
+    },
+    {
+      "rebrickableColorId": 1000,
+      "colorName": "Glow in Dark White",
+      "ldrawCode": 329,
+      "hex": "#F5F3D7",
+      "alpha": 0.961
+    },
+    {
+      "rebrickableColorId": 1001,
+      "colorName": "Medium Violet",
+      "ldrawCode": 112,
+      "hex": "#4861AC",
+      "alpha": 1
+    },
+    {
+      "rebrickableColorId": 1050,
+      "colorName": "Coral",
+      "ldrawCode": 353,
+      "hex": "#FF6D77",
+      "alpha": 1
+    },
+    {
+      "rebrickableColorId": 1065,
+      "colorName": "Reddish Gold",
+      "ldrawCode": 189,
+      "hex": "#AC8247",
+      "alpha": 1
+    },
+    {
+      "rebrickableColorId": 1067,
+      "colorName": "Dark Nougat",
+      "ldrawCode": 128,
+      "hex": "#AD6140",
+      "alpha": 1
+    },
+    {
+      "rebrickableColorId": 1088,
+      "colorName": "Medium Brown",
+      "ldrawCode": 370,
+      "hex": "#755945",
+      "alpha": 1
+    },
+    {
+      "rebrickableColorId": 1092,
+      "colorName": "Metallic Copper",
+      "ldrawCode": 300,
+      "hex": "#C27F53",
+      "alpha": 1
+    },
+    {
+      "rebrickableColorId": 1095,
+      "colorName": "Trans-Black",
+      "ldrawCode": 10375,
+      "hex": "#212121",
+      "alpha": 0.502
+    },
+    {
+      "rebrickableColorId": 1136,
+      "colorName": "Reddish Orange",
+      "ldrawCode": 402,
+      "hex": "#CA4C0B",
+      "alpha": 1
+    },
+    {
+      "rebrickableColorId": 1137,
+      "colorName": "Sienna Brown",
+      "ldrawCode": 422,
+      "hex": "#915C3C",
+      "alpha": 1
+    },
+    {
+      "rebrickableColorId": 1138,
+      "colorName": "Umber Brown",
+      "ldrawCode": 423,
+      "hex": "#543F33",
+      "alpha": 1
+    },
+    {
+      "rebrickableColorId": 1145,
+      "colorName": "Ochre Yellow",
+      "ldrawCode": 424,
+      "hex": "#DD9E47",
+      "alpha": 1
+    },
+    {
+      "rebrickableColorId": 1146,
+      "colorName": "Warm Pink",
+      "ldrawCode": 430,
+      "hex": "#F79B9B",
+      "alpha": 1
+    },
+    {
+      "rebrickableColorId": 1147,
+      "colorName": "Blue Violet",
+      "ldrawCode": 89,
+      "hex": "#1C58A7",
+      "alpha": 1
+    }
+  ],
+  "unmapped": [
+    {
+      "rebrickableColorId": 69,
+      "colorName": "Light Purple",
+      "reason": "no-ldraw-name-match"
+    },
+    {
+      "rebrickableColorId": 75,
+      "colorName": "Speckle Black-Copper",
+      "reason": "ldraw-material-effect"
+    },
+    {
+      "rebrickableColorId": 85,
+      "colorName": "Dark Purple",
+      "reason": "no-ldraw-name-match"
+    },
+    {
+      "rebrickableColorId": 89,
+      "colorName": "Royal Blue",
+      "reason": "no-ldraw-name-match"
+    },
+    {
+      "rebrickableColorId": 129,
+      "colorName": "Glitter Trans-Purple",
+      "reason": "ldraw-material-effect"
+    },
+    {
+      "rebrickableColorId": 132,
+      "colorName": "Speckle Black-Silver",
+      "reason": "ldraw-material-effect"
+    },
+    {
+      "rebrickableColorId": 133,
+      "colorName": "Speckle Black-Gold",
+      "reason": "ldraw-material-effect"
+    },
+    {
+      "rebrickableColorId": 137,
+      "colorName": "Pearl Sand Blue",
+      "reason": "no-ldraw-name-match"
+    },
+    {
+      "rebrickableColorId": 178,
+      "colorName": "Flat Dark Gold",
+      "reason": "no-ldraw-name-match"
+    },
+    {
+      "rebrickableColorId": 1051,
+      "colorName": "Pastel Blue",
+      "reason": "no-ldraw-name-match"
+    },
+    {
+      "rebrickableColorId": 1053,
+      "colorName": "Opal Trans-Light Blue",
+      "reason": "ldraw-material-effect"
+    },
+    {
+      "rebrickableColorId": 1055,
+      "colorName": "Opal Trans-Clear",
+      "reason": "ldraw-material-effect"
+    },
+    {
+      "rebrickableColorId": 1062,
+      "colorName": "Vibrant Yellow",
+      "reason": "no-ldraw-name-match"
+    },
+    {
+      "rebrickableColorId": 1063,
+      "colorName": "Pearl Copper",
+      "reason": "no-ldraw-name-match"
+    },
+    {
+      "rebrickableColorId": 1081,
+      "colorName": "Rust Orange",
+      "reason": "no-ldraw-name-match"
+    },
+    {
+      "rebrickableColorId": 1089,
+      "colorName": "Warm Tan",
+      "reason": "no-ldraw-name-match"
+    },
+    {
+      "rebrickableColorId": 1103,
+      "colorName": "Pearl Titanium",
+      "reason": "no-ldraw-name-match"
+    }
+  ]
+}

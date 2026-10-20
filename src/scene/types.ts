@@ -1,5 +1,6 @@
 import type { Group } from "three";
 import type { AnchorSlot } from "../contracts/anchor-registry.js";
+import type { PreviewColor } from "./preview-color.js";
 
 export type CameraPreset = "three-quarter" | "front" | "back";
 export type FigureSlot = AnchorSlot;
@@ -16,6 +17,8 @@ export type LDrawCatalogSelection = {
   placementTransformLdu: readonly number[];
   rebrickablePartNum: string;
   role: LDrawCatalogRole;
+  /** The chosen purchase colour as far as the preview can show it; omitted keeps the model colour. */
+  previewColor?: PreviewColor | undefined;
 };
 
 export type ScenePartDefinition = {
