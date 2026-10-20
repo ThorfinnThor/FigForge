@@ -6,8 +6,29 @@ import type { Language } from "../i18n.js";
  */
 export const EN_PREFIX = "/en";
 
+/** Guide slugs, German and English; the guides hub lives at /ratgeber and /en/guides. */
+export const GUIDE_SLUGS = {
+  order: { de: "minifiguren-teile-bestellen", en: "order-minifigure-parts" },
+  "part-numbers": { de: "teilenummern-verstehen", en: "understand-part-numbers" },
+  gift: { de: "minifigur-verschenken", en: "minifigure-gift" },
+} as const;
+
+export type GuideSlugId = keyof typeof GUIDE_SLUGS;
+
+export const guidePath = (id: GuideSlugId, language: Language): string =>
+  language === "de" ? `/ratgeber/${GUIDE_SLUGS[id].de}` : `${EN_PREFIX}/guides/${GUIDE_SLUGS[id].en}`;
+
 /** German path to English path, for pages whose slug is translated. */
-const TRANSLATED_PATHS: Readonly<Record<string, string>> = {};
+const TRANSLATED_PATHS: Readonly<Record<string, string>> = {
+  "/ratgeber": `${EN_PREFIX}/guides`,
+  ...Object.fromEntries((Object.keys(GUIDE_SLUGS) as GuideSlugId[]).map((id) => [guidePath(id, "de"), guidePath(id, "en")])),
+};
+
+/** Which guide, if any, a path (in either language) belongs to. */
+export const guideIdFromPath = (pathname: string): GuideSlugId | null => {
+  const german = germanPath(pathname);
+  return (Object.keys(GUIDE_SLUGS) as GuideSlugId[]).find((id) => guidePath(id, "de") === german) ?? null;
+};
 
 const ENGLISH_TO_GERMAN = new Map(Object.entries(TRANSLATED_PATHS).map(([german, english]) => [english, german]));
 

@@ -1,4 +1,5 @@
-import { localizedPath } from "../app/routing.js";
+import { guidePath, localizedPath } from "../app/routing.js";
+import { GUIDE_IDS, type GuideId } from "../guides/guide-content.js";
 import type { Language } from "../i18n.js";
 
 export const SITE_ORIGIN = "https://createyourminifig.com";
@@ -11,6 +12,8 @@ export type SeoRoute = {
   headingKey: string;
   ledeKey: string;
   indexable: boolean;
+  /** Guide pages get their full text in the prerendered HTML; the hub lists the guides. */
+  page?: { kind: "guide"; id: GuideId } | { kind: "guides-hub" };
 };
 
 const WORLD_KEYS = [
@@ -34,6 +37,16 @@ export const SEO_ROUTES: readonly SeoRoute[] = [
   })),
   { path: "/sets", titleKey: "products.metaTitle", descriptionKey: "products.metaDescription", headingKey: "products.title", ledeKey: "products.lede", indexable: true },
   { path: "/methodology", titleKey: "methodology.metaTitle", descriptionKey: "methodology.metaDescription", headingKey: "methodology.title", ledeKey: "methodology.metaDescription", indexable: true },
+  { path: "/ratgeber", titleKey: "guides.metaTitle", descriptionKey: "guides.metaDescription", headingKey: "guides.title", ledeKey: "guides.lede", indexable: true, page: { kind: "guides-hub" } },
+  ...GUIDE_IDS.map((id): SeoRoute => ({
+    path: guidePath(id, "de"),
+    titleKey: `guide.${id}.metaTitle`,
+    descriptionKey: `guide.${id}.metaDescription`,
+    headingKey: `guide.${id}.title`,
+    ledeKey: `guide.${id}.lede`,
+    indexable: true,
+    page: { kind: "guide", id },
+  })),
   { path: "/privacy", titleKey: "privacy.metaTitle", descriptionKey: "privacy.metaDescription", headingKey: "privacy.title", ledeKey: "privacy.metaDescription", indexable: true },
   { path: "/collection", titleKey: "collection.metaTitle", descriptionKey: "builder.metaDescription", headingKey: "nav.collection", ledeKey: "builder.metaDescription", indexable: false },
 ];
