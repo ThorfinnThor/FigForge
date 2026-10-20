@@ -35,7 +35,7 @@ describe("SEO prerendering", () => {
       titles.add(title ?? "");
       expect(html).not.toContain("placeholder");
       expect(html).toContain(`<link rel="canonical" href="${canonicalUrl(route.path)}" />`);
-      expect(html).toMatch(/<div id="root"><main><h1>[^<]+<\/h1><p>[^<]+<\/p><\/main><\/div>/u);
+      expect(html).toMatch(/<div id="root"><main>(?:<article>)?<h1>[^<]+<\/h1><p>[^<]+<\/p>/u);
       expect(html).not.toContain('content="noindex"');
     }
     expect(titles.size).toBe(SEO_ROUTES.filter((entry) => entry.indexable).length);

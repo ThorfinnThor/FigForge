@@ -1,3 +1,5 @@
+import { guidePath } from "../app/routing.js";
+import { GUIDE_IDS, GUIDE_SECTIONS } from "../guides/guide-content.js";
 import type { Language } from "../i18n.js";
 import { SEO_LANGUAGES, SEO_ROUTES, SITE_ORIGIN, canonicalUrl, routePath, type SeoRoute } from "./routes.js";
 
@@ -32,6 +34,7 @@ export function renderRoutePage(
   const description = escapeHtml(requireMessage(messages, route.descriptionKey));
   const heading = escapeHtml(requireMessage(messages, route.headingKey));
   const lede = escapeHtml(requireMessage(messages, route.ledeKey));
+  const body = renderBody(route, messages, language, heading, lede);
   const url = escapeHtml(canonicalUrl(routePath(route, language)));
   const otherLanguage = SEO_LANGUAGES.find((candidate) => candidate !== language) ?? language;
 
@@ -58,8 +61,29 @@ export function renderRoutePage(
   return replaceOnce(
     withHead,
     /<div id="root"><\/div>/u,
-    `<div id="root"><main><h1>${heading}</h1><p>${lede}</p></main></div>`,
+    `<div id="root">${body}</div>`,
   );
+}
+
+/** Guides ship their full text so search engines index the article, not just a title. */
+function renderBody(route: SeoRoute, messages: Messages, language: Language, heading: string, lede: string): string {
+  const intro = `<h1>${heading}</h1><p>${lede}</p>`;
+  const page = route.page;
+  if (page?.kind === "guide") {
+    const sections = GUIDE_SECTIONS[page.id][language].map((section) => [
+      `<h2>${escapeHtml(section.heading)}</h2>`,
+      ...(section.paragraphs ?? []).map((text) => `<p>${escapeHtml(text)}</p>`),
+      section.items ? `<ul>${section.items.map((item) => `<li>${escapeHtml(item)}</li>`).join("")}</ul>` : "",
+      ...(section.closing ?? []).map((text) => `<p>${escapeHtml(text)}</p>`),
+    ].join("")).join("");
+    return `<main><article>${intro}${sections}</article></main>`;
+  }
+  if (page?.kind === "guides-hub") {
+    const links = GUIDE_IDS.map((id) =>
+      `<li><a href="${escapeHtml(guidePath(id, language))}">${escapeHtml(requireMessage(messages, `guide.${id}.title`))}</a></li>`).join("");
+    return `<main>${intro}<ul>${links}</ul></main>`;
+  }
+  return `<main>${intro}</main>`;
 }
 
 /** hreflang pairs: every language version names all of them, and German is the default. */

@@ -3930,3 +3930,62 @@ legend {
     grid-template-columns: 1fr;
   }
 }
+
+/* Guides */
+.guide-page__lede {
+  max-width: 62ch;
+  margin: 0 0 var(--space-6);
+  color: var(--ink-muted);
+  font-size: 1.1rem;
+  line-height: 1.55;
+}
+
+.guide-page__body {
+  display: grid;
+  max-width: 68ch;
+  gap: var(--space-6);
+}
+
+.guide-page__body h2,
+.guide-page__more h2 {
+  margin: 0 0 var(--space-2);
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  font-weight: 400;
+  line-height: 1.15;
+}
+
+.guide-page__body p,
+.guide-page__body li {
+  line-height: 1.6;
+}
+
+.guide-page__body ul,
+.guide-page__more ul {
+  display: grid;
+  gap: var(--space-2);
+  margin: var(--space-2) 0;
+  padding-left: 1.25rem;
+}
+
+.guide-page__more {
+  display: grid;
+  max-width: 68ch;
+  gap: var(--space-3);
+  margin-top: var(--space-8);
+}
+
+.guide-page__more .ff-button {
+  justify-self: start;
+  text-decoration: none;
+}
+
+.guides-list {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+@media (max-width: 900px) {
+  .guides-list {
+    grid-template-columns: 1fr;
+  }
+}

@@ -1,6 +1,6 @@
 import { lazy, Suspense } from "react";
 import { I18nProvider, useI18n } from "../i18n.js";
-import { germanPath } from "./routing.js";
+import { germanPath, guideIdFromPath } from "./routing.js";
 
 const LandingPage = lazy(() => import("../components/LandingPage.js")
   .then((module) => ({ default: module.LandingPage })));
@@ -8,6 +8,10 @@ const CatalogWorkspace = lazy(() => import("../components/CatalogWorkspace.js")
   .then((module) => ({ default: module.CatalogWorkspace })));
 const CollectionPage = lazy(() => import("../components/CollectionPage.js")
   .then((module) => ({ default: module.CollectionPage })));
+const GuidePage = lazy(() => import("../components/GuidePage.js")
+  .then((module) => ({ default: module.GuidePage })));
+const GuidesIndexPage = lazy(() => import("../components/GuidesIndexPage.js")
+  .then((module) => ({ default: module.GuidesIndexPage })));
 const IdeasPage = lazy(() => import("../components/IdeasPage.js")
   .then((module) => ({ default: module.IdeasPage })));
 const MethodologyPage = lazy(() => import("../components/MethodologyPage.js")
@@ -28,7 +32,11 @@ function AppRoutes() {
   const { t } = useI18n();
   // Re-read on every render: switching the language rewrites the URL in place.
   const pathname = germanPath(window.location.pathname);
-  const page = pathname === "/ideas" || pathname.startsWith("/ideas/")
+  const page = pathname === "/ratgeber"
+    ? <GuidesIndexPage />
+    : pathname.startsWith("/ratgeber/") && guideIdFromPath(pathname) !== null
+      ? <GuidePage />
+      : pathname === "/ideas" || pathname.startsWith("/ideas/")
     ? <IdeasPage />
     : pathname === "/sets"
       ? <ProductsPage />

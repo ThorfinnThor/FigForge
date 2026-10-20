@@ -710,6 +710,32 @@ const testEnglishUrls = async (client: CdpClient, origin: string): Promise<void>
   assert.equal(await evaluate(client, "document.querySelector('#catalog-heading')?.textContent"), "Build the character you imagine.");
 };
 
+const testGuides = async (client: CdpClient, origin: string): Promise<void> => {
+  await navigate(client, `${origin}/ratgeber/minifiguren-teile-bestellen`);
+  await waitFor(client, "Boolean(document.querySelector('.guide-page h1'))", "German guide");
+  const german = await evaluate<{ heading: string; sections: number; related: number }>(client, `(() => ({
+    heading: document.querySelector('.guide-page h1')?.textContent ?? '',
+    sections: document.querySelectorAll('.guide-page__body section').length,
+    related: document.querySelectorAll('.guide-page__more li a').length,
+  }))()`);
+  assert.equal(german.heading, "Minifiguren-Teile bestellen: BrickLink, Pick a Brick und Rebrickable");
+  assert.ok(german.sections >= 5, "guide shows its sections");
+  assert.equal(german.related, 2);
+
+  await navigate(client, `${origin}/en/guides/minifigure-gift`);
+  await waitFor(client, "Boolean(document.querySelector('.guide-page h1'))", "English guide");
+  assert.match(await evaluate<string>(client, "document.querySelector('.guide-page h1').textContent"), /^Give a minifigure as a gift/u);
+  await evaluate(client, `(() => {
+    const select = document.querySelector('.language-picker select');
+    Object.getOwnPropertyDescriptor(HTMLSelectElement.prototype, 'value').set.call(select, 'de');
+    select.dispatchEvent(new Event('change', { bubbles: true }));
+  })()`);
+  await waitFor(client, "location.pathname === '/ratgeber/minifigur-verschenken' && document.querySelector('.guide-page h1')?.textContent?.startsWith('Eine Minifigur verschenken')", "German guide after the picker");
+
+  await navigate(client, `${origin}/en/guides`);
+  await waitFor(client, "document.querySelectorAll('.guides-list li').length === 3", "English guides hub");
+};
+
 const testCoreFirstCatalogLoading = async (client: CdpClient, origin: string): Promise<void> => {
   await navigate(client, `${origin}/builder`);
   await waitFor(
@@ -758,6 +784,8 @@ const run = async (): Promise<void> => {
     process.stdout.write("✓ landing page at / and builder at /builder\n");
     await testEnglishUrls(client, previewServer.origin);
     process.stdout.write("✓ English pages under /en and the language picker\n");
+    await testGuides(client, previewServer.origin);
+    process.stdout.write("✓ guides in both languages and the picker switching slugs\n");
     await testCoreFirstCatalogLoading(client, previewServer.origin);
     process.stdout.write("✓ core packages first, full catalog afterwards\n");
     await testMountedMobileKeyboard(client, previewServer.origin);

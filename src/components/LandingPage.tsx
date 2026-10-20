@@ -1,3 +1,5 @@
+import { guidePath } from "../app/routing.js";
+import { GUIDE_IDS } from "../guides/guide-content.js";
 import { FIGURE_TEMPLATES } from "../ideas/figure-templates.js";
 import { useI18n } from "../i18n.js";
 import { AppHeader } from "./AppHeader.js";
@@ -14,7 +16,7 @@ const STEPS = ["pick", "check", "export"] as const;
 const FACTS = ["local", "shops", "independent"] as const;
 
 export function LandingPage() {
-  const { path, t } = useI18n();
+  const { language, path, t } = useI18n();
 
   return (
     <div className="app-shell ideas-shell">
@@ -82,6 +84,25 @@ export function LandingPage() {
                 </li>
               );
             })}
+          </ul>
+        </section>
+
+        <section className="ideas-section" aria-labelledby="landing-guides-title">
+          <div className="ideas-page__section-heading">
+            <div>
+              <p className="ideas-page__eyebrow">{t("landing.guides.eyebrow")}</p>
+              <h2 id="landing-guides-title">{t("landing.guides.title")}</h2>
+            </div>
+          </div>
+          <ul className="landing-page__steps">
+            {GUIDE_IDS.map((id) => (
+              <li className="idea-world landing-page__step" key={id}>
+                <div>
+                  <h3>{t(`guide.${id}.title`)}</h3>
+                </div>
+                <a className="idea-world__link" href={guidePath(id, language)}>{t("guides.read")}</a>
+              </li>
+            ))}
           </ul>
         </section>
 
