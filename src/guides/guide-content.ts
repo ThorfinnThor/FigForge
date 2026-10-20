@@ -38,10 +38,12 @@ export const GUIDE_SECTIONS: Record<GuideId, Record<Language, readonly GuideSect
       {
         heading: "Weg 2: BrickLink-Wanted-List",
         paragraphs: [
-          "Du lädst die XML-Datei bei BrickLink als Wanted List hoch und suchst danach Shops, die deine Teile führen. BrickLink ist ein Marktplatz mit vielen unabhängigen Verkäufern.",
+          "Du fügst den Inhalt der XML-Datei bei BrickLink als Wanted List ein und suchst danach Shops, die deine Teile führen. BrickLink ist ein Marktplatz mit vielen unabhängigen Verkäufern.",
         ],
         items: [
           "Passt, wenn du Shops selbst vergleichen willst.",
+          "So geht der Import: Öffne die Seite „Upload to Wanted List“, wechsle zum Tab „Upload BrickLink XML format“ und füge dort den gesamten Text der XML-Datei ein. Der andere Tab, „Upload a file from your computer“, nimmt nur BrickStock-, LDraw-, Digital-Designer- und Studio-Dateien an, kein XML.",
+          "Öffne die Datei dafür in einem Texteditor und kopiere alles. Text, den du aus der Anzeige im Browser kopierst, enthält die Tags nicht; BrickLink lehnt ihn mit „Content is not allowed in prolog“ ab.",
           "Führt kein Shop alle Teile, besteht die Figur am Ende aus mehreren Bestellungen mit je eigenen Versandkosten.",
           "Prüfe Farbe und Teilenummer in der Wanted List, bevor du kaufst.",
         ],
@@ -98,10 +100,12 @@ export const GUIDE_SECTIONS: Record<GuideId, Record<Language, readonly GuideSect
       {
         heading: "Option 2: BrickLink wanted list",
         paragraphs: [
-          "You upload the XML file to BrickLink as a wanted list and then look for stores that carry your parts. BrickLink is a marketplace with many independent sellers.",
+          "You paste the contents of the XML file into BrickLink as a wanted list and then look for stores that carry your parts. BrickLink is a marketplace with many independent sellers.",
         ],
         items: [
           "Fits when you want to compare stores yourself.",
+          "This is how the import works: open the “Upload to Wanted List” page, switch to the “Upload BrickLink XML format” tab and paste the entire text of the XML file there. The other tab, “Upload a file from your computer”, only accepts BrickStock, LDraw, Digital Designer and Studio files, not XML.",
+          "Open the file in a text editor and copy everything. Text copied from the browser's display of the file lacks the tags; BrickLink rejects it with “Content is not allowed in prolog”.",
           "If no single store has every part, the figure ends up as several orders, each with its own shipping cost.",
           "Check color and part number in the wanted list before you buy.",
         ],
