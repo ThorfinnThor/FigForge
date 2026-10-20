@@ -27,6 +27,20 @@ Diese Datei hält fest, wo das Projekt steht, was zuletzt geändert wurde, wie d
 
 Eigentümer-Änderungen im selben Zeitraum: #116–#118 (Kaufbereich, mobile Regression, Icons).
 
+### Zweite Arbeitsrunde (2026-10-20)
+
+| PR | Inhalt |
+| --- | --- |
+| #131 | SEO-Technik (ADR-033): `tools/prerender-seo.ts` schreibt nach `vite build` pro öffentlicher Route eine eigene `index.html` (Titel, Beschreibung, Canonical, Open Graph, `h1` samt Einleitung) sowie `robots.txt` und `sitemap.xml`. Routen stehen in `src/seo/routes.ts`; `/collection` ist `noindex`. |
+| #132 | Dependabot: TypeScript-Major-Updates ausgeschlossen, bis `typescript-eslint` TypeScript 7 als Peer erlaubt (sonst `ERESOLVE` in `npm ci`). |
+| #86, #87 | Dependabot: `actions/setup-node` 7.1.0, `@huggingface/transformers` 4.3.1. |
+| #134 | Landingpage unter `/`, Builder unter `/builder`. Alte Links (`/?template=`, `/?figureId=`, `/#figforge=`) öffnen weiter den Builder. Themenseiten zeigen je Figur die LDraw-Nummern und einen Tipp pro Welt. |
+| #135 | Teile nach Beliebtheit (ADR-034): Feld `setCount` je Katalogpaket-Teil, abgeleitet vom Set-Index. Reihenfolge: baubar, Starterfiguren-Teile, `setCount`, Teilenummer. |
+| #136 | Kernpakete (ADR-035): je Rolle ein kleines Paket (Starterfiguren plus 300 beliebteste baubare Teile) für Katalog, LDraw-Laufzeit und Shop-Export. Start, Entwurf und Farboptionen laden nur diese; die vollen Pakete folgen bei Bedarf oder nach 4 s. Entpackt beim ersten Vorschaubild 3,5 statt 20,6 MB. |
+| #137 | Einkaufsfarbe in der 3D-Vorschau (ADR-036): 107 von 124 Farben sind über exakte Namensgleichheit mit der LDraw-Farbtabelle zugeordnet; nur die Hauptfarbe eines Teils wird ersetzt. |
+
+Geschlossen: #22 (überholt durch ADR-011), #78 (TypeScript 7, siehe #132).
+
 ## 3. Datenstand (2026-10-19/20, aus den Daten gemessen)
 
 - Katalogteile gesamt 20.282, davon als 3D-Modell verfügbar 14.865 (Zuwachs durch den Refresh am 19.10.: +11 bzw. +1).
@@ -53,16 +67,22 @@ Eigentümer-Änderungen im selben Zeitraum: #116–#118 (Kaufbereich, mobile Reg
 
 ## 5. Lokal arbeiten
 
-- Klon auf der SSD: `/Volumes/PortableSSD/claude/FigForge`. Node 24, npm 11.
+- Klon: `~/Projects/FigForge` (außerhalb von `/Volumes`, daher von der Vorschau der Claude-App lesbar). Früher auf der SSD: `/Volumes/PortableSSD/claude/FigForge`. Node 24, npm 11.
+- Auf diesem Rechner scheitert Node an der Zertifikatsprüfung der npm-Registry (`UNABLE_TO_GET_ISSUER_CERT_LOCALLY`). Abhilfe ohne Abschalten der Prüfung: `NODE_EXTRA_CA_CERTS=/etc/ssl/cert.pem` vor `npm ci`, `npm run verify` usw. setzen.
 - Volle Prüfung: `npm run verify`. Braucht Python ≥ 3.9 im PATH (das Standard-Python 3.8 scheitert an einem Python-Test, nicht am Projekt).
 - Dev-Server: `npx vite --port 5199`. Die Vorschau der Claude-App kann `/Volumes` nicht lesen (macOS-Datenschutz), daher den Server aus der Shell starten.
-- `npm run test:browser` (Headless-Chrome-Regressionen) hing lokal; die CI führt es verpflichtend aus.
+- `npm run test:browser` (Headless-Chrome-Regressionen) läuft lokal durch (zuletzt 2026-10-20) und wird in der CI verpflichtend ausgeführt. Der IndexedDB-Test war dort einmal zufällig rot (`cleared`) und beim Wiederholen grün.
+- Jeder Branch bekommt eine Cloudflare-Vorschau: `https://<branch-mit-bindestrichen>-figforge.shuu9599.workers.dev`. Die Vorschau-URL steht als Kommentar im PR. Damit lässt sich Optik prüfen, ohne lokal einen Server zu starten.
 - Beim Prüfen im Browser-Pane: Ein verdeckter Pane rendert verzögert und verfälscht Ladezeiten. Zeitmessungen im Vordergrund-Tab machen.
 - Heredocs mit Apostrophen in `$(...)` scheitern in der Shell; PR-Texte besser in eine Datei schreiben und `--body-file` nutzen.
 
 ## 6. Technische Hinweise
 
 - **Startfigur und Entwurf:** `src/figure/default-figure.ts` (Piratenkapitän aus `figure-templates.ts`). Alte Entwürfe, die nur die frühere Referenzvariante enthalten, werden durch die Startfigur ersetzt. Die Startfigur muss für neue Besucher ebenfalls hydratisiert werden (alle fünf Rollenpakete, ca. 14 MB JSON entpackt, ca. 1,9 MB Transfer; im Vordergrund-Tab ca. 1,1 s mit Cache, ca. 2,9 s bei lokalem Produktionsbuild).
+- **Routen und SEO:** Neue öffentliche Seiten in `src/seo/routes.ts` eintragen (Titel/Beschreibung/`h1`-Schlüssel in `src/i18n.tsx`, deutsch und englisch). Ein Test prüft, dass die Texte existieren. Die vorab erzeugte `index.html` ist nur Text für Suchmaschinen; React ersetzt den Inhalt beim Start.
+- **Kernpakete und Katalog laden:** `data/generated/core-packages/*.json` werden von `tools/lib/core-packages.ts` aus den vollständigen Paketen abgeleitet (am Ende von `assets:ldraw-expanded`; von Hand: `npm run data:build:core-packages`). Der Validator `data:validate:core-packages` baut sie neu und vergleicht. Die Kernliste ist exakt der Anfang der vollen Reihenfolge (Test `core-catalog-loading`). Wer die Sortierung oder die Auswahl ändert, muss die Kernpakete neu bauen.
+- **Beliebtheit:** `setCount` steckt in den Katalogpaketen; `npm run data:build:catalog-packages` liest dafür `catalog-set-index.json`.
+- **Vorschau-Farben:** `data/generated/preview-colors.json` (Generator `tools/lib/preview-colors.ts`, `npm run data:build:preview-colors`). Unzugeordnete Farben stehen mit Grund darin. Laufzeit: `src/scene/preview-color.ts`. Die Sammlungsansicht nutzt es noch nicht.
 - **Semantische Suche (42 MB):** lädt erst beim ersten Tippen im Suchfeld, nicht beim Öffnen.
 - **Teilenamen:** Katalognamen bleiben englisch; `src/catalog/part-display.ts` entfernt nur Präfix, „Print/Pattern“-Suffix und Klammerhinweise. Keine Teilübersetzung (würde gemischtsprachige Labels erzeugen).
 - **Crosswalk:** `data/generated/bricklink-item-crosswalk.json` (einzeilig). Logik in `tools/lib/bricklink-item-crosswalk.ts` (`refreshBrickLinkItemCrosswalkFile` läuft in `build-ldraw-expanded-catalog.ts` vor dem Exportbau). Nach Änderungen: `npm run data:validate:bricklink`.
@@ -70,7 +90,7 @@ Eigentümer-Änderungen im selben Zeitraum: #116–#118 (Kaufbereich, mobile Reg
 
 ## 7. Offene Punkte und Risiken
 
-1. **Token für Refresh-PRs (Entscheidung Eigentümer).** Fein begrenztes Token (nur dieses Repo, Contents + Pull requests, schreiben) als Secret anlegen, Workflow legt PR damit an, CI startet ohne Freigabe. Nachteile: an das Konto gebunden, läuft spätestens nach einem Jahr ab. Alternative GitHub-App (sauberer, mehr Aufwand). Der Review bleibt in jedem Fall beim Eigentümer.
+1. **Token für Refresh-PRs (Entscheidung Eigentümer; Empfehlung: Fine-grained PAT, nur dieses Repo, ein Jahr Laufzeit, als Secret `REFRESH_PR_TOKEN`).** Fein begrenztes Token (nur dieses Repo, Contents + Pull requests, schreiben) als Secret anlegen, Workflow legt PR damit an, CI startet ohne Freigabe. Nachteile: an das Konto gebunden, läuft spätestens nach einem Jahr ab. Alternative GitHub-App (sauberer, mehr Aufwand). Der Review bleibt in jedem Fall beim Eigentümer.
 2. **Rechtlich ungeprüft:** Nutzungsbedingungen des BrickLink Catalog Downloads für die Veröffentlichung der abgeleiteten Zuordnungstabelle in einem öffentlichen Repository. Vor einem breiten Start klären.
 3. **Impressum fehlt.** Bei einer deutschen Seite mit Affiliate-Links üblich; rechtlich prüfen lassen. Datenschutz-Seite existiert (`/privacy`).
 4. **Noch nicht belegt:**
@@ -78,10 +98,14 @@ Eigentümer-Änderungen im selben Zeitraum: #116–#118 (Kaufbereich, mobile Reg
    - dass die Dependabot-Gruppe `react` greift (erst beim nächsten wöchentlichen Dependabot-Lauf sichtbar),
    - `actions/upload-artifact` v7: ein von drei Upload-Schritten hat nachweislich funktioniert, die beiden anderen laufen nur bei zu prüfendem Zubehör,
    - die Live-Seite nach den letzten Merges wurde nicht erneut mit eigenen Augen geprüft (die CI-Browsertests auf `main` sind grün).
-5. **Daten, die Generator-Änderungen brauchen** (generierte Daten nicht von Hand ändern): Sortierung der Teile nach Beliebtheit (Anzahl Sets), Aufteilen der großen Katalogpakete für schnelleren Start.
-6. **Mehrfarbige Teile:** Die gewählte Einkaufsfarbe färbt die 3D-Vorschau noch nicht um (Oberfläche weist darauf hin).
+5. **Vorschau-Farben:** 17 Farben sind nicht zugeordnet (Liste mit Grund in `preview-colors.json`); bei mehrfarbigen Teilen ändert sich nur die Hauptfarbe; die Sammlungsansicht zeigt weiter Modellfarben.
+6. **Refresh-Pfad nach den Änderungen dieser Runde nicht im Echtbetrieb gesehen:** `setCount`, Kernpakete und Vorschau-Farben entstehen im Refresh. Beim nächsten Montags-Lauf prüfen, dass `verify` grün bleibt und die PR-Diffs plausibel sind.
+7. **Search Console / Bing Webmaster** noch nicht eingerichtet; Sitemap dort einreichen (`https://createyourminifig.com/sitemap.xml`).
+8. **Marken-Hinweis** auf der Landingpage („unabhängiges Projekt, nicht verbunden mit der LEGO Gruppe“) ist ein Entwurf und nicht rechtlich geprüft.
 
-## 8. SEO-Plan (Vorschlag, nicht umgesetzt)
+## 8. SEO-Plan
+
+**Stand 2026-10-20:** Schritt 2 (Technik) und die Landingpage samt Themenseiten sind umgesetzt (#131, #134). Offen: Search Console, Impressum, Ratgeber, englische Version. Der folgende Befund beschreibt den Zustand **vor** diesen PRs.
 
 **Befund 2026-10-20 (am Live-HTML geprüft):**
 - Reine JavaScript-App: im Rohzustand nur `<div id="root"></div>`, kein Text, keine Überschrift.
@@ -95,8 +119,8 @@ Eigentümer-Änderungen im selben Zeitraum: #116–#118 (Kaufbereich, mobile Reg
 1. Search Console (und Bing Webmaster) einrichten, damit nach 2–6 Wochen Daten da sind.
 2. Technik: Seiten vorab rendern (statisches HTML mit Titel, Beschreibung, Canonical, `h1`, Text), echte `robots.txt` und `sitemap.xml`, Platzhalter-Beschreibung ersetzen, Open-Graph, sinnvolle strukturierte Daten.
 3. Inhalte (wenige, jeweils eine eigene Suchabsicht):
-   - Startseite als Landingpage, Builder unter `/builder`.
-   - Vier Themenseiten (Piraten, Ritter, Weltraum, Feuerwehr) mit eigener URL, je drei Figuren mit echten Teilenummern, Tipps, passenden Sets.
+   - ~~Startseite als Landingpage, Builder unter `/builder`.~~ erledigt (#134)
+   - ~~Vier Themenseiten mit eigener URL, je drei Figuren mit Teilenummern, Tipps, passenden Sets.~~ erledigt (#134); Texte sind Entwürfe.
    - Ratgeber „Minifiguren-Teile bestellen“ (BrickLink, Pick a Brick, Rebrickable im Vergleich; die Uploads wurden praktisch getestet).
    - Ratgeber „Teilenummern verstehen“ (Kopf 3626, Torso 973, Beine 970, `pr`/`pat`/`c01`).
    - Ratgeber „Minifigur verschenken“.
@@ -107,7 +131,8 @@ Eigentümer-Änderungen im selben Zeitraum: #116–#118 (Kaufbereich, mobile Reg
 
 ## 9. Ausgeführte Prüfungen (Auszug)
 
-- `npm run verify` zuletzt grün auf dem Stand von #129 (357 Tests, alle Daten-Validatoren, Typecheck, Lint, Build, Cloudflare-Check).
+- `npm run verify` zuletzt grün auf dem Stand von #137 (379 Tests, alle Daten-Validatoren inklusive Kernpakete und Vorschau-Farben, Typecheck, Lint, Build, Cloudflare-Check); `npm run test:browser` lokal grün.
+- Live am 2026-10-20 geprüft: `robots.txt`, Sitemap (10 URLs), Titel/Canonical von `/ideas/pirates`, Landingpage unter `/`, `/builder` mit 3,5 MB entpackt beim ersten Vorschaubild.
 - CI `Verify` (inkl. verpflichtender Browser-Regressionen) auf `main` grün nach #112, #113, #125, #126, #127, #129.
 - Manueller Refresh-Lauf nach #129 am 2026-10-19: grün, neue Schritte (Crosswalk-Validierung, Altersprüfung) ohne Fehler.
 - Der automatische Montags-Lauf vom 2026-10-19 (09:59 UTC) lief erfolgreich, vor den BrickLink-Änderungen.
