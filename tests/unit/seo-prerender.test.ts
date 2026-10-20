@@ -72,3 +72,43 @@ describe("landing and builder routes", () => {
     expect(renderSitemapXml()).toContain("<loc>https://createyourminifig.com/builder</loc>");
   });
 });
+
+describe("English pages", () => {
+  const route = (path: string) => SEO_ROUTES.find((entry) => entry.path === path)!;
+
+  it("renders English copy, language and canonical under /en", () => {
+    const html = renderRoutePage(TEMPLATE, route("/ideas/pirates"), messages.en, "en");
+
+    expect(html).toContain('<html lang="en">');
+    expect(html).toContain("<title>Customizable pirate minifigure ideas | FigForge</title>");
+    expect(html).toContain('<link rel="canonical" href="https://createyourminifig.com/en/ideas/pirates" />');
+    expect(html).toContain('<meta property="og:locale" content="en_US" />');
+    expect(html).toContain('<meta property="og:locale:alternate" content="de_DE" />');
+  });
+
+  it("links both language versions and the German default with hreflang", () => {
+    for (const language of ["de", "en"] as const) {
+      const html = renderRoutePage(TEMPLATE, route("/builder"), messages[language], language);
+      expect(html).toContain('hreflang="de" href="https://createyourminifig.com/builder"');
+      expect(html).toContain('hreflang="en" href="https://createyourminifig.com/en/builder"');
+      expect(html).toContain('hreflang="x-default" href="https://createyourminifig.com/builder"');
+    }
+  });
+
+  it("keeps the local-only collection page out of search in both languages", () => {
+    const html = renderRoutePage(TEMPLATE, route("/collection"), messages.en, "en");
+    expect(html).toContain('<meta name="robots" content="noindex" />');
+    expect(html).not.toContain("hreflang");
+    expect(renderSitemapXml()).not.toContain("collection");
+  });
+
+  it("lists every indexable page in both languages with alternates in the sitemap", () => {
+    const sitemap = renderSitemapXml();
+    const indexable = SEO_ROUTES.filter((entry) => entry.indexable).length;
+
+    expect(sitemap.match(/<loc>/gu)).toHaveLength(indexable * 2);
+    expect(sitemap).toContain("<loc>https://createyourminifig.com/en/</loc>");
+    expect(sitemap).toContain('xmlns:xhtml="http://www.w3.org/1999/xhtml"');
+    expect(sitemap).toContain('<xhtml:link rel="alternate" hreflang="en" href="https://createyourminifig.com/en/ideas/space"/>');
+  });
+});

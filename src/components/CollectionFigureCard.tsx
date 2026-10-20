@@ -1,4 +1,5 @@
 import type { SavedFigure } from "../storage/figure-draft-store.js";
+import { localizedPath } from "../app/routing.js";
 import { FigurePreviewCard } from "./FigurePreviewCard.js";
 import { Button } from "./ui/Button.js";
 
@@ -67,7 +68,7 @@ export function CollectionFigureCard({
           >
             {onStage ? labels.removeFromStage : stageFull ? labels.stageFull : labels.addToStage}
           </Button>
-          <a className="ff-button ff-button--sm ff-button--ghost" href={`/builder?figureId=${encodeURIComponent(saved.id)}`}>
+          <a className="ff-button ff-button--sm ff-button--ghost" href={`${localizedPath("/builder", language)}?figureId=${encodeURIComponent(saved.id)}`}>
             {labels.openBuilder}
           </a>
           <Button onClick={onBuy} size="sm" variant="primary">

@@ -3,7 +3,7 @@ import { AppHeader } from "./AppHeader.js";
 import { useI18n } from "../i18n.js";
 
 export function PrivacyPage() {
-  const { t } = useI18n();
+  const { path, t } = useI18n();
 
   useEffect(() => {
     const previousTitle = document.title;
@@ -16,7 +16,7 @@ export function PrivacyPage() {
       <AppHeader active="privacy" />
 
       <div className="methodology-page">
-        <a className="methodology-page__back" href="/sets">← {t("privacy.back")}</a>
+        <a className="methodology-page__back" href={path("/sets")}>← {t("privacy.back")}</a>
         <section className="workspace-methodology" aria-labelledby="privacy-title">
           <p className="methodology-page__eyebrow">FigForge</p>
           <h1 id="privacy-title">{t("privacy.title")}</h1>

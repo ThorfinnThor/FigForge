@@ -24,7 +24,7 @@ const SECONDARY_ROUTES = [
 ] as const;
 
 export function AppHeader({ active, onNavigate, children }: AppHeaderProps) {
-  const { language, setLanguage, t } = useI18n();
+  const { language, path, setLanguage, t } = useI18n();
   const moreRef = useRef<HTMLDetailsElement>(null);
   const secondaryIsActive = SECONDARY_ROUTES.some(({ id }) => id === active);
 
@@ -51,7 +51,7 @@ export function AppHeader({ active, onNavigate, children }: AppHeaderProps) {
     <a
       aria-current={active === id ? "page" : undefined}
       className={`${className}${active === id ? ` ${className}--active` : ""}`}
-      href={href}
+      href={path(href)}
       key={id}
       onClick={onNavigate}
     >
@@ -61,7 +61,7 @@ export function AppHeader({ active, onNavigate, children }: AppHeaderProps) {
 
   return (
     <header className="app-header">
-      <a className="wordmark" href="/" onClick={onNavigate}>Fig<span>Forge</span></a>
+      <a className="wordmark" href={path("/")} onClick={onNavigate}>Fig<span>Forge</span></a>
       <nav className="app-nav" aria-label={t("nav.label")}>
         {PRIMARY_ROUTES.map((route) => link(route, "app-nav__link"))}
         <details className="app-more" ref={moreRef}>

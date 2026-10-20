@@ -1,5 +1,6 @@
 import { lazy, Suspense } from "react";
 import { I18nProvider, useI18n } from "../i18n.js";
+import { germanPath } from "./routing.js";
 
 const LandingPage = lazy(() => import("../components/LandingPage.js")
   .then((module) => ({ default: module.LandingPage })));
@@ -25,7 +26,8 @@ const hasLegacyBuilderIntent = (): boolean => {
 
 function AppRoutes() {
   const { t } = useI18n();
-  const pathname = window.location.pathname.replace(/\/+$/u, "") || "/";
+  // Re-read on every render: switching the language rewrites the URL in place.
+  const pathname = germanPath(window.location.pathname);
   const page = pathname === "/ideas" || pathname.startsWith("/ideas/")
     ? <IdeasPage />
     : pathname === "/sets"

@@ -680,6 +680,36 @@ const testLandingPage = async (client: CdpClient, origin: string): Promise<void>
   await waitFor(client, "Boolean(document.querySelector('#catalog-heading'))", "builder at /builder");
 };
 
+const testEnglishUrls = async (client: CdpClient, origin: string): Promise<void> => {
+  await navigate(client, `${origin}/en/`);
+  await waitFor(client, "Boolean(document.querySelector('.landing-page h1'))", "English landing page");
+  const english = await evaluate<{ heading: string; lang: string; builderHref: string | null; picker: string }>(client, `(() => ({
+    heading: document.querySelector('.landing-page h1')?.textContent ?? '',
+    lang: document.documentElement.lang,
+    builderHref: document.querySelector('.landing-page__actions a')?.getAttribute('href') ?? null,
+    picker: document.querySelector('.language-picker select')?.value ?? '',
+  }))()`);
+  assert.deepEqual(english, {
+    heading: "Assemble your minifigure from real parts.",
+    lang: "en",
+    builderHref: "/en/builder",
+    picker: "en",
+  });
+
+  // The picker switches in place and rewrites the URL to the German page.
+  await evaluate(client, `(() => {
+    const select = document.querySelector('.language-picker select');
+    Object.getOwnPropertyDescriptor(HTMLSelectElement.prototype, 'value').set.call(select, 'de');
+    select.dispatchEvent(new Event('change', { bubbles: true }));
+  })()`);
+  await waitFor(client, "location.pathname === '/' && document.querySelector('.landing-page h1')?.textContent?.startsWith('Stelle deine')", "German page after the picker");
+  assert.equal(await evaluate(client, "document.documentElement.lang"), "de");
+
+  await navigate(client, `${origin}/en/builder`);
+  await waitFor(client, "Boolean(document.querySelector('#catalog-heading'))", "English builder");
+  assert.equal(await evaluate(client, "document.querySelector('#catalog-heading')?.textContent"), "Build the character you imagine.");
+};
+
 const testCoreFirstCatalogLoading = async (client: CdpClient, origin: string): Promise<void> => {
   await navigate(client, `${origin}/builder`);
   await waitFor(
@@ -726,6 +756,8 @@ const run = async (): Promise<void> => {
     process.stdout.write("✓ real IndexedDB commit and abort-after-request-success\n");
     await testLandingPage(client, previewServer.origin);
     process.stdout.write("✓ landing page at / and builder at /builder\n");
+    await testEnglishUrls(client, previewServer.origin);
+    process.stdout.write("✓ English pages under /en and the language picker\n");
     await testCoreFirstCatalogLoading(client, previewServer.origin);
     process.stdout.write("✓ core packages first, full catalog afterwards\n");
     await testMountedMobileKeyboard(client, previewServer.origin);

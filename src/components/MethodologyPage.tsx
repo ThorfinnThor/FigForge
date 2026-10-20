@@ -2,14 +2,14 @@ import { AppHeader } from "./AppHeader.js";
 import { useI18n } from "../i18n.js";
 
 export function MethodologyPage() {
-  const { t } = useI18n();
+  const { path, t } = useI18n();
 
   return (
     <div className="app-shell methodology-shell">
       <AppHeader active="methodology" />
 
       <div className="methodology-page">
-        <a className="methodology-page__back" href="/builder">← {t("methodology.back")}</a>
+        <a className="methodology-page__back" href={path("/builder")}>← {t("methodology.back")}</a>
         <section className="workspace-methodology" aria-labelledby="methodology-title">
           <p className="methodology-page__eyebrow">FigForge</p>
           <h1 id="methodology-title">{t("methodology.title")}</h1>

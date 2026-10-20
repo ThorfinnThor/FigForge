@@ -1,4 +1,8 @@
+import { localizedPath } from "../app/routing.js";
+import type { Language } from "../i18n.js";
+
 export const SITE_ORIGIN = "https://createyourminifig.com";
+export const SEO_LANGUAGES = ["de", "en"] as const satisfies readonly Language[];
 
 export type SeoRoute = {
   path: string;
@@ -34,6 +38,11 @@ export const SEO_ROUTES: readonly SeoRoute[] = [
   { path: "/collection", titleKey: "collection.metaTitle", descriptionKey: "builder.metaDescription", headingKey: "nav.collection", ledeKey: "builder.metaDescription", indexable: false },
 ];
 
+/** Absolute URL of a path, which is already language-specific. */
 export const canonicalUrl = (path: string): string => (
   path === "/" ? `${SITE_ORIGIN}/` : `${SITE_ORIGIN}${path}`
 );
+
+/** Path of a route in a language; routes are identified by their German path. */
+export const routePath = (route: Pick<SeoRoute, "path">, language: Language): string =>
+  localizedPath(route.path, language);
