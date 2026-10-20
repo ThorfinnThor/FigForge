@@ -9,7 +9,7 @@ export function MethodologyPage() {
       <AppHeader active="methodology" />
 
       <div className="methodology-page">
-        <a className="methodology-page__back" href="/">← {t("methodology.back")}</a>
+        <a className="methodology-page__back" href="/builder">← {t("methodology.back")}</a>
         <section className="workspace-methodology" aria-labelledby="methodology-title">
           <p className="methodology-page__eyebrow">FigForge</p>
           <h1 id="methodology-title">{t("methodology.title")}</h1>

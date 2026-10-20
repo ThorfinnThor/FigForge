@@ -67,7 +67,7 @@ export function CollectionFigureCard({
           >
             {onStage ? labels.removeFromStage : stageFull ? labels.stageFull : labels.addToStage}
           </Button>
-          <a className="ff-button ff-button--sm ff-button--ghost" href={`/?figureId=${encodeURIComponent(saved.id)}`}>
+          <a className="ff-button ff-button--sm ff-button--ghost" href={`/builder?figureId=${encodeURIComponent(saved.id)}`}>
             {labels.openBuilder}
           </a>
           <Button onClick={onBuy} size="sm" variant="primary">

@@ -307,7 +307,7 @@ const navigate = async (client: CdpClient, url: string): Promise<void> => {
 };
 
 const testIndexedDbCommitAndAbort = async (client: CdpClient, origin: string): Promise<void> => {
-  await navigate(client, origin);
+  await navigate(client, `${origin}/builder`);
   const result = await evaluate<{
     loadedName: string | null;
     abortRejected: boolean;
@@ -387,7 +387,7 @@ const testMountedMobileKeyboard = async (client: CdpClient, origin: string): Pro
     deviceScaleFactor: 1,
     mobile: true,
   });
-  await navigate(client, origin);
+  await navigate(client, `${origin}/builder`);
   await waitFor(client, "document.querySelectorAll('[role=tab]').length === 3", "mounted mobile tabs");
   await evaluate(client, "document.querySelector('#mobile-tab-parts').focus()");
   assert.equal(await activeMobileTab(client), "mobile-tab-parts");
@@ -418,7 +418,7 @@ const testMountedMobilePurchaseFlow = async (client: CdpClient, origin: string):
     deviceScaleFactor: 1,
     mobile: true,
   });
-  await navigate(client, origin);
+  await navigate(client, `${origin}/builder`);
   await waitFor(client, "Boolean(document.querySelector('#mobile-tab-figure'))", "mobile figure tab");
   const figureTabOpened = await evaluate<boolean>(client, `(() => {
     const button = document.querySelector('#mobile-tab-figure');
@@ -563,7 +563,7 @@ const clickButtonWithText = async (client: CdpClient, text: string): Promise<boo
 
 const testNamedCollectionSave = async (client: CdpClient, origin: string): Promise<void> => {
   const figureName = "Browser Named Hero";
-  await navigate(client, origin);
+  await navigate(client, `${origin}/builder`);
   await waitFor(
     client,
     `Boolean([...document.querySelectorAll('button')].find((button) =>
@@ -594,7 +594,7 @@ const testNamedCollectionSave = async (client: CdpClient, origin: string): Promi
 };
 
 const testLDrawAndWebGlFailures = async (client: CdpClient, origin: string): Promise<void> => {
-  await navigate(client, origin);
+  await navigate(client, `${origin}/builder`);
   await waitFor(client, `Boolean(document.querySelector('.scene-lab[data-scene-state="ready"][data-selection-state="synchronized"] canvas.viewport'))`, "initial 3D preview", 60_000);
 
   await evaluate(client, `(() => {
@@ -666,6 +666,20 @@ const testLDrawAndWebGlFailures = async (client: CdpClient, origin: string): Pro
   await waitFor(client, `!${textIncludes("Die 3D-Darstellung wurde unterbrochen")} && Boolean(document.querySelector('.scene-lab[data-scene-state="ready"][data-selection-state="synchronized"]'))`, "WebGL scene rebuild", 60_000);
 };
 
+const testLandingPage = async (client: CdpClient, origin: string): Promise<void> => {
+  await navigate(client, origin);
+  await waitFor(client, "Boolean(document.querySelector('.landing-page h1'))", "landing page heading");
+  const landing = await evaluate<{ startHref: string | null; worldLinks: number; builderPresent: boolean }>(client, `(() => ({
+    startHref: document.querySelector('.landing-page__actions a')?.getAttribute('href') ?? null,
+    worldLinks: document.querySelectorAll('.ideas-worlds a[href^="/ideas/"]').length,
+    builderPresent: Boolean(document.querySelector('#catalog-heading')),
+  }))()`);
+  assert.deepEqual(landing, { startHref: "/builder", worldLinks: 4, builderPresent: false });
+
+  await navigate(client, `${origin}/builder`);
+  await waitFor(client, "Boolean(document.querySelector('#catalog-heading'))", "builder at /builder");
+};
+
 const run = async (): Promise<void> => {
   const storageHarness = await startStorageHarness();
   const previewServer = await startVitePreview();
@@ -682,6 +696,8 @@ const run = async (): Promise<void> => {
   try {
     await testIndexedDbCommitAndAbort(client, `${storageHarness.origin}/__browser-storage-qa`);
     process.stdout.write("✓ real IndexedDB commit and abort-after-request-success\n");
+    await testLandingPage(client, previewServer.origin);
+    process.stdout.write("✓ landing page at / and builder at /builder\n");
     await testMountedMobileKeyboard(client, previewServer.origin);
     process.stdout.write("✓ mounted mobile ArrowLeft/ArrowRight/Home/End navigation\n");
     await testMountedMobilePurchaseFlow(client, previewServer.origin);

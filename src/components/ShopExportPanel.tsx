@@ -186,7 +186,7 @@ export function ShopExportPanel({ selections, stepNumber = 2 }: ShopExportPanelP
                 {figuresNeedingColors.map(({ id, name }) => (
                   <a
                     className="ff-button ff-button--ghost ff-button--sm"
-                    href={`/?figureId=${encodeURIComponent(id)}`}
+                    href={`/builder?figureId=${encodeURIComponent(id)}`}
                     key={id}
                   >
                     {t("shop.collectionColors.open", { name })}

@@ -62,3 +62,13 @@ describe("SEO prerendering", () => {
     expect(() => renderRoutePage(TEMPLATE, SEO_ROUTES[0]!, {})).toThrow(/Missing German message/u);
   });
 });
+
+describe("landing and builder routes", () => {
+  it("prerenders the landing page at / and the builder at /builder", () => {
+    const landing = renderRoutePage(TEMPLATE, SEO_ROUTES.find((route) => route.path === "/")!, messages.de);
+    const builder = renderRoutePage(TEMPLATE, SEO_ROUTES.find((route) => route.path === "/builder")!, messages.de);
+    expect(landing).toContain("<h1>Stelle deine Minifigur aus echten Teilen zusammen.</h1>");
+    expect(builder).toContain("<h1>Baue den Charakter, den du dir vorstellst.</h1>");
+    expect(renderSitemapXml()).toContain("<loc>https://createyourminifig.com/builder</loc>");
+  });
+});

@@ -17,7 +17,8 @@ const WORLD_KEYS = [
 ] as const;
 
 export const SEO_ROUTES: readonly SeoRoute[] = [
-  { path: "/", titleKey: "home.metaTitle", descriptionKey: "home.metaDescription", headingKey: "catalog.heading", ledeKey: "home.metaDescription", indexable: true },
+  { path: "/", titleKey: "home.metaTitle", descriptionKey: "home.metaDescription", headingKey: "landing.title", ledeKey: "landing.lede", indexable: true },
+  { path: "/builder", titleKey: "builder.metaTitle", descriptionKey: "builder.metaDescription", headingKey: "catalog.heading", ledeKey: "catalog.lede", indexable: true },
   { path: "/ideas", titleKey: "ideas.metaTitle", descriptionKey: "ideas.metaDescription", headingKey: "ideas.title", ledeKey: "ideas.lede", indexable: true },
   ...WORLD_KEYS.map(({ id, key }): SeoRoute => ({
     path: `/ideas/${id}`,
@@ -30,7 +31,7 @@ export const SEO_ROUTES: readonly SeoRoute[] = [
   { path: "/sets", titleKey: "products.metaTitle", descriptionKey: "products.metaDescription", headingKey: "products.title", ledeKey: "products.lede", indexable: true },
   { path: "/methodology", titleKey: "methodology.metaTitle", descriptionKey: "methodology.metaDescription", headingKey: "methodology.title", ledeKey: "methodology.metaDescription", indexable: true },
   { path: "/privacy", titleKey: "privacy.metaTitle", descriptionKey: "privacy.metaDescription", headingKey: "privacy.title", ledeKey: "privacy.metaDescription", indexable: true },
-  { path: "/collection", titleKey: "collection.metaTitle", descriptionKey: "home.metaDescription", headingKey: "nav.collection", ledeKey: "home.metaDescription", indexable: false },
+  { path: "/collection", titleKey: "collection.metaTitle", descriptionKey: "builder.metaDescription", headingKey: "nav.collection", ledeKey: "builder.metaDescription", indexable: false },
 ];
 
 export const canonicalUrl = (path: string): string => (

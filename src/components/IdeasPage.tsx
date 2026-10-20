@@ -6,6 +6,24 @@ import { FigurePreviewCard } from "./FigurePreviewCard.js";
 import { productsForTheme } from "../products/curated-products.js";
 import { CuratedProductGrid } from "./CuratedProductGrid.js";
 
+const PART_SLOTS = ["head", "headwear", "torsoAssembly", "legsAssembly", "handAccessory"] as const;
+
+/** Reads the LDraw number from component ids such as "catalog:head:3626bpr0027". */
+const partNumbers = (template: (typeof FIGURE_TEMPLATES)[number]): ReadonlyArray<{ slot: (typeof PART_SLOTS)[number]; number: string }> => (
+  PART_SLOTS.flatMap((slot) => {
+    const componentId = template.document.selections.find((selection) => selection.slot === slot)?.componentId;
+    const number = componentId?.split(":")[2];
+    return number ? [{ slot, number }] : [];
+  })
+);
+
+const TIP_KEYS: Record<string, string> = {
+  pirates: "ideas.world.pirates.tip",
+  castle: "ideas.world.castle.tip",
+  space: "ideas.world.space.tip",
+  "fire-rescue": "ideas.world.fire.tip",
+};
+
 const THEME_WORLDS = [
   { id: "pirates", accent: "gold", nameKey: "ideas.world.pirates.name", descriptionKey: "ideas.world.pirates.description", rolesKey: "ideas.world.pirates.roles", metaTitleKey: "ideas.world.pirates.metaTitle", metaDescriptionKey: "ideas.world.pirates.metaDescription" },
   { id: "castle", accent: "red", nameKey: "ideas.world.castle.name", descriptionKey: "ideas.world.castle.description", rolesKey: "ideas.world.castle.roles", metaTitleKey: "ideas.world.castle.metaTitle", metaDescriptionKey: "ideas.world.castle.metaDescription" },
@@ -129,7 +147,20 @@ export function IdeasPage() {
                 <div className="idea-card__body">
                   <h3>{t(template.nameKey)}</h3>
                   <p>{t(template.descriptionKey)}</p>
-                  <a className="ff-button ff-button--primary idea-card__cta" href={`/?template=${encodeURIComponent(template.id)}`}>
+                  {selectedTheme ? (
+                    <details className="idea-card__parts">
+                      <summary>{t("ideas.parts.title")}</summary>
+                      <dl>
+                        {partNumbers(template).map(({ slot, number }) => (
+                          <div key={slot}>
+                            <dt>{t(`ideas.part.${slot}`)}</dt>
+                            <dd>{number}</dd>
+                          </div>
+                        ))}
+                      </dl>
+                    </details>
+                  ) : null}
+                  <a className="ff-button ff-button--primary idea-card__cta" href={`/builder?template=${encodeURIComponent(template.id)}`}>
                     {t("ideas.customize")}
                   </a>
                 </div>
@@ -137,6 +168,20 @@ export function IdeasPage() {
             ))}
           </ul>
         </section>
+
+        {selectedTheme ? (
+          <section className="ideas-section" aria-labelledby="ideas-tip-title">
+            <div className="ideas-page__section-heading">
+              <div>
+                <p className="ideas-page__eyebrow">{t("ideas.tips.eyebrow")}</p>
+                <h2 id="ideas-tip-title">{t("ideas.tips.title")}</h2>
+              </div>
+              <div className="ideas-page__section-aside">
+                <p>{t(TIP_KEYS[selectedTheme] ?? "")}</p>
+              </div>
+            </div>
+          </section>
+        ) : null}
 
         <section className="ideas-section" aria-labelledby="ideas-products-title">
           <div className="ideas-page__section-heading">
