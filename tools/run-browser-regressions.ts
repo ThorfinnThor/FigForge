@@ -680,6 +680,34 @@ const testLandingPage = async (client: CdpClient, origin: string): Promise<void>
   await waitFor(client, "Boolean(document.querySelector('#catalog-heading'))", "builder at /builder");
 };
 
+const testCoreFirstCatalogLoading = async (client: CdpClient, origin: string): Promise<void> => {
+  await navigate(client, `${origin}/builder`);
+  await waitFor(
+    client,
+    "Boolean(document.querySelector('.scene-lab[data-scene-state=\"ready\"][data-selection-state=\"synchronized\"]'))",
+    "default figure preview",
+    60_000,
+  );
+  const atReady = await evaluate<{ elapsedMs: number; largestScriptBytes: number; complete: string | null }>(client, `(() => ({
+    elapsedMs: performance.now(),
+    largestScriptBytes: Math.max(...performance.getEntriesByType('resource')
+      .filter((entry) => /[.](js|json)(?:$|[?])/u.test(entry.name))
+      .map((entry) => entry.decodedBodySize)),
+    complete: document.querySelector('.catalog-search-sticky')?.getAttribute('data-catalog-complete') ?? null,
+  }))()`);
+  // The full catalog is prefetched 4 s after load; before that only the core slice may be loaded.
+  if (atReady.elapsedMs < 3_000) {
+    assert.equal(atReady.complete, "false", "catalog must start as the core slice");
+    assert.ok(atReady.largestScriptBytes < 1_000_000, `no full role package at first preview (${atReady.largestScriptBytes} bytes)`);
+  }
+  await waitFor(
+    client,
+    "document.querySelector('.catalog-search-sticky')?.getAttribute('data-catalog-complete') === 'true'",
+    "full catalog after the core slice",
+    30_000,
+  );
+};
+
 const run = async (): Promise<void> => {
   const storageHarness = await startStorageHarness();
   const previewServer = await startVitePreview();
@@ -698,6 +726,8 @@ const run = async (): Promise<void> => {
     process.stdout.write("✓ real IndexedDB commit and abort-after-request-success\n");
     await testLandingPage(client, previewServer.origin);
     process.stdout.write("✓ landing page at / and builder at /builder\n");
+    await testCoreFirstCatalogLoading(client, previewServer.origin);
+    process.stdout.write("✓ core packages first, full catalog afterwards\n");
     await testMountedMobileKeyboard(client, previewServer.origin);
     process.stdout.write("✓ mounted mobile ArrowLeft/ArrowRight/Home/End navigation\n");
     await testMountedMobilePurchaseFlow(client, previewServer.origin);
@@ -712,7 +742,8 @@ const run = async (): Promise<void> => {
     client.close();
     chrome.process.kill("SIGTERM");
     await Promise.all([storageHarness.server.close(), previewServer.server.close()]);
-    await rm(chrome.profileDirectory, { force: true, recursive: true });
+    // Chrome may still be flushing its profile right after SIGTERM, so retry on ENOTEMPTY.
+    await rm(chrome.profileDirectory, { force: true, recursive: true, maxRetries: 10, retryDelay: 200 });
   }
 };
 

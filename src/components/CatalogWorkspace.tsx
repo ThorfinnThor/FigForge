@@ -13,7 +13,9 @@ import {
   digitalConnectivityForComponent,
   digitallySupportedLDrawEntryForComponent,
   hasExactPrintedGeometry,
+  loadCatalogCoreParts,
   loadCatalogParts,
+  loadComponentsForSelections,
   referenceVariant,
   thumbnailForComponent,
   verifiedLDrawEntryForComponent,
@@ -53,7 +55,7 @@ import type { CatalogPackagePart } from "../contracts/catalog-package.js";
 import type { LDrawCatalogRole, LDrawCatalogSelection } from "../scene/types.js";
 import { useI18n } from "../i18n.js";
 import type { ShopExportSelection } from "../procurement/shop-export.js";
-import { loadShopExportLookup } from "../procurement/shop-export-data.js";
+import { loadShopExportLookupForParts } from "../procurement/shop-export-data.js";
 import type { ShopExportColor } from "../contracts/shop-export.js";
 import { MOBILE_TAB_ORDER, mobileTabForKey, type MobileTab } from "./mobile-tab-navigation.js";
 
@@ -67,6 +69,8 @@ type FigureSnapshot = {
   selectedColorByRole: Partial<Record<CatalogRole, number>>;
 };
 
+/** The full catalog is fetched this long after load even if the user has not asked for it yet. */
+const FULL_CATALOG_PREFETCH_MS = 4_000;
 const DESKTOP_VISIBLE_PARTS_BATCH = 80;
 const MOBILE_VISIBLE_PARTS_BATCH = 24;
 const MAX_UNDO_HISTORY = 50;
@@ -123,6 +127,10 @@ export function CatalogWorkspace() {
   const deferredQuery = useDeferredValue(query);
   const [catalogParts, setCatalogParts] = useState<readonly CatalogPackagePart[]>([]);
   const [catalogLoadState, setCatalogLoadState] = useState<CatalogLoadState>("loading");
+  /** False while only the small core slice of the catalog is shown. */
+  const [catalogComplete, setCatalogComplete] = useState(false);
+  const [fullCatalogWanted, setFullCatalogWanted] = useState(false);
+  const catalogCompleteRef = useRef(false);
   const [catalogLoadRevision, setCatalogLoadRevision] = useState(0);
   const [catalogViewMode, setCatalogViewMode] = useState<CatalogViewMode>("exact");
   const [selectedCatalogSet, setSelectedCatalogSet] = useState<CatalogSetSelection | null>(null);
@@ -195,21 +203,60 @@ export function CatalogWorkspace() {
   const filteredComponents = searchResult.results.map(({ component }) => component);
   const visibleComponents = filteredComponents.slice(0, visiblePartCount);
 
+  // Anything that needs more than the core slice (searching, other views, reaching the end
+  // of the list) starts the full catalog download immediately instead of waiting for the timer.
+  const firstPageSize = isMobileLayout ? MOBILE_VISIBLE_PARTS_BATCH : DESKTOP_VISIBLE_PARTS_BATCH;
+  const reachedEndOfCoreList = catalogLoadState === "ready"
+    && visiblePartCount > firstPageSize
+    && visiblePartCount >= filteredComponents.length - firstPageSize;
+  const needsFullCatalog = query.trim().length > 0
+    || catalogViewMode !== "exact"
+    || selectedCatalogSet !== null
+    || reachedEndOfCoreList;
+  useEffect(() => {
+    if (needsFullCatalog) setFullCatalogWanted(true);
+  }, [needsFullCatalog]);
+
   useEffect(() => {
     let active = true;
+    catalogCompleteRef.current = false;
+    setCatalogComplete(false);
     setCatalogLoadState("loading");
     setCatalogParts([]);
+    void loadCatalogCoreParts(activeCategory)
+      .then((parts) => {
+        // The full list may already have won the race; never replace it with the core slice.
+        if (!active || catalogCompleteRef.current) return;
+        setCatalogParts(parts);
+        setCatalogLoadState("ready");
+      })
+      .catch(() => {
+        if (active && !catalogCompleteRef.current) setCatalogLoadState("error");
+      });
+    return () => { active = false; };
+  }, [activeCategory, catalogLoadRevision]);
+
+  useEffect(() => {
+    if (!fullCatalogWanted) return;
+    let active = true;
     void loadCatalogParts(activeCategory)
       .then((parts) => {
         if (!active) return;
+        catalogCompleteRef.current = true;
         setCatalogParts(parts);
         setCatalogLoadState("ready");
+        setCatalogComplete(true);
       })
       .catch(() => {
         if (active) setCatalogLoadState("error");
       });
     return () => { active = false; };
-  }, [activeCategory, catalogLoadRevision]);
+  }, [activeCategory, catalogLoadRevision, fullCatalogWanted]);
+
+  useEffect(() => {
+    const timer = window.setTimeout(() => setFullCatalogWanted(true), FULL_CATALOG_PREFETCH_MS);
+    return () => window.clearTimeout(timer);
+  }, []);
 
   useEffect(() => {
     if (!semanticSearchEnabled) return;
@@ -409,7 +456,10 @@ export function CatalogWorkspace() {
       setSelectedColorByRole({});
       return () => { active = false; };
     }
-    void loadShopExportLookup(selected.map(({ slot }) => slot)).then((lookup) => {
+    void loadShopExportLookupForParts(selected.map(({ slot, component }) => ({
+      slot,
+      rebrickablePartNum: component.rebrickablePartNum,
+    }))).then((lookup) => {
       if (!active) return;
       const options = Object.fromEntries(selected.map(({ component, slot }) => [
         slot,
@@ -443,13 +493,15 @@ export function CatalogWorkspace() {
     lenient = false,
   ): Promise<number> => {
     restoreOperationRef.current = operation;
-    const roles = [...new Set(document.selections.map(({ slot }) => slot))];
-    await Promise.all(roles.map(loadCatalogParts));
+    await loadComponentsForSelections(document.selections);
     if (restoreOperationRef.current !== operation) throw new Error(RESTORE_SUPERSEDED_ERROR);
     const restored = selectionsFromFigureDocument(document, isSupportedDocumentSelection);
     const droppedCount = document.selections.length - Object.keys(restored).length;
     if (droppedCount > 0 && !lenient) throw new Error("unsupported");
-    const lookup = await loadShopExportLookup(roles);
+    const lookup = await loadShopExportLookupForParts(Object.entries(restored).flatMap(([slot, componentId]) => {
+      const component = builderComponentForId(componentId);
+      return component ? [{ slot: slot as CatalogRole, rebrickablePartNum: component.rebrickablePartNum }] : [];
+    }));
     if (restoreOperationRef.current !== operation) throw new Error(RESTORE_SUPERSEDED_ERROR);
     const restoredColors = colorsFromFigureDocument(document, (componentId, slot, colorId) => {
       const component = builderComponentForId(componentId);
@@ -783,7 +835,7 @@ export function CatalogWorkspace() {
         <h1 id="catalog-heading">{t("catalog.heading")}</h1>
         <p className="lede">{t("catalog.lede")}</p>
       </div>
-      <div className="catalog-search-sticky">
+      <div className="catalog-search-sticky" data-catalog-complete={catalogComplete}>
         <TextInput
           label={t("catalog.searchLabel")}
           placeholder={t("catalog.searchPlaceholder")}
@@ -793,7 +845,7 @@ export function CatalogWorkspace() {
             setQuery(nextQuery);
             if (nextQuery.trim().length > 0) setSemanticSearchEnabled(true);
           }}
-          hint={catalogLoadState === "ready"
+          hint={catalogLoadState === "ready" && catalogComplete
             ? t(deferredQuery.trim().length === 0
               ? "catalog.results.all"
               : searchResult.outcome === "direct"
