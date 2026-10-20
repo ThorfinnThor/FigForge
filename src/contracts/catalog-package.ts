@@ -25,6 +25,8 @@ export const catalogPackagePartSchema = z
     material: z.string().min(1).max(80),
     colorNames: z.array(z.string().min(1).max(120)),
     searchText: z.string().min(1).max(4_000).optional(),
+    /** Distinct Rebrickable sets containing the part; omitted when no set does. */
+    setCount: z.number().int().positive().optional(),
   })
   .strict();
 
