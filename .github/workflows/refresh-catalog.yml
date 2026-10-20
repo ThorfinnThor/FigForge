@@ -19,6 +19,11 @@ jobs:
   refresh:
     runs-on: ubuntu-latest
     timeout-minutes: 30
+    env:
+      # Optional fine-grained token (this repo only; Contents and Pull requests: read and write).
+      # Pushes and pull requests made with the built-in GITHUB_TOKEN do not start the Verify
+      # workflow by themselves. With this token they do, so the review PR needs no manual approval.
+      REFRESH_PR_TOKEN: ${{ secrets.REFRESH_PR_TOKEN }}
     steps:
       - name: Check out protected production branch
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
@@ -78,6 +83,11 @@ jobs:
           branch="automation/rebrickable-catalog-refresh"
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          if [[ -n "${REFRESH_PR_TOKEN:-}" ]]; then
+            # actions/checkout stores the GITHUB_TOKEN as an extra header that would win over the URL.
+            git config --local --unset-all http.https://github.com/.extraheader || true
+            git remote set-url origin "https://x-access-token:${REFRESH_PR_TOKEN}@github.com/${GITHUB_REPOSITORY}.git"
+          fi
           git fetch origin "$branch" || true
           git switch -C "$branch"
           git add -- data docs/ldraw-catalog-coverage.md public/assets/ldraw public/assets/thumbnails/ldraw-expanded public/search
@@ -87,7 +97,7 @@ jobs:
       - name: Open or update review pull request
         if: steps.changes.outputs.changed == 'true'
         env:
-          GH_TOKEN: ${{ github.token }}
+          GH_TOKEN: ${{ secrets.REFRESH_PR_TOKEN || github.token }}
         shell: bash
         run: |
           branch="automation/rebrickable-catalog-refresh"
@@ -110,8 +120,10 @@ jobs:
               --body "Automatisch erzeugter Vorschlag. Nur Rebrickable Catalog Downloads/CSV und die offizielle LDraw-Bibliothek; keine MOC-Dateien und keine API. Eine neuere LDraw-Version wird mit neuem Hash in data/ldraw-source.lock.json übernommen. Vor dem Merge sind Quellen-, Schema- und Diff-Review erforderlich.${note}"
           fi
 
+      # Without REFRESH_PR_TOKEN the bot's push does not start Verify, so it is dispatched here.
+      # With the token the push and the pull request start it on their own.
       - name: Trigger required pull-request verification
-        if: steps.changes.outputs.changed == 'true'
+        if: steps.changes.outputs.changed == 'true' && env.REFRESH_PR_TOKEN == ''
         env:
           GH_TOKEN: ${{ github.token }}
         shell: bash
