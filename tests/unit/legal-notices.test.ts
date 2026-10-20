@@ -8,7 +8,7 @@ describe("legal notices", () => {
       const body = messages[language]["privacy.controller.body"]!;
       expect(body).toContain("SeitenHafen361");
       expect(body).toContain("Schayan Yousefian");
-      expect(body).toContain("info@createyourminifig.com");
+      expect(body).toContain("contact@createyourminifig.com");
     }
     const page = await readFile("src/components/PrivacyPage.tsx", "utf8");
     expect(page).toContain('path("/impressum")');
