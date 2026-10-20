@@ -11,13 +11,13 @@
   "documentCount": 2713,
   "documentsSha256": "9a992e51729f54d2a2510ce76a5a3e5501a0239059a293e41fd718df74909e1f",
   "orderedComponentIdsSha256": "1a22e6870bbd623f6802425c6531c054d430050c8cd1fffb69126441229507ee",
-  "indexSha256": "776354aa11d6781b28fc98c614d9c1d01531f84f50126d527ae59fb414fc5884",
+  "indexSha256": "46be8ee433ab80fc0dd00267745bfa7c681d2dc06fd2c657c3fdcbabe7c131ce",
   "requiredDownloadBytes": 42423577,
   "assets": [
     {
       "url": "/search/compact-minilm/index.f32",
       "byteLength": 4167168,
-      "sha256": "776354aa11d6781b28fc98c614d9c1d01531f84f50126d527ae59fb414fc5884",
+      "sha256": "46be8ee433ab80fc0dd00267745bfa7c681d2dc06fd2c657c3fdcbabe7c131ce",
       "kind": "index"
     },
     {

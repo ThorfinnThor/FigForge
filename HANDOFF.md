@@ -1,0 +1,113 @@
+# FigForge – Übergabe (Stand 2026-10-20)
+
+Diese Datei hält fest, wo das Projekt steht, was zuletzt geändert wurde, wie die Automatisierung funktioniert und was offen ist. Sie folgt der Pflichtübergabe aus `AGENTS.md` (geänderte Dateien, ausgeführte Befehle und Tests, Ergebnisse, bekannte Einschränkungen, offene Risiken). Zahlen sind mit Datum versehen; was nicht geprüft wurde, ist ausdrücklich so gekennzeichnet.
+
+## 1. Überblick
+
+- **Produkt:** backendloser Minifiguren-Konfigurator mit 3D-Vorschau (LDraw/Three.js) und Teilelisten-Export (BrickLink-XML, Rebrickable-CSV, Pick-a-Brick-CSV). Live unter https://createyourminifig.com.
+- **Technik:** React + Vite, Daten statisch im Repo, Entwürfe lokal im Browser (IndexedDB). Kein Backend, keine Konten.
+- **Deployment:** ausschließlich Cloudflare Workers Builds nach einem Merge auf `main`. GitHub Actions deployt nicht.
+- **Regeln:** `AGENTS.md` ist verbindlich (ADR bei Architekturänderungen, generierte Daten nicht von Hand ändern, Tests nicht passend zur Implementierung umdefinieren). `main` ist geschützt: Änderungen nur per PR, Branch muss aktuell sein, `verify` muss grün sein.
+- **Quellenregel (angepasst 2026-10-19, vom Eigentümer freigegeben):** Rebrickable Catalog Downloads/CSV. Einzige Erweiterung für BrickLink-Artikelnummern: der offizielle BrickLink Catalog Download als hashgebundener Snapshot (Rohdateien werden nicht veröffentlicht) und offizielle LDraw-Header. Keine MOC-Dateien, weder Rebrickable- noch BrickLink-API.
+
+## 2. Was in dieser Arbeitsrunde geändert wurde
+
+| PR | Inhalt |
+| --- | --- |
+| #111 | Startfigur ist der Piratenkapitän (vorher: Referenzvariante mit gesperrtem Torso/Beinen, deshalb leere Vorschau und „Entwurf nicht wiederherstellbar“). Gespeicherte Entwürfe werden tolerant wiederhergestellt, Importe und Share-Links bleiben streng. Hinweis unter der Vorschau für leere Slots. Gemeinsamer `AppHeader` (war in sechs Seiten kopiert), „Mehr“-Menü. Teilekarten ohne Entwicklerjargon, Teile aus den Ideen-Figuren zuerst. |
+| #119 | Namensvergleich der geprüften Katalognamen ignoriert Kommas. Refresh meldet Fehler per Issue (`catalog-refresh-failed`). Text der Shuttle-Karte neutralisiert. Mobiler Header 3 + 2. |
+| #121 | `npm run data:check:name-drift` listet alle abweichenden gepinnten Teilenamen auf einmal (lesend, läuft zuerst in `verify`). |
+| #122 | Bei fehlgeschlagener Validierung legt der Refresh den Daten-PR trotzdem als Entwurf an und endet rot. |
+| #124 | Refresh baut `ldraw-accessory-orientation-review.json` neu (sonst „Accessory review queue is stale“). |
+| #126 | `react` und `react-dom` gemeinsam auf 19.3.1; Dependabot-Gruppe `react`. (#114/#115 geschlossen.) |
+| #112, #113 | Dependabot: `upload-artifact` 7.0.2, `zod` 4.6.7. |
+| #128 (Eigentümer) | BrickLink-Wanted-List-Export mit belegtem Teile-/Farb-Mapping. |
+| #129 | Crosswalk bleibt ohne neuen BrickLink-Download aktuell; 90-Tage-Erinnerung; Quellenregel angepasst. |
+| #123, #125, #127 | automatisch erzeugte Daten-Refresh-PRs, geprüft und gemergt. |
+
+Eigentümer-Änderungen im selben Zeitraum: #116–#118 (Kaufbereich, mobile Regression, Icons).
+
+## 3. Datenstand (2026-10-19/20, aus den Daten gemessen)
+
+- Katalogteile gesamt 20.282, davon als 3D-Modell verfügbar 14.865 (Zuwachs durch den Refresh am 19.10.: +11 bzw. +1).
+- Köpfe mit Aufdruck im 3D-Modell: 527 (+3 kuratierte = die „530“ auf der Startseite). Das ist nicht die Gesamtzahl der Teile.
+- BrickLink-Crosswalk: 14.087 von 14.882 Builder-Teilen mit eindeutiger Artikelnummer, 795 gesperrt (85 mehrdeutig, 710 ohne Beleg), 0 `not-in-snapshot`; Snapshot vom 2026-10-19.
+- Ein Refresh ändert viele Dateien (Hashes, Reihenfolge), aber meist nur wenige Teile inhaltlich. Die Dateizahl eines Refresh-PR sagt nichts über neue Teile.
+
+## 4. Automatisierung (`.github/workflows/refresh-catalog.yml`)
+
+**Zeitplan:** Montags 04:17 UTC (GitHub startet verzögert; am 2026-10-19 um 09:59 UTC, erfolgreich). Manuell startbar über `workflow_dispatch`.
+
+**Ablauf:** Rebrickable-CSV laden → offizielle LDraw-Bibliothek prüfen/übernehmen → Builder-Katalog, Abdeckung, Platzierungskandidaten neu bauen (dabei: Crosswalk abgleichen, Exportpakete bauen) → Accessory-Review neu bauen → Suchindex bauen → `verify` → Automations-Branch `automation/rebrickable-catalog-refresh` pushen → Review-PR anlegen/aktualisieren → CI per Dispatch anstoßen → BrickLink-Snapshot-Alter prüfen.
+
+**Verhalten bei Problemen:**
+- `verify` schlägt fehl → PR wird trotzdem als **Entwurf** angelegt, Lauf endet rot, Issue `Katalog-Refresh fehlgeschlagen` (Label `catalog-refresh-failed`). Nächster grüner Lauf schließt das Issue.
+- Geprüfte Teilenamen weichen ab → `npm run data:check:name-drift` listet alle; gepinnte Namen in `data/curated/*` nach Prüfung anpassen (nur Umbenennung, nicht anderes Teil). Kommas, Groß-/Kleinschreibung und Leerraum werden ignoriert.
+- Neue Teile ohne BrickLink-Zuordnung → Status `not-in-snapshot`, für BrickLink gesperrt; ID nur bei eindeutigem offiziellen LDraw-Header.
+- BrickLink-Snapshot älter als 90 Tage → Issue (Label `bricklink-snapshot-stale`) mit Anleitung; wird nach dem Import geschlossen.
+
+**Manuelle Schritte, die bleiben:**
+1. **CI-Freigabe für Refresh-PRs.** Vom Workflow angelegte PRs (Roboter-Konto) starten die Tests nicht von selbst, der Lauf steht auf `action_required` und der PR auf `BLOCKED`. Freigabe in der Oberfläche („Approve and run“) oder `gh api -X POST repos/<owner>/<repo>/actions/runs/<id>/approve`. Behebbar durch ein fein begrenztes Token als Repo-Secret, mit dem der Workflow den PR anlegt (siehe Offene Punkte).
+2. **Branch aktualisieren**, wenn `main` weitergezogen ist (`gh pr update-branch <nr>`), dann CI abwarten und mergen.
+3. **BrickLink-Snapshot erneuern** (spätestens alle ~90 Tage): auf bricklink.com anmelden, im Catalog Download die Tabellen *Parts* und *Part and Color Codes* (txt) laden, dann `npm run data:import:bricklink -- <Parts.txt> <Part-and-Color-Codes.txt> YYYY-MM-DD` und das Ergebnis per PR einreichen. Rohdateien nicht committen.
+
+## 5. Lokal arbeiten
+
+- Klon auf der SSD: `/Volumes/PortableSSD/claude/FigForge`. Node 24, npm 11.
+- Volle Prüfung: `npm run verify`. Braucht Python ≥ 3.9 im PATH (das Standard-Python 3.8 scheitert an einem Python-Test, nicht am Projekt).
+- Dev-Server: `npx vite --port 5199`. Die Vorschau der Claude-App kann `/Volumes` nicht lesen (macOS-Datenschutz), daher den Server aus der Shell starten.
+- `npm run test:browser` (Headless-Chrome-Regressionen) hing lokal; die CI führt es verpflichtend aus.
+- Beim Prüfen im Browser-Pane: Ein verdeckter Pane rendert verzögert und verfälscht Ladezeiten. Zeitmessungen im Vordergrund-Tab machen.
+- Heredocs mit Apostrophen in `$(...)` scheitern in der Shell; PR-Texte besser in eine Datei schreiben und `--body-file` nutzen.
+
+## 6. Technische Hinweise
+
+- **Startfigur und Entwurf:** `src/figure/default-figure.ts` (Piratenkapitän aus `figure-templates.ts`). Alte Entwürfe, die nur die frühere Referenzvariante enthalten, werden durch die Startfigur ersetzt. Die Startfigur muss für neue Besucher ebenfalls hydratisiert werden (alle fünf Rollenpakete, ca. 14 MB JSON entpackt, ca. 1,9 MB Transfer; im Vordergrund-Tab ca. 1,1 s mit Cache, ca. 2,9 s bei lokalem Produktionsbuild).
+- **Semantische Suche (42 MB):** lädt erst beim ersten Tippen im Suchfeld, nicht beim Öffnen.
+- **Teilenamen:** Katalognamen bleiben englisch; `src/catalog/part-display.ts` entfernt nur Präfix, „Print/Pattern“-Suffix und Klammerhinweise. Keine Teilübersetzung (würde gemischtsprachige Labels erzeugen).
+- **Crosswalk:** `data/generated/bricklink-item-crosswalk.json` (einzeilig). Logik in `tools/lib/bricklink-item-crosswalk.ts` (`refreshBrickLinkItemCrosswalkFile` läuft in `build-ldraw-expanded-catalog.ts` vor dem Exportbau). Nach Änderungen: `npm run data:validate:bricklink`.
+- **`sourcePolicy`-Text** in den generierten Dateien lautet weiter „Nur Rebrickable Catalog Downloads/CSV, keine MOC-Dateien.“ (Konstante `SHOP_EXPORT_SOURCE_POLICY`); die Shop-Exportpakete enthalten aber BrickLink-abgeleitete IDs. Bewusst nicht geändert, weil alle generierten Dateien neu entstehen müssten; bei Gelegenheit sauber trennen.
+
+## 7. Offene Punkte und Risiken
+
+1. **Token für Refresh-PRs (Entscheidung Eigentümer).** Fein begrenztes Token (nur dieses Repo, Contents + Pull requests, schreiben) als Secret anlegen, Workflow legt PR damit an, CI startet ohne Freigabe. Nachteile: an das Konto gebunden, läuft spätestens nach einem Jahr ab. Alternative GitHub-App (sauberer, mehr Aufwand). Der Review bleibt in jedem Fall beim Eigentümer.
+2. **Rechtlich ungeprüft:** Nutzungsbedingungen des BrickLink Catalog Downloads für die Veröffentlichung der abgeleiteten Zuordnungstabelle in einem öffentlichen Repository. Vor einem breiten Start klären.
+3. **Impressum fehlt.** Bei einer deutschen Seite mit Affiliate-Links üblich; rechtlich prüfen lassen. Datenschutz-Seite existiert (`/privacy`).
+4. **Noch nicht belegt:**
+   - ein Refresh-Lauf, bei dem Rebrickable wirklich neue Builder-Teile hinzufügt (die Crosswalk-Logik dafür ist unit-getestet, aber nicht im Echtbetrieb gesehen),
+   - dass die Dependabot-Gruppe `react` greift (erst beim nächsten wöchentlichen Dependabot-Lauf sichtbar),
+   - `actions/upload-artifact` v7: ein von drei Upload-Schritten hat nachweislich funktioniert, die beiden anderen laufen nur bei zu prüfendem Zubehör,
+   - die Live-Seite nach den letzten Merges wurde nicht erneut mit eigenen Augen geprüft (die CI-Browsertests auf `main` sind grün).
+5. **Daten, die Generator-Änderungen brauchen** (generierte Daten nicht von Hand ändern): Sortierung der Teile nach Beliebtheit (Anzahl Sets), Aufteilen der großen Katalogpakete für schnelleren Start.
+6. **Mehrfarbige Teile:** Die gewählte Einkaufsfarbe färbt die 3D-Vorschau noch nicht um (Oberfläche weist darauf hin).
+
+## 8. SEO-Plan (Vorschlag, nicht umgesetzt)
+
+**Befund 2026-10-20 (am Live-HTML geprüft):**
+- Reine JavaScript-App: im Rohzustand nur `<div id="root"></div>`, kein Text, keine Überschrift.
+- Jede Seite liefert im Rohzustand die Platzhalter-Beschreibung „FigForge – technisches Projektgerüst“; der Titel ist „FigForge“. Richtige Titel setzt erst JavaScript.
+- `robots.txt` und `sitemap.xml` existieren nicht: beide URLs liefern die App-Startseite mit Status 200.
+- Kein Canonical-Tag, `lang` immer `de`, englische Version ohne eigene URL und ohne hreflang.
+
+**Positionierung (Hypothese, Suchvolumen nicht geprüft):** Der Minifiguren-Baukasten, der am Ende eine echte Einkaufsliste ausgibt (BrickLink, Rebrickable, Pick a Brick). Zielgruppe: Schenkende ohne Vorwissen und Hobbybauer. Suchabsichten wie „Minifigur selbst zusammenstellen“, „LEGO Minifigur personalisiert Geschenk“, „Minifiguren Teile kaufen“ mit Search Console bzw. Keyword-Tool bestätigen.
+
+**Reihenfolge:**
+1. Search Console (und Bing Webmaster) einrichten, damit nach 2–6 Wochen Daten da sind.
+2. Technik: Seiten vorab rendern (statisches HTML mit Titel, Beschreibung, Canonical, `h1`, Text), echte `robots.txt` und `sitemap.xml`, Platzhalter-Beschreibung ersetzen, Open-Graph, sinnvolle strukturierte Daten.
+3. Inhalte (wenige, jeweils eine eigene Suchabsicht):
+   - Startseite als Landingpage, Builder unter `/builder`.
+   - Vier Themenseiten (Piraten, Ritter, Weltraum, Feuerwehr) mit eigener URL, je drei Figuren mit echten Teilenummern, Tipps, passenden Sets.
+   - Ratgeber „Minifiguren-Teile bestellen“ (BrickLink, Pick a Brick, Rebrickable im Vergleich; die Uploads wurden praktisch getestet).
+   - Ratgeber „Teilenummern verstehen“ (Kopf 3626, Torso 973, Beine 970, `pr`/`pat`/`c01`).
+   - Ratgeber „Minifigur verschenken“.
+   - Impressum, Über uns/Kontakt, sichtbare Datenquellen/Methodik.
+   - Englische Version unter `/en/` erst nach der deutschen.
+4. **Nicht bauen:** Seiten pro Einzelteil (14.000+) oder pro Filmfigur. Auf den anderen Seiten des Eigentümers führten Massen an Vorlagen-Seiten zu algorithmischer Abwertung (Spam-Updates); lizenzierte Namen sind zusätzlich markenrechtlich heikel. Neue Seiten nur, wenn Search Console Nachfrage zeigt.
+5. Nach 2 und 6 Wochen Search Console prüfen, nur Seiten mit belegter Nachfrage erweitern.
+
+## 9. Ausgeführte Prüfungen (Auszug)
+
+- `npm run verify` zuletzt grün auf dem Stand von #129 (357 Tests, alle Daten-Validatoren, Typecheck, Lint, Build, Cloudflare-Check).
+- CI `Verify` (inkl. verpflichtender Browser-Regressionen) auf `main` grün nach #112, #113, #125, #126, #127, #129.
+- Manueller Refresh-Lauf nach #129 am 2026-10-19: grün, neue Schritte (Crosswalk-Validierung, Altersprüfung) ohne Fehler.
+- Der automatische Montags-Lauf vom 2026-10-19 (09:59 UTC) lief erfolgreich, vor den BrickLink-Änderungen.

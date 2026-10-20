@@ -34,15 +34,15 @@
           "fileName": "part_relationships.csv.gz",
           "required": false,
           "downloadUrl": "https://cdn.rebrickable.com/media/downloads/part_relationships.csv.gz",
-          "sha256": "ead9e5049ad114cbe2549b37b54b351e5849e490c068d82571f54abf49c143e2",
-          "retrievedAt": "2026-10-18T23:14:14.777Z"
+          "sha256": "85a2aed089a91b84b75535787ac58136e8d91643d4d2f0914221dc76c678ec9c",
+          "retrievedAt": "2026-10-19T20:13:04.704Z"
         },
         {
           "fileName": "elements.csv.gz",
           "required": false,
           "downloadUrl": "https://cdn.rebrickable.com/media/downloads/elements.csv.gz",
-          "sha256": "05ef5ae3392ffaf9a15be7cee33037ea6331ed35bcaf602060eb497d1e04fed4",
-          "retrievedAt": "2026-10-19T08:33:44.531Z"
+          "sha256": "f691451b0cc128c9c5a197d7623ea1ae9e702c94adad7456d2fcafd81f3119df",
+          "retrievedAt": "2026-10-19T20:13:04.704Z"
         },
         {
           "fileName": "sets.csv.gz",
@@ -55,22 +55,22 @@
           "fileName": "inventories.csv.gz",
           "required": true,
           "downloadUrl": "https://cdn.rebrickable.com/media/downloads/inventories.csv.gz",
-          "sha256": "9c7a723bc60fe000ebafc8db05b1edaac6e88cdd57529d9758b87626100b275d",
-          "retrievedAt": "2026-10-19T08:33:44.531Z"
+          "sha256": "34c24bbebc0c91a082bf4d6f9396e7fe327e06ef0db8dd6742fc0ac387a845b4",
+          "retrievedAt": "2026-10-19T20:13:04.704Z"
         },
         {
           "fileName": "inventory_parts.csv.gz",
           "required": true,
           "downloadUrl": "https://cdn.rebrickable.com/media/downloads/inventory_parts.csv.gz",
-          "sha256": "cdebd10b8ac805ec983cd7ac9b48d4d3493a96f9b0be2acd15d9e78ba54cef66",
-          "retrievedAt": "2026-10-19T08:33:44.531Z"
+          "sha256": "e3b83cb105c3c6385feb4e88fe80325eae3d6b14f1131770fefec21b01efb347",
+          "retrievedAt": "2026-10-19T20:13:04.704Z"
         },
         {
           "fileName": "inventory_minifigs.csv.gz",
           "required": true,
           "downloadUrl": "https://cdn.rebrickable.com/media/downloads/inventory_minifigs.csv.gz",
-          "sha256": "aae4697eafb13d0c1003846082de144b689e0f911054be201132f17698a64141",
-          "retrievedAt": "2026-10-18T23:14:14.777Z"
+          "sha256": "7532c15d2560df9d93cdf76d4772d5cc19061f00d708ceb4beaf28824b236ede",
+          "retrievedAt": "2026-10-19T20:13:04.704Z"
         },
         {
           "fileName": "minifigs.csv.gz",
