@@ -205,8 +205,10 @@ export function CatalogWorkspace() {
 
   // Anything that needs more than the core slice (searching, other views, reaching the end
   // of the list) starts the full catalog download immediately instead of waiting for the timer.
+  const firstPageSize = isMobileLayout ? MOBILE_VISIBLE_PARTS_BATCH : DESKTOP_VISIBLE_PARTS_BATCH;
   const reachedEndOfCoreList = catalogLoadState === "ready"
-    && visiblePartCount >= filteredComponents.length - DESKTOP_VISIBLE_PARTS_BATCH;
+    && visiblePartCount > firstPageSize
+    && visiblePartCount >= filteredComponents.length - firstPageSize;
   const needsFullCatalog = query.trim().length > 0
     || catalogViewMode !== "exact"
     || selectedCatalogSet !== null
@@ -833,7 +835,7 @@ export function CatalogWorkspace() {
         <h1 id="catalog-heading">{t("catalog.heading")}</h1>
         <p className="lede">{t("catalog.lede")}</p>
       </div>
-      <div className="catalog-search-sticky">
+      <div className="catalog-search-sticky" data-catalog-complete={catalogComplete}>
         <TextInput
           label={t("catalog.searchLabel")}
           placeholder={t("catalog.searchPlaceholder")}
