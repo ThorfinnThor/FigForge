@@ -54,6 +54,13 @@ export function ImprintPage() {
               <p>{t("imprint.editorial.body")}</p>
               <Address name={t("imprint.editorial.name")} />
             </section>
+            <section>
+              <h2>{t("imprint.trademark.title")}</h2>
+              <p>{t("imprint.trademark.independent")}</p>
+              <p>{t("imprint.trademark.lego")}</p>
+              <p>{t("imprint.trademark.others")}</p>
+              <p>{t("imprint.trademark.sources")}</p>
+            </section>
           </div>
         </section>
       </div>

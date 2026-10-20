@@ -77,6 +77,7 @@ export function ProductsPage() {
           <CuratedProductGrid products={accessories} />
         </section> : null}
         <footer className="products-legal">
+          <p>{t("landing.legal")}</p>
           <a href={path("/privacy")}>{t("products.legalLink")}</a>
         </footer>
       </div>

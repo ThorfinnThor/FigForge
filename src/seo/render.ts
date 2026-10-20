@@ -85,7 +85,10 @@ function renderBody(route: SeoRoute, messages: Messages, language: Language, hea
     return `<main>${intro}`
       + `<h2>${text("imprint.provider.title")}</h2><p>${text("imprint.provider.name")}<br>${text("imprint.provider.legalForm")}<br>${text("imprint.provider.owner")}</p>${address("Schayan Yousefian")}`
       + `<h2>${text("imprint.contact.title")}</h2><p>${text("imprint.contact.email")} info@createyourminifig.com</p>`
-      + `<h2>${text("imprint.editorial.title")}</h2><p>${text("imprint.editorial.body")}</p>${address(text("imprint.editorial.name"))}</main>`;
+      + `<h2>${text("imprint.editorial.title")}</h2><p>${text("imprint.editorial.body")}</p>${address(text("imprint.editorial.name"))}`
+      + `<h2>${text("imprint.trademark.title")}</h2>`
+      + ["independent", "lego", "others", "sources"].map((part) => `<p>${text(`imprint.trademark.${part}`)}</p>`).join("")
+      + "</main>";
   }
   if (page?.kind === "guides-hub") {
     const links = GUIDE_IDS.map((id) =>

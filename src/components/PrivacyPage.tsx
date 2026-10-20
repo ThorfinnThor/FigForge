@@ -22,6 +22,10 @@ export function PrivacyPage() {
           <h1 id="privacy-title">{t("privacy.title")}</h1>
           <div className="workspace-methodology__body privacy-sections">
             <section>
+              <h2>{t("privacy.controller.title")}</h2>
+              <p>{t("privacy.controller.body")} <a href={path("/impressum")}>{t("privacy.controller.link")}</a></p>
+            </section>
+            <section>
               <h2>{t("privacy.local.title")}</h2>
               <p>{t("privacy.local.body")}</p>
             </section>

@@ -130,6 +130,11 @@ describe("imprint", () => {
     expect(de).toContain("<h2>Diensteanbieter</h2>");
     expect(de).toContain('<link rel="canonical" href="https://createyourminifig.com/impressum" />');
     expect(en).toContain("<h2>Service provider</h2>");
+    expect(de).toContain("<h2>Hinweis zu Marken und Rechten</h2>");
+    expect(de).toContain("weder hergestellt noch gesponsert, autorisiert oder unterstützt");
+    expect(en).toContain("<h2>Trademarks and rights</h2>");
+    expect(en).toContain("not made, sponsored, authorized or endorsed by it");
+    for (const html of [de, en]) expect(html).toContain("LEGO®");
     expect(en).toContain('<link rel="canonical" href="https://createyourminifig.com/en/imprint" />');
   });
 });
