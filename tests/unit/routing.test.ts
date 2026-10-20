@@ -12,7 +12,7 @@ describe("language-aware routing", () => {
   });
 
   it("maps every page between its German and English path", () => {
-    for (const path of ["/", "/builder", "/ideas", "/ideas/fire-rescue", "/sets", "/privacy", "/methodology", "/collection"]) {
+    for (const path of ["/", "/builder", "/ideas", "/ideas/fire-rescue", "/sets", "/privacy", "/methodology", "/collection", "/impressum"]) {
       const english = localizedPath(path, "en");
       expect(english.startsWith("/en"), path).toBe(true);
       expect(germanPath(english), path).toBe(path);

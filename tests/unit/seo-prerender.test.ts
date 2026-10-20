@@ -112,3 +112,24 @@ describe("English pages", () => {
     expect(sitemap).toContain('<xhtml:link rel="alternate" hreflang="en" href="https://createyourminifig.com/en/ideas/space"/>');
   });
 });
+
+describe("imprint", () => {
+  const imprint = SEO_ROUTES.find((entry) => entry.path === "/impressum")!;
+
+  it("is reachable at /impressum and /en/imprint with the mandatory details in the HTML", () => {
+    const de = renderRoutePage(TEMPLATE, imprint, messages.de, "de");
+    const en = renderRoutePage(TEMPLATE, imprint, messages.en, "en");
+
+    for (const html of [de, en]) {
+      expect(html).toContain("SeitenHafen361");
+      expect(html).toContain("Schayan Yousefian");
+      expect(html).toContain("Freienwalder Str. 34");
+      expect(html).toContain("13359 Berlin");
+      expect(html).toContain("info@createyourminifig.com");
+    }
+    expect(de).toContain("<h2>Diensteanbieter</h2>");
+    expect(de).toContain('<link rel="canonical" href="https://createyourminifig.com/impressum" />');
+    expect(en).toContain("<h2>Service provider</h2>");
+    expect(en).toContain('<link rel="canonical" href="https://createyourminifig.com/en/imprint" />');
+  });
+});

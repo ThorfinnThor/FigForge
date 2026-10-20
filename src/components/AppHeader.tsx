@@ -1,7 +1,7 @@
 import { useEffect, useRef, type MouseEvent, type ReactNode } from "react";
 import { useI18n, type Language } from "../i18n.js";
 
-export type AppRoute = "home" | "guides" | "builder" | "ideas" | "sets" | "collection" | "methodology" | "privacy";
+export type AppRoute = "home" | "imprint" | "guides" | "builder" | "ideas" | "sets" | "collection" | "methodology" | "privacy";
 
 type AppHeaderProps = {
   active: AppRoute;
@@ -22,6 +22,7 @@ const SECONDARY_ROUTES = [
   { id: "guides", href: "/ratgeber", labelKey: "nav.guides" },
   { id: "methodology", href: "/methodology", labelKey: "nav.notes" },
   { id: "privacy", href: "/privacy", labelKey: "nav.privacy" },
+  { id: "imprint", href: "/impressum", labelKey: "nav.imprint" },
 ] as const;
 
 export function AppHeader({ active, onNavigate, children }: AppHeaderProps) {

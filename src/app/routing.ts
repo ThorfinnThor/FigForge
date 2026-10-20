@@ -20,6 +20,7 @@ export const guidePath = (id: GuideSlugId, language: Language): string =>
 
 /** German path to English path, for pages whose slug is translated. */
 const TRANSLATED_PATHS: Readonly<Record<string, string>> = {
+  "/impressum": `${EN_PREFIX}/imprint`,
   "/ratgeber": `${EN_PREFIX}/guides`,
   ...Object.fromEntries((Object.keys(GUIDE_SLUGS) as GuideSlugId[]).map((id) => [guidePath(id, "de"), guidePath(id, "en")])),
 };

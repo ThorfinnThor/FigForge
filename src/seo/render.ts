@@ -78,6 +78,15 @@ function renderBody(route: SeoRoute, messages: Messages, language: Language, hea
     ].join("")).join("");
     return `<main><article>${intro}${sections}</article></main>`;
   }
+  if (page?.kind === "imprint") {
+    const text = (key: string): string => escapeHtml(requireMessage(messages, key));
+    const address = (name: string): string =>
+      `<address>${name}<br>${text("imprint.address.street")}<br>${text("imprint.address.city")}<br>${text("imprint.address.country")}</address>`;
+    return `<main>${intro}`
+      + `<h2>${text("imprint.provider.title")}</h2><p>${text("imprint.provider.name")}<br>${text("imprint.provider.legalForm")}<br>${text("imprint.provider.owner")}</p>${address("Schayan Yousefian")}`
+      + `<h2>${text("imprint.contact.title")}</h2><p>${text("imprint.contact.email")} info@createyourminifig.com</p>`
+      + `<h2>${text("imprint.editorial.title")}</h2><p>${text("imprint.editorial.body")}</p>${address(text("imprint.editorial.name"))}</main>`;
+  }
   if (page?.kind === "guides-hub") {
     const links = GUIDE_IDS.map((id) =>
       `<li><a href="${escapeHtml(guidePath(id, language))}">${escapeHtml(requireMessage(messages, `guide.${id}.title`))}</a></li>`).join("");

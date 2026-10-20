@@ -741,6 +741,22 @@ const testGuides = async (client: CdpClient, origin: string): Promise<void> => {
   await waitFor(client, "document.querySelectorAll('.guides-list li').length === 3", "English guides hub");
 };
 
+const testImprint = async (client: CdpClient, origin: string): Promise<void> => {
+  for (const [path, heading] of [["/impressum", "Impressum"], ["/en/imprint", "Imprint"]] as const) {
+    await navigate(client, `${origin}${path}`);
+    await waitFor(client, "Boolean(document.querySelector('#imprint-title'))", `imprint at ${path}`);
+    const page = await evaluate<{ heading: string; text: string; mail: string | null }>(client, `(() => ({
+      heading: document.querySelector('#imprint-title').textContent,
+      text: document.querySelector('.workspace-methodology').innerText,
+      mail: document.querySelector('a[href^="mailto:"]')?.getAttribute('href') ?? null,
+    }))()`);
+    assert.equal(page.heading, heading);
+    assert.match(page.text, /SeitenHafen361/u);
+    assert.match(page.text, /Freienwalder Str\. 34/u);
+    assert.equal(page.mail, "mailto:info@createyourminifig.com");
+  }
+};
+
 const testCoreFirstCatalogLoading = async (client: CdpClient, origin: string): Promise<void> => {
   await navigate(client, `${origin}/builder`);
   await waitFor(
@@ -791,6 +807,8 @@ const run = async (): Promise<void> => {
     process.stdout.write("✓ English pages under /en and the language picker\n");
     await testGuides(client, previewServer.origin);
     process.stdout.write("✓ guides in both languages and the picker switching slugs\n");
+    await testImprint(client, previewServer.origin);
+    process.stdout.write("✓ imprint in both languages\n");
     await testCoreFirstCatalogLoading(client, previewServer.origin);
     process.stdout.write("✓ core packages first, full catalog afterwards\n");
     await testMountedMobileKeyboard(client, previewServer.origin);
