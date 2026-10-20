@@ -1,3 +1,4 @@
+import { copyTextToClipboard } from "../procurement/clipboard.js";
 import { useEffect, useMemo, useState } from "react";
 import { Button } from "./ui/Button.js";
 import { StatusMessage } from "./ui/StatusMessage.js";
@@ -41,6 +42,8 @@ type ShopTarget = {
   linkLabel: string;
   summary: string;
   downloadLabel: string;
+  /** Set when the destination takes the file content as pasted text instead of an upload. */
+  copyLabel?: string;
   mimeType: string;
 };
 
@@ -63,6 +66,7 @@ export function ShopExportPanel({ selections, stepNumber = 2 }: ShopExportPanelP
   const [lookup, setLookup] = useState<ShopExportLookup | null>(null);
   const [loadFailed, setLoadFailed] = useState(false);
   const [message, setMessage] = useState<string | null>(null);
+  const [messageTone, setMessageTone] = useState<"success" | "danger">("success");
   const [inventory, setInventory] = useState<PartInventory | null>(null);
   const rolesKey = [...new Set(selections.map(({ slot }) => slot))].sort().join(",");
 
@@ -115,6 +119,7 @@ export function ShopExportPanel({ selections, stepNumber = 2 }: ShopExportPanelP
       linkLabel: t("shop.bricklink.open"),
       summary: t("shop.bricklink.summary"),
       downloadLabel: t("shop.bricklink.download"),
+      copyLabel: t("shop.bricklink.copy"),
       mimeType: "application/xml;charset=utf-8",
     },
     {
@@ -214,6 +219,7 @@ export function ShopExportPanel({ selections, stepNumber = 2 }: ShopExportPanelP
                     disabled={target.downloadResult.lines.length === 0}
                     onClick={() => {
                       downloadTextFile(target.serialize(target.downloadResult), target.fileName, target.mimeType);
+                      setMessageTone("success");
                       setMessage(target.result.status === "partial"
                         ? t("shop.downloaded.partial", { fileName: target.fileName, count: target.result.blockers.length })
                         : t("shop.downloaded.complete", { fileName: target.fileName }));
@@ -223,6 +229,22 @@ export function ShopExportPanel({ selections, stepNumber = 2 }: ShopExportPanelP
                   >
                     {inventory ? t("inventory.downloadMissing") : target.downloadLabel}
                   </Button>
+                  {target.copyLabel ? (
+                    <Button
+                      className="shop-export__copy"
+                      disabled={target.downloadResult.lines.length === 0}
+                      onClick={() => {
+                        void copyTextToClipboard(target.serialize(target.downloadResult)).then((copied) => {
+                          setMessageTone(copied ? "success" : "danger");
+                          setMessage(copied ? t("shop.bricklink.copied") : t("shop.bricklink.copyFailed"));
+                        });
+                      }}
+                      size="md"
+                      variant="secondary"
+                    >
+                      {target.copyLabel}
+                    </Button>
+                  ) : null}
                   <a
                     className="ff-button ff-button--ghost ff-button--md shop-export__link"
                     href={target.link.href}
@@ -278,7 +300,7 @@ export function ShopExportPanel({ selections, stepNumber = 2 }: ShopExportPanelP
           <AmazonRecommendations />
         </>
       )}
-      {message ? <StatusMessage className="shop-export__message" tone="success">{message}</StatusMessage> : null}
+      {message ? <StatusMessage className="shop-export__message" tone={messageTone}>{message}</StatusMessage> : null}
     </section>
   );
 }
