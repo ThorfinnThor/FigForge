@@ -9,7 +9,7 @@
   },
   "scripts": {
     "dev": "vite",
-    "build": "tsc -b && vite build",
+    "build": "tsc -b && vite build && tsx tools/prerender-seo.ts",
     "preview": "vite preview",
     "catalog:local": "python3 tools/run_local_catalog_pipeline.py",
     "catalog:local:test": "python3 -m unittest discover -s tests/python -p 'test_*.py'",
