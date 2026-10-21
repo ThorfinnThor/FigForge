@@ -1,5 +1,6 @@
 import { lazy, Suspense } from "react";
 import { I18nProvider, useI18n } from "../i18n.js";
+import { ConsentBanner } from "../components/ConsentBanner.js";
 import { germanPath, guideIdFromPath } from "./routing.js";
 
 const LandingPage = lazy(() => import("../components/LandingPage.js")
@@ -67,6 +68,7 @@ export function App() {
       <main>
         <AppRoutes />
       </main>
+      <ConsentBanner />
     </I18nProvider>
   );
 }

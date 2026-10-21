@@ -86,6 +86,6 @@ describe("curated products", () => {
       readFile("src/components/PrivacyPage.tsx", "utf8"),
     ]);
     expect(appSource).toContain('pathname === "/privacy"');
-    expect(privacySource).toContain("PRIVACY_SECTIONS[language]");
+    expect(privacySource).toContain("privacySections(language");
   });
 });

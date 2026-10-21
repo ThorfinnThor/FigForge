@@ -1,7 +1,7 @@
 import { guidePath, localizedPath } from "../app/routing.js";
 import { GUIDE_IDS, GUIDE_SECTIONS } from "../guides/guide-content.js";
 import { splitInline } from "../privacy/inline.js";
-import { PRIVACY_SECTIONS } from "../privacy/privacy-content.js";
+import { privacySections } from "../privacy/privacy-content.js";
 import type { Language } from "../i18n.js";
 import { SEO_LANGUAGES, SEO_ROUTES, SITE_ORIGIN, canonicalUrl, routePath, type SeoRoute } from "./routes.js";
 
@@ -26,17 +26,23 @@ const requireMessage = (messages: Messages, key: string): string => {
  */
 const OG_LOCALE: Record<Language, string> = { de: "de_DE", en: "en_US" };
 
+export type RenderOptions = {
+  /** True when the site has a Google Analytics ID; selects the matching privacy wording. */
+  analytics?: boolean;
+};
+
 export function renderRoutePage(
   template: string,
   route: SeoRoute,
   messages: Messages,
   language: Language = "de",
+  options: RenderOptions = {},
 ): string {
   const title = escapeHtml(requireMessage(messages, route.titleKey));
   const description = escapeHtml(requireMessage(messages, route.descriptionKey));
   const heading = escapeHtml(requireMessage(messages, route.headingKey));
   const lede = escapeHtml(requireMessage(messages, route.ledeKey));
-  const body = renderBody(route, messages, language, heading, lede);
+  const body = renderBody(route, messages, language, heading, lede, options);
   const url = escapeHtml(canonicalUrl(routePath(route, language)));
   const otherLanguage = SEO_LANGUAGES.find((candidate) => candidate !== language) ?? language;
 
@@ -68,7 +74,14 @@ export function renderRoutePage(
 }
 
 /** Guides ship their full text so search engines index the article, not just a title. */
-function renderBody(route: SeoRoute, messages: Messages, language: Language, heading: string, lede: string): string {
+function renderBody(
+  route: SeoRoute,
+  messages: Messages,
+  language: Language,
+  heading: string,
+  lede: string,
+  options: RenderOptions,
+): string {
   const intro = `<h1>${heading}</h1><p>${lede}</p>`;
   const page = route.page;
   if (page?.kind === "guide") {
@@ -84,7 +97,7 @@ function renderBody(route: SeoRoute, messages: Messages, language: Language, hea
     const inline = (text: string): string => splitInline(text).map((part) => part.href === undefined
       ? escapeHtml(part.text)
       : `<a href="${escapeHtml(part.href.startsWith("/") ? localizedPath(part.href, language) : part.href)}">${escapeHtml(part.text)}</a>`).join("");
-    const sections = PRIVACY_SECTIONS[language].map((section) => [
+    const sections = privacySections(language, options.analytics === true).map((section) => [
       `<h2>${escapeHtml(section.heading)}</h2>`,
       ...(section.paragraphs ?? []).map((text) => `<p>${inline(text)}</p>`),
       section.items ? `<ul>${section.items.map((item) => `<li>${inline(item)}</li>`).join("")}</ul>` : "",

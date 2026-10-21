@@ -1,7 +1,7 @@
 import { describe, expect, it } from "vitest";
 import { messages } from "../../src/i18n.js";
 import { splitInline } from "../../src/privacy/inline.js";
-import { PRIVACY_SECTIONS } from "../../src/privacy/privacy-content.js";
+import { PRIVACY_SECTIONS, privacySections } from "../../src/privacy/privacy-content.js";
 import { renderRoutePage } from "../../src/seo/render.js";
 import { SEO_ROUTES } from "../../src/seo/routes.js";
 
@@ -65,5 +65,55 @@ describe("privacy notice", () => {
     expect(en).toContain("<h2>6. Contact by e-mail</h2>");
     expect(en).toContain('<a href="/en/imprint">imprint</a>');
     expect(en).not.toContain("[imprint]");
+  });
+});
+
+describe("privacy notice with Google Analytics", () => {
+  const withAnalytics = (language: "de" | "en") => privacySections(language, true);
+  const text = (sections: readonly { heading: string; paragraphs?: readonly string[]; items?: readonly string[]; closing?: readonly string[] }[]) =>
+    sections.flatMap((section) => [section.heading, ...(section.paragraphs ?? []), ...(section.items ?? []), ...(section.closing ?? [])]).join("\n");
+
+  it("keeps the base wording while no analytics ID is configured", () => {
+    for (const language of ["de", "en"] as const) {
+      expect(privacySections(language, false).map(({ id }) => id)).toEqual(PRIVACY_SECTIONS[language].map(({ id }) => id));
+      expect(text(privacySections(language, false))).not.toContain("Google Analytics 4");
+    }
+  });
+
+  it("adds a Google Analytics section after the cookie section and numbers all headings in order", () => {
+    for (const language of ["de", "en"] as const) {
+      const sections = withAnalytics(language);
+      expect(sections.map(({ id }) => id).slice(2, 7)).toEqual(["hosting", "cookies", "analytics", "local", "email"]);
+      expect(sections.map(({ heading }) => Number.parseInt(heading, 10)))
+        .toEqual(sections.map((_, index) => index + 1));
+    }
+  });
+
+  it("no longer claims there are no cookies and describes consent, withdrawal and no advertising use", () => {
+    const de = text(withAnalytics("de"));
+    const en = text(withAnalytics("en"));
+
+    expect(de).not.toContain("setzt derzeit keine Cookies");
+    expect(en).not.toContain("currently sets no cookies");
+    for (const needle of ["Google Ireland Limited", "Art. 6 Abs. 1 lit. a DSGVO", "§ 25 Abs. 1 TDDDG", "Cookie-Einstellungen", "höchstens 14 Monate", "Werbepersonalisierung"]) {
+      expect(de, needle).toContain(needle);
+    }
+    for (const needle of ["Google Ireland Limited", "Art. 6(1)(a) GDPR", "Section 25(1) TDDDG", "Cookie settings", "at most 14 months", "ad personalization"]) {
+      expect(en, needle).toContain(needle);
+    }
+    expect(de).not.toMatch(/Mit Google besteht ein(e)? (Vertrag|Vereinbarung)/u);
+    expect(de).toContain("Deine Entscheidung zu Google Analytics");
+  });
+
+  it("is what the prerender writes when the build has an ID, and the base wording otherwise", () => {
+    const route = SEO_ROUTES.find((entry) => entry.path === "/privacy")!;
+
+    const on = renderRoutePage(TEMPLATE, route, messages.de, "de", { analytics: true });
+    const off = renderRoutePage(TEMPLATE, route, messages.de, "de");
+
+    expect(on).toContain("<h2>5. Google Analytics</h2>");
+    expect(on).toContain("<h2>7. Kontakt per E-Mail</h2>");
+    expect(off).not.toContain("Google Analytics");
+    expect(off).toContain("<h2>6. Kontakt per E-Mail</h2>");
   });
 });
