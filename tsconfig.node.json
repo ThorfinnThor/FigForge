@@ -27,6 +27,7 @@
     "src/collection/**/*.ts",
     "src/compatibility/**/*.ts",
     "src/app/routing.ts",
+    "src/app/chunk-reload.ts",
     "src/guides/**/*.ts",
     "src/privacy/**/*.ts",
     "src/search/**/*.ts",

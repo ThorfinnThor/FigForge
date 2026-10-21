@@ -757,6 +757,37 @@ const testImprint = async (client: CdpClient, origin: string): Promise<void> => 
   }
 };
 
+const testRecoversFromPoisonedChunk = async (client: CdpClient, origin: string): Promise<void> => {
+  // Reproduces the state right after a deployment: the first request for the builder chunk is
+  // answered with the start page instead of JavaScript. The page must refetch and reload itself.
+  let poisonedResponses = 0;
+  await client.send("Fetch.enable", { patterns: [{ urlPattern: "*/assets/CatalogWorkspace-*.js", requestStage: "Request" }] });
+  const stop = client.on("Fetch.requestPaused", (params) => {
+    const requestId = String(params.requestId);
+    if (poisonedResponses === 0) {
+      poisonedResponses += 1;
+      void client.send("Fetch.fulfillRequest", {
+        requestId,
+        responseCode: 200,
+        responseHeaders: [{ name: "Content-Type", value: "text/html; charset=utf-8" }],
+        body: Buffer.from("<!doctype html><html><head><title>FigForge</title></head><body></body></html>").toString("base64"),
+      });
+    } else {
+      void client.send("Fetch.continueRequest", { requestId });
+    }
+  });
+  try {
+    await navigate(client, `${origin}/builder`);
+    await waitFor(client, "Boolean(document.querySelector('#catalog-heading'))", "builder after the poisoned chunk", 30_000);
+    assert.equal(poisonedResponses, 1, "the poisoned chunk response was served once");
+    const marker = await evaluate<unknown>(client, "history.state?.figforgeChunkReloadAt ?? null");
+    assert.equal(typeof marker, "number", "the page reloaded itself once and remembered it");
+  } finally {
+    stop();
+    await client.send("Fetch.disable");
+  }
+};
+
 const testCoreFirstCatalogLoading = async (client: CdpClient, origin: string): Promise<void> => {
   await navigate(client, `${origin}/builder`);
   await waitFor(
@@ -809,6 +840,8 @@ const run = async (): Promise<void> => {
     process.stdout.write("✓ guides in both languages and the picker switching slugs\n");
     await testImprint(client, previewServer.origin);
     process.stdout.write("✓ imprint in both languages\n");
+    await testRecoversFromPoisonedChunk(client, previewServer.origin);
+    process.stdout.write("✓ page recovers from a poisoned chunk by reloading once\n");
     await testCoreFirstCatalogLoading(client, previewServer.origin);
     process.stdout.write("✓ core packages first, full catalog afterwards\n");
     await testMountedMobileKeyboard(client, previewServer.origin);
