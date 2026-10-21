@@ -1,6 +1,6 @@
 # ADR-041: Google Analytics nur mit Einwilligung
 
-**Status:** akzeptiert (Einbau fertig; scharf geschaltet erst mit einer Mess-ID)  
+**Status:** akzeptiert (Mess-ID `G-TVW22LH1SJ` eingetragen; wirksam ab dem Merge)  
 **Datum:** 2026-10-21
 
 ## Kontext

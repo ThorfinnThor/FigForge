@@ -12,7 +12,7 @@ import {
   CONSENT_STORAGE_KEY,
   createConsentStore,
 } from "../../src/consent/consent-store.js";
-import { resolveMeasurementId } from "../../src/consent/measurement-id.js";
+import { DEFAULT_MEASUREMENT_ID, resolveMeasurementId } from "../../src/consent/measurement-id.js";
 
 const memoryStorage = (initial: Record<string, string> = {}) => {
   const data = new Map(Object.entries(initial));
@@ -40,11 +40,12 @@ const commands = (win: AnalyticsEnvironment["win"]): unknown[][] =>
   (win.dataLayer ?? []).map((entry) => Array.from(entry as ArrayLike<unknown>));
 
 describe("measurement ID", () => {
-  it("accepts a GA4 ID, trims it and rejects anything else", () => {
+  it("uses the committed ID without an override, accepts a GA4 ID, trims it and rejects anything else", () => {
     expect(resolveMeasurementId("G-ABC123XYZ9")).toBe("G-ABC123XYZ9");
     expect(resolveMeasurementId("  G-ABC123XYZ9 ")).toBe("G-ABC123XYZ9");
     expect(resolveMeasurementId("")).toBeNull();
-    expect(resolveMeasurementId(undefined)).toBeNull();
+    const committed: string = DEFAULT_MEASUREMENT_ID;
+    expect(resolveMeasurementId(undefined)).toBe(committed === "" ? null : committed);
     expect(resolveMeasurementId("UA-12345-1")).toBeNull();
     expect(resolveMeasurementId("g-abc123xyz9")).toBeNull();
     expect(resolveMeasurementId("G-<script>")).toBeNull();

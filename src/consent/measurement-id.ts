@@ -1,8 +1,8 @@
 /**
  * Google Analytics 4 measurement ID of the site. It is public (it appears in the page source).
- * Empty keeps analytics, the consent banner and the analytics wording of the privacy notice off.
+ * Emptying it switches analytics, the consent banner and the analytics wording of the privacy notice off again.
  */
-export const DEFAULT_MEASUREMENT_ID = "";
+export const DEFAULT_MEASUREMENT_ID = "G-TVW22LH1SJ";
 
 const MEASUREMENT_ID_PATTERN = /^G-[A-Z0-9]{6,14}$/u;
 

@@ -1,6 +1,6 @@
 # Google Analytics: Stand und Aktivierung
 
-**Stand 2026-10-21: gebaut (ADR-041), aber ausgeschaltet.** Banner, Widerruf, Laden nach Einwilligung, Sicherheitsrichtlinie, Datenschutztext und Tests sind fertig und bleiben aus, solange `DEFAULT_MEASUREMENT_ID` in `src/consent/measurement-id.ts` leer ist. Mit einer Mess-ID schaltet alles gemeinsam um. Die folgenden Abschnitte beschreiben, was dafür gebaut wurde und was der Eigentümer vorher tun muss (Abschnitt 6).
+**Stand 2026-10-21: gebaut (ADR-041) und mit der Mess-ID `G-TVW22LH1SJ` eingetragen; wirksam ab dem Merge von #159.** Banner, Widerruf, Laden nach Einwilligung, Sicherheitsrichtlinie, Datenschutztext und Tests sind fertig. Ist `DEFAULT_MEASUREMENT_ID` in `src/consent/measurement-id.ts` leer, schaltet alles gemeinsam wieder ab. Die ID wurde gegen Googles Server geprüft: `gtag/js?id=G-TVW22LH1SJ` liefert ein größeres Skript (539.444 statt 443.342 Bytes bei unbekannten IDs). Die folgenden Abschnitte beschreiben, was dafür gebaut wurde und was der Eigentümer vorher tun muss (Abschnitt 6).
 
 Ursprünglicher Plan (Stand 2026-10-21 vor dem Bau): Die Datenschutzerklärung (`/privacy`) sagt heute: keine Cookies, nichts von Dritten, und im Abschnitt „4. Cookies und Dienste von Dritten“ versprechen wir, vor einem solchen Dienst die Einwilligung einzuholen und die Erklärung zu ergänzen. Dieses Dokument legt fest, was dafür gebaut werden muss. **Gebaut ist davon noch nichts.**
 

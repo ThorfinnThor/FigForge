@@ -4,7 +4,8 @@ import { DEFAULT_MEASUREMENT_ID, resolveMeasurementId } from "../../src/consent/
 
 describe("consent banner", () => {
   it("switches on only with a valid measurement ID: the committed one is empty or well-formed", async () => {
-    expect(DEFAULT_MEASUREMENT_ID === "" || resolveMeasurementId() === DEFAULT_MEASUREMENT_ID).toBe(true);
+    const committed: string = DEFAULT_MEASUREMENT_ID;
+    expect(committed === "" || resolveMeasurementId() === committed).toBe(true);
     const config = await readFile("src/consent/analytics-config.ts", "utf8");
     expect(config).toContain("resolveMeasurementId(import.meta.env.VITE_GA_MEASUREMENT_ID)");
     const banner = await readFile("src/components/ConsentBanner.tsx", "utf8");
