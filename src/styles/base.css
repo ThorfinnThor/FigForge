@@ -3473,6 +3473,20 @@ legend {
     box-shadow: none;
   }
 
+  /* Scrolled content otherwise looks sliced at the screen edge; the fade shows there is more. */
+  .figure-panel--drawer::after {
+    position: absolute;
+    z-index: 3;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    height: var(--space-8);
+    border-radius: 0 0 0 var(--radius-lg);
+    background: linear-gradient(to bottom, transparent, var(--card) 85%);
+    content: "";
+    pointer-events: none;
+  }
+
   .figure-panel--drawer .figure-panel__hang {
     display: none;
   }
