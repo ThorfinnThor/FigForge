@@ -1,22 +1,12 @@
 import { useEffect } from "react";
 import { FIGURE_TEMPLATES, type FigureThemeId } from "../ideas/figure-templates.js";
+import { partNumbers } from "../ideas/part-numbers.js";
 import { AppHeader } from "./AppHeader.js";
 import { germanPath } from "../app/routing.js";
 import { useI18n } from "../i18n.js";
 import { FigurePreviewCard } from "./FigurePreviewCard.js";
 import { productsForTheme } from "../products/curated-products.js";
 import { CuratedProductGrid } from "./CuratedProductGrid.js";
-
-const PART_SLOTS = ["head", "headwear", "torsoAssembly", "legsAssembly", "handAccessory"] as const;
-
-/** Reads the LDraw number from component ids such as "catalog:head:3626bpr0027". */
-const partNumbers = (template: (typeof FIGURE_TEMPLATES)[number]): ReadonlyArray<{ slot: (typeof PART_SLOTS)[number]; number: string }> => (
-  PART_SLOTS.flatMap((slot) => {
-    const componentId = template.document.selections.find((selection) => selection.slot === slot)?.componentId;
-    const number = componentId?.split(":")[2];
-    return number ? [{ slot, number }] : [];
-  })
-);
 
 const TIP_KEYS: Record<string, string> = {
   pirates: "ideas.world.pirates.tip",

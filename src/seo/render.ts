@@ -3,21 +3,9 @@ import { GUIDE_IDS, GUIDE_SECTIONS } from "../guides/guide-content.js";
 import { splitInline } from "../privacy/inline.js";
 import { privacySections } from "../privacy/privacy-content.js";
 import type { Language } from "../i18n.js";
+import { escapeHtml, requireMessage, type Messages } from "./html.js";
+import { ideasBody, landingBody, methodologyBody, setsBody, worldBody } from "./page-bodies.js";
 import { SEO_LANGUAGES, SEO_ROUTES, SITE_ORIGIN, canonicalUrl, routePath, type SeoRoute } from "./routes.js";
-
-type Messages = Record<string, string>;
-
-const escapeHtml = (value: string): string => value
-  .replace(/&/gu, "&amp;")
-  .replace(/</gu, "&lt;")
-  .replace(/>/gu, "&gt;")
-  .replace(/"/gu, "&quot;");
-
-const requireMessage = (messages: Messages, key: string): string => {
-  const value = messages[key];
-  if (!value) throw new Error(`Missing German message for SEO key "${key}".`);
-  return value;
-};
 
 /**
  * Fills the built index.html template with route-specific head tags and a
@@ -73,7 +61,7 @@ export function renderRoutePage(
   );
 }
 
-/** Guides ship their full text so search engines index the article, not just a title. */
+/** Pages ship their full text so search engines index the content, not just a title. */
 function renderBody(
   route: SeoRoute,
   messages: Messages,
@@ -122,6 +110,12 @@ function renderBody(
       `<li><a href="${escapeHtml(guidePath(id, language))}">${escapeHtml(requireMessage(messages, `guide.${id}.title`))}</a></li>`).join("");
     return `<main>${intro}<ul>${links}</ul></main>`;
   }
+  const context = { messages, language };
+  if (page?.kind === "landing") return `<main>${intro}${landingBody(context)}</main>`;
+  if (page?.kind === "ideas") return `<main>${intro}${ideasBody(context)}</main>`;
+  if (page?.kind === "world") return `<main>${intro}${worldBody(context, page.id, page.key)}</main>`;
+  if (page?.kind === "sets") return `<main>${intro}${setsBody(context)}</main>`;
+  if (page?.kind === "methodology") return `<main>${intro}${methodologyBody(context)}</main>`;
   return `<main>${intro}</main>`;
 }
 

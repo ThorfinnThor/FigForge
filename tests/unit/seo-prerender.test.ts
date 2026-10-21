@@ -1,5 +1,8 @@
 import { describe, expect, it } from "vitest";
 import { messages } from "../../src/i18n.js";
+import { FIGURE_TEMPLATES } from "../../src/ideas/figure-templates.js";
+import { partNumbers } from "../../src/ideas/part-numbers.js";
+import { CURATED_PRODUCTS, productsForTheme } from "../../src/products/curated-products.js";
 import { renderRobotsTxt, renderRoutePage, renderSitemapXml } from "../../src/seo/render.js";
 import { SEO_ROUTES, canonicalUrl } from "../../src/seo/routes.js";
 
@@ -50,7 +53,8 @@ describe("SEO prerendering", () => {
   });
 
   it("escapes copy and points robots.txt at the sitemap", () => {
-    const route = { ...SEO_ROUTES[0]!, headingKey: "x.h", titleKey: "x.t", descriptionKey: "x.d", ledeKey: "x.l" };
+    // The builder has no extra body text, so only the head and heading copy are under test here.
+    const route = { ...SEO_ROUTES.find((entry) => entry.path === "/builder")!, headingKey: "x.h", titleKey: "x.t", descriptionKey: "x.d", ledeKey: "x.l" };
     const html = renderRoutePage(TEMPLATE, route, { "x.h": "A <b>", "x.t": 'Q "T"', "x.d": "a & b", "x.l": "l" });
     expect(html).toContain("<h1>A &lt;b&gt;</h1>");
     expect(html).toContain("<title>Q &quot;T&quot;</title>");
@@ -136,5 +140,73 @@ describe("imprint", () => {
     expect(en).toContain("not made, sponsored, authorized or endorsed by it");
     for (const html of [de, en]) expect(html).toContain("LEGO®");
     expect(en).toContain('<link rel="canonical" href="https://createyourminifig.com/en/imprint" />');
+  });
+});
+
+describe("full text of content pages", () => {
+  const route = (path: string) => SEO_ROUTES.find((entry) => entry.path === path)!;
+  const render = (path: string, language: "de" | "en") =>
+    renderRoutePage(TEMPLATE, route(path), messages[language], language);
+  const plain = (html: string): string => html.replace(/<[^>]+>/gu, " ").replace(/&quot;/gu, '"').replace(/&amp;/gu, "&");
+
+  it("lists steps, worlds, guides and the LEGO notice on the landing page in both languages", () => {
+    for (const language of ["de", "en"] as const) {
+      const html = render("/", language);
+      const prefix = language === "en" ? "/en" : "";
+      expect(html).toContain(`href="${prefix}/builder"`);
+      expect(html).toContain(`href="${prefix}/ideas/pirates"`);
+      expect(html).toContain(`href="${prefix}/${language === "en" ? "guides" : "ratgeber"}/`);
+      expect(html).toContain(language === "en" ? 'href="/en/imprint"' : 'href="/impressum"');
+      for (const key of ["landing.step.pick.title", "landing.fact.local.title", "landing.legal"]) {
+        expect(plain(html)).toContain(plain(messages[language][key]!));
+      }
+    }
+  });
+
+  it("lists every starter figure and every world on the ideas page", () => {
+    for (const language of ["de", "en"] as const) {
+      const html = render("/ideas", language);
+      for (const template of FIGURE_TEMPLATES) {
+        expect(plain(html)).toContain(plain(messages[language][template.nameKey]!));
+        expect(html).toContain(`?template=${template.id}`);
+      }
+      for (const world of ["pirates", "castle", "space", "fire-rescue"]) {
+        expect(html).toContain(`/ideas/${world}"`);
+      }
+    }
+  });
+
+  it("gives a theme page its figures with LDraw numbers, the tip and matching sets", () => {
+    const html = render("/ideas/pirates", "de");
+    const figures = FIGURE_TEMPLATES.filter((template) => template.themeId === "pirates");
+    expect(figures.length).toBeGreaterThan(0);
+    for (const template of figures) {
+      expect(plain(html)).toContain(plain(messages.de[template.nameKey]!));
+      for (const { number } of partNumbers(template)) expect(html).toContain(`<dd>${number}</dd>`);
+    }
+    expect(plain(html)).toContain(plain(messages.de["ideas.world.pirates.tip"]!));
+    for (const product of productsForTheme("pirates")) {
+      expect(plain(html)).toContain(plain(messages.de[product.titleKey]!));
+    }
+    expect(html).not.toContain("amazon");
+    const other = render("/ideas/space", "de");
+    expect(other).not.toContain(messages.de["ideas.world.pirates.tip"]!);
+  });
+
+  it("lists every curated set and accessory on the sets page", () => {
+    for (const language of ["de", "en"] as const) {
+      const html = plain(render("/sets", language));
+      for (const product of CURATED_PRODUCTS) expect(html).toContain(plain(messages[language][product.titleKey]!));
+    }
+  });
+
+  it("carries the method text and license links on the methodology page", () => {
+    for (const language of ["de", "en"] as const) {
+      const html = render("/methodology", language);
+      for (const key of ["source.note", "methodology.assembly", "methodology.physical", "methodology.localStorage", "methodology.figureExport"]) {
+        expect(plain(html)).toContain(plain(messages[language][key]!));
+      }
+      expect(html).toContain('href="/licenses/LDraw-CAreadme.txt"');
+    }
   });
 });
