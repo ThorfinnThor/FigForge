@@ -788,6 +788,87 @@ const testRecoversFromPoisonedChunk = async (client: CdpClient, origin: string):
   }
 };
 
+const CONSENT_KEY = "figforge-consent-v1";
+const TEST_MEASUREMENT_ID = "G-TEST123456";
+
+const testAnalyticsConsent = async (client: CdpClient, origin: string): Promise<void> => {
+  // The build for these tests carries a test measurement ID. Requests to Google are answered with an
+  // empty script and counted, so the test sees exactly when the page would have contacted Google.
+  const googleRequests: string[] = [];
+  const requests = (): readonly string[] => googleRequests;
+  await client.send("Fetch.enable", { patterns: [{ urlPattern: "*googletagmanager.com*", requestStage: "Request" }] });
+  const stop = client.on("Fetch.requestPaused", (params) => {
+    googleRequests.push((params.request as { url: string }).url);
+    void client.send("Fetch.fulfillRequest", {
+      requestId: String(params.requestId),
+      responseCode: 200,
+      responseHeaders: [{ name: "Content-Type", value: "text/javascript" }],
+      body: Buffer.from("/* stub */").toString("base64"),
+    });
+  });
+  const stored = (): Promise<string | null> => evaluate(client, `(() => { try { return JSON.parse(localStorage.getItem('${CONSENT_KEY}') ?? 'null')?.choice ?? null; } catch { return null; } })()`);
+  const bannerGone = (label: string) => waitFor(client, "!document.querySelector('.consent-banner')", label);
+  const openSettings = async (): Promise<void> => {
+    await evaluate(client, "document.querySelector('.app-more summary').click()");
+    await waitFor(client, "Boolean(document.querySelector('.app-more__button'))", "cookie settings entry");
+    await evaluate(client, "document.querySelector('.app-more__button').click()");
+    await waitFor(client, "Boolean(document.querySelector('.consent-banner'))", "banner opened from the menu");
+  };
+  try {
+    await navigate(client, `${origin}/`);
+    await evaluate(client, `localStorage.removeItem('${CONSENT_KEY}')`);
+    await navigate(client, `${origin}/`);
+    await waitFor(client, "Boolean(document.querySelector('.consent-banner'))", "consent banner on the first visit");
+    assert.deepEqual(requests(), [], "nothing is requested from Google before a decision");
+    const first = await evaluate<{ buttons: string[]; focusStolen: boolean; cookies: string }>(client, `({
+      buttons: [...document.querySelectorAll('.consent-banner__actions button')].map((button) => button.textContent),
+      focusStolen: Boolean(document.activeElement?.closest('.consent-banner')),
+      cookies: document.cookie,
+    })`);
+    assert.deepEqual(first.buttons, ["Erlauben", "Ablehnen"]);
+    assert.equal(first.focusStolen, false, "the first-visit banner does not take focus");
+    assert.equal(first.cookies.includes("_ga"), false);
+
+    assert.equal(await clickButtonWithText(client, "Ablehnen"), true);
+    await bannerGone("banner after declining");
+    assert.equal(await stored(), "denied");
+    assert.deepEqual(requests(), [], "declining loads nothing from Google");
+
+    await navigate(client, `${origin}/`);
+    await waitFor(client, "Boolean(document.querySelector('.app-header'))", "page after declining");
+    assert.equal(await evaluate(client, "Boolean(document.querySelector('.consent-banner'))"), false, "no second question");
+    assert.deepEqual(requests(), []);
+
+    await evaluate(client, "document.cookie = '_ga=GA1.1.test; path=/'");
+    await openSettings();
+    assert.match(await evaluate<string>(client, "document.querySelector('.consent-banner__current').textContent"), /abgelehnt/u);
+    assert.equal(await evaluate(client, "Boolean(document.activeElement?.closest('.consent-banner'))"), true, "an opened banner takes focus");
+    assert.equal(await clickButtonWithText(client, "Erlauben"), true);
+    await bannerGone("banner after allowing");
+    assert.equal(await stored(), "granted");
+    await waitFor(client, "true", "script request");
+    await waitFor(client, `document.querySelector('script[src*="googletagmanager"]') !== null`, "analytics script element");
+    assert.equal(requests().length, 1);
+    assert.ok(requests()[0]?.includes(`id=${TEST_MEASUREMENT_ID}`), "the script is requested for the measurement ID");
+
+    await openSettings();
+    assert.equal(await clickButtonWithText(client, "Ablehnen"), true);
+    await bannerGone("banner after withdrawing");
+    const withdrawn = await evaluate<{ disabled: unknown; cookies: string; choice: string | null }>(client, `({
+      disabled: window['ga-disable-${TEST_MEASUREMENT_ID}'],
+      cookies: document.cookie,
+      choice: JSON.parse(localStorage.getItem('${CONSENT_KEY}') ?? 'null')?.choice ?? null,
+    })`);
+    assert.equal(withdrawn.disabled, true, "measuring stops at once");
+    assert.equal(withdrawn.cookies.includes("_ga"), false, "the Google Analytics cookies are removed");
+    assert.equal(withdrawn.choice, "denied");
+    assert.equal(requests().length, 1, "withdrawing triggers no further Google request");
+  } finally {
+    stop();
+    await client.send("Fetch.disable");
+  }
+};
+
 const testCoreFirstCatalogLoading = async (client: CdpClient, origin: string): Promise<void> => {
   await navigate(client, `${origin}/builder`);
   await waitFor(
@@ -830,6 +911,9 @@ const run = async (): Promise<void> => {
   }
   const client = await createPage(chrome.debuggingOrigin);
   try {
+    // The test build has the consent banner switched on; every other test starts with a recorded decision.
+    await navigate(client, `${previewServer.origin}/`);
+    await evaluate(client, `localStorage.setItem('${CONSENT_KEY}', JSON.stringify({ v: 1, choice: 'denied', at: Date.now() }))`);
     await testIndexedDbCommitAndAbort(client, `${storageHarness.origin}/__browser-storage-qa`);
     process.stdout.write("✓ real IndexedDB commit and abort-after-request-success\n");
     await testLandingPage(client, previewServer.origin);
@@ -842,6 +926,8 @@ const run = async (): Promise<void> => {
     process.stdout.write("✓ imprint in both languages\n");
     await testRecoversFromPoisonedChunk(client, previewServer.origin);
     process.stdout.write("✓ page recovers from a poisoned chunk by reloading once\n");
+    await testAnalyticsConsent(client, previewServer.origin);
+    process.stdout.write("✓ analytics only after consent, withdrawal stops it and removes the cookies\n");
     await testCoreFirstCatalogLoading(client, previewServer.origin);
     process.stdout.write("✓ core packages first, full catalog afterwards\n");
     await testMountedMobileKeyboard(client, previewServer.origin);

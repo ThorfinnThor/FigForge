@@ -1,4 +1,6 @@
 import { useEffect, useRef, type MouseEvent, type ReactNode } from "react";
+import { ANALYTICS_ENABLED } from "../consent/analytics-config.js";
+import { useConsent } from "../consent/use-consent.js";
 import { useI18n, type Language } from "../i18n.js";
 
 export type AppRoute = "home" | "imprint" | "guides" | "builder" | "ideas" | "sets" | "collection" | "methodology" | "privacy";
@@ -28,6 +30,7 @@ const SECONDARY_ROUTES = [
 export function AppHeader({ active, onNavigate, children }: AppHeaderProps) {
   const { language, path, setLanguage, t } = useI18n();
   const moreRef = useRef<HTMLDetailsElement>(null);
+  const { store: consentStore } = useConsent();
   const secondaryIsActive = SECONDARY_ROUTES.some(({ id }) => id === active);
 
   useEffect(() => {
@@ -72,6 +75,18 @@ export function AppHeader({ active, onNavigate, children }: AppHeaderProps) {
           </summary>
           <div className="app-more__menu">
             {SECONDARY_ROUTES.map((route) => link(route, "app-more__link"))}
+            {ANALYTICS_ENABLED && consentStore ? (
+              <button
+                className="app-more__link app-more__button"
+                onClick={() => {
+                  consentStore.openSettings();
+                  if (moreRef.current) moreRef.current.open = false;
+                }}
+                type="button"
+              >
+                {t("consent.settings")}
+              </button>
+            ) : null}
           </div>
         </details>
       </nav>

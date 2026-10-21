@@ -1,6 +1,8 @@
-# Google-Dienste und Cookies einbauen: was dann zu tun ist
+# Google Analytics: Stand und Aktivierung
 
-Stand 2026-10-21. Die Datenschutzerklärung (`/privacy`) sagt heute: keine Cookies, nichts von Dritten, und im Abschnitt „4. Cookies und Dienste von Dritten“ versprechen wir, vor einem solchen Dienst die Einwilligung einzuholen und die Erklärung zu ergänzen. Dieses Dokument legt fest, was dafür gebaut werden muss. **Gebaut ist davon noch nichts.**
+**Stand 2026-10-21: gebaut (ADR-041), aber ausgeschaltet.** Banner, Widerruf, Laden nach Einwilligung, Sicherheitsrichtlinie, Datenschutztext und Tests sind fertig und bleiben aus, solange `DEFAULT_MEASUREMENT_ID` in `src/consent/measurement-id.ts` leer ist. Mit einer Mess-ID schaltet alles gemeinsam um. Die folgenden Abschnitte beschreiben, was dafür gebaut wurde und was der Eigentümer vorher tun muss (Abschnitt 6).
+
+Ursprünglicher Plan (Stand 2026-10-21 vor dem Bau): Die Datenschutzerklärung (`/privacy`) sagt heute: keine Cookies, nichts von Dritten, und im Abschnitt „4. Cookies und Dienste von Dritten“ versprechen wir, vor einem solchen Dienst die Einwilligung einzuholen und die Erklärung zu ergänzen. Dieses Dokument legt fest, was dafür gebaut werden muss. **Gebaut ist davon noch nichts.**
 
 ## 1. Erst entscheiden: welcher Google-Dienst?
 
@@ -55,3 +57,15 @@ If you consent, we use Google Analytics 4, a web analytics service of Google Ire
 2. Ob die **Datenverarbeitungsbedingungen** im Google-Konto akzeptiert sind; erst dann darf der Satz „Mit Google besteht eine Vereinbarung zur Auftragsverarbeitung“ stehen.
 3. Speicherdauer im Konto einstellen (2 oder 14 Monate) und im Text eintragen; Google-Signale und personalisierte Werbung deaktiviert lassen, solange nichts anderes beschlossen ist.
 4. Rechtliche Prüfung des Banners und des Textes.
+
+## 6. Aktivieren (Schritte für den Eigentümer)
+
+1. In Google Analytics (https://analytics.google.com) ein **Property** anlegen und einen **Web-Datenstream** für `https://createyourminifig.com` erstellen. Die Mess-ID hat die Form `G-XXXXXXXXXX`.
+2. Im Konto die **Datenverarbeitungsbedingungen** akzeptieren (Verwaltung → Konto → Einstellungen). Erst dann ist der Satz „Google stellt Datenverarbeitungsbedingungen bereit“ in der Erklärung gedeckt.
+3. **Speicherdauer** der Ereignisdaten auf 2 oder 14 Monate stellen (Verwaltung → Property → Datenerhebung und -änderung → Datenaufbewahrung). Der Text sagt „höchstens 14 Monate“.
+4. **Google-Signale** und personalisierte Werbung ausgeschaltet lassen (Datenerhebung). Der Code schaltet sie im Tag ebenfalls ab; der Text sagt, dass wir sie nicht nutzen.
+5. Die Mess-ID an den Entwickler geben. Eintrag in `src/consent/measurement-id.ts`, Merge, danach den Banner und Datenschutztext auf der Live-Seite ansehen.
+6. Nach der Aktivierung: auf der Live-Seite „Erlauben“ wählen und in Analytics unter „Echtzeit“ prüfen, dass ein Besuch ankommt; „Ablehnen“ und „Cookie-Einstellungen“ ausprobieren.
+7. Rechtliche Prüfung von Banner und Text (und des Satzes zu Googles Datenverarbeitungsbedingungen).
+
+Die Aussagen zu Google im Text (keine IP-Adressen gespeichert, Cookies `_ga` und `_ga_<ID>` bis zu zwei Jahre, Data Privacy Framework) stammen aus Googles Dokumentation und sind vor der Aktivierung dort gegenzulesen.

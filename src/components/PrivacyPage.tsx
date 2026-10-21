@@ -1,5 +1,6 @@
 import { Fragment, useEffect } from "react";
-import { PRIVACY_SECTIONS } from "../privacy/privacy-content.js";
+import { ANALYTICS_ENABLED } from "../consent/analytics-config.js";
+import { privacySections } from "../privacy/privacy-content.js";
 import { splitInline } from "../privacy/inline.js";
 import { useI18n } from "../i18n.js";
 import { AppHeader } from "./AppHeader.js";
@@ -29,7 +30,7 @@ export function PrivacyPage() {
           <p className="methodology-page__eyebrow">FigForge</p>
           <h1 id="privacy-title">{t("privacy.title")}</h1>
           <div className="workspace-methodology__body privacy-sections">
-            {PRIVACY_SECTIONS[language].map((section) => (
+            {privacySections(language, ANALYTICS_ENABLED).map((section) => (
               <section id={section.id} key={section.id}>
                 <h2>{section.heading}</h2>
                 {section.paragraphs?.map((paragraph) => <p key={paragraph}>{inline(paragraph)}</p>)}
