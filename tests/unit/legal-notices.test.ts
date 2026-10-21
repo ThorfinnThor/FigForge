@@ -1,17 +1,20 @@
 import { readFile } from "node:fs/promises";
 import { describe, expect, it } from "vitest";
 import { messages } from "../../src/i18n.js";
+import { PRIVACY_SECTIONS } from "../../src/privacy/privacy-content.js";
 
 describe("legal notices", () => {
   it("names the controller in the privacy notice and points to the imprint, in both languages", async () => {
     for (const language of ["de", "en"] as const) {
-      const body = messages[language]["privacy.controller.body"]!;
-      expect(body).toContain("SeitenHafen361");
-      expect(body).toContain("Schayan Yousefian");
-      expect(body).toContain("contact@createyourminifig.com");
+      const controller = PRIVACY_SECTIONS[language].find(({ id }) => id === "controller");
+      const text = [...(controller?.paragraphs ?? [])].join(" ");
+      expect(text, language).toContain("SeitenHafen361");
+      expect(text, language).toContain("Schayan Yousefian");
+      expect(text, language).toContain("contact@createyourminifig.com");
+      expect(text, language).toContain("](/impressum)");
     }
     const page = await readFile("src/components/PrivacyPage.tsx", "utf8");
-    expect(page).toContain('path("/impressum")');
+    expect(page).toContain("path(part.href)");
   });
 
   it("says in both languages that FigForge is independent and that LEGO does not endorse it", () => {

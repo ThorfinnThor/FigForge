@@ -13,7 +13,7 @@ export type SeoRoute = {
   ledeKey: string;
   indexable: boolean;
   /** Guide pages get their full text in the prerendered HTML; the hub lists the guides. */
-  page?: { kind: "guide"; id: GuideId } | { kind: "guides-hub" } | { kind: "imprint" };
+  page?: { kind: "guide"; id: GuideId } | { kind: "guides-hub" } | { kind: "imprint" } | { kind: "privacy" };
 };
 
 const WORLD_KEYS = [
@@ -48,7 +48,7 @@ export const SEO_ROUTES: readonly SeoRoute[] = [
     page: { kind: "guide", id },
   })),
   { path: "/impressum", titleKey: "imprint.metaTitle", descriptionKey: "imprint.metaDescription", headingKey: "imprint.title", ledeKey: "imprint.lede", indexable: true, page: { kind: "imprint" } },
-  { path: "/privacy", titleKey: "privacy.metaTitle", descriptionKey: "privacy.metaDescription", headingKey: "privacy.title", ledeKey: "privacy.metaDescription", indexable: true },
+  { path: "/privacy", titleKey: "privacy.metaTitle", descriptionKey: "privacy.metaDescription", headingKey: "privacy.title", ledeKey: "privacy.metaDescription", indexable: true, page: { kind: "privacy" } },
   { path: "/collection", titleKey: "collection.metaTitle", descriptionKey: "builder.metaDescription", headingKey: "nav.collection", ledeKey: "builder.metaDescription", indexable: false },
 ];
 

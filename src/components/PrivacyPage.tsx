@@ -1,15 +1,23 @@
-import { useEffect } from "react";
-import { AppHeader } from "./AppHeader.js";
+import { Fragment, useEffect } from "react";
+import { PRIVACY_SECTIONS } from "../privacy/privacy-content.js";
+import { splitInline } from "../privacy/inline.js";
 import { useI18n } from "../i18n.js";
+import { AppHeader } from "./AppHeader.js";
 
 export function PrivacyPage() {
-  const { path, t } = useI18n();
+  const { language, path, t } = useI18n();
 
   useEffect(() => {
     const previousTitle = document.title;
     document.title = t("privacy.metaTitle");
     return () => { document.title = previousTitle; };
   }, [t]);
+
+  const inline = (text: string) => splitInline(text).map((part, index) => (
+    part.href === undefined ? <Fragment key={index}>{part.text}</Fragment> : part.href.startsWith("/")
+      ? <a href={path(part.href)} key={index}>{part.text}</a>
+      : <a href={part.href} key={index} rel="noopener noreferrer" target="_blank">{part.text}</a>
+  ));
 
   return (
     <div className="app-shell methodology-shell">
@@ -21,22 +29,14 @@ export function PrivacyPage() {
           <p className="methodology-page__eyebrow">FigForge</p>
           <h1 id="privacy-title">{t("privacy.title")}</h1>
           <div className="workspace-methodology__body privacy-sections">
-            <section>
-              <h2>{t("privacy.controller.title")}</h2>
-              <p>{t("privacy.controller.body")} <a href={path("/impressum")}>{t("privacy.controller.link")}</a></p>
-            </section>
-            <section>
-              <h2>{t("privacy.local.title")}</h2>
-              <p>{t("privacy.local.body")}</p>
-            </section>
-            <section>
-              <h2>{t("privacy.links.title")}</h2>
-              <p>{t("privacy.links.body")}</p>
-            </section>
-            <section>
-              <h2>{t("privacy.affiliate.title")}</h2>
-              <p>{t("amazon.disclosure")} {t("products.disclosure")}</p>
-            </section>
+            {PRIVACY_SECTIONS[language].map((section) => (
+              <section id={section.id} key={section.id}>
+                <h2>{section.heading}</h2>
+                {section.paragraphs?.map((paragraph) => <p key={paragraph}>{inline(paragraph)}</p>)}
+                {section.items ? <ul>{section.items.map((item) => <li key={item}>{inline(item)}</li>)}</ul> : null}
+                {section.closing?.map((paragraph) => <p key={paragraph}>{inline(paragraph)}</p>)}
+              </section>
+            ))}
           </div>
         </section>
       </div>
