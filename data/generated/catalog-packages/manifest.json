@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
   "sourcePolicy": "Nur Rebrickable Catalog Downloads/CSV, keine MOC-Dateien.",
-  "sourceLockSha256": "3a3bc334f62ca67bac6ef155e5b47e81636798e862e99808898d2326e0616c5c",
-  "includedPartCount": 20282,
+  "sourceLockSha256": "97b110c562acb33a2fdbf636bf50869d8d5d842981cbad94c8ab7edc75fb9bcf",
+  "includedPartCount": 20283,
   "packages": [
     {
       "role": "head",
@@ -35,7 +35,7 @@
       "categoryIds": [
         61
       ],
-      "partCount": 3253
+      "partCount": 3254
     },
     {
       "role": "handAccessory",

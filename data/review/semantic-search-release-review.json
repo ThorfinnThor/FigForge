@@ -5,9 +5,9 @@
   "reviewStatus": "pending-human-review",
   "blindedSystems": true,
   "querySetSha256": "56c9a287a380df56d27ff7ecf061514e537ea1be4821f6f6e1f7b41ce397bf97",
-  "releaseManifestSha256": "c12dede72f1f69ee46b010caadf75d1b1687662c21a6e907e35e762378145ff7",
+  "releaseManifestSha256": "e45afe603a69744140123413f2dcd51877e02b62d81277ff54d782451b0c82ed",
   "releaseProfileId": "compact-minilm",
-  "releaseDocumentCount": 2713,
+  "releaseDocumentCount": 2712,
   "instructions": "Bewerte jeden Treffer blind mit 0 (unpassend), 1 (akzeptabel) oder 2 (sehr passend). Maßgeblich sind Suchtext, sichtbare Geometrie, Katalogname, Kategorie und belegte Farbe. Die Herkunft aus Basis- oder Hybridsuche bleibt verborgen; der Holdout wird nicht ausgeliefert.",
   "cases": [
     {
@@ -983,8 +983,8 @@
           "part:30114"
         ],
         "hybrid": [
-          "part:13750",
           "part:30475",
+          "part:13750",
           "part:30114"
         ]
       },
@@ -1246,7 +1246,7 @@
           "candidateKey": "candidate:release-dev-en-blue-police-uniform:part:973c32h01pr1697",
           "componentId": "part:973c32h01pr1697",
           "rebrickablePartNum": "973c32h01pr1697",
-          "originalName": "Torso Police Shirt with Gold Badge, Dark Blue Tie and 'POLICE' Print on Back, Medium Blue Arms, Yellow Hands",
+          "originalName": "Torso, Police Shirt with Gold Badge, Dark Blue Tie and 'POLICE' Print on Back, Medium Blue Arms, Yellow Hands",
           "categoryRole": "torsoAssembly",
           "colorNames": [
             "Medium Blue"
@@ -1258,7 +1258,7 @@
           "candidateKey": "candidate:release-dev-en-blue-police-uniform:part:973c29h01pr3747",
           "componentId": "part:973c29h01pr3747",
           "rebrickablePartNum": "973c29h01pr3747",
-          "originalName": "Torso Police Shirt with Dark Bluish Gray Vest, Gold Badge, Tan Belt and White 'POLICE' Print on Back, Bright Light Blue Arms, Yellow Hands",
+          "originalName": "Torso, Police Shirt with Dark Bluish Gray Vest, Gold Badge, Tan Belt and White 'POLICE' Print on Back, Bright Light Blue Arms, Yellow Hands",
           "categoryRole": "torsoAssembly",
           "colorNames": [
             "Bright Light Blue"
@@ -1333,7 +1333,7 @@
         "hybrid": [
           "part:973c03h03pr6396",
           "part:973c03h03pr1274",
-          "part:973c03h01pr3207"
+          "part:973c22h03pr2859"
         ]
       },
       "candidates": [
@@ -1362,6 +1362,18 @@
           "relevance": null
         },
         {
+          "candidateKey": "candidate:release-dev-de-black-knight-torso:part:973c22h03pr2859",
+          "componentId": "part:973c22h03pr2859",
+          "rebrickablePartNum": "973c22h03pr2859",
+          "originalName": "Torso, Samurai Armor with Dark Green Panels, Gold Phoenix and Red Sash Print, Red Arms, Black Hands",
+          "categoryRole": "torsoAssembly",
+          "colorNames": [
+            "Black"
+          ],
+          "thumbnailUrl": "/assets/thumbnails/ldraw-expanded/torso-973c22h03pr2859.webp",
+          "relevance": null
+        },
+        {
           "candidateKey": "candidate:release-dev-de-black-knight-torso:part:24319pr9822",
           "componentId": "part:24319pr9822",
           "rebrickablePartNum": "24319pr9822",
@@ -1383,18 +1395,6 @@
             "Black"
           ],
           "thumbnailUrl": "/assets/thumbnails/ldraw-expanded/torso-84638c01pr1442.webp",
-          "relevance": null
-        },
-        {
-          "candidateKey": "candidate:release-dev-de-black-knight-torso:part:973c03h01pr3207",
-          "componentId": "part:973c03h01pr3207",
-          "rebrickablePartNum": "973c03h01pr3207",
-          "originalName": "Torso, Jacket with Two Pockets over Bright Green T-Shirt with 8-Bit Shooter Print, Black Arms, Yellow Hands",
-          "categoryRole": "torsoAssembly",
-          "colorNames": [
-            "Black"
-          ],
-          "thumbnailUrl": "/assets/thumbnails/ldraw-expanded/torso-973c03h01pr3207.webp",
           "relevance": null
         },
         {
@@ -1482,7 +1482,7 @@
           "candidateKey": "candidate:release-dev-en-space-control-panel:part:973c28h28pr2715",
           "componentId": "part:973c28h28pr2715",
           "rebrickablePartNum": "973c28h28pr2715",
-          "originalName": "Torso Jumpsuit with Zipper, White and Gold Markings and Classic Space Logo Print, Blue Arms and Hands",
+          "originalName": "Torso, Jumpsuit with Zipper, White and Gold Markings and Classic Space Logo Print, Blue Arms and Hands",
           "categoryRole": "torsoAssembly",
           "colorNames": [
             "Blue"
@@ -1530,8 +1530,8 @@
         ],
         "hybrid": [
           "part:973c22h03pr1264",
-          "part:973c22h27pr2112",
-          "part:973c22h02pr5595"
+          "part:973c22h02pr5595",
+          "part:973c22h01pr1832"
         ]
       },
       "candidates": [
@@ -1547,18 +1547,6 @@
             "Red"
           ],
           "thumbnailUrl": "/assets/thumbnails/ldraw-expanded/torso-37191.webp",
-          "relevance": null
-        },
-        {
-          "candidateKey": "candidate:release-dev-de-red-pirate-no-armor:part:973c22h27pr2112",
-          "componentId": "part:973c22h27pr2112",
-          "rebrickablePartNum": "973c22h27pr2112",
-          "originalName": "Torso Santa Jacket with Fur and Black Belt Print, Red Arms, White Hands",
-          "categoryRole": "torsoAssembly",
-          "colorNames": [
-            "Red"
-          ],
-          "thumbnailUrl": "/assets/thumbnails/ldraw-expanded/torso-973c22h27pr2112.webp",
           "relevance": null
         },
         {
@@ -1610,6 +1598,18 @@
           "relevance": null
         },
         {
+          "candidateKey": "candidate:release-dev-de-red-pirate-no-armor:part:973c22h01pr1832",
+          "componentId": "part:973c22h01pr1832",
+          "rebrickablePartNum": "973c22h01pr1832",
+          "originalName": "Torso, Royal Guard Uniform with Gold Buttons and White Belt Print, Red Arms, Yellow Hands",
+          "categoryRole": "torsoAssembly",
+          "colorNames": [
+            "Red"
+          ],
+          "thumbnailUrl": "/assets/thumbnails/ldraw-expanded/torso-973c22h01pr1832.webp",
+          "relevance": null
+        },
+        {
           "candidateKey": "candidate:release-dev-de-red-pirate-no-armor:part:973c01h23pr6810",
           "componentId": "part:973c01h23pr6810",
           "rebrickablePartNum": "973c01h23pr6810",
@@ -1651,9 +1651,9 @@
         ],
         "hybrid": [
           "part:970c22pr0019",
+          "part:970c03pr0001",
           "part:970c14pr0288",
-          "part:970e09",
-          "part:970c03pr0001"
+          "part:970e09"
         ]
       },
       "candidates": [
@@ -1987,7 +1987,7 @@
         "hybrid": [
           "part:970c29",
           "part:970c08pr0001",
-          "part:970c05pr9967"
+          "part:970c65"
         ]
       },
       "candidates": [
@@ -2055,6 +2055,18 @@
           "relevance": null
         },
         {
+          "candidateKey": "candidate:release-dev-en-blue-jeans:part:970c65",
+          "componentId": "part:970c65",
+          "rebrickablePartNum": "970c65",
+          "originalName": "Hips and Trans-Light Blue Legs",
+          "categoryRole": "legsAssembly",
+          "colorNames": [
+            "Dark Azure"
+          ],
+          "thumbnailUrl": "/assets/thumbnails/ldraw-expanded/legs-970c65.webp",
+          "relevance": null
+        },
+        {
           "candidateKey": "candidate:release-dev-en-blue-jeans:part:16709pats01pr0014",
           "componentId": "part:16709pats01pr0014",
           "rebrickablePartNum": "16709pats01pr0014",
@@ -2074,18 +2086,6 @@
           "categoryRole": "legsAssembly",
           "colorNames": [],
           "thumbnailUrl": "/assets/thumbnails/ldraw-expanded/legs-16709pat28.webp",
-          "relevance": null
-        },
-        {
-          "candidateKey": "candidate:release-dev-en-blue-jeans:part:970c05pr9967",
-          "componentId": "part:970c05pr9967",
-          "rebrickablePartNum": "970c05pr9967",
-          "originalName": "Hips and Dark Blue Legs with Black Belt, Pockets, Shoes Print",
-          "categoryRole": "legsAssembly",
-          "colorNames": [
-            "Dark Blue"
-          ],
-          "thumbnailUrl": "/assets/thumbnails/ldraw-expanded/legs-970c05pr9967.webp",
           "relevance": null
         }
       ]
@@ -2352,30 +2352,22 @@
           "part:19727pr0005"
         ],
         "hybrid": [
-          "part:685pr0001",
-          "part:3626bpr0324",
-          "part:3626cpr1296"
+          "part:685pr0002",
+          "part:3626bpr0757",
+          "part:28621pr0063"
         ]
       },
       "candidates": [
         {
-          "candidateKey": "candidate:release-holdout-de-sad-glasses:part:685pr0001",
-          "componentId": "part:685pr0001",
-          "rebrickablePartNum": "685pr0001",
-          "originalName": "Homemaker Figure Head with Face Print",
+          "candidateKey": "candidate:release-holdout-de-sad-glasses:part:3626bpr0757",
+          "componentId": "part:3626bpr0757",
+          "rebrickablePartNum": "3626bpr0757",
+          "originalName": "Minifig Head Archibald Hale, Glasses with Brown Sideburns, Moustache and White Pupils Print [Blocked Open Stud]",
           "categoryRole": "head",
-          "colorNames": [],
-          "thumbnailUrl": "/assets/thumbnails/ldraw-expanded/head-685pr0001.webp",
-          "relevance": null
-        },
-        {
-          "candidateKey": "candidate:release-holdout-de-sad-glasses:part:3626bpr0324",
-          "componentId": "part:3626bpr0324",
-          "rebrickablePartNum": "3626bpr0324",
-          "originalName": "Minifig Head Witch, Hair Framed Face, Eyebrows and 1 Tooth in Mouth Print [Blocked Open Stud]",
-          "categoryRole": "head",
-          "colorNames": [],
-          "thumbnailUrl": "/assets/thumbnails/ldraw-expanded/head-3626bpr0324.webp",
+          "colorNames": [
+            "Yellow"
+          ],
+          "thumbnailUrl": "/assets/thumbnails/ldraw-expanded/head-3626bpr0757.webp",
           "relevance": null
         },
         {
@@ -2417,6 +2409,18 @@
           "relevance": null
         },
         {
+          "candidateKey": "candidate:release-holdout-de-sad-glasses:part:28621pr0063",
+          "componentId": "part:28621pr0063",
+          "rebrickablePartNum": "28621pr0063",
+          "originalName": "Minifig Head Professor Cuthbert Calculus, Black Eyebrows, Thick Moustache, Round Glasses",
+          "categoryRole": "head",
+          "colorNames": [
+            "Light Nougat"
+          ],
+          "thumbnailUrl": "/assets/thumbnails/ldraw-expanded/head-28621pr0063.webp",
+          "relevance": null
+        },
+        {
           "candidateKey": "candidate:release-holdout-de-sad-glasses:part:19727pr0001",
           "componentId": "part:19727pr0001",
           "rebrickablePartNum": "19727pr0001",
@@ -2429,15 +2433,13 @@
           "relevance": null
         },
         {
-          "candidateKey": "candidate:release-holdout-de-sad-glasses:part:3626cpr1296",
-          "componentId": "part:3626cpr1296",
-          "rebrickablePartNum": "3626cpr1296",
-          "originalName": "Minifig Head (No Face), Pineapple Print",
+          "candidateKey": "candidate:release-holdout-de-sad-glasses:part:685pr0002",
+          "componentId": "part:685pr0002",
+          "rebrickablePartNum": "685pr0002",
+          "originalName": "Homemaker Figure Head with Eyes, Glasses and Smile Print",
           "categoryRole": "head",
-          "colorNames": [
-            "Yellow"
-          ],
-          "thumbnailUrl": "/assets/thumbnails/ldraw-expanded/head-3626cpr1296.webp",
+          "colorNames": [],
+          "thumbnailUrl": "/assets/thumbnails/ldraw-expanded/head-685pr0002.webp",
           "relevance": null
         },
         {
@@ -2853,7 +2855,7 @@
         "hybrid": [
           "part:973c25h01pr1704",
           "part:973c35h01pr4009",
-          "part:973c31h03pr0055"
+          "part:973c25h27pr5890"
         ]
       },
       "candidates": [
@@ -2867,6 +2869,18 @@
             "Bright Green"
           ],
           "thumbnailUrl": "/assets/thumbnails/ldraw-expanded/torso-973c06h01.webp",
+          "relevance": null
+        },
+        {
+          "candidateKey": "candidate:release-holdout-de-green-ninja-armor:part:973c25h27pr5890",
+          "componentId": "part:973c25h27pr5890",
+          "rebrickablePartNum": "973c25h27pr5890",
+          "originalName": "Torso, Piccolo Suit Jacket, Gold Buttons, Dark Green Trim Print, Sand Green Arms, White Hands",
+          "categoryRole": "torsoAssembly",
+          "colorNames": [
+            "Sand Green"
+          ],
+          "thumbnailUrl": "/assets/thumbnails/ldraw-expanded/torso-973c25h27pr5890.webp",
           "relevance": null
         },
         {
@@ -2894,18 +2908,6 @@
           "relevance": null
         },
         {
-          "candidateKey": "candidate:release-holdout-de-green-ninja-armor:part:973c31h03pr0055",
-          "componentId": "part:973c31h03pr0055",
-          "rebrickablePartNum": "973c31h03pr0055",
-          "originalName": "Torso Bandit Card Suit Vest and Gold Fob Chain Print, Green Arms, Black Hands",
-          "categoryRole": "torsoAssembly",
-          "colorNames": [
-            "Green"
-          ],
-          "thumbnailUrl": "/assets/thumbnails/ldraw-expanded/torso-973c31h03pr0055.webp",
-          "relevance": null
-        },
-        {
           "candidateKey": "candidate:release-holdout-de-green-ninja-armor:part:37191",
           "componentId": "part:37191",
           "rebrickablePartNum": "37191",
@@ -2923,7 +2925,7 @@
           "candidateKey": "candidate:release-holdout-de-green-ninja-armor:part:973c35h01pr4009",
           "componentId": "part:973c35h01pr4009",
           "rebrickablePartNum": "973c35h01pr4009",
-          "originalName": "Torso Hoodie with Bright Green Pocket Trim and Ties and Gray Zipper over Robe with Asian Characters on Bright Green Trim Print, Dark Green Arms, Yellow Hands",
+          "originalName": "Torso, Hoodie with Bright Green Pocket Trim and Ties and Gray Zipper over Robe with Asian Characters on Bright Green Trim Print, Dark Green Arms, Yellow Hands",
           "categoryRole": "torsoAssembly",
           "colorNames": [
             "Dark Green"
@@ -2935,7 +2937,7 @@
           "candidateKey": "candidate:release-holdout-de-green-ninja-armor:part:973c02h02pr3917",
           "componentId": "part:973c02h02pr3917",
           "rebrickablePartNum": "973c02h02pr3917",
-          "originalName": "Torso, Horizontal Black Stripe Print (Powerpuff Girls), Light Arms and Hands",
+          "originalName": "Torso, Horizontal Black Stripe Print (Powerpuff Girls), Light Nougat Arms and Hands",
           "categoryRole": "torsoAssembly",
           "colorNames": [
             "Bright Green",
@@ -3080,10 +3082,137 @@
       "role": "legsAssembly",
       "query": "weiße Astronautenbeine",
       "systems": {
-        "baseline": [],
-        "hybrid": []
+        "baseline": [
+          "part:16709pat01",
+          "part:16709pat23pr2019",
+          "part:16709pat38",
+          "part:16709pat39",
+          "part:36036"
+        ],
+        "hybrid": [
+          "part:970c03pr0003",
+          "part:970c27pat38",
+          "part:970c27pat03"
+        ]
       },
-      "candidates": []
+      "candidates": [
+        {
+          "candidateKey": "candidate:release-holdout-de-white-astronaut-legs:part:970c03pr0003",
+          "componentId": "part:970c03pr0003",
+          "rebrickablePartNum": "970c03pr0003",
+          "originalName": "Hips and Black Legs with White Lab Coat/Buttons Print (Mad Scientist)",
+          "categoryRole": "legsAssembly",
+          "colorNames": [
+            "White"
+          ],
+          "thumbnailUrl": "/assets/thumbnails/ldraw-expanded/legs-970c03pr0003.webp",
+          "relevance": null
+        },
+        {
+          "candidateKey": "candidate:release-holdout-de-white-astronaut-legs:part:16709pat39",
+          "componentId": "part:16709pat39",
+          "rebrickablePartNum": "16709pat39",
+          "originalName": "Legs Short with Lavender Feet Pattern [Multi Color Injection]",
+          "categoryRole": "legsAssembly",
+          "colorNames": [
+            "White"
+          ],
+          "thumbnailUrl": "/assets/thumbnails/ldraw-expanded/legs-16709pat39.webp",
+          "relevance": null
+        },
+        {
+          "candidateKey": "candidate:release-holdout-de-white-astronaut-legs:part:970c27pat38",
+          "componentId": "part:970c27pat38",
+          "rebrickablePartNum": "970c27pat38",
+          "originalName": "Hips with White Legs and Bright Light Orange Boots Pattern [Donald]",
+          "categoryRole": "legsAssembly",
+          "colorNames": [
+            "White"
+          ],
+          "thumbnailUrl": "/assets/thumbnails/ldraw-expanded/legs-970c27pat38.webp",
+          "relevance": null
+        },
+        {
+          "candidateKey": "candidate:release-holdout-de-white-astronaut-legs:part:36036",
+          "componentId": "part:36036",
+          "rebrickablePartNum": "36036",
+          "originalName": "Hips and Legs Under Dress/Robe",
+          "categoryRole": "legsAssembly",
+          "colorNames": [
+            "Black",
+            "Blue",
+            "Bright Light Blue",
+            "Dark Blue",
+            "Dark Bluish Gray",
+            "Dark Brown",
+            "Dark Green",
+            "Dark Pink",
+            "Dark Purple",
+            "Dark Red",
+            "Lavender",
+            "Light Bluish Gray",
+            "Medium Lavender",
+            "Medium Nougat",
+            "Red",
+            "Sand Blue",
+            "Sand Green",
+            "White",
+            "Yellowish Green"
+          ],
+          "thumbnailUrl": "/assets/thumbnails/ldraw-expanded/legs-36036.webp",
+          "relevance": null
+        },
+        {
+          "candidateKey": "candidate:release-holdout-de-white-astronaut-legs:part:16709pat23pr2019",
+          "componentId": "part:16709pat23pr2019",
+          "rebrickablePartNum": "16709pat23pr2019",
+          "originalName": "Legs Short with Medium Nougat Feet Pattern with Black Claws/Toes Print",
+          "categoryRole": "legsAssembly",
+          "colorNames": [
+            "White"
+          ],
+          "thumbnailUrl": "/assets/thumbnails/ldraw-expanded/legs-16709pat23pr2019.webp",
+          "relevance": null
+        },
+        {
+          "candidateKey": "candidate:release-holdout-de-white-astronaut-legs:part:16709pat01",
+          "componentId": "part:16709pat01",
+          "rebrickablePartNum": "16709pat01",
+          "originalName": "Legs Short with Yellow Feet Pattern [Multi Color Injection]",
+          "categoryRole": "legsAssembly",
+          "colorNames": [
+            "Dark Turquoise",
+            "White"
+          ],
+          "thumbnailUrl": "/assets/thumbnails/ldraw-expanded/legs-16709pat01.webp",
+          "relevance": null
+        },
+        {
+          "candidateKey": "candidate:release-holdout-de-white-astronaut-legs:part:970c27pat03",
+          "componentId": "part:970c27pat03",
+          "rebrickablePartNum": "970c27pat03",
+          "originalName": "Hips with White Legs and Black Boots Pattern",
+          "categoryRole": "legsAssembly",
+          "colorNames": [
+            "White"
+          ],
+          "thumbnailUrl": "/assets/thumbnails/ldraw-expanded/legs-970c27pat03.webp",
+          "relevance": null
+        },
+        {
+          "candidateKey": "candidate:release-holdout-de-white-astronaut-legs:part:16709pat38",
+          "componentId": "part:16709pat38",
+          "rebrickablePartNum": "16709pat38",
+          "originalName": "Legs Short with Bright Light Orange Feet Pattern",
+          "categoryRole": "legsAssembly",
+          "colorNames": [
+            "Bright Light Yellow",
+            "White"
+          ],
+          "thumbnailUrl": "/assets/thumbnails/ldraw-expanded/legs-16709pat38.webp",
+          "relevance": null
+        }
+      ]
     },
     {
       "caseId": "release-holdout-en-lion-shield",
@@ -3225,63 +3354,50 @@
       "query": "schwarze Axt",
       "systems": {
         "baseline": [
-          "part:10169",
-          "part:10187",
-          "part:102498pat0001",
-          "part:10830pat0001",
-          "part:11103"
+          "part:18738",
+          "part:3835",
+          "part:3848",
+          "part:4438",
+          "part:6123"
         ],
         "hybrid": [
+          "part:3835",
           "part:4438",
-          "part:90370pr0001",
-          "part:3848"
+          "part:18738",
+          "part:3848",
+          "part:6123"
         ]
       },
       "candidates": [
         {
-          "candidateKey": "candidate:release-holdout-de-black-axe:part:10169",
-          "componentId": "part:10169",
-          "rebrickablePartNum": "10169",
-          "originalName": "Bag / Sack with Handle",
+          "candidateKey": "candidate:release-holdout-de-black-axe:part:6123",
+          "componentId": "part:6123",
+          "rebrickablePartNum": "6123",
+          "originalName": "Weapon Halberd / Axe Elaborate",
           "categoryRole": "handAccessory",
           "colorNames": [
             "Black",
-            "Dark Brown",
-            "Dark Tan",
-            "Green",
-            "Medium Nougat",
-            "Red",
-            "Reddish Brown",
-            "White",
+            "Dark Bluish Gray",
+            "Dark Gray",
+            "Dark Purple",
+            "Light Bluish Gray",
             "Yellow"
           ],
-          "thumbnailUrl": "/assets/thumbnails/ldraw-expanded/handAccessory-10169.webp",
+          "thumbnailUrl": "/assets/thumbnails/ldraw-expanded/handAccessory-6123.webp",
           "relevance": null
         },
         {
-          "candidateKey": "candidate:release-holdout-de-black-axe:part:11103",
-          "componentId": "part:11103",
-          "rebrickablePartNum": "11103",
-          "originalName": "Weapon Sword Double Blade with Bar Holder [Chi Sword]",
+          "candidateKey": "candidate:release-holdout-de-black-axe:part:18738",
+          "componentId": "part:18738",
+          "rebrickablePartNum": "18738",
+          "originalName": "Tool Ice Axe [3-Rib Handle]",
           "categoryRole": "handAccessory",
           "colorNames": [
             "Black",
             "Flat Silver",
-            "Pearl Gold"
+            "Light Bluish Gray"
           ],
-          "thumbnailUrl": "/assets/thumbnails/ldraw-expanded/handAccessory-11103.webp",
-          "relevance": null
-        },
-        {
-          "candidateKey": "candidate:release-holdout-de-black-axe:part:10830pat0001",
-          "componentId": "part:10830pat0001",
-          "rebrickablePartNum": "10830pat0001",
-          "originalName": "Equipment Magnifying Glass with Thick Frame, Solid Handle, Trans-Clear Lens Pattern",
-          "categoryRole": "handAccessory",
-          "colorNames": [
-            "Black"
-          ],
-          "thumbnailUrl": "/assets/thumbnails/ldraw-expanded/handAccessory-10830pat0001.webp",
+          "thumbnailUrl": "/assets/thumbnails/ldraw-expanded/handAccessory-18738.webp",
           "relevance": null
         },
         {
@@ -3320,53 +3436,17 @@
           "relevance": null
         },
         {
-          "candidateKey": "candidate:release-holdout-de-black-axe:part:10187",
-          "componentId": "part:10187",
-          "rebrickablePartNum": "10187",
-          "originalName": "Weapon Bladed Claw Spread",
+          "candidateKey": "candidate:release-holdout-de-black-axe:part:3835",
+          "componentId": "part:3835",
+          "rebrickablePartNum": "3835",
+          "originalName": "Weapon Axe",
           "categoryRole": "handAccessory",
           "colorNames": [
             "Black",
-            "Bright Light Yellow",
-            "Dark Azure",
-            "Dark Green",
-            "Dark Tan",
-            "Flat Silver",
-            "Glow in Dark White",
-            "Green",
-            "Nougat",
-            "Orange",
-            "Pearl Gold",
-            "White"
+            "Light Bluish Gray",
+            "Light Gray"
           ],
-          "thumbnailUrl": "/assets/thumbnails/ldraw-expanded/handAccessory-10187.webp",
-          "relevance": null
-        },
-        {
-          "candidateKey": "candidate:release-holdout-de-black-axe:part:102498pat0001",
-          "componentId": "part:102498pat0001",
-          "rebrickablePartNum": "102498pat0001",
-          "originalName": "Equipment Wand with Trans-Clear Hollow Stud Pattern",
-          "categoryRole": "handAccessory",
-          "colorNames": [
-            "Black",
-            "Dark Brown",
-            "Dark Tan",
-            "White"
-          ],
-          "thumbnailUrl": "/assets/thumbnails/ldraw-expanded/handAccessory-102498pat0001.webp",
-          "relevance": null
-        },
-        {
-          "candidateKey": "candidate:release-holdout-de-black-axe:part:90370pr0001",
-          "componentId": "part:90370pr0001",
-          "rebrickablePartNum": "90370pr0001",
-          "originalName": "Musical Instrument Microphone with Metallic Silver Top Print",
-          "categoryRole": "handAccessory",
-          "colorNames": [
-            "Black"
-          ],
-          "thumbnailUrl": "/assets/thumbnails/ldraw-expanded/handAccessory-90370pr0001.webp",
+          "thumbnailUrl": "/assets/thumbnails/ldraw-expanded/handAccessory-3835.webp",
           "relevance": null
         }
       ]
