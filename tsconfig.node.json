@@ -28,6 +28,7 @@
     "src/compatibility/**/*.ts",
     "src/app/routing.ts",
     "src/guides/**/*.ts",
+    "src/privacy/**/*.ts",
     "src/search/**/*.ts",
     "src/seo/**/*.ts",
     "src/figure/**/*.ts",
