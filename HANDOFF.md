@@ -56,27 +56,43 @@ Geschlossen: #22 (überholt durch ADR-011), #78 (TypeScript 7, siehe #132).
 | #145 | Rechtliche Hinweise: Abschnitt „Verantwortlicher“ in der Datenschutzseite mit Verweis aufs Impressum; Hinweis „Hinweis zu Marken und Rechten“ im Impressum; LEGO-Kurzhinweis (unabhängig, keine Verbindung, kein Sponsoring) auf Landingpage und Sets-Seite. Deutsch und Englisch. |
 | #146 | Workflow `refresh-catalog.yml` nutzt das optionale Secret `REFRESH_PR_TOKEN` (siehe Abschnitt 4 und 7). **Offen bis zum Merge; ohne Secret ändert sich nichts.** |
 
-## 3. Datenstand (2026-10-19/20, aus den Daten gemessen)
+### Vierte Arbeitsrunde (2026-10-20 bis 21)
 
-- Katalogteile gesamt 20.282, davon als 3D-Modell verfügbar 14.865 (Zuwachs durch den Refresh am 19.10.: +11 bzw. +1).
+| PR | Inhalt |
+| --- | --- |
+| #147 | `HANDOFF.md` nach der dritten Runde aktualisiert. |
+| #148, #149 | Entwurf der DSGVO-Datenschutzerklärung in `docs/legal/datenschutzerklaerung-entwurf.md` (belegte Angaben mit Quellen, Offenes getrennt). |
+| #150 | Kontaktadresse korrigiert: `contact@createyourminifig.com` statt `info@` (Impressum, Datenschutz, vorab erzeugtes HTML, Tests). |
+| #152 | Refresh: Zeilen in `inventory_minifigs.csv.gz` mit unbekanntem Inventar werden übersprungen und im Bericht gezählt (`skippedInventoryMinifigRows`); mehr als 0,5 % brechen weiter ab (ADR-039). Auslöser: Rebrickable-Daten vom 2026-10-21 mit Inventar 364458. |
+| #153 | Vollständige Datenschutzerklärung (elf Abschnitte, de/en) als strukturierter Inhalt in `src/privacy/privacy-content.ts`, auch im vorab erzeugten HTML. Abschnitt „Cookies und Dienste von Dritten“ verspricht Einwilligung und vorherige Anpassung vor Diensten wie Google. `docs/legal/google-cookies-vorbereitung.md` beschreibt, was dafür zu bauen und zu ändern ist (**nichts davon gebaut**). |
+| #154 | Textkorrekturen: Landingpage versprach „Kapitänshut“ als Suchbeispiel (lieferte nichts), deutscher Suchfeld-Platzhalter „Polizist“ → „Pirat“, „offengelegt“, „drehe“, doppelte Nennung von BrickLink-XML/Wanted List. |
+| #155 | Deutsches Such-Lexikon von 36 auf 132 Einträge (Berufe, Kleidung, Gesichter, Zubehör, Komposita, Farben). Test durchsucht den echten Katalog mit jedem Eintrag. `ff21`-Lexikon neu erzeugt (Hash der Basis). |
+| #156 | Seite lädt einmal neu, wenn ein Modul-Import nach einem Deployment fehlschlägt (`src/app/chunk-reload.ts`, ADR-040). Schleifenschutz über `history.state`, kein Web-Speicher. |
+| #157 | Refresh-PR vom 2026-10-21 gemergt, erzeugt mit `REFRESH_PR_TOKEN` (der erste Versuch scheiterte am fehlenden Pull-requests-Recht des Tokens): 20.283 Teile, 11.588 Sets, keine übersprungenen Zeilen. |
+
+## 3. Datenstand (2026-10-19 bis 21, aus den Daten gemessen)
+
+- Katalogteile gesamt 20.283 (Refresh 2026-10-21, #157), 11.588 Sets im Set-Index. Die Zahl der Teile mit 3D-Modell lag am 2026-10-20 bei 14.865; nach dem Refresh nicht neu ausgezählt.
 - Köpfe mit Aufdruck im 3D-Modell: 527 (+3 kuratierte = die „530“ auf der Startseite). Das ist nicht die Gesamtzahl der Teile.
 - BrickLink-Crosswalk: 14.087 von 14.882 Builder-Teilen mit eindeutiger Artikelnummer, 795 gesperrt (85 mehrdeutig, 710 ohne Beleg), 0 `not-in-snapshot`; Snapshot vom 2026-10-19.
+- Deutsche Suche: Das Suchmodell ist englisch (`all-MiniLM-L6-v2`); deutsche Wörter greifen nur über das Lexikon `data/curated/ff17-search-lexicon.json` (132 Einträge). Andere deutsche Wörter finden nichts.
 - Ein Refresh ändert viele Dateien (Hashes, Reihenfolge), aber meist nur wenige Teile inhaltlich. Die Dateizahl eines Refresh-PR sagt nichts über neue Teile.
 
 ## 4. Automatisierung (`.github/workflows/refresh-catalog.yml`)
 
-**Zeitplan:** Montags 04:17 UTC (GitHub startet verzögert; am 2026-10-19 um 09:59 UTC, erfolgreich). Manuell startbar über `workflow_dispatch`.
+**Zeitplan:** Montags 04:17 UTC (GitHub startet verzögert; am 2026-10-19 um 09:59 UTC, erfolgreich). Manuell startbar über `workflow_dispatch`. Nächster planmäßiger Lauf: 2026-10-26.
 
 **Ablauf:** Rebrickable-CSV laden → offizielle LDraw-Bibliothek prüfen/übernehmen → Builder-Katalog, Abdeckung, Platzierungskandidaten neu bauen (dabei: Crosswalk abgleichen, Exportpakete bauen) → Accessory-Review neu bauen → Suchindex bauen → `verify` → Automations-Branch `automation/rebrickable-catalog-refresh` pushen → Review-PR anlegen/aktualisieren → CI per Dispatch anstoßen → BrickLink-Snapshot-Alter prüfen.
 
 **Verhalten bei Problemen:**
 - `verify` schlägt fehl → PR wird trotzdem als **Entwurf** angelegt, Lauf endet rot, Issue `Katalog-Refresh fehlgeschlagen` (Label `catalog-refresh-failed`). Nächster grüner Lauf schließt das Issue.
 - Geprüfte Teilenamen weichen ab → `npm run data:check:name-drift` listet alle; gepinnte Namen in `data/curated/*` nach Prüfung anpassen (nur Umbenennung, nicht anderes Teil). Kommas, Groß-/Kleinschreibung und Leerraum werden ignoriert.
+- `inventory_minifigs.csv.gz` mit verwaister Inventar-ID → die Zeile wird übersprungen und im Bericht (`skippedInventoryMinifigRows`) gezählt; erst über 0,5 % der Zeilen bricht der Lauf ab (ADR-039).
 - Neue Teile ohne BrickLink-Zuordnung → Status `not-in-snapshot`, für BrickLink gesperrt; ID nur bei eindeutigem offiziellen LDraw-Header.
 - BrickLink-Snapshot älter als 90 Tage → Issue (Label `bricklink-snapshot-stale`) mit Anleitung; wird nach dem Import geschlossen.
 
 **Manuelle Schritte, die bleiben:**
-1. **CI-Freigabe für Refresh-PRs.** Vom Workflow angelegte PRs (Roboter-Konto) starten die Tests nicht von selbst, der Lauf steht auf `action_required` und der PR auf `BLOCKED`. Freigabe in der Oberfläche („Approve and run“) oder `gh api -X POST repos/<owner>/<repo>/actions/runs/<id>/approve`. **Entfällt, sobald das Secret `REFRESH_PR_TOKEN` gesetzt ist** (Workflow-Änderung in #146): Dann pushen und öffnen der PR mit dem Token, und Verify startet von selbst. Nach dem ersten Lauf mit Secret prüfen: PR-Autor ist der Token-Besitzer, Verify läuft ohne Freigabe, der Dispatch-Schritt ist übersprungen. Das Token läuft nach höchstens einem Jahr ab; dann schlägt der Refresh fehl und legt das Issue `catalog-refresh-failed` an.
+1. **Refresh-Token:** läuft ab (spätestens ein Jahr nach Anlage); Ablaufdatum im Kalender führen. Siehe Abschnitt 4.
 2. **Branch aktualisieren**, wenn `main` weitergezogen ist (`gh pr update-branch <nr>`), dann CI abwarten und mergen.
 3. **BrickLink-Snapshot erneuern** (spätestens alle ~90 Tage): auf bricklink.com anmelden, im Catalog Download die Tabellen *Parts* und *Part and Color Codes* (txt) laden, dann `npm run data:import:bricklink -- <Parts.txt> <Part-and-Color-Codes.txt> YYYY-MM-DD` und das Ergebnis per PR einreichen. Rohdateien nicht committen.
 
@@ -102,6 +118,9 @@ Geschlossen: #22 (überholt durch ADR-011), #78 (TypeScript 7, siehe #132).
 - **Vorschau-Farben:** `data/generated/preview-colors.json` (Generator `tools/lib/preview-colors.ts`, `npm run data:build:preview-colors`). Unzugeordnete Farben stehen mit Grund darin. Laufzeit: `src/scene/preview-color.ts`. Die Sammlungsansicht nutzt es noch nicht.
 - **Kaufwege (am 2026-10-20 geprüft):** *BrickLink:* Der Datei-Upload nimmt nur .bsx, .ldr, .lxf und .io; die XML (`<INVENTORY>` ohne XML-Deklaration) wird im Tab „Upload BrickLink XML format“ als Text eingefügt, dafür gibt es den Button „XML kopieren“. *Pick a Brick:* Dialog „Upload List“ nimmt CSV, JSON und LXFML (bis 200 verschiedene Teile, 5 MB); unsere CSV `elementId,quantity` entspricht LEGOs Vorlage; nicht geführte Teile meldet LEGO als „Unavailable Pieces“. Für die Startfigur lässt sich nur ein Teil exportieren (vier ohne Element-ID). *Rebrickable:* nicht selbst getestet (Bot-Abfrage und Konto nötig); laut Drittseite werden die Spalten `Part`, `Color`, `Quantity` erkannt, Import über „Import/Delete Parts“ auf der Teilelisten-Seite.
 - **Rechtstexte:** Alle Angaben zum Anbieter stehen in `imprint.*`-Meldungen und `src/components/ImprintPage.tsx` (E-Mail-Konstante `CONTACT_EMAIL`); der vorab erzeugte HTML-Text des Impressums wird in `src/seo/render.ts` aus denselben Meldungen gebaut. Der LEGO-Kurzhinweis ist `landing.legal`.
+- **Deutsche Suche erweitern:** Einträge in `data/curated/ff17-search-lexicon.json` (Format: eine Zeile je Eintrag, Schreibweisen je mit Umlaut und mit ae/oe/ue/ss, Mehrzahl und Beugungen; mehrdeutige Wörter, die auch englische Wörter sind, wie „Rock“ oder „Hose“, nicht aufnehmen). Danach `npm run data:build:ff21` (Hash der Basis im `ff21`-Lexikon) und `npm run verify`. Der Test `german-search-lexicon.test.ts` verlangt für jeden übersetzenden Eintrag Treffer im echten Katalog.
+- **Datenschutztext ändern:** Inhalt in `src/privacy/privacy-content.ts` (Abschnitte mit Überschrift, Absätzen, Liste; Links als `[Text](/pfad)` oder `[Text](https://…)`). Der Test `privacy-content.test.ts` prüft Abschnitte in beiden Sprachen, die tatsächlichen Aussagen (keine Cookies, nur eigene Domain, Purelymail, Cloudflare) und dass kein abgeschlossener Auftragsverarbeitungsvertrag behauptet wird. Wer Dienste einbindet, die Cookies setzen (Google), muss vorher `docs/legal/google-cookies-vorbereitung.md` abarbeiten: Einwilligungsbanner, Widerruf, Consent Mode v2, Sicherheitsrichtlinie (`public/_headers`), Tests, ADR und den Text in Abschnitt 2 und 4.
+- **Neu laden bei Deployment-Problemen:** `src/app/chunk-reload.ts` (ADR-040). Direkt nach einem Deployment kann eine neue Asset-Adresse kurz die Startseite statt JavaScript liefern und der Browser behält das; die Seite holt die Dateien dann am Zwischenspeicher vorbei neu und lädt einmal neu. Schleifenschutz in `history.state` (`figforgeChunkReloadAt`).
 - **Semantische Suche (42 MB):** lädt erst beim ersten Tippen im Suchfeld, nicht beim Öffnen.
 - **Teilenamen:** Katalognamen bleiben englisch; `src/catalog/part-display.ts` entfernt nur Präfix, „Print/Pattern“-Suffix und Klammerhinweise. Keine Teilübersetzung (würde gemischtsprachige Labels erzeugen).
 - **Crosswalk:** `data/generated/bricklink-item-crosswalk.json` (einzeilig). Logik in `tools/lib/bricklink-item-crosswalk.ts` (`refreshBrickLinkItemCrosswalkFile` läuft in `build-ldraw-expanded-catalog.ts` vor dem Exportbau). Nach Änderungen: `npm run data:validate:bricklink`.
@@ -111,22 +130,25 @@ Geschlossen: #22 (überholt durch ADR-011), #78 (TypeScript 7, siehe #132).
 
 1. **Token für Refresh-PRs (Entscheidung Eigentümer; Empfehlung: Fine-grained PAT, nur dieses Repo, ein Jahr Laufzeit, als Secret `REFRESH_PR_TOKEN`).** Workflow ist vorbereitet (#146). Anlegen: https://github.com/settings/personal-access-tokens/new (Repository access: nur `FigForge`; Repository permissions: Contents und Pull requests je „Read and write“), dann das Secret unter https://github.com/ThorfinnThor/FigForge/settings/secrets/actions/new speichern. Branch-Schutz auf `main` (geprüft per API): `verify` Pflicht, Branch muss aktuell sein, gilt auch für Administratoren, keine Force-Pushes, keine Pflicht-Reviews.
 2. **Rechtlich ungeprüft:** Nutzungsbedingungen des BrickLink Catalog Downloads für die Veröffentlichung der abgeleiteten Zuordnungstabelle in einem öffentlichen Repository. Vor einem breiten Start klären.
-3. **Rechtstexte:** Impressum (#142), Verantwortlicher im Datenschutz und Marken-Hinweis (#145) sind live, aber **nicht rechtlich geprüft**. Eine vollständige Datenschutzerklärung nach DSGVO fehlt noch (Hosting bei Cloudflare, Rechte der Betroffenen, Fremdanbieter wie Amazon). Das Postfach contact@createyourminifig.com ist laut Eigentümer eingerichtet.
+3. **Rechtstexte:** Impressum (#142), Datenschutzerklärung (#153) und Marken-Hinweis (#145) sind live, aber **nicht rechtlich geprüft**. Offen aus `docs/legal/datenschutzerklaerung-entwurf.md`: (a) Das Cloudflare-DPA wurde im Konto nicht gesondert akzeptiert; Cloudflare schreibt, es gelte für Self-Serve-Kunden und sei Teil des Vertrags, ob das ohne Zustimmung wirkt ist ungeklärt (Support fragen oder Prüfung). (b) `contact@createyourminifig.com` läuft laut Eigentümer bei Purelymail, einem US-Anbieter (Delaware, Server AWS US-East-1) ohne gefundene Auftragsverarbeitungsvereinbarung oder Standardvertragsklauseln; die alte `info@`-Adresse läuft über Namecheaps Weiterleitung, die öffentlichen MX-Einträge nennen nur diese Weiterleitung. (c) Amazon-Teilnahmevereinbarung nicht abrufbar. (d) § 25 TDDDG-Einschätzung zur lokalen Speicherung.
 4. **Noch nicht belegt:**
-   - ein Refresh-Lauf, bei dem Rebrickable wirklich neue Builder-Teile hinzufügt (die Crosswalk-Logik dafür ist unit-getestet, aber nicht im Echtbetrieb gesehen),
+   - ein Refresh-Lauf mit vielen neuen Builder-Teilen (am 2026-10-21 kam nur ein Teil hinzu; die Crosswalk-Logik ist unit-getestet, im Echtbetrieb nur dieser Fall gesehen),
    - dass die Dependabot-Gruppe `react` greift (erst beim nächsten wöchentlichen Dependabot-Lauf sichtbar),
    - `actions/upload-artifact` v7: ein von drei Upload-Schritten hat nachweislich funktioniert, die beiden anderen laufen nur bei zu prüfendem Zubehör,
-   - die Live-Seite nach den letzten Merges wurde nicht erneut mit eigenen Augen geprüft (die CI-Browsertests auf `main` sind grün).
+   - ob das automatische Neuladen (#156) bei einem echten Deployment greift; belegt ist es nur durch den Browser-Test, der den Fehler nachstellt. Beobachtet wurde das Problem am 2026-10-21 nach dem Merge von #155 in einem Test-Browser (Datei `download-figure-document-…js` lieferte zuerst die Startseite).
 5. **Vorschau-Farben:** 17 Farben sind nicht zugeordnet (Liste mit Grund in `preview-colors.json`); bei mehrfarbigen Teilen ändert sich nur die Hauptfarbe; die Sammlungsansicht zeigt weiter Modellfarben.
-6. **Refresh-Pfad nach den Änderungen dieser Runde nicht im Echtbetrieb gesehen:** `setCount`, Kernpakete und Vorschau-Farben entstehen im Refresh. Beim nächsten Montags-Lauf prüfen, dass `verify` grün bleibt und die PR-Diffs plausibel sind.
+6. **Refresh mit den neuen Bausteinen belegt:** `setCount`, Kernpakete und Vorschau-Farben entstehen im Refresh; der Lauf vom 2026-10-21 war grün, `verify` auf dem PR #157 ebenfalls.
 7. **Search Console / Bing Webmaster** noch nicht eingerichtet; Sitemap dort einreichen (`https://createyourminifig.com/sitemap.xml`, 30 URLs). Erst danach lassen sich Indexierung und Nachfrage der neuen Seiten beobachten.
 8. **Ratgeber-Texte** sind Entwürfe und nicht vom Eigentümer gelesen; besonders die Aussagen zu BrickLink, Brick Owl und Rebrickable (Konto nötig, mehrere Bestellungen bei mehreren Shops) und der Sicherheitshinweis zu Kleinteilen.
 9. **Kaufwege vom Eigentümer ausprobieren:** den Button „XML kopieren“ mit echtem BrickLink-Konto und den Rebrickable-CSV-Import (von mir nicht testbar).
-10. **Vorab erzeugtes HTML ist bei textreichen Seiten dünn:** Für Datenschutz, Methodik, Sets und Ideen steht nur `h1` und Einleitung im statischen HTML; der Rest erscheint erst nach dem Laden. Ratgeber und Impressum sind vollständig vorab erzeugt (`renderBody` in `src/seo/render.ts`). Bei Bedarf dort ergänzen.
+10. **Vorab erzeugtes HTML ist bei manchen textreichen Seiten dünn:** Für Methodik, Sets und Ideen steht nur `h1` und Einleitung im statischen HTML; der Rest erscheint erst nach dem Laden. Ratgeber, Impressum und Datenschutz sind vollständig vorab erzeugt (`renderBody` in `src/seo/render.ts`).
+11. **Google-Dienste (geplant):** Cookies und Analyse sind nicht eingebaut. Vorher `docs/legal/google-cookies-vorbereitung.md` abarbeiten; die Datenschutzerklärung verspricht Einwilligung und vorherige Anpassung. Welcher Google-Dienst, ist offen.
+12. **Deutsche Suche deckt nur das Lexikon ab:** Wörter außerhalb der 132 Einträge finden nichts; der Builder-Text „Finde echte Teile mit deinen eigenen Worten“ ist für Deutsch weiter optimistisch. Bei Bedarf Lexikon erweitern (Abschnitt 6).
+13. **Rebrickable-CSV-Import nicht getestet** (Bot-Abfrage, Konto nötig); BrickLink-Einfügen nicht getestet (LEGO-Login). Pick a Brick wurde mit der echten CSV getestet.
 
 ## 8. SEO-Plan
 
-**Stand 2026-10-20:** Schritt 2 (Technik), Landingpage, Themenseiten, die drei Ratgeber und die englische Fassung sind umgesetzt und live (#131, #134, #139, #140). Offen: Search Console/Bing Webmaster (Schritt 1), Impressum, danach die Auswertung nach 2 und 6 Wochen (Schritt 5). Der folgende Befund beschreibt den Zustand **vor** diesen PRs.
+**Stand 2026-10-20:** Schritt 2 (Technik), Landingpage, Themenseiten, die drei Ratgeber und die englische Fassung sind umgesetzt und live (#131, #134, #139, #140). Impressum ist ebenfalls fertig (#142). Offen: Search Console/Bing Webmaster (Schritt 1), danach die Auswertung nach 2 und 6 Wochen (Schritt 5). Der folgende Befund beschreibt den Zustand **vor** diesen PRs.
 
 **Befund 2026-10-20 (am Live-HTML geprüft):**
 - Reine JavaScript-App: im Rohzustand nur `<div id="root"></div>`, kein Text, keine Überschrift.
@@ -150,9 +172,12 @@ Geschlossen: #22 (überholt durch ADR-011), #78 (TypeScript 7, siehe #132).
 
 ## 9. Ausgeführte Prüfungen (Auszug)
 
-- `npm run verify` zuletzt grün auf dem Stand von #145 (398 Tests, alle Daten-Validatoren inklusive Kernpakete und Vorschau-Farben, Typecheck, Lint, Build, Cloudflare-Check); `npm run test:browser` lokal grün.
+- `npm run verify` zuletzt grün auf dem Stand von #156 (418 Tests, alle Daten-Validatoren inklusive Kernpakete und Vorschau-Farben, Typecheck, Lint, Build, Cloudflare-Check); `npm run test:browser` lokal grün.
 - Live am 2026-10-20 geprüft: `robots.txt`, Sitemap (28 URLs mit Alternativen), Titel/Canonical von `/ideas/pirates`, Landingpage unter `/`, `/builder` mit 3,5 MB entpackt beim ersten Vorschaubild, alle vier Ratgeber-Seiten und `/en/`, `/en/guides`, `/en/guides/order-minifigure-parts` (Status 200, richtiger Titel, `hreflang` auf die deutsche Fassung).
-- CI (`verify` samt verpflichtenden Browser-Regressionen und Cloudflare-Vorschau) war auf allen PRs #131 bis #145 grün; der Test `testGuides` und `testEnglishUrls` laufen dort mit.
+- CI (`verify` samt verpflichtenden Browser-Regressionen und Cloudflare-Vorschau) war auf allen PRs #131 bis #157 grün; der Test `testGuides` und `testEnglishUrls` laufen dort mit.
+- Live am 2026-10-21 geprüft: `/privacy` und `/en/privacy` mit der neuen Erklärung, deutsche Suche (Polizist 38 Treffer, Kapitänshut 11, Feuerwehrhelm 6, Koch 9, Brille 61 in „Alle Teile“), „XML kopieren“ übergibt rohe XML mit Tags (512 Zeichen, vier Einträge).
+- Refresh-Lauf mit `REFRESH_PR_TOKEN` am 2026-10-21 (Lauf nach #156): grün, PR mit Token-Besitzer als Autor, Verify startete von selbst, Dispatch übersprungen, Issue `catalog-refresh-failed` schloss sich selbst.
+- Lokal scheitert auf einer Entwicklungsmaschine der Browser-Test `testTemplateAndSixFigureStage` („must consume its query parameter“), auch auf Ständen, die in der CI grün sind; ursache unklar, maßgeblich ist die CI.
 - CI `Verify` (inkl. verpflichtender Browser-Regressionen) auf `main` grün nach #112, #113, #125, #126, #127, #129.
 - Manueller Refresh-Lauf nach #129 am 2026-10-19: grün, neue Schritte (Crosswalk-Validierung, Altersprüfung) ohne Fehler.
 - Der automatische Montags-Lauf vom 2026-10-19 (09:59 UTC) lief erfolgreich, vor den BrickLink-Änderungen.
