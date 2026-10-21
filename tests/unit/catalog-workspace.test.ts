@@ -56,10 +56,10 @@ describe("FF-14 responsive catalog workspace", () => {
     expect(stylesSource).toContain("overflow-wrap: anywhere");
   });
 
-  it("uses a simple high-coverage police search example in both languages", async () => {
+  it("uses a search example that returns results in both languages", async () => {
     const messagesSource = await readFile("src/i18n.tsx", "utf8");
 
-    expect(messagesSource).toContain('"catalog.searchPlaceholder": "Zum Beispiel: Polizist"');
+    expect(messagesSource).toContain('"catalog.searchPlaceholder": "Zum Beispiel: Pirat"');
     expect(messagesSource).toContain('"catalog.searchPlaceholder": "For example: police officer"');
     expect(messagesSource).not.toContain("Ogerkopf mit Hauern");
   });
