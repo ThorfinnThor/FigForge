@@ -1,5 +1,7 @@
-import { guidePath } from "../app/routing.js";
+import { guidePath, localizedPath } from "../app/routing.js";
 import { GUIDE_IDS, GUIDE_SECTIONS } from "../guides/guide-content.js";
+import { splitInline } from "../privacy/inline.js";
+import { PRIVACY_SECTIONS } from "../privacy/privacy-content.js";
 import type { Language } from "../i18n.js";
 import { SEO_LANGUAGES, SEO_ROUTES, SITE_ORIGIN, canonicalUrl, routePath, type SeoRoute } from "./routes.js";
 
@@ -75,6 +77,18 @@ function renderBody(route: SeoRoute, messages: Messages, language: Language, hea
       ...(section.paragraphs ?? []).map((text) => `<p>${escapeHtml(text)}</p>`),
       section.items ? `<ul>${section.items.map((item) => `<li>${escapeHtml(item)}</li>`).join("")}</ul>` : "",
       ...(section.closing ?? []).map((text) => `<p>${escapeHtml(text)}</p>`),
+    ].join("")).join("");
+    return `<main><article>${intro}${sections}</article></main>`;
+  }
+  if (page?.kind === "privacy") {
+    const inline = (text: string): string => splitInline(text).map((part) => part.href === undefined
+      ? escapeHtml(part.text)
+      : `<a href="${escapeHtml(part.href.startsWith("/") ? localizedPath(part.href, language) : part.href)}">${escapeHtml(part.text)}</a>`).join("");
+    const sections = PRIVACY_SECTIONS[language].map((section) => [
+      `<h2>${escapeHtml(section.heading)}</h2>`,
+      ...(section.paragraphs ?? []).map((text) => `<p>${inline(text)}</p>`),
+      section.items ? `<ul>${section.items.map((item) => `<li>${inline(item)}</li>`).join("")}</ul>` : "",
+      ...(section.closing ?? []).map((text) => `<p>${inline(text)}</p>`),
     ].join("")).join("");
     return `<main><article>${intro}${sections}</article></main>`;
   }
