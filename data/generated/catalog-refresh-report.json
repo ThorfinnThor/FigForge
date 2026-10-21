@@ -4,20 +4,29 @@
   "sourcePolicy": "Nur Rebrickable Catalog Downloads/CSV, keine MOC-Dateien.",
   "sourceLockUpdatedAt": "2026-09-28",
   "changedArtifacts": [
+    "colors.csv.gz",
+    "part_categories.csv.gz",
+    "parts.csv.gz",
     "part_relationships.csv.gz",
     "elements.csv.gz",
+    "sets.csv.gz",
     "inventories.csv.gz",
     "inventory_parts.csv.gz",
-    "inventory_minifigs.csv.gz"
+    "inventory_minifigs.csv.gz",
+    "minifigs.csv.gz"
   ],
-  "normalizedPartCount": 64900,
-  "packagedMinifigPartCount": 20282,
+  "normalizedPartCount": 64901,
+  "packagedMinifigPartCount": 20283,
   "setIndex": {
-    "relevantPartCount": 20282,
+    "relevantPartCount": 20283,
     "mappedPartCount": 19742,
-    "unmappedPartCount": 540,
+    "unmappedPartCount": 541,
     "setCount": 11588,
-    "associationCount": 123410
+    "associationCount": 123411
+  },
+  "skippedInventoryMinifigRows": {
+    "count": 0,
+    "sampleInventoryIds": []
   },
   "catalogPackageCount": 5,
   "artifactCount": 10,

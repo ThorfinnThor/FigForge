@@ -13,71 +13,71 @@
           "fileName": "colors.csv.gz",
           "required": true,
           "downloadUrl": "https://cdn.rebrickable.com/media/downloads/colors.csv.gz",
-          "sha256": "a9d1b834ad6b39c26508c3971665660f07eb64bf2d2519a844093f05379da4d5",
-          "retrievedAt": "2026-10-19T08:33:44.531Z"
+          "sha256": "c128aab6840c7603dc96d279a903edbf7001e379acab0501ca7c7633742bffd5",
+          "retrievedAt": "2026-10-21T14:42:58.405Z"
         },
         {
           "fileName": "part_categories.csv.gz",
           "required": true,
           "downloadUrl": "https://cdn.rebrickable.com/media/downloads/part_categories.csv.gz",
-          "sha256": "3eaf53cc10d24ecdb821fea09c8d37192e96bd69df51bb54978b11e6eef03b9f",
-          "retrievedAt": "2026-10-19T08:33:44.531Z"
+          "sha256": "cbe2264dd3ed5799f52e2ec8997c8eceae5d8e958e2a84b90f77a53242b775a6",
+          "retrievedAt": "2026-10-21T14:42:58.405Z"
         },
         {
           "fileName": "parts.csv.gz",
           "required": true,
           "downloadUrl": "https://cdn.rebrickable.com/media/downloads/parts.csv.gz",
-          "sha256": "c9298cd4d9c69a439061b7b6701e285a6fa58a8f5f61d43022c76fb915987202",
-          "retrievedAt": "2026-10-18T23:14:14.777Z"
+          "sha256": "3f10ff18cfa7a9eeecf4c8995b8baa1bc1917fe0d04067d7565b0353d36cdaca",
+          "retrievedAt": "2026-10-21T14:42:58.405Z"
         },
         {
           "fileName": "part_relationships.csv.gz",
           "required": false,
           "downloadUrl": "https://cdn.rebrickable.com/media/downloads/part_relationships.csv.gz",
-          "sha256": "85a2aed089a91b84b75535787ac58136e8d91643d4d2f0914221dc76c678ec9c",
-          "retrievedAt": "2026-10-19T20:13:04.704Z"
+          "sha256": "0f8f5df5b718ef16bdaacffc3b1ee261d35f80283d84f80d34c95d4c70b6e002",
+          "retrievedAt": "2026-10-21T14:42:58.405Z"
         },
         {
           "fileName": "elements.csv.gz",
           "required": false,
           "downloadUrl": "https://cdn.rebrickable.com/media/downloads/elements.csv.gz",
-          "sha256": "f691451b0cc128c9c5a197d7623ea1ae9e702c94adad7456d2fcafd81f3119df",
-          "retrievedAt": "2026-10-19T20:13:04.704Z"
+          "sha256": "ee6a0c3b0d897db88780edc2fdcbcd5dae80f208efbe74c7008a7f53596d19bf",
+          "retrievedAt": "2026-10-21T14:42:58.405Z"
         },
         {
           "fileName": "sets.csv.gz",
           "required": true,
           "downloadUrl": "https://cdn.rebrickable.com/media/downloads/sets.csv.gz",
-          "sha256": "ce8eb750d1b0e007587e6731a3c498497bff5e90ecd75c2b1b2d391221361d87",
-          "retrievedAt": "2026-10-18T23:14:14.777Z"
+          "sha256": "26a8fb7f6ee1e074c6500ddccdf63fdfa9e1d0776610822ba064c152c3103539",
+          "retrievedAt": "2026-10-21T14:42:58.405Z"
         },
         {
           "fileName": "inventories.csv.gz",
           "required": true,
           "downloadUrl": "https://cdn.rebrickable.com/media/downloads/inventories.csv.gz",
-          "sha256": "34c24bbebc0c91a082bf4d6f9396e7fe327e06ef0db8dd6742fc0ac387a845b4",
-          "retrievedAt": "2026-10-19T20:13:04.704Z"
+          "sha256": "623789abba0108b6c4ccf4e07463e05afc7e4eae0620ab3215251a20c7bab7bf",
+          "retrievedAt": "2026-10-21T14:42:58.405Z"
         },
         {
           "fileName": "inventory_parts.csv.gz",
           "required": true,
           "downloadUrl": "https://cdn.rebrickable.com/media/downloads/inventory_parts.csv.gz",
-          "sha256": "e3b83cb105c3c6385feb4e88fe80325eae3d6b14f1131770fefec21b01efb347",
-          "retrievedAt": "2026-10-19T20:13:04.704Z"
+          "sha256": "5bd7e5cb8d335b9c7c96682ba2ca51f52f290f24e89236578355e98de33ae321",
+          "retrievedAt": "2026-10-21T14:42:58.405Z"
         },
         {
           "fileName": "inventory_minifigs.csv.gz",
           "required": true,
           "downloadUrl": "https://cdn.rebrickable.com/media/downloads/inventory_minifigs.csv.gz",
-          "sha256": "7532c15d2560df9d93cdf76d4772d5cc19061f00d708ceb4beaf28824b236ede",
-          "retrievedAt": "2026-10-19T20:13:04.704Z"
+          "sha256": "5fa75763375d5bac888f0d7ff13d1a07dfe0fa89d2e2efa78d246c9a0411f162",
+          "retrievedAt": "2026-10-21T14:42:58.405Z"
         },
         {
           "fileName": "minifigs.csv.gz",
           "required": true,
           "downloadUrl": "https://cdn.rebrickable.com/media/downloads/minifigs.csv.gz",
-          "sha256": "bb93fea0226f2860c9e966feffd443d6269d9e23a67d8787b6f4180cdb62fcd4",
-          "retrievedAt": "2026-10-18T23:14:14.777Z"
+          "sha256": "f6aeeeb53222ba4270ea7f8d56d039dbc0100efececbd70d31357bc4c37fe159",
+          "retrievedAt": "2026-10-21T14:42:58.405Z"
         }
       ]
     }

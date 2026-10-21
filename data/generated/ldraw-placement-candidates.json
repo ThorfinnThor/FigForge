@@ -3,7 +3,7 @@
   "generatedAt": "2026-09-28",
   "sourcePolicy": "Nur Rebrickable Catalog Downloads/CSV, keine MOC-Dateien.",
   "sources": {
-    "catalogSourceLockSha256": "3a3bc334f62ca67bac6ef155e5b47e81636798e862e99808898d2326e0616c5c",
+    "catalogSourceLockSha256": "97b110c562acb33a2fdbf636bf50869d8d5d842981cbad94c8ab7edc75fb9bcf",
     "ldrawLibrary": "LDraw Official Parts Library",
     "ldrawRelease": "2026-09",
     "ldrawArchiveSha256": "f3e496d0ede69ca7942fa4aa198e661ee2d22723906101e2e339d8917a4dd5f2",
@@ -27,7 +27,7 @@
     "multipleRadius4CandidateCount": 113,
     "noRadius4CylinderDetectedCount": 244,
     "roleSpecificAssemblyProfileRequiredCount": 2,
-    "noOfficialMappingQueueCount": 4920,
+    "noOfficialMappingQueueCount": 4905,
     "ambiguousOfficialMappingQueueCount": 13
   },
   "placementCandidates": [
@@ -22439,7 +22439,7 @@
         "catalogId": "part:2019pr0440",
         "role": "headwear",
         "rebrickablePartNum": "2019pr0440",
-        "name": "Helmet Clone Trooper Phase 2, Closed Front, Holes for Visor, Light Bluish Gray Sides Print",
+        "name": "Helmet Clone Trooper Phase 2, Closed Front, Holes for Visor with Light Bluish Gray Sides Print",
         "ldrawFiles": [],
         "mappingEvidence": []
       },
@@ -35900,54 +35900,6 @@
         "mappingEvidence": []
       },
       {
-        "catalogId": "part:973c02h02pr1558",
-        "role": "torsoAssembly",
-        "rebrickablePartNum": "973c02h02pr1558",
-        "name": "Torso, Armor Ribbed with Disc and Two Buckles Print, Light Arms and Hands",
-        "ldrawFiles": [],
-        "mappingEvidence": []
-      },
-      {
-        "catalogId": "part:973c02h02pr2432",
-        "role": "torsoAssembly",
-        "rebrickablePartNum": "973c02h02pr2432",
-        "name": "Torso, Vest with Checkered Bandana and Ammunition Belt Print, Light Arms and Hands",
-        "ldrawFiles": [],
-        "mappingEvidence": []
-      },
-      {
-        "catalogId": "part:973c02h02pr3086",
-        "role": "torsoAssembly",
-        "rebrickablePartNum": "973c02h02pr3086",
-        "name": "Torso, Vest with Muscles and Black Harness Print, Light Arms and Hands",
-        "ldrawFiles": [],
-        "mappingEvidence": []
-      },
-      {
-        "catalogId": "part:973c02h02pr5156",
-        "role": "torsoAssembly",
-        "rebrickablePartNum": "973c02h02pr5156",
-        "name": "Torso, Dress with Light Nougat Neck, and Necklace Print, Light Arms and Hands",
-        "ldrawFiles": [],
-        "mappingEvidence": []
-      },
-      {
-        "catalogId": "part:973c02h02pr5163",
-        "role": "torsoAssembly",
-        "rebrickablePartNum": "973c02h02pr5163",
-        "name": "Torso, Dress with Neck and Midriff Ruffles Print, Light Arms and Hands",
-        "ldrawFiles": [],
-        "mappingEvidence": []
-      },
-      {
-        "catalogId": "part:973c02h14pr5779",
-        "role": "torsoAssembly",
-        "rebrickablePartNum": "973c02h14pr5779",
-        "name": "Torso, Bare Chest Print, Light Nougat Arms, Light Bluish Grey Hands",
-        "ldrawFiles": [],
-        "mappingEvidence": []
-      },
-      {
         "catalogId": "part:973c02h27pr3676",
         "role": "torsoAssembly",
         "rebrickablePartNum": "973c02h27pr3676",
@@ -36124,14 +36076,6 @@
         "mappingEvidence": []
       },
       {
-        "catalogId": "part:973c03h01pr5965",
-        "role": "torsoAssembly",
-        "rebrickablePartNum": "973c03h01pr5965",
-        "name": "Torso, Jacket, Dark Red Zipper Print, Black Arms and Hands",
-        "ldrawFiles": [],
-        "mappingEvidence": []
-      },
-      {
         "catalogId": "part:973c03h01pr9682",
         "role": "torsoAssembly",
         "rebrickablePartNum": "973c03h01pr9682",
@@ -36175,7 +36119,7 @@
         "catalogId": "part:973c03h02pr0001",
         "role": "torsoAssembly",
         "rebrickablePartNum": "973c03h02pr0001",
-        "name": "Torso, Bodysuit, Silver Superman Logo, Muscles Print (Black Superman), Black Arms, Light Nougat Arms",
+        "name": "Torso, Bodysuit, Silver Superman Logo, Muscles Print (Black Superman), Black Arms, Light Nougat Hands",
         "ldrawFiles": [],
         "mappingEvidence": []
       },
@@ -36356,26 +36300,10 @@
         "mappingEvidence": []
       },
       {
-        "catalogId": "part:973c03h03pr3018",
-        "role": "torsoAssembly",
-        "rebrickablePartNum": "973c03h03pr3018",
-        "name": "Torso, Silver and Yellowish Green Tattered Robes with Silver Chains Print, Blacks Arms and Hands",
-        "ldrawFiles": [],
-        "mappingEvidence": []
-      },
-      {
         "catalogId": "part:973c03h03pr5774",
         "role": "torsoAssembly",
         "rebrickablePartNum": "973c03h03pr5774",
         "name": "Torso, Armor, Dark Oranges Stripes on Arms Print, Black Arms and Hands (Fennec Shand)",
-        "ldrawFiles": [],
-        "mappingEvidence": []
-      },
-      {
-        "catalogId": "part:973c03h03pr5999",
-        "role": "torsoAssembly",
-        "rebrickablePartNum": "973c03h03pr5999",
-        "name": "Torso, Jacket, Open over Sand Green Hoodie, Necklace Print, Black Arms, Dark Bluish Gray Hands",
         "ldrawFiles": [],
         "mappingEvidence": []
       },
@@ -36716,30 +36644,6 @@
         "mappingEvidence": []
       },
       {
-        "catalogId": "part:973c04h03pr7060",
-        "role": "torsoAssembly",
-        "rebrickablePartNum": "973c04h03pr7060",
-        "name": "Torso, Racing Suit, BMW Logo, 'M' Print, Dark Azure, Black Hands",
-        "ldrawFiles": [],
-        "mappingEvidence": []
-      },
-      {
-        "catalogId": "part:973c04h12pr0817",
-        "role": "torsoAssembly",
-        "rebrickablePartNum": "973c04h12pr0817",
-        "name": "Torso, Racing Suit with Stylized Lightning Bolt and Zipper Print, Dark Azure, Dark Bluish Gray Hands",
-        "ldrawFiles": [],
-        "mappingEvidence": []
-      },
-      {
-        "catalogId": "part:973c04h27pr0003",
-        "role": "torsoAssembly",
-        "rebrickablePartNum": "973c04h27pr0003",
-        "name": "Torso, Christmas Sweater, White Snowflakes, Fireplace Print, Dark Azure, White Hands",
-        "ldrawFiles": [],
-        "mappingEvidence": []
-      },
-      {
         "catalogId": "part:973c04h27pr5404",
         "role": "torsoAssembly",
         "rebrickablePartNum": "973c04h27pr5404",
@@ -36751,7 +36655,7 @@
         "catalogId": "part:973c05h01pr0003",
         "role": "torsoAssembly",
         "rebrickablePartNum": "973c05h01pr0003",
-        "name": "Torso, Jacket, White Shirt, Black Bow Tie Print, with Dark Blue Arms and Yellow Hands",
+        "name": "Torso, Jacket, White Shirt, Black Bow Tie Print, with Dark Blue Arms, Yellow Hands",
         "ldrawFiles": [],
         "mappingEvidence": []
       },
@@ -36956,14 +36860,6 @@
         "mappingEvidence": []
       },
       {
-        "catalogId": "part:973c05h12pr4816",
-        "role": "torsoAssembly",
-        "rebrickablePartNum": "973c05h12pr4816",
-        "name": "Torso, Police Uniform, Dark Bluish Gray Straps/Harness, Badges, Belt Print Dark Blue Arms, Dark Bluish Gray Hands",
-        "ldrawFiles": [],
-        "mappingEvidence": []
-      },
-      {
         "catalogId": "part:973c05h13pr9861",
         "role": "torsoAssembly",
         "rebrickablePartNum": "973c05h13pr9861",
@@ -37116,14 +37012,6 @@
         "mappingEvidence": []
       },
       {
-        "catalogId": "part:973c06h01pr0002",
-        "role": "torsoAssembly",
-        "rebrickablePartNum": "973c06h01pr0002",
-        "name": "Torso, Jacket with Large Rounded Dark Green Collar, Gold trim, Post Office Horn, Black Belt Print Bright Green Arms, Yellow Hands",
-        "ldrawFiles": [],
-        "mappingEvidence": []
-      },
-      {
         "catalogId": "part:973c06h03pr1259",
         "role": "torsoAssembly",
         "rebrickablePartNum": "973c06h03pr1259",
@@ -37136,14 +37024,6 @@
         "role": "torsoAssembly",
         "rebrickablePartNum": "973c06h31pr0155",
         "name": "Torso, Green Goblin Armor Print, Bright Green Arms, Green Hands",
-        "ldrawFiles": [],
-        "mappingEvidence": []
-      },
-      {
-        "catalogId": "part:973c07h02pr6298",
-        "role": "torsoAssembly",
-        "rebrickablePartNum": "973c07h02pr6298",
-        "name": "Torso, Jacket with Tears, Olive Green Shirt, Tan Striped Shirt, Black Tie Print, Dark Brown, Light Nougat Hands",
         "ldrawFiles": [],
         "mappingEvidence": []
       },
@@ -37176,14 +37056,6 @@
         "role": "torsoAssembly",
         "rebrickablePartNum": "973c07h03pr5672",
         "name": "Torso, Armor, Light Bluish Gray Panels, Dark Brown Bandolier and Belt, Red Scarf Print, Dark Brown Arms with Light Bluish Gray Armor Panels Print, Black Hands",
-        "ldrawFiles": [],
-        "mappingEvidence": []
-      },
-      {
-        "catalogId": "part:973c07h18pr4255",
-        "role": "torsoAssembly",
-        "rebrickablePartNum": "973c07h18pr4255",
-        "name": "Torso, Jacket, Black Shirt Lime Neck Print (Gamora) Dark Brown Arms, Lime Hands",
         "ldrawFiles": [],
         "mappingEvidence": []
       },
@@ -37272,14 +37144,6 @@
         "role": "torsoAssembly",
         "rebrickablePartNum": "973c09h02pr5309",
         "name": "Torso, Jacket with Pockets, Joker Face, and Dice Tie Print, Dark Purple Arms with Playing Cards Print, Light Nougat Hands",
-        "ldrawFiles": [],
-        "mappingEvidence": []
-      },
-      {
-        "catalogId": "part:973c09h03pr6887",
-        "role": "torsoAssembly",
-        "rebrickablePartNum": "973c09h03pr6887",
-        "name": "Torso, Jacket, White USB Drive on Necklace, Orange Shirt, White/Black stripes Shirt Print, Dark Purple, Black Hands",
         "ldrawFiles": [],
         "mappingEvidence": []
       },
@@ -38055,7 +37919,7 @@
         "catalogId": "part:973c20h01pr2972",
         "role": "torsoAssembly",
         "rebrickablePartNum": "973c20h01pr2972",
-        "name": "Torso Jacket, Lavender Bow Tie and White Shirt Print, Olive Green, Yellow Hands",
+        "name": "Torso, Jacket, Lavender Bow Tie and White Shirt Print, Olive Green, Yellow Hands",
         "ldrawFiles": [],
         "mappingEvidence": []
       },
@@ -38063,7 +37927,7 @@
         "catalogId": "part:973c20h02pr0004",
         "role": "torsoAssembly",
         "rebrickablePartNum": "973c20h02pr0004",
-        "name": "Torso Robe, Gold and Medium Nougat Trim, Decorations, Vest, Dark Orange Tie with Gold Pin Print, Olive Green Arms, Medium Nougat Hands",
+        "name": "Torso, Robe, Gold and Medium Nougat Trim, Decorations, Vest, Dark Orange Tie with Gold Pin Print, Olive Green Arms, Medium Nougat Hands",
         "ldrawFiles": [],
         "mappingEvidence": []
       },
@@ -38079,7 +37943,7 @@
         "catalogId": "part:973c20h70pr0001",
         "role": "torsoAssembly",
         "rebrickablePartNum": "973c20h70pr0001",
-        "name": "Torso Jacket, Gold Belt Buckle with Dark Red '007', Ammo Belt, Buttons, Light Bluish Grey Shirt Print, Olive Green Arms, Warm Tan Hands",
+        "name": "Torso, Jacket, Gold Belt Buckle with Dark Red '007', Ammo Belt, Buttons, Light Bluish Grey Shirt Print, Olive Green Arms, Warm Tan Hands",
         "ldrawFiles": [],
         "mappingEvidence": []
       },
@@ -38111,7 +37975,7 @@
         "catalogId": "part:973c21h21pr4764",
         "role": "torsoAssembly",
         "rebrickablePartNum": "973c21h21pr4764",
-        "name": "Torso Robe, White Fabric, Flames, Beaded Necklace Print, Pearl Gold Arms and Legs",
+        "name": "Torso, Robe, White Fabric, Flames, Beaded Necklace Print, Pearl Gold Arms and Legs",
         "ldrawFiles": [],
         "mappingEvidence": []
       },
@@ -38119,7 +37983,7 @@
         "catalogId": "part:973c21h27pr3702",
         "role": "torsoAssembly",
         "rebrickablePartNum": "973c21h27pr3702",
-        "name": "Torso Jacket with White Speckles over Ruffled Shirt, Pink Bat Bow Tie, Two Buttons Print (Batman), Pearl Gold Arms with Speckles Print, White Hands",
+        "name": "Torso, Jacket with White Speckles over Ruffled Shirt, Pink Bat Bow Tie, Two Buttons Print (Batman), Pearl Gold Arms with Speckles Print, White Hands",
         "ldrawFiles": [],
         "mappingEvidence": []
       },
@@ -38527,7 +38391,7 @@
         "catalogId": "part:973c22h05pr0001",
         "role": "torsoAssembly",
         "rebrickablePartNum": "973c22h05pr0001",
-        "name": "Torso Space Suit, Dark Blue and Sand Blue Panel, Gold Lines, Classic Space Logo Print, Red Arms, Dark Blue Hands",
+        "name": "Torso, Space Suit, Dark Blue and Sand Blue Panel, Gold Lines, Classic Space Logo Print, Red Arms, Dark Blue Hands",
         "ldrawFiles": [],
         "mappingEvidence": []
       },
@@ -38535,7 +38399,7 @@
         "catalogId": "part:973c22h08pr0270",
         "role": "torsoAssembly",
         "rebrickablePartNum": "973c22h08pr0270",
-        "name": "Torso Jacket with Orange, Red, Silver Print, Red Arms, Dark Gray Hands",
+        "name": "Torso, Jacket with Orange, Red, Silver Print, Red Arms, Dark Gray Hands",
         "ldrawFiles": [],
         "mappingEvidence": []
       },
@@ -38543,7 +38407,7 @@
         "catalogId": "part:973c22h08pr0295",
         "role": "torsoAssembly",
         "rebrickablePartNum": "973c22h08pr0295",
-        "name": "Torso Jacket and White Neck with Silver Stripe Print, Red Arms, Dark Gray Hands",
+        "name": "Torso, Jacket and White Neck with Silver Stripe Print, Red Arms, Dark Gray Hands",
         "ldrawFiles": [],
         "mappingEvidence": []
       },
@@ -38559,7 +38423,7 @@
         "catalogId": "part:973c22h12pr3118",
         "role": "torsoAssembly",
         "rebrickablePartNum": "973c22h12pr3118",
-        "name": "Torso Plaid Shirt, Tattered with Green 'Kel' Print, Red Arms with Plaid Print, Dark Bluish Gray Hands",
+        "name": "Torso, Plaid Shirt, Tattered with Green 'Kel' Print, Red Arms with Plaid Print, Dark Bluish Gray Hands",
         "ldrawFiles": [],
         "mappingEvidence": []
       },
@@ -38567,7 +38431,7 @@
         "catalogId": "part:973c22h13pr6311",
         "role": "torsoAssembly",
         "rebrickablePartNum": "973c22h13pr6311",
-        "name": "Torso Soccer Shirt, White Top, Yellow Collar, Dice Logo Print, Red Arms, Reddish Brown Hands",
+        "name": "Torso, Soccer Shirt, White Top, Yellow Collar, Dice Logo Print, Red Arms, Reddish Brown Hands",
         "ldrawFiles": [],
         "mappingEvidence": []
       },
@@ -38575,7 +38439,7 @@
         "catalogId": "part:973c22h21pr3026",
         "role": "torsoAssembly",
         "rebrickablePartNum": "973c22h21pr3026",
-        "name": "Torso Santa Coat with White Fur Trim and Black Belt with Gold Buckle Print, Red Arms, Gold Hands",
+        "name": "Torso, Santa Coat with White Fur Trim and Black Belt with Gold Buckle Print, Red Arms, Gold Hands",
         "ldrawFiles": [],
         "mappingEvidence": []
       },
@@ -38623,7 +38487,7 @@
         "catalogId": "part:973c22h69pr6314",
         "role": "torsoAssembly",
         "rebrickablePartNum": "973c22h69pr6314",
-        "name": "Torso Soccer Shirt, White Top, Yellow Collar, Dice Logo Print, Red Arms, Medium Brown Hands",
+        "name": "Torso, Soccer Shirt, White Top, Yellow Collar, Dice Logo Print, Red Arms, Medium Brown Hands",
         "ldrawFiles": [],
         "mappingEvidence": []
       },
@@ -38631,7 +38495,7 @@
         "catalogId": "part:973c22h69pr6732",
         "role": "torsoAssembly",
         "rebrickablePartNum": "973c22h69pr6732",
-        "name": "Torso Soccer Shirt, White Top, Yellow Collar, Dice Logo / 'Oshoala' Print, Red Arms, Medium Brown Hands",
+        "name": "Torso, Soccer Shirt, White Top, Yellow Collar, Dice Logo / 'Oshoala' Print, Red Arms, Medium Brown Hands",
         "ldrawFiles": [],
         "mappingEvidence": []
       },
@@ -38639,7 +38503,7 @@
         "catalogId": "part:973c22h70pr6312",
         "role": "torsoAssembly",
         "rebrickablePartNum": "973c22h70pr6312",
-        "name": "Torso Soccer Shirt, White Top, Yellow Collar, Dice Logo Print, Red Arms, Warm Tan Hands",
+        "name": "Torso, Soccer Shirt, White Top, Yellow Collar, Dice Logo Print, Red Arms, Warm Tan Hands",
         "ldrawFiles": [],
         "mappingEvidence": []
       },
@@ -38647,7 +38511,7 @@
         "catalogId": "part:973c22h70pr6733",
         "role": "torsoAssembly",
         "rebrickablePartNum": "973c22h70pr6733",
-        "name": "Torso Soccer Shirt, White Top, Yellow Collar, Dice Logo / 'Yuki' Print, Red Arms, Warm Tan Hands",
+        "name": "Torso, Soccer Shirt, White Top, Yellow Collar, Dice Logo / 'Yuki' Print, Red Arms, Warm Tan Hands",
         "ldrawFiles": [],
         "mappingEvidence": []
       },
@@ -38655,7 +38519,7 @@
         "catalogId": "part:973c22h70pr6734",
         "role": "torsoAssembly",
         "rebrickablePartNum": "973c22h70pr6734",
-        "name": "Torso Soccer Shirt, White Top, Yellow Collar, Dice Logo / 'Kerr' Print, Red Arms, Warm Tan Hands",
+        "name": "Torso, Soccer Shirt, White Top, Yellow Collar, Dice Logo / 'Kerr' Print, Red Arms, Warm Tan Hands",
         "ldrawFiles": [],
         "mappingEvidence": []
       },
@@ -38663,7 +38527,7 @@
         "catalogId": "part:973c23h02pr3668",
         "role": "torsoAssembly",
         "rebrickablePartNum": "973c23h02pr3668",
-        "name": "Torso Jacket with Green Collar Print, Medium Nougat Hands, Light Nougat Hands",
+        "name": "Torso, Jacket with Green Collar Print, Medium Nougat Hands, Light Nougat Hands",
         "ldrawFiles": [],
         "mappingEvidence": []
       },
@@ -38671,7 +38535,7 @@
         "catalogId": "part:973c23h03pr3731",
         "role": "torsoAssembly",
         "rebrickablePartNum": "973c23h03pr3731",
-        "name": "Torso Crop Top, Spider and Medium Nougat Waist Print, Medium Nougat Arms with Bright Light Orange Cuffs Print, Black Hands",
+        "name": "Torso, Crop Top, Spider and Medium Nougat Waist Print, Medium Nougat Arms with Bright Light Orange Cuffs Print, Black Hands",
         "ldrawFiles": [],
         "mappingEvidence": []
       },
@@ -38679,7 +38543,7 @@
         "catalogId": "part:973c23h19pr3067",
         "role": "torsoAssembly",
         "rebrickablePartNum": "973c23h19pr3067",
-        "name": "Torso Jacket with Reddish Brown Straps and Belt, and Dark Red Undershirt Print, Medium Nougat Hands, Reddish Brown Hands",
+        "name": "Torso, Jacket with Reddish Brown Straps and Belt, and Dark Red Undershirt Print, Medium Nougat Hands, Reddish Brown Hands",
         "ldrawFiles": [],
         "mappingEvidence": []
       },
@@ -38687,7 +38551,7 @@
         "catalogId": "part:973c23h19pr5397",
         "role": "torsoAssembly",
         "rebrickablePartNum": "973c23h19pr5397",
-        "name": "Torso Robe with Fur Collar and Green Leaves and Red Berries Print, Medium Nougat Hands, Reddish Brown Hands",
+        "name": "Torso, Robe with Fur Collar and Green Leaves and Red Berries Print, Medium Nougat Hands, Reddish Brown Hands",
         "ldrawFiles": [],
         "mappingEvidence": []
       },
@@ -38711,7 +38575,7 @@
         "catalogId": "part:973c24h01pr0121",
         "role": "torsoAssembly",
         "rebrickablePartNum": "973c24h01pr0121",
-        "name": "Torso Hospital Scrubs with Stethoscope and ID Badge / '2014 The LEGO Store New York, NY' Print, Sand Blue Arms, Yellow Hands",
+        "name": "Torso, Hospital Scrubs with Stethoscope and ID Badge / '2014 The LEGO Store New York, NY' Print, Sand Blue Arms, Yellow Hands",
         "ldrawFiles": [],
         "mappingEvidence": []
       },
@@ -38719,7 +38583,7 @@
         "catalogId": "part:973c24h01pr0334",
         "role": "torsoAssembly",
         "rebrickablePartNum": "973c24h01pr0334",
-        "name": "Torso Jacket Open over Polo Shirt with Horizontal Stripes Print (Spider-Man), Sand Blue Arms, Yellow Hands",
+        "name": "Torso, Jacket Open over Polo Shirt with Horizontal Stripes Print (Spider-Man), Sand Blue Arms, Yellow Hands",
         "ldrawFiles": [],
         "mappingEvidence": []
       },
@@ -38727,7 +38591,7 @@
         "catalogId": "part:973c24h01pr9713",
         "role": "torsoAssembly",
         "rebrickablePartNum": "973c24h01pr9713",
-        "name": "Torso Sweater, Open with Bright Light Blue Shirt Print, Sand Blue Arms, Yellow Hands",
+        "name": "Torso, Sweater, Open with Bright Light Blue Shirt Print, Sand Blue Arms, Yellow Hands",
         "ldrawFiles": [],
         "mappingEvidence": []
       },
@@ -38735,7 +38599,7 @@
         "catalogId": "part:973c24h02pb0123",
         "role": "torsoAssembly",
         "rebrickablePartNum": "973c24h02pb0123",
-        "name": "Torso Robe with Braid Clasps Print, Sand Blue Arms, Light Nougat Hands",
+        "name": "Torso, Robe with Braid Clasps Print, Sand Blue Arms, Light Nougat Hands",
         "ldrawFiles": [],
         "mappingEvidence": []
       },
@@ -38751,7 +38615,7 @@
         "catalogId": "part:973c24h02pr5833",
         "role": "torsoAssembly",
         "rebrickablePartNum": "973c24h02pr5833",
-        "name": "Torso Vest with Pockets and Buttons, and Lime Tie / Dark Blue Vest with Strap and Buckle Print, Sand Blue Arms with Hexagon Patches Print, Light Nougat Hands",
+        "name": "Torso, Vest with Pockets and Buttons, and Lime Tie / Dark Blue Vest with Strap and Buckle Print, Sand Blue Arms with Hexagon Patches Print, Light Nougat Hands",
         "ldrawFiles": [],
         "mappingEvidence": []
       },
@@ -38799,7 +38663,7 @@
         "catalogId": "part:973c25h01pr0266",
         "role": "torsoAssembly",
         "rebrickablePartNum": "973c25h01pr0266",
-        "name": "Torso Crew Neck Sweater Print, Sand Green Arms, Yellow Hands",
+        "name": "Torso, Crew Neck Sweater Print, Sand Green Arms, Yellow Hands",
         "ldrawFiles": [],
         "mappingEvidence": []
       },
@@ -38815,7 +38679,7 @@
         "catalogId": "part:973c25h03pr0326",
         "role": "torsoAssembly",
         "rebrickablePartNum": "973c25h03pr0326",
-        "name": "Torso Jacket, Open over Bare Chest and Large Belt Print (Dr. Octopus), Sand Green Arms, Black Hands",
+        "name": "Torso, Jacket, Open over Bare Chest and Large Belt Print (Dr. Octopus), Sand Green Arms, Black Hands",
         "ldrawFiles": [],
         "mappingEvidence": []
       },
@@ -38975,7 +38839,7 @@
         "catalogId": "part:973c26h03pr3231",
         "role": "torsoAssembly",
         "rebrickablePartNum": "973c26h03pr3231",
-        "name": "Torso Jumpsuit, Slimed with 'P.V.' ID Badge Print, Tan Arms with Ghostbusters Logo, Black Hands",
+        "name": "Torso, Jumpsuit, Slimed with 'P.V.' ID Badge Print, Tan Arms with Ghostbusters Logo, Black Hands",
         "ldrawFiles": [],
         "mappingEvidence": []
       },
@@ -38983,7 +38847,7 @@
         "catalogId": "part:973c26h03pr3232",
         "role": "torsoAssembly",
         "rebrickablePartNum": "973c26h03pr3232",
-        "name": "Torso Jumpsuit with 'R.S.' ID Badge Print, Tan Arms with Ghostbusters Logo, Black Hands",
+        "name": "Torso, Jumpsuit with 'R.S.' ID Badge Print, Tan Arms with Ghostbusters Logo, Black Hands",
         "ldrawFiles": [],
         "mappingEvidence": []
       },
@@ -38991,7 +38855,7 @@
         "catalogId": "part:973c26h03pr3233",
         "role": "torsoAssembly",
         "rebrickablePartNum": "973c26h03pr3233",
-        "name": "Torso Jumpsuit with 'E.S.' ID Badge Print, Tan Arms with Ghostbusters Logo, Black Hands",
+        "name": "Torso, Jumpsuit with 'E.S.' ID Badge Print, Tan Arms with Ghostbusters Logo, Black Hands",
         "ldrawFiles": [],
         "mappingEvidence": []
       },
@@ -38999,7 +38863,7 @@
         "catalogId": "part:973c26h03pr3234",
         "role": "torsoAssembly",
         "rebrickablePartNum": "973c26h03pr3234",
-        "name": "Torso Jumpsuit, 'W.Z.' ID Badge Print, Tan Arms with Ghostbusters Logo, Black Hands",
+        "name": "Torso, Jumpsuit, 'W.Z.' ID Badge Print, Tan Arms with Ghostbusters Logo, Black Hands",
         "ldrawFiles": [],
         "mappingEvidence": []
       },
@@ -39007,7 +38871,7 @@
         "catalogId": "part:973c26h03pr5644",
         "role": "torsoAssembly",
         "rebrickablePartNum": "973c26h03pr5644",
-        "name": "Torso Race Jacket, Orange and Blue Stripes, 'Ford' Logo Print, Tan Arms, Yellow Hands",
+        "name": "Torso, Race Jacket, Orange and Blue Stripes, 'Ford' Logo Print, Tan Arms, Yellow Hands",
         "ldrawFiles": [],
         "mappingEvidence": []
       },
@@ -39015,7 +38879,7 @@
         "catalogId": "part:973c26h19pr9999",
         "role": "torsoAssembly",
         "rebrickablePartNum": "973c26h19pr9999",
-        "name": "Torso Coat, Open over White Shirt, Black Tie, Lanyard, and Pen / 'Play Day 2023' Print, Tan Arms, Reddish Brown Hands",
+        "name": "Torso, Coat, Open over White Shirt, Black Tie, Lanyard, and Pen / 'Play Day 2023' Print, Tan Arms, Reddish Brown Hands",
         "ldrawFiles": [],
         "mappingEvidence": []
       },
@@ -39023,7 +38887,7 @@
         "catalogId": "part:973c26h20pr0001",
         "role": "torsoAssembly",
         "rebrickablePartNum": "973c26h20pr0001",
-        "name": "Torso Robe, Reddish Brown Straps, Republic Badge Print (Yoda), Tan Arms, Olive Green Hands",
+        "name": "Torso, Robe, Reddish Brown Straps, Republic Badge Print (Yoda), Tan Arms, Olive Green Hands",
         "ldrawFiles": [],
         "mappingEvidence": []
       },
@@ -39812,6 +39676,14 @@
         "mappingEvidence": []
       },
       {
+        "catalogId": "part:973c27h02pr5547",
+        "role": "torsoAssembly",
+        "rebrickablePartNum": "973c27h02pr5547",
+        "name": "Torso, Jacket, White Shirt, Blue Tie Print, White Arms, Light Nougat Arms",
+        "ldrawFiles": [],
+        "mappingEvidence": []
+      },
+      {
         "catalogId": "part:973c27h02pr9660",
         "role": "torsoAssembly",
         "rebrickablePartNum": "973c27h02pr9660",
@@ -39887,7 +39759,7 @@
         "catalogId": "part:973c27h05pr0001",
         "role": "torsoAssembly",
         "rebrickablePartNum": "973c27h05pr0001",
-        "name": "Torso Space Suit, Dark Blue and Sand Blue Panel, Gold Lines, Classic Space Logo Print, White Arms, Dark Blue Hands",
+        "name": "Torso, Space Suit, Dark Blue and Sand Blue Panel, Gold Lines, Classic Space Logo Print, White Arms, Dark Blue Hands",
         "ldrawFiles": [],
         "mappingEvidence": []
       },
@@ -39895,7 +39767,7 @@
         "catalogId": "part:973c27h08pr0166",
         "role": "torsoAssembly",
         "rebrickablePartNum": "973c27h08pr0166",
-        "name": "Torso Lab Coat, Gray Buttons, Stethoscope Print (Mad Scientist), White Arms, Dark Gray Hands",
+        "name": "Torso, Lab Coat, Gray Buttons, Stethoscope Print (Mad Scientist), White Arms, Dark Gray Hands",
         "ldrawFiles": [],
         "mappingEvidence": []
       },
@@ -39911,7 +39783,7 @@
         "catalogId": "part:973c27h12pr3240",
         "role": "torsoAssembly",
         "rebrickablePartNum": "973c27h12pr3240",
-        "name": "Torso Racing Jacket with Octan Logo, Zipper Print, White Arms, Dark Bluish Hands",
+        "name": "Torso, Racing Jacket with Octan Logo, Zipper Print, White Arms, Dark Bluish Hands",
         "ldrawFiles": [],
         "mappingEvidence": []
       },
@@ -39919,7 +39791,7 @@
         "catalogId": "part:973c27h12pr3628",
         "role": "torsoAssembly",
         "rebrickablePartNum": "973c27h12pr3628",
-        "name": "Torso Prison Shirt, '621', Dark Bluish Gray Stripes, Suspenders and Belt with Pliers and Rope Print, White Arms, Dark Bluish Gray Hand",
+        "name": "Torso, Prison Shirt, '621', Dark Bluish Gray Stripes, Suspenders and Belt with Pliers and Rope Print, White Arms, Dark Bluish Gray Hand",
         "ldrawFiles": [],
         "mappingEvidence": []
       },
@@ -39927,7 +39799,7 @@
         "catalogId": "part:973c27h12pr4663",
         "role": "torsoAssembly",
         "rebrickablePartNum": "973c27h12pr4663",
-        "name": "Torso Vest over Tan Shirt, Ammo Belt, Utility Belt, Pockets, ID Badge Print, White Arms, Dark Bluish Hands",
+        "name": "Torso, Vest over Tan Shirt, Ammo Belt, Utility Belt, Pockets, ID Badge Print, White Arms, Dark Bluish Hands",
         "ldrawFiles": [],
         "mappingEvidence": []
       },
@@ -39935,7 +39807,7 @@
         "catalogId": "part:973c27h12pr5336",
         "role": "torsoAssembly",
         "rebrickablePartNum": "973c27h12pr5336",
-        "name": "Torso Jumpsuit with Dark Bluish Gray Belt and Harness Print, White Arms, Dark Bluish Hands",
+        "name": "Torso, Jumpsuit with Dark Bluish Gray Belt and Harness Print, White Arms, Dark Bluish Hands",
         "ldrawFiles": [],
         "mappingEvidence": []
       },
@@ -39943,7 +39815,7 @@
         "catalogId": "part:973c27h12pr5878",
         "role": "torsoAssembly",
         "rebrickablePartNum": "973c27h12pr5878",
-        "name": "Torso Jacket, White/Dark Red Shapes, Zippers Print, White Arms, Dark Bluish Grey Hands",
+        "name": "Torso, Jacket, White/Dark Red Shapes, Zippers Print, White Arms, Dark Bluish Grey Hands",
         "ldrawFiles": [],
         "mappingEvidence": []
       },
@@ -39959,7 +39831,7 @@
         "catalogId": "part:973c27h14pr3227",
         "role": "torsoAssembly",
         "rebrickablePartNum": "973c27h14pr3227",
-        "name": "Torso Space Suit, Control Panel Print, White Arms, Light Bluish Grey Hands with Classic Space Logo Print on Right Arm",
+        "name": "Torso, Space Suit, Control Panel Print, White Arms, Light Bluish Grey Hands with Classic Space Logo Print on Right Arm",
         "ldrawFiles": [],
         "mappingEvidence": []
       },
@@ -39983,7 +39855,7 @@
         "catalogId": "part:973c27h19pr9640",
         "role": "torsoAssembly",
         "rebrickablePartNum": "973c27h19pr9640",
-        "name": "Torso Jacket with Gray Undershirt / LEGO Education Logo on Back, Gold Trim, White Arms, Reddish Brown Hands",
+        "name": "Torso, Jacket with Gray Undershirt / LEGO Education Logo on Back, Gold Trim, White Arms, Reddish Brown Hands",
         "ldrawFiles": [],
         "mappingEvidence": []
       },
@@ -39991,7 +39863,7 @@
         "catalogId": "part:973c27h19pr9820",
         "role": "torsoAssembly",
         "rebrickablePartNum": "973c27h19pr9820",
-        "name": "Torso Jumpsuit, Hoses, Black Vest (Bacta Tank Suit) Print, White Arms, Reddish Brown Hands",
+        "name": "Torso, Jumpsuit, Hoses, Black Vest (Bacta Tank Suit) Print, White Arms, Reddish Brown Hands",
         "ldrawFiles": [],
         "mappingEvidence": []
       },
@@ -40015,7 +39887,7 @@
         "catalogId": "part:973c27h22pr4235",
         "role": "torsoAssembly",
         "rebrickablePartNum": "973c27h22pr4235",
-        "name": "Torso Racing Jacket, with 'Yrr' Print, White Arms with 'Grand Prix' Print, Red Hands",
+        "name": "Torso, Racing Jacket, with 'Yrr' Print, White Arms with 'Grand Prix' Print, Red Hands",
         "ldrawFiles": [],
         "mappingEvidence": []
       },
@@ -40023,7 +39895,7 @@
         "catalogId": "part:973c27h23pr0002",
         "role": "torsoAssembly",
         "rebrickablePartNum": "973c27h23pr0002",
-        "name": "Torso Robe with Long Gold Necklace Print, White Arms, Medium Nougat Hands",
+        "name": "Torso, Robe with Long Gold Necklace Print, White Arms, Medium Nougat Hands",
         "ldrawFiles": [],
         "mappingEvidence": []
       },
@@ -40031,7 +39903,7 @@
         "catalogId": "part:973c27h24pr4894",
         "role": "torsoAssembly",
         "rebrickablePartNum": "973c27h24pr4894",
-        "name": "Torso Scarab Collar and Bandage Wrappings Print, White Arms with Wrappings, Gold and Dark Turquoise Bracelets Print, Sand Blue Hands",
+        "name": "Torso, Scarab Collar and Bandage Wrappings Print, White Arms with Wrappings, Gold and Dark Turquoise Bracelets Print, Sand Blue Hands",
         "ldrawFiles": [],
         "mappingEvidence": []
       },
@@ -40135,7 +40007,7 @@
         "catalogId": "part:973c27h37pr0003",
         "role": "torsoAssembly",
         "rebrickablePartNum": "973c27h37pr0003",
-        "name": "Torso Jumpsuit, Black Panels Print (Spider Girl/Gwen), Magenta/Dark Azure Webbings on Arms Print, White Arms, Magenta Hands",
+        "name": "Torso, Jumpsuit, Black Panels Print (Spider Girl/Gwen), Magenta/Dark Azure Webbings on Arms Print, White Arms, Magenta Hands",
         "ldrawFiles": [],
         "mappingEvidence": []
       },
@@ -40143,7 +40015,7 @@
         "catalogId": "part:973c27h43pr3679",
         "role": "torsoAssembly",
         "rebrickablePartNum": "973c27h43pr3679",
-        "name": "Torso Jacket with Red Trim and Belt, Stethoscope and Pockets Print, White Arms with Stripes and Pink Glove Cuffs, Bright Pink Hands",
+        "name": "Torso, Jacket with Red Trim and Belt, Stethoscope and Pockets Print, White Arms with Stripes and Pink Glove Cuffs, Bright Pink Hands",
         "ldrawFiles": [],
         "mappingEvidence": []
       },
@@ -40159,7 +40031,7 @@
         "catalogId": "part:973c27h70pr0001",
         "role": "torsoAssembly",
         "rebrickablePartNum": "973c27h70pr0001",
-        "name": "Torso Shirt, Dark Blue Vest, Buttons, Warm Tan Chest, Reddish Brown Belt, Dark Orange/White Sash Print, White Arms, Warm Tan Hands",
+        "name": "Torso, Shirt, Dark Blue Vest, Buttons, Warm Tan Chest, Reddish Brown Belt, Dark Orange/White Sash Print, White Arms, Warm Tan Hands",
         "ldrawFiles": [],
         "mappingEvidence": []
       },
@@ -40191,7 +40063,7 @@
         "catalogId": "part:973c27h70pr0005",
         "role": "torsoAssembly",
         "rebrickablePartNum": "973c27h70pr0005",
-        "name": "Torso Shirt, Dark Red Vest, Gold Decorations, Dark Orange Belt, White Shirt, Necklace with Keys Print, White Arms, Warm Tan Hands",
+        "name": "Torso, Shirt, Dark Red Vest, Gold Decorations, Dark Orange Belt, White Shirt, Necklace with Keys Print, White Arms, Warm Tan Hands",
         "ldrawFiles": [],
         "mappingEvidence": []
       },
@@ -40199,7 +40071,7 @@
         "catalogId": "part:973c27h70pr6653",
         "role": "torsoAssembly",
         "rebrickablePartNum": "973c27h70pr6653",
-        "name": "Torso Vest, Dark Blue Trim, Gold Dots, White Shirt Print, White Arms, Warm Tan Hands",
+        "name": "Torso, Vest, Dark Blue Trim, Gold Dots, White Shirt Print, White Arms, Warm Tan Hands",
         "ldrawFiles": [],
         "mappingEvidence": []
       },
@@ -40431,7 +40303,7 @@
         "catalogId": "part:973c28h02pr9808",
         "role": "torsoAssembly",
         "rebrickablePartNum": "973c28h02pr9808",
-        "name": "Torso Coat with Orange Vest, Buttons, White/Light Blue Scarf Print (Bilbo Baggins), Blue Arms, Light Nougat Hands",
+        "name": "Torso, Coat with Orange Vest, Buttons, White/Light Blue Scarf Print (Bilbo Baggins), Blue Arms, Light Nougat Hands",
         "ldrawFiles": [],
         "mappingEvidence": []
       },
@@ -40439,7 +40311,7 @@
         "catalogId": "part:973c28h03pr0083",
         "role": "torsoAssembly",
         "rebrickablePartNum": "973c28h03pr0083",
-        "name": "Torso Soccer Jersey, Studded Armor / '1' on Back Print, Blue Arms, Black Hands",
+        "name": "Torso, Soccer Jersey, Studded Armor / '1' on Back Print, Blue Arms, Black Hands",
         "ldrawFiles": [],
         "mappingEvidence": []
       },
@@ -40455,7 +40327,7 @@
         "catalogId": "part:973c28h05pr4586",
         "role": "torsoAssembly",
         "rebrickablePartNum": "973c28h05pr4586",
-        "name": "Torso Space Suit, Lime Paint Print, Blue Arms with Dark Blue Panels Print, Dark Blue Hands",
+        "name": "Torso, Space Suit, Lime Paint Print, Blue Arms with Dark Blue Panels Print, Dark Blue Hands",
         "ldrawFiles": [],
         "mappingEvidence": []
       },
@@ -40479,7 +40351,7 @@
         "catalogId": "part:973c28h19pr0002",
         "role": "torsoAssembly",
         "rebrickablePartNum": "973c28h19pr0002",
-        "name": "Torso Jumpsuit, White Superman 'S' Symbol on Red Background, White Belt, Muscles Print, Blue Arms, Reddish Brown Hands",
+        "name": "Torso, Jumpsuit, White Superman 'S' Symbol on Red Background, White Belt, Muscles Print, Blue Arms, Reddish Brown Hands",
         "ldrawFiles": [],
         "mappingEvidence": []
       },
@@ -40487,7 +40359,7 @@
         "catalogId": "part:973c28h19pr1254",
         "role": "torsoAssembly",
         "rebrickablePartNum": "973c28h19pr1254",
-        "name": "Torso Jacket with Gold Trim and White Undershirt Print (Bespin Guard), Blue Arms Printed, Reddish Brown Hands",
+        "name": "Torso, Jacket with Gold Trim and White Undershirt Print (Bespin Guard), Blue Arms Printed, Reddish Brown Hands",
         "ldrawFiles": [],
         "mappingEvidence": []
       },
@@ -40519,7 +40391,7 @@
         "catalogId": "part:973c28h22pr5414",
         "role": "torsoAssembly",
         "rebrickablePartNum": "973c28h22pr5414",
-        "name": "Torso Muscles, Blue Sides and Waist, Webbing, Black Spider Print (Spider-Man), Blue Arms with Webbing Print, Red Hands",
+        "name": "Torso, Muscles, Blue Sides and Waist, Webbing, Black Spider Print (Spider-Man), Blue Arms with Webbing Print, Red Hands",
         "ldrawFiles": [],
         "mappingEvidence": []
       },
@@ -40527,7 +40399,7 @@
         "catalogId": "part:973c28h22pr9759",
         "role": "torsoAssembly",
         "rebrickablePartNum": "973c28h22pr9759",
-        "name": "Torso Crop Top with White Star, Utility Belt Print (Star Girl), Blue Arms with White Stars Print, Red Hands",
+        "name": "Torso, Crop Top with White Star, Utility Belt Print (Star Girl), Blue Arms with White Stars Print, Red Hands",
         "ldrawFiles": [],
         "mappingEvidence": []
       },
@@ -40551,7 +40423,7 @@
         "catalogId": "part:973c28h27pr4483",
         "role": "torsoAssembly",
         "rebrickablePartNum": "973c28h27pr4483",
-        "name": "Torso Shirt, Red Collar and Belt with Gold Button Print, Blue Arms with Red Cuffs Print, White Hands",
+        "name": "Torso, Shirt, Red Collar and Belt with Gold Button Print, Blue Arms with Red Cuffs Print, White Hands",
         "ldrawFiles": [],
         "mappingEvidence": []
       },
@@ -40583,7 +40455,7 @@
         "catalogId": "part:973c28h70pr6319",
         "role": "torsoAssembly",
         "rebrickablePartNum": "973c28h70pr6319",
-        "name": "Torso Soccer Shirt, Green Collar Print, Blue Arms, Warm Tan Hands",
+        "name": "Torso, Soccer Shirt, Green Collar Print, Blue Arms, Warm Tan Hands",
         "ldrawFiles": [],
         "mappingEvidence": []
       },
@@ -40599,7 +40471,7 @@
         "catalogId": "part:973c29h01pr1957",
         "role": "torsoAssembly",
         "rebrickablePartNum": "973c29h01pr1957",
-        "name": "Torso Pajama 4 Buttons and Vertical Light Aqua Stripes Print, Bright Light Blue Arms with Light Aqua Stripes, Yellow Hands",
+        "name": "Torso, Pajama 4 Buttons and Vertical Light Aqua Stripes Print, Bright Light Blue Arms with Light Aqua Stripes, Yellow Hands",
         "ldrawFiles": [],
         "mappingEvidence": []
       },
@@ -40607,7 +40479,7 @@
         "catalogId": "part:973c29h01pr4893",
         "role": "torsoAssembly",
         "rebrickablePartNum": "973c29h01pr4893",
-        "name": "Torso Shirt with Space Theme Logos and Dark Bluish Gray T-Shirt Print, Bright Light Blue Arms with Space Themes Logos Print, Yellow Hands",
+        "name": "Torso, Shirt with Space Theme Logos and Dark Bluish Gray T-Shirt Print, Bright Light Blue Arms with Space Themes Logos Print, Yellow Hands",
         "ldrawFiles": [],
         "mappingEvidence": []
       },
@@ -40615,7 +40487,7 @@
         "catalogId": "part:973c29h01pr9997",
         "role": "torsoAssembly",
         "rebrickablePartNum": "973c29h01pr9997",
-        "name": "Torso Robe with Gold Flowers Print Bright Light Blue Arms, Yellow Hands",
+        "name": "Torso, Robe with Gold Flowers Print Bright Light Blue Arms, Yellow Hands",
         "ldrawFiles": [],
         "mappingEvidence": []
       },
@@ -40623,7 +40495,7 @@
         "catalogId": "part:973c29h01pr9999",
         "role": "torsoAssembly",
         "rebrickablePartNum": "973c29h01pr9999",
-        "name": "Torso Sweater, Big Red Heart, Medium Blue, Bright Pink and Red Butterflies Print, Blue Light Blue Arms, Yellow Hands",
+        "name": "Torso, Sweater, Big Red Heart, Medium Blue, Bright Pink and Red Butterflies Print, Blue Light Blue Arms, Yellow Hands",
         "ldrawFiles": [],
         "mappingEvidence": []
       },
@@ -40639,7 +40511,7 @@
         "catalogId": "part:973c29h03pr0002",
         "role": "torsoAssembly",
         "rebrickablePartNum": "973c29h03pr0002",
-        "name": "Torso Coral Bow Tie Print, Bright Light Blue Arms, Black Hands",
+        "name": "Torso, Coral Bow Tie Print, Bright Light Blue Arms, Black Hands",
         "ldrawFiles": [],
         "mappingEvidence": []
       },
@@ -40647,7 +40519,7 @@
         "catalogId": "part:973c29h03pr3945",
         "role": "torsoAssembly",
         "rebrickablePartNum": "973c29h03pr3945",
-        "name": "Torso Pajamas with 3 Buttons, Volcanoes with Lava and Fire and White Clouds Fabric Print, Bright Light Blue Arms with Volcano Pajamas Fabric, Black Hands",
+        "name": "Torso, Pajamas with 3 Buttons, Volcanoes with Lava and Fire and White Clouds Fabric Print, Bright Light Blue Arms with Volcano Pajamas Fabric, Black Hands",
         "ldrawFiles": [],
         "mappingEvidence": []
       },
@@ -40671,7 +40543,7 @@
         "catalogId": "part:973c30h03pr0001",
         "role": "torsoAssembly",
         "rebrickablePartNum": "973c30h03pr0001",
-        "name": "Torso Armor, Silver Chainmail, Dark Brown Belt / Dark Red Cape with Falcon Coat of Arms Print, Flat Silver Arms, Black Hands",
+        "name": "Torso, Armor, Silver Chainmail, Dark Brown Belt / Dark Red Cape with Falcon Coat of Arms Print, Flat Silver Arms, Black Hands",
         "ldrawFiles": [],
         "mappingEvidence": []
       },
@@ -40679,7 +40551,7 @@
         "catalogId": "part:973c30h03pr3631",
         "role": "torsoAssembly",
         "rebrickablePartNum": "973c30h03pr3631",
-        "name": "Torso Muscles, V-Neck with Silver Rivets Print (Batman), Flat Silver Arms with Black Cuffs Print, Black Hands",
+        "name": "Torso, Muscles, V-Neck with Silver Rivets Print (Batman), Flat Silver Arms with Black Cuffs Print, Black Hands",
         "ldrawFiles": [],
         "mappingEvidence": []
       },
@@ -40687,7 +40559,7 @@
         "catalogId": "part:973c30h12pr4615",
         "role": "torsoAssembly",
         "rebrickablePartNum": "973c30h12pr4615",
-        "name": "Torso Rivets, Dark Bluish Gray 'Rust' Print, Flat Silver Arms with Elbow Panels Print, Dark Bluish Gray Hands",
+        "name": "Torso, Rivets, Dark Bluish Gray 'Rust' Print, Flat Silver Arms with Elbow Panels Print, Dark Bluish Gray Hands",
         "ldrawFiles": [],
         "mappingEvidence": []
       },
@@ -40711,7 +40583,7 @@
         "catalogId": "part:973c30h42pr9999",
         "role": "torsoAssembly",
         "rebrickablePartNum": "973c30h42pr9999",
-        "name": "Torso Robot, Gold Heart with Gears, Dark Turquoise Belt, Gold Zipper Print, Flat Silver Arms, Medium Azure Hands",
+        "name": "Torso, Robot, Gold Heart with Gears, Dark Turquoise Belt, Gold Zipper Print, Flat Silver Arms, Medium Azure Hands",
         "ldrawFiles": [],
         "mappingEvidence": []
       },
@@ -40871,7 +40743,7 @@
         "catalogId": "part:973c31h02pr9698",
         "role": "torsoAssembly",
         "rebrickablePartNum": "973c31h02pr9698",
-        "name": "Torso Suit Jacket with Black Shirt and Tie, Gold Chain and Dollar Bills Print, Green Arms with Dollar Bills Print, Light Nougat Hands",
+        "name": "Torso, Suit Jacket with Black Shirt and Tie, Gold Chain and Dollar Bills Print, Green Arms with Dollar Bills Print, Light Nougat Hands",
         "ldrawFiles": [],
         "mappingEvidence": []
       },
@@ -40887,7 +40759,7 @@
         "catalogId": "part:973c31h03pr0013",
         "role": "torsoAssembly",
         "rebrickablePartNum": "973c31h03pr0013",
-        "name": "Torso Race Jacket with Alligator Green Print, Green Arms, Black Hands",
+        "name": "Torso, Race Jacket with Alligator Green Print, Green Arms, Black Hands",
         "ldrawFiles": [],
         "mappingEvidence": []
       },
@@ -40895,7 +40767,7 @@
         "catalogId": "part:973c31h03pr0331",
         "role": "torsoAssembly",
         "rebrickablePartNum": "973c31h03pr0331",
-        "name": "Torso Jacket with Straps, White & Yellow Stripes Print, Green Arms, Black Hands",
+        "name": "Torso, Jacket with Straps, White & Yellow Stripes Print, Green Arms, Black Hands",
         "ldrawFiles": [],
         "mappingEvidence": []
       },
@@ -40903,7 +40775,7 @@
         "catalogId": "part:973c31h31pr2696",
         "role": "torsoAssembly",
         "rebrickablePartNum": "973c31h31pr2696",
-        "name": "Torso Turtle Shell with Gauge and Blue Diving Bottles Print Green Arms and Hands",
+        "name": "Torso, Turtle Shell with Gauge and Blue Diving Bottles Print Green Arms and Hands",
         "ldrawFiles": [],
         "mappingEvidence": []
       },
@@ -40911,7 +40783,7 @@
         "catalogId": "part:973c31h35pr0001",
         "role": "torsoAssembly",
         "rebrickablePartNum": "973c31h35pr0001",
-        "name": "Torso Yellow Dragon Stomach Print, Green Arms with Black Scales Print, Dark Green Hands",
+        "name": "Torso, Yellow Dragon Stomach Print, Green Arms with Black Scales Print, Dark Green Hands",
         "ldrawFiles": [],
         "mappingEvidence": []
       },
@@ -40919,7 +40791,7 @@
         "catalogId": "part:973c31h35pr3664",
         "role": "torsoAssembly",
         "rebrickablePartNum": "973c31h35pr3664",
-        "name": "Torso Suit Jacket with Pockets, Tie, Shirt and Bright Green Question Marks Print, Green Arms with Bright Green Question Marks Print, Dark Green Hands",
+        "name": "Torso, Suit Jacket with Pockets, Tie, Shirt and Bright Green Question Marks Print, Green Arms with Bright Green Question Marks Print, Dark Green Hands",
         "ldrawFiles": [],
         "mappingEvidence": []
       },
@@ -40935,7 +40807,7 @@
         "catalogId": "part:973c32h01pr0001",
         "role": "torsoAssembly",
         "rebrickablePartNum": "973c32h01pr0001",
-        "name": "Torso Shirt with Two Buttons and Shell Pendant, '2014 The LEGO Store Las Vegas' on Back Print, Medium Blue Arms, Yellow Hands",
+        "name": "Torso, Shirt with Two Buttons and Shell Pendant, '2014 The LEGO Store Las Vegas' on Back Print, Medium Blue Arms, Yellow Hands",
         "ldrawFiles": [],
         "mappingEvidence": []
       },
@@ -40943,7 +40815,7 @@
         "catalogId": "part:973c32h01pr0002",
         "role": "torsoAssembly",
         "rebrickablePartNum": "973c32h01pr0002",
-        "name": "Torso Safety Vest with Reflective Stripes over Medium Blue Shirt, ID Badge, Red Pen around Neck, '2016 The LEGO Store San Francisco Centre' Print, Medium Blue Arms, Yellow Hands",
+        "name": "Torso, Safety Vest with Reflective Stripes over Medium Blue Shirt, ID Badge, Red Pen around Neck, '2016 The LEGO Store San Francisco Centre' Print, Medium Blue Arms, Yellow Hands",
         "ldrawFiles": [],
         "mappingEvidence": []
       },
@@ -40951,7 +40823,7 @@
         "catalogId": "part:973c32h01pr0003",
         "role": "torsoAssembly",
         "rebrickablePartNum": "973c32h01pr0003",
-        "name": "Torso Hawaii Shirt, Palm Trees, Sunset '2018 THE LEGO STORE MCALLEN TX' Print, Medium Blue Arms, Yellow Hands",
+        "name": "Torso, Hawaii Shirt, Palm Trees, Sunset '2018 THE LEGO STORE MCALLEN TX' Print, Medium Blue Arms, Yellow Hands",
         "ldrawFiles": [],
         "mappingEvidence": []
       },
@@ -40959,7 +40831,7 @@
         "catalogId": "part:973c32h01pr0004",
         "role": "torsoAssembly",
         "rebrickablePartNum": "973c32h01pr0004",
-        "name": "Torso Shirt with Sunset and Palm Trees, Plain Back Print, Medium Blue Arms, Yellow Hands",
+        "name": "Torso, Shirt with Sunset and Palm Trees, Plain Back Print, Medium Blue Arms, Yellow Hands",
         "ldrawFiles": [],
         "mappingEvidence": []
       },
@@ -40967,7 +40839,7 @@
         "catalogId": "part:973c32h01pr0276",
         "role": "torsoAssembly",
         "rebrickablePartNum": "973c32h01pr0276",
-        "name": "Torso Silver and Black Logos Print, Medium Blue Arms, Yellow Hands",
+        "name": "Torso, Silver and Black Logos Print, Medium Blue Arms, Yellow Hands",
         "ldrawFiles": [],
         "mappingEvidence": []
       },
@@ -40975,7 +40847,7 @@
         "catalogId": "part:973c32h01pr1260",
         "role": "torsoAssembly",
         "rebrickablePartNum": "973c32h01pr1260",
-        "name": "Torso Police Shirt with Dark Bluish Gray Police Vest Print, Medium Blue Arm Left, Medium Blue Arm Right with Star Badge Print, Yellow Hands",
+        "name": "Torso, Police Shirt with Dark Bluish Gray Police Vest Print, Medium Blue Arm Left, Medium Blue Arm Right with Star Badge Print, Yellow Hands",
         "ldrawFiles": [],
         "mappingEvidence": []
       },
@@ -40983,7 +40855,7 @@
         "catalogId": "part:973c32h02pr0310",
         "role": "torsoAssembly",
         "rebrickablePartNum": "973c32h02pr0310",
-        "name": "Torso V-Neck Sweater Print (Mary Jane), Medium Blue Arms, Light Nougat Hands",
+        "name": "Torso, V-Neck Sweater Print (Mary Jane), Medium Blue Arms, Light Nougat Hands",
         "ldrawFiles": [],
         "mappingEvidence": []
       },
@@ -40999,7 +40871,7 @@
         "catalogId": "part:973c32h32pr3320",
         "role": "torsoAssembly",
         "rebrickablePartNum": "973c32h32pr3320",
-        "name": "Torso Bare Chest With Blue Genie Belly Line and Navel Print, Medium Blue Arms with Gold Stripes (Open Cuff Bracelet), Medium Blue Hands",
+        "name": "Torso, Bare Chest With Blue Genie Belly Line and Navel Print, Medium Blue Arms with Gold Stripes (Open Cuff Bracelet), Medium Blue Hands",
         "ldrawFiles": [],
         "mappingEvidence": []
       },
@@ -41015,7 +40887,7 @@
         "catalogId": "part:973c33h01pr2841",
         "role": "torsoAssembly",
         "rebrickablePartNum": "973c33h01pr2841",
-        "name": "Torso Shirt Tied at Waist with Purple and Silver Circles Print, Medium Lavender Arms with Purple and Silver Circles Print, Yellow Hands",
+        "name": "Torso, Shirt Tied at Waist with Purple and Silver Circles Print, Medium Lavender Arms with Purple and Silver Circles Print, Yellow Hands",
         "ldrawFiles": [],
         "mappingEvidence": []
       },
@@ -41039,7 +40911,7 @@
         "catalogId": "part:973c33h27pr3640",
         "role": "torsoAssembly",
         "rebrickablePartNum": "973c33h27pr3640",
-        "name": "Torso Muscles Outline on Front, Belt with 6 White Squares on Front and Reverse Print, Medium Lavender Arms with White Squares Print, White Hands",
+        "name": "Torso, Muscles Outline on Front, Belt with 6 White Squares on Front and Reverse Print, Medium Lavender Arms with White Squares Print, White Hands",
         "ldrawFiles": [],
         "mappingEvidence": []
       },
@@ -41071,7 +40943,7 @@
         "catalogId": "part:973c34h01pr0415",
         "role": "torsoAssembly",
         "rebrickablePartNum": "973c34h01pr0415",
-        "name": "Torso Construction Jacket Open, Safety Stripes, Blue Shirt, Dark Blue Tie Print, Orange Arms, Yellow Hands",
+        "name": "Torso, Construction Jacket Open, Safety Stripes, Blue Shirt, Dark Blue Tie Print, Orange Arms, Yellow Hands",
         "ldrawFiles": [],
         "mappingEvidence": []
       },
@@ -41087,7 +40959,7 @@
         "catalogId": "part:973c34h03pr0272",
         "role": "torsoAssembly",
         "rebrickablePartNum": "973c34h03pr0272",
-        "name": "Torso Jacket with Straps, Red & White Stripes Print, Orange Arms, Black Hands",
+        "name": "Torso, Jacket with Straps, Red & White Stripes Print, Orange Arms, Black Hands",
         "ldrawFiles": [],
         "mappingEvidence": []
       },
@@ -41095,7 +40967,7 @@
         "catalogId": "part:973c34h03pr2568",
         "role": "torsoAssembly",
         "rebrickablePartNum": "973c34h03pr2568",
-        "name": "Torso Prisoner Jumpsuit with Belt and White Undershirt / 'ARKHAM' and Belt on Back Print (Penguin), Orange Arms, Black Hands",
+        "name": "Torso, Prisoner Jumpsuit with Belt and White Undershirt / 'ARKHAM' and Belt on Back Print (Penguin), Orange Arms, Black Hands",
         "ldrawFiles": [],
         "mappingEvidence": []
       },
@@ -41103,7 +40975,7 @@
         "catalogId": "part:973c34h03pr4659",
         "role": "torsoAssembly",
         "rebrickablePartNum": "973c34h03pr4659",
-        "name": "Torso Vest with Rebel Logo, White and Orange Pilot Suit, Dark Bluish Grey Belt Print Orange Arms, Black Hands",
+        "name": "Torso, Vest with Rebel Logo, White and Orange Pilot Suit, Dark Bluish Grey Belt Print Orange Arms, Black Hands",
         "ldrawFiles": [],
         "mappingEvidence": []
       },
@@ -41111,7 +40983,7 @@
         "catalogId": "part:973c34h03pr5435",
         "role": "torsoAssembly",
         "rebrickablePartNum": "973c34h03pr5435",
-        "name": "Torso Rebel Pilot with White Flight Suit Print, Orange Arms with Pocket Print, Black Hands",
+        "name": "Torso, Rebel Pilot with White Flight Suit Print, Orange Arms with Pocket Print, Black Hands",
         "ldrawFiles": [],
         "mappingEvidence": []
       },
@@ -41119,7 +40991,7 @@
         "catalogId": "part:973c34h03pr9642",
         "role": "torsoAssembly",
         "rebrickablePartNum": "973c34h03pr9642",
-        "name": "Torso Tiger Stripes, Tan Stomach Print, Orange Arms, Black Hands",
+        "name": "Torso, Tiger Stripes, Tan Stomach Print, Orange Arms, Black Hands",
         "ldrawFiles": [],
         "mappingEvidence": []
       },
@@ -41135,7 +41007,7 @@
         "catalogId": "part:973c34h08pr0303",
         "role": "torsoAssembly",
         "rebrickablePartNum": "973c34h08pr0303",
-        "name": "Torso Jacket with Coast Guard Logo, Pockets, and Radio Print, Orange Arms, Dark Gray Hands",
+        "name": "Torso, Jacket with Coast Guard Logo, Pockets, and Radio Print, Orange Arms, Dark Gray Hands",
         "ldrawFiles": [],
         "mappingEvidence": []
       },
@@ -41143,7 +41015,7 @@
         "catalogId": "part:973c34h12pr0001",
         "role": "torsoAssembly",
         "rebrickablePartNum": "973c34h12pr0001",
-        "name": "Torso Construction Jacket over Dark Gray Hoodie, Zipper Pockets, Brown Belt Print, No Back Print, Orange Arms, Dark Bluish Gray Hands",
+        "name": "Torso, Construction Jacket over Dark Gray Hoodie, Zipper Pockets, Brown Belt Print, No Back Print, Orange Arms, Dark Bluish Gray Hands",
         "ldrawFiles": [],
         "mappingEvidence": []
       },
@@ -41151,7 +41023,7 @@
         "catalogId": "part:973c34h12pr0303",
         "role": "torsoAssembly",
         "rebrickablePartNum": "973c34h12pr0303",
-        "name": "Torso Jacket with Coast Guard Logo, Pockets, and Radio Print, Orange Arms, Dark Bluish Gray Hands",
+        "name": "Torso, Jacket with Coast Guard Logo, Pockets, and Radio Print, Orange Arms, Dark Bluish Gray Hands",
         "ldrawFiles": [],
         "mappingEvidence": []
       },
@@ -41159,7 +41031,7 @@
         "catalogId": "part:973c34h12pr1084",
         "role": "torsoAssembly",
         "rebrickablePartNum": "973c34h12pr1084",
-        "name": "Torso Safety Jacket with Zipper, Pockets, and Blue Shirt / 2011 The LEGO Store Mission Viejo, CA on Back Print, Orange Arms, Dark Bluish Gray Hands",
+        "name": "Torso, Safety Jacket with Zipper, Pockets, and Blue Shirt / 2011 The LEGO Store Mission Viejo, CA on Back Print, Orange Arms, Dark Bluish Gray Hands",
         "ldrawFiles": [],
         "mappingEvidence": []
       },
@@ -41167,7 +41039,7 @@
         "catalogId": "part:973c34h12pr1144",
         "role": "torsoAssembly",
         "rebrickablePartNum": "973c34h12pr1144",
-        "name": "Torso Safety Jacket with Zipper, Pockets, and Blue Shirt / 2012 The LEGO Store Wauwatosa, WI on Back Print, Orange Arms, Dark Bluish Gray Hands",
+        "name": "Torso, Safety Jacket with Zipper, Pockets, and Blue Shirt / 2012 The LEGO Store Wauwatosa, WI on Back Print, Orange Arms, Dark Bluish Gray Hands",
         "ldrawFiles": [],
         "mappingEvidence": []
       },
@@ -41175,7 +41047,7 @@
         "catalogId": "part:973c34h12pr9684",
         "role": "torsoAssembly",
         "rebrickablePartNum": "973c34h12pr9684",
-        "name": "Torso Safety Jacket with Zipper, Pockets, and Blue Shirt / 2012 The LEGO Store Northshore Mall, Peabody, MA on Back Print, Orange Arms, Dark Bluish Gray Hands",
+        "name": "Torso, Safety Jacket with Zipper, Pockets, and Blue Shirt / 2012 The LEGO Store Northshore Mall, Peabody, MA on Back Print, Orange Arms, Dark Bluish Gray Hands",
         "ldrawFiles": [],
         "mappingEvidence": []
       },
@@ -41183,7 +41055,7 @@
         "catalogId": "part:973c34h12pr9688",
         "role": "torsoAssembly",
         "rebrickablePartNum": "973c34h12pr9688",
-        "name": "Torso Safety Jacket with Zipper, Pockets, and Blue Shirt / 2012 The LEGO Store Elizabeth, NJ on Back Print, Orange Arms, Dark Bluish Gray Hands",
+        "name": "Torso, Safety Jacket with Zipper, Pockets, and Blue Shirt / 2012 The LEGO Store Elizabeth, NJ on Back Print, Orange Arms, Dark Bluish Gray Hands",
         "ldrawFiles": [],
         "mappingEvidence": []
       },
@@ -41199,7 +41071,7 @@
         "catalogId": "part:973c34h27pr3348",
         "role": "torsoAssembly",
         "rebrickablePartNum": "973c34h27pr3348",
-        "name": "Torso Rebel Pilot with Black Belt with Buckle on Back Print, Orange Arms with Jacket Print, White Hands",
+        "name": "Torso, Rebel Pilot with Black Belt with Buckle on Back Print, Orange Arms with Jacket Print, White Hands",
         "ldrawFiles": [],
         "mappingEvidence": []
       },
@@ -41207,7 +41079,7 @@
         "catalogId": "part:973c34h34pr0751",
         "role": "torsoAssembly",
         "rebrickablePartNum": "973c34h34pr0751",
-        "name": "Torso LEGO Universe Nexus Astronaut Print, Orange Arms and Hands",
+        "name": "Torso, LEGO Universe Nexus Astronaut Print, Orange Arms and Hands",
         "ldrawFiles": [],
         "mappingEvidence": []
       },
@@ -41215,7 +41087,7 @@
         "catalogId": "part:973c35h01pr3940",
         "role": "torsoAssembly",
         "rebrickablePartNum": "973c35h01pr3940",
-        "name": "Torso Hoodie with Silver Zipper and Green Ties and Pockets over White Shirt Print, Dark Green Arms with Green Cuffs Print, Yellow Hands",
+        "name": "Torso, Hoodie with Silver Zipper and Green Ties and Pockets over White Shirt Print, Dark Green Arms with Green Cuffs Print, Yellow Hands",
         "ldrawFiles": [],
         "mappingEvidence": []
       },
@@ -41223,7 +41095,7 @@
         "catalogId": "part:973c35h02pr0001",
         "role": "torsoAssembly",
         "rebrickablePartNum": "973c35h02pr0001",
-        "name": "Torso Robe, Black Shirt, Gold Pendant Print, Dark Green Arms, Light Nougat Hands, Dark Green Arms, Light Nougat Hands",
+        "name": "Torso, Robe, Black Shirt, Gold Pendant Print, Dark Green Arms, Light Nougat Hands, Dark Green Arms, Light Nougat Hands",
         "ldrawFiles": [],
         "mappingEvidence": []
       },
@@ -41263,7 +41135,7 @@
         "catalogId": "part:973c35h35pr3560",
         "role": "torsoAssembly",
         "rebrickablePartNum": "973c35h35pr3560",
-        "name": "Torso Bare Chest with Bones and Spikes Print, Dark Green Arms with Tan Stripes Print, Dark Green Hands",
+        "name": "Torso, Bare Chest with Bones and Spikes Print, Dark Green Arms with Tan Stripes Print, Dark Green Hands",
         "ldrawFiles": [],
         "mappingEvidence": []
       },
@@ -41303,7 +41175,7 @@
         "catalogId": "part:973c36h27pr0001",
         "role": "torsoAssembly",
         "rebrickablePartNum": "973c36h27pr0001",
-        "name": "Torso Jacket, Padded, Dark Pink Zipper, Pockets Print, Dark Pink Arms, White Hands",
+        "name": "Torso, Jacket, Padded, Dark Pink Zipper, Pockets Print, Dark Pink Arms, White Hands",
         "ldrawFiles": [],
         "mappingEvidence": []
       },
@@ -41319,7 +41191,7 @@
         "catalogId": "part:973c37h01pr0001",
         "role": "torsoAssembly",
         "rebrickablePartNum": "973c37h01pr0001",
-        "name": "Torso Hoodie with Pocket, Drawstring and Minifig Skull Print, Magenta Arms, Yellow Hands - No Back Print",
+        "name": "Torso, Hoodie with Pocket, Drawstring and Minifig Skull Print, Magenta Arms, Yellow Hands - No Back Print",
         "ldrawFiles": [],
         "mappingEvidence": []
       },
@@ -41327,7 +41199,7 @@
         "catalogId": "part:973c37h01pr1947",
         "role": "torsoAssembly",
         "rebrickablePartNum": "973c37h01pr1947",
-        "name": "Torso Hoodie with Pocket, Drawstring and Minifig Skull Print, Magenta Arms with Black Stripes, Yellow Hands",
+        "name": "Torso, Hoodie with Pocket, Drawstring and Minifig Skull Print, Magenta Arms with Black Stripes, Yellow Hands",
         "ldrawFiles": [],
         "mappingEvidence": []
       },
@@ -41335,7 +41207,7 @@
         "catalogId": "part:973c37h01pr9995",
         "role": "torsoAssembly",
         "rebrickablePartNum": "973c37h01pr9995",
-        "name": "Torso '2ND ANNIVERSARY LEGO Official Flagship Store 2020-2022' / LEGO Logo Back Print, Magenta Arms, Yellow Hands",
+        "name": "Torso, '2ND ANNIVERSARY LEGO Official Flagship Store 2020-2022' / LEGO Logo Back Print, Magenta Arms, Yellow Hands",
         "ldrawFiles": [],
         "mappingEvidence": []
       },
@@ -41343,7 +41215,7 @@
         "catalogId": "part:973c37h01pr9999",
         "role": "torsoAssembly",
         "rebrickablePartNum": "973c37h01pr9999",
-        "name": "Torso Hoodie with Pocket, Drawstring and Minifig Skull Print, Magenta Arms, Yellow Hands - Back Print",
+        "name": "Torso, Hoodie with Pocket, Drawstring and Minifig Skull Print, Magenta Arms, Yellow Hands - Back Print",
         "ldrawFiles": [],
         "mappingEvidence": []
       },
@@ -41367,7 +41239,7 @@
         "catalogId": "part:973c38h01pr5870",
         "role": "torsoAssembly",
         "rebrickablePartNum": "973c38h01pr5870",
-        "name": "Torso Armor, Gold and Dark Red Plating, Circle with Chinese Character Print, Bright Light Orange Arms with Gold, Dark Red, and Dark Turquoise Armor Print, Yellow Hands",
+        "name": "Torso, Armor, Gold and Dark Red Plating, Circle with Chinese Character Print, Bright Light Orange Arms with Gold, Dark Red, and Dark Turquoise Armor Print, Yellow Hands",
         "ldrawFiles": [],
         "mappingEvidence": []
       },
@@ -41375,7 +41247,7 @@
         "catalogId": "part:973c38h01pr5873",
         "role": "torsoAssembly",
         "rebrickablePartNum": "973c38h01pr5873",
-        "name": "Torso Jacket, Dark Turquoise and Red Shoulder Strap, White Undershirt Print, Bright Light Orange Arms with Black Target Circles Print, Yellow Hands",
+        "name": "Torso, Jacket, Dark Turquoise and Red Shoulder Strap, White Undershirt Print, Bright Light Orange Arms with Black Target Circles Print, Yellow Hands",
         "ldrawFiles": [],
         "mappingEvidence": []
       },
@@ -41391,7 +41263,7 @@
         "catalogId": "part:973c38h02pr9965",
         "role": "torsoAssembly",
         "rebrickablePartNum": "973c38h02pr9965",
-        "name": "Torso Tuxedo Jacket with Tiger Stripes and Black Bow Tie Print, Bright Light Orange Arms with Tiger Stripes Print, Light Nougat Hands",
+        "name": "Torso, Tuxedo Jacket with Tiger Stripes and Black Bow Tie Print, Bright Light Orange Arms with Tiger Stripes Print, Light Nougat Hands",
         "ldrawFiles": [],
         "mappingEvidence": []
       },
@@ -41399,7 +41271,7 @@
         "catalogId": "part:973c38h03pr3613",
         "role": "torsoAssembly",
         "rebrickablePartNum": "973c38h03pr3613",
-        "name": "Torso Jacket with Pinstripes and Black Undershirt Print, Bright Light Orange Arms with Pinstripes Print, Black Hands",
+        "name": "Torso, Jacket with Pinstripes and Black Undershirt Print, Bright Light Orange Arms with Pinstripes Print, Black Hands",
         "ldrawFiles": [],
         "mappingEvidence": []
       },
@@ -41415,7 +41287,7 @@
         "catalogId": "part:973c38h38pr4135",
         "role": "torsoAssembly",
         "rebrickablePartNum": "973c38h38pr4135",
-        "name": "Torso Cheetah Spots, Black Tank Top Print, Bright Light Arms and Hands",
+        "name": "Torso, Cheetah Spots, Black Tank Top Print, Bright Light Arms and Hands",
         "ldrawFiles": [],
         "mappingEvidence": []
       },
@@ -45343,7 +45215,7 @@
         "catalogId": "part:973g27c01h01pr0007",
         "role": "torsoAssembly",
         "rebrickablePartNum": "973g27c01h01pr0007",
-        "name": "Torso, Dual Molded Arms, White Sleeves Pattern, Yellow Arms and Hands",
+        "name": "Torso, Dual Molded Arms, Buttoned Shirts, Yellow Neck, Red Pizza Logo Print, White Sleeves Pattern, Yellow Arms and Hands",
         "ldrawFiles": [],
         "mappingEvidence": []
       },
@@ -51052,6 +50924,14 @@
         "mappingEvidence": []
       },
       {
+        "catalogId": "part:16709pats44",
+        "role": "legsAssembly",
+        "rebrickablePartNum": "16709pats44",
+        "name": "Legs Short with Bright Light Yellow Stripe Pattern [Plain]",
+        "ldrawFiles": [],
+        "mappingEvidence": []
+      },
+      {
         "catalogId": "part:16709pats44pr0001",
         "role": "legsAssembly",
         "rebrickablePartNum": "16709pats44pr0001",
@@ -56423,7 +56303,7 @@
         "catalogId": "part:92747pr0010",
         "role": "handAccessory",
         "rebrickablePartNum": "92747pr0010",
-        "name": "Shield Ovoid with Grip with Sign, Dark Green Background, Gold Decorations, Chair Print",
+        "name": "Shield Ovoid with Grip and Sign, Dark Green Background, Gold Decorations, Chair Print",
         "ldrawFiles": [],
         "mappingEvidence": []
       },
@@ -56431,7 +56311,7 @@
         "catalogId": "part:92747pr0011",
         "role": "handAccessory",
         "rebrickablePartNum": "92747pr0011",
-        "name": "Shield Ovoid with Grip with Black Oval (Eye) Print",
+        "name": "Shield Ovoid with Grip and Black Oval (Eye) Print",
         "ldrawFiles": [],
         "mappingEvidence": []
       },
@@ -56439,7 +56319,7 @@
         "catalogId": "part:92747pr0012",
         "role": "handAccessory",
         "rebrickablePartNum": "92747pr0012",
-        "name": "Shield Ovoid with Grip with White 'air', Vibrant Yellow 'max' on Dark/Light Bluish Grey Background Print",
+        "name": "Shield Ovoid with Grip and White 'air', Vibrant Yellow 'max' on Dark/Light Bluish Grey Background Print",
         "ldrawFiles": [],
         "mappingEvidence": []
       },
@@ -56447,7 +56327,7 @@
         "catalogId": "part:92747pr0013",
         "role": "handAccessory",
         "rebrickablePartNum": "92747pr0013",
-        "name": "Shield Ovoid with Grip with Silver Border Print",
+        "name": "Shield Ovoid with Grip and Silver Border Print",
         "ldrawFiles": [],
         "mappingEvidence": []
       },
@@ -56455,7 +56335,7 @@
         "catalogId": "part:92747pr0014",
         "role": "handAccessory",
         "rebrickablePartNum": "92747pr0014",
-        "name": "Shield Ovoid with Grip with Magic Mirror, Gold Border, White Minifig Head Print",
+        "name": "Shield Ovoid with Grip and Magic Mirror, Gold Border, White Minifig Head Print",
         "ldrawFiles": [],
         "mappingEvidence": []
       },
@@ -57244,7 +57124,7 @@
         "catalogId": "part:973c34h03pr1301",
         "role": "torsoAssembly",
         "rebrickablePartNum": "973c34h03pr1301",
-        "name": "Torso Rebel Pilot Print, Orange Arms, Black Hands",
+        "name": "Torso, Rebel Pilot Print, Orange Arms, Black Hands",
         "ldrawFiles": [
           "parts/76382pr8.dat",
           "parts/76382ps1.dat"
