@@ -23,8 +23,17 @@ export type CatalogSetIndexArtifact = {
   columns: string[];
 };
 
+/**
+ * Rebrickable occasionally ships an inventory_minifigs row whose inventory is missing from
+ * inventories.csv. Such a row cannot be attached to any set, so it is skipped and reported.
+ * More than this share of rows means the file is broken, not merely inconsistent.
+ */
+export const MAX_UNKNOWN_INVENTORY_MINIFIG_SHARE = 0.005;
+
 export type BuiltCatalogSetIndex = {
   index: CatalogSetIndex;
+  /** inventory_minifigs.csv.gz rows skipped because their inventory is not in inventories.csv.gz. */
+  skippedInventoryMinifigRows: { count: number; sampleInventoryIds: string[] };
   artifacts: CatalogSetIndexArtifact[];
   inventoryColorIdsByPartNum: ReadonlyMap<string, ReadonlySet<number>>;
 };
@@ -116,11 +125,13 @@ export const buildCatalogSetIndex = ({
     columns: inventoryMinifigsTable.headers,
   });
   const setNumsByFigureNum = new Map<string, Set<string>>();
+  const unknownInventoryIds: string[] = [];
   for (const row of inventoryMinifigsTable.rows) {
     const inventoryId = row.inventory_id ?? "";
     const figureNum = row.fig_num ?? "";
     if (!inventorySetNumById.has(inventoryId)) {
-      throw new Error(`inventory_minifigs.csv.gz references unknown inventory ${inventoryId}`);
+      unknownInventoryIds.push(inventoryId);
+      continue;
     }
     if (!figureNums.has(figureNum)) {
       throw new Error(`inventory_minifigs.csv.gz references unknown minifigure ${figureNum}`);
@@ -130,6 +141,13 @@ export const buildCatalogSetIndex = ({
     const setNums = setNumsByFigureNum.get(figureNum) ?? new Set<string>();
     setNums.add(setNum);
     setNumsByFigureNum.set(figureNum, setNums);
+  }
+
+  if (unknownInventoryIds.length > inventoryMinifigsTable.rows.length * MAX_UNKNOWN_INVENTORY_MINIFIG_SHARE) {
+    throw new Error(
+      `inventory_minifigs.csv.gz references unknown inventories in ${unknownInventoryIds.length} of `
+      + `${inventoryMinifigsTable.rows.length} rows, e.g. ${unknownInventoryIds.slice(0, 5).join(", ")}`,
+    );
   }
 
   const partNumsBySetNum = new Map<string, Set<string>>();
@@ -203,6 +221,10 @@ export const buildCatalogSetIndex = ({
         associationCount,
       },
     }),
+    skippedInventoryMinifigRows: {
+      count: unknownInventoryIds.length,
+      sampleInventoryIds: unknownInventoryIds.slice(0, 5),
+    },
     artifacts: artifactResults.sort((left, right) => compareText(left.fileName, right.fileName)),
     inventoryColorIdsByPartNum,
   };

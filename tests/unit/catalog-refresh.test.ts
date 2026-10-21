@@ -96,6 +96,44 @@ describe("catalog refresh adapter", () => {
     });
   });
 
+  const withMinifigRows = (rows: string): CatalogArtifactBytes[] => fixtureArtifacts.map((artifact) =>
+    artifact.fileName === "inventory_minifigs.csv.gz"
+      ? { ...artifact, bytes: new TextEncoder().encode(`inventory_id,fig_num,quantity\n${rows}`) }
+      : artifact);
+
+  it("skips an inventory_minifigs row whose inventory is unknown and reports it", () => {
+    const rows = ["10,fig-test,1", ...Array.from({ length: 300 }, () => "10,fig-test,1")];
+    const result = normalizeCatalogArtifacts({
+      sourceLock: fixtureLock(),
+      artifacts: withMinifigRows(`${rows.join("\n")}\n364458,fig-test,1\n`),
+      allowHashUpdates: true,
+      retrievedAt: "2026-10-21T00:00:00.000Z",
+    });
+
+    expect(result.skippedInventoryMinifigRows).toEqual({ count: 1, sampleInventoryIds: ["364458"] });
+    expect(result.catalogSetIndex.summary.associationCount).toBeGreaterThan(0);
+  });
+
+  it("still fails when a large share of inventory_minifigs rows has no inventory", () => {
+    expect(() => normalizeCatalogArtifacts({
+      sourceLock: fixtureLock(),
+      artifacts: withMinifigRows("10,fig-test,1\n999,fig-test,1\n998,fig-test,1\n"),
+      allowHashUpdates: true,
+      retrievedAt: "2026-10-21T00:00:00.000Z",
+    })).toThrow(/unknown inventories in 2 of 3 rows/u);
+  });
+
+  it("reports no skipped rows for consistent data", () => {
+    const result = normalizeCatalogArtifacts({
+      sourceLock: fixtureLock(),
+      artifacts: fixtureArtifacts,
+      allowHashUpdates: true,
+      retrievedAt: "2026-10-21T00:00:00.000Z",
+    });
+
+    expect(result.skippedInventoryMinifigRows).toEqual({ count: 0, sampleInventoryIds: [] });
+  });
+
   it("rejects a changed hash when lock updates are not explicitly allowed", () => {
     expect(() =>
       normalizeCatalogArtifacts({
