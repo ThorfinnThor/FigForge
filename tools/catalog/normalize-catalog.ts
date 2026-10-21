@@ -50,6 +50,8 @@ export type CatalogRefreshResult = {
   sourceLock: SourceLock;
   normalizedCatalog: NormalizedCatalog;
   catalogSetIndex: CatalogSetIndex;
+  /** Rebrickable rows the set index had to skip; the refresh report lists them. */
+  skippedInventoryMinifigRows: { count: number; sampleInventoryIds: string[] };
   changedArtifacts: string[];
 };
 
@@ -292,7 +294,13 @@ export const normalizeCatalogArtifacts = ({
     }),
     parts: normalizedParts,
   });
-  return { sourceLock: nextSourceLock, normalizedCatalog, catalogSetIndex: setIndexResult.index, changedArtifacts };
+  return {
+    sourceLock: nextSourceLock,
+    normalizedCatalog,
+    catalogSetIndex: setIndexResult.index,
+    skippedInventoryMinifigRows: setIndexResult.skippedInventoryMinifigRows,
+    changedArtifacts,
+  };
 };
 
 export const serializeSourceLock = serializeLock;

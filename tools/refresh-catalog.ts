@@ -147,6 +147,7 @@ if (!values.refresh) {
       normalizedPartCount: result.normalizedCatalog.parts.length,
       packagedMinifigPartCount: catalogPackages.manifest.includedPartCount,
       setIndex: result.catalogSetIndex.summary,
+      skippedInventoryMinifigRows: result.skippedInventoryMinifigRows,
       catalogPackageCount: catalogPackages.manifest.packages.length,
       artifactCount: result.normalizedCatalog.artifacts.length,
       apiUsed: false,
@@ -154,5 +155,5 @@ if (!values.refresh) {
     }, null, 2)}\n`,
     "utf8",
   );
-  console.log(JSON.stringify({ message: "catalog refresh normalized; generated outputs are ready for review", changedArtifacts: result.changedArtifacts, normalizedPartCount: result.normalizedCatalog.parts.length, packagedMinifigPartCount: catalogPackages.manifest.includedPartCount, setIndex: result.catalogSetIndex.summary, outputDirectory: "data/generated", apiUsed: false, mocFilesAllowed: false }));
+  console.log(JSON.stringify({ message: "catalog refresh normalized; generated outputs are ready for review", changedArtifacts: result.changedArtifacts, normalizedPartCount: result.normalizedCatalog.parts.length, packagedMinifigPartCount: catalogPackages.manifest.includedPartCount, setIndex: result.catalogSetIndex.summary, skippedInventoryMinifigRows: result.skippedInventoryMinifigRows, outputDirectory: "data/generated", apiUsed: false, mocFilesAllowed: false }));
 }
