@@ -180,6 +180,12 @@ export const CURATED_PRODUCTS: readonly CuratedProduct[] = [
   },
 ];
 
+/** The sets of a theme world; a world without sets of its own (such as zombies) shows all sets. */
+export const productsForThemePage = (themeId: FigureThemeId | null): readonly CuratedProduct[] => {
+  const own = productsForTheme(themeId);
+  return own.length > 0 ? own : productsForTheme(null);
+};
+
 export const productsForTheme = (themeId: FigureThemeId | null): readonly CuratedProduct[] => (
   CURATED_PRODUCTS.filter((product) => product.type === "set" && (!themeId || product.themeId === themeId))
 );

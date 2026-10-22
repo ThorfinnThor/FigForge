@@ -2191,14 +2191,23 @@ legend {
   text-align: right;
 }
 
+/* Five worlds: three on the first row, two wider ones below, no orphan. */
 .ideas-worlds {
   display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
+  grid-template-columns: repeat(6, minmax(0, 1fr));
   gap: var(--space-5);
   align-items: stretch;
   margin: 0;
   padding: 0;
   list-style: none;
+}
+
+.ideas-worlds > li {
+  grid-column: span 2;
+}
+
+.ideas-worlds > li:nth-child(n + 4) {
+  grid-column: span 3;
 }
 
 .ideas-page__all-worlds,
@@ -2225,6 +2234,7 @@ legend {
 .idea-world[data-accent="red"] { --idea-accent: var(--cat-torso); }
 .idea-world[data-accent="blue"] { --idea-accent: var(--cat-headwear); }
 .idea-world[data-accent="green"] { --idea-accent: var(--cat-legs); }
+.idea-world[data-accent="purple"] { --idea-accent: var(--cat-accessory); }
 
 .idea-world h3 {
   margin: 0;
@@ -2283,6 +2293,7 @@ legend {
 .idea-card[data-accent="red"] { --idea-accent: var(--cat-torso); }
 .idea-card[data-accent="blue"] { --idea-accent: var(--cat-headwear); }
 .idea-card[data-accent="green"] { --idea-accent: var(--cat-legs); }
+.idea-card[data-accent="purple"] { --idea-accent: var(--cat-accessory); }
 
 .figure-preview-card {
   position: relative;
@@ -3262,6 +3273,11 @@ legend {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
+  .ideas-worlds > li,
+  .ideas-worlds > li:nth-child(n + 4) {
+    grid-column: auto;
+  }
+
   .collection-library__list {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
@@ -3632,6 +3648,11 @@ legend {
 
   .ideas-worlds {
     grid-template-columns: 1fr;
+  }
+
+  .ideas-worlds > li,
+  .ideas-worlds > li:nth-child(n + 4) {
+    grid-column: auto;
   }
 
   .ideas-grid {

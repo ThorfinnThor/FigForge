@@ -3,15 +3,16 @@ import { GUIDE_IDS } from "../guides/guide-content.js";
 import { FIGURE_TEMPLATES, type FigureTemplate } from "../ideas/figure-templates.js";
 import { partNumbers } from "../ideas/part-numbers.js";
 import type { Language } from "../i18n.js";
-import { CURATED_PRODUCTS, productsForTheme, type CuratedProduct } from "../products/curated-products.js";
+import { CURATED_PRODUCTS, productsForThemePage, type CuratedProduct } from "../products/curated-products.js";
 import { escapeHtml, requireMessage, type Messages } from "./html.js";
 
-/** The four theme worlds, by their German path id and their message-key stem. */
+/** The theme worlds, by their German path id and their message-key stem. */
 export const WORLDS = [
   { id: "pirates", key: "pirates" },
   { id: "castle", key: "castle" },
   { id: "space", key: "space" },
   { id: "fire-rescue", key: "fire" },
+  { id: "zombies", key: "zombies" },
 ] as const;
 
 export type WorldKey = (typeof WORLDS)[number]["key"];
@@ -75,7 +76,7 @@ export const ideasBody = (context: Context): string => (
   `<h2>${text(context, "ideas.worlds.title")}</h2><p>${text(context, "ideas.worlds.lede")}</p>${worldList(context)}`
   + `<h2>${text(context, "ideas.starters.title")}</h2><p>${text(context, "ideas.starters.hint")}</p>`
   + templateList(context, FIGURE_TEMPLATES, false)
-  + productsSection(context, productsForTheme(null))
+  + productsSection(context, productsForThemePage(null))
 );
 
 export const worldBody = (context: Context, id: (typeof WORLDS)[number]["id"], key: WorldKey): string => (
@@ -83,7 +84,7 @@ export const worldBody = (context: Context, id: (typeof WORLDS)[number]["id"], k
   + `<h2>${text(context, "ideas.starters.filteredTitle")}</h2><p>${text(context, "ideas.starters.hint")}</p>`
   + templateList(context, FIGURE_TEMPLATES.filter((template) => template.themeId === id), true)
   + `<h2>${text(context, "ideas.tips.title")}</h2><p>${text(context, `ideas.world.${key}.tip`)}</p>`
-  + productsSection(context, productsForTheme(id))
+  + productsSection(context, productsForThemePage(id))
   + `<p>${link(context, "/ideas", text(context, "ideas.worlds.all"))}</p>`
 );
 
