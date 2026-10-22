@@ -80,3 +80,21 @@ export const disableAnalytics = (id: string, env: AnalyticsEnvironment): void =>
   if (env.win.gtag) env.win.gtag("consent", "update", { analytics_storage: "denied" });
   deleteAnalyticsCookies(env);
 };
+
+export type AnalyticsEventParams = Readonly<Record<string, string | number | boolean>>;
+
+/**
+ * Sends an event, but only while the visitor's consent is active: Google Analytics has been
+ * loaded after "granted" and not switched off since. Returns whether an event was queued.
+ */
+export const sendAnalyticsEvent = (
+  id: string,
+  name: string,
+  params: AnalyticsEventParams,
+  env: Pick<AnalyticsEnvironment, "win">,
+): boolean => {
+  const { win } = env;
+  if (win[`ga-loaded-${id}`] !== true || win[`ga-disable-${id}`] === true || !win.gtag) return false;
+  win.gtag("event", name, params);
+  return true;
+};

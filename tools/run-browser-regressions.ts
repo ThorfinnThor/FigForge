@@ -742,6 +742,47 @@ const testGuides = async (client: CdpClient, origin: string): Promise<void> => {
   await waitFor(client, "document.querySelectorAll('.guides-list li').length === 8", "English guides hub");
 };
 
+const testAffiliateClickCounting = async (client: CdpClient, origin: string): Promise<void> => {
+  // Google is answered with an empty script, as in the consent test, so nothing leaves the machine.
+  await client.send("Fetch.enable", { patterns: [{ urlPattern: "*googletagmanager.com*", requestStage: "Request" }] });
+  const stop = client.on("Fetch.requestPaused", (params) => {
+    void client.send("Fetch.fulfillRequest", {
+      requestId: String(params.requestId),
+      responseCode: 200,
+      responseHeaders: [{ name: "Content-Type", value: "text/javascript" }],
+      body: Buffer.from("/* stub */").toString("base64"),
+    });
+  });
+  const clickFirstAmazonLink = async (choice: "granted" | "denied"): Promise<unknown[][]> => {
+    await navigate(client, `${origin}/`);
+    await evaluate(client, `localStorage.setItem('${CONSENT_KEY}', JSON.stringify({ v: 1, choice: '${choice}', at: Date.now() }))`);
+    await navigate(client, `${origin}/sets`);
+    await waitFor(client, "document.querySelectorAll('.curated-product .ff-button--primary').length > 0", "product links on the sets page");
+    return await evaluate<unknown[][]>(client, `(() => {
+      // The link opens a new tab; stop the navigation but let the page's own click handler run.
+      document.addEventListener('click', (event) => event.preventDefault(), true);
+      document.querySelector('.curated-product .ff-button--primary').click();
+      return (window.dataLayer ?? []).map((entry) => Array.from(entry));
+    })()`);
+  };
+  try {
+    const granted = await clickFirstAmazonLink("granted");
+    const events = granted.filter((entry) => entry[0] === "event" && entry[1] === "affiliate_click");
+    assert.equal(events.length, 1, "one click event after consent");
+    assert.deepEqual(events[0]?.[2], {
+      partner: "amazon",
+      placement: "sets",
+      item: "iconic-pirate-ship",
+      affiliate: true,
+    });
+    const denied = await clickFirstAmazonLink("denied");
+    assert.equal(denied.some((entry) => entry[1] === "affiliate_click"), false, "no click event without consent");
+  } finally {
+    stop();
+    await client.send("Fetch.disable");
+  }
+};
+
 const testImprint = async (client: CdpClient, origin: string): Promise<void> => {
   for (const [path, heading] of [["/impressum", "Impressum"], ["/en/imprint", "Imprint"]] as const) {
     await navigate(client, `${origin}${path}`);
@@ -929,6 +970,8 @@ const run = async (): Promise<void> => {
     process.stdout.write("✓ page recovers from a poisoned chunk by reloading once\n");
     await testAnalyticsConsent(client, previewServer.origin);
     process.stdout.write("✓ analytics only after consent, withdrawal stops it and removes the cookies\n");
+    await testAffiliateClickCounting(client, previewServer.origin);
+    process.stdout.write("✓ partner link clicks are counted only with consent\n");
     await testCoreFirstCatalogLoading(client, previewServer.origin);
     process.stdout.write("✓ core packages first, full catalog afterwards\n");
     await testMountedMobileKeyboard(client, previewServer.origin);

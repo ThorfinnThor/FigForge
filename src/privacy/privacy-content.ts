@@ -270,7 +270,7 @@ const PRIVACY_ANALYTICS: Record<Language, {
       heading: "Google Analytics",
       paragraphs: [
         "Wenn du zustimmst, nutzen wir Google Analytics 4, einen Webanalysedienst der Google Ireland Limited, Gordon House, Barrow Street, Dublin 4, Irland (in Verbindung mit Google LLC, USA). Google Analytics setzt Cookies (_ga und _ga_ mit unserer Mess-ID, Laufzeit bis zu zwei Jahre) und verarbeitet Daten über deine Nutzung, zum Beispiel aufgerufene Seiten, ungefähre Herkunft, Gerät und Browser. Nach Googles Angaben protokolliert und speichert Google Analytics 4 keine IP-Adressen.",
-        "Wir nutzen die Auswertung, um die Seite zu verbessern. Werbefunktionen, Google-Signale und Werbepersonalisierung nutzen wir nicht.",
+        "Wir nutzen die Auswertung, um die Seite zu verbessern. Werbefunktionen, Google-Signale und Werbepersonalisierung nutzen wir nicht. Wenn du auf einen Partnerlink klickst, zählen wir den Klick (Seite, Produkt und Partner), ebenfalls nur mit deiner Einwilligung.",
         "Rechtsgrundlage ist deine Einwilligung (Art. 6 Abs. 1 lit. a DSGVO, § 25 Abs. 1 TDDDG). Du kannst sie jederzeit über „Cookie-Einstellungen“ im Menü „Mehr“ widerrufen; die Verarbeitung bis dahin bleibt rechtmäßig.",
         "Daten können in die USA übermittelt werden. Das stützt sich auf den Angemessenheitsbeschluss zum EU-US Data Privacy Framework und auf Standardvertragsklauseln. Google stellt dafür Datenverarbeitungsbedingungen bereit (Auftragsverarbeitung nach Art. 28 DSGVO). Die Speicherdauer der Ereignisdaten richtet sich nach den Einstellungen in unserem Analytics-Konto und beträgt höchstens 14 Monate.",
       ],
@@ -289,7 +289,7 @@ const PRIVACY_ANALYTICS: Record<Language, {
       heading: "Google Analytics",
       paragraphs: [
         "If you consent, we use Google Analytics 4, a web analytics service of Google Ireland Limited, Gordon House, Barrow Street, Dublin 4, Ireland (together with Google LLC, USA). Google Analytics sets cookies (_ga and _ga_ with our measurement ID, lifetime up to two years) and processes data about your use, for example pages viewed, approximate origin, device and browser. According to Google, Google Analytics 4 does not log or store IP addresses.",
-        "We use the analysis to improve the site. We do not use advertising features, Google signals or ad personalization.",
+        "We use the analysis to improve the site. We do not use advertising features, Google signals or ad personalization. If you click a partner link, we count the click (page, product and partner), also only with your consent.",
         "The legal basis is your consent (Art. 6(1)(a) GDPR, Section 25(1) TDDDG). You can withdraw it at any time through “Cookie settings” in the “More” menu; processing until then remains lawful.",
         "Data may be transferred to the USA. This relies on the adequacy decision for the EU-US Data Privacy Framework and on Standard Contractual Clauses. Google provides data processing terms for this (processing on our behalf under Art. 28 GDPR). The retention of event data follows the settings in our Analytics account and is at most 14 months.",
       ],

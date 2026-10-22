@@ -83,11 +83,15 @@ export const legoProductLink = (
   url: string,
   market: LegoMarket | null,
   templates: Readonly<Record<LegoRegion, string | null>> = LEGO_AFFILIATE_TEMPLATES,
+  placement?: string,
 ): LegoLink => {
   const parts = /^(https:\/\/www\.lego\.com\/)[a-z]{2}-[a-z]{2}(\/.+)$/u.exec(url);
   if (!market || !parts) return { href: url, affiliate: false };
   const target = `${parts[1]}${market.locale}${parts[2]}`;
   const template = market.region ? templates[market.region] : null;
   if (!isValidAffiliateTemplate(template)) return { href: target, affiliate: false };
-  return { href: template.replace("{url}", encodeURIComponent(target)), affiliate: true };
+  const href = template.replace("{url}", encodeURIComponent(target));
+  // Rakuten's "u1" is a free sub-ID that its reports break down by.
+  const subId = placement && /^[a-z0-9-]{1,40}$/u.test(placement) ? `&u1=${placement}` : "";
+  return { href: `${href}${subId}`, affiliate: true };
 };

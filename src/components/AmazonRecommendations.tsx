@@ -1,6 +1,9 @@
 import { useI18n } from "../i18n.js";
-import { AMAZON_AFFILIATE_CONFIG } from "../procurement/amazon-config.js";
+import { trackAffiliateClick } from "../consent/track-affiliate.js";
+import { AMAZON_AFFILIATE_CONFIG, amazonTrackingIdFor } from "../procurement/amazon-config.js";
 import { amazonSearchLink } from "../procurement/amazon-links.js";
+
+const PLACEMENT = "builder";
 
 const recommendations = [
   { id: "displayCase", icon: "▣", query: "LEGO minifigure display case" },
@@ -21,7 +24,7 @@ export function AmazonRecommendations() {
         {recommendations.map(({ icon, id, query }) => {
           const link = amazonSearchLink(
             query,
-            AMAZON_AFFILIATE_CONFIG.trackingId,
+            amazonTrackingIdFor(PLACEMENT),
             AMAZON_AFFILIATE_CONFIG.searchUrl,
           );
           return (
@@ -29,6 +32,7 @@ export function AmazonRecommendations() {
               className="amazon-recommendation"
               href={link.href}
               key={id}
+              onClick={() => trackAffiliateClick({ partner: "amazon", placement: PLACEMENT, item: id, affiliate: link.affiliate })}
               rel="sponsored noopener noreferrer"
               target="_blank"
             >
