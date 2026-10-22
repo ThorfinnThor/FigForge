@@ -170,7 +170,7 @@ describe("full text of content pages", () => {
         expect(plain(html)).toContain(plain(messages[language][template.nameKey]!));
         expect(html).toContain(`?template=${template.id}`);
       }
-      for (const world of ["pirates", "castle", "space", "fire-rescue", "zombies", "fantasy", "vikings"]) {
+      for (const world of ["pirates", "castle", "space", "fire-rescue", "zombies", "fantasy", "vikings", "egypt"]) {
         expect(html).toContain(`/ideas/${world}"`);
       }
     }

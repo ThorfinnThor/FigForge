@@ -2191,7 +2191,7 @@ legend {
   text-align: right;
 }
 
-/* Three worlds per row on wide screens; five and seven worlds get balanced rows. */
+/* Three worlds per row on wide screens; five, seven and eight worlds get balanced rows. */
 .ideas-worlds {
   display: grid;
   grid-template-columns: repeat(12, minmax(0, 1fr));
@@ -2213,7 +2213,9 @@ legend {
   }
 
   .ideas-worlds > li:first-child:nth-last-child(7),
-  .ideas-worlds > li:first-child:nth-last-child(7) ~ li:nth-child(-n + 4) {
+  .ideas-worlds > li:first-child:nth-last-child(7) ~ li:nth-child(-n + 4),
+  .ideas-worlds > li:first-child:nth-last-child(8),
+  .ideas-worlds > li:first-child:nth-last-child(8) ~ li {
     grid-column: span 3;
   }
 }
@@ -2245,6 +2247,7 @@ legend {
 .idea-world[data-accent="purple"] { --idea-accent: var(--cat-accessory); }
 .idea-world[data-accent="teal"] { --idea-accent: var(--accent-teal); }
 .idea-world[data-accent="orange"] { --idea-accent: var(--accent-orange); }
+.idea-world[data-accent="sand"] { --idea-accent: var(--accent-sand); }
 
 .idea-world h3 {
   margin: 0;
@@ -2306,6 +2309,7 @@ legend {
 .idea-card[data-accent="purple"] { --idea-accent: var(--cat-accessory); }
 .idea-card[data-accent="teal"] { --idea-accent: var(--accent-teal); }
 .idea-card[data-accent="orange"] { --idea-accent: var(--accent-orange); }
+.idea-card[data-accent="sand"] { --idea-accent: var(--accent-sand); }
 
 .figure-preview-card {
   position: relative;
