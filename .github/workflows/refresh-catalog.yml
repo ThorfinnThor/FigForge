@@ -120,6 +120,27 @@ jobs:
               --body "Automatisch erzeugter Vorschlag. Nur Rebrickable Catalog Downloads/CSV und die offizielle LDraw-Bibliothek; keine MOC-Dateien und keine API. Eine neuere LDraw-Version wird mit neuem Hash in data/ldraw-source.lock.json übernommen. Vor dem Merge sind Quellen-, Schema- und Diff-Review erforderlich.${note}"
           fi
 
+      # ADR-042: a refresh that passed the full validation merges itself once the required checks on
+      # the pull request are green. A failed validation leaves a draft, which is never merged here.
+      # Auto-merge needs the repository setting and the token; without either the PR just waits.
+      - name: Merge the review pull request automatically after green checks
+        if: steps.changes.outputs.changed == 'true' && steps.verify.outcome == 'success' && env.REFRESH_PR_TOKEN != ''
+        env:
+          GH_TOKEN: ${{ secrets.REFRESH_PR_TOKEN }}
+        shell: bash
+        run: |
+          branch="automation/rebrickable-catalog-refresh"
+          base="${{ github.event.repository.default_branch }}"
+          number="$(gh pr list --state open --base "$base" --head "$branch" --json number --jq '.[0].number // empty')"
+          if [[ -z "$number" ]]; then
+            echo "::warning::No open review pull request found; nothing to merge."
+            exit 0
+          fi
+          if [[ "$(gh pr view "$number" --json isDraft --jq .isDraft)" == "true" ]]; then
+            gh pr ready "$number"
+          fi
+          gh pr merge "$number" --auto --merge
+
       # Without REFRESH_PR_TOKEN the bot's push does not start Verify, so it is dispatched here.
       # With the token the push and the pull request start it on their own.
       - name: Trigger required pull-request verification
