@@ -89,6 +89,8 @@ Geschlossen: #22 (überholt durch ADR-011), #78 (TypeScript 7, siehe #132).
 
 | (folgt) | **Siebte Themenwelt „Wikinger“** (`/ideas/vikings`): Wikingerhäuptling, Schildmaid, Berserker, Akzentfarbe Orange. Raster der Welten jetzt auch für sieben Einträge ausgewogen (4 + 3), nur ab 1200 px Breite. **Stolperstein:** Das Haarteil 2644 (Hair Big Curly, Braids) hängt im Vorschau-Generator (`assets:figure-previews` endet mit „unsettled top-level await“, ohne Fehlercode); beim Auswählen von Teilen für Vorlagen Ausgabe des Befehls prüfen, nicht nur den Exit-Code. |
 
+| (folgt) | **Achte Themenwelt „Ägypten“** (`/ideas/egypt`): Pharao, Mumienkrieger, Tempelwächter, Akzentfarbe Sand. Raster der Welten auch für acht Einträge (3 × 3 ist nicht möglich, deshalb 4 + 4 ab 1200 px). Die Übersichts-Screenshots der neuen Figuren (Raster mit Namensschildern) sind nur Material für den Eigentümer und nicht auf der Seite. |
+
 **Einstellungen im Google-Analytics-Konto (vom Eigentümer freigegeben, am 2026-10-21 über den Browser gesetzt und nach Neuladen abgelesen):** Konto „SeitenHafen361“, Property „createyourminifig.com“. Kontodetails: die drei Datenweitergabe-Häkchen (Modelle für Beiträge und Geschäftsinformationen, Technischer Support, Empfehlungen für Ihr Unternehmen) sind aus. Datenaufbewahrung: Ereignisdaten 14 Monate (vorher 2), Nutzerdaten 14 Monate, „Bei neuer Nutzeraktivität zurücksetzen“ aus. Nicht angefasst: Google-Signale (im Tag per Code aus), Datenverarbeitungsbedingungen (siehe Abschnitt 7).
 
 ## 3. Datenstand (2026-10-19 bis 21, aus den Daten gemessen)

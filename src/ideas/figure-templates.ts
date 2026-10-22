@@ -1,7 +1,7 @@
 import { createFigureDocument } from "../figure/figure-document.js";
 import type { FigureDocument, FigureDocumentSlot } from "../contracts/figure-document.js";
 
-export type FigureThemeId = "pirates" | "castle" | "space" | "fire-rescue" | "zombies" | "fantasy" | "vikings";
+export type FigureThemeId = "pirates" | "castle" | "space" | "fire-rescue" | "zombies" | "fantasy" | "vikings" | "egypt";
 
 export type FigureTemplateId =
   | "pirate-captain"
@@ -24,12 +24,15 @@ export type FigureTemplateId =
   | "elf-archer"
   | "viking-chieftain"
   | "shieldmaiden"
-  | "berserker";
+  | "berserker"
+  | "pharaoh"
+  | "mummy-warrior"
+  | "temple-guard";
 
 export type FigureTemplate = {
   id: FigureTemplateId;
   themeId: FigureThemeId;
-  accent: "gold" | "red" | "blue" | "green" | "purple" | "teal" | "orange";
+  accent: "gold" | "red" | "blue" | "green" | "purple" | "teal" | "orange" | "sand";
   nameKey: string;
   descriptionKey: string;
   document: FigureDocument;
@@ -521,6 +524,72 @@ export const FIGURE_TEMPLATES: readonly FigureTemplate[] = [
       "/assets/thumbnails/ldraw-expanded/torso-973c19h19pr0002.webp",
       "/assets/thumbnails/ldraw-expanded/legs-970c19pr2231.webp",
       "/assets/thumbnails/ldraw-expanded/handAccessory-95052.webp",
+    ],
+  ),
+  createTemplate(
+    "pharaoh",
+    "egypt",
+    "sand",
+    "Pharaoh",
+    "ideas.pharaoh.name",
+    "ideas.pharaoh.description",
+    {
+      head: "catalog:head:3626bpr0046",
+      headwear: "catalog:headwear:90462pr0004",
+      torsoAssembly: "catalog:torsoAssembly:973c01h01pr1648",
+      legsAssembly: "catalog:legsAssembly:970c26pr0113",
+      handAccessory: "catalog:handAccessory:93252",
+    },
+    [
+      "/assets/thumbnails/ldraw-expanded/head-3626bpr0046.webp",
+      "/assets/thumbnails/ldraw-expanded/headwear-90462pr0004.webp",
+      "/assets/thumbnails/ldraw-expanded/torso-973c01h01pr1648.webp",
+      "/assets/thumbnails/ldraw-expanded/legs-970c26pr0113.webp",
+      "/assets/thumbnails/ldraw-expanded/handAccessory-93252.webp",
+    ],
+  ),
+  createTemplate(
+    "mummy-warrior",
+    "egypt",
+    "sand",
+    "Mummy Warrior",
+    "ideas.mummyWarrior.name",
+    "ideas.mummyWarrior.description",
+    {
+      head: "catalog:head:3626bpr0755",
+      headwear: "catalog:headwear:40235",
+      torsoAssembly: "catalog:torsoAssembly:973c14h12pr0780",
+      legsAssembly: "catalog:legsAssembly:970c14pr0197",
+      handAccessory: "catalog:handAccessory:60752",
+    },
+    [
+      "/assets/thumbnails/ldraw-expanded/head-3626bpr0755.webp",
+      "/assets/thumbnails/ldraw-expanded/headwear-40235.webp",
+      "/assets/thumbnails/ldraw-expanded/torso-973c14h12pr0780.webp",
+      "/assets/thumbnails/ldraw-expanded/legs-970c14pr0197.webp",
+      "/assets/thumbnails/ldraw-expanded/handAccessory-60752.webp",
+    ],
+  ),
+  createTemplate(
+    "temple-guard",
+    "egypt",
+    "sand",
+    "Temple Guard",
+    "ideas.templeGuard.name",
+    "ideas.templeGuard.description",
+    {
+      head: "catalog:head:3626bpr0758",
+      headwear: "catalog:headwear:93249pr0001",
+      torsoAssembly: "catalog:torsoAssembly:973c03h03pr1727",
+      legsAssembly: "catalog:legsAssembly:970c11",
+      handAccessory: "catalog:handAccessory:37341a",
+    },
+    [
+      "/assets/thumbnails/ldraw-expanded/head-3626bpr0758.webp",
+      "/assets/thumbnails/ldraw-expanded/headwear-93249pr0001.webp",
+      "/assets/thumbnails/ldraw-expanded/torso-973c03h03pr1727.webp",
+      "/assets/thumbnails/ldraw-expanded/legs-970c11.webp",
+      "/assets/thumbnails/ldraw-expanded/handAccessory-37341a.webp",
     ],
   ),
 ] as const;
