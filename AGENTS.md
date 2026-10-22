@@ -15,7 +15,7 @@ Der Implementierungsplan unter `docs/implementation-plan.md` und die Gestaltung 
 ## Änderungskontrolle
 
 - GitHub ist die maßgebliche Repository-Quelle.
-- Der Produktionsbranch ist geschützt. Automatisierte Datenänderungen werden ausschließlich als Review-Pull-Request vorgeschlagen.
+- Der Produktionsbranch ist geschützt. Automatisierte Datenänderungen werden ausschließlich als Pull-Request vorgeschlagen. Ein Katalog-Refresh, dessen `verify` grün ist, wird nach grünen Pflichtprüfungen automatisch gemergt (ADR-042); ein fehlgeschlagener Refresh bleibt ein Entwurf und wird nie automatisch gemergt.
 - Generierte Daten werden nicht von Hand editiert. Änderungen gehören in Adapter, kuratierte Daten oder belegte Overrides.
 - Architekturänderungen benötigen eine kurze ADR.
 - Keine zusätzlichen Features zur Abrundung.
