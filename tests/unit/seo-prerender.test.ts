@@ -84,7 +84,7 @@ describe("English pages", () => {
     const html = renderRoutePage(TEMPLATE, route("/ideas/pirates"), messages.en, "en");
 
     expect(html).toContain('<html lang="en">');
-    expect(html).toContain("<title>Customizable pirate minifigure ideas | FigForge</title>");
+    expect(html).toContain("<title>Customizable pirate minifigure ideas | Create Your Minifig</title>");
     expect(html).toContain('<link rel="canonical" href="https://createyourminifig.com/en/ideas/pirates" />');
     expect(html).toContain('<meta property="og:locale" content="en_US" />');
     expect(html).toContain('<meta property="og:locale:alternate" content="de_DE" />');
@@ -247,7 +247,7 @@ describe("sharing tags and structured data", () => {
     const graph = graphOf(renderRoutePage(TEMPLATE, route("/"), messages.de, "de"));
     const types = graph.map((node) => node["@type"]);
     expect(types).toEqual(["WebSite", "Organization"]);
-    expect(graph[0]).toMatchObject({ name: "FigForge", inLanguage: "de", url: "https://createyourminifig.com/" });
+    expect(graph[0]).toMatchObject({ name: "Create Your Minifig", alternateName: "FigForge", inLanguage: "de", url: "https://createyourminifig.com/" });
   });
 
   it("describes the builder as a free web application with a breadcrumb", () => {
@@ -271,7 +271,7 @@ describe("sharing tags and structured data", () => {
     for (const field of ["datePublished", "dateModified"]) {
       expect(String(article![field])).toMatch(/^\d{4}-\d{2}-\d{2}$/u);
     }
-    expect(String(article!.headline)).not.toContain("| FigForge");
+    expect(String(article!.headline)).not.toContain("| Create Your Minifig");
     const crumbs = graph.find((node) => node["@type"] === "BreadcrumbList") as { itemListElement: unknown[] };
     expect(crumbs.itemListElement).toHaveLength(3);
   });
@@ -322,7 +322,7 @@ describe("404 pages and llms.txt", () => {
 
   it("describes the site in llms.txt and lists the pages and guides in both languages", () => {
     const text = renderLlmsTxt(messages);
-    expect(text.startsWith("# FigForge\n")).toBe(true);
+    expect(text.startsWith("# Create Your Minifig\n")).toBe(true);
     expect(text).toContain("https://createyourminifig.com/builder");
     expect(text).toContain("https://createyourminifig.com/en/guides/order-minifigure-parts");
     expect(text).toContain("ohne Verbindung zur LEGO Gruppe");

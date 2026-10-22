@@ -19,7 +19,7 @@ export function GuidesIndexPage() {
 
       <div className="ideas-page">
         <section className="ideas-hero" aria-labelledby="guides-title">
-          <p className="ideas-page__eyebrow">FigForge</p>
+          <p className="ideas-page__eyebrow">Create Your Minifig</p>
           <h1 id="guides-title">{t("guides.title")}</h1>
           <p>{t("guides.lede")}</p>
         </section>

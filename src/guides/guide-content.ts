@@ -32,16 +32,16 @@ export const GUIDE_SECTIONS: Record<GuideId, Record<Language, readonly GuideSect
   order: {
     de: [
       {
-        heading: "Die Teileliste aus FigForge",
+        heading: "Die Teileliste aus Create Your Minifig",
         paragraphs: [
-          "Öffne im Builder „Teile kaufen“. Bei Teilen, die es in mehreren Farben gibt, wählst du dort die gewünschte Farbe. Danach lädst du die Liste für den Kaufweg deiner Wahl herunter. FigForge zeigt dir, wie viele Teile pro Weg enthalten sind.",
-          "Teile ohne belegte Zuordnung stehen nicht in der Liste, sondern unter „Warum fehlen manche Teile?“. FigForge rät keine Nummern: Eine falsche Zuordnung hieße am Ende ein falsches Teil im Paket.",
+          "Öffne im Builder „Teile kaufen“. Bei Teilen, die es in mehreren Farben gibt, wählst du dort die gewünschte Farbe. Danach lädst du die Liste für den Kaufweg deiner Wahl herunter. Create Your Minifig zeigt dir, wie viele Teile pro Weg enthalten sind.",
+          "Teile ohne belegte Zuordnung stehen nicht in der Liste, sondern unter „Warum fehlen manche Teile?“. Create Your Minifig rät keine Nummern: Eine falsche Zuordnung hieße am Ende ein falsches Teil im Paket.",
         ],
       },
       {
         heading: "Weg 1: Rebrickable-Teileliste",
         paragraphs: [
-          "Du importierst die CSV in deine Teilelisten bei Rebrickable und kaufst von dort über BrickLink oder Brick Owl. In FigForge ist das der empfohlene Weg, weil er ältere und bedruckte Minifiguren-Teile am besten abdeckt.",
+          "Du importierst die CSV in deine Teilelisten bei Rebrickable und kaufst von dort über BrickLink oder Brick Owl. In Create Your Minifig ist das der empfohlene Weg, weil er ältere und bedruckte Minifiguren-Teile am besten abdeckt.",
         ],
         items: [
           "Passt, wenn die Figur bedruckte Köpfe oder Oberkörper hat.",
@@ -56,7 +56,7 @@ export const GUIDE_SECTIONS: Record<GuideId, Record<Language, readonly GuideSect
         ],
         items: [
           "Passt, wenn du Shops selbst vergleichen willst.",
-          "So geht der Import: Klicke in FigForge auf „XML kopieren“, öffne bei BrickLink die Seite „Upload to Wanted List“, wechsle zum Tab „Upload BrickLink XML format“ und füge den Text dort ein. Der andere Tab, „Upload a file from your computer“, nimmt nur BrickStock-, LDraw-, Digital-Designer- und Studio-Dateien an, kein XML.",
+          "So geht der Import: Klicke in Create Your Minifig auf „XML kopieren“, öffne bei BrickLink die Seite „Upload to Wanted List“, wechsle zum Tab „Upload BrickLink XML format“ und füge den Text dort ein. Der andere Tab, „Upload a file from your computer“, nimmt nur BrickStock-, LDraw-, Digital-Designer- und Studio-Dateien an, kein XML.",
           "Hast du die XML-Datei geladen, öffne sie in einem Texteditor und kopiere alles. Text, den du aus der Anzeige im Browser kopierst, enthält die Tags nicht; BrickLink lehnt ihn mit „Content is not allowed in prolog“ ab.",
           "Führt kein Shop alle Teile, besteht die Figur am Ende aus mehreren Bestellungen mit je eigenen Versandkosten.",
           "Prüfe Farbe und Teilenummer in der Wanted List, bevor du kaufst.",
@@ -84,9 +84,9 @@ export const GUIDE_SECTIONS: Record<GuideId, Record<Language, readonly GuideSect
       {
         heading: "Vor dem Bestellen prüfen",
         items: [
-          "Farbe: Stimmt sie mit deiner Auswahl in FigForge überein?",
+          "Farbe: Stimmt sie mit deiner Auswahl in Create Your Minifig überein?",
           "Teilenummer und Aufdruck: Vergleiche sie mit dem Foto im Shop. Wie die Nummern aufgebaut sind, erklärt der Ratgeber „Teilenummern verstehen“.",
-          "Preis, Versand, Lieferzeit und Verfügbarkeit zeigt nur der Shop. FigForge verkauft nichts und nennt keine Preise.",
+          "Preis, Versand, Lieferzeit und Verfügbarkeit zeigt nur der Shop. Create Your Minifig verkauft nichts und nennt keine Preise.",
         ],
         closing: [
           "Die 3D-Vorschau prüft die Passung digital. Sie ist keine Garantie, dass die Teile in echt zusammenhalten.",
@@ -95,16 +95,16 @@ export const GUIDE_SECTIONS: Record<GuideId, Record<Language, readonly GuideSect
     ],
     en: [
       {
-        heading: "The parts list from FigForge",
+        heading: "The parts list from Create Your Minifig",
         paragraphs: [
-          "Open “Buy parts” in the Builder. For parts that exist in several colors, choose the color you want there. Then download the list for the way of buying you prefer. FigForge shows how many parts each list contains.",
-          "Parts without a documented mapping are not in the list; they appear under “Why are some parts missing?”. FigForge does not guess numbers: a wrong mapping would mean a wrong part in your parcel.",
+          "Open “Buy parts” in the Builder. For parts that exist in several colors, choose the color you want there. Then download the list for the way of buying you prefer. Create Your Minifig shows how many parts each list contains.",
+          "Parts without a documented mapping are not in the list; they appear under “Why are some parts missing?”. Create Your Minifig does not guess numbers: a wrong mapping would mean a wrong part in your parcel.",
         ],
       },
       {
         heading: "Option 1: Rebrickable parts list",
         paragraphs: [
-          "You import the CSV into your part lists at Rebrickable and buy from there through BrickLink or Brick Owl. FigForge recommends this route because it covers older and printed minifigure parts best.",
+          "You import the CSV into your part lists at Rebrickable and buy from there through BrickLink or Brick Owl. Create Your Minifig recommends this route because it covers older and printed minifigure parts best.",
         ],
         items: [
           "Fits when the figure has printed heads or torsos.",
@@ -119,7 +119,7 @@ export const GUIDE_SECTIONS: Record<GuideId, Record<Language, readonly GuideSect
         ],
         items: [
           "Fits when you want to compare stores yourself.",
-          "This is how the import works: click “Copy XML” in FigForge, open the “Upload to Wanted List” page at BrickLink, switch to the “Upload BrickLink XML format” tab and paste the text there. The other tab, “Upload a file from your computer”, only accepts BrickStock, LDraw, Digital Designer and Studio files, not XML.",
+          "This is how the import works: click “Copy XML” in Create Your Minifig, open the “Upload to Wanted List” page at BrickLink, switch to the “Upload BrickLink XML format” tab and paste the text there. The other tab, “Upload a file from your computer”, only accepts BrickStock, LDraw, Digital Designer and Studio files, not XML.",
           "If you downloaded the XML file, open it in a text editor and copy everything. Text copied from the browser's display of the file lacks the tags; BrickLink rejects it with “Content is not allowed in prolog”.",
           "If no single store has every part, the figure ends up as several orders, each with its own shipping cost.",
           "Check color and part number in the wanted list before you buy.",
@@ -147,9 +147,9 @@ export const GUIDE_SECTIONS: Record<GuideId, Record<Language, readonly GuideSect
       {
         heading: "Check before you order",
         items: [
-          "Color: does it match your choice in FigForge?",
+          "Color: does it match your choice in Create Your Minifig?",
           "Part number and print: compare them with the photo in the shop. The guide “Understand part numbers” explains how the numbers are built.",
-          "Price, shipping, delivery time and availability are shown only by the shop. FigForge sells nothing and quotes no prices.",
+          "Price, shipping, delivery time and availability are shown only by the shop. Create Your Minifig sells nothing and quotes no prices.",
         ],
         closing: [
           "The 3D preview checks fit digitally. It is no guarantee that the parts hold together in real life.",
@@ -195,7 +195,7 @@ export const GUIDE_SECTIONS: Record<GuideId, Record<Language, readonly GuideSect
       {
         heading: "Dieselbe Nummer, verschiedene Systeme",
         paragraphs: [
-          "Rebrickable, BrickLink und LDraw, die Bibliothek der 3D-Modelle, nummerieren nicht überall gleich. FigForge zeigt im Builder die Rebrickable-Nummer und auf den Themenseiten die LDraw-Nummer. Für BrickLink ordnet FigForge nur zu, wenn die Zuordnung belegt ist; sonst bleibt das Teil für diese Liste gesperrt.",
+          "Rebrickable, BrickLink und LDraw, die Bibliothek der 3D-Modelle, nummerieren nicht überall gleich. Create Your Minifig zeigt im Builder die Rebrickable-Nummer und auf den Themenseiten die LDraw-Nummer. Für BrickLink ordnet Create Your Minifig nur zu, wenn die Zuordnung belegt ist; sonst bleibt das Teil für diese Liste gesperrt.",
           "Vergleiche deshalb vor dem Kauf nicht nur die Nummer, sondern auch Name, Aufdruck und Farbe.",
         ],
       },
@@ -237,7 +237,7 @@ export const GUIDE_SECTIONS: Record<GuideId, Record<Language, readonly GuideSect
       {
         heading: "The same number, different systems",
         paragraphs: [
-          "Rebrickable, BrickLink and LDraw, the library of the 3D models, do not number everything alike. FigForge shows the Rebrickable number in the Builder and the LDraw number on the theme pages. For BrickLink, FigForge only maps a part when the mapping is documented; otherwise the part stays blocked for that list.",
+          "Rebrickable, BrickLink and LDraw, the library of the 3D models, do not number everything alike. Create Your Minifig shows the Rebrickable number in the Builder and the LDraw number on the theme pages. For BrickLink, Create Your Minifig only maps a part when the mapping is documented; otherwise the part stays blocked for that list.",
           "So before you buy, compare not just the number but also name, print and color.",
         ],
       },
@@ -332,7 +332,7 @@ export const GUIDE_SECTIONS: Record<GuideId, Record<Language, readonly GuideSect
       {
         heading: "Fünf Plätze für fünf Teile",
         paragraphs: [
-          "In FigForge hat jede Figur fünf Plätze: Kopf, Kopfbedeckung, Oberkörper, Beine und Handzubehör. Du tauschst jeden Platz einzeln aus, die anderen bleiben unverändert.",
+          "In Create Your Minifig hat jede Figur fünf Plätze: Kopf, Kopfbedeckung, Oberkörper, Beine und Handzubehör. Du tauschst jeden Platz einzeln aus, die anderen bleiben unverändert.",
         ],
         items: [
           "Kopf: Er sitzt oben auf dem Oberkörper. Sehr viele Köpfe tragen einen Aufdruck, etwa ein Gesicht, einen Bart oder eine Augenklappe.",
@@ -362,13 +362,13 @@ export const GUIDE_SECTIONS: Record<GuideId, Record<Language, readonly GuideSect
         heading: "Warum Oberkörper und Beine mehrere Teile in einem sind",
         paragraphs: [
           "Ein Oberkörper besteht in der Praxis aus dem Torso, zwei Armen und zwei Händen, die Beine aus der Hüfte und zwei Beinen. Die Kataloge führen sie oft als eine Baugruppe. Du erkennst sie am „c“ in der Nummer: 973c01h01pr0030 ist ein Torso samt Armen und Händen, 970c01pr0123 eine Hüfte mit Beinen.",
-          "In FigForge tauschst du diese Baugruppen als Ganzes. Welche Farbe Arme und Hände haben, steht im Namen, zum Beispiel „Yellow Arms and Hands“.",
+          "In Create Your Minifig tauschst du diese Baugruppen als Ganzes. Welche Farbe Arme und Hände haben, steht im Namen, zum Beispiel „Yellow Arms and Hands“.",
         ],
       },
       {
         heading: "Wie die Teile zusammenpassen",
         paragraphs: [
-          "Der Kopf steckt oben auf dem Oberkörper, die Kopfbedeckung auf dem Kopf, der Oberkörper sitzt auf der Hüfte, und das Zubehör kommt in die Hand. FigForge prüft diese Verbindungen digital mit geprüften Anschlussprofilen. Teile, für die kein Profil belegt ist, bleiben gesperrt.",
+          "Der Kopf steckt oben auf dem Oberkörper, die Kopfbedeckung auf dem Kopf, der Oberkörper sitzt auf der Hüfte, und das Zubehör kommt in die Hand. Create Your Minifig prüft diese Verbindungen digital mit geprüften Anschlussprofilen. Teile, für die kein Profil belegt ist, bleiben gesperrt.",
         ],
         closing: [
           "Die 3D-Vorschau ist eine digitale Prüfung und keine Garantie für die Passform im echten Bausatz.",
@@ -391,7 +391,7 @@ export const GUIDE_SECTIONS: Record<GuideId, Record<Language, readonly GuideSect
       {
         heading: "Five slots for five parts",
         paragraphs: [
-          "In FigForge every figure has five slots: head, headwear, torso, legs and hand accessory. You swap each slot on its own; the others stay as they are.",
+          "In Create Your Minifig every figure has five slots: head, headwear, torso, legs and hand accessory. You swap each slot on its own; the others stay as they are.",
         ],
         items: [
           "Head: It sits on top of the torso. Very many heads carry a print, such as a face, a beard or an eyepatch.",
@@ -421,13 +421,13 @@ export const GUIDE_SECTIONS: Record<GuideId, Record<Language, readonly GuideSect
         heading: "Why torso and legs are several parts in one",
         paragraphs: [
           "In practice a torso consists of the torso itself, two arms and two hands, and the legs of the hips and two legs. Catalogs often list them as one assembly. You recognize them by the “c” in the number: 973c01h01pr0030 is a torso with arms and hands, 970c01pr0123 is hips with legs.",
-          "In FigForge you swap these assemblies as a whole. The color of arms and hands is part of the name, for example “Yellow Arms and Hands”.",
+          "In Create Your Minifig you swap these assemblies as a whole. The color of arms and hands is part of the name, for example “Yellow Arms and Hands”.",
         ],
       },
       {
         heading: "How the parts fit together",
         paragraphs: [
-          "The head sits on top of the torso, the headwear on the head, the torso on the hips, and the accessory goes into the hand. FigForge checks these connections digitally with verified connection profiles. Parts without a documented profile stay locked.",
+          "The head sits on top of the torso, the headwear on the head, the torso on the hips, and the accessory goes into the hand. Create Your Minifig checks these connections digitally with verified connection profiles. Parts without a documented profile stay locked.",
         ],
         closing: [
           "The 3D preview is a digital check, not a guarantee that the parts fit in a real set.",
@@ -452,7 +452,7 @@ export const GUIDE_SECTIONS: Record<GuideId, Record<Language, readonly GuideSect
       {
         heading: "Was du brauchst",
         items: [
-          "Eine fertige Figur in FigForge, bei der unter „Farben bestätigen“ für alle Teile eine Farbe gewählt ist.",
+          "Eine fertige Figur in Create Your Minifig, bei der unter „Farben bestätigen“ für alle Teile eine Farbe gewählt ist.",
           "Ein BrickLink-Konto. Die Wanted List legst du nur angemeldet an.",
         ],
       },
@@ -460,7 +460,7 @@ export const GUIDE_SECTIONS: Record<GuideId, Record<Language, readonly GuideSect
         heading: "Schritt für Schritt",
         ordered: true,
         items: [
-          "Öffne in FigForge „Teile kaufen“ und suche den Kaufweg „BrickLink-Wanted-List“.",
+          "Öffne in Create Your Minifig „Teile kaufen“ und suche den Kaufweg „BrickLink-Wanted-List“.",
           "Klicke auf „XML kopieren“. Die Teileliste liegt jetzt als Text in deiner Zwischenablage.",
           "Öffne mit „BrickLink-Upload öffnen“ die Seite bei BrickLink. Das ist die Seite „Upload to Wanted List“.",
           "Wechsle dort zum Tab „Upload BrickLink XML format“ und füge den Text in das Feld ein.",
@@ -470,7 +470,7 @@ export const GUIDE_SECTIONS: Record<GuideId, Record<Language, readonly GuideSect
       {
         heading: "Warum der Datei-Upload nicht funktioniert",
         paragraphs: [
-          "Der Tab „Upload a file from your computer“ nimmt nur Dateien von BrickStock, LDraw, Digital Designer und Studio an, also keine XML-Datei. Das ist die häufigste Fehlerquelle. Die XML von FigForge gehört in den Tab „Upload BrickLink XML format“.",
+          "Der Tab „Upload a file from your computer“ nimmt nur Dateien von BrickStock, LDraw, Digital Designer und Studio an, also keine XML-Datei. Das ist die häufigste Fehlerquelle. Die XML von Create Your Minifig gehört in den Tab „Upload BrickLink XML format“.",
         ],
       },
       {
@@ -479,7 +479,7 @@ export const GUIDE_SECTIONS: Record<GuideId, Record<Language, readonly GuideSect
           "Die Meldung heißt, dass BrickLink am Anfang des Textes kein gültiges XML findet. Typisch ist Text, den du aus der Anzeige einer XML-Datei im Browser kopiert hast: Der Browser zeigt nur den Inhalt, die Tags fehlen. Der Text muss mit <INVENTORY> beginnen.",
         ],
         items: [
-          "Nimm den Button „XML kopieren“ in FigForge. Er übergibt den rohen Text mit allen Tags.",
+          "Nimm den Button „XML kopieren“ in Create Your Minifig. Er übergibt den rohen Text mit allen Tags.",
           "Hast du die Datei geladen, öffne sie in einem Texteditor und nicht im Browser und kopiere den gesamten Text.",
           "Achte darauf, dass vor <INVENTORY> nichts steht, auch keine Anführungszeichen.",
         ],
@@ -487,15 +487,15 @@ export const GUIDE_SECTIONS: Record<GuideId, Record<Language, readonly GuideSect
       {
         heading: "Was in der Liste steht",
         paragraphs: [
-          "Jede Zeile enthält eine BrickLink-Teilenummer, eine BrickLink-Farbnummer und die Menge. Die Farben stammen aus deiner Auswahl in FigForge. Ein Teil in Reddish Brown trägt zum Beispiel die BrickLink-Farbnummer 88, bei Rebrickable heißt dieselbe Farbe 70. Warum das so ist, erklärt der Ratgeber „Farbnamen und Farbnummern“.",
-          "Teile ohne belegte BrickLink-Zuordnung stehen nicht in der Liste. FigForge nennt sie unter „Warum fehlen manche Teile?“, statt Nummern zu raten.",
+          "Jede Zeile enthält eine BrickLink-Teilenummer, eine BrickLink-Farbnummer und die Menge. Die Farben stammen aus deiner Auswahl in Create Your Minifig. Ein Teil in Reddish Brown trägt zum Beispiel die BrickLink-Farbnummer 88, bei Rebrickable heißt dieselbe Farbe 70. Warum das so ist, erklärt der Ratgeber „Farbnamen und Farbnummern“.",
+          "Teile ohne belegte BrickLink-Zuordnung stehen nicht in der Liste. Create Your Minifig nennt sie unter „Warum fehlen manche Teile?“, statt Nummern zu raten.",
         ],
       },
       {
         heading: "Danach",
         items: [
           "Vergleiche Teilenummer und Farbe in der Wanted List mit deiner Figur in der Vorschau.",
-          "Preise, Verfügbarkeit und Versand zeigt nur BrickLink. FigForge nennt keine Preise.",
+          "Preise, Verfügbarkeit und Versand zeigt nur BrickLink. Create Your Minifig nennt keine Preise.",
           "Führt kein Shop alle Teile, besteht die Figur am Ende aus mehreren Bestellungen mit je eigenen Versandkosten.",
         ],
       },
@@ -504,7 +504,7 @@ export const GUIDE_SECTIONS: Record<GuideId, Record<Language, readonly GuideSect
       {
         heading: "What you need",
         items: [
-          "A finished figure in FigForge with a color chosen for every part under “Confirm colors”.",
+          "A finished figure in Create Your Minifig with a color chosen for every part under “Confirm colors”.",
           "A BrickLink account. You can only create a wanted list while signed in.",
         ],
       },
@@ -512,7 +512,7 @@ export const GUIDE_SECTIONS: Record<GuideId, Record<Language, readonly GuideSect
         heading: "Step by step",
         ordered: true,
         items: [
-          "Open “Buy parts” in FigForge and find the buying option “BrickLink Wanted List”.",
+          "Open “Buy parts” in Create Your Minifig and find the buying option “BrickLink Wanted List”.",
           "Click “Copy XML”. The parts list is now in your clipboard as text.",
           "Use “Open BrickLink upload” to open the page at BrickLink. It is the “Upload to Wanted List” page.",
           "Switch to the “Upload BrickLink XML format” tab and paste the text into the field.",
@@ -522,7 +522,7 @@ export const GUIDE_SECTIONS: Record<GuideId, Record<Language, readonly GuideSect
       {
         heading: "Why the file upload does not work",
         paragraphs: [
-          "The “Upload a file from your computer” tab only accepts BrickStock, LDraw, Digital Designer and Studio files, so no XML file. This is the most common pitfall. The XML from FigForge belongs in the “Upload BrickLink XML format” tab.",
+          "The “Upload a file from your computer” tab only accepts BrickStock, LDraw, Digital Designer and Studio files, so no XML file. This is the most common pitfall. The XML from Create Your Minifig belongs in the “Upload BrickLink XML format” tab.",
         ],
       },
       {
@@ -531,7 +531,7 @@ export const GUIDE_SECTIONS: Record<GuideId, Record<Language, readonly GuideSect
           "The message means BrickLink finds no valid XML at the start of the text. Typical cause: text copied from how the browser displays an XML file. The browser shows only the content, the tags are missing. The text has to start with <INVENTORY>.",
         ],
         items: [
-          "Use the “Copy XML” button in FigForge. It passes the raw text with all tags.",
+          "Use the “Copy XML” button in Create Your Minifig. It passes the raw text with all tags.",
           "If you downloaded the file, open it in a text editor, not in the browser, and copy all of the text.",
           "Make sure nothing comes before <INVENTORY>, not even quotation marks.",
         ],
@@ -539,15 +539,15 @@ export const GUIDE_SECTIONS: Record<GuideId, Record<Language, readonly GuideSect
       {
         heading: "What is in the list",
         paragraphs: [
-          "Each line holds a BrickLink part number, a BrickLink color number and the quantity. The colors come from your choice in FigForge. A part in Reddish Brown, for example, carries the BrickLink color number 88, while Rebrickable calls the same color 70. The guide “Color names and color numbers” explains why.",
-          "Parts without a documented BrickLink mapping are not in the list. FigForge names them under “Why are some parts missing?” instead of guessing numbers.",
+          "Each line holds a BrickLink part number, a BrickLink color number and the quantity. The colors come from your choice in Create Your Minifig. A part in Reddish Brown, for example, carries the BrickLink color number 88, while Rebrickable calls the same color 70. The guide “Color names and color numbers” explains why.",
+          "Parts without a documented BrickLink mapping are not in the list. Create Your Minifig names them under “Why are some parts missing?” instead of guessing numbers.",
         ],
       },
       {
         heading: "Afterwards",
         items: [
           "Compare part number and color in the wanted list with your figure in the preview.",
-          "Only BrickLink shows price, availability and shipping. FigForge quotes no prices.",
+          "Only BrickLink shows price, availability and shipping. Create Your Minifig quotes no prices.",
           "If no single store has every part, the figure ends up as several orders, each with its own shipping cost.",
         ],
       },
@@ -558,7 +558,7 @@ export const GUIDE_SECTIONS: Record<GuideId, Record<Language, readonly GuideSect
       {
         heading: "Was die CSV enthält",
         paragraphs: [
-          "Die Datei von FigForge hat zwei Spalten: elementId und quantity. Die Element-ID ist die Nummer, unter der LEGO ein Teil in einer bestimmten Farbe führt. Dasselbe Teil in einer anderen Farbe hat eine andere Element-ID. Die Spalten entsprechen der Vorlage, die LEGO bei Pick a Brick vorgibt.",
+          "Die Datei von Create Your Minifig hat zwei Spalten: elementId und quantity. Die Element-ID ist die Nummer, unter der LEGO ein Teil in einer bestimmten Farbe führt. Dasselbe Teil in einer anderen Farbe hat eine andere Element-ID. Die Spalten entsprechen der Vorlage, die LEGO bei Pick a Brick vorgibt.",
         ],
       },
       {
@@ -576,14 +576,14 @@ export const GUIDE_SECTIONS: Record<GuideId, Record<Language, readonly GuideSect
         heading: "Grenzen",
         items: [
           "Eine Liste darf bis zu 200 verschiedene Teile enthalten und höchstens 5 MB groß sein. Eine Minifigur liegt weit darunter.",
-          "LEGO nimmt CSV, JSON und LXFML an. FigForge erzeugt die CSV.",
+          "LEGO nimmt CSV, JSON und LXFML an. Create Your Minifig erzeugt die CSV.",
           "Es zählen nur Teile, die LEGO aktuell dort führt.",
         ],
       },
       {
         heading: "Warum manche Teile fehlen",
         paragraphs: [
-          "Pick a Brick führt nur einen Teil der aktuellen Elemente. Ältere und viele bedruckte Minifiguren-Teile gibt es dort oft nicht. Außerdem hat nicht jedes Teil im Katalog eine belegte Element-ID. FigForge nimmt nur Teile mit belegter Element-ID in die CSV auf und nennt die übrigen unter „Warum fehlen manche Teile?“.",
+          "Pick a Brick führt nur einen Teil der aktuellen Elemente. Ältere und viele bedruckte Minifiguren-Teile gibt es dort oft nicht. Außerdem hat nicht jedes Teil im Katalog eine belegte Element-ID. Create Your Minifig nimmt nur Teile mit belegter Element-ID in die CSV auf und nennt die übrigen unter „Warum fehlen manche Teile?“.",
           "Ein Beispiel vom 20.10.2026: Bei der Vorlage Piratenkapitän ließ sich nur ein Teil per Pick a Brick exportieren, vier hatten keine Element-ID. Bei Figuren mit bedruckten Teilen ist das häufig.",
         ],
       },
@@ -598,8 +598,8 @@ export const GUIDE_SECTIONS: Record<GuideId, Record<Language, readonly GuideSect
       {
         heading: "Vor dem Absenden",
         items: [
-          "Preis, Verfügbarkeit und Versand zeigt nur LEGO. FigForge nennt keine Preise.",
-          "Vergleiche Farbe und Aufdruck bei LEGO mit der Vorschau in FigForge.",
+          "Preis, Verfügbarkeit und Versand zeigt nur LEGO. Create Your Minifig nennt keine Preise.",
+          "Vergleiche Farbe und Aufdruck bei LEGO mit der Vorschau in Create Your Minifig.",
         ],
       },
     ],
@@ -607,7 +607,7 @@ export const GUIDE_SECTIONS: Record<GuideId, Record<Language, readonly GuideSect
       {
         heading: "What the CSV contains",
         paragraphs: [
-          "The file from FigForge has two columns: elementId and quantity. The element ID is the number under which LEGO lists a part in a specific color. The same part in another color has another element ID. The columns match the template LEGO provides at Pick a Brick.",
+          "The file from Create Your Minifig has two columns: elementId and quantity. The element ID is the number under which LEGO lists a part in a specific color. The same part in another color has another element ID. The columns match the template LEGO provides at Pick a Brick.",
         ],
       },
       {
@@ -625,14 +625,14 @@ export const GUIDE_SECTIONS: Record<GuideId, Record<Language, readonly GuideSect
         heading: "Limits",
         items: [
           "A list can hold up to 200 different parts and be at most 5 MB. A minifigure is far below that.",
-          "LEGO accepts CSV, JSON and LXFML. FigForge creates the CSV.",
+          "LEGO accepts CSV, JSON and LXFML. Create Your Minifig creates the CSV.",
           "Only parts LEGO currently carries there count.",
         ],
       },
       {
         heading: "Why some parts are missing",
         paragraphs: [
-          "Pick a Brick carries only some of the current elements. Older and many printed minifigure parts are often not available. Also, not every part in the catalog has a documented element ID. FigForge puts only parts with a documented element ID into the CSV and names the rest under “Why are some parts missing?”.",
+          "Pick a Brick carries only some of the current elements. Older and many printed minifigure parts are often not available. Also, not every part in the catalog has a documented element ID. Create Your Minifig puts only parts with a documented element ID into the CSV and names the rest under “Why are some parts missing?”.",
           "An example from 20 October 2026: with the Pirate captain template only one part could be exported to Pick a Brick, four had no element ID. This is common for figures with printed parts.",
         ],
       },
@@ -647,8 +647,8 @@ export const GUIDE_SECTIONS: Record<GuideId, Record<Language, readonly GuideSect
       {
         heading: "Before you submit",
         items: [
-          "Only LEGO shows price, availability and shipping. FigForge quotes no prices.",
-          "Compare color and print at LEGO with the preview in FigForge.",
+          "Only LEGO shows price, availability and shipping. Create Your Minifig quotes no prices.",
+          "Compare color and print at LEGO with the preview in Create Your Minifig.",
         ],
       },
     ],
@@ -666,7 +666,7 @@ export const GUIDE_SECTIONS: Record<GuideId, Record<Language, readonly GuideSect
       {
         heading: "Suchwörter, die im Builder funktionieren",
         paragraphs: [
-          "Das Suchmodell von FigForge versteht Englisch am besten. Für deutsche Wörter gibt es ein eingebautes Wörterbuch. Diese Wörter stehen darin:",
+          "Das Suchmodell von Create Your Minifig versteht Englisch am besten. Für deutsche Wörter gibt es ein eingebautes Wörterbuch. Diese Wörter stehen darin:",
         ],
         items: [
           "Berufe: Koch, Köchin, Arzt, Ärztin, Feuerwehrmann, Feuerwehrfrau, Bauarbeiter, Astronaut, Astronautin, Kapitän, König, Königin.",
@@ -720,7 +720,7 @@ export const GUIDE_SECTIONS: Record<GuideId, Record<Language, readonly GuideSect
       {
         heading: "Search words that work in the Builder",
         paragraphs: [
-          "FigForge's search model understands English best, so these English words work well:",
+          "Create Your Minifig's search model understands English best, so these English words work well:",
         ],
         items: [
           "Professions: chef, doctor, firefighter, construction worker, astronaut, captain, king, queen.",
@@ -774,7 +774,7 @@ export const GUIDE_SECTIONS: Record<GuideId, Record<Language, readonly GuideSect
       {
         heading: "Dieselbe Farbe, verschiedene Nummern",
         paragraphs: [
-          "Rebrickable und BrickLink nummerieren Farben unterschiedlich. Bei LEGO Pick a Brick steckt die Farbe in der Element-ID, die Teil und Farbe zusammen bezeichnet. Beispiele aus den Katalogdaten von FigForge:",
+          "Rebrickable und BrickLink nummerieren Farben unterschiedlich. Bei LEGO Pick a Brick steckt die Farbe in der Element-ID, die Teil und Farbe zusammen bezeichnet. Beispiele aus den Katalogdaten von Create Your Minifig:",
         ],
         items: [
           "Black: bei Rebrickable 0, bei BrickLink 11",
@@ -785,29 +785,29 @@ export const GUIDE_SECTIONS: Record<GuideId, Record<Language, readonly GuideSect
           "Dark Bluish Gray: bei Rebrickable 72, bei BrickLink 85",
         ],
         closing: [
-          "FigForge verwendet die Rebrickable-Farbnamen und rechnet für die BrickLink-XML auf die BrickLink-Farbnummer um. Du musst keine Nummern übersetzen.",
+          "Create Your Minifig verwendet die Rebrickable-Farbnamen und rechnet für die BrickLink-XML auf die BrickLink-Farbnummer um. Du musst keine Nummern übersetzen.",
         ],
       },
       {
         heading: "Farben, die man verwechselt",
         paragraphs: [
-          "Brown und Reddish Brown sind zwei verschiedene Farben mit eigenen Nummern. Nach den Farbwerten der LDraw-Bibliothek, die FigForge für die 3D-Vorschau nutzt, ist Reddish Brown (#5F3109) deutlich satter als Brown (#543324).",
+          "Brown und Reddish Brown sind zwei verschiedene Farben mit eigenen Nummern. Nach den Farbwerten der LDraw-Bibliothek, die Create Your Minifig für die 3D-Vorschau nutzt, ist Reddish Brown (#5F3109) deutlich satter als Brown (#543324).",
           "Auch Light Gray und Light Bluish Gray sind zwei getrennte Farben. Wer ältere und neuere Teile mischt, sollte darauf achten, nicht beide Grautöne zu verwechseln.",
         ],
       },
       {
-        heading: "So bestätigst du die Farben in FigForge",
+        heading: "So bestätigst du die Farben in Create Your Minifig",
         items: [
           "Öffne „Teile kaufen“. Unter „Farben bestätigen“ stehen die Teile, für die es mehrere Farben gibt.",
-          "Wähle bei jedem dieser Teile die Farbe. FigForge zeigt „Offene Farbauswahlen“, bis alle gewählt sind.",
-          "Ist die Farbe für alle Teile eindeutig, übernimmt FigForge sie selbst.",
+          "Wähle bei jedem dieser Teile die Farbe. Create Your Minifig zeigt „Offene Farbauswahlen“, bis alle gewählt sind.",
+          "Ist die Farbe für alle Teile eindeutig, übernimmt Create Your Minifig sie selbst.",
           "Die 3D-Vorschau zeigt die gewählte Farbe als Hauptfarbe des Teils. Feste Farben wie Aufdrucke bleiben, und für einzelne Farben gibt es keine Vorschau.",
         ],
       },
       {
         heading: "Vor dem Kauf prüfen",
         items: [
-          "Vergleiche die Farbe im Shop mit dem englischen Namen in FigForge.",
+          "Vergleiche die Farbe im Shop mit dem englischen Namen in Create Your Minifig.",
           "Prüfe bei BrickLink in der Wanted List die Farbe jeder Zeile.",
           "Bei Pick a Brick bestimmt die Element-ID die Farbe. Prüfe das Foto.",
         ],
@@ -823,7 +823,7 @@ export const GUIDE_SECTIONS: Record<GuideId, Record<Language, readonly GuideSect
       {
         heading: "The same color, different numbers",
         paragraphs: [
-          "Rebrickable and BrickLink number colors differently. At LEGO Pick a Brick the color is part of the element ID, which identifies part and color together. Examples from FigForge's catalog data:",
+          "Rebrickable and BrickLink number colors differently. At LEGO Pick a Brick the color is part of the element ID, which identifies part and color together. Examples from Create Your Minifig's catalog data:",
         ],
         items: [
           "Black: 0 at Rebrickable, 11 at BrickLink",
@@ -834,29 +834,29 @@ export const GUIDE_SECTIONS: Record<GuideId, Record<Language, readonly GuideSect
           "Dark Bluish Gray: 72 at Rebrickable, 85 at BrickLink",
         ],
         closing: [
-          "FigForge uses the Rebrickable color names and converts to the BrickLink color number for the BrickLink XML. You do not have to translate numbers.",
+          "Create Your Minifig uses the Rebrickable color names and converts to the BrickLink color number for the BrickLink XML. You do not have to translate numbers.",
         ],
       },
       {
         heading: "Colors that are easily confused",
         paragraphs: [
-          "Brown and Reddish Brown are two different colors with their own numbers. According to the color values of the LDraw library, which FigForge uses for the 3D preview, Reddish Brown (#5F3109) is clearly richer than Brown (#543324).",
+          "Brown and Reddish Brown are two different colors with their own numbers. According to the color values of the LDraw library, which Create Your Minifig uses for the 3D preview, Reddish Brown (#5F3109) is clearly richer than Brown (#543324).",
           "Light Gray and Light Bluish Gray are also two separate colors. If you mix older and newer parts, take care not to confuse the two grays.",
         ],
       },
       {
-        heading: "How to confirm colors in FigForge",
+        heading: "How to confirm colors in Create Your Minifig",
         items: [
           "Open “Buy parts”. Under “Confirm colors” you find the parts that exist in several colors.",
-          "Choose the color for each of these parts. FigForge shows “Color choices remaining” until all are chosen.",
-          "If the color is clear for every part, FigForge takes it on its own.",
+          "Choose the color for each of these parts. Create Your Minifig shows “Color choices remaining” until all are chosen.",
+          "If the color is clear for every part, Create Your Minifig takes it on its own.",
           "The 3D preview shows the chosen color as the part's main color. Fixed colors such as prints stay, and a few colors have no preview.",
         ],
       },
       {
         heading: "Check before you buy",
         items: [
-          "Compare the color in the shop with the English name in FigForge.",
+          "Compare the color in the shop with the English name in Create Your Minifig.",
           "At BrickLink, check the color of every line in the wanted list.",
           "At Pick a Brick the element ID decides the color. Check the photo.",
         ],

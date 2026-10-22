@@ -12,7 +12,9 @@ const WEBSITE_ID = `${SITE_ORIGIN}/#website`;
 const organization = (): JsonLd => ({
   "@type": "Organization",
   "@id": ORGANIZATION_ID,
-  name: "FigForge",
+  name: "Create Your Minifig",
+  // The site was called FigForge until October 2026; the old name stays findable.
+  alternateName: "FigForge",
   url: `${SITE_ORIGIN}/`,
   logo: { "@type": "ImageObject", url: `${SITE_ORIGIN}/icons/icon-512.png`, width: 512, height: 512 },
 });
@@ -20,7 +22,8 @@ const organization = (): JsonLd => ({
 const website = (language: Language): JsonLd => ({
   "@type": "WebSite",
   "@id": WEBSITE_ID,
-  name: "FigForge",
+  name: "Create Your Minifig",
+  alternateName: "FigForge",
   url: `${SITE_ORIGIN}/`,
   inLanguage: language,
   publisher: { "@id": ORGANIZATION_ID },
@@ -71,7 +74,7 @@ const article = (route: SeoRoute, messages: Messages, language: Language): JsonL
   return {
     "@type": "Article",
     "@id": `${canonicalUrl(guidePath(route.page.id, language))}#article`,
-    headline: requireMessage(messages, route.titleKey).replace(/ \| FigForge$/u, ""),
+    headline: requireMessage(messages, route.titleKey).replace(/ \| Create Your Minifig$/u, ""),
     description: requireMessage(messages, route.descriptionKey),
     inLanguage: language,
     datePublished: dates.published,

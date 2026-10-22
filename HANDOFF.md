@@ -4,7 +4,7 @@ Diese Datei hält fest, wo das Projekt steht, was zuletzt geändert wurde, wie d
 
 ## 1. Überblick
 
-- **Produkt:** backendloser Minifiguren-Konfigurator mit 3D-Vorschau (LDraw/Three.js) und Teilelisten-Export (BrickLink-XML, Rebrickable-CSV, Pick-a-Brick-CSV). Live unter https://createyourminifig.com.
+- **Produkt (Name seit 2026-10-22: „Create Your Minifig“, intern weiter „FigForge“):** backendloser Minifiguren-Konfigurator mit 3D-Vorschau (LDraw/Three.js) und Teilelisten-Export (BrickLink-XML, Rebrickable-CSV, Pick-a-Brick-CSV). Live unter https://createyourminifig.com.
 - **Technik:** React + Vite, Daten statisch im Repo, Entwürfe lokal im Browser (IndexedDB). Kein Backend, keine Konten.
 - **Deployment:** ausschließlich Cloudflare Workers Builds nach einem Merge auf `main`. GitHub Actions deployt nicht.
 - **Regeln:** `AGENTS.md` ist verbindlich (ADR bei Architekturänderungen, generierte Daten nicht von Hand ändern, Tests nicht passend zur Implementierung umdefinieren). `main` ist geschützt: Änderungen nur per PR, Branch muss aktuell sein, `verify` muss grün sein.
@@ -80,6 +80,8 @@ Geschlossen: #22 (überholt durch ADR-011), #78 (TypeScript 7, siehe #132).
 | (folgt) | **LEGO-Partnerlinks vorbereitet, nicht aktiv** (ADR-044): Markt nach Browsersprache (`navigator.languages`, nur lokal gelesen), Shop-Locale je Land, Deep-Link-Vorlagen je Programm (Lego EU, Lego UK) in `src/procurement/lego-affiliate.ts`; ohne Vorlage einfacher Link auf den passenden Shop. Datenschutztext erwähnt Rakuten erst nach Aktivierung. Aktivierung: `docs/legal/lego-partnerlinks-aktivierung.md`. Offen beim Eigentümer: Rakuten-Profil mit createyourminifig.com, Antrag bei Lego EU und UK, Link-Vorlagen liefern. |
 
 | (folgt) | **Partnerlink-Auswertung (ADR-045):** Klick auf einen Partnerlink sendet `affiliate_click` (Partner, Platz, Produkt, mit/ohne Provision) an Google Analytics, nur mit Einwilligung; Rakuten-Links tragen `&u1=<platz>`; Amazon kann je Platz eine eigene Tracking-ID haben (`placementTrackingIds`, derzeit leer, alles unter `figforge-21`). Kuratierte Produkte unter den Ratgebern Geschenk, Aufbau und Beruf/Hobby (`src/guides/guide-products.ts`, als Anzeige gekennzeichnet). Browser-Test `testAffiliateClickCounting`. Offen beim Eigentümer: im Amazon-Konto weitere Tracking-IDs anlegen und eintragen (optional); in GA unter Berichte → Ereignisse das Ereignis `affiliate_click` ansehen. |
+
+| (folgt) | **Neuer Markenname „Create Your Minifig“ (ADR-046)** statt „FigForge“ auf der ganzen Seite (Kopfzeile, Titel, Texte, Rechtstexte, Ratgeber, Open Graph und neue Vorschaubilder, JSON-LD mit `alternateName: FigForge`, `llms.txt`, Manifest). Interner Name „FigForge“ bleibt in Code, Dateiformat-Kennungen, Speicherschlüsseln, Freigabelinks und Tracking-ID (sonst würden Entwürfe, Einwilligungen und geteilte Links ungültig). Download-Dateinamen jetzt `minifig-…`. Demo-Videos in `demo/` zeigen noch den alten Namen. |
 
 **Einstellungen im Google-Analytics-Konto (vom Eigentümer freigegeben, am 2026-10-21 über den Browser gesetzt und nach Neuladen abgelesen):** Konto „SeitenHafen361“, Property „createyourminifig.com“. Kontodetails: die drei Datenweitergabe-Häkchen (Modelle für Beiträge und Geschäftsinformationen, Technischer Support, Empfehlungen für Ihr Unternehmen) sind aus. Datenaufbewahrung: Ereignisdaten 14 Monate (vorher 2), Nutzerdaten 14 Monate, „Bei neuer Nutzeraktivität zurücksetzen“ aus. Nicht angefasst: Google-Signale (im Tag per Code aus), Datenverarbeitungsbedingungen (siehe Abschnitt 7).
 

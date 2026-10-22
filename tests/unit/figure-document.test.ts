@@ -11,9 +11,9 @@ import { figureDocumentFileName } from "../../src/figure/download-figure-documen
 describe("FF-22/FF-23 local figure document", () => {
   it("creates a stable JSON filename from the saved figure name", () => {
     expect(figureDocumentFileName("Weltraum-Pirat ÄÖÜ!"))
-      .toBe("figforge-weltraum-pirat-aou.json");
+      .toBe("minifig-weltraum-pirat-aou.json");
     expect(figureDocumentFileName("宇宙"))
-      .toBe("figforge-figure.json");
+      .toBe("minifig-figure.json");
   });
 
   it("round-trips all five versioned builder slots and component IDs", () => {

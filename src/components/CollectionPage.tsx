@@ -286,7 +286,7 @@ export function CollectionPage() {
       <div className="collection-page">
         <section className="collection-page__hero" aria-labelledby="collection-title">
           <div>
-            <p className="collection-page__eyebrow">FigForge</p>
+            <p className="collection-page__eyebrow">Create Your Minifig</p>
             <h1 id="collection-title">{t("collection.title")}</h1>
             <p>{t("collection.lede")}</p>
           </div>
