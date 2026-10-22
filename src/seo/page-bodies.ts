@@ -106,3 +106,15 @@ export const methodologyBody = (context: Context): string => (
   ].map(([href, key]) => `<li><a href="${href}">${text(context, key!)}</a></li>`).join("")
   + "</ul>"
 );
+
+/** The builder is an app; its static text explains what it does and where to read more. */
+export const builderBody = (context: Context): string => {
+  const steps = (["pick", "check", "export"] as const).map((step) =>
+    `<li><h3>${text(context, `landing.step.${step}.title`)}</h3><p>${text(context, `landing.step.${step}.body`)}</p></li>`).join("");
+  const guides = GUIDE_IDS.map((id) =>
+    `<li><a href="${escapeHtml(guidePath(id, context.language))}">${text(context, `guide.${id}.title`)}</a></li>`).join("");
+  return `<h2>${text(context, "landing.steps.title")}</h2><ol>${steps}</ol>`
+    + `<p>${link(context, "/ideas", text(context, "landing.cta.ideas"))}</p>`
+    + `<h2>${text(context, "landing.guides.title")}</h2><ul>${guides}</ul>`
+    + `<p>${link(context, "/methodology", text(context, "nav.notes"))}</p>`;
+};

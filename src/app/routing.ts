@@ -51,7 +51,7 @@ export const germanPath = (pathname: string): string => {
 export const localizedPath = (path: string, language: Language): string => {
   const german = trimTrailingSlash(path);
   if (language === "de") return german;
-  return TRANSLATED_PATHS[german] ?? (german === "/" ? `${EN_PREFIX}/` : `${EN_PREFIX}${german}`);
+  return TRANSLATED_PATHS[german] ?? (german === "/" ? EN_PREFIX : `${EN_PREFIX}${german}`);
 };
 
 /** The same page in another language, keeping query and hash. */

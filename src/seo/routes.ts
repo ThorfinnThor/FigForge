@@ -4,6 +4,10 @@ import type { Language } from "../i18n.js";
 import { WORLDS, type WorldKey } from "./page-bodies.js";
 
 export const SITE_ORIGIN = "https://createyourminifig.com";
+/** Social preview image, one per language (1200 x 630). */
+export const ogImageUrl = (language: Language): string =>
+  `${SITE_ORIGIN}/${language === "en" ? "og-image-en.png" : "og-image.png"}`;
+
 export const SEO_LANGUAGES = ["de", "en"] as const satisfies readonly Language[];
 
 export type SeoRoute = {
@@ -23,12 +27,13 @@ export type SeoRoute = {
     | { kind: "ideas" }
     | { kind: "world"; id: (typeof WORLDS)[number]["id"]; key: WorldKey }
     | { kind: "sets" }
-    | { kind: "methodology" };
+    | { kind: "methodology" }
+    | { kind: "builder" };
 };
 
 export const SEO_ROUTES: readonly SeoRoute[] = [
   { path: "/", titleKey: "home.metaTitle", descriptionKey: "home.metaDescription", headingKey: "landing.title", ledeKey: "landing.lede", indexable: true, page: { kind: "landing" } },
-  { path: "/builder", titleKey: "builder.metaTitle", descriptionKey: "builder.metaDescription", headingKey: "catalog.heading", ledeKey: "catalog.lede", indexable: true },
+  { path: "/builder", titleKey: "builder.metaTitle", descriptionKey: "builder.metaDescription", headingKey: "catalog.heading", ledeKey: "catalog.lede", indexable: true, page: { kind: "builder" } },
   { path: "/ideas", titleKey: "ideas.metaTitle", descriptionKey: "ideas.metaDescription", headingKey: "ideas.title", ledeKey: "ideas.lede", indexable: true, page: { kind: "ideas" } },
   ...WORLDS.map(({ id, key }): SeoRoute => ({
     path: `/ideas/${id}`,
