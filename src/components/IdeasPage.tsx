@@ -15,6 +15,7 @@ const TIP_KEYS: Record<string, string> = {
   "fire-rescue": "ideas.world.fire.tip",
   zombies: "ideas.world.zombies.tip",
   fantasy: "ideas.world.fantasy.tip",
+  vikings: "ideas.world.vikings.tip",
 };
 
 const THEME_WORLDS = [
@@ -24,9 +25,10 @@ const THEME_WORLDS = [
   { id: "fire-rescue", accent: "green", nameKey: "ideas.world.fire.name", descriptionKey: "ideas.world.fire.description", rolesKey: "ideas.world.fire.roles", metaTitleKey: "ideas.world.fire.metaTitle", metaDescriptionKey: "ideas.world.fire.metaDescription" },
   { id: "zombies", accent: "purple", nameKey: "ideas.world.zombies.name", descriptionKey: "ideas.world.zombies.description", rolesKey: "ideas.world.zombies.roles", metaTitleKey: "ideas.world.zombies.metaTitle", metaDescriptionKey: "ideas.world.zombies.metaDescription" },
   { id: "fantasy", accent: "teal", nameKey: "ideas.world.fantasy.name", descriptionKey: "ideas.world.fantasy.description", rolesKey: "ideas.world.fantasy.roles", metaTitleKey: "ideas.world.fantasy.metaTitle", metaDescriptionKey: "ideas.world.fantasy.metaDescription" },
+  { id: "vikings", accent: "orange", nameKey: "ideas.world.vikings.name", descriptionKey: "ideas.world.vikings.description", rolesKey: "ideas.world.vikings.roles", metaTitleKey: "ideas.world.vikings.metaTitle", metaDescriptionKey: "ideas.world.vikings.metaDescription" },
 ] as const satisfies ReadonlyArray<{
   id: FigureThemeId;
-  accent: "gold" | "red" | "blue" | "green" | "purple" | "teal";
+  accent: "gold" | "red" | "blue" | "green" | "purple" | "teal" | "orange";
   nameKey: string;
   descriptionKey: string;
   rolesKey: string;

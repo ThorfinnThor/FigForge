@@ -2191,10 +2191,10 @@ legend {
   text-align: right;
 }
 
-/* Three per row; with exactly five worlds the last two share the second row. */
+/* Three worlds per row on wide screens; five and seven worlds get balanced rows. */
 .ideas-worlds {
   display: grid;
-  grid-template-columns: repeat(6, minmax(0, 1fr));
+  grid-template-columns: repeat(12, minmax(0, 1fr));
   gap: var(--space-5);
   align-items: stretch;
   margin: 0;
@@ -2203,12 +2203,19 @@ legend {
 }
 
 .ideas-worlds > li {
-  grid-column: span 2;
+  grid-column: span 4;
 }
 
-.ideas-worlds > li:nth-child(4):nth-last-child(2),
-.ideas-worlds > li:nth-child(5):last-child {
-  grid-column: span 3;
+@media (min-width: 1200px) {
+  .ideas-worlds > li:nth-child(4):nth-last-child(2),
+  .ideas-worlds > li:nth-child(5):last-child {
+    grid-column: span 6;
+  }
+
+  .ideas-worlds > li:first-child:nth-last-child(7),
+  .ideas-worlds > li:first-child:nth-last-child(7) ~ li:nth-child(-n + 4) {
+    grid-column: span 3;
+  }
 }
 
 .ideas-page__all-worlds,
@@ -2237,6 +2244,7 @@ legend {
 .idea-world[data-accent="green"] { --idea-accent: var(--cat-legs); }
 .idea-world[data-accent="purple"] { --idea-accent: var(--cat-accessory); }
 .idea-world[data-accent="teal"] { --idea-accent: var(--accent-teal); }
+.idea-world[data-accent="orange"] { --idea-accent: var(--accent-orange); }
 
 .idea-world h3 {
   margin: 0;
@@ -2297,6 +2305,7 @@ legend {
 .idea-card[data-accent="green"] { --idea-accent: var(--cat-legs); }
 .idea-card[data-accent="purple"] { --idea-accent: var(--cat-accessory); }
 .idea-card[data-accent="teal"] { --idea-accent: var(--accent-teal); }
+.idea-card[data-accent="orange"] { --idea-accent: var(--accent-orange); }
 
 .figure-preview-card {
   position: relative;
@@ -3276,9 +3285,7 @@ legend {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
-  .ideas-worlds > li,
-  .ideas-worlds > li:nth-child(4):nth-last-child(2),
-  .ideas-worlds > li:nth-child(5):last-child {
+  .ideas-worlds > li {
     grid-column: auto;
   }
 
@@ -3654,9 +3661,7 @@ legend {
     grid-template-columns: 1fr;
   }
 
-  .ideas-worlds > li,
-  .ideas-worlds > li:nth-child(4):nth-last-child(2),
-  .ideas-worlds > li:nth-child(5):last-child {
+  .ideas-worlds > li {
     grid-column: auto;
   }
 
