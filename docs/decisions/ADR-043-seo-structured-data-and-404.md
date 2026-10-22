@@ -31,6 +31,12 @@ mit Status 200 und der App-Startseite (`not_found_handling:
   das Modul-Skript der App nicht, weil die App jeden unbekannten Pfad als
   Builder öffnen würde. Alle öffentlichen Routen sind vorab erzeugt, deshalb
   braucht keine gültige Adresse den bisherigen Rückfall.
+- **Adressen ohne abschließenden Schrägstrich:** Cloudflare leitete bisher
+  `/builder` per 307 auf `/builder/` um, während Canonical, Sitemap und
+  `hreflang` `/builder` nannten (Widerspruch, den die Search Console als
+  „Seite mit Weiterleitung“ meldet). `wrangler.jsonc` setzt deshalb
+  `"html_handling": "drop-trailing-slash"`; `/builder/` leitet auf `/builder`
+  um. Die englische Startseite heißt jetzt `/en` (vorher `/en/`).
 - **`llms.txt`** wird beim Prerender aus den Routen erzeugt (Beschreibung,
   Hinweis zur Unabhängigkeit von LEGO, Seiten und Ratgeber, deutsch und englisch).
 - **Builder:** Der Builder bekommt im statischen HTML die drei Schritte, Links

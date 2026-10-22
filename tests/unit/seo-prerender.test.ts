@@ -4,7 +4,7 @@ import { FIGURE_TEMPLATES } from "../../src/ideas/figure-templates.js";
 import { partNumbers } from "../../src/ideas/part-numbers.js";
 import { CURATED_PRODUCTS, productsForTheme } from "../../src/products/curated-products.js";
 import { render404Page, renderLlmsTxt, renderRobotsTxt, renderRoutePage, renderSitemapXml } from "../../src/seo/render.js";
-import { SEO_ROUTES, canonicalUrl } from "../../src/seo/routes.js";
+import { SEO_ROUTES, canonicalUrl, routePath } from "../../src/seo/routes.js";
 
 const TEMPLATE = [
   "<!doctype html>",
@@ -111,7 +111,7 @@ describe("English pages", () => {
     const indexable = SEO_ROUTES.filter((entry) => entry.indexable).length;
 
     expect(sitemap.match(/<loc>/gu)).toHaveLength(indexable * 2);
-    expect(sitemap).toContain("<loc>https://createyourminifig.com/en/</loc>");
+    expect(sitemap).toContain("<loc>https://createyourminifig.com/en</loc>");
     expect(sitemap).toContain('xmlns:xhtml="http://www.w3.org/1999/xhtml"');
     expect(sitemap).toContain('<xhtml:link rel="alternate" hreflang="en" href="https://createyourminifig.com/en/ideas/space"/>');
   });
@@ -256,7 +256,7 @@ describe("sharing tags and structured data", () => {
     expect(app).toMatchObject({ isAccessibleForFree: true, inLanguage: "en", url: "https://createyourminifig.com/en/builder" });
     const crumbs = graph.find((node) => node["@type"] === "BreadcrumbList") as { itemListElement: Array<{ position: number; item: string }> };
     expect(crumbs.itemListElement.map((entry) => entry.item)).toEqual([
-      "https://createyourminifig.com/en/",
+      "https://createyourminifig.com/en",
       "https://createyourminifig.com/en/builder",
     ]);
   });
@@ -298,6 +298,19 @@ describe("404 pages and llms.txt", () => {
     expect(de).toContain('href="/builder"');
     expect(en).toContain('<html lang="en">');
     expect(en).toContain('href="/en/builder"');
+  });
+
+  it("uses addresses without a trailing slash everywhere, matching what Cloudflare serves", async () => {
+    const { readFile } = await import("node:fs/promises");
+    const config = await readFile(new URL("../../wrangler.jsonc", import.meta.url), "utf8");
+    expect(config).toContain('"html_handling": "drop-trailing-slash"');
+    for (const route of SEO_ROUTES) {
+      for (const language of ["de", "en"] as const) {
+        const url = canonicalUrl(routePath(route, language));
+        expect(url === "https://createyourminifig.com/" || !url.endsWith("/"), url).toBe(true);
+      }
+    }
+    expect(canonicalUrl(routePath(SEO_ROUTES[0]!, "en"))).toBe("https://createyourminifig.com/en");
   });
 
   it("lets Cloudflare answer unknown addresses with the 404 page instead of the app", async () => {
