@@ -86,7 +86,7 @@ Geschlossen: #22 (überholt durch ADR-011), #78 (TypeScript 7, siehe #132).
 
 **Zeitplan:** Montags 04:17 UTC (GitHub startet verzögert; am 2026-10-19 um 09:59 UTC, erfolgreich). Manuell startbar über `workflow_dispatch`. Nächster planmäßiger Lauf: 2026-10-26.
 
-**Ablauf:** Rebrickable-CSV laden → offizielle LDraw-Bibliothek prüfen/übernehmen → Builder-Katalog, Abdeckung, Platzierungskandidaten neu bauen (dabei: Crosswalk abgleichen, Exportpakete bauen) → Accessory-Review neu bauen → Suchindex bauen → `verify` → Automations-Branch `automation/rebrickable-catalog-refresh` pushen → Review-PR anlegen/aktualisieren → CI per Dispatch anstoßen → BrickLink-Snapshot-Alter prüfen.
+**Ablauf:** Rebrickable-CSV laden → offizielle LDraw-Bibliothek prüfen/übernehmen → Builder-Katalog, Abdeckung, Platzierungskandidaten neu bauen (dabei: Crosswalk abgleichen, Exportpakete bauen) → Accessory-Review neu bauen → Suchindex bauen → `verify` → Automations-Branch `automation/rebrickable-catalog-refresh` pushen → Review-PR anlegen/aktualisieren → bei grünem `verify` Auto-Merge einschalten (ADR-042) → CI per Dispatch anstoßen (nur ohne Token) → BrickLink-Snapshot-Alter prüfen.
 
 **Verhalten bei Problemen:**
 - `verify` schlägt fehl → PR wird trotzdem als **Entwurf** angelegt, Lauf endet rot, Issue `Katalog-Refresh fehlgeschlagen` (Label `catalog-refresh-failed`). Nächster grüner Lauf schließt das Issue.
@@ -97,7 +97,7 @@ Geschlossen: #22 (überholt durch ADR-011), #78 (TypeScript 7, siehe #132).
 
 **Manuelle Schritte, die bleiben:**
 1. **Refresh-Token:** läuft ab (spätestens ein Jahr nach Anlage); Ablaufdatum im Kalender führen. Siehe Abschnitt 4.
-2. **Branch aktualisieren**, wenn `main` weitergezogen ist (`gh pr update-branch <nr>`), dann CI abwarten und mergen.
+2. **Branch aktualisieren**, wenn `main` weitergezogen ist und der Auto-Merge deshalb nicht greift (`gh pr update-branch <nr>`); ein grüner Refresh-PR mergt sich sonst selbst. Entwürfe (Validierung fehlgeschlagen) werden nie automatisch gemergt.
 3. **BrickLink-Snapshot erneuern** (spätestens alle ~90 Tage): auf bricklink.com anmelden, im Catalog Download die Tabellen *Parts* und *Part and Color Codes* (txt) laden, dann `npm run data:import:bricklink -- <Parts.txt> <Part-and-Color-Codes.txt> YYYY-MM-DD` und das Ergebnis per PR einreichen. Rohdateien nicht committen.
 
 ## 5. Lokal arbeiten
