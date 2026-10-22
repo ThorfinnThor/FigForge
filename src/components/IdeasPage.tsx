@@ -5,7 +5,7 @@ import { AppHeader } from "./AppHeader.js";
 import { germanPath } from "../app/routing.js";
 import { useI18n } from "../i18n.js";
 import { FigurePreviewCard } from "./FigurePreviewCard.js";
-import { productsForTheme } from "../products/curated-products.js";
+import { productsForThemePage } from "../products/curated-products.js";
 import { CuratedProductGrid } from "./CuratedProductGrid.js";
 
 const TIP_KEYS: Record<string, string> = {
@@ -13,6 +13,7 @@ const TIP_KEYS: Record<string, string> = {
   castle: "ideas.world.castle.tip",
   space: "ideas.world.space.tip",
   "fire-rescue": "ideas.world.fire.tip",
+  zombies: "ideas.world.zombies.tip",
 };
 
 const THEME_WORLDS = [
@@ -20,9 +21,10 @@ const THEME_WORLDS = [
   { id: "castle", accent: "red", nameKey: "ideas.world.castle.name", descriptionKey: "ideas.world.castle.description", rolesKey: "ideas.world.castle.roles", metaTitleKey: "ideas.world.castle.metaTitle", metaDescriptionKey: "ideas.world.castle.metaDescription" },
   { id: "space", accent: "blue", nameKey: "ideas.world.space.name", descriptionKey: "ideas.world.space.description", rolesKey: "ideas.world.space.roles", metaTitleKey: "ideas.world.space.metaTitle", metaDescriptionKey: "ideas.world.space.metaDescription" },
   { id: "fire-rescue", accent: "green", nameKey: "ideas.world.fire.name", descriptionKey: "ideas.world.fire.description", rolesKey: "ideas.world.fire.roles", metaTitleKey: "ideas.world.fire.metaTitle", metaDescriptionKey: "ideas.world.fire.metaDescription" },
+  { id: "zombies", accent: "purple", nameKey: "ideas.world.zombies.name", descriptionKey: "ideas.world.zombies.description", rolesKey: "ideas.world.zombies.roles", metaTitleKey: "ideas.world.zombies.metaTitle", metaDescriptionKey: "ideas.world.zombies.metaDescription" },
 ] as const satisfies ReadonlyArray<{
   id: FigureThemeId;
-  accent: "gold" | "red" | "blue" | "green";
+  accent: "gold" | "red" | "blue" | "green" | "purple";
   nameKey: string;
   descriptionKey: string;
   rolesKey: string;
@@ -51,7 +53,7 @@ export function IdeasPage() {
   const visibleTemplates = selectedTheme
     ? FIGURE_TEMPLATES.filter((template) => template.themeId === selectedTheme)
     : FIGURE_TEMPLATES;
-  const matchingProducts = productsForTheme(selectedTheme);
+  const matchingProducts = productsForThemePage(selectedTheme);
 
   useEffect(() => {
     const previousTitle = document.title;

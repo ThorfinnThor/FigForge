@@ -8,12 +8,12 @@ const runtimeFiles = ["head", "headwear", "torso-assembly", "legs-assembly", "ha
 describe("curated figure templates", () => {
   it("contains unique, schema-valid, complete templates", async () => {
     expect(new Set(FIGURE_TEMPLATES.map(({ id }) => id)).size).toBe(FIGURE_TEMPLATES.length);
-    expect(FIGURE_TEMPLATES).toHaveLength(12);
+    expect(FIGURE_TEMPLATES).toHaveLength(15);
     const themeCounts = new Map<string, number>();
     for (const template of FIGURE_TEMPLATES) {
       themeCounts.set(template.themeId, (themeCounts.get(template.themeId) ?? 0) + 1);
     }
-    expect(Object.fromEntries(themeCounts)).toEqual({ pirates: 3, castle: 3, space: 3, "fire-rescue": 3 });
+    expect(Object.fromEntries(themeCounts)).toEqual({ pirates: 3, castle: 3, space: 3, "fire-rescue": 3, zombies: 3 });
     for (const template of FIGURE_TEMPLATES) {
       expect(figureDocumentSchema.parse(template.document)).toEqual(template.document);
       expect(template.document.selections).toHaveLength(5);

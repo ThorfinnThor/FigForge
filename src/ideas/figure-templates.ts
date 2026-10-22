@@ -1,7 +1,7 @@
 import { createFigureDocument } from "../figure/figure-document.js";
 import type { FigureDocument, FigureDocumentSlot } from "../contracts/figure-document.js";
 
-export type FigureThemeId = "pirates" | "castle" | "space" | "fire-rescue";
+export type FigureThemeId = "pirates" | "castle" | "space" | "fire-rescue" | "zombies";
 
 export type FigureTemplateId =
   | "pirate-captain"
@@ -15,12 +15,15 @@ export type FigureTemplateId =
   | "space-robot-engineer"
   | "firefighter"
   | "fire-chief"
-  | "rescue-specialist";
+  | "rescue-specialist"
+  | "zombie-pirate-captain"
+  | "zombie-surgeon"
+  | "grim-reaper";
 
 export type FigureTemplate = {
   id: FigureTemplateId;
   themeId: FigureThemeId;
-  accent: "gold" | "red" | "blue" | "green";
+  accent: "gold" | "red" | "blue" | "green" | "purple";
   nameKey: string;
   descriptionKey: string;
   document: FigureDocument;
@@ -314,6 +317,72 @@ export const FIGURE_TEMPLATES: readonly FigureTemplate[] = [
       "/assets/thumbnails/ldraw-expanded/torso-973c27h01pr0040.webp",
       "/assets/thumbnails/ldraw-expanded/legs-970c12.webp",
       "/assets/thumbnails/ldraw-expanded/handAccessory-39802pr0001.webp",
+    ],
+  ),
+  createTemplate(
+    "zombie-pirate-captain",
+    "zombies",
+    "purple",
+    "Zombie Pirate Captain",
+    "ideas.zombiePirate.name",
+    "ideas.zombiePirate.description",
+    {
+      head: "catalog:head:3626bpr0619",
+      headwear: "catalog:headwear:2528pr0010",
+      torsoAssembly: "catalog:torsoAssembly:84638c06pr0003",
+      legsAssembly: "catalog:legsAssembly:970e02",
+      handAccessory: "catalog:handAccessory:39802pr0001",
+    },
+    [
+      "/assets/thumbnails/ldraw-expanded/head-3626bpr0619.webp",
+      "/assets/thumbnails/ldraw-expanded/headwear-2528pr0010.webp",
+      "/assets/thumbnails/ldraw-expanded/torso-84638c06pr0003.webp",
+      "/assets/thumbnails/ldraw-expanded/legs-970e02.webp",
+      "/assets/thumbnails/ldraw-expanded/handAccessory-39802pr0001.webp",
+    ],
+  ),
+  createTemplate(
+    "zombie-surgeon",
+    "zombies",
+    "purple",
+    "Zombie Surgeon",
+    "ideas.zombieSurgeon.name",
+    "ideas.zombieSurgeon.description",
+    {
+      head: "catalog:head:3626cpr1735",
+      headwear: "catalog:headwear:2645",
+      torsoAssembly: "catalog:torsoAssembly:973c27h01pr4199",
+      legsAssembly: "catalog:legsAssembly:970c19pat34pr0001",
+      handAccessory: "catalog:handAccessory:11601",
+    },
+    [
+      "/assets/thumbnails/ldraw-expanded/head-3626cpr1735.webp",
+      "/assets/thumbnails/ldraw-expanded/headwear-2645.webp",
+      "/assets/thumbnails/ldraw-expanded/torso-973c27h01pr4199.webp",
+      "/assets/thumbnails/ldraw-expanded/legs-970c19pat34pr0001.webp",
+      "/assets/thumbnails/ldraw-expanded/handAccessory-11601.webp",
+    ],
+  ),
+  createTemplate(
+    "grim-reaper",
+    "zombies",
+    "purple",
+    "Grim Reaper",
+    "ideas.grimReaper.name",
+    "ideas.grimReaper.description",
+    {
+      head: "catalog:head:3626bpr0190",
+      headwear: "catalog:headwear:30381",
+      torsoAssembly: "catalog:torsoAssembly:973c03h03pr1437",
+      legsAssembly: "catalog:legsAssembly:19859pat0007",
+      handAccessory: "catalog:handAccessory:98141",
+    },
+    [
+      "/assets/thumbnails/ldraw-expanded/head-3626bpr0190.webp",
+      "/assets/thumbnails/ldraw-expanded/headwear-30381.webp",
+      "/assets/thumbnails/ldraw-expanded/torso-973c03h03pr1437.webp",
+      "/assets/thumbnails/ldraw-expanded/legs-19859pat0007.webp",
+      "/assets/thumbnails/ldraw-expanded/handAccessory-98141.webp",
     ],
   ),
 ] as const;
