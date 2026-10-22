@@ -306,8 +306,9 @@ const navigate = async (client: CdpClient, url: string): Promise<void> => {
   await waitFor(client, "document.readyState === 'complete'", `page ${url}`);
 };
 
-const testIndexedDbCommitAndAbort = async (client: CdpClient, origin: string): Promise<void> => {
-  await navigate(client, `${origin}/builder`);
+/** `pageUrl` is the blank storage QA page: the real app would re-save its draft while the test clears it. */
+const testIndexedDbCommitAndAbort = async (client: CdpClient, pageUrl: string): Promise<void> => {
+  await navigate(client, pageUrl);
   const result = await evaluate<{
     loadedName: string | null;
     abortRejected: boolean;
