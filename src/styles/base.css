@@ -2191,7 +2191,7 @@ legend {
   text-align: right;
 }
 
-/* Five worlds: three on the first row, two wider ones below, no orphan. */
+/* Three per row; with exactly five worlds the last two share the second row. */
 .ideas-worlds {
   display: grid;
   grid-template-columns: repeat(6, minmax(0, 1fr));
@@ -2206,7 +2206,8 @@ legend {
   grid-column: span 2;
 }
 
-.ideas-worlds > li:nth-child(n + 4) {
+.ideas-worlds > li:nth-child(4):nth-last-child(2),
+.ideas-worlds > li:nth-child(5):last-child {
   grid-column: span 3;
 }
 
@@ -2235,6 +2236,7 @@ legend {
 .idea-world[data-accent="blue"] { --idea-accent: var(--cat-headwear); }
 .idea-world[data-accent="green"] { --idea-accent: var(--cat-legs); }
 .idea-world[data-accent="purple"] { --idea-accent: var(--cat-accessory); }
+.idea-world[data-accent="teal"] { --idea-accent: var(--accent-teal); }
 
 .idea-world h3 {
   margin: 0;
@@ -2294,6 +2296,7 @@ legend {
 .idea-card[data-accent="blue"] { --idea-accent: var(--cat-headwear); }
 .idea-card[data-accent="green"] { --idea-accent: var(--cat-legs); }
 .idea-card[data-accent="purple"] { --idea-accent: var(--cat-accessory); }
+.idea-card[data-accent="teal"] { --idea-accent: var(--accent-teal); }
 
 .figure-preview-card {
   position: relative;
@@ -3274,7 +3277,8 @@ legend {
   }
 
   .ideas-worlds > li,
-  .ideas-worlds > li:nth-child(n + 4) {
+  .ideas-worlds > li:nth-child(4):nth-last-child(2),
+  .ideas-worlds > li:nth-child(5):last-child {
     grid-column: auto;
   }
 
@@ -3651,7 +3655,8 @@ legend {
   }
 
   .ideas-worlds > li,
-  .ideas-worlds > li:nth-child(n + 4) {
+  .ideas-worlds > li:nth-child(4):nth-last-child(2),
+  .ideas-worlds > li:nth-child(5):last-child {
     grid-column: auto;
   }
 

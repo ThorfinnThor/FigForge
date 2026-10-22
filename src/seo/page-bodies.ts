@@ -13,6 +13,7 @@ export const WORLDS = [
   { id: "space", key: "space" },
   { id: "fire-rescue", key: "fire" },
   { id: "zombies", key: "zombies" },
+  { id: "fantasy", key: "fantasy" },
 ] as const;
 
 export type WorldKey = (typeof WORLDS)[number]["key"];

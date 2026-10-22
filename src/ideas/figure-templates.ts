@@ -1,7 +1,7 @@
 import { createFigureDocument } from "../figure/figure-document.js";
 import type { FigureDocument, FigureDocumentSlot } from "../contracts/figure-document.js";
 
-export type FigureThemeId = "pirates" | "castle" | "space" | "fire-rescue" | "zombies";
+export type FigureThemeId = "pirates" | "castle" | "space" | "fire-rescue" | "zombies" | "fantasy";
 
 export type FigureTemplateId =
   | "pirate-captain"
@@ -18,12 +18,15 @@ export type FigureTemplateId =
   | "rescue-specialist"
   | "zombie-pirate-captain"
   | "zombie-surgeon"
-  | "grim-reaper";
+  | "grim-reaper"
+  | "wizard"
+  | "dwarf-warrior"
+  | "elf-archer";
 
 export type FigureTemplate = {
   id: FigureTemplateId;
   themeId: FigureThemeId;
-  accent: "gold" | "red" | "blue" | "green" | "purple";
+  accent: "gold" | "red" | "blue" | "green" | "purple" | "teal";
   nameKey: string;
   descriptionKey: string;
   document: FigureDocument;
@@ -383,6 +386,72 @@ export const FIGURE_TEMPLATES: readonly FigureTemplate[] = [
       "/assets/thumbnails/ldraw-expanded/torso-973c03h03pr1437.webp",
       "/assets/thumbnails/ldraw-expanded/legs-19859pat0007.webp",
       "/assets/thumbnails/ldraw-expanded/handAccessory-98141.webp",
+    ],
+  ),
+  createTemplate(
+    "wizard",
+    "fantasy",
+    "teal",
+    "Wizard",
+    "ideas.wizard.name",
+    "ideas.wizard.description",
+    {
+      head: "catalog:head:3626bpr0679",
+      headwear: "catalog:headwear:6131pr0004",
+      torsoAssembly: "catalog:torsoAssembly:973c03h03pr2077",
+      legsAssembly: "catalog:legsAssembly:36036",
+      handAccessory: "catalog:handAccessory:95049",
+    },
+    [
+      "/assets/thumbnails/ldraw-expanded/head-3626bpr0679.webp",
+      "/assets/thumbnails/ldraw-expanded/headwear-6131pr0004.webp",
+      "/assets/thumbnails/ldraw-expanded/torso-973c03h03pr2077.webp",
+      "/assets/thumbnails/ldraw-expanded/legs-36036.webp",
+      "/assets/thumbnails/ldraw-expanded/handAccessory-95049.webp",
+    ],
+  ),
+  createTemplate(
+    "dwarf-warrior",
+    "fantasy",
+    "teal",
+    "Dwarf Warrior",
+    "ideas.dwarfWarrior.name",
+    "ideas.dwarfWarrior.description",
+    {
+      head: "catalog:head:3626bpr0251",
+      headwear: "catalog:headwear:53450",
+      torsoAssembly: "catalog:torsoAssembly:973c11h19pr2063",
+      legsAssembly: "catalog:legsAssembly:970c07pr0334",
+      handAccessory: "catalog:handAccessory:75904pr0002",
+    },
+    [
+      "/assets/thumbnails/ldraw-expanded/head-3626bpr0251.webp",
+      "/assets/thumbnails/ldraw-expanded/headwear-53450.webp",
+      "/assets/thumbnails/ldraw-expanded/torso-973c11h19pr2063.webp",
+      "/assets/thumbnails/ldraw-expanded/legs-970c07pr0334.webp",
+      "/assets/thumbnails/ldraw-expanded/handAccessory-75904pr0002.webp",
+    ],
+  ),
+  createTemplate(
+    "elf-archer",
+    "fantasy",
+    "teal",
+    "Elf Archer",
+    "ideas.elfArcher.name",
+    "ideas.elfArcher.description",
+    {
+      head: "catalog:head:3626cpr0677",
+      headwear: "catalog:headwear:19206pr0001",
+      torsoAssembly: "catalog:torsoAssembly:973c20h01pr6141",
+      legsAssembly: "catalog:legsAssembly:970c11",
+      handAccessory: "catalog:handAccessory:4499",
+    },
+    [
+      "/assets/thumbnails/ldraw-expanded/head-3626cpr0677.webp",
+      "/assets/thumbnails/ldraw-expanded/headwear-19206pr0001.webp",
+      "/assets/thumbnails/ldraw-expanded/torso-973c20h01pr6141.webp",
+      "/assets/thumbnails/ldraw-expanded/legs-970c11.webp",
+      "/assets/thumbnails/ldraw-expanded/handAccessory-4499.webp",
     ],
   ),
 ] as const;
