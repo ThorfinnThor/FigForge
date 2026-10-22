@@ -3987,6 +3987,7 @@ legend {
 }
 
 .guide-page__body ul,
+.guide-page__body ol,
 .guide-page__more ul {
   display: grid;
   gap: var(--space-2);

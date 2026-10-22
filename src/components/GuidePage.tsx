@@ -8,7 +8,9 @@ export function GuidePage() {
   const { language, path, t } = useI18n();
   const id: GuideSlugId = guideIdFromPath(window.location.pathname) ?? "order";
   const sections = GUIDE_SECTIONS[id][language];
-  const others = GUIDE_IDS.filter((guide) => guide !== id);
+  // The next three guides in order, wrapping around, so the list stays short as guides are added.
+  const position = GUIDE_IDS.indexOf(id);
+  const others = [1, 2, 3].map((step) => GUIDE_IDS[(position + step) % GUIDE_IDS.length]!);
 
   useEffect(() => {
     const previousTitle = document.title;
@@ -31,7 +33,9 @@ export function GuidePage() {
               <section key={section.heading}>
                 <h2>{section.heading}</h2>
                 {section.paragraphs?.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}
-                {section.items ? <ul>{section.items.map((item) => <li key={item}>{item}</li>)}</ul> : null}
+                {section.items
+                  ? (section.ordered ? <ol>{section.items.map((item) => <li key={item}>{item}</li>)}</ol> : <ul>{section.items.map((item) => <li key={item}>{item}</li>)}</ul>)
+                  : null}
                 {section.closing?.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}
               </section>
             ))}
