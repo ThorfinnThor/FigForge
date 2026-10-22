@@ -306,8 +306,24 @@ const renumber = (sections: readonly PrivacySection[]): PrivacySection[] =>
  * The notice that matches the site: the base text while no cookie-setting service is active, and the
  * text with Google Analytics once the site has a measurement ID. Headings are numbered in order.
  */
-export const privacySections = (language: Language, analytics: boolean): readonly PrivacySection[] => {
-  const base = PRIVACY_SECTIONS[language];
+/** Added to the "external links" section while LEGO partner links are active. */
+const LEGO_AFFILIATE_PARAGRAPH: Record<Language, string> = {
+  de: "Einige Links zu Produkten bei LEGO sind Partnerlinks über das Partnernetzwerk Rakuten Advertising und als Anzeige gekennzeichnet. Welcher Partnerlink erscheint, richtet sich nach der Spracheinstellung deines Browsers; diese Einstellung wird nur auf deinem Gerät gelesen und nicht an uns übertragen. Wenn du einen solchen Link anklickst, erfasst Rakuten Advertising den Klick und, falls du bei LEGO einkaufst, den Kauf. Dafür können Cookies gesetzt werden, und Daten können außerhalb der EU verarbeitet werden. Rakuten Advertising und LEGO verarbeiten die Daten nach ihren eigenen Datenschutzerklärungen. Wenn du über einen Partnerlink einkaufst, erhalten wir eine Vergütung.",
+  en: "Some links to products at LEGO are affiliate links through the Rakuten Advertising partner network and are marked as ads. Which affiliate link appears depends on your browser's language setting; this setting is read only on your device and is not sent to us. If you click such a link, Rakuten Advertising records the click and, if you buy at LEGO, the purchase. Cookies may be set for this, and data may be processed outside the EU. Rakuten Advertising and LEGO process the data under their own privacy notices. If you buy through an affiliate link, we receive a commission.",
+};
+
+export const privacySections = (
+  language: Language,
+  analytics: boolean,
+  legoAffiliate = false,
+): readonly PrivacySection[] => {
+  const withAffiliate = (sections: readonly PrivacySection[]): PrivacySection[] => sections.map((section) => (
+    legoAffiliate && section.id === "external"
+      ? { ...section, paragraphs: [...(section.paragraphs ?? []).flatMap((text, index) => (
+        index === 1 ? [text, LEGO_AFFILIATE_PARAGRAPH[language]] : [text])
+      )] }
+      : section));
+  const base = withAffiliate(PRIVACY_SECTIONS[language]);
   if (!analytics) return renumber(base);
   const extra = PRIVACY_ANALYTICS[language];
   const adapted = base.flatMap((section): PrivacySection[] => {

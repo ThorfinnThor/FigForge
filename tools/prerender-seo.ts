@@ -2,6 +2,7 @@ import { mkdir, readFile, writeFile } from "node:fs/promises";
 import { dirname, resolve } from "node:path";
 import { resolveMeasurementId } from "../src/consent/measurement-id.js";
 import { messages } from "../src/i18n.js";
+import { isLegoAffiliateActive } from "../src/procurement/lego-affiliate.js";
 import { render404Page, renderLlmsTxt, renderRobotsTxt, renderRoutePage, renderSitemapXml } from "../src/seo/render.js";
 import { SEO_LANGUAGES, SEO_ROUTES, routePath } from "../src/seo/routes.js";
 
@@ -17,7 +18,7 @@ for (const language of SEO_LANGUAGES) {
       ? resolve(distDirectory, "index.html")
       : resolve(distDirectory, `.${path}`, "index.html");
     await mkdir(dirname(target), { recursive: true });
-    await writeFile(target, renderRoutePage(template, route, messages[language], language, { analytics }), "utf8");
+    await writeFile(target, renderRoutePage(template, route, messages[language], language, { analytics, legoAffiliate: isLegoAffiliateActive() }), "utf8");
   }
 }
 

@@ -18,6 +18,8 @@ const OG_LOCALE: Record<Language, string> = { de: "de_DE", en: "en_US" };
 export type RenderOptions = {
   /** True when the site has a Google Analytics ID; selects the matching privacy wording. */
   analytics?: boolean;
+  /** True while LEGO partner links are active; adds their paragraph to the privacy text. */
+  legoAffiliate?: boolean;
 };
 
 export function renderRoutePage(
@@ -98,7 +100,7 @@ function renderBody(
     const inline = (text: string): string => splitInline(text).map((part) => part.href === undefined
       ? escapeHtml(part.text)
       : `<a href="${escapeHtml(part.href.startsWith("/") ? localizedPath(part.href, language) : part.href)}">${escapeHtml(part.text)}</a>`).join("");
-    const sections = privacySections(language, options.analytics === true).map((section) => [
+    const sections = privacySections(language, options.analytics === true, options.legoAffiliate === true).map((section) => [
       `<h2>${escapeHtml(section.heading)}</h2>`,
       ...(section.paragraphs ?? []).map((text) => `<p>${inline(text)}</p>`),
       section.items ? `<ul>${section.items.map((item) => `<li>${inline(item)}</li>`).join("")}</ul>` : "",
