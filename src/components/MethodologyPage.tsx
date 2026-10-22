@@ -11,7 +11,7 @@ export function MethodologyPage() {
       <div className="methodology-page">
         <a className="methodology-page__back" href={path("/builder")}>← {t("methodology.back")}</a>
         <section className="workspace-methodology" aria-labelledby="methodology-title">
-          <p className="methodology-page__eyebrow">FigForge</p>
+          <p className="methodology-page__eyebrow">Create Your Minifig</p>
           <h1 id="methodology-title">{t("methodology.title")}</h1>
           <div className="workspace-methodology__body">
             <p>{t("source.note")}</p>

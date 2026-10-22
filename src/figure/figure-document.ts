@@ -12,7 +12,7 @@ const byteLength = (value: string): number => new TextEncoder().encode(value).by
 
 export const createFigureDocument = (
   selections: FigureSelectionMap,
-  name = "Meine FigForge-Figur",
+  name = "Meine Figur",
   updatedAt = new Date().toISOString(),
   colors: FigureColorSelectionMap = {},
 ): FigureDocument => figureDocumentSchema.parse({

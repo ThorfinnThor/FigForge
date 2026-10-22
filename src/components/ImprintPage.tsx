@@ -30,7 +30,7 @@ export function ImprintPage() {
       <AppHeader active="imprint" />
 
       <div className="methodology-page">
-        <a className="methodology-page__back" href={path("/")}>← FigForge</a>
+        <a className="methodology-page__back" href={path("/")}>← Create Your Minifig</a>
         <section className="workspace-methodology" aria-labelledby="imprint-title">
           <p className="methodology-page__eyebrow">{t("imprint.eyebrow")}</p>
           <h1 id="imprint-title">{t("imprint.title")}</h1>

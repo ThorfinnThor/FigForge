@@ -32,7 +32,7 @@ export const PRIVACY_SECTIONS: Record<Language, readonly PrivacySection[]> = {
       id: "summary",
       heading: "2. Das Wichtigste in Kürze",
       paragraphs: [
-        "FigForge kommt ohne Benutzerkonten aus. Es gibt keine Registrierung, keine Cookies, keine Werbe- oder Analysedienste und keine Schriften, Skripte oder Bilder von fremden Servern. Die Figuren, die du zusammenstellst, bleiben in deinem Browser. Personenbezogene Daten fallen nur beim Aufruf der Seite (technische Zugriffsdaten beim Hoster) und, wenn du uns schreibst, durch deine E-Mail an.",
+        "Create Your Minifig kommt ohne Benutzerkonten aus. Es gibt keine Registrierung, keine Cookies, keine Werbe- oder Analysedienste und keine Schriften, Skripte oder Bilder von fremden Servern. Die Figuren, die du zusammenstellst, bleiben in deinem Browser. Personenbezogene Daten fallen nur beim Aufruf der Seite (technische Zugriffsdaten beim Hoster) und, wenn du uns schreibst, durch deine E-Mail an.",
       ],
     },
     {
@@ -51,7 +51,7 @@ export const PRIVACY_SECTIONS: Record<Language, readonly PrivacySection[]> = {
       closing: [
         "Zweck und Rechtsgrundlage: Auslieferung, Stabilität und Sicherheit der Website. Rechtsgrundlage ist Art. 6 Abs. 1 lit. f DSGVO (berechtigtes Interesse an einem sicheren und zuverlässigen Betrieb).",
         "Auftragsverarbeitung: Cloudflare stellt einen Vertrag zur Auftragsverarbeitung nach Art. 28 DSGVO bereit (Data Processing Addendum). Nach Cloudflares Angaben gilt er für Kunden mit einem Self-Serve- oder Enterprise-Vertrag und ist Teil dieses Vertrags. Er enthält Standardvertragsklauseln der EU und nimmt auf das EU-US Data Privacy Framework Bezug.",
-        "Speicherdauer: FigForge selbst speichert diese Zugriffsdaten nicht. Wie lange Cloudflare sie vorhält, steht in der [Datenschutzerklärung von Cloudflare](https://www.cloudflare.com/privacypolicy/).",
+        "Speicherdauer: Create Your Minifig selbst speichert diese Zugriffsdaten nicht. Wie lange Cloudflare sie vorhält, steht in der [Datenschutzerklärung von Cloudflare](https://www.cloudflare.com/privacypolicy/).",
         "Drittlandübermittlung: Cloudflare ist ein US-Unternehmen. Eine Übermittlung personenbezogener Daten in die USA kann nicht ausgeschlossen werden, auch wenn Anfragen über Server in Europa laufen. Sie stützt sich auf den Angemessenheitsbeschluss zum EU-US Data Privacy Framework, an dem Cloudflare nach eigenen Angaben teilnimmt, und zusätzlich auf Standardvertragsklauseln.",
       ],
     },
@@ -59,7 +59,7 @@ export const PRIVACY_SECTIONS: Record<Language, readonly PrivacySection[]> = {
       id: "cookies",
       heading: "4. Cookies und Dienste von Dritten",
       paragraphs: [
-        "FigForge setzt derzeit keine Cookies. Wir verwenden keine Tracking- oder Analysedienste und laden keine Inhalte von fremden Servern nach: Schriften, Bilder, Skripte und das Suchmodell kommen von unserer eigenen Domain. Deshalb gibt es derzeit keinen Cookie-Banner.",
+        "Create Your Minifig setzt derzeit keine Cookies. Wir verwenden keine Tracking- oder Analysedienste und laden keine Inhalte von fremden Servern nach: Schriften, Bilder, Skripte und das Suchmodell kommen von unserer eigenen Domain. Deshalb gibt es derzeit keinen Cookie-Banner.",
         "Sollten wir künftig Dienste einbinden, die Cookies setzen oder Daten an Dritte senden, zum Beispiel von Google, holen wir vorher deine Einwilligung ein und ergänzen diese Erklärung, bevor der Dienst aktiv wird. Ohne deine Einwilligung wird dann nichts geladen.",
       ],
     },
@@ -67,7 +67,7 @@ export const PRIVACY_SECTIONS: Record<Language, readonly PrivacySection[]> = {
       id: "local",
       heading: "5. Speicherung in deinem Browser",
       paragraphs: [
-        "Damit der Builder funktioniert, speichert FigForge Daten ausschließlich lokal in deinem Browser (IndexedDB und Browser-Zwischenspeicher):",
+        "Damit der Builder funktioniert, speichert Create Your Minifig Daten ausschließlich lokal in deinem Browser (IndexedDB und Browser-Zwischenspeicher):",
       ],
       items: [
         "dein aktueller Entwurf, gespeicherte Figuren und die Anordnung auf der Bühne,",
@@ -92,9 +92,9 @@ export const PRIVACY_SECTIONS: Record<Language, readonly PrivacySection[]> = {
       id: "external",
       heading: "7. Externe Links und Partnerlinks",
       paragraphs: [
-        "FigForge verlinkt auf Websites Dritter, zum Beispiel LEGO, Amazon, BrickLink, Rebrickable, Brick Owl und Pick a Brick. Mit dem Klick verlässt du FigForge. Ab dann gelten die Datenschutzbestimmungen des jeweiligen Anbieters; dort können Cookies gesetzt und Daten verarbeitet werden, auf die wir keinen Einfluss haben.",
+        "Create Your Minifig verlinkt auf Websites Dritter, zum Beispiel LEGO, Amazon, BrickLink, Rebrickable, Brick Owl und Pick a Brick. Mit dem Klick verlässt du Create Your Minifig. Ab dann gelten die Datenschutzbestimmungen des jeweiligen Anbieters; dort können Cookies gesetzt und Daten verarbeitet werden, auf die wir keinen Einfluss haben.",
         "Einige Links zu Produkten bei Amazon sind Partnerlinks (Amazon-Partnerprogramm) und als Anzeige gekennzeichnet. Wenn du über so einen Link bei Amazon einkaufst, erhalten wir eine Vergütung. Amazon verarbeitet dabei Daten nach seiner eigenen Datenschutzerklärung. Als Amazon-Partner verdiene ich an qualifizierten Verkäufen.",
-        "FigForge speichert keine Preise oder Verfügbarkeiten; prüfe beides auf der geöffneten Produktseite.",
+        "Create Your Minifig speichert keine Preise oder Verfügbarkeiten; prüfe beides auf der geöffneten Produktseite.",
         "Die Teilelisten, die du herunterlädst oder kopierst, enthalten nur Teilenummern, Farben und Mengen, keine personenbezogenen Daten. Wenn du sie bei einem Dienst hochlädst, gelten dessen Bedingungen.",
       ],
     },
@@ -111,7 +111,7 @@ export const PRIVACY_SECTIONS: Record<Language, readonly PrivacySection[]> = {
         "Widerspruch gegen die Verarbeitung auf Grundlage berechtigter Interessen (Art. 21).",
       ],
       closing: [
-        "Wende dich dafür an contact@createyourminifig.com. Eine erteilte Einwilligung kannst du jederzeit widerrufen; FigForge arbeitet derzeit ohne Einwilligungen.",
+        "Wende dich dafür an contact@createyourminifig.com. Eine erteilte Einwilligung kannst du jederzeit widerrufen; Create Your Minifig arbeitet derzeit ohne Einwilligungen.",
       ],
     },
     {
@@ -148,7 +148,7 @@ export const PRIVACY_SECTIONS: Record<Language, readonly PrivacySection[]> = {
       id: "summary",
       heading: "2. In short",
       paragraphs: [
-        "FigForge works without user accounts. There is no registration, no cookies, no advertising or analytics services and no fonts, scripts or images from third-party servers. The figures you assemble stay in your browser. Personal data arises only when you open the site (technical access data at the host) and when you write to us by e-mail.",
+        "Create Your Minifig works without user accounts. There is no registration, no cookies, no advertising or analytics services and no fonts, scripts or images from third-party servers. The figures you assemble stay in your browser. Personal data arises only when you open the site (technical access data at the host) and when you write to us by e-mail.",
       ],
     },
     {
@@ -167,7 +167,7 @@ export const PRIVACY_SECTIONS: Record<Language, readonly PrivacySection[]> = {
       closing: [
         "Purpose and legal basis: delivery, stability and security of the website. The legal basis is Art. 6(1)(f) GDPR (legitimate interest in secure and reliable operation).",
         "Processing on our behalf: Cloudflare provides a data processing agreement under Art. 28 GDPR (Data Processing Addendum). According to Cloudflare it applies to customers with a Self-Serve or Enterprise agreement and forms part of that agreement. It contains EU Standard Contractual Clauses and refers to the EU-US Data Privacy Framework.",
-        "Retention: FigForge itself does not store this access data. How long Cloudflare keeps it is stated in [Cloudflare's privacy policy](https://www.cloudflare.com/privacypolicy/).",
+        "Retention: Create Your Minifig itself does not store this access data. How long Cloudflare keeps it is stated in [Cloudflare's privacy policy](https://www.cloudflare.com/privacypolicy/).",
         "Transfers to third countries: Cloudflare is a US company. A transfer of personal data to the USA cannot be ruled out, even if requests are served from servers in Europe. It relies on the adequacy decision for the EU-US Data Privacy Framework, in which Cloudflare participates according to its own statements, and additionally on Standard Contractual Clauses.",
       ],
     },
@@ -175,7 +175,7 @@ export const PRIVACY_SECTIONS: Record<Language, readonly PrivacySection[]> = {
       id: "cookies",
       heading: "4. Cookies and third-party services",
       paragraphs: [
-        "FigForge currently sets no cookies. We use no tracking or analytics services and load no content from third-party servers: fonts, images, scripts and the search model come from our own domain. This is why there is currently no cookie banner.",
+        "Create Your Minifig currently sets no cookies. We use no tracking or analytics services and load no content from third-party servers: fonts, images, scripts and the search model come from our own domain. This is why there is currently no cookie banner.",
         "If we add services in the future that set cookies or send data to third parties, for example from Google, we will ask for your consent first and update this notice before the service becomes active. Without your consent, nothing of the kind will be loaded.",
       ],
     },
@@ -183,7 +183,7 @@ export const PRIVACY_SECTIONS: Record<Language, readonly PrivacySection[]> = {
       id: "local",
       heading: "5. Storage in your browser",
       paragraphs: [
-        "For the Builder to work, FigForge stores data exclusively locally in your browser (IndexedDB and browser cache):",
+        "For the Builder to work, Create Your Minifig stores data exclusively locally in your browser (IndexedDB and browser cache):",
       ],
       items: [
         "your current draft, saved figures and the arrangement on the stage,",
@@ -208,9 +208,9 @@ export const PRIVACY_SECTIONS: Record<Language, readonly PrivacySection[]> = {
       id: "external",
       heading: "7. External links and affiliate links",
       paragraphs: [
-        "FigForge links to third-party websites, for example LEGO, Amazon, BrickLink, Rebrickable, Brick Owl and Pick a Brick. By clicking you leave FigForge. From then on the provider's privacy terms apply; cookies may be set there and data processed over which we have no influence.",
+        "Create Your Minifig links to third-party websites, for example LEGO, Amazon, BrickLink, Rebrickable, Brick Owl and Pick a Brick. By clicking you leave Create Your Minifig. From then on the provider's privacy terms apply; cookies may be set there and data processed over which we have no influence.",
         "Some links to products at Amazon are affiliate links (Amazon Associates programme) and are marked as ads. If you buy at Amazon through such a link, we receive a commission. Amazon processes data in line with its own privacy policy. As an Amazon Associate I earn from qualifying purchases.",
-        "FigForge does not store prices or availability; check both on the product page you open.",
+        "Create Your Minifig does not store prices or availability; check both on the product page you open.",
         "The parts lists you download or copy contain only part numbers, colors and quantities, no personal data. If you upload them to a service, that service's terms apply.",
       ],
     },
@@ -227,7 +227,7 @@ export const PRIVACY_SECTIONS: Record<Language, readonly PrivacySection[]> = {
         "object to processing based on legitimate interests (Art. 21).",
       ],
       closing: [
-        "Contact contact@createyourminifig.com for this. You can withdraw any consent at any time; FigForge currently works without consents.",
+        "Contact contact@createyourminifig.com for this. You can withdraw any consent at any time; Create Your Minifig currently works without consents.",
       ],
     },
     {
@@ -260,9 +260,9 @@ const PRIVACY_ANALYTICS: Record<Language, {
   rightsClosing: string;
 }> = {
   de: {
-    summary: "FigForge kommt ohne Benutzerkonten aus. Es gibt keine Registrierung, keine Werbedienste und keine Schriften, Skripte oder Bilder von fremden Servern. Cookies und die Statistik von Google Analytics gibt es nur, wenn du ausdrücklich zustimmst. Die Figuren, die du zusammenstellst, bleiben in deinem Browser. Personenbezogene Daten fallen sonst nur beim Aufruf der Seite (technische Zugriffsdaten beim Hoster) und, wenn du uns schreibst, durch deine E-Mail an.",
+    summary: "Create Your Minifig kommt ohne Benutzerkonten aus. Es gibt keine Registrierung, keine Werbedienste und keine Schriften, Skripte oder Bilder von fremden Servern. Cookies und die Statistik von Google Analytics gibt es nur, wenn du ausdrücklich zustimmst. Die Figuren, die du zusammenstellst, bleiben in deinem Browser. Personenbezogene Daten fallen sonst nur beim Aufruf der Seite (technische Zugriffsdaten beim Hoster) und, wenn du uns schreibst, durch deine E-Mail an.",
     cookies: [
-      "Ohne deine Zustimmung setzt FigForge keine Cookies und lädt nichts von Dritten nach: Schriften, Bilder, Skripte und das Suchmodell kommen von unserer eigenen Domain. Beim ersten Besuch fragt ein Hinweis, ob Google Analytics messen darf. „Erlauben“ und „Ablehnen“ sind gleichwertig; ohne Erlaubnis wird nichts von Google geladen.",
+      "Ohne deine Zustimmung setzt Create Your Minifig keine Cookies und lädt nichts von Dritten nach: Schriften, Bilder, Skripte und das Suchmodell kommen von unserer eigenen Domain. Beim ersten Besuch fragt ein Hinweis, ob Google Analytics messen darf. „Erlauben“ und „Ablehnen“ sind gleichwertig; ohne Erlaubnis wird nichts von Google geladen.",
       "Deine Entscheidung kannst du jederzeit unter „Cookie-Einstellungen“ im Menü „Mehr“ ändern. Bei einem Widerruf stoppt die Messung sofort, und wir entfernen die Cookies von Google Analytics.",
     ],
     section: {
@@ -279,9 +279,9 @@ const PRIVACY_ANALYTICS: Record<Language, {
     rightsClosing: "Wende dich dafür an contact@createyourminifig.com. Eine Einwilligung zu Google Analytics kannst du jederzeit über „Cookie-Einstellungen“ im Menü „Mehr“ widerrufen.",
   },
   en: {
-    summary: "FigForge works without user accounts. There is no registration, no advertising services and no fonts, scripts or images from third-party servers. Cookies and Google Analytics statistics exist only if you explicitly agree. The figures you assemble stay in your browser. Otherwise personal data arises only when you open the site (technical access data at the host) and when you write to us by e-mail.",
+    summary: "Create Your Minifig works without user accounts. There is no registration, no advertising services and no fonts, scripts or images from third-party servers. Cookies and Google Analytics statistics exist only if you explicitly agree. The figures you assemble stay in your browser. Otherwise personal data arises only when you open the site (technical access data at the host) and when you write to us by e-mail.",
     cookies: [
-      "Without your consent FigForge sets no cookies and loads nothing from third parties: fonts, images, scripts and the search model come from our own domain. On your first visit a notice asks whether Google Analytics may measure. “Allow” and “Decline” are equal; without permission nothing is loaded from Google.",
+      "Without your consent Create Your Minifig sets no cookies and loads nothing from third parties: fonts, images, scripts and the search model come from our own domain. On your first visit a notice asks whether Google Analytics may measure. “Allow” and “Decline” are equal; without permission nothing is loaded from Google.",
       "You can change your decision at any time under “Cookie settings” in the “More” menu. If you withdraw, measuring stops immediately and we remove the Google Analytics cookies.",
     ],
     section: {

@@ -309,18 +309,18 @@ legend {
 }
 
 .wordmark {
-  color: var(--signal);
+  color: #fff;
   font-family: var(--font-display);
-  font-size: 2rem;
+  font-size: 1.75rem;
   line-height: 1;
   letter-spacing: 0.01em;
   text-decoration: none;
-  text-shadow: 0 3px 0 var(--signal-shadow);
+  text-shadow: 0 3px 0 #0c1228;
 }
 
 .wordmark span {
-  color: #fff;
-  text-shadow: 0 3px 0 #0c1228;
+  color: var(--signal);
+  text-shadow: 0 3px 0 var(--signal-shadow);
 }
 
 .app-nav {
@@ -3573,7 +3573,7 @@ legend {
   .wordmark {
     grid-column: 1;
     grid-row: 1;
-    font-size: 1.85rem;
+    font-size: 1.4rem;
   }
 
   .app-nav {

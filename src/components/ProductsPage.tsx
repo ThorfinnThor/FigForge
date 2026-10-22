@@ -39,7 +39,7 @@ export function ProductsPage() {
 
       <div className="products-page">
         <section className="products-hero" aria-labelledby="products-title">
-          <p className="ideas-page__eyebrow">FigForge Picks · {t("products.adLabel")}</p>
+          <p className="ideas-page__eyebrow">Create Your Minifig Picks · {t("products.adLabel")}</p>
           <h1 id="products-title">{t("products.title")}</h1>
           <p>{t("products.lede")}</p>
         </section>

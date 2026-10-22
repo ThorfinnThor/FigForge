@@ -28,7 +28,7 @@ export function PrivacyPage() {
       <div className="methodology-page">
         <a className="methodology-page__back" href={path("/sets")}>← {t("privacy.back")}</a>
         <section className="workspace-methodology" aria-labelledby="privacy-title">
-          <p className="methodology-page__eyebrow">FigForge</p>
+          <p className="methodology-page__eyebrow">Create Your Minifig</p>
           <h1 id="privacy-title">{t("privacy.title")}</h1>
           <div className="workspace-methodology__body privacy-sections">
             {privacySections(language, ANALYTICS_ENABLED, isLegoAffiliateActive()).map((section) => (

@@ -41,7 +41,7 @@ export function renderRoutePage(
     `<link rel="canonical" href="${url}" />`,
     ...(route.indexable ? alternateLinks(route) : ['<meta name="robots" content="noindex" />']),
     '<meta property="og:type" content="website" />',
-    '<meta property="og:site_name" content="FigForge" />',
+    '<meta property="og:site_name" content="Create Your Minifig" />',
     `<meta property="og:locale" content="${OG_LOCALE[language]}" />`,
     `<meta property="og:locale:alternate" content="${OG_LOCALE[otherLanguage]}" />`,
     `<meta property="og:title" content="${title}" />`,
@@ -207,12 +207,12 @@ export function renderLlmsTxt(messages: Record<Language, Messages>): string {
   const core = indexable.filter((route) => ["/", "/builder", "/ideas", "/sets", "/methodology"].includes(route.path));
   const guides = indexable.filter((route) => route.page?.kind === "guide" || route.page?.kind === "guides-hub");
   return [
-    "# FigForge",
+    "# Create Your Minifig",
     "",
     `> ${requireMessage(de, "seo.webAppDescription")}`,
     "",
-    "FigForge ist ein unabhängiges Projekt ohne Verbindung zur LEGO Gruppe. Teiledaten stammen aus den Rebrickable Catalog Downloads, 3D-Modelle aus der offiziellen LDraw-Bibliothek. Es gibt keine Konten; Entwürfe bleiben im Browser. FigForge verkauft keine Teile und nennt keine Preise.",
-    "FigForge is an independent project with no connection to the LEGO Group. Part data comes from the Rebrickable catalog downloads, 3D models from the official LDraw library. There are no accounts; drafts stay in the browser. FigForge sells no parts and shows no prices.",
+    "Create Your Minifig ist ein unabhängiges Projekt ohne Verbindung zur LEGO Gruppe. Teiledaten stammen aus den Rebrickable Catalog Downloads, 3D-Modelle aus der offiziellen LDraw-Bibliothek. Es gibt keine Konten; Entwürfe bleiben im Browser. Create Your Minifig verkauft keine Teile und nennt keine Preise.",
+    "Create Your Minifig is an independent project with no connection to the LEGO Group. Part data comes from the Rebrickable catalog downloads, 3D models from the official LDraw library. There are no accounts; drafts stay in the browser. Create Your Minifig sells no parts and shows no prices.",
     "",
     section("Seiten", core, "de"),
     section("Ratgeber", guides, "de"),

@@ -636,7 +636,7 @@ export function CatalogWorkspace() {
   }, [selectedByRole, selectedColorByRole]);
 
   const exportFigure = (): void => {
-    downloadFigureDocument(currentFigureDocument(), "figforge-figur.json");
+    downloadFigureDocument(currentFigureDocument(), "minifig-figur.json");
     setTransferMessageTone("info");
     setTransferMessage(t("figure.transfer.exported"));
   };

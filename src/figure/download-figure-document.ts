@@ -9,7 +9,7 @@ export const figureDocumentFileName = (name: string): string => {
     .replace(/[^a-z0-9]+/gu, "-")
     .replace(/^-+|-+$/gu, "")
     .slice(0, 60);
-  return `figforge-${slug || "figure"}.json`;
+  return `minifig-${slug || "figure"}.json`;
 };
 
 export const downloadFigureDocument = (

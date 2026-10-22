@@ -66,7 +66,7 @@ export function AppHeader({ active, onNavigate, children }: AppHeaderProps) {
 
   return (
     <header className="app-header">
-      <a className="wordmark" href={path("/")} onClick={onNavigate}>Fig<span>Forge</span></a>
+      <a className="wordmark" href={path("/")} onClick={onNavigate}>Create Your <span>Minifig</span></a>
       <nav className="app-nav" aria-label={t("nav.label")}>
         {PRIMARY_ROUTES.map((route) => link(route, "app-nav__link"))}
         <details className="app-more" ref={moreRef}>

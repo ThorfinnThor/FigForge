@@ -79,7 +79,7 @@ export function IdeasPage() {
 
       <div className="ideas-page">
         <section className="ideas-hero" aria-labelledby="ideas-title">
-          <p className="ideas-page__eyebrow">FigForge Ideas</p>
+          <p className="ideas-page__eyebrow">Create Your Minifig Ideas</p>
           <h1 id="ideas-title">{t("ideas.title")}</h1>
           <p>{t("ideas.lede")}</p>
         </section>
