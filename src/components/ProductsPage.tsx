@@ -64,7 +64,7 @@ export function ProductsPage() {
             </div>
             <p>{t("products.sets.lede")}</p>
           </div>
-          <CuratedProductGrid products={sets} />
+          <CuratedProductGrid placement="sets" products={sets} />
         </section> : null}
         {showAccessories ? <section className="products-section" aria-labelledby="products-accessories-title">
           <div className="products-section__heading">
@@ -74,7 +74,7 @@ export function ProductsPage() {
             </div>
             <p>{t("products.accessories.lede")}</p>
           </div>
-          <CuratedProductGrid products={accessories} />
+          <CuratedProductGrid placement="sets" products={accessories} />
         </section> : null}
         <footer className="products-legal">
           <p>{t("landing.legal")}</p>

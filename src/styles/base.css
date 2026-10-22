@@ -3995,6 +3995,12 @@ legend {
   padding-left: 1.25rem;
 }
 
+.guide-page__products {
+  display: grid;
+  gap: var(--space-3);
+  margin-top: var(--space-8);
+}
+
 .guide-page__more {
   display: grid;
   max-width: 68ch;

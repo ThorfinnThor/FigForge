@@ -1,5 +1,6 @@
 import { useI18n } from "../i18n.js";
-import { AMAZON_AFFILIATE_CONFIG } from "../procurement/amazon-config.js";
+import { trackAffiliateClick } from "../consent/track-affiliate.js";
+import { AMAZON_AFFILIATE_CONFIG, amazonTrackingIdFor } from "../procurement/amazon-config.js";
 import { amazonProductLink, amazonSearchLink } from "../procurement/amazon-links.js";
 import { legoProductLink } from "../procurement/lego-affiliate.js";
 import type { CuratedProduct } from "../products/curated-products.js";
@@ -7,9 +8,11 @@ import { useLegoMarket } from "./use-lego-market.js";
 
 type CuratedProductGridProps = {
   products: readonly CuratedProduct[];
+  /** Where the grid sits, for click counts and per-placement tracking IDs. */
+  placement: string;
 };
 
-export function CuratedProductGrid({ products }: CuratedProductGridProps) {
+export function CuratedProductGrid({ products, placement }: CuratedProductGridProps) {
   const { t } = useI18n();
   const legoMarket = useLegoMarket();
   const gridClassName = products.length < 4
@@ -20,13 +23,13 @@ export function CuratedProductGrid({ products }: CuratedProductGridProps) {
     <ul className={gridClassName}>
       {products.map((product) => {
         const amazonLink = product.amazonAsin
-          ? amazonProductLink(product.amazonAsin, AMAZON_AFFILIATE_CONFIG.trackingId)
+          ? amazonProductLink(product.amazonAsin, amazonTrackingIdFor(placement))
           : amazonSearchLink(
               product.amazonQuery,
-              AMAZON_AFFILIATE_CONFIG.trackingId,
+              amazonTrackingIdFor(placement),
               AMAZON_AFFILIATE_CONFIG.searchUrl,
             );
-        const legoLink = product.officialUrl ? legoProductLink(product.officialUrl, legoMarket) : null;
+        const legoLink = product.officialUrl ? legoProductLink(product.officialUrl, legoMarket, undefined, placement) : null;
         return (
           <li className="curated-product" data-accent={product.accent} key={product.id}>
             <div className="curated-product__visual">
@@ -52,6 +55,7 @@ export function CuratedProductGrid({ products }: CuratedProductGridProps) {
                 <a
                   className="ff-button ff-button--primary"
                   href={amazonLink.href}
+                  onClick={() => trackAffiliateClick({ partner: "amazon", placement, item: product.id, affiliate: amazonLink.affiliate })}
                   rel="sponsored noopener noreferrer"
                   target="_blank"
                 >
@@ -61,6 +65,7 @@ export function CuratedProductGrid({ products }: CuratedProductGridProps) {
                   <a
                     className="ff-button ff-button--ghost"
                     href={legoLink.href}
+                    onClick={() => trackAffiliateClick({ partner: "lego", placement, item: product.id, affiliate: legoLink.affiliate })}
                     rel={legoLink.affiliate ? "sponsored noopener noreferrer" : "noopener noreferrer"}
                     target="_blank"
                   >

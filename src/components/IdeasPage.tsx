@@ -187,7 +187,7 @@ export function IdeasPage() {
               </a>
             </div>
           </div>
-          <CuratedProductGrid products={matchingProducts} />
+          <CuratedProductGrid placement={selectedTheme ? `ideas-${selectedTheme}` : "ideas"} products={matchingProducts} />
         </section>
       </div>
     </div>

@@ -3,6 +3,11 @@ export interface AmazonAffiliateConfig {
   marketplace: "amazon.de";
   searchUrl: "https://www.amazon.de/s";
   trackingId: string;
+  /**
+   * Optional own tracking ID per placement ("sets", "builder", "guide-gift", …), created in the
+   * Associates account, so its reports show which placement earned. Missing ones use `trackingId`.
+   */
+  placementTrackingIds: Readonly<Record<string, string>>;
   oneLink: {
     enabled: boolean;
     sourceStoreId: string;
@@ -26,6 +31,7 @@ export const AMAZON_AFFILIATE_CONFIG: AmazonAffiliateConfig = {
   marketplace: "amazon.de",
   searchUrl: "https://www.amazon.de/s",
   trackingId: "figforge-21",
+  placementTrackingIds: {},
   oneLink: {
     enabled: true,
     sourceStoreId: "seitenhafen36-21",
@@ -57,3 +63,12 @@ export function validateAmazonAffiliateConfig(config: AmazonAffiliateConfig): vo
     throw new Error("Invalid Amazon OneLink configuration record");
   }
 }
+
+/** The tracking ID for a placement: its own one when the account has it, otherwise the main one. */
+export const amazonTrackingIdFor = (
+  placement: string,
+  config: Pick<AmazonAffiliateConfig, "trackingId" | "placementTrackingIds"> = AMAZON_AFFILIATE_CONFIG,
+): string => {
+  const own = config.placementTrackingIds[placement];
+  return own && /^[a-z0-9-]+-21$/iu.test(own) ? own : config.trackingId;
+};
