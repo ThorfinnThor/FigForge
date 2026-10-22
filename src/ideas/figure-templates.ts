@@ -1,7 +1,7 @@
 import { createFigureDocument } from "../figure/figure-document.js";
 import type { FigureDocument, FigureDocumentSlot } from "../contracts/figure-document.js";
 
-export type FigureThemeId = "pirates" | "castle" | "space" | "fire-rescue" | "zombies" | "fantasy" | "vikings" | "egypt";
+export type FigureThemeId = "pirates" | "castle" | "space" | "fire-rescue" | "zombies" | "fantasy" | "vikings" | "egypt" | "monsters";
 
 export type FigureTemplateId =
   | "pirate-captain"
@@ -27,12 +27,15 @@ export type FigureTemplateId =
   | "berserker"
   | "pharaoh"
   | "mummy-warrior"
-  | "temple-guard";
+  | "temple-guard"
+  | "witch"
+  | "vampire"
+  | "werewolf";
 
 export type FigureTemplate = {
   id: FigureTemplateId;
   themeId: FigureThemeId;
-  accent: "gold" | "red" | "blue" | "green" | "purple" | "teal" | "orange" | "sand";
+  accent: "gold" | "red" | "blue" | "green" | "purple" | "teal" | "orange" | "sand" | "pink";
   nameKey: string;
   descriptionKey: string;
   document: FigureDocument;
@@ -590,6 +593,72 @@ export const FIGURE_TEMPLATES: readonly FigureTemplate[] = [
       "/assets/thumbnails/ldraw-expanded/torso-973c03h03pr1727.webp",
       "/assets/thumbnails/ldraw-expanded/legs-970c11.webp",
       "/assets/thumbnails/ldraw-expanded/handAccessory-37341a.webp",
+    ],
+  ),
+  createTemplate(
+    "witch",
+    "monsters",
+    "pink",
+    "Witch",
+    "ideas.witch.name",
+    "ideas.witch.description",
+    {
+      head: "catalog:head:3626cpr1774",
+      headwear: "catalog:headwear:20606pr0007",
+      torsoAssembly: "catalog:torsoAssembly:973c03h02pr4191",
+      legsAssembly: "catalog:legsAssembly:970c03pr0928",
+      handAccessory: "catalog:handAccessory:4332",
+    },
+    [
+      "/assets/thumbnails/ldraw-expanded/head-3626cpr1774.webp",
+      "/assets/thumbnails/ldraw-expanded/headwear-20606pr0007.webp",
+      "/assets/thumbnails/ldraw-expanded/torso-973c03h02pr4191.webp",
+      "/assets/thumbnails/ldraw-expanded/legs-970c03pr0928.webp",
+      "/assets/thumbnails/ldraw-expanded/handAccessory-4332.webp",
+    ],
+  ),
+  createTemplate(
+    "vampire",
+    "monsters",
+    "pink",
+    "Vampire",
+    "ideas.vampire.name",
+    "ideas.vampire.description",
+    {
+      head: "catalog:head:3626bpr0687",
+      headwear: "catalog:headwear:42444",
+      torsoAssembly: "catalog:torsoAssembly:973c03h27pr1649",
+      legsAssembly: "catalog:legsAssembly:36036",
+      handAccessory: "catalog:handAccessory:37762",
+    },
+    [
+      "/assets/thumbnails/ldraw-expanded/head-3626bpr0687.webp",
+      "/assets/thumbnails/ldraw-expanded/headwear-42444.webp",
+      "/assets/thumbnails/ldraw-expanded/torso-973c03h27pr1649.webp",
+      "/assets/thumbnails/ldraw-expanded/legs-36036.webp",
+      "/assets/thumbnails/ldraw-expanded/handAccessory-37762.webp",
+    ],
+  ),
+  createTemplate(
+    "werewolf",
+    "monsters",
+    "pink",
+    "Werewolf",
+    "ideas.werewolf.name",
+    "ideas.werewolf.description",
+    {
+      head: "catalog:head:3626bpr0001",
+      headwear: "catalog:headwear:11233pr0002",
+      torsoAssembly: "catalog:torsoAssembly:973c19h19pr4491",
+      legsAssembly: "catalog:legsAssembly:970c19pr2231",
+      handAccessory: "catalog:handAccessory:98372pr0002",
+    },
+    [
+      "/assets/thumbnails/ldraw-expanded/head-3626bpr0001.webp",
+      "/assets/thumbnails/ldraw-expanded/headwear-11233pr0002.webp",
+      "/assets/thumbnails/ldraw-expanded/torso-973c19h19pr4491.webp",
+      "/assets/thumbnails/ldraw-expanded/legs-970c19pr2231.webp",
+      "/assets/thumbnails/ldraw-expanded/handAccessory-98372pr0002.webp",
     ],
   ),
 ] as const;

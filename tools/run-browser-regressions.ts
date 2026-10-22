@@ -680,7 +680,7 @@ const testLandingPage = async (client: CdpClient, origin: string): Promise<void>
     worldLinks: document.querySelectorAll('.ideas-worlds a[href^="/ideas/"]').length,
     builderPresent: Boolean(document.querySelector('#catalog-heading')),
   }))()`);
-  assert.deepEqual(landing, { startHref: "/builder", worldLinks: 8, builderPresent: false });
+  assert.deepEqual(landing, { startHref: "/builder", worldLinks: 9, builderPresent: false });
 
   await navigate(client, `${origin}/builder`);
   await waitFor(client, "Boolean(document.querySelector('#catalog-heading'))", "builder at /builder");

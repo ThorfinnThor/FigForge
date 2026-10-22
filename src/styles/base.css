@@ -2248,6 +2248,7 @@ legend {
 .idea-world[data-accent="teal"] { --idea-accent: var(--accent-teal); }
 .idea-world[data-accent="orange"] { --idea-accent: var(--accent-orange); }
 .idea-world[data-accent="sand"] { --idea-accent: var(--accent-sand); }
+.idea-world[data-accent="pink"] { --idea-accent: var(--accent-pink); }
 
 .idea-world h3 {
   margin: 0;
@@ -2310,6 +2311,7 @@ legend {
 .idea-card[data-accent="teal"] { --idea-accent: var(--accent-teal); }
 .idea-card[data-accent="orange"] { --idea-accent: var(--accent-orange); }
 .idea-card[data-accent="sand"] { --idea-accent: var(--accent-sand); }
+.idea-card[data-accent="pink"] { --idea-accent: var(--accent-pink); }
 
 .figure-preview-card {
   position: relative;
