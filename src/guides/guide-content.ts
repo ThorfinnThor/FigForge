@@ -14,6 +14,13 @@ export type GuideSection = {
 /** Titles, descriptions and the lede live in the i18n messages (`guide.<id>.*`); this is the body. */
 export const GUIDE_IDS = Object.keys(GUIDE_SLUGS) as readonly GuideId[];
 
+/** ISO dates for the article structured data; update `modified` whenever the text changes. */
+export const GUIDE_DATES: Record<GuideId, { published: string; modified: string }> = {
+  order: { published: "2026-10-20", modified: "2026-10-20" },
+  "part-numbers": { published: "2026-10-20", modified: "2026-10-20" },
+  gift: { published: "2026-10-20", modified: "2026-10-20" },
+};
+
 export const GUIDE_SECTIONS: Record<GuideId, Record<Language, readonly GuideSection[]>> = {
   order: {
     de: [

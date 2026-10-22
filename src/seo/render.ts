@@ -4,8 +4,9 @@ import { splitInline } from "../privacy/inline.js";
 import { privacySections } from "../privacy/privacy-content.js";
 import type { Language } from "../i18n.js";
 import { escapeHtml, requireMessage, type Messages } from "./html.js";
-import { ideasBody, landingBody, methodologyBody, setsBody, worldBody } from "./page-bodies.js";
-import { SEO_LANGUAGES, SEO_ROUTES, SITE_ORIGIN, canonicalUrl, routePath, type SeoRoute } from "./routes.js";
+import { jsonLdFor, jsonLdScript } from "./json-ld.js";
+import { builderBody, ideasBody, landingBody, methodologyBody, setsBody, worldBody } from "./page-bodies.js";
+import { SEO_LANGUAGES, SEO_ROUTES, SITE_ORIGIN, canonicalUrl, ogImageUrl, routePath, type SeoRoute } from "./routes.js";
 
 /**
  * Fills the built index.html template with route-specific head tags and a
@@ -44,6 +45,15 @@ export function renderRoutePage(
     `<meta property="og:title" content="${title}" />`,
     `<meta property="og:description" content="${description}" />`,
     `<meta property="og:url" content="${url}" />`,
+    `<meta property="og:image" content="${escapeHtml(ogImageUrl(language))}" />`,
+    '<meta property="og:image:width" content="1200" />',
+    '<meta property="og:image:height" content="630" />',
+    `<meta property="og:image:alt" content="${escapeHtml(requireMessage(messages, "seo.ogImageAlt"))}" />`,
+    '<meta name="twitter:card" content="summary_large_image" />',
+    `<meta name="twitter:title" content="${title}" />`,
+    `<meta name="twitter:description" content="${description}" />`,
+    `<meta name="twitter:image" content="${escapeHtml(ogImageUrl(language))}" />`,
+    ...(route.indexable ? [jsonLdScript(jsonLdFor(route, messages, language))] : []),
   ].map((tag) => `    ${tag}`).join("\n");
 
   const withLang = replaceOnce(template, /<html lang="[a-z]+">/u, `<html lang="${language}">`);
@@ -111,6 +121,7 @@ function renderBody(
     return `<main>${intro}<ul>${links}</ul></main>`;
   }
   const context = { messages, language };
+  if (page?.kind === "builder") return `<main>${intro}${builderBody(context)}</main>`;
   if (page?.kind === "landing") return `<main>${intro}${landingBody(context)}</main>`;
   if (page?.kind === "ideas") return `<main>${intro}${ideasBody(context)}</main>`;
   if (page?.kind === "world") return `<main>${intro}${worldBody(context, page.id, page.key)}</main>`;
@@ -148,4 +159,58 @@ export function renderSitemapXml(): string {
     }))
     .join("\n");
   return `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">\n${entries}\n</urlset>\n`;
+}
+
+/**
+ * The page Cloudflare serves with status 404 for unknown addresses ("404-page" in wrangler.jsonc).
+ * It must not start the app, which would treat any unknown path as the builder, so the module
+ * script is removed.
+ */
+export function render404Page(template: string, messages: Messages, language: Language): string {
+  const title = escapeHtml(requireMessage(messages, "notFound.metaTitle"));
+  const description = escapeHtml(requireMessage(messages, "notFound.metaDescription"));
+  const link = (path: string, key: string, classes: string): string =>
+    `<a class="${classes}" href="${escapeHtml(localizedPath(path, language))}">${escapeHtml(requireMessage(messages, key))}</a>`;
+  const body = `<div class="app-shell ideas-shell"><main class="ideas-page"><section class="ideas-hero">`
+    + `<h1>${escapeHtml(requireMessage(messages, "notFound.title"))}</h1>`
+    + `<p>${escapeHtml(requireMessage(messages, "notFound.body"))}</p>`
+    + `<div class="landing-page__actions">${link("/", "notFound.home", "ff-button ff-button--primary ff-button--lg")} `
+    + `${link("/builder", "notFound.builder", "ff-button ff-button--ghost ff-button--lg landing-page__ghost")}</div>`
+    + `</section></main></div>`;
+  const withLang = replaceOnce(template, /<html lang="[a-z]+">/u, `<html lang="${language}">`);
+  const withTitle = replaceOnce(withLang, /<title>[^<]*<\/title>/u, `<title>${title}</title>`);
+  const withDescription = replaceOnce(
+    withTitle,
+    /<meta name="description" content="[^"]*" \/>/u,
+    `<meta name="description" content="${description}" />`,
+  );
+  const withoutApp = replaceOnce(withDescription, /\s*<script type="module"[^>]*><\/script>/u, "");
+  const withRobots = replaceOnce(withoutApp, /<\/head>/u, '    <meta name="robots" content="noindex" />\n  </head>');
+  return replaceOnce(withRobots, /<div id="root"><\/div>/u, `<div id="root">${body}</div>`);
+}
+
+/** llms.txt: a short, plain description of the site for AI crawlers and assistants. */
+export function renderLlmsTxt(messages: Record<Language, Messages>): string {
+  const de = messages.de;
+  const entry = (route: SeoRoute, language: Language): string => {
+    const m = messages[language];
+    return `- [${requireMessage(m, route.headingKey)}](${canonicalUrl(routePath(route, language))}): ${requireMessage(m, route.descriptionKey)}`;
+  };
+  const indexable = SEO_ROUTES.filter((route) => route.indexable);
+  const section = (title: string, routes: readonly SeoRoute[], language: Language): string =>
+    `## ${title}\n\n${routes.map((route) => entry(route, language)).join("\n")}\n`;
+  const core = indexable.filter((route) => ["/", "/builder", "/ideas", "/sets", "/methodology"].includes(route.path));
+  const guides = indexable.filter((route) => route.page?.kind === "guide" || route.page?.kind === "guides-hub");
+  return [
+    "# FigForge",
+    "",
+    `> ${requireMessage(de, "seo.webAppDescription")}`,
+    "",
+    "FigForge ist ein unabhängiges Projekt ohne Verbindung zur LEGO Gruppe. Teiledaten stammen aus den Rebrickable Catalog Downloads, 3D-Modelle aus der offiziellen LDraw-Bibliothek. Es gibt keine Konten; Entwürfe bleiben im Browser. FigForge verkauft keine Teile und nennt keine Preise.",
+    "FigForge is an independent project with no connection to the LEGO Group. Part data comes from the Rebrickable catalog downloads, 3D models from the official LDraw library. There are no accounts; drafts stay in the browser. FigForge sells no parts and shows no prices.",
+    "",
+    section("Seiten", core, "de"),
+    section("Ratgeber", guides, "de"),
+    section("English", [...core, ...guides], "en"),
+  ].join("\n");
 }

@@ -3,7 +3,7 @@ import { messages } from "../../src/i18n.js";
 import { FIGURE_TEMPLATES } from "../../src/ideas/figure-templates.js";
 import { partNumbers } from "../../src/ideas/part-numbers.js";
 import { CURATED_PRODUCTS, productsForTheme } from "../../src/products/curated-products.js";
-import { renderRobotsTxt, renderRoutePage, renderSitemapXml } from "../../src/seo/render.js";
+import { render404Page, renderLlmsTxt, renderRobotsTxt, renderRoutePage, renderSitemapXml } from "../../src/seo/render.js";
 import { SEO_ROUTES, canonicalUrl } from "../../src/seo/routes.js";
 
 const TEMPLATE = [
@@ -53,9 +53,9 @@ describe("SEO prerendering", () => {
   });
 
   it("escapes copy and points robots.txt at the sitemap", () => {
-    // The builder has no extra body text, so only the head and heading copy are under test here.
-    const route = { ...SEO_ROUTES.find((entry) => entry.path === "/builder")!, headingKey: "x.h", titleKey: "x.t", descriptionKey: "x.d", ledeKey: "x.l" };
-    const html = renderRoutePage(TEMPLATE, route, { "x.h": "A <b>", "x.t": 'Q "T"', "x.d": "a & b", "x.l": "l" });
+    // The collection page has no extra body text, so only the head and heading copy are under test here.
+    const route = { ...SEO_ROUTES.find((entry) => entry.path === "/collection")!, headingKey: "x.h", titleKey: "x.t", descriptionKey: "x.d", ledeKey: "x.l" };
+    const html = renderRoutePage(TEMPLATE, route, { "x.h": "A <b>", "x.t": 'Q "T"', "x.d": "a & b", "x.l": "l", "seo.ogImageAlt": "alt" });
     expect(html).toContain("<h1>A &lt;b&gt;</h1>");
     expect(html).toContain("<title>Q &quot;T&quot;</title>");
     expect(html).toContain('content="a &amp; b"');
@@ -208,5 +208,112 @@ describe("full text of content pages", () => {
       }
       expect(html).toContain('href="/licenses/LDraw-CAreadme.txt"');
     }
+  });
+});
+
+describe("sharing tags and structured data", () => {
+  const route = (path: string) => SEO_ROUTES.find((entry) => entry.path === path)!;
+  const graphOf = (html: string): Array<Record<string, unknown>> => {
+    const raw = /<script type="application\/ld\+json">(.*?)<\/script>/su.exec(html)?.[1];
+    expect(raw, "ld+json script").toBeTruthy();
+    const parsed = JSON.parse(raw!) as { "@context": string; "@graph": Array<Record<string, unknown>> };
+    expect(parsed["@context"]).toBe("https://schema.org");
+    return parsed["@graph"];
+  };
+
+  it("gives every page an Open Graph image and Twitter card in its own language", () => {
+    const de = renderRoutePage(TEMPLATE, route("/ideas"), messages.de, "de");
+    const en = renderRoutePage(TEMPLATE, route("/ideas"), messages.en, "en");
+    expect(de).toContain('<meta property="og:image" content="https://createyourminifig.com/og-image.png" />');
+    expect(en).toContain('<meta property="og:image" content="https://createyourminifig.com/og-image-en.png" />');
+    for (const html of [de, en]) {
+      expect(html).toContain('<meta name="twitter:card" content="summary_large_image" />');
+      expect(html).toContain('<meta property="og:image:width" content="1200" />');
+      expect(html).toMatch(/<meta property="og:image:alt" content="[^"]{20,}" \/>/u);
+    }
+  });
+
+  it("ships the two social images as 1200 x 630 PNG files", async () => {
+    const { readFile } = await import("node:fs/promises");
+    for (const name of ["og-image.png", "og-image-en.png"]) {
+      const bytes = await readFile(new URL(`../../public/${name}`, import.meta.url));
+      expect(bytes.subarray(1, 4).toString("ascii")).toBe("PNG");
+      expect(bytes.readUInt32BE(16)).toBe(1200);
+      expect(bytes.readUInt32BE(20)).toBe(630);
+    }
+  });
+
+  it("describes the site and organization on the home page", () => {
+    const graph = graphOf(renderRoutePage(TEMPLATE, route("/"), messages.de, "de"));
+    const types = graph.map((node) => node["@type"]);
+    expect(types).toEqual(["WebSite", "Organization"]);
+    expect(graph[0]).toMatchObject({ name: "FigForge", inLanguage: "de", url: "https://createyourminifig.com/" });
+  });
+
+  it("describes the builder as a free web application with a breadcrumb", () => {
+    const graph = graphOf(renderRoutePage(TEMPLATE, route("/builder"), messages.en, "en"));
+    const app = graph.find((node) => node["@type"] === "WebApplication");
+    expect(app).toMatchObject({ isAccessibleForFree: true, inLanguage: "en", url: "https://createyourminifig.com/en/builder" });
+    const crumbs = graph.find((node) => node["@type"] === "BreadcrumbList") as { itemListElement: Array<{ position: number; item: string }> };
+    expect(crumbs.itemListElement.map((entry) => entry.item)).toEqual([
+      "https://createyourminifig.com/en/",
+      "https://createyourminifig.com/en/builder",
+    ]);
+  });
+
+  it("marks guides as articles with dates and a three-step breadcrumb", () => {
+    const graph = graphOf(renderRoutePage(TEMPLATE, route("/ratgeber/minifiguren-teile-bestellen"), messages.de, "de"));
+    const article = graph.find((node) => node["@type"] === "Article");
+    expect(article).toMatchObject({
+      inLanguage: "de",
+      mainEntityOfPage: "https://createyourminifig.com/ratgeber/minifiguren-teile-bestellen",
+    });
+    for (const field of ["datePublished", "dateModified"]) {
+      expect(String(article![field])).toMatch(/^\d{4}-\d{2}-\d{2}$/u);
+    }
+    expect(String(article!.headline)).not.toContain("| FigForge");
+    const crumbs = graph.find((node) => node["@type"] === "BreadcrumbList") as { itemListElement: unknown[] };
+    expect(crumbs.itemListElement).toHaveLength(3);
+  });
+
+  it("keeps structured data off noindex pages and cannot be broken out of the script element", () => {
+    expect(renderRoutePage(TEMPLATE, route("/collection"), messages.de, "de")).not.toContain("ld+json");
+    const hostile = { ...route("/builder"), titleKey: "x.t", descriptionKey: "x.d", headingKey: "x.h", ledeKey: "x.l" };
+    const html = renderRoutePage(TEMPLATE, hostile, { ...messages.de, "x.h": "</script><b>", "x.t": "t", "x.d": "d", "x.l": "l" });
+    expect(html.match(/<\/script>/gu)).toHaveLength(1);
+    expect(graphOf(html).some((node) => JSON.stringify(node).includes("</script>"))).toBe(true);
+  });
+});
+
+describe("404 pages and llms.txt", () => {
+  it("renders a 404 page that does not start the app", () => {
+    const withApp = TEMPLATE.replace("</head>", '<script type="module" crossorigin src="/assets/index-x.js"></script></head>');
+    const de = render404Page(withApp, messages.de, "de");
+    const en = render404Page(withApp, messages.en, "en");
+    for (const html of [de, en]) {
+      expect(html).not.toContain('type="module"');
+      expect(html).toContain('<meta name="robots" content="noindex" />');
+    }
+    expect(de).toContain("Diese Seite gibt es nicht.");
+    expect(de).toContain('href="/builder"');
+    expect(en).toContain('<html lang="en">');
+    expect(en).toContain('href="/en/builder"');
+  });
+
+  it("lets Cloudflare answer unknown addresses with the 404 page instead of the app", async () => {
+    const { readFile } = await import("node:fs/promises");
+    const config = await readFile(new URL("../../wrangler.jsonc", import.meta.url), "utf8");
+    expect(config).toContain('"not_found_handling": "404-page"');
+    expect(config).not.toContain("single-page-application");
+  });
+
+  it("describes the site in llms.txt and lists the pages and guides in both languages", () => {
+    const text = renderLlmsTxt(messages);
+    expect(text.startsWith("# FigForge\n")).toBe(true);
+    expect(text).toContain("https://createyourminifig.com/builder");
+    expect(text).toContain("https://createyourminifig.com/en/guides/order-minifigure-parts");
+    expect(text).toContain("ohne Verbindung zur LEGO Gruppe");
+    expect(text).toContain("no connection to the LEGO Group");
+    expect(text).not.toContain("/collection");
   });
 });

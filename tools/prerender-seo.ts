@@ -2,7 +2,7 @@ import { mkdir, readFile, writeFile } from "node:fs/promises";
 import { dirname, resolve } from "node:path";
 import { resolveMeasurementId } from "../src/consent/measurement-id.js";
 import { messages } from "../src/i18n.js";
-import { renderRobotsTxt, renderRoutePage, renderSitemapXml } from "../src/seo/render.js";
+import { render404Page, renderLlmsTxt, renderRobotsTxt, renderRoutePage, renderSitemapXml } from "../src/seo/render.js";
 import { SEO_LANGUAGES, SEO_ROUTES, routePath } from "../src/seo/routes.js";
 
 const distDirectory = resolve(process.cwd(), "dist");
@@ -21,6 +21,11 @@ for (const language of SEO_LANGUAGES) {
   }
 }
 
+// Cloudflare serves the nearest 404.html for unknown addresses: /en/ gets the English one.
+await writeFile(resolve(distDirectory, "404.html"), render404Page(template, messages.de, "de"), "utf8");
+await mkdir(resolve(distDirectory, "en"), { recursive: true });
+await writeFile(resolve(distDirectory, "en", "404.html"), render404Page(template, messages.en, "en"), "utf8");
+await writeFile(resolve(distDirectory, "llms.txt"), renderLlmsTxt(messages), "utf8");
 await writeFile(resolve(distDirectory, "robots.txt"), renderRobotsTxt(), "utf8");
 await writeFile(resolve(distDirectory, "sitemap.xml"), renderSitemapXml(), "utf8");
-console.log(`Prerendered ${SEO_ROUTES.length * SEO_LANGUAGES.length} pages, robots.txt and sitemap.xml.`);
+console.log(`Prerendered ${SEO_ROUTES.length * SEO_LANGUAGES.length} pages, two 404 pages, llms.txt, robots.txt and sitemap.xml.`);

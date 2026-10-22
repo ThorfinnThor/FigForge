@@ -6,7 +6,7 @@
   "previews": {},
   "assets": {
     "directory": "./dist",
-    "not_found_handling": "single-page-application",
+    "not_found_handling": "404-page",
     "run_worker_first": false
   }
 }
