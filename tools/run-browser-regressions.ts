@@ -725,7 +725,7 @@ const testGuides = async (client: CdpClient, origin: string): Promise<void> => {
   }))()`);
   assert.equal(german.heading, "Minifiguren-Teile bestellen: BrickLink, Pick a Brick und Rebrickable");
   assert.ok(german.sections >= 5, "guide shows its sections");
-  assert.equal(german.related, 2);
+  assert.equal(german.related, 3);
 
   await navigate(client, `${origin}/en/guides/minifigure-gift`);
   await waitFor(client, "Boolean(document.querySelector('.guide-page h1'))", "English guide");
@@ -738,7 +738,7 @@ const testGuides = async (client: CdpClient, origin: string): Promise<void> => {
   await waitFor(client, "location.pathname === '/ratgeber/minifigur-verschenken' && document.querySelector('.guide-page h1')?.textContent?.startsWith('Eine Minifigur verschenken')", "German guide after the picker");
 
   await navigate(client, `${origin}/en/guides`);
-  await waitFor(client, "document.querySelectorAll('.guides-list li').length === 3", "English guides hub");
+  await waitFor(client, "document.querySelectorAll('.guides-list li').length === 8", "English guides hub");
 };
 
 const testImprint = async (client: CdpClient, origin: string): Promise<void> => {

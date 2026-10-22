@@ -11,6 +11,11 @@ export const GUIDE_SLUGS = {
   order: { de: "minifiguren-teile-bestellen", en: "order-minifigure-parts" },
   "part-numbers": { de: "teilenummern-verstehen", en: "understand-part-numbers" },
   gift: { de: "minifigur-verschenken", en: "minifigure-gift" },
+  anatomy: { de: "aufbau-einer-minifigur", en: "minifigure-anatomy" },
+  bricklink: { de: "bricklink-wanted-list-minifigur", en: "bricklink-wanted-list-minifigure" },
+  "pick-a-brick": { de: "pick-a-brick-minifiguren-teile", en: "pick-a-brick-minifigure-parts" },
+  profession: { de: "minifigur-beruf-hobby", en: "minifigure-profession-hobby" },
+  colors: { de: "farbnamen-und-farbnummern", en: "color-names-and-ids" },
 } as const;
 
 export type GuideSlugId = keyof typeof GUIDE_SLUGS;

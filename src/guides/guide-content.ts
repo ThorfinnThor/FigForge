@@ -7,6 +7,8 @@ export type GuideSection = {
   heading: string;
   paragraphs?: readonly string[];
   items?: readonly string[];
+  /** Render the items as a numbered list (steps) instead of bullets. */
+  ordered?: boolean;
   /** Paragraphs shown after the list. */
   closing?: readonly string[];
 };
@@ -19,6 +21,11 @@ export const GUIDE_DATES: Record<GuideId, { published: string; modified: string 
   order: { published: "2026-10-20", modified: "2026-10-20" },
   "part-numbers": { published: "2026-10-20", modified: "2026-10-20" },
   gift: { published: "2026-10-20", modified: "2026-10-20" },
+  anatomy: { published: "2026-10-22", modified: "2026-10-22" },
+  bricklink: { published: "2026-10-22", modified: "2026-10-22" },
+  "pick-a-brick": { published: "2026-10-22", modified: "2026-10-22" },
+  profession: { published: "2026-10-22", modified: "2026-10-22" },
+  colors: { published: "2026-10-22", modified: "2026-10-22" },
 };
 
 export const GUIDE_SECTIONS: Record<GuideId, Record<Language, readonly GuideSection[]>> = {
@@ -317,6 +324,542 @@ export const GUIDE_SECTIONS: Record<GuideId, Record<Language, readonly GuideSect
       {
         heading: "Safety",
         paragraphs: ["Minifigures and their parts are small parts. They are not suitable for children under three years."],
+      },
+    ],
+  },
+  anatomy: {
+    de: [
+      {
+        heading: "Fünf Plätze für fünf Teile",
+        paragraphs: [
+          "In FigForge hat jede Figur fünf Plätze: Kopf, Kopfbedeckung, Oberkörper, Beine und Handzubehör. Du tauschst jeden Platz einzeln aus, die anderen bleiben unverändert.",
+        ],
+        items: [
+          "Kopf: Er sitzt oben auf dem Oberkörper. Sehr viele Köpfe tragen einen Aufdruck, etwa ein Gesicht, einen Bart oder eine Augenklappe.",
+          "Kopfbedeckung: Hut, Helm, Mütze oder Haare. Sie wird auf den Kopf gesteckt und ist ein eigenes Teil. Manche Figuren haben keine.",
+          "Oberkörper: der Torso mit Aufdruck. Im Katalog steht er meist samt Armen und Händen als eine Baugruppe.",
+          "Beine: Hüfte und Beine in einem Eintrag, oft mit Aufdruck.",
+          "Handzubehör: das, was die Figur in der Hand hält, zum Beispiel ein Säbel, ein Fernrohr oder ein Werkzeug.",
+        ],
+      },
+      {
+        heading: "Ein Beispiel: der Piratenkapitän",
+        paragraphs: [
+          "Die Vorlage „Piratenkapitän“ besteht aus diesen fünf Teilen. Die Namen sind die Katalognamen von Rebrickable, die Nummern die LDraw-Nummern, wie sie auch auf der Themenseite Piraten stehen.",
+        ],
+        items: [
+          "Kopf, 3626bpr0027: Minifig Head Pirate, Eyepatch, Stubble and Reddish-Brown Hair Print",
+          "Kopfbedeckung, 2528pr0002: Hat Pirate Bicorne (Admiral) with Gold Captain Print",
+          "Oberkörper, 973c01h01pr0030: Torso, Vest, Purple, Anchor Tattoo Print, Yellow Arms and Hands",
+          "Beine, 970c01pr0123: Hips and Yellow Legs with Castaway Rags and Patch Print",
+          "Handzubehör, 2530: Weapon Sword / Cutlass",
+        ],
+        closing: [
+          "Wie solche Nummern aufgebaut sind, erklärt der Ratgeber „Minifiguren-Teilenummern verstehen“.",
+        ],
+      },
+      {
+        heading: "Warum Oberkörper und Beine mehrere Teile in einem sind",
+        paragraphs: [
+          "Ein Oberkörper besteht in der Praxis aus dem Torso, zwei Armen und zwei Händen, die Beine aus der Hüfte und zwei Beinen. Die Kataloge führen sie oft als eine Baugruppe. Du erkennst sie am „c“ in der Nummer: 973c01h01pr0030 ist ein Torso samt Armen und Händen, 970c01pr0123 eine Hüfte mit Beinen.",
+          "In FigForge tauschst du diese Baugruppen als Ganzes. Welche Farbe Arme und Hände haben, steht im Namen, zum Beispiel „Yellow Arms and Hands“.",
+        ],
+      },
+      {
+        heading: "Wie die Teile zusammenpassen",
+        paragraphs: [
+          "Der Kopf steckt oben auf dem Oberkörper, die Kopfbedeckung auf dem Kopf, der Oberkörper sitzt auf der Hüfte, und das Zubehör kommt in die Hand. FigForge prüft diese Verbindungen digital mit geprüften Anschlussprofilen. Teile, für die kein Profil belegt ist, bleiben gesperrt.",
+        ],
+        closing: [
+          "Die 3D-Vorschau ist eine digitale Prüfung und keine Garantie für die Passform im echten Bausatz.",
+        ],
+      },
+      {
+        heading: "So tauschst du ein Teil im Builder",
+        items: [
+          "Wähle den Bereich: Köpfe, Kopfbedeckung, Oberkörper, Beine oder Zubehör.",
+          "Suche mit einem Wort oder nutze die Filter.",
+          "Klicke bei einem Teil auf „Einsetzen“. Es erscheint sofort in der 3D-Vorschau.",
+          "Unter „Deine Figur“ siehst du alle fünf Plätze mit ihren Nummern.",
+        ],
+        closing: [
+          "Ist die Figur fertig, erklärt der Ratgeber „Minifiguren-Teile bestellen“, wie du an die echten Teile kommst.",
+        ],
+      },
+    ],
+    en: [
+      {
+        heading: "Five slots for five parts",
+        paragraphs: [
+          "In FigForge every figure has five slots: head, headwear, torso, legs and hand accessory. You swap each slot on its own; the others stay as they are.",
+        ],
+        items: [
+          "Head: It sits on top of the torso. Very many heads carry a print, such as a face, a beard or an eyepatch.",
+          "Headwear: a hat, helmet, cap or hair. It is pushed onto the head and is a part of its own. Some figures have none.",
+          "Torso: the torso with its print. In the catalog it is usually listed together with arms and hands as one assembly.",
+          "Legs: hips and legs in one entry, often with a print.",
+          "Hand accessory: whatever the figure holds, for example a sword, a spyglass or a tool.",
+        ],
+      },
+      {
+        heading: "An example: the pirate captain",
+        paragraphs: [
+          "The “Pirate captain” template is made of these five parts. The names are the Rebrickable catalog names; the numbers are the LDraw numbers, as shown on the pirates theme page.",
+        ],
+        items: [
+          "Head, 3626bpr0027: Minifig Head Pirate, Eyepatch, Stubble and Reddish-Brown Hair Print",
+          "Headwear, 2528pr0002: Hat Pirate Bicorne (Admiral) with Gold Captain Print",
+          "Torso, 973c01h01pr0030: Torso, Vest, Purple, Anchor Tattoo Print, Yellow Arms and Hands",
+          "Legs, 970c01pr0123: Hips and Yellow Legs with Castaway Rags and Patch Print",
+          "Hand accessory, 2530: Weapon Sword / Cutlass",
+        ],
+        closing: [
+          "How such numbers are built is explained in the guide “Understand minifigure part numbers”.",
+        ],
+      },
+      {
+        heading: "Why torso and legs are several parts in one",
+        paragraphs: [
+          "In practice a torso consists of the torso itself, two arms and two hands, and the legs of the hips and two legs. Catalogs often list them as one assembly. You recognize them by the “c” in the number: 973c01h01pr0030 is a torso with arms and hands, 970c01pr0123 is hips with legs.",
+          "In FigForge you swap these assemblies as a whole. The color of arms and hands is part of the name, for example “Yellow Arms and Hands”.",
+        ],
+      },
+      {
+        heading: "How the parts fit together",
+        paragraphs: [
+          "The head sits on top of the torso, the headwear on the head, the torso on the hips, and the accessory goes into the hand. FigForge checks these connections digitally with verified connection profiles. Parts without a documented profile stay locked.",
+        ],
+        closing: [
+          "The 3D preview is a digital check, not a guarantee that the parts fit in a real set.",
+        ],
+      },
+      {
+        heading: "How to swap a part in the Builder",
+        items: [
+          "Choose the area: heads, headwear, torsos, legs or accessories.",
+          "Search with a word or use the filters.",
+          "Click “Insert” on a part. It appears in the 3D preview right away.",
+          "Under “Your figure” you see all five slots with their numbers.",
+        ],
+        closing: [
+          "Once the figure is done, the guide “Order minifigure parts” explains how to get the real parts.",
+        ],
+      },
+    ],
+  },
+  bricklink: {
+    de: [
+      {
+        heading: "Was du brauchst",
+        items: [
+          "Eine fertige Figur in FigForge, bei der unter „Farben bestätigen“ für alle Teile eine Farbe gewählt ist.",
+          "Ein BrickLink-Konto. Die Wanted List legst du nur angemeldet an.",
+        ],
+      },
+      {
+        heading: "Schritt für Schritt",
+        ordered: true,
+        items: [
+          "Öffne in FigForge „Teile kaufen“ und suche den Kaufweg „BrickLink-Wanted-List“.",
+          "Klicke auf „XML kopieren“. Die Teileliste liegt jetzt als Text in deiner Zwischenablage.",
+          "Öffne mit „BrickLink-Upload öffnen“ die Seite bei BrickLink. Das ist die Seite „Upload to Wanted List“.",
+          "Wechsle dort zum Tab „Upload BrickLink XML format“ und füge den Text in das Feld ein.",
+          "Schicke den Import ab und prüfe die Wanted List: Stimmen Teilenummer, Farbe und Menge mit deiner Figur überein?",
+        ],
+      },
+      {
+        heading: "Warum der Datei-Upload nicht funktioniert",
+        paragraphs: [
+          "Der Tab „Upload a file from your computer“ nimmt nur Dateien von BrickStock, LDraw, Digital Designer und Studio an, also keine XML-Datei. Das ist die häufigste Fehlerquelle. Die XML von FigForge gehört in den Tab „Upload BrickLink XML format“.",
+        ],
+      },
+      {
+        heading: "Fehlermeldung „Content is not allowed in prolog“",
+        paragraphs: [
+          "Die Meldung heißt, dass BrickLink am Anfang des Textes kein gültiges XML findet. Typisch ist Text, den du aus der Anzeige einer XML-Datei im Browser kopiert hast: Der Browser zeigt nur den Inhalt, die Tags fehlen. Der Text muss mit <INVENTORY> beginnen.",
+        ],
+        items: [
+          "Nimm den Button „XML kopieren“ in FigForge. Er übergibt den rohen Text mit allen Tags.",
+          "Hast du die Datei geladen, öffne sie in einem Texteditor und nicht im Browser und kopiere den gesamten Text.",
+          "Achte darauf, dass vor <INVENTORY> nichts steht, auch keine Anführungszeichen.",
+        ],
+      },
+      {
+        heading: "Was in der Liste steht",
+        paragraphs: [
+          "Jede Zeile enthält eine BrickLink-Teilenummer, eine BrickLink-Farbnummer und die Menge. Die Farben stammen aus deiner Auswahl in FigForge. Ein Teil in Reddish Brown trägt zum Beispiel die BrickLink-Farbnummer 88, bei Rebrickable heißt dieselbe Farbe 70. Warum das so ist, erklärt der Ratgeber „Farbnamen und Farbnummern“.",
+          "Teile ohne belegte BrickLink-Zuordnung stehen nicht in der Liste. FigForge nennt sie unter „Warum fehlen manche Teile?“, statt Nummern zu raten.",
+        ],
+      },
+      {
+        heading: "Danach",
+        items: [
+          "Vergleiche Teilenummer und Farbe in der Wanted List mit deiner Figur in der Vorschau.",
+          "Preise, Verfügbarkeit und Versand zeigt nur BrickLink. FigForge nennt keine Preise.",
+          "Führt kein Shop alle Teile, besteht die Figur am Ende aus mehreren Bestellungen mit je eigenen Versandkosten.",
+        ],
+      },
+    ],
+    en: [
+      {
+        heading: "What you need",
+        items: [
+          "A finished figure in FigForge with a color chosen for every part under “Confirm colors”.",
+          "A BrickLink account. You can only create a wanted list while signed in.",
+        ],
+      },
+      {
+        heading: "Step by step",
+        ordered: true,
+        items: [
+          "Open “Buy parts” in FigForge and find the buying option “BrickLink Wanted List”.",
+          "Click “Copy XML”. The parts list is now in your clipboard as text.",
+          "Use “Open BrickLink upload” to open the page at BrickLink. It is the “Upload to Wanted List” page.",
+          "Switch to the “Upload BrickLink XML format” tab and paste the text into the field.",
+          "Submit the import and check the wanted list: do part number, color and quantity match your figure?",
+        ],
+      },
+      {
+        heading: "Why the file upload does not work",
+        paragraphs: [
+          "The “Upload a file from your computer” tab only accepts BrickStock, LDraw, Digital Designer and Studio files, so no XML file. This is the most common pitfall. The XML from FigForge belongs in the “Upload BrickLink XML format” tab.",
+        ],
+      },
+      {
+        heading: "The error “Content is not allowed in prolog”",
+        paragraphs: [
+          "The message means BrickLink finds no valid XML at the start of the text. Typical cause: text copied from how the browser displays an XML file. The browser shows only the content, the tags are missing. The text has to start with <INVENTORY>.",
+        ],
+        items: [
+          "Use the “Copy XML” button in FigForge. It passes the raw text with all tags.",
+          "If you downloaded the file, open it in a text editor, not in the browser, and copy all of the text.",
+          "Make sure nothing comes before <INVENTORY>, not even quotation marks.",
+        ],
+      },
+      {
+        heading: "What is in the list",
+        paragraphs: [
+          "Each line holds a BrickLink part number, a BrickLink color number and the quantity. The colors come from your choice in FigForge. A part in Reddish Brown, for example, carries the BrickLink color number 88, while Rebrickable calls the same color 70. The guide “Color names and color numbers” explains why.",
+          "Parts without a documented BrickLink mapping are not in the list. FigForge names them under “Why are some parts missing?” instead of guessing numbers.",
+        ],
+      },
+      {
+        heading: "Afterwards",
+        items: [
+          "Compare part number and color in the wanted list with your figure in the preview.",
+          "Only BrickLink shows price, availability and shipping. FigForge quotes no prices.",
+          "If no single store has every part, the figure ends up as several orders, each with its own shipping cost.",
+        ],
+      },
+    ],
+  },
+  "pick-a-brick": {
+    de: [
+      {
+        heading: "Was die CSV enthält",
+        paragraphs: [
+          "Die Datei von FigForge hat zwei Spalten: elementId und quantity. Die Element-ID ist die Nummer, unter der LEGO ein Teil in einer bestimmten Farbe führt. Dasselbe Teil in einer anderen Farbe hat eine andere Element-ID. Die Spalten entsprechen der Vorlage, die LEGO bei Pick a Brick vorgibt.",
+        ],
+      },
+      {
+        heading: "Schritt für Schritt",
+        ordered: true,
+        items: [
+          "Setze die Figur im Builder zusammen und öffne „Teile kaufen“.",
+          "Wähle unter „Farben bestätigen“ für jedes Teil mit mehreren Farben die gewünschte Farbe.",
+          "Klicke beim Kaufweg „Pick a Brick“ auf „Pick-a-Brick-Liste laden“. Du erhältst eine CSV-Datei.",
+          "Öffne mit „Pick a Brick öffnen“ die Seite bei LEGO, wähle „Upload List“ und die Datei.",
+          "Teile, die LEGO dort nicht führt, meldet die Seite als „Unavailable Pieces“.",
+        ],
+      },
+      {
+        heading: "Grenzen",
+        items: [
+          "Eine Liste darf bis zu 200 verschiedene Teile enthalten und höchstens 5 MB groß sein. Eine Minifigur liegt weit darunter.",
+          "LEGO nimmt CSV, JSON und LXFML an. FigForge erzeugt die CSV.",
+          "Es zählen nur Teile, die LEGO aktuell dort führt.",
+        ],
+      },
+      {
+        heading: "Warum manche Teile fehlen",
+        paragraphs: [
+          "Pick a Brick führt nur einen Teil der aktuellen Elemente. Ältere und viele bedruckte Minifiguren-Teile gibt es dort oft nicht. Außerdem hat nicht jedes Teil im Katalog eine belegte Element-ID. FigForge nimmt nur Teile mit belegter Element-ID in die CSV auf und nennt die übrigen unter „Warum fehlen manche Teile?“.",
+          "Ein Beispiel vom 20.10.2026: Bei der Vorlage Piratenkapitän ließ sich nur ein Teil per Pick a Brick exportieren, vier hatten keine Element-ID. Bei Figuren mit bedruckten Teilen ist das häufig.",
+        ],
+      },
+      {
+        heading: "Was du bei fehlenden Teilen tust",
+        items: [
+          "Nimm die Rebrickable-Liste. Sie deckt ältere und bedruckte Teile am besten ab. Gekauft wird dann bei BrickLink oder Brick Owl.",
+          "Oder nimm die BrickLink-Wanted-List, wenn du die Shops selbst vergleichen willst.",
+          "Du kannst auch mischen: die Teile, die LEGO führt, bei LEGO, den Rest bei einem Marktplatz.",
+        ],
+      },
+      {
+        heading: "Vor dem Absenden",
+        items: [
+          "Preis, Verfügbarkeit und Versand zeigt nur LEGO. FigForge nennt keine Preise.",
+          "Vergleiche Farbe und Aufdruck bei LEGO mit der Vorschau in FigForge.",
+        ],
+      },
+    ],
+    en: [
+      {
+        heading: "What the CSV contains",
+        paragraphs: [
+          "The file from FigForge has two columns: elementId and quantity. The element ID is the number under which LEGO lists a part in a specific color. The same part in another color has another element ID. The columns match the template LEGO provides at Pick a Brick.",
+        ],
+      },
+      {
+        heading: "Step by step",
+        ordered: true,
+        items: [
+          "Assemble the figure in the Builder and open “Buy parts”.",
+          "Under “Confirm colors”, choose the color for every part that comes in several.",
+          "At the “Pick a Brick” option, click “Download Pick a Brick list”. You get a CSV file.",
+          "Use “Open Pick a Brick” to open the page at LEGO, choose “Upload List” and the file.",
+          "Parts LEGO does not carry there are reported as “Unavailable Pieces”.",
+        ],
+      },
+      {
+        heading: "Limits",
+        items: [
+          "A list can hold up to 200 different parts and be at most 5 MB. A minifigure is far below that.",
+          "LEGO accepts CSV, JSON and LXFML. FigForge creates the CSV.",
+          "Only parts LEGO currently carries there count.",
+        ],
+      },
+      {
+        heading: "Why some parts are missing",
+        paragraphs: [
+          "Pick a Brick carries only some of the current elements. Older and many printed minifigure parts are often not available. Also, not every part in the catalog has a documented element ID. FigForge puts only parts with a documented element ID into the CSV and names the rest under “Why are some parts missing?”.",
+          "An example from 20 October 2026: with the Pirate captain template only one part could be exported to Pick a Brick, four had no element ID. This is common for figures with printed parts.",
+        ],
+      },
+      {
+        heading: "What to do about missing parts",
+        items: [
+          "Use the Rebrickable list. It covers older and printed parts best. You then buy at BrickLink or Brick Owl.",
+          "Or use the BrickLink wanted list if you want to compare stores yourself.",
+          "You can also mix: the parts LEGO carries from LEGO, the rest from a marketplace.",
+        ],
+      },
+      {
+        heading: "Before you submit",
+        items: [
+          "Only LEGO shows price, availability and shipping. FigForge quotes no prices.",
+          "Compare color and print at LEGO with the preview in FigForge.",
+        ],
+      },
+    ],
+  },
+  profession: {
+    de: [
+      {
+        heading: "So gehst du vor",
+        items: [
+          "Überlege, woran man die Person erkennt: an der Kopfbedeckung (Helm, Mütze, Hut), am Oberkörper (Uniform, Kittel, Anzug) oder am Zubehör (Werkzeug, Instrument, Kamera).",
+          "Wähle ein bis zwei dieser Merkmale. Mehr wirkt schnell überladen.",
+          "Der Rest darf schlicht bleiben, zum Beispiel ein Kopf mit einem Lächeln.",
+        ],
+      },
+      {
+        heading: "Suchwörter, die im Builder funktionieren",
+        paragraphs: [
+          "Das Suchmodell von FigForge versteht Englisch am besten. Für deutsche Wörter gibt es ein eingebautes Wörterbuch. Diese Wörter stehen darin:",
+        ],
+        items: [
+          "Berufe: Koch, Köchin, Arzt, Ärztin, Feuerwehrmann, Feuerwehrfrau, Bauarbeiter, Astronaut, Astronautin, Kapitän, König, Königin.",
+          "Kopfbedeckung: Kochmütze, Feuerwehrhelm, Astronautenhelm, Kapitänshut, Hexenhut, Krone, Helm, Hut, Kappe.",
+          "Zubehör: Gitarre, Kamera, Fernglas, Fernrohr, Fackel, Axt, Dolch, Buch, Koffer, Flagge.",
+          "Aussehen: Brille, Bart, Augenbrauen, Glatze, Augenklappe.",
+        ],
+        closing: [
+          "Andere deutsche Wörter finden nichts. Probiere dann das englische Wort, zum Beispiel „chef“ oder „police“.",
+        ],
+      },
+      {
+        heading: "Ideen nach Themenwelt",
+        paragraphs: [
+          "Die Themenwelten im Bereich Ideen liefern fertige Vorlagen, die du Teil für Teil änderst:",
+        ],
+        items: [
+          "Piraten: Piratenkapitän, Piraten-Decksmann und Piraten-Ausguck, für Segler und Abenteurer.",
+          "Burg: Burgritter, Königliche Burgwache und Waldläufer, für Fans von Mittelalter und Fantasy.",
+          "Weltraum: Classic-Space-Entdecker, Weltraumpilot und Roboter-Techniker, für Technikfans.",
+          "Feuerwehr und Rettung: Feuerwehrfigur, Einsatzleiter und Rettungsspezialist, für Einsatzkräfte und alle, die Feuerwehr lieben.",
+        ],
+      },
+      {
+        heading: "Persönlicher machen",
+        items: [
+          "Gib der Figur im Builder einen Namen. Er steht in deiner Sammlung.",
+          "Tausche nur ein Teil gegen ein Zubehör, das zum Hobby passt. Die Vorlage bleibt sonst erkennbar.",
+          "Gibt es ein Teil in mehreren Farben, wähle beim Bestätigen der Farben die Lieblingsfarbe der Person.",
+        ],
+      },
+      {
+        heading: "Danach",
+        paragraphs: [
+          "Wie du von der Figur zu den echten Teilen kommst, steht im Ratgeber „Minifiguren-Teile bestellen“. Verpackung und Sicherheit behandelt der Ratgeber „Eine Minifigur verschenken“.",
+        ],
+        closing: [
+          "Minifiguren und ihre Teile sind Kleinteile und nicht für Kinder unter drei Jahren geeignet.",
+        ],
+      },
+    ],
+    en: [
+      {
+        heading: "How to go about it",
+        items: [
+          "Think about what identifies the person: the headwear (helmet, cap, hat), the torso (uniform, coat, suit) or the accessory (tool, instrument, camera).",
+          "Pick one or two of these traits. More quickly looks overloaded.",
+          "The rest can stay simple, for example a head with a smile.",
+        ],
+      },
+      {
+        heading: "Search words that work in the Builder",
+        paragraphs: [
+          "FigForge's search model understands English best, so these English words work well:",
+        ],
+        items: [
+          "Professions: chef, doctor, firefighter, construction worker, astronaut, captain, king, queen.",
+          "Headwear: chef hat, fire helmet, space helmet, captain hat, witch hat, crown, helmet, hat, cap.",
+          "Accessories: guitar, camera, binoculars, spyglass, torch, axe, dagger, book, suitcase, flag.",
+          "Looks: glasses, beard, eyebrows, bald, eyepatch.",
+        ],
+        closing: [
+          "Search words in English work best. The German dictionary only covers a limited list, so if a German word finds nothing, try the English one.",
+        ],
+      },
+      {
+        heading: "Ideas by theme world",
+        paragraphs: [
+          "The theme worlds in the Ideas section provide finished templates that you change part by part:",
+        ],
+        items: [
+          "Pirates: Pirate captain, Pirate deckhand and Pirate lookout, for sailors and adventurers.",
+          "Castle: Castle knight, Royal castle guard and Forest scout, for fans of the Middle Ages and fantasy.",
+          "Space: Classic Space explorer, Space pilot and Robot engineer, for tech fans.",
+          "Fire and rescue: Firefighter, Fire chief and Rescue specialist, for first responders and everyone who loves fire trucks.",
+        ],
+      },
+      {
+        heading: "Making it more personal",
+        items: [
+          "Give the figure a name in the Builder. It appears in your collection.",
+          "Swap only one part for an accessory that fits the hobby. The template stays recognizable that way.",
+          "If a part comes in several colors, choose the person's favorite color when you confirm the colors.",
+        ],
+      },
+      {
+        heading: "Afterwards",
+        paragraphs: [
+          "How to get from the figure to the real parts is explained in the guide “Order minifigure parts”. Packaging and safety are covered in the guide “Give a minifigure as a gift”.",
+        ],
+        closing: [
+          "Minifigures and their parts are small parts and not suitable for children under three years.",
+        ],
+      },
+    ],
+  },
+  colors: {
+    de: [
+      {
+        heading: "Warum die Farbe zur Einkaufsliste gehört",
+        paragraphs: [
+          "Eine Teilenummer allein reicht beim Kaufen nicht. Ein Oberkörper oder ein Kopf kann in mehreren Farben existieren, und jede Farbe ist ein eigener Artikel mit eigener Nummer. Eine Einkaufsliste besteht deshalb aus Teil, Farbe und Menge.",
+        ],
+      },
+      {
+        heading: "Dieselbe Farbe, verschiedene Nummern",
+        paragraphs: [
+          "Rebrickable und BrickLink nummerieren Farben unterschiedlich. Bei LEGO Pick a Brick steckt die Farbe in der Element-ID, die Teil und Farbe zusammen bezeichnet. Beispiele aus den Katalogdaten von FigForge:",
+        ],
+        items: [
+          "Black: bei Rebrickable 0, bei BrickLink 11",
+          "Brown: bei Rebrickable 6, bei BrickLink 8",
+          "Reddish Brown: bei Rebrickable 70, bei BrickLink 88",
+          "Light Gray: bei Rebrickable 7, bei BrickLink 9",
+          "Light Bluish Gray: bei Rebrickable 71, bei BrickLink 86",
+          "Dark Bluish Gray: bei Rebrickable 72, bei BrickLink 85",
+        ],
+        closing: [
+          "FigForge verwendet die Rebrickable-Farbnamen und rechnet für die BrickLink-XML auf die BrickLink-Farbnummer um. Du musst keine Nummern übersetzen.",
+        ],
+      },
+      {
+        heading: "Farben, die man verwechselt",
+        paragraphs: [
+          "Brown und Reddish Brown sind zwei verschiedene Farben mit eigenen Nummern. Nach den Farbwerten der LDraw-Bibliothek, die FigForge für die 3D-Vorschau nutzt, ist Reddish Brown (#5F3109) deutlich satter als Brown (#543324).",
+          "Auch Light Gray und Light Bluish Gray sind zwei getrennte Farben. Wer ältere und neuere Teile mischt, sollte darauf achten, nicht beide Grautöne zu verwechseln.",
+        ],
+      },
+      {
+        heading: "So bestätigst du die Farben in FigForge",
+        items: [
+          "Öffne „Teile kaufen“. Unter „Farben bestätigen“ stehen die Teile, für die es mehrere Farben gibt.",
+          "Wähle bei jedem dieser Teile die Farbe. FigForge zeigt „Offene Farbauswahlen“, bis alle gewählt sind.",
+          "Ist die Farbe für alle Teile eindeutig, übernimmt FigForge sie selbst.",
+          "Die 3D-Vorschau zeigt die gewählte Farbe als Hauptfarbe des Teils. Feste Farben wie Aufdrucke bleiben, und für einzelne Farben gibt es keine Vorschau.",
+        ],
+      },
+      {
+        heading: "Vor dem Kauf prüfen",
+        items: [
+          "Vergleiche die Farbe im Shop mit dem englischen Namen in FigForge.",
+          "Prüfe bei BrickLink in der Wanted List die Farbe jeder Zeile.",
+          "Bei Pick a Brick bestimmt die Element-ID die Farbe. Prüfe das Foto.",
+        ],
+      },
+    ],
+    en: [
+      {
+        heading: "Why the color belongs in the shopping list",
+        paragraphs: [
+          "A part number alone is not enough when you buy. A torso or a head can exist in several colors, and every color is its own item with its own number. A shopping list therefore consists of part, color and quantity.",
+        ],
+      },
+      {
+        heading: "The same color, different numbers",
+        paragraphs: [
+          "Rebrickable and BrickLink number colors differently. At LEGO Pick a Brick the color is part of the element ID, which identifies part and color together. Examples from FigForge's catalog data:",
+        ],
+        items: [
+          "Black: 0 at Rebrickable, 11 at BrickLink",
+          "Brown: 6 at Rebrickable, 8 at BrickLink",
+          "Reddish Brown: 70 at Rebrickable, 88 at BrickLink",
+          "Light Gray: 7 at Rebrickable, 9 at BrickLink",
+          "Light Bluish Gray: 71 at Rebrickable, 86 at BrickLink",
+          "Dark Bluish Gray: 72 at Rebrickable, 85 at BrickLink",
+        ],
+        closing: [
+          "FigForge uses the Rebrickable color names and converts to the BrickLink color number for the BrickLink XML. You do not have to translate numbers.",
+        ],
+      },
+      {
+        heading: "Colors that are easily confused",
+        paragraphs: [
+          "Brown and Reddish Brown are two different colors with their own numbers. According to the color values of the LDraw library, which FigForge uses for the 3D preview, Reddish Brown (#5F3109) is clearly richer than Brown (#543324).",
+          "Light Gray and Light Bluish Gray are also two separate colors. If you mix older and newer parts, take care not to confuse the two grays.",
+        ],
+      },
+      {
+        heading: "How to confirm colors in FigForge",
+        items: [
+          "Open “Buy parts”. Under “Confirm colors” you find the parts that exist in several colors.",
+          "Choose the color for each of these parts. FigForge shows “Color choices remaining” until all are chosen.",
+          "If the color is clear for every part, FigForge takes it on its own.",
+          "The 3D preview shows the chosen color as the part's main color. Fixed colors such as prints stay, and a few colors have no preview.",
+        ],
+      },
+      {
+        heading: "Check before you buy",
+        items: [
+          "Compare the color in the shop with the English name in FigForge.",
+          "At BrickLink, check the color of every line in the wanted list.",
+          "At Pick a Brick the element ID decides the color. Check the photo.",
+        ],
       },
     ],
   },

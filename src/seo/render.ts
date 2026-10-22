@@ -71,6 +71,9 @@ export function renderRoutePage(
   );
 }
 
+const list = (items: readonly string[], ordered: boolean): string =>
+  ordered ? `<ol>${items.join("")}</ol>` : `<ul>${items.join("")}</ul>`;
+
 /** Pages ship their full text so search engines index the content, not just a title. */
 function renderBody(
   route: SeoRoute,
@@ -86,7 +89,7 @@ function renderBody(
     const sections = GUIDE_SECTIONS[page.id][language].map((section) => [
       `<h2>${escapeHtml(section.heading)}</h2>`,
       ...(section.paragraphs ?? []).map((text) => `<p>${escapeHtml(text)}</p>`),
-      section.items ? `<ul>${section.items.map((item) => `<li>${escapeHtml(item)}</li>`).join("")}</ul>` : "",
+      section.items ? list(section.items.map((item) => `<li>${escapeHtml(item)}</li>`), section.ordered === true) : "",
       ...(section.closing ?? []).map((text) => `<p>${escapeHtml(text)}</p>`),
     ].join("")).join("");
     return `<main><article>${intro}${sections}</article></main>`;

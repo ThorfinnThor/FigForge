@@ -66,3 +66,51 @@ describe("guides", () => {
     expect(sitemap).toContain("<loc>https://createyourminifig.com/en/guides/minifigure-gift</loc>");
   });
 });
+
+describe("facts in the newer guides", () => {
+  const read = async (path: string): Promise<unknown> => {
+    const { readFile } = await import("node:fs/promises");
+    return JSON.parse(await readFile(new URL(`../../${path}`, import.meta.url), "utf8")) as unknown;
+  };
+
+  it("renders step lists as numbered lists in the prerendered HTML", () => {
+    const route = SEO_ROUTES.find((entry) => entry.path === guidePath("bricklink", "de"))!;
+    const html = renderRoutePage(TEMPLATE, route, messages.de, "de");
+    expect(html).toMatch(/<h2>Schritt für Schritt<\/h2><ol><li>/u);
+    expect(html).toContain("<h2>Fehlermeldung „Content is not allowed in prolog“</h2>");
+  });
+
+  it("quotes color numbers that match the catalog's shop export data", async () => {
+    const data = await read("data/generated/shop-export/torso-assembly.json") as {
+      entries: Array<{ colors: Array<{ rebrickableColorId: number; colorName: string; bricklinkColorId: number | null }> }>;
+    };
+    const known = new Map<string, { rebrickable: number; bricklink: number | null }>();
+    for (const entry of data.entries) {
+      for (const color of entry.colors) known.set(color.colorName, { rebrickable: color.rebrickableColorId, bricklink: color.bricklinkColorId });
+    }
+    const lines = GUIDE_SECTIONS.colors.de.flatMap((section) => section.items ?? [])
+      .filter((item) => /bei Rebrickable \d+, bei BrickLink \d+/u.test(item));
+    expect(lines.length).toBeGreaterThanOrEqual(6);
+    for (const line of lines) {
+      const [, name, rebrickable, bricklink] = /^(.+): bei Rebrickable (\d+), bei BrickLink (\d+)$/u.exec(line)!;
+      expect(known.get(name!), name).toEqual({ rebrickable: Number(rebrickable), bricklink: Number(bricklink) });
+    }
+  });
+
+  it("quotes the pirate captain's parts exactly as the catalog names them", async () => {
+    const roles = ["head", "headwear", "torso-assembly", "legs-assembly", "hand-accessory"];
+    const names = new Map<string, string>();
+    for (const role of roles) {
+      const data = await read(`data/generated/catalog-packages/${role}.json`) as { parts: Array<{ rebrickablePartNum: string; name: string }> };
+      // The article leaves out bracketed build hints such as "[Blocked Open Stud]", like the app does.
+      for (const part of data.parts) names.set(part.rebrickablePartNum, part.name.replace(/\s*\[[^\]]*\]$/u, ""));
+    }
+    const items = GUIDE_SECTIONS.anatomy.de.flatMap((section) => section.items ?? []).filter((item) => /, \d.*: /u.test(item));
+    expect(items).toHaveLength(5);
+    for (const item of items) {
+      const [, number, name] = /^[^,]+, (\S+): (.+)$/u.exec(item)!;
+      expect(names.get(number!), number).toBe(name);
+    }
+  });
+});
+
