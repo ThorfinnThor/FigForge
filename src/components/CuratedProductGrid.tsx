@@ -1,7 +1,9 @@
 import { useI18n } from "../i18n.js";
 import { AMAZON_AFFILIATE_CONFIG } from "../procurement/amazon-config.js";
 import { amazonProductLink, amazonSearchLink } from "../procurement/amazon-links.js";
+import { legoProductLink } from "../procurement/lego-affiliate.js";
 import type { CuratedProduct } from "../products/curated-products.js";
+import { useLegoMarket } from "./use-lego-market.js";
 
 type CuratedProductGridProps = {
   products: readonly CuratedProduct[];
@@ -9,6 +11,7 @@ type CuratedProductGridProps = {
 
 export function CuratedProductGrid({ products }: CuratedProductGridProps) {
   const { t } = useI18n();
+  const legoMarket = useLegoMarket();
   const gridClassName = products.length < 4
     ? "curated-products curated-products--compact"
     : "curated-products";
@@ -23,6 +26,7 @@ export function CuratedProductGrid({ products }: CuratedProductGridProps) {
               AMAZON_AFFILIATE_CONFIG.trackingId,
               AMAZON_AFFILIATE_CONFIG.searchUrl,
             );
+        const legoLink = product.officialUrl ? legoProductLink(product.officialUrl, legoMarket) : null;
         return (
           <li className="curated-product" data-accent={product.accent} key={product.id}>
             <div className="curated-product__visual">
@@ -53,11 +57,11 @@ export function CuratedProductGrid({ products }: CuratedProductGridProps) {
                 >
                   {t("products.amazon")}
                 </a>
-                {product.officialUrl ? (
+                {legoLink ? (
                   <a
                     className="ff-button ff-button--ghost"
-                    href={product.officialUrl}
-                    rel="noopener noreferrer"
+                    href={legoLink.href}
+                    rel={legoLink.affiliate ? "sponsored noopener noreferrer" : "noopener noreferrer"}
                     target="_blank"
                   >
                     {t("products.official")}
