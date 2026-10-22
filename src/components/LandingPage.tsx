@@ -11,6 +11,7 @@ const WORLDS = [
   { id: "space", accent: "blue", key: "space" },
   { id: "fire-rescue", accent: "green", key: "fire" },
   { id: "zombies", accent: "purple", key: "zombies" },
+  { id: "fantasy", accent: "teal", key: "fantasy" },
 ] as const;
 
 const STEPS = ["pick", "check", "export"] as const;
