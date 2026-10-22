@@ -1,7 +1,7 @@
 import { createFigureDocument } from "../figure/figure-document.js";
 import type { FigureDocument, FigureDocumentSlot } from "../contracts/figure-document.js";
 
-export type FigureThemeId = "pirates" | "castle" | "space" | "fire-rescue" | "zombies" | "fantasy";
+export type FigureThemeId = "pirates" | "castle" | "space" | "fire-rescue" | "zombies" | "fantasy" | "vikings";
 
 export type FigureTemplateId =
   | "pirate-captain"
@@ -21,12 +21,15 @@ export type FigureTemplateId =
   | "grim-reaper"
   | "wizard"
   | "dwarf-warrior"
-  | "elf-archer";
+  | "elf-archer"
+  | "viking-chieftain"
+  | "shieldmaiden"
+  | "berserker";
 
 export type FigureTemplate = {
   id: FigureTemplateId;
   themeId: FigureThemeId;
-  accent: "gold" | "red" | "blue" | "green" | "purple" | "teal";
+  accent: "gold" | "red" | "blue" | "green" | "purple" | "teal" | "orange";
   nameKey: string;
   descriptionKey: string;
   document: FigureDocument;
@@ -452,6 +455,72 @@ export const FIGURE_TEMPLATES: readonly FigureTemplate[] = [
       "/assets/thumbnails/ldraw-expanded/torso-973c20h01pr6141.webp",
       "/assets/thumbnails/ldraw-expanded/legs-970c11.webp",
       "/assets/thumbnails/ldraw-expanded/handAccessory-4499.webp",
+    ],
+  ),
+  createTemplate(
+    "viking-chieftain",
+    "vikings",
+    "orange",
+    "Viking Chieftain",
+    "ideas.vikingChief.name",
+    "ideas.vikingChief.description",
+    {
+      head: "catalog:head:3626bpr0649",
+      headwear: "catalog:headwear:67037pr0001",
+      torsoAssembly: "catalog:torsoAssembly:973c35h01pr6825",
+      legsAssembly: "catalog:legsAssembly:970c11pr2550",
+      handAccessory: "catalog:handAccessory:95330pr0001",
+    },
+    [
+      "/assets/thumbnails/ldraw-expanded/head-3626bpr0649.webp",
+      "/assets/thumbnails/ldraw-expanded/headwear-67037pr0001.webp",
+      "/assets/thumbnails/ldraw-expanded/torso-973c35h01pr6825.webp",
+      "/assets/thumbnails/ldraw-expanded/legs-970c11pr2550.webp",
+      "/assets/thumbnails/ldraw-expanded/handAccessory-95330pr0001.webp",
+    ],
+  ),
+  createTemplate(
+    "shieldmaiden",
+    "vikings",
+    "orange",
+    "Shieldmaiden",
+    "ideas.shieldmaiden.name",
+    "ideas.shieldmaiden.description",
+    {
+      head: "catalog:head:3626cpr1966",
+      headwear: "catalog:headwear:30114",
+      torsoAssembly: "catalog:torsoAssembly:973c03h12pr1626",
+      legsAssembly: "catalog:legsAssembly:970c07pr0334",
+      handAccessory: "catalog:handAccessory:76764",
+    },
+    [
+      "/assets/thumbnails/ldraw-expanded/head-3626cpr1966.webp",
+      "/assets/thumbnails/ldraw-expanded/headwear-30114.webp",
+      "/assets/thumbnails/ldraw-expanded/torso-973c03h12pr1626.webp",
+      "/assets/thumbnails/ldraw-expanded/legs-970c07pr0334.webp",
+      "/assets/thumbnails/ldraw-expanded/handAccessory-76764.webp",
+    ],
+  ),
+  createTemplate(
+    "berserker",
+    "vikings",
+    "orange",
+    "Berserker",
+    "ideas.berserker.name",
+    "ideas.berserker.description",
+    {
+      head: "catalog:head:3626bpr0411",
+      headwear: "catalog:headwear:3201",
+      torsoAssembly: "catalog:torsoAssembly:973c19h19pr0002",
+      legsAssembly: "catalog:legsAssembly:970c19pr2231",
+      handAccessory: "catalog:handAccessory:95052",
+    },
+    [
+      "/assets/thumbnails/ldraw-expanded/head-3626bpr0411.webp",
+      "/assets/thumbnails/ldraw-expanded/headwear-3201.webp",
+      "/assets/thumbnails/ldraw-expanded/torso-973c19h19pr0002.webp",
+      "/assets/thumbnails/ldraw-expanded/legs-970c19pr2231.webp",
+      "/assets/thumbnails/ldraw-expanded/handAccessory-95052.webp",
     ],
   ),
 ] as const;
