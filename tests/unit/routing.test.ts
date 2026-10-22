@@ -18,7 +18,7 @@ describe("language-aware routing", () => {
       expect(germanPath(english), path).toBe(path);
       expect(localizedPath(path, "de")).toBe(path);
     }
-    expect(localizedPath("/", "en")).toBe("/en/");
+    expect(localizedPath("/", "en")).toBe("/en");
     expect(localizedPath("/builder", "en")).toBe("/en/builder");
   });
 
