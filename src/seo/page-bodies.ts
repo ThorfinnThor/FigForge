@@ -2,6 +2,7 @@ import { guidePath, localizedPath } from "../app/routing.js";
 import { GUIDE_IDS } from "../guides/guide-content.js";
 import { FIGURE_TEMPLATES, type FigureTemplate } from "../ideas/figure-templates.js";
 import { partNumbers } from "../ideas/part-numbers.js";
+import { formatCatalogPartCount } from "../catalog/catalog-stats.js";
 import type { Language } from "../i18n.js";
 import { CURATED_PRODUCTS, productsForThemePage, type CuratedProduct } from "../products/curated-products.js";
 import { escapeHtml, requireMessage, type Messages } from "./html.js";
@@ -105,7 +106,7 @@ export const setsBody = (context: Context): string => (
 
 export const methodologyBody = (context: Context): string => (
   ["source.note", "methodology.assembly", "methodology.physical", "methodology.localStorage", "methodology.figureExport"]
-    .map((key) => `<p>${text(context, key)}</p>`).join("")
+    .map((key) => `<p>${key === "source.note" ? escapeHtml(requireMessage(context.messages, key).replace("{count}", formatCatalogPartCount(context.language))) : text(context, key)}</p>`).join("")
   + "<ul>"
   + [
     ["/licenses/LDraw-CAreadme.txt", "source.ldrawLicense"],

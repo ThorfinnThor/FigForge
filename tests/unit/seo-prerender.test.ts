@@ -1,4 +1,5 @@
 import { describe, expect, it } from "vitest";
+import { formatCatalogPartCount } from "../../src/catalog/catalog-stats.js";
 import { messages } from "../../src/i18n.js";
 import { FIGURE_TEMPLATES } from "../../src/ideas/figure-templates.js";
 import { partNumbers } from "../../src/ideas/part-numbers.js";
@@ -204,7 +205,8 @@ describe("full text of content pages", () => {
     for (const language of ["de", "en"] as const) {
       const html = render("/methodology", language);
       for (const key of ["source.note", "methodology.assembly", "methodology.physical", "methodology.localStorage", "methodology.figureExport"]) {
-        expect(plain(html)).toContain(plain(messages[language][key]!));
+        const expected = messages[language][key]!.replace("{count}", formatCatalogPartCount(language));
+        expect(plain(html)).toContain(plain(expected));
       }
       expect(html).toContain('href="/licenses/LDraw-CAreadme.txt"');
     }
@@ -328,5 +330,38 @@ describe("404 pages and llms.txt", () => {
     expect(text).toContain("ohne Verbindung zur LEGO Gruppe");
     expect(text).toContain("no connection to the LEGO Group");
     expect(text).not.toContain("/collection");
+  });
+});
+
+describe("titles, descriptions and headers", () => {
+  it("keeps every indexable title within 60 and every description within 160 characters", () => {
+    for (const language of ["de", "en"] as const) {
+      const seen = new Set<string>();
+      for (const route of SEO_ROUTES.filter((entry) => entry.indexable)) {
+        const title = messages[language][route.titleKey]!;
+        const description = messages[language][route.descriptionKey]!;
+        expect(title.length, `${language} ${route.titleKey}: ${title}`).toBeLessThanOrEqual(60);
+        expect(description.length, `${language} ${route.descriptionKey}`).toBeLessThanOrEqual(160);
+        expect(seen.has(title), `duplicate title ${title}`).toBe(false);
+        seen.add(title);
+      }
+    }
+  });
+
+  it("states the catalog size from the data in the methodology page, not as a fixed number", () => {
+    const route = SEO_ROUTES.find((entry) => entry.path === "/methodology")!;
+    for (const language of ["de", "en"] as const) {
+      expect(messages[language]["source.note"]).toContain("{count}");
+      const html = renderRoutePage(TEMPLATE, route, messages[language], language);
+      expect(html).toContain(formatCatalogPartCount(language));
+      expect(html).not.toContain("{count}");
+      expect(html).not.toContain("20.202");
+    }
+  });
+
+  it("asks browsers to use HTTPS only", async () => {
+    const { readFile } = await import("node:fs/promises");
+    const headers = await readFile(new URL("../../public/_headers", import.meta.url), "utf8");
+    expect(headers).toContain("Strict-Transport-Security: max-age=31536000");
   });
 });
