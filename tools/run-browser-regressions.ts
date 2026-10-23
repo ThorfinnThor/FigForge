@@ -633,6 +633,35 @@ const testFigureNameField = async (client: CdpClient, origin: string): Promise<v
   );
 };
 
+const testInventorySuggestions = async (client: CdpClient, origin: string): Promise<void> => {
+  await navigate(client, `${origin}/collection`);
+  await waitFor(client, "Boolean(document.querySelector('.collection-inventory input[type=file]'))", "inventory import input", 60_000);
+  assert.equal(await evaluate<boolean>(client, "!document.querySelector('.inventory-suggestions')"), true,
+    "suggestions must stay hidden until an inventory exists");
+  const imported = await evaluate<boolean>(client, `(() => {
+    const input = document.querySelector('.collection-inventory input[type=file]');
+    if (!(input instanceof HTMLInputElement)) return false;
+    const transfer = new DataTransfer();
+    transfer.items.add(new File(['Part,Color,Quantity\\n3626bpr0027,14,1\\n2528pr0002,0,1\\n2530,71,2\\n'], 'inventory.csv', { type: 'text/csv' }));
+    input.files = transfer.files;
+    input.dispatchEvent(new Event('change', { bubbles: true }));
+    return true;
+  })()`);
+  assert.equal(imported, true);
+  await waitFor(client, "Boolean(document.querySelector('.inventory-suggestion'))", "figure suggestions from the inventory", 30_000);
+  const first = await evaluate<{ title: string; count: string; href: string }>(client, `(() => {
+    const card = document.querySelector('.inventory-suggestion');
+    return {
+      title: card?.querySelector('h3')?.textContent ?? '',
+      count: card?.querySelector('.inventory-suggestion__count')?.textContent ?? '',
+      href: card?.querySelector('a')?.getAttribute('href') ?? '',
+    };
+  })()`);
+  assert.equal(first.title, "Piratenkapitän");
+  assert.equal(first.count, "3 von 5 Teilen vorhanden");
+  assert.equal(first.href, "/builder?template=pirate-captain");
+};
+
 const testLDrawAndWebGlFailures = async (client: CdpClient, origin: string): Promise<void> => {
   await navigate(client, `${origin}/builder`);
   await waitFor(client, `Boolean(document.querySelector('.scene-lab[data-scene-state="ready"][data-selection-state="synchronized"] canvas.viewport'))`, "initial 3D preview", 60_000);
@@ -1018,6 +1047,8 @@ const run = async (): Promise<void> => {
     process.stdout.write("✓ named collection save and success confirmation\n");
     await testFigureNameField(client, previewServer.origin);
     process.stdout.write("✓ figure name editable in the builder and kept after reload\n");
+    await testInventorySuggestions(client, previewServer.origin);
+    process.stdout.write("✓ figure suggestions from an imported parts list\n");
     await testLDrawAndWebGlFailures(client, previewServer.origin);
     process.stdout.write("✓ browser LDraw request failure and WebGL context-loss recovery\n");
   } finally {
