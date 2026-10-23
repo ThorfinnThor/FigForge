@@ -8,22 +8,22 @@
   "runtimeVersion": "@huggingface/transformers@4.3.0",
   "queryNormalizerVersion": "de-en-domain-v1",
   "embeddingDimension": 384,
-  "documentCount": 2744,
-  "documentsSha256": "dc4f31fd3f53bc8290c9fa6a1d62700d6ecba222be121a5b5ced8684f5c76a8b",
-  "orderedComponentIdsSha256": "87e1dae85cea75ea94851b61a11a480af37c29778efd0f21ddda9fbab0a2c49d",
-  "indexSha256": "253fd4544bf8ffa437b836bfbdff2f745f91e24a947a1ebb2ba40c68a7c306fa",
-  "requiredDownloadBytes": 42471740,
+  "documentCount": 2748,
+  "documentsSha256": "13f93d0fadae343a101a4016015f996ae8b01499fa04f71db387fbb160489f19",
+  "orderedComponentIdsSha256": "ed6640e3add19bd2df2c7b983fd8bf6de16de7c92133e231c752e28b5fbefac2",
+  "indexSha256": "a58197e34c4095e38fc5e8a7b43901079414c0a99fa8536ad81bc97c11bd7a0d",
+  "requiredDownloadBytes": 42477947,
   "assets": [
     {
       "url": "/search/compact-minilm/index.f32",
-      "byteLength": 4214784,
-      "sha256": "253fd4544bf8ffa437b836bfbdff2f745f91e24a947a1ebb2ba40c68a7c306fa",
+      "byteLength": 4220928,
+      "sha256": "a58197e34c4095e38fc5e8a7b43901079414c0a99fa8536ad81bc97c11bd7a0d",
       "kind": "index"
     },
     {
       "url": "/search/compact-minilm/ordered-component-ids.json",
-      "byteLength": 51057,
-      "sha256": "87e1dae85cea75ea94851b61a11a480af37c29778efd0f21ddda9fbab0a2c49d",
+      "byteLength": 51120,
+      "sha256": "ed6640e3add19bd2df2c7b983fd8bf6de16de7c92133e231c752e28b5fbefac2",
       "kind": "mapping"
     },
     {

@@ -737865,6 +737865,92 @@
       }
     },
     {
+      "componentId": "catalog:handAccessory:3876",
+      "role": "handAccessory",
+      "rebrickablePartNum": "3876",
+      "name": "Shield Round with Stud",
+      "rebrickableCategoryId": 73,
+      "rebrickableCategoryName": "Minifig Shields, Weapons, & Tools",
+      "material": "Plastic",
+      "colorNames": [
+        "White"
+      ],
+      "previewColorName": "White",
+      "previewColorRgb": "FFFFFF",
+      "previewColorEvidence": "rebrickable-elements-first",
+      "status": "verified",
+      "ldrawFile": "parts/3876.dat",
+      "ldrawUpdate": "2017-01",
+      "mappingEvidence": "exact-filename",
+      "assemblyWrapperFor": null,
+      "geometryFallback": null,
+      "modelUrl": "/assets/ldraw/official-2609/models/handAccessory-3876.ldr",
+      "modelSha256": "11da4cd79fd2e84a4489120f19d2eaa16577a72bf6a7be6425f0ce2b6ac00750",
+      "thumbnailUrl": "/assets/thumbnails/ldraw-expanded/handAccessory-3876.webp",
+      "thumbnailSha256": "6103fcf7af86290ef2a006abdffaf156f24fc95b6fac9f50278c035c8ecdb62a",
+      "thumbnailBytes": 2140,
+      "placementMode": "snap-connector",
+      "placementTransformLdu": [
+        -0.985,
+        0.17,
+        0,
+        0,
+        0.146464,
+        0.848563,
+        -0.507414,
+        0,
+        0.086268,
+        0.499806,
+        0.86148,
+        0,
+        24.522094,
+        31.592566,
+        -20.060158,
+        1
+      ],
+      "digitalValidation": {
+        "status": "passed",
+        "reasonCode": null,
+        "gripLengthLdu": 22,
+        "modelBoundsLdu": {
+          "min": [
+            -24,
+            -24,
+            -14
+          ],
+          "max": [
+            24,
+            24,
+            14
+          ],
+          "size": [
+            48,
+            48,
+            28
+          ]
+        },
+        "sampledPointCount": 6144,
+        "protectedBodyBoxCount": 8,
+        "collisionSampleCount": 0,
+        "collisionSamplesByPart": {},
+        "gripCandidatesTested": 2,
+        "safeGripCandidatesFound": 2,
+        "selectedGripCandidateIndex": 1,
+        "orientationCandidatesTested": 8,
+        "selectedOrientationIndex": 2,
+        "gripPrimitive": "p/4-4cyli.dat",
+        "gripEvidenceSource": "official-ldraw-geometry",
+        "limits": {
+          "minimumGripLengthLdu": 8,
+          "maximumAccessoryExtentLdu": 240,
+          "gripNeighborhoodRadiusLdu": 7,
+          "bodyBoxInsetLdu": 0.25
+        },
+        "physicalFitGuaranteed": false,
+        "clearanceMode": "closed-mesh"
+      }
+    },
+    {
       "componentId": "catalog:handAccessory:3885",
       "role": "handAccessory",
       "rebrickablePartNum": "3885",
@@ -743511,6 +743597,266 @@
           "bodyBoxInsetLdu": 0.25
         },
         "physicalFitGuaranteed": false
+      }
+    },
+    {
+      "componentId": "catalog:handAccessory:59231",
+      "role": "handAccessory",
+      "rebrickablePartNum": "59231",
+      "name": "Shield Round Flat [Plain]",
+      "rebrickableCategoryId": 73,
+      "rebrickableCategoryName": "Minifig Shields, Weapons, & Tools",
+      "material": "Plastic",
+      "colorNames": [
+        "Dark Bluish Gray",
+        "Pearl Titanium",
+        "Sand Green"
+      ],
+      "previewColorName": "Dark Bluish Gray",
+      "previewColorRgb": "6C6E68",
+      "previewColorEvidence": "rebrickable-elements-first",
+      "status": "verified",
+      "ldrawFile": "parts/59231.dat",
+      "ldrawUpdate": "2011-02",
+      "mappingEvidence": "exact-filename",
+      "assemblyWrapperFor": null,
+      "geometryFallback": null,
+      "modelUrl": "/assets/ldraw/official-2609/models/handAccessory-59231.ldr",
+      "modelSha256": "e3633018fb0bc7dea60b47f1a75077199977799aa11ceb5dda8774b142c20269",
+      "thumbnailUrl": "/assets/thumbnails/ldraw-expanded/handAccessory-59231.webp",
+      "thumbnailSha256": "adcd34d233402c817709949533800902e85bb90d55a7d0fc366edaa0f7875ee7",
+      "thumbnailBytes": 2386,
+      "placementMode": "snap-connector",
+      "placementTransformLdu": [
+        0.985,
+        -0.17,
+        0,
+        0,
+        0.146464,
+        0.848563,
+        -0.507414,
+        0,
+        0.086268,
+        0.499806,
+        0.86148,
+        0,
+        23.831954,
+        27.594115,
+        -26.951994,
+        1
+      ],
+      "digitalValidation": {
+        "status": "passed",
+        "reasonCode": null,
+        "gripLengthLdu": 22,
+        "modelBoundsLdu": {
+          "min": [
+            -20,
+            -20,
+            -3
+          ],
+          "max": [
+            20,
+            20,
+            22
+          ],
+          "size": [
+            40,
+            40,
+            25
+          ]
+        },
+        "sampledPointCount": 640,
+        "protectedBodyBoxCount": 8,
+        "collisionSampleCount": 0,
+        "collisionSamplesByPart": {},
+        "gripCandidatesTested": 2,
+        "safeGripCandidatesFound": 2,
+        "selectedGripCandidateIndex": 1,
+        "orientationCandidatesTested": 8,
+        "selectedOrientationIndex": 6,
+        "gripPrimitive": "p/4-4cylc.dat",
+        "gripEvidenceSource": "official-ldraw-geometry",
+        "limits": {
+          "minimumGripLengthLdu": 8,
+          "maximumAccessoryExtentLdu": 240,
+          "gripNeighborhoodRadiusLdu": 7,
+          "bodyBoxInsetLdu": 0.25
+        },
+        "physicalFitGuaranteed": false,
+        "clearanceMode": "closed-mesh"
+      }
+    },
+    {
+      "componentId": "catalog:handAccessory:59231pr0001",
+      "role": "handAccessory",
+      "rebrickablePartNum": "59231pr0001",
+      "name": "Shield Round Flat with Silver Skull on Dark Red Print",
+      "rebrickableCategoryId": 73,
+      "rebrickableCategoryName": "Minifig Shields, Weapons, & Tools",
+      "material": "Plastic",
+      "colorNames": [
+        "Dark Bluish Gray"
+      ],
+      "previewColorName": "Dark Bluish Gray",
+      "previewColorRgb": "6C6E68",
+      "previewColorEvidence": "rebrickable-elements-first",
+      "status": "verified",
+      "ldrawFile": "parts/59231p4h.dat",
+      "ldrawUpdate": "2011-02",
+      "mappingEvidence": "explicit-keyword",
+      "assemblyWrapperFor": null,
+      "geometryFallback": null,
+      "modelUrl": "/assets/ldraw/official-2609/models/handAccessory-59231pr0001.ldr",
+      "modelSha256": "af70aed8d2bcd07664f9bdfaecf0b3b79f80a540ab99696c28d1944c035fafc1",
+      "thumbnailUrl": "/assets/thumbnails/ldraw-expanded/handAccessory-59231pr0001.webp",
+      "thumbnailSha256": "a502e028f1bcdcbdfd6568db5e3d80f335540740372753ac33d6fc845490da38",
+      "thumbnailBytes": 5526,
+      "placementMode": "snap-connector",
+      "placementTransformLdu": [
+        0.985,
+        -0.17,
+        0,
+        0,
+        0.146464,
+        0.848563,
+        -0.507414,
+        0,
+        0.086268,
+        0.499806,
+        0.86148,
+        0,
+        23.831954,
+        27.594115,
+        -26.951994,
+        1
+      ],
+      "digitalValidation": {
+        "status": "passed",
+        "reasonCode": null,
+        "gripLengthLdu": 22,
+        "modelBoundsLdu": {
+          "min": [
+            -20,
+            -20,
+            -3
+          ],
+          "max": [
+            20,
+            20,
+            22
+          ],
+          "size": [
+            40,
+            40,
+            25
+          ]
+        },
+        "sampledPointCount": 6840,
+        "protectedBodyBoxCount": 8,
+        "collisionSampleCount": 0,
+        "collisionSamplesByPart": {},
+        "gripCandidatesTested": 2,
+        "safeGripCandidatesFound": 2,
+        "selectedGripCandidateIndex": 1,
+        "orientationCandidatesTested": 8,
+        "selectedOrientationIndex": 6,
+        "gripPrimitive": "p/4-4cylc.dat",
+        "gripEvidenceSource": "official-ldraw-geometry",
+        "limits": {
+          "minimumGripLengthLdu": 8,
+          "maximumAccessoryExtentLdu": 240,
+          "gripNeighborhoodRadiusLdu": 7,
+          "bodyBoxInsetLdu": 0.25
+        },
+        "physicalFitGuaranteed": false,
+        "clearanceMode": "closed-mesh"
+      }
+    },
+    {
+      "componentId": "catalog:handAccessory:59231pr0002",
+      "role": "handAccessory",
+      "rebrickablePartNum": "59231pr0002",
+      "name": "Shield Round Flat with Helmet on Dark / Medium Blue Quarters Print",
+      "rebrickableCategoryId": 73,
+      "rebrickableCategoryName": "Minifig Shields, Weapons, & Tools",
+      "material": "Plastic",
+      "colorNames": [
+        "Dark Bluish Gray"
+      ],
+      "previewColorName": "Dark Bluish Gray",
+      "previewColorRgb": "6C6E68",
+      "previewColorEvidence": "rebrickable-elements-first",
+      "status": "verified",
+      "ldrawFile": "parts/59231p40.dat",
+      "ldrawUpdate": "2024-02",
+      "mappingEvidence": "explicit-keyword",
+      "assemblyWrapperFor": null,
+      "geometryFallback": null,
+      "modelUrl": "/assets/ldraw/official-2609/models/handAccessory-59231pr0002.ldr",
+      "modelSha256": "5918f4800b9703cb78b6a59709359c961b1f77c1c24f0554807e05a12c421047",
+      "thumbnailUrl": "/assets/thumbnails/ldraw-expanded/handAccessory-59231pr0002.webp",
+      "thumbnailSha256": "f4679583b1a516f7521ca28b08f9c329d01b09de05c8998b1062cc3c8bf636b1",
+      "thumbnailBytes": 7040,
+      "placementMode": "snap-connector",
+      "placementTransformLdu": [
+        0.985,
+        -0.17,
+        0,
+        0,
+        0.146464,
+        0.848563,
+        -0.507414,
+        0,
+        0.086268,
+        0.499806,
+        0.86148,
+        0,
+        23.831954,
+        27.594115,
+        -26.951994,
+        1
+      ],
+      "digitalValidation": {
+        "status": "passed",
+        "reasonCode": null,
+        "gripLengthLdu": 22,
+        "modelBoundsLdu": {
+          "min": [
+            -20,
+            -20,
+            -3
+          ],
+          "max": [
+            20,
+            20,
+            22
+          ],
+          "size": [
+            40,
+            40,
+            25
+          ]
+        },
+        "sampledPointCount": 2744,
+        "protectedBodyBoxCount": 8,
+        "collisionSampleCount": 0,
+        "collisionSamplesByPart": {},
+        "gripCandidatesTested": 2,
+        "safeGripCandidatesFound": 2,
+        "selectedGripCandidateIndex": 1,
+        "orientationCandidatesTested": 8,
+        "selectedOrientationIndex": 6,
+        "gripPrimitive": "p/4-4cylc.dat",
+        "gripEvidenceSource": "official-ldraw-geometry",
+        "limits": {
+          "minimumGripLengthLdu": 8,
+          "maximumAccessoryExtentLdu": 240,
+          "gripNeighborhoodRadiusLdu": 7,
+          "bodyBoxInsetLdu": 0.25
+        },
+        "physicalFitGuaranteed": false,
+        "clearanceMode": "closed-mesh"
       }
     },
     {
@@ -754601,27 +754947,27 @@
   ],
   "summary": {
     "catalogPartCount": 20283,
-    "digitallySupportedCount": 14913,
+    "digitallySupportedCount": 14917,
     "headCount": 4877,
     "headwearCount": 781,
     "torsoAssemblyCount": 6030,
     "legsAssemblyCount": 2889,
-    "handAccessoryCount": 336,
-    "directMappingCount": 2529,
+    "handAccessoryCount": 340,
+    "directMappingCount": 2533,
     "colorCodedAssemblyCount": 7620,
     "officialAssemblyWrapperCount": 76,
     "ambiguousAssemblyWrappersExcluded": 6,
     "unprintedColorCodedAssemblyCount": 7413,
     "printParentGeometryFallbackCount": 4764,
-    "generatedAssetCount": 5234,
-    "sharedOfficialFileCount": 5690,
+    "generatedAssetCount": 5238,
+    "sharedOfficialFileCount": 5699,
     "ambiguousMappingsExcluded": 127,
     "accessoryGripCandidatesExcluded": 243,
     "accessoryLdcadGripCandidatesDisambiguated": 39,
     "accessoryLdcadPrintParentGripCandidatesEvaluated": 12,
     "accessoryMultipleGripCandidatesEvaluated": 108,
-    "accessoryMultipleGripCandidatesPassed": 33,
-    "accessoryMultipleGripCandidatesAmbiguous": 65,
+    "accessoryMultipleGripCandidatesPassed": 37,
+    "accessoryMultipleGripCandidatesAmbiguous": 61,
     "accessoryMultipleGripCandidatesNoSafe": 2,
     "accessoryMultipleGripCandidatesRenderFailed": 0,
     "accessoryMultipleGripCandidatesSemanticRejected": 8,
@@ -754629,8 +754975,8 @@
     "accessoryPlacementRenderFailuresExcluded": 0,
     "accessorySemanticGripRejectionsExcluded": 14,
     "accessoryVisualPlacementRejectionsExcluded": 4,
-    "digitalPlacementPassedCount": 336,
-    "digitalPlacementRejectionsExcluded": 102,
+    "digitalPlacementPassedCount": 340,
+    "digitalPlacementRejectionsExcluded": 98,
     "renderFailuresExcluded": 0,
     "mocFilesUsed": 0
   },
@@ -759085,37 +759431,6 @@
       ]
     },
     {
-      "rebrickablePartNum": "3876",
-      "ldrawFile": "parts/3876.dat",
-      "reasonCode": "multiple-safe-grip-candidates",
-      "collisionSampleCount": 0,
-      "collisionSamplesByPart": {},
-      "gripCandidatesTested": 2,
-      "safeGripCandidatesFound": 2,
-      "orientationCollisionCountsByGrip": [
-        [
-          6,
-          561,
-          299,
-          0,
-          1203,
-          80,
-          471,
-          2783
-        ],
-        [
-          5,
-          0,
-          0,
-          0,
-          1467,
-          1473,
-          1477,
-          1467
-        ]
-      ]
-    },
-    {
       "rebrickablePartNum": "3959",
       "ldrawFile": "parts/3959.dat",
       "reasonCode": "multiple-safe-grip-candidates",
@@ -760522,99 +760837,6 @@
           349,
           16,
           991
-        ]
-      ]
-    },
-    {
-      "rebrickablePartNum": "59231",
-      "ldrawFile": "parts/59231.dat",
-      "reasonCode": "multiple-safe-grip-candidates",
-      "collisionSampleCount": 0,
-      "collisionSamplesByPart": {},
-      "gripCandidatesTested": 2,
-      "safeGripCandidatesFound": 2,
-      "orientationCollisionCountsByGrip": [
-        [
-          24,
-          0,
-          0,
-          47,
-          25,
-          171,
-          45,
-          70
-        ],
-        [
-          63,
-          63,
-          73,
-          63,
-          10,
-          0,
-          0,
-          0
-        ]
-      ]
-    },
-    {
-      "rebrickablePartNum": "59231pr0001",
-      "ldrawFile": "parts/59231p4h.dat",
-      "reasonCode": "multiple-safe-grip-candidates",
-      "collisionSampleCount": 0,
-      "collisionSamplesByPart": {},
-      "gripCandidatesTested": 2,
-      "safeGripCandidatesFound": 2,
-      "orientationCollisionCountsByGrip": [
-        [
-          394,
-          0,
-          0,
-          588,
-          363,
-          2676,
-          1533,
-          70
-        ],
-        [
-          1386,
-          1594,
-          1270,
-          1289,
-          10,
-          0,
-          0,
-          0
-        ]
-      ]
-    },
-    {
-      "rebrickablePartNum": "59231pr0002",
-      "ldrawFile": "parts/59231p40.dat",
-      "reasonCode": "multiple-safe-grip-candidates",
-      "collisionSampleCount": 0,
-      "collisionSamplesByPart": {},
-      "gripCandidatesTested": 2,
-      "safeGripCandidatesFound": 2,
-      "orientationCollisionCountsByGrip": [
-        [
-          69,
-          0,
-          0,
-          121,
-          150,
-          1312,
-          749,
-          70
-        ],
-        [
-          592,
-          222,
-          588,
-          379,
-          10,
-          0,
-          0,
-          0
         ]
       ]
     },
