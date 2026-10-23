@@ -5,9 +5,9 @@
   "reviewStatus": "pending-human-review",
   "blindedSystems": true,
   "querySetSha256": "56c9a287a380df56d27ff7ecf061514e537ea1be4821f6f6e1f7b41ce397bf97",
-  "releaseManifestSha256": "772c8ac821bedd226de859e392573c37d7d88c10f68d463cad401cdfbfa17c69",
+  "releaseManifestSha256": "33d70788dea8845e1e118f60d07490248dffb0e3558db0c269099cea7c138067",
   "releaseProfileId": "compact-minilm",
-  "releaseDocumentCount": 2748,
+  "releaseDocumentCount": 2752,
   "instructions": "Bewerte jeden Treffer blind mit 0 (unpassend), 1 (akzeptabel) oder 2 (sehr passend). Maßgeblich sind Suchtext, sichtbare Geometrie, Katalogname, Kategorie und belegte Farbe. Die Herkunft aus Basis- oder Hybridsuche bleibt verborgen; der Holdout wird nicht ausgeliefert.",
   "cases": [
     {
@@ -217,8 +217,8 @@
         "hybrid": [
           "part:3626cpr0914",
           "part:3626bpr0049",
-          "part:3626cpr2141",
           "part:3626cpr0889",
+          "part:3626cpr2141",
           "part:3626bpr0282"
         ]
       },
@@ -482,7 +482,7 @@
           "part:3626bpr0029",
           "part:3626cpr1557",
           "part:3626bpr0564",
-          "part:3626bpr0026"
+          "part:3626bpr0027"
         ]
       },
       "candidates": [
@@ -521,13 +521,13 @@
           "relevance": null
         },
         {
-          "candidateKey": "candidate:release-dev-de-eyepatch-beard:part:3626bpr0026",
-          "componentId": "part:3626bpr0026",
-          "rebrickablePartNum": "3626bpr0026",
-          "originalName": "Minifig Head Pirate / Wolfpack, Eyepatch, Stubble, Black Hair Print [Blocked Open Stud]",
+          "candidateKey": "candidate:release-dev-de-eyepatch-beard:part:3626bpr0027",
+          "componentId": "part:3626bpr0027",
+          "rebrickablePartNum": "3626bpr0027",
+          "originalName": "Minifig Head Pirate, Eyepatch, Stubble and Reddish-Brown Hair Print [Blocked Open Stud]",
           "categoryRole": "head",
           "colorNames": [],
-          "thumbnailUrl": "/assets/thumbnails/ldraw-expanded/head-3626bpr0026.webp",
+          "thumbnailUrl": "/assets/thumbnails/ldraw-expanded/head-3626bpr0027.webp",
           "relevance": null
         },
         {
@@ -1518,7 +1518,7 @@
         "hybrid": [
           "part:973c22h03pr1264",
           "part:973c22h01pr1783",
-          "part:973c22h02pr5595"
+          "part:973c22h27pr2112"
         ]
       },
       "candidates": [
@@ -1546,6 +1546,18 @@
             "Red"
           ],
           "thumbnailUrl": "/assets/thumbnails/ldraw-expanded/torso-37191.webp",
+          "relevance": null
+        },
+        {
+          "candidateKey": "candidate:release-dev-de-red-pirate-no-armor:part:973c22h27pr2112",
+          "componentId": "part:973c22h27pr2112",
+          "rebrickablePartNum": "973c22h27pr2112",
+          "originalName": "Torso, Santa Jacket with Fur and Black Belt Print, Red Arms, White Hands",
+          "categoryRole": "torsoAssembly",
+          "colorNames": [
+            "Red"
+          ],
+          "thumbnailUrl": "/assets/thumbnails/ldraw-expanded/torso-973c22h27pr2112.webp",
           "relevance": null
         },
         {
@@ -1582,18 +1594,6 @@
             "Red"
           ],
           "thumbnailUrl": "/assets/thumbnails/ldraw-expanded/torso-973c22h03pr1264.webp",
-          "relevance": null
-        },
-        {
-          "candidateKey": "candidate:release-dev-de-red-pirate-no-armor:part:973c22h02pr5595",
-          "componentId": "part:973c22h02pr5595",
-          "rebrickablePartNum": "973c22h02pr5595",
-          "originalName": "Torso, Letterman Jacket, White Undershirt Print, Red Arms, Light Nougat Hands",
-          "categoryRole": "torsoAssembly",
-          "colorNames": [
-            "Red"
-          ],
-          "thumbnailUrl": "/assets/thumbnails/ldraw-expanded/torso-973c22h02pr5595.webp",
           "relevance": null
         },
         {
@@ -1638,8 +1638,8 @@
         ],
         "hybrid": [
           "part:970c22pr0019",
-          "part:970e09",
           "part:970c03pr0001",
+          "part:970e09",
           "part:970c14pr0288"
         ]
       },

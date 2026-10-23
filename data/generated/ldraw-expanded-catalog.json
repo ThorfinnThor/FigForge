@@ -728309,6 +728309,96 @@
       }
     },
     {
+      "componentId": "catalog:handAccessory:18034",
+      "role": "handAccessory",
+      "rebrickablePartNum": "18034",
+      "name": "Weapon Sword with Thick Crossguard (Roman Gladius)",
+      "rebrickableCategoryId": 73,
+      "rebrickableCategoryName": "Minifig Shields, Weapons, & Tools",
+      "material": "Plastic",
+      "colorNames": [
+        "Black",
+        "Flat Silver",
+        "Pearl Gold",
+        "Pearl Titanium",
+        "White"
+      ],
+      "previewColorName": "Pearl Titanium",
+      "previewColorRgb": "3E3C39",
+      "previewColorEvidence": "rebrickable-elements-first",
+      "status": "verified",
+      "ldrawFile": "parts/18034.dat",
+      "ldrawUpdate": "2024-03",
+      "mappingEvidence": "exact-filename",
+      "assemblyWrapperFor": null,
+      "geometryFallback": null,
+      "modelUrl": "/assets/ldraw/official-2609/models/handAccessory-18034.ldr",
+      "modelSha256": "93ae10936e3a097c6292d9ed88bc1dbbd81263ae1528f0ce5ae27ea4a4f89607",
+      "thumbnailUrl": "/assets/thumbnails/ldraw-expanded/handAccessory-18034.webp",
+      "thumbnailSha256": "9dec151bfe56cedfbf8c025ceff80fec409b41f43d9b7cc51d8ebe2b25b16160",
+      "thumbnailBytes": 2116,
+      "placementMode": "snap-connector",
+      "placementTransformLdu": [
+        0.146464,
+        0.848563,
+        -0.507414,
+        0,
+        -0.086268,
+        -0.499806,
+        -0.861479,
+        0,
+        -0.985,
+        0.17,
+        0,
+        0,
+        25.373986,
+        36.528153,
+        -11.553048,
+        1
+      ],
+      "digitalValidation": {
+        "status": "passed",
+        "reasonCode": null,
+        "gripLengthLdu": 13.75,
+        "modelBoundsLdu": {
+          "min": [
+            -6,
+            -57.92,
+            -7
+          ],
+          "max": [
+            6,
+            19.75,
+            7
+          ],
+          "size": [
+            12,
+            77.67,
+            14
+          ]
+        },
+        "sampledPointCount": 4416,
+        "protectedBodyBoxCount": 8,
+        "collisionSampleCount": 0,
+        "collisionSamplesByPart": {},
+        "gripCandidatesTested": 1,
+        "safeGripCandidatesFound": 1,
+        "selectedGripCandidateIndex": 0,
+        "orientationCandidatesTested": 56,
+        "selectedOrientationIndex": 5,
+        "gripPrimitive": "stacked:p/4-4cyli.dat",
+        "gripEvidenceSource": "official-ldraw-geometry",
+        "limits": {
+          "minimumGripLengthLdu": 8,
+          "maximumAccessoryExtentLdu": 240,
+          "gripNeighborhoodRadiusLdu": 7,
+          "bodyBoxInsetLdu": 0.25
+        },
+        "physicalFitGuaranteed": false,
+        "clearanceMode": "closed-mesh"
+      }
+    },
+    {
       "componentId": "catalog:handAccessory:18041",
       "role": "handAccessory",
       "rebrickablePartNum": "18041",
@@ -731126,6 +731216,90 @@
       }
     },
     {
+      "componentId": "catalog:handAccessory:2674b",
+      "role": "handAccessory",
+      "rebrickablePartNum": "2674b",
+      "name": "Weapon Sword Long",
+      "rebrickableCategoryId": 73,
+      "rebrickableCategoryName": "Minifig Shields, Weapons, & Tools",
+      "material": "Plastic",
+      "colorNames": [],
+      "previewColorName": null,
+      "previewColorRgb": "A0A8A4",
+      "previewColorEvidence": "neutral-fallback",
+      "status": "verified",
+      "ldrawFile": "parts/2674b.dat",
+      "ldrawUpdate": "2025-08",
+      "mappingEvidence": "exact-filename",
+      "assemblyWrapperFor": null,
+      "geometryFallback": null,
+      "modelUrl": "/assets/ldraw/official-2609/models/handAccessory-2674b.ldr",
+      "modelSha256": "83575b7979c69faed4e2af7c7346e66c68def855e536c3a10e7f074fb66ab46f",
+      "thumbnailUrl": "/assets/thumbnails/ldraw-expanded/handAccessory-2674b.webp",
+      "thumbnailSha256": "d7ac61b5ce4acb354c9445beefe8706555bace56c91a2cdc418a5fea13ab9a86",
+      "thumbnailBytes": 1964,
+      "placementMode": "snap-connector",
+      "placementTransformLdu": [
+        -0.985,
+        0.17,
+        0,
+        0,
+        -0.086268,
+        -0.499806,
+        -0.861479,
+        0,
+        0.146464,
+        0.848563,
+        -0.507414,
+        0,
+        24.81109,
+        33.266917,
+        -17.174202,
+        1
+      ],
+      "digitalValidation": {
+        "status": "passed",
+        "reasonCode": null,
+        "gripLengthLdu": 15.5,
+        "modelBoundsLdu": {
+          "min": [
+            -6,
+            -86.25,
+            -14
+          ],
+          "max": [
+            6,
+            16.6,
+            14
+          ],
+          "size": [
+            12,
+            102.85,
+            28
+          ]
+        },
+        "sampledPointCount": 3120,
+        "protectedBodyBoxCount": 8,
+        "collisionSampleCount": 0,
+        "collisionSamplesByPart": {},
+        "gripCandidatesTested": 1,
+        "safeGripCandidatesFound": 1,
+        "selectedGripCandidateIndex": 0,
+        "orientationCandidatesTested": 72,
+        "selectedOrientationIndex": 1,
+        "gripPrimitive": "stacked:p/4-4cylc.dat",
+        "gripEvidenceSource": "official-ldraw-geometry",
+        "limits": {
+          "minimumGripLengthLdu": 8,
+          "maximumAccessoryExtentLdu": 240,
+          "gripNeighborhoodRadiusLdu": 7,
+          "bodyBoxInsetLdu": 0.25
+        },
+        "physicalFitGuaranteed": false,
+        "clearanceMode": "closed-mesh"
+      }
+    },
+    {
       "componentId": "catalog:handAccessory:2674d",
       "role": "handAccessory",
       "rebrickablePartNum": "2674d",
@@ -731206,6 +731380,174 @@
           "bodyBoxInsetLdu": 0.25
         },
         "physicalFitGuaranteed": false
+      }
+    },
+    {
+      "componentId": "catalog:handAccessory:2674e",
+      "role": "handAccessory",
+      "rebrickablePartNum": "2674e",
+      "name": "Weapon Sword Broken (Narsil)",
+      "rebrickableCategoryId": 73,
+      "rebrickableCategoryName": "Minifig Shields, Weapons, & Tools",
+      "material": "Plastic",
+      "colorNames": [],
+      "previewColorName": null,
+      "previewColorRgb": "A0A8A4",
+      "previewColorEvidence": "neutral-fallback",
+      "status": "verified",
+      "ldrawFile": "parts/2674e.dat",
+      "ldrawUpdate": "2025-09",
+      "mappingEvidence": "exact-filename",
+      "assemblyWrapperFor": null,
+      "geometryFallback": null,
+      "modelUrl": "/assets/ldraw/official-2609/models/handAccessory-2674e.ldr",
+      "modelSha256": "b42d1f75538971faa36b416fea82d1f3621e4d619a3cfa271e5be38db15c6552",
+      "thumbnailUrl": "/assets/thumbnails/ldraw-expanded/handAccessory-2674e.webp",
+      "thumbnailSha256": "e9a8179dc80adfd6a8f0db25b7f6cbf8b85095de461b2f8ded674d859e48e0b8",
+      "thumbnailBytes": 2010,
+      "placementMode": "snap-connector",
+      "placementTransformLdu": [
+        -0.985,
+        0.17,
+        0,
+        0,
+        -0.086268,
+        -0.499806,
+        -0.861479,
+        0,
+        0.146464,
+        0.848563,
+        -0.507414,
+        0,
+        24.802463,
+        33.216936,
+        -17.26035,
+        1
+      ],
+      "digitalValidation": {
+        "status": "passed",
+        "reasonCode": null,
+        "gripLengthLdu": 12.3,
+        "modelBoundsLdu": {
+          "min": [
+            -5.2,
+            -52.6,
+            -16.2
+          ],
+          "max": [
+            5.2,
+            26.5,
+            16.2
+          ],
+          "size": [
+            10.4,
+            79.1,
+            32.4
+          ]
+        },
+        "sampledPointCount": 3208,
+        "protectedBodyBoxCount": 8,
+        "collisionSampleCount": 0,
+        "collisionSamplesByPart": {},
+        "gripCandidatesTested": 1,
+        "safeGripCandidatesFound": 1,
+        "selectedGripCandidateIndex": 0,
+        "orientationCandidatesTested": 56,
+        "selectedOrientationIndex": 1,
+        "gripPrimitive": "stacked:p/4-4cylc.dat",
+        "gripEvidenceSource": "official-ldraw-geometry",
+        "limits": {
+          "minimumGripLengthLdu": 8,
+          "maximumAccessoryExtentLdu": 240,
+          "gripNeighborhoodRadiusLdu": 7,
+          "bodyBoxInsetLdu": 0.25
+        },
+        "physicalFitGuaranteed": false,
+        "clearanceMode": "closed-mesh"
+      }
+    },
+    {
+      "componentId": "catalog:handAccessory:2674f",
+      "role": "handAccessory",
+      "rebrickablePartNum": "2674f",
+      "name": "Weapon Sword Short",
+      "rebrickableCategoryId": 73,
+      "rebrickableCategoryName": "Minifig Shields, Weapons, & Tools",
+      "material": "Plastic",
+      "colorNames": [],
+      "previewColorName": null,
+      "previewColorRgb": "A0A8A4",
+      "previewColorEvidence": "neutral-fallback",
+      "status": "verified",
+      "ldrawFile": "parts/2674f.dat",
+      "ldrawUpdate": "2025-09",
+      "mappingEvidence": "exact-filename",
+      "assemblyWrapperFor": null,
+      "geometryFallback": null,
+      "modelUrl": "/assets/ldraw/official-2609/models/handAccessory-2674f.ldr",
+      "modelSha256": "954c30b06f9fd0468088a490be066be85a636326ba4ef670c90677363362527d",
+      "thumbnailUrl": "/assets/thumbnails/ldraw-expanded/handAccessory-2674f.webp",
+      "thumbnailSha256": "08b241d6aa2fd2a1d8276a412cb4c6b6410ce2853b5fbf1dbb159394c505c006",
+      "thumbnailBytes": 2048,
+      "placementMode": "snap-connector",
+      "placementTransformLdu": [
+        0.985,
+        -0.17,
+        0,
+        0,
+        -0.086268,
+        -0.499806,
+        -0.861479,
+        0,
+        0.146464,
+        0.848563,
+        -0.507414,
+        0,
+        24.78521,
+        33.116975,
+        -17.432646,
+        1
+      ],
+      "digitalValidation": {
+        "status": "passed",
+        "reasonCode": null,
+        "gripLengthLdu": 16.1,
+        "modelBoundsLdu": {
+          "min": [
+            -6,
+            -76.6,
+            -16.2259
+          ],
+          "max": [
+            6,
+            16.6,
+            16.2259
+          ],
+          "size": [
+            12,
+            93.2,
+            32.4518
+          ]
+        },
+        "sampledPointCount": 2928,
+        "protectedBodyBoxCount": 8,
+        "collisionSampleCount": 0,
+        "collisionSamplesByPart": {},
+        "gripCandidatesTested": 1,
+        "safeGripCandidatesFound": 1,
+        "selectedGripCandidateIndex": 0,
+        "orientationCandidatesTested": 88,
+        "selectedOrientationIndex": 5,
+        "gripPrimitive": "stacked:p/4-4cylc.dat",
+        "gripEvidenceSource": "official-ldraw-geometry",
+        "limits": {
+          "minimumGripLengthLdu": 8,
+          "maximumAccessoryExtentLdu": 240,
+          "gripNeighborhoodRadiusLdu": 7,
+          "bodyBoxInsetLdu": 0.25
+        },
+        "physicalFitGuaranteed": false,
+        "clearanceMode": "closed-mesh"
       }
     },
     {
@@ -754947,22 +755289,22 @@
   ],
   "summary": {
     "catalogPartCount": 20283,
-    "digitallySupportedCount": 14917,
+    "digitallySupportedCount": 14921,
     "headCount": 4877,
     "headwearCount": 781,
     "torsoAssemblyCount": 6030,
     "legsAssemblyCount": 2889,
-    "handAccessoryCount": 340,
-    "directMappingCount": 2533,
+    "handAccessoryCount": 344,
+    "directMappingCount": 2537,
     "colorCodedAssemblyCount": 7620,
     "officialAssemblyWrapperCount": 76,
     "ambiguousAssemblyWrappersExcluded": 6,
     "unprintedColorCodedAssemblyCount": 7413,
     "printParentGeometryFallbackCount": 4764,
-    "generatedAssetCount": 5238,
-    "sharedOfficialFileCount": 5699,
+    "generatedAssetCount": 5242,
+    "sharedOfficialFileCount": 5708,
     "ambiguousMappingsExcluded": 127,
-    "accessoryGripCandidatesExcluded": 243,
+    "accessoryGripCandidatesExcluded": 239,
     "accessoryLdcadGripCandidatesDisambiguated": 39,
     "accessoryLdcadPrintParentGripCandidatesEvaluated": 12,
     "accessoryMultipleGripCandidatesEvaluated": 108,
@@ -754971,11 +755313,11 @@
     "accessoryMultipleGripCandidatesNoSafe": 2,
     "accessoryMultipleGripCandidatesRenderFailed": 0,
     "accessoryMultipleGripCandidatesSemanticRejected": 8,
-    "accessoryPlacementCandidatesEvaluated": 438,
+    "accessoryPlacementCandidatesEvaluated": 442,
     "accessoryPlacementRenderFailuresExcluded": 0,
     "accessorySemanticGripRejectionsExcluded": 14,
     "accessoryVisualPlacementRejectionsExcluded": 4,
-    "digitalPlacementPassedCount": 340,
+    "digitalPlacementPassedCount": 344,
     "digitalPlacementRejectionsExcluded": 98,
     "renderFailuresExcluded": 0,
     "mocFilesUsed": 0

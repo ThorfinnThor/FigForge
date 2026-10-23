@@ -244,6 +244,63 @@ export function proposedHandPlacements(evidence: CylinderEvidence): number[][] {
   return placements;
 }
 
+const STACKED_CYLINDER_MAX_GAP_LDU = 2;
+const STACKED_CYLINDER_MAX_OFF_AXIS_LDU = 0.25;
+
+/**
+ * Merges short radius-4 cylinder segments that sit on one axis and touch within a groove
+ * (ribbed handles are modelled as a stack of 1 to 2 LDU rings) into one longer grip segment.
+ * Only the segments themselves count; the result is geometric evidence, not an approval.
+ */
+export function mergeStackedCylinderEvidence(segments: readonly CylinderEvidence[]): CylinderEvidence[] {
+  const candidates = segments.filter((item) => item.radiusLdu >= 3.75 && item.radiusLdu <= 4.25);
+  const remaining = [...candidates];
+  const merged: CylinderEvidence[] = [];
+  while (remaining.length > 0) {
+    const reference = remaining.shift()!;
+    const axis = new Vector3(...reference.axis).normalize();
+    const origin = new Vector3(...reference.centerLdu);
+    const group = [reference];
+    for (let index = remaining.length - 1; index >= 0; index -= 1) {
+      const other = remaining[index]!;
+      const otherAxis = new Vector3(...other.axis).normalize();
+      if (Math.abs(otherAxis.dot(axis)) < 0.9999) continue;
+      const offset = new Vector3(...other.centerLdu).sub(origin);
+      const offAxis = offset.clone().sub(axis.clone().multiplyScalar(offset.dot(axis))).length();
+      if (offAxis > STACKED_CYLINDER_MAX_OFF_AXIS_LDU) continue;
+      group.push(other);
+      remaining.splice(index, 1);
+    }
+    const spans = group
+      .map((item) => {
+        const centre = new Vector3(...item.centerLdu).sub(origin).dot(axis);
+        return { start: centre - item.lengthLdu / 2, end: centre + item.lengthLdu / 2 };
+      })
+      .sort((left, right) => left.start - right.start);
+    // Split the group wherever two segments are further apart than a groove.
+    const runs: Array<{ start: number; end: number }> = [];
+    for (const span of spans) {
+      const last = runs[runs.length - 1];
+      if (last && span.start - last.end <= STACKED_CYLINDER_MAX_GAP_LDU) last.end = Math.max(last.end, span.end);
+      else runs.push({ ...span });
+    }
+    for (const run of runs) {
+      const middle = (run.start + run.end) / 2;
+      const centre = origin.clone().add(axis.clone().multiplyScalar(middle));
+      const connector = new Matrix4().fromArray(reference.sourceConnectorTransformLdu).setPosition(centre);
+      merged.push({
+        primitive: `stacked:${reference.primitive}`,
+        radiusLdu: reference.radiusLdu,
+        lengthLdu: roundedNumber(run.end - run.start),
+        centerLdu: roundedVector(centre),
+        axis: roundedVector(axis.clone().multiplyScalar(run.end - run.start)),
+        sourceConnectorTransformLdu: roundedMatrix(connector),
+      });
+    }
+  }
+  return merged.sort((left, right) => right.lengthLdu - left.lengthLdu);
+}
+
 const gripContactOffsets = (lengthLdu: number): number[] => {
   const maximumOffset = Math.max(0, (lengthLdu - MIN_DIGITAL_HAND_GRIP_LENGTH_LDU) / 2);
   const offsets = [0];

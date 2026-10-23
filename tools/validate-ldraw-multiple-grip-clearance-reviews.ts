@@ -135,9 +135,11 @@ const remainingWithoutReviewedGrip = [...remainingMultiple].filter((partNum) =>
     && !placementBlockedPartNums.has(partNum)
     && !remainingPlacementApprovedPartNums.has(partNum)
 );
-// ADR-047: all 3846 profile members were multi-grip parts and left the candidate queue when
-// the project profile placed them. The original 99 unreviewed parts stay unreviewed.
+// ADR-047: the members of the cylinder profile families (shields) were multi-grip parts and left
+// the candidate queue when the project profile placed them. Stacked-cylinder families (swords)
+// were never in this queue. The original 99 unreviewed parts stay unreviewed.
 const profileMemberCount = (await readAccessoryProfileReviews(root)).families
+  .filter(({ gripSource }) => gripSource !== "stacked-cylinders")
   .reduce((total, { members }) => total + members.length, 0);
 assert.equal(
   remainingWithoutReviewedGrip.length + profileMemberCount,

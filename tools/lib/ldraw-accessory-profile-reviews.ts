@@ -13,6 +13,11 @@ export type AccessoryProfileMember = {
 
 export type AccessoryProfileFamily = {
   familyId: string;
+  /**
+   * Where the grip comes from. "cylinder" (default) is one of the detected radius-4 cylinders;
+   * "stacked-cylinders" is a ribbed handle merged from touching radius-4 rings on one axis.
+   */
+  gripSource?: "cylinder" | "stacked-cylinders";
   catalogName: string;
   detectedGripPrimitive: string;
   detectedGripLengthLdu: number;
@@ -53,7 +58,8 @@ export function assertValidAccessoryProfileReviews(reviews: AccessoryProfileRevi
     }
     seenFamilies.add(family.familyId);
     if (
-      !family.catalogName.trim()
+      (family.gripSource !== undefined && !["cylinder", "stacked-cylinders"].includes(family.gripSource))
+      || !family.catalogName.trim()
       || !family.detectedGripPrimitive.trim()
       || family.detectedGripLengthLdu <= 0
       || family.gripCandidatesTested <= 0
@@ -83,6 +89,13 @@ export function assertValidAccessoryProfileReviews(reviews: AccessoryProfileRevi
       seenParts.add(key);
     }
   }
+}
+
+/** Part numbers whose grip must be merged from stacked cylinders before candidates are tested. */
+export function stackedCylinderGripPartNums(reviews: AccessoryProfileReviews): Set<string> {
+  return new Set(reviews.families
+    .filter(({ gripSource }) => gripSource === "stacked-cylinders")
+    .flatMap(({ members }) => members.map(({ rebrickablePartNum }) => rebrickablePartNum.toLowerCase())));
 }
 
 /** Approved placement reviews equivalent to the family profile, one per member. */

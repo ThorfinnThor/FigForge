@@ -4,6 +4,7 @@ import { resolve } from "node:path";
 import { catalogPackageSchema } from "../src/contracts/catalog-package.js";
 import { handGripEvidenceFromLDCadShadow, vendoredAccessoryGripFiles } from "./lib/ldcad-shadow-connectivity.js";
 import { readAccessoryPlacementReviews } from "./lib/ldraw-accessory-placement-reviews.js";
+import { readAccessoryProfileReviews } from "./lib/ldraw-accessory-profile-reviews.js";
 import { readNoRadiusGripClearanceReviews } from "./lib/ldraw-no-radius-grip-clearance-reviews.js";
 import { normalizeCatalogEvidenceName } from "./lib/ldraw-review.js";
 
@@ -112,15 +113,22 @@ for (const review of reviews.reviews) {
   }
 }
 
+// ADR-047: parts of stacked-cylinder profile families (swords) were in this queue and left it
+// when the project profile placed them; the audited counts below stay as they were.
+const stackedProfileMemberCount = (await readAccessoryProfileReviews(root)).families
+  .filter(({ gripSource }) => gripSource === "stacked-cylinders")
+  .reduce((total, { members }) => total + members.length, 0);
 const expectedRemainingCount = reviews.withoutUniqueDocumentedGripCount
   + remainingPlacementBlockedPartNums.size
-  + remainingPlacementApprovedPartNums.size;
+  + remainingPlacementApprovedPartNums.size
+  - stackedProfileMemberCount;
 assert.equal(placement.summary.noRadius4CylinderDetectedCount, expectedRemainingCount);
 assert.equal(remainingNoRadius.size, expectedRemainingCount);
 assert.equal(
   reviews.reviews.length
     - placementBlockedReviews.length
     + remainingNoRadius.size
+    + stackedProfileMemberCount
     - blockedOutsideAuditedReviews.length
     - placementApprovedReviews.length,
   reviews.auditedQueueCount,
