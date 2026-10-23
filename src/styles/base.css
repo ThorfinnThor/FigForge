@@ -2255,6 +2255,7 @@ legend {
 .idea-world[data-accent="pink"] { --idea-accent: var(--accent-pink); }
 .idea-world[data-accent="brown"] { --idea-accent: var(--accent-brown); }
 .idea-world[data-accent="indigo"] { --idea-accent: var(--accent-indigo); }
+.idea-world[data-accent="olive"] { --idea-accent: var(--accent-olive); }
 
 .idea-world h3 {
   margin: 0;
@@ -2320,6 +2321,7 @@ legend {
 .idea-card[data-accent="pink"] { --idea-accent: var(--accent-pink); }
 .idea-card[data-accent="brown"] { --idea-accent: var(--accent-brown); }
 .idea-card[data-accent="indigo"] { --idea-accent: var(--accent-indigo); }
+.idea-card[data-accent="olive"] { --idea-accent: var(--accent-olive); }
 
 .figure-preview-card {
   position: relative;

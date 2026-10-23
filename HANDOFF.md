@@ -97,6 +97,8 @@ Geschlossen: #22 (überholt durch ADR-011), #78 (TypeScript 7, siehe #132).
 
 | (folgt) | **Elfte Themenwelt „Ninja & Samurai“** (`/ideas/ninja`): Ninja, Samurai, Shogun, Akzentfarbe Indigo. Raster bei elf Welten 4 + 4 + 3 (ab 1200 px). Bewusst ohne Markenbegriffe aus LEGO-Themen. |
 
+| (folgt) | **Zwölfte Themenwelt „Dschungel-Entdecker“** (`/ideas/jungle`): Dschungelforscher, Expeditions-Fotografin, Schatzsucher, Akzentfarbe Oliv. **Beim Teileauswählen beachten:** Nicht jedes Teil, das die Suche im Builder findet, hat eine „verified runtime placement“ (zum Beispiel die Spitzhacke 3841); `assets:figure-previews` bricht dann mit „Missing verified runtime placement“ ab. Vorher prüfen: `grep 'catalog:handAccessory:<Nr>"' data/generated/ldraw-runtime/hand-accessory.json` (entsprechend je Slot). |
+
 **Einstellungen im Google-Analytics-Konto (vom Eigentümer freigegeben, am 2026-10-21 über den Browser gesetzt und nach Neuladen abgelesen):** Konto „SeitenHafen361“, Property „createyourminifig.com“. Kontodetails: die drei Datenweitergabe-Häkchen (Modelle für Beiträge und Geschäftsinformationen, Technischer Support, Empfehlungen für Ihr Unternehmen) sind aus. Datenaufbewahrung: Ereignisdaten 14 Monate (vorher 2), Nutzerdaten 14 Monate, „Bei neuer Nutzeraktivität zurücksetzen“ aus. Nicht angefasst: Google-Signale (im Tag per Code aus), Datenverarbeitungsbedingungen (siehe Abschnitt 7).
 
 ## 3. Datenstand (2026-10-19 bis 21, aus den Daten gemessen)
