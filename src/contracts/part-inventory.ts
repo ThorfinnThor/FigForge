@@ -8,7 +8,7 @@ export const partInventoryEntrySchema = z.object({
 
 export const partInventorySchema = z.object({
   schemaVersion: z.literal(1),
-  source: z.literal("rebrickable-csv"),
+  source: z.enum(["rebrickable-csv", "bricklink-xml"]),
   importedAt: z.iso.datetime(),
   entries: z.array(partInventoryEntrySchema),
 }).strict();

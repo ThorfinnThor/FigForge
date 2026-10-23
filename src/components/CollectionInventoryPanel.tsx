@@ -1,7 +1,9 @@
 import { useRef, useState } from "react";
 import type { PartInventory } from "../contracts/part-inventory.js";
 import { useI18n } from "../i18n.js";
+import { importBrickLinkInventory, parseBrickLinkInventoryXml, type BrickLinkImportSummary } from "../procurement/bricklink-inventory.js";
 import { parsePartInventoryCsv } from "../procurement/part-inventory.js";
+import { loadAllShopExportEntries } from "../procurement/shop-export-data.js";
 import { savePartInventory } from "../storage/figure-draft-store.js";
 import { Button } from "./ui/Button.js";
 import { StatusMessage } from "./ui/StatusMessage.js";
@@ -14,7 +16,9 @@ type CollectionInventoryPanelProps = {
 export function CollectionInventoryPanel({ inventory, onImported }: CollectionInventoryPanelProps) {
   const { t } = useI18n();
   const inputRef = useRef<HTMLInputElement>(null);
-  const [status, setStatus] = useState<"idle" | "saving" | "success" | "error">("idle");
+  const brickLinkInputRef = useRef<HTMLInputElement>(null);
+  const [status, setStatus] = useState<"idle" | "saving" | "success" | "error" | "bricklink-success" | "bricklink-empty" | "bricklink-error">("idle");
+  const [brickLinkSummary, setBrickLinkSummary] = useState<BrickLinkImportSummary | null>(null);
 
   const importFile = async (file: File): Promise<void> => {
     setStatus("saving");
@@ -28,6 +32,27 @@ export function CollectionInventoryPanel({ inventory, onImported }: CollectionIn
       setStatus("error");
     } finally {
       if (inputRef.current) inputRef.current.value = "";
+    }
+  };
+
+  const importBrickLinkFile = async (file: File): Promise<void> => {
+    setStatus("saving");
+    try {
+      if (file.size > 5 * 1024 * 1024) throw new Error("BrickLink XML exceeds 5 MiB");
+      const parsed = parseBrickLinkInventoryXml(await file.text());
+      const { inventory: imported, summary } = importBrickLinkInventory(parsed.items, await loadAllShopExportEntries());
+      setBrickLinkSummary({ ...summary, notInCatalog: summary.notInCatalog + parsed.skippedNonPart + parsed.skippedInvalid });
+      if (imported.entries.length === 0) {
+        setStatus("bricklink-empty");
+        return;
+      }
+      await savePartInventory(imported);
+      onImported(imported);
+      setStatus("bricklink-success");
+    } catch {
+      setStatus("bricklink-error");
+    } finally {
+      if (brickLinkInputRef.current) brickLinkInputRef.current.value = "";
     }
   };
 
@@ -50,11 +75,38 @@ export function CollectionInventoryPanel({ inventory, onImported }: CollectionIn
         ref={inputRef}
         type="file"
       />
-      <Button disabled={status === "saving"} onClick={() => inputRef.current?.click()} size="md" variant="secondary">
-        {inventory ? t("inventory.replace") : t("inventory.import")}
-      </Button>
+      <input
+        accept=".xml,text/xml,application/xml"
+        className="visually-hidden"
+        data-bricklink-input="true"
+        onChange={(event) => {
+          const file = event.currentTarget.files?.[0];
+          if (file) void importBrickLinkFile(file);
+        }}
+        ref={brickLinkInputRef}
+        type="file"
+      />
+      <div className="collection-inventory__actions">
+        <Button disabled={status === "saving"} onClick={() => inputRef.current?.click()} size="md" variant="secondary">
+          {inventory ? t("inventory.replace") : t("inventory.import")}
+        </Button>
+        <Button disabled={status === "saving"} onClick={() => brickLinkInputRef.current?.click()} size="md" variant="secondary">
+          {t("inventory.bricklink.import")}
+        </Button>
+        <p className="collection-inventory__hint">{t("inventory.bricklink.hint")}</p>
+      </div>
       {status === "success" ? <StatusMessage tone="success">{t("inventory.success")}</StatusMessage> : null}
       {status === "error" ? <StatusMessage tone="danger">{t("inventory.error")}</StatusMessage> : null}
+      {status === "bricklink-success" && brickLinkSummary ? (
+        <StatusMessage tone="success">
+          {t("inventory.bricklink.success", {
+            matched: brickLinkSummary.matched,
+            skipped: brickLinkSummary.notInCatalog + brickLinkSummary.ambiguous,
+          })}
+        </StatusMessage>
+      ) : null}
+      {status === "bricklink-empty" ? <StatusMessage tone="warning">{t("inventory.bricklink.empty")}</StatusMessage> : null}
+      {status === "bricklink-error" ? <StatusMessage tone="danger">{t("inventory.bricklink.error")}</StatusMessage> : null}
     </section>
   );
 }

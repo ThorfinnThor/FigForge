@@ -51,3 +51,10 @@ export const loadShopExportLookupForParts = async (
   ]));
   return (slot, rebrickablePartNum) => entries.get(slot)?.get(rebrickablePartNum.toLowerCase());
 };
+
+/** Every exportable catalog part of every role; used to map imported BrickLink lists once. */
+export const loadAllShopExportEntries = async (): Promise<ShopExportEntry[]> => {
+  const roles = Object.keys(shopExportLoaders) as CatalogRole[];
+  const packages = await Promise.all(roles.map(loadRole));
+  return packages.flatMap((entries) => [...entries.values()]);
+};

@@ -662,6 +662,35 @@ const testInventorySuggestions = async (client: CdpClient, origin: string): Prom
   assert.equal(first.href, "/builder?template=pirate-captain");
 };
 
+const testBrickLinkInventoryImport = async (client: CdpClient, origin: string): Promise<void> => {
+  await navigate(client, `${origin}/collection`);
+  await waitFor(client, "Boolean(document.querySelector('.collection-inventory input[data-bricklink-input]'))", "BrickLink import input", 60_000);
+  const xml = "<INVENTORY><ITEM><ITEMTYPE>P</ITEMTYPE><ITEMID>3626pb0082</ITEMID><COLOR>3</COLOR><QTY>1</QTY></ITEM>"
+    + "<ITEM><ITEMTYPE>P</ITEMTYPE><ITEMID>2528pb04</ITEMID><COLOR>11</COLOR><QTY>2</QTY></ITEM>"
+    + "<ITEM><ITEMTYPE>P</ITEMTYPE><ITEMID>3001</ITEMID><COLOR>5</COLOR><QTY>9</QTY></ITEM></INVENTORY>";
+  const imported = await evaluate<boolean>(client, `(() => {
+    const input = document.querySelector('.collection-inventory input[data-bricklink-input]');
+    if (!(input instanceof HTMLInputElement)) return false;
+    const transfer = new DataTransfer();
+    transfer.items.add(new File([${JSON.stringify(xml)}], 'bricklink.xml', { type: 'text/xml' }));
+    input.files = transfer.files;
+    input.dispatchEvent(new Event('change', { bubbles: true }));
+    return true;
+  })()`);
+  assert.equal(imported, true);
+  await waitFor(client, textIncludes("Bestand aus BrickLink importiert: 2 Positionen zugeordnet, 1 übersprungen"), "BrickLink import summary", 60_000);
+  await waitFor(client, "Boolean(document.querySelector('.inventory-suggestion'))", "suggestions from the BrickLink inventory", 30_000);
+  const first = await evaluate<{ title: string; count: string }>(client, `(() => {
+    const card = document.querySelector('.inventory-suggestion');
+    return {
+      title: card?.querySelector('h3')?.textContent ?? '',
+      count: card?.querySelector('.inventory-suggestion__count')?.textContent ?? '',
+    };
+  })()`);
+  assert.equal(first.title, "Piratenkapitän");
+  assert.equal(first.count, "2 von 5 Teilen vorhanden");
+};
+
 const testLDrawAndWebGlFailures = async (client: CdpClient, origin: string): Promise<void> => {
   await navigate(client, `${origin}/builder`);
   await waitFor(client, `Boolean(document.querySelector('.scene-lab[data-scene-state="ready"][data-selection-state="synchronized"] canvas.viewport'))`, "initial 3D preview", 60_000);
@@ -1049,6 +1078,8 @@ const run = async (): Promise<void> => {
     process.stdout.write("✓ figure name editable in the builder and kept after reload\n");
     await testInventorySuggestions(client, previewServer.origin);
     process.stdout.write("✓ figure suggestions from an imported parts list\n");
+    await testBrickLinkInventoryImport(client, previewServer.origin);
+    process.stdout.write("✓ BrickLink XML import maps parts and feeds the suggestions\n");
     await testLDrawAndWebGlFailures(client, previewServer.origin);
     process.stdout.write("✓ browser LDraw request failure and WebGL context-loss recovery\n");
   } finally {
