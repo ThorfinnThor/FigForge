@@ -24,6 +24,7 @@ import {
 import { CollectionFigureCard } from "./CollectionFigureCard.js";
 import { LegacyFigurePreviewMigrator } from "./LegacyFigurePreviewMigrator.js";
 import { CollectionInventoryPanel } from "./CollectionInventoryPanel.js";
+import { InventorySuggestions } from "./InventorySuggestions.js";
 import { CollectionPurchaseDialog } from "./CollectionPurchaseDialog.js";
 import { CollectionViewport } from "./CollectionViewport.js";
 import { StageNameDialog } from "./StageNameDialog.js";
@@ -411,6 +412,8 @@ export function CollectionPage() {
         {loadState === "ready" ? (
           <CollectionInventoryPanel inventory={inventory} onImported={setInventory} />
         ) : null}
+
+        {loadState === "ready" && inventory ? <InventorySuggestions inventory={inventory} /> : null}
 
         {loadState === "ready" ? (
           <details className="collection-data">
