@@ -18,6 +18,7 @@ export const WORLDS = [
   { id: "egypt", key: "egypt" },
   { id: "monsters", key: "monsters" },
   { id: "wildwest", key: "wildwest" },
+  { id: "ninja", key: "ninja" },
 ] as const;
 
 export type WorldKey = (typeof WORLDS)[number]["key"];

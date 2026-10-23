@@ -1,7 +1,7 @@
 import { createFigureDocument } from "../figure/figure-document.js";
 import type { FigureDocument, FigureDocumentSlot } from "../contracts/figure-document.js";
 
-export type FigureThemeId = "pirates" | "castle" | "space" | "fire-rescue" | "zombies" | "fantasy" | "vikings" | "egypt" | "monsters" | "wildwest";
+export type FigureThemeId = "pirates" | "castle" | "space" | "fire-rescue" | "zombies" | "fantasy" | "vikings" | "egypt" | "monsters" | "wildwest" | "ninja";
 
 export type FigureTemplateId =
   | "pirate-captain"
@@ -33,12 +33,15 @@ export type FigureTemplateId =
   | "werewolf"
   | "sheriff"
   | "outlaw"
-  | "cowboy";
+  | "cowboy"
+  | "ninja-shadow"
+  | "samurai-warrior"
+  | "shogun";
 
 export type FigureTemplate = {
   id: FigureTemplateId;
   themeId: FigureThemeId;
-  accent: "gold" | "red" | "blue" | "green" | "purple" | "teal" | "orange" | "sand" | "pink" | "brown";
+  accent: "gold" | "red" | "blue" | "green" | "purple" | "teal" | "orange" | "sand" | "pink" | "brown" | "indigo";
   nameKey: string;
   descriptionKey: string;
   document: FigureDocument;
@@ -728,6 +731,72 @@ export const FIGURE_TEMPLATES: readonly FigureTemplate[] = [
       "/assets/thumbnails/ldraw-expanded/torso-973c22h01pr0053.webp",
       "/assets/thumbnails/ldraw-expanded/legs-970c12pr0888.webp",
       "/assets/thumbnails/ldraw-expanded/handAccessory-99253.webp",
+    ],
+  ),
+  createTemplate(
+    "ninja-shadow",
+    "ninja",
+    "indigo",
+    "Ninja",
+    "ideas.ninjaShadow.name",
+    "ideas.ninjaShadow.description",
+    {
+      head: "catalog:head:3626bpr0389",
+      headwear: "catalog:headwear:30177",
+      torsoAssembly: "catalog:torsoAssembly:973c31h01pr0040",
+      legsAssembly: "catalog:legsAssembly:970c03pat19",
+      handAccessory: "catalog:handAccessory:30173a",
+    },
+    [
+      "/assets/thumbnails/ldraw-expanded/head-3626bpr0389.webp",
+      "/assets/thumbnails/ldraw-expanded/headwear-30177.webp",
+      "/assets/thumbnails/ldraw-expanded/torso-973c31h01pr0040.webp",
+      "/assets/thumbnails/ldraw-expanded/legs-970c03pat19.webp",
+      "/assets/thumbnails/ldraw-expanded/handAccessory-30173a.webp",
+    ],
+  ),
+  createTemplate(
+    "samurai-warrior",
+    "ninja",
+    "indigo",
+    "Samurai",
+    "ideas.samuraiWarrior.name",
+    "ideas.samuraiWarrior.description",
+    {
+      head: "catalog:head:3626bpr0348",
+      headwear: "catalog:headwear:30175",
+      torsoAssembly: "catalog:torsoAssembly:973c22h03pr2859",
+      legsAssembly: "catalog:legsAssembly:970c10pr0188",
+      handAccessory: "catalog:handAccessory:93055",
+    },
+    [
+      "/assets/thumbnails/ldraw-expanded/head-3626bpr0348.webp",
+      "/assets/thumbnails/ldraw-expanded/headwear-30175.webp",
+      "/assets/thumbnails/ldraw-expanded/torso-973c22h03pr2859.webp",
+      "/assets/thumbnails/ldraw-expanded/legs-970c10pr0188.webp",
+      "/assets/thumbnails/ldraw-expanded/handAccessory-93055.webp",
+    ],
+  ),
+  createTemplate(
+    "shogun",
+    "ninja",
+    "indigo",
+    "Shogun",
+    "ideas.shogun.name",
+    "ideas.shogun.description",
+    {
+      head: "catalog:head:3626bpr0247",
+      headwear: "catalog:headwear:98128",
+      torsoAssembly: "catalog:torsoAssembly:973c03h01pr0001",
+      legsAssembly: "catalog:legsAssembly:970c10pat03",
+      handAccessory: "catalog:handAccessory:21459",
+    },
+    [
+      "/assets/thumbnails/ldraw-expanded/head-3626bpr0247.webp",
+      "/assets/thumbnails/ldraw-expanded/headwear-98128.webp",
+      "/assets/thumbnails/ldraw-expanded/torso-973c03h01pr0001.webp",
+      "/assets/thumbnails/ldraw-expanded/legs-970c10pat03.webp",
+      "/assets/thumbnails/ldraw-expanded/handAccessory-21459.webp",
     ],
   ),
 ] as const;

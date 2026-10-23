@@ -95,6 +95,8 @@ Geschlossen: #22 (überholt durch ADR-011), #78 (TypeScript 7, siehe #132).
 
 | (folgt) | **Zehnte Themenwelt „Wilder Westen“** (`/ideas/wildwest`): Sheriff, Bandit (englisch Outlaw), Cowboy, Akzentfarbe Braun. Raster bei zehn Welten 4 + 3 + 3. **Beim Teileauswählen beachten:** Einige ältere Köpfe (zum Beispiel 3626bpr0298, 0333, 9964) tragen keine eigene Hautfarbe und erscheinen in der Vorschau grau; für Vorlagen Köpfe mit gelber Vorschau wählen (Kontrollbild: `public/assets/thumbnails/ldraw-expanded/head-<Nr>.webp`). |
 
+| (folgt) | **Elfte Themenwelt „Ninja & Samurai“** (`/ideas/ninja`): Ninja, Samurai, Shogun, Akzentfarbe Indigo. Raster bei elf Welten 4 + 4 + 3 (ab 1200 px). Bewusst ohne Markenbegriffe aus LEGO-Themen. |
+
 **Einstellungen im Google-Analytics-Konto (vom Eigentümer freigegeben, am 2026-10-21 über den Browser gesetzt und nach Neuladen abgelesen):** Konto „SeitenHafen361“, Property „createyourminifig.com“. Kontodetails: die drei Datenweitergabe-Häkchen (Modelle für Beiträge und Geschäftsinformationen, Technischer Support, Empfehlungen für Ihr Unternehmen) sind aus. Datenaufbewahrung: Ereignisdaten 14 Monate (vorher 2), Nutzerdaten 14 Monate, „Bei neuer Nutzeraktivität zurücksetzen“ aus. Nicht angefasst: Google-Signale (im Tag per Code aus), Datenverarbeitungsbedingungen (siehe Abschnitt 7).
 
 ## 3. Datenstand (2026-10-19 bis 21, aus den Daten gemessen)
