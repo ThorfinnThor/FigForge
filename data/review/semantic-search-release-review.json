@@ -5,9 +5,9 @@
   "reviewStatus": "pending-human-review",
   "blindedSystems": true,
   "querySetSha256": "56c9a287a380df56d27ff7ecf061514e537ea1be4821f6f6e1f7b41ce397bf97",
-  "releaseManifestSha256": "3c9721c8465a6c73fdff2064d821f9f132b3c67b54277a9513d293945d197fc4",
+  "releaseManifestSha256": "772c8ac821bedd226de859e392573c37d7d88c10f68d463cad401cdfbfa17c69",
   "releaseProfileId": "compact-minilm",
-  "releaseDocumentCount": 2744,
+  "releaseDocumentCount": 2748,
   "instructions": "Bewerte jeden Treffer blind mit 0 (unpassend), 1 (akzeptabel) oder 2 (sehr passend). Maßgeblich sind Suchtext, sichtbare Geometrie, Katalogname, Kategorie und belegte Farbe. Die Herkunft aus Basis- oder Hybridsuche bleibt verborgen; der Holdout wird nicht ausgeliefert.",
   "cases": [
     {
@@ -572,8 +572,8 @@
         ],
         "hybrid": [
           "part:15864pat0001",
-          "part:79230",
-          "part:3896"
+          "part:3896",
+          "part:79230"
         ]
       },
       "candidates": [
@@ -3234,8 +3234,8 @@
         "hybrid": [
           "part:3846pr0023",
           "part:3846pr0044",
-          "part:3846pr0005",
           "part:3846pr0038",
+          "part:3846pr0005",
           "part:3846pr0048"
         ]
       },

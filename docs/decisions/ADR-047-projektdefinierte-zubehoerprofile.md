@@ -29,20 +29,17 @@ Nicht Teil dieser Entscheidung: die inoffizielle LDraw-Bibliothek, Aufdrucke aus
 
 ## Erwarteter Umfang
 
-Nur Handzubehör. Obergrenze, wenn alle Familien bestätigt würden:
+Nur Handzubehör. Bedingung 2 (Transform aus erkennbarer Griffgeometrie) begrenzt den Umfang stark: Eine Familie ist nur umsetzbar, wenn die offizielle LDraw-Datei einen Griffzylinder enthält, an dem der Transform verankert werden kann. Die Prüfung aller Schild- und Schwertfamilien (2026-10-23) ergab:
 
-| Familie | Teile (inkl. Druckvarianten) |
-|---|---|
-| Schild `3846` dreieckig | 32 |
-| Schild `2586` oval | 19 |
-| Schild `75902` rund gewölbt | 16 |
-| Schild `92747` oval mit Griff | 7 |
-| Schild `91884` rund mit Noppe | 5 |
-| Schilde `18836`, `59231`, `10049`, `61856`, `98367`, `3876`, `37720`, `48494`, `93251` | 17 |
-| Schwerter (`2674a/b/e/f`, `5644`, `11439pat…`, `13549`, `18034`, `25111`, `36017`) | 13 |
-| **Summe** | **109** |
+| Familie | Teile (inkl. Druckvarianten) | Griffgeometrie in LDraw | Stand |
+|---|---|---|---|
+| Schild `3846` dreieckig | 32 | ja (zwei Zylinder) | umgesetzt |
+| Schild `59231` rund flach | 3 | ja (zwei Zylinder) | umgesetzt |
+| Schild `3876` rund mit Noppe | 1 | ja (zwei Zylinder) | umgesetzt |
+| Schilde `2586`, `75902`, `92747`, `91884`, `18836`, `10049`, `61856`, `98367`, `37720a`, `48494`, `93251` | rund 70 | nein | ausgeschlossen |
+| Schwerter (`2674a/b/e/f`, `5644`, `11439pat…`, `13549`, `18034`, `25111`, `36017`) | 13 | nein | ausgeschlossen |
 
-Das wären etwa +4 % exakte Teile (von rund 2.712 auf rund 2.820). Realistisch bleibt es darunter, weil jede Familie die Sichtprüfung bestehen muss; für Schwerter ohne eindeutigen Griff rechnet der Entwurf mit Ausfällen.
+Familien ohne Griffgeometrie bleiben gesperrt: Der Builder erzeugt für sie keine Griffkandidaten, und ein Transform wäre geraten (zum Beispiel `2586`, dessen LDraw-Datei nur die Schildform aus flachen Scheiben enthält). Sie werden erst freigeschaltet, wenn LDraw oder LDCad eine Griffgeometrie oder einen Anschluss dafür liefert. Der frühere Entwurf nannte rund 109 Teile; belastbar sind 36.
 
 ## Konsequenzen
 
@@ -57,11 +54,12 @@ Das wären etwa +4 % exakte Teile (von rund 2.712 auf rund 2.820). Realistisch b
 
 ## Umsetzungsstand
 
+- Familien `59231` (3 Teile) und `3876` (1 Teil): Griff 1 (Zylinder entlang der Schildtiefe), Ausrichtungen 6 bzw. 2. Der Griff 0 legt die Schilde flach ab; die Ausrichtungen 5 und 7 drehen den Aufdruck von `59231pr0002` (Adler) sichtbar schief.
 - Familie `3846` (32 Teile): Griffkandidat 1, Ausrichtung 2 (Schild aufrecht vor dem Körper, Spitze nach unten, Aufdruck nach vorn). Kollisionsfrei gegen die geschlossene Referenzgeometrie für alle 32 Mitglieder; Dreiansichten-Browserprüfung für das unbedruckte Schild und mehrere Druckvarianten.
 - Freigabedatei: `data/curated/ldraw-accessory-profile-reviews.json`; Prüfung: `npm run assets:validate:accessory-profiles`.
 - Kennzeichnung: Hinweis auf der Teilekarte in beiden Sprachen.
 
 ## Offene Punkte
 
-- Weitere Familien (`2586`, `75902`, `92747`, `91884`, übrige Schilde, Schwerter) folgen einzeln nach Sichtprüfung und Freigabe.
+- Familien ohne Griffgeometrie (siehe Tabelle) bleiben gesperrt, bis neue Quelldaten vorliegen.
 - Die Hashes decken die Teiledatei ab, nicht ihre Unterteile (`s/…`); ein Release, das nur ein Unterteil ändert, wird nicht erkannt, würde aber die Kollisionsprüfung beim Build neu bewerten.

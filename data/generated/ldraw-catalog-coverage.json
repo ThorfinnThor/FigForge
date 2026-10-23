@@ -34,17 +34,17 @@
   },
   "summary": {
     "catalogPartCount": 20283,
-    "visualizedPartCount": 14923,
-    "builderReadyPartCount": 14921,
-    "remainingCatalogPartCount": 5362,
-    "remainingWithoutVisualizationCount": 5360,
+    "visualizedPartCount": 14927,
+    "builderReadyPartCount": 14925,
+    "remainingCatalogPartCount": 5358,
+    "remainingWithoutVisualizationCount": 5356,
     "uniqueOfficialMappingCount": 2840,
     "ambiguousOfficialMappingCount": 168,
     "noOfficialMappingCount": 17275,
     "remainingClassifications": {
       "builder-blocked": 2,
       "render-failed": 0,
-      "placement-profile-required": 347,
+      "placement-profile-required": 343,
       "reviewed-incompatible-assembly": 95,
       "ambiguous-official-mapping": 13,
       "no-official-mapping": 4905
@@ -105,12 +105,12 @@
     },
     "handAccessory": {
       "catalogPartCount": 1311,
-      "builderReadyPartCount": 338,
-      "remainingCatalogPartCount": 973,
+      "builderReadyPartCount": 342,
+      "remainingCatalogPartCount": 969,
       "remainingClassifications": {
         "builder-blocked": 1,
         "render-failed": 0,
-        "placement-profile-required": 345,
+        "placement-profile-required": 341,
         "reviewed-incompatible-assembly": 0,
         "ambiguous-official-mapping": 4,
         "no-official-mapping": 623
@@ -45764,20 +45764,6 @@
       "reason": null
     },
     {
-      "catalogId": "part:3876",
-      "role": "handAccessory",
-      "rebrickablePartNum": "3876",
-      "name": "Shield Round with Stud",
-      "classification": "placement-profile-required",
-      "ldrawFiles": [
-        "parts/3876.dat"
-      ],
-      "mappingEvidence": [
-        "exact-filename"
-      ],
-      "reason": null
-    },
-    {
       "catalogId": "part:3899pr0006",
       "role": "handAccessory",
       "rebrickablePartNum": "3899pr0006",
@@ -51279,48 +51265,6 @@
       "classification": "no-official-mapping",
       "ldrawFiles": [],
       "mappingEvidence": [],
-      "reason": null
-    },
-    {
-      "catalogId": "part:59231",
-      "role": "handAccessory",
-      "rebrickablePartNum": "59231",
-      "name": "Shield Round Flat [Plain]",
-      "classification": "placement-profile-required",
-      "ldrawFiles": [
-        "parts/59231.dat"
-      ],
-      "mappingEvidence": [
-        "exact-filename"
-      ],
-      "reason": null
-    },
-    {
-      "catalogId": "part:59231pr0001",
-      "role": "handAccessory",
-      "rebrickablePartNum": "59231pr0001",
-      "name": "Shield Round Flat with Silver Skull on Dark Red Print",
-      "classification": "placement-profile-required",
-      "ldrawFiles": [
-        "parts/59231p4h.dat"
-      ],
-      "mappingEvidence": [
-        "explicit-keyword"
-      ],
-      "reason": null
-    },
-    {
-      "catalogId": "part:59231pr0002",
-      "role": "handAccessory",
-      "rebrickablePartNum": "59231pr0002",
-      "name": "Shield Round Flat with Helmet on Dark / Medium Blue Quarters Print",
-      "classification": "placement-profile-required",
-      "ldrawFiles": [
-        "parts/59231p40.dat"
-      ],
-      "mappingEvidence": [
-        "explicit-keyword"
-      ],
       "reason": null
     },
     {

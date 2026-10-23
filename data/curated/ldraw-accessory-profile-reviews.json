@@ -178,6 +178,58 @@
           "ldrawFileSha256": "d8bd252415db09cf119c615de6d70416ff4af2474d125b24d869aa8380b988d3"
         }
       ]
+    },
+    {
+      "familyId": "59231",
+      "catalogName": "Shield Round Flat",
+      "detectedGripPrimitive": "p/4-4cylc.dat",
+      "detectedGripLengthLdu": 22,
+      "gripCandidatesTested": 2,
+      "orientationCandidatesTested": 8,
+      "selectedGripCandidateIndex": 1,
+      "selectedOrientationIndex": 6,
+      "reviewedAt": "2026-10-23",
+      "reviewer": "Claude browser QA, Freigabe durch Projektverantwortlichen",
+      "evidenceReference": "three-quarter,front,back local browser inspection (plain shield and two printed variants)",
+      "note": "Griff 1 (Zylinder entlang der Schildtiefe) mit Ausrichtung 6 hält das runde Schild aufrecht vor dem Körper, Aufdruck nach vorn und aufrecht (Adler mit Flügeln oben), Griffstab hinter dem Schild in der Hand. Griff 0 (Zylinder quer) legt das Schild flach oder seitlich ab; die Ausrichtungen 5 und 7 drehen den Aufdruck um etwa 35 Grad.",
+      "members": [
+        {
+          "rebrickablePartNum": "59231",
+          "ldrawFile": "parts/59231.dat",
+          "ldrawFileSha256": "d40122d95a7a9ad666fd5d9927c7cc53ab059ab02d3426a0dc4af19837943359"
+        },
+        {
+          "rebrickablePartNum": "59231pr0001",
+          "ldrawFile": "parts/59231p4h.dat",
+          "ldrawFileSha256": "25c2d247cdfe528980e37ff42d1276e52c1a60c5c0d98206172e73a6baef569a"
+        },
+        {
+          "rebrickablePartNum": "59231pr0002",
+          "ldrawFile": "parts/59231p40.dat",
+          "ldrawFileSha256": "2d56242c47b97ac76de720e08dbf26148d6e0c46ac4c34ef57b2ca13afa3fc1c"
+        }
+      ]
+    },
+    {
+      "familyId": "3876",
+      "catalogName": "Shield Round with Stud",
+      "detectedGripPrimitive": "p/4-4cyli.dat",
+      "detectedGripLengthLdu": 22,
+      "gripCandidatesTested": 2,
+      "orientationCandidatesTested": 8,
+      "selectedGripCandidateIndex": 1,
+      "selectedOrientationIndex": 2,
+      "reviewedAt": "2026-10-23",
+      "reviewer": "Claude browser QA, Freigabe durch Projektverantwortlichen",
+      "evidenceReference": "three-quarter,front,back local browser inspection",
+      "note": "Griff 1 (Zylinder entlang der Schildtiefe) mit Ausrichtung 2 hält das runde, rotationssymmetrische Schild aufrecht vor dem Körper wie bei 59231, Griffstab hinter dem Schild in der Hand. Griff 0 legt das Schild flach ab.",
+      "members": [
+        {
+          "rebrickablePartNum": "3876",
+          "ldrawFile": "parts/3876.dat",
+          "ldrawFileSha256": "833db2e17613e4fd19894c524edb3976a9cd5299aaf297615ad0cbf490bef844"
+        }
+      ]
     }
   ]
 }
