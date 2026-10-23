@@ -44,6 +44,11 @@ import { collectVendoredLDCadHandGripEvidence } from "./lib/ldcad-shadow-connect
 import { readAccessoryGripIntentReviews } from "./lib/ldraw-accessory-grip-intent-reviews.js";
 import { readAccessoryPlacementReviews } from "./lib/ldraw-accessory-placement-reviews.js";
 import {
+  assertProfileSourceHashes,
+  profileMemberPlacementReviews,
+  readAccessoryProfileReviews,
+} from "./lib/ldraw-accessory-profile-reviews.js";
+import {
   ambiguousMappingKey,
   readAmbiguousMappingResolutions,
   selectedAmbiguousMappings,
@@ -377,14 +382,25 @@ const accessoryGripIntentReviewByPartNum = new Map(accessoryGripIntentReviews.re
   review,
 ]));
 const accessoryPlacementReviews = await readAccessoryPlacementReviews(root);
+// ADR-047: family profiles act as approved placement reviews for each member part.
+const accessoryProfileReviews = await readAccessoryProfileReviews(root);
+await assertProfileSourceHashes(accessoryProfileReviews, libraryRoot);
 const accessoryPlacementReviewByPartNum = new Map(accessoryPlacementReviews.reviews.map((review) => [
   normalize(review.rebrickablePartNum),
   review,
 ]));
+for (const review of profileMemberPlacementReviews(accessoryProfileReviews)) {
+  const key = normalize(review.rebrickablePartNum);
+  if (accessoryPlacementReviewByPartNum.has(key)) {
+    throw new Error(`Accessory profile member also has a placement review: ${review.rebrickablePartNum}`);
+  }
+  accessoryPlacementReviewByPartNum.set(key, review);
+}
 const closedMeshClearancePartNums = new Set([
   ...uniqueGripClearanceReviews.reviews,
   ...multipleGripClearanceReviews.reviews,
   ...noRadiusGripClearanceReviews.reviews,
+  ...accessoryProfileReviews.families.flatMap(({ members }) => members),
 ].map(({ rebrickablePartNum }) => normalize(rebrickablePartNum)));
 const resolvedCandidatesFor = (partNum: string, role: CatalogRole): Candidate[] => {
   const candidates = candidateIndex.get(normalize(partNum)) ?? [];

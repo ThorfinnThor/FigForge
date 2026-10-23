@@ -734734,6 +734734,2768 @@
       }
     },
     {
+      "componentId": "catalog:handAccessory:3846",
+      "role": "handAccessory",
+      "rebrickablePartNum": "3846",
+      "name": "Shield Triangular",
+      "rebrickableCategoryId": 73,
+      "rebrickableCategoryName": "Minifig Shields, Weapons, & Tools",
+      "material": "Plastic",
+      "colorNames": [
+        "Black",
+        "Blue",
+        "Bright Light Orange",
+        "Brown",
+        "Dark Bluish Gray",
+        "Dark Pink",
+        "Dark Red",
+        "Flat Silver",
+        "Glow in Dark White",
+        "Green",
+        "Light Bluish Gray",
+        "Light Gray",
+        "Light Nougat",
+        "Lime",
+        "Pearl Gold",
+        "Red",
+        "Reddish Brown",
+        "Sand Blue",
+        "Very Light Bluish Gray",
+        "White",
+        "Yellow"
+      ],
+      "previewColorName": "White",
+      "previewColorRgb": "FFFFFF",
+      "previewColorEvidence": "rebrickable-elements-first",
+      "status": "verified",
+      "ldrawFile": "parts/3846.dat",
+      "ldrawUpdate": "2003-03",
+      "mappingEvidence": "exact-filename",
+      "assemblyWrapperFor": null,
+      "geometryFallback": null,
+      "modelUrl": "/assets/ldraw/official-2609/models/handAccessory-3846.ldr",
+      "modelSha256": "ec61505eb28a8556dbea35596a9ed7d60f94cb1ca153ce85e6790d71e74d9aa8",
+      "thumbnailUrl": "/assets/thumbnails/ldraw-expanded/handAccessory-3846.webp",
+      "thumbnailSha256": "75300a1efb123409aeb753d3f76fad6bedb8879507b5b3ef8710118fdc92372f",
+      "thumbnailBytes": 1764,
+      "placementMode": "snap-connector",
+      "placementTransformLdu": [
+        -0.985,
+        0.17,
+        0,
+        0,
+        0.146464,
+        0.848563,
+        -0.507414,
+        0,
+        0.086268,
+        0.499806,
+        0.86148,
+        0,
+        24.522094,
+        31.592566,
+        -20.060158,
+        1
+      ],
+      "digitalValidation": {
+        "status": "passed",
+        "reasonCode": null,
+        "gripLengthLdu": 22,
+        "modelBoundsLdu": {
+          "min": [
+            -20,
+            -14,
+            -10
+          ],
+          "max": [
+            20,
+            32.37,
+            14
+          ],
+          "size": [
+            40,
+            46.37,
+            24
+          ]
+        },
+        "sampledPointCount": 544,
+        "protectedBodyBoxCount": 8,
+        "collisionSampleCount": 0,
+        "collisionSamplesByPart": {},
+        "gripCandidatesTested": 2,
+        "safeGripCandidatesFound": 2,
+        "selectedGripCandidateIndex": 1,
+        "orientationCandidatesTested": 8,
+        "selectedOrientationIndex": 2,
+        "gripPrimitive": "p/4-4cyli.dat",
+        "gripEvidenceSource": "official-ldraw-geometry",
+        "limits": {
+          "minimumGripLengthLdu": 8,
+          "maximumAccessoryExtentLdu": 240,
+          "gripNeighborhoodRadiusLdu": 7,
+          "bodyBoxInsetLdu": 0.25
+        },
+        "physicalFitGuaranteed": false,
+        "clearanceMode": "closed-mesh"
+      }
+    },
+    {
+      "componentId": "catalog:handAccessory:3846pr0001",
+      "role": "handAccessory",
+      "rebrickablePartNum": "3846pr0001",
+      "name": "Shield Triangular with Gold Lion on Red/White Quarters Print",
+      "rebrickableCategoryId": 73,
+      "rebrickableCategoryName": "Minifig Shields, Weapons, & Tools",
+      "material": "Plastic",
+      "colorNames": [
+        "Light Bluish Gray"
+      ],
+      "previewColorName": "Light Bluish Gray",
+      "previewColorRgb": "A0A5A9",
+      "previewColorEvidence": "rebrickable-elements-first",
+      "status": "verified",
+      "ldrawFile": "parts/3846p4l.dat",
+      "ldrawUpdate": "2022-04",
+      "mappingEvidence": "explicit-keyword",
+      "assemblyWrapperFor": null,
+      "geometryFallback": null,
+      "modelUrl": "/assets/ldraw/official-2609/models/handAccessory-3846pr0001.ldr",
+      "modelSha256": "a1d0899cb016bd0dbf3271c54129e9997af0105f654772ad092b11f6a125f37d",
+      "thumbnailUrl": "/assets/thumbnails/ldraw-expanded/handAccessory-3846pr0001.webp",
+      "thumbnailSha256": "ba8df0eebf59effdcdf57791292738db4cf12e7db661d92f41604094de79c316",
+      "thumbnailBytes": 5978,
+      "placementMode": "snap-connector",
+      "placementTransformLdu": [
+        -0.985,
+        0.17,
+        0,
+        0,
+        0.146464,
+        0.848563,
+        -0.507414,
+        0,
+        0.086268,
+        0.499806,
+        0.86148,
+        0,
+        24.522094,
+        31.592566,
+        -20.060158,
+        1
+      ],
+      "digitalValidation": {
+        "status": "passed",
+        "reasonCode": null,
+        "gripLengthLdu": 22,
+        "modelBoundsLdu": {
+          "min": [
+            -20,
+            -14,
+            -10
+          ],
+          "max": [
+            20,
+            32.37,
+            14
+          ],
+          "size": [
+            40,
+            46.37,
+            24
+          ]
+        },
+        "sampledPointCount": 7652,
+        "protectedBodyBoxCount": 8,
+        "collisionSampleCount": 0,
+        "collisionSamplesByPart": {},
+        "gripCandidatesTested": 2,
+        "safeGripCandidatesFound": 2,
+        "selectedGripCandidateIndex": 1,
+        "orientationCandidatesTested": 8,
+        "selectedOrientationIndex": 2,
+        "gripPrimitive": "p/4-4cyli.dat",
+        "gripEvidenceSource": "official-ldraw-geometry",
+        "limits": {
+          "minimumGripLengthLdu": 8,
+          "maximumAccessoryExtentLdu": 240,
+          "gripNeighborhoodRadiusLdu": 7,
+          "bodyBoxInsetLdu": 0.25
+        },
+        "physicalFitGuaranteed": false,
+        "clearanceMode": "closed-mesh"
+      }
+    },
+    {
+      "componentId": "catalog:handAccessory:3846pr0002",
+      "role": "handAccessory",
+      "rebrickablePartNum": "3846pr0002",
+      "name": "Shield Triangular with Dragon on Medium Nougat and Tan Quarters Print",
+      "rebrickableCategoryId": 73,
+      "rebrickableCategoryName": "Minifig Shields, Weapons, & Tools",
+      "material": "Plastic",
+      "colorNames": [
+        "Light Bluish Gray"
+      ],
+      "previewColorName": "Light Bluish Gray",
+      "previewColorRgb": "A0A5A9",
+      "previewColorEvidence": "rebrickable-elements-first",
+      "status": "verified",
+      "ldrawFile": "parts/3846p4k.dat",
+      "ldrawUpdate": "2020-01",
+      "mappingEvidence": "explicit-keyword",
+      "assemblyWrapperFor": null,
+      "geometryFallback": null,
+      "modelUrl": "/assets/ldraw/official-2609/models/handAccessory-3846pr0002.ldr",
+      "modelSha256": "87d57f6eb12349336c46ce33a057998a1e0fd7ce6cb9f9bc301d44e66931b8b5",
+      "thumbnailUrl": "/assets/thumbnails/ldraw-expanded/handAccessory-3846pr0002.webp",
+      "thumbnailSha256": "69584e37c2b2f91ab7c166e9e558894624889facc19763f6ef52da3acf3181a1",
+      "thumbnailBytes": 4824,
+      "placementMode": "snap-connector",
+      "placementTransformLdu": [
+        -0.985,
+        0.17,
+        0,
+        0,
+        0.146464,
+        0.848563,
+        -0.507414,
+        0,
+        0.086268,
+        0.499806,
+        0.86148,
+        0,
+        24.522094,
+        31.592566,
+        -20.060158,
+        1
+      ],
+      "digitalValidation": {
+        "status": "passed",
+        "reasonCode": null,
+        "gripLengthLdu": 22,
+        "modelBoundsLdu": {
+          "min": [
+            -20,
+            -14,
+            -10
+          ],
+          "max": [
+            20,
+            32.37,
+            14
+          ],
+          "size": [
+            40,
+            46.37,
+            24
+          ]
+        },
+        "sampledPointCount": 5476,
+        "protectedBodyBoxCount": 8,
+        "collisionSampleCount": 0,
+        "collisionSamplesByPart": {},
+        "gripCandidatesTested": 2,
+        "safeGripCandidatesFound": 2,
+        "selectedGripCandidateIndex": 1,
+        "orientationCandidatesTested": 8,
+        "selectedOrientationIndex": 2,
+        "gripPrimitive": "p/4-4cyli.dat",
+        "gripEvidenceSource": "official-ldraw-geometry",
+        "limits": {
+          "minimumGripLengthLdu": 8,
+          "maximumAccessoryExtentLdu": 240,
+          "gripNeighborhoodRadiusLdu": 7,
+          "bodyBoxInsetLdu": 0.25
+        },
+        "physicalFitGuaranteed": false,
+        "clearanceMode": "closed-mesh"
+      }
+    },
+    {
+      "componentId": "catalog:handAccessory:3846pr0005",
+      "role": "handAccessory",
+      "rebrickablePartNum": "3846pr0005",
+      "name": "Shield Triangular with Lion Head, Blue and White Background Print",
+      "rebrickableCategoryId": 73,
+      "rebrickableCategoryName": "Minifig Shields, Weapons, & Tools",
+      "material": "Plastic",
+      "colorNames": [
+        "Light Bluish Gray"
+      ],
+      "previewColorName": "Light Bluish Gray",
+      "previewColorRgb": "A0A5A9",
+      "previewColorEvidence": "rebrickable-elements-first",
+      "status": "verified",
+      "ldrawFile": "parts/3846p4m.dat",
+      "ldrawUpdate": "2020-01",
+      "mappingEvidence": "explicit-keyword",
+      "assemblyWrapperFor": null,
+      "geometryFallback": null,
+      "modelUrl": "/assets/ldraw/official-2609/models/handAccessory-3846pr0005.ldr",
+      "modelSha256": "563d763a6266620ffc84aa2284ec920c483bed7be767eea9cae07f9e523bd171",
+      "thumbnailUrl": "/assets/thumbnails/ldraw-expanded/handAccessory-3846pr0005.webp",
+      "thumbnailSha256": "50b15cc91ea3419589a0b9c42643cb6425ed8671456f9c50ef418a58e3836c28",
+      "thumbnailBytes": 6278,
+      "placementMode": "snap-connector",
+      "placementTransformLdu": [
+        -0.985,
+        0.17,
+        0,
+        0,
+        0.146464,
+        0.848563,
+        -0.507414,
+        0,
+        0.086268,
+        0.499806,
+        0.86148,
+        0,
+        24.522094,
+        31.592566,
+        -20.060158,
+        1
+      ],
+      "digitalValidation": {
+        "status": "passed",
+        "reasonCode": null,
+        "gripLengthLdu": 22,
+        "modelBoundsLdu": {
+          "min": [
+            -20,
+            -14,
+            -10
+          ],
+          "max": [
+            20,
+            32.37,
+            14
+          ],
+          "size": [
+            40,
+            46.37,
+            24
+          ]
+        },
+        "sampledPointCount": 2860,
+        "protectedBodyBoxCount": 8,
+        "collisionSampleCount": 0,
+        "collisionSamplesByPart": {},
+        "gripCandidatesTested": 2,
+        "safeGripCandidatesFound": 2,
+        "selectedGripCandidateIndex": 1,
+        "orientationCandidatesTested": 8,
+        "selectedOrientationIndex": 2,
+        "gripPrimitive": "p/4-4cyli.dat",
+        "gripEvidenceSource": "official-ldraw-geometry",
+        "limits": {
+          "minimumGripLengthLdu": 8,
+          "maximumAccessoryExtentLdu": 240,
+          "gripNeighborhoodRadiusLdu": 7,
+          "bodyBoxInsetLdu": 0.25
+        },
+        "physicalFitGuaranteed": false,
+        "clearanceMode": "closed-mesh"
+      }
+    },
+    {
+      "componentId": "catalog:handAccessory:3846pr0007",
+      "role": "handAccessory",
+      "rebrickablePartNum": "3846pr0007",
+      "name": "Shield Triangular with Goblin King Eye Print",
+      "rebrickableCategoryId": 73,
+      "rebrickableCategoryName": "Minifig Shields, Weapons, & Tools",
+      "material": "Plastic",
+      "colorNames": [
+        "Black"
+      ],
+      "previewColorName": "Black",
+      "previewColorRgb": "05131D",
+      "previewColorEvidence": "rebrickable-elements-first",
+      "status": "verified",
+      "ldrawFile": "parts/3846pm0.dat",
+      "ldrawUpdate": "2020-01",
+      "mappingEvidence": "explicit-keyword",
+      "assemblyWrapperFor": null,
+      "geometryFallback": null,
+      "modelUrl": "/assets/ldraw/official-2609/models/handAccessory-3846pr0007.ldr",
+      "modelSha256": "6cabe4585614ce748265ca05a83f68f1360bf221c6ae9fd865d3d446e76a8f9c",
+      "thumbnailUrl": "/assets/thumbnails/ldraw-expanded/handAccessory-3846pr0007.webp",
+      "thumbnailSha256": "06a1bd17786164e4b94b4b60848973d84345baa40649751cf33cff6da04f7485",
+      "thumbnailBytes": 5236,
+      "placementMode": "snap-connector",
+      "placementTransformLdu": [
+        -0.985,
+        0.17,
+        0,
+        0,
+        0.146464,
+        0.848563,
+        -0.507414,
+        0,
+        0.086268,
+        0.499806,
+        0.86148,
+        0,
+        24.522094,
+        31.592566,
+        -20.060158,
+        1
+      ],
+      "digitalValidation": {
+        "status": "passed",
+        "reasonCode": null,
+        "gripLengthLdu": 22,
+        "modelBoundsLdu": {
+          "min": [
+            -20,
+            -14,
+            -10
+          ],
+          "max": [
+            20,
+            32.37,
+            14
+          ],
+          "size": [
+            40,
+            46.37,
+            24
+          ]
+        },
+        "sampledPointCount": 1988,
+        "protectedBodyBoxCount": 8,
+        "collisionSampleCount": 0,
+        "collisionSamplesByPart": {},
+        "gripCandidatesTested": 2,
+        "safeGripCandidatesFound": 2,
+        "selectedGripCandidateIndex": 1,
+        "orientationCandidatesTested": 8,
+        "selectedOrientationIndex": 2,
+        "gripPrimitive": "p/4-4cyli.dat",
+        "gripEvidenceSource": "official-ldraw-geometry",
+        "limits": {
+          "minimumGripLengthLdu": 8,
+          "maximumAccessoryExtentLdu": 240,
+          "gripNeighborhoodRadiusLdu": 7,
+          "bodyBoxInsetLdu": 0.25
+        },
+        "physicalFitGuaranteed": false,
+        "clearanceMode": "closed-mesh"
+      }
+    },
+    {
+      "componentId": "catalog:handAccessory:3846pr0011",
+      "role": "handAccessory",
+      "rebrickablePartNum": "3846pr0011",
+      "name": "Shield Triangular with Town Hall Print",
+      "rebrickableCategoryId": 73,
+      "rebrickableCategoryName": "Minifig Shields, Weapons, & Tools",
+      "material": "Plastic",
+      "colorNames": [
+        "Light Bluish Gray"
+      ],
+      "previewColorName": "Light Bluish Gray",
+      "previewColorRgb": "A0A5A9",
+      "previewColorEvidence": "rebrickable-elements-first",
+      "status": "verified",
+      "ldrawFile": "parts/3846p02.dat",
+      "ldrawUpdate": "2020-02",
+      "mappingEvidence": "explicit-keyword",
+      "assemblyWrapperFor": null,
+      "geometryFallback": null,
+      "modelUrl": "/assets/ldraw/official-2609/models/handAccessory-3846pr0011.ldr",
+      "modelSha256": "b49226adbcf325c850eca71a7af32d34f200f96684fe036d6a284001324b507a",
+      "thumbnailUrl": "/assets/thumbnails/ldraw-expanded/handAccessory-3846pr0011.webp",
+      "thumbnailSha256": "189b89f4743a35a16bcd28f08cbc5037870dc91157a3666f51a3f53f5f3c0c83",
+      "thumbnailBytes": 6314,
+      "placementMode": "snap-connector",
+      "placementTransformLdu": [
+        -0.985,
+        0.17,
+        0,
+        0,
+        0.146464,
+        0.848563,
+        -0.507414,
+        0,
+        0.086268,
+        0.499806,
+        0.86148,
+        0,
+        24.522094,
+        31.592566,
+        -20.060158,
+        1
+      ],
+      "digitalValidation": {
+        "status": "passed",
+        "reasonCode": null,
+        "gripLengthLdu": 22,
+        "modelBoundsLdu": {
+          "min": [
+            -20,
+            -14,
+            -10
+          ],
+          "max": [
+            20,
+            32.37,
+            14
+          ],
+          "size": [
+            40,
+            46.37,
+            24
+          ]
+        },
+        "sampledPointCount": 9928,
+        "protectedBodyBoxCount": 8,
+        "collisionSampleCount": 0,
+        "collisionSamplesByPart": {},
+        "gripCandidatesTested": 2,
+        "safeGripCandidatesFound": 2,
+        "selectedGripCandidateIndex": 1,
+        "orientationCandidatesTested": 8,
+        "selectedOrientationIndex": 2,
+        "gripPrimitive": "p/4-4cyli.dat",
+        "gripEvidenceSource": "official-ldraw-geometry",
+        "limits": {
+          "minimumGripLengthLdu": 8,
+          "maximumAccessoryExtentLdu": 240,
+          "gripNeighborhoodRadiusLdu": 7,
+          "bodyBoxInsetLdu": 0.25
+        },
+        "physicalFitGuaranteed": false,
+        "clearanceMode": "closed-mesh"
+      }
+    },
+    {
+      "componentId": "catalog:handAccessory:3846pr0012",
+      "role": "handAccessory",
+      "rebrickablePartNum": "3846pr0012",
+      "name": "Shield Triangular with Red Dragon Head on Black Background Print",
+      "rebrickableCategoryId": 73,
+      "rebrickableCategoryName": "Minifig Shields, Weapons, & Tools",
+      "material": "Plastic",
+      "colorNames": [
+        "Light Bluish Gray"
+      ],
+      "previewColorName": "Light Bluish Gray",
+      "previewColorRgb": "A0A5A9",
+      "previewColorEvidence": "rebrickable-elements-first",
+      "status": "verified",
+      "ldrawFile": "parts/3846p4n.dat",
+      "ldrawUpdate": "2020-01",
+      "mappingEvidence": "explicit-keyword",
+      "assemblyWrapperFor": null,
+      "geometryFallback": null,
+      "modelUrl": "/assets/ldraw/official-2609/models/handAccessory-3846pr0012.ldr",
+      "modelSha256": "74f914b479fa3a4da01bc4b4678a28bf36392aabcd1e888a2e1881f52fcdfd40",
+      "thumbnailUrl": "/assets/thumbnails/ldraw-expanded/handAccessory-3846pr0012.webp",
+      "thumbnailSha256": "4e3b0a5da808eb4749664cc4e2ca7266dee85d944ed5046feaa4f2d6749bd4fb",
+      "thumbnailBytes": 5346,
+      "placementMode": "snap-connector",
+      "placementTransformLdu": [
+        -0.985,
+        0.17,
+        0,
+        0,
+        0.146464,
+        0.848563,
+        -0.507414,
+        0,
+        0.086268,
+        0.499806,
+        0.86148,
+        0,
+        24.522094,
+        31.592566,
+        -20.060158,
+        1
+      ],
+      "digitalValidation": {
+        "status": "passed",
+        "reasonCode": null,
+        "gripLengthLdu": 22,
+        "modelBoundsLdu": {
+          "min": [
+            -20,
+            -14,
+            -10
+          ],
+          "max": [
+            20,
+            32.37,
+            14
+          ],
+          "size": [
+            40,
+            46.37,
+            24
+          ]
+        },
+        "sampledPointCount": 2500,
+        "protectedBodyBoxCount": 8,
+        "collisionSampleCount": 0,
+        "collisionSamplesByPart": {},
+        "gripCandidatesTested": 2,
+        "safeGripCandidatesFound": 2,
+        "selectedGripCandidateIndex": 1,
+        "orientationCandidatesTested": 8,
+        "selectedOrientationIndex": 2,
+        "gripPrimitive": "p/4-4cyli.dat",
+        "gripEvidenceSource": "official-ldraw-geometry",
+        "limits": {
+          "minimumGripLengthLdu": 8,
+          "maximumAccessoryExtentLdu": 240,
+          "gripNeighborhoodRadiusLdu": 7,
+          "bodyBoxInsetLdu": 0.25
+        },
+        "physicalFitGuaranteed": false,
+        "clearanceMode": "closed-mesh"
+      }
+    },
+    {
+      "componentId": "catalog:handAccessory:3846pr0016",
+      "role": "handAccessory",
+      "rebrickablePartNum": "3846pr0016",
+      "name": "Shield Triangular with Crown on Dark / Medium Blue Quarters Print",
+      "rebrickableCategoryId": 73,
+      "rebrickableCategoryName": "Minifig Shields, Weapons, & Tools",
+      "material": "Plastic",
+      "colorNames": [
+        "Light Bluish Gray"
+      ],
+      "previewColorName": "Light Bluish Gray",
+      "previewColorRgb": "A0A5A9",
+      "previewColorEvidence": "rebrickable-elements-first",
+      "status": "verified",
+      "ldrawFile": "parts/3846p4j.dat",
+      "ldrawUpdate": "2011-02",
+      "mappingEvidence": "explicit-keyword",
+      "assemblyWrapperFor": null,
+      "geometryFallback": null,
+      "modelUrl": "/assets/ldraw/official-2609/models/handAccessory-3846pr0016.ldr",
+      "modelSha256": "0421d24d057b596edfc59b521fc842581caf64eb89c7881e2150aa260d901f5c",
+      "thumbnailUrl": "/assets/thumbnails/ldraw-expanded/handAccessory-3846pr0016.webp",
+      "thumbnailSha256": "27b714bd8eddc98b002f3955a9e091a7e075927f71ebfb0e6470bf685881bf6e",
+      "thumbnailBytes": 5010,
+      "placementMode": "snap-connector",
+      "placementTransformLdu": [
+        -0.985,
+        0.17,
+        0,
+        0,
+        0.146464,
+        0.848563,
+        -0.507414,
+        0,
+        0.086268,
+        0.499806,
+        0.86148,
+        0,
+        24.522094,
+        31.592566,
+        -20.060158,
+        1
+      ],
+      "digitalValidation": {
+        "status": "passed",
+        "reasonCode": null,
+        "gripLengthLdu": 22,
+        "modelBoundsLdu": {
+          "min": [
+            -20,
+            -14,
+            -10
+          ],
+          "max": [
+            20,
+            32.37,
+            14
+          ],
+          "size": [
+            40,
+            46.37,
+            24
+          ]
+        },
+        "sampledPointCount": 3136,
+        "protectedBodyBoxCount": 8,
+        "collisionSampleCount": 0,
+        "collisionSamplesByPart": {},
+        "gripCandidatesTested": 2,
+        "safeGripCandidatesFound": 2,
+        "selectedGripCandidateIndex": 1,
+        "orientationCandidatesTested": 8,
+        "selectedOrientationIndex": 2,
+        "gripPrimitive": "p/4-4cyli.dat",
+        "gripEvidenceSource": "official-ldraw-geometry",
+        "limits": {
+          "minimumGripLengthLdu": 8,
+          "maximumAccessoryExtentLdu": 240,
+          "gripNeighborhoodRadiusLdu": 7,
+          "bodyBoxInsetLdu": 0.25
+        },
+        "physicalFitGuaranteed": false,
+        "clearanceMode": "closed-mesh"
+      }
+    },
+    {
+      "componentId": "catalog:handAccessory:3846pr0017",
+      "role": "handAccessory",
+      "rebrickablePartNum": "3846pr0017",
+      "name": "Shield Triangular with Red Cross and Helmet Print",
+      "rebrickableCategoryId": 73,
+      "rebrickableCategoryName": "Minifig Shields, Weapons, & Tools",
+      "material": "Plastic",
+      "colorNames": [
+        "Light Bluish Gray"
+      ],
+      "previewColorName": "Light Bluish Gray",
+      "previewColorRgb": "A0A5A9",
+      "previewColorEvidence": "rebrickable-elements-first",
+      "status": "verified",
+      "ldrawFile": "parts/3846p01.dat",
+      "ldrawUpdate": "2011-02",
+      "mappingEvidence": "explicit-keyword",
+      "assemblyWrapperFor": null,
+      "geometryFallback": null,
+      "modelUrl": "/assets/ldraw/official-2609/models/handAccessory-3846pr0017.ldr",
+      "modelSha256": "f6ca0ab9b9b081298b9fd7db76329394eea85dacb6e887fafda419ec670f5d59",
+      "thumbnailUrl": "/assets/thumbnails/ldraw-expanded/handAccessory-3846pr0017.webp",
+      "thumbnailSha256": "59406a9fc70930ebce7b585c3020a6249525a54f363cc7be1e8e961e63bec99d",
+      "thumbnailBytes": 5854,
+      "placementMode": "snap-connector",
+      "placementTransformLdu": [
+        -0.985,
+        0.17,
+        0,
+        0,
+        0.146464,
+        0.848563,
+        -0.507414,
+        0,
+        0.086268,
+        0.499806,
+        0.86148,
+        0,
+        24.522094,
+        31.592566,
+        -20.060158,
+        1
+      ],
+      "digitalValidation": {
+        "status": "passed",
+        "reasonCode": null,
+        "gripLengthLdu": 22,
+        "modelBoundsLdu": {
+          "min": [
+            -20,
+            -14,
+            -10
+          ],
+          "max": [
+            20,
+            32.4,
+            14
+          ],
+          "size": [
+            40,
+            46.4,
+            24
+          ]
+        },
+        "sampledPointCount": 5580,
+        "protectedBodyBoxCount": 8,
+        "collisionSampleCount": 0,
+        "collisionSamplesByPart": {},
+        "gripCandidatesTested": 2,
+        "safeGripCandidatesFound": 2,
+        "selectedGripCandidateIndex": 1,
+        "orientationCandidatesTested": 8,
+        "selectedOrientationIndex": 2,
+        "gripPrimitive": "p/4-4cyli.dat",
+        "gripEvidenceSource": "official-ldraw-geometry",
+        "limits": {
+          "minimumGripLengthLdu": 8,
+          "maximumAccessoryExtentLdu": 240,
+          "gripNeighborhoodRadiusLdu": 7,
+          "bodyBoxInsetLdu": 0.25
+        },
+        "physicalFitGuaranteed": false,
+        "clearanceMode": "closed-mesh"
+      }
+    },
+    {
+      "componentId": "catalog:handAccessory:3846pr0018",
+      "role": "handAccessory",
+      "rebrickablePartNum": "3846pr0018",
+      "name": "Shield Triangular with Wolfpack Print",
+      "rebrickableCategoryId": 73,
+      "rebrickableCategoryName": "Minifig Shields, Weapons, & Tools",
+      "material": "Plastic",
+      "colorNames": [
+        "Light Gray"
+      ],
+      "previewColorName": "Light Gray",
+      "previewColorRgb": "9BA19D",
+      "previewColorEvidence": "rebrickable-elements-first",
+      "status": "verified",
+      "ldrawFile": "parts/3846p44.dat",
+      "ldrawUpdate": "2013-01",
+      "mappingEvidence": "explicit-keyword",
+      "assemblyWrapperFor": null,
+      "geometryFallback": null,
+      "modelUrl": "/assets/ldraw/official-2609/models/handAccessory-3846pr0018.ldr",
+      "modelSha256": "fec0b19e0b0a9586498c9519420c35c0cb5103ec78d3e658af3c164bf758e73d",
+      "thumbnailUrl": "/assets/thumbnails/ldraw-expanded/handAccessory-3846pr0018.webp",
+      "thumbnailSha256": "4d5b5eeb45f588b46efe86829fb1a1ec5df38914cfce8f4a04d62d3e56162ecc",
+      "thumbnailBytes": 5450,
+      "placementMode": "snap-connector",
+      "placementTransformLdu": [
+        -0.985,
+        0.17,
+        0,
+        0,
+        0.146464,
+        0.848563,
+        -0.507414,
+        0,
+        0.086268,
+        0.499806,
+        0.86148,
+        0,
+        24.522094,
+        31.592566,
+        -20.060158,
+        1
+      ],
+      "digitalValidation": {
+        "status": "passed",
+        "reasonCode": null,
+        "gripLengthLdu": 22,
+        "modelBoundsLdu": {
+          "min": [
+            -20,
+            -14,
+            -10
+          ],
+          "max": [
+            20,
+            32.37,
+            14
+          ],
+          "size": [
+            40,
+            46.37,
+            24
+          ]
+        },
+        "sampledPointCount": 1144,
+        "protectedBodyBoxCount": 8,
+        "collisionSampleCount": 0,
+        "collisionSamplesByPart": {},
+        "gripCandidatesTested": 2,
+        "safeGripCandidatesFound": 2,
+        "selectedGripCandidateIndex": 1,
+        "orientationCandidatesTested": 8,
+        "selectedOrientationIndex": 2,
+        "gripPrimitive": "p/4-4cyli.dat",
+        "gripEvidenceSource": "official-ldraw-geometry",
+        "limits": {
+          "minimumGripLengthLdu": 8,
+          "maximumAccessoryExtentLdu": 240,
+          "gripNeighborhoodRadiusLdu": 7,
+          "bodyBoxInsetLdu": 0.25
+        },
+        "physicalFitGuaranteed": false,
+        "clearanceMode": "closed-mesh"
+      }
+    },
+    {
+      "componentId": "catalog:handAccessory:3846pr0021",
+      "role": "handAccessory",
+      "rebrickablePartNum": "3846pr0021",
+      "name": "Shield Triangular with Batlord Print",
+      "rebrickableCategoryId": 73,
+      "rebrickableCategoryName": "Minifig Shields, Weapons, & Tools",
+      "material": "Plastic",
+      "colorNames": [
+        "Light Gray"
+      ],
+      "previewColorName": "Light Gray",
+      "previewColorRgb": "9BA19D",
+      "previewColorEvidence": "rebrickable-elements-first",
+      "status": "verified",
+      "ldrawFile": "parts/3846p4f.dat",
+      "ldrawUpdate": "2025-09",
+      "mappingEvidence": "explicit-keyword",
+      "assemblyWrapperFor": null,
+      "geometryFallback": null,
+      "modelUrl": "/assets/ldraw/official-2609/models/handAccessory-3846pr0021.ldr",
+      "modelSha256": "8384412108eb25c803bc446f732726fc06b243464ba14ff17318c3360fe3ed57",
+      "thumbnailUrl": "/assets/thumbnails/ldraw-expanded/handAccessory-3846pr0021.webp",
+      "thumbnailSha256": "333c7c3b6118cc22bd1b8be81503c9ef748c5d6df1adb5df919e536c5f1e7600",
+      "thumbnailBytes": 6250,
+      "placementMode": "snap-connector",
+      "placementTransformLdu": [
+        -0.985,
+        0.17,
+        0,
+        0,
+        0.146464,
+        0.848563,
+        -0.507414,
+        0,
+        0.086268,
+        0.499806,
+        0.86148,
+        0,
+        24.522094,
+        31.592566,
+        -20.060158,
+        1
+      ],
+      "digitalValidation": {
+        "status": "passed",
+        "reasonCode": null,
+        "gripLengthLdu": 22,
+        "modelBoundsLdu": {
+          "min": [
+            -20,
+            -14,
+            -10
+          ],
+          "max": [
+            20,
+            32.37,
+            14
+          ],
+          "size": [
+            40,
+            46.37,
+            24
+          ]
+        },
+        "sampledPointCount": 1876,
+        "protectedBodyBoxCount": 8,
+        "collisionSampleCount": 0,
+        "collisionSamplesByPart": {},
+        "gripCandidatesTested": 2,
+        "safeGripCandidatesFound": 2,
+        "selectedGripCandidateIndex": 1,
+        "orientationCandidatesTested": 8,
+        "selectedOrientationIndex": 2,
+        "gripPrimitive": "p/4-4cyli.dat",
+        "gripEvidenceSource": "official-ldraw-geometry",
+        "limits": {
+          "minimumGripLengthLdu": 8,
+          "maximumAccessoryExtentLdu": 240,
+          "gripNeighborhoodRadiusLdu": 7,
+          "bodyBoxInsetLdu": 0.25
+        },
+        "physicalFitGuaranteed": false,
+        "clearanceMode": "closed-mesh"
+      }
+    },
+    {
+      "componentId": "catalog:handAccessory:3846pr0022",
+      "role": "handAccessory",
+      "rebrickablePartNum": "3846pr0022",
+      "name": "Shield Triangular with Lion Head, Blue and Yellow Print",
+      "rebrickableCategoryId": 73,
+      "rebrickableCategoryName": "Minifig Shields, Weapons, & Tools",
+      "material": "Plastic",
+      "colorNames": [
+        "Light Gray"
+      ],
+      "previewColorName": "Light Gray",
+      "previewColorRgb": "9BA19D",
+      "previewColorEvidence": "rebrickable-elements-first",
+      "status": "verified",
+      "ldrawFile": "parts/3846p4e.dat",
+      "ldrawUpdate": "2014-02",
+      "mappingEvidence": "explicit-keyword",
+      "assemblyWrapperFor": null,
+      "geometryFallback": null,
+      "modelUrl": "/assets/ldraw/official-2609/models/handAccessory-3846pr0022.ldr",
+      "modelSha256": "2eda243bf27388bc940adddfe8bae2724cf983e2b473422e5ffd09854225db8c",
+      "thumbnailUrl": "/assets/thumbnails/ldraw-expanded/handAccessory-3846pr0022.webp",
+      "thumbnailSha256": "b3ebee8235d6f0a10ab75a6ab41f9e7ac054048feeb98c1c715e3b1080161122",
+      "thumbnailBytes": 6648,
+      "placementMode": "snap-connector",
+      "placementTransformLdu": [
+        -0.985,
+        0.17,
+        0,
+        0,
+        0.146464,
+        0.848563,
+        -0.507414,
+        0,
+        0.086268,
+        0.499806,
+        0.86148,
+        0,
+        24.522094,
+        31.592566,
+        -20.060158,
+        1
+      ],
+      "digitalValidation": {
+        "status": "passed",
+        "reasonCode": null,
+        "gripLengthLdu": 22,
+        "modelBoundsLdu": {
+          "min": [
+            -20,
+            -14,
+            -10
+          ],
+          "max": [
+            20,
+            32.37,
+            14
+          ],
+          "size": [
+            40,
+            46.37,
+            24
+          ]
+        },
+        "sampledPointCount": 3196,
+        "protectedBodyBoxCount": 8,
+        "collisionSampleCount": 0,
+        "collisionSamplesByPart": {},
+        "gripCandidatesTested": 2,
+        "safeGripCandidatesFound": 2,
+        "selectedGripCandidateIndex": 1,
+        "orientationCandidatesTested": 8,
+        "selectedOrientationIndex": 2,
+        "gripPrimitive": "p/4-4cyli.dat",
+        "gripEvidenceSource": "official-ldraw-geometry",
+        "limits": {
+          "minimumGripLengthLdu": 8,
+          "maximumAccessoryExtentLdu": 240,
+          "gripNeighborhoodRadiusLdu": 7,
+          "bodyBoxInsetLdu": 0.25
+        },
+        "physicalFitGuaranteed": false,
+        "clearanceMode": "closed-mesh"
+      }
+    },
+    {
+      "componentId": "catalog:handAccessory:3846pr0023",
+      "role": "handAccessory",
+      "rebrickablePartNum": "3846pr0023",
+      "name": "Shield Triangular with Lion Head, Red and White Background Print",
+      "rebrickableCategoryId": 73,
+      "rebrickableCategoryName": "Minifig Shields, Weapons, & Tools",
+      "material": "Plastic",
+      "colorNames": [],
+      "previewColorName": null,
+      "previewColorRgb": "A0A8A4",
+      "previewColorEvidence": "neutral-fallback",
+      "status": "verified",
+      "ldrawFile": "parts/3846p4d.dat",
+      "ldrawUpdate": "2014-02",
+      "mappingEvidence": "explicit-keyword",
+      "assemblyWrapperFor": null,
+      "geometryFallback": null,
+      "modelUrl": "/assets/ldraw/official-2609/models/handAccessory-3846pr0023.ldr",
+      "modelSha256": "2ce8b9885387898d61bedfae630eff001cbc054659e61d501149ad297c26ac34",
+      "thumbnailUrl": "/assets/thumbnails/ldraw-expanded/handAccessory-3846pr0023.webp",
+      "thumbnailSha256": "7f46cfa47547d04c54d09c40cd414dfdc9a43a423657424023df6df244970b3e",
+      "thumbnailBytes": 6372,
+      "placementMode": "snap-connector",
+      "placementTransformLdu": [
+        -0.985,
+        0.17,
+        0,
+        0,
+        0.146464,
+        0.848563,
+        -0.507414,
+        0,
+        0.086268,
+        0.499806,
+        0.86148,
+        0,
+        24.522094,
+        31.592566,
+        -20.060158,
+        1
+      ],
+      "digitalValidation": {
+        "status": "passed",
+        "reasonCode": null,
+        "gripLengthLdu": 22,
+        "modelBoundsLdu": {
+          "min": [
+            -20,
+            -14,
+            -10
+          ],
+          "max": [
+            20,
+            32.37,
+            14
+          ],
+          "size": [
+            40,
+            46.37,
+            24
+          ]
+        },
+        "sampledPointCount": 2920,
+        "protectedBodyBoxCount": 8,
+        "collisionSampleCount": 0,
+        "collisionSamplesByPart": {},
+        "gripCandidatesTested": 2,
+        "safeGripCandidatesFound": 2,
+        "selectedGripCandidateIndex": 1,
+        "orientationCandidatesTested": 8,
+        "selectedOrientationIndex": 2,
+        "gripPrimitive": "p/4-4cyli.dat",
+        "gripEvidenceSource": "official-ldraw-geometry",
+        "limits": {
+          "minimumGripLengthLdu": 8,
+          "maximumAccessoryExtentLdu": 240,
+          "gripNeighborhoodRadiusLdu": 7,
+          "bodyBoxInsetLdu": 0.25
+        },
+        "physicalFitGuaranteed": false,
+        "clearanceMode": "closed-mesh"
+      }
+    },
+    {
+      "componentId": "catalog:handAccessory:3846pr0024",
+      "role": "handAccessory",
+      "rebrickablePartNum": "3846pr0024",
+      "name": "Shield Triangular with Blue Dragon Print",
+      "rebrickableCategoryId": 73,
+      "rebrickableCategoryName": "Minifig Shields, Weapons, & Tools",
+      "material": "Plastic",
+      "colorNames": [],
+      "previewColorName": null,
+      "previewColorRgb": "A0A8A4",
+      "previewColorEvidence": "neutral-fallback",
+      "status": "verified",
+      "ldrawFile": "parts/3846p4c.dat",
+      "ldrawUpdate": "2018-01",
+      "mappingEvidence": "explicit-keyword",
+      "assemblyWrapperFor": null,
+      "geometryFallback": null,
+      "modelUrl": "/assets/ldraw/official-2609/models/handAccessory-3846pr0024.ldr",
+      "modelSha256": "78bf7dda18640d76886942ded834ee77f4c3f49ad15b8e3749b7c5d97bed0976",
+      "thumbnailUrl": "/assets/thumbnails/ldraw-expanded/handAccessory-3846pr0024.webp",
+      "thumbnailSha256": "6a838956d16880a034f6ac037eedc6d2e38a00e255007bc94bba285f29307dfe",
+      "thumbnailBytes": 6758,
+      "placementMode": "snap-connector",
+      "placementTransformLdu": [
+        -0.985,
+        0.17,
+        0,
+        0,
+        0.146464,
+        0.848563,
+        -0.507414,
+        0,
+        0.086268,
+        0.499806,
+        0.86148,
+        0,
+        24.522094,
+        31.592566,
+        -20.060158,
+        1
+      ],
+      "digitalValidation": {
+        "status": "passed",
+        "reasonCode": null,
+        "gripLengthLdu": 22,
+        "modelBoundsLdu": {
+          "min": [
+            -20,
+            -14,
+            -10
+          ],
+          "max": [
+            20,
+            32.37,
+            14
+          ],
+          "size": [
+            40,
+            46.37,
+            24
+          ]
+        },
+        "sampledPointCount": 3172,
+        "protectedBodyBoxCount": 8,
+        "collisionSampleCount": 0,
+        "collisionSamplesByPart": {},
+        "gripCandidatesTested": 2,
+        "safeGripCandidatesFound": 2,
+        "selectedGripCandidateIndex": 1,
+        "orientationCandidatesTested": 8,
+        "selectedOrientationIndex": 2,
+        "gripPrimitive": "p/4-4cyli.dat",
+        "gripEvidenceSource": "official-ldraw-geometry",
+        "limits": {
+          "minimumGripLengthLdu": 8,
+          "maximumAccessoryExtentLdu": 240,
+          "gripNeighborhoodRadiusLdu": 7,
+          "bodyBoxInsetLdu": 0.25
+        },
+        "physicalFitGuaranteed": false,
+        "clearanceMode": "closed-mesh"
+      }
+    },
+    {
+      "componentId": "catalog:handAccessory:3846pr0025",
+      "role": "handAccessory",
+      "rebrickablePartNum": "3846pr0025",
+      "name": "Shield Triangular with Forestmen Deer Head Print",
+      "rebrickableCategoryId": 73,
+      "rebrickableCategoryName": "Minifig Shields, Weapons, & Tools",
+      "material": "Plastic",
+      "colorNames": [
+        "Brown"
+      ],
+      "previewColorName": "Brown",
+      "previewColorRgb": "583927",
+      "previewColorEvidence": "rebrickable-elements-first",
+      "status": "verified",
+      "ldrawFile": "parts/3846p48.dat",
+      "ldrawUpdate": "2018-01",
+      "mappingEvidence": "explicit-keyword",
+      "assemblyWrapperFor": null,
+      "geometryFallback": null,
+      "modelUrl": "/assets/ldraw/official-2609/models/handAccessory-3846pr0025.ldr",
+      "modelSha256": "e79375a758ec01db02149fe8ef16ff918a7f1afa39f155b56d14c211bf21688a",
+      "thumbnailUrl": "/assets/thumbnails/ldraw-expanded/handAccessory-3846pr0025.webp",
+      "thumbnailSha256": "d2b83cbd16ad9cbebbf64ec4741899c785583d4639f95242cce5e1871237829b",
+      "thumbnailBytes": 4552,
+      "placementMode": "snap-connector",
+      "placementTransformLdu": [
+        -0.985,
+        0.17,
+        0,
+        0,
+        0.146464,
+        0.848563,
+        -0.507414,
+        0,
+        0.086268,
+        0.499806,
+        0.86148,
+        0,
+        24.522094,
+        31.592566,
+        -20.060158,
+        1
+      ],
+      "digitalValidation": {
+        "status": "passed",
+        "reasonCode": null,
+        "gripLengthLdu": 22,
+        "modelBoundsLdu": {
+          "min": [
+            -20,
+            -14,
+            -10
+          ],
+          "max": [
+            20,
+            32.37,
+            14
+          ],
+          "size": [
+            40,
+            46.37,
+            24
+          ]
+        },
+        "sampledPointCount": 1552,
+        "protectedBodyBoxCount": 8,
+        "collisionSampleCount": 0,
+        "collisionSamplesByPart": {},
+        "gripCandidatesTested": 2,
+        "safeGripCandidatesFound": 2,
+        "selectedGripCandidateIndex": 1,
+        "orientationCandidatesTested": 8,
+        "selectedOrientationIndex": 2,
+        "gripPrimitive": "p/4-4cyli.dat",
+        "gripEvidenceSource": "official-ldraw-geometry",
+        "limits": {
+          "minimumGripLengthLdu": 8,
+          "maximumAccessoryExtentLdu": 240,
+          "gripNeighborhoodRadiusLdu": 7,
+          "bodyBoxInsetLdu": 0.25
+        },
+        "physicalFitGuaranteed": false,
+        "clearanceMode": "closed-mesh"
+      }
+    },
+    {
+      "componentId": "catalog:handAccessory:3846pr0026",
+      "role": "handAccessory",
+      "rebrickablePartNum": "3846pr0026",
+      "name": "Shield Triangular with Red and Gray Halves and Blue Border Print",
+      "rebrickableCategoryId": 73,
+      "rebrickableCategoryName": "Minifig Shields, Weapons, & Tools",
+      "material": "Plastic",
+      "colorNames": [],
+      "previewColorName": null,
+      "previewColorRgb": "A0A8A4",
+      "previewColorEvidence": "neutral-fallback",
+      "status": "verified",
+      "ldrawFile": "parts/3846p47.dat",
+      "ldrawUpdate": "2018-01",
+      "mappingEvidence": "explicit-keyword",
+      "assemblyWrapperFor": null,
+      "geometryFallback": null,
+      "modelUrl": "/assets/ldraw/official-2609/models/handAccessory-3846pr0026.ldr",
+      "modelSha256": "5d498b421d202e1e4ca2d6288fa504db919962d35216310d8778f240fbbdf7ba",
+      "thumbnailUrl": "/assets/thumbnails/ldraw-expanded/handAccessory-3846pr0026.webp",
+      "thumbnailSha256": "c9474c8d38002797b2b00ffa20f32f996e9060cb8aee2c9b96968e72a053e9cc",
+      "thumbnailBytes": 4336,
+      "placementMode": "snap-connector",
+      "placementTransformLdu": [
+        -0.985,
+        0.17,
+        0,
+        0,
+        0.146464,
+        0.848563,
+        -0.507414,
+        0,
+        0.086268,
+        0.499806,
+        0.86148,
+        0,
+        24.522094,
+        31.592566,
+        -20.060158,
+        1
+      ],
+      "digitalValidation": {
+        "status": "passed",
+        "reasonCode": null,
+        "gripLengthLdu": 22,
+        "modelBoundsLdu": {
+          "min": [
+            -20,
+            -14,
+            -10
+          ],
+          "max": [
+            20,
+            32.37,
+            14
+          ],
+          "size": [
+            40,
+            46.37,
+            24
+          ]
+        },
+        "sampledPointCount": 624,
+        "protectedBodyBoxCount": 8,
+        "collisionSampleCount": 0,
+        "collisionSamplesByPart": {},
+        "gripCandidatesTested": 2,
+        "safeGripCandidatesFound": 2,
+        "selectedGripCandidateIndex": 1,
+        "orientationCandidatesTested": 8,
+        "selectedOrientationIndex": 2,
+        "gripPrimitive": "p/4-4cyli.dat",
+        "gripEvidenceSource": "official-ldraw-geometry",
+        "limits": {
+          "minimumGripLengthLdu": 8,
+          "maximumAccessoryExtentLdu": 240,
+          "gripNeighborhoodRadiusLdu": 7,
+          "bodyBoxInsetLdu": 0.25
+        },
+        "physicalFitGuaranteed": false,
+        "clearanceMode": "closed-mesh"
+      }
+    },
+    {
+      "componentId": "catalog:handAccessory:3846pr0027",
+      "role": "handAccessory",
+      "rebrickablePartNum": "3846pr0027",
+      "name": "Shield Triangular with Black Falcon and Yellow Border Print",
+      "rebrickableCategoryId": 73,
+      "rebrickableCategoryName": "Minifig Shields, Weapons, & Tools",
+      "material": "Plastic",
+      "colorNames": [
+        "Light Gray"
+      ],
+      "previewColorName": "Light Gray",
+      "previewColorRgb": "9BA19D",
+      "previewColorEvidence": "rebrickable-elements-first",
+      "status": "verified",
+      "ldrawFile": "parts/3846p46.dat",
+      "ldrawUpdate": "2018-01",
+      "mappingEvidence": "explicit-keyword",
+      "assemblyWrapperFor": null,
+      "geometryFallback": null,
+      "modelUrl": "/assets/ldraw/official-2609/models/handAccessory-3846pr0027.ldr",
+      "modelSha256": "54f6f09c94daccbc632ec405dbbc518b17509e1da93ebacf3588fbecce02267a",
+      "thumbnailUrl": "/assets/thumbnails/ldraw-expanded/handAccessory-3846pr0027.webp",
+      "thumbnailSha256": "41bfde5614f9671ade44b411a10f393c0bf126c81397f635e4148248ff95401c",
+      "thumbnailBytes": 6036,
+      "placementMode": "snap-connector",
+      "placementTransformLdu": [
+        -0.985,
+        0.17,
+        0,
+        0,
+        0.146464,
+        0.848563,
+        -0.507414,
+        0,
+        0.086268,
+        0.499806,
+        0.86148,
+        0,
+        24.522094,
+        31.592566,
+        -20.060158,
+        1
+      ],
+      "digitalValidation": {
+        "status": "passed",
+        "reasonCode": null,
+        "gripLengthLdu": 22,
+        "modelBoundsLdu": {
+          "min": [
+            -20,
+            -14,
+            -10
+          ],
+          "max": [
+            20,
+            32.37,
+            14
+          ],
+          "size": [
+            40,
+            46.37,
+            24
+          ]
+        },
+        "sampledPointCount": 1808,
+        "protectedBodyBoxCount": 8,
+        "collisionSampleCount": 0,
+        "collisionSamplesByPart": {},
+        "gripCandidatesTested": 2,
+        "safeGripCandidatesFound": 2,
+        "selectedGripCandidateIndex": 1,
+        "orientationCandidatesTested": 8,
+        "selectedOrientationIndex": 2,
+        "gripPrimitive": "p/4-4cyli.dat",
+        "gripEvidenceSource": "official-ldraw-geometry",
+        "limits": {
+          "minimumGripLengthLdu": 8,
+          "maximumAccessoryExtentLdu": 240,
+          "gripNeighborhoodRadiusLdu": 7,
+          "bodyBoxInsetLdu": 0.25
+        },
+        "physicalFitGuaranteed": false,
+        "clearanceMode": "closed-mesh"
+      }
+    },
+    {
+      "componentId": "catalog:handAccessory:3846pr0028",
+      "role": "handAccessory",
+      "rebrickablePartNum": "3846pr0028",
+      "name": "Shield Triangular with Black Falcon and Blue Border Print",
+      "rebrickableCategoryId": 73,
+      "rebrickableCategoryName": "Minifig Shields, Weapons, & Tools",
+      "material": "Plastic",
+      "colorNames": [
+        "Light Bluish Gray",
+        "Light Gray"
+      ],
+      "previewColorName": "Light Gray",
+      "previewColorRgb": "9BA19D",
+      "previewColorEvidence": "rebrickable-elements-first",
+      "status": "verified",
+      "ldrawFile": "parts/3846p45.dat",
+      "ldrawUpdate": "2018-01",
+      "mappingEvidence": "explicit-keyword",
+      "assemblyWrapperFor": null,
+      "geometryFallback": null,
+      "modelUrl": "/assets/ldraw/official-2609/models/handAccessory-3846pr0028.ldr",
+      "modelSha256": "cac28ba823381db2b34078e73bbb93a892144f6c9f613eaf1c3e7daaa9725cfd",
+      "thumbnailUrl": "/assets/thumbnails/ldraw-expanded/handAccessory-3846pr0028.webp",
+      "thumbnailSha256": "5918a41146dbba1e12e3bf8c9149289f37e0657a1f564399e66f9c6837c3dea5",
+      "thumbnailBytes": 6036,
+      "placementMode": "snap-connector",
+      "placementTransformLdu": [
+        -0.985,
+        0.17,
+        0,
+        0,
+        0.146464,
+        0.848563,
+        -0.507414,
+        0,
+        0.086268,
+        0.499806,
+        0.86148,
+        0,
+        24.522094,
+        31.592566,
+        -20.060158,
+        1
+      ],
+      "digitalValidation": {
+        "status": "passed",
+        "reasonCode": null,
+        "gripLengthLdu": 22,
+        "modelBoundsLdu": {
+          "min": [
+            -20,
+            -14,
+            -10
+          ],
+          "max": [
+            20,
+            32.37,
+            14
+          ],
+          "size": [
+            40,
+            46.37,
+            24
+          ]
+        },
+        "sampledPointCount": 1808,
+        "protectedBodyBoxCount": 8,
+        "collisionSampleCount": 0,
+        "collisionSamplesByPart": {},
+        "gripCandidatesTested": 2,
+        "safeGripCandidatesFound": 2,
+        "selectedGripCandidateIndex": 1,
+        "orientationCandidatesTested": 8,
+        "selectedOrientationIndex": 2,
+        "gripPrimitive": "p/4-4cyli.dat",
+        "gripEvidenceSource": "official-ldraw-geometry",
+        "limits": {
+          "minimumGripLengthLdu": 8,
+          "maximumAccessoryExtentLdu": 240,
+          "gripNeighborhoodRadiusLdu": 7,
+          "bodyBoxInsetLdu": 0.25
+        },
+        "physicalFitGuaranteed": false,
+        "clearanceMode": "closed-mesh"
+      }
+    },
+    {
+      "componentId": "catalog:handAccessory:3846pr0036",
+      "role": "handAccessory",
+      "rebrickablePartNum": "3846pr0036",
+      "name": "Shield Triangular with Maroon/Red Quarters Print Castle, LEGOLAND Castle, Knight, Tournament",
+      "rebrickableCategoryId": 73,
+      "rebrickableCategoryName": "Minifig Shields, Weapons, & Tools",
+      "material": "Plastic",
+      "colorNames": [],
+      "previewColorName": null,
+      "previewColorRgb": "A0A8A4",
+      "previewColorEvidence": "neutral-fallback",
+      "status": "verified",
+      "ldrawFile": "parts/3846p4u.dat",
+      "ldrawUpdate": "2015-02",
+      "mappingEvidence": "explicit-keyword",
+      "assemblyWrapperFor": null,
+      "geometryFallback": null,
+      "modelUrl": "/assets/ldraw/official-2609/models/handAccessory-3846pr0036.ldr",
+      "modelSha256": "921d6d2f1fc4131882cab61348f16f0b78a81d50c63f9f159e598138561f4ec2",
+      "thumbnailUrl": "/assets/thumbnails/ldraw-expanded/handAccessory-3846pr0036.webp",
+      "thumbnailSha256": "8e736fd7af417393a04271afe8b25eb41a8e3841bb79175e6f155d043b0a1b7e",
+      "thumbnailBytes": 4814,
+      "placementMode": "snap-connector",
+      "placementTransformLdu": [
+        -0.985,
+        0.17,
+        0,
+        0,
+        0.146464,
+        0.848563,
+        -0.507414,
+        0,
+        0.086268,
+        0.499806,
+        0.86148,
+        0,
+        24.522094,
+        31.592566,
+        -20.060158,
+        1
+      ],
+      "digitalValidation": {
+        "status": "passed",
+        "reasonCode": null,
+        "gripLengthLdu": 22,
+        "modelBoundsLdu": {
+          "min": [
+            -20,
+            -14,
+            -10
+          ],
+          "max": [
+            20,
+            32.37,
+            14
+          ],
+          "size": [
+            40,
+            46.37,
+            24
+          ]
+        },
+        "sampledPointCount": 572,
+        "protectedBodyBoxCount": 8,
+        "collisionSampleCount": 0,
+        "collisionSamplesByPart": {},
+        "gripCandidatesTested": 2,
+        "safeGripCandidatesFound": 2,
+        "selectedGripCandidateIndex": 1,
+        "orientationCandidatesTested": 8,
+        "selectedOrientationIndex": 2,
+        "gripPrimitive": "p/4-4cyli.dat",
+        "gripEvidenceSource": "official-ldraw-geometry",
+        "limits": {
+          "minimumGripLengthLdu": 8,
+          "maximumAccessoryExtentLdu": 240,
+          "gripNeighborhoodRadiusLdu": 7,
+          "bodyBoxInsetLdu": 0.25
+        },
+        "physicalFitGuaranteed": false,
+        "clearanceMode": "closed-mesh"
+      }
+    },
+    {
+      "componentId": "catalog:handAccessory:3846pr0037",
+      "role": "handAccessory",
+      "rebrickablePartNum": "3846pr0037",
+      "name": "Shield Triangular with Red/Peach Quarters Print Castle, LEGOLAND Castle, Knight, Tournament",
+      "rebrickableCategoryId": 73,
+      "rebrickableCategoryName": "Minifig Shields, Weapons, & Tools",
+      "material": "Plastic",
+      "colorNames": [],
+      "previewColorName": null,
+      "previewColorRgb": "A0A8A4",
+      "previewColorEvidence": "neutral-fallback",
+      "status": "verified",
+      "ldrawFile": "parts/3846p4t.dat",
+      "ldrawUpdate": "2015-02",
+      "mappingEvidence": "explicit-keyword",
+      "assemblyWrapperFor": null,
+      "geometryFallback": null,
+      "modelUrl": "/assets/ldraw/official-2609/models/handAccessory-3846pr0037.ldr",
+      "modelSha256": "2d8708a5d2f16350dd2ccb2af76cbcd76c10387984a44b5782b1f253396e3425",
+      "thumbnailUrl": "/assets/thumbnails/ldraw-expanded/handAccessory-3846pr0037.webp",
+      "thumbnailSha256": "85a4d806d13dcd5c138191387eec9efce092e44d1e81ec29313fe6aca60c2132",
+      "thumbnailBytes": 4276,
+      "placementMode": "snap-connector",
+      "placementTransformLdu": [
+        -0.985,
+        0.17,
+        0,
+        0,
+        0.146464,
+        0.848563,
+        -0.507414,
+        0,
+        0.086268,
+        0.499806,
+        0.86148,
+        0,
+        24.522094,
+        31.592566,
+        -20.060158,
+        1
+      ],
+      "digitalValidation": {
+        "status": "passed",
+        "reasonCode": null,
+        "gripLengthLdu": 22,
+        "modelBoundsLdu": {
+          "min": [
+            -20,
+            -14,
+            -10
+          ],
+          "max": [
+            20,
+            32.37,
+            14
+          ],
+          "size": [
+            40,
+            46.37,
+            24
+          ]
+        },
+        "sampledPointCount": 572,
+        "protectedBodyBoxCount": 8,
+        "collisionSampleCount": 0,
+        "collisionSamplesByPart": {},
+        "gripCandidatesTested": 2,
+        "safeGripCandidatesFound": 2,
+        "selectedGripCandidateIndex": 1,
+        "orientationCandidatesTested": 8,
+        "selectedOrientationIndex": 2,
+        "gripPrimitive": "p/4-4cyli.dat",
+        "gripEvidenceSource": "official-ldraw-geometry",
+        "limits": {
+          "minimumGripLengthLdu": 8,
+          "maximumAccessoryExtentLdu": 240,
+          "gripNeighborhoodRadiusLdu": 7,
+          "bodyBoxInsetLdu": 0.25
+        },
+        "physicalFitGuaranteed": false,
+        "clearanceMode": "closed-mesh"
+      }
+    },
+    {
+      "componentId": "catalog:handAccessory:3846pr0038",
+      "role": "handAccessory",
+      "rebrickablePartNum": "3846pr0038",
+      "name": "Shield Triangular with Lion Standing Yellow, and Blue Background Print",
+      "rebrickableCategoryId": 73,
+      "rebrickableCategoryName": "Minifig Shields, Weapons, & Tools",
+      "material": "Plastic",
+      "colorNames": [],
+      "previewColorName": null,
+      "previewColorRgb": "A0A8A4",
+      "previewColorEvidence": "neutral-fallback",
+      "status": "verified",
+      "ldrawFile": "parts/3846p4h.dat",
+      "ldrawUpdate": "2012-02",
+      "mappingEvidence": "explicit-keyword",
+      "assemblyWrapperFor": null,
+      "geometryFallback": null,
+      "modelUrl": "/assets/ldraw/official-2609/models/handAccessory-3846pr0038.ldr",
+      "modelSha256": "33aa7407a4ea0e3175914638628fb02b7bf77f1c31d1bf8f027dd3c31b64fe83",
+      "thumbnailUrl": "/assets/thumbnails/ldraw-expanded/handAccessory-3846pr0038.webp",
+      "thumbnailSha256": "dae8bd479bb4827abcf5379e418f03d8dd88bbb856102dd8f4c621e460ac2e24",
+      "thumbnailBytes": 6540,
+      "placementMode": "snap-connector",
+      "placementTransformLdu": [
+        -0.985,
+        0.17,
+        0,
+        0,
+        0.146464,
+        0.848563,
+        -0.507414,
+        0,
+        0.086268,
+        0.499806,
+        0.86148,
+        0,
+        24.522094,
+        31.592566,
+        -20.060158,
+        1
+      ],
+      "digitalValidation": {
+        "status": "passed",
+        "reasonCode": null,
+        "gripLengthLdu": 22,
+        "modelBoundsLdu": {
+          "min": [
+            -20,
+            -14,
+            -10
+          ],
+          "max": [
+            20,
+            32.37,
+            14
+          ],
+          "size": [
+            40,
+            46.37,
+            24
+          ]
+        },
+        "sampledPointCount": 2864,
+        "protectedBodyBoxCount": 8,
+        "collisionSampleCount": 0,
+        "collisionSamplesByPart": {},
+        "gripCandidatesTested": 2,
+        "safeGripCandidatesFound": 2,
+        "selectedGripCandidateIndex": 1,
+        "orientationCandidatesTested": 8,
+        "selectedOrientationIndex": 2,
+        "gripPrimitive": "p/4-4cyli.dat",
+        "gripEvidenceSource": "official-ldraw-geometry",
+        "limits": {
+          "minimumGripLengthLdu": 8,
+          "maximumAccessoryExtentLdu": 240,
+          "gripNeighborhoodRadiusLdu": 7,
+          "bodyBoxInsetLdu": 0.25
+        },
+        "physicalFitGuaranteed": false,
+        "clearanceMode": "closed-mesh"
+      }
+    },
+    {
+      "componentId": "catalog:handAccessory:3846pr0039",
+      "role": "handAccessory",
+      "rebrickablePartNum": "3846pr0039",
+      "name": "Shield Triangular with Blue Lion, and Yellow Background Print",
+      "rebrickableCategoryId": 73,
+      "rebrickableCategoryName": "Minifig Shields, Weapons, & Tools",
+      "material": "Plastic",
+      "colorNames": [
+        "Light Bluish Gray",
+        "Light Gray"
+      ],
+      "previewColorName": "Light Gray",
+      "previewColorRgb": "9BA19D",
+      "previewColorEvidence": "rebrickable-elements-first",
+      "status": "verified",
+      "ldrawFile": "parts/3846p4g.dat",
+      "ldrawUpdate": "2012-02",
+      "mappingEvidence": "explicit-keyword",
+      "assemblyWrapperFor": null,
+      "geometryFallback": null,
+      "modelUrl": "/assets/ldraw/official-2609/models/handAccessory-3846pr0039.ldr",
+      "modelSha256": "cc3a83af368d8f19989c270aa4ec45ab6a9640a02683b43abf0a8abeeb9e88a2",
+      "thumbnailUrl": "/assets/thumbnails/ldraw-expanded/handAccessory-3846pr0039.webp",
+      "thumbnailSha256": "9ee27077005ca080999d041a8cdc8e70a55296ee45d90f56e952dbd92a6a7559",
+      "thumbnailBytes": 6478,
+      "placementMode": "snap-connector",
+      "placementTransformLdu": [
+        -0.985,
+        0.17,
+        0,
+        0,
+        0.146464,
+        0.848563,
+        -0.507414,
+        0,
+        0.086268,
+        0.499806,
+        0.86148,
+        0,
+        24.522094,
+        31.592566,
+        -20.060158,
+        1
+      ],
+      "digitalValidation": {
+        "status": "passed",
+        "reasonCode": null,
+        "gripLengthLdu": 22,
+        "modelBoundsLdu": {
+          "min": [
+            -20,
+            -14,
+            -10
+          ],
+          "max": [
+            20,
+            32.37,
+            14
+          ],
+          "size": [
+            40,
+            46.37,
+            24
+          ]
+        },
+        "sampledPointCount": 2864,
+        "protectedBodyBoxCount": 8,
+        "collisionSampleCount": 0,
+        "collisionSamplesByPart": {},
+        "gripCandidatesTested": 2,
+        "safeGripCandidatesFound": 2,
+        "selectedGripCandidateIndex": 1,
+        "orientationCandidatesTested": 8,
+        "selectedOrientationIndex": 2,
+        "gripPrimitive": "p/4-4cyli.dat",
+        "gripEvidenceSource": "official-ldraw-geometry",
+        "limits": {
+          "minimumGripLengthLdu": 8,
+          "maximumAccessoryExtentLdu": 240,
+          "gripNeighborhoodRadiusLdu": 7,
+          "bodyBoxInsetLdu": 0.25
+        },
+        "physicalFitGuaranteed": false,
+        "clearanceMode": "closed-mesh"
+      }
+    },
+    {
+      "componentId": "catalog:handAccessory:3846pr0040",
+      "role": "handAccessory",
+      "rebrickablePartNum": "3846pr0040",
+      "name": "Shield Triangular with Black Falcon and Black Border Print",
+      "rebrickableCategoryId": 73,
+      "rebrickableCategoryName": "Minifig Shields, Weapons, & Tools",
+      "material": "Plastic",
+      "colorNames": [
+        "Light Bluish Gray"
+      ],
+      "previewColorName": "Light Bluish Gray",
+      "previewColorRgb": "A0A5A9",
+      "previewColorEvidence": "rebrickable-elements-first",
+      "status": "verified",
+      "ldrawFile": "parts/3846p49.dat",
+      "ldrawUpdate": "2025-02",
+      "mappingEvidence": "explicit-keyword",
+      "assemblyWrapperFor": null,
+      "geometryFallback": null,
+      "modelUrl": "/assets/ldraw/official-2609/models/handAccessory-3846pr0040.ldr",
+      "modelSha256": "4bd3d062e6fb864f41b271db3045b00a85af439d5634558c69323891459708da",
+      "thumbnailUrl": "/assets/thumbnails/ldraw-expanded/handAccessory-3846pr0040.webp",
+      "thumbnailSha256": "0e9c154615c6a92f3e2fbe7326635f23c30a31a07f2b5b349a8baec2dcb29893",
+      "thumbnailBytes": 5154,
+      "placementMode": "snap-connector",
+      "placementTransformLdu": [
+        -0.985,
+        0.17,
+        0,
+        0,
+        0.146464,
+        0.848563,
+        -0.507414,
+        0,
+        0.086268,
+        0.499806,
+        0.86148,
+        0,
+        24.522094,
+        31.592566,
+        -20.060158,
+        1
+      ],
+      "digitalValidation": {
+        "status": "passed",
+        "reasonCode": null,
+        "gripLengthLdu": 22,
+        "modelBoundsLdu": {
+          "min": [
+            -20,
+            -14,
+            -10
+          ],
+          "max": [
+            20,
+            32.37,
+            14
+          ],
+          "size": [
+            40,
+            46.37,
+            24
+          ]
+        },
+        "sampledPointCount": 3032,
+        "protectedBodyBoxCount": 8,
+        "collisionSampleCount": 0,
+        "collisionSamplesByPart": {},
+        "gripCandidatesTested": 2,
+        "safeGripCandidatesFound": 2,
+        "selectedGripCandidateIndex": 1,
+        "orientationCandidatesTested": 8,
+        "selectedOrientationIndex": 2,
+        "gripPrimitive": "p/4-4cyli.dat",
+        "gripEvidenceSource": "official-ldraw-geometry",
+        "limits": {
+          "minimumGripLengthLdu": 8,
+          "maximumAccessoryExtentLdu": 240,
+          "gripNeighborhoodRadiusLdu": 7,
+          "bodyBoxInsetLdu": 0.25
+        },
+        "physicalFitGuaranteed": false,
+        "clearanceMode": "closed-mesh"
+      }
+    },
+    {
+      "componentId": "catalog:handAccessory:3846pr0041",
+      "role": "handAccessory",
+      "rebrickablePartNum": "3846pr0041",
+      "name": "Shield Triangular with Forestmen Deer Head, Black Border Print",
+      "rebrickableCategoryId": 73,
+      "rebrickableCategoryName": "Minifig Shields, Weapons, & Tools",
+      "material": "Plastic",
+      "colorNames": [
+        "Reddish Brown"
+      ],
+      "previewColorName": "Reddish Brown",
+      "previewColorRgb": "582A12",
+      "previewColorEvidence": "rebrickable-elements-first",
+      "status": "verified",
+      "ldrawFile": "parts/3846p40.dat",
+      "ldrawUpdate": "2024-01",
+      "mappingEvidence": "explicit-keyword",
+      "assemblyWrapperFor": null,
+      "geometryFallback": null,
+      "modelUrl": "/assets/ldraw/official-2609/models/handAccessory-3846pr0041.ldr",
+      "modelSha256": "0bbd897329a2b2ed323fb61cd002f9a106c7642ad1fde9a553921d0eb7a6596c",
+      "thumbnailUrl": "/assets/thumbnails/ldraw-expanded/handAccessory-3846pr0041.webp",
+      "thumbnailSha256": "20dffab83f37fd88a702fd32e47ebba88d0184754acd5576f78d68fe4b56e12b",
+      "thumbnailBytes": 4728,
+      "placementMode": "snap-connector",
+      "placementTransformLdu": [
+        -0.985,
+        0.17,
+        0,
+        0,
+        0.146464,
+        0.848563,
+        -0.507414,
+        0,
+        0.086268,
+        0.499806,
+        0.86148,
+        0,
+        24.522094,
+        31.592566,
+        -20.060158,
+        1
+      ],
+      "digitalValidation": {
+        "status": "passed",
+        "reasonCode": null,
+        "gripLengthLdu": 22,
+        "modelBoundsLdu": {
+          "min": [
+            -20,
+            -14,
+            -10
+          ],
+          "max": [
+            20,
+            32.37,
+            14
+          ],
+          "size": [
+            40,
+            46.37,
+            24
+          ]
+        },
+        "sampledPointCount": 4760,
+        "protectedBodyBoxCount": 8,
+        "collisionSampleCount": 0,
+        "collisionSamplesByPart": {},
+        "gripCandidatesTested": 2,
+        "safeGripCandidatesFound": 2,
+        "selectedGripCandidateIndex": 1,
+        "orientationCandidatesTested": 8,
+        "selectedOrientationIndex": 2,
+        "gripPrimitive": "p/4-4cyli.dat",
+        "gripEvidenceSource": "official-ldraw-geometry",
+        "limits": {
+          "minimumGripLengthLdu": 8,
+          "maximumAccessoryExtentLdu": 240,
+          "gripNeighborhoodRadiusLdu": 7,
+          "bodyBoxInsetLdu": 0.25
+        },
+        "physicalFitGuaranteed": false,
+        "clearanceMode": "closed-mesh"
+      }
+    },
+    {
+      "componentId": "catalog:handAccessory:3846pr0043",
+      "role": "handAccessory",
+      "rebrickablePartNum": "3846pr0043",
+      "name": "Shield Triangular with Crusaders Crossed Axe and Blue Border Print",
+      "rebrickableCategoryId": 73,
+      "rebrickableCategoryName": "Minifig Shields, Weapons, & Tools",
+      "material": "Plastic",
+      "colorNames": [
+        "Light Bluish Gray"
+      ],
+      "previewColorName": "Light Bluish Gray",
+      "previewColorRgb": "A0A5A9",
+      "previewColorEvidence": "rebrickable-elements-first",
+      "status": "verified",
+      "ldrawFile": "parts/3846p4r.dat",
+      "ldrawUpdate": "2023-04",
+      "mappingEvidence": "explicit-keyword",
+      "assemblyWrapperFor": null,
+      "geometryFallback": null,
+      "modelUrl": "/assets/ldraw/official-2609/models/handAccessory-3846pr0043.ldr",
+      "modelSha256": "a27b7816fdeefef064ff6e32e3da1dc40cb515196b482be95d82ee9357ac7457",
+      "thumbnailUrl": "/assets/thumbnails/ldraw-expanded/handAccessory-3846pr0043.webp",
+      "thumbnailSha256": "dc8c75fb243e6dd8ba67de7714517d040c4ae53fcb279efb60bb3667794313fb",
+      "thumbnailBytes": 5890,
+      "placementMode": "snap-connector",
+      "placementTransformLdu": [
+        -0.985,
+        0.17,
+        0,
+        0,
+        0.146464,
+        0.848563,
+        -0.507414,
+        0,
+        0.086268,
+        0.499806,
+        0.86148,
+        0,
+        24.522094,
+        31.592566,
+        -20.060158,
+        1
+      ],
+      "digitalValidation": {
+        "status": "passed",
+        "reasonCode": null,
+        "gripLengthLdu": 22,
+        "modelBoundsLdu": {
+          "min": [
+            -20,
+            -14,
+            -10
+          ],
+          "max": [
+            20,
+            32.37,
+            14
+          ],
+          "size": [
+            40,
+            46.37,
+            24
+          ]
+        },
+        "sampledPointCount": 1044,
+        "protectedBodyBoxCount": 8,
+        "collisionSampleCount": 0,
+        "collisionSamplesByPart": {},
+        "gripCandidatesTested": 2,
+        "safeGripCandidatesFound": 2,
+        "selectedGripCandidateIndex": 1,
+        "orientationCandidatesTested": 8,
+        "selectedOrientationIndex": 2,
+        "gripPrimitive": "p/4-4cyli.dat",
+        "gripEvidenceSource": "official-ldraw-geometry",
+        "limits": {
+          "minimumGripLengthLdu": 8,
+          "maximumAccessoryExtentLdu": 240,
+          "gripNeighborhoodRadiusLdu": 7,
+          "bodyBoxInsetLdu": 0.25
+        },
+        "physicalFitGuaranteed": false,
+        "clearanceMode": "closed-mesh"
+      }
+    },
+    {
+      "componentId": "catalog:handAccessory:3846pr0044",
+      "role": "handAccessory",
+      "rebrickablePartNum": "3846pr0044",
+      "name": "Shield Triangular with Lion Standing Yellow on Blue/Red Halves Background Print",
+      "rebrickableCategoryId": 73,
+      "rebrickableCategoryName": "Minifig Shields, Weapons, & Tools",
+      "material": "Plastic",
+      "colorNames": [
+        "Light Bluish Gray"
+      ],
+      "previewColorName": "Light Bluish Gray",
+      "previewColorRgb": "A0A5A9",
+      "previewColorEvidence": "rebrickable-elements-first",
+      "status": "verified",
+      "ldrawFile": "parts/3846p4q.dat",
+      "ldrawUpdate": "2023-02",
+      "mappingEvidence": "explicit-keyword",
+      "assemblyWrapperFor": null,
+      "geometryFallback": null,
+      "modelUrl": "/assets/ldraw/official-2609/models/handAccessory-3846pr0044.ldr",
+      "modelSha256": "03f789fcd3449502058e3754281c1f289215ca84b2c55e9f559b0b4e3128a296",
+      "thumbnailUrl": "/assets/thumbnails/ldraw-expanded/handAccessory-3846pr0044.webp",
+      "thumbnailSha256": "8fd3a9445ee9c86d5b618a730da19dbb012f3c1f6061323a5854cd5085bd9932",
+      "thumbnailBytes": 6248,
+      "placementMode": "snap-connector",
+      "placementTransformLdu": [
+        -0.985,
+        0.17,
+        0,
+        0,
+        0.146464,
+        0.848563,
+        -0.507414,
+        0,
+        0.086268,
+        0.499806,
+        0.86148,
+        0,
+        24.522094,
+        31.592566,
+        -20.060158,
+        1
+      ],
+      "digitalValidation": {
+        "status": "passed",
+        "reasonCode": null,
+        "gripLengthLdu": 22,
+        "modelBoundsLdu": {
+          "min": [
+            -20,
+            -14,
+            -10
+          ],
+          "max": [
+            20,
+            32.37,
+            14
+          ],
+          "size": [
+            40,
+            46.37,
+            24
+          ]
+        },
+        "sampledPointCount": 3380,
+        "protectedBodyBoxCount": 8,
+        "collisionSampleCount": 0,
+        "collisionSamplesByPart": {},
+        "gripCandidatesTested": 2,
+        "safeGripCandidatesFound": 2,
+        "selectedGripCandidateIndex": 1,
+        "orientationCandidatesTested": 8,
+        "selectedOrientationIndex": 2,
+        "gripPrimitive": "p/4-4cyli.dat",
+        "gripEvidenceSource": "official-ldraw-geometry",
+        "limits": {
+          "minimumGripLengthLdu": 8,
+          "maximumAccessoryExtentLdu": 240,
+          "gripNeighborhoodRadiusLdu": 7,
+          "bodyBoxInsetLdu": 0.25
+        },
+        "physicalFitGuaranteed": false,
+        "clearanceMode": "closed-mesh"
+      }
+    },
+    {
+      "componentId": "catalog:handAccessory:3846pr0045",
+      "role": "handAccessory",
+      "rebrickablePartNum": "3846pr0045",
+      "name": "Shield Triangular with 3 Yellow Trefoils on Blue Background Print",
+      "rebrickableCategoryId": 73,
+      "rebrickableCategoryName": "Minifig Shields, Weapons, & Tools",
+      "material": "Plastic",
+      "colorNames": [
+        "Light Bluish Gray"
+      ],
+      "previewColorName": "Light Bluish Gray",
+      "previewColorRgb": "A0A5A9",
+      "previewColorEvidence": "rebrickable-elements-first",
+      "status": "verified",
+      "ldrawFile": "parts/3846p4z.dat",
+      "ldrawUpdate": "2024-04",
+      "mappingEvidence": "explicit-keyword",
+      "assemblyWrapperFor": null,
+      "geometryFallback": null,
+      "modelUrl": "/assets/ldraw/official-2609/models/handAccessory-3846pr0045.ldr",
+      "modelSha256": "c98d3d9353e520fe3e8d321496abe6a95014b9153f959bdf035d3323db629feb",
+      "thumbnailUrl": "/assets/thumbnails/ldraw-expanded/handAccessory-3846pr0045.webp",
+      "thumbnailSha256": "2ce2d9a6abed5e3b1632e794009fc3f07a13989aee674d24d1f9c925b336c78a",
+      "thumbnailBytes": 5610,
+      "placementMode": "snap-connector",
+      "placementTransformLdu": [
+        -0.985,
+        0.17,
+        0,
+        0,
+        0.146464,
+        0.848563,
+        -0.507414,
+        0,
+        0.086268,
+        0.499806,
+        0.86148,
+        0,
+        24.522094,
+        31.592566,
+        -20.060158,
+        1
+      ],
+      "digitalValidation": {
+        "status": "passed",
+        "reasonCode": null,
+        "gripLengthLdu": 22,
+        "modelBoundsLdu": {
+          "min": [
+            -20,
+            -14,
+            -10
+          ],
+          "max": [
+            20,
+            32.37,
+            14
+          ],
+          "size": [
+            40,
+            46.37,
+            24
+          ]
+        },
+        "sampledPointCount": 1628,
+        "protectedBodyBoxCount": 8,
+        "collisionSampleCount": 0,
+        "collisionSamplesByPart": {},
+        "gripCandidatesTested": 2,
+        "safeGripCandidatesFound": 2,
+        "selectedGripCandidateIndex": 1,
+        "orientationCandidatesTested": 8,
+        "selectedOrientationIndex": 2,
+        "gripPrimitive": "p/4-4cyli.dat",
+        "gripEvidenceSource": "official-ldraw-geometry",
+        "limits": {
+          "minimumGripLengthLdu": 8,
+          "maximumAccessoryExtentLdu": 240,
+          "gripNeighborhoodRadiusLdu": 7,
+          "bodyBoxInsetLdu": 0.25
+        },
+        "physicalFitGuaranteed": false,
+        "clearanceMode": "closed-mesh"
+      }
+    },
+    {
+      "componentId": "catalog:handAccessory:3846pr0046",
+      "role": "handAccessory",
+      "rebrickablePartNum": "3846pr0046",
+      "name": "Shield Triangular with Yellow and Green Stripes Print",
+      "rebrickableCategoryId": 73,
+      "rebrickableCategoryName": "Minifig Shields, Weapons, & Tools",
+      "material": "Plastic",
+      "colorNames": [
+        "Light Bluish Gray"
+      ],
+      "previewColorName": "Light Bluish Gray",
+      "previewColorRgb": "A0A5A9",
+      "previewColorEvidence": "rebrickable-elements-first",
+      "status": "verified",
+      "ldrawFile": "parts/3846p4y.dat",
+      "ldrawUpdate": "2024-04",
+      "mappingEvidence": "explicit-keyword",
+      "assemblyWrapperFor": null,
+      "geometryFallback": null,
+      "modelUrl": "/assets/ldraw/official-2609/models/handAccessory-3846pr0046.ldr",
+      "modelSha256": "b624f3d04474a74192aeb05f2fdedf048d8c85d375052f698c72e0286cdc8428",
+      "thumbnailUrl": "/assets/thumbnails/ldraw-expanded/handAccessory-3846pr0046.webp",
+      "thumbnailSha256": "5925f33d004c38db02904e4a52c541eab2816fb25047281b11a7d2c5560a22d8",
+      "thumbnailBytes": 4366,
+      "placementMode": "snap-connector",
+      "placementTransformLdu": [
+        -0.985,
+        0.17,
+        0,
+        0,
+        0.146464,
+        0.848563,
+        -0.507414,
+        0,
+        0.086268,
+        0.499806,
+        0.86148,
+        0,
+        24.522094,
+        31.592566,
+        -20.060158,
+        1
+      ],
+      "digitalValidation": {
+        "status": "passed",
+        "reasonCode": null,
+        "gripLengthLdu": 22,
+        "modelBoundsLdu": {
+          "min": [
+            -20,
+            -14,
+            -10
+          ],
+          "max": [
+            20,
+            32.37,
+            14
+          ],
+          "size": [
+            40,
+            46.37,
+            24
+          ]
+        },
+        "sampledPointCount": 844,
+        "protectedBodyBoxCount": 8,
+        "collisionSampleCount": 0,
+        "collisionSamplesByPart": {},
+        "gripCandidatesTested": 2,
+        "safeGripCandidatesFound": 2,
+        "selectedGripCandidateIndex": 1,
+        "orientationCandidatesTested": 8,
+        "selectedOrientationIndex": 2,
+        "gripPrimitive": "p/4-4cyli.dat",
+        "gripEvidenceSource": "official-ldraw-geometry",
+        "limits": {
+          "minimumGripLengthLdu": 8,
+          "maximumAccessoryExtentLdu": 240,
+          "gripNeighborhoodRadiusLdu": 7,
+          "bodyBoxInsetLdu": 0.25
+        },
+        "physicalFitGuaranteed": false,
+        "clearanceMode": "closed-mesh"
+      }
+    },
+    {
+      "componentId": "catalog:handAccessory:3846pr0047",
+      "role": "handAccessory",
+      "rebrickablePartNum": "3846pr0047",
+      "name": "Shield Triangular with Lion Standing Blue on Yellow Background Print",
+      "rebrickableCategoryId": 73,
+      "rebrickableCategoryName": "Minifig Shields, Weapons, & Tools",
+      "material": "Plastic",
+      "colorNames": [
+        "Light Bluish Gray"
+      ],
+      "previewColorName": "Light Bluish Gray",
+      "previewColorRgb": "A0A5A9",
+      "previewColorEvidence": "rebrickable-elements-first",
+      "status": "verified",
+      "ldrawFile": "parts/3846p4o.dat",
+      "ldrawUpdate": "2023-02",
+      "mappingEvidence": "explicit-keyword",
+      "assemblyWrapperFor": null,
+      "geometryFallback": null,
+      "modelUrl": "/assets/ldraw/official-2609/models/handAccessory-3846pr0047.ldr",
+      "modelSha256": "09dede6ae3b8172c488e627e3d6fc57768f4f595bbc81aa17b23388b66b082d1",
+      "thumbnailUrl": "/assets/thumbnails/ldraw-expanded/handAccessory-3846pr0047.webp",
+      "thumbnailSha256": "3fa91e2cebf714543425fa53b4dfa913dafae33c83493f62aed98d5339f88b5c",
+      "thumbnailBytes": 6356,
+      "placementMode": "snap-connector",
+      "placementTransformLdu": [
+        -0.985,
+        0.17,
+        0,
+        0,
+        0.146464,
+        0.848563,
+        -0.507414,
+        0,
+        0.086268,
+        0.499806,
+        0.86148,
+        0,
+        24.522094,
+        31.592566,
+        -20.060158,
+        1
+      ],
+      "digitalValidation": {
+        "status": "passed",
+        "reasonCode": null,
+        "gripLengthLdu": 22,
+        "modelBoundsLdu": {
+          "min": [
+            -20,
+            -14,
+            -10
+          ],
+          "max": [
+            20,
+            32.37,
+            14
+          ],
+          "size": [
+            40,
+            46.37,
+            24
+          ]
+        },
+        "sampledPointCount": 2740,
+        "protectedBodyBoxCount": 8,
+        "collisionSampleCount": 0,
+        "collisionSamplesByPart": {},
+        "gripCandidatesTested": 2,
+        "safeGripCandidatesFound": 2,
+        "selectedGripCandidateIndex": 1,
+        "orientationCandidatesTested": 8,
+        "selectedOrientationIndex": 2,
+        "gripPrimitive": "p/4-4cyli.dat",
+        "gripEvidenceSource": "official-ldraw-geometry",
+        "limits": {
+          "minimumGripLengthLdu": 8,
+          "maximumAccessoryExtentLdu": 240,
+          "gripNeighborhoodRadiusLdu": 7,
+          "bodyBoxInsetLdu": 0.25
+        },
+        "physicalFitGuaranteed": false,
+        "clearanceMode": "closed-mesh"
+      }
+    },
+    {
+      "componentId": "catalog:handAccessory:3846pr0048",
+      "role": "handAccessory",
+      "rebrickablePartNum": "3846pr0048",
+      "name": "Shield Triangular with Lion Standing Yellow on Blue Background Print",
+      "rebrickableCategoryId": 73,
+      "rebrickableCategoryName": "Minifig Shields, Weapons, & Tools",
+      "material": "Plastic",
+      "colorNames": [
+        "Light Bluish Gray"
+      ],
+      "previewColorName": "Light Bluish Gray",
+      "previewColorRgb": "A0A5A9",
+      "previewColorEvidence": "rebrickable-elements-first",
+      "status": "verified",
+      "ldrawFile": "parts/3846p4p.dat",
+      "ldrawUpdate": "2023-02",
+      "mappingEvidence": "explicit-keyword",
+      "assemblyWrapperFor": null,
+      "geometryFallback": null,
+      "modelUrl": "/assets/ldraw/official-2609/models/handAccessory-3846pr0048.ldr",
+      "modelSha256": "479d43e31ab449a696442b8971fb637940fc0fc3a6f365ad227aadb3094b9410",
+      "thumbnailUrl": "/assets/thumbnails/ldraw-expanded/handAccessory-3846pr0048.webp",
+      "thumbnailSha256": "ce169434984592a11b268d0690fec26728c79db267b4a4f25d8a6a0029c9dd3b",
+      "thumbnailBytes": 6520,
+      "placementMode": "snap-connector",
+      "placementTransformLdu": [
+        -0.985,
+        0.17,
+        0,
+        0,
+        0.146464,
+        0.848563,
+        -0.507414,
+        0,
+        0.086268,
+        0.499806,
+        0.86148,
+        0,
+        24.522094,
+        31.592566,
+        -20.060158,
+        1
+      ],
+      "digitalValidation": {
+        "status": "passed",
+        "reasonCode": null,
+        "gripLengthLdu": 22,
+        "modelBoundsLdu": {
+          "min": [
+            -20,
+            -14,
+            -10
+          ],
+          "max": [
+            20,
+            32.37,
+            14
+          ],
+          "size": [
+            40,
+            46.37,
+            24
+          ]
+        },
+        "sampledPointCount": 2740,
+        "protectedBodyBoxCount": 8,
+        "collisionSampleCount": 0,
+        "collisionSamplesByPart": {},
+        "gripCandidatesTested": 2,
+        "safeGripCandidatesFound": 2,
+        "selectedGripCandidateIndex": 1,
+        "orientationCandidatesTested": 8,
+        "selectedOrientationIndex": 2,
+        "gripPrimitive": "p/4-4cyli.dat",
+        "gripEvidenceSource": "official-ldraw-geometry",
+        "limits": {
+          "minimumGripLengthLdu": 8,
+          "maximumAccessoryExtentLdu": 240,
+          "gripNeighborhoodRadiusLdu": 7,
+          "bodyBoxInsetLdu": 0.25
+        },
+        "physicalFitGuaranteed": false,
+        "clearanceMode": "closed-mesh"
+      }
+    },
+    {
+      "componentId": "catalog:handAccessory:3846pr0049",
+      "role": "handAccessory",
+      "rebrickablePartNum": "3846pr0049",
+      "name": "Shield Triangular with Crown on Pink Background and Gold Border Print",
+      "rebrickableCategoryId": 73,
+      "rebrickableCategoryName": "Minifig Shields, Weapons, & Tools",
+      "material": "Plastic",
+      "colorNames": [
+        "Light Bluish Gray"
+      ],
+      "previewColorName": "Light Bluish Gray",
+      "previewColorRgb": "A0A5A9",
+      "previewColorEvidence": "rebrickable-elements-first",
+      "status": "verified",
+      "ldrawFile": "parts/3846p4x.dat",
+      "ldrawUpdate": "2024-04",
+      "mappingEvidence": "explicit-keyword",
+      "assemblyWrapperFor": null,
+      "geometryFallback": null,
+      "modelUrl": "/assets/ldraw/official-2609/models/handAccessory-3846pr0049.ldr",
+      "modelSha256": "51ea734deadb3094d1775b96df90b41c9931750301ad192fd04d8fecd1555316",
+      "thumbnailUrl": "/assets/thumbnails/ldraw-expanded/handAccessory-3846pr0049.webp",
+      "thumbnailSha256": "beeaa237d63c66780e7125d5c0e20b707ff36d9cbe04e7e9e97c5d7f5d3eb9ca",
+      "thumbnailBytes": 5300,
+      "placementMode": "snap-connector",
+      "placementTransformLdu": [
+        -0.985,
+        0.17,
+        0,
+        0,
+        0.146464,
+        0.848563,
+        -0.507414,
+        0,
+        0.086268,
+        0.499806,
+        0.86148,
+        0,
+        24.522094,
+        31.592566,
+        -20.060158,
+        1
+      ],
+      "digitalValidation": {
+        "status": "passed",
+        "reasonCode": null,
+        "gripLengthLdu": 22,
+        "modelBoundsLdu": {
+          "min": [
+            -20,
+            -14,
+            -10
+          ],
+          "max": [
+            20,
+            32.37,
+            14
+          ],
+          "size": [
+            40,
+            46.37,
+            24
+          ]
+        },
+        "sampledPointCount": 1596,
+        "protectedBodyBoxCount": 8,
+        "collisionSampleCount": 0,
+        "collisionSamplesByPart": {},
+        "gripCandidatesTested": 2,
+        "safeGripCandidatesFound": 2,
+        "selectedGripCandidateIndex": 1,
+        "orientationCandidatesTested": 8,
+        "selectedOrientationIndex": 2,
+        "gripPrimitive": "p/4-4cyli.dat",
+        "gripEvidenceSource": "official-ldraw-geometry",
+        "limits": {
+          "minimumGripLengthLdu": 8,
+          "maximumAccessoryExtentLdu": 240,
+          "gripNeighborhoodRadiusLdu": 7,
+          "bodyBoxInsetLdu": 0.25
+        },
+        "physicalFitGuaranteed": false,
+        "clearanceMode": "closed-mesh"
+      }
+    },
+    {
+      "componentId": "catalog:handAccessory:3846pr0051",
+      "role": "handAccessory",
+      "rebrickablePartNum": "3846pr0051",
+      "name": "Shield Triangular with White Horse on Blue Field, Gold Border Print",
+      "rebrickableCategoryId": 73,
+      "rebrickableCategoryName": "Minifig Shields, Weapons, & Tools",
+      "material": "Plastic",
+      "colorNames": [
+        "Light Bluish Gray"
+      ],
+      "previewColorName": "Light Bluish Gray",
+      "previewColorRgb": "A0A5A9",
+      "previewColorEvidence": "rebrickable-elements-first",
+      "status": "verified",
+      "ldrawFile": "parts/3846p50.dat",
+      "ldrawUpdate": "2026-03",
+      "mappingEvidence": "explicit-keyword",
+      "assemblyWrapperFor": null,
+      "geometryFallback": null,
+      "modelUrl": "/assets/ldraw/official-2609/models/handAccessory-3846pr0051.ldr",
+      "modelSha256": "6a686eac759cb7dbb3d770b95ba156eec8425d5072b414a10c406bf0e0ab6b48",
+      "thumbnailUrl": "/assets/thumbnails/ldraw-expanded/handAccessory-3846pr0051.webp",
+      "thumbnailSha256": "22c805f5e4696bd739b81e2becf4ee0d58b3cb0381b6b1e5fb7f4e4536e5f698",
+      "thumbnailBytes": 5682,
+      "placementMode": "snap-connector",
+      "placementTransformLdu": [
+        -0.985,
+        0.17,
+        0,
+        0,
+        0.146464,
+        0.848563,
+        -0.507414,
+        0,
+        0.086268,
+        0.499806,
+        0.86148,
+        0,
+        24.522094,
+        31.592566,
+        -20.060158,
+        1
+      ],
+      "digitalValidation": {
+        "status": "passed",
+        "reasonCode": null,
+        "gripLengthLdu": 22,
+        "modelBoundsLdu": {
+          "min": [
+            -20,
+            -14,
+            -10
+          ],
+          "max": [
+            20,
+            32.37,
+            14
+          ],
+          "size": [
+            40,
+            46.37,
+            24
+          ]
+        },
+        "sampledPointCount": 3320,
+        "protectedBodyBoxCount": 8,
+        "collisionSampleCount": 0,
+        "collisionSamplesByPart": {},
+        "gripCandidatesTested": 2,
+        "safeGripCandidatesFound": 2,
+        "selectedGripCandidateIndex": 1,
+        "orientationCandidatesTested": 8,
+        "selectedOrientationIndex": 2,
+        "gripPrimitive": "p/4-4cyli.dat",
+        "gripEvidenceSource": "official-ldraw-geometry",
+        "limits": {
+          "minimumGripLengthLdu": 8,
+          "maximumAccessoryExtentLdu": 240,
+          "gripNeighborhoodRadiusLdu": 7,
+          "bodyBoxInsetLdu": 0.25
+        },
+        "physicalFitGuaranteed": false,
+        "clearanceMode": "closed-mesh"
+      }
+    },
+    {
       "componentId": "catalog:handAccessory:3847",
       "role": "handAccessory",
       "rebrickablePartNum": "3847",
@@ -751839,27 +754601,27 @@
   ],
   "summary": {
     "catalogPartCount": 20283,
-    "digitallySupportedCount": 14881,
+    "digitallySupportedCount": 14913,
     "headCount": 4877,
     "headwearCount": 781,
     "torsoAssemblyCount": 6030,
     "legsAssemblyCount": 2889,
-    "handAccessoryCount": 304,
-    "directMappingCount": 2497,
+    "handAccessoryCount": 336,
+    "directMappingCount": 2529,
     "colorCodedAssemblyCount": 7620,
     "officialAssemblyWrapperCount": 76,
     "ambiguousAssemblyWrappersExcluded": 6,
     "unprintedColorCodedAssemblyCount": 7413,
     "printParentGeometryFallbackCount": 4764,
-    "generatedAssetCount": 5202,
-    "sharedOfficialFileCount": 5637,
+    "generatedAssetCount": 5234,
+    "sharedOfficialFileCount": 5690,
     "ambiguousMappingsExcluded": 127,
     "accessoryGripCandidatesExcluded": 243,
     "accessoryLdcadGripCandidatesDisambiguated": 39,
     "accessoryLdcadPrintParentGripCandidatesEvaluated": 12,
     "accessoryMultipleGripCandidatesEvaluated": 108,
-    "accessoryMultipleGripCandidatesPassed": 1,
-    "accessoryMultipleGripCandidatesAmbiguous": 97,
+    "accessoryMultipleGripCandidatesPassed": 33,
+    "accessoryMultipleGripCandidatesAmbiguous": 65,
     "accessoryMultipleGripCandidatesNoSafe": 2,
     "accessoryMultipleGripCandidatesRenderFailed": 0,
     "accessoryMultipleGripCandidatesSemanticRejected": 8,
@@ -751867,8 +754629,8 @@
     "accessoryPlacementRenderFailuresExcluded": 0,
     "accessorySemanticGripRejectionsExcluded": 14,
     "accessoryVisualPlacementRejectionsExcluded": 4,
-    "digitalPlacementPassedCount": 304,
-    "digitalPlacementRejectionsExcluded": 134,
+    "digitalPlacementPassedCount": 336,
+    "digitalPlacementRejectionsExcluded": 102,
     "renderFailuresExcluded": 0,
     "mocFilesUsed": 0
   },
@@ -756278,998 +759040,6 @@
           0,
           0,
           0
-        ]
-      ]
-    },
-    {
-      "rebrickablePartNum": "3846",
-      "ldrawFile": "parts/3846.dat",
-      "reasonCode": "multiple-safe-grip-candidates",
-      "collisionSampleCount": 0,
-      "collisionSamplesByPart": {},
-      "gripCandidatesTested": 2,
-      "safeGripCandidatesFound": 2,
-      "orientationCollisionCountsByGrip": [
-        [
-          11,
-          51,
-          25,
-          0,
-          28,
-          80,
-          17,
-          63
-        ],
-        [
-          9,
-          0,
-          0,
-          0,
-          33,
-          71,
-          69,
-          15
-        ]
-      ]
-    },
-    {
-      "rebrickablePartNum": "3846pr0001",
-      "ldrawFile": "parts/3846p4l.dat",
-      "reasonCode": "multiple-safe-grip-candidates",
-      "collisionSampleCount": 0,
-      "collisionSamplesByPart": {},
-      "gripCandidatesTested": 2,
-      "safeGripCandidatesFound": 2,
-      "orientationCollisionCountsByGrip": [
-        [
-          12,
-          1047,
-          252,
-          0,
-          405,
-          80,
-          26,
-          3038
-        ],
-        [
-          11,
-          0,
-          0,
-          0,
-          254,
-          2650,
-          1327,
-          336
-        ]
-      ]
-    },
-    {
-      "rebrickablePartNum": "3846pr0002",
-      "ldrawFile": "parts/3846p4k.dat",
-      "reasonCode": "multiple-safe-grip-candidates",
-      "collisionSampleCount": 0,
-      "collisionSamplesByPart": {},
-      "gripCandidatesTested": 2,
-      "safeGripCandidatesFound": 2,
-      "orientationCollisionCountsByGrip": [
-        [
-          12,
-          696,
-          134,
-          0,
-          612,
-          80,
-          45,
-          1486
-        ],
-        [
-          12,
-          0,
-          0,
-          0,
-          399,
-          2312,
-          450,
-          323
-        ]
-      ]
-    },
-    {
-      "rebrickablePartNum": "3846pr0005",
-      "ldrawFile": "parts/3846p4m.dat",
-      "reasonCode": "multiple-safe-grip-candidates",
-      "collisionSampleCount": 0,
-      "collisionSamplesByPart": {},
-      "gripCandidatesTested": 2,
-      "safeGripCandidatesFound": 2,
-      "orientationCollisionCountsByGrip": [
-        [
-          13,
-          443,
-          137,
-          0,
-          343,
-          80,
-          176,
-          1228
-        ],
-        [
-          16,
-          0,
-          0,
-          0,
-          381,
-          812,
-          403,
-          599
-        ]
-      ]
-    },
-    {
-      "rebrickablePartNum": "3846pr0007",
-      "ldrawFile": "parts/3846pm0.dat",
-      "reasonCode": "multiple-safe-grip-candidates",
-      "collisionSampleCount": 0,
-      "collisionSamplesByPart": {},
-      "gripCandidatesTested": 2,
-      "safeGripCandidatesFound": 2,
-      "orientationCollisionCountsByGrip": [
-        [
-          13,
-          323,
-          109,
-          0,
-          311,
-          80,
-          143,
-          596
-        ],
-        [
-          11,
-          0,
-          0,
-          0,
-          342,
-          623,
-          471,
-          267
-        ]
-      ]
-    },
-    {
-      "rebrickablePartNum": "3846pr0011",
-      "ldrawFile": "parts/3846p02.dat",
-      "reasonCode": "multiple-safe-grip-candidates",
-      "collisionSampleCount": 0,
-      "collisionSamplesByPart": {},
-      "gripCandidatesTested": 2,
-      "safeGripCandidatesFound": 2,
-      "orientationCollisionCountsByGrip": [
-        [
-          21,
-          2538,
-          943,
-          0,
-          1587,
-          80,
-          490,
-          3013
-        ],
-        [
-          10,
-          0,
-          0,
-          0,
-          1723,
-          4242,
-          3028,
-          1096
-        ]
-      ]
-    },
-    {
-      "rebrickablePartNum": "3846pr0012",
-      "ldrawFile": "parts/3846p4n.dat",
-      "reasonCode": "multiple-safe-grip-candidates",
-      "collisionSampleCount": 0,
-      "collisionSamplesByPart": {},
-      "gripCandidatesTested": 2,
-      "safeGripCandidatesFound": 2,
-      "orientationCollisionCountsByGrip": [
-        [
-          13,
-          549,
-          42,
-          0,
-          503,
-          80,
-          396,
-          765
-        ],
-        [
-          17,
-          0,
-          0,
-          0,
-          517,
-          700,
-          263,
-          432
-        ]
-      ]
-    },
-    {
-      "rebrickablePartNum": "3846pr0016",
-      "ldrawFile": "parts/3846p4j.dat",
-      "reasonCode": "multiple-safe-grip-candidates",
-      "collisionSampleCount": 0,
-      "collisionSamplesByPart": {},
-      "gripCandidatesTested": 2,
-      "safeGripCandidatesFound": 2,
-      "orientationCollisionCountsByGrip": [
-        [
-          12,
-          130,
-          45,
-          0,
-          688,
-          80,
-          55,
-          1447
-        ],
-        [
-          12,
-          0,
-          0,
-          0,
-          578,
-          199,
-          666,
-          53
-        ]
-      ]
-    },
-    {
-      "rebrickablePartNum": "3846pr0017",
-      "ldrawFile": "parts/3846p01.dat",
-      "reasonCode": "multiple-safe-grip-candidates",
-      "collisionSampleCount": 0,
-      "collisionSamplesByPart": {},
-      "gripCandidatesTested": 2,
-      "safeGripCandidatesFound": 2,
-      "orientationCollisionCountsByGrip": [
-        [
-          13,
-          482,
-          187,
-          0,
-          1253,
-          80,
-          564,
-          3430
-        ],
-        [
-          14,
-          0,
-          0,
-          0,
-          1300,
-          763,
-          1217,
-          1281
-        ]
-      ]
-    },
-    {
-      "rebrickablePartNum": "3846pr0018",
-      "ldrawFile": "parts/3846p44.dat",
-      "reasonCode": "multiple-safe-grip-candidates",
-      "collisionSampleCount": 0,
-      "collisionSamplesByPart": {},
-      "gripCandidatesTested": 2,
-      "safeGripCandidatesFound": 2,
-      "orientationCollisionCountsByGrip": [
-        [
-          12,
-          185,
-          53,
-          0,
-          100,
-          80,
-          47,
-          187
-        ],
-        [
-          11,
-          0,
-          0,
-          0,
-          136,
-          385,
-          219,
-          43
-        ]
-      ]
-    },
-    {
-      "rebrickablePartNum": "3846pr0021",
-      "ldrawFile": "parts/3846p4f.dat",
-      "reasonCode": "multiple-safe-grip-candidates",
-      "collisionSampleCount": 0,
-      "collisionSamplesByPart": {},
-      "gripCandidatesTested": 2,
-      "safeGripCandidatesFound": 2,
-      "orientationCollisionCountsByGrip": [
-        [
-          12,
-          246,
-          114,
-          0,
-          238,
-          80,
-          82,
-          523
-        ],
-        [
-          10,
-          0,
-          0,
-          0,
-          255,
-          581,
-          408,
-          73
-        ]
-      ]
-    },
-    {
-      "rebrickablePartNum": "3846pr0022",
-      "ldrawFile": "parts/3846p4e.dat",
-      "reasonCode": "multiple-safe-grip-candidates",
-      "collisionSampleCount": 0,
-      "collisionSamplesByPart": {},
-      "gripCandidatesTested": 2,
-      "safeGripCandidatesFound": 2,
-      "orientationCollisionCountsByGrip": [
-        [
-          12,
-          224,
-          103,
-          0,
-          313,
-          80,
-          56,
-          1418
-        ],
-        [
-          12,
-          0,
-          0,
-          0,
-          283,
-          737,
-          397,
-          334
-        ]
-      ]
-    },
-    {
-      "rebrickablePartNum": "3846pr0023",
-      "ldrawFile": "parts/3846p4d.dat",
-      "reasonCode": "multiple-safe-grip-candidates",
-      "collisionSampleCount": 0,
-      "collisionSamplesByPart": {},
-      "gripCandidatesTested": 2,
-      "safeGripCandidatesFound": 2,
-      "orientationCollisionCountsByGrip": [
-        [
-          12,
-          212,
-          93,
-          0,
-          296,
-          80,
-          44,
-          1158
-        ],
-        [
-          12,
-          0,
-          0,
-          0,
-          276,
-          730,
-          372,
-          224
-        ]
-      ]
-    },
-    {
-      "rebrickablePartNum": "3846pr0024",
-      "ldrawFile": "parts/3846p4c.dat",
-      "reasonCode": "multiple-safe-grip-candidates",
-      "collisionSampleCount": 0,
-      "collisionSamplesByPart": {},
-      "gripCandidatesTested": 2,
-      "safeGripCandidatesFound": 2,
-      "orientationCollisionCountsByGrip": [
-        [
-          12,
-          324,
-          107,
-          0,
-          345,
-          80,
-          86,
-          747
-        ],
-        [
-          12,
-          0,
-          0,
-          0,
-          293,
-          1208,
-          381,
-          70
-        ]
-      ]
-    },
-    {
-      "rebrickablePartNum": "3846pr0025",
-      "ldrawFile": "parts/3846p48.dat",
-      "reasonCode": "multiple-safe-grip-candidates",
-      "collisionSampleCount": 0,
-      "collisionSamplesByPart": {},
-      "gripCandidatesTested": 2,
-      "safeGripCandidatesFound": 2,
-      "orientationCollisionCountsByGrip": [
-        [
-          12,
-          115,
-          45,
-          0,
-          252,
-          80,
-          55,
-          372
-        ],
-        [
-          12,
-          0,
-          0,
-          0,
-          261,
-          277,
-          255,
-          60
-        ]
-      ]
-    },
-    {
-      "rebrickablePartNum": "3846pr0026",
-      "ldrawFile": "parts/3846p47.dat",
-      "reasonCode": "multiple-safe-grip-candidates",
-      "collisionSampleCount": 0,
-      "collisionSamplesByPart": {},
-      "gripCandidatesTested": 2,
-      "safeGripCandidatesFound": 2,
-      "orientationCollisionCountsByGrip": [
-        [
-          11,
-          68,
-          32,
-          0,
-          44,
-          80,
-          27,
-          97
-        ],
-        [
-          10,
-          0,
-          0,
-          0,
-          58,
-          101,
-          100,
-          24
-        ]
-      ]
-    },
-    {
-      "rebrickablePartNum": "3846pr0027",
-      "ldrawFile": "parts/3846p46.dat",
-      "reasonCode": "multiple-safe-grip-candidates",
-      "collisionSampleCount": 0,
-      "collisionSamplesByPart": {},
-      "gripCandidatesTested": 2,
-      "safeGripCandidatesFound": 2,
-      "orientationCollisionCountsByGrip": [
-        [
-          12,
-          297,
-          150,
-          0,
-          192,
-          80,
-          63,
-          584
-        ],
-        [
-          12,
-          0,
-          0,
-          0,
-          213,
-          586,
-          400,
-          64
-        ]
-      ]
-    },
-    {
-      "rebrickablePartNum": "3846pr0028",
-      "ldrawFile": "parts/3846p45.dat",
-      "reasonCode": "multiple-safe-grip-candidates",
-      "collisionSampleCount": 0,
-      "collisionSamplesByPart": {},
-      "gripCandidatesTested": 2,
-      "safeGripCandidatesFound": 2,
-      "orientationCollisionCountsByGrip": [
-        [
-          12,
-          297,
-          150,
-          0,
-          192,
-          80,
-          63,
-          584
-        ],
-        [
-          12,
-          0,
-          0,
-          0,
-          213,
-          586,
-          400,
-          64
-        ]
-      ]
-    },
-    {
-      "rebrickablePartNum": "3846pr0036",
-      "ldrawFile": "parts/3846p4u.dat",
-      "reasonCode": "multiple-safe-grip-candidates",
-      "collisionSampleCount": 0,
-      "collisionSamplesByPart": {},
-      "gripCandidatesTested": 2,
-      "safeGripCandidatesFound": 2,
-      "orientationCollisionCountsByGrip": [
-        [
-          10,
-          53,
-          24,
-          0,
-          34,
-          80,
-          18,
-          78
-        ],
-        [
-          11,
-          0,
-          0,
-          0,
-          39,
-          71,
-          73,
-          20
-        ]
-      ]
-    },
-    {
-      "rebrickablePartNum": "3846pr0037",
-      "ldrawFile": "parts/3846p4t.dat",
-      "reasonCode": "multiple-safe-grip-candidates",
-      "collisionSampleCount": 0,
-      "collisionSamplesByPart": {},
-      "gripCandidatesTested": 2,
-      "safeGripCandidatesFound": 2,
-      "orientationCollisionCountsByGrip": [
-        [
-          10,
-          53,
-          24,
-          0,
-          34,
-          80,
-          18,
-          78
-        ],
-        [
-          11,
-          0,
-          0,
-          0,
-          39,
-          71,
-          73,
-          20
-        ]
-      ]
-    },
-    {
-      "rebrickablePartNum": "3846pr0038",
-      "ldrawFile": "parts/3846p4h.dat",
-      "reasonCode": "multiple-safe-grip-candidates",
-      "collisionSampleCount": 0,
-      "collisionSamplesByPart": {},
-      "gripCandidatesTested": 2,
-      "safeGripCandidatesFound": 2,
-      "orientationCollisionCountsByGrip": [
-        [
-          12,
-          302,
-          119,
-          0,
-          469,
-          80,
-          82,
-          997
-        ],
-        [
-          11,
-          0,
-          0,
-          0,
-          417,
-          787,
-          466,
-          326
-        ]
-      ]
-    },
-    {
-      "rebrickablePartNum": "3846pr0039",
-      "ldrawFile": "parts/3846p4g.dat",
-      "reasonCode": "multiple-safe-grip-candidates",
-      "collisionSampleCount": 0,
-      "collisionSamplesByPart": {},
-      "gripCandidatesTested": 2,
-      "safeGripCandidatesFound": 2,
-      "orientationCollisionCountsByGrip": [
-        [
-          12,
-          302,
-          119,
-          0,
-          469,
-          80,
-          82,
-          997
-        ],
-        [
-          11,
-          0,
-          0,
-          0,
-          417,
-          787,
-          466,
-          326
-        ]
-      ]
-    },
-    {
-      "rebrickablePartNum": "3846pr0040",
-      "ldrawFile": "parts/3846p49.dat",
-      "reasonCode": "multiple-safe-grip-candidates",
-      "collisionSampleCount": 0,
-      "collisionSamplesByPart": {},
-      "gripCandidatesTested": 2,
-      "safeGripCandidatesFound": 2,
-      "orientationCollisionCountsByGrip": [
-        [
-          20,
-          357,
-          225,
-          0,
-          458,
-          80,
-          161,
-          973
-        ],
-        [
-          11,
-          0,
-          0,
-          0,
-          464,
-          1088,
-          780,
-          278
-        ]
-      ]
-    },
-    {
-      "rebrickablePartNum": "3846pr0041",
-      "ldrawFile": "parts/3846p40.dat",
-      "reasonCode": "multiple-safe-grip-candidates",
-      "collisionSampleCount": 0,
-      "collisionSamplesByPart": {},
-      "gripCandidatesTested": 2,
-      "safeGripCandidatesFound": 2,
-      "orientationCollisionCountsByGrip": [
-        [
-          15,
-          754,
-          240,
-          0,
-          845,
-          80,
-          221,
-          1756
-        ],
-        [
-          12,
-          0,
-          0,
-          0,
-          840,
-          1282,
-          1245,
-          239
-        ]
-      ]
-    },
-    {
-      "rebrickablePartNum": "3846pr0043",
-      "ldrawFile": "parts/3846p4r.dat",
-      "reasonCode": "multiple-safe-grip-candidates",
-      "collisionSampleCount": 0,
-      "collisionSamplesByPart": {},
-      "gripCandidatesTested": 2,
-      "safeGripCandidatesFound": 2,
-      "orientationCollisionCountsByGrip": [
-        [
-          13,
-          111,
-          60,
-          0,
-          162,
-          80,
-          51,
-          309
-        ],
-        [
-          12,
-          0,
-          0,
-          0,
-          152,
-          167,
-          209,
-          59
-        ]
-      ]
-    },
-    {
-      "rebrickablePartNum": "3846pr0044",
-      "ldrawFile": "parts/3846p4q.dat",
-      "reasonCode": "multiple-safe-grip-candidates",
-      "collisionSampleCount": 0,
-      "collisionSamplesByPart": {},
-      "gripCandidatesTested": 2,
-      "safeGripCandidatesFound": 2,
-      "orientationCollisionCountsByGrip": [
-        [
-          13,
-          259,
-          156,
-          0,
-          353,
-          80,
-          229,
-          1498
-        ],
-        [
-          12,
-          0,
-          0,
-          0,
-          339,
-          891,
-          879,
-          416
-        ]
-      ]
-    },
-    {
-      "rebrickablePartNum": "3846pr0045",
-      "ldrawFile": "parts/3846p4z.dat",
-      "reasonCode": "multiple-safe-grip-candidates",
-      "collisionSampleCount": 0,
-      "collisionSamplesByPart": {},
-      "gripCandidatesTested": 2,
-      "safeGripCandidatesFound": 2,
-      "orientationCollisionCountsByGrip": [
-        [
-          14,
-          224,
-          58,
-          0,
-          261,
-          80,
-          49,
-          496
-        ],
-        [
-          16,
-          0,
-          0,
-          0,
-          246,
-          441,
-          337,
-          94
-        ]
-      ]
-    },
-    {
-      "rebrickablePartNum": "3846pr0046",
-      "ldrawFile": "parts/3846p4y.dat",
-      "reasonCode": "multiple-safe-grip-candidates",
-      "collisionSampleCount": 0,
-      "collisionSamplesByPart": {},
-      "gripCandidatesTested": 2,
-      "safeGripCandidatesFound": 2,
-      "orientationCollisionCountsByGrip": [
-        [
-          13,
-          157,
-          43,
-          0,
-          90,
-          80,
-          67,
-          199
-        ],
-        [
-          13,
-          0,
-          0,
-          0,
-          98,
-          191,
-          126,
-          87
-        ]
-      ]
-    },
-    {
-      "rebrickablePartNum": "3846pr0047",
-      "ldrawFile": "parts/3846p4o.dat",
-      "reasonCode": "multiple-safe-grip-candidates",
-      "collisionSampleCount": 0,
-      "collisionSamplesByPart": {},
-      "gripCandidatesTested": 2,
-      "safeGripCandidatesFound": 2,
-      "orientationCollisionCountsByGrip": [
-        [
-          13,
-          215,
-          86,
-          0,
-          353,
-          80,
-          131,
-          1155
-        ],
-        [
-          12,
-          0,
-          0,
-          0,
-          339,
-          685,
-          502,
-          284
-        ]
-      ]
-    },
-    {
-      "rebrickablePartNum": "3846pr0048",
-      "ldrawFile": "parts/3846p4p.dat",
-      "reasonCode": "multiple-safe-grip-candidates",
-      "collisionSampleCount": 0,
-      "collisionSamplesByPart": {},
-      "gripCandidatesTested": 2,
-      "safeGripCandidatesFound": 2,
-      "orientationCollisionCountsByGrip": [
-        [
-          13,
-          215,
-          86,
-          0,
-          353,
-          80,
-          131,
-          1155
-        ],
-        [
-          12,
-          0,
-          0,
-          0,
-          339,
-          685,
-          502,
-          284
-        ]
-      ]
-    },
-    {
-      "rebrickablePartNum": "3846pr0049",
-      "ldrawFile": "parts/3846p4x.dat",
-      "reasonCode": "multiple-safe-grip-candidates",
-      "collisionSampleCount": 0,
-      "collisionSamplesByPart": {},
-      "gripCandidatesTested": 2,
-      "safeGripCandidatesFound": 2,
-      "orientationCollisionCountsByGrip": [
-        [
-          15,
-          244,
-          45,
-          0,
-          301,
-          80,
-          179,
-          404
-        ],
-        [
-          13,
-          0,
-          0,
-          0,
-          276,
-          366,
-          251,
-          199
-        ]
-      ]
-    },
-    {
-      "rebrickablePartNum": "3846pr0051",
-      "ldrawFile": "parts/3846p50.dat",
-      "reasonCode": "multiple-safe-grip-candidates",
-      "collisionSampleCount": 0,
-      "collisionSamplesByPart": {},
-      "gripCandidatesTested": 2,
-      "safeGripCandidatesFound": 2,
-      "orientationCollisionCountsByGrip": [
-        [
-          16,
-          615,
-          116,
-          0,
-          709,
-          80,
-          296,
-          1299
-        ],
-        [
-          16,
-          0,
-          0,
-          0,
-          718,
-          911,
-          584,
-          415
         ]
       ]
     },

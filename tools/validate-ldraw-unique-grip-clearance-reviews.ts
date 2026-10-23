@@ -4,6 +4,7 @@ import { resolve } from "node:path";
 import { catalogPackageSchema } from "../src/contracts/catalog-package.js";
 import { readAccessoryGripIntentReviews } from "./lib/ldraw-accessory-grip-intent-reviews.js";
 import { readAccessoryPlacementReviews } from "./lib/ldraw-accessory-placement-reviews.js";
+import { readAccessoryProfileReviews } from "./lib/ldraw-accessory-profile-reviews.js";
 import { readMultipleGripClearanceReviews } from "./lib/ldraw-multiple-grip-clearance-reviews.js";
 import { readNoRadiusGripClearanceReviews } from "./lib/ldraw-no-radius-grip-clearance-reviews.js";
 import { normalizeCatalogEvidenceName } from "./lib/ldraw-review.js";
@@ -15,6 +16,7 @@ const intentReviews = await readAccessoryGripIntentReviews(root);
 const placementReviews = await readAccessoryPlacementReviews(root);
 const multipleGripReviews = await readMultipleGripClearanceReviews(root);
 const noRadiusGripReviews = await readNoRadiusGripClearanceReviews(root);
+const profileReviews = await readAccessoryProfileReviews(root);
 const catalogSource: unknown = JSON.parse(await readFile(
   resolve(root, "data/generated/catalog-packages/hand-accessory.json"),
   "utf8",
@@ -134,6 +136,8 @@ assert.deepEqual(
         expectedResult === "passed" && !isReleaseBlocked(rebrickablePartNum)
       ))
       .map(({ rebrickablePartNum }) => rebrickablePartNum),
+    // ADR-047: profile family members are also checked against the closed reference mesh.
+    ...profileReviews.families.flatMap(({ members }) => members.map(({ rebrickablePartNum }) => rebrickablePartNum)),
   ]),
 );
 const expectedRemainingUnique = new Set([

@@ -2,6 +2,7 @@ import { createHash } from "node:crypto";
 import { readFile } from "node:fs/promises";
 import { describe, expect, it } from "vitest";
 import placementReviewsJson from "../../data/curated/ldraw-accessory-placement-reviews.json" with { type: "json" };
+import profileReviewsJson from "../../data/curated/ldraw-accessory-profile-reviews.json" with { type: "json" };
 import reviewJson from "../../data/generated/ldraw-accessory-orientation-review.json" with { type: "json" };
 import runtimeJson from "../../data/generated/ldraw-runtime/hand-accessory.json" with { type: "json" };
 import { ldrawAccessoryOrientationReviewSchema } from "../../src/contracts/ldraw-accessory-orientation-review.js";
@@ -12,7 +13,11 @@ describe("accessory orientation review queue", () => {
   it("covers every digitally connected hand accessory and preserves curated visual approvals", () => {
     expect(review.entries).toHaveLength(runtimeJson.entries.length);
     expect(review.summary.pendingReviewCount + review.summary.approvedReviewCount).toBe(review.entries.length);
-    const approvedReviews = placementReviewsJson.reviews.filter(({ decision }) => decision === "approved");
+    // ADR-047: members of an approved profile family count as visually approved placements.
+    const approvedReviews = [
+      ...placementReviewsJson.reviews.filter(({ decision }) => decision === "approved"),
+      ...profileReviewsJson.families.flatMap(({ members }) => members),
+    ];
     expect(review.summary.approvedReviewCount).toBe(approvedReviews.length);
     expect(
       review.entries
