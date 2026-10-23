@@ -691,6 +691,36 @@ const testBrickLinkInventoryImport = async (client: CdpClient, origin: string): 
   assert.equal(first.count, "2 von 5 Teilen vorhanden");
 };
 
+const testPartNumberLeavesCategory = async (client: CdpClient, origin: string): Promise<void> => {
+  const typeQuery = (value: string): Promise<boolean> => evaluate<boolean>(client, `(() => {
+    const input = document.querySelector('.catalog-search-sticky input');
+    if (!(input instanceof HTMLInputElement)) return false;
+    const setter = Object.getOwnPropertyDescriptor(HTMLInputElement.prototype, 'value')?.set;
+    setter?.call(input, ${JSON.stringify(value)});
+    input.dispatchEvent(new Event('input', { bubbles: true }));
+    return true;
+  })()`);
+  const activeCategory = (): Promise<string> => evaluate<string>(client,
+    `[...document.querySelectorAll('button[aria-pressed="true"]')].map((button) => button.textContent?.trim()).find((text) => ['Alle Teile', 'Köpfe', 'Kopfbedeckung', 'Oberkörper', 'Beine', 'Zubehör'].includes(text ?? '')) ?? ''`);
+  await navigate(client, `${origin}/builder`);
+  await waitFor(client, "Boolean(document.querySelector('.catalog-search-sticky input'))", "catalog search", 60_000);
+  assert.equal(await activeCategory(), "Köpfe", "the builder starts in the heads category");
+
+  assert.equal(await typeQuery("Pirat"), true);
+  await delay(500);
+  assert.equal(await activeCategory(), "Köpfe", "a keyword must keep the chosen category");
+
+  assert.equal(await typeQuery("3846pr0025"), true);
+  await waitFor(client, `document.querySelector('.part-card .part-card__id')?.textContent?.includes('3846pr0025') === true`,
+    "shield found by its part number", 60_000);
+  assert.equal(await activeCategory(), "Alle Teile", "a part number must leave the narrower category");
+
+  assert.equal(await clickButtonWithText(client, "Zubehör"), true);
+  assert.equal(await typeQuery("3846pr0025x"), true);
+  await delay(500);
+  assert.equal(await activeCategory(), "Zubehör", "the switch happens only once per part number query");
+};
+
 const testLDrawAndWebGlFailures = async (client: CdpClient, origin: string): Promise<void> => {
   await navigate(client, `${origin}/builder`);
   await waitFor(client, `Boolean(document.querySelector('.scene-lab[data-scene-state="ready"][data-selection-state="synchronized"] canvas.viewport'))`, "initial 3D preview", 60_000);
@@ -1080,6 +1110,8 @@ const run = async (): Promise<void> => {
     process.stdout.write("✓ figure suggestions from an imported parts list\n");
     await testBrickLinkInventoryImport(client, previewServer.origin);
     process.stdout.write("✓ BrickLink XML import maps parts and feeds the suggestions\n");
+    await testPartNumberLeavesCategory(client, previewServer.origin);
+    process.stdout.write("✓ a part number leaves the category tab once, keywords do not\n");
     await testLDrawAndWebGlFailures(client, previewServer.origin);
     process.stdout.write("✓ browser LDraw request failure and WebGL context-loss recovery\n");
   } finally {
