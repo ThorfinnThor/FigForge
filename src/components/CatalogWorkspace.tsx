@@ -25,6 +25,7 @@ import { Button } from "./ui/Button.js";
 import { StatusMessage } from "./ui/StatusMessage.js";
 import { TextInput } from "./ui/TextInput.js";
 import { mergeSemanticCatalogResults, searchCatalog } from "../search/catalog-search.js";
+import { normalizeSearchQuery } from "../search/normalize-query.js";
 import {
   SemanticSearchClient,
   semanticSearchRelease,
@@ -63,6 +64,8 @@ import { MOBILE_TAB_ORDER, mobileTabForKey, type MobileTab } from "./mobile-tab-
 type CatalogRole = CatalogPackagePart["role"];
 type CatalogLoadState = "loading" | "ready" | "error";
 type CatalogViewMode = "exact" | "all";
+
+const hasPartNumber = (query: string): boolean => normalizeSearchQuery(query).idMatches.length > 0;
 type SemanticSearchStatus = "disabled" | "loading" | "ready" | "error";
 type DraftHydrationState = "loading" | "ready" | "recovery-required";
 type FigureSnapshot = {
@@ -844,6 +847,8 @@ export function CatalogWorkspace() {
           value={query}
           onChange={(event) => {
             const nextQuery = event.target.value;
+            // A part number says nothing about the role, so leave a narrower category tab once.
+            if (activeCategory !== "all" && !hasPartNumber(query) && hasPartNumber(nextQuery)) setActiveCategory("all");
             setQuery(nextQuery);
             if (nextQuery.trim().length > 0) setSemanticSearchEnabled(true);
           }}
