@@ -72,7 +72,7 @@ describe("FF-14 responsive catalog workspace", () => {
 
     expect(workspaceSource).not.toContain('className="workspace-methodology"');
     expect(methodologySource).toContain('className="workspace-methodology"');
-    expect(methodologySource).toContain('t("source.note")');
+    expect(methodologySource).toContain('t("source.note", {');
     expect(methodologySource).toContain('t("methodology.assembly")');
     expect(appSource).toContain('pathname === "/methodology"');
     expect(viewportSource).not.toContain("Lokaler MVP:");

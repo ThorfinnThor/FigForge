@@ -1,8 +1,9 @@
 import { AppHeader } from "./AppHeader.js";
+import { formatCatalogPartCount } from "../catalog/catalog-stats.js";
 import { useI18n } from "../i18n.js";
 
 export function MethodologyPage() {
-  const { path, t } = useI18n();
+  const { language, path, t } = useI18n();
 
   return (
     <div className="app-shell methodology-shell">
@@ -14,7 +15,7 @@ export function MethodologyPage() {
           <p className="methodology-page__eyebrow">Create Your Minifig</p>
           <h1 id="methodology-title">{t("methodology.title")}</h1>
           <div className="workspace-methodology__body">
-            <p>{t("source.note")}</p>
+            <p>{t("source.note", { count: formatCatalogPartCount(language) })}</p>
             <p>{t("methodology.assembly")}</p>
             <p>{t("methodology.physical")}</p>
             <p>{t("methodology.localStorage")}</p>
