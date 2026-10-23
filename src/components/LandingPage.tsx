@@ -5,6 +5,9 @@ import { useI18n } from "../i18n.js";
 import { AppHeader } from "./AppHeader.js";
 import { FigurePreviewCard } from "./FigurePreviewCard.js";
 
+/** The landing page shows a first selection; all worlds are one click away on the ideas page. */
+const FEATURED_WORLD_COUNT = 6;
+
 const WORLDS = [
   { id: "pirates", accent: "gold", key: "pirates" },
   { id: "castle", accent: "red", key: "castle" },
@@ -72,7 +75,7 @@ export function LandingPage() {
             </div>
           </div>
           <ul className="ideas-worlds">
-            {WORLDS.map((world) => {
+            {WORLDS.slice(0, FEATURED_WORLD_COUNT).map((world) => {
               const template = FIGURE_TEMPLATES.find((entry) => entry.themeId === world.id);
               return (
                 <li className="idea-world" data-accent={world.accent} key={world.id}>
@@ -93,6 +96,11 @@ export function LandingPage() {
               );
             })}
           </ul>
+          <p className="landing-page__all-worlds">
+            <a className="ff-button ff-button--primary" href={path("/ideas")}>
+              {t("landing.worlds.all", { count: WORLDS.length })}
+            </a>
+          </p>
         </section>
 
         <section className="ideas-section" aria-labelledby="landing-guides-title">

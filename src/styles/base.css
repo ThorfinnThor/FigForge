@@ -2224,6 +2224,10 @@ legend {
   }
 }
 
+.landing-page__all-worlds {
+  margin: var(--space-5) 0 0;
+}
+
 .ideas-page__all-worlds,
 .idea-world__link {
   text-decoration: none;
