@@ -35,6 +35,7 @@ import {
 } from "./lib/ldraw-accessory-clearance.js";
 import {
   collectCylinderEvidence,
+  mergeStackedCylinderEvidence,
   proposedHandPlacements,
   proposedSlidingHandPlacements,
   type CylinderEvidence,
@@ -47,6 +48,7 @@ import {
   assertProfileSourceHashes,
   profileMemberPlacementReviews,
   readAccessoryProfileReviews,
+  stackedCylinderGripPartNums,
 } from "./lib/ldraw-accessory-profile-reviews.js";
 import {
   ambiguousMappingKey,
@@ -385,6 +387,7 @@ const accessoryPlacementReviews = await readAccessoryPlacementReviews(root);
 // ADR-047: family profiles act as approved placement reviews for each member part.
 const accessoryProfileReviews = await readAccessoryProfileReviews(root);
 await assertProfileSourceHashes(accessoryProfileReviews, libraryRoot);
+const stackedGripPartNums = stackedCylinderGripPartNums(accessoryProfileReviews);
 const accessoryPlacementReviewByPartNum = new Map(accessoryPlacementReviews.reviews.map((review) => [
   normalize(review.rebrickablePartNum),
   review,
@@ -745,9 +748,18 @@ for (const role of BUILD_ROLES) {
         const geometricConnectorCandidates = (await collectCylinderEvidence(libraryRoot, direct.file)).filter((evidence) =>
           evidence.radiusLdu >= 3.75 && evidence.radiusLdu <= 4.25 && evidence.lengthLdu >= 4
         );
-        const geometricGripCandidates = geometricConnectorCandidates.filter((evidence) =>
-          evidence.lengthLdu >= digitalAccessoryLimits.minimumGripLengthLdu
-        );
+        const stackedGripCandidates = stackedGripPartNums.has(normalize(part.rebrickablePartNum))
+          ? mergeStackedCylinderEvidence(await collectCylinderEvidence(libraryRoot, direct.file)).filter((evidence) =>
+            evidence.lengthLdu >= digitalAccessoryLimits.minimumGripLengthLdu)
+          : [];
+        if (stackedGripPartNums.has(normalize(part.rebrickablePartNum)) && stackedGripCandidates.length !== 1) {
+          throw new Error(`Stacked-cylinder grip of ${part.rebrickablePartNum} is not unique: ${stackedGripCandidates.length} candidate(s)`);
+        }
+        const geometricGripCandidates = stackedGripCandidates.length === 1
+          ? stackedGripCandidates
+          : geometricConnectorCandidates.filter((evidence) =>
+            evidence.lengthLdu >= digitalAccessoryLimits.minimumGripLengthLdu
+          );
         const ldcadGripCandidates = await collectVendoredLDCadHandGripEvidence(ldcadShadowRoot, direct.file);
         const printParentLdcadGripCandidates = [];
         for (const parentPartNum of normalizedPart?.printParentPartNums ?? []) {

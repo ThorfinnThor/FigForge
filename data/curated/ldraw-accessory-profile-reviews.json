@@ -230,6 +230,94 @@
           "ldrawFileSha256": "833db2e17613e4fd19894c524edb3976a9cd5299aaf297615ad0cbf490bef844"
         }
       ]
+    },
+    {
+      "familyId": "2674b",
+      "gripSource": "stacked-cylinders",
+      "catalogName": "Weapon Sword Long",
+      "detectedGripPrimitive": "stacked:p/4-4cylc.dat",
+      "detectedGripLengthLdu": 15.5,
+      "gripCandidatesTested": 1,
+      "orientationCandidatesTested": 72,
+      "selectedGripCandidateIndex": 0,
+      "selectedOrientationIndex": 1,
+      "reviewedAt": "2026-10-23",
+      "reviewer": "Claude browser QA, Freigabe durch Projektverantwortlichen",
+      "evidenceReference": "three-quarter,front,back local browser inspection",
+      "note": "Der Griff ist ein geriffelter Stab aus aneinanderliegenden Radius-4-Ringen auf einer Achse (zusammengefasst zu 15.5 LDU). Die Ausrichtung hält das Schwert am Griff, Knauf in der Hand, Klinge nach vorn und leicht nach unten; die Gegenausrichtung zeigt die Klinge nach hinten oben. Ausrichtungen mit Kollision mit der Figur wurden nicht gewählt.",
+      "members": [
+        {
+          "rebrickablePartNum": "2674b",
+          "ldrawFile": "parts/2674b.dat",
+          "ldrawFileSha256": "cf9147942b8655559629a867b4348ade7f5d0a8c86dfc89af925bd14c7e6032c"
+        }
+      ]
+    },
+    {
+      "familyId": "2674e",
+      "gripSource": "stacked-cylinders",
+      "catalogName": "Weapon Sword Broken (Narsil)",
+      "detectedGripPrimitive": "stacked:p/4-4cylc.dat",
+      "detectedGripLengthLdu": 12.3,
+      "gripCandidatesTested": 1,
+      "orientationCandidatesTested": 56,
+      "selectedGripCandidateIndex": 0,
+      "selectedOrientationIndex": 1,
+      "reviewedAt": "2026-10-23",
+      "reviewer": "Claude browser QA, Freigabe durch Projektverantwortlichen",
+      "evidenceReference": "three-quarter,front,back local browser inspection",
+      "note": "Der Griff ist ein geriffelter Stab aus aneinanderliegenden Radius-4-Ringen auf einer Achse (zusammengefasst zu 12.3 LDU). Die Ausrichtung hält das Schwert am Griff, Knauf in der Hand, Klinge nach vorn und leicht nach unten; die Gegenausrichtung zeigt die Klinge nach hinten oben. Ausrichtungen mit Kollision mit der Figur wurden nicht gewählt.",
+      "members": [
+        {
+          "rebrickablePartNum": "2674e",
+          "ldrawFile": "parts/2674e.dat",
+          "ldrawFileSha256": "c84ebeb28eac8363d4ac4bbb0f83ac9df99574c581b8939575d657001c55648b"
+        }
+      ]
+    },
+    {
+      "familyId": "2674f",
+      "gripSource": "stacked-cylinders",
+      "catalogName": "Weapon Sword Short",
+      "detectedGripPrimitive": "stacked:p/4-4cylc.dat",
+      "detectedGripLengthLdu": 16.1,
+      "gripCandidatesTested": 1,
+      "orientationCandidatesTested": 88,
+      "selectedGripCandidateIndex": 0,
+      "selectedOrientationIndex": 5,
+      "reviewedAt": "2026-10-23",
+      "reviewer": "Claude browser QA, Freigabe durch Projektverantwortlichen",
+      "evidenceReference": "three-quarter,front,back local browser inspection",
+      "note": "Der Griff ist ein geriffelter Stab aus aneinanderliegenden Radius-4-Ringen auf einer Achse (zusammengefasst zu 16.1 LDU). Die Ausrichtung hält das Schwert am Griff, Knauf in der Hand, Klinge nach vorn und leicht nach unten; die Gegenausrichtung zeigt die Klinge nach hinten oben. Ausrichtungen mit Kollision mit der Figur wurden nicht gewählt.",
+      "members": [
+        {
+          "rebrickablePartNum": "2674f",
+          "ldrawFile": "parts/2674f.dat",
+          "ldrawFileSha256": "dd723762b0153441d60e444454e76a5f053738f47293855f8408b7f260d60361"
+        }
+      ]
+    },
+    {
+      "familyId": "18034",
+      "gripSource": "stacked-cylinders",
+      "catalogName": "Weapon Sword with Thick Crossguard (Roman Gladius)",
+      "detectedGripPrimitive": "stacked:p/4-4cyli.dat",
+      "detectedGripLengthLdu": 13.75,
+      "gripCandidatesTested": 1,
+      "orientationCandidatesTested": 56,
+      "selectedGripCandidateIndex": 0,
+      "selectedOrientationIndex": 5,
+      "reviewedAt": "2026-10-23",
+      "reviewer": "Claude browser QA, Freigabe durch Projektverantwortlichen",
+      "evidenceReference": "three-quarter,front,back local browser inspection",
+      "note": "Der Griff ist ein geriffelter Stab aus aneinanderliegenden Radius-4-Ringen auf einer Achse (zusammengefasst zu 13.75 LDU). Die Ausrichtung hält das Schwert am Griff, Knauf in der Hand, Klinge nach vorn und leicht nach unten; die Gegenausrichtung zeigt die Klinge nach hinten oben. Ausrichtungen mit Kollision mit der Figur wurden nicht gewählt.",
+      "members": [
+        {
+          "rebrickablePartNum": "18034",
+          "ldrawFile": "parts/18034.dat",
+          "ldrawFileSha256": "74f63c052e64bc7d4490ef3d7aabd3b13d8276a503309d76052a2a48f9fd7796"
+        }
+      ]
     }
   ]
 }

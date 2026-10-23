@@ -37,9 +37,10 @@ Nur Handzubehör. Bedingung 2 (Transform aus erkennbarer Griffgeometrie) begrenz
 | Schild `59231` rund flach | 3 | ja (zwei Zylinder) | umgesetzt |
 | Schild `3876` rund mit Noppe | 1 | ja (zwei Zylinder) | umgesetzt |
 | Schilde `2586`, `75902`, `92747`, `91884`, `18836`, `10049`, `61856`, `98367`, `37720a`, `48494`, `93251` | rund 70 | nein | ausgeschlossen |
-| Schwerter (`2674a/b/e/f`, `5644`, `11439pat…`, `13549`, `18034`, `25111`, `36017`) | 13 | nein | ausgeschlossen |
+| Schwerter `2674b`, `2674e`, `2674f`, `18034` | 4 | ja, als geriffelter Stab aus aneinanderliegenden Radius-4-Ringen | umgesetzt |
+| Schwerter `2674a`, `5644`, `11439pat…` (4), `13549`, `25111`, `36017` | 9 | nein (keine Ringe, Griff unter 8 LDU oder die Ringe bilden die gekrümmte Klinge) | ausgeschlossen |
 
-Familien ohne Griffgeometrie bleiben gesperrt: Der Builder erzeugt für sie keine Griffkandidaten, und ein Transform wäre geraten (zum Beispiel `2586`, dessen LDraw-Datei nur die Schildform aus flachen Scheiben enthält). Sie werden erst freigeschaltet, wenn LDraw oder LDCad eine Griffgeometrie oder einen Anschluss dafür liefert. Der frühere Entwurf nannte rund 109 Teile; belastbar sind 36.
+Der Detektor erkannte zunächst nur einzelne Zylinder von mindestens 8 LDU; bei den Schwertern `2674b/e/f` und `18034` besteht der Griff aber aus einem Stapel kurzer Radius-4-Ringe (je 1 bis 2 LDU) auf einer Achse. Familien mit `gripSource: "stacked-cylinders"` fassen solche Ringe zu einem Griff zusammen (Ringe auf derselben Achse, höchstens 2 LDU Abstand, zusammen mindestens 8 LDU); das gilt nur für die in der Freigabedatei so gekennzeichneten Teile, der allgemeine Detektor bleibt unverändert. Familien ohne Griffgeometrie bleiben gesperrt: Der Builder erzeugt für sie keine Griffkandidaten, und ein Transform wäre geraten (zum Beispiel `2586`, dessen LDraw-Datei nur die Schildform aus flachen Scheiben enthält). Sie werden erst freigeschaltet, wenn LDraw oder LDCad eine Griffgeometrie oder einen Anschluss dafür liefert. Der frühere Entwurf nannte rund 109 Teile; belastbar sind 40 (32 + 3 + 1 + 4).
 
 ## Konsequenzen
 
@@ -55,6 +56,7 @@ Familien ohne Griffgeometrie bleiben gesperrt: Der Builder erzeugt für sie kein
 ## Umsetzungsstand
 
 - Familien `59231` (3 Teile) und `3876` (1 Teil): Griff 1 (Zylinder entlang der Schildtiefe), Ausrichtungen 6 bzw. 2. Der Griff 0 legt die Schilde flach ab; die Ausrichtungen 5 und 7 drehen den Aufdruck von `59231pr0002` (Adler) sichtbar schief.
+- Schwerter `2674b`, `2674e`, `2674f`, `18034` (je eine Familie): Griff aus gestapelten Ringen (12,3 bis 16,1 LDU), Klinge nach vorn und leicht nach unten gehalten (die Gegenausrichtung zeigt die Klinge nach hinten oben und wurde nicht gewählt). Die Referenzhand neigt die Griffachse um etwa 30 Grad; eine Klinge nach vorn oben ist deshalb mit der festen Armhaltung nicht erreichbar.
 - Familie `3846` (32 Teile): Griffkandidat 1, Ausrichtung 2 (Schild aufrecht vor dem Körper, Spitze nach unten, Aufdruck nach vorn). Kollisionsfrei gegen die geschlossene Referenzgeometrie für alle 32 Mitglieder; Dreiansichten-Browserprüfung für das unbedruckte Schild und mehrere Druckvarianten.
 - Freigabedatei: `data/curated/ldraw-accessory-profile-reviews.json`; Prüfung: `npm run assets:validate:accessory-profiles`.
 - Kennzeichnung: Hinweis auf der Teilekarte in beiden Sprachen.

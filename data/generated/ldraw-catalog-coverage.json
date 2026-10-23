@@ -34,17 +34,17 @@
   },
   "summary": {
     "catalogPartCount": 20283,
-    "visualizedPartCount": 14927,
-    "builderReadyPartCount": 14925,
-    "remainingCatalogPartCount": 5358,
-    "remainingWithoutVisualizationCount": 5356,
+    "visualizedPartCount": 14931,
+    "builderReadyPartCount": 14929,
+    "remainingCatalogPartCount": 5354,
+    "remainingWithoutVisualizationCount": 5352,
     "uniqueOfficialMappingCount": 2840,
     "ambiguousOfficialMappingCount": 168,
     "noOfficialMappingCount": 17275,
     "remainingClassifications": {
       "builder-blocked": 2,
       "render-failed": 0,
-      "placement-profile-required": 343,
+      "placement-profile-required": 339,
       "reviewed-incompatible-assembly": 95,
       "ambiguous-official-mapping": 13,
       "no-official-mapping": 4905
@@ -105,12 +105,12 @@
     },
     "handAccessory": {
       "catalogPartCount": 1311,
-      "builderReadyPartCount": 342,
-      "remainingCatalogPartCount": 969,
+      "builderReadyPartCount": 346,
+      "remainingCatalogPartCount": 965,
       "remainingClassifications": {
         "builder-blocked": 1,
         "render-failed": 0,
-        "placement-profile-required": 341,
+        "placement-profile-required": 337,
         "reviewed-incompatible-assembly": 0,
         "ambiguous-official-mapping": 4,
         "no-official-mapping": 623
@@ -45346,20 +45346,6 @@
       "reason": null
     },
     {
-      "catalogId": "part:2674b",
-      "role": "handAccessory",
-      "rebrickablePartNum": "2674b",
-      "name": "Weapon Sword Long",
-      "classification": "placement-profile-required",
-      "ldrawFiles": [
-        "parts/2674b.dat"
-      ],
-      "mappingEvidence": [
-        "exact-filename"
-      ],
-      "reason": null
-    },
-    {
       "catalogId": "part:2674c",
       "role": "handAccessory",
       "rebrickablePartNum": "2674c",
@@ -45367,34 +45353,6 @@
       "classification": "no-official-mapping",
       "ldrawFiles": [],
       "mappingEvidence": [],
-      "reason": null
-    },
-    {
-      "catalogId": "part:2674e",
-      "role": "handAccessory",
-      "rebrickablePartNum": "2674e",
-      "name": "Weapon Sword Broken (Narsil)",
-      "classification": "placement-profile-required",
-      "ldrawFiles": [
-        "parts/2674e.dat"
-      ],
-      "mappingEvidence": [
-        "exact-filename"
-      ],
-      "reason": null
-    },
-    {
-      "catalogId": "part:2674f",
-      "role": "handAccessory",
-      "rebrickablePartNum": "2674f",
-      "name": "Weapon Sword Short",
-      "classification": "placement-profile-required",
-      "ldrawFiles": [
-        "parts/2674f.dat"
-      ],
-      "mappingEvidence": [
-        "exact-filename"
-      ],
       "reason": null
     },
     {
@@ -47677,20 +47635,6 @@
       "classification": "no-official-mapping",
       "ldrawFiles": [],
       "mappingEvidence": [],
-      "reason": null
-    },
-    {
-      "catalogId": "part:18034",
-      "role": "handAccessory",
-      "rebrickablePartNum": "18034",
-      "name": "Weapon Sword with Thick Crossguard (Roman Gladius)",
-      "classification": "placement-profile-required",
-      "ldrawFiles": [
-        "parts/18034.dat"
-      ],
-      "mappingEvidence": [
-        "exact-filename"
-      ],
       "reason": null
     },
     {

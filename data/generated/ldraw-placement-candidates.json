@@ -22,10 +22,10 @@
     "automaticBuilderEnablements": 0
   },
   "summary": {
-    "placementProfileRequiredCount": 343,
+    "placementProfileRequiredCount": 339,
     "uniqueRadius4CandidateCount": 20,
     "multipleRadius4CandidateCount": 77,
-    "noRadius4CylinderDetectedCount": 244,
+    "noRadius4CylinderDetectedCount": 240,
     "roleSpecificAssemblyProfileRequiredCount": 2,
     "noOfficialMappingQueueCount": 4905,
     "ambiguousOfficialMappingQueueCount": 13
@@ -1322,57 +1322,6 @@
       "name": "Weapon Sword Elvish",
       "ldrawFiles": [
         "parts/2674a.dat"
-      ],
-      "mappingEvidence": [
-        "exact-filename"
-      ],
-      "analysis": "no-radius-4-cylinder-detected",
-      "evidence": [],
-      "proposedPlacementTransformLdu": null,
-      "automaticBuilderEnablement": false,
-      "limitation": "Official LDraw files can encode shafts as direct mesh triangles, so absence of a cylinder primitive is not proof that no grip exists."
-    },
-    {
-      "catalogId": "part:2674b",
-      "role": "handAccessory",
-      "rebrickablePartNum": "2674b",
-      "name": "Weapon Sword Long",
-      "ldrawFiles": [
-        "parts/2674b.dat"
-      ],
-      "mappingEvidence": [
-        "exact-filename"
-      ],
-      "analysis": "no-radius-4-cylinder-detected",
-      "evidence": [],
-      "proposedPlacementTransformLdu": null,
-      "automaticBuilderEnablement": false,
-      "limitation": "Official LDraw files can encode shafts as direct mesh triangles, so absence of a cylinder primitive is not proof that no grip exists."
-    },
-    {
-      "catalogId": "part:2674e",
-      "role": "handAccessory",
-      "rebrickablePartNum": "2674e",
-      "name": "Weapon Sword Broken (Narsil)",
-      "ldrawFiles": [
-        "parts/2674e.dat"
-      ],
-      "mappingEvidence": [
-        "exact-filename"
-      ],
-      "analysis": "no-radius-4-cylinder-detected",
-      "evidence": [],
-      "proposedPlacementTransformLdu": null,
-      "automaticBuilderEnablement": false,
-      "limitation": "Official LDraw files can encode shafts as direct mesh triangles, so absence of a cylinder primitive is not proof that no grip exists."
-    },
-    {
-      "catalogId": "part:2674f",
-      "role": "handAccessory",
-      "rebrickablePartNum": "2674f",
-      "name": "Weapon Sword Short",
-      "ldrawFiles": [
-        "parts/2674f.dat"
       ],
       "mappingEvidence": [
         "exact-filename"
@@ -3994,23 +3943,6 @@
       "proposedPlacementTransformLdu": null,
       "automaticBuilderEnablement": false,
       "limitation": "Several possible shafts exist; selecting one automatically would guess the intended grip."
-    },
-    {
-      "catalogId": "part:18034",
-      "role": "handAccessory",
-      "rebrickablePartNum": "18034",
-      "name": "Weapon Sword with Thick Crossguard (Roman Gladius)",
-      "ldrawFiles": [
-        "parts/18034.dat"
-      ],
-      "mappingEvidence": [
-        "exact-filename"
-      ],
-      "analysis": "no-radius-4-cylinder-detected",
-      "evidence": [],
-      "proposedPlacementTransformLdu": null,
-      "automaticBuilderEnablement": false,
-      "limitation": "Official LDraw files can encode shafts as direct mesh triangles, so absence of a cylinder primitive is not proof that no grip exists."
     },
     {
       "catalogId": "part:18746",
