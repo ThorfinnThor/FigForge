@@ -1,7 +1,7 @@
 import { createFigureDocument } from "../figure/figure-document.js";
 import type { FigureDocument, FigureDocumentSlot } from "../contracts/figure-document.js";
 
-export type FigureThemeId = "pirates" | "castle" | "space" | "fire-rescue" | "zombies" | "fantasy" | "vikings" | "egypt" | "monsters" | "wildwest" | "ninja";
+export type FigureThemeId = "pirates" | "castle" | "space" | "fire-rescue" | "zombies" | "fantasy" | "vikings" | "egypt" | "monsters" | "wildwest" | "ninja" | "jungle";
 
 export type FigureTemplateId =
   | "pirate-captain"
@@ -36,12 +36,15 @@ export type FigureTemplateId =
   | "cowboy"
   | "ninja-shadow"
   | "samurai-warrior"
-  | "shogun";
+  | "shogun"
+  | "jungle-explorer"
+  | "expedition-photographer"
+  | "treasure-hunter";
 
 export type FigureTemplate = {
   id: FigureTemplateId;
   themeId: FigureThemeId;
-  accent: "gold" | "red" | "blue" | "green" | "purple" | "teal" | "orange" | "sand" | "pink" | "brown" | "indigo";
+  accent: "gold" | "red" | "blue" | "green" | "purple" | "teal" | "orange" | "sand" | "pink" | "brown" | "indigo" | "olive";
   nameKey: string;
   descriptionKey: string;
   document: FigureDocument;
@@ -797,6 +800,72 @@ export const FIGURE_TEMPLATES: readonly FigureTemplate[] = [
       "/assets/thumbnails/ldraw-expanded/torso-973c03h01pr0001.webp",
       "/assets/thumbnails/ldraw-expanded/legs-970c10pat03.webp",
       "/assets/thumbnails/ldraw-expanded/handAccessory-21459.webp",
+    ],
+  ),
+  createTemplate(
+    "jungle-explorer",
+    "jungle",
+    "olive",
+    "Jungle Explorer",
+    "ideas.jungleExplorer.name",
+    "ideas.jungleExplorer.description",
+    {
+      head: "catalog:head:3626bpr0757",
+      headwear: "catalog:headwear:30172",
+      torsoAssembly: "catalog:torsoAssembly:973c11h01pr1725",
+      legsAssembly: "catalog:legsAssembly:970c26pr0018",
+      handAccessory: "catalog:handAccessory:29109",
+    },
+    [
+      "/assets/thumbnails/ldraw-expanded/head-3626bpr0757.webp",
+      "/assets/thumbnails/ldraw-expanded/headwear-30172.webp",
+      "/assets/thumbnails/ldraw-expanded/torso-973c11h01pr1725.webp",
+      "/assets/thumbnails/ldraw-expanded/legs-970c26pr0018.webp",
+      "/assets/thumbnails/ldraw-expanded/handAccessory-29109.webp",
+    ],
+  ),
+  createTemplate(
+    "expedition-photographer",
+    "jungle",
+    "olive",
+    "Expedition Photographer",
+    "ideas.expeditionPhotographer.name",
+    "ideas.expeditionPhotographer.description",
+    {
+      head: "catalog:head:3626cpr1967",
+      headwear: "catalog:headwear:98279",
+      torsoAssembly: "catalog:torsoAssembly:973c26h01pr1657",
+      legsAssembly: "catalog:legsAssembly:970c11pat19",
+      handAccessory: "catalog:handAccessory:30089a",
+    },
+    [
+      "/assets/thumbnails/ldraw-expanded/head-3626cpr1967.webp",
+      "/assets/thumbnails/ldraw-expanded/headwear-98279.webp",
+      "/assets/thumbnails/ldraw-expanded/torso-973c26h01pr1657.webp",
+      "/assets/thumbnails/ldraw-expanded/legs-970c11pat19.webp",
+      "/assets/thumbnails/ldraw-expanded/handAccessory-30089a.webp",
+    ],
+  ),
+  createTemplate(
+    "treasure-hunter",
+    "jungle",
+    "olive",
+    "Treasure Hunter",
+    "ideas.treasureHunter.name",
+    "ideas.treasureHunter.description",
+    {
+      head: "catalog:head:3626bpr0646",
+      headwear: "catalog:headwear:61506",
+      torsoAssembly: "catalog:torsoAssembly:973c26h01pr0006",
+      legsAssembly: "catalog:legsAssembly:970c26pr0002",
+      handAccessory: "catalog:handAccessory:3837",
+    },
+    [
+      "/assets/thumbnails/ldraw-expanded/head-3626bpr0646.webp",
+      "/assets/thumbnails/ldraw-expanded/headwear-61506.webp",
+      "/assets/thumbnails/ldraw-expanded/torso-973c26h01pr0006.webp",
+      "/assets/thumbnails/ldraw-expanded/legs-970c26pr0002.webp",
+      "/assets/thumbnails/ldraw-expanded/handAccessory-3837.webp",
     ],
   ),
 ] as const;
