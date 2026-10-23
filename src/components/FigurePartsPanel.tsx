@@ -1,9 +1,10 @@
 import { Card } from "./ui/Card.js";
 import { Button } from "./ui/Button.js";
 import { StatusMessage } from "./ui/StatusMessage.js";
+import { TextInput } from "./ui/TextInput.js";
 import type { CatalogPackagePart } from "../contracts/catalog-package.js";
 import type { ShopExportColor } from "../contracts/shop-export.js";
-import { useRef, type ReactNode, type RefObject } from "react";
+import { useEffect, useRef, useState, type ReactNode, type RefObject } from "react";
 import { useI18n } from "../i18n.js";
 
 export type FigureSlot = {
@@ -18,6 +19,8 @@ export type FigureSlot = {
 type FigurePartsPanelProps = {
   closeButtonRef?: RefObject<HTMLButtonElement | null>;
   drawer?: boolean;
+  figureName?: string;
+  onFigureNameChange?: (name: string) => void;
   onClose?: () => void;
   onExport: () => void;
   onShare: () => Promise<void>;
@@ -39,6 +42,8 @@ type FigurePartsPanelProps = {
 export function FigurePartsPanel({
   closeButtonRef,
   drawer = false,
+  figureName,
+  onFigureNameChange,
   onClose,
   onExport,
   onShare,
@@ -58,6 +63,11 @@ export function FigurePartsPanel({
 }: FigurePartsPanelProps) {
   const importInputRef = useRef<HTMLInputElement>(null);
   const { t } = useI18n();
+  // The draft is only updated with non-empty names; an emptied field falls back on blur.
+  const [nameDraft, setNameDraft] = useState(figureName ?? "");
+  useEffect(() => {
+    setNameDraft(figureName ?? "");
+  }, [figureName]);
   const filledSlots = slots.filter((slot) => slot.component);
   const configurableColorSlots = filledSlots.filter((slot) => slot.colors.length > 1);
   const missingColorCount = configurableColorSlots.filter((slot) => slot.selectedColorId === undefined).length;
@@ -86,6 +96,21 @@ export function FigurePartsPanel({
             ) : null}
           </div>
         </div>
+        {onFigureNameChange ? (
+          <div className="figure-panel__name">
+            <TextInput
+              label={t("figure.nameLabel")}
+              maxLength={80}
+              onBlur={() => setNameDraft(figureName ?? "")}
+              onChange={(event) => {
+                const next = event.currentTarget.value;
+                setNameDraft(next);
+                if (next.trim().length > 0) onFigureNameChange(next);
+              }}
+              value={nameDraft}
+            />
+          </div>
+        ) : null}
         <div className="figure-slot-list">
           {slots.map((slot) => (
             <Card className="figure-slot" data-role={slot.id} data-filled={slot.component ? "true" : undefined} key={slot.id}>

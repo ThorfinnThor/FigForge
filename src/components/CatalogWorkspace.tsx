@@ -1023,6 +1023,8 @@ export function CatalogWorkspace() {
     <FigurePartsPanel
       closeButtonRef={drawerCloseRef}
       drawer={isDesktopDrawerLayout}
+      figureName={figureName}
+      onFigureNameChange={setFigureName}
       onClose={closeFigurePanel}
       onExport={exportFigure}
       onShare={shareFigure}
