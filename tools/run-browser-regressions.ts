@@ -599,6 +599,32 @@ const testNamedCollectionSave = async (client: CdpClient, origin: string): Promi
   await waitFor(client, textIncludes(figureName), "named figure in collection");
 };
 
+const testFigureNameField = async (client: CdpClient, origin: string): Promise<void> => {
+  const figureName = "Browser Renamed Hero";
+  await navigate(client, `${origin}/builder`);
+  await waitFor(client, "Boolean(document.querySelector('.workspace-drawer-trigger'))", "figure panel trigger", 60_000);
+  await evaluate(client, `document.querySelector('.workspace-drawer-trigger')?.click()`);
+  await waitFor(client, "Boolean(document.querySelector('.figure-panel__name input'))", "figure name field");
+  const renamed = await evaluate<boolean>(client, `(() => {
+    const input = document.querySelector('.figure-panel__name input');
+    if (!(input instanceof HTMLInputElement)) return false;
+    const setter = Object.getOwnPropertyDescriptor(HTMLInputElement.prototype, 'value')?.set;
+    setter?.call(input, ${JSON.stringify(figureName)});
+    input.dispatchEvent(new Event('input', { bubbles: true }));
+    return input.value === ${JSON.stringify(figureName)};
+  })()`);
+  assert.equal(renamed, true, "the figure name must be editable in the builder");
+  await delay(1_000);
+  await navigate(client, `${origin}/builder`);
+  await waitFor(client, "Boolean(document.querySelector('.workspace-drawer-trigger'))", "figure panel trigger after reload", 60_000);
+  await evaluate(client, `document.querySelector('.workspace-drawer-trigger')?.click()`);
+  await waitFor(
+    client,
+    `document.querySelector('.figure-panel__name input')?.value === ${JSON.stringify(figureName)}`,
+    "figure name kept after reload",
+  );
+};
+
 const testLDrawAndWebGlFailures = async (client: CdpClient, origin: string): Promise<void> => {
   await navigate(client, `${origin}/builder`);
   await waitFor(client, `Boolean(document.querySelector('.scene-lab[data-scene-state="ready"][data-selection-state="synchronized"] canvas.viewport'))`, "initial 3D preview", 60_000);
@@ -982,6 +1008,8 @@ const run = async (): Promise<void> => {
     process.stdout.write(`✓ complete template and six-figure stage (${timings.templateLoadMs} ms / ${timings.stageLoadMs} ms)\n`);
     await testNamedCollectionSave(client, previewServer.origin);
     process.stdout.write("✓ named collection save and success confirmation\n");
+    await testFigureNameField(client, previewServer.origin);
+    process.stdout.write("✓ figure name editable in the builder and kept after reload\n");
     await testLDrawAndWebGlFailures(client, previewServer.origin);
     process.stdout.write("✓ browser LDraw request failure and WebGL context-loss recovery\n");
   } finally {

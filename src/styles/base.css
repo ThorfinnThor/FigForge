@@ -1427,6 +1427,10 @@ legend {
   white-space: nowrap;
 }
 
+.figure-panel__name {
+  padding: 0 var(--space-4);
+}
+
 .figure-slot-list {
   display: grid;
 }
