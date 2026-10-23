@@ -601,23 +601,31 @@ const testNamedCollectionSave = async (client: CdpClient, origin: string): Promi
 
 const testFigureNameField = async (client: CdpClient, origin: string): Promise<void> => {
   const figureName = "Browser Renamed Hero";
-  await navigate(client, `${origin}/builder`);
-  await waitFor(client, "Boolean(document.querySelector('.workspace-drawer-trigger'))", "figure panel trigger", 60_000);
-  await evaluate(client, `document.querySelector('.workspace-drawer-trigger')?.click()`);
-  await waitFor(client, "Boolean(document.querySelector('.figure-panel__name input'))", "figure name field");
-  const renamed = await evaluate<boolean>(client, `(() => {
-    const input = document.querySelector('.figure-panel__name input');
-    if (!(input instanceof HTMLInputElement)) return false;
-    const setter = Object.getOwnPropertyDescriptor(HTMLInputElement.prototype, 'value')?.set;
-    setter?.call(input, ${JSON.stringify(figureName)});
-    input.dispatchEvent(new Event('input', { bubbles: true }));
-    return input.value === ${JSON.stringify(figureName)};
-  })()`);
-  assert.equal(renamed, true, "the figure name must be editable in the builder");
-  await delay(1_000);
-  await navigate(client, `${origin}/builder`);
-  await waitFor(client, "Boolean(document.querySelector('.workspace-drawer-trigger'))", "figure panel trigger after reload", 60_000);
-  await evaluate(client, `document.querySelector('.workspace-drawer-trigger')?.click()`);
+  const openPanel = async (): Promise<void> => {
+    await navigate(client, `${origin}/builder`);
+    await waitFor(client, "Boolean(document.querySelector('.workspace-drawer-trigger'))", "figure panel trigger", 60_000);
+    await evaluate(client, `document.querySelector('.workspace-drawer-trigger')?.click()`);
+    await waitFor(client, "Boolean(document.querySelector('.figure-panel__name input'))", "figure name field");
+  };
+  await openPanel();
+  // The stored draft is applied asynchronously and replaces a name typed before it arrives,
+  // so type again until the name is still there after the draft has been restored and saved.
+  let kept = false;
+  for (let attempt = 0; attempt < 5 && !kept; attempt += 1) {
+    const renamed = await evaluate<boolean>(client, `(() => {
+      const input = document.querySelector('.figure-panel__name input');
+      if (!(input instanceof HTMLInputElement)) return false;
+      const setter = Object.getOwnPropertyDescriptor(HTMLInputElement.prototype, 'value')?.set;
+      setter?.call(input, ${JSON.stringify(figureName)});
+      input.dispatchEvent(new Event('input', { bubbles: true }));
+      return true;
+    })()`);
+    assert.equal(renamed, true, "the figure name must be editable in the builder");
+    await delay(1_500);
+    kept = await evaluate<boolean>(client, `document.querySelector('.figure-panel__name input')?.value === ${JSON.stringify(figureName)}`);
+  }
+  assert.equal(kept, true, "the typed figure name must stay in the field");
+  await openPanel();
   await waitFor(
     client,
     `document.querySelector('.figure-panel__name input')?.value === ${JSON.stringify(figureName)}`,
