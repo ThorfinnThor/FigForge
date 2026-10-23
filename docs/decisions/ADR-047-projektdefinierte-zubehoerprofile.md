@@ -51,8 +51,17 @@ Das wären etwa +4 % exakte Teile (von rund 2.712 auf rund 2.820). Realistisch b
 - Zusätzlicher Pflegeaufwand: Bei jedem LDraw-Release prüft ein Test die Datei-Hashes der freigegebenen Familien.
 - Ablehnen bedeutet: Die 377 Teile bleiben gesperrt, die Zahl wächst nur mit neuen LDraw- und LDCad-Releases.
 
+## Folge für die Prüfung
+
+`validate-ldraw-expanded-catalog` verlangt sonst bei jedem Handzubehör genau einen kollisionsfreien Griff (`safeGripCandidatesFound === 1`). Für Mitglieder einer Profilfamilie genügt `>= 1`, weil das Profil gerade einen von mehreren sicheren Griffen festlegt. Für alle anderen Teile bleibt die strikte Prüfung unverändert; die Auswahl selbst prüft `assets:validate:accessory-profiles`.
+
+## Umsetzungsstand
+
+- Familie `3846` (32 Teile): Griffkandidat 1, Ausrichtung 2 (Schild aufrecht vor dem Körper, Spitze nach unten, Aufdruck nach vorn). Kollisionsfrei gegen die geschlossene Referenzgeometrie für alle 32 Mitglieder; Dreiansichten-Browserprüfung für das unbedruckte Schild und mehrere Druckvarianten.
+- Freigabedatei: `data/curated/ldraw-accessory-profile-reviews.json`; Prüfung: `npm run assets:validate:accessory-profiles`.
+- Kennzeichnung: Hinweis auf der Teilekarte in beiden Sprachen.
+
 ## Offene Punkte
 
-- Entscheidung des Projektverantwortlichen, ob die Ausnahme von ADR-016/ADR-028 gelten soll.
-- Wortlaut der Kennzeichnung in der Oberfläche (DE/EN).
-- Ob die Validatoren (`assets:validate:accessory-placement` und Nachbarn) eine eigene Prüfung für die neue Freigabe-Datei erhalten oder die bestehende erweitert wird.
+- Weitere Familien (`2586`, `75902`, `92747`, `91884`, übrige Schilde, Schwerter) folgen einzeln nach Sichtprüfung und Freigabe.
+- Die Hashes decken die Teiledatei ab, nicht ihre Unterteile (`s/…`); ein Release, das nur ein Unterteil ändert, wird nicht erkannt, würde aber die Kollisionsprüfung beim Build neu bewerten.

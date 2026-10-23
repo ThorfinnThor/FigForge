@@ -11,8 +11,12 @@ import {
   parseAssemblyPartNum,
 } from "./lib/rebrickable-assembly-colors.js";
 import { handGripEvidenceFromLDCadShadow } from "./lib/ldcad-shadow-connectivity.js";
+import { readAccessoryProfileReviews } from "./lib/ldraw-accessory-profile-reviews.js";
 
 const root = process.cwd();
+// ADR-047: a project profile picks one grip although several are collision-free.
+const profileMemberPartNums = new Set((await readAccessoryProfileReviews(root)).families.flatMap(({ members }) =>
+  members.map(({ rebrickablePartNum }) => rebrickablePartNum.toLowerCase())));
 const libraryRoot = resolve(root, "public", OFFICIAL_LDRAW_PUBLIC_PATH.slice(1));
 const sha256 = (content: string | Buffer): string => createHash("sha256").update(content).digest("hex");
 
@@ -466,7 +470,11 @@ for (const entry of catalog.entries) {
     assert(entry.digitalValidation.protectedBodyBoxCount > 0);
     assert.equal(entry.digitalValidation.collisionSampleCount, 0);
     assert(entry.digitalValidation.gripCandidatesTested >= 1);
-    assert.equal(entry.digitalValidation.safeGripCandidatesFound, 1);
+    if (profileMemberPartNums.has(entry.rebrickablePartNum.toLowerCase())) {
+      assert(entry.digitalValidation.safeGripCandidatesFound >= 1);
+    } else {
+      assert.equal(entry.digitalValidation.safeGripCandidatesFound, 1);
+    }
     assert(
       entry.digitalValidation.selectedGripCandidateIndex >= 0
         && entry.digitalValidation.selectedGripCandidateIndex < entry.digitalValidation.gripCandidatesTested,

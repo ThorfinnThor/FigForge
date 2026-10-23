@@ -1,0 +1,183 @@
+{
+  "schemaVersion": 1,
+  "sourcePolicy": "Nur Rebrickable Catalog Downloads/CSV, keine MOC-Dateien.",
+  "methodology": "ADR-047: Projektdefinierte Handgriff-Profile. Die Geometrie stammt aus der offiziellen LDraw-Bibliothek; die Handposition ist vom Projekt festgelegt und nicht durch einen dokumentierten Anschluss belegt. Jede Familie ist ein Transform (Griff- und Ausrichtungskandidat), der die Kollisionsprüfung gegen die geschlossene Referenzgeometrie besteht und per Dreiansichtenprüfung bestätigt wurde. Ändert sich eine Datei (SHA-256), bricht der Build ab.",
+  "families": [
+    {
+      "familyId": "3846",
+      "catalogName": "Shield Triangular",
+      "detectedGripPrimitive": "p/4-4cyli.dat",
+      "detectedGripLengthLdu": 22,
+      "gripCandidatesTested": 2,
+      "orientationCandidatesTested": 8,
+      "selectedGripCandidateIndex": 1,
+      "selectedOrientationIndex": 2,
+      "reviewedAt": "2026-10-23",
+      "reviewer": "Claude browser QA, Freigabe durch Projektverantwortlichen",
+      "evidenceReference": "three-quarter,front,back local browser inspection (plain shield and printed variants)",
+      "note": "Griff 1 (Zylinder entlang der Schildtiefe) mit Ausrichtung 2 hält das Schild aufrecht vor dem Körper, Spitze nach unten, Aufdruck nach vorn, Griffstab hinter dem Schild in der Hand. Die übrigen kollisionsfreien Kandidaten drehen das Schild seitlich oder um etwa 45 Grad.",
+      "members": [
+        {
+          "rebrickablePartNum": "3846",
+          "ldrawFile": "parts/3846.dat",
+          "ldrawFileSha256": "992fe9bcadc95f6b2d5053b3e51ba4e2d47558d6b43f7458bb1b2cb72fe86c7d"
+        },
+        {
+          "rebrickablePartNum": "3846pr0001",
+          "ldrawFile": "parts/3846p4l.dat",
+          "ldrawFileSha256": "1bb57831ba57182dbfe878aefb789e571a25ce0c9a802dd79f4b938138e951d0"
+        },
+        {
+          "rebrickablePartNum": "3846pr0002",
+          "ldrawFile": "parts/3846p4k.dat",
+          "ldrawFileSha256": "447ce27bc7630a811e30555bdd4c7099c9e9d64aef00e3b399b54477ab4b4c0f"
+        },
+        {
+          "rebrickablePartNum": "3846pr0005",
+          "ldrawFile": "parts/3846p4m.dat",
+          "ldrawFileSha256": "d5ce0ebbb2d75f1e309ed81858017763f0729f95d7c021b15ddae2f593dab60e"
+        },
+        {
+          "rebrickablePartNum": "3846pr0007",
+          "ldrawFile": "parts/3846pm0.dat",
+          "ldrawFileSha256": "d6bdddd5e31e3e18c0f3a58df86571c368b3c1a9a75fb21d614a49153c280160"
+        },
+        {
+          "rebrickablePartNum": "3846pr0011",
+          "ldrawFile": "parts/3846p02.dat",
+          "ldrawFileSha256": "c7a5454e059622f1cfa22b9e877c68bcac1473238c5f086e1e2fe0ff3eae4a27"
+        },
+        {
+          "rebrickablePartNum": "3846pr0012",
+          "ldrawFile": "parts/3846p4n.dat",
+          "ldrawFileSha256": "6a652852f431d536cc40ca479079fce79d11df843b625e66a7df6e875afeff33"
+        },
+        {
+          "rebrickablePartNum": "3846pr0016",
+          "ldrawFile": "parts/3846p4j.dat",
+          "ldrawFileSha256": "cf7ff0a84b0a3586b8579f1e613a1882e43428e7e8078177b9701f296d5e73e9"
+        },
+        {
+          "rebrickablePartNum": "3846pr0017",
+          "ldrawFile": "parts/3846p01.dat",
+          "ldrawFileSha256": "afa508265f4ba36be3b1754a102d6d824157782d31d681f61c906b56027825bc"
+        },
+        {
+          "rebrickablePartNum": "3846pr0018",
+          "ldrawFile": "parts/3846p44.dat",
+          "ldrawFileSha256": "d75a4fd802ce0917329ea65c2997e6236fbc3a7cee1b02365f4777b15ac5c98c"
+        },
+        {
+          "rebrickablePartNum": "3846pr0021",
+          "ldrawFile": "parts/3846p4f.dat",
+          "ldrawFileSha256": "f6468d8b936a52c3dda2f66eb214e4da19855dbde74ba4d02b11b3373835b762"
+        },
+        {
+          "rebrickablePartNum": "3846pr0022",
+          "ldrawFile": "parts/3846p4e.dat",
+          "ldrawFileSha256": "aae229a634ce09f9bcb8e5d02bc4d07f112c95f70f3a087ad04c67e53326b75d"
+        },
+        {
+          "rebrickablePartNum": "3846pr0023",
+          "ldrawFile": "parts/3846p4d.dat",
+          "ldrawFileSha256": "8d25b8134e0f0236bc1ea09ee23476863eaff8352188180373c1d56a2147366a"
+        },
+        {
+          "rebrickablePartNum": "3846pr0024",
+          "ldrawFile": "parts/3846p4c.dat",
+          "ldrawFileSha256": "4d95e9eabb291b1498362e400d4d0b55b0da1cbf770ed2be709d9dcdd8e8da49"
+        },
+        {
+          "rebrickablePartNum": "3846pr0025",
+          "ldrawFile": "parts/3846p48.dat",
+          "ldrawFileSha256": "b0a777688c22721e0263530c4f2bd29f5fc5eecf5ce4399ccff232b21baa10ed"
+        },
+        {
+          "rebrickablePartNum": "3846pr0026",
+          "ldrawFile": "parts/3846p47.dat",
+          "ldrawFileSha256": "2f8207dc3b3aead39ef2bd3d42eb3b91efeb9ca36f261879e85ac3e663b6bb5a"
+        },
+        {
+          "rebrickablePartNum": "3846pr0027",
+          "ldrawFile": "parts/3846p46.dat",
+          "ldrawFileSha256": "c18f9b10662cdca359f61936df605ee79f7a97a878e888dc82f15a64f0470ac7"
+        },
+        {
+          "rebrickablePartNum": "3846pr0028",
+          "ldrawFile": "parts/3846p45.dat",
+          "ldrawFileSha256": "6d508660f7d471499de1d859d0c666d0c8129a5ee1eccbca6b83f9a14b14510f"
+        },
+        {
+          "rebrickablePartNum": "3846pr0036",
+          "ldrawFile": "parts/3846p4u.dat",
+          "ldrawFileSha256": "bbe50d093eeeff0e06c92a75028d8db64d09832bec4c646a176ea512af93f246"
+        },
+        {
+          "rebrickablePartNum": "3846pr0037",
+          "ldrawFile": "parts/3846p4t.dat",
+          "ldrawFileSha256": "8d5a89bc2b395b59f607f493fb657ea63baf4dbd6390027b0cf414187d273fa6"
+        },
+        {
+          "rebrickablePartNum": "3846pr0038",
+          "ldrawFile": "parts/3846p4h.dat",
+          "ldrawFileSha256": "2ab2445d575100398943ef7ba69f9e0610f0ed0de4c915cbf279187c35720c6e"
+        },
+        {
+          "rebrickablePartNum": "3846pr0039",
+          "ldrawFile": "parts/3846p4g.dat",
+          "ldrawFileSha256": "986e1e25af91f68960bf0cd2d4962e865e26d30bbd79e84bd8d2977af695b2f3"
+        },
+        {
+          "rebrickablePartNum": "3846pr0040",
+          "ldrawFile": "parts/3846p49.dat",
+          "ldrawFileSha256": "8f5a389c745a6dea005cbec7b9adf997332a48e6f17b0793b7fe4f4f85643df2"
+        },
+        {
+          "rebrickablePartNum": "3846pr0041",
+          "ldrawFile": "parts/3846p40.dat",
+          "ldrawFileSha256": "448093a24a0e811a758faa0fe3e80eab5733ce672037220bc85fc1c8e162a752"
+        },
+        {
+          "rebrickablePartNum": "3846pr0043",
+          "ldrawFile": "parts/3846p4r.dat",
+          "ldrawFileSha256": "f2fd508857e099e33915f174bc720c4cf09573f92e924b10ab900b9ca3b28c06"
+        },
+        {
+          "rebrickablePartNum": "3846pr0044",
+          "ldrawFile": "parts/3846p4q.dat",
+          "ldrawFileSha256": "4a9a9fcbc63a001b6d780b60c3954322a5350a290671d5b397c821d621e9da45"
+        },
+        {
+          "rebrickablePartNum": "3846pr0045",
+          "ldrawFile": "parts/3846p4z.dat",
+          "ldrawFileSha256": "44d20ff2e6ac217c5b43e26174d5018fb3a9134a0e2cdbd878db725d053e2bff"
+        },
+        {
+          "rebrickablePartNum": "3846pr0046",
+          "ldrawFile": "parts/3846p4y.dat",
+          "ldrawFileSha256": "42648d6f7f315f4e6bf4bb1dc7344b934a1e6a5eb718b85dffb4d55d0e57e8c8"
+        },
+        {
+          "rebrickablePartNum": "3846pr0047",
+          "ldrawFile": "parts/3846p4o.dat",
+          "ldrawFileSha256": "4618706468973c62fbab3d4c7cce0078593372b22eaaa51216a138f1961ff82b"
+        },
+        {
+          "rebrickablePartNum": "3846pr0048",
+          "ldrawFile": "parts/3846p4p.dat",
+          "ldrawFileSha256": "451d43841f9c5c7ebf02b08b333024a8ed176e76b1f73bb9a488fe1699719407"
+        },
+        {
+          "rebrickablePartNum": "3846pr0049",
+          "ldrawFile": "parts/3846p4x.dat",
+          "ldrawFileSha256": "9be2d27234b9f1652c3cbefa24674fd88bb482cf00f1051d98a3ce90cdd5c5b2"
+        },
+        {
+          "rebrickablePartNum": "3846pr0051",
+          "ldrawFile": "parts/3846p50.dat",
+          "ldrawFileSha256": "d8bd252415db09cf119c615de6d70416ff4af2474d125b24d869aa8380b988d3"
+        }
+      ]
+    }
+  ]
+}

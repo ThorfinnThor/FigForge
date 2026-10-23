@@ -5,6 +5,7 @@ import { catalogPackageSchema } from "../src/contracts/catalog-package.js";
 import { handGripEvidenceFromLDCadShadow, vendoredAccessoryGripFiles } from "./lib/ldcad-shadow-connectivity.js";
 import { readAccessoryGripIntentReviews } from "./lib/ldraw-accessory-grip-intent-reviews.js";
 import { readAccessoryPlacementReviews } from "./lib/ldraw-accessory-placement-reviews.js";
+import { readAccessoryProfileReviews } from "./lib/ldraw-accessory-profile-reviews.js";
 import { readMultipleGripClearanceReviews } from "./lib/ldraw-multiple-grip-clearance-reviews.js";
 import { normalizeCatalogEvidenceName } from "./lib/ldraw-review.js";
 
@@ -134,8 +135,12 @@ const remainingWithoutReviewedGrip = [...remainingMultiple].filter((partNum) =>
     && !placementBlockedPartNums.has(partNum)
     && !remainingPlacementApprovedPartNums.has(partNum)
 );
+// ADR-047: all 3846 profile members were multi-grip parts and left the candidate queue when
+// the project profile placed them. The original 99 unreviewed parts stay unreviewed.
+const profileMemberCount = (await readAccessoryProfileReviews(root)).families
+  .reduce((total, { members }) => total + members.length, 0);
 assert.equal(
-  remainingWithoutReviewedGrip.length,
+  remainingWithoutReviewedGrip.length + profileMemberCount,
   99,
 );
 

@@ -4,6 +4,7 @@ import { resolve } from "node:path";
 import { ldrawAccessoryOrientationReviewSchema } from "../src/contracts/ldraw-accessory-orientation-review.js";
 import { ldrawRuntimePackageSchema } from "../src/contracts/ldraw-runtime-package.js";
 import { readAccessoryPlacementReviews } from "./lib/ldraw-accessory-placement-reviews.js";
+import { profileMemberPlacementReviews, readAccessoryProfileReviews } from "./lib/ldraw-accessory-profile-reviews.js";
 
 const root = process.cwd();
 const runtimePath = resolve(root, "data/generated/ldraw-runtime/hand-accessory.json");
@@ -41,7 +42,11 @@ const expanded = JSON.parse(expandedRaw.toString("utf8")) as {
 };
 const expandedByComponent = new Map(expanded.entries.map((entry) => [entry.componentId, entry]));
 const placementReviews = await readAccessoryPlacementReviews(root);
-const placementReviewByPartNum = new Map(placementReviews.reviews.map((review) => [
+const profileReviews = await readAccessoryProfileReviews(root);
+const placementReviewByPartNum = new Map([
+  ...placementReviews.reviews,
+  ...profileMemberPlacementReviews(profileReviews),
+].map((review) => [
   review.rebrickablePartNum.trim().toLowerCase(),
   review,
 ]));

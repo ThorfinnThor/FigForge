@@ -4,6 +4,7 @@ import { StatusMessage } from "./ui/StatusMessage.js";
 import { evaluateCatalogPlacement } from "../compatibility/compatibility-evaluator.js";
 import type { CatalogPackagePart } from "../contracts/catalog-package.js";
 import { partDisplay } from "../catalog/part-display.js";
+import { hasProjectDefinedPlacement } from "../catalog/project-placement-profiles.js";
 import { useI18n } from "../i18n.js";
 
 type PartCardProps = {
@@ -96,6 +97,11 @@ export function PartCard({
                 : builderComponentId
                   ? t("part.modelMissing")
                   : t("part.catalogStatus")}
+          </StatusMessage>
+        ) : null}
+        {connectionStatus === "digitally-supported" && hasProjectDefinedPlacement(component.rebrickablePartNum) ? (
+          <StatusMessage className="part-card__status" tone="info">
+            {t("part.projectPlacement")}
           </StatusMessage>
         ) : null}
         {geometryOnlyPreview ? (
