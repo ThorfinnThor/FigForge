@@ -2,7 +2,7 @@
 
 ## Status
 
-Entwurf — 2026-10-23. Noch nicht angenommen; es ändert sich weder Code noch Katalogdaten.
+Akzeptiert — 2026-10-23 (Projektverantwortlicher). Umsetzung familienweise, beginnend mit Schild `3846`.
 
 ## Kontext
 
