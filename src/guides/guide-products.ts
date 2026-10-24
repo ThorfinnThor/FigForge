@@ -8,4 +8,6 @@ export const GUIDE_PRODUCTS: Readonly<Partial<Record<GuideId, readonly string[]>
   gift: ["minifigure-display-case", "minifigure-display-base", "minifigure-storage"],
   anatomy: ["iconic-pirate-ship", "medieval-horse-knight-castle", "space-shuttle"],
   profession: ["fire-station-with-fire-truck", "fire-rescue-boat", "modular-space-station"],
+  "kids-gift": ["minifigure-storage", "minifigure-display-base", "minifigure-display-case"],
+  christmas: ["minifigure-display-case", "minifigure-display-base", "minifigure-storage"],
 };
