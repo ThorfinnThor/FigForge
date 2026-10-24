@@ -16,6 +16,9 @@ export const GUIDE_SLUGS = {
   "pick-a-brick": { de: "pick-a-brick-minifiguren-teile", en: "pick-a-brick-minifigure-parts" },
   profession: { de: "minifigur-beruf-hobby", en: "minifigure-profession-hobby" },
   colors: { de: "farbnamen-und-farbnummern", en: "color-names-and-ids" },
+  "kids-gift": { de: "minifigur-geschenk-fuer-kinder", en: "minifigure-gift-for-kids" },
+  "build-with-kids": { de: "minifigur-mit-kindern-bauen", en: "build-a-minifigure-with-kids" },
+  christmas: { de: "minifigur-weihnachtsgeschenk", en: "minifigure-christmas-gift" },
 } as const;
 
 export type GuideSlugId = keyof typeof GUIDE_SLUGS;

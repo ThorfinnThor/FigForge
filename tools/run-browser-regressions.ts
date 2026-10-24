@@ -6,6 +6,7 @@ import { tmpdir } from "node:os";
 import { join } from "node:path";
 import { setTimeout as delay } from "node:timers/promises";
 import { createServer, preview, type Plugin, type PreviewServer, type ViteDevServer } from "vite";
+import { GUIDE_IDS } from "../src/guides/guide-content.js";
 
 const ROOT_URL = "about:blank";
 const DEFAULT_TIMEOUT_MS = 30_000;
@@ -861,7 +862,7 @@ const testGuides = async (client: CdpClient, origin: string): Promise<void> => {
   await waitFor(client, "location.pathname === '/ratgeber/minifigur-verschenken' && document.querySelector('.guide-page h1')?.textContent?.startsWith('Eine Minifigur verschenken')", "German guide after the picker");
 
   await navigate(client, `${origin}/en/guides`);
-  await waitFor(client, "document.querySelectorAll('.guides-list li').length === 8", "English guides hub");
+  await waitFor(client, `document.querySelectorAll('.guides-list li').length === ${GUIDE_IDS.length}`, "English guides hub");
 };
 
 const testAffiliateClickCounting = async (client: CdpClient, origin: string): Promise<void> => {

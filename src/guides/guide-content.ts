@@ -26,6 +26,9 @@ export const GUIDE_DATES: Record<GuideId, { published: string; modified: string 
   "pick-a-brick": { published: "2026-10-22", modified: "2026-10-22" },
   profession: { published: "2026-10-22", modified: "2026-10-22" },
   colors: { published: "2026-10-22", modified: "2026-10-22" },
+  "kids-gift": { published: "2026-10-24", modified: "2026-10-24" },
+  "build-with-kids": { published: "2026-10-24", modified: "2026-10-24" },
+  christmas: { published: "2026-10-24", modified: "2026-10-24" },
 };
 
 export const GUIDE_SECTIONS: Record<GuideId, Record<Language, readonly GuideSection[]>> = {
@@ -859,6 +862,320 @@ export const GUIDE_SECTIONS: Record<GuideId, Record<Language, readonly GuideSect
           "Compare the color in the shop with the English name in Create Your Minifig.",
           "At BrickLink, check the color of every line in the wanted list.",
           "At Pick a Brick the element ID decides the color. Check the photo.",
+        ],
+      },
+    ],
+  },
+  "kids-gift": {
+    de: [
+      {
+        heading: "Sicherheit zuerst",
+        paragraphs: [
+          "Minifiguren und ihre Teile sind Kleinteile. Sie sind nichts für Kinder unter drei Jahren. Auch bei älteren Kindern gilt: Kleine Geschwister sollten nicht an die Teile kommen, und Teile gehören nicht in den Mund.",
+          "Welche Altersangabe für ein bestimmtes Teil gilt, steht nicht in Create Your Minifig, sondern beim Anbieter, bei dem du bestellst. Prüfe sie dort.",
+        ],
+      },
+      {
+        heading: "Welche Figur passt zum Kind?",
+        paragraphs: [
+          "Eine Figur kommt gut an, wenn das Kind sich darin wiederfindet. Unter Ideen findest du zwölf Themenwelten, zum Beispiel Piraten, Ritterburg, Weltraum, Feuerwehr, Wikinger, Ninja und Dschungel. Jede Idee lässt sich im Builder Teil für Teil ändern.",
+        ],
+        items: [
+          "Das Lieblingsthema des Kindes: Piraten, Ritter, Weltraum oder Feuerwehr.",
+          "Ein Beruf, den das Kind bewundert, etwa Feuerwehrfrau, Astronaut oder Arzt. Mehr dazu im Ratgeber „Minifigur nach Beruf oder Hobby“.",
+          "Eine Figur, die dem Kind ähnelt: Gesicht und Haare lassen sich im Builder wählen, zum Beispiel mit der Suche nach „rote Haare“.",
+          "Mehrere Figuren für Geschwister oder die ganze Familie. In der Sammlung passen bis zu sechs Figuren auf eine Bühne.",
+        ],
+      },
+      {
+        heading: "Fertig gesteckt oder zum Selberstecken",
+        items: [
+          "Fertig gesteckt kann das Kind sofort spielen. Das ist die bessere Wahl für jüngere Kinder, weil keine losen Teile herumliegen.",
+          "Lose Teile machen Kindern, die gern bauen, mehr Freude, denn das Zusammenstecken gehört zum Geschenk. Dann sollte ein Erwachsener dabei sein.",
+          "Die 3D-Vorschau prüft die Passung nur digital. Stecke die Figur vor dem Verschenken selbst zusammen und probiere aus, ob alles hält.",
+        ],
+      },
+      {
+        heading: "So kommen die Teile zum Kind",
+        paragraphs: [
+          "Create Your Minifig verkauft keine Teile und nimmt keine Bestellungen an. Du stellst die Figur zusammen, erzeugst unter „Teile kaufen“ die Teileliste und bestellst bei einem Shop deiner Wahl. Welcher Weg zu deiner Figur passt, steht im Ratgeber „Minifiguren-Teile bestellen“.",
+          "Kommen die Teile aus mehreren Shops, treffen sie nicht gleichzeitig ein. Plane Zeit ein und bestelle nicht erst kurz vor dem Anlass.",
+        ],
+      },
+      {
+        heading: "Was du vorher wissen solltest",
+        items: [
+          "Der Name des Kindes steht nicht auf der Figur. Die Figur besteht aus bestehenden Teilen mit festen Aufdrucken. Den Namen kannst du auf eine Karte schreiben.",
+          "Manche Teile, besonders bedruckte oder ältere, sind nicht überall zu haben. Verfügbarkeit und Preise nennt Create Your Minifig nicht, sie stehen im Shop. Ist ein Teil nicht lieferbar, tauschst du es im Builder aus.",
+          "Gebrauchte Teile gibt es vor allem bei Marktplätzen wie BrickLink. Das Angebot steht im jeweiligen Shop.",
+        ],
+      },
+      {
+        heading: "Aufbewahren und weiterspielen",
+        paragraphs: [
+          "Eine kleine Box oder ein Sockel hilft, dass die Figur nicht verloren geht. Unter dem Ratgeber findest du dazu eine Auswahl an Produkten.",
+        ],
+      },
+    ],
+    en: [
+      {
+        heading: "Safety first",
+        paragraphs: [
+          "Minifigures and their parts are small parts. They are not for children under three. For older children too: keep them away from younger siblings, and parts do not belong in the mouth.",
+          "Which age rating applies to a particular part is not stated in Create Your Minifig but by the seller you order from. Check it there.",
+        ],
+      },
+      {
+        heading: "Which figure suits the child?",
+        paragraphs: [
+          "A figure goes down well when the child recognises themselves in it. Under Ideas you will find twelve theme worlds, for example pirates, castle, space, fire rescue, vikings, ninja and jungle. You can change every idea part by part in the Builder.",
+        ],
+        items: [
+          "The child's favorite theme: pirates, knights, space or fire rescue.",
+          "A job the child admires, such as firefighter, astronaut or doctor. More in the guide “Minifigure by profession or hobby”.",
+          "A figure that looks like the child: face and hair can be chosen in the Builder, for example by searching for “red hair”.",
+          "Several figures for siblings or the whole family. In the collection, up to six figures fit on one playground.",
+        ],
+      },
+      {
+        heading: "Assembled or to assemble yourself",
+        items: [
+          "Assembled, the child can play right away. That is the better choice for younger children because no loose parts lie around.",
+          "Loose parts please children who like to build, because snapping the figure together is part of the gift. An adult should be there.",
+          "The 3D preview checks fit only digitally. Snap the figure together yourself before you give it away and check that everything holds.",
+        ],
+      },
+      {
+        heading: "How the parts reach the child",
+        paragraphs: [
+          "Create Your Minifig does not sell parts and does not take orders. You assemble the figure, create the parts list under “Buy parts” and order from a shop of your choice. Which option fits your figure is explained in the guide “Order minifigure parts”.",
+          "If the parts come from several shops, they do not arrive together. Allow some time and do not order just before the occasion.",
+        ],
+      },
+      {
+        heading: "What to know beforehand",
+        items: [
+          "The child's name is not on the figure. The figure is made of existing parts with fixed prints. You can write the name on a card.",
+          "Some parts, especially printed or older ones, are not available everywhere. Create Your Minifig does not state availability or prices; they are in the shop. If a part is not available, replace it in the Builder.",
+          "Used parts are mostly found on marketplaces such as BrickLink. The offers are shown in the respective shop.",
+        ],
+      },
+      {
+        heading: "Keep it and keep playing",
+        paragraphs: [
+          "A small box or a base helps keep the figure from getting lost. Below this guide you will find a selection of products for that.",
+        ],
+      },
+    ],
+  },
+  "build-with-kids": {
+    de: [
+      {
+        heading: "Was ihr braucht",
+        paragraphs: [
+          "Ihr braucht nur einen Browser. Es gibt kein Konto und keine Anmeldung, und eure Figuren bleiben in diesem Browser gespeichert, nicht auf einem Server.",
+          "Create Your Minifig verkauft keine Teile. Gekauft wird später bei einem Shop, und das erledigen die Eltern.",
+        ],
+      },
+      {
+        heading: "Schritt für Schritt",
+        ordered: true,
+        items: [
+          "Schaut unter Ideen, welche Themenwelt dem Kind gefällt, oder startet direkt im Builder.",
+          "Das Kind wählt einen Kopf. Die Suche versteht deutsche Wörter wie „Pirat“, „Ritter“, „Roboter“, „Wikinger“ oder „Hexe“.",
+          "Dann sucht ihr der Reihe nach Kopfbedeckung, Oberkörper, Beine und Zubehör aus. Die Reiter heißen Köpfe, Kopfbedeckung, Oberkörper, Beine und Zubehör.",
+          "Dreht die Figur in der 3D-Vorschau: mit dem Finger oder der Maus ziehen, oder die Ansichten Dreiviertel, Vorne und Hinten antippen.",
+          "Gebt der Figur im Figurenpanel („Deine Figur“) einen Namen.",
+          "Mit „In Sammlung speichern“ legt ihr die Figur ab. Auf einer Bühne in der Sammlung passen bis zu sechs Figuren nebeneinander.",
+          "Wenn die Figur fertig ist, öffnen die Eltern „Teile kaufen“, wählen bei Teilen mit mehreren Farben die Farbe und laden die Teileliste für den Shop herunter.",
+        ],
+      },
+      {
+        heading: "Ideen für mehr Spaß",
+        items: [
+          "Zeichnet die Figur und erfindet eine Geschichte dazu.",
+          "Baut eine ganze Gruppe: eine Piratencrew, eine Feuerwehrmannschaft oder die Familie.",
+          "Jedes Familienmitglied entwirft eine Figur, dann stellt ihr alle auf eine Bühne.",
+          "Wenn die echten Teile ankommen, sucht das Kind sie mit der Vorschau am Bildschirm zusammen und steckt die Figur selbst zusammen.",
+        ],
+      },
+      {
+        heading: "Was die Eltern übernehmen",
+        paragraphs: [
+          "Bestellung, Zahlung und Lieferadresse sind Sache der Erwachsenen. Kinder sollten nicht selbst bei einem Shop bestellen.",
+          "Sagt dem Kind vorher, dass es dauert. Kommen die Teile aus mehreren Shops, treffen sie nicht gleichzeitig ein. Welcher Weg zu eurer Figur passt, steht im Ratgeber „Minifiguren-Teile bestellen“.",
+        ],
+      },
+      {
+        heading: "Wenn ein Teil nicht lieferbar ist",
+        paragraphs: [
+          "Manche Teile, besonders bedruckte oder ältere, sind nicht überall zu haben. Verfügbarkeit nennt Create Your Minifig nicht, sie steht im Shop. Dann tauscht ihr das Teil im Builder gegen ein ähnliches aus und erzeugt die Teileliste neu. Das ist auch eine gute Gelegenheit, die Figur noch einmal zu verändern.",
+        ],
+      },
+      {
+        heading: "Sicherheit",
+        paragraphs: [
+          "Minifiguren und ihre Teile sind Kleinteile. Sie sind nichts für Kinder unter drei Jahren. Steckt die Figur gemeinsam zusammen und räumt lose Teile danach weg.",
+        ],
+      },
+    ],
+    en: [
+      {
+        heading: "What you need",
+        paragraphs: [
+          "All you need is a browser. There is no account and no sign-in, and your figures stay saved in this browser, not on a server.",
+          "Create Your Minifig does not sell parts. You buy later from a shop, and the parents take care of that.",
+        ],
+      },
+      {
+        heading: "Step by step",
+        ordered: true,
+        items: [
+          "Look under Ideas for a theme world the child likes, or start directly in the Builder.",
+          "The child chooses a head. The search understands German words such as “Pirat”, “Ritter”, “Roboter”, “Wikinger” or “Hexe”, and of course English ones such as “pirate” or “knight”.",
+          "Then pick headwear, torso, legs and accessory one after the other. The tabs are Heads, Headwear, Torsos, Legs and Accessories.",
+          "Turn the figure in the 3D preview: drag with a finger or the mouse, or tap the views Three-quarter, Front and Back.",
+          "Give the figure a name in the figure panel (“Your figure”).",
+          "Use “Save to collection” to keep the figure. Up to six figures fit side by side on a playground in the collection.",
+          "When the figure is done, the parents open “Buy parts”, choose the color for parts that come in several colors and download the parts list for the shop.",
+        ],
+      },
+      {
+        heading: "Ideas for more fun",
+        items: [
+          "Draw the figure and make up a story for it.",
+          "Build a whole group: a pirate crew, a fire crew or the family.",
+          "Every family member designs a figure, then you put them all on one playground.",
+          "When the real parts arrive, the child finds them with the preview on the screen and snaps the figure together themselves.",
+        ],
+      },
+      {
+        heading: "What the parents take care of",
+        paragraphs: [
+          "Order, payment and delivery address are for adults. Children should not order from a shop themselves.",
+          "Tell the child beforehand that it takes a while. If the parts come from several shops, they do not arrive together. Which option fits your figure is explained in the guide “Order minifigure parts”.",
+        ],
+      },
+      {
+        heading: "If a part is not available",
+        paragraphs: [
+          "Some parts, especially printed or older ones, are not available everywhere. Create Your Minifig does not state availability; it is shown in the shop. Replace the part in the Builder with a similar one and create the parts list again. That is also a good moment to change the figure once more.",
+        ],
+      },
+      {
+        heading: "Safety",
+        paragraphs: [
+          "Minifigures and their parts are small parts. They are not for children under three. Snap the figure together as a team and put loose parts away afterwards.",
+        ],
+      },
+    ],
+  },
+  christmas: {
+    de: [
+      {
+        heading: "Was „personalisiert“ hier heißt",
+        paragraphs: [
+          "Du wählst aus echten Teilen aus: Kopf, Kopfbedeckung, Oberkörper, Beine und Zubehör. So entsteht eine Figur, die zu der beschenkten Person passt, etwa durch Beruf, Hobby, Lieblingsthema oder Haarfarbe.",
+          "Ein Name oder ein Foto lässt sich nicht aufdrucken. Create Your Minifig bietet keinen individuellen Druck an, und die Teile haben ihre festen Aufdrucke. Den Namen schreibst du auf eine Karte, am besten den, den du der Figur im Builder gegeben hast.",
+        ],
+      },
+      {
+        heading: "Zeitplan für das Fest",
+        ordered: true,
+        items: [
+          "Stelle die Figur früh zusammen und speichere sie in deiner Sammlung. Dann kannst du sie in Ruhe noch einmal ändern.",
+          "Bestelle die Teile mit großzügigem Vorlauf. Wie lange ein Paket braucht, hängt vom Shop ab und steht nicht in Create Your Minifig.",
+          "Kommen die Teile aus mehreren Shops, treffen sie nicht gleichzeitig ein. Rechne mit mehreren Paketen.",
+          "Stecke die Figur nach dem Eintreffen zusammen und probiere aus, ob alles hält. Die 3D-Vorschau prüft die Passung nur digital.",
+          "Verpacke das Geschenk erst, wenn die Figur komplett und geprüft ist.",
+        ],
+      },
+      {
+        heading: "Welche Figur?",
+        items: [
+          "Beruf oder Hobby der Person. Ideen dazu stehen im Ratgeber „Minifigur nach Beruf oder Hobby“.",
+          "Ein Thema, das die Person mag: Piraten, Ritterburg, Weltraum, Feuerwehr und acht weitere Themenwelten unter Ideen.",
+          "Eine Gruppe für die Familie: In der Sammlung passen bis zu sechs Figuren auf eine Bühne.",
+          "Für Kinder lies zuerst den Ratgeber „Minifigur als Geschenk für Kinder“.",
+        ],
+      },
+      {
+        heading: "Teile statt Paket: fünf Tage, fünf Teile",
+        paragraphs: [
+          "Eine Figur besteht aus fünf Teilen: Kopf, Kopfbedeckung, Oberkörper, Beine und Zubehör. Du kannst jeden Tag vor dem Fest ein Teil verschenken. Am letzten Tag steckt die Person die Figur selbst zusammen. Bei Kindern sollte dabei ein Erwachsener sein.",
+        ],
+      },
+      {
+        heading: "Wenn etwas nicht rechtzeitig kommt",
+        paragraphs: [
+          "Drucke die 3D-Vorschau der Figur als Bild aus oder mache ein Bildschirmfoto und lege es mit einer Karte unter den Baum: „Deine Figur ist unterwegs.“ So hat die Person etwas in der Hand, und die Überraschung bleibt.",
+        ],
+      },
+      {
+        heading: "Verpacken und aufbewahren",
+        items: [
+          "Packe die zusammengesteckte Figur in eine kleine Schachtel oder einen Beutel und lege die Karte mit dem Namen dazu.",
+          "Für Erwachsene eignet sich ein Sockel oder eine kleine Vitrine. Eine Auswahl findest du unter diesem Ratgeber.",
+        ],
+      },
+      {
+        heading: "Sicherheit",
+        paragraphs: [
+          "Minifiguren und ihre Teile sind Kleinteile. Sie sind nichts für Kinder unter drei Jahren.",
+        ],
+      },
+    ],
+    en: [
+      {
+        heading: "What “personalized” means here",
+        paragraphs: [
+          "You choose from real parts: head, headwear, torso, legs and accessory. That makes a figure that suits the person you give it to, for example through job, hobby, favorite theme or hair color.",
+          "A name or a photo cannot be printed on it. Create Your Minifig does not offer individual printing, and the parts have their fixed prints. Write the name on a card, ideally the one you gave the figure in the Builder.",
+        ],
+      },
+      {
+        heading: "Timeline for the holidays",
+        ordered: true,
+        items: [
+          "Assemble the figure early and save it to your collection. Then you can still change it calmly.",
+          "Order the parts with plenty of lead time. How long a parcel takes depends on the shop and is not stated in Create Your Minifig.",
+          "If the parts come from several shops, they do not arrive together. Expect several parcels.",
+          "Snap the figure together when the parts arrive and check that everything holds. The 3D preview checks fit only digitally.",
+          "Wrap the gift only when the figure is complete and checked.",
+        ],
+      },
+      {
+        heading: "Which figure?",
+        items: [
+          "The person's job or hobby. Ideas are in the guide “Minifigure by profession or hobby”.",
+          "A theme the person likes: pirates, castle, space, fire rescue and eight more theme worlds under Ideas.",
+          "A group for the family: in the collection, up to six figures fit on one playground.",
+          "For children, read the guide “Minifigure gift for kids” first.",
+        ],
+      },
+      {
+        heading: "Parts instead of a parcel: five days, five parts",
+        paragraphs: [
+          "A figure has five parts: head, headwear, torso, legs and accessory. You can give one part each day before the holiday. On the last day the person snaps the figure together themselves. With children, an adult should be there.",
+        ],
+      },
+      {
+        heading: "If something does not arrive in time",
+        paragraphs: [
+          "Print the 3D preview of the figure as a picture, or take a screenshot, and put it under the tree with a card: “Your figure is on its way.” That way the person has something in hand and the surprise stays.",
+        ],
+      },
+      {
+        heading: "Wrap and keep",
+        items: [
+          "Put the assembled figure in a small box or bag and add the card with the name.",
+          "For adults a base or a small display case is a good fit. You will find a selection below this guide.",
+        ],
+      },
+      {
+        heading: "Safety",
+        paragraphs: [
+          "Minifigures and their parts are small parts. They are not for children under three.",
         ],
       },
     ],
