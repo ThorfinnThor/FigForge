@@ -177,6 +177,30 @@ export const updateSavedFigurePreview = async (
   }
 };
 
+/**
+ * Renames a saved figure in place. Only the name changes: the save date, the parts and the
+ * preview stay as they were, so the figure keeps its position and its stages.
+ */
+export const renameSavedFigure = async (id: string, name: string): Promise<SavedFigure> => {
+  const database = await openDatabase();
+  try {
+    const existing = await requestResult<unknown>(
+      database.transaction(COLLECTION_STORE_NAME).objectStore(COLLECTION_STORE_NAME).get(id),
+    );
+    if (existing === undefined) throw new Error("Saved figure not found");
+    const previous = savedFigureSchema.parse(existing);
+    const renamed = savedFigureSchema.parse({
+      ...previous,
+      document: figureDocumentSchema.parse({ ...previous.document, name }),
+    });
+    const transaction = database.transaction(COLLECTION_STORE_NAME, "readwrite");
+    await committedMutation(transaction, [transaction.objectStore(COLLECTION_STORE_NAME).put(renamed)]);
+    return renamed;
+  } finally {
+    database.close();
+  }
+};
+
 export const deleteSavedFigure = async (id: string): Promise<void> => {
   const database = await openDatabase();
   try {
