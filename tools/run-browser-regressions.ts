@@ -600,6 +600,43 @@ const testNamedCollectionSave = async (client: CdpClient, origin: string): Promi
   await waitFor(client, textIncludes(figureName), "named figure in collection");
 };
 
+const testRenameSavedFigure = async (client: CdpClient, origin: string): Promise<void> => {
+  const oldName = "Browser Named Hero";
+  const newName = "Browser Renamed Saved";
+  const cardCount = (): Promise<number> => evaluate<number>(client, "document.querySelectorAll('.collection-card').length");
+  await navigate(client, `${origin}/collection`);
+  await waitFor(client, `[...document.querySelectorAll('.collection-card h4')].some((title) => title.textContent === ${JSON.stringify(oldName)})`, "saved figure card", 60_000);
+  const before = await cardCount();
+  const opened = await evaluate<boolean>(client, `(() => {
+    const button = [...document.querySelectorAll('.collection-card button')]
+      .find((candidate) => candidate.getAttribute('aria-label') === ${JSON.stringify(`Umbenennen: ${oldName}`)});
+    if (!(button instanceof HTMLButtonElement)) return false;
+    button.click();
+    return true;
+  })()`);
+  assert.equal(opened, true, "every figure card must offer renaming");
+  await waitFor(client, "Boolean(document.querySelector('.collection-save-dialog input'))", "rename dialog");
+  assert.equal(await evaluate<string>(client, "document.querySelector('.collection-save-dialog input').value"), oldName,
+    "the dialog starts with the current name");
+  const typed = await evaluate<boolean>(client, `(() => {
+    const input = document.querySelector('.collection-save-dialog input');
+    if (!(input instanceof HTMLInputElement)) return false;
+    const setter = Object.getOwnPropertyDescriptor(HTMLInputElement.prototype, 'value')?.set;
+    setter?.call(input, ${JSON.stringify(newName)});
+    input.dispatchEvent(new Event('input', { bubbles: true }));
+    return true;
+  })()`);
+  assert.equal(typed, true);
+  assert.equal(await clickButtonWithText(client, "Namen speichern"), true);
+  await waitFor(client, `[...document.querySelectorAll('.collection-card h4')].some((title) => title.textContent === ${JSON.stringify(newName)}) && !document.querySelector('.collection-save-dialog')`, "renamed figure card");
+  assert.equal(await cardCount(), before, "renaming must not create a copy");
+  await navigate(client, `${origin}/collection`);
+  await waitFor(client, `[...document.querySelectorAll('.collection-card h4')].some((title) => title.textContent === ${JSON.stringify(newName)})`, "renamed figure after reload", 60_000);
+  assert.equal(await evaluate<boolean>(client, `[...document.querySelectorAll('.collection-card h4')].every((title) => title.textContent !== ${JSON.stringify(oldName)})`), true,
+    "the old name must be gone");
+  assert.equal(await cardCount(), before);
+};
+
 const testFigureNameField = async (client: CdpClient, origin: string): Promise<void> => {
   const figureName = "Browser Renamed Hero";
   const openPanel = async (): Promise<void> => {
@@ -1105,6 +1142,8 @@ const run = async (): Promise<void> => {
     process.stdout.write(`✓ complete template and six-figure stage (${timings.templateLoadMs} ms / ${timings.stageLoadMs} ms)\n`);
     await testNamedCollectionSave(client, previewServer.origin);
     process.stdout.write("✓ named collection save and success confirmation\n");
+    await testRenameSavedFigure(client, previewServer.origin);
+    process.stdout.write("✓ saved figure renamed in the collection without a copy\n");
     await testFigureNameField(client, previewServer.origin);
     process.stdout.write("✓ figure name editable in the builder and kept after reload\n");
     await testInventorySuggestions(client, previewServer.origin);

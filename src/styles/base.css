@@ -3056,6 +3056,10 @@ legend {
   text-decoration: none;
 }
 
+.collection-card__actions > :last-child {
+  grid-column: 1 / -1;
+}
+
 .collection-purchase-dialog__backdrop {
   position: fixed;
   z-index: 100;

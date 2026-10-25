@@ -18,12 +18,14 @@ import {
   listSavedFigures,
   loadPartInventory,
   loadCurrentPlaygroundStages,
+  renameSavedFigure,
   saveCurrentPlaygroundStages,
   type SavedFigure,
 } from "../storage/figure-draft-store.js";
 import { CollectionFigureCard } from "./CollectionFigureCard.js";
 import { LegacyFigurePreviewMigrator } from "./LegacyFigurePreviewMigrator.js";
 import { CollectionInventoryPanel } from "./CollectionInventoryPanel.js";
+import { FigureRenameDialog } from "./FigureRenameDialog.js";
 import { InventorySuggestions } from "./InventorySuggestions.js";
 import { CollectionPurchaseDialog } from "./CollectionPurchaseDialog.js";
 import { CollectionViewport } from "./CollectionViewport.js";
@@ -70,6 +72,7 @@ export function CollectionPage() {
     title: string;
   } | null>(null);
   const [stageDialogMode, setStageDialogMode] = useState<"create" | "rename" | null>(null);
+  const [renameTarget, setRenameTarget] = useState<SavedFigure | null>(null);
   const [isSavingLayout, setIsSavingLayout] = useState(false);
 
   useEffect(() => {
@@ -276,6 +279,18 @@ export function CollectionPage() {
     });
   };
   const purchaseJsonFigure = purchaseSelection?.jsonFigure;
+  const renameFigure = async (name: string): Promise<void> => {
+    const target = renameTarget;
+    setRenameTarget(null);
+    if (!target || name === target.document.name) return;
+    setActionError(false);
+    try {
+      const renamed = await renameSavedFigure(target.id, name);
+      setCollection((current) => current.map((saved) => saved.id === renamed.id ? renamed : saved));
+    } catch {
+      setActionError(true);
+    }
+  };
   const acceptMigratedPreview = (migrated: SavedFigure): void => {
     setCollection((current) => current.map((saved) => saved.id === migrated.id ? migrated : saved));
   };
@@ -387,6 +402,7 @@ export function CollectionPage() {
                         moveUp: t("collection.moveUp"),
                         moveDown: t("collection.moveDown"),
                         openBuilder: t("collection.openBuilder"),
+                        rename: t("collection.renameFigure"),
                         buyFigure: t("collection.buyFigure"),
                         stageFull: t("collection.stageFull"),
                         onStage: t("collection.onStage"),
@@ -395,6 +411,7 @@ export function CollectionPage() {
                       language={language}
                       onMove={(direction) => moveOnStage(saved.id, direction)}
                       onBuy={() => openPurchaseDialog(saved)}
+                      onRename={() => setRenameTarget(saved)}
                       onStage={onStage}
                       onToggleStage={() => onStage ? removeFromStage(saved.id) : addToStage(saved.id)}
                       saved={saved}
@@ -440,6 +457,13 @@ export function CollectionPage() {
             : {})}
           savedFigures={purchaseSelection.figures}
           title={purchaseSelection.title}
+        />
+      ) : null}
+      {renameTarget ? (
+        <FigureRenameDialog
+          initialName={renameTarget.document.name}
+          onClose={() => setRenameTarget(null)}
+          onSubmit={(name) => void renameFigure(name)}
         />
       ) : null}
       {stageDialogMode ? (

@@ -17,6 +17,7 @@ type CollectionFigureCardProps = {
     moveUp: string;
     moveDown: string;
     openBuilder: string;
+    rename: string;
     buyFigure: string;
     stageFull: string;
     onStage: string;
@@ -25,6 +26,7 @@ type CollectionFigureCardProps = {
   onToggleStage: () => void;
   onMove: (direction: -1 | 1) => void;
   onBuy: () => void;
+  onRename: () => void;
 };
 
 export function CollectionFigureCard({
@@ -39,6 +41,7 @@ export function CollectionFigureCard({
   onToggleStage,
   onMove,
   onBuy,
+  onRename,
 }: CollectionFigureCardProps) {
   return (
     <li className={`collection-card${onStage ? " collection-card--on-stage" : ""}`}>
@@ -71,6 +74,15 @@ export function CollectionFigureCard({
           <a className="ff-button ff-button--sm ff-button--ghost" href={`${localizedPath("/builder", language)}?figureId=${encodeURIComponent(saved.id)}`}>
             {labels.openBuilder}
           </a>
+          <Button
+            aria-label={`${labels.rename}: ${saved.document.name}`}
+            disabled={busy}
+            onClick={onRename}
+            size="sm"
+            variant="ghost"
+          >
+            {labels.rename}
+          </Button>
           <Button onClick={onBuy} size="sm" variant="primary">
             {labels.buyFigure}
           </Button>
