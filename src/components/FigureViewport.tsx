@@ -240,7 +240,10 @@ export function FigureViewport({
             {t("viewport.missing", { slots: missingSlotLabels.join(", ") })}
           </p>
         ) : null}
-        <p className="viewport-help">{t("viewport.help")}</p>
+        <p className="viewport-help">
+          <span className="viewport-help__pointer">{t("viewport.help")}</span>
+          <span className="viewport-help__touch">{t("viewport.helpTouch")}</span>
+        </p>
       </Card>
 
       <div className="scene-copy">

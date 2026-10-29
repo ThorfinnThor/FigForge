@@ -89,6 +89,87 @@ export function IdeasPage() {
     };
   }, [selectedWorld, t]);
 
+  // On a theme page the chosen world's figures come first; the other worlds follow below.
+  const worldsSection = (
+    <section className="ideas-section" aria-labelledby="ideas-worlds-title">
+      <div className="ideas-page__section-heading ideas-page__section-heading--worlds">
+        <div>
+          <p className="ideas-page__eyebrow">{t("ideas.worlds.eyebrow")}</p>
+          <h2 id="ideas-worlds-title">{t("ideas.worlds.title")}</h2>
+        </div>
+        <div className="ideas-page__section-aside">
+          <p>{t("ideas.worlds.lede")}</p>
+          {selectedTheme ? (
+            <a className="ff-button ff-button--ghost ideas-page__all-worlds" href={path("/ideas")}>
+              {t("ideas.worlds.all")}
+            </a>
+          ) : null}
+        </div>
+      </div>
+      <ul className="ideas-worlds">
+        {THEME_WORLDS.map((world) => (
+          <li className="idea-world" data-accent={world.accent} key={world.id}>
+            <div>
+              <h3>{t(world.nameKey)}</h3>
+              <p>{t(world.descriptionKey)}</p>
+              <p className="idea-world__roles">{t(world.rolesKey)}</p>
+            </div>
+            <a
+              aria-current={selectedTheme === world.id ? "page" : undefined}
+              className="idea-world__link"
+              href={path(`/ideas/${encodeURIComponent(world.id)}`)}
+            >
+              {t("ideas.worlds.open")}
+            </a>
+          </li>
+        ))}
+      </ul>
+    </section>
+  );
+
+  const figuresSection = (
+    <section className="ideas-section" aria-labelledby="ideas-grid-title">
+      <div className="ideas-page__section-heading">
+        <div>
+          <p className="ideas-page__eyebrow">{t("ideas.starters.eyebrow")}</p>
+          <h2 id="ideas-grid-title">{selectedWorld ? t(selectedWorld.nameKey) : t("ideas.starters.title")}</h2>
+        </div>
+        <p>{selectedWorld ? t(selectedWorld.descriptionKey) : t("ideas.starters.hint")}</p>
+      </div>
+      <ul className="ideas-grid">
+        {visibleTemplates.map((template) => (
+          <li className="idea-card" data-accent={template.accent} key={template.id}>
+            <FigurePreviewCard
+              alt={t(template.nameKey)}
+              className="idea-card__preview"
+              src={template.previewImageUrl}
+            />
+            <div className="idea-card__body">
+              <h3>{t(template.nameKey)}</h3>
+              <p>{t(template.descriptionKey)}</p>
+              {selectedTheme ? (
+                <details className="idea-card__parts">
+                  <summary>{t("ideas.parts.title")}</summary>
+                  <dl>
+                    {partNumbers(template).map(({ slot, number }) => (
+                      <div key={slot}>
+                        <dt>{t(`ideas.part.${slot}`)}</dt>
+                        <dd>{number}</dd>
+                      </div>
+                    ))}
+                  </dl>
+                </details>
+              ) : null}
+              <a className="ff-button ff-button--primary idea-card__cta" href={`${path("/builder")}?template=${encodeURIComponent(template.id)}`}>
+                {t("ideas.customize")}
+              </a>
+            </div>
+          </li>
+        ))}
+      </ul>
+    </section>
+  );
+
   return (
     <div className="app-shell ideas-shell">
       <AppHeader active="ideas" />
@@ -100,81 +181,8 @@ export function IdeasPage() {
           <p>{t("ideas.lede")}</p>
         </section>
 
-        <section className="ideas-section" aria-labelledby="ideas-worlds-title">
-          <div className="ideas-page__section-heading ideas-page__section-heading--worlds">
-            <div>
-              <p className="ideas-page__eyebrow">{t("ideas.worlds.eyebrow")}</p>
-              <h2 id="ideas-worlds-title">{t("ideas.worlds.title")}</h2>
-            </div>
-            <div className="ideas-page__section-aside">
-              <p>{t("ideas.worlds.lede")}</p>
-              {selectedTheme ? (
-                <a className="ff-button ff-button--ghost ideas-page__all-worlds" href={path("/ideas")}>
-                  {t("ideas.worlds.all")}
-                </a>
-              ) : null}
-            </div>
-          </div>
-          <ul className="ideas-worlds">
-            {THEME_WORLDS.map((world) => (
-              <li className="idea-world" data-accent={world.accent} key={world.id}>
-                <div>
-                  <h3>{t(world.nameKey)}</h3>
-                  <p>{t(world.descriptionKey)}</p>
-                  <p className="idea-world__roles">{t(world.rolesKey)}</p>
-                </div>
-                <a
-                  aria-current={selectedTheme === world.id ? "page" : undefined}
-                  className="idea-world__link"
-                  href={path(`/ideas/${encodeURIComponent(world.id)}`)}
-                >
-                  {t("ideas.worlds.open")}
-                </a>
-              </li>
-            ))}
-          </ul>
-        </section>
-
-        <section className="ideas-section" aria-labelledby="ideas-grid-title">
-          <div className="ideas-page__section-heading">
-            <div>
-              <p className="ideas-page__eyebrow">{t("ideas.starters.eyebrow")}</p>
-              <h2 id="ideas-grid-title">{selectedWorld ? t(selectedWorld.nameKey) : t("ideas.starters.title")}</h2>
-            </div>
-            <p>{selectedWorld ? t(selectedWorld.descriptionKey) : t("ideas.starters.hint")}</p>
-          </div>
-          <ul className="ideas-grid">
-            {visibleTemplates.map((template) => (
-              <li className="idea-card" data-accent={template.accent} key={template.id}>
-                <FigurePreviewCard
-                  alt={t(template.nameKey)}
-                  className="idea-card__preview"
-                  src={template.previewImageUrl}
-                />
-                <div className="idea-card__body">
-                  <h3>{t(template.nameKey)}</h3>
-                  <p>{t(template.descriptionKey)}</p>
-                  {selectedTheme ? (
-                    <details className="idea-card__parts">
-                      <summary>{t("ideas.parts.title")}</summary>
-                      <dl>
-                        {partNumbers(template).map(({ slot, number }) => (
-                          <div key={slot}>
-                            <dt>{t(`ideas.part.${slot}`)}</dt>
-                            <dd>{number}</dd>
-                          </div>
-                        ))}
-                      </dl>
-                    </details>
-                  ) : null}
-                  <a className="ff-button ff-button--primary idea-card__cta" href={`${path("/builder")}?template=${encodeURIComponent(template.id)}`}>
-                    {t("ideas.customize")}
-                  </a>
-                </div>
-              </li>
-            ))}
-          </ul>
-        </section>
+        {selectedTheme ? figuresSection : worldsSection}
+        {selectedTheme ? worldsSection : figuresSection}
 
         {selectedTheme ? (
           <section className="ideas-section" aria-labelledby="ideas-tip-title">

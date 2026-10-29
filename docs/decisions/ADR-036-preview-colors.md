@@ -37,6 +37,7 @@ Original wieder her. Ein Farbwechsel bei gleichem Teil lädt kein Modell neu.
   Hinweis in der Oberfläche sagt das.
 - Die Sammlungsansicht zeigt gespeicherte Figuren weiter in Modellfarben; die
   Vorlage-Modelle werden dort geteilt und müssten pro Figur kopiert werden.
+  *(Überholt durch ADR-048: Die Sammlung zeigt jetzt die gewählten Farben.)*
 - Die Farbtabelle gleicht Namen ab, nicht Messwerte. Weicht eine
   Rebrickable-Farbe vom gleichnamigen LDraw-Ton ab, zeigt die Vorschau den
   LDraw-Ton.

@@ -5,6 +5,7 @@ import { TextInput } from "./ui/TextInput.js";
 import type { CatalogPackagePart } from "../contracts/catalog-package.js";
 import type { ShopExportColor } from "../contracts/shop-export.js";
 import { useEffect, useRef, useState, type ReactNode, type RefObject } from "react";
+import { partDisplay } from "../catalog/part-display.js";
 import { useI18n } from "../i18n.js";
 
 export type FigureSlot = {
@@ -120,7 +121,13 @@ export function FigurePartsPanel({
               </div>
               <div className="figure-slot__copy">
                 <p className="figure-slot__label">{slot.label}</p>
-                <p className="figure-slot__name">{slot.component?.name ?? t("figure.empty")}</p>
+                <p
+                  className="figure-slot__name"
+                  lang={slot.component ? "en" : undefined}
+                  title={slot.component ? slot.component.name : undefined}
+                >
+                  {slot.component ? partDisplay(slot.component.name).title : t("figure.empty")}
+                </p>
                 <p className="figure-slot__meta">{slot.component ? `Rebrickable · ${slot.component.rebrickablePartNum}` : t("figure.none")}</p>
                 {slot.component ? (
                   <p
