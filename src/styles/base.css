@@ -1149,6 +1149,21 @@ legend {
   text-align: right;
 }
 
+.viewport-help__touch {
+  display: none;
+}
+
+/* Touch screens zoom by pinching; the mouse wheel hint would be wrong there. */
+@media (pointer: coarse) {
+  .viewport-help__pointer {
+    display: none;
+  }
+
+  .viewport-help__touch {
+    display: inline;
+  }
+}
+
 .viewport-missing {
   position: absolute;
   z-index: 2;

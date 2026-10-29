@@ -22,6 +22,7 @@ import { LDrawLoader } from "three/addons/loaders/LDrawLoader.js";
 import type { CollectionFigure } from "../collection/collection-figures.js";
 import { PLAYGROUND_LAYOUT_MAX_FIGURES } from "../contracts/playground-layout.js";
 import { disposeObject3D } from "./dispose-object.js";
+import { applyPreviewColor, disposePreviewColorMaterials } from "./preview-color.js";
 import { assertInternalLDrawUrl } from "./ldraw-part-loader.js";
 import { OFFICIAL_LDRAW_PUBLIC_PATH } from "./ldraw-release.js";
 import type { CameraPreset, LDrawCatalogRole, LDrawCatalogSelection } from "./types.js";
@@ -208,6 +209,7 @@ export class CollectionSceneController {
     const rigs = await Promise.all(figures.map((figure) => this.#createFigureRig(figure)));
     if (this.#disposed || revision !== this.#applyRevision) return;
 
+    this.#displayRoot.children.forEach(disposePreviewColorMaterials);
     this.#displayRoot.clear();
     rigs.forEach((rig) => this.#displayRoot.add(rig));
     this.#figureCount = rigs.length;
@@ -315,6 +317,9 @@ export class CollectionSceneController {
     for (const { object, selection } of parts) {
       const previous = slots.get(selection.role);
       previous?.removeFromParent();
+      // `object` is this figure's own clone of the shared template: the recolouring replaces the
+      // materials of the clone only, so other figures with the same part keep their colours.
+      applyPreviewColor(object, selection.previewColor);
       this.#applyPlacement(object, selection);
       model.add(object);
       slots.set(selection.role, object);

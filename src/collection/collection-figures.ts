@@ -1,6 +1,7 @@
 import type { FigureDocument } from "../contracts/figure-document.js";
 import type { PlaygroundStage } from "../contracts/playground-layout.js";
 import type { SavedFigure } from "../storage/figure-draft-store.js";
+import { previewColorForRebrickableColor } from "../catalog/preview-colors.js";
 import type { LDrawCatalogRole, LDrawCatalogSelection } from "../scene/types.js";
 import {
   builderComponentForId,
@@ -27,7 +28,7 @@ const isLDrawRole = (role: string): role is LDrawCatalogRole => LDRAW_ROLES.has(
 
 export const ldrawSelectionsForFigureDocument = (
   document: FigureDocument,
-): readonly LDrawCatalogSelection[] => document.selections.flatMap(({ componentId, slot }) => {
+): readonly LDrawCatalogSelection[] => document.selections.flatMap(({ componentId, rebrickableColorId, slot }) => {
   if (!isLDrawRole(slot)) return [];
   const component = builderComponentForId(componentId);
   const ldrawEntry = digitallySupportedLDrawEntryForComponent(componentId);
@@ -43,6 +44,8 @@ export const ldrawSelectionsForFigureDocument = (
     placementTransformLdu: connectivity.placementTransformLdu,
     rebrickablePartNum: component.rebrickablePartNum,
     role: slot,
+    // The same chosen colour the builder shows, so a saved figure looks alike in both places.
+    previewColor: previewColorForRebrickableColor(rebrickableColorId),
   } satisfies LDrawCatalogSelection];
 });
 

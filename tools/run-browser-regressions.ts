@@ -759,6 +759,23 @@ const testPartNumberLeavesCategory = async (client: CdpClient, origin: string): 
   assert.equal(await activeCategory(), "Zubehör", "the switch happens only once per part number query");
 };
 
+const testThemePageOrder = async (client: CdpClient, origin: string): Promise<void> => {
+  const gridBeforeWorlds = (): Promise<boolean | null> => evaluate<boolean | null>(client, `(() => {
+    const grid = document.querySelector('.ideas-grid');
+    const worlds = document.querySelector('.ideas-worlds');
+    if (!grid || !worlds) return null;
+    return Boolean(grid.compareDocumentPosition(worlds) & Node.DOCUMENT_POSITION_FOLLOWING);
+  })()`);
+  await navigate(client, `${origin}/ideas`);
+  await waitFor(client, "Boolean(document.querySelector('.ideas-grid') && document.querySelector('.ideas-worlds'))", "ideas overview", 60_000);
+  assert.equal(await gridBeforeWorlds(), false, "the overview shows the theme worlds first");
+  await navigate(client, `${origin}/ideas/fire-rescue`);
+  await waitFor(client, "Boolean(document.querySelector('.ideas-grid') && document.querySelector('.ideas-worlds'))", "theme page", 60_000);
+  assert.equal(await gridBeforeWorlds(), true, "a theme page shows its figures before the other worlds");
+  assert.equal(await evaluate<number>(client, "document.querySelectorAll('.ideas-grid .idea-card').length"), 3,
+    "the fire rescue page lists its three figures");
+};
+
 const testLDrawAndWebGlFailures = async (client: CdpClient, origin: string): Promise<void> => {
   await navigate(client, `${origin}/builder`);
   await waitFor(client, `Boolean(document.querySelector('.scene-lab[data-scene-state="ready"][data-selection-state="synchronized"] canvas.viewport'))`, "initial 3D preview", 60_000);
@@ -1152,6 +1169,8 @@ const run = async (): Promise<void> => {
     process.stdout.write("✓ BrickLink XML import maps parts and feeds the suggestions\n");
     await testPartNumberLeavesCategory(client, previewServer.origin);
     process.stdout.write("✓ a part number leaves the category tab once, keywords do not\n");
+    await testThemePageOrder(client, previewServer.origin);
+    process.stdout.write("✓ a theme page shows its figures before the other worlds\n");
     await testLDrawAndWebGlFailures(client, previewServer.origin);
     process.stdout.write("✓ browser LDraw request failure and WebGL context-loss recovery\n");
   } finally {

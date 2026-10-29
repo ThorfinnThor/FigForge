@@ -64,3 +64,17 @@ export function applyPreviewColor(root: Object3D, color: PreviewColor | undefine
     else update(materials as Material, null);
   });
 }
+
+/**
+ * Disposes the material copies `applyPreviewColor` made for `root`. The geometry and all other
+ * materials may still be shared with a template and are left alone.
+ */
+export function disposePreviewColorMaterials(root: Object3D): void {
+  root.traverse((child) => {
+    if (!(child instanceof Mesh)) return;
+    const materials: unknown = Reflect.get(child, "material");
+    for (const material of Array.isArray(materials) ? materials as Material[] : [materials as Material]) {
+      if (material.userData[ORIGINAL_KEY]) material.dispose();
+    }
+  });
+}
